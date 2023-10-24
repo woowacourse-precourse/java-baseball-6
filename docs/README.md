@@ -43,3 +43,17 @@
         - [x] 3스트라이크가 아닐 경우 입력창으로 돌아간다
         - [x] 3스트라이크 일 경우 `3개의 숫자를 모두 맞히셨습니다! 게임 종료`
           `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`를 출력한다.
+
+#### <span style="background-color:#E8D595">4. 결과
+
+- **3자리 숫자 입력, 결과 출력, 종료**
+  
+![Animation](https://github.com/jinchiim/Programmers/assets/105053478/f13c8a0d-18e4-4e74-a51f-fe2a0b85361a)
+
+- **0 혹은 중복 숫자, 한글과 같은 그 외 문자 입력 시 에러**
+  
+![Animation1](https://github.com/jinchiim/Programmers/assets/105053478/a3ce044e-8652-4cf9-800b-d6d295376ec8)
+
+- **1혹은 2가 아닌 숫자를 입력시 에러**
+
+![Animation2](https://github.com/jinchiim/Programmers/assets/105053478/457f2a00-2765-4ea4-9dc9-83fe394adb97)
