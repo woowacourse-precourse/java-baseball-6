@@ -99,6 +99,16 @@ public class Application {
         return answer;
     }
 
+    public static int[] compareLogic(int[] inputIntegerArray,int[] answerIntegerArray) {
+        int[] result = new int[3];
+
+        result[0] = ballCount(inputIntegerArray, answerIntegerArray);
+        result[1] = strikeCount(inputIntegerArray, answerIntegerArray);
+        result[2] = (result[1] == 3) ? 1 : 0;
+
+        return result;
+    }
+
 
 
     public static void main(String[] args) {
