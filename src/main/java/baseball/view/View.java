@@ -1,13 +1,11 @@
 package baseball.view;
 
+import baseball.domain.Computer;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 
 public class View {
-    private static final String END_COMMAND = "1";
-    private static final String RESTART_COMMAND = "2";
-    private static final int INPUT_NUMBER_SIZE = 3;
 
     public static String readUserNumber() {
         printInputNumberMessage();
@@ -33,7 +31,7 @@ public class View {
     }
 
     private static void checkNumberSize(String inputNumber) {
-        if (inputNumber.length() != INPUT_NUMBER_SIZE) {
+        if (inputNumber.length() != Computer.NUMBER_SIZE) {
             throw new IllegalArgumentException("반드시 3개의 숫자여야 합니다.");
         }
     }
@@ -48,7 +46,7 @@ public class View {
         String[] numbers = inputNumber.split("");
         long count = Arrays.stream(numbers).distinct().count();
 
-        if (count != INPUT_NUMBER_SIZE) {
+        if (count != Computer.NUMBER_SIZE) {
             throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
         }
     }
@@ -62,8 +60,8 @@ public class View {
         return Integer.parseInt(inputCommand);
     }
 
-    private static void checkEndCommandType(String inputCommand) {
-        if (!inputCommand.equals(END_COMMAND) && !inputCommand.equals(RESTART_COMMAND)) {
+    private static void checkEndCommandType(String command) {
+        if (!command.equals(Computer.FINISH_COMMAND) && !command.equals(Computer.RESTART_COMMAND)) {
             throw new IllegalArgumentException("잘못된 종료 커멘드입니다.");
         }
     }

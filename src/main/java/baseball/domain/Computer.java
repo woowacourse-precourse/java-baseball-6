@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private static final int END = 2;
-    private String targetNumber;
+    public static final String RESTART_COMMAND = "1";
+    public static final String FINISH_COMMAND = "2";
+    public static final int NUMBER_SIZE = 3;
+
     private int ballCount;
     private int strikeCount;
 
