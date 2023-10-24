@@ -30,17 +30,18 @@ public class Computer {
         int strikeCnt = 0;
         int ballCnt = 0;
 
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             if (targetChars[i] == numChars[i]) {
-                strikeCnt ++;
+                strikeCnt++;
             } else {
-                if(this.target.contains(String.valueOf(numChars[i]))) {
-                    ballCnt ++;
+                if (this.target.contains(String.valueOf(numChars[i]))) {
+                    ballCnt++;
                 }
             }
         }
 
-        String answer = (ballCnt != 0 ? ballCnt + "볼 " : "") + (strikeCnt != 0 ? strikeCnt + "스트라이크" : "").trim();
+        String answer = (ballCnt != 0 ? ballCnt + "볼 " : "") + (strikeCnt != 0 ? strikeCnt + "스트라이크"
+                : "").trim();
         return answer.isEmpty() ? "낫싱" : answer;
     }
 }
