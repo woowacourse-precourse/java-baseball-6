@@ -17,10 +17,12 @@
 
 2. checkLength() : 사용자의 입력 값의 길이가 3인지 체크하는 함수.
    * return : boolean
+   * 3이 아닐 경우 IllegalArgumentException 발생 후, "3개의 숫자를 입력하세요." 문구 출력
 
 
 3. checkZero() : 사용자의 입력 값이 0이 있는지 체크하는 함수.
    * return : boolean
+   * 0이 아닐 경우 IllegalArgumentException 발생 후, "1부터 9사이의 숫자만 입력하세요." 문구 출력
 ---
 
 
