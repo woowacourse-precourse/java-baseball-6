@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.Model;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -19,30 +20,15 @@ public class Application {
     }
 }
 
-class Input {
-    public static String inputThreeNumber() {
-        return Console.readLine();
-    }
-
-    public static List<Integer> stringToIntegerList(String stringNumber) {
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < stringNumber.length(); i++) {
-            char c = stringNumber.charAt(i);
-            int digit = Character.getNumericValue(c);
-            list.add(digit);
-        }
-        return list;
-    }
-}
-
 class Game {
     public static void gameMiddle() {
         List<Integer> list;
         List<Integer> answer = RandomNumber.getUniqueNumbers();
         do {
             View.gameNumberInputPrint();
-            String str = Input.inputThreeNumber();
-            list = Input.stringToIntegerList(str);
+            String str = Model.inputThreeNumber();
+            Model.isInputThreeNumber(str);
+            list = Model.stringToIntegerList(str);
             List<Integer> result = BaseballCalculate.baseballCalculate(answer, list);
             String baseballHint = BaseballCalculate.makeBaseballHint(result);
             View.baseballHintPrint(baseballHint);
@@ -73,7 +59,6 @@ class RandomNumber {
             }
         }
         baseballNumber = computer;
-        System.out.println(baseballNumber);
         return baseballNumber;
     }
 }
