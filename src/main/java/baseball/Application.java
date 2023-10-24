@@ -32,11 +32,14 @@ public class Application {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String isClose = Console.readLine();
                 System.out.println(isClose);
-                if (isClose.equals("2")) {
-                    break;
-                }
 
-                computer = getRandomNumbers();
+                if (isClose.equals("1")) {
+                    computer = getRandomNumbers();
+                } else if (isClose.equals("2")) {
+                    break;
+                } else {
+                    throw new IllegalArgumentException("1 또는 2 이외의 문자가 입력되었습니다.");
+                }
             }
         }
     }
