@@ -66,14 +66,12 @@
     - [x] `isSameValue()`: `BaseballNumber`의 값을 비교하여 같은지 반환.
     - [x] `isContainedIn()`: `BaseballNumbers`의 리스트에 같은 값이 있는지 반환.
 - `Score`
-    - [x] `toString()` 메서드를 오버라이딩하여 `"n볼"`, `"n스트라이크"`, `"낫싱"` `"3스트라이크"` 출력.
+    - [x] `toString()` 메서드를 오버라이딩하여 `"낫싱"`, `"n볼"`, `"n스트라이크"`, `"n볼 m스트라이크"` 출력.
     - [x] `isStrikeOut()`: 정답과 입력값을 비교하여 `"3스트라이크"`인지 `boolean` 반환.
-    - [x] `getBallCount()`: `Score`가 가지고 있는 `Ball`의 값을 반환.
-    - [x] `getStrikeCount()`: `Score`가 가지고 있는 `Strike`의 값을 반환.
 - `Ball`
     - [x] `isEmpty()`: 볼이 비어있는지 확인.
-    - [x] `getValue()`: 볼의 값을 반환.
+    - [ ] `toString()` 메서드를 오버라이딩 하여 `isEmpty()`가 `true`인 경우 공백, 아닌 경우 `"n볼"` 출력.
 - `Strike`
     - [x] `isEmpty()`: 스트라이크가 비어있는지 확인.
     - [x] `isFullCount()`: 3스트라이크인지 확인.
-    - [x] `getValue()`: 스트라이크 값을 반환.
+    - [ ] `toString()` 메서드를 오버라이딩 하여 `isEmpty()`가 `true`인 경우 공백, 아닌 경우 `"n스트라이크"` 출력.
