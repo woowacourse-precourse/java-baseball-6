@@ -167,7 +167,6 @@ public class Application {
                 return false;
             default:
                 System.out.println("잘못된 입력입니다.");
-                System.exit(1);
                 return false;
         }
     }
