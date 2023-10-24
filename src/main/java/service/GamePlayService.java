@@ -1,6 +1,8 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import model.Computer;
 import model.User;
@@ -17,6 +19,9 @@ public class GamePlayService {
         computer.setComputerNumbers(); // 2. 컴퓨터 숫자 입력
         String userInput = gameView.userInput(); // 3. 사용자 숫자 입력
         validationCheckOfUserInput(userInput); // 4. 사용자 숫자 유효성 체크
+
+        List<Integer> userNumList = StringToArrayList(userInput); // 5. 사용자 입력 값 List로 변환
+
 
     }
 
@@ -38,5 +43,13 @@ public class GamePlayService {
         if (numSet.size() != 3) {
             throw new IllegalArgumentException("같은 숫자는 입력할 수 없습니다.");
         }
+    }
+
+    public static List<Integer> StringToArrayList(String userInput) {
+        List<Integer> numList = new ArrayList<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            numList.add(userInput.charAt(i) - '0');
+        }
+        return numList;
     }
 }
