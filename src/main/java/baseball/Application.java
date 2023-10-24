@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.message.ApplicationMessage;
+import baseball.enums.ApplicationMessage;
 import baseball.io.Output;
 import baseball.game.BaseballGame;
 

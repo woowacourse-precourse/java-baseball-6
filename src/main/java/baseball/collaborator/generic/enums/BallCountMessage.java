@@ -1,4 +1,4 @@
-package baseball.collaborator.generic.message;
+package baseball.collaborator.generic.enums;
 
 public enum BallCountMessage {
 

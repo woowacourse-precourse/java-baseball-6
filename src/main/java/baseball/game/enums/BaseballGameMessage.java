@@ -1,4 +1,4 @@
-package baseball.game.message;
+package baseball.game.enums;
 
 public enum BaseballGameMessage {
 

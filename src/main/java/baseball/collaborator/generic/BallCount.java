@@ -1,6 +1,6 @@
 package baseball.collaborator.generic;
 
-import baseball.collaborator.generic.message.BallCountMessage;
+import baseball.collaborator.generic.enums.BallCountMessage;
 
 public record BallCount(long countOfStrike, long countOfBall) {
 
