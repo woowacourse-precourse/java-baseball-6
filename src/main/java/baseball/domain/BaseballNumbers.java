@@ -26,11 +26,16 @@ public class BaseballNumbers {
             BaseballNumber currentAnswerBaseballNumber = baseballNumbers.get(i);
             BaseballNumber currentInputBaseballNumber = inputBaseballNumbers.baseballNumbers.get(i);
             boolean isSameValue = currentAnswerBaseballNumber.isSameValue(currentInputBaseballNumber);
-            boolean isContainedIn = currentInputBaseballNumber.isContainedIn(baseballNumbers);
+            boolean isContainedIn = contains(currentInputBaseballNumber);
             ball += countBall(isSameValue, isContainedIn);
             strike += countStrike(isSameValue);
         }
         return Score.from(Ball.from(ball), Strike.from(strike));
+    }
+
+    private boolean contains(BaseballNumber inputBaseballNumber) {
+        return this.baseballNumbers.stream()
+                .anyMatch(baseballNumber -> baseballNumber.isSameValue(inputBaseballNumber));
     }
 
     private int countBall(boolean isSameValue, boolean isContainedIn) {
