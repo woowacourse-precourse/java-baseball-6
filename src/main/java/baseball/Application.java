@@ -9,33 +9,41 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> computerNumbers = generateRandomNumbers();
-        System.out.println("컴퓨터가 숫자를 정했습니다.");
-
         while (true) {
-            System.out.print("세 자리 숫자를 입력하세요: ");
-            String input = Console.readLine();
-            if (!isValidInput(input)) {
-                System.out.println("잘못된 입력입니다. 1부터 9까지의 서로 다른 숫자를 입력하세요.");
-                continue;
+            List<Integer> computerNumbers = generateRandomNumbers();
+            System.out.println("컴퓨터가 숫자를 정했습니다.");
+
+            int attempts = 0;
+            while (true) {
+                System.out.print("세 자리 숫자를 입력하세요: ");
+                String input = Console.readLine();
+                if (!isValidInput(input)) {
+                    System.out.println("잘못된 입력입니다. 1부터 9까지의 서로 다른 숫자를 입력하세요.");
+                    continue;
+                }
+
+                List<Integer> userNumbers = parseInput(input);
+                Result result = calculateResult(computerNumbers, userNumbers);
+                System.out.println(result.toString());
+
+                if (result.is3Strikes()) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
+
+                attempts++;
             }
 
-            List<Integer> userNumbers = parseInput(input);
-            Result result = calculateResult(computerNumbers, userNumbers);
-            System.out.println(result.toString());
-
-            if (result.is3Strikes()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String choice = Console.readLine();
+            if (!choice.equals("1")) {
                 break;
             }
         }
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String choice = Console.readLine();
-        if (!choice.equals("1")) {
-            break;
-        }
-    }
 
+        System.out.println("게임을 종료합니다.");
+        Console.close();
+    }
 
     private static List<Integer> generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
@@ -63,11 +71,38 @@ public class Application {
         return true;
     }
 
+
     private static boolean areDigitsUnique(String input) {
         return input.chars().distinct().count() == 3;
     }
 
+    private static List<Integer> parseInput(String input) {
+        List<Integer> numbers = new ArrayList<>();
+        for (char digit : input.toCharArray()) {
+            numbers.add(Character.getNumericValue(digit));
+        }
+        return numbers;
+    }
+
+    private static Result calculateResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int computerDigit = computerNumbers.get(i);
+            int userDigit = userNumbers.get(i);
+
+            if (computerDigit == userDigit) {
+                strikes++;
+            } else if (computerNumbers.contains(userDigit)) {
+                balls++;
+            }
+        }
+
+        return new Result(strikes, balls);
+    }
 }
+
 
 class Result {
     private int strikes;
@@ -95,3 +130,4 @@ class Result {
         }
     }
 }
+
