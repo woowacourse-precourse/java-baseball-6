@@ -13,7 +13,7 @@ public class NumberFormat {
      private List<Integer> numberList;
 
      protected NumberFormat(List<Integer> numberList){
-          this.numberList = numberList;
+          this.numberList = new ArrayList<>(numberList);
      }
 
      public static NumberFormat generateRandomNumber(){
@@ -49,6 +49,6 @@ public class NumberFormat {
      }
 
      public List<Integer> getNumberList() {
-          return numberList.stream().collect(Collectors.toUnmodifiableList());
+          return Collections.unmodifiableList(numberList);
      }
 }
