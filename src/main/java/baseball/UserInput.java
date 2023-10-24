@@ -8,13 +8,9 @@ import java.util.List;
 
 public class UserInput {
     private List<Integer> userNum;
-    private final OutputView outputView;
-    private final InputValidator inputValidator;
 
     UserInput() {
         this.userNum = new ArrayList<>();
-        this.outputView = new OutputView();
-        this.inputValidator = new InputValidator();
     }
 
     public List<Integer> getUserNum() {
@@ -22,16 +18,16 @@ public class UserInput {
     }
 
     public void promptUserInput() {
-        outputView.promptMessage();
+        OutputView.promptMessage();
         String string = Console.readLine();
-        inputValidator.gameInputValidator(string);
+        InputValidator.gameInputValidator(string);
         userNum = stringToInt(string);
     }
 
     public int promptUserForRestart() {
-        outputView.restartMessage();
+        OutputView.restartMessage();
         String s = Console.readLine();
-        inputValidator.restartInputValidator(s);
+        InputValidator.restartInputValidator(s);
         List<Integer> userAnswer = new ArrayList<>(stringToInt(s));
         return userAnswer.get(0);
     }

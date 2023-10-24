@@ -9,14 +9,12 @@ public class GameController {
     private final Computer computer;
     private final UserInput userInput;
     private final MatchCalculator matchCalculator;
-    private final OutputView outputView;
     private List<Integer> computerNum;
     private static boolean hasWon;
 
     GameController() {
         computer = new Computer();
         userInput = new UserInput();
-        outputView = new OutputView();
         matchCalculator = new MatchCalculator();
     }
 
@@ -25,7 +23,7 @@ public class GameController {
         while (!hasWon) {
             loopThroughGame();
         }
-        outputView.gameOverMessage();
+        OutputView.gameOverMessage();
         restartOrExit(userInput.promptUserForRestart());
     }
 
@@ -38,7 +36,7 @@ public class GameController {
         userInput.promptUserInput();
         List<Integer> userGuess = userInput.getUserNum();
         int[] matchResult = matchCalculator.checkMatch(computerNum, userGuess);
-        outputView.printMatchResult(matchResult[0], matchResult[1]);
+        OutputView.printMatchResult(matchResult[0], matchResult[1]);
     }
 
     private void restartOrExit(int userAnswer) {
