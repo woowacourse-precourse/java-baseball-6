@@ -11,7 +11,7 @@ public class Application {
         String gameState = "1";
         List<Integer> computer = new ArrayList<>();
         String input;
-        int ball=0; int strike=0;
+        int ball; int strike;
 
         while(gameState.equals("1")){
             while (computer.size() < 3){
@@ -23,7 +23,9 @@ public class Application {
 
             while(true){
                 System.out.print("숫자를 입력해주세요 : ");
+                strike=0;ball=0;
                 input = Console.readLine();
+                System.out.println(input);
                 if(!isValidInput(input)){
                     throw new IllegalArgumentException("유효하지 않은 입력 발생");
                 }
@@ -45,7 +47,6 @@ public class Application {
                 if(strike==3){
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     computer.clear();
-                    strike=0;
                     break;
                 }
             }
