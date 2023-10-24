@@ -55,9 +55,6 @@ public class GameManager {
         if (option == 1) {
             startGame();
         }
-        if (option == 2) {
-            OutputView.printEnd();
-        }
     }
 
 
