@@ -18,7 +18,7 @@ public class ComputerNumbersGeneratorImp implements ComputerNumbersGenerator {
                 .collect(Collectors.toList());
     }
 
-    private int getRandomUniqueNumber(List<Integer> usedNumbers) {
+    private static int getRandomUniqueNumber(List<Integer> usedNumbers) {
         int randomNumber;
         do {
             randomNumber = getRandomNumber();
@@ -26,7 +26,7 @@ public class ComputerNumbersGeneratorImp implements ComputerNumbersGenerator {
         return randomNumber;
     }
 
-    private int getRandomNumber() {
+    private static int getRandomNumber() {
         return Randoms.pickNumberInRange(GAME_NUMBERS_MIN_VALUE.getValue(), GAME_NUMBERS_MAX_VALUE.getValue());
     }
 }

@@ -15,7 +15,7 @@ public class RestartOptionValidatorImp implements RestartOptionValidator {
         isRange(inputOption);
     }
 
-    private void isNumber(String inputOption) {
+    private static void isNumber(String inputOption) {
         inputOption.chars().forEach(ch -> {
             if (!Character.isDigit(ch)) {
                 throw new IllegalArgumentException(RESTART_OPTION_NON_NUMBER.getMessage());
@@ -23,13 +23,13 @@ public class RestartOptionValidatorImp implements RestartOptionValidator {
         });
     }
 
-    private void isLength(String inputOption) {
+    private static void isLength(String inputOption) {
         if (inputOption.length() != RESTART_OPTION_SIZE.getValue()) {
             throw new IllegalArgumentException(RESTART_OPTION_LENGTH_INVALID.getMessage());
         }
     }
 
-    private void isRange(String inputOption) {
+    private static void isRange(String inputOption) {
         int num = Integer.parseInt(inputOption);
         if (num < RESTART_OPTION_MIN_VALUE.getValue() || num > RESTART_OPTION_MAX_VALUE.getValue()) {
             throw new IllegalArgumentException(RESTART_OPTION_RANGE_INVALID.getMessage());
