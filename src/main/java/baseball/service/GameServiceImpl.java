@@ -2,7 +2,7 @@ package baseball.service;
 
 public class GameServiceImpl implements GameService {
 
-    private void playOneGame() {
+    public void playOneGame() {
         /*while (true) { //TODO:
             //사용자는 서로 다른 숫자로 이루어진 3자리 숫자 1개를 입력　
             inputView.displayInputMessage();
