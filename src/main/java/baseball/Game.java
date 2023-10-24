@@ -48,4 +48,12 @@ public class Game {
             throw new IllegalArgumentException("The input numbers are duplicated");
         }
     }
+
+    private void validateRange(List<Integer> userNumbers) {
+        for(int number : userNumbers) {
+            if(number < START_NUM || number > LAST_NUM) {
+                throw new IllegalArgumentException("The input number is out of range");
+            }
+        }
+    }
 }
