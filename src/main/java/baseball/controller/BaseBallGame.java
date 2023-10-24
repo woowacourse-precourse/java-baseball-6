@@ -1,30 +1,55 @@
 package baseball.controller;
 
 import baseball.model.Settings;
-import baseball.view.InputNumber;
+import baseball.view.Input;
 import baseball.view.Output;
 import java.util.List;
-import java.util.Objects;
 
 public class BaseBallGame {
 
 
-    public static int restart = 0;
-    public static boolean correct = false;
-
     public void GameStart() {
+        Output.StartMessage();
+        do {
+            Settings.computer = Settings.GenerateNumbers();
+            System.out.println(Settings.computer);
+            ComparingNumbers(Settings.computer);
+            Output.CompleteMessage();
+            Settings.restart = CheckInput.CheckRestart(Input.GetRestartInput());
+        } while (Settings.restart.equals("1"));
+    }
 
-        while (!Objects.equals(Settings.restart, "2")) {
-            Output.InputMessage();
-            List<Integer> computer = Settings.GenerateNumbers();
-            System.out.println(computer); // 확인용
-            correct = false;
-            while (!correct) {
-                Settings.SetElements();
-                String userInput = InputNumber.GetUserInput();
-                CheckInput.CheckNumberRules(userInput);
-                CheckInput.StrikesAndBalls(computer, userInput);
-                Output.Hint(computer, userInput);
+    public void ComparingNumbers(List<Integer> computer) {
+        do {
+            Settings.Init();
+            Output.RequestInputMessage();
+            String userInput = Input.GetUserInput();
+            CheckInput.CheckNumberRules(userInput);
+            ChangeInputToInt(userInput);
+            CountStrike(Settings.user);
+            CountBall(Settings.user);
+            Output.HintMessage();
+        } while (Settings.strike != 3);
+    }
+
+    public void ChangeInputToInt(String userInput) {
+        for (char c : userInput.toCharArray()) {
+            Settings.user.add(c - '0');
+        }
+    }
+
+    public void CountStrike(List<Integer> user) {
+        for (int i = 0; i < user.size(); i++) {
+            if (Settings.computer.contains(user.get(i)) && Settings.computer.indexOf(user.get(i)) == i) {
+                Settings.strike++;
+            }
+        }
+    }
+
+    public void CountBall(List<Integer> user) {
+        for (int i = 0; i < user.size(); i++) {
+            if (Settings.computer.contains(user.get(i)) && Settings.computer.indexOf(user.get(i)) != i) {
+                Settings.ball++;
             }
         }
     }
