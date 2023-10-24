@@ -27,14 +27,14 @@ public class UserInputOutput {
         try {
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("숫자가 아닌 다른 것이 입력되었습니다.");
+            System.out.println("숫자(양수)를 입력해야 합니다.");
             return -1;
         }
     }
 
     private static boolean isValidUserNumber(int number) {
         if (number < 100 || number > 999 || !areDigitsUnique(number)) {
-            System.out.println("1부터 9까지 서로 다른 3자리 숫자를 입력해주세요.");
+            System.out.println("1부터 9까지 서로 다른 3자리의 숫자를 입력해야 합니다.");
             return false;
         }
         return true;
