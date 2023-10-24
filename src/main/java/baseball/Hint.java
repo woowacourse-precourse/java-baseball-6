@@ -42,6 +42,10 @@ public class Hint {
 
                 System.out.println(ballCount + "볼");
 
+            } else {
+
+                System.out.println("낫싱");
+
             }
         }
     }
