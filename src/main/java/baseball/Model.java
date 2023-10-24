@@ -12,7 +12,6 @@ public class Model{
     private static final String BALL_SENTENCE = "볼 ";
     private static final String STRIKE_SENTENCE = "스트라이크 ";
     private static final String NOTING_SENTENCE = "낫싱 ";
-
     private static final String ERR_SENTENCE = "유효하지 않은 숫자입니다.";
     View view = new View();
     public List<Integer> initComputerNum(){
