@@ -10,19 +10,19 @@ public class ExceptionHandling {
         isDifferent(strNumber);
     }
 
-    private static void isNull(final String strNumber) {
+    public static void isNull(final String strNumber) {
         if (strNumber.isBlank()) {
             throw new IllegalArgumentException("문자열이 비어있거나 빈 공백으로 이뤄져 있습니다. 게임을 종료합니다.");
         }
     }
 
-    private static void isThree(final String strNumber) {
+    public static void isThree(final String strNumber) {
         if (strNumber.length() != NUMBER_OF_NUMBERS) {
             throw new IllegalArgumentException("3자리 수를 입력하셔야 합니다. 게임을 종료합니다.");
         }
     }
 
-    private static void isDigits(final String strNumber) {
+    public static void isDigits(final String strNumber) {
         for (int i = 0; i < NUMBER_OF_NUMBERS; i++) {
             char chNumber = strNumber.charAt(i);
             if (!(chNumber >= '1' && chNumber <= '9')) {
@@ -31,7 +31,7 @@ public class ExceptionHandling {
         }
     }
 
-    private static void isDifferent(final String strNumber) {
+    public static void isDifferent(final String strNumber) {
         String strTemp = "";
         for (int i = 0; i < NUMBER_OF_NUMBERS; i++) {
             char chNumber = strNumber.charAt(i);
