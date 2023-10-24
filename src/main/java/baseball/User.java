@@ -7,8 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 public class User {
+    private static final String INPUT_STRING = "숫자를 입력해주세요 : ";
+    private static final int SIZE = 3;
+
     public List<Integer> getNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_STRING);
         String input = Console.readLine();
 
         if (!isValidInput(input)) {
@@ -26,12 +29,12 @@ public class User {
     }
 
     private boolean isValidInput(String input) {
-        if (input == null || input.length() != 3) {
+        if (input == null || input.length() != SIZE) {
             return false;
         }
 
         for (char ch : input.toCharArray()) {
-            if (!Character.isDigit(ch)) {
+            if (!Character.isDigit(ch) || ch == '0') {
                 return false;
             }
         }
