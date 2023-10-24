@@ -1,5 +1,6 @@
 package baseball.domain.hint;
 
+import baseball.domain.GameConstants;
 import baseball.domain.hint.item.HintItem;
 import baseball.util.StringUtil;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class Hint {
 
     private List<String> counts;
     private List<String> names;
-
+    private boolean isCorrect;
 
     public List<HintItem> getHintItems() {
         return hintItems;
@@ -33,6 +34,7 @@ public class Hint {
         this.hintItems = hintItems;
         this.counts = counts();
         this.names = names();
+        this.isCorrect = setCorrect();
     }
 
     public static Hint createHint(List<HintItem> hintItems) {
@@ -60,5 +62,17 @@ public class Hint {
             }
         }
         return names;
+    }
+
+    public boolean isCorrect() {
+        return isCorrect;
+    }
+
+    private boolean setCorrect() {
+        if (counts.contains(String.valueOf(GameConstants.NUMBER_LENGTH))
+                && names.contains(GameConstants.STRIKE_TEXT)) {
+            return true;
+        }
+        return false;
     }
 }
