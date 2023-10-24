@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class BaseBallGame {
     private int cnt; // 맞춰야 할 숫자의 개수
     private int computerNum; // 컴퓨터가 선택한 숫자
+    private boolean flag = true; // 게임 종료 확인 위한 변수
     PrintConsole print = new PrintConsole(); // 콘솔 출력 위한 참조변수
     CompareNum compareNum = new CompareNum(); // 숫자 비교 위한 참조변수
     CheckValidNum checkNum = new CheckValidNum(); // 사용자 입력 숫자 유효성 확인 위한 참조변수
@@ -26,6 +27,7 @@ public class BaseBallGame {
 
     // 랜덤한 숫자 생성
     public void init() {
+        computerNum = 0;
         int tmp = 0; // 현재 선택한 숫자 개수
         boolean[] ch = new boolean[10]; // 중복된 숫자 체크 위한 배열
 
@@ -46,7 +48,7 @@ public class BaseBallGame {
         init();
 
         print.printStart();
-        while (true) {
+        while (flag) {
             int num = print.printInput();
 
             checkNum.check(num); // 사용자가 올바른 숫자 입력했는지 확인
@@ -72,6 +74,7 @@ public class BaseBallGame {
         if (num == 1) { // 게임 재시작
             return 1;
         } else if (num == 2) { // 게임 종료
+            flag = false;
             return 2;
         } else { // 예외 발생
             throw new IllegalArgumentException();
