@@ -3,42 +3,45 @@ package baseball.utils;
 import static baseball.model.constants.Rule.GAME_NUMBERS_SIZE;
 import static baseball.model.constants.Rule.GAME_WIN;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class NumbersComparator {
-    private int ball;
+    private final List<Integer> result = new ArrayList<>();
     private int strike;
+    private int ball;
 
-    public int[] getCompareNumberResult(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    public List<Integer> getCompareNumberResult(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         resetCount();
-        strikeCount(computerNumbers, playerNumbers);
-        ballCount(computerNumbers, playerNumbers);
-        ballExceptStrike();
-        return new int[]{ball, strike};
+        calculateStrike(computerNumbers, playerNumbers);
+        calculateBall(computerNumbers, playerNumbers);
+        setHint();
+        return result;
     }
 
     public boolean isCorrect() {
-        return strike == GAME_WIN.getValue();
+        return result.get(1) == GAME_WIN.getValue();
     }
 
     private void resetCount() {
-        ball = 0;
-        strike = 0;
+        result.clear();
+        result.add(0);
+        result.add(0);
     }
 
-    private void strikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    private void calculateStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         strike = (int) IntStream.range(0, GAME_NUMBERS_SIZE.getValue())
                 .filter(i -> playerNumbers.get(i).equals(computerNumbers.get(i)))
                 .count();
-
     }
 
-    private void ballCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    private void calculateBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         ball = (int) playerNumbers.stream().filter(computerNumbers::contains).count();
     }
 
-    private void ballExceptStrike() {
-        ball = ball - strike;
+    private void setHint() {
+        result.set(0, ball - strike);
+        result.set(1, strike);
     }
 }

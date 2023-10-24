@@ -14,6 +14,7 @@ import baseball.model.service.RestartOptionValidatorImp;
 import baseball.utils.NumbersComparator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class BaseballGame {
     private Computer computer;
@@ -71,36 +72,36 @@ public class BaseballGame {
         player = Player.of(InputView.setGameInput(), playerNumbersValidator);
     }
 
-    private int[] getCompareResult() {
+    private List<Integer> getCompareResult() {
         return numberComparator.getCompareNumberResult(computer.getComputerNumbers(), player.getPlayerNumbers());
     }
 
-    private void printHint(int[] count) {
+    private void printHint(List<Integer> count) {
         printBallCount(count);
         printStrikeCount(count);
         printNothing(count);
     }
 
-    private void printBallCount(int[] count) {
-        if (count[0] != 0 && count[1] != 0) {
-            OutputView.printCount(count[0]);
+    private void printBallCount(List<Integer> count) {
+        if (count.get(0) != 0 && count.get(1) != 0) {
+            OutputView.printCount(count.get(1));
             OutputView.printBallStrike();
         }
-        if (count[0] != 0 && count[1] == 0) {
-            OutputView.printCount(count[0]);
+        if (count.get(0) != 0 && count.get(1) == 0) {
+            OutputView.printCount(count.get(0));
             OutputView.printBall();
         }
     }
 
-    private void printStrikeCount(int[] count) {
-        if (count[1] != 0) {
-            OutputView.printCount(count[1]);
+    private void printStrikeCount(List<Integer> count) {
+        if (count.get(1) != 0) {
+            OutputView.printCount(count.get(1));
             OutputView.printStrike();
         }
     }
 
-    private void printNothing(int[] count) {
-        if (count[0] == 0 && count[1] == 0) {
+    private void printNothing(List<Integer> count) {
+        if (count.get(0) == 0 && count.get(1) == 0) {
             OutputView.printNothing();
         }
     }
