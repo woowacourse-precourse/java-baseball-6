@@ -17,6 +17,7 @@ public class BaseBallGame {
         baseBallUI.startGame();
         this.playing();
         this.end();
+        reader.close();
     }
 
     private void playing() {
