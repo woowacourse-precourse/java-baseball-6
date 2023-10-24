@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class AdditionalTest extends NsTest {
 
     @Test
-    void 게임종료_후_재시작() {
+    void gameTest() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("124", "123", "1", "123", "789", "654", "456","2");
@@ -23,28 +23,28 @@ class AdditionalTest extends NsTest {
         );
     }
     @Test
-    void 중복숫자_예외_테스트() {
+    void input_duplicateNum_ExceptionsTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("133","444"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
     @Test
-    void 숫자_0포함_예외_테스트() {
+    void input_Zero_ExceptionsTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("120","000"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
     @Test
-    void 숫자_자릿수_예외테스트() {
+    void input_Number_ExceptionsTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1","12"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
     @Test
-    void 입력값_타입_예외테스트() {
+    void input_Type_ExceptionsTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("kim","!@#","12A","김민제"))
                         .isInstanceOf(IllegalArgumentException.class)
