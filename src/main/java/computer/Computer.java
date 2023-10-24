@@ -19,7 +19,7 @@ public class Computer {
         return computer;
     }
 
-    public void addNonDuplicationNumber(List<Integer> list, int number){
+    private void addNonDuplicationNumber(List<Integer> list, int number){
         if(!list.contains(number)){
             list.add(number);
         }
