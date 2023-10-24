@@ -2,9 +2,9 @@ package baseball.service;
 
 import static baseball.util.Constants.*;
 
-import baseball.util.Constants;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import camp.nextstep.edu.missionutils.Randoms;
+import baseball.util.Constants;
 
 public class ComputerService {
     private static ArrayList<Integer> randomNumbers;
@@ -17,7 +17,7 @@ public class ComputerService {
         return randomNumbers;
     }
 
-    public static void resetNumber() {
+    public void resetNumber() {
         randomNumbers = generateRandomNumbers();
     }
 

@@ -1,11 +1,9 @@
 package baseball.view;
 
-import static baseball.util.Constants.ZERO;
-import static baseball.util.Constants.ONE;
+import static baseball.util.Constants.*;
 
-import baseball.util.Messages;
 import java.util.ArrayList;
-
+import baseball.util.Messages;
 
 public class OutputView {
     public void printStart() {

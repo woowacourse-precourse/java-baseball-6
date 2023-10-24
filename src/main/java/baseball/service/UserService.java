@@ -4,7 +4,6 @@ import baseball.util.validation.InputNumbersValidation;
 import java.util.ArrayList;
 
 public class UserService {
-
     public ArrayList<Integer> getInputNumbers(String input) {
         return generateInputNumbers(input);
     }

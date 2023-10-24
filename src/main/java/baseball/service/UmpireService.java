@@ -1,14 +1,15 @@
 package baseball.service;
 
+import static baseball.util.Constants.*;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import baseball.util.validation.restartNumberValidation;
-import static baseball.util.Constants.*;
 
 
 public class UmpireService {
-    private int ballCount = 0;
-    private int strikeCount = 0;
+    private int ballCount;
+    private int strikeCount;
 
     public UmpireService() {
         initCount();

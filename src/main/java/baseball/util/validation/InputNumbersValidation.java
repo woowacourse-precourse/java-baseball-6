@@ -1,7 +1,9 @@
 package baseball.util.validation;
 
-import baseball.util.Messages;
+import static baseball.util.Constants.*;
+
 import java.util.ArrayList;
+import baseball.util.Messages;
 
 public class InputNumbersValidation {
     public static void validateAll(ArrayList<Integer> input) {
@@ -11,14 +13,14 @@ public class InputNumbersValidation {
     }
 
     private static void validateLength(ArrayList<Integer> input) {
-        if (input.size() != 3) {
+        if (input.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(Messages.INVALID_LENGTH);
         }
     }
 
     private static void validateRange(ArrayList<Integer> input) {
         for (int number : input) {
-            if (number < 1 || number > 9) {
+            if (number < NUMBER_MIN_RANGE || number > NUMBER_MAX_RANGE) {
                 throw new IllegalArgumentException(Messages.INVALID_TYPE_AND_RANGE);
             }
         }
