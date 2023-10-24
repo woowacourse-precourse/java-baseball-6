@@ -41,7 +41,6 @@ public class Computer {
         if(!BallCount.Nashing){
             OutputView.printBall(BallCount.ballCount);
             OutputView.printStrike(BallCount.strikeCount);
-            BallCount.ResetCount();
         }
     }
 }
