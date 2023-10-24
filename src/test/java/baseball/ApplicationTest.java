@@ -30,7 +30,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 랜덤숫자_테스트() {
+    void 서로_다른_랜덤숫자_테스트() {
         List<Integer> threeRandomNumber = Application.getThreeRandomNumber();
 
         Integer indexZero = threeRandomNumber.get(0);
