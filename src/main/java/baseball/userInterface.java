@@ -32,4 +32,11 @@ public class userInterface {
         System.out.println(String.format(restartChoicePhrases, restartChoice, endGameChoice));
     }
 
+    public static void stringArrayToIntArray(String[] input){
+        List<Integer> input_int = new ArrayList<>();
+        for(String num:input){
+            input_int.add(Integer.parseInt(num));
+        }
+        userInputNumber=input_int;
+    }
 }
