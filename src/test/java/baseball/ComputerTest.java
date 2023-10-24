@@ -50,7 +50,7 @@ public class ComputerTest extends NsTest {
     public void testComputeResult() {
         Computer computer = new Computer();
 
-        // 시크릿 넘버 생성 [1, 2, 3]
+        // 시크릿 넘버 [1, 2, 3]
         List<Integer> secretNumbers = new ArrayList<>();
         secretNumbers.add(1);
         secretNumbers.add(2);
@@ -63,10 +63,9 @@ public class ComputerTest extends NsTest {
         userInputNumbers.add(3);
         userInputNumbers.add(2);
         userInputNumbers.add(1);
-        // 테스트 실행
+
         Game game = computer.computeResult(userInputNumbers);
 
-        // 테스트 결과 검증
         assertNotNull(game);
         assertEquals(1, game.getStrikes());
         assertEquals(2, game.getBalls());
