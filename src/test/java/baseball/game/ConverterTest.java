@@ -21,7 +21,7 @@ class ConverterTest {
     }
 
     @Test
-    void a() {
+    void 문자를_입력했을때_에러발생() {
         Assertions.assertThrows(NumberFormatException.class, () -> converter.convertToInputNumbers("abc"));
     }
 }

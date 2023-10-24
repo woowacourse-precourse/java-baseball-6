@@ -1,19 +1,19 @@
 package baseball.game;
 
+import static constant.Constant.ZERO;
+
 import java.util.List;
 import java.util.Objects;
 
-import static constant.Constant.ZERO;
 
 public class InningResult {
     private int numberOfBalls;
     private int numberOfStrikes;
 
-    public InningResult() {
+    private InningResult() {
         this.numberOfBalls = 0;
         this.numberOfStrikes = 0;
     }
-
 
     public void increaseBall() {
         numberOfBalls++;
@@ -47,11 +47,11 @@ public class InningResult {
         return this.numberOfStrikes == 3;
     }
 
-    protected static InningResult countMatchesBetween(List<Integer> first, List<Integer> second) {
+    protected static InningResult countMatchesBetween(List<Integer> userInputNumbers, List<Integer> generatedNumbers) {
         InningResult result = new InningResult();
-        for (int i = 0; i < first.size(); i++) {
-            if (second.contains(first.get(i))) {
-                if (Objects.equals(first.get(i), second.get(i))) {
+        for (int i = 0; i < userInputNumbers.size(); i++) {
+            if (generatedNumbers.contains(userInputNumbers.get(i))) {
+                if (Objects.equals(userInputNumbers.get(i), generatedNumbers.get(i))) {
                     result.increaseStrike();
                 } else {
                     result.increaseBall();
@@ -60,5 +60,4 @@ public class InningResult {
         }
         return result;
     }
-
 }
