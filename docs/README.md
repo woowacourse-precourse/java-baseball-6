@@ -3,7 +3,6 @@
 - 컴퓨터 : 1~9 수 랜덤 생성
 - 사용자 입력에 따라 결과 출력
   (스트라이크 / 볼 / 낫싱)
-<<<<<<< HEAD
 ```java
 import camp.nextstep.edu.missionutils;
 ```
@@ -34,9 +33,8 @@ import camp.nextstep.edu.missionutils;
 # Process :
 ### *Model* 
 #### : 비즈니스 로직을 담당, 입출력 데이터 관리
-- [ ] (랜덤 수 생성) 클래스
-- [ ] (유저 숫자 입력) 클래스
-- [ ] (잘못된 값 입력) 예외처리 
+- [x] (랜덤 수 생성) 클래스 (generateNumber.java)
+- [x] (잘못된 값 입력) 예외처리 (PlayerNumber.java)
 - [ ] 게임 재시작, 종료 로직 구현
 ---
 ### *View*
@@ -49,3 +47,6 @@ import camp.nextstep.edu.missionutils;
 - [ ] (입력값과 정답 숫자 비교) 클래스
 
 
+### *GameManager*
+#### : 게임의 실행을 관리
+- [ ] Application.java
