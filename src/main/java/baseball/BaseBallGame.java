@@ -29,8 +29,6 @@ public class BaseBallGame {
 
             Balls computer = new Balls(ModelCreateRandomNumber.createRandomNumber());
 
-            System.out.println(computer.ball());
-
             while (true) {
 
                 Balls user = ModelUserNumCheck.changeToComparable(ViewInput.numInputView());
