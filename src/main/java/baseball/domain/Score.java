@@ -2,30 +2,30 @@ package baseball.domain;
 
 public class Score {
 
-    private Strike strike;
-    private Ball ball;
+    private int strike;
+    private int ball;
 
     public static Score create(Balls answerBalls, Balls userBalls) {
 
         Score score = new Score();
-        score.strike = new Strike(userBalls.calculateStrike(answerBalls));
-        score.ball = new Ball(userBalls.calculateBall(answerBalls));
+        score.strike = userBalls.calculateStrike(answerBalls);
+        score.ball = userBalls.calculateBall(answerBalls);
         return score;
     }
 
     public int getStrike() {
 
-        return strike.getStrike();
+        return strike;
     }
 
     public int getBall() {
 
-        return ball.getBall();
+        return ball;
     }
 
     public boolean isAllStrike() {
 
-        if(strike.isAllStrike()) {
+        if(strike == 3) {
             return true;
         }
 

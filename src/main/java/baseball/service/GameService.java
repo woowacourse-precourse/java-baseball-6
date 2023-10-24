@@ -36,6 +36,10 @@ public class GameService {
             return true;
         }
 
+        if(score.isAllStrike()) {
+            return true;
+        }
+
         return false;
     }
 
