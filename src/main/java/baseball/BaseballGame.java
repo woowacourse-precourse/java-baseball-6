@@ -13,9 +13,9 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         do game();
-        while(reGame());
+        while(reGame()==1);
 
-        System.out.println("게임을 종료합니다.");
+        System.out.println("게임 종료");
     }
 
     public void game(){
@@ -44,7 +44,7 @@ public class BaseballGame {
         return ranNumList;
     }
 
-    public boolean reGame(){
+    public int reGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return getGameState();
     }
@@ -53,8 +53,20 @@ public class BaseballGame {
         String input = Console.readLine();
         List<Integer> inputList = new ArrayList<>();
 
+        if(input.isEmpty() || input.isBlank())
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+
+        if(input.length() != numLength)
+            throw new IllegalArgumentException("입력의 길이는 " + numLength + "만 가능합니다.");
+
         for(int i=0; i<numLength; i++) {
             int num = input.charAt(i) - '0';
+            if(num<1 || num>9)
+                throw new IllegalArgumentException("숫자 1 ~ 9까지만 입력 가능합니다.");
+
+            if(!inputList.isEmpty() && inputList.contains(num))
+                throw new IllegalArgumentException("중복된 숫자는 입력 불가합니다.");
+
             inputList.add(num);
         }
 
@@ -99,7 +111,7 @@ public class BaseballGame {
         return false;
     }
 
-    public boolean getGameState(){
+    public int getGameState(){
         String input;
         int inputToInt;
 
@@ -113,6 +125,6 @@ public class BaseballGame {
         if(!GAME_STATE.contains(inputToInt))
             throw new IllegalArgumentException("1과 2의 숫자만 입력 가능합니다.");
 
-        return true;
+        return inputToInt;
     }
 }
