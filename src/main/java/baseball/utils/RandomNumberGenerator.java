@@ -31,11 +31,10 @@ public class RandomNumberGenerator {
     }
 
     private boolean isUniqueNumber(int randomNum, List<Integer> uniqueRandomNumbers) {
-        return uniqueRandomNumbers.contains(randomNum);
+        return !uniqueRandomNumbers.contains(randomNum);
     }
 
     private int pickRandomNumber(int minNum, int maxNum) {
         return Randoms.pickNumberInRange(minNum, maxNum);
     }
-
 }
