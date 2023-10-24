@@ -31,4 +31,42 @@ class GameNumberTest {
             }
         }
     }
+
+
+    @DisplayName("입력된 수의 스트라이크, 볼의 개수를 카운트한다.")
+    @Test
+    void countStrikeAndBall() {
+        // given
+        Game game = Game.createRandomNumber();
+
+        // when
+        int[] array = game.checkScoreResult(String.valueOf(game.getRandNumber()));
+
+        // then
+        assertThat(array).contains(0, 3);
+    }
+
+    @DisplayName("입력된 수의 스트라이크, 볼의 개수를 카운트한다.")
+    @Test
+    void countStrikeAndBall2() {
+        // given
+        Game game = Game.createRandomNumberForInput(new char[]{'1', '2', '3'});
+        // when
+        int[] array = game.checkScoreResult(String.valueOf("321"));
+
+        // then
+        assertThat(array).contains(2, 1);
+    }
+
+    @DisplayName("입력된 수의 스트라이크, 볼의 개수를 카운트한다.")
+    @Test
+    void countStrikeAndBall3() {
+        // given
+        Game game = Game.createRandomNumberForInput(new char[]{'1', '2', '3'});
+        // when
+        int[] array = game.checkScoreResult(String.valueOf("435"));
+
+        // then
+        assertThat(array).contains(1, 0);
+    }
 }
