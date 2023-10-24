@@ -15,7 +15,6 @@ public class Controller {
         while (true) {
             outputView.startMention();
             service.initComputer();
-            Result result = null;
             gamePlay();
             outputView.gameOverMention();
             if (!willContinue()) break;
