@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.validator;
 
 import baseball.constant.ExceptionMessage;
 import baseball.constant.GameConstant;
