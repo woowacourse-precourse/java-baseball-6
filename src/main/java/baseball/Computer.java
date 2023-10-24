@@ -1,18 +1,22 @@
 package baseball;
 
+import static baseball.constants.Game.BALL;
+import static baseball.constants.Game.NOTHING;
+import static baseball.constants.Game.STRIKE;
+
 public class Computer {
     private final Answer answer;
 
-    public Computer(Answer answer) {
-        this.answer = answer;
+    public Computer() {
+        answer = new Answer();
     }
 
     public void printResult(String guess) {
         int strikes = getStrikesCount(guess);
         int balls = getBallsCount(guess);
 
-        String comment = (strikes == 0 && balls == 0) ? "낫싱" : ((balls > 0 ? balls + "볼 " : "") +
-                (strikes > 0 ? strikes + "스트라이크" : ""));
+        String comment = (strikes == 0 && balls == 0) ? NOTHING : ((balls > 0 ? balls + BALL + " " : "") +
+                (strikes > 0 ? strikes + STRIKE : ""));
         System.out.println(comment);
     }
 

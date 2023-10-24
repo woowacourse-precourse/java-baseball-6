@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.constants.Game.ANSWER_DIGIT;
+import static baseball.constants.Game.END_INCLUSIVE;
+import static baseball.constants.Game.START_INCLUSIVE;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,15 +11,11 @@ import java.util.Set;
 public class Guess {
     private final String guess;
 
-    private static final int START_INCLUSIVE = Constants.START_INCLUSIVE;
-    private static final int END_INCLUSIVE = Constants.END_INCLUSIVE;
-    private static final int ANSWER_DIGIT = Constants.ANSWER_DIGIT;
-
     public Guess() {
         String input = Console.readLine();
         validateNumberInput(input);
 
-        this.guess = input;
+        guess = input;
     }
 
     public String getGuess() {

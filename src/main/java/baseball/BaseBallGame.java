@@ -1,14 +1,15 @@
 package baseball;
 
+import static baseball.constants.Game.ANSWER_DIGIT;
+import static baseball.constants.Game.QUIT;
+import static baseball.constants.Message.GAME_OVER;
+import static baseball.constants.Message.GAME_START;
+import static baseball.constants.Message.INPUT_PROMPT;
+import static baseball.constants.Message.RESTART_PROMPT;
+
 public class BaseBallGame {
     private static int strikes = 0;
 
-    private static final int ANSWER_DIGIT = Constants.ANSWER_DIGIT;
-    private static final String INPUT_PROMPT = Constants.INPUT_PROMPT;
-    private static final String GAME_START = Constants.GAME_START;
-    private static final String GAME_OVER = Constants.GAME_OVER;
-    private static final String RESTART_PROMPT = Constants.RESTART_PROMPT;
-    private static final String QUIT = Constants.QUIT;
 
     public void startGame() {
         System.out.println(GAME_START);
@@ -16,8 +17,7 @@ public class BaseBallGame {
     }
 
     private void runGame() {
-        Answer answer = new Answer();
-        Computer computer = new Computer(answer);
+        Computer computer = new Computer();
         playRound(computer);
 
         GameStatus gameStatus = new GameStatus();
@@ -44,7 +44,6 @@ public class BaseBallGame {
     private Guess getGuessFromUser() {
         System.out.print(INPUT_PROMPT);
 
-        Guess guess = new Guess();
-        return guess;
+        return new Guess();
     }
 }

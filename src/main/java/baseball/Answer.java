@@ -1,20 +1,21 @@
 package baseball;
 
+import static baseball.constants.Game.ANSWER_DIGIT;
+import static baseball.constants.Game.END_INCLUSIVE;
+import static baseball.constants.Game.START_INCLUSIVE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Answer {
-    private String answer;
-    int START_INCLUSIVE = Constants.START_INCLUSIVE;
-    int END_INCLUSIVE = Constants.END_INCLUSIVE;
-    int ANSWER_DIGIT = Constants.ANSWER_DIGIT;
+    private final String answer;
 
     public Answer() {
-        this.answer = generateRandomAnswer();
+        answer = generateRandomAnswer();
     }
 
     public String getAnswer() {
-        return this.answer;
+        return answer;
     }
 
     private String generateRandomAnswer() {
