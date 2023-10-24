@@ -58,6 +58,12 @@ public class Application {
             throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해주세요.");
         }
 
+        if (userString.charAt(0) == '0'
+                || userString.charAt(1) == '0'
+                || userString.charAt(2) == '0') {
+            throw new IllegalArgumentException("0이 포함되지 않는 수를 입력해주세요.");
+        }
+
         return userNumbers;
     }
 
