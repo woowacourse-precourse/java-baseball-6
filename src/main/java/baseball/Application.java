@@ -9,43 +9,26 @@ public class Application {
     public static void main(String[] args) {
         int keepGoing = 1;
         int strike = 0;
-        int numOfBall;
-        int numOfStrike;
-        List<Integer> result = new ArrayList<>();
-        String input = Console.readLine();
+        List<Integer> computer = new ArrayList<>();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (keepGoing == 1) {
             // Get Computer Data
-            List<Integer> computer = getCompGameData();
+            computer = getCompGameData();
 
+            // Start Baseball Game
             while (strike < 3) {
-                // Get user Data
-                List<Integer> user = getUserGameData();
-                result = compareData(computer, user);
-                numOfBall = result.get(0);
-                numOfStrike = result.get(1);
-
-                // for no ball and no strike
-                checkNothing(numOfBall, numOfStrike);
-
-                // for with strike
-                printBall(numOfBall);
-                strike = printStrike(numOfStrike);
+                strike = doBaseballGame(computer);
             }
 
+            // Check Restart or Not
             printRestart();
-            keepGoing = isInt(input);
 
-            if (keepGoing == 1) {
-                strike = 0;
-            } else if (keepGoing == 2) {
-                return;
-            } else {
-                System.out.println("값이 유효하지 않습니다. 프로그램을 종료합니다.");
-
-            }
+            keepGoing = checkKeepGoing(isInt(Console.readLine()));
+            strike = 0;
         }
+        return;
     }
 
     public static void printBall(int ball) {
@@ -84,6 +67,45 @@ public class Application {
         return ret;
     }
 
+    public static int doBaseballGame(List<Integer> computer) {
+        // Get user Data
+        List<Integer> user = getUserGameData();
+        List<Integer> result = new ArrayList<>();
+        int numOfBall;
+        int numOfStrike;
+
+        result = compareData(computer, user);
+        numOfBall = result.get(0);
+        numOfStrike = result.get(1);
+
+        // for no ball and no strike
+        checkNothing(numOfBall, numOfStrike);
+
+        // for with strike
+        printBall(numOfBall);
+        return printStrike(numOfStrike);
+    }
+
+    public static int checkKeepGoing(int keepGoing) {
+        if (keepGoing == 1) {
+            return 1;
+        } else if (keepGoing == 2) {
+            return 2;
+        } else {
+            System.out.println("값이 유효하지 않습니다. 프로그램을 종료합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void checkUserDataValidate(int userData) {
+        if (userData < 100) {
+            throw new IllegalArgumentException();
+        }
+        if (userData > 1000) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     /*
      * @return Random Computer Data
      */
@@ -102,34 +124,18 @@ public class Application {
      * @return User Input Data
      */
     public static List<Integer> getUserGameData() {
-        String str = "";
-        char[] userStr = "".toCharArray();
+        int userInput;
         List<Integer> user = new ArrayList<Integer>();
 
-        // Check If Input Data has 3 Numbers, and Only Includes Integer
         System.out.print("숫자를 입력해주세요 : ");
-        str = Console.readLine();
 
-        isInt(str);
+        // Check If Input Data has 3 Numbers, and Only Includes Integer
+        userInput = isInt(Console.readLine());
+        checkUserDataValidate(userInput);
 
-        if (str.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-
-        userStr = str.toCharArray();
-
-        // Check If There's Any Same Number
-        for (int i = 0; i < str.length() - 1; i++) {
-            for (int j = i + 1; j < str.length(); j++) {
-                if (userStr[i] == userStr[j]) {
-                    throw new IllegalArgumentException();
-                }
-            }
-        }
-
-        for (int i = 0; i < 3; i++) {
-            user.add(userStr[i] - '0');
-        }
+        user.add(userInput / 100);
+        user.add(userInput % 100 / 10);
+        user.add(userInput % 10);
 
         return user;
     }
