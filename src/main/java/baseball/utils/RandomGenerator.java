@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

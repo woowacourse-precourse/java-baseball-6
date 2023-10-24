@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.GameSetting;
-import baseball.util.Converter;
+import baseball.utils.Converter;
 
 import static baseball.constant.GameConstant.GAME_OVER;
 import static baseball.constant.GameConstant.INPUT_PROMPT;
