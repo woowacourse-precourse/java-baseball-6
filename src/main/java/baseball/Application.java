@@ -2,23 +2,36 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) {
 
         boolean game_flag = false;          // 게임 진행 여부
-        int randomNumber;                   // 컴퓨터의 랜덤 숫자
+        StringBuilder randomNumber;                   // 컴퓨터의 랜덤 숫자
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (!game_flag) {
 
-            randomNumber = Randoms.pickNumberInRange(100, 999);     // (int startInclusive, int endInclusive)
-//            System.out.println(randomNumber);
+            List<Integer> computer = new ArrayList<>();
+            while (computer.size() < 3) {
+                int tempNumber = Randoms.pickNumberInRange(1, 9);
+                if (!computer.contains(tempNumber)) {
+                    computer.add(tempNumber);
+                }
+            }
+
+            randomNumber = new StringBuilder();
+
+            for (Integer com : computer) {
+                randomNumber.append(com);
+            }
 
             // 게임 시작
-            start(String.valueOf(randomNumber));
+            start(randomNumber.toString());
 
             // 게임 종료
             game_flag = end();
@@ -33,11 +46,15 @@ public class Application {
 
             System.out.print("숫자를 입력해주세요 : ");
 
+            userNumber = Console.readLine();
+
             try {
-                userNumber = Console.readLine();
-            } catch (Exception e) {
+                Integer.parseInt(userNumber);
+            } catch(Exception e) {
                 throw new IllegalArgumentException();
             }
+
+            if (userNumber.length() != 3) throw new IllegalArgumentException();
 
             // 입력된 숫자에 대한 결과 계산
             if (calculate(randomNumber, userNumber)) {
@@ -74,6 +91,10 @@ public class Application {
         }
 
         // 출력
+        return printResult(ball, strike);
+    }
+
+    private static boolean printResult(int ball, int strike) {
 
         if (ball > 0) System.out.print(ball + "볼 ");
 
