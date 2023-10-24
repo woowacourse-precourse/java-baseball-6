@@ -38,7 +38,7 @@ public class GameController {
     }
 
     public Boolean checkGameClear(GameResult playerResult) {
-        if (playerResult.getStrike() == 3) {
+        if (playerResult.getStrike() == Constant.THREE_STRIKE_OUT) {
             OutputView.printGameEndMessage();
             return true;
         }
