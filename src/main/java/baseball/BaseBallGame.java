@@ -3,7 +3,7 @@ package baseball;
 import model.ModelCompareAnswerInput;
 import model.ModelCreateRandomNumber;
 import model.ModelRestartOrEnd;
-import model.ModelUserNumCheck;
+import model.ModelUserNum;
 import view.ViewInput;
 import view.ViewResult;
 import view.ViewStart;
@@ -31,7 +31,7 @@ public class BaseBallGame {
 
             while (true) {
 
-                Balls user = ModelUserNumCheck.changeToComparable(ViewInput.numInputView());
+                Balls user = ModelUserNum.changeToBallsType(ViewInput.numInputView());
 
                 Result result = ModelCompareAnswerInput.compareAnswerInput(computer, user);
 

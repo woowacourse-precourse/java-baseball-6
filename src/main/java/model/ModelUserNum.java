@@ -15,7 +15,7 @@ import java.util.Set;
 import vo.Balls;
 
 /**
- * ModelUserNumCheck.java
+ * ModelUserNum.java
  * <p>
  * 입력 받은 숫자 관련 처리 모델
  *
@@ -23,15 +23,15 @@ import vo.Balls;
  * @since 2023-10-25
  */
 
-public class ModelUserNumCheck {
+public class ModelUserNum {
 
     /**
-     * 입력받은 문자열을 정답과 비교할 수 있게 변환
+     * 입력받은 문자열(숫자)을 Ball 타입으로 변환
      *
      * @param str 사용자로부터 입력 받은 문자열
      * @return Balls 타입으로 변환된 입력 숫자
      */
-    public static Balls changeToComparable(String str) {
+    public static Balls changeToBallsType(String str) {
 
         List<Integer> input = stringToListInt(str);
 
