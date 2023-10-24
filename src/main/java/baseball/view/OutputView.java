@@ -3,14 +3,14 @@ package baseball.view;
 public class OutputView {
 
     private static final String NOTHING = "0";
-    private static final int BALL_RESULT = 0;
-    private static final int STRIKE_RESULT = 1;
+    private static final int BALL = 0;
+    private static final int STRIKE = 1;
 
     public OutputView(String[] result) {
-        if (!result[BALL_RESULT].equals(NOTHING) && result[STRIKE_RESULT].equals(NOTHING)) printOnlyBallCountMessage(result[BALL_RESULT]);
-        if (result[BALL_RESULT].equals(NOTHING)&&!result[STRIKE_RESULT].equals(NOTHING)) printOnlyStrikeCountMessage(result[STRIKE_RESULT]);
-        if (!result[BALL_RESULT].equals(NOTHING) && !result[STRIKE_RESULT].equals(NOTHING)) printBallAndStrikeCountMessage(result[BALL_RESULT], result[STRIKE_RESULT]);
-        if (result[BALL_RESULT].equals(NOTHING) && result[STRIKE_RESULT].equals(NOTHING)) printNothingMessage();
+        if (!result[BALL].equals(NOTHING) && result[STRIKE].equals(NOTHING)) printOnlyBallCountMessage(result[BALL]);
+        if (result[BALL].equals(NOTHING)&&!result[STRIKE].equals(NOTHING)) printOnlyStrikeCountMessage(result[STRIKE]);
+        if (!result[BALL].equals(NOTHING) && !result[STRIKE].equals(NOTHING)) printBallAndStrikeCountMessage(result[BALL], result[STRIKE]);
+        if (result[BALL].equals(NOTHING) && result[STRIKE].equals(NOTHING)) printNothingMessage();
     }
 
 
