@@ -9,14 +9,14 @@ public class Application {
     }
 
     public static NumberSet pickRandomUniqueNumberSet() {
-        NumberSet result = new NumberSet(0, 0, 0);
-        while (!result.isUnique()) {
+        NumberSet result;
+        do {
             result = new NumberSet(
                     pick1DigitRandomNumber(),
                     pick1DigitRandomNumber(),
                     pick1DigitRandomNumber()
             );
-        }
+        } while (!result.isUnique());
         return result;
     }
 
