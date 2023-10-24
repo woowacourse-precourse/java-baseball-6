@@ -31,36 +31,27 @@ public class Application {
 
         String input = Console.readLine();
 
-        try {
+        if (input.length() != 3) {
 
-            if (input.length() != 3) {
-
-                throw new IllegalArgumentException("입력 값이 3자리가 아닙니다.");
-
-            }
-
-            for (int i = 0; i < input.length(); i++) {
-
-                int number = Character.getNumericValue(input.charAt(i));
-
-                userAnswers.add(number);
-
-            }
-
-            long distinctNumber = userAnswers.stream().distinct().count();
-
-            if (distinctNumber != 3) {
-
-                throw new IllegalArgumentException("입력 값은 서로 다른 숫자여야 합니다.");
-
-            }
-
-        } catch (IllegalArgumentException e) {
-
-            throw new IllegalArgumentException(e.getMessage());
+            throw new IllegalArgumentException("입력 값이 3자리가 아닙니다.");
 
         }
 
+        for (int i = 0; i < input.length(); i++) {
+
+            int number = Character.getNumericValue(input.charAt(i));
+
+            userAnswers.add(number);
+
+        }
+
+        long distinctNumber = userAnswers.stream().distinct().count();
+
+        if (distinctNumber != 3) {
+
+            throw new IllegalArgumentException("입력 값은 서로 다른 숫자여야 합니다.");
+
+        }
 
 
 
