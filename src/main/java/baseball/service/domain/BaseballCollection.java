@@ -113,16 +113,10 @@ public class BaseballCollection {
     }
 
     private boolean isStrike(int computerBall, int playerBall) {
-        if (this.baseball.contains(playerBall) && playerBall == computerBall) {
-            return true;
-        }
-        return false;
+        return this.baseball.contains(playerBall) && playerBall == computerBall;
     }
 
     private boolean isBall(int computerBall, int playerBall) {
-        if (this.baseball.contains(playerBall) && playerBall != computerBall) {
-            return true;
-        }
-        return false;
+        return this.baseball.contains(playerBall) && playerBall != computerBall;
     }
 }
