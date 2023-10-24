@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Computer {
-
+    public static final String NOTTHING = "낫싱";
+    public static final String STRIKE = "스트라이크";
+    public static final String BOLL = "볼";
     public static final int MAX_DIGIT = 3;
     public static final int MIN_NUM = 1;
     public static final int MAX_NUM = 9;
@@ -24,18 +26,18 @@ public class Computer {
     }
 
     // ans와 비교 후 스타라이크 결과 리턴
-    public String ansCheck(int n){
+    public String answerCheck(int checkNum){
         boolean isStrike [] = new boolean[3];
         boolean isBoll [] = new boolean[3];
         Arrays.fill(isStrike, false);
 
         for(int i=pickNums.size()-1; i >= 0; i--){
-            if(n%10 == pickNums.get(i)){
+            if(checkNum%10 == pickNums.get(i)){
                 isStrike[i] = true;
-            } else if(pickNums.contains(n%10)){
+            } else if(pickNums.contains(checkNum%10)){
                 isBoll[i] = true;
             }
-            n /= 10;
+            checkNum /= 10;
         }
 
         int bollCount = 0;
@@ -49,16 +51,17 @@ public class Computer {
         }
 
         if(strikeCount == 0 && bollCount == 0){
-            return "낫싱";
+            return NOTTHING;
         }
         else{
-            if(strikeCount == 3){
-                return strikeCount + "스트라이크";
-            } else if(bollCount == 3){
-                return bollCount + "볼";
+            if(strikeCount == MAX_DIGIT){
+                return strikeCount + STRIKE;
+            }
+            else if(bollCount == MAX_DIGIT){
+                return bollCount + BOLL;
             }
             else{
-                return bollCount+"볼 "+ strikeCount + "스트라이크";
+                return bollCount + BOLL+ strikeCount + STRIKE;
             }
         }
     }

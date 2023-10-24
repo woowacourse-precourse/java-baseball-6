@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Game {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -25,7 +23,7 @@ public class Game {
                 n = getPlayerAnswerInputAsInt();
 
                 // 정답 비교
-                String result = computer.ansCheck(n);
+                String result = computer.answerCheck(n);
                 System.out.println(result);
 
                 // 게임 종료 여부
