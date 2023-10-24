@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.config.withinRange;
 import baseball.util.Validate;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -15,7 +16,9 @@ public class GameService {
 
     public void solvingProblem() {
         GenerationQuestionList answerRandomListFactory = new GenerationQuestionList(new ArrayList<>());
-        List<Integer> answerRandomList = answerRandomListFactory.generateThreeRandomNumber();
+
+        List<Integer> answerRandomList = answerRandomListFactory.generateRandomNumberList(
+                new withinRange(1, 9));
 
         while (play) {
             System.out.print("숫자를 입력해주세요 : ");
