@@ -37,9 +37,6 @@ public class BaseballGameController {
 
     private Boolean checkRetry() {
         outputView.readRetryCheckMessage();
-        if (baseballGame.checkRetry(inputView.retryCheckNumber())) {
-            return true;
-        }
-        return false;
+        return baseballGame.checkRetry(inputView.retryCheckNumber());
     }
 }
