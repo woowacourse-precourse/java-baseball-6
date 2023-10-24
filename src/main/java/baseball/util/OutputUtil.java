@@ -24,7 +24,7 @@ public class OutputUtil {
         } else if (ball == 0) {
             System.out.printf(strike+STRIKE+"\n");
         } else {
-            System.out.printf(ball+BALL+strike+STRIKE+"\n");
+            System.out.printf(ball+BALL+" "+strike+STRIKE+"\n");
         }
     }
 }

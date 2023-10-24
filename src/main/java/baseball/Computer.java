@@ -13,9 +13,9 @@ public class Computer {
     public Computer() {
     }
 
-    private List<String> baseballNum = new ArrayList<>();
 
     public String createValidBaseballNum() {
+        List<String> baseballNum = new ArrayList<>();
         while (baseballNum.size() < BASEBALL_NUM_LIMIT_LENGTH) {
             String invalidNum = String.valueOf(Randoms.pickNumberInRange(1, 9));
             if (validator.validNumNotInList(invalidNum, baseballNum)) {

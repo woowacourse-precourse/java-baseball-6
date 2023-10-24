@@ -6,8 +6,7 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class Referee {
-    Score score = new Score();
-
+    private Score score;
     public Referee() {
     }
 
@@ -21,6 +20,7 @@ public class Referee {
 
     public Score judgeScore(String baseballNum, String userInputNum) {
         int len = userInputNum.length();
+        score = new Score();
         for (int i = 0; i < len; i++) {
             compareIsSameNum(baseballNum, userInputNum, i);
         }
@@ -32,10 +32,9 @@ public class Referee {
         int tmp = -1;
         for (int j = 0; j < len; j++) {
             if (baseballNum.charAt(j) == userInputNum.charAt(index)) {
-                tmp = j;
+                verifyScoreType(j, index);
                 break;
             }
-            verifyScoreType(tmp, index);
         }
     }
 

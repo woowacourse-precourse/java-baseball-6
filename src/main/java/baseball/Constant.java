@@ -12,5 +12,5 @@ public class Constant {
     public static final String IS_CONTINUE_FLAG = "1";
     public static final Integer BASEBALL_NUM_LIMIT_LENGTH = 3;
     public static final String NOT_ALLOW_BASEBALL_NUMBER = "0";
-
+    public static final String END_GAME = "게임 종료";
 }

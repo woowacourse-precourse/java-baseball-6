@@ -6,27 +6,17 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class User {
-
-
     public User() {
     }
 
     public String getNum() throws IllegalArgumentException {
         System.out.print(INPUT_NUMBER_MENT);
         String num = readLine();
-        if(Validator.validNum(num)){
+        if (Validator.validNum(num)) {
             return num;
         }
-        throw new  IllegalArgumentException();
+        throw new IllegalArgumentException("유효하지않은 숫자입니다");
     }
 
-    public Boolean continueGame() {
-        System.out.println(END_GAME_MENT);
-        System.out.println(NEW_GAME_MENT);
-        String flag = readLine();
-        if (flag.equals(IS_CONTINUE_FLAG)) {
-            return TRUE;
-        }
-        return FALSE;
-    }
+
 }

@@ -2,6 +2,7 @@ package baseball;
 
 
 import java.util.List;
+import java.util.Set;
 
 import static baseball.Constant.BASEBALL_NUM_LIMIT_LENGTH;
 import static baseball.Constant.NOT_ALLOW_BASEBALL_NUMBER;
@@ -18,22 +19,30 @@ public class Validator {
     }
 
     // 사용자가 입력한 숫자가 3자리 숫자인지 확인해주는 메서드
-    public static Boolean validNum(String invalidNums){
-        if (validLength(invalidNums) && validNonZero(invalidNums)) {
+    public static Boolean validNum(String invalidNums) {
+        if (checkLength(invalidNums) && checkZeroNum(invalidNums) && checkDuplicationNum(invalidNums)) {
             return TRUE;
         }
         return FALSE;
     }
 
-    private static Boolean validLength(String invalidNums) {
+    private static Boolean checkLength(String invalidNums) {
         if (invalidNums.length() != BASEBALL_NUM_LIMIT_LENGTH) {
             return FALSE;
         }
         return TRUE;
     }
 
-    private static Boolean validNonZero(String invalidNums) {
+    private static Boolean checkZeroNum(String invalidNums) {
         if (invalidNums.contains(NOT_ALLOW_BASEBALL_NUMBER)) {
+            return FALSE;
+        }
+        return TRUE;
+    }
+
+    private static Boolean checkDuplicationNum(String invalidNums) {
+        Set<String> invalidNums1 = Set.of(invalidNums);
+        if (invalidNums1.size() != BASEBALL_NUM_LIMIT_LENGTH) {
             return FALSE;
         }
         return TRUE;
