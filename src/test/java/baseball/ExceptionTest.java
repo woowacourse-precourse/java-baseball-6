@@ -12,6 +12,11 @@ public class ExceptionTest {
         inputView.close();
     }
     @Test
+    void 유저입력예외처리테스트_올바른입력(){
+        Assertions.assertThatNoException().isThrownBy(() -> inputStringToSystemIn("123"));
+
+    }
+    @Test
     void 유저입력예외처리테스트_길이가3이아닌입력(){
         inputStringToSystemIn("12 ");
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
