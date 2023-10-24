@@ -26,7 +26,7 @@ public class Alert {
     }
 
 
-    public static void NothingMessage() {
+    public static void nothingMessage() {
         System.out.println(NOTHING);
     }
 

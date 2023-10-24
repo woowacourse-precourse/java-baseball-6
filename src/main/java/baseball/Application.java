@@ -1,7 +1,6 @@
 package baseball;
 
 public class Application {
-
     public static void main(String[] args) {
 
         boolean restart;
@@ -10,7 +9,7 @@ public class Application {
 
         do {
             Game baseballGame = new Game();
-            baseballGame.Start();
+            baseballGame.start();
             restart = Game.reStart();
 
         } while (restart);
