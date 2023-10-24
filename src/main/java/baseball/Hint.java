@@ -28,6 +28,6 @@ public class Hint {
         if (strike > 0) {
             buffer.append(strike + "스트라이크");
         }
-        return buffer.toString();
+        return buffer.toString().trim();
     }
 }
