@@ -25,7 +25,7 @@ public class StudyTest {
     }
 
     @Test
-    void 사용자_입력_리스트_정상_변환_테스트() {
+    void 사용자_입력_스트링_리스트로_정상_변환_테스트() {
         String input = "123";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
