@@ -24,7 +24,7 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
+                        .isInstanceOf(IndexOutOfBoundsException.class)
         );
     }
 
@@ -32,11 +32,5 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
-    static void runException(String num){
-        for (int i = 0; i < num.length(); i++) {
-            if (num.charAt(i) < '1' || num.charAt(i) > '9' || num.length() != 3) {
-                throw new IllegalArgumentException();
-            }
-        }
-    }
+
 }

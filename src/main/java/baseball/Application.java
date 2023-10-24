@@ -64,13 +64,15 @@ public class Application {
             try{
                 input = readLine();
 
-                runException(input);
+                /*if(input.length() !=3)
+                    throw new IllegalArgumentException();*/
+                //runException(input);
                 //strike, ball 판단
                 for (int i = 0; i < input.length(); i++) {
-                    /*if(input.charAt(i) < '0' || input.charAt(i) > '9' || input.length() !=3) {
+                    if(input.charAt(i) < '0' || input.charAt(i) > '9'  ) {
                         throw new IllegalArgumentException();
                         //return;
-                    }*/
+                    }
                     int num = input.charAt(i) - '0';
                     if (computer.isStrike(num, i))
                         strikeCount++;
