@@ -38,8 +38,8 @@ public class Balls {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Balls balls1 = (Balls) o;
-        return Objects.equals(balls, balls1.balls);
+        Balls givenBalls = (Balls) o;
+        return Objects.equals(balls, givenBalls.balls);
     }
 
     @Override
