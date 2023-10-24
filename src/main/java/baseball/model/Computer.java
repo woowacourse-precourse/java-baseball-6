@@ -35,6 +35,14 @@ public class Computer {
         return strikeCount;
     }
 
+    private void addBallCount() {
+        ballCount++;
+    }
+
+    private void addStrikeCount() {
+        strikeCount++;
+    }
+
     public void generateRandomNumbers() {
         Set<Integer> randomNumbers = new HashSet<>();
 
@@ -52,9 +60,9 @@ public class Computer {
             Integer playerNumber = playerNumbers.get(index);
 
             if (isStrike(index, playerNumber)) {
-                strikeCount++;
+                addStrikeCount();
             } else if (isBall(playerNumber)) {
-                ballCount++;
+                addBallCount();
             }
         }
     }
