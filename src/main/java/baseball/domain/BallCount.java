@@ -2,29 +2,49 @@ package baseball.domain;
 
 import java.util.List;
 
+import static baseball.domain.GameRules.INPUT_LIMIT;
+
 
 public class BallCount {
-    private static int strike;
-    private static int ball;
+    private int strike;
+    private int ball;
 
-    public static boolean isStrike(List<Integer> generatedAnswer, List<Integer> submittedAnswer) {
-        return generatedAnswer.equals(submittedAnswer);
+    public BallCount(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
     }
-    public static void plusStrike() {
+    public void plusStrike() {
         strike++;
     }
 
-    public static boolean isBall(List<Integer> generatedAnswer, List<Integer> submittedAnswer) {
-        return !isStrike(generatedAnswer, submittedAnswer) && generatedAnswer.contains(submittedAnswer);
-    }
-    public static void plusBall() {
+    public void plusBall() {
         ball++;
     }
+    public boolean isStrike() {
+        return !isAllStrike() && strike != 0 && ball == 0;
+    }
 
-    public boolean isAllStrike(int strike) {
+    public boolean isBall() {
+        return strike == 0 && ball != 0;
+    }
+
+    public boolean isStrikeAndBall() {
+        return strike != 0 && ball != 0;
+    }
+
+    public boolean isNothing() {
+        return strike == 0 && ball == 0;
+    }
+
+    public boolean isAllStrike() {
         return strike == 3;
     }
-    public boolean isNothing(int strike, int ball) {
-        return strike == 0 && ball == 0;
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
     }
 }

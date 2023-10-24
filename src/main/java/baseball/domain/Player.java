@@ -1,30 +1,33 @@
 package baseball.domain;
 
-import baseball.view.InputView;
+import baseball.validation.PickNumberValidation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
 public class Player {
-    List<Integer> pickNumbers =  new ArrayList<>();
-    InputView inputView;
+    private List<Integer> pickNumbers;
 
-    public Player(InputView inputView) {
-        this.inputView = inputView;
+    public Player(List<Integer> pickNumbers) {
+        PickNumberValidation.checkValidInput(pickNumbers);
+        this.pickNumbers = pickNumbers;
     }
 
-    public List<Integer> storeNumber(String[] picksToArray) {
-        for(String pick : picksToArray) {
-            int parsedPick = parseInt(pick);
-            pickNumbers.add(parsedPick);
-        }
+    public List<Integer> getPickNumbers() {
         return pickNumbers;
     }
 
-    public boolean isGameEnd() {
-        String gameRestart = inputView.askGameEnd();
+    //    public List<Integer> storeNumber(String[] picksToArray) {
+//        for(String pick : picksToArray) {
+//            int parsedPick = parseInt(pick);
+//            pickNumbers.add(parsedPick);
+//        }
+//        return pickNumbers;
+//    }
+    public boolean isGameEnd(String gameRestart) {
         return gameRestart.equals("1");
     }
+
+
 }

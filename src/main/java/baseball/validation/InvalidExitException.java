@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.validation;
 
 public class InvalidExitException {
     private static final String EXIT_CHOICE_REGEX = "[1-2]+";
@@ -12,9 +12,9 @@ public class InvalidExitException {
             throw new IllegalArgumentException("1과 2만 입력해주세요.");
         }
     }
-//    public void isNumeric(String pickNumber) {
-//        if(pickNumber.matches(NUMBER_REGEX)) {
-//            throw new IllegalArgumentException("숫자만 입력해주세요.");
-//        }
-//    }
+    public void isNumeric(String pickNumber) {
+        if(pickNumber.matches(NUMBER_REGEX)) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
+    }
 }
