@@ -1,5 +1,6 @@
 package baseball.domain.player;
 
+import baseball.domain.computer.Computer;
 import baseball.domain.number.Number;
 import baseball.exception.player.DuplicateNumberException;
 import baseball.exception.player.InputSizeException;
@@ -17,19 +18,23 @@ public class Player {
     private Player(List<Number> numbers) {
         this.numbers = numbers;
     }
+
     public static Player createPlayerByIntegerNumbers(List<Integer> inputNumbers) {
         checkInputSize(inputNumbers.size());
         checkForDuplicateNumbers(inputNumbers);
         List<Number> players = integerToNumber(inputNumbers);
         return new Player(players);
     }
+    public List<Number> getNumbers() {
+        return numbers;
+    }
 
-    private static void checkInputSize(int size) {
+    public static void checkInputSize(int size) {
         if (size > BASEBALL_NUMBERS_LIMIT_SIZE) {
             throw new InputSizeException();
         }
     }
-    private static void checkForDuplicateNumbers(List<Integer> inputNumbers) {
+    public static void checkForDuplicateNumbers(List<Integer> inputNumbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(inputNumbers);
         if (uniqueNumbers.size() != inputNumbers.size()) {
             throw new DuplicateNumberException();
@@ -42,26 +47,26 @@ public class Player {
                 .collect(Collectors.toList());
     }
 
-    public int calculateStrikeCounts(Player player) {
+    public int calculateStrikeCounts(Computer computer) {
         return (int) IntStream.range(0, BASEBALL_NUMBERS_LIMIT_SIZE)
-                .filter(index -> isStrike(player, index))
+                .filter(index -> isStrike(computer, index))
                 .count();
     }
 
-    private boolean isStrike(Player player, int idx) {
-        return player.numbers.get(idx).equals(this.numbers.get(idx));
+    private boolean isStrike(Computer computer, int idx) {
+        return computer.getAnswerNumbers().get(idx).equals(this.numbers.get(idx));
     }
 
-    public int calculateBallCounts(Player player) {
+    public int calculateBallCounts(Computer computer) {
         return (int) IntStream.range(0, BASEBALL_NUMBERS_LIMIT_SIZE)
-                .filter(index -> isBall(player, index))
+                .filter(index -> isBall(computer, index))
                 .count();
     }
 
-    private boolean isBall(Player player, int index) {
-        if (isStrike(player, index)) {
+    private boolean isBall(Computer computer, int index) {
+        if (isStrike(computer, index)) {
             return false;
         }
-        return this.numbers.contains(player.numbers.get(index));
+        return this.numbers.contains(computer.getAnswerNumbers().get(index));
     }
 }

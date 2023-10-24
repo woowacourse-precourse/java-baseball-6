@@ -1,5 +1,6 @@
 package baseball.domain.player;
 
+import baseball.domain.computer.Computer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -12,10 +13,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class PlayerTest {
-    private Player answerNumbers;
+    private Computer answerNumbers;
     @BeforeEach
     void beforeEach() {
-        answerNumbers = Player.createPlayerByIntegerNumbers(Arrays.asList(1, 2, 3));
+        answerNumbers = Computer.from(Player.createPlayerByIntegerNumbers(Arrays.asList(1, 2, 3)));
     }
 
     @Test
@@ -73,7 +74,7 @@ class PlayerTest {
             Player input = Player.createPlayerByIntegerNumbers(Arrays.asList(1, 4, 5));
             int expected = 1;
             // when
-            int result = answerNumbers.calculateStrikeCounts(input);
+            int result = input.calculateStrikeCounts(answerNumbers);
 
             // then
             assertThat(result).isEqualTo(expected);
@@ -87,7 +88,7 @@ class PlayerTest {
             int expected = 2;
 
             // when
-            int result = answerNumbers.calculateStrikeCounts(input);
+            int result = input.calculateStrikeCounts(answerNumbers);
 
             // then
             assertThat(result).isEqualTo(expected);
@@ -101,7 +102,7 @@ class PlayerTest {
             int expected = 3;
 
             // when
-            int result = answerNumbers.calculateStrikeCounts(input);
+            int result = input.calculateStrikeCounts(answerNumbers);
 
             // then
             assertThat(result).isEqualTo(expected);
@@ -120,7 +121,7 @@ class PlayerTest {
             int expected = 1;
 
             // when
-            int result = answerNumbers.calculateBallCounts(input);
+            int result = input.calculateBallCounts(answerNumbers);
 
             // then
             assertThat(result).isEqualTo(expected);
@@ -134,7 +135,7 @@ class PlayerTest {
             int expected = 2;
 
             // when
-            int result = answerNumbers.calculateBallCounts(input);
+            int result = input.calculateBallCounts(answerNumbers);
 
             // then
             assertThat(result).isEqualTo(expected);
@@ -148,7 +149,7 @@ class PlayerTest {
             int expected = 3;
 
             // when
-            int result = answerNumbers.calculateBallCounts(input);
+            int result = input.calculateBallCounts(answerNumbers);
 
             // then
             assertThat(result).isEqualTo(expected);

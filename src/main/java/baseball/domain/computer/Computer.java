@@ -1,6 +1,7 @@
 package baseball.domain.computer;
 
 import baseball.domain.number.Number;
+import baseball.domain.player.Player;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -10,8 +11,7 @@ import java.util.Set;
 
 import static baseball.domain.number.Number.MAX_NUMBER;
 import static baseball.domain.number.Number.MIN_NUMBER;
-import static baseball.domain.player.Player.BASEBALL_NUMBERS_LIMIT_SIZE;
-import static baseball.domain.player.Player.integerToNumber;
+import static baseball.domain.player.Player.*;
 
 public class Computer {
     private List<Number> answerNumbers;
@@ -23,6 +23,10 @@ public class Computer {
     public static Computer createComputerAnswerByRandomGenerator() {
         List<Number> answerNumbers = integerToNumber(generateNumbers());
         return new Computer(answerNumbers);
+    }
+
+    public static Computer from(Player answerNumbers) {
+        return new Computer(answerNumbers.getNumbers());
     }
 
     private static ArrayList<Integer> generateNumbers() {
