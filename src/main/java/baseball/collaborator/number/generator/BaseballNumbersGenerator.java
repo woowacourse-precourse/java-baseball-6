@@ -28,6 +28,10 @@ public class BaseballNumbersGenerator implements NumbersGenerator {
             throw new IllegalArgumentException(
                     BaseballNumbersGeneratorMessage.ALERT_DUPLICATE_INPUT_VALUES.get());
         }
+        if (numbers.stream().anyMatch(number -> number < 1 || 9 < number)) {
+            throw new IllegalArgumentException(
+                    BaseballNumbersGeneratorMessage.ALERT_OUT_OF_RANGE.get());
+        }
         if (isNegativeNumber(numbers)) {
             throw new IllegalArgumentException(
                     BaseballNumbersGeneratorMessage.ALERT_NEGATIVE_NUMBER.get());
