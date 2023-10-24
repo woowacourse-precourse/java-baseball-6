@@ -47,5 +47,19 @@ class UserTest {
 
     }
 
+    @Test
+    @DisplayName("유저가 중복된 숫자를 입력했을 때 에러가 발생하는지 확인")
+    void 오류발생_테스트_중복(){
+        //given
+        String userInput="477";
+        User user=new User();
+
+        //then
+        Assertions.assertThatThrownBy(()->user.makeUserNumber(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복");
+
+    }
+
 
 }
