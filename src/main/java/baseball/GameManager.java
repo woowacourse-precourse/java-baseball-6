@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -16,13 +17,22 @@ public class GameManager {
     }
 
     public void startGame(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
-            System.out.println("숫자를 입력해주세요 : ");
-            List<Integer> inputNumbers = player.getNumbers();
-            if (!isValid(inputNumbers)) {
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> inputNumbers = new ArrayList<>();
+            String input = readLine();
+            for (int i = 0; i < input.length(); i++) {
+                // 문자를 정수로 변환하여 리스트에 추가
+                int digit = Character.getNumericValue(input.charAt(i));
+                inputNumbers.add(digit);
+            }
+            player.setNumbers(inputNumbers);
+            List<Integer> playerNumbers = player.getNumbers();
+            if (!isValid(playerNumbers)) {
                 throw new IllegalArgumentException();
             }
-            int[] result = judge(inputNumbers);
+            int[] result = judge(playerNumbers);
             System.out.println(result[0] + "스트라이크 " + result[1] + "볼");
             if (result[0] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
