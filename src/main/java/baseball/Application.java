@@ -14,8 +14,9 @@ public class Application {
             String computerNum = ComputerNumber.listToString(uniqueThreeNumbers);
             String userInput = UserInput.readUserInput();
             String userNum = UserInput.checkUserInput(userInput);
-            HintCountDto hintCountDto = Hint.calHint(computerNum, userNum);
-            isGameDone = Hint.printHint(hintCountDto);
+            int balls = Hint.calBall(computerNum, userNum);
+            int strikes = Hint.calStrike(computerNum, userNum);
+            isGameDone = Hint.printHint(balls, strikes);
         }
     }
 }

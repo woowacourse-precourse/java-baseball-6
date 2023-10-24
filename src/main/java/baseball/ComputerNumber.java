@@ -6,24 +6,24 @@ import java.util.List;
 
 public class ComputerNumber {
 
-    public static List<Integer> makeUniqueThreeNumbers() {
-        List<Integer> randomNumbers = new ArrayList<>();
+    public static List<Integer> makeUniqueThreeNums() {
+        List<Integer> randomNums = new ArrayList<>();
 
-        while (randomNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumbers.contains(randomNumber)) {
-                randomNumbers.add(randomNumber);
+        while (randomNums.size() < 3) {
+            int randomNum = Randoms.pickNumberInRange(1, 9);
+            if (!randomNums.contains(randomNum)) {
+                randomNums.add(randomNum);
             }
         }
 
-        return randomNumbers;
+        return randomNums;
     }
 
-    public static String listToString(List<Integer> randomNumbers) {
+    public static String listToString(List<Integer> randomNums) {
         String numbers = "";
 
         for (int i = 0; i < 3; i++) {
-            numbers += randomNumbers.get(i).toString();
+            numbers += randomNums.get(i).toString();
         }
 
         return numbers;
