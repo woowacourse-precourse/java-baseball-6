@@ -1,8 +1,8 @@
 package baseball;
 
 import baseball.model.ComputerRandomNumbers;
+import baseball.model.GameRestart;
 import baseball.validator.PlayerNumberValidator;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -63,6 +63,15 @@ public class InputTest {
     void 음수_입력_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> PlayerNumberValidator.validateNumberRange("-123"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("재시작 시 1 또는 2가 아닌 경우 테스트")
+    void 게임_재시작_입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> GameRestart.validateRestartNumber("0"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
