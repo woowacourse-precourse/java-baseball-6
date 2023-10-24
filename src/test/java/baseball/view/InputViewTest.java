@@ -13,4 +13,5 @@ class InputViewTest {
         Integer[] result = InputView.convertStrToIntArr("123");
         Assertions.assertArrayEquals(expect, result);
     }
+
 }
