@@ -115,7 +115,26 @@ public class Application {
         return input;
     }
 
-
+    public static void messagePrintingLogic(int[] resultArray) {
+        if (resultArray[2] == 0) {
+            if ((resultArray[0] == 0) && (resultArray[1] == 0)) {
+                System.out.println("낫싱");
+            }
+            else if ((resultArray[0] > 0) && (resultArray[1] == 0)) {
+                System.out.printf("%d볼\n", resultArray[0]);
+            }
+            else if ((resultArray[0] == 0) && (resultArray[1] > 0)) {
+                System.out.printf("%d스트라이크\n", resultArray[1]);
+            }
+            else if ((resultArray[0] > 0) && (resultArray[1] > 0)) {
+                System.out.printf("%d볼 %d스트라이크\n", resultArray[0], resultArray[1]);
+            }
+        }
+        else {
+            System.out.printf("%d스트라이크\n", resultArray[1]);
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
