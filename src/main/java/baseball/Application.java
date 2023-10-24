@@ -7,6 +7,9 @@ public class Application {
         int restart = 1;
         while (restart == 1) {
             BaseBallGame baseBallGame = new BaseBallGame();
+            for (int i : baseBallGame.getRandomNumber()) {
+                System.out.print(i);
+            }
             System.out.println();
             User user = new User();
             baseBallGame.gameStart();
