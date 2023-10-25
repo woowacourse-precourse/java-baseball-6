@@ -1,8 +1,8 @@
 package baseball.game;
 
 import static baseball.constant.NumberConstants.COUNT_ZERO;
-import static baseball.output.GameOutput.printNewLine;
-import static baseball.output.GameOutput.printlnNothing;
+import static baseball.game.GameOutput.printNewLine;
+import static baseball.game.GameOutput.printlnNothing;
 
 import java.util.stream.IntStream;
 

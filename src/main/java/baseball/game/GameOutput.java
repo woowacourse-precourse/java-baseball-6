@@ -1,4 +1,4 @@
-package baseball.output;
+package baseball.game;
 
 import static baseball.constant.MessageConstants.ASK_ONE_OR_TWO;
 import static baseball.constant.MessageConstants.BALL;
