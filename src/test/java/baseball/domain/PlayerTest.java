@@ -12,7 +12,7 @@ public class PlayerTest {
         List<Integer> expectedResult = List.of(1, 2, 3);
 
         Player player = new Player();
-        player.setInputAnswer(inputNumbers);
+        player.insertInputAnswer(inputNumbers);
 
         List<Integer> playersInputAnswer = player.getInputAnswer();
         Assertions.assertEquals(expectedResult,playersInputAnswer);

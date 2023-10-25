@@ -6,7 +6,7 @@ import java.util.List;
 public class Player {
     private List<Integer> inputAnswer;
 
-    public void setInputAnswer(String stringInputAnswer) {
+    public void insertInputAnswer(String stringInputAnswer) {
         this.inputAnswer = convertStringInputToIntegerList(stringInputAnswer);
     }
 

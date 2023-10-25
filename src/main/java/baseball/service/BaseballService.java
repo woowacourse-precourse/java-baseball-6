@@ -12,7 +12,7 @@ public record BaseballService(Computer computer,
 
     public void inputAnswer(String inputAnswer) {
         inputValidator.validateAnswer(inputAnswer);
-        player.setInputAnswer(inputAnswer);
+        player.insertInputAnswer(inputAnswer);
     }
 
     public String palyGame() {
