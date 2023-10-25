@@ -22,7 +22,7 @@ class RefereeTest {
 
     @Test
     void 스트라이크_개수를_올바르게_계산(){
-        referee.calculateStrikeCount(user.getNumbers(), computer.getNumbers());
+        referee.calculateStrikeCount(user, computer);
         assertEquals(3, referee.getStrike());
     }
 }

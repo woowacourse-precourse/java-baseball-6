@@ -21,4 +21,8 @@ public class Player {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public int getNumber(int index) {
+        return numbers.get(index);
+    }
 }

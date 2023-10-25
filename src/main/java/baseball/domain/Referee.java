@@ -30,23 +30,23 @@ public class Referee {
 
     public void playGame(Player user, Player computer) {
         initialization();
-        calculateStrikeCount(user.getNumbers(), computer.getNumbers());
-        calculateBallCount(user.getNumbers(), computer.getNumbers());
+        calculateStrikeCount(user, computer);
+        calculateBallCount(user, computer);
     }
 
-    public void calculateStrikeCount(List<Integer> user, List<Integer> computer) {
+    public void calculateStrikeCount(Player user, Player computer) {
         for (int i = 0; i < NUMBERS_SIZE; i++) {
-            if (user.get(i) == computer.get(i)) {
+            if (user.getNumber(i) == computer.getNumber(i)) {
                 strike++;
             }
         }
     }
 
-    public void calculateBallCount(List<Integer> user, List<Integer> computer) {
+    public void calculateBallCount(Player user, Player computer) {
         for (int i = 0; i < NUMBERS_SIZE; i++) {
             for (int j = 0; j < NUMBERS_SIZE; j++) {
                 if (i != j) {
-                    if (user.get(i) == computer.get(j)) {
+                    if (user.getNumber(i) == computer.getNumber(j)) {
                         ball++;
                     }
                 }
