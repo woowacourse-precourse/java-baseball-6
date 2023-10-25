@@ -48,17 +48,11 @@ public class BaseballView {
     }
 
     private static boolean isInvalidLength(List<Integer> input) {
-        if (input.size() != NUM_LENGTH) {
-            return true;
-        }
-        return false;
+        return input.size() != NUM_LENGTH;
     }
 
     private static boolean isDuplicated(List<Integer> input) {
-        if (input.size() != input.stream().distinct().count()) {
-            return true;
-        }
-        return false;
+        return input.size() != input.stream().distinct().count();
     }
 
     public static void printNothing() {
