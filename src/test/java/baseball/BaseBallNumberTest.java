@@ -94,7 +94,7 @@ class BaseBallNumberTest {
 
     }
 
-    static Stream<Arguments> InputStringStream() {
+    static Stream<Arguments> inputStringStream() {
         return Stream.of(
                 Arguments.of("123", 3, 0),
                 Arguments.of("234", 0, 2),
@@ -105,7 +105,7 @@ class BaseBallNumberTest {
         );
     }
 
-    static Stream<Arguments> inValidNumberArray() {
+    static Stream<Arguments> inValidNumberStream() {
         return Stream.of(
                 Arguments.of("3자리보다 큰 숫자 문자열이 들어온 경우", "1234"),
                 Arguments.of("3자리보다 작은 숫자 문자열이 들어온 경우", "12"),
