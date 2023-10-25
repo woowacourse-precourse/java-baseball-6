@@ -1,7 +1,5 @@
 package io;
 
-public final class Printer {
-    public void print(final Renderable renderable) {
-        System.out.print(renderable.render());
-    }
+public interface Printer {
+    void print(Renderable renderable);
 }
