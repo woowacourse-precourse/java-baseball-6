@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class NumberChecker {
 
-    private int numberLength;
+    private final int numberLength;
     private static final String SPLIT = "";
     private static final int MORE_THAN_ONE = 1;
 
