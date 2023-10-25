@@ -39,12 +39,20 @@ public class BaseballGame {
       int m = Character.getNumericValue(num.charAt(pos));
       int index = computer.indexOf(m);
 
-      if (index == pos) {
-        strike++;
-      }
-      if (index != pos && index != -1) {
-        ball++;
-      }
+      isStrike(index, pos);
+      isBall(index, pos);
+    }
+  }
+
+  private static void isBall(int index, int pos) {
+    if (index != pos && index != -1) {
+      ball++;
+    }
+  }
+
+  private static void isStrike(int index, int pos) {
+    if (index == pos) {
+      strike++;
     }
   }
 
