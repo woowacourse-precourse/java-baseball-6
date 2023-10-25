@@ -1,6 +1,9 @@
 package baseball.model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ball {
     private final int number;
     private final int digits;
@@ -11,6 +14,15 @@ public class Ball {
         if(!ball_validator(number, digits)){
             throw new Exception("정상적이지 않은 ball 생성");
         }
+    }
+
+    public static List<Ball> of(String userInput) throws Exception {
+        List<Ball> balls = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int num = Integer.parseInt(userInput.substring(i, i+1));
+            balls.add(new Ball(num, i));
+        }
+        return balls;
     }
 
     private boolean ball_validator(int number, int digits) {

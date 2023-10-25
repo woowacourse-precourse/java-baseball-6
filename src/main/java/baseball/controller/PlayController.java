@@ -1,12 +1,14 @@
 package baseball.controller;
 
 import baseball.model.Ball;
+import baseball.view.View;
 
 import java.util.List;
 
 public class PlayController {
     private CountController countController;
     private RandomGenerator randomGenerator;
+    private View view = new View();
     private boolean restart;
     private boolean retry;
     public PlayController() throws Exception {
@@ -28,7 +30,8 @@ public class PlayController {
         randomGenerator = new RandomGenerator();
         List<Ball> computer = randomGenerator.getComputer();
         while(retry) {
-            //TODO : Input view 숫자를 입력해주세요 : 123
+            String user_input = view.user_balls();
+            List<Ball> user = Ball.of(user_input);
             countController = new CountController();
             //countController.count_ball(computer, user);
             //TODO : Output view 1볼 1스트라이크
