@@ -61,7 +61,6 @@ public class BaseballGame {
         ball = RESET;
     }
 
-
     private List<Integer> convertToIntegerList(String userInput) {
         String[] arr = userInput.split("");
         return Arrays.stream(arr).map(Integer::valueOf).collect(Collectors.toList());
