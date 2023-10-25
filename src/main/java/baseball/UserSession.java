@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class UserSession {
     private Game game;
@@ -12,7 +13,7 @@ public class UserSession {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             String input = promptForRound();
-            int[] result = game.playRound(input);
+            List<Integer> result = game.playRound(input);
             showRoundResult(result);
             if (game.isWin(result)) {
                 System.out.println(new StringBuilder()
@@ -25,26 +26,26 @@ public class UserSession {
         }
     }
 
-    private void showRoundResult(int[] result) {
-        if (result[0] == 0 && result[1] == 0) {
+    private void showRoundResult(List<Integer> result) {
+        if (result.get(0) == 0 && result.get(1) == 0) {
             System.out.println("낫싱");
         }
-        else if (result[0] > 0 && result[1] > 0) {
+        else if (result.get(0) > 0 && result.get(1) > 0) {
             System.out.println(new StringBuilder()
-                    .append(result[1])
+                    .append(result.get(1))
                     .append("볼 ")
-                    .append(result[0])
+                    .append(result.get(0))
                     .append("스트라이크")
             );
-        } else if (result[0] > 0 && result[1] == 0) {
+        } else if (result.get(0) > 0 && result.get(1) == 0) {
             System.out.println(new StringBuilder()
-                    .append(result[0])
+                    .append(result.get(0))
                     .append("스트라이크")
             );
         }
-        else if (result[0] == 0 && result[1] > 0) {
+        else if (result.get(0) == 0 && result.get(1) > 0) {
             System.out.println(new StringBuilder()
-                    .append(result[1])
+                    .append(result.get(1))
                     .append("볼")
             );
         }
