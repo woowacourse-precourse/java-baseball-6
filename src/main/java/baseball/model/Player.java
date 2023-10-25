@@ -8,8 +8,20 @@ public class Player extends Number {
     public Player() {
         super();
         setInput();
+        validateInput();
+        setNumbers();
+    }
+
+    private void validateInput() {
         isSizeCorrect();
-        putNumber();
+        isBetween1And9();
+    }
+
+    private void setNumbers() {
+        for (char i : getInput().toCharArray()) {
+            int num = changeToInt(i);
+            putNumber(num);
+        }
     }
 
     private String getInput() {
@@ -20,21 +32,19 @@ public class Player extends Number {
         input = Console.readLine().trim();
     }
 
-    public void putNumber() {
-        for (char i : getInput().toCharArray()) {
-            int num = changeToInt(i);
-            if (isContained(num)) {
-                throw new IllegalArgumentException("중복 없는 숫자로 골라주세요.");
-            }
-            numbers.add(num);
+    @Override
+    public boolean isContained(int number) {
+        if (super.isContained(number)) {
+            throw new IllegalArgumentException("중복 없는 숫자로 골라주세요.");
         }
+        return super.isContained(number);
     }
 
-    private int changeToInt(char num) {
+    private int changeToInt(char i) {
         if (!isBetween1And9()) {
             throw new IllegalArgumentException("1-9 사이 숫자만 입력해주세요.");
         }
-        return Integer.valueOf(num);
+        return Integer.valueOf(i);
     }
 
     private boolean isBetween1And9() {
@@ -42,10 +52,8 @@ public class Player extends Number {
     }
 
     private void isSizeCorrect() {
-        if (input.length() != NUMBER_SIZE) {
+        if (getInput().length() != NUMBER_SIZE) {
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
         }
     }
-
-
 }
