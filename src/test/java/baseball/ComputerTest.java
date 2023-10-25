@@ -16,6 +16,7 @@ public class ComputerTest {
 
         // then
         assertThat(computer.getAnswer()).hasSize(3);
+        assertThat(computer.getAnswer()).doesNotHaveDuplicates();
     }
 
     @Test
