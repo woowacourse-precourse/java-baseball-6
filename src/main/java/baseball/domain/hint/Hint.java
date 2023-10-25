@@ -26,10 +26,6 @@ public class Hint {
         return names;
     }
 
-    public void addHintItem(HintItem hintItem) {
-        hintItems.add(hintItem);
-    }
-
     private Hint(List<HintItem> hintItems) {
         this.hintItems = hintItems;
         this.counts = counts();
@@ -69,10 +65,7 @@ public class Hint {
     }
 
     private boolean setCorrect() {
-        if (counts.contains(String.valueOf(GameConstants.NUMBER_LENGTH))
-                && names.contains(GameConstants.STRIKE_TEXT)) {
-            return true;
-        }
-        return false;
+        return counts.contains(String.valueOf(GameConstants.NUMBER_LENGTH))
+                && names.contains(GameConstants.STRIKE_TEXT);
     }
 }
