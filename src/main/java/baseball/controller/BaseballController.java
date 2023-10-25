@@ -27,20 +27,24 @@ public class BaseballController {
 
     public void playGame() {
         coumputerNumberList = computerNumber.generateNumber();
+        try {
         while (true) {
             strike = 0;
             ball = 0;
             playerNumberList = playerNumber.playerNumberToList(inputView.inputPlayerNumber());
             strike = playGame.checkStrike(coumputerNumberList, playerNumberList);
-            if(strike!=3) {
+            if (strike != 3) {
                 ball = playGame.checkBall(coumputerNumberList, playerNumberList);
             }
-            boolean result = judgeResult(strike,ball);
-            if(!result) {
+            boolean result = judgeResult(strike, ball);
+            if (!result) {
                 break;
             }
-        }
+         }
         gameOption();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     public boolean judgeResult(int strike, int ball) {
         if(strike==0 && ball==0) {
