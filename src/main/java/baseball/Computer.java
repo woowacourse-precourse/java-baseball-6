@@ -70,7 +70,6 @@ public class Computer {
         ArrayList<Integer> userInput;
         boolean endCode;
 
-        outputManager.printStartMessage();
         while (true) {
             outputManager.printRequestInputMessage();
             userInput = inputManager.takeUserAnswerInput();
@@ -89,6 +88,7 @@ public class Computer {
         boolean is_end;
 
         is_end = false;
+        outputManager.printStartMessage();
         while (!is_end) {
             makeAnswer();
             is_end = playBaseball();
