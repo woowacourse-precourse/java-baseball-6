@@ -1,5 +1,7 @@
 package baseball.people.preparation;
 
+import java.util.List;
+
 public class Referee {
     private TargetNumber targetNumber;
 
@@ -21,14 +23,14 @@ public class Referee {
      * @param numbers 3자리 정수 배열
      * @return 3스트라이크면 true, 그렇지 않으면 false
      */
-    public boolean strikeOut(int[] numbers) {
+    public boolean strikeOut(List<Integer> numbers) {
         int ball = 0, strike = 0;
         for (int i = 0; i < 3; i++) {
-            if (targetNumber.isStrike(numbers[i], i)) {
+            if (targetNumber.isStrike(numbers.get(i), i)) {
                 strike++;
                 continue;
             }
-            if (targetNumber.isBall(numbers[i])) {
+            if (targetNumber.isBall(numbers.get(i))) {
                 ball++;
             }
         }

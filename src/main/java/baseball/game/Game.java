@@ -2,6 +2,7 @@ package baseball.game;
 
 import baseball.people.Pitcher;
 import baseball.people.preparation.Referee;
+import java.util.List;
 
 public class Game {
     private final Pitcher pitcher = Pitcher.enter();
@@ -31,7 +32,7 @@ public class Game {
 
     private void matchStart() {
         referee.playBall();
-        int[] pitch;
+        List<Integer> pitch;
         boolean strikeOut;
         do {
             pitch = pitcher.pitch();

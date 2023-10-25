@@ -1,6 +1,8 @@
 package baseball.people;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pitcher {
 
@@ -21,7 +23,7 @@ public class Pitcher {
      *
      * @return 길이 3인 정수(int 타입) 배열
      */
-    public int[] pitch() {
+    public List<Integer> pitch() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
@@ -29,9 +31,9 @@ public class Pitcher {
             throw new IllegalArgumentException();
         }
 
-        int[] numbers = new int[3];
+        List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            numbers[i] = (input.charAt(i) - '0');
+            numbers.add(input.charAt(i) - '0');
         }
 
         return numbers;
