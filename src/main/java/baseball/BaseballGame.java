@@ -70,7 +70,7 @@ public class BaseballGame {
 		System.out.print("숫자를 입력해주세요 : ");
 	}
 
-	public void gameStart(User user) {
+	public void gameStart(User user) throws IllegalArgumentException {
 		while (strike != 3) {
 			int[] userNumbers = userNumberToArray(user.input3DigitNumber());
 			strike = 0;
