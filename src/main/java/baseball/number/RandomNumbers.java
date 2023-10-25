@@ -9,6 +9,10 @@ public class RandomNumbers {
 
     private static List<BaseBallNumber> randomNumbers;
 
+    public RandomNumbers(){
+        this.randomNumbers = extractRandomNumbers();
+
+    }
 
 
 }
