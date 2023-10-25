@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static baseball.utils.ErrorMessage.NUMBERS_NOT_POSITIVE_INTEGER;
+import static baseball.utils.ErrorMessage.NUMBERS_OUT_OF_RANGE;
 import static baseball.utils.ErrorMessage.NUMBERS_SIZE_IS_INVALID;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
@@ -30,7 +31,14 @@ class PlayerTest {
                 .hasMessageContaining(NUMBERS_NOT_POSITIVE_INTEGER);
     }
 
+    @ParameterizedTest
+    @DisplayName("각 자릿수가 1~9 범위를 벗어난 경우 예외가 발생한다.")
+    @ValueSource(strings = {"012", "302", "450"})
+    void createNumbersByOutOfRange(String input) {
+        assertThatThrownBy(() -> new Player().validateRange(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NUMBERS_OUT_OF_RANGE);
+    }
+
 
 }
-
-// NUMBERS_SIZE_IS_INVALID
