@@ -101,18 +101,14 @@ public class Application {
         do {
 
             int[] answer = createNewArray();
-            try {
+            int[] userInput;
 
-                int[] userInput;
-                do {
-                    userInput = receiveNewArray();
-                } while (!testInput(answer, userInput));
+            do {
+                userInput = receiveNewArray();
+            } while (!testInput(answer, userInput));
 
-                key = endGame();
+            key = endGame();
 
-            } catch (IllegalArgumentException e) {
-                break;
-            }
 
         } while (key == 1);
     }
