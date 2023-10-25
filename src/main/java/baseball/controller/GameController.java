@@ -37,7 +37,6 @@ public class GameController {
     private void playUntilBaseballNumberMatch() {
         Result result;
         do {
-            numberBaseballGame.initGameSetting();
             int playerInput = inputView.requestBaseballNumberInput();
             result = numberBaseballGame.makeResult(playerInput);
             outputView.responseResult(result);
