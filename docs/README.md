@@ -24,3 +24,9 @@
 
 ### 5. 에러 조건
 * 사용자가 잘못된 값을 입력하면 **IllegalArgumentException** 발생 후 애플리케이션 종료.
+
+
+=> Application에서 시작
+=> RandomNumber통해 랜덤값 생성 후 
+=> InputNum에서 입력받은 값과 RandomNumber에서 생성한 랜덤값을 Compare에서 비교해서 
+=> 3스트라이크가 될 때까지 반복. 만약 3스트라이크가 된다면 EndOrRetry를 통해서 재시작/종료 설정.
