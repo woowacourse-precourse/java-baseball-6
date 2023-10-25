@@ -81,4 +81,13 @@ class NumberTest {
         // then
         assertThatThrownBy(() -> new Number(list1)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 생성된_번호_길이_예외_테스트() {
+        // given
+        List<Integer> list1 = new ArrayList<>(List.of(1, 2, 3, 4));
+
+        // then
+        assertThatThrownBy(() -> new Number(list1)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
