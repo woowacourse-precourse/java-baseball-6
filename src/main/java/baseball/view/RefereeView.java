@@ -24,11 +24,14 @@ public class RefereeView {
     public void printLostResult(Integer strike, Integer ball) {
         if (strike == 0 && ball == 0) {
             System.out.println(GameMessage.NOTHING.getMessage());
-        } else if (strike != 0 && ball == 0) {
+        }
+        if (strike != 0 && ball == 0) {
             System.out.printf(GameMessage.ONLY_STRIKE_FORMAT.getMessage(), strike);
-        } else if (strike == 0 && ball != 0) {
+        }
+        if (strike == 0 && ball != 0) {
             System.out.printf(GameMessage.ONLY_BALL_FORMAT.getMessage(), ball);
-        } else {
+        }
+        if (strike != 0 && ball != 0) {
             System.out.printf(GameMessage.BALL_AND_STRIKE_FORMAT.getMessage(), ball, strike);
         }
     }
