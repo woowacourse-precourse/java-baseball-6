@@ -6,12 +6,13 @@ import java.util.Set;
 import camp.nextstep.edu.missionutils.Console;
 
 public class NumberInputValidator {
-    public void validNumber() {
+    public String validNumber() {
         String balls = Console.readLine();
         vaildNumberUnderThreeDigits(balls);
         vaildNumberOverThreeDigits(balls);
         vaildNumberRange(balls);
         validContainSameNumber(balls);
+        return balls;
     }
 
     void vaildNumberOverThreeDigits(String balls) {
