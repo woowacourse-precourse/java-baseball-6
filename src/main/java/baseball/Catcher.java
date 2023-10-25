@@ -6,11 +6,9 @@ import java.util.*;
 
 public class Catcher {
     private List<Integer> numbers;
-    private int maxSize;
 
-    public Catcher(int maxSize) {
+    public Catcher() {
         this.numbers = new ArrayList<>();
-        this.maxSize = maxSize;
     }
 
     public List<Integer> getNumbers() {
@@ -19,7 +17,7 @@ public class Catcher {
 
     public void generateRandomNumbers() {
         numbers.clear();
-        while (numbers.size() < maxSize) {
+        while (numbers.size() < Constant.MAX_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
             if (!numbers.contains(randomNumber)) {

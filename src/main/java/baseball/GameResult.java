@@ -3,12 +3,10 @@ package baseball;
 public class GameResult {
     private int strike;
     private int ball;
-    private int maxSize;
 
-    public GameResult(int strike, int ball, int maxSize) {
+    public GameResult(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
-        this.maxSize = maxSize;
     }
 
     @Override
@@ -33,7 +31,7 @@ public class GameResult {
     }
 
     public boolean isStrikeOut() {
-        return strike == maxSize;
+        return strike == Constant.MAX_NUMBER_SIZE;
     }
 }
 

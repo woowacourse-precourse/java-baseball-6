@@ -8,11 +8,9 @@ import java.util.Stack;
 
 public class Pitcher {
     private List<Integer> numbers;
-    private int maxSize;
 
-    public Pitcher(int maxSize) {
+    public Pitcher() {
         this.numbers = new ArrayList<>();
-        this.maxSize = maxSize;
     }
 
     public List<Integer> getNumbers() {
@@ -24,8 +22,8 @@ public class Pitcher {
         Stack<Integer> split = new Stack<>();
         String inputStr = Console.readLine();
 
-        if (inputStr.length() > maxSize) {
-            throw new IllegalArgumentException("최대 길이 " + maxSize + "를 넘어가는 입력입니다.");
+        if (inputStr.length() > Constant.MAX_NUMBER_SIZE) {
+            throw new IllegalArgumentException("최대 길이 " + Constant.MAX_NUMBER_SIZE + "를 넘어가는 입력입니다.");
         }
 
         int inputNumber = Integer.parseInt(inputStr);
@@ -46,7 +44,7 @@ public class Pitcher {
 
     public void updateNumbers(Stack<Integer> split) {
         numbers.clear();
-        while (numbers.size() < maxSize) {
+        while (numbers.size() < Constant.MAX_NUMBER_SIZE) {
             numbers.add(split.pop());
         }
     }
