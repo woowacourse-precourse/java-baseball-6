@@ -6,10 +6,6 @@ import baseball.constants.RestartChoice;
 import baseball.entity.Computer;
 import baseball.entity.User;
 
-import java.util.HashSet;
-
-import static baseball.constants.Constants.NUMBER_LENGTH;
-import static baseball.constants.Constants.REQUIRED_STRIKES_FOR_WIN;
 import static baseball.constants.Messages.START_MESSAGE;
 
 public class BaseballGame {

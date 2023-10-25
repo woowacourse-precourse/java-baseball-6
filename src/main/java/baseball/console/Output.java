@@ -1,6 +1,6 @@
 package baseball.console;
 
-import static baseball.constants.Constants.REQUIRED_NUMBERS_TO_MATCH;
+import static baseball.constants.Constants.REQUIRED_STRIKES_FOR_WIN;
 import static baseball.constants.Messages.*;
 
 public class Output {
@@ -38,6 +38,6 @@ public class Output {
     }
 
     public static void printAnswerMessage() {
-        System.out.printf(ANSWER_MESSAGE.getMessage(), REQUIRED_NUMBERS_TO_MATCH.getValue());
+        System.out.printf(ANSWER_MESSAGE.getMessage(), REQUIRED_STRIKES_FOR_WIN.getValue());
     }
 }

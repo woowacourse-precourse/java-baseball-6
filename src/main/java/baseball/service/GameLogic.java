@@ -4,8 +4,7 @@ import baseball.console.Output;
 
 import java.util.HashSet;
 
-import static baseball.constants.Constants.NUMBER_LENGTH;
-import static baseball.constants.Constants.REQUIRED_STRIKES_FOR_WIN;
+import static baseball.constants.Constants.*;
 
 class GameLogic {
 
@@ -23,7 +22,7 @@ class GameLogic {
             set.add(c);
         }
         int ballCount = 0;
-        for (int index = 0; index < NUMBER_LENGTH.getValue(); index++) {
+        for (int index = 0; index < VALID_NUMBER_LENGTH.getValue(); index++) {
             if (number.charAt(index) != answer.charAt(index) && set.contains(number.charAt(index))) {
                 ballCount++;
             }
@@ -37,7 +36,7 @@ class GameLogic {
         }
 
         int strikeCount = 0;
-        for (int index = 0; index < NUMBER_LENGTH.getValue(); index++) {
+        for (int index = 0; index < VALID_NUMBER_LENGTH.getValue(); index++) {
             if (number.charAt(index) == answer.charAt(index)) {
                 strikeCount++;
             }
