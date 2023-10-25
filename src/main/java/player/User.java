@@ -6,7 +6,15 @@ public class User implements Player {
     private char[] numbers;
 
     public User() {
-        numbers = new char[3];
+        numbers = new char[SIZE];
+    }
+
+    @Override
+    public void setNumbers() {
+        char[] userNumbers = Console.readLine().toCharArray();
+
+        numberValidation(userNumbers);
+        numbers = userNumbers;
     }
 
     public boolean chooseGameEnd() {
@@ -18,42 +26,49 @@ public class User implements Player {
         int choice = Integer.parseInt(userChoiceInput);
         endInputNumberValidation(choice);
 
-        if (choice == 1)
+        if (choice == 1) {
             return false;
+        }
 
         return true;
     }
 
-    private void endInputStringValidation(String userInput) {
-        if (userInput.length() != 1)
+    public char getNumber(final int index) {
+        getNumberValidation(index);
+
+        return numbers[index];
+    }
+
+    private void endInputStringValidation(final String userInput) {
+        if (userInput.length() != 1) {
             throw new IllegalArgumentException("user input is too many");
-    }
-
-    private void endInputNumberValidation(int choice) {
-        if (choice < 1 || choice > 2)
-            throw new IllegalArgumentException("user input is not appropriate");
-    }
-
-
-    @Override
-    public void setNumbers() {
-        char[] userNumbers = Console.readLine().toCharArray();
-
-        numberValidation(userNumbers);
-        numbers = userNumbers;
-    }
-
-    private void numberValidation(char[] numbersInput) {
-        if (numbersInput.length != 3)
-            throw new IllegalArgumentException("user input number size is not appropriate");
-
-        for (char number : numbersInput) {
-            if (number <= '0' || number > '9')
-                throw new IllegalArgumentException("user input is not appropriate");
         }
     }
 
-    public char getNumber(int index) {
-        return numbers[index];
+    private void endInputNumberValidation(final int choice) {
+        if (choice < 1 || choice > 2) {
+            throw new IllegalArgumentException("user input is not appropriate");
+        }
+    }
+
+    private void numberValidation(char[] numbersInput) {
+        if (numbersInput.length < SIZE) {
+            throw new IllegalArgumentException("user input numbers size is smaller");
+        }
+
+        if (numbersInput.length > SIZE) {
+            throw new IllegalArgumentException("user input numbers size is bigger");
+        }
+
+        for (char number : numbersInput) {
+            if (number <= '0' || number > '9') {
+                throw new IllegalArgumentException("user input is not appropriate");
+            }
+        }
+    }
+
+    private void getNumberValidation(final int index) {
+        if (index < 0 || index >= SIZE)
+            throw new NullPointerException("input does not correspond to random number size");
     }
 }

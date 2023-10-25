@@ -1,7 +1,10 @@
 package game;
 
-import judge.*;
-import player.*;
+import static judge.Judge.calculateScore;
+
+import player.Computer;
+import player.User;
+import judge.Score;
 
 public class Game {
     User user;
@@ -25,16 +28,18 @@ public class Game {
             System.out.print("숫자를 입력해주세요 : ");
             user.setNumbers();
 
-            Score score = Judge.calculateScore(user, computer);
+            Score score = calculateScore(user, computer);
             score.printScore();
 
-            if (!score.isCorrect())
+            if (!score.isCorrect()) {
                 continue;
+            }
 
-            if (user.chooseGameEnd())
+            if (user.chooseGameEnd()) {
                 start = false;
-            else
+            } else {
                 computer.setNumbers();
+            }
         }
     }
 }
