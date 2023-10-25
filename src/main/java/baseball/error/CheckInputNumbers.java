@@ -11,7 +11,7 @@ public class CheckInputNumbers {
     public static final char RANDOM_NUMBER_RANGE_START = '1';
     public static final char RANDOM_NUMBER_RANGE_END = '9';
     public static final String LENGTH_EXCEPTION_MESSAGE = "잘못된 길이의 값이 입력되었습니다.";
-    public static final String NON_NUMERIC_EXCEPTION_MESSAGE = "숫자 외의 다른 값이 입력되었습니다.";
+    public static final String NON_NUMERIC_EXCEPTION_MESSAGE = "잘못된 값이 입력되었습니다.";
     public static final String DUPLICATE_EXCEPTION_MESSAGE = "중복된 값이 입력되었습니다.";
 
 
