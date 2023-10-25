@@ -9,6 +9,22 @@ import java.util.Set;
 public class PlayerNumber {
 
     /**
+     * 일급 컬렉션 사용을 위한 private final 선언 및 생성자를 통한 검증
+     */
+    private final List<Integer> playerNumbers;
+
+    public PlayerNumber(List<Integer> playerNumbers) {
+        validateSize(playerNumbers);
+        validateDuplicate(playerNumbers);
+        validatePlayerInputRange(playerNumbers);
+        this.playerNumbers = playerNumbers;
+    }
+
+    public List<Integer> getPlayerNumbers() {
+        return playerNumbers;
+    }
+
+    /**
      * 입력한 문자열의 길이가 3이 아닌 경우 예외 발생
      *
      * @param playerNumbers : 랜덤으로 생성한 컴퓨터가 가진 수
