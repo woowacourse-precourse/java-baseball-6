@@ -12,8 +12,12 @@ public final class LengthValidationRule implements ValidationRule {
 
     @Override
     public void validate(String playerNumber) {
-        if (playerNumber.length() != BALL_LENGTH) {
+        if (isInvalidLength(playerNumber.length(), BALL_LENGTH)) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_LENGTH.getMessage());
         }
+    }
+
+    private boolean isInvalidLength(int length, int targetLength) {
+        return !(length == targetLength);
     }
 }

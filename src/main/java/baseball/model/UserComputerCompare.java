@@ -1,6 +1,7 @@
 package baseball.model;
 
 import static baseball.util.Constants.BALL_LENGTH;
+import static baseball.util.Constants.DEFAULT_VALUE;
 
 public record UserComputerCompare(Computer computer, Player player, Result result) {
 
@@ -12,10 +13,9 @@ public record UserComputerCompare(Computer computer, Player player, Result resul
         return new UserComputerCompare(computer, player);
     }
 
-
     public Result ResultgetBallCountJudgement() {
         Result result = Result.initialBallCount();
-        for (int position = 0; position < BALL_LENGTH; position++) {
+        for (int position = DEFAULT_VALUE; position < BALL_LENGTH; position++) {
             result.updateBallCount(getBallCount(position));
         }
         return result;

@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import static baseball.util.Constants.DEFAULT_VALUE;
+
 import baseball.model.Computer;
 import baseball.model.GameCommand;
 import baseball.model.GameStatus;
@@ -33,8 +35,8 @@ public class GameController {
     private void playUntilExit() {
         outputView.printGameStart();
 
-        IntStream.generate(() -> 0) // generate an infinite stream
-                .takeWhile(i -> !GameStatus.isApplicationExit(gameStatus)) // condition to continue
+        IntStream.generate(() -> DEFAULT_VALUE)
+                .takeWhile(i -> !GameStatus.isApplicationExit(gameStatus))
                 .forEach(i -> {
                     playSingleGame();
                     handleRetry();
@@ -44,8 +46,8 @@ public class GameController {
     private void playSingleGame() {
         Computer computer = Computer.createByNumber();
 
-        IntStream.generate(() -> 0) // generate an infinite stream
-                .takeWhile(i -> !GameStatus.isGameOver(gameStatus)) // condition to continue
+        IntStream.generate(() -> DEFAULT_VALUE)
+                .takeWhile(i -> !GameStatus.isGameOver(gameStatus))
                 .forEach(i -> {
                     Player player = getPlayerFromInput();
                     Result result = getResultFromComparison(computer, player);
