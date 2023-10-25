@@ -1,11 +1,15 @@
 package baseball;
 
-public class Game {
+public class GameController {
     private String randomNumber;
     private String userNumber;
     private boolean quit = true;
     private int strike;
     private int ball;
+    RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
+    GameOutputPrinter gameOutputPrinter = new GameOutputPrinter();
+    GameInputReader gameInputReader = new GameInputReader();
+    InputNumberChecker inputNumberChecker = new InputNumberChecker();
 
     public void play() {
 
@@ -15,7 +19,6 @@ public class Game {
             getUserInput();
             checkInput();
 
-            // test 용
             printResult();
 
             if (strike == 3) {
@@ -25,31 +28,24 @@ public class Game {
     }
 
     private void initializeGame() {
-        GameOutputPrinter gameOutputPrinter = new GameOutputPrinter();
         gameOutputPrinter.printStartGame();
-
-        RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
         randomNumber = randomNumberCreater.getRandomNumber();
     }
 
     private void getUserInput() {
-        GameInputReader input = new GameInputReader();
-        userNumber = input.enterGameNumber();
+        userNumber = gameInputReader.enterGameNumber();
     }
 
     private void checkInput() {
-        InputNumberChecker inputNumberChecker = new InputNumberChecker();
         strike = inputNumberChecker.checkStrike(randomNumber, userNumber);
         ball = inputNumberChecker.checkBall(randomNumber, userNumber);
     }
 
     private void printResult() {
-        GameOutputPrinter gameOutputPrinter = new GameOutputPrinter();
         gameOutputPrinter.printResult(strike, ball);
     }
 
     private void handleGameEnd() {
-        GameInputReader gameInputReader = new GameInputReader();
         if (gameInputReader.enterAnswerRestartGame().equals("1")) {
             RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
             randomNumber = randomNumberCreater.getRandomNumber();
