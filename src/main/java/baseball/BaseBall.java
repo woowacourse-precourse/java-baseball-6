@@ -14,7 +14,7 @@ public class BaseBall {
             int[] strikeBallArray = Inning.getStrikeBallCount(computerNumber, playerNumber);
 
             if (isSuccess(strikeBallArray)) {
-                Notification.notifySuccessResult(strikeBallArray);
+                Notification.notifySuccessResult();
                 break;
             }
             Notification.notifyFailResult(strikeBallArray);
