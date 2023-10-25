@@ -8,7 +8,7 @@ public class PlayerNumber {
         if (playerNumberValidator.isValidNumber(number)) {
             this.number = number;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorCode.INVALID_PLAY_NUMBER.getErrorMessage());
         }
     }
 

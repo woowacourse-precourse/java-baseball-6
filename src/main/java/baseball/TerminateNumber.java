@@ -7,7 +7,7 @@ public class TerminateNumber {
         if (isValidNumber(number)) {
             this.number = number;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorCode.INVALID_TERMINATE_NUMBER.getErrorMessage());
         }
     }
 
