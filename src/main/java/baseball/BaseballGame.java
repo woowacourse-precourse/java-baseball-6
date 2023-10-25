@@ -4,28 +4,30 @@ import baseball.AnswerGenerator;
 import baseball.FeedbackAssistant;
 
 public class BaseballGame {
-    private final FeedbackAssistant feedbackAssistant;
+//    private final FeedbackAssistant feedbackAssistant;
+    private final Evaluator evaluator;
     private static String answer;
 
     BaseballGame() {
-        feedbackAssistant = new FeedbackAssistant();
+//        feedbackAssistant = new FeedbackAssistant();
+        evaluator = new Evaluator();
     }
 
     public void startGame() {
-        feedbackAssistant.printStartMessage();
+        FeedbackAssistant.printStartMessage();
         this.runGame();
     }
 
     private void generateAnswer(){
         AnswerGenerator answerGenerator = new AnswerGenerator();
 
-        this.answer = answerGenerator.generateAnswer();
+        answer = answerGenerator.generateAnswer();
     }
 
     public void runGame() throws IllegalArgumentException {
         this.generateAnswer();
         while (true){
-            if (this.evaluator.evaluateUserInput(this.answer) == true)
+            if (this.evaluator.evaluateUserInput(answer))
                 break;
             else
                 continue;
