@@ -23,6 +23,7 @@ public class GameController {
     public static void playGame() {
         startGame();
         while (!Game.isGameWon()) {
+            SystemMessagePrinter.printInputNumberMessage();
             getUserInput();
             validateUserInput(userInput);
             int[] hint = Game.generateHint(userInput, pickedNumbers);
