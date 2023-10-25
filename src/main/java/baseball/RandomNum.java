@@ -14,7 +14,7 @@ public class RandomNum {
     public List<Integer> computer = new ArrayList<>();
 
     public void resetComputer() {
-        List<Integer> computer = new ArrayList<>();
+        computer = new ArrayList<>();
         ComputerSet();
 
 
