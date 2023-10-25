@@ -1,8 +1,6 @@
 package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
-
 public class InputView {
 
     public static String setUserNumber(){
@@ -11,7 +9,7 @@ public class InputView {
     }
 
     public static List<String> UserNumbertoList(){
-       String userNumber = setUserNumber();
+        String userNumber = setUserNumber();
         return List.of(userNumber.split(""));
 
     }

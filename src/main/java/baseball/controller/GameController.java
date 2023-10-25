@@ -1,11 +1,9 @@
 package baseball.controller;
 
 import baseball.model.ComputerNumber;
-import baseball.model.UserNumber;
 import baseball.model.NumberComparator;
-
-
 import baseball.util.Result;
+import baseball.vailidation.NumberValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -24,15 +22,21 @@ public class GameController {
     public void start() {
         Result result;
         do {
-            result = getNumberCompare();
             System.out.println(computer.getNumbers());
+            result = getNumberCompare();
             printCount(result);
         } while (!isGameSet(result));
 
     }
 
     public List<String> getNumberFromUser(){
-        return InputView.UserNumbertoList();
+        List<String> VaildateNumber = InputView.UserNumbertoList();
+
+        NumberValidator.checkLength(VaildateNumber);
+        NumberValidator.checkRedundancy(VaildateNumber);
+        NumberValidator.checkZero(VaildateNumber);
+
+        return VaildateNumber;
     }
 
     public Result getNumberCompare(){
@@ -48,10 +52,10 @@ public class GameController {
 
     public boolean isGameSet(Result count) {
         if(count.strike == 3){
-        OutputView.printGameSetMessage();
-        InputView.restart();
+            OutputView.printGameSetMessage();
+            computer.resetNumbers();
         }
-        return false;
+        return true;
     }
 
 }

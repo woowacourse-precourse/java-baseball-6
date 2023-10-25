@@ -16,7 +16,7 @@ public class OutputView {
                 System.out.print(balls + "볼 ");
             }
         }
-        System.out.println(); // 결과 출력 후 줄바꿈
+        System.out.println();
     }
     public static void printGameSetMessage(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
