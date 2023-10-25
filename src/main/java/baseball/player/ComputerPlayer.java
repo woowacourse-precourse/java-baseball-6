@@ -13,9 +13,6 @@ public class ComputerPlayer {
         generateNumbers();
     }
 
-    public List<Integer> getComputerNumber() {
-        return numbers;
-    }
 
     public void generateNumbers() {
         while(numbers.size() < Constants.maxNumDigit) {
