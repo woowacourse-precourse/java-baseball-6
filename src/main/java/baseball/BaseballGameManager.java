@@ -55,7 +55,11 @@ public class BaseballGameManager {
         userNumber.clear();
         System.out.print("숫자를 입력해주세요 : ");
 
-        userInput = Integer.valueOf(Console.readLine());
+        try {
+            userInput = Integer.valueOf(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자(정수) 형식이 잘못되었거나, 숫자를 입력하지 않았습니다.(문자열, 특수기호, 실수형 등)");
+        }
     }
 
     private void getBaseBallResult() {
