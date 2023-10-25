@@ -42,7 +42,7 @@ public class BaseballGameController {
         outputView.printGameStop();
         String continueChoice = inputView.getGameContinueChoice();
         GameEndOption option = GameEndOption.fromString(continueChoice);
-        if (option == GameEndOption.TERMINATE) {
+        if (option == GameEndOption.END) {
             game.end();
         }
     }

@@ -2,7 +2,7 @@ package baseball.enums;
 
 public enum GameEndOption {
     RESTART("1"),
-    TERMINATE("2");
+    END("2");
 
     private final String option;
 
