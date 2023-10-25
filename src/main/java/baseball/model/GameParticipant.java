@@ -5,10 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Objects;
 
-enum GameStatusCode {
-    PLAYING,
-    STOP
-}
+
 public class GameParticipant {
     private GameStatusCode playerStatus;
     private GameManager game;
@@ -29,6 +26,7 @@ public class GameParticipant {
         if (Objects.equals(replayChoice, "1")) {
             playerStatus = GameStatusCode.PLAYING;
             game = new GameManager(); // 새로운 게임 객체 생성
+
         } else if (Objects.equals(replayChoice, "2")) {
             playerStatus = GameStatusCode.STOP;
         } else {
