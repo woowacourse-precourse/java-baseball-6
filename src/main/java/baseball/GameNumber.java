@@ -40,10 +40,10 @@ public class GameNumber {
         boolean isCorrectAnswer;
 
         // TODO: for문 리팩토링 구조 고민해보기
-        for (int i = 0; i < 3; i++) {
-            if (this.value.charAt(i) == guessed.value.charAt(i)) {
+        for (int idx = 0; idx < 3; idx++) {
+            if (isStrike(guessed, idx)) {
                 strike++;
-            } else if (this.value.contains(String.valueOf(guessed.value.charAt(i)))) {
+            } else if (isBall(guessed, idx)) {
                 ball++;
             }
         }
@@ -51,5 +51,13 @@ public class GameNumber {
         isCorrectAnswer = (strike == 3);
 
         return new GameResult(strike, ball, isCorrectAnswer);
+    }
+
+    private boolean isStrike(GameNumber guessed, int index) {
+        return this.value.charAt(index) == guessed.value.charAt(index);
+    }
+
+    private boolean isBall(GameNumber guessed, int index) {
+        return this.value.contains(String.valueOf(guessed.value.charAt(index)));
     }
 }
