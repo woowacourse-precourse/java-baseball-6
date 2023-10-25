@@ -6,11 +6,62 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class Computer {
+public class BaseballGameComputer {
     private String goalNum;
 
-    public Computer() {
+    public BaseballGameComputer() {
         updateGoalNum();
+    }
+
+    private int obtainBallCnt(String userNum) {
+        int result = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                char comChar = goalNum.charAt(i);
+                char userChar = userNum.charAt(j);
+
+                if (i != j && comChar == userChar) {
+                    result++;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private int obtainStrikeCnt(String userNum) {
+        int result = 0;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                char comChar = goalNum.charAt(i);
+                char userChar = userNum.charAt(j);
+
+                if (i == j && comChar == userChar) {
+                    result++;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public void updateGoalNum() {
+        Set<Integer> candidates = new HashSet<>();
+
+        while (candidates.size() < 3) {
+            int randomNumber = pickNumberInRange(1, 9);
+            candidates.add(randomNumber);
+        }
+
+        String result = "";
+        Iterator<Integer> iter = candidates.iterator();
+        while (iter.hasNext()) {
+            Integer next = iter.next();
+            result += next;
+        }
+
+        goalNum = result;
     }
 
     public void printResult(String userNum) {
@@ -33,61 +84,10 @@ public class Computer {
 
     }
 
-    public int obtainBallCnt(String userNum) {
-        int result = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                char comChar = goalNum.charAt(i);
-                char userChar = userNum.charAt(j);
-
-                if (i != j && comChar == userChar) {
-                    result++;
-                }
-            }
-        }
-
-        return result;
-    }
-
-    public int obtainStrikeCnt(String userNum) {
-        int result = 0;
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                char comChar = goalNum.charAt(i);
-                char userChar = userNum.charAt(j);
-
-                if (i == j && comChar == userChar) {
-                    result++;
-                }
-            }
-        }
-
-        return result;
-    }
-
     public boolean isWin(String userNum) {
         if (obtainStrikeCnt(userNum) == 3) {
             return true;
         }
         return false;
-    }
-
-    public void updateGoalNum() {
-        Set<Integer> candidates = new HashSet<>();
-
-        while (candidates.size() < 3) {
-            int randomNumber = pickNumberInRange(1, 9);
-            candidates.add(randomNumber);
-        }
-
-        String result = "";
-        Iterator<Integer> iter = candidates.iterator();
-        while (iter.hasNext()) {
-            Integer next = iter.next();
-            result += next;
-        }
-
-        goalNum = result;
     }
 }

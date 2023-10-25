@@ -3,7 +3,7 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-public class User {
+public class BaseballGameUser {
     private String userNum;
 
     public void updateUserNum(String userNum) {
