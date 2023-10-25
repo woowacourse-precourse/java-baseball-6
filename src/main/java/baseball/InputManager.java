@@ -12,8 +12,8 @@ public class InputManager {
         userInput = Console.readLine();
         validateChecker.isUserInputValidate(userInput);
         userInputNum = new ArrayList<>();
-        for (int i = 0; i < 3; i ++) {
-            userInputNum.add(Integer.parseInt(String.valueOf(userInput.charAt(i))));
+        for (int i = 0; i < 3; i++) {
+            userInputNum.add(Character.getNumericValue(userInput.charAt(i)));
         }
         return (userInputNum);
     }
