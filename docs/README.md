@@ -21,3 +21,30 @@
 - 게임 종료 시 `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.` 문구를 출력한다.
 - 턴 마다  `숫자를 입력해주세요 :` 문구를 출력한다.
 - 턴 마다 사용자 입력에 대해 점수를 출력한다.
+
+
+## 코드 기능 목록
+
+### Application - 애플리케이션의 진입점
+- List<Integer> numbers : 게임 진행 중의 정답을 유지
+- run() : 게임 실행, 진행, 생명주기 관리
+- initializeNumber(): 게임 내 정답 점수 초기화
+
+### InputProcessor - 입력과 관련된 static methods 포함
+- validateRestartInput() : 재시작 여부 입력의 유효성을 검증한다.
+- validatePitchInput() : 투구 입력의 유효성을 검증한다.
+- parsePitchInput() : 투구 입력을 List 객체로 파싱한다.
+
+### OutputProcessor - 출력과 관련된 static methods 포함
+- printExitMessage() : 게임 종료 메세지를 출력한다.
+- printCompleteMessage() : 게임 성공 메세지를 출력한다.
+- printPitchInputMessage() : 숫자 입력 요청 메세지를 출력한다.
+- printStartMessage() : 게임 시작 메세지를 출력한다.
+- printScore() : 점수 메세지를 출력한다.
+
+### Score - 투구 결과 점수를 저장하는 클래스 
+- Integer strike : 스트라이크 개수
+- Integer ball : 볼 개수
+
+### ScoreCalculator - 투구와 정답을 비교해 점수를 계산하는 클래스
+- calculate() : 
