@@ -8,7 +8,7 @@ public enum GameResultType {
     ONLY_STRIKE(strike -> strike >= 1, ball -> ball == 0, "%d스트라이크", false),
     STRIKE_AND_BALL(strike -> strike >= 1, ball -> ball >= 1, "%d볼 %d스트라이크", false),
     ONLY_BALL(strike -> strike == 0, ball -> ball >= 1, "%d볼", false);
-    public static final String INVALID_RESULT_MESSAGE = "올바른 결과를 찾지 못했습니다.";
+    private static final String INVALID_RESULT_MESSAGE = "올바른 결과를 찾지 못했습니다.";
 
     private final IntPredicate strike;
     private final IntPredicate ball;
