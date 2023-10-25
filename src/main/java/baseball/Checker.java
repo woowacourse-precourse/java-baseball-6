@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.constant.GameMessage;
 import java.util.List;
 
 public class Checker {
@@ -37,6 +38,20 @@ public class Checker {
     public void countBall(int playerIdx) {
         if (used[playerNumber.get(playerIdx)]) {
             ball++;
+        }
+    }
+
+    public void printResult() {
+        if (strike == 3) {
+            System.out.println(strike + GameMessage.STRIKE);
+        } else if (strike > 0 && ball > 0) {
+            System.out.println(ball + GameMessage.BALL + " " + strike + GameMessage.STRIKE);
+        } else if (strike > 0 & ball == 0) {
+            System.out.println(strike + GameMessage.STRIKE);
+        } else if (strike == 0 && ball > 0) {
+            System.out.println(ball + GameMessage.BALL);
+        } else if (strike == 0 && ball == 0) {
+            System.out.println(GameMessage.NOTHING);
         }
     }
 }

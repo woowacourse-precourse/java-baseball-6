@@ -22,6 +22,8 @@ public class NumberBaseballGame {
 
         checker = new Checker(computer.getComputerNumber(), player.getPlayerNumber(), computer.getUsedArray());
         boolean isCorrect = checker.checkAnswer();
+        checker.printResult();
+
     }
 
     private void printStartMessage() {
