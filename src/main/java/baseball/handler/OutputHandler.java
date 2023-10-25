@@ -16,4 +16,18 @@ public class OutputHandler {
   public static void printNumberInputMessage() {
     System.out.print(Constants.NUMBER_INPUT_MESSAGE);
   }
+
+  public static void printGuessNumberResult(int strike, int ball) {
+    StringBuilder resultMessage = new StringBuilder();
+    if (ball > 0) {
+      resultMessage.append(ball).append(Constants.BALL);
+    }
+    if (strike > 0) {
+      resultMessage.append(strike).append(Constants.STRIKE);
+    }
+    if (ball == 0 && strike == 0) {
+      resultMessage.append(Constants.NOTHING);
+    }
+    System.out.println(resultMessage.toString());
+  }
 }
