@@ -17,13 +17,13 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> gameNumber = Computer.InitGame();
+        Computer.InitGame();
         OutputView.printStart();
         while(Game.retryEnd){
             OutputView.printInput();
             String userInputs = InputView.readGameNumber();
             CreateBall(userInputs);
-            checkNum(gameNumber,userNumbers);
+            checkNum(userNumbers);
             endRound();
             checkGameEnd();
             if(!Game.gameContinue){
@@ -32,9 +32,11 @@ public class Application {
                 if(Game.retryEnd==false){
                     break;
                 }
-                gameNumber = Computer.InitGame();
+                Computer.InitGame();
                 OutputView.printStart();
             }
         }
+        GameReset();
+
     }
 }
