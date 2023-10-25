@@ -8,13 +8,9 @@ public class Application {
         while (restart == 1) {
             BaseballGame baseBallGame = new BaseballGame();
             User user = new User();
-            try {
-                baseBallGame.gameStart(user);
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                restart = user.inputRestartNumber();
-            } catch (IllegalArgumentException e) {
-                return;
-            }
+            baseBallGame.gameStart(user);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            restart = user.inputRestartNumber();
         }
     }
 }
