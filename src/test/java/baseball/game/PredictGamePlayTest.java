@@ -64,7 +64,7 @@ class PredictGamePlayTest {
         String result = predictGamePlay.play(List.of(test1));
 
         // then
-        Assertions.assertThat(result).isEqualTo("넛싱");
+        Assertions.assertThat(result).isEqualTo("낫싱");
     }
 
     @Test
