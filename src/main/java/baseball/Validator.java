@@ -1,6 +1,8 @@
 package baseball;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Validator {
     private static final int ANSWER_SIZE = 3;
@@ -12,12 +14,9 @@ public class Validator {
     }
 
     public static void checkValidOfAnswerUnique(List<Integer> tempAnswer) {
-        for (int i = 0; i < ANSWER_SIZE - 1; i++) {
-            for (int j = i + 1; j < ANSWER_SIZE; j++) {
-                if (tempAnswer.get(i).equals(tempAnswer.get(j))) {
-                    throw new IllegalArgumentException("숫자는 중복되지 않아야합니다.");
-                }
-            }
+        Set<Integer> uniqueNumbers = new HashSet<>(tempAnswer);
+        if (uniqueNumbers.size() != ANSWER_SIZE) {
+            throw new IllegalArgumentException("숫자는 중복되지 않아야합니다.");
         }
     }
 

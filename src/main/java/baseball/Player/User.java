@@ -16,13 +16,16 @@ public class User extends Player {
     List<Integer> generateAnswer() {
         List<Integer> tempAnswer = new ArrayList<>();
         char[] userInput = Console.readLine().toCharArray();
-        for (char character : userInput) {
-            tempAnswer.add((int) character - '0');
-        }
+        changeUserInputToUserAnswer(tempAnswer, userInput);
         Validator.checkValidOfAnswerSize(tempAnswer);
         Validator.checkValidOfAnswerUnique(tempAnswer);
         return tempAnswer;
     }
 
+    private static void changeUserInputToUserAnswer(List<Integer> tempAnswer, char[] userInput) {
+        for (char character : userInput) {
+            tempAnswer.add((int) character - '0');
+        }
+    }
 
 }
