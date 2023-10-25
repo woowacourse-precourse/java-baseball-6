@@ -4,13 +4,16 @@ import baseball.player.Attacker;
 import baseball.player.Defender;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class PlayBaseBallGame {
 
     private static boolean treeStrike;
+
     public static PlayBaseBallGame create(){
         return new PlayBaseBallGame();
     }
@@ -31,6 +34,10 @@ public class PlayBaseBallGame {
         List<Integer> defendNums = new ArrayList<>();
 
         String balls = readLine();
+
+        validateType(balls);
+        validLength(balls);
+        validateDuplication(balls);
 
         System.out.println(balls);
         for(int i=0; i<balls.length(); i++){
@@ -66,6 +73,33 @@ public class PlayBaseBallGame {
             System.out.println(ballCount + "볼 " + strikeCount +"스트라이크");
         }
 
+    }
+
+    // 입력 길이 검증
+    public void validLength(String s){
+        if(s.length() != 3) {
+            throw new IllegalArgumentException("입력값의 길이가 잘못 되었습니다.");
+        }
+    }
+
+    // 입력 타입 검증
+    public void validateType(String balls){
+        for(int i=0; i<balls.length(); i++){
+            if(balls.charAt(i) <48 || balls.charAt(i)>57){
+                throw new IllegalArgumentException("정수가 들어가야 합니다.");
+            }
+        }
+    }
+
+    // 입력 중복 검증
+    private void validateDuplication(String balls) {
+        Set<Integer> ballSet = new HashSet<>();
+        for(int i=0; i<balls.length(); i++){
+            ballSet.add(Integer.parseInt(String.valueOf(balls.charAt(i))));
+        }
+        if (ballSet.size() != balls.length()) {
+            throw new IllegalArgumentException("공의 숫자가 중복 됩니다.");
+        }
     }
 
 
