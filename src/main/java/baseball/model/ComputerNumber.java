@@ -1,8 +1,6 @@
 package baseball.model;
 
-
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +24,10 @@ public class ComputerNumber {
             }
         }
         return numbers;
+    }
+
+    public void resetNumbers() {
+        this.numbers = generateComputerNumbers();
     }
 
     public List<Integer> getNumbers() {
