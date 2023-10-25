@@ -2,15 +2,10 @@ package baseball.model;
 
 import static baseball.util.Constants.BALL_LENGTH;
 
-public class UserComputerCompare {
-    private final Computer computer;
-    private final Player player;
-    private final Result result;
+public record UserComputerCompare(Computer computer, Player player, Result result) {
 
-    private UserComputerCompare(Computer computer, Player player) {
-        this.computer = computer;
-        this.player = player;
-        this.result = Result.initialBallCount();
+    public UserComputerCompare(Computer computer, Player player) {
+        this(computer, player, Result.initialBallCount());
     }
 
     public static UserComputerCompare judge(Computer computer, Player player) {

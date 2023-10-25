@@ -5,12 +5,7 @@ import static baseball.util.Constants.BALL_LENGTH;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Result {
-    private Map<BallCount, Integer> result;
-
-    private Result(Map<BallCount, Integer> result) {
-        this.result = result;
-    }
+public record Result(Map<BallCount, Integer> result) {
 
     public static Result initialBallCount() {
         Map<BallCount, Integer> result = new HashMap<>();
@@ -29,7 +24,6 @@ public class Result {
 
         result.put(ballCount, result.getOrDefault(ballCount, 0) + 1);
     }
-
 
     public boolean isThreeStrike() {
         return result.getOrDefault(BallCount.STRIKE, 0).equals(BALL_LENGTH);

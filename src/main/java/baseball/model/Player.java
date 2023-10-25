@@ -2,12 +2,7 @@ package baseball.model;
 
 import java.util.List;
 
-public class Player {
-    private final List<Integer> playerNumber;
-
-    private Player(List<Integer> playerNumber) {
-        this.playerNumber = playerNumber;
-    }
+public record Player(List<Integer> playerNumber) {
 
     public static Player createByNumber(List<Integer> playerNumber) {
         return new Player(playerNumber);

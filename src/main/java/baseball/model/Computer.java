@@ -9,20 +9,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Computer {
+public record Computer(List<Integer> computerNumber) {
 
-    private final List<Integer> computerNumber;
-
-    private Computer() {
-        this.computerNumber = createRandomNumbers();
+    public Computer() {
+        this(createRandomNumbers());
     }
 
     public static Computer createByNumber() {
-
         return new Computer();
     }
 
-    public List<Integer> createRandomNumbers() {
+    private static List<Integer> createRandomNumbers() {
         return IntStream.generate(Computer::createRandomNumber)
                 .boxed()
                 .distinct()
