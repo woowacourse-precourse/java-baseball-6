@@ -1,16 +1,25 @@
 package baseball.domain.game;
 
 import baseball.domain.game.BaseBallGameExitManager;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static camp.nextstep.edu.missionutils.Console.close;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseBallGameExitManagerTest {
     private final BaseBallGameExitManager baseBallGameExitManager = BaseBallGameExitManager.newInstance();
+
+    @BeforeEach
+    void consoleClose() {
+        close();
+    }
 
     @Test
     void 재시작_여부_출력_테스트() {
@@ -29,7 +38,9 @@ class BaseBallGameExitManagerTest {
     @Test
     void 새로운_게임_시작_테스트() {
         // given & when
-        final boolean userInputRetryOption = baseBallGameExitManager.isUserInputRetryOption("1");
+        String inputCommand = "2";
+        System.setIn(new ByteArrayInputStream(inputCommand.getBytes()));
+        final boolean userInputRetryOption = baseBallGameExitManager.isExitingBaseballGame();
 
         // then
         assertThat(userInputRetryOption).isTrue();
@@ -38,10 +49,22 @@ class BaseBallGameExitManagerTest {
     @Test
     void 게임_종료_테스트() {
         // given & when
-        final boolean userInputExitOption = baseBallGameExitManager.isUserInputExitOption("2");
+        String inputCommand = "1";
+        System.setIn(new ByteArrayInputStream(inputCommand.getBytes()));
+        final boolean userInputRetryOption = baseBallGameExitManager.isExitingBaseballGame();
 
         // then
-        assertThat(userInputExitOption).isTrue();
+        assertThat(userInputRetryOption).isFalse();
+    }
+
+    @Test
+    void 다른_커맨드_입력시_익셉션_발생_테스트() {
+        // given
+        String inputCommand = "3";
+        System.setIn(new ByteArrayInputStream(inputCommand.getBytes()));
+        // when & then
+        assertThatThrownBy(baseBallGameExitManager::isExitingBaseballGame)
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
