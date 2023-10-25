@@ -5,13 +5,13 @@ import baseball.view.UIMessage;
 public class InputValidator {
     public static void validatePlayNumber(String input) {
         if (!isInteger(input) || !isThreeDigit(input) || hasDuplicatedNumber(input)) {
-            throw new IllegalArgumentException(UIMessage.END_MESSAGE.getMessage());
+            throw new IllegalArgumentException(UIMessage.ERROR.getMessage());
         }
     }
 
     public static void validateGameContinue(String input) {
         if (!isInteger(input) || !isOneOrTwo(input)) {
-            throw new IllegalArgumentException(UIMessage.END_MESSAGE.getMessage());
+            throw new IllegalArgumentException(UIMessage.ERROR.getMessage());
         }
     }
 
@@ -20,7 +20,7 @@ public class InputValidator {
             int number = Integer.parseInt(input);
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println(UIMessage.END_MESSAGE.getMessage());
+            System.out.println(UIMessage.ERROR.getMessage());
         }
         return false;
     }
