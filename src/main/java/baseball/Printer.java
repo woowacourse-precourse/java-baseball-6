@@ -23,7 +23,7 @@ public class Printer {
 
     private static void printNotThing(Result result) {
         if (result.ball() == 0 && result.strike() == 0) {
-            println("낫싱");
+            print("낫싱");
         }
     }
 
