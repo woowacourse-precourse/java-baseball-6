@@ -17,7 +17,8 @@ public class User {
     }
 
     public List<Integer> enterNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
+        numbers.clear();
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNum = Console.readLine();
         if (checkInvalid(inputNum)) {
             throw new IllegalArgumentException();
@@ -29,7 +30,7 @@ public class User {
     private List<Integer> convertStrToList(String input) {
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < LEN_NUM; i++) {
-            result.add((int) input.charAt(i));
+            result.add((Integer.valueOf(input.substring(i, i + 1))));
         }
         return result;
     }
@@ -40,6 +41,21 @@ public class User {
             return true;
         }
         if (!isDigitNumber(input)) {
+            return true;
+        }
+        if (isDuplicate(input)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean isDuplicate(String input) {
+        String first = input.substring(0, 1);
+        String sec = input.substring(1, 2);
+        String third = input.substring(2, 3);
+
+        if (first.equals(sec) || first.equals(third) || sec.equals(third)) {
             return true;
         }
         return false;
