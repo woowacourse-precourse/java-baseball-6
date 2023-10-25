@@ -2,11 +2,21 @@ package baseball;
 
 import java.util.List;
 
-public class Number {
+public class BaseballNumber {
 
     protected static final int MINRANGE = 1;
     protected static final int MAXRANGE = 9;
     protected static final int SIZE = 3;
+    private final List<Integer> baseballNum;
+
+    public List<Integer> getBaseballNum() {
+        return baseballNum;
+    }
+
+    public BaseballNumber(List<Integer> baseballNum) {
+        validate(baseballNum);
+        this.baseballNum = baseballNum;
+    }
 
 
     public void validate(List<Integer> number) {

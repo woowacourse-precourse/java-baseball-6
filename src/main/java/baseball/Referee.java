@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Number.SIZE;
+import static baseball.BaseballNumber.SIZE;
 
 import java.util.List;
 

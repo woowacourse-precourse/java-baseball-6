@@ -4,16 +4,15 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 
-public class Player extends Number {
+public class Player {
 
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
     public List<Integer> createUserNum() {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
-        List<Integer> inputNum = convertStringToList(input);
-        validate(inputNum);
-        return inputNum;
+        BaseballNumber baseballNumber = new BaseballNumber(convertStringToList(input));
+        return baseballNumber.getBaseballNum();
     }
 
     public List<Integer> convertStringToList(String input) {
