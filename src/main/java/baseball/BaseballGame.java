@@ -7,11 +7,17 @@ import java.util.List;
 
 public class BaseballGame {
 
-    private boolean on = true;
-    private int strike = 0;
-    private int ball = 0;
-    private String message = "";
+    private boolean on;
+    private int strike;
+    private int ball;
+    private String message;
 
+    BaseballGame() {
+        this.on = true;
+        this.strike = 0;
+        this.ball = 0;
+        this.message = "";
+    }
 
     private void onToFalse() {
         on = false;
