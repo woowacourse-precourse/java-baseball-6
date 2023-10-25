@@ -33,7 +33,7 @@ public class GameController {
             printMessage.requestNumber();
             String number = Console.readLine();
 
-            user = exception.isValid(number);    // 예외 발생하지 않으면 List<Integer> 형태로 숫자 반환
+            user = exception.isNumberValid(number);    // 예외 발생하지 않으면 List<Integer> 형태로 숫자 반환
 
             int strike = gameTool.countStrike(computer, user);
             int ball = gameTool.countBall(computer, user);
@@ -43,7 +43,10 @@ public class GameController {
 
             if (strike == 3) {
                 printMessage.gameEnd();
-                status = Integer.parseInt(Console.readLine());
+
+                String endNumber = Console.readLine();
+                exception.isEndValid(endNumber);
+                status = Integer.parseInt(endNumber);
                 break;
             }
        }
