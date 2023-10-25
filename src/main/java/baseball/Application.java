@@ -27,7 +27,7 @@ public class Application {
             int numberOfStrike = 0;
             int numberOfBall = 0;
 
-            while (numberOfStrike != 3 || numberOfBall != 0) {
+            while (true) {
 
                 numberOfStrike = 0;
                 numberOfBall = 0;
@@ -55,7 +55,7 @@ public class Application {
                     }
                 }
 
-                if (numberOfStrike == 3) {
+                if (numberOfStrike == 3 && numberOfBall == 0) {
                     System.out.println("3스트라이크\n3개 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
