@@ -23,13 +23,9 @@ public class InputView {
     }
 
     public static List<Integer> generateUserAnswer() {
-        try {
             List<Integer> userAnswer = getUserInput();
             validateUserAnswerInput(userAnswer);
             return userAnswer;
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(ErrorMessage.USER_INSERT_NUMBER_NOT_DUPLICATION.getMessage());
-        }
     }
 
     public static List<Integer> getUserInput() {
@@ -61,6 +57,11 @@ public class InputView {
         Set<Integer> userAnswerSet = new HashSet<>(userAnswers);
         if (userAnswerSet.size() != USER_INSERT_NUMBER_SIZE_THREE) {
             throw new IllegalArgumentException(ErrorMessage.USER_INSERT_NUMBER_NOT_DUPLICATION.getMessage());
+        }
+        for (Integer userAnswer : userAnswers) {
+            if(!userAnswers.contains(userAnswer)){
+                throw new IllegalArgumentException(ErrorMessage.USER_INSERT_NUMBER_NOT_DUPLICATION.getMessage());
+            }
         }
     }
 
