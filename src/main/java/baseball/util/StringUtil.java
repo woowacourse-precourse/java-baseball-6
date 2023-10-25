@@ -61,10 +61,11 @@ public class StringUtil {
     }
 
     public static void validateOutOfRange(String stringValue, int startRange, int endRange) {
-        String regex = "^[" + startRange + "-" + endRange + "]+$";
+        String regEx = RegExUtil.createRangeRegex(startRange, endRange);
 
-        if (!stringValue.matches(regex)) {
+        if (!stringValue.matches(regEx)) {
             ExceptionUtil.throwInvalidValueException(OUT_OF_RANGE_DIGITS_MESSAGE);
         }
     }
+
 }
