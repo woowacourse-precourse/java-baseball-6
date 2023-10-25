@@ -15,7 +15,7 @@ public class GameOutputPrinter {
         System.out.println(GAME_END_MESSAGE);
     }
 
-    public void printResult(int strike, int ball) {
+    public void printHint(int strike, int ball) {
         String result = "";
         if (ball == 0 && strike == 0) {
             result = STRING_NOTHING;

@@ -3,7 +3,7 @@ package baseball;
 public class GameController {
     private String randomNumber;
     private String userNumber;
-    private boolean quit = true;
+    private boolean gameRunning = true;
     private int strike;
     private int ball;
     RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
@@ -15,11 +15,11 @@ public class GameController {
 
         initializeGame();
 
-        while(quit) {
+        while(gameRunning) {
             getUserInput();
             checkInput();
 
-            printResult();
+            printHint();
 
             if (strike == 3) {
                 handleGameEnd();
@@ -41,8 +41,8 @@ public class GameController {
         ball = inputNumberChecker.checkBall(randomNumber, userNumber);
     }
 
-    private void printResult() {
-        gameOutputPrinter.printResult(strike, ball);
+    private void printHint() {
+        gameOutputPrinter.printHint(strike, ball);
     }
 
     private void handleGameEnd() {
@@ -50,9 +50,9 @@ public class GameController {
             RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
             randomNumber = randomNumberCreater.getRandomNumber();
             System.out.println(randomNumber);
-            quit = true;
+            gameRunning = true;
         } else {
-            quit = false;
+            gameRunning = false;
         }
     }
 }
