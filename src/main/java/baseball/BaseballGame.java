@@ -27,14 +27,13 @@ public class BaseballGame {
 
             Map<String, Integer> result = comparator.getResult(computerNum, userNum);
             checkIsFinish(result);
+            output.printScore(result);
 
             if (isFinish) {
                 output.printFinish();
                 if (isRestart()) {
                     restartGame();
                 }
-            } else {
-                output.printScore(result);
             }
         }
     }
