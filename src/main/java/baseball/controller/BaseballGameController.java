@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.number.BaseBallNumbers;
 import baseball.number.RandomNumbers;
 import baseball.view.InputView;
+import baseball.view.ResultView;
 
 public class BaseballGameController {
 
