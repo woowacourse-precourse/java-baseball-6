@@ -82,7 +82,7 @@ public class ApplicationContainer {
     public Console getConsole() {
         if ( console == null ) {
             console = new ConsoleImpl();
-            printCreatedInstanceMessage(console.getClass().getName(), Console.class.toString());
+            printCreatedInstanceMessage(console.getClass().toString(), Console.class.toString());
         }
         return console;
     }
