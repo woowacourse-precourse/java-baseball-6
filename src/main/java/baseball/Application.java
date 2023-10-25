@@ -8,8 +8,8 @@ import java.util.List;
 public class Application {
 
     public static final String PREDICTION_MESSAGE = "숫자를 입력해주세요 : ";
-    public static final String REGAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    public static final String REGAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
+    public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.\n";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -25,7 +25,10 @@ public class Application {
 
     public static void play(Game game, User user) {
         game.init();
-        resolve(game, user);
+        Result result = new Result();
+        while (!result.isCorrect()) {
+            result = resolve(game, user);
+        }
         askReGame(user);
     }
 
@@ -47,19 +50,18 @@ public class Application {
         throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
-    public static void resolve(Game game, User user) {
+    public static Result resolve(Game game, User user) {
         Result result = new Result();
-        while (result.isCorrect()) {
-            game.reset();
-            user.setPrediction(getPrediction());
-            game.countStrikeOrBall(user.getPrediction());
-            result.setResult(game);
-            print(result.getMessage());
-        }
+        game.reset();
+        user.setPrediction(getPrediction());
+        game.countStrikeOrBall(user.getPrediction());
+        result.setResult(game);
+        print(result.getMessage());
+        return result;
     }
 
     private static void print(String message) {
-        System.out.println(message);
+        System.out.print(message);
     }
 
     private static List<Integer> getPrediction() throws IllegalArgumentException {

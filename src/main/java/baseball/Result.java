@@ -15,7 +15,7 @@ public class Result {
 
     public void setResult(Game game) {
         if (game.getNumberOfStrike() == 3 && game.getNumberOfBall() == 0) {
-            this.message = "3스트라이크\n3개 숫자를 모두 맞히셨습니다! 게임 종료";
+            this.message = "3스트라이크\n3개 숫자를 모두 맞히셨습니다! 게임 종료\n";
             this.correct = true;
             return;
         }
