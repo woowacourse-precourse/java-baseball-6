@@ -40,6 +40,7 @@ final public class Computer {
 		}
 	}
 
+	// 입력이 올바른지 아닌지 판단하는 메서드
 	private boolean isLegalInput(String input) {
 		// 입력한 답과 정답의 길이가 다른 경우
 		if (input.length() != size) {
@@ -64,7 +65,7 @@ final public class Computer {
 		return true;
 	}
 
-	// 입력한 문자열 중 한 글자가 스트라이크인지 볼인지 판단하여 스트라이크와 볼 값을 업데이트하는 함수
+	// 입력한 문자열 중 한 글자가 스트라이크인지 볼인지 판단하여 스트라이크와 볼 값을 업데이트하는 메서드
 	// 글자가 컴퓨터가 생성한 문자열과 같은 위치에 같은 값이면 스트라이크의 값을 증가
 	// 글자가 컴퓨터가 생성한 문자열과 같은 위치에 있지 않지만 다른 위치에 존재하면 볼의 값을 증가
 	private int[] updateStrikeBall(int currentStrike, int currentBall, int num, int computerValue,
@@ -79,7 +80,7 @@ final public class Computer {
 		return new int[] {strike, ball};
 	}
 
-	// 스트라이크, 볼의 개수를 구하는 함수
+	// 스트라이크, 볼의 개수를 구하는 메서드
 	private int[] getStrikeBall(String input, List<Integer> computer, boolean[] numbersInComputer) {
 		int strike = 0;
 		int ball = 0;
@@ -92,7 +93,7 @@ final public class Computer {
 		return new int[] {strike, ball};
 	}
 
-	// 입력이 정답인지 아닌지 판단하는 함수
+	// 입력이 정답인지 아닌지 판단하는 메서드
 	public boolean gradeInput(String input) {
 		// 입력이 올바르지 않은 경우
 		if (!isLegalInput(input)) {
