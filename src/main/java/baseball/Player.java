@@ -2,7 +2,7 @@ package baseball;
 
 
 public class Player {
-    private final NumberBoard numberBoard;
+    private NumberBoard numberBoard;
 
     public Player(NumberBoard numberBoard) {
         this.numberBoard = numberBoard;
@@ -12,7 +12,7 @@ public class Player {
         return numberBoard;
     }
 
-    public NumberBoard setNumberBoard() {
-        return numberBoard;
+    public void setNumberBoard(NumberBoard numberBoard) {
+        this.numberBoard = numberBoard;
     }
 }

@@ -19,8 +19,8 @@ public class Application {
 
             if (input.equals("1")) {
                 System.out.println("게임을 다시 시작합니다.");
-                computerNumber = NumberBoard.makeRandomBoard();
-                computer = new Player(computerNumber);
+                NumberBoard newNumber = NumberBoard.makeRandomBoard();
+                computer.setNumberBoard(newNumber);
                 continue;
             }
 

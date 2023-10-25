@@ -11,7 +11,7 @@ public class BaseballGameController {
         return new BaseballGameModel(ballCount, size);
     }
 
-    private static int[] countBallByAnswer(NumberBoard computerAnswer, NumberBoard myAnswer) {
+    private int[] countBallByAnswer(NumberBoard computerAnswer, NumberBoard myAnswer) {
         int strike = 0;
         int ball = 0;
         int size = computerAnswer.size();
@@ -28,7 +28,6 @@ public class BaseballGameController {
                 }
             }
         }
-
         int[] result = new int[2];
         result[0] = strike;
         result[1] = ball;

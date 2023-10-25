@@ -24,7 +24,7 @@ public class NumberBoard {
         return new NumberBoard(RandomArray.makeRandomArray(START_RANGE, END_RANGE, SIZE));
     }
 
-    private void validateInput(String input, int size) {
+    private static void validateInput(String input, int size) {
         if (validateInputByTypeAndSize(input, size) || nonDuplicateNumber(input, size)) {
             throw new IllegalArgumentException("길이가 " + size + "인 중복되지 않는 숫자를 입력해주세요.");
         }
