@@ -1,6 +1,8 @@
 package baseball;
 
+import baseball.game.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -10,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
+    @DisplayName("전체 로직 테스트")
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -27,6 +30,25 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    @DisplayName("세자리 숫자가 아니라면, 설정한 예외를 반환한다.")
+    void givenIllegalInput_whenValidDigit_thenReturnIllegalException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 문자열을 입력하면, 설정한 예외를 반환한다.")
+    void givenIllegalInput_whenValidIsInteger_thenReturnIllegalException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("숫자가 아닌 문자열"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
