@@ -8,6 +8,8 @@ import baseball.vo.RandomNumbers;
 public class BaseBallRun {
     private final BaseBallView baseBallView;
     private final BaseBallCompare baseBallCompare;
+    private static final String RESTART_GAME = "1";
+    private static final String END_GAME = "2";
 
     public BaseBallRun() {
         this.baseBallView = new BaseBallView();
@@ -44,11 +46,11 @@ public class BaseBallRun {
     }
 
     private boolean restartCheck(String inputStr) {
-        if (inputStr.equals("1")) {
+        if (inputStr.equals(RESTART_GAME)) {
             return true;
         }
 
-        if (inputStr.equals("2")) {
+        if (inputStr.equals(END_GAME)) {
             return false;
         }
 
