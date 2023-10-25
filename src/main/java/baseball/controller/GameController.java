@@ -60,7 +60,7 @@ public class GameController {
         input = inputView.getExit();
         validateExitInput(input);
 
-        if(input == "1") {
+        if(input.charAt(0) == '1') {
             gameProceed();
         }
     }
@@ -115,7 +115,11 @@ public class GameController {
     }
 
     private void validateExitInput(String input) {
-        if(input != "1" && input != "2") {
+        if(input.length() != 1) {
+            ExceptionHandler.inputException();
+        }
+
+        if(input.charAt(0) != '1' && input.charAt(0) != '2') {
             ExceptionHandler.inputException();
         }
     }
