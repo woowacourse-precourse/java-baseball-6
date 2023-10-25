@@ -41,9 +41,6 @@ public class Application {
 
             if (isGameWon(strike, ball)) {
                 if (endGameProcess()) break;
-
-                computerArray.clear();
-                userArray.clear();
                 computerArray = generateComputerNumbers();
             }
         }
