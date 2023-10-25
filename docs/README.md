@@ -4,8 +4,7 @@
 
 - computer : 정답 숫자 리스트
 - user : 사용자 입력 리스트
-- ascii : 입력 범위 확인을 위한 ascii 코드 번호
-- userNumber : ascii 코드 번호에서 48을 뺀 원래 숫자 값
+- userNumber : ascii 코드 값에서 48을 뺀 원래 숫자 값
 - out : 사용자 입력에 따른 출력 결과 문자열
 
 ### 풀이 방법

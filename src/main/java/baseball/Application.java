@@ -36,12 +36,11 @@ public class Application {
 
             for (int i = 0; i < 3; i++){
                 char ch = line.charAt(i);
-                int ascii = ch;
-                int userNumber = ascii - 48;
+                int userNumber = (int) ch - 48;
 
                 // 에외처리 2. 범위
                 if (userNumber > 9 || userNumber < 0) {
-                    throw new IllegalArgumentException("outOfRange");
+                    throw new IllegalArgumentException("OutOfRange");
                 }
                 System.out.println("userNumber : " + userNumber);
 
