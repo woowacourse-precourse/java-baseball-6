@@ -44,8 +44,9 @@
 
 ### Model
 1. Computer: 랜덤 숫자 생성  - (1)
-2. game: 게임 로직 실행  - (4)
-3. Result: 게임 결과 저장
+2. Player: 사용자 입력 숫자 저장
+3. Game: 게임 로직 실행  - (4)
+4. GameResult: 게임 결과 저장
 
 ### util
 1. NumbersValidator: 사용자 입력 숫자 검증 - (3)
