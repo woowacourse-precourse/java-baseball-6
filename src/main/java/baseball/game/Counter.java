@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.type.CountSpeaker;
+import baseball.domain.Result;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class Counter {
                 ballCount++;
             }
         }
-        indicator(strikeCount, ballCount);
+        Result.of(strikeCount, ballCount).indicator();
         return strikeCount;
     }
 
@@ -34,19 +34,5 @@ public class Counter {
     private boolean isBall(List<Integer> theAnswer, int guessDigit) {
         return theAnswer.contains(guessDigit);
     }
-    private void indicator(int strikeCount, int ballCount) {
-        if (strikeCount == 0 && ballCount == 0) {
-            System.out.println(CountSpeaker.NOTHING.getCall());
-        } else if (strikeCount == 3) {
-            System.out.println(strikeCount + CountSpeaker.STRIKE.getCall());
-        } else {
-            if (strikeCount == 0) {
-                System.out.println(ballCount + CountSpeaker.BALL.getCall());
-            } else if (ballCount == 0) {
-                System.out.println(strikeCount + CountSpeaker.STRIKE.getCall());
-            } else {
-                System.out.println(ballCount + CountSpeaker.BALL.getCall() + " " + strikeCount + CountSpeaker.STRIKE.getCall());
-            }
-        }
-    }
+
 }
