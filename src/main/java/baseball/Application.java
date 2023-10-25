@@ -8,17 +8,20 @@ import baseball.utils.Utils;
 
 public class Application {
     public static void main(String[] args) {
+        try {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            boolean isContinue = true;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean isContinue = true;
-
-        while (isContinue) {
-            Baseball baseball = new Baseball(Utils.createRandomNumberList(3));
-            GameRunner gameRunner = new GameRunner(baseball);
-            gameRunner.run();
-            isContinue = askContinue();
+            while (isContinue) {
+                Baseball baseball = new Baseball(Utils.createRandomNumberList(3));
+                GameRunner gameRunner = new GameRunner(baseball);
+                gameRunner.run();
+                isContinue = askContinue();
+            }
+            System.out.println("프로그램을 종료합니다.");
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
-        System.out.println("프로그램을 종료합니다.");
     }
 
     private static boolean askContinue() {
