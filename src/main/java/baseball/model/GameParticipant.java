@@ -1,21 +1,25 @@
-package baseball;
+package baseball.model;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Objects;
 
+enum GameStatusCode {
+    PLAYING,
+    STOP;
+}
 public class GameParticipant {
     private String playerGuessedNumber;
-    private GameStatus playerStatus;
+    private GameStatusCode playerStatus;
     private GameManager game;
 
     public GameParticipant() {
-        this.playerStatus = GameStatus.PLAYING;
+        this.playerStatus = GameStatusCode.PLAYING;
         this.game = new GameManager();
     }
 
-    public GameStatus playGameByRequest() {
-        while (playerStatus == GameStatus.PLAYING) {
+    public GameStatusCode playGameByRequest() {
+        while (playerStatus == GameStatusCode.PLAYING) {
             String guessedNumber = getUserInput();
             playerStatus = game.processTurn(guessedNumber);
         }
@@ -23,10 +27,10 @@ public class GameParticipant {
         System.out.println("3개의 숫자를 모두 맞췄습니다. 게임 종료");
         String replayChoice = askForReplay();
         if (Objects.equals(replayChoice, "1")) {
-            playerStatus = GameStatus.PLAYING;
+            playerStatus = GameStatusCode.PLAYING;
             game = new GameManager(); // 새로운 게임 객체 생성
         } else if (Objects.equals(replayChoice, "2")) {
-            playerStatus = GameStatus.STOP;
+            playerStatus = GameStatusCode.STOP;
         } else {
             throw new IllegalArgumentException("잘못된 선택입니다.");
         }
@@ -35,7 +39,7 @@ public class GameParticipant {
     }
 
     public void run() {
-        while (playerStatus != GameStatus.STOP) {
+        while (playerStatus != GameStatusCode.STOP) {
             playerStatus = playGameByRequest();
         }
     }
@@ -46,7 +50,7 @@ public class GameParticipant {
     }
 
     private String askForReplay() {
-        System.out.print("다시 플레이? (1: Yes, 2: No): ");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return Console.readLine();
     }
 }
