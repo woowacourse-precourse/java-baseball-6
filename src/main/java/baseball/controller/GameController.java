@@ -1,62 +1,50 @@
 package baseball.controller;
 
-import baseball.domain.Judgement;
-import baseball.domain.Result;
 import baseball.io.Input;
 import baseball.io.Output;
+import baseball.umpire.Judgement;
+import baseball.umpire.Result;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class GameController {
-    Input input = new Input();
-    Judgement judge = new Judgement();
-    Output output = new Output();
+    private final static int IN_GAME_INPUT = 3;
+    private final static int REPLAY_INPUT = 1;
+    private final static int MINIMUM_RANDOM_VALUE = 1;
+    private final static int MAXIMUM_RANDOM_VALUE = 9;
+    private final static int BASEBALL_NUMBER_SIZE = 3;
+    private final static int REPLAY_VALUE = 1;
 
-    public void playGame() {
-        System.out.println("야구 게임을 시작합니다.");
-
-        boolean run = true;
-
-        while (run) {
-            List<Integer> opponent = createOpponent();
-            System.out.println(opponent);
-            guessTilSuccess(opponent);
-            run = restart();
-        }
-
-        System.out.println("게임 종료");
-    }
-
-    private List<Integer> createOpponent() {
+    public List<Integer> createOpponent() {
         Set<Integer> opponent = new HashSet<Integer>();
 
-        while (opponent.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (opponent.size() < BASEBALL_NUMBER_SIZE) {
+            int randomNumber =
+                    Randoms.pickNumberInRange(MINIMUM_RANDOM_VALUE, MAXIMUM_RANDOM_VALUE);
             opponent.add(randomNumber);
         }
         return setIntoList(opponent);
     }
 
-    private void guessTilSuccess(List<Integer> opponent) {
-        System.out.print("숫자를 입력해주세요 : ");
+    public void guessTilSuccess(List<Integer> opponent) {
+        Output.printTryNumber();
 
-        Result resultData = judge.judgement(opponent, getInput(3));
+        Result resultData = Judgement.countSB(opponent, getInput(IN_GAME_INPUT));
         //Recursive
-        if (output.printResult(resultData)) {
+        if (Output.printResult(resultData)) {
             guessTilSuccess(opponent);
         }
     }
 
-    private boolean restart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        return getInput(1).get(0) == 1;
+    public boolean replay() {
+        Output.printGameAgain();
+        return getInput(REPLAY_INPUT).get(0) == REPLAY_VALUE;
     }
 
     private List<Integer> getInput(int inputType) {
-        return input.playerInput(inputType);
+        return Input.playerInput(inputType);
     }
 
     private List<Integer> setIntoList(Set<Integer> target) {
