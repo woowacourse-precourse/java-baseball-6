@@ -16,4 +16,12 @@ public class InputView {
         return input;
     }
 
+    public static String readRestartCommand(){
+        OutputView.printRestartMessage();
+
+        String input = Console.readLine();
+        RestartValidator.validateRestartNumber(input);
+        return input;
+    }
+
 }
