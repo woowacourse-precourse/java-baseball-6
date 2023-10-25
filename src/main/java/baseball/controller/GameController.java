@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.ball.Balls;
+import baseball.domain.ball.Baseballs;
 import baseball.domain.game.Game;
 import baseball.domain.game.GameResult;
 import baseball.view.InputView;
@@ -24,8 +24,8 @@ public class GameController {
 
     private void play() {
         while (game.isRun()) {
-            Balls playerBalls = createPlayerBalls();
-            GameResult gameResult = game.compareBalls(playerBalls);
+            Baseballs playerBaseballs = createPlayerBalls();
+            GameResult gameResult = game.compareBalls(playerBaseballs);
             OutputView.printResult(gameResult);
             checkGameEnd();
         }
@@ -39,11 +39,11 @@ public class GameController {
         }
     }
 
-    private Balls createPlayerBalls() {
+    private Baseballs createPlayerBalls() {
         String number = InputView.askNumber();
         validateNumber(number);
         List<Integer> numbers = stringToList(number);
-        return new Balls(numbers);
+        return new Baseballs(numbers);
     }
 
     private void validateNumber(String number) {

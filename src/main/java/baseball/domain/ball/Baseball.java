@@ -1,25 +1,25 @@
 package baseball.domain.ball;
 
-public class Ball {
+public class Baseball {
 
     private final Number number;
     private final int position;
 
-    public Ball(Number number, int position) {
+    public Baseball(Number number, int position) {
         this.number = number;
         this.position = position;
     }
 
-    public boolean isMatch(Ball otherBall) {
-        return this.number.isSameNumber(otherBall.number) && isSamePosition(otherBall.position);
+    public boolean isMatch(Baseball otherBaseball) {
+        return this.number.isSameNumber(otherBaseball.number) && isSamePosition(otherBaseball.position);
     }
 
     private boolean isSamePosition(int otherPositon) {
         return this.position == otherPositon;
     }
 
-    public boolean isPartialMatch(Ball otherBall) {
-        return this.number.isSameNumber(otherBall.number) && isOtherPosition(otherBall.position);
+    public boolean isPartialMatch(Baseball otherBaseball) {
+        return this.number.isSameNumber(otherBaseball.number) && isOtherPosition(otherBaseball.position);
     }
 
     private boolean isOtherPosition(int otherPosition) {

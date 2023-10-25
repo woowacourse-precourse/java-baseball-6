@@ -1,63 +1,62 @@
 package baseball.domain.ball;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Balls {
+public class Baseballs {
 
     public static final int CORRECT_SIZE = 3;
     public static final int START_INDEX = 0;
     public static final int END_INDEX = 3;
-    List<Ball> balls;
+    List<Baseball> baseballs;
 
-    public Balls(List<Integer> values) {
+    public Baseballs(List<Integer> values) {
         validate(values);
-        this.balls = createBalls(values);
+        this.baseballs = createBalls(values);
     }
 
-    public int getStrikeCount(Balls otherBalls) {
+    public int getStrikeCount(Baseballs otherBaseballs) {
         int result = 0;
-        for (Ball ball : this.balls) {
-            if (otherBalls.isStrike(ball)) {
+        for (Baseball baseball : this.baseballs) {
+            if (otherBaseballs.isStrike(baseball)) {
                 result++;
             }
         }
         return result;
     }
 
-    private boolean isStrike(Ball otherBall) {
-        for (Ball ball : this.balls) {
-            if (ball.isMatch(otherBall)) {
+    private boolean isStrike(Baseball otherBaseball) {
+        for (Baseball baseball : this.baseballs) {
+            if (baseball.isMatch(otherBaseball)) {
                 return true;
             }
         }
         return false;
     }
 
-    public int getBallCount(Balls otherBalls) {
+    public int getBallCount(Baseballs otherBaseballs) {
         int result = 0;
-        for (Ball ball : this.balls) {
-            if (otherBalls.isBall(ball)) {
+        for (Baseball baseball : this.baseballs) {
+            if (otherBaseballs.isBall(baseball)) {
                 result++;
             }
         }
         return result;
     }
 
-    private boolean isBall(Ball otherBall) {
-        for (Ball ball : this.balls) {
-            if (ball.isPartialMatch(otherBall)) {
+    private boolean isBall(Baseball otherBaseball) {
+        for (Baseball baseball : this.baseballs) {
+            if (baseball.isPartialMatch(otherBaseball)) {
                 return true;
             }
         }
         return false;
     }
 
-    private List<Ball> createBalls(List<Integer> values) {
+    private List<Baseball> createBalls(List<Integer> values) {
         return IntStream.range(START_INDEX, END_INDEX)
-                .mapToObj(index -> new Ball(new Number(values.get(index)), index))
+                .mapToObj(index -> new Baseball(new Number(values.get(index)), index))
                 .collect(Collectors.toList());
     }
 

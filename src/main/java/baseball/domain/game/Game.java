@@ -1,12 +1,12 @@
 package baseball.domain.game;
 
 import baseball.domain.generator.RandomNumberGenerator;
-import baseball.domain.ball.Balls;
+import baseball.domain.ball.Baseballs;
 import java.util.List;
 
 public class Game {
 
-    private Balls balls;
+    private Baseballs baseBalls;
 
     GameStatus gameStatus;
 
@@ -15,24 +15,24 @@ public class Game {
     }
 
     private void init() {
-        this.balls = createBalls();
+        this.baseBalls = createBalls();
         gameStatus = GameStatus.RUN;
     }
 
-    private Balls createBalls() {
+    private Baseballs createBalls() {
         List<Integer> randomNumbers = RandomNumberGenerator.createRandomNumbers(3, 1, 9);
-        return new Balls(randomNumbers);
+        return new Baseballs(randomNumbers);
     }
 
-    public GameResult compareBalls(Balls otherBalls) {
-        GameResult gameResult = createGameResult(otherBalls);
+    public GameResult compareBalls(Baseballs otherBaseballs) {
+        GameResult gameResult = createGameResult(otherBaseballs);
         changeGameStatusBy(gameResult);
         return gameResult;
     }
 
-    private GameResult createGameResult(Balls otherBalls) {
-        int strike = this.balls.getStrikeCount(otherBalls);
-        int ball = this.balls.getBallCount(otherBalls);
+    private GameResult createGameResult(Baseballs otherBaseballs) {
+        int strike = this.baseBalls.getStrikeCount(otherBaseballs);
+        int ball = this.baseBalls.getBallCount(otherBaseballs);
         return new GameResult(strike, ball);
     }
 

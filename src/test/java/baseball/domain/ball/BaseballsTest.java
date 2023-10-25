@@ -12,7 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-class BallsTest {
+class BaseballsTest {
 
     static Stream<Arguments> createBallsData() {
         return Stream.of(
@@ -34,15 +34,15 @@ class BallsTest {
     @ParameterizedTest
     @MethodSource("createBallsData")
     void balls_생성_테스트(List<Integer> values) {
-        Balls balls = new Balls(values);
-        assertNotNull(balls);
+        Baseballs baseBalls = new Baseballs(values);
+        assertNotNull(baseBalls);
     }
 
     @DisplayName("balls 생성 예외 테스트")
     @ParameterizedTest
     @MethodSource("createBallsExceptionData")
     void balls_생성_예외_테스트(List<Integer> values) {
-        assertThrows(IllegalArgumentException.class, () -> new Balls(values));
+        assertThrows(IllegalArgumentException.class, () -> new Baseballs(values));
     }
 
 
@@ -50,9 +50,9 @@ class BallsTest {
     @ParameterizedTest
     @MethodSource("createBallsWithSameNumberAndSamePositionData")
     void 같은숫자_같은위치_개수(List<Integer> numbers, List<Integer> otherNumbers, int expected) {
-        Balls balls = new Balls(numbers);
-        Balls otherBalls = new Balls(otherNumbers);
-        assertThat(balls.getStrikeCount(otherBalls)).isEqualTo(expected);
+        Baseballs baseBalls = new Baseballs(numbers);
+        Baseballs otherBaseballs = new Baseballs(otherNumbers);
+        assertThat(baseBalls.getStrikeCount(otherBaseballs)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> createBallsWithSameNumberAndSamePositionData() {
@@ -68,9 +68,9 @@ class BallsTest {
     @ParameterizedTest
     @MethodSource("createBallsWithSameNumberAndOtherPositionData")
     void 같은숫자_다른위치_개수(List<Integer> numbers, List<Integer> otherNumbers, int expected) {
-        Balls balls = new Balls(numbers);
-        Balls otherBalls = new Balls(otherNumbers);
-        assertThat(balls.getBallCount(otherBalls)).isEqualTo(expected);
+        Baseballs baseBalls = new Baseballs(numbers);
+        Baseballs otherBaseballs = new Baseballs(otherNumbers);
+        assertThat(baseBalls.getBallCount(otherBaseballs)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> createBallsWithSameNumberAndOtherPositionData() {
