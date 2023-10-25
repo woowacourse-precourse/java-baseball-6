@@ -12,15 +12,17 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         // 1. 랜덤 번호 선택
-        Computer computer = new Computer(Randoms.pickUniqueNumbersInRange(1, 9, 3));
+//        Computer computer = new Computer(Randoms.pickUniqueNumbersInRange(1, 9, 3));
+        Computer computer = new Computer();
+        System.out.println("computer.getTarget() = " + computer.getTarget());
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
             String input = null;
             // 2. 번호 입력 받기
             try {
-                System.out.println("숫자를 입력하세요: ");
+                System.out.print("숫자를 입력하세요: ");
                 input = Console.readLine();
-                System.out.println("input = " + input);
                 if (input.length() != 3) {
                     throw new IllegalArgumentException();
                 }
@@ -34,6 +36,7 @@ public class Application {
             // 3. 스트라이크 / 볼 / 낫싱 결과 판단 후 결과 출력
 
             String guessResult = computer.getGuessResult(guess);
+            System.out.println("computer.getTarget() = " + computer.getTarget());
             System.out.println(guessResult);
 
             // 4. 게임 재시작 or 종료
@@ -44,7 +47,8 @@ public class Application {
                 String choice = Console.readLine();
                 // 게임 재시작
                 if (choice.equals("1")) {
-                    computer.changeTarget(Randoms.pickUniqueNumbersInRange(1, 9, 3));
+//                    computer.changeTarget(Randoms.pickUniqueNumbersInRange(1, 9, 3));
+                    computer = new Computer();
                 }
                 // 게임 종료
                 else if (choice.equals("2")) {

@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +14,18 @@ public class Computer {
 
     public Computer(List<Integer> target) {
         this.target = target;
+        this.solved = false;
+    }
+
+    public Computer() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        this.target = computer;
         this.solved = false;
     }
 
@@ -58,16 +72,18 @@ public class Computer {
     // 입력받는 리스트와 컴퓨터의 리스트를 비교해서 스트라이크/볼/낫싱 판단
     // [스트라이크 개수, 볼 개수]
     private List<Integer> guessNumbers(List<Integer> guess) {
-
+        System.out.println("guess = " + guess);
+        System.out.println("target = " + target);
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i< 3; i++) {
-            if (guess.get(i).equals(target.get(i))) {
-                strike += 1;
-            }
-            else if (target.contains(guess.get(i))) {
-                ball += 1;
+        for (int i = 0; i < 3; i++) {
+            if (!guess.isEmpty() && !target.isEmpty()) {
+                if (guess.get(i).equals(target.get(i))) {
+                    strike += 1;
+                } else if (target.contains(guess.get(i))) {
+                    ball += 1;
+                }
             }
         }
 
