@@ -19,9 +19,9 @@ public class Pitcher {
     }
 
     /**
-     * 사용자의 입력을 받아서 정수 배열로 변환하는 메서드
+     * 사용자의 입력을 받아서 정수 리스트로 변환하는 메서드
      *
-     * @return 길이 3인 정수(int 타입) 배열
+     * @return 크기가 3인 정수 리스트
      */
     public List<Integer> pitch() {
         System.out.print("숫자를 입력해주세요 : ");
