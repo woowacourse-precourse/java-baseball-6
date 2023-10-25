@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class BaseBall {
 
@@ -36,13 +35,7 @@ public class BaseBall {
     }
 
     public void reset() {
-        this.answer = new ArrayList<>();
-        while (this.answer.size() < this.ANSWER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
-        }
+        this.answer = NumericModule.getRandomNumberList(this.ANSWER_LENGTH);
         this.ended = false;
     }
 
@@ -113,7 +106,7 @@ public class BaseBall {
     }
 
     private void validateInputNumber(List<Integer> input) throws IllegalArgumentException {
-        if (new HashSet<Integer>(input).size() != this.ANSWER_LENGTH) {
+        if (new HashSet<>(input).size() != this.ANSWER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
