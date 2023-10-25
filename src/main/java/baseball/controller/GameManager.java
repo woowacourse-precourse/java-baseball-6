@@ -28,10 +28,10 @@ public class GameManager {
 
         Referee referee = new Referee();
         Player player;
-        while (!referee.isTreeStrike()) {
+        while (!referee.isThreeStrike()) {
             player = new Player(viewer.pleaseInputNumberView());
             referee = new Referee(player, computerPlayer);
-            System.out.println(referee.result());
+            viewer.resultView(referee.result());
         }
         viewer.threeStrikeView();
     }
