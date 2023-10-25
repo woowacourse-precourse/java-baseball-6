@@ -19,29 +19,6 @@ public class BaseballService {
         return computer;
     }
 
-    // 중복 검사 함수
-    public boolean isDuplicationExist(String randomNum) {
-        ArrayList<Character> randomNumList = new ArrayList<Character>();
-        for (int i=0; i<3; i++){
-            randomNumList.add(randomNum.charAt(i));
-        }
-        Set<Character> randNumSet = new HashSet<>(randomNumList);
-        if (randNumSet.size()!=3) {
-            return true;
-        }
-        return false;
-    }
-
-    // 문자열이 모두 숫자로만 이루어져있는지 검사하는 함수
-    public boolean isCharacterExist(String randomNum) {
-        try{
-            Integer.parseInt(randomNum);
-            return false;
-        } catch(NumberFormatException e){
-            return true;
-        }
-    }
-
     public int countStrikeOrBall(String computer, String randomNum, BaseballEnum baseballEnum){
         // 컴퓨터가 임의로 뽑은 수 3개와 플레이어가 입력한 숫자 3개 비교
         int count=0;

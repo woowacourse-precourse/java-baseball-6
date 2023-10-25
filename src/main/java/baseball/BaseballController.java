@@ -39,4 +39,13 @@ public class BaseballController {
             }
         }
     }
+
+    public void compareNums(int strike, String computer){
+        strike = 0;
+        String randomNum = baseballView.inputRandomNum();
+        baseballService.verifyRandomInput(randomNum);
+        strike = baseballService.getStrike(computer, randomNum);
+        int ball = baseballService.getBall(computer, randomNum);
+        baseballView.printStrikeOrBall(strike, ball);
+    }
 }
