@@ -71,13 +71,13 @@ public class Play {
         String input = InputView.userNumberInput();
 
         if (!checkNumberPattern(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1부터 9사이의 수 3개를 입력하세요.");
         }
 
         userNumber.newUserNumber(input);
 
         if (!checkDuplicateNumber(userNumber.getUserNumber())) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복되지 않는 숫자를 입력하세요.");
         }
 
         return userNumber.getUserNumber();
