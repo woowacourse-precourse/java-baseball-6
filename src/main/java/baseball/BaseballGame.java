@@ -2,6 +2,7 @@ package baseball;
 
 import constant.GameMessage;
 import java.util.List;
+import utils.InputUtil;
 import utils.RandomUtil;
 
 public class BaseballGame {
@@ -23,5 +24,34 @@ public class BaseballGame {
 
         // 정답을 맞췄을 때 문구 출력
         System.out.println(GameMessage.CORRECT_ANSWER_MESSAGE.getMessage());
+    }
+
+    private boolean playGame(List<Integer> targetNmbs, Hint hint) {
+        // 사용자 입력
+        List<Integer> playerNmbs = InputUtil.getPlayerInput();
+        // 사용자 입력값 및 상대방(컴퓨터) 값의 일치 여부 확인
+        boolean isCorrect = checkPlayerNmbIsCorrect(playerNmbs, targetNmbs);
+
+        // 힌트 출력
+        hint.getHint(playerNmbs, targetNmbs);
+
+        // 일치 여부 반환
+        return isCorrect;
+    }
+
+    private boolean checkPlayerNmbIsCorrect(List<Integer> playerNmbs, List<Integer> targetNmbs) {
+        // list를 String으로 변환하여 두 String이 일치하는지를 통해 값 일치 여부 확인
+        String playerNmb = listToStr(playerNmbs);
+        String targetNmb = listToStr(targetNmbs);
+
+        return playerNmb.equals(targetNmb);
+    }
+
+    private String listToStr(List<Integer> nmbs) {
+        StringBuilder str = new StringBuilder();
+        for (int idx = 0; idx < nmbs.size(); idx++) {
+            str.append(nmbs.get(idx));
+        }
+        return str.toString();
     }
 }
