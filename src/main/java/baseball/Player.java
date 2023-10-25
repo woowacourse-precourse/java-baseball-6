@@ -5,6 +5,7 @@ import java.util.List;
 public class Player {
     public static String playerNum;
 
+
     public static List<Integer> getPlayerNumber(String inputNum){
         playerNum = inputNum;
         // 유효한지 체크

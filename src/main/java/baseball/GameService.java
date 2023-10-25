@@ -34,7 +34,9 @@ public class GameService {
 
     private static void playGame(List<Integer> computer) {
         PlayGameView.printInputNum();
+        // 유효한 input인지 확인
         List<Integer> player = Player.getPlayerNumber(Console.readLine());
+        // computer vs player 비교
         Hint.compareNumber(computer, player);
     }
 
@@ -42,6 +44,7 @@ public class GameService {
     private static Boolean restartGame() {
         EndGameView.printGameEnd();
         String restartOrQuit = Console.readLine();
+        // 1 or 2 외의 다른 숫자일 경우
         CheckValidNum.checkNewOrQuit(restartOrQuit);
         return restartOrQuit.equals("1");
     }

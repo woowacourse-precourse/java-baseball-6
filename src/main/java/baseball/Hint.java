@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Hint {
     public static boolean isThreeBall = false;
+
+
     public static void compareNumber(List<Integer> computerNum, List<Integer> playerInput){
         isThreeBall = false;
         int ballCnt = 0;

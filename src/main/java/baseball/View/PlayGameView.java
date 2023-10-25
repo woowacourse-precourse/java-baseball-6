@@ -9,6 +9,8 @@ public class PlayGameView {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+
+    // Case 별로 나누기
     public static void printHint(int ballCount, int strikeCount) {
 
         if (ballCount == 0 && strikeCount == 0) {

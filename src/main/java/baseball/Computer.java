@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Computer {
 
+    // 랜덤 숫자 생성 메서드
     public static List<Integer> createRandomNumber() {
 
         List<Integer> randomNumList = new ArrayList<>();

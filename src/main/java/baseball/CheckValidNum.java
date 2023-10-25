@@ -4,6 +4,7 @@ import java.util.List;
 
 public class CheckValidNum {
 
+    // 예외 처리
     public static void IsValidNum(String InputString) {
         if (!checkValidLength(InputString) || !checkValidRange(InputString) || !checkDifferentNumber(InputString))
             throw new IllegalArgumentException();
@@ -38,6 +39,8 @@ public class CheckValidNum {
         return IsDifferentNum;
     }
 
+
+    // 1 or 2 외의 다른 숫자인지 확인 메서드
     public static void checkNewOrQuit(String Inputstring)
     {
         List<String> possibleNumber = List.of("1", "2");
