@@ -31,7 +31,7 @@ public class Validation {
     private static void validateSameNumber(String numbers) {
         List<Character> checkList = new ArrayList<>();
 
-        for (char singleNumber : numbers.toCharArray()) {
+        for (final char singleNumber : numbers.toCharArray()) {
             validateCheckListContainsSingleNumber(checkList, singleNumber);
             checkList.add(singleNumber);
         }
@@ -65,7 +65,7 @@ public class Validation {
         try {
             Integer.parseInt(numbers);
             return true;
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException e) {
             return false;
         }
     }
