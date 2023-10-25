@@ -36,6 +36,13 @@ public class ConsoleOutput implements OutPut {
     }
 
     @Override
+    public void collect(int strikeCount) throws IOException {
+        output.write(String.valueOf(strikeCount));
+        output.write(ConsoleMessage.CORRECT_ANSWER.getMessage());
+        output.flush();
+    }
+
+    @Override
     public void close() throws IOException {
         if(output != null) {
             output.close();
