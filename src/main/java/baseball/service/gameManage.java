@@ -16,8 +16,9 @@ public class gameManage implements gameManageInterface {
     public void init() {
         GameMessage.gameStartMessage();
         try {
-            play();
-            playAgain();
+            do {
+                play();
+            } while (isPlayAgain());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw new IllegalArgumentException(e);
@@ -81,17 +82,12 @@ public class gameManage implements gameManageInterface {
         }
     }
 
-    public void playAgain() {
+    public boolean isPlayAgain() {
         GameMessage.gameRestartMessage();
-        while (true) {
-            int checkAgain = Integer.parseInt(Console.readLine());
-            if (checkAgain != gameConstant.PLAY_AGAIN && checkAgain != gameConstant.EXIT_GAME) {
-                throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
-            }
-            if (checkAgain == gameConstant.EXIT_GAME) {
-                break;
-            }
-            play();
+        int checkAgain = Integer.parseInt(Console.readLine());
+        if (checkAgain != gameConstant.PLAY_AGAIN && checkAgain != gameConstant.EXIT_GAME) {
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
+        return checkAgain == gameConstant.PLAY_AGAIN;
     }
 }

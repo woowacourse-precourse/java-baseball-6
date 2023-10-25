@@ -13,6 +13,6 @@ public interface gameManageInterface {
 
     void play();
 
-    void playAgain();
+    boolean isPlayAgain();
 
 }
