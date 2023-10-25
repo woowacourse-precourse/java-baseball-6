@@ -29,7 +29,7 @@ public class Number {
         int second = validateIsDigit((number % 100) / 10);
         int third = validateIsDigit(number % 10);
 
-        validateInputNumberUnique(first, second, third);
+        validateUnique(first, second, third);
 
         return List.of(first, second, third);
     }
@@ -43,7 +43,7 @@ public class Number {
     }
 
 
-    private void validateInputNumberUnique(int first, int second, int third) {
+    private void validateUnique(int first, int second, int third) {
         if (first == second || second == third || first == third) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_DIGIT_IS_NOT_UNIQUE.getMessage());
         }
