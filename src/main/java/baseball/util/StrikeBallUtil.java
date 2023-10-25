@@ -6,15 +6,15 @@ import baseball.game.Hint;
 
 public class StrikeBallUtil {
 
-    public static Hint getHint(String answerNumbers, String userNumbers) {
+    public static Hint getHint(char[] answerNumbers, char[] userNumbers) {
 
         int strike = 0;
         int ball = 0;
 
         for (int i = 0; i < NUMBER_BASEBALL_STR_LENGTH; i++) {
-            char userNumber = userNumbers.charAt(i);
+            char userNumber = userNumbers[i];
             for (int j = 0; j < NUMBER_BASEBALL_STR_LENGTH; j++) {
-                char answerNumber = answerNumbers.charAt(j);
+                char answerNumber = answerNumbers[j];
                 if (isSameNumber(userNumber, answerNumber)) {
 
                     if (isSamePosition(i, j)) {
@@ -44,11 +44,13 @@ public class StrikeBallUtil {
         } else if (isBallAndStrike(hint)) {
             OutputUtil.printBallAndStrike(hint);
         } else {
+
             if (isOnlyBall(hint)) {
                 OutputUtil.printOnlyBall(hint.getBall());
             } else {
                 OutputUtil.printOnlyStrike(hint.getStrike());
             }
+
         }
     }
 

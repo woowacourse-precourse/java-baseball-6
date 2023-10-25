@@ -12,14 +12,14 @@ public class Game {
     public static void start() {
         while (restartFlag) {
 
-            final String answerNumbers = RandomNumberUtil.getThreeRandomNumbers();
+            final char[] answerNumbers = RandomNumberUtil.getThreeRandomNumbers();
 
             boolean isCorrect = false;
             while (!isCorrect) {
 
                 String userNumbers = InputUtil.inputNumber();
 
-                Hint hint = StrikeBallUtil.getHint(answerNumbers, userNumbers);
+                Hint hint = StrikeBallUtil.getHint(answerNumbers, userNumbers.toCharArray());
                 StrikeBallUtil.printHint(hint);
 
                 if (isThreeStrike(hint.getStrike())) {

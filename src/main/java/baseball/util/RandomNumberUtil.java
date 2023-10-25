@@ -1,21 +1,30 @@
 package baseball.util;
 
+import static baseball.constant.Constant.NUMBER_BASEBALL_STR_LENGTH;
+
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RandomNumberUtil {
-    public static String getThreeRandomNumbers() {
+    public static char[] getThreeRandomNumbers() {
 
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+        char[] computerChar = new char[NUMBER_BASEBALL_STR_LENGTH];
+        for (int i = 0; i < computerChar.length; i++) {
+            while (computerChar[i] == 0) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!containNumberInCharArr(i, randomNumber, computerChar)) {
+                    computerChar[i] = Character.forDigit(randomNumber, 10);
+                }
             }
         }
 
-        return computer.stream().map(String::valueOf).collect(Collectors.joining());
+        return computerChar;
+    }
+
+    private static boolean containNumberInCharArr(int i, int randomNumber, char[] computer) {
+
+        return IntStream.range(0, i)
+                .mapToObj(j -> computer[j] == randomNumber - '0')
+                .anyMatch(Boolean::booleanValue);
     }
 }
