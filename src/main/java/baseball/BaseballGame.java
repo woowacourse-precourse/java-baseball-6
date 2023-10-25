@@ -85,6 +85,7 @@ public class BaseballGame {
             }
         }
         resetStrike();
+        resetBall();
         System.out.println(message);
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
