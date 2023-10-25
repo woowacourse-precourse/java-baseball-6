@@ -1,28 +1,30 @@
-## 📖 요구사항 분석
-- 필요한 기능
-  - 전체 게임을 핸들링 하는 기능(게임 시작/재시작/종료 담당): `GameController`
-    - 게임 진행 문구 예시
-```
-숫자 야구 게임을 시작합니다.
-숫자를 입력해주세요 :
-```
-```
-1볼 1스트라이크
-```
-```
-3개의 숫자를 모두 맞히셨습니다! 게임 종료
-게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
-``` 
-  - 게임에 사용할 숫자를 핸들링 하는 기능: `NumberController`
-    - 정답(난수)을 생성하는 기능: `NumberController.generateComputerNumberList`
-      - 정답조건: 1부터 9까지 서로 다른 수로 이루어진 3자리 수
-    - 3자리 숫자의 각자리 숫자를 나누어 배열로 나누는 기능: `NumberController.splitter`
-       - ex) 입력값: 123  ->  배열: {1,2,3}
-  - 두 개의 배열을 비교하여 내부의 Int값 중 동일한 값이 있는지 확인하는 기능 `NumberController.compareNumberList`
-    - 동일한 값이 있을 경우 배열의 인덱스 값도 같은지 확인하는 기능
-  - 입력값과 정답을 비교하여 '스트라이크', '볼', '낫싱'을 출력하는 기능
-  - 예외케이스를 확인하여 `IllegalArgumentException`을 발생시키는 기능: `ExceptionController`
-    - 예외케이스
-      - 정답 숫자 입력값이 세자리 숫자가 아닌 경우: `ExceptionController.validateThreeDigitNumber` 
-      - ~~정답 숫자 각자리 숫자 중 동일한 숫자가 있는 경우(ex. 111, 755, 443, 828 등)~~
-      - 게임이 끝난 후 입력 값으로 1과 2 외의 숫자가 입력된 경우: `ExceptionController.validateGameProgressNumber`
+# 요구사항 분석
+
+## ⚙️ 필요한 기능
+
+### ✔️ 게임 진행을 컨트롤: `GameController.class`
+
+- 게임시작 기능: `gameStart()`
+    - '게임시작문구' 출력
+    - '사용자입력값' 받기
+- 게임종료 기능: `handleGameActive()`
+    - 정답을 맞출 시 '게임종료문구' 출력
+    - 사용자 입력값에 따라 '게임재시작' 및 '게임종료' 핸들링
+- 게임점수 출력 기능: `reportGameResult()`
+- 게임결과에 따른 점수('strike', 'ball')를 출력
+
+### ✔️ 게임에 사용할 숫자 컨트롤: `NumberController.class`
+
+- 게임 정답 생성 기능: `generateComputerNumberList()`
+    - 정답조건: 1부터 9까지 서로 다른 수로 이루어진 3자리 수
+- 3자리 숫자를 각자리 숫자의 배열로 나누는 기능: `splitter()`
+    - ex) 입력값: 123 ->  배열: {1,2,3}
+- 두 개의 숫자배열을 비교하여 점수를 측정하는 기능: `compareNumberList()`
+    - 게임점수란 'strike'와 'ball' 각각의 개수
+        - 인덱스와 값이 모두 같으면 'strike': `contStrike()`
+        - 인덱스는 다르나 같은 값이 있으면 'ball': `countBall()`
+
+### ✔️ 사용자 입력값 유효성 체크: `InputValidatorController.class`
+
+- 게임정답 입력값이 세자리 숫자가 아닌경우: `validateThreeDigitNumber()`
+- 정답을 맞춘 후 게임진행 입력값이 1이나 2가 아닌경우: `validateGameProgressNumber()`
