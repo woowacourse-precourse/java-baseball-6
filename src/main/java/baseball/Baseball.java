@@ -8,6 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Baseball {
+    Score score = new Score();
 
     public void startGame() {
         while(true) {
@@ -46,7 +47,6 @@ public class Baseball {
             String userInput = readLine();
             UserInputUtil.validateThreeDifferentNatureNumber(userInput);
 
-            Score score = new Score();
             List<Integer> userNumber = UserInputUtil.convertStringToIntegerList(userInput);
             for (int i = 0; i < 3; i++) {
                 String result = compareNumber(computerNumber, userNumber.get(i), i);
