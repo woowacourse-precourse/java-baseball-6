@@ -28,13 +28,17 @@ public class ApplicationContainer {
     private Console console;
 
     private void printCreatedInstanceMessage( String instanceClass, String interfaceClass) {
-        System.out.println("The instance of " + instanceClass + " is successfully created as an implementation of " + interfaceClass);
+        System.out.println(
+                "The instance of " + instanceClass + " is successfully created as an implementation of " + interfaceClass
+        );
     }
 
     public RandomNumberGenerator getRandomNumberGenerator() {
         if ( randomNumberGenerator == null ) {
             randomNumberGenerator = new RandomNumberGeneratorImpl();
-            printCreatedInstanceMessage(randomNumberGenerator.getClass().toString(), RandomNumberGenerator.class.toString());
+            printCreatedInstanceMessage(
+                    randomNumberGenerator.getClass().toString(), RandomNumberGenerator.class.toString()
+            );
         }
         return randomNumberGenerator;
     }
@@ -73,7 +77,9 @@ public class ApplicationContainer {
 
     public GameService getGameService() {
         if ( gameService == null ) {
-            gameService = new GameServiceImpl(getRandomNumberGenerator(), getNumbersMatcher(), getInputValidator(), getGameFactory());
+            gameService = new GameServiceImpl(
+                    getRandomNumberGenerator(), getNumbersMatcher(), getInputValidator(), getGameFactory()
+            );
             printCreatedInstanceMessage(gameService.getClass().toString(), GameService.class.toString());
         }
         return gameService;

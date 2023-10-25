@@ -8,7 +8,13 @@ public class InputValidatorImpl implements InputValidator {
     private final boolean VALID_FAILED = false;
 
     @Override
-    public boolean validate(String input, int numberDigits, int startInclusive, int endInclusive, boolean validateUniqueValue) {
+    public boolean validate(
+            String input,
+            int numberDigits,
+            int startInclusive,
+            int endInclusive,
+            boolean validateUniqueValue
+    ) {
         if ( input.length() != numberDigits )
             return VALID_FAILED;
 

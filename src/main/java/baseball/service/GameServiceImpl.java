@@ -9,7 +9,12 @@ import baseball.util.validator.InputValidator;
 import java.util.List;
 
 public class GameServiceImpl implements GameService {
-    public GameServiceImpl(RandomNumberGenerator randomNumberGenerator, NumbersMatcher numbersMatcher, InputValidator inputValidator, GameFactory gameFactory) {
+    public GameServiceImpl(
+            RandomNumberGenerator randomNumberGenerator,
+            NumbersMatcher numbersMatcher,
+            InputValidator inputValidator,
+            GameFactory gameFactory
+    ) {
         this.randomNumberGenerator = randomNumberGenerator;
         this.numbersMatcher = numbersMatcher;
         this.inputValidator = inputValidator;
@@ -36,7 +41,9 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public void init(Game game) {
-        game.setTargetNumberList(randomNumberGenerator.pickUniqueRandomNumber(GAME_NUMBER_DIGITS, GAME_MIN_NUMBER, GAME_MAX_NUMBER));
+        game.setTargetNumberList(
+                randomNumberGenerator.pickUniqueRandomNumber(GAME_NUMBER_DIGITS, GAME_MIN_NUMBER, GAME_MAX_NUMBER)
+        );
     }
 
     @Override
