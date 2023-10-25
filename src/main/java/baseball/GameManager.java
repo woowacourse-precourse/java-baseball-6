@@ -7,7 +7,6 @@ public class GameManager {
         printWelcomeMessage();
 
         while (true) {
-
             Game game = configureGame();
             game.play();
 
