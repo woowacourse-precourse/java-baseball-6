@@ -68,35 +68,8 @@ public class Application {
         int num = 0;
         try {
             String input = readLine();
-            boolean isNumeric = true;
-            boolean containsZero = false;
-            Set<Character> uniqueDigits = new HashSet<>();
-
-            for (int i = 0; i < input.length(); i++) {
-                char ch = input.charAt(i);
-
-                if (Character.isDigit(ch)) {
-                    if (ch == '0') {
-                        containsZero = true;
-                    }
-
-                    if (uniqueDigits.contains(ch)) {
-                        throw new IllegalArgumentException("중복된 숫자를 입력하지 마세요.");
-                    } else {
-                        uniqueDigits.add(ch);
-                    }
-                } else {
-                    isNumeric = false;
-                    break;
-                }
-            }
-
-            if (!isNumeric || containsZero) {
-                throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
-            }
-
+            validateUserInput(input);
             num = Integer.parseInt(input);
-
             if (num < min || num > max) {
                 throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
             }
@@ -105,6 +78,35 @@ public class Application {
             status = GAME_OVER;
         }
         return num;
+    }
+
+    private static void validateUserInput(String input) {
+        boolean isNumeric = true;
+        boolean containsZero = false;
+        Set<Character> uniqueDigits = new HashSet<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+
+            if (Character.isDigit(ch)) {
+                if (ch == '0') {
+                    containsZero = true;
+                }
+
+                if (uniqueDigits.contains(ch)) {
+                    throw new IllegalArgumentException("중복된 숫자를 입력하지 마세요.");
+                } else {
+                    uniqueDigits.add(ch);
+                }
+            } else {
+                isNumeric = false;
+                break;
+            }
+        }
+
+        if (!isNumeric || containsZero) {
+            throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
+        }
     }
 
     private static int[] getDigits(int number) {
@@ -150,5 +152,5 @@ public class Application {
             System.out.println("낫싱");
         }
     }
-    
+
 }
