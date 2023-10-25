@@ -84,11 +84,11 @@ public class Application {
         }
     }
 
-    public static boolean isLengthThree(String userInput) {
-        if (userInput.length() == 3) {
+    public static boolean isRightLength(String userInput, int inputLength) {
+        if (userInput.length() == inputLength) {
             return true;
         } else {
-            throw new IllegalArgumentException("입력 길이가 3이 아닌 잘못된 입력입니다.");
+            throw new IllegalArgumentException("입력 길이가 " + inputLength + "이 아닌 잘못된 입력입니다.");
         }
     }
 
