@@ -4,12 +4,15 @@
 ![class diagram.png](image%2Fclass_diagram.png)
 
 ### 클래스 다이어그램 설명
-  - `GameManager` : 게임의 로직을 처리하는 클래스
-  - `InputHandler` : 사용자의 입력을 처리하는 클래스
+  - `GameManager` : 게임 실행과 조건을 처리하는 클래스
+  - `InputView` : 사용자의 입력을 처리하는 클래스
   - `InputValidator` : 입력의 유효성을 검사하는 클래스
+  - `OutputView` : 사용자에게 출력을 처리하는 클래스
+  - `BaseballManager` : 숫자야구게임의 로직을 처리하는 클래스
+  - `ListNumber` : 숫자야구게임에서 사용하는 숫자를 리스트로 처리하는 클래스
   - `NumberGenerator` : 무작위 숫자를 생성하는 클래스
-  - `Computer` : 구현 기능 중 컴퓨터의 역할을 수행하는 클래스
   - `Score` : 점수와 관련된 정보를 관리하는 클래스
+  - `Calculator` : 점수를 계산하는 클래스
 
 ## 구현 기능
 
