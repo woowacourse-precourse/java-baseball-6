@@ -95,21 +95,23 @@ public class Game {
         }
     }
 
+    private static boolean userEndGameInput(int strike) {
+        return userReplayInput().equals("2");
+    }
+
+
     private static boolean play(String randomNumber, String guessingNumber) {
-        while (true) {
+        boolean end = false;
+        while (!end) {
 
-            int strike = 0;
-            int ball = 0;
-
-            strike = calculateStrike(randomNumber, guessingNumber);
-            ball = calculateBall(randomNumber, guessingNumber);
+            int strike = calculateStrike(randomNumber, guessingNumber);
+            int ball = calculateBall(randomNumber, guessingNumber);
 
             printResult(strike, ball);
+            end = userEndGameInput(strike);
 
-            if (strike == 3) {
-                return false;
-            }
         }
+        return false;
     }
 
 
