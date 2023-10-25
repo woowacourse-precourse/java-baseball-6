@@ -16,8 +16,7 @@ public class NumberConverter {
                     .map(Integer::parseInt)
                     .filter(n -> n != 0)
                     .toList();
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("문자가 아닌 숫자를 입력해주세요");
         }
     }

@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class StrikeCounterTest {
-    final Counter strikeCounter =  new StrikeCounter();
+    final Counter strikeCounter = new StrikeCounter();
 
     @Test
     void 스트라이크가_없다() {

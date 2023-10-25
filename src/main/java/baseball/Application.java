@@ -1,9 +1,9 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import baseball.util.NumberConverter;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
@@ -17,7 +17,9 @@ public class Application {
                 String input = readLine();
                 List<Integer> number = NumberConverter.from(input);
                 boolean isAnswer = game.play(number);
-                if (isAnswer) break;
+                if (isAnswer) {
+                    break;
+                }
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
