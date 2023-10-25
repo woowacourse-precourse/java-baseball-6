@@ -29,7 +29,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_중복_숫자_입력(){
+    void 예외_테스트_중복_숫자_입력() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("224"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_숫자_아닌_문자_입력(){
+    void 예외_테스트_숫자_아닌_문자_입력() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("at3"))
                         .isInstanceOf(IllegalArgumentException.class)
