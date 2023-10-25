@@ -1,7 +1,17 @@
 package baseball;
 
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        SequenceManager sequenceManager = new SequenceManager();
+
+        while (sequenceManager.validateRestart()) {
+
+            sequenceManager.proceedIntro();
+
+            sequenceManager.proceedMainGame();
+
+            sequenceManager.proceedOutro();
+        }
     }
 }
