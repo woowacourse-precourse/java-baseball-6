@@ -1,6 +1,8 @@
 package baseball;
 
+import baseball.view.RetryInputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -27,6 +29,25 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @DisplayName("세 자리 숫자가 아닌 숫자를 입력했을 시 예외발생")
+    @Test
+    void wrongSizeTest() {
+        assertThatThrownBy(() -> runException("13")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("중복된 숫자가 존재하는 세 자리 숫자를 입력했을 시 예외발생")
+    @Test
+    void numberDuplicationTest() {
+        assertThatThrownBy(() -> runException("133")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("재시작 시 1이나 2이외의 숫자를 입력했을 때 예외 발생")
+    @Test
+    void retryInputTest() {
+
+
+    }
+
 
     @Override
     public void runMain() {
