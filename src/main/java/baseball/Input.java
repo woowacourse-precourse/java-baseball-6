@@ -15,6 +15,10 @@ public class Input {
         System.out.printf("숫자를 입력해 주세요 : ");
         String inputnum = Console.readLine();
 
+        if(inputnum.length() !=3){
+            throw new IllegalArgumentException();
+        }
+
         String[] temp = inputnum.split("");
 
         for(int i =0; i<inputnum.length(); i++){
