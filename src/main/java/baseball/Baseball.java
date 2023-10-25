@@ -1,19 +1,14 @@
 package baseball;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Baseball{
     private CreateComputerNumber createComputerNumber;
     private InputUserNumber inputUserNumber;
     public void playball(){
-        List<Integer> computer = new ArrayList<>();
-        List<Integer> user = new ArrayList<>();
+        List<Integer> computer;
+        List<Integer> user;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
