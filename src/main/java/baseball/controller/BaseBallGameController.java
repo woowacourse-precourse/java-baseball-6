@@ -20,7 +20,7 @@ public class BaseballGameController {
 
     public void start() {
         outputView.printGameStart();
-        while (!isEnd()) {
+        while (!game.isEnd()) {
             play();
             stop();
         }
@@ -45,9 +45,5 @@ public class BaseballGameController {
         if (option == GameEndOption.END) {
             game.end();
         }
-    }
-
-    public boolean isEnd() {
-        return game.isEnd();
     }
 }
