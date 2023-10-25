@@ -35,12 +35,12 @@ public class OutputView {
             return;
         }
 
-        if (score.balls() > 0) {
+        if (score.isBall()) {
             System.out.printf("%d볼%n", score.balls());
             return;
         }
 
-        if (score.strikes() > 0) {
+        if (score.isStrike()) {
             System.out.printf("%d스트라이크%n", score.strikes());
         }
     }

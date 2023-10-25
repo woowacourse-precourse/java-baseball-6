@@ -1,9 +1,10 @@
 package baseball.model;
 
 public record Score(int strikes, int balls) {
+    static final int MAX_STRIKES = 3;
 
     public boolean isGameWon() {
-        return strikes == 3;
+        return strikes == MAX_STRIKES;
     }
 
     public boolean isNothing() {
