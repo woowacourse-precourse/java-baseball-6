@@ -41,11 +41,11 @@ public class BaseBallGame {
         while (isRunnable) {
             prompt.print(SystemMessage.INPUT);
             String playerInput = prompt.input();
-            this.verifyForBaseballNumber(playerInput);
-            List<Integer> verifiedInput = baseBallGameMapper.toList(playerInput);
-            Player player = new Player(verifiedInput);
+            verifyForBaseballNumber(playerInput);
+            List<Integer> verifiedNumbers = baseBallGameMapper.toList(playerInput);
+            Player player = new Player(verifiedNumbers);
             Hint judgedHint = referee.ballCount(player, computer);
-            prompt.print(judgedHint::report);
+            prompt.print(judgedHint::getMessage);
 
             if (judgedHint.isAllStrike()) {
                 prompt.print(SystemMessage.ALL_STRIKE);

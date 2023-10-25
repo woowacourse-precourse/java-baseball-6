@@ -8,17 +8,17 @@ public record Hint(int strike, int ball) {
         return this.strike == ALL_STRIKE.getCondition();
     }
 
-    public String report() {
-        StringBuilder result = new StringBuilder();
-        writeBallCount(result);
-        writeStrikeCount(result);
+    public String getMessage() {
+        StringBuilder message = new StringBuilder();
+        writeBallCount(message);
+        writeStrikeCount(message);
 
-        if (result.isEmpty()) {
-            result.append("낫싱");
+        if (message.isEmpty()) {
+            message.append("낫싱");
         }
-        result.append("\n");
+        message.append("\n");
 
-        return result.toString();
+        return message.toString();
     }
 
     private void writeStrikeCount(StringBuilder result) {
