@@ -3,6 +3,7 @@ package baseball;
 import static baseball.Application.NUMBER_LENGTH;
 
 import balls.Balls;
+import java.util.stream.IntStream;
 
 public class BaseballGameService {
     public boolean baseballGameServiceStart(Balls computerBalls, Balls userBalls) {
@@ -33,31 +34,25 @@ public class BaseballGameService {
     }
 
     public int countBall(Balls computerBalls, Balls userBalls) {
-        int ballCount = 0;
-        for (int i = 0; i < computerBalls.getBallsSize(); i++) {
-            if (isBall(i, computerBalls, userBalls)) {
-                ballCount++;
-            }
-        }
-        return ballCount;
+        return (int) IntStream.range(0, computerBalls.getBallsSize())
+                .filter(i -> isBall(i, computerBalls, userBalls))
+                .count();
     }
 
     public boolean isBall(int digit, Balls computerBalls, Balls userBalls) {
-        return computerBalls.compareToByBall(userBalls, digit);
+        return IntStream.range(0, computerBalls.getBallsSize())
+                .filter(index -> digit != index)
+                .anyMatch(index -> computerBalls.compareByDigit(digit, userBalls.getBall(index)));
     }
 
     public int countStrike(Balls computerBalls, Balls userBalls) {
-        int strike = 0;
-        for (int i = 0; i < computerBalls.getBallsSize(); i++) {
-            if (isStrike(i, computerBalls, userBalls)) {
-                strike++;
-            }
-        }
-        return strike;
+        return (int) IntStream.range(0, computerBalls.getBallsSize())
+                .filter(i -> isStrike(i, computerBalls, userBalls))
+                .count();
     }
 
     public boolean isStrike(int digit, Balls computerBalls, Balls userBalls) {
-        return computerBalls.compareToByStrike(userBalls, digit);
+        return computerBalls.compareByDigit(digit, userBalls.getBall(digit));
     }
 
 }
