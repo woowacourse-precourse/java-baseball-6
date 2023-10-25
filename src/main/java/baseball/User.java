@@ -9,13 +9,20 @@ public class User {
     public User() {
     }
 
-    public String getNum() throws IllegalArgumentException {
+    public String getNum(){
         System.out.print(INPUT_NUMBER_MENT);
         String num = readLine();
-        if (Validator.validNum(num)) {
-            return num;
+        if(!Validator.checkZeroNum(num)){
+            throw new IllegalArgumentException(CHECK_ZERONUM_ERROR);
         }
-        throw new IllegalArgumentException("유효하지않은 숫자입니다");
+        if(!Validator.checkLength(num)){
+            throw new IllegalArgumentException(CHECK_LENGTH_ERROR);
+        }
+        if(!Validator.checkDuplicationNum(num)){
+            throw new IllegalArgumentException(CHECK_DUPLICATE_ERROR);
+        }
+        return num;
+
     }
 
 
