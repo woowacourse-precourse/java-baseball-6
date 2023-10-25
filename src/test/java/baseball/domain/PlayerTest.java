@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static baseball.utils.ErrorMessage.NUMBERS_DUPLICATED;
 import static baseball.utils.ErrorMessage.NUMBERS_NOT_POSITIVE_INTEGER;
 import static baseball.utils.ErrorMessage.NUMBERS_OUT_OF_RANGE;
 import static baseball.utils.ErrorMessage.NUMBERS_SIZE_IS_INVALID;
@@ -40,5 +41,13 @@ class PlayerTest {
                 .hasMessageContaining(NUMBERS_OUT_OF_RANGE);
     }
 
+    @ParameterizedTest
+    @DisplayName("중복된 수가 있는 경우 예외가 발생한다.")
+    @ValueSource(strings = {"122", "434", "555"})
+    void createNumbersByDuplicatedNumbers(String input) {
+        assertThatThrownBy(() -> new Player().validateDuplicatedNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NUMBERS_DUPLICATED);
+    }
 
 }
