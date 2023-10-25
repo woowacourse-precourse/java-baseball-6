@@ -20,12 +20,13 @@ public class Initializer {
         return this.comNum;
     }
     public List<Integer> setUser(){
+
         String userInStr =Console.readLine();
         int inputSize = userInStr.length();
         System.out.println(userInStr.charAt(0));
         if(inputSize>3){
             //TODO: 예외처리
-            new ArrayIndexOutOfBoundsException("잘못된 입력입니다.");
+            throw new ArrayIndexOutOfBoundsException("잘못된 입력입니다.");
         }
 
         for (int i = 0; i < 3; ++i) {
