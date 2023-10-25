@@ -1,9 +1,9 @@
 package baseball;
 
 import static baseball.BaseballGame.ANSWER_DIGIT;
-import static baseball.PrintMessage.BALL_FORMAT;
-import static baseball.PrintMessage.NOTHING_FORMAT;
-import static baseball.PrintMessage.STRIKE_FORMAT;
+import static baseball.constant.PrintMessage.BALL_FORMAT;
+import static baseball.constant.PrintMessage.NOTHING_FORMAT;
+import static baseball.constant.PrintMessage.STRIKE_FORMAT;
 
 import java.util.List;
 import java.util.StringJoiner;

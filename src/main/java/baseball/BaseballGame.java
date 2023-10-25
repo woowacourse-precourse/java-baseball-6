@@ -1,13 +1,13 @@
 package baseball;
 
-import static baseball.ErrorMessage.INPUT_INVALID_DIGIT;
-import static baseball.ErrorMessage.INPUT_INVALID_RANGE;
-import static baseball.ErrorMessage.INPUT_NOT_DISTINCT;
-import static baseball.ErrorMessage.INPUT_NOT_NUMBER;
-import static baseball.PrintMessage.GAME_OVER;
-import static baseball.PrintMessage.GAME_START;
-import static baseball.PrintMessage.IS_RESTART;
-import static baseball.PrintMessage.USER_INPUT;
+import static baseball.constant.ErrorMessage.INPUT_INVALID_DIGIT;
+import static baseball.constant.ErrorMessage.INPUT_INVALID_RANGE;
+import static baseball.constant.ErrorMessage.INPUT_NOT_DISTINCT;
+import static baseball.constant.ErrorMessage.INPUT_NOT_NUMBER;
+import static baseball.constant.PrintMessage.GAME_OVER;
+import static baseball.constant.PrintMessage.GAME_START;
+import static baseball.constant.PrintMessage.IS_RESTART;
+import static baseball.constant.PrintMessage.USER_INPUT;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;

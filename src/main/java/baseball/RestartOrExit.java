@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.ErrorMessage.INVALID_RESTART_INPUT;
+import static baseball.constant.ErrorMessage.INVALID_RESTART_INPUT;
 
 import java.util.Arrays;
 
