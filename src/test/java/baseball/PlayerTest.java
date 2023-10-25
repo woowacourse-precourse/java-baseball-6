@@ -8,10 +8,13 @@ import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_ZERO_CONTAIN;
 import baseball.domain.Player;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Player 클래스")
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class PlayerTest {
 
     @ParameterizedTest
