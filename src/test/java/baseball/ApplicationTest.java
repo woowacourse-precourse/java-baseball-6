@@ -1,18 +1,16 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
 
@@ -20,20 +18,21 @@ class ApplicationTest extends NsTest {
     //입력길이,재시작,0확인,문자입력,중복숫자확인
     @Test
     @DisplayName("문자열에서 리스트로 변환 테스트")
-    void 입력한_문자열_리스트로_변환(){
+    void 입력한_문자열_리스트로_변환() {
         //Given
         User user = new User();
 
         //When
-        String testNumber= "123";
-        List<Integer> testList = Arrays.asList(1,2,3);
+        String testNumber = "123";
+        List<Integer> testList = Arrays.asList(1, 2, 3);
 
         //Then
-        Assertions.assertEquals(user.makeListNumber(testNumber),testList);
+        Assertions.assertEquals(user.makeListNumber(testNumber), testList);
     }
+
     @Test
     @DisplayName("입력한 숫자 중 중복 숫자 확인 테스트")
-    void 입력한_숫자_중복확인(){
+    void 입력한_숫자_중복확인() {
         //Given
         User user = new User();
 
@@ -45,9 +44,10 @@ class ApplicationTest extends NsTest {
 
 
     }
+
     @Test
     @DisplayName("입력한 숫자의 길이 확인 테스트")
-    void 입력한_숫자_길이확인(){
+    void 입력한_숫자_길이확인() {
         //Given
         User user = new User();
 
@@ -58,9 +58,10 @@ class ApplicationTest extends NsTest {
         });
 
     }
+
     @Test
     @DisplayName("입력한 숫자 중 0이 있는지 확인")
-    void 입력한_숫자중_0유무_확인(){
+    void 입력한_숫자중_0유무_확인() {
         //Given
         User user = new User();
 
@@ -71,9 +72,10 @@ class ApplicationTest extends NsTest {
         });
 
     }
+
     @Test
     @DisplayName("문자를 입력했을 때 오류 확인")
-    void 입력한_숫자중_문자_확인(){
+    void 입력한_숫자중_문자_확인() {
         //Given
         User user = new User();
 
@@ -83,9 +85,10 @@ class ApplicationTest extends NsTest {
             user.makeListNumber("abc");
         });
     }
+
     @Test
     @DisplayName("재시작시 입력 오류 확인")
-    void 재시작시_입력문자_확인(){
+    void 재시작시_입력문자_확인() {
         //Given
         User user = new User();
 

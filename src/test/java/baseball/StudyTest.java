@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class StudyTest extends NsTest {
     @Test
-    void test(){
+    void test() {
 
     }
 

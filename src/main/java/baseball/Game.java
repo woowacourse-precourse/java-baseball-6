@@ -10,7 +10,8 @@ public class Game {
     private Output output = new Output();
     private boolean quit = true;
     private boolean randomCreate = true;
-    public void start(){
+
+    public void start() {
         output.startPrint();
         List<Integer> randomNumber = null;
         while (quit) {
