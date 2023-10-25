@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class UserNumber {
     private final List<Integer> userNumber;
 
-    private static final int SIZE = 3;
+    private static final int NUMBER_SIZE = 3;
 
     public UserNumber(String userNumber) {
         validate(userNumber);
@@ -29,7 +29,7 @@ public class UserNumber {
     }
 
     private void validateNumberLength(String userNumber) {
-        if(userNumber.length() != SIZE)
+        if(userNumber.length() != NUMBER_SIZE)
             throw new IllegalArgumentException();
     }
 
@@ -51,7 +51,7 @@ public class UserNumber {
         int setSize = Arrays.asList(userNumber.split("")).stream()
                 .distinct()
                 .collect(Collectors.joining()).length();
-        if(!(setSize == SIZE))
+        if(!(setSize == NUMBER_SIZE))
             throw new IllegalArgumentException();
     }
 
