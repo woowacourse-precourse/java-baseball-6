@@ -12,13 +12,13 @@ public class ShootBall {
         numbers = new int[10];
     }
 
-
     //(3)번 기능
     public void inputNumGenerator(){
         clearArr();
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         validNumInspect(input);
+
         int input_num;
         for(int i=0;i<3;i++){
             input_num = input.charAt(i) - '0';
@@ -32,17 +32,20 @@ public class ShootBall {
         int randNum;
         int i=1;
         clearArr();
+
         while(i<=3) {
             randNum = Randoms.pickNumberInRange(1, 9);
-            if(numbers[randNum]==0)
-                numbers[randNum] = (i*2)+1;
+
+            if(numbers[randNum]==0) {
+                numbers[randNum] = (i * 2) + 1;
+            }
             else{
                 continue;
             }
             i++;
-            System.out.print(randNum);
+            //System.out.print(randNum);
         }
-        System.out.print('\n');
+        //System.out.print('\n');
     }
     //(3.1)번 기능
     public void clearArr(){
@@ -58,7 +61,6 @@ public class ShootBall {
 
         for(int i =0;i<3;i++){
             tmp = input.charAt(i);
-
             //정수형 외의 문자가 입력됐을 때
             if( tmp>'9'||tmp<'1')
                 throw new IllegalArgumentException("잘못된 입력입니다.");
@@ -78,6 +80,7 @@ public class ShootBall {
         int strike=0,ball=0;
         boolean result = false;
         int[] inputNumbers = inputBall.getNumbers();
+
         for(int i=1;i<=9;i++){
             if((numbers[i] & inputNumbers[i])!=0)
                 if(numbers[i] == inputNumbers[i])
@@ -85,6 +88,7 @@ public class ShootBall {
                 else
                     ball++;
         }
+
         if(ball !=0)
             System.out.print(ball+"볼 " );
         if(strike !=0)
@@ -96,6 +100,7 @@ public class ShootBall {
             System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
         System.out.print("\n");
+
         return result;
     }
 }
