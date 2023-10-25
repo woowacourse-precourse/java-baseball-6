@@ -32,15 +32,24 @@ public class PlayballGame {
         GameMessage.gameResultMessage(gameInit.getBallCount(),gameInit.getStrikeCount());
     }
 
-    public String receiveUserNumbers(){
+    public String receiveUserNumbers()throws IllegalArgumentException{
         gameInit.initResult();
         GameMessage.askUserInput();
         String inputNumbers = Console.readLine();
         if (inputNumbers.length() != 3){
             throw new IllegalArgumentException();
         }
-//        System.out.println("입력한 수는: "+inputNumbers);
+
+        for(int i=0;i<3;i++) {
+            if (!isLimitDigit(i,inputNumbers)) {
+                throw new IllegalArgumentException();
+            }
+        }
         return inputNumbers;
+    }
+
+    public boolean  isLimitDigit(int i, String inputNumbers) {
+        return 0 < inputNumbers.charAt(i) -'0' && inputNumbers.charAt(i) -'0' <= 9;
     }
 
     public void calculateResult(){
