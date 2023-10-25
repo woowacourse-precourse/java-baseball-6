@@ -5,7 +5,41 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class valueHandler {
+
+    public static int endValueCheck(){
+        // 콘솔에서 읽는 값.
+        String sfns = readLine();
+
+        int fns;
+
+        try{
+            fns = Integer.parseInt(sfns);
+        } catch(NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+
+        if(fns == 1)
+            return 0;
+        else if (fns == 2)
+            return 1;
+        else
+            throw new IllegalArgumentException("입력 범위를 넘어선 값입니다.");
+    }
+
+    // 숫자값 List<Integer>로 변환
+    public static List<Integer> createUserVariable(int number){
+        List<Integer> numberList = new ArrayList<>();
+
+        numberList.add(number/100);
+        numberList.add((number%100)/10);
+        numberList.add(number%10);
+
+        return numberList;
+    }
+
     // 숫자야구 랜덤 값 생성 함수
     public static List<Integer> createRandomVariable(){
         // 숫자 3개 생성
@@ -21,10 +55,7 @@ public class valueHandler {
         return computer;
     }
 
-    // 숫자가 문자가 아닌지 숫자라도 정해진 양식에서 벗어났는지 체크
-    // 만약에 문자라면 -> InputMismatchException -> IllegalArgException
-    // 숫자가 양식이 틀리면 -> IllegalArgException
-    // 맞으면 숫자 return
+
 
 
     public static int getBallValue(List<Integer> computer, List<Integer> numberList){
