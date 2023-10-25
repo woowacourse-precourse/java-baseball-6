@@ -44,7 +44,7 @@ public class NumberBaseballGame {
                 }
             }
         }
-        gameUI.displayMessage("게임이 종료되었습니다.");
+        //gameUI.displayMessage("게임이 종료되었습니다.");
     }
 
     private void restartGame() {

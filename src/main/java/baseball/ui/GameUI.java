@@ -43,17 +43,16 @@ public class GameUI {
     }
 
     public int askForRestart() {
-        //System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        //System.out.println();
-        //scanner.nextLine();
-        int choice = scanner.nextInt();
-
-        if (choice != 1 && choice != 2) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        //System.out.println("asdf");
+        String choice = Console.readLine();
+        int choice_1 = Integer.parseInt(choice);
+        if (choice_1 != 1 && choice_1 != 2) {
             System.out.println("not valid, just 2 or 1.");
-            //throw new IllegalArgumentException("invalid input");
             return askForRestart();
         }
-        return choice;
+
+        return choice_1;
     }
 
     public void displayMessage(String message) {
