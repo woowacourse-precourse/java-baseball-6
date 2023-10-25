@@ -1,6 +1,8 @@
 package baseball.number;
 
+import baseball.invalid.InvalidBaseBallNumberRangeException;
 import java.util.Objects;
+
 
 public class BaseBallNumber {
 
