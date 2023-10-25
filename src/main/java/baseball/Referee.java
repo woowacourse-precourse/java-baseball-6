@@ -8,33 +8,16 @@ import static baseball.GameState.STRIKE;
 import java.util.List;
 
 public class Referee {
-    public static boolean judge(List<Integer> computer, List<Integer> number) {
-        int ballCount = judgeBall(computer, number);
-        int strikeCount = judgeStrike(computer, number);
-        return printJudge(ballCount, strikeCount);
+    private final BallCounter ballCounter = new BallCounter();
+    private final StrikeCounter strikeCounter = new StrikeCounter();
+
+    public boolean judge(List<Integer> computer, List<Integer> number) {
+        int ballCount = ballCounter.judge(computer, number);
+        int strikeCount = strikeCounter.judge(computer, number);
+        return say(ballCount, strikeCount);
     }
 
-    private static int judgeBall(List<Integer> computer, List<Integer> number) {
-        return (int) number.stream()
-                .filter(n -> isBall(computer, number, n))
-                .count();
-    }
-
-    private static boolean isBall(List<Integer> computer, List<Integer> number, Integer n) {
-        return computer.contains(n) && computer.indexOf(n) != number.indexOf(n);
-    }
-
-    private static int judgeStrike(List<Integer> computer, List<Integer> number) {
-        return (int) number.stream()
-                .filter(n -> isStrike(computer, number, n))
-                .count();
-    }
-
-    private static boolean isStrike(List<Integer> computer, List<Integer> number, Integer n) {
-        return computer.indexOf(n) == number.indexOf(n);
-    }
-
-    private static boolean printJudge(int ballCount, int strikeCount) {
+    private boolean say(int ballCount, int strikeCount) {
         if (ballCount > 0) {
             System.out.print(ballCount + BALL.getMessage() + " ");
         }
