@@ -15,6 +15,7 @@ public class Application {
     public static void main(String[] args) {
 
         MessageGenerator messageGenerator = new MessageGenerator();
+        Validation validation = new Validation();
 
         messageGenerator.startGame();
         int computerNumber = generateComputerNumber();
@@ -26,7 +27,7 @@ public class Application {
                 messageGenerator.selectOption();
                 String optionString = readLine();
 
-                int optionNumber = getOptionNumber(optionString);
+                int optionNumber = validation.getOptionNumber(optionString);
                 if (optionNumber == 1) {
                     computerNumber = generateComputerNumber();
                     is3Strike = false;
@@ -77,8 +78,6 @@ public class Application {
     /**
      * 스트라이크의 개수와 볼의 개수가 같으면 스트라이크의 개수를 출력하고, 볼은 0으로 처리해야 한다.
      * 3스트라이크가 나오면 게임이 종료된다.
-     * @param computerNumber
-     * @param userNumber
      */
     private static void printHint(int computerNumber, int userNumber) {
 
@@ -115,9 +114,6 @@ public class Application {
 
     /**
      * 스트라이크 개수를 반환한다.
-     * @param computerNumber
-     * @param userNumber
-     * @return count
      */
     private static int countStrike(int computerNumber, int userNumber) {
         String computerValue = String.valueOf(computerNumber);
@@ -134,9 +130,6 @@ public class Application {
 
     /**
      * 컴퓨터의 수와 유저의 수 중 같은 숫자의 개수를 반환한다..
-     * @param computerNumber
-     * @param userNumber
-     * @return count
      */
     private static int countSameNumber(int computerNumber, int userNumber) {
         String[] computerValue = String.valueOf(computerNumber).split("");
@@ -156,14 +149,5 @@ public class Application {
         }
         return count;
     }
-
-    private static int getOptionNumber(String userInput) {
-        // 게임을 계속하는 것과 관련해서 1과 2가 아닌 수를 입력 받을 시 exception 발생
-        if (!userInput.equals("1") && !userInput.equals("2")) {
-            throw new IllegalArgumentException("숫자 1 또는 2만 입력할 수 있습니다.");
-        }
-        return parseInt(userInput);
-    }
-
 
 }

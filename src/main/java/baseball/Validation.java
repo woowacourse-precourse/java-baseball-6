@@ -40,11 +40,24 @@ public class Validation {
      * @param userInput
      * @return charSet.size() != userInput.length()
      */
-    private static boolean isDuplicate(String userInput) {
+    public static boolean isDuplicate(String userInput) {
         HashSet<Character> charSet = new HashSet<>();
         for (int i = 0; i < userInput.length(); i++) {
             charSet.add(userInput.charAt(i));
         }
         return charSet.size() != userInput.length();    // 길이가 달라야 중복인 것.
+    }
+
+    /**
+     * 게임을 계속할지 중단할지 결정하기 위해 입력하는 숫자에 대한 검증을 진행한다.
+     * 1과 2가 아닌 수를 입력할 시 IllegalArgumentException 예외를 발생시킨다.
+     * @param userInput
+     * @return
+     */
+    public static int getOptionNumber(String userInput) {
+        if (!userInput.equals("1") && !userInput.equals("2")) {
+            throw new IllegalArgumentException("숫자 1 또는 2만 입력할 수 있습니다.");
+        }
+        return parseInt(userInput);
     }
 }
