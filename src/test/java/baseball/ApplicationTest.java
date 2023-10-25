@@ -51,20 +51,20 @@ class ApplicationTest extends NsTest {
     @Test
     void 세_자리_수_입력값_길이_테스트() {
         // given
-        int lengthThree = 3;
+        final int LENGTH_THREE = 3;
         String case1 = "123";
         String case2 = "12";
         String case3 = "1234";
 
         // when
         Throwable result1 = catchThrowable(() -> {
-            Validator.validateInputLength(case1, lengthThree);
+            Validator.validateInputLength(case1, LENGTH_THREE);
         });
         Throwable result2 = catchThrowable(() -> {
-            Validator.validateInputLength(case2, lengthThree);
+            Validator.validateInputLength(case2, LENGTH_THREE);
         });
         Throwable result3 = catchThrowable(() -> {
-            Validator.validateInputLength(case3, lengthThree);
+            Validator.validateInputLength(case3, LENGTH_THREE);
         });
 
         // then
@@ -76,20 +76,20 @@ class ApplicationTest extends NsTest {
     @Test
     void 재시작_또는_종료_입력값_길이_테스트() {
         // given
-        int lengthOne = 1;
+        final int LENGTH_ONE = 1;
         String case1 = "1";
         String case2 = "";
         String case3 = "12";
 
         // when
         Throwable result1 = catchThrowable(() -> {
-            Validator.validateInputLength(case1, lengthOne);
+            Validator.validateInputLength(case1, LENGTH_ONE);
         });
         Throwable result2 = catchThrowable(() -> {
-            Validator.validateInputLength(case2, lengthOne);
+            Validator.validateInputLength(case2, LENGTH_ONE);
         });
         Throwable result3 = catchThrowable(() -> {
-            Validator.validateInputLength(case3, lengthOne);
+            Validator.validateInputLength(case3, LENGTH_ONE);
         });
 
         // then
