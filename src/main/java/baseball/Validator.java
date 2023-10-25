@@ -3,7 +3,6 @@ package baseball;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static baseball.Constant.BASEBALL_NUM_LIMIT_LENGTH;
 import static baseball.Constant.NOT_ALLOW_BASEBALL_NUMBER;
@@ -19,34 +18,25 @@ public class Validator {
         return validNumList.contains(invalidNum);
     }
 
-    // 사용자가 입력한 숫자가 3자리 숫자인지 확인해주는 메서드
-    public static Boolean validNum(String invalidNums) {
-        if (checkLength(invalidNums) && checkZeroNum(invalidNums) && checkDuplicationNum(invalidNums)) {
-            return TRUE;
-        }
-        return FALSE;
-    }
-
-    private static Boolean checkLength(String invalidNums) {
+    public static Boolean checkLength(String invalidNums) {
         if (invalidNums.length() != BASEBALL_NUM_LIMIT_LENGTH) {
             return FALSE;
         }
         return TRUE;
     }
 
-    private static Boolean checkZeroNum(String invalidNums) {
+    public static Boolean checkZeroNum(String invalidNums) {
         if (invalidNums.contains(NOT_ALLOW_BASEBALL_NUMBER)) {
             return FALSE;
         }
         return TRUE;
     }
 
-    private static Boolean checkDuplicationNum(String invalidNums) {
-
-        char[] chars = invalidNums.toCharArray();
+    public static Boolean checkDuplicationNum(String invalidNums) {
+        char[] invalidNumList = invalidNums.toCharArray();
         HashSet<Character> invalidNumSet = new HashSet<>();
-        for (char aChar : chars) {
-            invalidNumSet.add(aChar);
+        for (char num : invalidNumList) {
+            invalidNumSet.add(num);
         }
         if (invalidNumSet.size() != BASEBALL_NUM_LIMIT_LENGTH) {
             return FALSE;
