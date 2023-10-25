@@ -4,20 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Validator {
-
     private static final int ANSWER_INPUT_LENGTH = 3;
     private static final int RESTART_INPUT_LENGTH = 1;
     private static final char INVALID_INPUT_CHAR = '0';
     private static final List<String> restartValues = List.of("1", "2");
-    private static ArrayList<Character> checkDuplicateList;
+
+    private Validator() {
+        throw new UnsupportedOperationException();
+    }
 
     public static void validateAnswerInput(String answerInput) {
 
-        if (!validInputLength(ANSWER_INPUT_LENGTH, answerInput)) {
+        if (invalidInputLength(ANSWER_INPUT_LENGTH, answerInput)) {
             throw new IllegalArgumentException();
         }
 
-        checkDuplicateList = new ArrayList<>();
+        List<Character> checkDuplicateList = new ArrayList<>();
 
         for (char input : answerInput.toCharArray()) {
             if (!Character.isDigit(input)) {
@@ -34,7 +36,7 @@ public class Validator {
     }
 
     public static void validateRestartInput(String restartInput) {
-        if (!validInputLength(RESTART_INPUT_LENGTH, restartInput)) {
+        if (invalidInputLength(RESTART_INPUT_LENGTH, restartInput)) {
             throw new IllegalArgumentException();
         }
         if (!restartValues.contains(restartInput)) {
@@ -42,10 +44,7 @@ public class Validator {
         }
     }
 
-    private static boolean validInputLength(int length, String input) {
-        if (input.length() == length) {
-            return true;
-        }
-        return false;
+    private static boolean invalidInputLength(int length, String input) {
+        return input.length() != length;
     }
 }
