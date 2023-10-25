@@ -1,14 +1,18 @@
 package baseball.model;
 
+import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class BaseballGameModel {
 
-    int[] computerNumbers;
+    List<Integer> computerNumbers;
 
     void generateRandomNumbers(){
 
     }
 
-    int[] getComputerNumbers(){
+    List<Integer> getComputerNumbers(){
 
         return null;
     }

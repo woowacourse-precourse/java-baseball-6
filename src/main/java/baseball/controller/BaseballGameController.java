@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class BaseballGameController {
 
@@ -8,11 +9,11 @@ public class BaseballGameController {
 
     }
 
-    boolean isValidInput(int[] numbers) {
+    boolean isValidInput(String userInput) {
         return false;
     }
 
-    HashMap<String, Integer> computeResult(int[] userNumbers, int[] computerNumbers) {
+    HashMap<String, Integer> computeResult(List<Integer> userNumbers, List<Integer> computerNumbers) {
         return null;
     }
 
