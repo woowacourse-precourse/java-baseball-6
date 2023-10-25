@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static utils.Console.print;
+
 public class Game {
     // 멤버 변수
     private int gameFlag;
@@ -91,9 +93,7 @@ public class Game {
 
     // Print Method
     // System.out.print 함수 대신 사용
-    private static void print(String content) {
-        System.out.print(content);
-    }
+
 
     public void start() {
         print("숫자 야구 게임을 시작합니다.\n");
