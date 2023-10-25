@@ -9,7 +9,7 @@ public class BaseballService {
         }
 
         for(char x : number.toCharArray()){
-            if(x -'0' < 0 || x -'0' > 9){
+            if(x -'0' < 1 || x -'0' > 9){
                 throw new IllegalArgumentException();
             }
         }

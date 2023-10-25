@@ -17,6 +17,7 @@ import baseball.domain.Referee;
 import baseball.service.BaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Console;
 
 // Todo : 메서드 명은 동사로 시작, camelCase
 public class BaseballController {
@@ -36,6 +37,7 @@ public class BaseballController {
 
             callNumberToMatch(computer,player);
         }while(restart);
+        Console.close();
     }
 
     void callNumberToMatch(Computer computer, Player player){
@@ -47,6 +49,8 @@ public class BaseballController {
             Referee referee = new Referee(computer,player);
 
             referee.checkResult();
+
+            outputView.printResultMessage(referee.getStrike(),referee.getBall());
 
             if(referee.getStrike() == 3){
                 outputView.printMatchAllNumberMessage();
