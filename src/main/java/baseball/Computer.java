@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,9 +8,11 @@ import java.util.Arrays;
 public class Computer {
 
     private final int digits;
+    private String targetNumber;
 
     public Computer(int digitNumber) {
         this.digits = digitNumber;
+        this.targetNumber = String.valueOf(randomize());
     }
 
     /**
@@ -20,7 +23,7 @@ public class Computer {
      *
      * @return 생성된 임의의 수
      */
-    public int generateRandomNumbers() {
+    public int randomize() {
         if (digits < 1 || digits > 8) {
             throw new IllegalArgumentException();
         }
@@ -33,7 +36,6 @@ public class Computer {
                 selectedNumbers.add(n);
             }
         }
-
         return selectedNumbers.stream().mapToInt(Integer::intValue).reduce(0, (a, b) -> a * 10 + b);
     }
 
@@ -43,13 +45,35 @@ public class Computer {
      * @param input 입력값
      */
     public String evaluate(String input, String targetNumber) {
-        if (isNaN(input) || isNotUnique(input) || isNotNaturalNumber(input) || input.length() != 3) {
+        if (isNaN(input) || isNotUnique(input) || isNotNaturalNumber(input) || input.length() != digits) {
             throw new IllegalArgumentException();
         }
         int[] candidates = candidateNumbers(input, targetNumber);
         int numberOfStrikes = numberOfStrikes(targetNumber, input, candidates);
         int numberOfBalls = candidates.length - numberOfStrikes;
         return Prompt.printResult(numberOfBalls, numberOfStrikes);
+    }
+
+    public String evaluate(String input) {
+        return evaluate(input, this.targetNumber);
+    }
+
+    public boolean restartOrTerminate(String option) {
+        switch (option) {
+            case "1" -> {
+                reset();
+                return true;
+            }
+            case "2" -> {
+                Console.close();
+                return false;
+            }
+            default -> throw new IllegalArgumentException();
+        }
+    }
+
+    private void reset() {
+        this.targetNumber = String.valueOf(randomize());
     }
 
     private int[] candidateNumbers(String input, String targetNumber) {

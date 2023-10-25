@@ -18,7 +18,7 @@ public class UnitTest {
     class ComputerRandomNumberTest {
         @Test
         void 임의의_수는_3자리이다() {
-            int number = computer.generateRandomNumbers();
+            int number = computer.randomize();
 
             assertTrue(number >= 100);
             assertTrue(number < 1000);
@@ -26,7 +26,7 @@ public class UnitTest {
 
         @Test
         void 임의의_수는_서로_다른_수이다() {
-            int number = computer.generateRandomNumbers();
+            int number = computer.randomize();
             int n1 = number / 100;
             int n2 = (number % 100) / 10;
             int n3 = number % 10;
@@ -38,7 +38,7 @@ public class UnitTest {
 
         @Test
         void 임의의_수의_자리수는_0이_아닌_자연수이다() {
-            int number = computer.generateRandomNumbers() % 10;
+            int number = computer.randomize() % 10;
 
             assertTrue(number >= 1);
         }
