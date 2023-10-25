@@ -16,6 +16,9 @@ public class Application {
             if(Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine()) == 1){
                 redo = true;
             }
+            else
+                redo = false;
         } while(redo);
+        System.out.println("게임 종료");
     }
 }
