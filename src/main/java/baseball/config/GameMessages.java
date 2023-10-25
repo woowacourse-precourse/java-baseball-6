@@ -23,7 +23,7 @@ public class GameMessages {
      * <p>
      * 사용 예: {@code String.format(BALL, ballCount);}
      */
-    public static final String BALL = "%d볼";
+    public static final String BALL = "%d볼 ";
 
     /** 낫싱 결과 메시지 */
     public static final String NOTHING = "낫싱";
@@ -41,5 +41,6 @@ public class GameMessages {
      * 사용 예: {@code String.format(REPLAY_OR_STOP, replayOption, stopOption);}
      */
     public static final String REPLAY_OR_STOP = "게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.";
+    public static final String INPUT_ERR_MSG = "유효하지 않은 입력입니다.";
 }
 
