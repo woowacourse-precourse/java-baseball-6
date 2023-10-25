@@ -23,10 +23,8 @@ public class Human {
         return null;
     }
 
-    public void validateInput(String input) throws IllegalAccessException {
-
+    public void validateInput(String input) throws IllegalAccessException {:
         List<Integer> parseInput = new ArrayList<>(Arrays.asList(0, 0, 0));
-
         // 1. Invalid Length
         if (input.length() != 3) {
             throw new IllegalArgumentException("Length 가 3이 아님.");
