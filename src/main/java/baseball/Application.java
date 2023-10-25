@@ -3,6 +3,7 @@ package baseball;
 import baseball.game.Game;
 import baseball.game.GameLogic;
 import baseball.game.GameUI;
+import baseball.user.User;
 import baseball.validators.QuitCommandValidator;
 import baseball.validators.UserNumberValidator;
 

@@ -1,7 +1,7 @@
 package baseball.game;
 
 import baseball.Computer;
-import baseball.User;
+import baseball.user.User;
 import baseball.validators.ValidatorType;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -13,7 +13,7 @@ public class Game {
     private final Computer computer;
     private final GameUI gameUI;
     private final GameLogic gameLogic;
-    private static final int EXITCOMMAND = 2;
+    private static final String EXIT_COMMAND = "2";
 
     public Game(GameUI gameUI, GameLogic gameLogic, Computer computer, User user) {
         this.computer = computer;
@@ -22,9 +22,8 @@ public class Game {
         this.gameLogic = gameLogic;
     }
 
-    private static boolean isWantToQuitGame() {
-        int exitCommand = Integer.parseInt(Console.readLine());
-        return exitCommand == EXITCOMMAND;
+    private static String quitInput() {
+        return Console.readLine();
     }
 
     private String inferHint() {
@@ -40,20 +39,21 @@ public class Game {
             try {
                 gameUI.diplayUserInput();
                 user.inputUserNumber();
-                gameLogic.validateUserInput(user.getUserNumber(), ValidatorType.USER_NUMBER);
 
                 String hint = inferHint();
                 gameUI.displayHint(inferHint());
 
                 if (gameLogic.isAnswer(hint)) {
                     displayCorrectAnswerMessage();
+                    String quitInput = quitInput();
 
-                    if (isWantToQuitGame()) {
+                    gameLogic.validateUserInput(quitInput, ValidatorType.QUIT_COMMAND);
+
+                    if (quitInput.equals(EXIT_COMMAND)) {
                         break;
-                    } else {
-                        computer.resetComputerNumber();
                     }
 
+                    computer.resetComputerNumber();
                 }
             } catch (IllegalArgumentException e) {
                 gameUI.displayExceptionMessage(e);

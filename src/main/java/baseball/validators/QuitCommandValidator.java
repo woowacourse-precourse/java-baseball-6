@@ -7,7 +7,7 @@ public class QuitCommandValidator implements Validator {
 
     @Override
     public void validate(String userInput) {
-        if (!userInput.equals(CONTINUE_COMMAND) || !userInput.equals(EXIT_COMMAND)) {
+        if (!userInput.equals(CONTINUE_COMMAND) && !userInput.equals(EXIT_COMMAND)) {
             throw (new IllegalArgumentException("1번 혹은 2번을 입력하세요."));
         }
     }

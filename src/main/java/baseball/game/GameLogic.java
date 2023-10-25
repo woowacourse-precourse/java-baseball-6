@@ -16,12 +16,15 @@ public class GameLogic {
         this.quitCommandValidator = quitCommandValidator;
     }
 
-    void validateUserInput(String userInput, ValidatorType validatorType) {
+    public void validateUserInput(String userInput, ValidatorType validatorType) {
         switch (validatorType) {
-            case USER_NUMBER -> userNumberValidator.validate(userInput);
-            case QUIT_COMMAND -> quitCommandValidator.validate(userInput);
+            case USER_NUMBER:
+                userNumberValidator.validate(userInput);
+                break;
+            case QUIT_COMMAND:
+                quitCommandValidator.validate(userInput);
+                break;
         }
-        userNumberValidator.validate(userInput);
     }
 
     public int countStrike(String userNumber, ArrayList<Integer> computerNumber) {
