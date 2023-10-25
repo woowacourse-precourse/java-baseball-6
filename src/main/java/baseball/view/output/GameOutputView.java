@@ -5,6 +5,9 @@ import baseball.dto.GuessResult;
 
 public class GameOutputView {
 
+    private GameOutputView() {
+    }
+
     public static void printEnterBallNumbersScript() {
         System.out.print("숫자를 입력해주세요 : ");
     }
