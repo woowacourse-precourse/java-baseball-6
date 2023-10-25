@@ -8,7 +8,7 @@ import baseball.util.Constant;
 public class NumberGenerator {
 	private final List<Integer> computerNumber = new ArrayList<>();
 
-	private void generateNumber() {
+	public void generateNumber() {
 		while (computerNumber.size() < Constant.NUMBER_LENGTH) {
 			int randomNumber = Randoms.pickNumberInRange(Constant.MIN_NUMBER, Constant.MAX_NUMBER);
 			if (!computerNumber.contains(randomNumber)) {
