@@ -7,7 +7,7 @@ public class ScoreKeeper {
 
     // 승리조건 확인
     public static boolean isThreeStrikes() {
-        return strikeCount == 3;
+        return strikeCount == Constants.NUMBER_GAME_LENGTH;
     }
 
     // 정답 확인하기 - 볼, 스트라이크, 낫싱 출력
@@ -26,7 +26,7 @@ public class ScoreKeeper {
     private static void calculateBallCount(String answer) {
         ballCount = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.NUMBER_GAME_LENGTH; i++) {
             if (Defender.isBall(answer, i)) {
                 ballCount++;
             }
@@ -40,7 +40,7 @@ public class ScoreKeeper {
     private static void calculateStrikeCount(String answer) {
         strikeCount = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.NUMBER_GAME_LENGTH; i++) {
             if (Defender.isStrike(answer, i)) {
                 strikeCount++;
             }

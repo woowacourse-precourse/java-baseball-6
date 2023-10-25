@@ -3,7 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Session {
-    private static final String victoryMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String victoryMessage = String.format(
+            "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", Constants.NUMBER_GAME_LENGTH);
     private static boolean isGameRunning = true;
 
     // 프로그램 시작, 응답받기

@@ -11,13 +11,13 @@ public class Defender {
     public static void reroll() {
         target.setLength(0);
         List<Integer> temp = new ArrayList<>();
-        while (temp.size() < 3) {
+        while (temp.size() < Constants.NUMBER_GAME_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!temp.contains(randomNumber)) {
                 temp.add(randomNumber);
             }
         }
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.NUMBER_GAME_LENGTH; i++) {
             target.append(temp.get(i));
         }
     }

@@ -14,7 +14,7 @@ class ValidationAnswer extends Validation {
 
     // 입력 유효성 검사: 0이 포함되어 있는가?
     private static void checkAnswerIncludeZero(String answer) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.NUMBER_GAME_LENGTH; i++) {
             if (answer.charAt(i) == '0') {
                 throw new IllegalArgumentException(answerErrorMessage);
             }
@@ -23,7 +23,7 @@ class ValidationAnswer extends Validation {
 
     // 입력 유효성 검사: 숫자이지만 3자리가 아닌 입력값 확인
     private static void checkAnswerLength(String answer) {
-        if (answer.length() != 3) {
+        if (answer.length() != Constants.NUMBER_GAME_LENGTH) {
             throw new IllegalArgumentException(answerErrorMessage);
         }
     }
