@@ -9,10 +9,12 @@ public class Game {
 
     private Computer computer;
     private Player player;
+    private InputHandler inputHandler;
 
-    public Game(Computer computer, Player player) {
+    public Game(Computer computer, Player player, InputHandler inputHandler) {
         this.computer = computer;
         this.player = player;
+        this.inputHandler = inputHandler;
     }
 
     public void start() {
@@ -23,15 +25,15 @@ public class Game {
 
     private void init() {
         computer.generateRandomNumbers();
-        player.setNumbers(new InputHandler().getPlayInput());
+        player.setNumbers(inputHandler.getPlayInput());
     }
 
     private void loop() {
         while (true) {
-            if (handleGameOver()){
+            if (handleGameOver()) {
                 return;
             }
-            player.setNumbers(new InputHandler().getPlayInput());
+            player.setNumbers(inputHandler.getPlayInput());
         }
     }
 
@@ -50,11 +52,11 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 " + RESTART_KEYWORD + ", 종료하려면 " + EXIT_KEYWORD + "를 입력하세요.");
         String playerChoice = Console.readLine();
 
-        if (RESTART_KEYWORD.equals(playerChoice)){
+        if (RESTART_KEYWORD.equals(playerChoice)) {
             computer.generateRandomNumbers();
             return true;
         }
-        if (EXIT_KEYWORD.equals(playerChoice)){
+        if (EXIT_KEYWORD.equals(playerChoice)) {
             return false;
         }
 
