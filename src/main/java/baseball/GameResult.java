@@ -23,7 +23,6 @@ public class GameResult {
     }
 
     public List<String> getBallAndStrikeResult() {
-        result.remove(null);
         return result.entrySet().stream()
                 .filter(status -> status.getValue() != null)
                 .map(status -> status.getValue() + status.getKey().toString())
