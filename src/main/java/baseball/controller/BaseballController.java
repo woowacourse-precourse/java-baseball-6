@@ -15,9 +15,8 @@ public class BaseballController {
 
     public void startNumberBaseballGame() {
         gameInformation.makeRandomNumber();
-        answerNumber = gameInformation.getAnswerNumber();
 
-        while (answerNumber.equals(inputNumber) == false) {
+        while (gameInformation.compareInputWithAnswer(inputNumber)==false) {
             Output.printInputNumberMessage();
             inputNumber = Input.getNumber();
 

@@ -21,11 +21,11 @@ public class NumberValidator {
         }
     }
 
-    public static boolean validInputLength(String inputNumber, int numberCount){
-        if(inputNumber.length() > numberCount){
-            return false;
-        } else if(inputNumber.length() < numberCount){
-            return false;
+    public static boolean validInputLength(String inputNumber, int numberCount) {
+        if (inputNumber.length() > numberCount) {
+            return false;   //입력받아야할 숫자보다 더 많이 입력 받은 경우 false 반환
+        } else if (inputNumber.length() < numberCount) {
+            return false;  //입력받아야할 숫자보다 더 적게 입력 받은 경우 false 반환
         }
         return true;
     }

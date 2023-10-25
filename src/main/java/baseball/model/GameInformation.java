@@ -40,9 +40,13 @@ public class GameInformation {
         }
     }
 
+    public boolean compareInputWithAnswer(String inputNumber) {
 
-    public String getAnswerNumber() {
-        return answerNumber;
+        if (answerNumber.equals(inputNumber)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public int getStrikeCount() {
