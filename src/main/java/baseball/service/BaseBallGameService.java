@@ -15,8 +15,7 @@ public class BaseBallGameService {
     public void start() {
         BallStrike ballStrike = new BallStrike();
 
-        Computer randomNumbers = Computer.createRandomNumbers();
-        List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
+        List<Integer> randomNumbersList = generateComputerNumbers();
 
         while (ballStrike.getStrikeCount() < 3) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -52,6 +51,13 @@ public class BaseBallGameService {
             return true;
         }
         return false;
+    }
+
+    public List<Integer> generateComputerNumbers() {
+        Computer randomNumbers = Computer.createRandomNumbers();
+        List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
+
+        return randomNumbersList;
     }
 
 
