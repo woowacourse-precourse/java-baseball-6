@@ -7,4 +7,12 @@ public class Game {
 
     private Game() {
     }
+
+    private static class GameHolder {
+        private static final Game INSTANCE = new Game();
+    }
+
+    public static Game getInstance() {
+        return GameHolder.INSTANCE;
+    }
 }
