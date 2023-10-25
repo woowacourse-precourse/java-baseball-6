@@ -1,25 +1,29 @@
 package baseball.people.preparation;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 class TargetNumber {
-    private int[] number = new int[3];
+    private final List<Integer> number = new ArrayList<>();
 
     private TargetNumber() {
-        number = this.getRandomNumber();
+        this.getRandomNumber();
     }
 
     private TargetNumber(int a, int b, int c) {
-        this.number[0] = a;
-        this.number[1] = b;
-        this.number[2] = c;
+        number.add(a);
+        number.add(b);
+        number.add(c);
     }
 
     static TargetNumber generate(int a, int b, int c) {
         if (isValidNumber(a) && isValidNumber(b) && isValidNumber(c)) {
             return new TargetNumber(a, b, c);
         }
+
         return new TargetNumber();
     }
 
@@ -27,28 +31,30 @@ class TargetNumber {
         if (!isValidNumber(num) || !isValidIndex(idx)) {
             return false;
         }
-        return number[idx] == num;
+
+        return number.get(idx) == num;
     }
 
     boolean isBall(int num) {
         if (!isValidNumber(num)) {
             return false;
         }
-        return Arrays.stream(number).anyMatch(i -> i == num);
+
+        return number.contains(num);
     }
 
-    int[] getRandomNumber() {
+    void getRandomNumber() {
         boolean[] duplicationCheck = new boolean[10];
-        int[] randomNumber = new int[3];
         for (int i = 0; i < 3; i++) {
             int value = Randoms.pickNumberInRange(1, 9);
+
             while (duplicationCheck[value]) {
                 value = Randoms.pickNumberInRange(1, 9);
             }
+
             duplicationCheck[value] = true;
-            randomNumber[i] = value;
+            number.add(value);
         }
-        return randomNumber;
     }
 
     private static boolean isValidNumber(int i) {
