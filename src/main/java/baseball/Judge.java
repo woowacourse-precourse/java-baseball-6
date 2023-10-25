@@ -9,7 +9,7 @@ public class Judge {
         int strike = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (computer.get(i) == user.get(j)) {
+                if (computer.get(i).equals(user.get(j))) {
                     if (i == j) {
                         strike += 1;
                     } else {
@@ -33,7 +33,6 @@ public class Judge {
             System.out.print("3스트라이크");
             System.out.println("3개의 숫자를 다 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
         } else if (ball == 0) {
             System.out.print(strike + "스트라이크");
         } else {
