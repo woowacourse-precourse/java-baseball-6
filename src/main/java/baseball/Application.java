@@ -71,11 +71,10 @@ public class Application {
                 && isRightRangeNumber(userInput)
                 && isDifferentNumber(userInput)) {
             numberList = changeStringToList(userInput);
-        } else {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+            return numberList;
         }
 
-        return numberList;
+        throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
     public static void outputBaseball(int strike, int ball) {
@@ -88,7 +87,7 @@ public class Application {
             System.out.println(ball + "볼");
         } else if ((strike != 0) && (ball == 0)) {
             System.out.println(strike + "스트라이크");
-        } else {
+        } else if ((strike != 0) && (ball != 0)) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
@@ -98,9 +97,9 @@ public class Application {
                 && isDigitNumber(userInputStartOrEnd)
                 && isOneOrTwo(userInputStartOrEnd)) {
             return userInputStartOrEnd.charAt(0) - '0';
-        } else {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
         }
+
+        throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
     public static boolean isOneOrTwo(String userInputStartOrEnd) {
@@ -108,17 +107,17 @@ public class Application {
 
         if ((userInputNumber == RESTART) || (userInputNumber == END)) {
             return true;
-        } else {
-            throw new IllegalArgumentException("입력이 1 또는 2가 아닌 잘못된 입력입니다.");
         }
+
+        throw new IllegalArgumentException("입력이 1 또는 2가 아닌 잘못된 입력입니다.");
     }
 
     public static boolean isRightLength(String userInput, int inputLength) {
         if (userInput.length() == inputLength) {
             return true;
-        } else {
-            throw new IllegalArgumentException("입력 길이가 " + inputLength + "이 아닌 잘못된 입력입니다.");
         }
+
+        throw new IllegalArgumentException("입력 길이가 " + inputLength + "이 아닌 잘못된 입력입니다.");
     }
 
     public static boolean isDigitNumber(String userInput) {
@@ -132,9 +131,9 @@ public class Application {
 
         if ((digitCount == userInput.length())) {
             return true;
-        } else {
-            throw new IllegalArgumentException("입력에 숫자가 아닌 것이 포함된 잘못된 입력입니다.");
         }
+
+        throw new IllegalArgumentException("입력에 숫자가 아닌 것이 포함된 잘못된 입력입니다.");
     }
 
     public static boolean isRightRangeNumber(String userInput) {
@@ -146,9 +145,9 @@ public class Application {
                 && (1 <= indexOne && indexOne <= 9)
                 && (1 <= indexTwo && indexTwo <= 9)) {
             return true;
-        } else {
-            throw new IllegalArgumentException("입력에 1~9사이 숫자가 아닌 숫자가 포함된 잘못된 입력입니다.");
         }
+
+        throw new IllegalArgumentException("입력에 1~9사이 숫자가 아닌 숫자가 포함된 잘못된 입력입니다.");
     }
 
     public static boolean isDifferentNumber(String userInput) {
@@ -160,9 +159,9 @@ public class Application {
                 && (indexOne != indexTwo)
                 && (indexTwo != indexZero)) {
             return true;
-        } else {
-            throw new IllegalArgumentException("입력에 중복된 숫자가 포함된 잘못된 입력입니다.");
         }
+
+        throw new IllegalArgumentException("입력에 중복된 숫자가 포함된 잘못된 입력입니다.");
     }
 
     public static void startOneGame(List<Integer> result) {
