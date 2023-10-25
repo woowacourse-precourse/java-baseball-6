@@ -6,21 +6,14 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGameInput {
-    private final int playInputLength;
-
-    BaseBallGameInput(int playInputLength) {
-        this.playInputLength = playInputLength;
-    }
-
     public List<Integer> playInput() {
         String userInputStr = Console.readLine();
         validatePlayInput(userInputStr);
-        List<Integer> numbers = convertStringToList(userInputStr);
-        return numbers;
+        return convertStringToList(userInputStr);
     }
 
     private void validatePlayInput(String input) {
-        if (input.length() != playInputLength) {
+        if (input.length() != GameConstant.PLAY_INPUT_LENGTH) {
             throw new IllegalArgumentException();
         }
     }

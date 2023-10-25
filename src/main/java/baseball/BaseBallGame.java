@@ -7,23 +7,22 @@ enum STAGES {
     PLAY,
     END,
     OVER,
-    CONTINUE
 }
 
 public class BaseBallGame implements Game {
     private STAGES stage;
     private Computer computer;
-    private BaseBallGameInput baseBallGameInput;
+    private final BaseBallGameInput baseBallGameInput;
 
     BaseBallGame() {
-        this.baseBallGameInput = new BaseBallGameInput(GameConstant.PLAY_INPUT_LENGTH);
+        this.baseBallGameInput = new BaseBallGameInput();
         this.start();
     }
 
     private void start() {
         this.stage = STAGES.START;
         this.printStageMessage();
-        this.computer = new Computer(new NextStepRandomNumberGenerator(), GameConstant.PLAY_INPUT_LENGTH);
+        this.computer = new Computer(new NextStepRandomNumberGenerator());
         System.out.println(this.computer.getComputerNumbers());
     }
 
@@ -69,7 +68,6 @@ public class BaseBallGame implements Game {
         if (this.stage == STAGES.END) {
             System.out.println(GameConstant.END_STAGE_MESSAGE);
             System.out.println(GameConstant.END_STAGE_MESSAGE2);
-            return;
         }
     }
 
