@@ -27,10 +27,10 @@ public class BaseballGameController {
             compareUserToComputer(computerNumber);
             OutputView.printClearMessage();
             input = InputView.inputUserRestartMessage();
-        } while (validateGameReplay(input));
+        } while (validateGameRestart(input));
     }
 
-    private boolean validateGameReplay(String input) {
+    private boolean validateGameRestart(String input) {
         return input.equals(Constant.GAME_RESTART_NUMBER);
     }
 
