@@ -1,6 +1,6 @@
 package view;
 
-public class InputText {
+public class InputTextPrinter {
 
     /**
      * 사용자의 입력을 요청하는 텍스트 출력 기능
