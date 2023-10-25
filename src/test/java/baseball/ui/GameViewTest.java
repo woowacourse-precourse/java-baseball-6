@@ -4,10 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.controller.AbstractGameController;
 import baseball.controller.GameController;
-import baseball.util.RandomNumberCreator;
 import baseball.state.Scoring;
 import baseball.ui.output.component.OutputComponentImpl;
 import baseball.ui.output.format.ResultFormatStringCreatorImpl;
+import baseball.util.DefaultRandomNumberCreatorByDigit;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -116,7 +116,7 @@ class GameViewTest {
     }
 
     private static Scoring getDefaultScoring() {
-        return new Scoring(RandomNumberCreator.create(3));
+        return new Scoring(new DefaultRandomNumberCreatorByDigit().create(3));
     }
 
 }

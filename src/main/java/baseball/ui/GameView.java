@@ -2,11 +2,11 @@ package baseball.ui;
 
 import baseball.controller.GameController;
 import baseball.controller.GameControllerImpl;
-import baseball.util.RandomNumberCreator;
 import baseball.state.Scoring;
 import baseball.ui.input.component.InputComponent;
 import baseball.ui.output.component.OutputComponent;
 import baseball.ui.output.format.ResultFormatStringCreator;
+import baseball.util.DefaultRandomNumberCreatorByDigit;
 import java.util.Map;
 
 public class GameView {
@@ -64,7 +64,7 @@ public class GameView {
     }
 
     public void restart() {
-        this.gameController = new GameControllerImpl(new Scoring(RandomNumberCreator.create(3)));
+        this.gameController = new GameControllerImpl(new Scoring(new DefaultRandomNumberCreatorByDigit().create(3)));
         this.gameController.start();
         guessUntilCorrect();
     }
