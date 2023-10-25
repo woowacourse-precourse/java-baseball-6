@@ -26,6 +26,11 @@ public class Baseball {
         BallCount ballCount = createBallCount();
         String ballCountMessage = ballCount.createBallCountMessage();
         System.out.println(ballCountMessage);
+        if (ballCount.isThreeStrike()) {
+            BaseballPrinter.printCorrectMessage();
+            return;
+        }
+        playGame();
     }
 
     private BallCount createBallCount() {
