@@ -2,7 +2,7 @@ package baseball.data;
 
 public class BaseballDataUsingThreeNumber implements IBaseballData<Integer> {
 
-    private int value;
+    private final Integer value;
 
     public BaseballDataUsingThreeNumber(int value) {
         this.value = value;
@@ -10,13 +10,13 @@ public class BaseballDataUsingThreeNumber implements IBaseballData<Integer> {
 
 
     @Override
-    public BaseballDataCompareResult compare(IBaseballData baseballData) {
+    public BaseballDataCompareResult compare(IBaseballData<Integer> baseballData) {
         if (!(baseballData instanceof BaseballDataUsingThreeNumber)) {
             throw new IllegalArgumentException();
         }
 
         int value1 = this.value;
-        int value2 = (int) baseballData.getValue();
+        int value2 = baseballData.getValue();
         int[] value1Arr = this.numberToArray(value1);
         int[] value2Arr = this.numberToArray(value2);
 
@@ -31,7 +31,7 @@ public class BaseballDataUsingThreeNumber implements IBaseballData<Integer> {
                         continue;
                     }
                     ballCount++;
-                    
+
                 }
             }
         }
@@ -46,9 +46,8 @@ public class BaseballDataUsingThreeNumber implements IBaseballData<Integer> {
     @Override
     public int getSize() {
         String numberAsString = Integer.toString(this.value);
-        int length = numberAsString.length();
 
-        return length;
+        return numberAsString.length();
     }
 
     private int[] numberToArray(int num) {

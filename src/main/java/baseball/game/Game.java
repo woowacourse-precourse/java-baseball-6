@@ -4,17 +4,15 @@ import baseball.data.BaseballDataCompareResult;
 import baseball.data.IBaseballDataBuilder;
 import baseball.util.ISystemConsole;
 import baseball.data.IBaseballData;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class Game {
+public class Game<T> {
 
-    private ISystemConsole systemConsole;
-    private IBaseballDataBuilder baseballDataBuilder;
-    private IBaseballData computerBaseballData;
-    private IMessage gameMessage;
+    private final ISystemConsole systemConsole;
+    private final IBaseballDataBuilder<T> baseballDataBuilder;
+    private IBaseballData<T> computerBaseballData;
+    private final IMessage gameMessage;
 
-    public Game(ISystemConsole systemConsole, IBaseballDataBuilder baseballDataBuilder,
+    public Game(ISystemConsole systemConsole, IBaseballDataBuilder<T> baseballDataBuilder,
             IMessage gameMessage) {
         this.systemConsole = systemConsole;
         this.baseballDataBuilder = baseballDataBuilder;
@@ -30,11 +28,7 @@ public class Game {
             this.systemConsole.open();
             this.systemConsole.print(this.gameMessage.requestNumberMessage());
             String input = this.systemConsole.scan();
-            if (!isValidInput(input)) {
-                throw new IllegalArgumentException(this.gameMessage.inputNumberErrorMessage());
-            }
-
-            IBaseballData userBaseballData = this.baseballDataBuilder.createUserData(input);
+            IBaseballData<T> userBaseballData = this.baseballDataBuilder.createUserData(input);
             BaseballDataCompareResult compareResult = this.computerBaseballData.compare(
                     userBaseballData);
             this.checkStrikeBallCount(compareResult);
@@ -66,8 +60,11 @@ public class Game {
             printString.append(this.gameMessage.nothingMessage());
         }
         this.systemConsole.println(printString.toString());
+    }
 
-
+    private boolean checkGameOver(BaseballDataCompareResult compareResult,
+            IBaseballData<T> computerBaseballData) {
+        return compareResult.strike == computerBaseballData.getSize();
     }
 
     private boolean checkGameEnd() {

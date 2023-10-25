@@ -3,7 +3,7 @@ package baseball.data;
 public interface IBaseballData<T> {
 
 
-    BaseballDataCompareResult compare(IBaseballData baseballData);
+    BaseballDataCompareResult compare(IBaseballData<T> baseballData);
 
     T getValue();
 

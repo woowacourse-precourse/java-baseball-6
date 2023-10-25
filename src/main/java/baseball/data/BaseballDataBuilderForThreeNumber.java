@@ -6,16 +6,17 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BaseballDataBuilderForThreeNumber implements IBaseballDataBuilder {
+public class BaseballDataBuilderForThreeNumber implements IBaseballDataBuilder<Integer> {
 
-    private IRandomValueGenerator randomValueGenerator;
+    private final IRandomValueGenerator<Integer> randomValueGenerator;
 
-    public BaseballDataBuilderForThreeNumber(IRandomValueGenerator randomValueGenerator) {
+    public BaseballDataBuilderForThreeNumber(IRandomValueGenerator<Integer> randomValueGenerator
+    ) {
         this.randomValueGenerator = randomValueGenerator;
     }
 
     @Override
-    public IBaseballData createComputerData() {
+    public IBaseballData<Integer> createComputerData() {
 
         if (randomValueGenerator instanceof BaseballDataUsingThreeNumber) {
             throw new IllegalArgumentException();
@@ -25,7 +26,7 @@ public class BaseballDataBuilderForThreeNumber implements IBaseballDataBuilder {
 
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < LENGTH_OF_NUMBER) {
-            int randomNumber = (int) this.randomValueGenerator.generate();
+            int randomNumber = this.randomValueGenerator.generate();
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
             }

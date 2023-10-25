@@ -2,9 +2,9 @@ package baseball.data;
 
 import baseball.util.IRandomValueGenerator;
 
-public interface IBaseballDataBuilder {
+public interface IBaseballDataBuilder<T> {
 
-    IBaseballData createComputerData();
+    IBaseballData<T> createComputerData();
 
-    IBaseballData createUserData(String userData);
+    IBaseballData<T> createUserData(String userData);
 }
