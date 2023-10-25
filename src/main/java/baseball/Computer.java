@@ -9,11 +9,11 @@ public class Computer implements Rule {
         numbers = BaseballNumbers.selectByRandom();
     }
 
-    int testNothing(BaseballNumber number) {
+    public int testNothing(BaseballNumber number) {
         return (numbers.contains(number) ? 0 : 1);
     }
 
-    int testStrike(int index, BaseballNumber number) {
+    public int testStrike(int index, BaseballNumber number) {
         BaseballNumber numberOfIndex = numbers.get(index);
         return (numberOfIndex.equals(number) ? 1 : 0);
     }

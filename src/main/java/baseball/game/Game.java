@@ -1,4 +1,10 @@
-package baseball;
+package baseball.game;
+
+import baseball.BaseballNumber;
+import baseball.Computer;
+import baseball.Result;
+import baseball.Rule;
+import baseball.User;
 
 public class Game implements Rule {
     private final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";

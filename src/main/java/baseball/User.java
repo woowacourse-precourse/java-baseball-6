@@ -9,7 +9,7 @@ public class User implements Rule {
         numbers = BaseballNumbers.selectByInput();
     }
 
-    BaseballNumber numberOf(int index) {
+    public BaseballNumber numberOf(int index) {
         return numbers.get(index);
     }
 }

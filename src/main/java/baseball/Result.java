@@ -16,7 +16,7 @@ public class Result implements Rule {
         this.nothing = nothing;
     }
 
-    void print() {
+    public void print() {
         System.out.println(message());
     }
 
@@ -39,7 +39,7 @@ public class Result implements Rule {
         return stringBuilder.toString();
     }
 
-    boolean isMatched() {
+    public boolean isMatched() {
         return (strike == DIGIT_SIZE);
     }
 }
