@@ -32,6 +32,14 @@ public class BaseballGame {
         this.strike++;
     }
 
+    public List<Integer> stringToIntegerList(String input) {
+        List<Integer> userNum = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            userNum.add(Character.getNumericValue(input.charAt(i)));
+        }
+        return userNum;
+    }
+
     public void reStart() {
         resetStrike();
         resetBall();
@@ -55,10 +63,7 @@ public class BaseballGame {
 
         String message = "";
 
-        List<Integer> userNum = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            userNum.add(Character.getNumericValue(input.charAt(i)));
-        }
+        List<Integer> userNum = stringToIntegerList(input);
 
         for (int i = 0; i < 3; i++) {
             if (userNum.get(i).equals(target.get(i))) {
