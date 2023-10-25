@@ -36,3 +36,4 @@
     - [x] game : 게임 진행
     - [x] exitGame : 게임 종료
 
+- [ ] num int 변수 3개 → list 변경
