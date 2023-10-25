@@ -8,11 +8,21 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> testRandom = getRandomNumber();
-        List<Integer> testInput= inputUserNumber();
+        List<Integer> randomNumber = getRandomNumber();
+        System.out.println(randomNumber);
+        while (true) {
+            List<Integer> userNumber = inputUserNumber();
+            int strike = strike(randomNumber, userNumber);
+            int ball = ball(randomNumber, userNumber);
 
-        System.out.println(testRandom);
-        System.out.println(testInput);
+            // test
+            System.out.println(strike);
+            System.out.println(ball);
+            if(strike == 3){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
+        }
     }
 
     private static List<Integer> getRandomNumber() {
@@ -35,12 +45,12 @@ public class Application {
         }
         for (int userNumber : userNumbers) {
             if(userNumber < 1 || userNumber > 9) {
-                throw new IllegalArgumentException("범위 밖 숫자 입력입니다.");
+                throw new IllegalArgumentException("1부터 9까지의 숫자를 입력해주세요.");
             }
         }
         Set<Integer> deleteDuplicate = new HashSet<>(userNumbers);
         if (deleteDuplicate.size() != userNumbers.size()) {
-            throw new IllegalArgumentException("중복되지 않은 수를 입력해주세요.");
+            throw new IllegalArgumentException("중복 되지 않은 수를 입력해주세요.");
         }
         return userNumbers;
     }
@@ -56,5 +66,25 @@ public class Application {
             }
         }
         return userNumbers;
+    }
+
+    private static int strike(List<Integer> randomNumber, List<Integer> userNumber) {
+        int count = 0;
+        for(int i =0; i< userNumber.size(); i++) {
+            if(randomNumber.get(i).equals(userNumber.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static int ball(List<Integer> randomNumber, List<Integer> userNumber) {
+        int ball = 0;
+        for(int i =0; i< userNumber.size(); i++) {
+            if(randomNumber.contains(userNumber.get(i)) && !randomNumber.get(i).equals(userNumber.get(i))) {
+                 ball++;
+            }
+        }
+        return ball;
     }
 }
