@@ -3,7 +3,7 @@ package baseball.finishProcess;
 import java.util.Scanner;
 
 public class finishProcess {
-    String finishAnswer;
+    int finishAnswer;
 
     public finishProcess() {
         printFinishPhrase();
@@ -16,6 +16,12 @@ public class finishProcess {
 
     private void inputFinishAnswer() {
         Scanner sc = new Scanner(System.in);
-        finishAnswer = sc.next();
+
+        try {
+            finishAnswer = sc.nextInt();
+        }
+        catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
