@@ -1,10 +1,10 @@
 package baseball.controller;
 
 import baseball.common.GameValue;
-import baseball.domain.ComputerNumber;
-import baseball.domain.PlayerNumber;
+import baseball.domain.Computer;
+import baseball.domain.NumberGenerator;
+import baseball.domain.Player;
 import baseball.dto.CountResultDto;
-import baseball.service.CountService;
 import baseball.validation.ErrorMessage;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -12,17 +12,12 @@ import baseball.view.OutputView;
 public class BaseBallController {
     private static final String RESTART = "1";
     private static final String END = "2";
-    private final CountService countService;
-
-    public BaseBallController(CountService countService) {
-        this.countService = countService;
-    }
 
     public void startGame() {
         OutputView.printGameStartMessage();
         do {
-            ComputerNumber computerNumber = ComputerNumber.getInstance();
-            runGame(computerNumber);
+            Computer computer = new Computer(NumberGenerator.createComputerNumber());
+            runGame(computer);
         } while (restartGame());
     }
 
@@ -38,15 +33,15 @@ public class BaseBallController {
         throw new IllegalArgumentException(ErrorMessage.RESTART_COMMAND.getMessage());
     }
 
-    private void runGame(ComputerNumber computerNumber) {
+    private void runGame(Computer computer) {
         boolean gameStatus = true;
         while (gameStatus) {
             OutputView.printInputMessage();
             String input = InputView.inputPlayerNumber();
-            PlayerNumber playerNumber = PlayerNumber.from(input);
-            CountResultDto countResultDto = countService.getCountResult(computerNumber, playerNumber);
-            OutputView.printResult(countResultDto);
-            gameStatus = isWinGame(countResultDto.getStrikeCount());
+            Player player = new Player(NumberGenerator.createPlayerNumber(input));
+            CountResultDto countResult = computer.match(player);
+            OutputView.printResult(countResult);
+            gameStatus = isWinGame(countResult.getStrikeCount());
         }
     }
 
