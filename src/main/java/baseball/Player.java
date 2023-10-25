@@ -37,7 +37,6 @@ public class Player {
             Integer.valueOf(inputNumber);
         }
         catch (NumberFormatException ex) {
-            System.out.println("숫자가 아닙니다.");
             throw new IllegalArgumentException();
         }
     }
@@ -45,7 +44,6 @@ public class Player {
     // 유효성 검사: 세 자리 수
     private void validationThree(List<Integer> playerNumberInt) {
         if (playerNumberInt.size() != 3){
-            System.out.println("세 자리 수가 아닙니다.");
             throw new IllegalArgumentException();
         }
     }
@@ -54,7 +52,6 @@ public class Player {
     private void validationRange(List<Integer> playerNumberInt) {
         for (Integer i : playerNumberInt) {
             if (i == 0) {
-                System.out.println("1~9사이의 수가 아닙니다.");
                 throw new IllegalArgumentException();
             }
         }
@@ -66,7 +63,6 @@ public class Player {
         for (int i = 0; i < length; i++) {
             for (int j = i + 1; j < length; j++) {
                 if (playerNumberInt.get(i) == playerNumberInt.get(j)) {
-                    System.out.println("숫자가 중복됩니다.");
                     throw new IllegalArgumentException();
                 }
             }

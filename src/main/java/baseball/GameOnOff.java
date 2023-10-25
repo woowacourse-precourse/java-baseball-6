@@ -22,7 +22,6 @@ public class GameOnOff {
             inputNum = num;
         }
         catch (NumberFormatException ex){
-            System.out.println("잘못된 값을 입력하였습니다.");
             throw new IllegalArgumentException();
         }
     }
