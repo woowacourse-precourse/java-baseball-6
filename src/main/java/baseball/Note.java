@@ -1,11 +1,11 @@
 package baseball;
 
 public class Note {
-    private final String number;
+    private final String answerNumber;
 
     private Note(String number) throws IllegalArgumentException {
         classInvariant(number);
-        this.number = number;
+        this.answerNumber = number;
     }
 
     private void classInvariant(String number) {
@@ -14,13 +14,16 @@ public class Note {
     }
 
     private void checkThreeDigits(String number) throws IllegalArgumentException{
-        if (number.length() != 3) {
+        final int threeDigits = 3;
+        final char numberLowerBound = '1';
+        final char numberUpperBound = '9';
+        if (number.length() != threeDigits) {
             throw new IllegalArgumentException("3자리의 정수를 입력해야 합니다.");
         }
 
         for (int i = 0; i < number.length(); i++) {
             char c = number.charAt(i);
-            if (c < '1' || c > '9') {
+            if (c < numberLowerBound || c > numberUpperBound) {
                 throw new IllegalArgumentException("3자리의 정수를 입력해야 합니다");
             }
         }
@@ -32,7 +35,7 @@ public class Note {
 
     @Override
     public String toString() {
-        return this.number;
+        return this.answerNumber;
     }
 
 
