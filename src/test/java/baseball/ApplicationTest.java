@@ -33,6 +33,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 중복_숫자_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("331"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     @DisplayName("컴퓨터가 랜덤으로 3자리 숫자를 생성하는지 테스트")
     void 컴퓨터_숫자_생성_테스트() {
         Computer randomNumbers = Computer.createRandomNumbers();
