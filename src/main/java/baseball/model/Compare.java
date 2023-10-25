@@ -3,14 +3,14 @@ package baseball.model;
 import static baseball.util.Constants.BALL_LENGTH;
 import static baseball.util.Constants.DEFAULT_VALUE;
 
-public record UserComputerCompare(Computer computer, Player player, Result result) {
+public record Compare(Computer computer, Player player, Result result) {
 
-    public UserComputerCompare(Computer computer, Player player) {
+    public Compare(Computer computer, Player player) {
         this(computer, player, Result.initialBallCount());
     }
 
-    public static UserComputerCompare judge(Computer computer, Player player) {
-        return new UserComputerCompare(computer, player);
+    public static Compare judge(Computer computer, Player player) {
+        return new Compare(computer, player);
     }
 
     public Result ResultgetBallCountJudgement() {

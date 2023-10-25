@@ -2,12 +2,12 @@ package baseball.controller;
 
 import static baseball.util.Constants.DEFAULT_VALUE;
 
+import baseball.model.Compare;
 import baseball.model.Computer;
 import baseball.model.GameCommand;
 import baseball.model.GameStatus;
 import baseball.model.Player;
 import baseball.model.Result;
-import baseball.model.UserComputerCompare;
 import baseball.util.GameStatusHelper;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -63,8 +63,8 @@ public class GameController {
     }
 
     private Result getResultFromComparison(Computer computer, Player player) {
-        UserComputerCompare referee = UserComputerCompare.judge(computer, player);
-        return referee.ResultgetBallCountJudgement();
+        Compare compare = Compare.judge(computer, player);
+        return compare.ResultgetBallCountJudgement();
     }
 
     private void updateGameStatus(Result result) {
