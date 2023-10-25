@@ -67,17 +67,17 @@ class CountControllerTests {
 
     //TODO : add @ParameterizedTest
     @Test
-    @DisplayName("1strike 2ball 테스트")
-    void count_ballAndStrike() {
+    @DisplayName("1strike 2ball 테스트2")
+    void count_ballAndStrike2() {
         List<Ball> user = new ArrayList<>();
-        user.add(new Ball(3,0));
-        user.add(new Ball(2,1));
-        user.add(new Ball(1,2));
+        user.add(new Ball(4,0));
+        user.add(new Ball(5,1));
+        user.add(new Ball(7,2));
 
         List<Ball> com = new ArrayList<>();
-        com.add(new Ball(1,0));
-        com.add(new Ball(2,1));
-        com.add(new Ball(3,2));
+        com.add(new Ball(5,0));
+        com.add(new Ball(4,1));
+        com.add(new Ball(7,2));
 
         countController.count_ball(com, user);
         assertThat(countController.getStrike()).isEqualTo(1);

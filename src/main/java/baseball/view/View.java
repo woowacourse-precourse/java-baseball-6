@@ -55,39 +55,46 @@ public class View {
         return check.size() == 3;
     }
 
-    public void ballAndStrike_result(int ball, int strike) {
+    public void ballAndStrike_result(int strike, int ball) {
         //TODO : 1볼 1스트라이크
         StringBuilder sb = new StringBuilder();
         sb.append(ball)
-                .append(MESSAGE.BALL)
+                .append(MESSAGE.BALL.getMessage())
                 .append(" ")
                 .append(strike)
-                .append(MESSAGE.STRIKE);
-        System.out.print(sb.toString());
+                .append(MESSAGE.STRIKE.getMessage());
+        System.out.println(sb.toString());
     }
 
     public void nothing_result() {
-        System.out.print(MESSAGE.NOTHING);
+        System.out.println(MESSAGE.NOTHING.getMessage());
     }
 
     public void ball_result(int ball) {
         StringBuilder sb = new StringBuilder();
-        sb.append(ball).append(MESSAGE.BALL);
-        System.out.print(sb.toString());
+        sb.append(ball).append(MESSAGE.BALL.getMessage());
+        System.out.println(sb.toString());
     }
 
     public void strike_result(int strike) {
         StringBuilder sb = new StringBuilder();
-        sb.append(strike).append(MESSAGE.STRIKE);
-        System.out.print(sb.toString());
+        sb.append(strike).append(MESSAGE.STRIKE.getMessage());
+        System.out.println(sb.toString());
     }
 
     public void game_end() {
-        System.out.println(MESSAGE.GAME_END_MSG);
+        System.out.println(MESSAGE.GAME_END_MSG.getMessage());
     }
 
     public void game_start() {
-        System.out.println(MESSAGE.GAME_START_MSG);
+        System.out.println(MESSAGE.GAME_START_MSG.getMessage());
     }
 
+    public void input_msg() {
+        System.out.print(MESSAGE.INPUT_USER_NUM.getMessage());
+    }
+
+    public void restart_msg() {
+        System.out.print(MESSAGE.INPUT_RESTART.getMessage());
+    }
 }
