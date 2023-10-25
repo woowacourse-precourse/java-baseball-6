@@ -21,9 +21,9 @@ public class Player {
         convertInputStringToIntegers(input);
     }
 
-    public GameState retrieveRestartNumber() {
+    public GameRestartState retrieveRestartNumber() {
         OutputUtils.printRestartGameMessage();
-        return GameState.findGameStateFromString(Console.readLine());
+        return GameRestartState.findGameStateFromString(Console.readLine());
     }
 
     private void convertInputStringToIntegers(final String input) {
