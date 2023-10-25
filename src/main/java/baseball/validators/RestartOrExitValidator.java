@@ -6,5 +6,4 @@ public class RestartOrExitValidator {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
         }
     }
-
 }
