@@ -23,61 +23,61 @@ public class GameController {
     }
 
 
-    public void playball() {
+    public void turnOnGame() {
+        outputView.startMessage();
         computerNumber = getComputerNumber();
         try {
-            logicStart();
+            playBall();
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
 
-    private void logicStart() {
-        PlayerGameStateDto gamestate;
+    private void playBall() {
+        PlayerGameStateDto playerGameState;
         do {
-            outputView.printInputInitMessage();
+            outputView.inputInitMessage();
             String userNumber = getUserNumber();
             BaseballService baseballService = new BaseballService(userNumber, computerNumber);
-            gamestate = baseballService.calculate();
-            outputResult(gamestate);
-        } while (isGameReStart(gamestate));
+            playerGameState = baseballService.calculateStrikeBall();
+            outputResult(playerGameState);
+        } while (isGameRestart(playerGameState));
     }
 
-    private boolean isGameReStart(PlayerGameStateDto gameState) {
-        if (gameState.isEndGame()) {
-            checkRestart(gameState);
-            checkComputerNumberChange(gameState);
-            return gameState.isRestart();
+    private boolean isGameRestart(PlayerGameStateDto playerGameState) {
+        if (playerGameState.isEndGame()) {
+            inputRestart(playerGameState);
+            checkComputerNumberChange(playerGameState);
+            return playerGameState.isRestart();
         }
         return true;
     }
 
-    private void checkComputerNumberChange(PlayerGameStateDto gameState) {
-        if (gameState.isRestart()) {
+    private void checkComputerNumberChange(PlayerGameStateDto playerGameState) {
+        if (playerGameState.isRestart()) {
             computerNumber = changeComputerNumber();
         }
     }
 
     private String changeComputerNumber() {
-        String computerNumber;
         computerNumber = getComputerNumber();
         return computerNumber;
     }
 
-    private void checkRestart(PlayerGameStateDto gamestate) {
+    private void inputRestart(PlayerGameStateDto playerGameState) {
         String restartNumber = inputView.readRestart();
         validator.validateRestart(restartNumber);
         if (restartNumber.equals(RESTART)) {
-            gamestate.activateRestart();
+            playerGameState.activateRestart();
         }
     }
 
 
-    private void outputResult(PlayerGameStateDto gamestate) {
-        int strike = gamestate.getStrike();
-        int ball = gamestate.getBall();
+    private void outputResult(PlayerGameStateDto playerGameState) {
+        int strike = playerGameState.getStrike();
+        int ball = playerGameState.getBall();
         if (strike == NumberConstant.THREE_STRIKE.getNumber()) {
-            threeStrikeProcess(gamestate, strike);
+            threeStrikeProcess(playerGameState, strike);
         } else if (strike > 0 && ball > 0) {
             outputView.strikeBall(strike, ball);
         } else if (strike > 0) {
@@ -89,9 +89,9 @@ public class GameController {
         }
     }
 
-    private void threeStrikeProcess(PlayerGameStateDto gamestate, int strike) {
+    private void threeStrikeProcess(PlayerGameStateDto playerGameState, int strike) {
         threeThrikeOutput(strike);
-        gamestate.activateEndGame();
+        playerGameState.activateEndGame();
     }
 
     private void threeThrikeOutput(int strike) {

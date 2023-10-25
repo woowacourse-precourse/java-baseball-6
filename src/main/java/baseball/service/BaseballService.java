@@ -14,24 +14,24 @@ public class BaseballService {
         this.computerNumber = computerNumber;
     }
 
-    public PlayerGameStateDto calculate() {
-        PlayerGameStateDto playerGameStateDto = new PlayerGameStateDto();
-        calculateStrike(playerGameStateDto);
-        calculateBall(playerGameStateDto);
-        return playerGameStateDto;
+    public PlayerGameStateDto calculateStrikeBall() {
+        PlayerGameStateDto playerGameState = new PlayerGameStateDto();
+        calculateStrike(playerGameState);
+        calculateBall(playerGameState);
+        return playerGameState;
     }
 
     private void calculateBall(
-        PlayerGameStateDto playerGameStateDto) {
+        PlayerGameStateDto playerGameState) {
         for (int index = 0; index < NumberConstant.INPUT_LENGTH.getNumber(); index++) {
-            findDifferentIndexSameNumber(playerGameStateDto, index);
+            findDifferentIndexSameNumber(playerGameState, index);
         }
     }
 
-    private void findDifferentIndexSameNumber(PlayerGameStateDto playerGameStateDto, int index1) {
+    private void findDifferentIndexSameNumber(PlayerGameStateDto playerGameState, int index1) {
         for (int index2 = 0; index2 < NumberConstant.INPUT_LENGTH.getNumber(); index2++) {
             if (isDifferentIndex(index1, index2) && isSameNumber(index1, index2)) {
-                addBall(playerGameStateDto);
+                addBall(playerGameState);
             }
         }
     }
@@ -49,19 +49,19 @@ public class BaseballService {
         return index1 != index2;
     }
 
-    private void addBall(PlayerGameStateDto playerGameStateDto) {
-        playerGameStateDto.addBall();
+    private void addBall(PlayerGameStateDto playerGameState) {
+        playerGameState.addBall();
     }
 
-    private void calculateStrike(PlayerGameStateDto playerGameStateDto) {
+    private void calculateStrike(PlayerGameStateDto playerGameState) {
         for (int index = 0; index < NumberConstant.INPUT_LENGTH.getNumber(); index++) {
             if (isSameNumber(index)) {
-                addStrike(playerGameStateDto);
+                addStrike(playerGameState);
             }
         }
     }
 
-    private void addStrike(PlayerGameStateDto playerGameStateDto) {
-        playerGameStateDto.addStrike();
+    private void addStrike(PlayerGameStateDto playerGameState) {
+        playerGameState.addStrike();
     }
 }

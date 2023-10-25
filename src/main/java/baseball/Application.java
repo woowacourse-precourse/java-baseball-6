@@ -10,7 +10,6 @@ public class Application {
         InputView inputView = InputView.getInstance();
         OutputView outputView = OutputView.getInstance();
         GameController game = new GameController(inputView, outputView);
-        outputView.startMessage();
-        game.playball();
+        game.turnOnGame();
     }
 }

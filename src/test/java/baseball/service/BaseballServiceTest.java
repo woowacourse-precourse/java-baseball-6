@@ -19,7 +19,7 @@ class BaseballServiceTest {
         BaseballService baseballService = new BaseballService(userNumber, computerNumber);
 
         //when
-        PlayerGameStateDto gameState = baseballService.calculate();
+        PlayerGameStateDto gameState = baseballService.calculateStrikeBall();
 
         //then
         Assertions.assertThat(gameState.getStrike()).isEqualTo(0);

@@ -31,7 +31,7 @@ public class OutputView {
         System.out.println(START_MESSAGE);
     }
 
-    public void printInputInitMessage() {
+    public void inputInitMessage() {
         System.out.print(INPUT_MESSAGE);
     }
 
