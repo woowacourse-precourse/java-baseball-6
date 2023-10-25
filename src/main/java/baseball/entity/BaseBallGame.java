@@ -25,7 +25,7 @@ public class BaseBallGame {
             String input = readLine();
             checkValidInput(input);  // 입력값 확인
 
-            Result result = correctNumber.compareTo(input); // 입력값 비교
+            Result result = correctNumber.compareToInput(input); // 입력값 비교
             System.out.println(result.toString()); // 입력 결과 출력
 
             if (result.isAllCorrect()) {

@@ -8,7 +8,7 @@ public class CorrectNumber {
 
     private List<Integer> correctNumbers;
 
-    public Result compareTo(String input) {
+    public Result compareToInput(String input) {
         int strikeNumber = 0;
         int ballNumber = 0;
         String[] parsedString = input.split("");
