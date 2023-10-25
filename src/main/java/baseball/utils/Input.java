@@ -1,9 +1,7 @@
 package baseball.utils;
 
-import static baseball.utils.OutputMessage.askNumberMessage;
-import static baseball.utils.OutputMessage.askRestartMessage;
-import static baseball.validate.CheckInput.validatePlayerInput;
 
+import baseball.validate.CheckInput;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +10,13 @@ public class Input {
     private static final int INPUT_LENGTH = 3;
 
     public static String askRestart() {
-        askRestartMessage();
+        OutputMessage.askRestartMessage();
         String answer = Console.readLine();
         return answer.trim();
     }
 
     public static List<Integer> askPlayerInput() {
-        askNumberMessage();
+        OutputMessage.askNumberMessage();
         String stringInput = getInputString();
         return stringToInteger(stringInput);
     }
@@ -26,7 +24,7 @@ public class Input {
     private static String getInputString() {
         String playerInput = Console.readLine();
         String trimInput = playerInput.trim();
-        validatePlayerInput(trimInput);
+        CheckInput.validatePlayerInput(trimInput);
         return trimInput;
     }
 
