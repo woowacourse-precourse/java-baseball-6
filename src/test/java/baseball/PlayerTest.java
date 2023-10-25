@@ -17,7 +17,7 @@ public class PlayerTest {
         private int number;
         private int[] numbers = new int[10];
 
-        public static Player nextNumberOf(String stringNumber) {
+        public static Player inputNumberOf(String stringNumber) {
             return new Player(stringNumber);
         }
 
@@ -75,7 +75,7 @@ public class PlayerTest {
     }
 
     private int input(String stringNumber) {
-        return Player.nextNumberOf(stringNumber).getNumber();
+        return Player.inputNumberOf(stringNumber).getNumber();
     }
 
     @Test

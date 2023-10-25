@@ -36,18 +36,14 @@ public class NumberBaseballTest extends NsTest {
             return true;
         }
 
-        return endGame();
+        System.out.println("게임 종료");
+        return false;
     }
 
     private void checkRight(String command) {
         if (!command.equals("1") && !command.equals("2")) {
             throw new IllegalArgumentException("잘못된 명령어입니다.");
         }
-    }
-
-    private static boolean endGame() {
-        System.out.println("게임 종료");
-        return false;
     }
 
     @Test
