@@ -14,13 +14,6 @@ public class InputView {
         return getString();
     }
 
-    private static int getInt() {
-        try {
-            return Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해야 합니다.");
-        }
-    }
 
     private static String getString() {
         String str = Console.readLine();
