@@ -26,7 +26,7 @@ public class NumberOfGame {
 		this.computerNumber = computerNumber;
 	}
 	
-	public List<Integer> getCoomputerNumber(){
+	public List<Integer> getComputerNumber(){
 		return this.computerNumber;
 	}
 }
