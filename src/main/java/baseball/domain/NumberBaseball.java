@@ -32,7 +32,7 @@ public class NumberBaseball {
         return new NumberBaseball(values);
     }
 
-    public static NumberBaseball createRandomBaseball() { //정적 팩터리 메서드
+    public static NumberBaseball createRandomBaseball() {
         List<Integer> computerList = IntegerListUtil.generateRandomList();
         return createBaseball(computerList);
     }
