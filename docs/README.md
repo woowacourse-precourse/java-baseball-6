@@ -20,15 +20,6 @@
 - **기능 1. 정답 입력하기**
   - 설명: 사용자는 3자리의 숫자로 구성된 'answer'를 입력한다..
   - 연관 메서드: `generateAnswer()`
-- **기능 2. 입력 값의 유니크성 검사하기**
-  - 설명: 사용자가 입력한 숫자 리스트 내의 각 숫자가 중복되지 않는지 검사한다.
-  - 연관 메서드: `checkValidOfAnswerUnique()`
-  - 예외처리 : `IllegalArgumentException`를 발생시킨다.
-- **기능 3. 입력 값의 크기 검사하기**
-  - 설명: 사용자가 입력한 숫자 리스트의 크기가 정확히 3자리인지 검사한다.
-  - 연관 메서드: `checkValidOfAnswerSize()`
-  - 예외처리 : `IllegalArgumentException`를 발생시킨다.
-
 
 ### Computer 클래스 기능 명세
 - **기능 1. 정답 생성하기**
@@ -41,6 +32,19 @@
   - 설명: 스트라이크, 볼의 개수를 파악하고 조건에 맞는 출력을 진행한다.
   - 연관 메서드: `displayCompareResult()`
 
+### Validator 클래스 기능 명세
+- **기능 1. 입력 값의 유니크성 검사하기**
+  - 설명: 사용자가 입력한 숫자 리스트 내의 각 숫자가 중복되지 않는지 검사한다.
+  - 연관 메서드: `checkValidOfAnswerUnique()`
+  - 예외처리 : `IllegalArgumentException`를 발생시킨다.
+- **기능 2. 입력 값의 크기 검사하기**
+  - 설명: 사용자가 입력한 숫자 리스트의 크기가 정확히 3자리인지 검사한다.
+  - 연관 메서드: `checkValidOfAnswerSize()`
+  - 예외처리 : `IllegalArgumentException`를 발생시킨다.
+- **기능 3. 게임 재시작에 대한 입력값 검사하기**
+  - 설명: 사용자가 입력한 값이 1 또는 2인지 검사한다.
+  - 연관 메서드: `checkValidOfRetry()`
+  - 예외처리 : `IllegalArgumentException`를 발생시킨다.
 
 ## 클래스 설명
 ### GameController 클래스
@@ -112,3 +116,21 @@ Computer 클래스는 컴퓨터 플레이어의 동작을 표현하는 클래스
 - private void `displayCompareResult(int strikeCount, int ballCount)`: void
   - 평가 결과를 문자열로 표시하고 콘솔에 출력하는 메서드.
   - 볼과 스트라이크의 개수에 따라 해당하는 문자열을 출력합니다. 만약 모두 0이라면 "낫싱"을 출력합니다.
+
+### Validator 클래스
+#### 개요
+Validator 클래스는 프로그램 실행 간, 사용자의 입력값을 검증하는 클래스입니다.
+
+#### 주요 메소드
+- public static boolean `checkValidOfAnswer(String input)`: boolean
+  - 사용자의 입력값이 유효한지 검사하는 메서드.
+  - 입력값이 3자리의 숫자로 구성되어 있는지 검사합니다.
+  - 만약 유효하지 않은 값이라면 예외를 발생시킵니다.
+- public static boolean `checkValidOfRetry(String input)`: boolean
+  - 사용자의 입력값이 유효한지 검사하는 메서드.
+  - 입력값이 1 또는 2인지 검사합니다.
+  - 만약 유효하지 않은 값이라면 예외를 발생시킵니다.
+- public static boolean `checkValidOfRetry(String input)`: boolean
+  - 사용자의 입력값이 유효한지 검사하는 메서드.
+  - 입력값이 1 또는 2인지 검사합니다.
+  - 만약 유효하지 않은 값이라면 예외를 발생시킵니다.
