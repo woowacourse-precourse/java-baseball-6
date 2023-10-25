@@ -18,7 +18,7 @@ class BallNumberTest {
 
     @Test
     @DisplayName("BaseballNumber가 해당 number를 가지고 있다면 true를 반환하는지 테스트한다")
-    void contains(int number, int target, boolean expected) {
+    void contains() {
         BallNumber ballNumber = new BallNumber(685);
         assertThat(ballNumber.contains(6)).isTrue();
         assertThat(ballNumber.contains(1)).isFalse();
