@@ -26,9 +26,9 @@ public class BaseBallGameController {
             BaseBallNumbers baseBallNumbers = new BaseBallNumbers(inputView.getRequirePlayerBaseballNumbers());
             ballCnt = baseBallNumbers.calculateBallCount(randomNumbers.getRandomNumbers());
             strikeCnt = baseBallNumbers.calculateStrikeCount(randomNumbers.getRandomNumbers());
-            System.out.println("ballCnt = " + ballCnt);
-            System.out.println("strikeCnt = " + strikeCnt);
+            outputView.printResult(ballCnt, strikeCnt);
         }
+        outputView.printThreeStrikeMessage();
     }
 
     // checkContinue: 게임을 계속할 것인지 확인
