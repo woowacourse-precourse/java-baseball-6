@@ -25,7 +25,7 @@ public class InputView {
         System.out.print(INPUT_NUMBER);
         String inputString = Console.readLine();
         System.out.println(inputString);
-        ValidateInputNumber(inputString); // 이걸 여기서?? 분리 하고 싶음 > 기능이 다름
+        ValidateInputNumber(inputString);
 
         return AddNumber(inputString);
     }
@@ -52,18 +52,10 @@ public class InputView {
         }
     }
 
-    public boolean ProgramReStartOrExit() {
-        try { // 문자 입력 방지
-            int input = Integer.parseInt(Console.readLine());
-            if (input == 1) {
-                return true;
-            } else if (input == 2) {
-                return false;
-            }
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
-        return false;
+    public String ProgramReStartOrExit() {
+        String number = Console.readLine();
+        //ValidateReStartOrExit(number);
+        return number;
     }
 
     public void StrikeGameSet() {
