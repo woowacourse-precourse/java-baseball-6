@@ -11,6 +11,14 @@ public class GameController {
 	OutputView outputView = new OutputView();
 	InputView inputView = new InputView();
 
+	public void proceedGame() {
+		while (isEndGame) {
+			Game computerData = new Game();
+			computerData.setGameNumbers(computerController.getComputerNumber());
+			repeatGame(computerData);
+		}
+	}
+
 	public void initGame() {
 		isEndGame = true;
 	}
