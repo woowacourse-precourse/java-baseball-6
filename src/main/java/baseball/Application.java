@@ -18,6 +18,6 @@ public class Application {
 
         // BaseballGame 인스턴스 생성
         BaseballGame game = new BaseballGame();
-        game.play(cpuInput, userInput);
+        game.start(cpuInput, userInput);
     }
 }
