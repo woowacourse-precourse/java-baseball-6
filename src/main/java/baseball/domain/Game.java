@@ -1,20 +1,15 @@
-package baseball.service;
+package baseball.domain;
 
-import baseball.domain.Command;
-import baseball.domain.Computer;
-import baseball.domain.Judgment;
-import baseball.domain.Player;
-import baseball.domain.Result;
 import baseball.dto.ResultDto;
 import baseball.utils.NumberGenerator;
 import baseball.utils.RandomNumberGenerator;
 
-public class BaseballService {
+public class Game {
     private Computer computer;
     private final Judgment judgment;
     private final NumberGenerator numberGenerator;
 
-    public BaseballService() {
+    public Game() {
         this.numberGenerator = new RandomNumberGenerator();
         this.judgment = new Judgment();
     }

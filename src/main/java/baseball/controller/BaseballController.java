@@ -1,42 +1,42 @@
 package baseball.controller;
 
+import baseball.domain.Game;
 import baseball.dto.ResultDto;
-import baseball.service.BaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballController {
-    private final BaseballService baseballService;
+    private final Game game;
 
     public BaseballController() {
-        this.baseballService = new BaseballService();
+        this.game = new Game();
     }
 
     public void run() {
         OutputView.printStart();
 
         do {
-            baseballService.init();
+            game.init();
             do {
                 playGame();
                 printGameResult();
-            } while (!baseballService.isGameOver());
+            } while (!game.isGameOver());
         } while (isRetry());
     }
 
     private Boolean isRetry() {
         OutputView.printGameOver();
         String command = InputView.inputRetryOrQuit();
-        return baseballService.isRetry(command);
+        return game.isRetry(command);
     }
 
     private void playGame() {
         String number = InputView.inputNumber();
-        baseballService.playGame(number);
+        game.playGame(number);
     }
 
     private void printGameResult() {
-        ResultDto gameResult = baseballService.getGameResult();
+        ResultDto gameResult = game.getGameResult();
         OutputView.printBaseballResult(gameResult);
     }
 }
