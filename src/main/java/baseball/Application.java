@@ -16,7 +16,7 @@ public class Application {
             } else {
                 startGame();
             }
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
 
             choice = Integer.parseInt(Console.readLine());
         }
@@ -50,20 +50,21 @@ public class Application {
             }
 
             if (strikes == 3) {
-                System.out.println("스트라이크 3! 게임 종료!");
+                System.out.println("3스트라이크");
                 break;
             }
             if (balls > 0) {
-                System.out.println(balls + "볼 ");
+                System.out.print(balls + "볼 ");
             }
             if (strikes > 0) {
-                System.out.println(strikes + "스트라이크 ");
+                System.out.print(strikes + "스트라이크");
             }
             if (balls == 0 && strikes == 0) {
-                System.out.println("낫싱");
+                System.out.print("낫싱");
             }
+            System.out.println();
         }
-
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static int generateUniqueRandomNumber(int start, int end, int count) {
