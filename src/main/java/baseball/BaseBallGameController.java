@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Score.THREE_STRIKE;
+
 import java.util.List;
 
 public class BaseBallGameController {
@@ -25,6 +27,6 @@ public class BaseBallGameController {
     }
 
     private boolean notThreeStrike(Score gameResult) {
-        return !gameResult.equals(Score.THREE_STRIKE);
+        return gameResult != THREE_STRIKE;
     }
 }
