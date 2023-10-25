@@ -22,14 +22,15 @@ public class Game {
     boolean isRestart = true;
     while (isRestart) {
       List<Integer> computerNumbers = computer.generateNumbers();
-      NumberValidator.validate(computerNumbers);
+      NumberValidator.validateLength(computerNumbers);
 
       boolean isEnd = false;
 
       while (!isEnd) {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> playerNumbers = player.inputNumbers();
-        NumberValidator.validate(playerNumbers);
+        NumberValidator.validateLength(playerNumbers);
+        NumberValidator.validateRange(playerNumbers);
         int[] result = score.calculateScore(playerNumbers, computerNumbers);
         printResult(result);
         isEnd = isGameOver(result);
@@ -83,6 +84,7 @@ public class Game {
   private boolean askRestart() {
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     int choice = player.inputNumbers().get(0);
+    NumberValidator.checkResetNumber(choice);
     return choice == 1;
   }
 }
