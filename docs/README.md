@@ -28,7 +28,7 @@
 
 ### 플레이어가 선택한 옵션을 보기 쉽게 Enum 객체를 생성 -> PlayerOption
 
-- [ ] RESTART, END 라는 값을 갖는다.
+- [x] RESTART, END 라는 값을 갖는다.
 
 ### 입력 및 변환 기능 구현 -> NumberGenerator
 
