@@ -9,9 +9,7 @@ import java.util.Set;
 
 public class Player {
 
-    private static final int MIN_INPUT = 1;
-    private static final int MAX_INPUT = 9;
-    private static final int CNT_INPUT = 3;
+    private Constant constant;
 
     public List<Integer> input(){
         System.out.print("숫자를 입력해주세요 : ");
@@ -24,14 +22,14 @@ public class Player {
     }
 
     private void checkLength(String user){
-        if(user.length() != CNT_INPUT) throw new IllegalArgumentException(String.format("%d자리 숫자를 입력해주세요", CNT_INPUT));
+        if(user.length() != constant.CNT_INPUT) throw new IllegalArgumentException(String.format("%d자리 숫자를 입력해주세요", constant.CNT_INPUT));
     }
 
     private void checkMinAndMax(String user){
         for(int i = 0; i<user.length(); i++){
             int inputChar = Integer.parseInt(user.substring(i,i+1));
-            if(inputChar < MIN_INPUT || inputChar > MAX_INPUT) {
-                throw new IllegalArgumentException(String.format("각 자리수는 %d부터 %d까지의 숫자로만 입력해주세요.", MIN_INPUT, MAX_INPUT));
+            if(inputChar < constant.MIN_INPUT || inputChar > constant.MAX_INPUT) {
+                throw new IllegalArgumentException(String.format("각 자리수는 %d부터 %d까지의 숫자로만 입력해주세요.", constant.MIN_INPUT, constant.MAX_INPUT));
             }
         }
     }

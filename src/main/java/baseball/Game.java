@@ -6,13 +6,15 @@ import java.util.List;
 
 public class Game {
 
+    private Constant constant;
+
     public void run(){
         while(true){
             play();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String input = Console.readLine();
-            if(input.equals("1")) continue;
-            else if(input.equals("2")) break;
+            int input = Integer.parseInt(Console.readLine());
+            if(input == constant.RESTART_NUM) continue;
+            else if(input == constant.EXIT_NUM) break;
         }
     }
 
