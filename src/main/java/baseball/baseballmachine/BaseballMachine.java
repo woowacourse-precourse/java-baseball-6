@@ -26,6 +26,7 @@ public class BaseballMachine {
         this.player = player;
     }
 
+    /* 숫자 야구가 실행되는 메인 함수 */
     public void run() throws IllegalArgumentException {
         computerList = computer.getNewRandomList();
         start = true;
@@ -50,6 +51,7 @@ public class BaseballMachine {
         }
     }
 
+    /* 실제 스트라이크, 볼을 구분하는 메서드 */
     private static void setStrikeBall(int index) {
         if (computerList.get(index).equals(playerList.get(index))) {
             strike++;
@@ -58,6 +60,7 @@ public class BaseballMachine {
         }
     }
 
+    /* 스트라이크, 볼에 따른 출력 분기 메서드 */
     private void printResult() {
         /* 낫싱 */
         if (strike == 0 && ball == 0) {
@@ -89,6 +92,7 @@ public class BaseballMachine {
         }
     }
 
+    /* 재시작 여부 체크 */
     private void isRestart() {
         String select = Console.readLine();
         if (select.equals(RESTART)) {
