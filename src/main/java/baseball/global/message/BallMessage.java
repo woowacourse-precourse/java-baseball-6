@@ -11,9 +11,6 @@ public enum BallMessage {
         this.message = message;
     }
 
-    public static String makeMessage(int number, BallMessage ball) {
-        return number + ball.message;
-    }
 
     public abstract String apply(int number);
 
