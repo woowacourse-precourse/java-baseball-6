@@ -30,8 +30,7 @@ public class GameController {
     }
 
     private void restartOrNot() {
-        boolean canRestart = inputFormatter.wantRestart();
-        if (canRestart) {
+        if (inputFormatter.wantRestart()) {
             start(false);
         }
     }
