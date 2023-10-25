@@ -13,13 +13,13 @@ public class GameInputValidator implements InputValidator {
         checkInputIsNumeric(input);
     }
 
-    public void checkInputLengthValidity(String input) throws IllegalArgumentException {
+    private void checkInputLengthValidity(String input) throws IllegalArgumentException {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void checkInputRangeValidity(String input) throws IllegalArgumentException {
+    private void checkInputRangeValidity(String input) throws IllegalArgumentException {
         for (char c : input.toCharArray()) {
             int digit = Character.getNumericValue(c);
             if (digit < 1 || digit > 9) {
@@ -28,7 +28,7 @@ public class GameInputValidator implements InputValidator {
         }
     }
 
-    public void checkInputUniquenessValidity(String input) throws IllegalArgumentException {
+    private void checkInputUniquenessValidity(String input) throws IllegalArgumentException {
         Set<Character> uniqueDigits = new HashSet<>();
         for (char c : input.toCharArray()) {
             if (!uniqueDigits.add(c)) {
@@ -37,7 +37,7 @@ public class GameInputValidator implements InputValidator {
         }
     }
 
-    public void checkInputIsNumeric(String input) throws IllegalArgumentException {
+    private void checkInputIsNumeric(String input) throws IllegalArgumentException {
         for (char c : input.toCharArray()){
             if(!Character.isDigit(c)){
                 throw new IllegalArgumentException();

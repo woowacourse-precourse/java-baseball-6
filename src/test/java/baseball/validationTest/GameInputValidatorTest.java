@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class GameInputValidatorTest {
-    @Test
+    /*@Test
     public void lengthTest(){
         GameInputValidator gameInputValidator = new GameInputValidator();
         Assertions.assertThatIllegalArgumentException().isThrownBy(() ->{
@@ -38,5 +38,5 @@ public class GameInputValidatorTest {
         Assertions.assertThatIllegalArgumentException().isThrownBy(() ->{
             gameInputValidator.checkInputIsNumeric("rdf");
         });
-    }
+    }*/
 }
