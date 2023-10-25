@@ -13,16 +13,28 @@ public class Result {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        if (ballNumber != 0) {
-            sb.append(ballNumber).append("볼 ");
-        }
-        if (strikeNumber != 0) {
-            sb.append(strikeNumber).append("스트라이크 ");
-        }
+        getBall(sb);
+        getStrike(sb);
+        checkNothing(sb);
+        return sb.toString();
+    }
+
+    private void checkNothing(StringBuilder sb) {
         if (ballNumber == 0 && strikeNumber == 0) {
             sb.append("낫싱 ");
         }
-        return sb.toString();
+    }
+
+    private void getStrike(StringBuilder sb) {
+        if (strikeNumber != 0) {
+            sb.append(strikeNumber).append("스트라이크 ");
+        }
+    }
+
+    private void getBall(StringBuilder sb) {
+        if (ballNumber != 0) {
+            sb.append(ballNumber).append("볼 ");
+        }
     }
 
     public boolean isAllCorrect() {
