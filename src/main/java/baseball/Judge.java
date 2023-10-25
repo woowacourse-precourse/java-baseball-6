@@ -41,15 +41,15 @@ public class Judge {
         System.out.println();
     }
 
-    public void startGame() {
+    public boolean startGame() {
         try {
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             boolean gameWin = false;
+            List<Integer> computerNumbers = computer.getNumbers();
 
             while (!gameWin) {
                 List<Integer> playerNumbers = human.getNumbers();
-                List<Integer> computerNumbers = computer.getNumbers();
 
                 int[] hints = checkStrikesBalls(computerNumbers, playerNumbers);
                 int strikes = hints[0];
@@ -58,23 +58,27 @@ public class Judge {
                 showHints(strikes, balls);
 
                 gameWin = (strikes == 3);
-                if (gameWin) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-                    String choice = Console.readLine();
-
-                    if (choice.equals("1")) {
-                        gameWin = false;
-                    } else if (choice.equals("2")) {
-                        break;
-                    } else {
-                        throw new IllegalAccessException();
-                    }
-                }
             }
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String choice = Console.readLine();
+
+            if (choice.equals("1")) {
+                return true;
+            } else if (choice.equals("2")) {
+                return false;
+            } else {
+                throw new IllegalAccessException();
+            }
+
+
         } catch (IllegalAccessException e) {
             System.out.println(e.getMessage());
         }
+        return false;
     }
+
+
 }
