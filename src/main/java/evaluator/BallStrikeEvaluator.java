@@ -26,6 +26,11 @@ public class BallStrikeEvaluator {
         }
     }
 
+    public void clearCount() {
+        this.ballCount = 0;
+        this.strikeCount = 0;
+    }
+
     private void checkBallStrike(int computerIdx, int playerIdx) {
         if(computerIdx != -1) {
             if(computerIdx == playerIdx) {

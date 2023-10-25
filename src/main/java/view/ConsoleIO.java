@@ -15,7 +15,7 @@ public class ConsoleIO {
                 .mapToObj(ch -> (char) ch)
                 .filter(Character::isDigit)
                 .map(Character::getNumericValue)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public static void resultPrint(Integer ballCount, Integer strikeCount) {
@@ -34,5 +34,11 @@ public class ConsoleIO {
         if(ballCount > 0 && strikeCount > 0) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
+    }
+
+    public static String restartRequest() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Console.readLine();
     }
 }
