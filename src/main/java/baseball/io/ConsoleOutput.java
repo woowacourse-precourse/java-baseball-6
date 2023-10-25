@@ -7,20 +7,15 @@ import java.io.OutputStreamWriter;
 public class ConsoleOutput implements OutPut {
     private final BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
     @Override
-    public void gameStart() {
-        try {
-            output.write(ConsoleMessage.GAME_START.getMessage());
-            output.flush();
-        } catch (IOException e) {
-            throw new IllegalArgumentException(e);
-        }
+    public void gameStart() throws IOException {
+        output.write(ConsoleMessage.GAME_START.getMessage());
+        output.flush();
     }
 
     @Override
     public void print(String msg) throws IOException {
         output.write(msg);
         output.flush();
-
     }
 
     @Override
