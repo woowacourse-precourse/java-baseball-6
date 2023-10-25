@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 
 public class BaseballNumber {
@@ -13,6 +12,7 @@ public class BaseballNumber {
         correctNumbers = new ArrayList<>();
     }
 
+    //정답 수 생성
     public ArrayList<Integer> generateCorrectNumbers(){
         correctNumbers.clear();
         for(int i=0;i<3;i++){
@@ -26,6 +26,7 @@ public class BaseballNumber {
         return correctNumbers;
     }
 
+    //중복 확인
     public boolean isDuplicate(ArrayList<Integer> correctNumbers, int inputRandomInt){
         if(correctNumbers.contains(inputRandomInt)){
             return true;
@@ -33,16 +34,14 @@ public class BaseballNumber {
         return false;
     }
 
+    //String to ArrayList<Integer>
     public ArrayList<Integer> toIntegerArray(String inputString){
         playerInputNumbers.clear();
-
         String[] integerTokens = inputString.split("");
-
         for(String token : integerTokens){
             int intValue = Integer.parseInt(token);
             playerInputNumbers.add(intValue);
         }
-
         return playerInputNumbers;
     }
 

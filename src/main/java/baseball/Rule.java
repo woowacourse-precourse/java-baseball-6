@@ -14,7 +14,6 @@ public class Rule {
     }
 
     public void printGuess(){
-        //print result
         StringBuilder sb = new StringBuilder();
         if(balls>0){
             sb.append(balls).append("볼");
