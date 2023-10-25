@@ -22,7 +22,7 @@ public class Game {
         ball = -1;
     }
 
-    public void run() {
+    public void play() {
         do {
             Message.input();
             String input = Console.readLine();

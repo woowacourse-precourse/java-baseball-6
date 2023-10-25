@@ -16,7 +16,7 @@ public class GameController {
         Message.start();
         do {
             game.init(START_INCLUSIVE, END_INCLUSIVE);
-            game.run();
+            game.play();
         } while (restart());
     }
 
