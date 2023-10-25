@@ -17,5 +17,4 @@ public enum ComputerMessage {
     }
 
     String message() { return text; }
-
 }

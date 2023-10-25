@@ -34,5 +34,4 @@ public class MyException {
             numberFlag[number] = true;
         }
     }
-
 }

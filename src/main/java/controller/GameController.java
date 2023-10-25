@@ -40,5 +40,4 @@ public class GameController {
         String input = Console.readLine();
         gameService.restartOrQuit(input);
     }
-
 }

@@ -31,5 +31,4 @@ public class GameView {
             System.out.println(ComputerMessage.NOTHING.message());
         }
     }
-
 }
