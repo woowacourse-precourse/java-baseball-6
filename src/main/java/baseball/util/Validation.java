@@ -8,6 +8,7 @@ public class Validation implements Validate {
     private final static int EXPECTED_RETRY_LENGTH = 1;
     private final static String GAME_REPLAY = "1";
     private final static String GAME_EXIT = "2";
+    private final static String WRONG_INPUT_MESSAGE = "잘못된 입력입니다.";
 
     @Override
     public boolean combinedValidation(String input) {
@@ -15,7 +16,7 @@ public class Validation implements Validate {
                 && validationEachDifferentElement(input)) {
             return true;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(WRONG_INPUT_MESSAGE);
     }
 
     @Override
@@ -25,7 +26,7 @@ public class Validation implements Validate {
                 return true;
             }
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(WRONG_INPUT_MESSAGE);
     }
 
     /**

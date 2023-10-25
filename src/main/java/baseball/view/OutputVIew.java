@@ -8,7 +8,6 @@ public class OutputVIew {
     private final static String NOTHING = "낫싱";
     private final static String GAME_OVER_MESSAGE = "게임을 종료합니다.";
     private final static String GAME_CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료 \n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private final static String WRONG_INPUT_MESSAGE = "잘못된 입력입니다.";
 
     public void printRequestInputNumberMessage() {
         System.out.print(REQUEST_INPUT_NUMBER_MESSAGE);
@@ -34,7 +33,4 @@ public class OutputVIew {
         System.out.println(GAME_OVER_MESSAGE);
     }
 
-    public void printWrongInput() {
-        System.out.println(WRONG_INPUT_MESSAGE);
-    }
 }
