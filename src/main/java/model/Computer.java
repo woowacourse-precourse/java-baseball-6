@@ -11,10 +11,6 @@ public class Computer {
         this.randomNumber = randomNumber;
     }
 
-    public String getRandomNumber() {
-        return randomNumber;
-    }
-
     public String createRandomNumber(){
         List<Integer> randomNumberList = new ArrayList<>();
         while (randomNumberList.size() < 3) {

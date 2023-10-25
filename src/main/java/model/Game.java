@@ -1,7 +1,6 @@
 package model;
 
 import static constants.GameConstant.BALL;
-import static constants.GameConstant.NOTHING;
 import static constants.GameConstant.STRIKE;
 
 import java.util.ArrayList;
@@ -33,10 +32,6 @@ public class Game {
                 }
                 baseballScoreList.add(scoreResult);
             }
-        }
-
-        if(baseballScoreList.size() == 0){
-            baseballScoreList.add(NOTHING);
         }
         return baseballScoreList;
     }
