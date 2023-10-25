@@ -37,7 +37,7 @@ public class BusinessController {
         int strikeCount = 0;
         int ballCount = 0;
         for (int i = 0; i < userData.size(); i++) {
-            for (int j = 0; j < userData.size(); j++) {
+            for (int j = 0; j < computerData.size(); j++) {
                 if (i == j) {
                     if (userData.get(i).equals(computerData.get(j))) {
                         strikeCount += 1;
@@ -49,10 +49,10 @@ public class BusinessController {
                 }
             }
         }
-        return calculateResult(strikeCount, ballCount);
+        return generateResult(strikeCount, ballCount);
     }
 
-    private Result calculateResult(int strikeCount, int ballCount) {
+    private Result generateResult(int strikeCount, int ballCount) {
         if (strikeCount == 3) {
             return Result.of(ResultCase.CORRECT, strikeCount, ballCount);
         } else if (strikeCount == 0 && ballCount == 0) {
