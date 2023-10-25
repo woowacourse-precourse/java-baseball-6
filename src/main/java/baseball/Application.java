@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.game.SetOfGameFactory;
+import baseball.game.TotalGame;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        TotalGame totalGame = new TotalGame(new SetOfGameFactory());
+        totalGame.play();
     }
 }
