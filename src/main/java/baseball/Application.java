@@ -1,10 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,12 +11,12 @@ public class Application {
         // 객체 생성
         baseballGame b1 = new baseballGame();
 
-        exit_for :
+        exit_for:
         while (true) {
             // 컴퓨터 숫자 생성
             b1.computerNumberArrList();
             // System.out.println(b1.computerNumber);
-            while (true){
+            while (true) {
                 System.out.printf("숫자를 입력해주세요 : ");
                 // 사용자 숫자 입력
                 try {

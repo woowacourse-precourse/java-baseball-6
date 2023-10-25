@@ -1,8 +1,6 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -10,14 +8,14 @@ import java.util.Set;
 
 public class baseballGame {
     // 생성된 컴퓨터 숫자를 저장하는 ArrayList
-    ArrayList<Integer> computerNumber = new ArrayList<>() ;
+    ArrayList<Integer> computerNumber = new ArrayList<>();
     // 입력받은 사용자 숫자를 저장하는 ArrayList
     ArrayList<Integer> userNumber = new ArrayList<>();
     // 볼, 스트라이크 개수
     int b, s;
 
     // 컴퓨터 숫자 생성
-    public void  computerNumberArrList() {
+    public void computerNumberArrList() {
         computerNumber.clear();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -67,7 +65,7 @@ public class baseballGame {
         ArrayList<String> strUserNumberArrList = new ArrayList<String>(Arrays.asList(strUserNumberArr));
         Set<String> strUserNumberArrSet = new HashSet<>(strUserNumberArrList);
 
-        if(strUserNumberArrSet.size()!= strUserNumberArrList.size()){
+        if (strUserNumberArrSet.size() != strUserNumberArrList.size()) {
             throw new IllegalArgumentException();
         }
     }
@@ -87,16 +85,16 @@ public class baseballGame {
 
     // 입력한 수에 대한 결과를 볼, 스트라이크로 출력
     public void printStrikeAndBall() {
-        if (s==3) {
+        if (s == 3) {
             System.out.printf("3스트라이크%n3개의 숫자를 모두 맞히셨습니다! 게임 종료%n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.%n");
-        } else if (b==0 & s==0) {
+        } else if (b == 0 & s == 0) {
             System.out.printf("낫싱%n");
-        } else if (b!=0 & s!=0) {
-            System.out.printf("%d볼 %d스트라이크%n",b,s);
-        } else if (b!=0 & s==0) {
-            System.out.printf("%d볼%n",b);
-        } else if (b==0 & s!=0) {
-            System.out.printf("%d스트라이크%n",s);
+        } else if (b != 0 & s != 0) {
+            System.out.printf("%d볼 %d스트라이크%n", b, s);
+        } else if (b != 0 & s == 0) {
+            System.out.printf("%d볼%n", b);
+        } else if (b == 0 & s != 0) {
+            System.out.printf("%d스트라이크%n", s);
         }
     }
 
@@ -117,7 +115,7 @@ public class baseballGame {
         }
 
         // 입력한 한자리 정수가 1 또는 2가 아닐 때
-        if (Integer.parseInt(continueOrStopArr[0])!=1 && Integer.parseInt(continueOrStopArr[0])!=2) {
+        if (Integer.parseInt(continueOrStopArr[0]) != 1 && Integer.parseInt(continueOrStopArr[0]) != 2) {
             throw new IllegalArgumentException();
         }
         return continueOrStop;
