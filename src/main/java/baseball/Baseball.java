@@ -21,6 +21,7 @@ public class Baseball {
     public void incrementBallCount() {
         ballCount++;
     }
+
     public void incrementStrikeCount() {
         strikeCount++;
     }

@@ -26,7 +26,7 @@ public class BaseballGame implements Game {
     @Override
     public void play() {
         writer.write(START_MESSAGE);
-        while(true) {
+        while (true) {
             String computerNumber = randomNumberGenerator.generateNonRepeatingRandomDigitSequence(
                 BASEBALL_NUMBER_SIZE);
             playMainContent(computerNumber);
@@ -34,18 +34,22 @@ public class BaseballGame implements Game {
             writer.write(NEXT_GAME_MESSAGE);
             String endNumber = reader.read();
             terminateValidator.validate(endNumber);
-            if (isEnd(endNumber))break;
+            if (isEnd(endNumber)) {
+                break;
+            }
         }
     }
 
     private void playMainContent(String computerNumber) {
-        while(true) {
+        while (true) {
             writer.write(INPUT_MESSAGE);
             String inputNumber = reader.read();
             baseballNumValidator.validate(inputNumber);
             String result = processor.process(computerNumber, inputNumber);
             writer.write(result);
-            if (isAllStrike(result)) break;
+            if (isAllStrike(result)) {
+                break;
+            }
         }
     }
 
@@ -54,7 +58,7 @@ public class BaseballGame implements Game {
     }
 
     private boolean isEnd(String input) {
-        return (Integer.parseInt(input)==END_GAME_NUMBER);
+        return (Integer.parseInt(input) == END_GAME_NUMBER);
     }
 
 }

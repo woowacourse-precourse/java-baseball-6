@@ -14,12 +14,14 @@ public class BaseballGameProcessorImpl implements BaseballGameProcessor {
     public String process(String computerNumber, String inputNumber) {
         Set<Character> box = new HashSet<>();
         Baseball baseball = Baseball.getInstance();
-        for (int i= INIT_NUMBER; i< computerNumber.length(); i++) {
+        for (int i = INIT_NUMBER; i < computerNumber.length(); i++) {
             box.add(computerNumber.charAt(i));
         }
-        for (int i= INIT_NUMBER; i< inputNumber.length(); i++) {
-            if (!box.contains(inputNumber.charAt(i))) continue;
-            if (computerNumber.charAt(i)== inputNumber.charAt(i)) {
+        for (int i = INIT_NUMBER; i < inputNumber.length(); i++) {
+            if (!box.contains(inputNumber.charAt(i))) {
+                continue;
+            }
+            if (computerNumber.charAt(i) == inputNumber.charAt(i)) {
                 baseball.incrementStrikeCount();
                 continue;
             }
