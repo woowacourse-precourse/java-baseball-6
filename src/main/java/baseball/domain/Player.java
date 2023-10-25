@@ -20,7 +20,7 @@ public class Player {
     }
     public void guessNumbers() {
         String inputNumbers = InputView.inputNumbers();
-        if(inputNumbers.length() <= 0 || inputNumbers.length() > 3 || isThereDuplicateNumber(inputNumbers)){
+        if(inputNumbers.length() > 3 || isThereDuplicateNumber(inputNumbers)){
             throwIllegalArgumentException();
         }
         numbers.clear();

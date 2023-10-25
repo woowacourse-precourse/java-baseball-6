@@ -60,7 +60,6 @@ public class BaseballGame {
                 computerNumbers.add(randomNumber);
             }
         }
-        System.out.println(String.valueOf(computerNumbers));
         return computerNumbers;
     }
 
