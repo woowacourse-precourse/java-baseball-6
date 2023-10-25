@@ -16,7 +16,6 @@ public class Application {
             Config config = new Config();
             config.gameController().run();
         } catch (Exception e) {
-            e.printStackTrace();
             throw new IllegalArgumentException(e.getMessage());
         }
 
