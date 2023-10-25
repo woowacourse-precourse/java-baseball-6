@@ -7,9 +7,6 @@ import java.util.List;
 public class BaseballGame {
     private int[] compareResult;
 
-    public BaseballGame() {
-    }
-
     public void start() {
         showStart();
         Computer computer = new Computer();
@@ -45,10 +42,6 @@ public class BaseballGame {
             return true;
         }
         return false;
-    }
-
-    private static void inputOptionNumber(int number) {
-
     }
 
     private static List<Integer> getUsetNumberList() {
