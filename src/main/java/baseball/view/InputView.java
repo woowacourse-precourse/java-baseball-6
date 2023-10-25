@@ -8,6 +8,7 @@ public class InputView {
     private List<Integer> playerAnswer = new ArrayList<>();
 
     public List<Integer> inputPlayerNumbers() {
+        System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();  //입력받기
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
