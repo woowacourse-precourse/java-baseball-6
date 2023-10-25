@@ -156,4 +156,32 @@ class GamePlay {
     }
 }
 
+class GameEnd {
+    int PlayerResponse;
+    GameEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        PlayerResponse = playerResponse();
+        if (PlayerResponse == 1)
+            new GameSet();
+    }
+
+    private int playerResponse() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        PlayerResponse = responseInput();
+        return PlayerResponse;
+    }
+
+    private int responseInput() {
+        String response = Console.readLine();
+        checkResponse(response);
+        return Integer.parseInt(response);
+    }
+
+    private void checkResponse(String response) {
+        if (response.equals("1") || response.equals("2"))
+            return;
+        throw new IllegalArgumentException();
+    }
+}
+
 
