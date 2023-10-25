@@ -16,6 +16,7 @@ public class GameController {
     private void startGame() {
         gameService.startGame();
     }
+
     private void setGame() {
         gameService.setGame();
     }
@@ -27,6 +28,4 @@ public class GameController {
     private boolean requestGameRetry() {
         return gameService.getUserRetryRequest();
     }
-
-
 }

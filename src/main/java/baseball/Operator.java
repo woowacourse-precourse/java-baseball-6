@@ -8,8 +8,8 @@ public class Operator {
         return numbers.length == count;
     }
 
-    public static void isCorrectInput(String numbers){
-        if (numbers.length() < 3){
+    public static void isCorrectInput(String numbers) {
+        if (numbers.length() < 3) {
             throw new IllegalArgumentException();
         }
 
