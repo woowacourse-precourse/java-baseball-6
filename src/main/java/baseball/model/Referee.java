@@ -47,20 +47,21 @@ public class Referee {
 
     private int calculateStrikeNumbers(String randomNumbers, String inputNumbers) {
         return (int) IntStream.range(Constants.ZERO, Constants.NUMBER_OF_NUMBERS)
-                .filter(i -> isSameNumberInSamePlace(randomNumbers.charAt(i), inputNumbers.charAt(i)))
+                .filter(index -> isSameNumberInSamePlace(randomNumbers.charAt(index), inputNumbers.charAt(index)))
                 .count();
     }
 
     private int calculateBallNumbers(String randomNumbers, String inputNumbers) {
         return (int) IntStream.range(Constants.ZERO, Constants.NUMBER_OF_NUMBERS)
-                .filter(i -> isRandomNumbersContainInputNumber(randomNumbers, inputNumbers.charAt(i)))
-                .filter(i -> !isSameNumberInSamePlace(randomNumbers.charAt(i), inputNumbers.charAt(i)))
+                .filter(inputNumbersIndex ->
+                        isRandomNumbersContainInputNumber(randomNumbers, inputNumbers.charAt(inputNumbersIndex)))
+                .filter(index -> !isSameNumberInSamePlace(randomNumbers.charAt(index), inputNumbers.charAt(index)))
                 .count();
     }
 
     private boolean isRandomNumbersContainInputNumber(String randomNumbers, char inputNumber) {
         return randomNumbers.chars()
-                .mapToObj(c -> (char) c)
+                .mapToObj(intStreamToCharacter -> (char) intStreamToCharacter)
                 .anyMatch(singleNumber -> isSameNumberInSamePlace(singleNumber, inputNumber));
     }
 
