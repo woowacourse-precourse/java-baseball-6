@@ -2,26 +2,10 @@ package baseball.util;
 
 import static baseball.domain.GameConstants.NUMBER_LENGTH;
 
-import baseball.domain.GameConstants;
 import java.util.HashSet;
 import java.util.Set;
 
 public class StringUtil {
-
-    private static final String TOO_SHORT_LENGTH_MESSAGE = String.format(
-            "자리수가 %d보다 작습니다.",
-            NUMBER_LENGTH);
-
-    private static final String TOO_LONG_LENGTH_MESSAGE = String.format(
-            "자리수가 %d보다 큽니다.",
-            NUMBER_LENGTH);
-
-    private static final String DUPLICATE_DIGITS_MESSAGE = "같은 숫자가 2개 이상 있습니다.";
-
-    private static final String OUT_OF_RANGE_DIGITS_MESSAGE = String.format(
-            "각 자리 숫자가 %d에서 %d 사이가 아닙니다.",
-            GameConstants.MIN_DIGIT, GameConstants.MAX_DIGIT);
-
 
     public static Set toHashSet(String string) {
         Set numSet = new HashSet();
@@ -59,13 +43,4 @@ public class StringUtil {
             ExceptionUtil.throwInvalidValueException(DUPLICATE_DIGITS_MESSAGE);
         }
     }
-
-    public static void validateOutOfRange(String stringValue, int startRange, int endRange) {
-        String regEx = RegExUtil.createRangeRegex(startRange, endRange);
-
-        if (!stringValue.matches(regEx)) {
-            ExceptionUtil.throwInvalidValueException(OUT_OF_RANGE_DIGITS_MESSAGE);
-        }
-    }
-
 }
