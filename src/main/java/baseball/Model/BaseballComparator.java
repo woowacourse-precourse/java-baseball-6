@@ -1,7 +1,5 @@
 package baseball.Model;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class BaseballComparator {

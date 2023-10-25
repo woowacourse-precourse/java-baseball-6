@@ -1,7 +1,6 @@
 package baseball.Model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.stream.Stream;
 
 public class ComputerNumberPicker {

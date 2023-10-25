@@ -1,7 +1,6 @@
 package baseball.Model;
 
 import baseball.View.InputView;
-
 import java.util.stream.IntStream;
 
 public class UserNumberPicker {

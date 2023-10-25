@@ -1,8 +1,5 @@
 package baseball.Model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Exception {
     public static boolean isNumber(String userInput) {
         return userInput.chars()
