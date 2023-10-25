@@ -10,6 +10,8 @@ public class User {
     private List<Integer> numbers;
 
     private List<Integer> convertInputToList(String input) {
+        validateInputLength(input);
+
         List<Integer> convertedNumbers = new ArrayList<>();
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             char c = input.charAt(i);
@@ -28,7 +30,7 @@ public class User {
      */
     private void validateNumberRange(char c) {
         if ((int)c < 49 || (int)c > 57){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력한 값에 문자 혹은 0이 포함되어있습니다.");
         }
     }
 
@@ -39,7 +41,7 @@ public class User {
      */
     private void validateInputLength(String input) {
         if (input.length() > NUMBER_LENGTH || input.length() < NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력한 값이 3자리수가 아닙니다.");
         }
     }
 
@@ -51,7 +53,7 @@ public class User {
      */
     private void validateDuplicate(List<Integer> numbers, int n) {
         if (numbers.contains(n)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력한 값에 중복된 값이 포함되어있습니다.");
         }
     }
 
