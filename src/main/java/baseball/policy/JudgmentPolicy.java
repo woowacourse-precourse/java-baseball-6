@@ -22,6 +22,7 @@ public class JudgmentPolicy {
 
         return score;
     }
+
     private Judgment makeJudgment(List<Integer> computerNumbers, Integer userNumber, int userNumberIndex) {
         Judgment judgment;
         if(computerNumbers.get(userNumberIndex) == userNumber) {

@@ -21,7 +21,7 @@ public class BaseballGame implements Game {
         System.out.println("숫자 야구 게임을 시작합니다");
 
         Boolean exit = false;
-        do {정
+        do {
             String userInput = Console.readLine();
             user.setNumbers(userInput);
 
