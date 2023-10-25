@@ -4,13 +4,19 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class BaseballGameManager {
     private static BaseballGameManager baseballGameManager;
     private List<Integer> computerNumber = new ArrayList<>();
     private List<Integer> userNumber = new ArrayList<>();
     private Integer userInput;
+    private Map<String, Integer> baseballResult = new HashMap<>();
+    private AtomicInteger strikeCount = new AtomicInteger(0);
+    private AtomicInteger ballCount = new AtomicInteger(0);
 
     private BaseballGameManager() {}
 
@@ -26,6 +32,7 @@ public class BaseballGameManager {
 
         while(true) {
             getUserInput();
+            getBaseBallResult();
         }
     }
 
@@ -46,5 +53,25 @@ public class BaseballGameManager {
         System.out.print("숫자를 입력해주세요 : ");
 
         userInput = Integer.valueOf(Console.readLine());
+    }
+
+    private void getBaseBallResult() {
+        strikeCount.set(0);
+        ballCount.set(0);
+
+        userNumber.stream()
+                .filter(userInputDigit -> computerNumber.contains(userInputDigit))
+                .forEach(userInputDigit -> {
+                    if (computerNumber.indexOf(userInputDigit) == userNumber.indexOf(userInputDigit)) {
+                        strikeCount.getAndIncrement();
+                    } else {
+                        ballCount.getAndIncrement();
+                    }
+                });
+
+        baseballResult = Map.of(
+                "볼", ballCount.get(),
+                "스트라이크", strikeCount.get()
+        );
     }
 }
