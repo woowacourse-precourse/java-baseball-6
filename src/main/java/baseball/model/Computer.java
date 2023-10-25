@@ -1,16 +1,14 @@
 package baseball.model;
 
-import baseball.util.BaseballAnswerGenerator;
-
 public class Computer {
 
-    private final int[] numbers;
+    private final Numbers numbers;
 
     public Computer() {
-        this.numbers = BaseballAnswerGenerator.generate();
+        this.numbers = Numbers.random();
     }
 
-    public int[] getNumbers() {
+    public Numbers getNumbers() {
         return numbers;
     }
 }
