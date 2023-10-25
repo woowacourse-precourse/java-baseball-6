@@ -48,6 +48,13 @@ public class Utils {
         }
     }
 
+    // 게임 재시작 여부 요청의 입력을 검증하는 메소드
+    public void validateRestartInput(String playerInput) {
+        if (!playerInput.equals("1") && !playerInput.equals("2")) {
+            throw new IllegalArgumentException("입력이 잘못되어 게임을 종료합니다.");
+        }
+    }
+
     // 볼 개수를 반환하는 메소드
     public int checkBallCnt(String answerNumber, String inputValue) {
         int result = 0;
@@ -75,10 +82,4 @@ public class Utils {
         return result;
     }
 
-    // 게임 재시작 여부 요청의 입력을 검증하는 메소드
-    public void validateRestartInput(String playerInput) {
-        if (!playerInput.equals("1") && !playerInput.equals("2")) {
-            throw new IllegalArgumentException("입력이 잘못되어 게임을 종료합니다.");
-        }
-    }
 }
