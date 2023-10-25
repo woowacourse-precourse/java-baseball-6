@@ -7,6 +7,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Controller {
 
+    GameService gameService = new GameService();
+
     public void run() throws IllegalArgumentException {
         setGame();
         startGame();
@@ -15,20 +17,31 @@ public class Controller {
     }
 
     private void setGame() {
-
-        /**r게임 세팅을 한다**/;
+        gameService.setGame(3, 1, 9);
     }
 
     private void startGame() throws IllegalArgumentException {
-        /** 게임 시작을 진행한다 **/
+        gameService.playGame();
     }
 
-    private void endGame() {
-        /** 게임을 끝낸다**/
+    private void endGame()  {
+        SystemMessage.printGameOverMessage();
     }
 
     private void askRetry() throws IllegalArgumentException {
-        /** 만일 게임을 다시 시작하고 싶어하면 다시 시작할 수 있도록 물어본다**/
+        RequestInput.printRetryMessage();
+        if (getInputNum() == 1) {
+            run();
+        }
+
+    }
+    private int getInputNum() throws IllegalArgumentException {
+        int inputNum = Integer.parseInt(Console.readLine());
+
+        if (inputNum == 0 || inputNum > 2) {
+            throw new IllegalArgumentException();
+        }
+        return inputNum;
     }
 }
 
