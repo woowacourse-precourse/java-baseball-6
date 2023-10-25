@@ -3,6 +3,7 @@ package baseball;
 import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
 
     private static final int NUMBER_SIZE = 3;
