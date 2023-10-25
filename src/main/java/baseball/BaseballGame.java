@@ -43,28 +43,19 @@ public class BaseballGame {
     }
 
     private int checkStrikeCount(BaseballNumber computerBaseballNumber, BaseballNumber userBaseballNumber) {
-        int strike = 0;
-        for (int i = 0; i < 3; i++) {
-            if (computerBaseballNumber.get(i) == userBaseballNumber.get(i)) {
-                strike++;
-            }
-        }
-        return strike;
+        return baseballCountStrategy(new StrikeCountStrategy(computerBaseballNumber, userBaseballNumber));
     }
 
     private int checkBallCount(BaseballNumber computerBaseballNumber, BaseballNumber userBaseballNumber) {
-        int ball = 0;
+        return baseballCountStrategy(new BallCountStrategy(computerBaseballNumber, userBaseballNumber));
+    }
+
+    private int baseballCountStrategy(CountStrategy countStrategy) {
+        int count = 0;
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (computerBaseballNumber.get(i) == userBaseballNumber.get(j)) {
-                    ball++;
-                }
-            }
+            count += countStrategy.counting(i);
         }
-        return ball;
+        return count;
     }
 
     private boolean wantToContinueGame() {
@@ -75,7 +66,7 @@ public class BaseballGame {
     }
 
     private void validateContinueGameInput(String inputString) {
-        if(!inputString.equals("1") && !inputString.equals("2")) {
+        if (!inputString.equals("1") && !inputString.equals("2")) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
