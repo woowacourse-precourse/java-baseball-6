@@ -55,10 +55,15 @@ public class Game {
     private boolean restart() {
         String restart = InputUtil.getUserInput(RESTART_MESSAGE);
 
-        if (!(restart.equals("1") || restart.equals("2"))){
-            throw new IllegalArgumentException();
-        }
+        validateInput(restart);
+
         return "1".equals(restart);
+    }
+
+    private void validateInput(String input) {
+        if (!(input.equals("1") || input.equals("2"))){
+            throw new IllegalArgumentException("입력한 값이 1 또는 2가 아닙니다.");
+        }
     }
 
     /**
