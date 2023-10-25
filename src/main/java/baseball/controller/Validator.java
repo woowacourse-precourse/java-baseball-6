@@ -11,7 +11,7 @@ public class Validator {
     private static final String PLEASE_INPUT_ONE_OR_TWO = "1혹은2만 입력해야합니다;";
     private static final String NUMBER_RANGE = "[1-9]+";
     private static final String RESTART_GAME_NUMBER = "1";
-    private static final String  GAME_END_NUMBER = "2";
+    private static final String GAME_END_NUMBER = "2";
     private static final int INPUT_NUMBER_SIZE = 3;
 
 
@@ -49,7 +49,7 @@ public class Validator {
 
 
     public void validateGameEndInput(String endnumber) {
-        if(!endnumber.equals(RESTART_GAME_NUMBER) && !endnumber.equals(GAME_END_NUMBER)){
+        if (!endnumber.equals(RESTART_GAME_NUMBER) && !endnumber.equals(GAME_END_NUMBER)) {
             throw new IllegalArgumentException(PLEASE_INPUT_ONE_OR_TWO);
         }
     }
