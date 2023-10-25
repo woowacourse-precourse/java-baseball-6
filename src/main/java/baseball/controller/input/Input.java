@@ -2,6 +2,7 @@ package baseball.controller.input;
 
 import baseball.domain.ball.Balls;
 
+import baseball.exception.WrongInputException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
@@ -33,7 +34,7 @@ public class Input {
                 Console.close();
                 yield false;
             }
-            default -> throw new IllegalArgumentException("잘못된 입력입니다.");
+            default -> throw new WrongInputException("잘못된 입력입니다.");
         };
     }
 }
