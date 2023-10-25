@@ -56,7 +56,6 @@ public class GameNumber {
     public GameNumber() {
         initBoard();
         generateRandomizeNumber();
-        System.out.println(getBoard());
     }
 
     public List<Integer> getBoard() {
