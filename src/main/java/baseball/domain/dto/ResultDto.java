@@ -21,4 +21,8 @@ public class ResultDto {
         return score.isThreeStrike();
     }
 
+    public Map<String, Integer> getResult() {
+        return result;
+    }
+
 }
