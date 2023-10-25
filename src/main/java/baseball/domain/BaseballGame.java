@@ -27,8 +27,8 @@ public class BaseballGame {
     }
 
     public void play() {
+        computer.init();
         do {
-            computer.init();
             player.inputNumbers();
             compareNumbers();
             printHint();
@@ -39,7 +39,9 @@ public class BaseballGame {
     public void compareNumbers() {
         ballCount = 0;
         strikeCount = 0;
-
+        for (int i = 0; i < 3; i++) {
+            System.out.print(computer.getNumberOf(i) + " ");
+        }
         for (int i = 0; i < NUMBER_SIZE; i++) {
             int computerNumber = computer.getNumberOf(i);
             int playerNumber = player.getNumberOf(i);
