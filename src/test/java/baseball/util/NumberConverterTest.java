@@ -34,4 +34,11 @@ class NumberConverterTest {
                 NumberConverter.from("012"));
         assertEquals(e.getMessage(), "1부터 9까지 3개의 숫자를 입력해주세요");
     }
+
+    @Test
+    void 중복되는_숫자가_존재할_경우_예외를_발생시킨다() {
+        Exception e = assertThrows(IllegalArgumentException.class, () ->
+                NumberConverter.from("112"));
+        assertEquals(e.getMessage(), "서로 다른 숫자들을 입력해주세요");
+    }
 }
