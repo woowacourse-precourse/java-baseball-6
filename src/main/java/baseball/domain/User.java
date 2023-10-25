@@ -1,5 +1,5 @@
 package baseball.domain;
 
 public interface User {
-    void readNumbers();
+    void setNumbers(String userInput);
 }

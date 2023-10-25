@@ -9,8 +9,7 @@ import java.util.stream.Stream;
 public class BaseballUser implements User {
     private List<Integer> numbers;
 
-    public void readNumbers() {
-        String userInput = Console.readLine();
+    public void setNumbers(String userInput) {
 
         // TODO: validation 로직 추가
 
