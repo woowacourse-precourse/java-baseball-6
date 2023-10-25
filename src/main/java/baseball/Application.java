@@ -4,8 +4,8 @@ public class Application {
 
   public static void main(String[] args) {
     // TODO: 프로그램 구현
-    int restartStatus = 0;
-    while (restartStatus == 0) {
+    int restartStatus = 1;
+    while (restartStatus == 1) {
       try {
         Play play = new Play();
         restartStatus = play.gameSet();
