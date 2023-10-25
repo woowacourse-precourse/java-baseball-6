@@ -11,7 +11,7 @@ public class Game {
         int ball = same - strike;
 
         if(same == 0){
-            return "낫실";
+            return "낫싱";
         }else if(strike == 0){
             return ball + "볼";
         }else if(ball == 0){
