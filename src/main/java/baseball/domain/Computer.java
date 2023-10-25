@@ -8,7 +8,6 @@ public class Computer {
 
     public Computer(NumberGenerator numberGenerator) {
         this.numbers = numberGenerator.generate();
-        System.out.println(numbers);
     }
 
     public int compareSameIndexNumber(Player player) {
