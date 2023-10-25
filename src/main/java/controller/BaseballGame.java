@@ -21,6 +21,17 @@ public class BaseballGame {
         this.randomNumber = randomNumber;
     }
 
+    public void start() {
+        System.out.println(inputView.GAME_START_MESSAGE);
+        while (true) {
+            boolean play = Play();
+            if (!play) {
+                System.out.println(outputView.GAME_SET);
+                break;
+            }
+        }
+    }
+
     public boolean Play() {
         computer = randomNumber.GenerateRandomNumber();
         while (true) {
