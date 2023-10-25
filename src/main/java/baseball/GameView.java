@@ -16,7 +16,8 @@ public class GameView {
     public void displayResult(Result result) {
         if (result.getStrikes() == 0 && result.getBalls() == 0) {
             displayMessage("낫싱");
-        } else if (result.getStrikes() == 0) {
+        }
+        else if (result.getStrikes() == 0) {
             displayMessage(result.getBalls() + "볼");
         } else if (result.getBalls() == 0) {
             displayMessage(result.getStrikes() + "스트라이크");
