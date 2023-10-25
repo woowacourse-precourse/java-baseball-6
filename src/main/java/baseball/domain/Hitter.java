@@ -3,7 +3,6 @@ package baseball.domain;
 
 import baseball.domain.numberBalls.NumberBalls;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class Hitter {
 
@@ -25,7 +24,7 @@ public class Hitter {
 
         return NumberBalls.create(Arrays.stream(numberString.split(""))
                 .map(Integer::valueOf)
-                .collect(Collectors.toList()));
+                .toList());
     }
 
     private static void validateIsInteger(String input) {
