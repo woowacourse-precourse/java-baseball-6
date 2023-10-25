@@ -8,6 +8,9 @@ import java.util.List;
 public class Computer {
 
     private static final int LEN_NUM = 3;
+    private int strikeCnt = 0;
+    private int ballCnt = 0;
+    private boolean isNothing = false;
 
     private List<Integer> numbers;
 
@@ -21,6 +24,23 @@ public class Computer {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
+            }
+        }
+    }
+    // 같은 수가 같은 자리에 있으면 "스트라이크"
+    // 같은 수가 다른 자리에 있으면 "볼"
+    public void count(List<Integer> userNumber) {
+        for (int i = 0; i < userNumber.size(); i++) {
+            Integer digit = userNumber.get(i);
+            Integer target = numbers.get(i);
+
+            if (digit == target) {
+                this.strikeCnt += 1;
+                continue;
+            }
+
+            if (numbers.contains(digit)) {
+                this.ballCnt += 1;
             }
         }
     }
