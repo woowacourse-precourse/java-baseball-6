@@ -35,16 +35,15 @@ public class ComputerPlayer {
         int strikes = result[0];
         int balls = result[1];
 
-        if (strikes > 0) {
-            System.out.println(strikes + " 스트라이크");
-        }
-
         if (balls > 0) {
-            System.out.println(balls + " 볼");
+            System.out.print(balls + "볼 ");
+        }
+        if (strikes > 0) {
+            System.out.println(strikes + "스트라이크");
         }
 
         if (strikes == 0 && balls == 0) {
-            System.out.println("Nothing");
+            System.out.print("낫싱");
         }
     }
 
