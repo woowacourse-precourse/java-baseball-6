@@ -13,7 +13,7 @@ public class Application {
         BaseballGame baseballGame;
         while(true){
             baseballGame = new BaseballGame();
-            if (baseballGame.play() == EXIT) {
+            if (baseballGame.play().equals(EXIT)) {
                 InputUtil.closeConsole();
                 return;
             }
