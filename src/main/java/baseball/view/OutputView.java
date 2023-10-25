@@ -9,6 +9,7 @@ public class OutputView {
     public static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String NOTHING_MESSAGE = "낫싱\n";
+    public static final String BALL_MESSAGE = "%d볼\n";
 
 
     public static void printGameStart() {
@@ -30,6 +31,12 @@ public class OutputView {
     private static void printNothing(GameResponse response) {
         if (response.hasNoStrike() && response.hasNoBall()) {
             System.out.print(NOTHING_MESSAGE);
+        }
+    }
+
+    private static void printBall(GameResponse response) {
+        if (response.hasNoStrike() && !response.hasNoBall()) {
+            System.out.printf(BALL_MESSAGE, response.getBall());
         }
     }
 }
