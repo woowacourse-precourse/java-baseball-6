@@ -69,22 +69,4 @@ public class Game {
 
         return sb.toString();
     }
-
-    /**
-     * 게임이 끝난 경우 재시작/종료 구 입력은 1과 2 중 하나의 수
-     */
-    public boolean checkRestart(String input) {
-        //문자를 두 개 이상 입력
-        if (input.length() != 1) {
-            throw new IllegalArgumentException("1이나 2 하나만 공백없이 입력해야 합니다.");
-        }
-
-        if (input.charAt(0) - '0' == 1) { //재시작
-            return true;
-        } else if (input.charAt(0) - '0' == 2) { //종료
-            return false;
-        } else { //입력이 1이나 2가 아닌 경우
-            throw new IllegalArgumentException("1이나 2를 입력해야 합니다.");
-        }
-    }
 }

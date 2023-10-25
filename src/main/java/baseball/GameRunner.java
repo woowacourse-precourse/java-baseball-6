@@ -44,7 +44,7 @@ public class GameRunner {
         if (game.getStrike() == 3) {
             System.out.println(Message.SUCCESS_MSG);
             String input = Console.readLine();
-            if (game.checkRestart(input)) {
+            if (InputHandler.checkRestartInput(input)) {
                 game = null;
                 return false;
             } else {
