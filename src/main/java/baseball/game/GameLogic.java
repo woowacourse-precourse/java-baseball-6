@@ -27,15 +27,15 @@ public class GameLogic {
             .count();
     }
 
-    boolean isNothing(int strike, int ball) {
+    public boolean isNothing(int strike, int ball) {
         return strike == 0 && ball == 0;
     }
 
-    boolean isAnswer(String hint) {
+    public boolean isAnswer(String hint) {
         return hint.equals(GameHintType.ANSWER.toString());
     }
 
-    String generateHintFromResult(int strike, int ball) {
+    public String generateHintFromResult(int strike, int ball) {
         if (isNothing(strike, ball)) {
             return GameHintType.NOTHING.format(0);
         }
