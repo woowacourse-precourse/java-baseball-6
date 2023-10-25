@@ -6,16 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    public final List<Integer> numbers = new ArrayList<>();
+    public String number;
     private int optionNum = 0;
 
     public void getNum() {
-        String getNumber;
         try {
             InputStreamReader ir = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(ir);
-            getNumber = br.readLine();
-            getNumberError(getNumber);
+            number = br.readLine();
+            getNumberError(number);
         } catch (Exception e) {
         }
     }
