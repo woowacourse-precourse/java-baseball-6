@@ -17,16 +17,16 @@ public class BaseballGameController {
 
         view.printStartMessage();
 
-        while(gameContinue) {
+        while (gameContinue) {
             String userInput = view.getUserNumberInput();
             UserNumber userNumber = new UserNumber(userInput);
             String result = computerNumber.getResultComparedWithUserNumber(userNumber);
             view.printResult(result);
 
-            if(result.contains("3스트라이크")) {
+            if (result.contains("3스트라이크")) {
                 view.printEndGameMessage();
                 gameContinue = view.askForNewGame();
-                if(gameContinue) {
+                if (gameContinue) {
                     computerNumber = new ComputerNumber();
                 }
             }

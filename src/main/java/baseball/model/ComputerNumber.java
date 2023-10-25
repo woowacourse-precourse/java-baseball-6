@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerNumber extends Number{
+public class ComputerNumber extends Number {
     public ComputerNumber() {
         super(generateRandomNumberArray());
     }
@@ -35,9 +35,9 @@ public class ComputerNumber extends Number{
         }
 
         String result = "";
-        if(balls > 0) result += balls + "볼 ";
-        if(strikes > 0) result += strikes + "스트라이크 ";
-        if(result.isEmpty()) result = "낫싱";
+        if (balls > 0) result += balls + "볼 ";
+        if (strikes > 0) result += strikes + "스트라이크 ";
+        if (result.isEmpty()) result = "낫싱";
 
         return result.trim();
     }
