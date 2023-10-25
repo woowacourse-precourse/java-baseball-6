@@ -29,12 +29,12 @@ public class Application {
             //computerNumbers에 대한 유효성 검증
             validNumbers(computerNumbers);
             //생성된 computerNumbers와 사용자가 입력한 수를 가지고 비교하여 결과값 출력
-            countStrike(computerNumbers);
+            calculateCount(computerNumbers);
 
             System.out.println(NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             //게임 종료 시 재시작 or 종료
-            ReStart();
-        } catch(IllegalArgumentException e) {
+            inputReStartNumber();
+        } catch(IllegalArgumentException error) {
             throw new IllegalArgumentException("게임이 종료되었습니다");
         }
     }
@@ -44,7 +44,7 @@ public class Application {
      *
      * @param computerNumbers 컴퓨터가 생성한 3개의 숫자
      */
-    public static void countStrike(List<Integer> computerNumbers) {
+    public static void calculateCount(List<Integer> computerNumbers) {
         while(strike!=NUMBER_COUNT) {
 
             //사용자로부터 입력받은 값을 List배열에 저장
@@ -54,13 +54,14 @@ public class Application {
             //computerNumbers와 playerNumbers를 비교하여 strike와 ball값 증가
             compareNumbers(computerNumbers, playerNumbers);
 
+            System.out.println(printResult());
         }
     }
 
     /**
      * 게임 종료 후 사용자가 입력하는 값에 대한 유효성 검사와 게임 재시작 또는 게임을 종료한다.
      */
-    public static void ReStart() {
+    public static void inputReStartNumber() {
         System.out.println("게임을 새로 시작려면 1, 종료하려면 2를 입력하세요.");
 
         //사용자로부터 게임을 재시작할건지 종료할건지 값 입력받기
@@ -139,7 +140,6 @@ public class Application {
                 ball++;
             }
         }
-        System.out.println(printResult());
     }
 
     /**
