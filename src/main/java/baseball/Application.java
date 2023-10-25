@@ -19,13 +19,11 @@ class BaseballGame {
     private List<Integer> user = new ArrayList<>();
     private boolean isPlaying = true;
     void play() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        makeComNum();
         while (isPlaying) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            makeComNum();
-            while (isPlaying) {
-                getUserNum();
-                printResult(countStrike(), countBall());
-            }
+            getUserNum();
+            printResult(countStrike(), countBall());
         }
     }
     private void makeComNum() {
