@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import baseball.util.BaseballGameNumbersConvertor;
 import baseball.util.RetryInputConvertor;

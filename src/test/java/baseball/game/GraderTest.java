@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -68,6 +68,5 @@ public class GraderTest {
                 () -> answerSize4Grader.grade(size5Numbers))
                 .isInstanceOf(IllegalArgumentException.class)
         );
-        ;
     }
 }

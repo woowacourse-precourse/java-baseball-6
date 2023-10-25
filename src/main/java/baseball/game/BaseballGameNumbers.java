@@ -1,5 +1,6 @@
-package baseball;
+package baseball.game;
 
+import baseball.util.RandomNumberPicker;
 import java.util.List;
 
 public class BaseballGameNumbers {
