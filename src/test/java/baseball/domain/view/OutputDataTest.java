@@ -29,4 +29,14 @@ class OutputDataTest {
         result.put(BallCount.STRIKE, 0);
         OutputData.gameResultPrint(new ResultDto(new Score(result)));
     }
+
+    @Test
+    void 결과_출력2() {
+        result.put(BallCount.OUT, 2);
+        result.put(BallCount.BALL, 1);
+        result.put(BallCount.STRIKE, 0);
+
+        OutputData.gameResultPrint(new ResultDto(new Score(result)));
+    }
+
 }
