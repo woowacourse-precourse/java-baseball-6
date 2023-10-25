@@ -2,15 +2,17 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Array {
-    int[] answer = new int[3];
-    int[] userInput = new int[3];
+    private static final int START = 1;
+    private static final int END = 9;
+    int[] answer = new int[Game.NUMBER];
+    int[] userInput = new int[Game.NUMBER];
 
     void getRandomAnswer(){
         int newNum;
          int answerIndex = 0;
 
-         while(answerIndex < 3) {
-             newNum = pickNumberInRange(1, 9);
+         while(answerIndex < Game.NUMBER) {
+             newNum = pickNumberInRange(START, END);
 
              if(!isValueInArray(newNum, answer)) {
                  answer[answerIndex] = newNum;
@@ -30,7 +32,7 @@ public class Array {
         String strInput = readLine();
         throwError(strInput);
 
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < Game.NUMBER; i++)
             userInput[i] = strInput.charAt(i) - '0';
      }
 
@@ -41,8 +43,8 @@ public class Array {
      }
 
     void checkInputDuplicates(String str) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = i + 1; j < 3; j++) {
+        for (int i = 0; i < Game.NUMBER; i++) {
+            for (int j = i + 1; j < Game.NUMBER; j++) {
                 if (str.charAt(i) == str.charAt(j))
                     throw new IllegalArgumentException();
             }
@@ -50,12 +52,12 @@ public class Array {
     }
 
     void checkInputLength(String str){
-        if (str.length() != 3)
+        if (str.length() != Game.NUMBER)
             throw new IllegalArgumentException();
     }
 
     void checkInputFormat(String str) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Game.NUMBER; i++) {
             if ('1' > str.charAt(i) || str.charAt(i) > '9')
                 throw new IllegalArgumentException();
         }
