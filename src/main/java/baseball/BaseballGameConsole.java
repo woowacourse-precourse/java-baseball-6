@@ -14,17 +14,14 @@ public class BaseballGameConsole {
     }
 
     public void start(){
-        outputConsole.printStartMessage();
-        game.setUpForNewGame();
+        setUpNewGame();
+        alertGameStarted();
         while(!game.isGameFinished()){
-            outputConsole.printInputForm();
-            Result gameResult = game.play(inputConsole.readPrediction());
-            outputConsole.printResult(gameResult.getNumberOfBalls(), gameResult.getNumberOfStrikes());
+            playGameWithUserPrediction();
             if(game.isGameFinished()){
-                outputConsole.printGameFinishedMessage();
-                outputConsole.printRegameMessage();
+                alertGameFinishedAndAskNewGame();
                 if(playerWantsNewGame(inputConsole.readUserIntentionForNewGame())){
-                    game.setUpForNewGame();
+                    setUpNewGame();
                 }
             }
         }
@@ -38,5 +35,24 @@ public class BaseballGameConsole {
             return false;
         }
         else throw new IllegalArgumentException();
+    }
+
+    private void playGameWithUserPrediction(){
+        outputConsole.printInputForm();
+        Result gameResult = game.play(inputConsole.readPrediction());
+        outputConsole.printResult(gameResult.getNumberOfBalls(), gameResult.getNumberOfStrikes());
+    }
+
+    private void alertGameFinishedAndAskNewGame(){
+        outputConsole.printGameFinishedMessage();
+        outputConsole.printRegameMessage();
+    }
+
+    private void alertGameStarted(){
+        outputConsole.printStartMessage();
+    }
+
+    private void setUpNewGame(){
+        game.setUpForNewGame();
     }
 }
