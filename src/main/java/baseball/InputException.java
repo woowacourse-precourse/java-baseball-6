@@ -27,7 +27,7 @@ public class InputException {
         for(int i = 0; i < inputNumber.size(); i++){
             System.out.println(inputNumber.get(i));
             if(inputNumber.get(i).equals(0)){
-                throw new IllegalArgumentException("0은 입력이 불가능합니다.");
+//                throw new IllegalArgumentException("0은 입력이 불가능합니다.");
             }
         }
     }
