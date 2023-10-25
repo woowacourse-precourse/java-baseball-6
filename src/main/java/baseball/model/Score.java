@@ -4,6 +4,11 @@ public class Score {
     private int strike;
     private int ball;
 
+    public Score() {
+        this.strike = 0;
+        this.ball = 0;
+    }
+
     public int getStrike() {
         return strike;
     }
