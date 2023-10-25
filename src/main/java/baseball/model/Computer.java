@@ -13,22 +13,22 @@ public class Computer {
     private static final Integer MIN_NUM = 1;
     private static final Integer MAX_NUM = 9;
 
-    private Set<Integer> answerSet = new LinkedHashSet<>();
-    private List<Integer> answerList;
+    private final List<Integer> answer;
 
     public Computer() {
+        Set<Integer> answerSet = new LinkedHashSet<>();
         while (answerSet.size() < NUMBER_DIGIT) {
             answerSet.add(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
         }
-        answerList = setToIntegerList(answerSet);
+        answer = setToIntegerList(answerSet);
     }
 
     public GameResult calculateGameResult(GameNumber gameNumber) {
         Integer ballCount = 0;
         Integer strikeCount = 0;
-
+        List<Integer> numbers = gameNumber.getNumbers();
         for (int i = 0; i < NUMBER_DIGIT; i++) {
-            int num = gameNumber.getNumberAt(i);
+            int num = numbers.get(i);
 
             if (isStrike(i, num)) {
                 strikeCount++;
@@ -40,11 +40,11 @@ public class Computer {
     }
 
     private Boolean isStrike(Integer index, Integer num) {
-        return num.equals(answerList.get(index));
+        return num.equals(answer.get(index));
     }
 
     private Boolean isBall(Integer num) {
-        return answerSet.contains(num);
+        return answer.contains(num);
     }
 
     private List<Integer> setToIntegerList(Set<Integer> set) {

@@ -1,8 +1,6 @@
 package baseball.dto;
 
-import baseball.model.Computer;
 import baseball.validator.InputValidator;
-import baseball.exception.InvalidIndexException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +25,7 @@ public class GameNumber {
         return numbers;
     }
 
-    public Integer getNumberAt(Integer index) {
-        if (index < Computer.NUMBER_DIGIT) {
-            return numbers.get(index);
-        }
-        throw new InvalidIndexException();
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
