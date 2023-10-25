@@ -17,7 +17,13 @@ public class InputManager {
     }
 
     private List<Integer> validate(String num) {
-        Integer number = Integer.parseInt(num);
+        Integer number=null;
+        try {
+            number = Integer.parseInt(num);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 수를 입력했습니다.");
+        }
+
 
 
         if (number < 111 || number > 999) {
