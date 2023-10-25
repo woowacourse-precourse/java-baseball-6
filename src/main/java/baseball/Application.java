@@ -8,21 +8,18 @@ import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
-        try {
-            while (true) {
-                Game game = new Game();
-                game.start();
+        while (true) {
+            Game game = new Game();
+            game.start();
 
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int restart = Integer.parseInt(Console.readLine());
-
-                if (restart != 1) {
-                    break;
-                }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int restart = Integer.parseInt(Console.readLine());
+            if (restart != 1 && restart != 2) {
+                throw new IllegalArgumentException("1 또는 2를 입력해야 합니다..");
             }
-        }
-        catch (IllegalArgumentException e) {
-            System.out.println("입력 값이 잘못되었습니다. 프로그램을 종료합니다.");
+            if (restart != 1) {
+                break;
+            }
         }
     }
 }
