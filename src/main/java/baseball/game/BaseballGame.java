@@ -11,6 +11,8 @@ public class BaseballGame implements Game {
 
     private final View view = new ConsoleView();
 
+    private Balls answerBalls;
+    private Balls balls;
     private Results results;
 
     public void run() {
@@ -18,31 +20,42 @@ public class BaseballGame implements Game {
         view.displayGameStartMessage();
 
         do {
-
-            Balls answerBalls = BallsUtils.generateRandomBalls(1,9,3);
+            generateAnswer();
 
             do {
-
                 view.displayRequestNumberMessage();
+                inputBalls();
 
-                String inputString = view.inputString();
-                Balls balls = BallsUtils.convertStringToBalls(inputString);
-
-                results = ResultsUtils.determineResults(balls, answerBalls);
-
+                determineResults();
                 view.displayResults(results);
 
-            } while (!results.isAnswer());
+            } while (!isAnswer());
 
             view.displayCongratulationMessage();
-
             view.displayAskRestartMessage();
 
-        } while (goonaRestart());
+        } while (gonnaRestart());
 
     }
 
-    private boolean goonaRestart() {
+    private void generateAnswer() {
+        answerBalls = BallsUtils.generateRandomBalls(1,9,3);
+    }
+
+    private void inputBalls() {
+        String inputString = view.inputString();
+        balls = BallsUtils.convertStringToBalls(inputString);
+    }
+
+    private void determineResults() {
+        results = ResultsUtils.determineResults(balls, answerBalls);
+    }
+
+    private boolean isAnswer() {
+        return results.isAnswer();
+    }
+
+    private boolean gonnaRestart() {
         String inputString = view.inputString();
         return RestartStatus.gonnaRestart(inputString);
     }

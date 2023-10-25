@@ -10,17 +10,17 @@ public class Balls {
     private final List<Ball> balls;
 
     public Balls(List<Ball> balls) {
-        validateSize();
-        validateDistinctValue();
-        validateDistinctIndex();
+        validateSize(balls);
+        validateDistinctValue(balls);
+        validateDistinctIndex(balls);
         this.balls = balls;
     }
 
-    private void validateSize() {
+    private void validateSize(List<Ball> balls) {
         ListValidators.validateSize(balls, BALL_COUNT);
     }
 
-    private void validateDistinctValue() {
+    private void validateDistinctValue(List<Ball> balls) {
         ListValidators.validateDistinct(
                 balls.stream()
                         .map(Ball::getValue)
@@ -28,7 +28,7 @@ public class Balls {
         );
     }
 
-    private void validateDistinctIndex() {
+    private void validateDistinctIndex(List<Ball> balls) {
         ListValidators.validateDistinct(
                 balls.stream()
                         .map(Ball::getIndex)
