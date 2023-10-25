@@ -15,9 +15,6 @@ public class CommandLine {
         PRESENTATION.print(message);
     }
 
-    public static String input(){
-        return Console.readLine();
-    }
 
     public static String input(String message){
         show(message);
