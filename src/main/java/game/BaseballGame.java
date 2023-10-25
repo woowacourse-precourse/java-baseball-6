@@ -50,14 +50,19 @@ public class BaseballGame implements Game {
     private void checkResultAndRetry(GameResult gameResult) {
         if (isFinish(gameResult)) {
             console.printEndMessage();
-            console.printEndOrRetryMessage();
-            int menu = Integer.parseInt(console.inputRetryMenu());
-            if (menu == STOP_NUMBER) {
-                gameStatus = GameStatus.END;
-                return;
-            }
-            computerBalls = createNewComputerBalls();
+            restartGame();
         }
+    }
+
+    @Override
+    public void restartGame() {
+        console.printEndOrRetryMessage();
+        int menu = Integer.parseInt(console.inputRetryMenu());
+        if (menu == STOP_NUMBER) {
+            gameStatus = GameStatus.END;
+            return;
+        }
+        computerBalls = createNewComputerBalls();
     }
 
     private Balls createNewComputerBalls() {
@@ -71,8 +76,5 @@ public class BaseballGame implements Game {
         return gameResult.strike() == MAX_STRIKE;
     }
 
-    @Override
-    public void restartGame() {
 
-    }
 }
