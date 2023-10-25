@@ -15,6 +15,12 @@ public class Application {
             int result = getResultGame(randomNumbers, userNumbers);
 
             if (result == 3) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                boolean reStart = reStartGame();
+                if (reStart) {
+                    randomNumbers = makeRandomNumber();
+                    continue;
+                }
                 break;
             }
         }
@@ -77,6 +83,9 @@ public class Application {
         }
         if (ballCount != 0) {
             resultMessage += ballCount + "볼";
+            if (strikeCount != 0) {
+                resultMessage = ballCount + "볼 ";
+            }
         }
         if (strikeCount != 0) {
             resultMessage += strikeCount + "스트라이크";
@@ -89,5 +98,15 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
         return strikeCount;
+    }
+
+    private static boolean reStartGame() {
+        String input = Console.readLine();
+        int reStartNumber = Integer.parseInt(input);
+
+        if (reStartNumber == 1) {
+            return true;
+        }
+        return false;
     }
 }
