@@ -10,7 +10,7 @@ import baseball.service.DefaultConsoleService;
 import baseball.service.DefaultRandomService;
 import baseball.view.InputValidator;
 import baseball.view.InputView;
-import baseball.view.OutputDevice;
+import baseball.view.OutputView;
 import java.util.List;
 
 public class Application {
@@ -21,18 +21,18 @@ public class Application {
         // TODO: 프로그램 구현
         BaseBallGame baseBallGame = new BaseBallGame(new RandomNumberGenerator(new DefaultRandomService()));
         InputView inputView = new InputView(new DefaultConsoleService(), new InputValidator());
-        OutputDevice outputDevice = new OutputDevice();
+        OutputView outputView = new OutputView();
         Score gameResult;
 
-        outputDevice.printGameStart();
+        outputView.printGameStart();
 
         do {
             List<Integer> answerNumbers = baseBallGame.createAnswerNumbers();
 
-            BaseBallGameController controller = new BaseBallGameController(inputView, baseBallGame, outputDevice);
+            BaseBallGameController controller = new BaseBallGameController(inputView, baseBallGame, outputView);
             gameResult = controller.competeWith(answerNumbers);
 
-            outputDevice.printGameFinish();
+            outputView.printGameFinish();
         } while (playingGame(gameResult, inputView));
     }
 
