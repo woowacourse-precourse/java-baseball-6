@@ -1,7 +1,5 @@
 package baseball;
 
-import java.io.BufferedReader;
-
 public class Game {
     private final static int ON = 1;
     private final static int OFF = 2;
@@ -11,11 +9,11 @@ public class Game {
     private NumberManager numberManager;
     private int status = ON;
 
-    Game(BufferedReader br) {
+    Game() {
         this.computer = new Computer();
         this.user = new User();
         this.ruleManager = new RuleManager();
-        this.numberManager = new NumberManager(br);
+        this.numberManager = new NumberManager();
     }
 
     public int getStatus() {
