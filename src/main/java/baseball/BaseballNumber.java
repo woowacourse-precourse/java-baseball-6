@@ -34,4 +34,31 @@ public class BaseballNumber {
         }
     }
 
+    public BaseballScore checkBalls() {
+        int strike = strikeNumber();
+        int ball = ballNumber() - strike;
+        return new BaseballScore(strike, ball);
+    }
+
+    private int strikeNumber() {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    private int ballNumber() {
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(user.get(i))) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+
 }

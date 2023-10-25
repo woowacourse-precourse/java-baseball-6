@@ -34,5 +34,5 @@ public class BaseballScore {
             return ballNumber + "볼 " + strikeNumber + "스트라이크";
         }
     }
-
+    
 }

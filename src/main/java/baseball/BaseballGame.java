@@ -12,8 +12,8 @@ public class BaseballGame {
         this.numbers.setUser(numbers);
     }
 
-    public void getBallScoreMessage() {
-
+    public String getBallScoreMessage() {
+        return numbers.checkBalls().getNumberMessage();
     }
 
 }
