@@ -20,11 +20,11 @@ public class InputView {
 
     public String inputNumbers() {
         System.out.print(INPUT_NUMBERS);
-        return readLine();
+        return readLine().strip();
     }
 
     public String inputGameCommand() {
         System.out.print(INPUT_RESTART_OR_END);
-        return readLine();
+        return readLine().strip();
     }
 }
