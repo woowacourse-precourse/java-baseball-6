@@ -1,15 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
 
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
     private static final int NUMBER_SIZE = 3;
     private static final String INPUT_RESTART = "1";
     private static final String INPUT_NUMBER_FORMAT = "[1-9]{3}";
@@ -22,7 +18,7 @@ public class Application {
         String choiceOfUser = INPUT_RESTART;
         while (choiceOfUser.equals(INPUT_RESTART)) {
 
-            List<Integer> computer = makeRandomNumber();
+            Computer computer = new Computer();
 
             boolean isAnswer = false;
             while (!isAnswer) {
@@ -31,7 +27,7 @@ public class Application {
                 String input = Console.readLine();
                 validateInputNumber(input);
 
-                List<Integer> user = changeStringToList(input);
+                User user = new User(input);
 
                 isAnswer = compare(computer, user);
             }
@@ -40,13 +36,6 @@ public class Application {
         }
     }
 
-    private static List<Integer> changeStringToList(String input) {
-        List<Integer> user = new ArrayList<>();
-        for (String splitInput : input.split("")) {
-            user.add(Integer.parseInt(splitInput));
-        }
-        return user;
-    }
 
     private static void validateInputNumber(String input) {
         if (!input.matches(INPUT_NUMBER_FORMAT)) {
@@ -69,28 +58,20 @@ public class Application {
         }
     }
 
-    private static List<Integer> makeRandomNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < NUMBER_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
+    private static boolean compare(Computer computer, User user) {
 
-    private static boolean compare(List<Integer> computer, List<Integer> user) {
+        List<Integer> computerNumber = computer.getNumber();
+        List<Integer> userNumber = user.getNumber();
 
         int ball = 0;
         int strike = 0;
 
-        for (int computerIndex = 0; computerIndex < 3; computerIndex++) {
-            Integer computerNumber = computer.get(computerIndex);
-            if (!user.contains(computerNumber)) {
+        for (int i = 0; i < 3; i++) {
+            Integer oneNumber = computerNumber.get(i);
+            if (!userNumber.contains(oneNumber)) {
                 continue;
             }
-            if (user.indexOf(computerNumber) == computerIndex) {
+            if (userNumber.indexOf(oneNumber) == i) {
                 strike += 1;
                 continue;
             }
