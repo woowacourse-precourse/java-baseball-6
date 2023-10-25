@@ -1,5 +1,9 @@
 package baseball.domain.view;
 
+import baseball.domain.dto.ResultDto;
+
+import java.util.Map;
+
 public class OutputData {
     public static final String THREE_STRIKE_WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String OUT = "아웃";
@@ -10,4 +14,11 @@ public class OutputData {
 
     private OutputData() {
     }
+
+    private static void printOutput() {
+        System.out.print(output);
+        System.out.println();
+        output = "";
+    }
+
 }
