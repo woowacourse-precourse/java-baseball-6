@@ -19,7 +19,11 @@ public class BaseBallManager {
     private static Map<String, Integer> playerResult;
 
     public BaseBallManager() {
-        this.computerBallGroup = new BallNumberGroup(generateUniqueRandomNumbers());
+        generateBaseBall();
+    }
+
+    private void generateBaseBall() {
+        computerBallGroup = new BallNumberGroup(generateUniqueRandomNumbers());
         computerBallInfo = new HashMap<>();
         List<BallNumber> computerBall = computerBallGroup.getBallNumberGroup();
         for (int bIdx = 0; bIdx < BALL_NUMBER_SIZE; bIdx++) {
