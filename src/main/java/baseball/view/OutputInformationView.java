@@ -26,4 +26,9 @@ public class OutputInformationView {
     public void gameEndGuide() {
         System.out.println(gameEnd);
     }
+
+    // 스트라이크,볼,낫싱의 결과값을 출력하는 메서드.
+    public void resultGuide(String result) {
+        System.out.println(result);
+    }
 }
