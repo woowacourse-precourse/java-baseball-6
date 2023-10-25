@@ -14,7 +14,6 @@ public class AnswerEvaluatorImpl implements Evaluator {
     public AnswerEvaluatorImpl(int numSize) {
         this.boardSize = numSize;
         this.answer = new ArrayList<>();
-        resetAnswer();
     }
 
     @Override

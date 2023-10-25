@@ -3,7 +3,6 @@ package baseball.phase.impl;
 import baseball.game.BaseballGame;
 import baseball.phase.Phase;
 import baseball.phase.PhaseID;
-import java.util.List;
 
 public class InitPhase implements Phase {
     private BaseballGame baseballGame;
@@ -18,8 +17,7 @@ public class InitPhase implements Phase {
 
     @Override
     public void play() {
-        List<Integer> answer = this.baseballGame.getAnswer();
-
+        this.baseballGame.getEvaluator().resetAnswer();
     }
 
     @Override
