@@ -19,14 +19,19 @@ public class Application {
 
         // 4. computerNum과 userNum을 비교하여 숫자 야구 진행
         PlayGame playBaseball = new PlayGame();
-        boolean gameContinues = playBaseball.compareNum(computerNum, userNum);
+        int gameContinues = playBaseball.compareNum(computerNum, userNum);
 
         while (true) {
-            if (!gameContinues) {
+            if (gameContinues == 2) { //op2. 게임 종료
                 break;
+            } else if (gameContinues == 1) { // op1. 새로운 게임 시작, 변경된 랜덤 숫자와 유저 숫자 넣기
+                computerNum = randNumGenerator.makeRandNum();
+                userNum = consoleInput.inputNum();
+                gameContinues = playBaseball.compareNum(computerNum, userNum);
+            } else { // op3. 현재 게임 지속
+                userNum = consoleInput.inputNum();
+                gameContinues = playBaseball.compareNum(computerNum, userNum);
             }
-            userNum = consoleInput.inputNum();
-            gameContinues = playBaseball.compareNum(computerNum, userNum);
         }
 
     }
