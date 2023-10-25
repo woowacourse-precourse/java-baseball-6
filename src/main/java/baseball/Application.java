@@ -29,14 +29,20 @@ public class Application {
     private static List<Integer> inputNumberOfUser() {
         System.out.print("숫자를 입력해주세요 : ");
 
-        int number = Integer.parseInt(Console.readLine());
+        String inputStr = Console.readLine();
+        if(!isNumber(inputStr))
+            throw new IllegalArgumentException("숫자가 아닙니다.");
 
+        int number = Integer.parseInt(inputStr);
         List<Integer> userNumber = new ArrayList<>();
 
         for (int i = 0; i < 3; i ++){
             userNumber.add(number % 10);
             number /=10;
         }
+
+        if(!areDistinctNumbers(userNumber))
+            throw new IllegalArgumentException("중복된 숫자가 입력되었습니다. ");
 
         return userNumber;
     }
