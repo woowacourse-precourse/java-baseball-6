@@ -15,7 +15,7 @@ public class Application {
         System.out.println(Arrays.toString(parseInput("123")));
         System.out.println(countStrikes(computerNumbers, parseInput("912")));
         System.out.println(countBalls(computerNumbers, parseInput("841"), 1));
-
+        printResult(1,2);
     }
 
     // 컴퓨터 랜덤 숫자 3개 생성
@@ -52,6 +52,9 @@ public class Application {
             int[] userNumbers = parseInput(input);
             int strikes = countStrikes(computerNumbers, userNumbers);
             int balls = countBalls(computerNumbers, userNumbers, strikes);
+
+            printResult(strikes, balls);
+
         } else {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
@@ -108,5 +111,24 @@ public class Application {
 
 
     // 결과 출력
-
+    private static void printResult(int strikes, int balls){
+        if (strikes == 3){
+            System.out.printf("%d스트라이크\n", strikes);
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
+        if(strikes == 0 && balls == 0){
+            System.out.println("낫싱");
+            return;
+        }
+        if(balls == 0){
+            System.out.printf("%d스트라이크\n", strikes);
+            return;
+        }
+        if (strikes == 0) {
+            System.out.printf("%d볼\n", balls);
+            return;
+        }
+        System.out.printf("%d볼 %d스트라이크\n", strikes, balls);
+    }
 }
