@@ -6,19 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Computer가 랜덤 3자리 수 생성
-public class ComputerNum {
-    private String computerNum;
+public class ComputerNumber {
+    private String computerNumber;
 
-    public ComputerNum(){
-        generateNum();
+    public ComputerNumber(){
+        generateNumber();
     }
 
-    public String getComputerNum(){
-        return computerNum;
+    public String getComputerNumber() {
+        return computerNumber;
     }
 
     // 랜덤 3자리 수 생성
-    public void generateNum(){
+    public void generateNumber(){
         List<String> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -26,8 +26,9 @@ public class ComputerNum {
                 computer.add(Integer.toString(randomNumber));
             }
         }
-        this.computerNum = String.join("", computer);
+        this.computerNumber = String.join("", computer);
     }
+
 
 
 }
