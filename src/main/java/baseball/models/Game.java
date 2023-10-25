@@ -7,7 +7,7 @@ import baseball.utils.Utils;
 public class Game {
 
     public static final int NUM_LENGTH = 3;
-    public boolean status; // 게임 진행 여부
+    private boolean status; // 게임 진행 여부
 
     public boolean isStatus() {
         return status;
