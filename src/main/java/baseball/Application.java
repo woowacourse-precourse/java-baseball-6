@@ -1,13 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Application {
     static int setNumber = 1;
     static String cNumber;
-    static String userNumber;
+    static String pNumber;
 
     public static int[] getResult(String computerNumber, String userNumber) {
         int ball = 0;
@@ -74,42 +72,11 @@ public class Application {
         while (setNumber != 2) {
             System.out.print("숫자를 입력해주세요 : ");
             String user = Console.readLine();
-            getUserNumber(user);
-            printResult(cNumber, userNumber);
-            //start();
+            pNumber = numberControl.getPlayerNumber(user);
+            printResult(cNumber, pNumber);
         }
     }
 
-    public static void getUserNumber(String inputNumber) {
-        isWrongLength(inputNumber);
-        isSameNumber(inputNumber);
-        isNotDigitNumber(inputNumber);
-        userNumber = inputNumber;
-    }
-
-    public static void isWrongLength(String userNumber) throws IllegalArgumentException {
-        if (userNumber.length() != 3) {
-            throw new IllegalArgumentException("입력한 숫자는 3자리여야 합니다.");
-        }
-    }
-
-    public static void isNotDigitNumber(String userNumber) throws IllegalArgumentException {
-        for (int i = 0; i < 3; i++) {
-            if (!Character.isDigit(userNumber.charAt(i))) {
-                throw new IllegalArgumentException("자연수가 아닙니다.");
-            }
-        }
-    }
-
-    public static void isSameNumber(String userNumber) throws IllegalArgumentException {
-        Set<Character> set = new HashSet<>();
-        for (int i = 0; i < 3; i++) {
-            set.add(userNumber.charAt(i));
-        }
-        if (set.size() != userNumber.length()) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-        }
-    }
 
     public static void startMention() {
         System.out.println("숫자 야구 게임을 시작합니다.");
