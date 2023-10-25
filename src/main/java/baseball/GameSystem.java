@@ -2,10 +2,9 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import baseball.Model.Computer;
+import baseball.Model.Player;
+import baseball.Model.Result;
 
 public class GameSystem {
   private final Player player;

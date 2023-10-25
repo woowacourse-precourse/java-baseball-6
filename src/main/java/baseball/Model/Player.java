@@ -1,7 +1,8 @@
-package baseball;
+package baseball.Model;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.Constant;
 import java.util.ArrayList;
 import java.util.List;
 
