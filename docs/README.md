@@ -19,22 +19,27 @@ Random 값 추출
 사용자의 입력
     missionutils.Console의 readLine 사용하여 입력값을 받음
     입력값 세자리가 모두 다르면 통과
-    IllegalArgumentException 예외 발생
-        입력 받은 숫자가 3자리가 아닌 경우
-        입력 받은 값이 숫자가 아닌 경우
-        입력 받은 값에 중복된 숫자가 있을 경우
+
+스트라이크 개수 체크
+countStrike 메서드 생성
+isDigitStrike 메서드 생성
+
+볼 개수 체크
+countBall 메서드 생성
+isDigitBall 메서드 생성
 
 3자리의 수를 맞추기
     같은 수가 같은 자리 : '스트라이크'
     같은 수가 다른 자리 : '볼'
     같은 수가 없으면 : '낫싱'
 
-스트라이크 개수 체크
-    countStrike 메서드 생성
-    isDigitStrike 메서드 생성
-볼 개수 체크
-    countBall 메서드 생성
-    isDigitBall 메서드 생성
+IllegalArgumentException 예외 발생
+    1이나 2이외의 다른 숫자를 입력한 경우
+    입력 받은 숫자가 모두 다른 경우
+    입력 문자열의 길이가 주어진 길이와 같은지 검사
+    입력 받은 문자열이 숫자로만 이루어져 있는 경우
+    입력 받은 문자열의 문자가 모두 다른 경우
+입력 받은 문자열을 정수 리스트로 변환하는 메서드 생성
 
 출력
     입력한 수에 대한 결과를 볼,스트라이크 개수로 표시 : ' 볼  스트라이크'
