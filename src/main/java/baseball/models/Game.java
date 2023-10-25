@@ -44,10 +44,12 @@ public class Game {
     }
 
     // 정답을 맞힌 경우 게임 재시작 여부 입력 요청하는 메소드
-    public int askForRestart() {
+    public void askForRestart() {
         int playerInput = Integer.parseInt(Console.readLine());
         utils.validateRestartInput(playerInput);
-        return playerInput;
+        if (playerInput == 2) {
+            this.status = false;
+        }
     }
 
 }
