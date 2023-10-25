@@ -4,17 +4,17 @@ import java.util.stream.IntStream;
 
 public class Referee {
 
-    private int strikeNumber;
-    private int ballNumber;
+    private final int strikeNumber;
+    private final int ballNumber;
 
-    public void calculateBallAndStrikeNumber(String randomNumbers, String inputNumbers) {
-        strikeNumber = calculateStrikeNumbers(randomNumbers, inputNumbers);
-        ballNumber = calculateBallNumbers(randomNumbers, inputNumbers);
+    private Referee(final int strikeNumber, final int ballNumber) {
+        this.strikeNumber = strikeNumber;
+        this.ballNumber = ballNumber;
     }
 
-    public void setUpGame() {
-        strikeNumber = Constants.ZERO;
-        ballNumber = Constants.ZERO;
+    public static Referee calculateBallAndStrikeNumber(String randomNumbers, String inputNumbers) {
+        return new Referee(calculateStrikeNumbers(randomNumbers, inputNumbers),
+                calculateBallNumbers(randomNumbers, inputNumbers));
     }
 
     public boolean isNothing() {
@@ -45,13 +45,13 @@ public class Referee {
         return ballNumber;
     }
 
-    private int calculateStrikeNumbers(String randomNumbers, String inputNumbers) {
+    private static int calculateStrikeNumbers(String randomNumbers, String inputNumbers) {
         return (int) IntStream.range(Constants.ZERO, Constants.NUMBER_OF_NUMBERS)
                 .filter(index -> isSameNumberInSamePlace(randomNumbers.charAt(index), inputNumbers.charAt(index)))
                 .count();
     }
 
-    private int calculateBallNumbers(String randomNumbers, String inputNumbers) {
+    private static int calculateBallNumbers(String randomNumbers, String inputNumbers) {
         return (int) IntStream.range(Constants.ZERO, Constants.NUMBER_OF_NUMBERS)
                 .filter(inputNumbersIndex ->
                         isRandomNumbersContainInputNumber(randomNumbers, inputNumbers.charAt(inputNumbersIndex)))
@@ -59,13 +59,13 @@ public class Referee {
                 .count();
     }
 
-    private boolean isRandomNumbersContainInputNumber(String randomNumbers, char inputNumber) {
+    private static boolean isRandomNumbersContainInputNumber(String randomNumbers, char inputNumber) {
         return randomNumbers.chars()
                 .mapToObj(intStreamToCharacter -> (char) intStreamToCharacter)
                 .anyMatch(singleNumber -> isSameNumberInSamePlace(singleNumber, inputNumber));
     }
 
-    private boolean isSameNumberInSamePlace(char randomNumber, char inputNumber) {
+    private static boolean isSameNumberInSamePlace(char randomNumber, char inputNumber) {
         return randomNumber == inputNumber;
     }
 }

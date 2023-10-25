@@ -11,7 +11,7 @@ import baseball.view.OutputView;
 public class BaseballGameController {
 
     private final Computer computer = new Computer();
-    private final Referee referee = new Referee();
+    private Referee referee;
     private Player player;
 
     public void play() {
@@ -29,7 +29,7 @@ public class BaseballGameController {
         do {
             OutputView.printMessageToInputNumbers();
             player = new Player(InputView.inputNumbers());
-            referee.calculateBallAndStrikeNumber(randomNumbers, player.getNumber());
+            referee = Referee.calculateBallAndStrikeNumber(randomNumbers, player.getNumber());
             determineResult();
         } while (!referee.isThreeStrike());
     }
