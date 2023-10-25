@@ -30,7 +30,7 @@ class BaseballGame{
     }
 }
 
-public class Application {
+class GameProcess{
 
     private static void isSutable(String s) throws IllegalArgumentException{
         try{
@@ -53,15 +53,18 @@ public class Application {
         }
     }
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    public static void startGame(){
         // 문제 출제
         System.out.println("숫자 야구 게임을 시작합니다");
 
         BaseballGame game = new BaseballGame();
+        playGame(game);
+    }
+
+    private static void playGame(BaseballGame game){
+        // 문제 풀기-반복처리
         List<Integer> computer=game.getComputerNumbers();
 
-        // 문제 풀기-반복처리
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
             String answer= readLine();
@@ -106,6 +109,15 @@ public class Application {
             if(strike==3)break;
         }
 
+
+    }
+}
+
+public class Application {
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        GameProcess.startGame();
         // 정답 알림 문구출력
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
