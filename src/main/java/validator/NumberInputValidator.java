@@ -6,4 +6,10 @@ public class NumberInputValidator {
             throw new IllegalArgumentException("공의 개수가 3개 보다 많아요.");
         }
     }
+
+    void vaildNumberUnderThreeDigits(String balls) {
+        if (balls.length() < 3) {
+            throw new IllegalArgumentException("공의 개수가 3개 보다 적어요.");
+        }
+    }
 }
