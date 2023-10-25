@@ -131,7 +131,15 @@ GameNumber 객체 리스트를 지닌 클래스
 
 - 오류 메시지를 `[ERROR]` 접두사와 함께 반환
 
-## 10. InputValidator
+## 10. Result (enum)
+
+### data
+
+- BALL
+- STRIKE
+- NOTHING
+
+## 11. InputValidator
 
 입력 데이터를 유효성 검사하는 데 사용되는 클래스
 
@@ -140,11 +148,11 @@ GameNumber 객체 리스트를 지닌 클래스
 - 주어진 입력 문자열이 숫자로 변환 가능한지 확인하고,</br>
   변환 불가능한 경우 오류 메시지와 함께 예외를 발생시킨다
 
-## 11. NumberGenerator(interface)
+## 12. NumberGenerator(interface)
 
 숫자 생성 기능을 정의
 
-## 12. RandomNumberGenerator
+## 13. RandomNumberGenerator
 
 NumberGenerator의 구현체
 
@@ -154,7 +162,7 @@ NumberGenerator의 구현체
 
 # [ View ]
 
-## 13. OutputView
+## 14. OutputView
 
 게임 메시지 및 결과 출력을 담당하는 클래스
 
@@ -166,7 +174,7 @@ NumberGenerator의 구현체
 - 게임 성공 메시지 출력
 - 게임 재시작/종료에 대한 메시지 출력
 
-## 14. InputView
+## 15. InputView
 
 사용자 입력 처리를 담당하는 클래스
 
@@ -176,16 +184,18 @@ NumberGenerator의 구현체
 - 사용자로부터 게임 재시작/종료에 대한 입력을 받는다
 - 콘솔에서 문자열을 읽어와 반환한다
 
-# [ Controller ]
+# [ Convertor ]
 
-## 15. InputController
+## 16. InputConvertor
 
 사용자 입력 처리 및 변환을 담당하는 클래스
 
 - 사용자로부터 3개의 숫자 입력을 받아 Player 객체로 변환
 - 사용자로부터 게임 상태 입력을 받아 GameStatus로 변환
 
-## 16. GameController
+# [ Controller ]
+
+## 17. GameController
 
 게임의 전체적인 흐름을 제어하는 클래스
 
