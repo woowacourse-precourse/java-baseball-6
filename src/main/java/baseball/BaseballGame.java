@@ -4,6 +4,10 @@ import static baseball.ErrorMessage.INPUT_INVALID_DIGIT;
 import static baseball.ErrorMessage.INPUT_INVALID_RANGE;
 import static baseball.ErrorMessage.INPUT_NOT_DISTINCT;
 import static baseball.ErrorMessage.INPUT_NOT_NUMBER;
+import static baseball.PrintMessage.GAME_OVER;
+import static baseball.PrintMessage.GAME_START;
+import static baseball.PrintMessage.IS_RESTART;
+import static baseball.PrintMessage.USER_INPUT;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -17,14 +21,8 @@ public class BaseballGame {
     private static final String SEPARATOR = "";
 
     public static final Integer ANSWER_DIGIT = 3;
-
-    public static final int NUMBER_MIN_RANGE = 1;
-    public static final int NUMBER_MAX_RANGE = 9;
-
-    private static final String PRINT_GAME_START = "숫자 야구 게임을 시작합니다.";
-    private static final String PRINT_USER_INPUT = "숫자를 입력해주세요 :";
-    private static final String PRINT_GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String PRINT_IS_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final Integer NUMBER_MIN_RANGE = 1;
+    public static final Integer NUMBER_MAX_RANGE = 9;
 
 
     public BaseballGame(Computer computer, HintScore hintScore) {
@@ -34,14 +32,14 @@ public class BaseballGame {
 
     public void run() {
         do {
-            System.out.println(PRINT_GAME_START);
+            System.out.println(GAME_START);
             List<Integer> correctAnswer = computer.createCorrectAnswer();
             play(correctAnswer);
         } while (isRestart());
     }
 
     private boolean isRestart() {
-        System.out.println(PRINT_IS_RESTART);
+        System.out.println(IS_RESTART);
         Integer userInput = convertStringToInteger(Console.readLine());
         return RestartOrExit.isRestart(userInput);
     }
@@ -49,15 +47,13 @@ public class BaseballGame {
     private void play(List<Integer> correctAnswer) {
         while (true) {
             hintScore.clear();
-            System.out.print(PRINT_USER_INPUT);
-            List<Integer> userAnswer = Arrays.stream(Console.readLine().split(SEPARATOR))
-                    .map(input -> convertStringToInteger(input))
-                    .toList();
+            System.out.print(USER_INPUT);
+            List<Integer> userAnswer = getUserAnswer();
             validAnswer(userAnswer);
             hintScore.calculateHint(correctAnswer, userAnswer);
             System.out.println(hintScore);
             if (hintScore.isGameOver()) {
-                System.out.println(PRINT_GAME_OVER);
+                System.out.println(GAME_OVER);
                 break;
             }
         }
