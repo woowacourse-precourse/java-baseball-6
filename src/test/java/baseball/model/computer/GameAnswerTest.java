@@ -10,10 +10,11 @@ import org.junit.jupiter.api.Test;
 
 class GameAnswerTest {
 
-    private GameAnswer gameAnswer;
     private static final Integer BALL_SIZE = 3;
     private static final Integer FIRST_NUMBER = 1;
     private static final Integer LAST_NUMBER = 9;
+
+    private GameAnswer gameAnswer;
 
     @BeforeEach
     void init() {
