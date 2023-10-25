@@ -4,7 +4,7 @@ import ball.Ball;
 import ball.Balls;
 
 public class Judge {
-    private static final int COUNT_FOR_WINNING = 3;
+    private static final int STANDARD_COUNT = 3;
     private int strikeCount;
     private int ballCount;
     public int getStrikeCount() {
@@ -17,13 +17,13 @@ public class Judge {
 
     public void compareBalls(Balls userBalls, Balls computerBalls) {
         initializeCounts();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < STANDARD_COUNT; i++) {
             compareBall(i, userBalls, computerBalls);
         }
     }
 
     public boolean isCorrect() {
-        return this.strikeCount == COUNT_FOR_WINNING;
+        return this.strikeCount == STANDARD_COUNT;
     }
 
     private void initializeCounts() {
