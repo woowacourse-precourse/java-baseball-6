@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.constants.GameMessages;
+import baseball.constants.MessageConstants;
 import baseball.model.Hint;
 import baseball.model.Numbers;
 import baseball.utils.Parser;
@@ -15,8 +15,10 @@ public class GameController {
     private OutputView outputView = new OutputView();
     private ComputerController computerController = new ComputerController();
 
+    private static final int RESTART_ANSWER = 1;
+
     public GameController() {
-        outputView.printlnMessage(GameMessages.GAME_START_MESSAGE);
+        outputView.printlnMessage(MessageConstants.GAME_START_MESSAGE);
     }
 
     public void playGame() {
@@ -24,7 +26,7 @@ public class GameController {
         while (isRunning) {
             computerController.saveRandomNumbers();
             proceedGame();
-            outputView.printlnMessage(GameMessages.RESTART_OR_EXIT_MESSAGE);
+            outputView.printlnMessage(MessageConstants.RESTART_OR_EXIT_MESSAGE);
             isRunning = requestRestartOrExit();
         }
     }
@@ -32,12 +34,12 @@ public class GameController {
     private void proceedGame() {
         Boolean isCorrectAnswer = false;
         while (!isCorrectAnswer) {
-            outputView.printMessage(GameMessages.NUMBER_REQUEST_MESSAGE);
+            outputView.printMessage(MessageConstants.NUMBER_REQUEST_MESSAGE);
             Hint hint = computerController.provideHint(getPlayerNumber());
             outputView.printContents(hint.generateHintMessage());
             isCorrectAnswer = computerController.checkCorrectAnswer(hint);
         }
-        outputView.printlnMessage(GameMessages.CORRECT_ANSWER_MESSAGE);
+        outputView.printlnMessage(MessageConstants.CORRECT_ANSWER_MESSAGE);
     }
 
     private Numbers getPlayerNumber() {
@@ -49,6 +51,6 @@ public class GameController {
     private boolean requestRestartOrExit() {
         String response = inputView.readRestartOrOver();
         RestartOrExitValidator.validateRestartOrExit(response);
-        return Parser.parseRestartOrExit(response).equals(1);
+        return Parser.parseRestartOrExit(response).equals(RESTART_ANSWER);
     }
 }

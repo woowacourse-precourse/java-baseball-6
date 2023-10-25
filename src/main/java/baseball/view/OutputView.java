@@ -1,14 +1,14 @@
 package baseball.view;
 
-import baseball.constants.GameMessages;
+import baseball.constants.MessageConstants;
 
 public class OutputView {
 
-    public void printlnMessage(GameMessages message) {
+    public void printlnMessage(MessageConstants message) {
         System.out.println(message.getMessage());
     }
 
-    public void printMessage(GameMessages message) {
+    public void printMessage(MessageConstants message) {
         System.out.print(message.getMessage());
     }
 

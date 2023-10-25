@@ -1,6 +1,8 @@
 package baseball.model;
 
 public class Hint {
+    private static final int THREE_STRIKES = 3;
+
     private Integer strike;
     private Integer ball;
 
@@ -25,6 +27,6 @@ public class Hint {
     }
 
     public boolean isThreeStrike() {
-        return strike.equals(3);
+        return strike.equals(THREE_STRIKES);
     }
 }
