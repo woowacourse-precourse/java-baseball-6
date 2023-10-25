@@ -17,7 +17,6 @@ public class Round {
 
     public Round() {
         resetComNum();
-        System.out.println(comNum);
     }
 
     // 숫자 야구 게임을 새로 시작할 때, 컴퓨터가 무작위로 1부터 9 사이에서 중복되지 않는 3개의 숫자를 선택하는 메서드
@@ -100,7 +99,7 @@ public class Round {
     }
 
     public boolean endCheck() { // 메서드명 endCheck
-        System.out.println("숫자를 모두 맞혔습니다! 게임 종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String reinput = Console.readLine();
