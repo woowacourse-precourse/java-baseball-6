@@ -20,7 +20,7 @@ public class BaseballGame {
     }
 
     private void onToFalse() {
-        on = false;
+        this.on = false;
     }
 
     private void resetMessage() {
@@ -66,7 +66,7 @@ public class BaseballGame {
     public void start(List<Integer> target, String input) {
         do {
             play(target, input);
-        } while (on);
+        } while (this.on);
     }
 
 
@@ -79,40 +79,40 @@ public class BaseballGame {
 
         countStrike(target, userNum);
 
-        if (strike == 3) {
+        if (this.strike == 3) {
             ending();
             return;
         }
         countBall(target, userNum);
-        System.out.println("ball:" + ball);
+        System.out.println("ball:" + this.ball);
         calculateScore();
         resetStrike();
         resetBall();
-        System.out.println(message);
+        System.out.println(this.message);
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
         play(reTarget, userInput);
     }
 
     private void calculateScore() {
-        if (ball > 0) {
-            message = ball + "볼";
+        if (this.ball > 0) {
+            this.message = this.ball + "볼";
         }
-        if (strike > 0) {
-            if (!message.isEmpty()) {
-                message += " ";
+        if (this.strike > 0) {
+            if (!this.message.isEmpty()) {
+                this.message += " ";
             }
-            message += strike + "스트라이크";
+            this.message += this.strike + "스트라이크";
         }
-        if (message.isEmpty()) {
-            message = "낫싱";
+        if (this.message.isEmpty()) {
+            this.message = "낫싱";
         }
     }
 
 
     public void ending() {
         System.out.println(
-                strike + "스트라이크\n"
+                this.strike + "스트라이크\n"
                         + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
                         + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -140,7 +140,7 @@ public class BaseballGame {
                 upBall();
             }
         }
-        System.out.println("countBall 함수의 ball:" + ball);
+        System.out.println("countBall 함수의 ball:" + this.ball);
     }
 
 }
