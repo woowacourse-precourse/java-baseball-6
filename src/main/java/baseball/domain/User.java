@@ -8,12 +8,10 @@ import java.util.List;
 public class User implements IPlayer {
 
     private final IInput input;
-    private final int NUMBER_BALLS;
     private List<Integer> numbers;
 
-    public User(IInput input, final int NUMBER_BALLS) {
+    public User(IInput input) {
         this.input = input;
-        this.NUMBER_BALLS = NUMBER_BALLS;
     }
 
     @Override

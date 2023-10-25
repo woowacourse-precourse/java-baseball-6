@@ -50,8 +50,8 @@ public class Game {
     }
 
     private void initPlayer() {
-        user = new User(input, NUMBER_BALLS);
-        computer = new Computer(output, NUMBER_BALLS);
+        user = new User(input);
+        computer = new Computer(output);
         computer.generatePlayerNumber(NUMBER_BALLS);
     }
 

@@ -19,7 +19,7 @@ class UserTest {
 
     @BeforeAll
     public static void setupAll() {
-        user = new User(new ConsoleInput(), NUMBER_BALLS);
+        user = new User(new ConsoleInput());
         originalSystemIn = System.in;
     }
 

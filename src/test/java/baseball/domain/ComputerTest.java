@@ -31,8 +31,8 @@ class ComputerTest {
 
     @BeforeAll
     public static void setupAll() {
-        user = new User(new ConsoleInput(), NUMBER_BALLS);
-        computer = new Computer(new ConsoleOutput(), NUMBER_BALLS);
+        user = new User(new ConsoleInput());
+        computer = new Computer(new ConsoleOutput());
         originalSystemIn = System.in;
         originalSystemOut = new PrintStream(System.out);
     }

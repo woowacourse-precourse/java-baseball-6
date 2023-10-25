@@ -9,13 +9,11 @@ import java.util.List;
 public class Computer implements IPlayer {
 
     private final IOutput output;
-    private final int NUMBER_BALLS;
     private List<Integer> numbers;
     private Response response;
 
-    public Computer(IOutput output, final int NUMBER_BALLS) {
+    public Computer(IOutput output) {
         this.output = output;
-        this.NUMBER_BALLS = NUMBER_BALLS;
     }
 
     @Override
@@ -54,7 +52,7 @@ public class Computer implements IPlayer {
             }
         }
 
-        response = new Response(List.of(strikeCount, ballCount), NUMBER_BALLS);
+        response = new Response(List.of(strikeCount, ballCount), numbers.size());
     }
 
     public int countNumberBalls() {
