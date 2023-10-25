@@ -17,10 +17,14 @@ public class ComputerNumber {
     public ComputerNumber(String strComputer) {
         for (int i = 0; i < strComputer.length(); i++) {
             char c = strComputer.charAt(i);
-            if (Character.isDigit(c)) {
-                int digit = Character.getNumericValue(c);
-                computerNumber.add(digit);
-            }
+            addDigit(c);
+        }
+    }
+
+    private void addDigit(char c) {
+        if (Character.isDigit(c)) {
+            int digit = Character.getNumericValue(c);
+            computerNumber.add(digit);
         }
     }
 
