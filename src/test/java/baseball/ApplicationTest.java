@@ -31,7 +31,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 중복된_값_입력_시_예외_발생_테스트() {
+    void 중복_값_입력_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("122"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -39,7 +39,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 숫자가_아닌_것을_입력했을_시_예외_발생_테스트() {
+    void 숫자_이외_입력_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12삼"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -47,7 +47,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 정답을_맞추기_위한_입력값의_길이_예외_테스트() {
+    void 세_자리_수_입력값_길이_테스트() {
         // given
         int lengthThree = 3;
         String case1 = "123";
@@ -72,7 +72,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 정답을_맞춘_후_입력값의_길이_예외_테스트() {
+    void 재시작_또는_종료_입력값_길이_테스트() {
         // given
         int lengthOne = 1;
         String case1 = "1";
