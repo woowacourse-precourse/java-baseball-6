@@ -16,4 +16,16 @@ public class Umpire {
         }
         return strike;
     }
+
+    public int getBallCount(List<Integer> computerNumber, List<Integer> userNumber) {
+        int ball = INIT_NUMBER;
+        for (int i = INIT_NUMBER; i < MAX_NUMBER_SIZE; i++) {
+            if (computerNumber.contains(userNumber.get(i))) {
+                ball++;
+            }
+        }
+        return ball - getStrikeCount(computerNumber, userNumber);
+    }
+
+
 }
