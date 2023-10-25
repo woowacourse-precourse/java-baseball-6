@@ -1,0 +1,32 @@
+# 구현할 기능 목록 ⚾
+
+- [x] 난수 생성기 구현 (**RandomNumberGenerator**)
+    - [x] ```camp.nextstep.edu.missionutils.Randoms```의 ```pickNumberInRange()``` 활용
+    - [x] 각 자리 숫자가 1-9 사이의 범위를 지키도록 구현
+    - [x] 생성된 숫자는 서로 다른 3자리 수가 되도록 구현
+- [x] 유저의 입력을 처리하는 클래스 구현 (**InputReader**)
+    - [x] ```camp.nextstep.edu.missionutils.Console```의 ```readLine()```활용
+    - [x] 유저가 입력한 세자리 추측값을 읽어들이는 기능 구현
+    - [x] 유저가 입력한 한자리 continueMode값을 읽어들이는 기능 구현
+- [x] 검증기 구현 (**InputValidator**)
+    - [x] 유저가 입력한 세자리 추측값 검증기 (**GuessedNumberValidator**)
+        - [x] 입력이 숫자 값인지 검증
+        - [x] 세자리인지 검증
+        - [x] 중복 검증
+        - [x] 위의 검증들을 통과하지 못하면 ```IllegalArgumentException```을 발생 시키도록 구현
+    - [x] 유저의 재시작/종료 구분 수 검증 (**ContinueModeNumberValidator**)
+        - [x] 입력이 1 또는 2의 값인지 검증
+        - [x] 위의 검증을 통과하지 못하면 ```IllegalArgumentException```을 발생 시키도록 구현
+
+- [x] 심판 구현 (**Referee**)
+    - [x] 유저의 입력과 정답을 비교, ball count & strike count 계산하는 기능 구현
+- [x] 뷰를 담당하는 클래스 구현 (**Announcer**)
+    - [x] 게임 시작, 종료 메시지 출력 구현
+    - [x] 유저로 하여금 숫자 입력하도록 유도하는 메시지 출력 구현
+    - [x] Referee에게 전달 받은 Score객체 resolve 후 출력 구현
+    - [x] 종료/재시작 안내 메시지 구현
+- [x] 게임을 구동 하는 클래스 구현 (**GameEngine**)
+    - [x] 각 요소들을 활용하여 게임을 구동하는 run 메서드 구현
+    - [x] 게임의 시작과 3스트라이크로 인한 게임의 종료 구현
+    - [x] 게임 종료 후 완전 종료 혹은 다음 게임 진행으로의 분기 구현
+    - [x] GameEngine을 어플리케이션 진입 지점과 연결
