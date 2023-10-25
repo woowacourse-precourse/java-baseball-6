@@ -1,15 +1,23 @@
 package baseball.Service;
 
-import baseball.model.Score;
-import baseball.model.TargetNumber;
-import baseball.model.UserNumber;
+import baseball.controller.GameController;
+import baseball.domain.Score;
+import baseball.domain.TargetNumber;
+import baseball.domain.UserNumber;
 
 import java.util.List;
 
 public class GameService {
 
-    private final TargetNumber targetNumber = new TargetNumber();
-    private final Score score = new Score();
+    private final TargetNumber targetNumber;
+    private final Score score;
+    private static final int SIZE = 3;
+
+    public GameService() {
+        targetNumber = new TargetNumber();
+        score = new Score();
+    }
+
 
     public void setGame() {
         targetNumber.setTargetNumber();
@@ -23,22 +31,22 @@ public class GameService {
 
     private void computeScore(List<Integer> userNumber, List<Integer> targetNumber) {
         countStrike(userNumber, targetNumber);
-        for(int i = 0; i < 3; i++) {
-            countBall(userNumber, targetNumber, i);
-        }
+        countBall(userNumber, targetNumber);
     }
 
     private void countStrike(List<Integer> userNumber, List<Integer> targetNumber) {
-        for(int i = 0; i < 3; i++) {
-            if(userNumber.get(i) == targetNumber.get(i))
+        for(int index = 0; index < SIZE; index++) {
+            if(userNumber.get(index) == targetNumber.get(index))
                 score.incStrikeCount();
         }
     }
 
-    private void countBall(List<Integer> userNumber, List<Integer> targetNumber, int index) {
-        for(int i = 0; i < 3; i++) {
-            if(i!=index && userNumber.get(i)==targetNumber.get(index))
-                score.incBallCount();
+    private void countBall(List<Integer> userNumber, List<Integer> targetNumber) {
+        for(int i = 0; i < SIZE; i++) {
+            for(int j = 0; j< SIZE; j++) {
+                if(userNumber.get(i) == targetNumber.get(j) && !(i == j))
+                    score.incBallCount();
+            }
         }
     }
 
