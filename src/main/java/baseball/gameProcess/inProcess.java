@@ -8,6 +8,8 @@ public class inProcess {
     public inProcess() {
         printInputNumberPhrase();
         inputNumber();
+        checkNumberThree();
+        checkNumberOneToNineDifferent();
     }
 
     private void printInputNumberPhrase() {
@@ -22,6 +24,28 @@ public class inProcess {
         }
         catch (Exception e) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkNumberThree() {
+        if (String.valueOf(number).length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkNumberOneToNineDifferent() {
+        boolean[] exist = new boolean[10];
+        int share = number;
+        int remain;
+
+        for (int i = 0; i < String.valueOf(number).length(); i++) {
+            remain = share % 10;
+            share /= 10;
+
+            if (remain == 0 || exist[remain]) {
+                throw new IllegalArgumentException();
+            }
+            exist[remain] = true;
         }
     }
 }
