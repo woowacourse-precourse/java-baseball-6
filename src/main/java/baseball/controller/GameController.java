@@ -10,11 +10,19 @@ import java.util.List;
 public class GameController {
 
     private static final GameController instance = new GameController();
-    private final GameService gameService = GameService.getInstance();
+    private final GameService gameService;
     private GameStatus currentGameStatus = GameStatus.CONTINUE;
 
     public static GameController getInstance() {
         return instance;
+    }
+
+    public GameController() {
+        this.gameService = GameService.getInstance();
+    }
+
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
     }
 
     public void run() {
@@ -22,7 +30,7 @@ public class GameController {
         playGame();
     }
 
-    private void playGame() {
+    public void playGame() {
         initializeGame();
         do {
             OutputView.printInputNumber();
@@ -33,13 +41,13 @@ public class GameController {
         handleGame();
     }
 
-    private GameStatus playGameRound(List<Integer> numbers) {
+    public GameStatus playGameRound(List<Integer> numbers) {
         GameResponse response = gameService.playGame(numbers);
         OutputView.printGameResult(response);
         return response.getGameStatus();
     }
 
-    private void handleGame() {
+    public void handleGame() {
         OutputView.printGameEnd();
         OutputView.printGameRestart();
         GameStatus option = GameStatus.fromInt(InputView.inputRestart());
