@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 public class Print {
     public static String START_GAME = "숫자 야구 게임을 시작합니다.";

@@ -1,5 +1,6 @@
-package baseball;
+package baseball.player;
 
+import baseball.game.Validate;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;

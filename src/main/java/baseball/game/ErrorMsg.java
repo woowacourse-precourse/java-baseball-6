@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 public class ErrorMsg {
     public static String VALUE_MUST_BE_INTEGER_1_TO_9 = "입력 값은 1~9의 정수입니다.";
