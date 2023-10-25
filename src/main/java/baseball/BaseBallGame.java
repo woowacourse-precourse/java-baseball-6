@@ -81,6 +81,7 @@ public class BaseBallGame {
 
     /*
     사용자 입력이 유효한지 검증하는 매서드입니다.
+
     입력값이 3자리 인지, 숫자 외의 문자가 포함되어 있는지, 서로 다른 숫자가 맞는지를 검증합니다.
     입력이 유효하지 않은 경우 IllegalArgumentExeption을 발생시킵니다.
      */
@@ -103,9 +104,9 @@ public class BaseBallGame {
     }
 
     /*
-     * 게임 재시작 여부를 확인하는 메서드입니다.
-     *
-     * @return 게임을 재시작할 경우 true, 종료할 경우 false
+     게임 재시작 여부를 확인하는 메서드입니다.
+
+     @return 게임을 재시작할 경우 true, 종료할 경우 false
      */
     private boolean replayGame() {
         String input;
@@ -118,10 +119,10 @@ public class BaseBallGame {
     }
 
     /*
-     * 입력값이 유효한지 확인하는 메서드입니다.
-     *
-     * @param input 사용자 입력값
-     * @return 유효하지 않은 경우 true, 유효한 경우 false
+     입력값이 유효한지 확인하는 메서드입니다.
+
+     @param input 사용자 입력값
+     @return 유효하지 않은 경우 true, 유효한 경우 false
      */
     private boolean invalidInput(String input) {
         return !input.equals("1") && !input.equals("2");
