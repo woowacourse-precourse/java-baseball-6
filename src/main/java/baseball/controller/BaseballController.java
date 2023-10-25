@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.util.BaseballUtil;
 import baseball.view.UserInterface;
+import baseball.vo.GuessResultVO;
 
 import java.util.List;
 
