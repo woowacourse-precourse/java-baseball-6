@@ -8,4 +8,3 @@ public class Application {
         baseballController.startGame();
     }
 }
-
