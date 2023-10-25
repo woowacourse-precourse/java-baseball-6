@@ -25,7 +25,7 @@ public class BaseBallApp {
         while(true) {
             String inputString = ConsoleInput.askInputNumber();
             BaseBallNumber inputNumber = BaseBallNumber.generateNumber(inputString);
-            BallCount ballCount = BallCount.calculate(computerNumber, inputNumber);
+            BallCount ballCount = BallCount.generateBallCount(computerNumber, inputNumber);
             ConsoleOutput.print(ballCount.getResultMessage());
             if(ballCount.isFinished()) {
                 ConsoleOutput.collect();
