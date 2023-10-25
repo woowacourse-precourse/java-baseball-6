@@ -2,7 +2,6 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.util.NumberConverter;
 import java.util.List;
 
 public class Application {

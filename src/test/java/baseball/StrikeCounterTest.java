@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

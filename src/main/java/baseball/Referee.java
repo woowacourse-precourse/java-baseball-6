@@ -1,8 +1,5 @@
 package baseball;
 
-import baseball.util.BallCounter;
-import baseball.util.Counter;
-import baseball.util.StrikeCounter;
 import java.util.List;
 
 public class Referee {
