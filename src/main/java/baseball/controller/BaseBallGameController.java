@@ -13,12 +13,13 @@ public class BaseballGameController {
     private final OutputView outputView;
 
     public BaseballGameController() {
-        this.game = new Game();
+        this.game = Game.start();
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
     public void start() {
+        outputView.printGameStart();
         while (!isEnd()) {
             play();
             stop();
@@ -26,7 +27,6 @@ public class BaseballGameController {
     }
 
     public void play() {
-        outputView.printGameStart();
         Round round;
         String computerNumber = new Computer().getRandomNumber();
         do {
@@ -35,7 +35,7 @@ public class BaseballGameController {
             round = Round.fromPlayerAndComputerNumbers(playerNumber, computerNumber);
             String result = round.generateResultMessage();
             outputView.printRoundResult(result);
-        } while (!round.isCorrectGuess());
+        } while (!round.isEnd());
     }
 
     public void stop() {
@@ -43,7 +43,7 @@ public class BaseballGameController {
         String continueChoice = inputView.getGameContinueChoice();
         GameEndOption option = GameEndOption.fromString(continueChoice);
         if (option == GameEndOption.TERMINATE) {
-            game.endGame();
+            game.end();
         }
     }
 

@@ -5,15 +5,19 @@ import baseball.enums.GameStatus;
 public class Game {
     private GameStatus status;
 
-    public Game() {
-        this.status = GameStatus.IN_PROGRESS;
+    private Game(GameStatus status) {
+        this.status = status;
+    }
+
+    public static Game start() {
+        return new Game(GameStatus.IN_PROGRESS);
+    }
+
+    public void end() {
+        this.status = GameStatus.END;
     }
 
     public boolean isEnd() {
         return this.status == GameStatus.END;
-    }
-
-    public void endGame() {
-        this.status = GameStatus.END;
     }
 }

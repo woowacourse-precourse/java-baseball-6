@@ -49,7 +49,7 @@ public class Round {
         return result.toString().trim();
     }
 
-    public boolean isCorrectGuess() {
+    public boolean isEnd() {
         return strikeCount == CORRECT_GUESS_COUNT;
     }
 }
