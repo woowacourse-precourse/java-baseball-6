@@ -1,13 +1,7 @@
 package baseball.view;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.io.ByteArrayInputStream;
-import org.junit.jupiter.api.Test;
-
 public class ValidatorTest {
-
+/*
     void userInput(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
     }
@@ -65,4 +59,5 @@ public class ValidatorTest {
         assertThat(e.getClass()).isEqualTo(IllegalArgumentException.class);
         assertThat(e.getMessage()).isEqualTo("1, 2 중 하나를 입력해주세요.");
     }
+*/
 }

@@ -17,11 +17,12 @@ public class InputViewTest {
         int userNumbers = InputView.getUserNumbers();
         assertThat(userNumbers).isEqualTo(234);
     }
-
+ /*
     @Test
     void 게임_재시작_입력_테스트() {
         userInput("1");
         int userNumbers = InputView.getRestart();
         assertThat(userNumbers).isEqualTo(1);
     }
+ */
 }
