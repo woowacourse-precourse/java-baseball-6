@@ -30,4 +30,15 @@ class NumberGeneratorTest {
         //then
         assertThat(generator.createValidatedOption(input)).isEqualTo(PlayerOption.RESTART);
     }
+
+    @Test
+    @DisplayName("플레이어가 게임 종료를 선택한 경우 PlayerOption.END를 반환")
+    void playerWantEnd() {
+        //given
+        NumberGenerator generator = new NumberGenerator();
+        //when
+        String input = "2";
+        //then
+        assertThat(generator.createValidatedOption(input)).isEqualTo(PlayerOption.END);
+    }
 }
