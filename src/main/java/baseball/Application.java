@@ -9,6 +9,7 @@ import java.util.List;
 public class Application {
 
     private static final String REGEX = "[1-9]+"; //유효한 숫자만 추출하기 위한 정규식
+    private static final
 
     public static void main(String[] args) {
         List<Integer> computer = new ArrayList<>();
@@ -39,20 +40,23 @@ public class Application {
                         onGoingGame = false;
                         gameContinue = false;
                     }
-                    else if(input.charAt(0) == '1'){
+                    if(input.charAt(0) == '1'){
                         onGoingGame = false;
                     }
-                    else{
+                    if(input.charAt){
                         throw new IllegalArgumentException("잘못된 게임 종료 입력입니다. 게임을 종료합니다.");
                     }
-                } else if (strike != 0 && ball != 0) {
+                }
+                else if (strike != 0 && ball != 0) {
                     System.out.println(ball + "볼 " + strike + "스트라이크");
-                } else if(strike == 0 && ball == 0){
+                }
+                else if(strike == 0 && ball == 0){
                     System.out.println("낫싱");
                 }
                 else if (strike == 0) {
                     System.out.println(ball + "볼");
-                } else if (ball == 0) {
+                }
+                else if (ball == 0) {
                     System.out.println(strike + "스트라이크");
                 }
             }
