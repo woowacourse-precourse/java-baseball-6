@@ -19,12 +19,16 @@ public class Player {
     public Player() {
     }
 
-    public Player(String numberStr) {
+    public void setNumbers(String numberStr) {
         validateSize(numberStr);
         validatePositiveInteger(numberStr);
         validateRange(numberStr);
         validateDuplicatedNumbers(numberStr);
         this.numbers = changeStringToIntegerList(numberStr);
+    }
+
+    public List<Integer> getNumbers() {
+        return List.copyOf(numbers);
     }
 
     public void validateSize(String numberStr) {
@@ -61,9 +65,5 @@ public class Player {
                 .stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-    }
-
-    public List<Integer> getNumbers() {
-        return List.copyOf(numbers);
     }
 }
