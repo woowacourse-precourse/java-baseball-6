@@ -10,13 +10,11 @@ public record OutputView() {
     }
 
     public void notifyGameResult(String result) {
-        if (result == "3스트라이크") {
-            System.out.println(result);
-            System.out.println(ALL_CLEAR_GAME_OVER);
-            return;
-        }
-
         System.out.println(result);
+
+        if (result.equals("3스트라이크")) {
+            System.out.println(ALL_CLEAR_GAME_OVER);
+        }
     }
 
     public void notifyEnd() {
