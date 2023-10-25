@@ -1,10 +1,9 @@
 package baseball.gameProcess;
 
-import baseball.GameRole;
+import baseball.GameSetting;
 
 import java.util.ArrayList;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Console;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -20,13 +19,13 @@ public class InProcess {
         return isCorrect;
     }
 
-    public InProcess(GameRole gameRole, List<Integer> computer) throws IllegalArgumentException {
+    public InProcess(GameSetting gameSetting, List<Integer> computer) throws IllegalArgumentException {
         try {
             initVariables(computer);
             printInputNumberPhrase();
             inputNumber();
-            checkInputNumber(gameRole);
-            judgeInputNumber(gameRole, computer);
+            checkInputNumber(gameSetting);
+            judgeInputNumber(gameSetting, computer);
         } catch(IllegalArgumentException e) {
             throw e;
         }
@@ -54,32 +53,32 @@ public class InProcess {
         }
     }
 
-    private void checkInputNumber(GameRole gameRole) throws IllegalArgumentException{
+    private void checkInputNumber(GameSetting gameSetting) throws IllegalArgumentException{
         try {
-            checkNumberCnt(gameRole);
-            checkNumberDifferent(gameRole);
-            numberToPerNumber(gameRole);
+            checkNumberCnt(gameSetting);
+            checkNumberDifferent(gameSetting);
+            numberToPerNumber(gameSetting);
         } catch (IllegalArgumentException e) {
             throw e;
         }
     }
 
-    private void checkNumberCnt(GameRole gameRole) throws IllegalArgumentException{
-        if (String.valueOf(number).length() != gameRole.GAME_NUMBER_CNT) {
+    private void checkNumberCnt(GameSetting gameSetting) throws IllegalArgumentException{
+        if (String.valueOf(number).length() != gameSetting.GAME_NUMBER_CNT) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void checkNumberDifferent(GameRole gameRole) throws IllegalArgumentException {
-        boolean[] exist = new boolean[gameRole.GAME_NUMBER_RANGE_UNDER+1];
+    private void checkNumberDifferent(GameSetting gameSetting) throws IllegalArgumentException {
+        boolean[] exist = new boolean[gameSetting.GAME_NUMBER_RANGE_UNDER+1];
         int share = number;
 
         try {
-            for (int i = 0; i < gameRole.GAME_NUMBER_CNT; i++) {
+            for (int i = 0; i < gameSetting.GAME_NUMBER_CNT; i++) {
                 int remain = share % 10;
                 share /= 10;
 
-                if (outOfRange(gameRole, remain) || exist[remain]) {
+                if (outOfRange(gameSetting, remain) || exist[remain]) {
                     throw new IllegalArgumentException();
                 }
                 else {
@@ -91,33 +90,33 @@ public class InProcess {
         }
     }
 
-    private boolean outOfRange(GameRole gameRole, int remain) {
-        if (remain >= gameRole.GAME_NUMBER_RANGE_OVER && remain <= gameRole.GAME_NUMBER_RANGE_UNDER) return false;
+    private boolean outOfRange(GameSetting gameSetting, int remain) {
+        if (remain >= gameSetting.GAME_NUMBER_RANGE_OVER && remain <= gameSetting.GAME_NUMBER_RANGE_UNDER) return false;
         else return true;
     }
 
-    private void numberToPerNumber(GameRole gameRole) {
+    private void numberToPerNumber(GameSetting gameSetting) {
         String num = String.valueOf(number);
-        for (int i = 0; i < gameRole.GAME_NUMBER_CNT; i++) {
+        for (int i = 0; i < gameSetting.GAME_NUMBER_CNT; i++) {
             my.add(num.charAt(i) - '0');
         }
     }
 
-    private void judgeInputNumber(GameRole gameRole, List<Integer> computer) {
-        compareInputNumber(gameRole, computer);
+    private void judgeInputNumber(GameSetting gameSetting, List<Integer> computer) {
+        compareInputNumber(gameSetting, computer);
         printCollectNumber();
-        checkAllStrike(gameRole);
+        checkAllStrike(gameSetting);
     }
 
-    private void checkAllStrike(GameRole gameRole) {
-        if (strike == gameRole.GAME_NUMBER_CNT) {
+    private void checkAllStrike(GameSetting gameSetting) {
+        if (strike == gameSetting.GAME_NUMBER_CNT) {
             isCorrect = true;
-            printFinishPhrase(gameRole);
+            printFinishPhrase(gameSetting);
         }
     }
 
-    private void printFinishPhrase(GameRole gameRole) {
-        System.out.println(gameRole.GAME_NUMBER_CNT+InNotice.finishPhrase);
+    private void printFinishPhrase(GameSetting gameSetting) {
+        System.out.println(gameSetting.GAME_NUMBER_CNT+InNotice.finishPhrase);
     }
 
     private void printCollectNumber() {
@@ -143,8 +142,8 @@ public class InProcess {
         System.out.println(InNotice.nothing);
     }
 
-    private void compareInputNumber(GameRole gameRole, List<Integer> computer) {
-        for (int i = 0; i < gameRole.GAME_NUMBER_CNT; i++) {
+    private void compareInputNumber(GameSetting gameSetting, List<Integer> computer) {
+        for (int i = 0; i < gameSetting.GAME_NUMBER_CNT; i++) {
             if (my.get(i) == computer.get(i)) {
                 strike++;
             }

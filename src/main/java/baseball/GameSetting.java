@@ -1,6 +1,6 @@
 package baseball;
 
-public class GameRole {
+public class GameSetting {
     // 임의의 n개 숫자 입력
     public int GAME_NUMBER_CNT = 3;
 

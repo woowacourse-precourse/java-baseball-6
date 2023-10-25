@@ -1,6 +1,6 @@
 package baseball.startProcess;
 
-import baseball.GameRole;
+import baseball.GameSetting;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -9,19 +9,19 @@ import java.util.List;
 public class StartProcess {
     private List<Integer> computer;
 
-    public void resetGame(GameRole gameRole) {
+    public void resetGame(GameSetting gameSetting) {
         initVariable();
-        inputComputerNumber(gameRole);
+        inputComputerNumber(gameSetting);
     }
 
     public List<Integer> getComputerNumber() {
         return computer;
     }
 
-    public StartProcess(GameRole gameRole) {
+    public StartProcess(GameSetting gameSetting) {
         initVariable();
         printStartPhrase();
-        inputComputerNumber(gameRole);
+        inputComputerNumber(gameSetting);
     }
 
     private void initVariable() {
@@ -32,9 +32,9 @@ public class StartProcess {
         System.out.println(StartNotice.startPhrase);
     }
 
-    private void inputComputerNumber(GameRole gameRole) {
-        while (computer.size() < gameRole.GAME_NUMBER_CNT) {
-            int randomNumber = Randoms.pickNumberInRange(gameRole.GAME_NUMBER_RANGE_OVER, gameRole.GAME_NUMBER_RANGE_UNDER);
+    private void inputComputerNumber(GameSetting gameSetting) {
+        while (computer.size() < gameSetting.GAME_NUMBER_CNT) {
+            int randomNumber = Randoms.pickNumberInRange(gameSetting.GAME_NUMBER_RANGE_OVER, gameSetting.GAME_NUMBER_RANGE_UNDER);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
