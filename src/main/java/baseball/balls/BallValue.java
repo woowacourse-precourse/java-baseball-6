@@ -11,11 +11,11 @@ public class BallValue {
     private final int value;
 
     public BallValue(int value) {
-        validateRange();
+        validateRange(value);
         this.value = value;
     }
 
-    private void validateRange() {
+    private void validateRange(int value) {
         IntegerValidators.validateRange(value, MIN_VALUE, MAX_VALUE);
     }
 

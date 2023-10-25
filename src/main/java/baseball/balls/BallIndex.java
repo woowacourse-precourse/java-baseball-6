@@ -11,11 +11,11 @@ public class BallIndex {
     private final int index;
 
     public BallIndex(int index) {
-        validateRange();
+        validateRange(index);
         this.index = index;
     }
 
-    private void validateRange() {
+    private void validateRange(int index) {
         IntegerValidators.validateRange(index, MIN_INDEX, MAX_INDEX);
     }
 
