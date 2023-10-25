@@ -19,6 +19,9 @@
         - check 컴퓨터와 유저의 수 비교
         - playGame 게임 시작
         - restart 재시작 여부 설정
+    - Result
+      - Strike, Ball 등 결과값을 관리
+      - getResult를 통해 출력값 관리
     - Player
         - SetComputerNum 유저의 인풋을 받아 값을 지정
         - getPlayerNum
