@@ -3,7 +3,19 @@ package baseball;
 public class Parser {
     public int[] parseUserInput(String input, int size) {
         checkSize(input, size);
+        checkDuplicate(input);
         return getParseInput(input, size);
+    }
+
+    private void checkDuplicate(String input) {
+        int len = input.length();
+        for (int i = 0; i < len - 1; i++) {
+            for (int j = i + 1; j < len; j++) {
+                if(input.charAt(i) == input.charAt(j)) {
+                    throw new IllegalArgumentException();
+                }
+            }
+        }
     }
 
     public void checkSize(String input, int size) {
