@@ -1,4 +1,6 @@
-package baseball;
+package baseball.model;
+
+import baseball.Result;
 
 import java.util.List;
 
@@ -8,15 +10,15 @@ public class Judge {
         return result.isAllStrike();
     }
 
-    public Result makeResult(List<Integer> playerNumbers, List<Integer> answer) {
-        int duplicate = countDuplicateIntegers(playerNumbers, answer);
-        int strike = countStrike(playerNumbers, answer);
+    public Result makeResult(List<Integer> answer, List<Integer> playerNumbers) {
+        int duplicate = countDuplicateIntegers(answer, playerNumbers);
+        int strike = countStrike(answer, playerNumbers);
         int ball = calculateBall(duplicate, strike);
 
         return new Result(strike, ball);
     }
 
-    private int countDuplicateIntegers(List<Integer> playerNumbers, List<Integer> answer) {
+    private int countDuplicateIntegers(List<Integer> answer, List<Integer> playerNumbers) {
         int duplicate = 0;
         for (int i = 0; i < playerNumbers.size(); i++) {
             if (answer.contains(playerNumbers.get(i))) {
@@ -26,7 +28,7 @@ public class Judge {
         return duplicate;
     }
 
-    private int countStrike(List<Integer> playerNumbers, List<Integer> answer) {
+    private int countStrike(List<Integer> answer, List<Integer> playerNumbers) {
         int strike = 0;
         for (int i = 0; i < playerNumbers.size(); i++) {
             if (answer.get(i) == playerNumbers.get(i)) {
