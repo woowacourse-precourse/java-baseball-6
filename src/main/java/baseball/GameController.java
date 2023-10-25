@@ -49,7 +49,7 @@ public class GameController {
 
     private void handleGameEnd() {
         userAnswer = gameInputReader.enterAnswerRestartGame();
-        isValidUserAnswerInput(userNumber);
+        isValidUserAnswerInput(userAnswer);
         if (userAnswer.equals("1")) {
             RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
             randomNumber = randomNumberCreater.getRandomNumber();
