@@ -16,6 +16,10 @@ public class Result {
     Ball++;
   }
 
+  public boolean isEnd() {
+    return Strike == 3;
+  }
+
   public String getResult() {
     StringBuilder resultBuilder = new StringBuilder();
     if (Ball == 0 && Strike == 0) {

@@ -8,9 +8,6 @@ import java.util.Objects;
 import java.util.Set;
 
 public class GameSystem {
-  private final static int NUMBER = 3;
-  private final static int RESTART = 1;
-  private final static int ENDGAME = 2;
 
   public GameSystem() {
     System.out.println("숫자 야구 게임을 시작합니다.");
@@ -38,7 +35,7 @@ public class GameSystem {
   public void checkResult(List<Integer> ComputerNum, List<Integer> playerNum, Result result) {
     Set<Integer> computerNumSet = new HashSet<>(ComputerNum);
 
-    for (int i = 0; i < NUMBER; i++) {
+    for (int i = 0; i < Constant.SIZE; i++) {
       if (Objects.equals(playerNum.get(i), ComputerNum.get(i))) {
         result.addStrike();
       } else if (computerNumSet.contains(playerNum.get(i))) {
@@ -52,10 +49,10 @@ public class GameSystem {
 
     int choice = Integer.parseInt(readLine());
     switch (choice) {
-      case RESTART:
+      case Constant.RESTART:
         playGame();
         break;
-      case ENDGAME:
+      case Constant.ENDGAME:
         break;
       default:
         throw new IllegalArgumentException("1이나 2가 아닌 잘못된 입력이 들어왔습니다.");

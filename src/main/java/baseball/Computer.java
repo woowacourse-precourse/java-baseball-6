@@ -6,10 +6,6 @@ import java.util.List;
 
 public class Computer {
 
-  private final static int NUMBER = 3;
-  private final static int MIN_NUMBER = 1;
-  private final static int MAX_NUMBER = 9;
-
   private List<Integer> ComputerNum = new ArrayList<>();
 
   public Computer() {
@@ -17,12 +13,13 @@ public class Computer {
   }
 
   public void GenerateRandomComputerNum() {
-    while (ComputerNum.size() < NUMBER) {
-      int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+    while (ComputerNum.size() < Constant.SIZE) {
+      int randomNumber = Randoms.pickNumberInRange(Constant.MIN_NUMBER, Constant.MAX_NUMBER);
       if (!ComputerNum.contains(randomNumber)) {
         ComputerNum.add(randomNumber);
       }
     }
+    //확인을 위한 코드
     System.out.println(ComputerNum);
   }
 
