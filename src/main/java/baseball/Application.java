@@ -13,7 +13,7 @@ public class Application {
         BaseBallGame baseBallGame = new BaseBallGame(new RandomNumberGenerator(new DefaultRandomService()));
         InputDevice inputDevice = new InputDevice(new DefaultConsoleService(), new InputValidator());
         OutputDevice outputDevice = new OutputDevice();
-        String gameResult;
+        Score gameResult;
 
         outputDevice.printGameStart();
 
@@ -27,8 +27,8 @@ public class Application {
         } while (playingGame(gameResult, inputDevice));
     }
 
-    private static boolean playingGame(String gameResult, InputDevice inputDevice) {
-        if (gameResult.equals(THREE_STRIKE.getName())) {
+    private static boolean playingGame(Score gameResult, InputDevice inputDevice) {
+        if (gameResult == THREE_STRIKE) {
             int restartOrExit = inputDevice.restartOrExit();
             return restartOrExit != EXIT_NUMBER;
         }

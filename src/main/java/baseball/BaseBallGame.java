@@ -14,8 +14,8 @@ public class BaseBallGame {
         return randomNumberGenerator.createRandomNumbers();
     }
 
-    public String createGameResult(List<Integer> tryNumbers, List<Integer> answerNumbers) {
+    public Score createGameResult(List<Integer> tryNumbers, List<Integer> answerNumbers) {
         GameReferee gameReferee = new GameReferee(new Ball(answerNumbers));
-        return gameReferee.judge(new Ball(tryNumbers)).getName();
+        return gameReferee.judge(new Ball(tryNumbers));
     }
 }

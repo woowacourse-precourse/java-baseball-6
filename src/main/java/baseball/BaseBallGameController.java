@@ -14,17 +14,17 @@ public class BaseBallGameController {
         this.outputDevice = outputDevice;
     }
 
-    public String competeWith(List<Integer> answerNumbers) {
-        String gameResult;
+    public Score competeWith(List<Integer> answerNumbers) {
+        Score gameResult;
         do {
             List<Integer> tryNumbers = inputDevice.inputTryNumber();
             gameResult = baseBallGame.createGameResult(tryNumbers, answerNumbers);
-            outputDevice.printGameResult(gameResult);
+            outputDevice.printGameResult(gameResult.getName());
         } while (notThreeStrike(gameResult));
         return gameResult;
     }
 
-    private boolean notThreeStrike(String gameResult) {
-        return !gameResult.equals(Score.THREE_STRIKE.getName());
+    private boolean notThreeStrike(Score gameResult) {
+        return !gameResult.equals(Score.THREE_STRIKE);
     }
 }
