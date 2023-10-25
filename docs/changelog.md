@@ -52,6 +52,9 @@
 - application의 main함수에 완성도 올리기
 - 경기 재시작 또는 종료
     - application 의 main함수에서 while 반복문과 starttoggle 변수활용해서 구현
+- 에러처리
+  - checkValidity() 추가 : 올바른 값인지 판별후 아니면 오류생성
+  - isNumeric() 추가 : 문자열이 숫자인지 판별
 
 ### 취소
 
@@ -59,6 +62,6 @@
 
 ### 진행중
 
-- 에러처리
+
   
     

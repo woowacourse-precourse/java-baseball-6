@@ -40,23 +40,25 @@
             - [x] 같은 과정 반복 - while반복문 활용
             - [x] 숫자를 모두 맞히면 종료기능
     - 재시작/종료 (exit)
-        - [x] 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다. - while반복문과 토글변수 이용해서 구현
+        - [x] 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다. - application 의 while반복문과 토글변수 이용해서 구현
             - [x] 게임 완전히 종료 
             - [x] 게임 재시작
     - 에러처리 (Error)
-        - [ ] 사용자가 잘못된 값을 입력할 경우`IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
-            - [ ] 잘못된 입력시 `IllegalArgumentException` 예외 발생후 종료기능
-              - [ ] IllegalArgumentException 예외를 던지는 함수 생성 
+        - [x] 사용자가 잘못된 값을 입력할 경우`IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다. - checkValidity(), isNumeric()
+            - [x] 잘못된 입력시 `IllegalArgumentException` 예외 발생후 종료기능
+              - [x] 숫자게임중 3개의 수 입력시 잘못된값 입력한 경우 예외 생성
+              - [x] 재시작시 1과 2이외의 수 입력시 예외 생성
+              - [x] IllegalArgumentException 예외를 던지는 함수 생성 
 
 
 
 ### **문서화 및 배포**
 
-- [ ] README.md 작성
+- [x] README.md 작성
 
-- [ ] changelog.md 작성
+- [x] changelog.md 작성
 
-- [ ] todo.md 작성
+- [x] todo.md 작성
 
 ## 게임 방법
 - 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 얻고, 그 힌트를 이용해서 먼저 상대방(컴퓨터)의 수를 맞추면 승리한다.
