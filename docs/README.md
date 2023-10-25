@@ -58,8 +58,24 @@
 
 - [x]  `setAnswer()` : 게임의 정답 1~9사이의 서로 다른 3개의 숫자인 answer를 결정한다.
 - [x]  `getResult()` : Player의 Input을 보고 결과를 판단 후 결과를 String으로 반환해준다.
-- [x]  `countBall()` : player의 Input에서 ball이 몇 개인지 판단 후 반환한다.
-- [x]  `coutnStrike()` : player의 Input에서 strike의 개수를 판단 후 반환한다.
+
+# Service
+
+---
+
+### ComputerService
+
+역할: Computer가 로직을 처리하는데 필요한 보조 메서드를 정의
+
+- [x]  `countBall()` : Player의 Input에서 ball이 몇 개인지 판단 후 반환한다.
+- [x]  `countStrike()` : Player의 Input에서 strike의 개수를 판단 후 반환한다.
+- [x]  `getResultMessage()` : ball과 strike의 개수를 전달 받고 이에 적합한 결과를 출력한다.
+    - ball과 strike가 없다 → ‘낫싱’
+    - ball만 있다 → ‘n볼’
+    - strike만 있다 → ‘n스트라이크’
+    - 둘 다 있다 → ‘n볼 m스트라이크’
+- [x]  `getBallMessage()` : ball 개수를 받아 ball의 개수를 String으로 반환한다. 존재하지 않으면 비어있는 String을 반환한다.
+- [x]  `getStrikeMessage()` : strike 개수를 받고 strike의 개수를 String으로 반환한다. 존재하지 않으면 비어있는 String을 반환한다.
 
 # 프로그램에 진행에 필요한 클래스(Utils)
 
@@ -83,13 +99,6 @@
 - [x]  `askNumberMessage()` : 입력할 숫자를 물어보는 ‘숫자를 입력해주세요 : ‘를 출력한다.
 - [x]  `printSuccessMessage()` : 성공 여부를 알려주는 ‘3개의 숫자를 모두 맞히셨습니다! 게임 종료’를 출력한다.
 - [x]  `printResult()` : 결과 값 result를 전달받고 이를 출력한다.
-- [x]  `getResultMessage()` : ball과 strike의 개수를 전달 받고 이에 적합한 결과를 출력한다.
-    - ball과 strike가 없다 → ‘낫싱’
-    - ball만 있다 → ‘n볼’
-    - strike만 있다 → ‘n스트라이크’
-    - 둘 다 있다 → ‘n볼 m스트라이크’
-- [x]  `getBallMessage()` : ball 개수를 받아 ball의 개수를 String으로 반환한다. 존재하지 않으면 비어있는 String을 반환한다.
-- [x]  `getStrikeMessage()` : strike 개수를 받고 strike의 개수를 String으로 반환한다. 존재하지 않으면 비어있는 String을 반환한다.
 
 # 예외 처리(Validate)
 

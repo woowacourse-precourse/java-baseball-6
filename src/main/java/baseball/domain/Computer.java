@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.service.ComputerService;
-import baseball.utils.OutputMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +18,9 @@ public class Computer {
         }
     }
 
-
     public String getResult(List<Integer> playerInput) {
         int ball = ComputerService.countBall(playerInput, answer);
         int strike = ComputerService.countStrike(playerInput, answer);
-        return OutputMessage.getResultMessage(ball, strike);
+        return ComputerService.getResultMessage(ball, strike);
     }
 }
