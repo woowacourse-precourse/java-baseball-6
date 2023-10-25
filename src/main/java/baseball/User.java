@@ -6,7 +6,7 @@ import java.util.List;
 
 public class User {
 
-    private static final char RESTART_NUMBER = '1';
+    private static final String RESTART_NUMBER = "1";
     private static final boolean RESTART = true;
     private static final boolean DO_NOT_RESTART = false;
     private List<Integer> numbers;

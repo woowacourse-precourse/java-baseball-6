@@ -16,8 +16,8 @@ public class UserInputValidator {
     private static final char MAX_NUMBER = '9';
     private String userInputNumbers = "";
     private String userInputRestartNumber = "";
-    private static final char RESTART_NUMBER = '1';
-    private static final char DO_NOT_RESTART_NUMBER = '2';
+    private static final String RESTART_NUMBER = "1";
+    private static final String DO_NOT_RESTART_NUMBER = "2";
 
     public void validateInputNumbers(String userInput) {
         userInputNumbers = userInput;
@@ -60,10 +60,8 @@ public class UserInputValidator {
     }
 
     private void checkRestartNumberRange() {
-        for (char number : userInputNumbers.toCharArray()) {
-            if (number !=  RESTART_NUMBER || number != DO_NOT_RESTART_NUMBER) {
-                throw new IllegalArgumentException(WRONG_RESTART_NUMBER_RANGE_MSG);
-            }
+        if (!(userInputRestartNumber.equals(RESTART_NUMBER) || userInputRestartNumber.equals(DO_NOT_RESTART_NUMBER))) {
+            throw new IllegalArgumentException(WRONG_RESTART_NUMBER_RANGE_MSG);
         }
     }
 
