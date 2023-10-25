@@ -102,4 +102,14 @@ public class Play {
         return strike;
     }
 
+    private int getBall(int[] inputNumber){
+        int ball = 0;
+        for(int i : inputNumber){
+            if(result.contains(i)){
+                ball++;
+            }
+        }
+        return ball;
+    }
+
 }
