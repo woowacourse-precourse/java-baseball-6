@@ -1,10 +1,9 @@
 package baseball.controller;
 
 import baseball.domain.NumberBaseball;
-import baseball.domain.Restart;
+import baseball.domain.RestartOption;
 import baseball.service.GameService;
 import baseball.service.hint.HintService;
-import baseball.util.ExceptionUtil;
 import baseball.util.InputUtil;
 import baseball.validation.IntegerValidator;
 import baseball.view.*;
@@ -54,17 +53,15 @@ public class GameController {
 
         IntegerValidator.validateInteger(regameNum);
         int parsedRegameNum = Integer.parseInt(regameNum);
-        Restart restart = Restart.validateValue(parsedRegameNum);
+        RestartOption restartOption = RestartOption.create(parsedRegameNum);
 
-        if (restart == Restart.RESTART_GAME) {
+        if (restartOption == RestartOption.RESTART_GAME) {
             return false;
         }
-        if (restart == Restart.EXIT_GAME) {
+        if (restartOption == RestartOption.EXIT_GAME) {
             return true;
         }
-        if (restart == Restart.OTHER_CHOICE) {
-            ExceptionUtil.throwInvalidValueException();
-        }
+
         return false;
     }
 }
