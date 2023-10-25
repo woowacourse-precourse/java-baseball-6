@@ -65,14 +65,16 @@
 
     * 메소드
         * public void startGame()
-          * 게임을 진행한다.
-        * private String fowardText(String text)
+          * 게임을 진행시키고, 다시 시작할지만 체크한다.
+        * private void runGameLogic()
+          * 실제 게임을 진행한다.
+        * public void giveTextToMachine(String text)
             * game에게 텍스트를 받아서 gameMarchine으로 넘긴다.
-        * private String getTextFromMarchine(String case)
+        * public String getTextFromMachine()
             * 입력을 gameMarchine에게 요구하여 받아온다.
         * private List\<Integer> generateGameNumber()
             * 컴퓨터가 랜덤 숫자 3개를 골라서 리턴하는 메소드
-        * private Boolean compare()
+        * private static int[] compareComputerWithUser(List<Integer> computerNumList, List<Integer> userNumList)
             * 사용자 입력 숫자를 컴퓨터 숫자와 비교하여 볼,스트라이크 개수를 리턴한다.
 
         * private Boolean checkResult(List\<Integer>)
@@ -80,6 +82,8 @@
  
         * printResult
             * 결과를 사용자에게 출력하는 함수
+        * askForRegame
+            * 게임을 다시 할지 확인하는 함수
 
 * GameMarchine클래스
     * 기능
@@ -90,10 +94,7 @@
     * 메소드
         * runGame(game)
             * 게임을 시작하고
-            * 게임이 끝나면 다시할지 묻는다.
-                * 1.이면 끝내기
-                * 2.이면 게임 다시시작
-        * askForRegame
-            * 게임을 다시 할지 확인하는 함수
         * printText(String text)
             * text를 출력한다.
+        * public static String getTextFromUser()
+          * 유저로부터 text를 받는다.
