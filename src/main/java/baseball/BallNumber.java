@@ -21,7 +21,7 @@ public class BallNumber {
     }
   }
 
-  public List<Integer> getComputer() {
+  public List<Integer> getComputer() { // computer 값 가져오기
     return computer;
   }
 }

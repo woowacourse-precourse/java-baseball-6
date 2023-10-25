@@ -25,11 +25,11 @@ public class ScoreDTO {
     this.strike = strike;
   }
 
-  public void addBall() {
+  public void addBall() {  // ball 개수 추가
     ball++;
   }
 
-  public void addStrike() {
+  public void addStrike() {  // strike 개수 추가
     strike++;
   }
 }

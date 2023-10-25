@@ -18,11 +18,11 @@ public class BaseballGame {
     ballNumber = new BallNumber();
     userNumber = new UserNumber();
     while (true) {
-      userNumber.inputUser();
+      userNumber.inputUser();  // user 값 입력 받기
       scoreDTO = new ScoreDTO();
-      gameComputerUserCompare(ballNumber.getComputer(), userNumber.getUser());
-      resultPrint();
-      if (finishGame()) {
+      gameComputerUserCompare(ballNumber.getComputer(), userNumber.getUser());  // computer 값과 user 값 비교
+      resultPrint();  // 결과 출력
+      if (finishGame()) {  // 게임 종료 여부
         return;
       }
     }

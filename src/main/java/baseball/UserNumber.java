@@ -13,21 +13,18 @@ public class UserNumber {
 
   }
 
-  public void inputUser() {
+  public void inputUser() { // user 값 입력 받기
     System.out.print("숫자를 입력해주세요 : ");
     this.userInput = Console.readLine();
-    validateInputLength(this.userInput);
-    validateInputInt(this.userInput);
+    validateInputLength(this.userInput);  // 유효성 검사 : 값 길이 체크
+    validateInputInt(this.userInput);  // 유효성 검사 : 타입 체크
     this.user = Arrays.stream(this.userInput.split(""))
       .mapToInt(Integer::parseInt).boxed()
-      .collect(Collectors.toList());
-    validateInputCompare(this.user);
-//    if (user.size() < 3) {
-//      throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
-//    }
+      .collect(Collectors.toList());  // 형 변환 Array
+    validateInputCompare(this.user);  // 유효성 검사 : 중복 값 입력 체크
   }
 
-  public List<Integer> getUser() {
+  public List<Integer> getUser() {  // user 값 가져오기
     return user;
   }
 
