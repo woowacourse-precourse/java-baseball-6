@@ -17,6 +17,7 @@ public class GameService {
 
     private ValidationService validationService = new ValidationService(
             START_INCLUSIVE_NUMBER, END_INCLUSIVE_NUMBER, SIZE_NUMBER);
+    private CompareService compareService = new CompareService(gameNumber, SIZE_NUMBER);
 
     // 컴퓨터 난수 생성
     public void setComputerNumbers() {
@@ -37,5 +38,17 @@ public class GameService {
             System.out.println(e.getMessage());
         }
     }
+
+    // 사용자가 입력한 값과 컴퓨터의 값 비교 (같으면 true)
+    public boolean sameNumbers() {
+        int strikeCount = compareService.compareNumbers();
+
+        if (strikeCount == 3) {
+            return true;
+        }
+
+        return false;
+    }
+
 
 }

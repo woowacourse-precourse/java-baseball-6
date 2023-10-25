@@ -12,7 +12,16 @@ public class GameController {
         outputMessage.printGameStartMessage();
         gameService.setComputerNumbers();
 
-        gameService.getUserNumbers();
+        boolean gameStatus = true;
+        while (gameStatus) {
+            gameService.getUserNumbers();
+
+            if (gameService.sameNumbers()) {
+                outputMessage.printGameEndMessage();
+                gameStatus = false;
+            }
+
+        }
     }
 
 }
