@@ -1,11 +1,9 @@
 package baseball.people.preparation;
 
-import static baseball.people.Message.BALL;
 import static baseball.people.Message.GAME_END;
 import static baseball.people.Message.GAME_START;
-import static baseball.people.Message.NOTHING;
-import static baseball.people.Message.STRIKE;
 
+import baseball.people.Message;
 import java.util.List;
 
 public class Referee {
@@ -42,9 +40,13 @@ public class Referee {
             }
         }
 
-        declare(ball, strike);
+        System.out.println(Message.getBallStrikeMessage(ball, strike));
+        if (strike == 3) {
+            System.out.println(GAME_END.getMessage());
+            return true;
+        }
 
-        return strike == 3;
+        return false;
     }
 
     /**
@@ -52,26 +54,5 @@ public class Referee {
      */
     public void playBall() {
         targetNumber = TargetNumber.generate(0, 0, 0);
-    }
-
-    private void declare(int ball, int strike) {
-        if (ball == 0 && strike == 0) {
-            System.out.println(NOTHING.getMessage());
-            return;
-        }
-
-        StringBuilder print = new StringBuilder();
-        if (ball > 0) {
-            print.append(String.format(BALL.getMessage(), ball));
-        }
-        if (strike > 0) {
-            print.append(String.format(STRIKE.getMessage(), strike));
-        }
-
-        System.out.println(print);
-
-        if (strike == 3) {
-            System.out.println(GAME_END.getMessage());
-        }
     }
 }
