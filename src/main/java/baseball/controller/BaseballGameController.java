@@ -13,6 +13,9 @@ public class BaseballGameController {
     public static Hint hint;
 
     public BaseballGameController(){
+        user = new User();
+        hint = new Hint();
+        pc = new Computer();
     }
 
     public void gameStart() {
@@ -26,6 +29,7 @@ public class BaseballGameController {
             user.setNumber(Console.readLine());
 
             hint = new Hint();
+
             hint.gamePlay(pc.getNumber(), user.getNumber());
             hint.printHint();
 
@@ -40,6 +44,5 @@ public class BaseballGameController {
 
     public void initializePc(){
         pc = new Computer();
-//        pc.setNumber();
     }
 }
