@@ -3,6 +3,8 @@ package baseball;
 import java.util.List;
 
 public class Application {
+    private static final String RESTART_CODE = "1";
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String exit = "";
@@ -15,6 +17,6 @@ public class Application {
 
             exit = RestartGameChecker.checkRestartGame();
         }
-        while (exit.equals("1"));
+        while (RESTART_CODE.equals(exit));
     }
 }

@@ -5,7 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomNumberMaker {
+public final class RandomNumberMaker {
+
+    private RandomNumberMaker() {
+    }
+
     public static List<Integer> makeRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {

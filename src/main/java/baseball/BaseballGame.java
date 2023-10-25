@@ -28,27 +28,21 @@ public class BaseballGame {
             MessagePrinter.printResultMessage(strikeCount, ballCount);
         }
         while (strikeCount != 3);
-
         MessagePrinter.printGameEndMessage();
-
     }
 
     public String getNumber() {
-        String input = Console.readLine();
-        return input;
+        return Console.readLine();
     }
 
     public List<Integer> convertNumber(String inputNumber) {
         InputValidator.checkPlayerNumber(inputNumber);
 
         List<Integer> numbers = new ArrayList<>();
-
         for (char c : inputNumber.toCharArray()) {
             numbers.add(Integer.parseInt(String.valueOf(c)));
         }
-
         return numbers;
     }
-
 
 }
