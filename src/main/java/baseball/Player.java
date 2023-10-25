@@ -10,9 +10,10 @@ import java.util.Set;
 public class Player {
 
     private Constant constant;
+    private Messages messages;
 
     public List<Integer> input(){
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(messages.INPUT_MESSAGE);
         String user = Console.readLine();
         checkType(user);
         checkLength(user);
