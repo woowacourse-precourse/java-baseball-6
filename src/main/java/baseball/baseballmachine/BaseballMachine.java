@@ -5,7 +5,6 @@ import baseball.player.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class BaseballMachine {
