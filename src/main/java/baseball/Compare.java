@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class CompareBalls {
+public class Compare {
     public int countTotal(List<Integer> computer, List<Integer> player){
         int total = 0;
         for(int i = 0; i < player.size(); i++){

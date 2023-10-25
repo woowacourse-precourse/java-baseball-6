@@ -9,9 +9,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CompareBallsTest {
+class CompareTest {
 
-    CompareBalls compareBalls = new CompareBalls();
+    Compare compare = new Compare();
 
     static List<Integer> computer;
     static List<Integer> player;
@@ -28,7 +28,7 @@ class CompareBallsTest {
         // given
 
         // when
-        int total = compareBalls.countTotal(computer, player);
+        int total = compare.countTotal(computer, player);
 
         // then
         assertThat(3).isEqualTo(total);
@@ -40,7 +40,7 @@ class CompareBallsTest {
         // given
 
         // when
-        int expectStrike = compareBalls.countStrike(computer, player);
+        int expectStrike = compare.countStrike(computer, player);
 
         // then
         assertThat(1).isEqualTo(expectStrike);

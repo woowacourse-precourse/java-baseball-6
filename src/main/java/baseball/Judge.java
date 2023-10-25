@@ -3,11 +3,11 @@ package baseball;
 import java.util.List;
 
 public class Judge {
-    CompareBalls compareBalls = new CompareBalls();
+    Compare compare = new Compare();
 
     public String judge(List<Integer> computer, List<Integer> player){
-        int total = compareBalls.countTotal(computer, player);
-        int strike = compareBalls.countStrike(computer, player);
+        int total = compare.countTotal(computer, player);
+        int strike = compare.countStrike(computer, player);
         int ball = total - strike;
 
         if (total == 0) {
