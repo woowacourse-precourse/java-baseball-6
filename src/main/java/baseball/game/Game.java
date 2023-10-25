@@ -1,11 +1,11 @@
 package baseball.game;
 
+import static baseball.game.GameUI.displayCorrectAnswerMessage;
+
 import baseball.Computer;
 import baseball.user.User;
-import baseball.validators.ValidatorType;
+import baseball.user.UserStauts;
 import camp.nextstep.edu.missionutils.Console;
-
-import static baseball.game.GameUI.displayCorrectAnswerMessage;
 
 public class Game {
 
@@ -13,17 +13,12 @@ public class Game {
     private final Computer computer;
     private final GameUI gameUI;
     private final GameLogic gameLogic;
-    private static final String EXIT_COMMAND = "2";
 
     public Game(GameUI gameUI, GameLogic gameLogic, Computer computer, User user) {
         this.computer = computer;
         this.user = user;
         this.gameUI = gameUI;
         this.gameLogic = gameLogic;
-    }
-
-    private static String quitInput() {
-        return Console.readLine();
     }
 
     private String inferHint() {
@@ -45,11 +40,9 @@ public class Game {
 
                 if (gameLogic.isAnswer(hint)) {
                     displayCorrectAnswerMessage();
-                    String quitInput = quitInput();
 
-                    gameLogic.validateUserInput(quitInput, ValidatorType.QUIT_COMMAND);
-
-                    if (quitInput.equals(EXIT_COMMAND)) {
+                    user.inputUserStatus();
+                    if (user.getUserStatus().equals(UserStauts.EXIT_COMMAND)) {
                         break;
                     }
 

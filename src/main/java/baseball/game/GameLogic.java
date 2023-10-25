@@ -1,31 +1,14 @@
 package baseball.game;
 
-import baseball.validators.Validator;
-import baseball.validators.ValidatorType;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class GameLogic {
 
-    private final Validator userNumberValidator;
-    private final Validator quitCommandValidator;
-
-    public GameLogic(Validator userNumberValidator, Validator quitCommandValidator) {
-        this.userNumberValidator = userNumberValidator;
-        this.quitCommandValidator = quitCommandValidator;
+    public GameLogic() {
     }
 
-    public void validateUserInput(String userInput, ValidatorType validatorType) {
-        switch (validatorType) {
-            case USER_NUMBER:
-                userNumberValidator.validate(userInput);
-                break;
-            case QUIT_COMMAND:
-                quitCommandValidator.validate(userInput);
-                break;
-        }
-    }
 
     public int countStrike(String userNumber, ArrayList<Integer> computerNumber) {
         int result = 0;
