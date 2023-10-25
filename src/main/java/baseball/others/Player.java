@@ -8,7 +8,8 @@ import java.util.List;
 
 public class Player {
     public static String playerInputGuessingNumber() {
-        return Console.readLine().trim().replaceAll(" ", "");
+        String inputGuessingNumber = Console.readLine();
+        return removeSpace(inputGuessingNumber);
     }
 
     public static List<Integer> playerGenerateNum(final String strNumber) {
@@ -21,6 +22,11 @@ public class Player {
     }
 
     public static String playerInputRestartNumber() {
-        return Console.readLine().trim().replaceAll(" ", "");
+        String inputRestartNumber = Console.readLine();
+        return removeSpace(inputRestartNumber);
+    }
+
+    public static String removeSpace(final String inputNumber) {
+        return inputNumber.trim().replaceAll(" ", "");
     }
 }
