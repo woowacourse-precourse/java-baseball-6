@@ -3,13 +3,15 @@ package baseball.domain;
 import static baseball.global.enums.Constant.NUM_LENGTH;
 import static baseball.global.enums.ErrorMessage.DIFFERENT_THREE_DIGITS;
 import static baseball.global.util.GameInput.validateNum;
-import static baseball.global.util.GameOutput.errorMessage;
 import static baseball.global.util.GameOutput.inputCommand;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 게임을 진행하는 플레이어에 대한 클래스
+ */
 public class Player {
 
     private List<Integer> num;
@@ -22,10 +24,8 @@ public class Player {
 
     public List<Integer> start() {
         status = 1;
-
         while (status == 1) {
             inputCommand();
-
             inputNum();
             status = 2;
         }
@@ -46,7 +46,5 @@ public class Player {
 
             num.add(digit);
         }
-
     }
-
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 랜덤 세 자리 수를 생성하기 위한 라이브러리 호출 pickNumberInRange(시작 범위, 끝 범위) : 한 자리 수 랜덤 추출 메서드
+ * 랜덤 세 자리 수를 생성하는 컴퓨터 클래스 랜덤 수 추출을 위한 라이브러리 호출 pickNumberInRange(시작 범위, 끝 범위) : 한 자리 수 랜덤 추출 메서드
  */
 public class Computer {
 
@@ -25,6 +25,4 @@ public class Computer {
         }
         return num;
     }
-
-
 }

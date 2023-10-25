@@ -4,6 +4,9 @@ import static baseball.global.enums.GuideMessage.FINISH_GUIDE;
 import static baseball.global.enums.GuideMessage.INPUT_COMMAND;
 import static baseball.global.enums.GuideMessage.RESTART_MENU;
 
+/**
+ * 공통된 출력 커맨드를 관리하는 클래스
+ */
 public final class GameOutput {
 
     public static void printResult(String result) {
@@ -20,9 +23,5 @@ public final class GameOutput {
 
     public static void inputCommand() {
         System.out.print(INPUT_COMMAND.message);
-    }
-
-    public static void errorMessage(Exception e) {
-        System.out.println(e.getMessage());
     }
 }

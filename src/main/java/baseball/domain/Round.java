@@ -8,7 +8,7 @@ import static baseball.global.enums.GameResult.STRIKE;
 import java.util.List;
 
 /**
- * 사용자 입력값과 컴퓨터가 생성한 수를 비교하며 숫자 야구게임을 진행하는 클래스 - 숫자 비교 기능 포함 *비교 결과는 각각 ball과 strike 변수에 저장된다(카운트 1씩)
+ * 사용자 입력값과 컴퓨터가 생성한 수를 비교하며 숫자 야구게임을 진행하는 클래스 숫자 비교 기능 포함 비교 결과는 각각 ball과 strike 변수에 저장된다(카운트 1씩)
  */
 public class Round {
 

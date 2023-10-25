@@ -1,5 +1,8 @@
 package baseball.global.enums;
 
+/**
+ * 게임 진행에 공통적으로 필요한 시작, 재시작, 종료, 입력 안내 문구를 Enum으로 관리
+ */
 public enum GuideMessage {
 
     START_MENU("숫자 야구 게임을 시작합니다."),

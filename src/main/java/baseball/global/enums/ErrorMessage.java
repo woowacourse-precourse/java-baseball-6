@@ -1,5 +1,8 @@
 package baseball.global.enums;
 
+/**
+ * 비정상적인 상황에 대해 커스텀한 예외 메시지와 함께 IllegalArgumentException을 던져서 예외처리
+ */
 public enum ErrorMessage {
 
     EMPTY_INPUT_VALUE("입력값이 비어 있습니다."),

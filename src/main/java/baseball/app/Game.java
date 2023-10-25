@@ -4,7 +4,6 @@ package baseball.app;
 import static baseball.global.enums.GameResult.PERFECT;
 import static baseball.global.enums.GuideMessage.START_MENU;
 import static baseball.global.util.GameInput.validateMenu;
-import static baseball.global.util.GameOutput.errorMessage;
 import static baseball.global.util.GameOutput.printFinish;
 import static baseball.global.util.GameOutput.printRestart;
 import static baseball.global.util.GameOutput.printResult;
@@ -15,6 +14,9 @@ import baseball.domain.Player;
 import baseball.domain.Round;
 import java.util.List;
 
+/**
+ * 야구게임 전체적인 로직의 순서와 흐름을 진행하는 Game 클래스
+ */
 public class Game {
 
     private Computer computer;
@@ -23,15 +25,19 @@ public class Game {
     private List<Integer> playerNum;
     private Round round;
     private boolean isFinished;
-    private int menu;
 
-    public void init() {
+    public void start() {
+        init();
+        play();
+    }
+
+    private void init() {
         computer = new Computer();
         System.out.println(START_MENU.message);
         isFinished = true;
     }
 
-    public void play() {
+    private void play() {
         player = new Player();  // 컴퓨터와 대결할 플레이어는 단 1명
         computerNum = computer.make();
 
@@ -69,8 +75,7 @@ public class Game {
     private int finishMenu() {
         while (true) {
             printRestart();
-            String s = readLine();
-            return validateMenu(s);
+            return validateMenu(readLine());
         }
     }
 
