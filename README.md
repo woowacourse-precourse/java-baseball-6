@@ -53,8 +53,8 @@ BUILD SUCCESSFUL in 0s
 2. [x] 랜덤한 3자리 수 생성 메소드
     3. [x] `camp.nextstep.edu.missionutils`에서 제공하는`Randoms` 사용
     4. [x] 서로 다른 3자리의 수인지 체크
-5. [ ] 사용자 입력 받기
-    6. [ ] `camp.nextstep.edu.missionutils`에서 제공하는`Console` 사용
+5. [x] 사용자 입력 받기
+    6. [x] `camp.nextstep.edu.missionutils`에서 제공하는`Console` 사용
 7. [ ] 사용자 입력 유효성 검사
     8. [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료
     9. [ ] 서로 다른 수인지 체크
