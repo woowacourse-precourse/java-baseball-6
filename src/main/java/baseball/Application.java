@@ -12,7 +12,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        
+
         while (true) {
             List<Integer> computer = getRandomNumber();
 
@@ -96,7 +96,7 @@ public class Application {
         int input = Integer.parseInt(Console.readLine());
 
         if(input != 1 && input != 2){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("옳은 입력값을 입력해주세요.");
         }
 
         return input;
