@@ -44,4 +44,4 @@
     | GameInput            | getRestartOption | if 조건을 2개가 아닌 하나로 변경                                              |  
     | GameNumberComparator | compareNumbers | 컴퓨터-유저 숫자 카운트 기능,<br/>스트라이크 카운트 기능, <br/>볼 카운트 기능 , <br/>숫자 비교 기능 |
     | GameNumberGenerator  | generateNumber          | 랜덤 숫자 뽑는 기능, <br/>중복 체크 기능, <br/>최종 숫자 삽입 기능                      |
-    | Game                 | run          | 반복해서 실행하는 기능, 3스트라이크인지 확인하는 기능, 재시작 하는 기능                         |
+    | Game                 | run          | 반복해서 실행하는 기능, <br/>3스트라이크인지 확인하는 기능, <br/>재시작 하는 기능                         |
