@@ -89,9 +89,9 @@ public class Application {
         }
 
         if (isFinish(strikeCnt, ballCnt)) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     private static void checkStrikeAndBall(int userNumber, int computerNumber) {
@@ -148,7 +148,7 @@ public class Application {
     private static boolean isNumber(String inputString) {
         return inputString.matches("\\d+");
     }
-    
+
     private static boolean areDistinctNumbers(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         return uniqueNumbers.size() == NUMBER_COUNT;
