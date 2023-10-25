@@ -8,11 +8,15 @@ public class FinishProcess {
     private int finishAnswer;
     private boolean isContinue;
 
-    public FinishProcess() {
-        initVariables();
-        printFinishPhrase();
-        inputFinishAnswer();
-        checkFinishAnswer();
+    public FinishProcess() throws IllegalArgumentException {
+        try {
+            initVariables();
+            printFinishPhrase();
+            inputFinishAnswer();
+            checkFinishAnswer();
+        } catch (IllegalArgumentException e){
+            throw e;
+        }
     }
 
     private void initVariables() {
@@ -24,7 +28,7 @@ public class FinishProcess {
         System.out.println(FinishNotice.finishQuestionPhrase);
     }
 
-    private void inputFinishAnswer() {
+    private void inputFinishAnswer() throws IllegalArgumentException {
 
         try {
             finishAnswer = Integer.parseInt(readLine());
@@ -34,7 +38,7 @@ public class FinishProcess {
         }
     }
 
-    private void checkFinishAnswer() {
+    private void checkFinishAnswer() throws IllegalArgumentException {
         if (finishAnswer == FinishNotice.restartCode) isContinue = true;
         else if (finishAnswer == FinishNotice.exitCode) isContinue = false;
         else throw new IllegalArgumentException();

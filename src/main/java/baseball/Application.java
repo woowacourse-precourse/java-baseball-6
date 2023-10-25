@@ -5,7 +5,7 @@ import baseball.finishProcess.*;
 import baseball.gameProcess.*;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException{
         GameRole gameRole = new GameRole();
 
         StartProcess startProcess = new StartProcess(gameRole);
@@ -24,8 +24,8 @@ public class Application {
 
                 startProcess.resetGame(gameRole);
             }
-        } catch (Exception e) {
-            // e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            throw e;
         }
     }
 }
