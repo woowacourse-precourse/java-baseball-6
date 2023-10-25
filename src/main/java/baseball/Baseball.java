@@ -19,6 +19,7 @@ public class Baseball {
      * 유저가 제시한 숫자
      */
     private final List<Integer> user;
+
     private int ball = 0;
     private int strike = 0;
 
@@ -55,7 +56,7 @@ public class Baseball {
     /**
      * 게임 결과를 출력한다.
      *
-     * @param ball 카운트 된 ball의 수
+     * @param ball   카운트 된 ball의 수
      * @param strike 카운트 된 strike의 수
      */
     private static void commentPrint(int ball, int strike) {

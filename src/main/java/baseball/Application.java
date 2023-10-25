@@ -21,8 +21,8 @@ public class Application {
     private static void runGame() {
         Computer computer = new Computer();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean correct = false; // 정답 여부
 
+        boolean correct = false; // 정답 여부
         while (!correct) { // 정답을 맞출 때 까지 반복한다.
             correct = guessTheAnswer(computer);
         }

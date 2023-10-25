@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class User {
+
     /**
      * 사용자가 입력한 정수를 정수 리스트로 관리한다.
      */
@@ -17,15 +18,14 @@ public class User {
      * @param input 사용자가 입력한 정수 문자열
      */
     public User(String input) {
-        List<Integer> inNumbers = new ArrayList<>();
         validationTextLength(input); // 입력 값의 길이가 3인지 확인
 
         // 입력한 숫자를 분할하여 저장한다.
+        List<Integer> inNumbers = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             Number number = new Number(input.charAt(i));
             inNumbers.add(number.getNumber());
         }
-
         validationDuplication(inNumbers); // 중복된 값이 있는지 확인한다.
 
         this.numbers = inNumbers;
@@ -39,9 +39,7 @@ public class User {
     private void validationDuplication(List<Integer> numbers) {
         // 중복을 허용하지 않는 Set 자료구조를 사용한다.
         Set<Integer> numbersSet = new HashSet<>(numbers);
-
-        // 크기를 비교한다.
-        if (numbersSet.size() != numbers.size()) {
+        if (numbersSet.size() != numbers.size()) { // 크기를 비교한다.
             throw new IllegalArgumentException();
         }
     }
