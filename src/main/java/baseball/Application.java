@@ -11,6 +11,7 @@ public class Application {
     public static void main(String[] args) {
         do{
             game.start();
+
         }while(game.restart()==true);
     }
 }
