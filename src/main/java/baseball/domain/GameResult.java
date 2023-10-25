@@ -33,4 +33,12 @@ public class GameResult {
 		return this.strikeCount == END_CONDITION && this.ballCount == 0;
 	}
 
+	public boolean existOnlyBall() {
+		return this.ballCount != 0 && this.strikeCount == 0;
+	}
+
+	public boolean existOnlyStrike() {
+		return this.strikeCount != 0 && this.ballCount == 0;
+	}
+
 }

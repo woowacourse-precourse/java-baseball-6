@@ -13,20 +13,19 @@ public enum GameResultMessage {
 		if (gameResult.isNothing()) {
 			return NOTHING.message;
 		}
-		if (existOnlyBall(gameResult)) {
-			return gameResult.getBallCount() + BALL.message;
+		int ballCount = gameResult.getBallCount();
+		int strikeCount = gameResult.getStrikeCount();
+		if (gameResult.existOnlyBall()) {
+			return createCountMessage(ballCount, BALL);
 		}
-		if (existOnlyStrike(gameResult)) {
-			return gameResult.getStrikeCount() + STRIKE.message;
+		if (gameResult.existOnlyStrike()) {
+			return createCountMessage(strikeCount, STRIKE);
 		}
-		return gameResult.getBallCount() + BALL.message + " " + gameResult.getStrikeCount() + STRIKE.message;
+		return String.join(" ", createCountMessage(ballCount, BALL), createCountMessage(strikeCount, STRIKE));
 	}
 
-	private static boolean existOnlyBall(final GameResult gameResult) {
-		return gameResult.getBallCount() != 0 && gameResult.getStrikeCount() == 0;
+	private static String createCountMessage(final int count, final GameResultMessage gameResultMessage) {
+		return String.join("", count + gameResultMessage.message);
 	}
 
-	private static boolean existOnlyStrike(final GameResult gameResult) {
-		return gameResult.getStrikeCount() != 0 && gameResult.getBallCount() == 0;
-	}
 }
