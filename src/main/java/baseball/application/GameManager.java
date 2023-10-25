@@ -6,6 +6,8 @@ import baseball.presentation.UserOutput;
 import java.util.List;
 
 public class GameManager {
+    private final String RESTART = "1";
+
     private final Generator generator;
     private final UserInput userInput;
     private final UserOutput userOutput;
@@ -53,7 +55,7 @@ public class GameManager {
         } else {
             userOutput.endingMessage();
             String restartNumber = userInput.inputRestartNumber();
-            if (restartNumber.equals("1")) {
+            if (restartNumber.equals(RESTART)) {
                 run();
             }
         }
