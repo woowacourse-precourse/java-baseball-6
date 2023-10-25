@@ -21,10 +21,6 @@ public class BaseballGameService {
     public void playGame(BaseballGame baseballGame){
         User user = baseballGame.getUser();
         List<Integer> targetNumbers = baseballGame.getTargetNumber();
-        for(int i=0; i<targetNumbers.size(); i++){
-            System.out.print(targetNumbers.get(i));
-        }
-        System.out.println();
 
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
