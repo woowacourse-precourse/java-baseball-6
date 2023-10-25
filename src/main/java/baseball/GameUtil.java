@@ -24,7 +24,6 @@ public class GameUtil {
 
         // 3자리 숫자 섞기
         randomNumbers = Randoms.shuffle(randomNumbers);
-        System.out.println(randomNumbers);
 
         return randomNumbers;
     }
