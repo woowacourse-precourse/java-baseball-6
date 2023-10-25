@@ -1,9 +1,9 @@
-package baseball.exception;
+package baseball.util;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class ValidationException {
+public class InputValidator {
     public static void validateInput(String input) {
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException("입력값이 공백 문자만 포함하고 있습니다.");

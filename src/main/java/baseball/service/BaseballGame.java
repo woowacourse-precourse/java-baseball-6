@@ -3,11 +3,11 @@ package baseball.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import baseball.exception.ValidationException;
 import baseball.model.Constant;
 import baseball.model.StrikeBallCount;
 import baseball.model.ThreeDigits;
 import baseball.model.random.NumberGenerator;
+import baseball.util.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
@@ -39,7 +39,7 @@ public class BaseballGame {
         while(!isGameEnd){
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            ValidationException.validateInput(input);
+            InputValidator.validateInput(input);
             ThreeDigits inputThreeDigits = ThreeDigits.toThreeDigits(input);
             StrikeBallCount strikeBallCount = calculateStrikeBallCount(answer, inputThreeDigits);
 
