@@ -6,12 +6,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
 
-	Ball[] playerBalls;
+	private Ball[] balls;
 
 	public Player() {
 	}
 
-	public int[] getInput() {
+	public void getInput() {
 		System.out.println("숫자를 입력해주세요 : ");
 		String input = Console.readLine();
 
@@ -19,11 +19,15 @@ public class Player {
 			throw new IllegalArgumentException("잘못된 입력값입니다. 세 자리의 숫자를 입력하세요.");
 		}
 
-		playerBalls = new Ball[3];
+		balls = new Ball[3];
 		for (int i = 0; i < 3; i++) {
-			playerBalls[i] = new Ball(Integer.parseInt(input.charAt()))
+			balls[i] = new Ball(Character.getNumericValue(input.charAt(i)));
 		}
 
+	}
+
+	public Ball[] getBalls() {
+		return balls;
 	}
 
 	private boolean isCorrectInput(String input) {
