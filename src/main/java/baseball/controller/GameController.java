@@ -55,7 +55,7 @@ public class GameController {
     }
 
     private BaseballNumbers getBaseballNumbers() {
-        InputView.printCheat(computerNumbers); // 값 확인용
+//        InputView.printCheat(computerNumbers); // 값 확인용
         InputView.printRequestingInput();
         return InputView.getUserNumbers();
     }
