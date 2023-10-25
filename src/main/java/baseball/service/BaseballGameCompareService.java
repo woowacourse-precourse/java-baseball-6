@@ -17,9 +17,14 @@ public class BaseballGameCompareService {
     private int countStrike(List<Integer> userNumberList, List<Integer> randomNumberList) {
         int strikeCount = 0;
         for (int i = 0; i < userNumberList.size(); i++) {
-            if (Objects.equals(userNumberList.get(i), randomNumberList.get(i))) {
-                strikeCount++;
-            }
+            strikeCount = getStrikeCount(userNumberList, randomNumberList, strikeCount, i);
+        }
+        return strikeCount;
+    }
+
+    private int getStrikeCount(List<Integer> userNumberList, List<Integer> randomNumberList, int strikeCount, int i) {
+        if (Objects.equals(userNumberList.get(i), randomNumberList.get(i))) {
+            strikeCount++;
         }
         return strikeCount;
     }
@@ -27,9 +32,14 @@ public class BaseballGameCompareService {
     private int countBall(List<Integer> userNumberList, List<Integer> randomNumberList) {
         int ballCount = 0;
         for (int i = 0; i < userNumberList.size(); i++) {
-            if (randomNumberList.contains(userNumberList.get(i))) {
-                ballCount++;
-            }
+            ballCount = getBallCount(userNumberList, randomNumberList, ballCount, i);
+        }
+        return ballCount;
+    }
+
+    private int getBallCount(List<Integer> userNumberList, List<Integer> randomNumberList, int ballCount, int i) {
+        if (randomNumberList.contains(userNumberList.get(i))) {
+            ballCount++;
         }
         return ballCount;
     }
