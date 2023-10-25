@@ -15,13 +15,13 @@ public class Game {
     }
 
     private void start() {
-        System.out.println(GuideMessage.GAME_START_MESSAGE);
+        System.out.println(GuideMessage.GAME_START);
 
         resetRandomNumbers();
     }
 
     private void play() {
-        System.out.print(GuideMessage.INPUT_REQUEST_MESSAGE);
+        System.out.print(GuideMessage.INPUT_REQUEST);
 
         String userInput = Console.readLine();
 
@@ -37,9 +37,9 @@ public class Game {
     }
 
     private void end() {
-        System.out.println(GuideMessage.GAME_EXIT_MESSAGE);
+        System.out.println(GuideMessage.GAME_EXIT);
 
-        System.out.println(GuideMessage.RESTART_INPUT_MESSAGE);
+        System.out.println(GuideMessage.RESTART_INPUT);
 
         String restartInput = Console.readLine();
 
