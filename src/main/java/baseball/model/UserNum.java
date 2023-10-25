@@ -1,16 +1,11 @@
 package baseball.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserNum {
-    private List<Integer> userNum=new ArrayList<>();
+    private List<Integer> userNum;
 
     public UserNum(List<Integer> num){
-        this.userNum=num;
-    }
-
-    public void setUserNum(List<Integer> num){
         this.userNum=num;
     }
 

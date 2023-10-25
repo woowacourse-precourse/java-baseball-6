@@ -1,10 +1,13 @@
-package baseball.controller;
+package baseball.view;
 
+import baseball.controller.GenerateTargetNum;
+import baseball.controller.JudgeCountNum;
+import baseball.controller.ValidUserNum;
 import baseball.model.CountNum;
 import baseball.model.TargetNum;
 import baseball.model.UserNum;
 import camp.nextstep.edu.missionutils.Console;
-public class BaseballGameImpl implements BaseballGame{
+public class BaseballGameImpl implements BaseballGame {
 
     private final GenerateTargetNum generateTargetNum;
     private final ValidUserNum validUserNum;
@@ -21,7 +24,6 @@ public class BaseballGameImpl implements BaseballGame{
         while(true){
             s=Console.readLine();
             UserNum userNum= validUserNum.getValidUserNum(s);
-
 
             CountNum countNum = judgeCountNum.getJudgeCountNum(userNum,targetNum);
             int strike = countNum.getStrikeNum();

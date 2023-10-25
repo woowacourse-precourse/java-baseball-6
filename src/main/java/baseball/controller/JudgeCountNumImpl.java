@@ -17,15 +17,15 @@ public class JudgeCountNumImpl implements JudgeCountNum {
         Integer ball=0;
 
         for(int i=0;i<3;i++){
-            for(int j=0;j<3;j++){
-            if(userNumArray.get(i)==targetNumArray.get(j)){
-                if(i!=j){
-                    ball++;
+            for(int j=i;j<3;j++){
+                if(userNumArray.get(i)==targetNumArray.get(j)){
+                    if(i!=j){
+                        ball++;
+                    }
+                    if(i==j){
+                        strike++;
+                    }
                 }
-                if(i==j){
-                    strike++;
-                }
-            }
             }
         }
         CountNum countNum=new CountNum(strike,ball);

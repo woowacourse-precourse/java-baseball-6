@@ -18,8 +18,6 @@ class GenerateTargetNumberTest {
         TargetNum targetNum = generateTargetNumImpl.getTargetNum();
         List<Integer> targetNumArray=targetNum.getTargetNumArray();
 
-        System.out.println(targetNumArray);
-
         // size가 3인지
         Assertions.assertThat(targetNumArray.size()).isEqualTo(3);
 

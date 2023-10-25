@@ -53,7 +53,6 @@ public class JudgeCountNumTest {
         Assertions.assertThat(strikeNum).isEqualTo(0);
         Assertions.assertThat(ballNum).isEqualTo(0);
 
-
     }
 
 }
