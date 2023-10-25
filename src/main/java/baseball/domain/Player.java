@@ -4,6 +4,7 @@ import baseball.utils.InputValidation;
 import baseball.view.InputInformationView;
 
 public class Player {
+
     private String inputNumber;
     private final InputValidation inputValidation;
     private final InputInformationView inputInformationView;
