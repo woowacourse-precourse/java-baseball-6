@@ -1,16 +1,16 @@
 package baseball.number;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import baseball.utils.match.MatchResults;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class NumbersTest {
 
@@ -53,10 +53,32 @@ class NumbersTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @MethodSource("getCompareNumbers")
+    void compare(Numbers otherNumbers, String expected) {
+        // given
+        Numbers numbers = new Numbers("123");
+
+        // when
+        MatchResults result = numbers.compare(otherNumbers);
+
+        // then
+        assertThat(result.getResultMessage()).isEqualTo(expected);
+    }
+
     public static Stream<Arguments> getNumbers() {
         return Stream.of(
             Arguments.of(new Numbers(), true),
             Arguments.of(new Numbers("123"), false)
+        );
+    }
+
+    public static Stream<Arguments> getCompareNumbers() {
+        return Stream.of(
+                Arguments.of(new Numbers("123"), "3스트라이크"),
+                Arguments.of(new Numbers("134"), "1볼 1스트라이크"),
+                Arguments.of(new Numbers("312"), "3볼"),
+                Arguments.of(new Numbers("456"), "낫싱")
         );
     }
 }

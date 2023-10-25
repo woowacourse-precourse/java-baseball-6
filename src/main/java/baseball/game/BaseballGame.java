@@ -24,6 +24,7 @@ public class BaseballGame {
         while (gameStatus.isPlay()) {
             generateComputerNumbers();
             selectPlayerNumbers();
+            selectRestart();
         }
     }
 
@@ -46,5 +47,10 @@ public class BaseballGame {
     private void inputNumbers() {
         output.printMessage(Messages.INPUT.getMessage());
         player.inputNumbers(input.inputNumbers());
+    }
+
+    private void selectRestart() {
+        output.printMessageLine(Messages.RESTART.getMessage());
+        this.gameStatus = GameStatus.of(input.inputRestart());
     }
 }
