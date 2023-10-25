@@ -3,11 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
+        System.out.print(Game.START_MESSAGE);
         Game.start();
     }
 }
@@ -90,7 +90,7 @@ class Result {
 }
 class Game {
     public static final int NUMBERS = 3;
-    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.\n";
+    public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.\n";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
     static String getResult() {
@@ -102,8 +102,11 @@ class Game {
             start();
         }
     }
+    public static void game() {
+        start();
+        restart();
+    }
     public static void start() {
-        System.out.print(START_MESSAGE);
         Computer.generateAnswer();
         while (!Objects.equals(getResult(), Result.END_MESSAGE)) {
             System.out.print(INPUT_MESSAGE);
@@ -112,5 +115,4 @@ class Game {
         }
         restart();
     }
-
 }
