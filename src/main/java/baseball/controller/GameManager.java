@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.service.GameResult;
-import baseball.service.Judgement;
+import baseball.service.Referee;
 import baseball.service.domain.BaseballCollection;
 import baseball.service.domain.RandomNumberGenerator;
 import baseball.view.Input;
@@ -9,10 +9,10 @@ import baseball.view.Output;
 
 public class GameManager {
     private final RestartCommandValidator validator;
-    private final Judgement judgment;
+    private final Referee judgment;
     private final Input input;
 
-    public GameManager(RestartCommandValidator validator, Judgement judgment, Input input) {
+    public GameManager(RestartCommandValidator validator, Referee judgment, Input input) {
         this.validator = validator;
         this.judgment = judgment;
         this.input = input;
