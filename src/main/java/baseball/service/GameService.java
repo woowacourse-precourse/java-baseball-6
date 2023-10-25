@@ -25,6 +25,11 @@ public class GameService {
         this.randomCreator = SystemRandomCreator.getInstance();
     }
 
+    public GameService(RandomCreator randomCreator) {
+        this.referee = Referee.getInstance();
+        this.randomCreator = randomCreator;
+    }
+
     public void initializeGame() {
         user = new Player();
         computer = new Player(randomCreator.createRandomNumbers());
