@@ -1,24 +1,20 @@
 package baseball;
 
-import java.io.FilterOutputStream;
 import java.util.HashSet;
-import java.util.Random;
-import java.util.Scanner;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-
         while (true) {
-            int targetNumber = generateRandomNumber(random);
+            int targetNumber = generateRandomNumber();
             boolean gameWon = false;
 
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             while (!gameWon) {
                 System.out.print("숫자를 입력해주세요 : ");
-                String userInput = scanner.next();
+                String userInput = readLine();
 
                 try {
                     if (isValidInput(userInput)) {
@@ -28,7 +24,7 @@ public class Application {
                         int balls = result % 10;
 
                         if (strikes == 3) {
-                            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                             gameWon = true;
                         }
                         else if (result == 0) {
@@ -47,15 +43,16 @@ public class Application {
                         }
                     }
                     else {
-                        throw new IllegalArgumentException();
+                        throw new IllegalArgumentException("잘못된 입력입니다.");
                     }
                 } catch (IllegalArgumentException e) {
-                    System.exit(0);
+                    System.err.println(e.getMessage());
+                    return;
                 }
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String playAgain = scanner.next().toLowerCase();
+            String playAgain = readLine().toLowerCase();
 
             if (!playAgain.equals("1")) {
                 break;
@@ -63,12 +60,12 @@ public class Application {
         }
     }
 
-    private static int generateRandomNumber(Random random) {
+    private static int generateRandomNumber() {
         // 중복을 피하기 위해 HashSet을 사용합니다.
         HashSet<Integer> set = new HashSet<>();
 
         while (set.size() < 3) {
-            int randomNumber = random.nextInt(10);
+            int randomNumber = pickNumberInRange(1, 9);
             set.add(randomNumber);
         }
 
