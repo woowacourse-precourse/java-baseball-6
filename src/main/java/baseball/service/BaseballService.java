@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.vo.Score;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class BaseballService {
 
@@ -30,13 +31,8 @@ public class BaseballService {
     }
 
     private int calculateStrikeCnt(List<Integer> computerNumbers, List<Integer> numbers) {
-        int strikeCnt = 0;
-        for (int idx = 0; idx < numbers.size(); idx++) {
-            int target = numbers.get(idx);
-            if (idx == computerNumbers.indexOf(target)) {
-                strikeCnt++;
-            }
-        }
-        return strikeCnt;
+        return (int) IntStream.range(0, numbers.size())
+            .filter(idx -> numbers.get(idx).equals(computerNumbers.get(idx)))
+            .count();
     }
 }
