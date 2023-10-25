@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SplitLine {
-    public List<Integer> splitLine(String line) {
+    public static List<Integer> splitLine(String line) {
         List<Integer> splitLine = new ArrayList<>();
 
         for (int l = 0; l < line.length(); l++) {
