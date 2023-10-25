@@ -2,33 +2,44 @@ package baseball;
 
 public class Result {
 
-    private int numberOfStrike;
-    private int numberOfBall;
+    private boolean correct;
+    private String message;
 
-    public Result(int numberOfStrike, int numberOfBall) {
-        this.numberOfStrike = numberOfStrike;
-        this.numberOfBall = numberOfBall;
+    public boolean isCorrect() {
+        return correct;
     }
 
-    @Override
-    public String toString() {
-        if (numberOfStrike == 3 && numberOfBall == 0) {
-            return "3스트라이크\n3개 숫자를 모두 맞히셨습니다! 게임 종료";
+    public String getMessage() {
+        return message;
+    }
+
+    public void setResult(Game game) {
+        if (game.getNumberOfStrike() == 3 && game.getNumberOfBall() == 0) {
+            this.message = "3스트라이크\n3개 숫자를 모두 맞히셨습니다! 게임 종료";
+            this.correct = true;
+            return;
         }
 
-        if (numberOfStrike == 0 && numberOfBall == 0) {
-            return "낫싱\n";
+        if (game.getNumberOfStrike() == 0 && game.getNumberOfBall() == 0) {
+            this.message = "낫싱\n";
+            this.correct = false;
+            return;
         }
 
-        if (numberOfStrike == 0) {
-            return numberOfBall + "볼\n";
+        if (game.getNumberOfStrike() == 0) {
+            this.message = game.getNumberOfBall() + "볼\n";
+            this.correct = false;
+            return;
         }
 
-        if (numberOfBall == 0) {
-            return numberOfStrike + "스트라이크\n";
+        if (game.getNumberOfBall() == 0) {
+            this.message = game.getNumberOfStrike() + "스트라이크\n";
+            this.correct = false;
+            return;
         }
 
-        return numberOfBall + "볼 " + numberOfStrike + "스트라이크\n";
+        this.message = game.getNumberOfBall() + "볼 " + game.getNumberOfStrike() + "스트라이크\n";
+        this.correct = false;
     }
 
 }

@@ -64,8 +64,4 @@ public class Game {
     public int getNumberOfBall() {
         return numberOfBall;
     }
-
-    public Result getResult() {
-        return new Result(numberOfStrike, numberOfBall);
-    }
 }

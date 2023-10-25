@@ -6,9 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    public static final String PREDICTION_MESSAGE = "숫자를 입력해주세요 : ";
+    public static final String REGAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        printStartMessage();
+        print(START_MESSAGE);
 
         Game game = new Game();
         User user = new User();
@@ -25,7 +30,7 @@ public class Application {
     }
 
     private static void askReGame(User user) {
-        printReGameMessage();
+        print(REGAME_MESSAGE);
         String newReGame = Console.readLine();
         user.setContinued(validateReGame(newReGame));
     }
@@ -43,11 +48,13 @@ public class Application {
     }
 
     public static void resolve(Game game, User user) {
-        while (!isCorrect(game)) {
+        Result result = new Result();
+        while (result.isCorrect()) {
             game.reset();
             user.setPrediction(getPrediction());
             game.countStrikeOrBall(user.getPrediction());
-            print(game.getResult().toString());
+            result.setResult(game);
+            print(result.getMessage());
         }
     }
 
@@ -56,21 +63,9 @@ public class Application {
     }
 
     private static List<Integer> getPrediction() throws IllegalArgumentException {
-        printInputMessage();
+        print(PREDICTION_MESSAGE);
         String userInput = Console.readLine();
         return validateUserInput(userInput);
-    }
-
-    public static boolean isCorrect(Game game) {
-        return game.getNumberOfStrike() == 3 && game.getNumberOfBall() == 0;
-    }
-
-    public static void printReGameMessage() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-    }
-
-    public static void printInputMessage() {
-        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public static List<Integer> validateUserInput(String response) throws IllegalArgumentException {
@@ -90,7 +85,4 @@ public class Application {
         return prediction;
     }
 
-    private static void printStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
 }
