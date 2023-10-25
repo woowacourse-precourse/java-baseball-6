@@ -1,16 +1,16 @@
 package baseball;
 
-import java.util.HashSet;
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
+        Computer computer = new Computer();
+
         while (true) {
-            int targetNumber = generateRandomNumber();
             boolean gameWon = false;
 
             System.out.println("숫자 야구 게임을 시작합니다.");
+            int targetNum = computer.generateRandomNumber();
 
             while (!gameWon) {
                 System.out.print("숫자를 입력해주세요 : ");
@@ -19,7 +19,7 @@ public class Application {
                 try {
                     if (isValidInput(userInput)) {
                         int guess = Integer.parseInt(userInput);
-                        int result = checkGuess(targetNumber, guess);
+                        int result = checkGuess(targetNum, guess);
                         int strikes = result / 10;
                         int balls = result % 10;
 
@@ -58,22 +58,6 @@ public class Application {
                 break;
             }
         }
-    }
-
-    private static int generateRandomNumber() {
-        // 중복을 피하기 위해 HashSet을 사용합니다.
-        HashSet<Integer> set = new HashSet<>();
-
-        while (set.size() < 3) {
-            int randomNumber = pickNumberInRange(1, 9);
-            set.add(randomNumber);
-        }
-
-        Integer[] uniqueNumbers = set.toArray(new Integer[0]);
-
-        int result = uniqueNumbers[0] * 100 + uniqueNumbers[1] * 10 + uniqueNumbers[2];
-
-        return result;
     }
 
     private static boolean isValidInput(String input) {
