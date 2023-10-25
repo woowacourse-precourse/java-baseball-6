@@ -3,9 +3,6 @@ package baseball.controller;
 import baseball.entity.Computer;
 import baseball.entity.GameLogic;
 import baseball.view.GameIO;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,24 +14,28 @@ public class GameController {
         this.gameIO = gameIO;
         this.gameLogic = gameLogic;
     }
+    /**
+     * 게임 시작 문구 출력
+     */
     public void init() {
         gameIO.printStartGameMessage();
     }
+
+    /**
+     * 게임 진행 메서드
+     */
     public void runGame() {
         boolean continueRequested;
 
         do {
             Computer computer = new Computer();
-            List<Integer> computerNumbers = new ArrayList<>();
-            computerNumbers = computer.createRandomNumber();
+            List<Integer> computerNumbers = computer.createRandomNumber();
 
-            Map compareResult = new HashMap<>();
+            Map compareResult;
             do {
-                GameLogic gameLogic = new GameLogic();
                 String playerGuess = gameIO.readPlayerGuess();
 
-                List<Integer> playerGuessNumbers = new ArrayList<>();
-                playerGuessNumbers = gameLogic.validateAndReturnBaseBallNumber(playerGuess);
+                List<Integer> playerGuessNumbers = gameLogic.validateAndReturnBaseBallNumber(playerGuess);
 
                 compareResult = gameLogic.compareNumbers(playerGuessNumbers, computerNumbers);
                 gameIO.printBallStrike(compareResult);
