@@ -11,7 +11,7 @@ public class Validation {
 
     public void inputRangeCheck(String userInput) {
         for (int i = 0; i < Constant.INPUT_LENGTH; i++) {
-            if (userInput.charAt(i) - '0' > Constant.END_RANGE && userInput.charAt(i) - '0' < Constant.START_RANGE) {
+            if (userInput.charAt(i) - '0' > Constant.END_RANGE || userInput.charAt(i) - '0' < Constant.START_RANGE) {
                 throw new IllegalArgumentException("입력 값의 범위는 123 ~ 987 입니다.");
             }
         }
