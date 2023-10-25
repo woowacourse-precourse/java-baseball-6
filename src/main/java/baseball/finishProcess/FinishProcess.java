@@ -2,18 +2,24 @@ package baseball.finishProcess;
 
 import java.util.Scanner;
 
-public class finishProcess {
-    int finishAnswer;
-    boolean isExit;
+public class FinishProcess {
+    private int finishAnswer;
+    private boolean isExit;
 
-    public finishProcess() {
+    public FinishProcess() {
+        initVariables();
         printFinishPhrase();
         inputFinishAnswer();
         checkFinishAnswer();
     }
 
+    private void initVariables() {
+        finishAnswer = 0;
+        isExit = false;
+    }
+
     private void printFinishPhrase() {
-        System.out.println(finishNotice.finishQuestionPhrase);
+        System.out.println(FinishNotice.finishQuestionPhrase);
     }
 
     private void inputFinishAnswer() {
@@ -28,8 +34,8 @@ public class finishProcess {
     }
 
     private void checkFinishAnswer() {
-        if (finishAnswer == finishNotice.restartCode) isExit = false;
-        else if (finishAnswer == finishNotice.exitCode) isExit = true;
+        if (finishAnswer == FinishNotice.restartCode) isExit = false;
+        else if (finishAnswer == FinishNotice.exitCode) isExit = true;
         else throw new IllegalArgumentException();
     }
 
