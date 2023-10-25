@@ -21,18 +21,24 @@ public class User {
 
         for (char c : userNum.toCharArray()) {
             int digit = Character.getNumericValue(c);
-
-            if (userNumArray.contains(digit)) {
-                throw new IllegalArgumentException();
-            }
-
-            userNumArray.add(digit);
+            addUniqueDigit(digit, userNumArray);
         }
 
+        validateInputLength(userNumArray);
+
+        return userNumArray;
+    }
+
+    private static void addUniqueDigit(int digit, ArrayList<Integer> userNumArray) {
+        if (userNumArray.contains(digit)) {
+            throw new IllegalArgumentException();
+        }
+        userNumArray.add(digit);
+    }
+
+    private static void validateInputLength(ArrayList<Integer> userNumArray) {
         if (userNumArray.size() != 3) {
             throw new IllegalArgumentException();
         }
-
-        return userNumArray;
     }
 }
