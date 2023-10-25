@@ -21,10 +21,10 @@ public class Score {
     public int getBall() {
         return ball;
     }
-    public void countStrike(){
+    public void increaseStrike(){
         this.strike++;
     }
-    public void countBall(){
+    public void increaseBall(){
         this.ball++;
     }
 }

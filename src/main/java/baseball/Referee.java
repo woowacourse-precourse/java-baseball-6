@@ -40,9 +40,9 @@ public class Referee {
 
     public void verifyScoreType(int tmp, int index) {
         if (tmp == index) {
-            score.countStrike();
+            score.increaseStrike();
             return;
         }
-        score.countBall();
+        score.increaseBall();
     }
 }
