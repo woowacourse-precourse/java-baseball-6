@@ -46,6 +46,7 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> Application.validateUserInput(input1)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Application.validateUserInput(input2)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Application.validateUserInput(input3)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateUserInput(input4)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
