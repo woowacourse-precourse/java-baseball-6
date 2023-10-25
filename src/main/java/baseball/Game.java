@@ -159,13 +159,21 @@ public class Game {
                 // generateComputerNumber();
                 this.generateComputerNumber();
             }
-        } else if(ball + strike == 0) {
+        }
+
+        if(ball + strike == 0) {
             print("낫싱\n");
-        } else if(ball > 0 && strike > 0) {
+        }
+
+        if(ball > 0 && strike > 0) {
             print(ball + "볼 " + strike + "스트라이크\n");
-        } else if(ball> 0) {
+        }
+
+        if(ball> 0) {
             print(ball + "볼\n");
-        } else {
+        }
+
+        if(strike == MAX_LENGTH){
             print(ball + "스트라이크\n");
         }
     }
