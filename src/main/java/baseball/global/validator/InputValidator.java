@@ -14,6 +14,7 @@ public class InputValidator {
 
     public void validateBaseballNumberInput(String playerInput){
         validateInputNumeric(playerInput);
+        validateInputContainZero(playerInput);
         validateInputSize(playerInput);
         validateInputDistinct(playerInput);
     }
@@ -28,6 +29,12 @@ public class InputValidator {
             Integer.parseInt(playerInput);
         } catch (NumberFormatException e){
             throw new IllegalArgumentException(INPUT_NOT_NUMERIC.getMessage());
+        }
+    }
+
+    private void validateInputContainZero(String playerInput){
+        if (playerInput.contains("0")){
+            throw new IllegalArgumentException(INPUT_ZERO_UNAVAILABLE.getMessage());
         }
     }
 
