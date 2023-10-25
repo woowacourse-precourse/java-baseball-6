@@ -4,6 +4,7 @@ public class BaseballGame {
 
     private final Input input;
     private final Output output;
+    private GameStatus gameStatus;
 
     public BaseballGame(Input input, Output output) {
         this.input = input;
@@ -19,31 +20,28 @@ public class BaseballGame {
     }
 
     private void gameStart() {
+        gameStatus = GameStatus.GAME_START;
         output.gameStart();
-        while (true) {
-            playUntilThreeStrikes();
+        while (!GameStatus.isGameEnd(gameStatus)) {
+            playUntilInningEnd();
             output.inputGameCommand();
             GameCommand gameCommand = input.readGameCommand();
-            if (!gameCommand.isContinue()) {
-                break;
-            }
+            gameStatus = GameStatus.fromGameCommand(gameCommand);
         }
         output.gameEnd();
     }
 
-    private void playUntilThreeStrikes() {
+    private void playUntilInningEnd() {
         Computer computer = Computer.getInstanceByRandomNumbers();
-        while (true) {
+        while (!GameStatus.isInningEnd(gameStatus)) {
             output.inputPlayerNumber();
             Player player = Player.getInstanceByNumber(input.readPlayerNumber());
             Referee referee = Referee.getInstance(computer, player);
             Result result = referee.judge();
             output.printResult(result);
-            if (result.isThreeStrikes()) {
-                output.inningEnd();
-                break;
-            }
+            gameStatus = GameStatus.fromResult(result);
         }
+        output.inningEnd();
     }
 
     private void handleException(IllegalArgumentException exception) {
