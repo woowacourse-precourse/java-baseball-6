@@ -49,9 +49,8 @@
 
 ### restartGame()
 
-- 랜덤으로 숫자 3개 뽑기 (getRandomAnswer)
-- 힌트 초기화 (hint.init)
-- playGame 호출
+- 새 Game 객체 선언
+- startGame!
 
 ## 2. Array
 
