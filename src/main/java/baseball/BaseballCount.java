@@ -10,18 +10,19 @@ public class BaseballCount {
     }
 
     public String getResultBriefing() {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder resultStringBuilder = new StringBuilder();
         if (strike == 0 && ball == 0) {
-            stringBuilder.append("낫싱");
+            resultStringBuilder.append("낫싱");
         } else if (strike > 0 || ball > 0) {
             if (ball != 0) {
-                stringBuilder.append(ball).append("볼 ");
+                resultStringBuilder.append(ball).append("볼 ");
             }
             if (strike != 0) {
-                stringBuilder.append(strike).append("스트라이크");
+                resultStringBuilder.append(strike).append("스트라이크");
             }
         }
-        return stringBuilder.toString().trim();
+        String result = resultStringBuilder.toString();
+        return result.trim();
     }
 
     public boolean isAllStrike() {
