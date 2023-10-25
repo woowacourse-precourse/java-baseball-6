@@ -29,7 +29,7 @@ public class Computer {
             }
         }
 
-        if(strike == 3) {
+        if (strike == 3) {
             isThreeStrike = true;
         }
 
