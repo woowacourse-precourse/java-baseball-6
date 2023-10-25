@@ -7,7 +7,7 @@ public class Turn {
     private static final String STRIKE_STRING = "스트라이크";
     private static final String NOTHING_STRING = "낫싱";
     private static final String BLANK_STRING = " ";
-    private static final int CORRECT_GUESS_COUNT = 3;
+    private static final int THREE_STRIKE = 3;
     private final int ballCount;
     private final int strikeCount;
 
@@ -49,7 +49,7 @@ public class Turn {
         return result.toString().trim();
     }
 
-    public boolean isEnd() {
-        return strikeCount == CORRECT_GUESS_COUNT;
+    public boolean isThreeStrike() {
+        return strikeCount == THREE_STRIKE;
     }
 }

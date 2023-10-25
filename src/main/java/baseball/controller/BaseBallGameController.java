@@ -27,15 +27,15 @@ public class BaseballGameController {
     }
 
     public void play() {
-        Turn turn;
         String computerNumber = new Round().getRandomNumber();
+        Turn turn;
         do {
             String playerNumber = inputView.getSuggestedNumber();
             InputValidator.validatePlayerNumber(playerNumber);
             turn = Turn.fromPlayerAndComputerNumbers(playerNumber, computerNumber);
             String result = turn.generateResultMessage();
             outputView.printTurnResult(result);
-        } while (!turn.isEnd());
+        } while (!turn.isThreeStrike());
     }
 
     public void stop() {
