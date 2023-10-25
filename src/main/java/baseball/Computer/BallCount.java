@@ -20,11 +20,13 @@ public class BallCount {
         if(strikeCount==0 && ballCount==0){
             Nashing = true;
             OutputView.printNashing();
+            Nashing = false;
         }
     }
 
     public static void ResetCount(){
         strikeCount = 0;
         ballCount = 0;
+        Nashing = false;
     }
 }
