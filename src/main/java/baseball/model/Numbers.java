@@ -4,32 +4,29 @@ import java.util.List;
 
 public class Numbers {
 
-    private Integer first;
-    private Integer second;
-    private Integer third;
+    List<Integer> savedNumbers;
 
     public Numbers() {
     }
 
-    public Numbers(Integer first, Integer second, Integer third) {
-        this.first = first;
-        this.second = second;
-        this.third = third;
+    public Numbers(List<Integer> inputNumbers) {
+        savedNumbers = inputNumbers;
     }
 
     public static Numbers from(List<Integer> numbers) {
-        return new Numbers(numbers.get(0), numbers.get(1), numbers.get(2));
+        return new Numbers(numbers);
     }
 
-    public Integer countIdentity(Numbers numbers) {
-        return (this.first.equals(numbers.first) ? 1 : 0) +
-                (this.second.equals(numbers.second) ? 1 : 0) +
-                (this.third.equals(numbers.third) ? 1 : 0);
+    public Integer valueAt(int index) {
+        return savedNumbers.get(index);
     }
 
-    public Integer countEquality(Numbers numbers) {
-        return (this.first.equals(numbers.second) || this.first.equals(numbers.third) ? 1 : 0) +
-                (this.second.equals(numbers.first) || this.second.equals(numbers.third) ? 1 : 0) +
-                (this.third.equals(numbers.first) || this.third.equals(numbers.second) ? 1 : 0);
+    public boolean equalsAt(Integer number, int index) {
+        return savedNumbers.get(index).equals(number);
     }
+
+    public boolean contains(Integer number) {
+        return savedNumbers.contains(number);
+    }
+
 }
