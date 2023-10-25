@@ -11,13 +11,12 @@ public class Player {
     private final String GAME_INPUT_REGEX = "[1-9]+";
     private final String GAME_INIT_REGEX = "[1-2]+";
 
-    public List<Integer> enterNumbers() {
+    public List<Integer> enterNumbers() throws IllegalArgumentException {
         List<Integer> numbers = new ArrayList<>();
         String input = Console.readLine();
-        System.out.println(input);
 
         if (!isRandomNumbers(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid Numbers");
         }
 
         for (char c : input.toCharArray()) {
@@ -26,12 +25,11 @@ public class Player {
         return numbers;
     }
 
-    public Integer enterMenuNumber() {
+    public Integer enterMenuNumber() throws IllegalArgumentException {
         String input = Console.readLine();
-        System.out.println(input);
 
         if (!isNumber(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid Number");
         }
 
         return Integer.parseInt(input);

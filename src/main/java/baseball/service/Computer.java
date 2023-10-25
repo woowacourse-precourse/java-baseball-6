@@ -9,10 +9,11 @@ public class Computer {
     private final int MAX_NUMBER = 9;
     private final int MIN_NUMBER = 1;
 
-    private final Integer LIST_SIZE = 3;
+    private final int LIST_SIZE = 3;
 
     private Integer ball = 0;
     private Integer strike = 0;
+    private Boolean complete = false;
 
     public List<Integer> generateNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
@@ -38,7 +39,11 @@ public class Computer {
             }
         }
 
-        return this.getMessage();
+        String message = this.getMessage();
+
+        this.strike = 0;
+        this.ball = 0;
+        return message;
     }
 
     public String getMessage() {
@@ -48,10 +53,19 @@ public class Computer {
         } else if (this.ball > 0) {
             return this.ball + "볼";
         } else if (this.strike == 3) {
+            this.complete = true;
             return this.strike + "스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         } else if (this.strike > 0) {
             return this.strike + "스트라이크";
         }
         return "낫싱";
+    }
+
+    public Boolean getComplete() {
+        return complete;
+    }
+
+    public void isComplete(Boolean complete) {
+        this.complete = complete;
     }
 }
