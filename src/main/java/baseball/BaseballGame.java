@@ -23,7 +23,7 @@ public class BaseballGame {
     public void start(List<Integer> target, String input) {
         do {
             play(target, input);
-        } while (on == false);
+        } while (on);
     }
 
     public void ending() {
