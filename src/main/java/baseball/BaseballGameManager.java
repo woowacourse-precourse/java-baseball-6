@@ -34,6 +34,7 @@ public class BaseballGameManager {
             getUserInput();
             getBaseBallResult();
             printResult();
+            if(isCorrect()) break;
         }
     }
 
@@ -88,5 +89,10 @@ public class BaseballGameManager {
             if (strikeCountResult > 0) System.out.print(strikeCountResult + "스트라이크");
         }
         System.out.println();
+    }
+
+    private Boolean isCorrect() {
+        if (baseballResult.get("스트라이크") == 3) return true;
+        return false;
     }
 }
