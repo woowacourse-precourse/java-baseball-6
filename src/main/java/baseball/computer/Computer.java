@@ -2,11 +2,21 @@ package baseball.computer;
 
 import baseball.Ball;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Computer {
-    private Ball balls;
+    public Ball balls;
 
-    public Computer() {
-        balls = new Ball(Randoms.pickUniqueNumbersInRange(1, 9, 3));
+    public void initializeBall() {
+        List<Integer> randomBalls = new ArrayList<>();
+        while (randomBalls.size() < 3) {
+            int randomBall = Randoms.pickNumberInRange(1, 9);
+            if (!randomBalls.contains(randomBall)) {
+                randomBalls.add(randomBall);
+            }
+        }
+
+        balls = new Ball(randomBalls);
     }
 }
