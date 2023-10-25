@@ -9,9 +9,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
-	private Judge judge;
-	private List<Integer> computer;
-	private Player player;
+	private static final int EXIT_NUM = 2;
+	private final Judge judge;
+	private final List<Integer> computer;
+	private final Player player;
 	private boolean gameOn;
 
 	public Game() {
@@ -34,20 +35,16 @@ public class Game {
 
 	public void start() {
 		System.out.println("숫자 야구 게임을 시작합니다.");
-		while (this.gameOn == true) {
+		while (this.gameOn) {
 			init();
-			try {
-				while (this.judge.callPitch() == true) {
-					System.out.print("숫자를 입력해주세요 : ");
-					this.player.input();
-					ArrayList<Integer> pitchBall = this.player.pitch();
-					this.judge.judgePitch(pitchBall);
-					this.judge.callSignal();
-				}
-				this.gameOn = askGame();
-			} catch (NumberFormatException e) {
-
+			while (this.judge.callPitch()) {
+				System.out.print("숫자를 입력해주세요 : ");
+				this.player.input();
+				ArrayList<Integer> pitchBall = this.player.pitch();
+				this.judge.judgePitch(pitchBall);
+				this.judge.callSignal();
 			}
+			this.gameOn = askGame();
 		}
 	}
 
@@ -58,8 +55,7 @@ public class Game {
 		if (input.length() != 1 || input.charAt(0) - '0' < 1 || input.charAt(0) - '0' > 2) {
 			throw new IllegalArgumentException("input only 1 or 2");
 		}
-		if (input.charAt(0) - '0' == 2)
-			return (false);
-		return (true);
+		int num = Character.getNumericValue(input.charAt(0));
+		return (num != EXIT_NUM);
 	}
 }

@@ -27,32 +27,33 @@ public class Judge {
 		}
 		this.strikes = 0;
 		this.balls = 0;
-		return (finish == false);
+		return (!finish);
 	}
 
-	public void judgePitch(ArrayList<Integer> pitchBall) {
-		for (int i = 0; i < pitchBall.size(); i++) {
-			int num = pitchBall.get(i);
+	public void judgePitch(ArrayList<Integer> pitchBalls) {
+		for (int i = 0; i < pitchBalls.size(); i++) {
+			int num = pitchBalls.get(i);
 			if (strikeZone.get(i) == num) {
 				this.strikes++;
 				continue;
 			}
-			if (strikeZone.contains(num))
+			if (strikeZone.contains(num)) {
 				this.balls++;
+			}
 		}
 	}
 
 	public void callSignal() {
 		StringBuilder sb = new StringBuilder();
 		if (this.balls > 0) {
-			sb.append(Integer.toString(this.balls) + "볼 ");
+			sb.append(this.balls).append("볼 ");
 		}
 		if (this.strikes > 0) {
-			sb.append(Integer.toString(this.strikes) + "스트라이크 ");
+			sb.append(this.strikes).append("스트라이크 ");
 		}
 		if (this.balls == 0 && this.strikes == 0) {
 			sb.append("낫싱");
 		}
-		System.out.println(sb.toString());
+		System.out.println(sb);
 	}
 }

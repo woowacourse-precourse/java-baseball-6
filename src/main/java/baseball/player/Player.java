@@ -19,8 +19,9 @@ public class Player {
 				throw new IllegalArgumentException("input 3 different numbers between 1 ~ 9.");
 			}
 			for (int j = 0; j < i; j++) {
-				if (input.charAt(i) == input.charAt(j))
+				if (input.charAt(i) == input.charAt(j)) {
 					throw new IllegalArgumentException("input 3 different numbers between 1 ~ 9.");
+				}
 			}
 		}
 	}
