@@ -24,7 +24,7 @@ public class ConsoleInput {
 
     private static boolean validInput(String input, int length) {
         if (length == 1) {
-            return input.length() != length || input.matches(ONE_OR_TWO_PATTERN);
+            return input.length() != length || !input.matches(ONE_OR_TWO_PATTERN);
         }
         return input.length() != length || !input.matches(DIGITS_PATTERN) || validDuplicate(input);
     }

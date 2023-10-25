@@ -19,7 +19,7 @@ public class BaseballService {
         return computerBall.countStrike(user) == 3;
     }
 
-    public String compareToComputer(List<Integer> user) {
+    public String getHint(List<Integer> user) {
 
         StringBuilder message = new StringBuilder();
         int strike = computerBall.countStrike(user);
