@@ -24,10 +24,9 @@ public class BaseballGame {
 
     public void run(){
         // 초기 셋팅
-        boolean isFinish = false;
+        boolean isFinish;
         // Game start
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         while(state != GameState.EXIT){
             System.out.print("숫자를 입력해주세요 : ");
             String userNum = Console.readLine();
@@ -35,25 +34,31 @@ public class BaseballGame {
             if(!validationCheck.validateUserNumber(userNum)){
                 throw new IllegalArgumentException("잘못된 입력입니다."); // raise error
             }
-            user.setNumbers(userNum); // setting user numbers
+            user.generateNumbers(userNum); // setting user numbers
 
             // checking score
-            isFinish = score.checkScore(computer.getNumbers(), user.getNumbers());
+            isFinish = score.checkScore(this.computer, this.user);
             if(isFinish){
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String cmdStr = Console.readLine();
-                // validation check about user command
-                if(!validationCheck.validateUserCommand(cmdStr)){
-                    throw new IllegalArgumentException("잘못된 입력입니다."); // raise error
-                }
-                int cmdInt = Integer.parseInt(cmdStr);
-                if(cmdInt == 1){
-                    computer.generateNumbers(); // reset computer numbers
-                    isFinish = false; // reset isFinish state
-                }else if(cmdInt == 2){
-                    state = GameState.EXIT;
-                }
+                replay();
             }
+        }
+    }
+
+    private void replay(){
+        // local variable
+        int cmdInt;
+        // print and input
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String cmdStr = Console.readLine();
+        // validation check about user command
+        if(!validationCheck.validateUserCommand(cmdStr)){
+            throw new IllegalArgumentException("잘못된 입력입니다."); // raise error
+        }
+        cmdInt = Integer.parseInt(cmdStr);
+        if(cmdInt == 1){
+            computer.generateNumbers(); // reset computer numbers
+        }else if(cmdInt == 2){
+            state = GameState.EXIT;
         }
     }
 }

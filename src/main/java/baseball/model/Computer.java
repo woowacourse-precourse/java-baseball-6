@@ -8,9 +8,10 @@ import java.util.List;
 public class Computer {
     // member variables
     private final List<Integer> numbers;
+
     // constructor
     public Computer() {
-        this.numbers = new ArrayList<>();
+        numbers = new ArrayList<>();
         // initialize numbers list
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -19,22 +20,25 @@ public class Computer {
             }
         }
     }
+
     // getter
     public List<Integer> getNumbers() {
         return numbers;
     }
-    // clear numbers
-    private void clearNumbers(){
-        numbers.clear();
-    }
+
     // pick random numbers for computer method
     public void generateNumbers() {
-        this.clearNumbers();
+        clearNumbers();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
         }
+    }
+
+    // clear numbers
+    private void clearNumbers(){
+        numbers.clear();
     }
 }
