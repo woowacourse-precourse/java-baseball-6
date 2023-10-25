@@ -3,7 +3,6 @@ package baseball.service;
 import baseball.utils.Validation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
 import java.util.List;
 
 import static baseball.constant.Number.NUMBER_LENGTH;

@@ -1,11 +1,12 @@
 package baseball.utils;
 
-import baseball.constant.Number;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static baseball.constant.Number.RESTART;
+import static baseball.constant.Number.EXIT;
 
 public class Validation {
 
@@ -40,7 +41,7 @@ public class Validation {
     }
 
     public void isValidNumber(Integer retryNumber){
-        if (retryNumber != Number.RESTART && retryNumber != Number.EXIT) {
+        if (retryNumber != RESTART && retryNumber != EXIT) {
             throw new IllegalArgumentException("1또는 2를 입력해야합니다.");
         }
     }

@@ -1,9 +1,7 @@
 package baseball.controller;
 
-import baseball.constant.Number;
 import baseball.service.ComputerService;
 import baseball.service.UserService;
-
 import java.util.List;
 
 import static baseball.constant.Number.FAIL;
