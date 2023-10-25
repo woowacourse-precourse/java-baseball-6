@@ -1,7 +1,6 @@
 package baseball.module;
 
 import baseball.input.validator.UserChoiceValidator;
-import baseball.input.validator.UserGuessValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,21 +15,20 @@ class UserChoiceValidatorTest {
     }
 
     @Test
-    @DisplayName("숫자가 아니면 예외")
-    void checkIsInteger() {
-        Assertions.assertThrows(IllegalArgumentException.class,()-> userChoiceValidator.validateIsInteger("1o3"));
-        Assertions.assertThrows(IllegalArgumentException.class,()-> userChoiceValidator.validateIsInteger("! +"));
+    @DisplayName("null이면 예외")
+    void validateNotNull() {
+        Assertions.assertThrows(IllegalArgumentException.class,()-> userChoiceValidator.validate(""));
     }
 
     @Test
-    @DisplayName("null있으 예외")
-    void checkDuplicate() {
-        Assertions.assertThrows(IllegalArgumentException.class,()-> userChoiceValidator.validate("223"));
+    @DisplayName("숫자가 아니면 예외")
+    void validateIsInteger() {
+        Assertions.assertThrows(IllegalArgumentException.class,()-> userChoiceValidator.validate("k"));
     }
 
     @Test
     @DisplayName("1,2가 아니면 예외")
-    void checkIsRightChoice() {
+    void validateChoice() {
         Assertions.assertThrows(IllegalArgumentException.class,()-> userChoiceValidator.validateChoice("8"));
     }
 }

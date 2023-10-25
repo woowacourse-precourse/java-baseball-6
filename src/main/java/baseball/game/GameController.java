@@ -18,16 +18,12 @@ public class GameController {
     private final ResultGenerator resultGenerator;
     private List<Integer> computerNumbers;
 
-    public GameController(ChoiceInputProcessor choiceInputProcessor,
-                          GuessInputProcessor guessInputProcessor,
-                          ComputerNumberGenerator computerNumberGenerator,
-                          OutputView outputView,
-                          ResultGenerator resultGenerator) {
-        this.choiceInputProcessor = choiceInputProcessor;
-        this.guessInputProcessor =guessInputProcessor;
-        this.computerNumberGenerator = computerNumberGenerator;
-        this.outputView = outputView;
-        this.resultGenerator = resultGenerator;
+    public GameController(Builder builder){
+        this.choiceInputProcessor = builder.choiceInputProcessor;
+        this.resultGenerator = builder.resultGenerator;
+        this.computerNumberGenerator = builder.computerNumberGenerator;
+        this.guessInputProcessor = builder.guessInputProcessor;
+        this.outputView = builder.outputView;
     }
 
     public void initializeGameSession(){
@@ -60,5 +56,42 @@ public class GameController {
         outputView.printRestartMessage();
         int restartChoice = choiceInputProcessor.obtainValidUserChoice();
         return restartChoice == GameConstant.RESTART_CHOICE.getValue();
+    }
+
+    public static class Builder{
+        private ChoiceInputProcessor choiceInputProcessor;
+        private GuessInputProcessor guessInputProcessor;
+        private ComputerNumberGenerator computerNumberGenerator;
+        private OutputView outputView;
+        private ResultGenerator resultGenerator;
+
+        public Builder withChoiceInputProcessor(ChoiceInputProcessor processor) {
+            this.choiceInputProcessor = processor;
+            return this;
+        }
+
+        public Builder withGuessInputProcessor(GuessInputProcessor processor) {
+            this.guessInputProcessor = processor;
+            return this;
+        }
+
+        public Builder withComputerNumberGenerator(ComputerNumberGenerator computerNumberGenerator) {
+            this.computerNumberGenerator = computerNumberGenerator;
+            return this;
+        }
+
+        public Builder withOutputView(OutputView outputView){
+            this.outputView = outputView;
+            return this;
+        }
+
+        public Builder withResultGenerator(ResultGenerator resultGenerator){
+            this.resultGenerator = resultGenerator;
+            return this;
+        }
+
+        public GameController build() {
+            return new GameController(this);
+        }
     }
 }

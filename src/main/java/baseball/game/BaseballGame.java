@@ -14,15 +14,16 @@ public class BaseballGame {
 
     public BaseballGame () {
         InputConverter inputConverter = new InputConverter();
+        UserGuessValidator userGuessValidator= new UserGuessValidator();
         UserChoiceValidator userChoiceValidator = new UserChoiceValidator();
 
-        GuessInputProcessor guessInputProcessor = new GuessInputProcessor(inputConverter, new UserGuessValidator());
-        ChoiceInputProcessor choiceInputProcessor = new ChoiceInputProcessor(inputConverter, new UserChoiceValidator());
-        ComputerNumberGenerator computerNumberGenerator = new ComputerNumberGenerator();
-        OutputView outputView = new OutputView();
-        ResultGenerator resultGenerator = new ResultGenerator();
-
-        gameController = new GameController(choiceInputProcessor, guessInputProcessor, computerNumberGenerator, outputView, resultGenerator);
+        gameController  = new GameController.Builder()
+                .withGuessInputProcessor(new GuessInputProcessor(inputConverter, userGuessValidator))
+                .withChoiceInputProcessor(new ChoiceInputProcessor(inputConverter, userChoiceValidator))
+                .withComputerNumberGenerator(new ComputerNumberGenerator())
+                .withOutputView(new OutputView())
+                .withResultGenerator(new ResultGenerator())
+                .build();
     }
 
     public void runGame(){
