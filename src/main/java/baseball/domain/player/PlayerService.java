@@ -19,9 +19,7 @@ public class PlayerService {
         System.out.print(NUMS_INPUT.getMessage());
         List<Integer> numbers = new ArrayList<>();
         String numberLine = readLine();
-        if (numberLine.length() > 3) {
-            throw new IllegalArgumentException();
-        }
+        playerInputError(numberLine);
         for (int i = 0; i < 3; i++) {
             numbers.add(numberLine.charAt(i) - '0');
         }
@@ -40,5 +38,26 @@ public class PlayerService {
             return true;
         }
         throw new IllegalArgumentException();
+    }
+
+    public void playerInputError(String line) {
+        if (line.length() != 3) {
+            throw new IllegalArgumentException("Invalid Length");
+        }
+        int[] numberList = new int[3];
+        for (int i = 0; i < 3; i++) {
+            int number = line.charAt(i) - '0';
+            numberList[i] = number;
+            if (!(number >= 1 && number <= 9)) {
+                throw new IllegalArgumentException("Invalid Number");
+            }
+        }
+        for (int i = 0; i < 2; i++) {
+            for (int j = i + 1; j < 2; j++) {
+                if (numberList[i] == numberList[j]) {
+                    throw new IllegalArgumentException("Invalid Same Number");
+                }
+            }
+        }
     }
 }
