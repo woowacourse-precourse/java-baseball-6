@@ -8,31 +8,26 @@ import baseball.domain.player.dto.RetryNumberDto;
 import baseball.global.message.RetryMessage;
 
 public class GameService {
-    private Player player;
-    private final Computer computer;
     private Game game;
 
-    public GameService(Player player, Computer computer, Game game) {
-        this.player = player;
-        this.computer = computer;
+    public GameService(Game game) {
         this.game = game;
     }
 
-    public void createComputerNumber() {
-        computer.generateThreeNumber();
+    public void initNumbers() {
+        game.initNumbers();
     }
 
     public String getResult(PlayerNumbersDto playerNumbersDto) {
-        createPlayerNumbers(playerNumbersDto);
+        game.inputPlayerNumbers(playerNumbersDto.playerNumbers());
         return game.getPlayerResult();
     }
 
-    public void createPlayerNumbers(PlayerNumbersDto playerNumbersDto) {
-        player.createPlayerNumbers(playerNumbersDto.playerNumbers());
-    }
 
     public boolean askRetry(RetryNumberDto retry) {
         String input = retry.number();
         return RetryMessage.compareInput(input);
     }
+
+
 }

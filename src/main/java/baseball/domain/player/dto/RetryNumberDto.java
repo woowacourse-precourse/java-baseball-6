@@ -1,11 +1,12 @@
 package baseball.domain.player.dto;
 
-import baseball.global.exception.CustomObjects;
+import java.util.Objects;
 
 public record RetryNumberDto(String number) {
 
     public RetryNumberDto {
-        CustomObjects.requireNonNull(number, "input cannot be null");
+        Objects.requireNonNull(number, "input cannot be null");
+        validateNumberIsOneOrTwo();
     }
 
     public static RetryNumberDto of(String number) {

@@ -11,9 +11,9 @@ public class Game {
     private Player player;
     private PlayResult playResult;
 
-    public Game(Computer computer, Player player) {
+    public Game(Player player) {
         playResult = new PlayResult();
-        this.computer = computer;
+        this.computer = new Computer();
         this.player = player;
     }
 
@@ -44,5 +44,13 @@ public class Game {
             }
         }
         return playResult;
+    }
+
+    public void inputPlayerNumbers(String playerNumbers) {
+        player.createPlayerNumbers(playerNumbers);
+    }
+
+    public void initNumbers() {
+        computer.generateThreeNumber();
     }
 }

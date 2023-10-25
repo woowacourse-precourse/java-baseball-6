@@ -1,14 +1,13 @@
 package baseball.domain.player.dto;
 
-import baseball.global.exception.CustomObjects;
-
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public record PlayerNumbersDto(String playerNumbers) {
 
     public PlayerNumbersDto {
-        CustomObjects.requireNonNull(playerNumbers, "input cannot be null");
+        Objects.requireNonNull(playerNumbers, "input cannot be null");
         if (playerNumbers.equals("")) throw new IllegalArgumentException("숫자 3자리로 입력하세요");
         validateInputNumbers(playerNumbers);
     }

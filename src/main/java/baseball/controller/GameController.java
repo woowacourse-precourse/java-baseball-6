@@ -19,8 +19,8 @@ public class GameController {
     public void run() {
         boolean retry;
         do {
-            gameService.createComputerNumber();
             start();
+            init();
             play();
             end();
             retry = gameService.askRetry(RetryNumberDto.of(InputView.input()));
@@ -30,6 +30,10 @@ public class GameController {
 
     public void start() {
         OutputView.printStartMessage();
+    }
+
+    public void init() {
+        gameService.initNumbers();
     }
 
     public void play() {
