@@ -1,6 +1,5 @@
 package baseball.game;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -10,7 +9,13 @@ import java.util.Map;
 
 public class Computer {
 
-    public List<Integer> randomNums = new ArrayList<>();
+    public List<Integer> randomNums;
+    public User user;
+
+    public Computer(User user) {
+        genNumbers();
+        this.user = user;
+    }
 
     public void genNumbers() {
         randomNums = new ArrayList<>();
@@ -72,7 +77,7 @@ public class Computer {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        String gameOverCode = Console.readLine();
+        String gameOverCode = user.getInput();
 
         if(gameOverCode.equals("1")) {
             genNumbers();
