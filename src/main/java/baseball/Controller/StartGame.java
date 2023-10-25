@@ -42,7 +42,7 @@ public class StartGame {
             else {
                 for (int i = 0; i < 3; i++) {
                     int num = Integer.parseInt(userInput[i]);
-                    if (num == 0) invalidNumberException(); // 1 ~ 9 제외 수 입력시 예외처리
+                    if (num < 1 || num > 9) invalidNumberException(); // 1 ~ 9 제외 수 입력시 예외처리
                     else if (user.contains(num)) duplicateNumberException(); // 수가 중복될시 예외처리
                     else user.add(num);
                 }
