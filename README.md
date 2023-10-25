@@ -43,7 +43,8 @@ BUILD SUCCESSFUL in 0s
         - 123을 제시한 경우 : 1스트라이크
         - 456을 제시한 경우 : 1볼 1스트라이크
         - 789를 제시한 경우 : 낫싱
-- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한
+- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한
+  숫자에 대한
   결과를 출력한다.
 - 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
@@ -126,13 +127,13 @@ BUILD SUCCESSFUL in 0s
 #### 사용 예시
 
 ```java
-List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
+List<Integer> computer=new ArrayList<>();
+        while(computer.size()< 3){
+        int randomNumber=Randoms.pickNumberInRange(1,9);
+        if(!computer.contains(randomNumber)){
         computer.add(randomNumber);
-    }
-}
+        }
+        }
 ```
 
 ---
@@ -142,3 +143,37 @@ while (computer.size() < 3) {
 - 미션은 [java-baseball-6](https://github.com/woowacourse-precourse/java-baseball-6) 저장소를 Fork & Clone해 시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+## 구현할 기능 목록
+
+- 콘솔(console) 입력및 출력 요청
+- 유저에게 입력 값을 받아, 현재 수행 해야할 로직을 결정
+- 상대방(컴퓨터)의 수 생성
+- 입력값과 상대방의 수 비교 및 결과값 반환
+- 게임 로직 수행에 따른 결과 값을 유저에게 전달
+- 출력 결과에 따른 다음 입력(or 종료) 요청
+
+---
+
+## 구현할 기능에 매핑되는 클래스및 메서드
+
+- 콘솔(console) 입력및 출력 요청 → User (interface)
+    - **User.doGame()**
+- 유저에게 입력 값을 받아, 현재 수행 해야할 로직을 결정 → GameDispatcher (interface)
+    - **GameDispatcherFactor.create(String cmd)**: GameDispatcher
+        - 입력 파라미터에 매칭되는 GameDispatcher의 구현체를 생성한다.
+    - **GameDispatcher.dispatch(UserReqeust request)**: UserResponse
+        - 콘솔입력을 통해 요청 받은 로직을 처리
+- 상대방(컴퓨터)의 수 생성 → GamePlay (interface) : StartGamePlay
+    - **Gameplay.play(List<String> args)** : String
+- 입력값과 상대방의 수 비교 → GamePlay (interface) : PredictGamePlay
+    - **Gameplay.play(List<String> args)** : String
+- 게임 로직 수행에 따른 결과 값을 유저에게 전달 → GameDispatcher (interface)
+    - **GameDispatcher.dispatch(UserRequest request)**: UserResponse
+- 출력 결과에 따른 다음 입력(or 종료) 요청 → User (interface)
+    - **User.doGame(): void**
+        - 결과를 출력
+    - **User.doNextGame(GameResponse response)**: void
+        - 결과(response)에 따른 다음 행동 결정
