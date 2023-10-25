@@ -5,6 +5,8 @@ import java.util.List;
 
 public class RandomNumberGenerator {
 
+    private static final int START_INCLUSIVE = 1;
+    private static final int END_INCLUSIVE = 9;
     private final RandomService randomService;
 
     public RandomNumberGenerator(RandomService randomService) {
@@ -26,7 +28,7 @@ public class RandomNumberGenerator {
     }
 
     private void addNumberIfNotDuplicate(List<Integer> numbers) {
-        int number = randomService.pickNumberInRange(1, 9);
+        int number = randomService.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
         if (isNotDuplicate(numbers, number)) {
             numbers.add(number);
         }
