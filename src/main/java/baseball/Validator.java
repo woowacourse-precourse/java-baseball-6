@@ -29,6 +29,9 @@ public class Validator {
     }
 
     private void isDistinctThreeDightNumber(String userInput) throws IllegalArgumentException {
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException(USER_NUMBER_ERROR_MESSAGE);
+        }
         Set<Character> setForDistinctThreeDigitNumber = new HashSet<>();
 
         for (char userInputToChar : userInput.toCharArray()) {
