@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class GameManager {
+    private static final String RETRY_COMMAND_ERROR_MESSAGE = "1 또는 2를 입력해주세요.";
     private final Computer computer = new Computer();
 
     private boolean isEnd;
@@ -51,7 +52,7 @@ public class GameManager {
         }
 
         if (retryCommand > 2) {
-            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+            throw new IllegalArgumentException(RETRY_COMMAND_ERROR_MESSAGE);
         }
     }
 

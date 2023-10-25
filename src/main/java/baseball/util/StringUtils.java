@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringUtils {
+    private static final String NUMERIC_ERROR_MESSAGE = "숫자만 입력해주세요.";
     private StringUtils() {}
 
     public static List<Integer> stringToIntegerList(String target) {
@@ -12,7 +13,7 @@ public class StringUtils {
         List<Integer> resultList = new ArrayList<>();
         for (String ball:sliceTarget) {
             if (!isNumeric(ball)) {
-                throw new IllegalArgumentException("숫자만 입력해주세요.");
+                throw new IllegalArgumentException(NUMERIC_ERROR_MESSAGE);
             }
             resultList.add(Integer.valueOf(ball));
         }

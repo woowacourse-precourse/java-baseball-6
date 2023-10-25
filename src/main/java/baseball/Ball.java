@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Ball {
+    private static final String DUPLICATE_BALL_ERROR_MESSAGE = "중복된 볼은 허용하지 않습니다.";
+    private static final String OVER_BALL_ERROR_MESSAGE = "볼의 개수는 3개만 가능합니다.";
     private static final int BALLS_SIZE = 3;
     private final List<Integer> balls;
 
@@ -17,14 +19,14 @@ public class Ball {
 
     private void validateSize(List<Integer> balls) {
         if (balls.size() != BALLS_SIZE) {
-            throw new IllegalArgumentException("볼의 개수는 3개만 가능합니다.");
+            throw new IllegalArgumentException(OVER_BALL_ERROR_MESSAGE);
         }
     }
 
     private void validateDuplicateBall(List<Integer> balls) {
         Set<Integer> ballsToSet = new HashSet<>(balls);
         if (ballsToSet.size() != BALLS_SIZE) {
-            throw new IllegalArgumentException("중복된 볼은 허용하지 않습니다.");
+            throw new IllegalArgumentException(DUPLICATE_BALL_ERROR_MESSAGE);
         }
     }
 
