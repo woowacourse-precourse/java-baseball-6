@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 
 public class Baseball {
@@ -44,24 +43,17 @@ public class Baseball {
 
         answerNumberList = new ArrayList<>();
         answerNumberList.add(Randoms.pickNumberInRange(1, 9));
-        boolean equalPrevNumber = false;
 
         while (answerNumberList.size() < 3) {
 
-            equalPrevNumber = false;
-
             int nowNumber = Randoms.pickNumberInRange(1, 9);
-            for (int prevNumber : answerNumberList) {
-                if (prevNumber == nowNumber) {
-                    equalPrevNumber = true;
-                    break;
-                }
-            }
+            int isDupleNumber = (int) answerNumberList.stream()
+                    .filter(n -> n == nowNumber)
+                    .count();
 
-            if (!equalPrevNumber) {
+            if (isDupleNumber == 0) {
                 answerNumberList.add(nowNumber);
             }
-
         }
 
         return answerNumberList;

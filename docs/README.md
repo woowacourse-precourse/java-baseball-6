@@ -24,8 +24,9 @@
 
 ---
 # 리팩토링
-- [ ] 역할분산
-  - [ ] 입력값을 따로 관리하는 클래스 생성
+- [x] 역할분산
+  - [x] 입력값을 따로 관리하는 클래스 생성
     - 입력값 숫자야구번호와 게임관리하는 command를 InputLineConverter를 통해 관리.
     - Baseball에서는 입력을 받지 않기에 IllegalCheck를 InputLineConverter 클래스에 역할부여
-    
+- [x] initRandomNumber() 세부로직 리팩토링
+  - 가독성을 위해 Stream형태로 변경
