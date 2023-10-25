@@ -1,13 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
+/***
+ * 컴퓨터
+ */
 public class Computer {
     private BaseBall baseBall;
-    public Computer(){
-        int first = Randoms.pickNumberInRange(0,9);
-        int second = Randoms.pickNumberInRange(0,9);
-        int third = Randoms.pickNumberInRange(0,9);
+    public Computer(final int first, final int second, final  int third){
         baseBall = new BaseBall(first,second,third);
     }
 

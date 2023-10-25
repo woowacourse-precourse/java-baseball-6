@@ -6,8 +6,8 @@
 - [x] 유저는 BaseBall을 하나 가질수 있다.
 - [x] 유저는 Game에 콘솔에서 입력받은 3개의 번호를 BaseBall에 저장한다(BaseBall).
 ## Computer 클래스
-- [ ] 컴퓨터는 게임시작시 BaseBall을 하나 가질수있다.
-- [ ] 게임시작시 랜덤으로 3개의 숫자를 BaseBall로 선정한다.
+- [x] 컴퓨터는 게임시작시 BaseBall을 하나 가질수있다.
+- [x] 게임시작시 랜덤으로 3개의 숫자를 BaseBall로 선정한다.
 ## Game 클래스
 - [ ] User 클래스와 Coputer클래스를 비교하는 메소드 -> 볼
 - [ ] index위치까지 비교하는 메소드 -> 스트라이크

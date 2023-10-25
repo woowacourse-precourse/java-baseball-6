@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 /***
  * 야구 게임 숫자
  */
