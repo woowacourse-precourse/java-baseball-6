@@ -1,5 +1,6 @@
 package baseball.feature;
 
+import java.text.MessageFormat;
 import java.util.*;
 
 public class Confirm {
@@ -24,7 +25,7 @@ public class Confirm {
     // 그리고 일치갯수중 자리까지 일치하는 경우는 스트라이크 - checkPositionMatch
     // 일치갯수중 스트라이크를 제외하면 볼의 수
 
-    //일치 하는 숫자의 갯수 찾기
+    //일치 하는 숫자의 갯수 찾기 테스트 에러 때문에 public으로 함
     public int accordNumber() {
         int count = 0;
         for (int num : userNumbers) {
@@ -36,7 +37,7 @@ public class Confirm {
         return count;
     }
 
-    //자리와 숫자가 일치 하는 갯수 찾기
+    //자리와 숫자가 일치 하는 갯수 찾기 테스트 에러 때문에 public으로 함
     public int checkPositionMatch() {
         int count = 0;
         for (int i = 0; i < computerNumbers.size(); i++) {
@@ -54,8 +55,23 @@ public class Confirm {
     // 볼, 스트라이크, 낫싱 판별
     // 두 리스트를 비교,판별이후 accordCount, positionMatchCount 초기화
     public String referee() {
+        String resultMessage;
+        accordNumber();
+        checkPositionMatch();
+        if (accordCount == 0) {
+            return "낫싱";
+        }
+        int strike = positionMatchCount;
+        int ball = accordCount - positionMatchCount;
 
-        return null;
+        if (strike == 0) {
+            resultMessage = MessageFormat.format("{0}볼", ball);
+        } else if (ball == 0) {
+            resultMessage = MessageFormat.format("{0}스트라이크", strike);
+        } else {
+            resultMessage = MessageFormat.format("{0}볼 {1}스트라이크", ball, strike);
+        }
+        return resultMessage;
     }
 
 
