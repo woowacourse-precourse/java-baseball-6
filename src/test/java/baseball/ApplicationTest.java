@@ -36,6 +36,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 중복숫자예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
