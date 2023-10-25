@@ -29,7 +29,6 @@ public class Application {
         controller.checkNothing(player_numbers, computer_numbers);
         controller.checkBall(player_numbers, computer_numbers);
         System.out.println("player num: " + player.player_num);
-        System.out.println("computer num: " + computer.createNumber(firstNumber, secondNumber, thirdNumber));
 
 
     }
