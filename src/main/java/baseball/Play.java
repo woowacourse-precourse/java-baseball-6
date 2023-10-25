@@ -69,7 +69,7 @@ public class Play {
             if (newgame == 1) {
                 return 1;
             } else if (newgame == 2) {
-                return 2;
+                return 0;
             } else {
                 throw new IllegalArgumentException();
             }
