@@ -14,6 +14,7 @@ public class Player {
     }
 
     public void setNumbers(List<Integer> newNumbers) {
+        PlayerValidator.validate(newNumbers);
         numbers = newNumbers;
     }
 
