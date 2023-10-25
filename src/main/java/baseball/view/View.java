@@ -39,4 +39,39 @@ public class View {
         }
         return check.size() == 3;
     }
+
+    public void ballAndStrike_result(int ball, int strike) {
+        //TODO : 1볼 1스트라이크
+        StringBuilder sb = new StringBuilder();
+        sb.append(ball)
+                .append(MESSAGE.BALL)
+                .append(" ")
+                .append(strike)
+                .append(MESSAGE.STRIKE);
+        System.out.print(sb.toString());
+    }
+
+    public void nothing_result() {
+        System.out.print(MESSAGE.NOTHING);
+    }
+
+    public void ball_result(int ball) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(ball).append(MESSAGE.BALL);
+        System.out.print(sb.toString());
+    }
+
+    public void strike_result(int strike) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(strike).append(MESSAGE.STRIKE);
+        System.out.print(sb.toString());
+    }
+
+    public void game_end() {
+        System.out.println(MESSAGE.GAME_END_MSG);
+    }
+
+    public void game_start() {
+        System.out.println(MESSAGE.GAME_START_MSG);
+    }
 }

@@ -18,7 +18,7 @@ public class PlayController {
     }
 
     private void initGame() throws Exception {
-        //TODO : Output view 숫자 야구 게임을 시작합니다.
+        view.game_start();
         while(restart) {
             playGame();
             //TODO : Input view 1, 2 입력
@@ -33,11 +33,27 @@ public class PlayController {
             String user_input = view.user_balls();
             List<Ball> user = Ball.of(user_input);
             countController = new CountController();
-            //countController.count_ball(computer, user);
-            //TODO : Output view 1볼 1스트라이크
+            countController.count_ball(computer, user);
+            count_result(countController.getStrike(), countController.getBall());
             this.retry = !check_finish(countController.getStrike());
         }
-        //TODO : Output view 3개의 숫자를 모두 맞히셨습니다! 게임 종료
+        view.game_end();
+    }
+
+    private void count_result(int strike, int ball) {
+        if(strike==0 &&ball==0) {
+            view.nothing_result();
+            return;
+        }
+        if(strike==0){
+            view.ball_result(ball);
+            return;
+        }
+        if(ball==0){
+            view.strike_result(strike);
+            return;
+        }
+        view.ballAndStrike_result(strike, ball);
     }
 
     public boolean check_finish(int strike) {
