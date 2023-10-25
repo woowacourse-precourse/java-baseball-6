@@ -12,11 +12,11 @@ public class GameController {
     public void start() {
         Output.startMessage();
 
-        do {
+        while (true) {
             Computer computer = new Computer();
             int[] result;  // 볼과 스트라이크 개수를 저장
 
-            do {
+            while (true) {
                 String userInput = Input.userNumber();
                 Player player = new Player(userInput);
 
@@ -25,11 +25,19 @@ public class GameController {
 
                 printResult(result[0], result[1]);
 
-            } while (result[1] != 3);
+                if (result[1] == 3) {
+                    break;
+                }
+            }
 
             Output.displayMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        } while (isRestartGame());
+
+            if (!isRestartGame()) {
+                break;
+            }
+        }
     }
+
 
     private boolean isRestartGame() {
         String input = Input.restartGame();
@@ -38,7 +46,7 @@ public class GameController {
             return true;
         } else if ("2".equals(input)) {   // 게임 종료
             return false;
-        } else {   // 잘못된 입력 처리
+        } else {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         }
     }
@@ -48,7 +56,7 @@ public class GameController {
 
         if (strikeCount == 0 && ballCount == 0) {
             resultMessage.append("낫싱");
-        } else  {   // 스트라이크 카운트가 3 미만일 때만 결과를 출력합니다.
+        } else  {
             if (ballCount > 0) {
                 resultMessage.append(ballCount).append("볼");
             }
