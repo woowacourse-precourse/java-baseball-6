@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.ComputerNumberGenerator;
 import baseball.message.ConsoleMessage;
 import baseball.model.CheckCount;
 import baseball.model.ComputerNumber;
@@ -10,15 +11,19 @@ import baseball.view.Output;
 import java.util.List;
 
 public class Controller {
+    private final ComputerNumberGenerator numberGenerator;
+    public Controller(final ComputerNumberGenerator numberGenerator){
+        this.numberGenerator = numberGenerator;
+    }
 
     public void run() {
         System.out.println(ConsoleMessage.START_GAME.getMessage());
-
         reGame();
     }
 
     private void reGame() {
         int gameFlag;
+
         do {
             playGame();
             gameFlag = Input.inputGameFlag();
@@ -26,8 +31,9 @@ public class Controller {
     }
 
     private void playGame() {
-        ComputerNumber computerNumber = new ComputerNumber(new RandomNumberGenerator());
+        ComputerNumber computerNumber = new ComputerNumber(numberGenerator);
         int strike = 0;
+
         while (strike != 3) {
             List<Integer> userNumber = Input.inputUserNumber();
 
