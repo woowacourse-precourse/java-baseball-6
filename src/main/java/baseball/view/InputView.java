@@ -46,8 +46,8 @@ public class InputView {
     }
 
     private void validateRestartOrExitNumber(int inputNumbers) {
-        int restartNumber = 1;
-        int exitNumber = 2;
+        final int restartNumber = 1;
+        final int exitNumber = 2;
         if (restartNumber != inputNumbers && exitNumber != inputNumbers) {
             throw new IllegalArgumentException(GameInstructions.ASK_RESTART_OR_EXIT.getMessage());
         }

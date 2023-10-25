@@ -22,10 +22,11 @@ public class GameController {
 
     public void runGame() {
         boolean playOption = true;
+        final int restartNumber = 1;
 
         outputView.printGameStart();
         List<Integer> randomNumbers = randomNumberGenerator.generateRandomNumbers();
-        System.out.println(randomNumbers);
+
         while (playOption) {
             outputView.printForInputThreeDigitNumbers();
             int[] playersNumbers = inputView.inputThreeDigitNumber();
@@ -35,7 +36,7 @@ public class GameController {
                 continue;
             }
             outputView.printGameSuccessResult(gameResult);
-            if (inputView.inputRestartOrExit() == 1) {
+            if (inputView.inputRestartOrExit() == restartNumber) {
                 randomNumbers = randomNumberGenerator.generateRandomNumbers();
                 continue;
             }
