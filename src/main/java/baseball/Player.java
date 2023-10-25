@@ -14,4 +14,8 @@ public class Player {
                 .collect(Collectors.toList());
         return numbers;
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
