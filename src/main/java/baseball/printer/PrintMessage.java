@@ -11,6 +11,10 @@ public enum PrintMessage {
 
     private final String message;
 
+    public String getMessage() {
+        return message;
+    }
+
     PrintMessage(String message) {
         this.message = message;
     }
