@@ -57,13 +57,13 @@ public class ComputerTest {
         int number1 = answer.getNumberByIndex(0);
         int number2 = answer.getNumberByIndex(1);
         int number3 = answer.getNumberByIndex(2);
-        GameNumbers user = new GameNumbers(List.of(number1, number3, number2));
+        GameNumbers user = new GameNumbers(List.of(number3, number1, number2));
 
         //when
         Hint hint = computer.getHint(user);
 
         //then
-        Assertions.assertThat(hint.getStrike()).isEqualTo(1);
+        Assertions.assertThat(hint.getBall()).isEqualTo(3);
     }
 
     @DisplayName("숫자와 자리가 모두 같으면 스트라이크")
@@ -80,7 +80,7 @@ public class ComputerTest {
         Hint hint = computer.getHint(user);
 
         //then
-        Assertions.assertThat(hint.getBall()).isEqualTo(2);
+        Assertions.assertThat(hint.getStrike()).isEqualTo(1);
     }
 
     @DisplayName("볼, 스트라이크 종합 테스트")
