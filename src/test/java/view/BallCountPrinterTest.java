@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class OutputBallCountTest {
+public class BallCountPrinterTest {
     private static ByteArrayOutputStream outputMessage;
 
     @BeforeEach
@@ -25,9 +25,9 @@ public class OutputBallCountTest {
     void 낫싱출력_테스트(){
         //given
         int[] count = {0,0};
-        OutputBallCount print = new OutputBallCount();
+        BallCountPrinter print = new BallCountPrinter();
         //when
-        print.printCount(count);
+        print.printBallCount(count);
         //then
         Assertions.assertEquals("낫싱\n", outputMessage.toString());
     }
@@ -35,21 +35,21 @@ public class OutputBallCountTest {
     void 볼출력_테스트(){
         //given
         int[] count = {0,3};
-        OutputBallCount print = new OutputBallCount();
+        BallCountPrinter print = new BallCountPrinter();
         //when
-        print.printCount(count);
+        print.printBallCount(count);
         //then
-        Assertions.assertEquals("3볼\n", outputMessage.toString());
+        Assertions.assertEquals("3볼 ", outputMessage.toString());
     }
 
     @Test
     void 스트라이크출력_테스트(){
         //given
         int[] count = {3,0};
-        OutputBallCount print = new OutputBallCount();
+        BallCountPrinter print = new BallCountPrinter();
         //when
-        print.printCount(count);
+        print.printBallCount(count);
         //then
-        Assertions.assertEquals("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n", outputMessage.toString());
+        Assertions.assertEquals("3스트라이크\n", outputMessage.toString());
     }
 }
