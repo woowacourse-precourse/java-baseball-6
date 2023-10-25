@@ -7,7 +7,8 @@ import java.util.List;
 
 public class ClientNumbers {
 
-	private static final int NOT_ALLOWED_INPUT = 0;
+	private static final int MIN_RANGE_OF_DIGITS = 1;
+	private static final int MAX_RANGE_OF_DIGITS = 9;
 	private final List<Integer> numbers;
 
 	public ClientNumbers(List<Integer> numbers) {
@@ -36,7 +37,7 @@ public class ClientNumbers {
 	}
 
 	private boolean allowsNumberRange(List<Integer> numbers) {
-		return !numbers.contains(NOT_ALLOWED_INPUT);
+		return numbers.stream().allMatch(number -> number >= MIN_RANGE_OF_DIGITS && number <= MAX_RANGE_OF_DIGITS);
 	}
 
 	private boolean shouldInvalidLength(List<Integer> numbers) {
