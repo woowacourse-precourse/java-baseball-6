@@ -2,6 +2,8 @@ package baseball.view;
 
 public class OutputView {
 
+    private static final int COUNT_ZERO = 0;
+
     public static void printStartGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -20,16 +22,16 @@ public class OutputView {
 
     public static void printCalculateResult(int ballCount, int strikeCount) {
 
-        if (ballCount != 0 && strikeCount != 0) {
+        if (ballCount != COUNT_ZERO && strikeCount != COUNT_ZERO) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
-        if (ballCount == 0 && strikeCount == 0) {
+        if (ballCount == COUNT_ZERO && strikeCount == COUNT_ZERO) {
             System.out.println("낫싱");
         }
-        if (ballCount != 0 && strikeCount == 0) {
+        if (ballCount != COUNT_ZERO && strikeCount == COUNT_ZERO) {
             System.out.println(ballCount + "볼 ");
         }
-        if (ballCount == 0 && strikeCount != 0) {
+        if (ballCount == COUNT_ZERO && strikeCount != COUNT_ZERO) {
             System.out.println(strikeCount + "스트라이크");
         }
     }

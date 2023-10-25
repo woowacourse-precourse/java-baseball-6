@@ -9,6 +9,7 @@ import baseball.view.OutputView;
 public class Controller {
     private static final int RESTART_GAME = 1;
     private static final int QUIT_GAME = 2;
+    private static final int STRIKE_COUNT_THREE = 3;
     private Computer computer = new Computer();
     private Player player = new Player();
     private BaseballGame baseballGame = new BaseballGame();
@@ -27,7 +28,7 @@ public class Controller {
             baseballGame.calculateNumbers(computer.getComputerNumbers(), player.getPlayerNumbers());
             OutputView.printCalculateResult(baseballGame.ballCount, baseballGame.strikeCount);
 
-            if (baseballGame.strikeCount == 3) {
+            if (baseballGame.strikeCount == STRIKE_COUNT_THREE) {
                 OutputView.printSuccess();
                 break;
             }

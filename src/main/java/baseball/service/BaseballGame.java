@@ -8,6 +8,10 @@ public class BaseballGame {
 
 
     private static final int COUNT_ZERO = 0;
+    private static final int COMPUTER_NUMBER_COUNT = 3;
+    private static final int COMPUTER_NUMBER_MIN = 1;
+    private static final int COMPUTER_NUMBER_MAX = 9;
+
     public int strikeCount;
     public int ballCount;
 
@@ -28,8 +32,8 @@ public class BaseballGame {
 
     public List<Integer> createComputerNumbers() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < COMPUTER_NUMBER_COUNT) {
+            int randomNumber = Randoms.pickNumberInRange(COMPUTER_NUMBER_MIN, COMPUTER_NUMBER_MAX);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
