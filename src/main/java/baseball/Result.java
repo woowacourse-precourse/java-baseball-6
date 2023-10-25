@@ -26,11 +26,11 @@ public class Result {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             input = Console.readLine();
-            if (input.charAt(0) == '2') {
+            if (input.length() == 1 && input.charAt(0) == '2') {
                 continueGuess = false;
                 gameOver = true;
             }
-            else if(input.charAt(0) == '1'){
+            else if(input.length() == 1 && input.charAt(0) == '1'){
                 continueGuess = false;
             }
             else {
