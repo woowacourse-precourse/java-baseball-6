@@ -11,9 +11,6 @@ public class Game {
     private final int[] comNumbers = new int[3];
     public void playGame() {
         compPick();
-        for (int i = 0; i < comNumbers.length; i++) {
-            System.out.println(comNumbers[i]);
-        }
         while (true) {
             int[] userNumbers = inspection.getUserInput();
             int[] result = calculateResult(userNumbers);

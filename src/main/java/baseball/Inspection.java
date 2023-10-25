@@ -26,21 +26,11 @@ public class Inspection {
             System.out.println("입력 오류: 값을 읽을 수 없습니다. 다시 시도하세요.");
         }
     }
-    private boolean hasDuplicate(int[] userNumbers) {
-        for (int i = 0; i < userNumbers.length - 1; i++) {
-            for (int j = i + 1; j < userNumbers.length; j++) {
-                if (userNumbers[i] == userNumbers[j]) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
     public int[] getUserInput() {
         int[] userNumbers = new int[3];
         while (true) {
             try {
-                System.out.print("숫자를 입력해주세요 (1에서 9까지 중복되지 않는 3자리 숫자) : ");
+                System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
                 if (input.equals("1") || input.equals("2")) {
                     System.out.println("1 또는 2는 게임을 재시작/종료 명령어입니다. 3자리 숫자를 입력해주세요.");
@@ -63,5 +53,15 @@ public class Inspection {
                 throw new IllegalArgumentException(e.getMessage());
             }
         }
+    }
+    private boolean hasDuplicate(int[] userNumbers) {
+        for (int i = 0; i < userNumbers.length - 1; i++) {
+            for (int j = i + 1; j < userNumbers.length; j++) {
+                if (userNumbers[i] == userNumbers[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
