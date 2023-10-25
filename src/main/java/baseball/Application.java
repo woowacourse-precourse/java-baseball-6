@@ -29,5 +29,8 @@ public class Application {
 
         // 임의의 수 3가지 부여
         randomNumbers = getRandomNumbers();
+
+        // 숫자 입력 문구 출력
+        System.out.println("숫자를 입력해주세요 : ");
     }
 }
