@@ -18,6 +18,16 @@ public class Validation implements Validate {
         throw new IllegalArgumentException();
     }
 
+    @Override
+    public boolean validationReplayInput(String input) {
+        if (validateInputType(input) && validateInputLength(input, EXPECTED_RETRY_LENGTH)) {
+            if (input.equals(GAME_REPLAY) || (input.equals(GAME_EXIT))) {
+                return true;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
     /**
      * false : 입력된 값에 숫자 외의 포함될 경우 && validate(0) 문자가 포함되어 있을 경우
      */
@@ -56,15 +66,5 @@ public class Validation implements Validate {
             intArr[i] = Integer.parseInt(input.substring(i, i + 1));
         }
         return intArr;
-    }
-
-    @Override
-    public boolean validationReplayInput(String input) {
-        if (validateInputType(input) && validateInputLength(input, EXPECTED_RETRY_LENGTH)) {
-            if (input.equals(GAME_REPLAY) || (input.equals(GAME_EXIT))) {
-                return true;
-            }
-        }
-        throw new IllegalArgumentException();
     }
 }
