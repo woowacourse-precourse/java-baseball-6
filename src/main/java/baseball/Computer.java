@@ -11,7 +11,7 @@ public class Computer {
     public void generateNumber(){
         do {
             numbers = pickNumbers();
-        } while (Operator.isDuplicated(numbers));
+        } while (!Operator.isDuplicated(numbers));
 
     }
 
