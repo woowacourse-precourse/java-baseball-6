@@ -102,17 +102,6 @@ class ValidationTest {
         assertThat(validation().validateInputLength(input, 4)).isFalse();
     }
 
-    @DisplayName("입력된 문자열은 int형 배열로 변환된다.")
-    @Test
-    void 입력된_문자열은_int형_배열로_변환된다() {
-        //given
-        String str = "123";
-        int[] intArr = new int[]{1, 2, 3};
-
-        //then
-        assertThat(validation().inputToArr(str)).isEqualTo(intArr);
-    }
-
     @DisplayName("게임 재 시작시 정상 입력값 1은 : true 를 리턴한다.")
     @Test
     void 입력값_1은_게임이_재실행된다() {

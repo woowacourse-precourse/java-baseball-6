@@ -1,10 +1,12 @@
 package baseball.util;
 
+import static baseball.util.ConvertInputToArr.inputToArr;
+
 import java.util.Arrays;
 
 public class Validation implements Validate {
 
-    private final static int EXPECTED_LENGTH = 3;
+    public final static int EXPECTED_LENGTH = 3;
     private final static int EXPECTED_RETRY_LENGTH = 1;
     private final static String GAME_REPLAY = "1";
     private final static String GAME_EXIT = "2";
@@ -58,14 +60,5 @@ public class Validation implements Validate {
         int[] intArr = inputToArr(input);
 
         return Arrays.stream(intArr).distinct().count() == EXPECTED_LENGTH;
-    }
-
-    public int[] inputToArr(String input) {
-        int[] intArr = new int[EXPECTED_LENGTH];
-
-        for (int i = 0; i < intArr.length; i++) {
-            intArr[i] = Integer.parseInt(input.substring(i, i + 1));
-        }
-        return intArr;
     }
 }
