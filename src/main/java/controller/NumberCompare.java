@@ -1,7 +1,6 @@
 package controller;
 
-import model.PlayerNumber;
-import model.RandomComputerNumber;
+import model.GameStrikeAndBall;
 import view.OutputView;
 
 import java.util.ArrayList;
@@ -10,9 +9,8 @@ import java.util.Objects;
 public class NumberCompare {
     private final ArrayList<Integer> playerNumber;
     private final ArrayList<Integer> computerNumber;
-    private int strike;
-    private int ball;
     private boolean isGameEnded;
+
 
     public NumberCompare(ArrayList<Integer> playerNumber, ArrayList<Integer> computerNumber) {
         this.playerNumber = playerNumber;
@@ -20,30 +18,29 @@ public class NumberCompare {
     }
 
     public void compare() {
-        strike = 0;
-        ball = 0;
+        GameStrikeAndBall gameResult = new GameStrikeAndBall();
         isGameEnded = false;
         for (int i = 0; i < 3; i++) {
             if (Objects.equals(playerNumber.get(i), computerNumber.get(i))) {
-                strike++;
+                gameResult.strike++;
             } else if (computerNumber.contains(playerNumber.get(i))) {
-                ball++;
+                gameResult.ball++;
             }
         }
-        if (strike == 3) {
+        if (gameResult.strike == 3) {
             isGameEnded = true;
         }
-        printResult();
+        printResult(gameResult.strike, gameResult.ball);
     }
 
-    public void printResult() {
+    public void printResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             OutputView.printNothingMessage();
         } else if (strike == 0) {
             OutputView.printBallMessage(ball);
         } else if (ball == 0) {
             OutputView.printStrikeMessage(strike);
-        } else {
+        } else if(strike > 0 && ball > 0){
             OutputView.printStrikeAndBallMessage(strike, ball);
         }
     }
