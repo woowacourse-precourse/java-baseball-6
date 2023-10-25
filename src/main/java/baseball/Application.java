@@ -38,17 +38,23 @@ public class Application {
 
             }
 
-            printReGameMessage();
-            String reply = Console.readLine();
-            if (reply.equals("1")) {
-                isContinued = true;
-            } else if (reply.equals("2")) {
-                isContinued = false;
-            } else {
-                throw new IllegalArgumentException("잘못도니 값을 입력했습니다.");
-            }
+            isContinued = isContinued();
         }
 
+    }
+
+    private static boolean isContinued() throws IllegalArgumentException {
+        printReGameMessage();
+        String reply = Console.readLine();
+        if (reply.equals("1")) {
+            return true;
+        }
+
+        if (reply.equals("2")) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
     }
 
     private static void printReGameMessage() {
