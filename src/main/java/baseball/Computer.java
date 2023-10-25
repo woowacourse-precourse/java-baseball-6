@@ -1,6 +1,5 @@
-package baseball.domain;
+package baseball;
 
-import baseball.utils.NumberGenerator;
 import java.util.List;
 
 public class Computer {

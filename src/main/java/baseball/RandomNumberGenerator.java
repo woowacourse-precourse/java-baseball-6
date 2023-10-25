@@ -1,6 +1,6 @@
-package baseball.utils;
+package baseball;
 
-import static baseball.utils.Constants.NUMBER_SIZE;
+import static baseball.Constants.NUMBER_SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

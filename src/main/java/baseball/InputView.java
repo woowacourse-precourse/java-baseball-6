@@ -1,9 +1,8 @@
-package baseball.view;
+package baseball;
 
-import static baseball.utils.ViewMessages.INPUT_NUMBER;
-import static baseball.utils.ViewMessages.INPUT_RETRY_OR_QUIT;
+import static baseball.ViewMessages.INPUT_NUMBER;
+import static baseball.ViewMessages.INPUT_RETRY_OR_QUIT;
 
-import baseball.utils.IntegerConvertor;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {

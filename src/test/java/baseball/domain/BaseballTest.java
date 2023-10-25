@@ -1,9 +1,8 @@
 package baseball.domain;
 
-import static baseball.utils.ErrorMessages.INVALID_BASEBALL_CNT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.assertj.core.api.Assertions;
+import baseball.Baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -13,20 +12,6 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Baseball 클래스")
 public class BaseballTest {
 
-    @Nested
-    @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-    class 생성자는 {
-        @Nested
-        @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class ball_strike_개수의_합이_숫자_길이보다_크면 {
-            @Test
-            void IllegalArgumentException_예외를_던진다() {
-                Assertions.assertThatThrownBy(() -> new Baseball(3, 1))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(INVALID_BASEBALL_CNT);
-            }
-        }
-    }
 
     @Nested
     @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)

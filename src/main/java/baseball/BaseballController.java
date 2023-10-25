@@ -1,16 +1,4 @@
-package baseball.controller;
-
-import baseball.domain.Baseball;
-import baseball.domain.BaseballGame;
-import baseball.domain.BaseballResult;
-import baseball.domain.Computer;
-import baseball.domain.GameState;
-import baseball.domain.Player;
-import baseball.dto.BaseballResultDto;
-import baseball.utils.NumberGenerator;
-import baseball.utils.RandomNumberGenerator;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+package baseball;
 
 public class BaseballController {
     public void run() {

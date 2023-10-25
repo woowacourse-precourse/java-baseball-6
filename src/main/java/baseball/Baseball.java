@@ -1,24 +1,13 @@
-package baseball.domain;
+package baseball;
 
-import static baseball.utils.Constants.NUMBER_SIZE;
+import static baseball.Constants.NUMBER_SIZE;
 
-import baseball.utils.ErrorMessages;
 import java.util.Objects;
 
 public record Baseball(
         int ball,
         int strike
 ) {
-    public Baseball {
-        validate(ball, strike);
-    }
-
-    public void validate(int ball, int strike) {
-        int total = ball + strike;
-        if (total > NUMBER_SIZE) {
-            throw new IllegalArgumentException(ErrorMessages.INVALID_BASEBALL_CNT);
-        }
-    }
 
     public Boolean isBallAndStrike() {
         return ball > 0 && strike > 0;

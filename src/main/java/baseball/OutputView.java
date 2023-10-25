@@ -1,10 +1,9 @@
-package baseball.view;
+package baseball;
 
 
-import static baseball.utils.ViewMessages.OUTPUT_DONE;
-import static baseball.utils.ViewMessages.OUTPUT_START;
+import static baseball.ViewMessages.OUTPUT_DONE;
+import static baseball.ViewMessages.OUTPUT_START;
 
-import baseball.dto.BaseballResultDto;
 import java.text.MessageFormat;
 
 public class OutputView {

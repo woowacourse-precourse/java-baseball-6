@@ -3,9 +3,12 @@ package baseball.domain;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import baseball.Computer;
+import baseball.GameState;
+import baseball.NumberGenerator;
+import baseball.Player;
+import baseball.RandomNumberGenerator;
 import baseball.config.ComputerTestConfig;
-import baseball.utils.NumberGenerator;
-import baseball.utils.RandomNumberGenerator;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;

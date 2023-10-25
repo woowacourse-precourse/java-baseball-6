@@ -1,4 +1,4 @@
-package baseball.utils;
+package baseball;
 
 public class IntegerConvertor {
     private IntegerConvertor() {

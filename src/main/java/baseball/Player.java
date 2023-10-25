@@ -1,11 +1,10 @@
-package baseball.domain;
+package baseball;
 
-import static baseball.utils.Constants.NUMBER_SIZE;
-import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_DUPLICATE;
-import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_INVALID_SIZE;
-import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_ZERO_CONTAIN;
+import static baseball.Constants.NUMBER_SIZE;
+import static baseball.ErrorMessages.PLAYER_NUMBERS_DUPLICATE;
+import static baseball.ErrorMessages.PLAYER_NUMBERS_INVALID_SIZE;
+import static baseball.ErrorMessages.PLAYER_NUMBERS_ZERO_CONTAIN;
 
-import baseball.utils.IntegerConvertor;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;

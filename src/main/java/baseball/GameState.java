@@ -1,9 +1,7 @@
-package baseball.domain;
+package baseball;
 
-import static baseball.utils.Constants.QUIT_NUMBER;
-import static baseball.utils.Constants.RETRY_NUMBER;
-
-import baseball.utils.ErrorMessages;
+import static baseball.Constants.QUIT_NUMBER;
+import static baseball.Constants.RETRY_NUMBER;
 
 public enum GameState {
     RUNNING,

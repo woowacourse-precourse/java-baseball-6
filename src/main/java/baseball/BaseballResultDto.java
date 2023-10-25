@@ -1,4 +1,4 @@
-package baseball.dto;
+package baseball;
 
 public record BaseballResultDto(
         int ballCnt,

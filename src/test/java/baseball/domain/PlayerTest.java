@@ -1,11 +1,12 @@
 package baseball.domain;
 
-import static baseball.utils.ErrorMessages.NOT_INTEGER;
-import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_DUPLICATE;
-import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_INVALID_SIZE;
-import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_ZERO_CONTAIN;
+import static baseball.ErrorMessages.NOT_INTEGER;
+import static baseball.ErrorMessages.PLAYER_NUMBERS_DUPLICATE;
+import static baseball.ErrorMessages.PLAYER_NUMBERS_INVALID_SIZE;
+import static baseball.ErrorMessages.PLAYER_NUMBERS_ZERO_CONTAIN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import baseball.Player;
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
