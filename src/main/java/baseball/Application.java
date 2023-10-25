@@ -7,43 +7,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
-    static class Result {
-        private int strike;
-        private int ball;
-
-        public Result(int strike, int ball) {
-            this.strike = strike;
-            this.ball = ball;
-        }
-
-        public int getStrike() {
-            return strike;
-        }
-
-        public int getBall() {
-            return ball;
-        }
+    public static void main(String[] args) {
+        startGame();
     }
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    private static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-            List<Integer> computerNumbers = selectComputerNumbers();
-//            System.out.println(computerNumbers);
-
-            while (true) {
-                List<Integer> userNumbers = inputUserNumbers();
-                System.out.println(userNumbers);
-                Result result = getResultForUserNumbers(computerNumbers, userNumbers);
-                printResult(result);
-
-                if (correctAllNumbers(result)){
-                    break;
-                }
-            }
-
+            List<Integer> computerNumberList = selectComputerNumbers();
+            playGameWithUser(computerNumberList);
             if (selectUserExit()) {
                 break;
             }
@@ -51,29 +24,48 @@ public class Application {
     }
 
     private static List<Integer> selectComputerNumbers() {
-        List<Integer> computerNumbers = new ArrayList<>();
+        List<Integer> computerNumberList = new ArrayList<>();
 
-        while (computerNumbers.size() < 3) {
+        while (computerNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
+            if (!computerNumberList.contains(randomNumber)) {
+                computerNumberList.add(randomNumber);
             }
         }
-        return computerNumbers;
+        return computerNumberList;
+    }
+
+    private static void playGameWithUser(List<Integer> computerNumberList) {
+        while (true) {
+            List<Integer> userNumberList = inputUserNumbers();
+            Result result = getResultForUserNumbers(computerNumberList, userNumberList);
+            result.toStringResult();
+
+            if (result.correctAllNumbers()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
     private static List<Integer> inputUserNumbers() {
-        List<Integer> userNumbers = new ArrayList<>();
-        String userInput;
-        boolean selectedNum[] = new boolean[10];
+        List<Integer> userNumberList = new ArrayList<>();
 
         System.out.print("숫자를 입력해주세요 : ");
-        userInput = Console.readLine();
-        Arrays.fill(selectedNum, false);
+        String userInput = Console.readLine();
 
         if (userInput.length() != 3) {
             throw new IllegalArgumentException("입력 개수(3개) 부족 또는 초과");
         }
+
+        userNumberList = changeStringToList(userInput);
+        return userNumberList;
+    }
+
+    private static List<Integer> changeStringToList(String userInput) {
+        List<Integer> userNumberList = new ArrayList<>();
+        boolean selectedNum[] = new boolean[10];
+        Arrays.fill(selectedNum, false);
 
         for (int i = 0; i < userInput.length(); i++) {
             int number = userInput.charAt(i) - '0';
@@ -86,70 +78,43 @@ public class Application {
                 throw new IllegalArgumentException("중복된 숫자 존재");
             }
 
-            userNumbers.add(number);
+            userNumberList.add(number);
             selectedNum[number] = true;
         }
-        return userNumbers;
+        return userNumberList;
     }
 
-    private static Result getResultForUserNumbers(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    private static Result getResultForUserNumbers(List<Integer> computerNumberList, List<Integer> userNumberList) {
         int strike = 0;
         int ball = 0;
 
-        for (int k = 0; k < userNumbers.size(); k++) {
-            int userNumber = userNumbers.get(k);
+        for (int k = 0; k < userNumberList.size(); k++) {
+            int computerNumber = computerNumberList.get(k);
+            int userNumber = userNumberList.get(k);
 
-            if (computerNumbers.get(k) == userNumber) {
+            if (computerNumber == userNumber) {
                 strike++;
             }
-            else if (computerNumbers.contains(userNumber)) {
+
+            if (computerNumber != userNumber && computerNumberList.contains(userNumber)) {
                 ball++;
             }
         }
         return new Result(strike, ball);
     }
 
-    private static void printResult(Result result) {
-        int strikeCnt = result.getStrike();
-        int ballCnt = result.getBall();
-
-        if (strikeCnt == 0 && ballCnt == 0) {
-            System.out.println("낫싱");
-        }
-        else {
-            if (ballCnt > 0) {
-                System.out.print(ballCnt + "볼 ");
-            }
-
-            if (strikeCnt > 0) {
-                System.out.print(strikeCnt + "스트라이크");
-            }
-            System.out.println();
-        }
-        return;
-    }
-
-    private static boolean correctAllNumbers(Result result) {
-        if (result.getStrike() == 3){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
-        }
-        return false;
-    }
-
     private static boolean selectUserExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
 
-        if (!userInput.equals("1") && !userInput.equals("2")) {
-            throw new IllegalArgumentException("잘못된 입력 형식 (1 또는 2만 가능)");
-        }
-
         if (userInput.equals("2")) {
             return true;
         }
-        else {
+
+        if (userInput.equals("1")) {
             return false;
         }
+
+        throw new IllegalArgumentException("잘못된 입력 형식 (1 또는 2만 가능)");
     }
 }
