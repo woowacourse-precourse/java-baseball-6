@@ -11,8 +11,9 @@ public class Answer {
 
     public void generateAnswer() {
         List<Integer> answer = new ArrayList<>();
-        while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (answer.size() < Validate.BASEBALL_NUM_OF_DIGITS) {
+            int randomNumber = Randoms.pickNumberInRange(Validate.BASEBALL_START_DIGITS,
+                    Validate.BASEBALL_END_DIGITS);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }

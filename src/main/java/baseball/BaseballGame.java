@@ -2,22 +2,23 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseballGame {
+    private final Integer BALL_INDEX = 0;
+    private final Integer STRIKE_INDEX = 1;
     public static final BaseballGame game = new BaseballGame();
-    Scanner scanner = new Scanner(System.in);
-
     private List<Integer> compareAnswerWithUserInput(List<Integer> answer, List<Integer> userInput) {
         List<Integer> compared = new ArrayList<>();
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Validate.BASEBALL_NUM_OF_DIGITS; i++) {
             if (answer.contains(userInput.get(i))) {
+                ball++;
                 if (answer.get(i).equals(userInput.get(i))) {
                     strike++;
-                } else {
-                    ball++;
+                    ball--;
                 }
             }
         }
@@ -27,11 +28,12 @@ public class BaseballGame {
     }
 
     private Boolean isNothing(List<Integer> compared) {
-        return compared.get(0) == 0 && compared.get(1) == 0;
+        return compared.get(BALL_INDEX) == 0 && compared.get(STRIKE_INDEX) == 0;
     }
 
     private Boolean isCorrect(List<Integer> compared) {
-        return compared.get(1) == 3;
+        int max_num_of_correctness = 3;
+        return compared.get(STRIKE_INDEX) == max_num_of_correctness;
     }
 
     private List<Integer> convertUserInputToList(String input) {
@@ -43,16 +45,17 @@ public class BaseballGame {
     }
 
     private Boolean isContinue(String game) {
-        return Integer.parseInt(game) == 1;
+        int continueValue = 1;
+        return Integer.parseInt(game) == continueValue;
     }
 
     private void printResult(List<Integer> comparing) {
         String result = "";
-        if (comparing.get(0) > 0) {
-            result += String.format("%d볼 ", comparing.get(0));
+        if (comparing.get(BALL_INDEX) > 0) {
+            result += String.format(Message.BALL, comparing.get(BALL_INDEX));
         }
-        if (comparing.get(1) > 0) {
-            result += String.format("%d스트라이크", comparing.get(1));
+        if (comparing.get(STRIKE_INDEX) > 0) {
+            result += String.format(Message.STRIKE, comparing.get(STRIKE_INDEX));
         }
         if (result.length() > 0) {
             System.out.println(result);
@@ -61,11 +64,11 @@ public class BaseballGame {
 
     public void run() {
         String continueGame;
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Message.START);
         do {
             doGame();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            continueGame = scanner.nextLine().strip();
+            System.out.println(Message.IS_CONTINUE);
+            continueGame = readLine();
             Validate.validateContinueGame(continueGame);
         } while (isContinue(continueGame));
     }
@@ -76,18 +79,18 @@ public class BaseballGame {
         Answer.answer.generateAnswer();
 //        System.out.println(Arrays.toString(Answer.answer.getNumber().toArray()));
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            number = scanner.nextLine();
+            System.out.print(Message.INPUT);
+            number = readLine();
             Validate.validateNumber(number);
             userInput = convertUserInputToList(number);
             compared = compareAnswerWithUserInput(Answer.answer.getNumber(), userInput);
             printResult(compared);
             if (isCorrect(compared)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(Message.CORRECT);
                 break;
             }
             if (isNothing(compared)) {
-                System.out.println("낫싱");
+                System.out.println(Message.NOTHING);
             }
         }
     }
