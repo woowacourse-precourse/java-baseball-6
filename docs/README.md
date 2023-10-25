@@ -73,25 +73,25 @@
 
 - docs: README 수정 예외(IllegalArgumentException) 사항 발생시 애플리케이션 종료
 ### 클래스 다이어그램
-<img style="width:80%;" src="https://github.com/OiKimiO/java-baseball-6/assets/53805469/d60af987-0764-4342-b051-183f6f780d04" />
+<img style="width:80%;" src="https://github.com/OiKimiO/java-baseball-6/assets/53805469/5c05cb17-d7ad-48f2-8c8f-70abbf358ef7" />
 
 최종 클래스 다이어 그램입니다! 
 
 해당 클래스들의 목적은 **숫자 야구를 진행**하는 것입니다. 
 
-진행은 숫자 야구(Number Baseball)의 진행으로 상대방(Player Partner)이 미리 정답을 작성(writeAnswer)합니다.
+먼저 **숫자 야구 객체**가 **상대방 객체**에게 숫자 야구 진행을 지시합니다. (=NumberBaseball.startGame())
 
+이때 **숫자 야구 객체**가 정답 숫자를 만들고  **상대방 객체**에게 전달합니다.(= PlayerPartner.inputAnswerOf(int[] answers))
 
-이후 플레이어(Player)는 자신의 숫자를 입력(nextNumberOf)합니다.
+이후 **상대방 객체**는 전달받은 정답 숫자와 플레이어의 숫자를 비교한 뒤 볼/스트라이크를 출력합니다.(=PlayerPartner.startGame())
 
-입력을 마친 후 상대방의 숫자와 플레이어의 숫자(playerNumber)를 비교(compareNumbers)합니다.
+이때 **상대방 객체**가 **플레이어 객체**에게 입력을 지시하고,(=Player.inputNumberOf(String playerNumber))
 
+숫자를 비교하는 로직은 **숫자 분류기 객체**를 통해 진행됩니다.
+(=NumberClassifier.compareNumbers(String playerNumbers, String PartnerNumbers))
 
-상대방 숫자와 플레이어 숫자를 비교하는 것은 전적으로 숫자 분류기(Number Classifier)에 위임합니다. 
+숫자 비교를 반복하다 3스트라이크가 나오면 재시작하거나 종료합니다. (=NumberBaseball.isContinue())
 
-숫자 분류기의 분류 작업이 완료되면 곧바로 볼 카운트(getBallCount)와 스트라이크 카운트(getStrikeCount)를 가져옵니다. 
-
-그리고 분류한 결과가 3 스트라이크면 게임을 재시작하거나 종료합니다.  
 
 ### 폴더 구조
 <img style="width:30%;" src="https://github.com/OiKimiO/java-baseball-6/assets/53805469/261a617f-577f-4d89-bae0-fe4a72ccb64e" />
