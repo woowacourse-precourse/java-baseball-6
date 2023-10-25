@@ -1,7 +1,6 @@
 package baseball.service;
 
 import baseball.domain.NumberBaseball;
-import baseball.domain.hint.Hint;
 import baseball.service.hint.HintService;
 import baseball.view.EndView;
 import baseball.view.HintView;

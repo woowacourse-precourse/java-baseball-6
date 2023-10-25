@@ -12,7 +12,7 @@ public class StrikeServiceImpl implements HintItemService {
 
     private static final StrikeServiceImpl strikeService = new StrikeServiceImpl();
 
-    public static StrikeServiceImpl getInstance(){
+    public static StrikeServiceImpl getInstance() {
         return strikeService;
     }
 

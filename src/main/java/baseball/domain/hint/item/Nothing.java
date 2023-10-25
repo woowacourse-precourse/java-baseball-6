@@ -13,6 +13,7 @@ public class Nothing extends HintItem {
     public boolean active() {
         if (getCount() > 0) {
             return false;
-        } return true;
+        }
+        return true;
     }
 }

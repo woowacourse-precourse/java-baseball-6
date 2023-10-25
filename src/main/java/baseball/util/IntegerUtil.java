@@ -11,11 +11,11 @@ public class IntegerUtil {
         }
     }
 
-    public static boolean isSame(Integer i1,Integer i2) {
-        return ObjectUtil.isSame(i1,i2);
+    public static boolean isSame(Integer i1, Integer i2) {
+        return ObjectUtil.isSame(i1, i2);
     }
 
-    public static Integer parseInteger(char character){
+    public static Integer parseInteger(char character) {
         Integer integer = character - '0';
 
         return integer;

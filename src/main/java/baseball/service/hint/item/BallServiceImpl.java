@@ -39,7 +39,7 @@ public class BallServiceImpl implements HintItemService {
                 if (i == j) {
                     continue;
                 }
-                if (ObjectUtil.isSame(computer.get(i), input.get(j))) { //TODO: BaseBall 역할로 분리하기
+                if (ObjectUtil.isSame(computer.get(i), input.get(j))) {
                     count++;
                 }
             }

@@ -5,7 +5,6 @@ import baseball.domain.RestartOption;
 import baseball.service.GameService;
 import baseball.service.hint.HintService;
 import baseball.util.InputUtil;
-import baseball.validation.IntegerValidator;
 import baseball.view.*;
 
 public class GameController {
@@ -46,7 +45,7 @@ public class GameController {
         return isRestart();
     }
 
-    private boolean isRestart(){
+    private boolean isRestart() {
         restartView.displayRestartChoiceMessage();
 
         String regameNum = InputUtil.inputString();

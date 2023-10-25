@@ -17,7 +17,7 @@ public class HintServiceImpl implements HintService {
 
     @Override
     public Hint createHint(NumberBaseball computerBaseball, NumberBaseball inputBaseball) {
-        List<HintItem> hintItems =  createActiveHintItems(computerBaseball, inputBaseball);
+        List<HintItem> hintItems = createActiveHintItems(computerBaseball, inputBaseball);
         return Hint.createHint(hintItems);
     }
 
