@@ -11,7 +11,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
   public BallNumbers readUserNumber() {
-    System.out.print("숫자를 입력해주세요: ");
+    OutputView.printInputMessage();
     String input = Console.readLine();
 
     String errorMessage = Validator.validateInput(input);
