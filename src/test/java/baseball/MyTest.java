@@ -3,9 +3,7 @@ package baseball;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import static baseball.Application.*;
@@ -48,5 +46,16 @@ public class MyTest{
         Assertions.assertThat(result1).isEqualTo(true);
         Assertions.assertThat(result2).isEqualTo(false);
         Assertions.assertThat(result3).isEqualTo(false);
+    }
+
+    @Test
+    void answerCompare(){
+        List<Integer> answer = new ArrayList<>(Arrays.asList(3, 6, 9));
+        Set<Integer> user = new LinkedHashSet<>();
+        user.add(9);
+        user.add(6);
+        user.add(3);
+
+        Assertions.assertThat(compareAnswer(answer, user)).isEqualTo(2);
     }
 }

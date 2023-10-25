@@ -16,20 +16,44 @@ public class Application {
             List<Integer> randomAnswer = generateRandomAnswer();
 
             // [게임 시작]
-            boolean gamePower = true;
+            gamePower = true;
             while(gamePower){
                 // 사용자 입력값 대기...
                 Set<Integer> userGuessSet = readUserGuess();
-//                formatCheck(userGuessSet) ? compareAnswer(randomAnswer, userGuessSet) : turnOff();
-
-                if(userGuessSet.size() != 3){
-                    computerPower = false;
-                    gamePower = false;
-                    throw new IllegalArgumentException("잘못된 형식의 입력입니다. 프로그램을 종료합니다.");
+                boolean checkResult = formatCheck(userGuessSet);
+                if(!checkResult) {
+                    turnOff();
+                    continue;
                 }
-
+                compareAnswer(randomAnswer, userGuessSet);
             }
         }
+    }
+
+    private static void turnOff() {
+        computerPower = false;
+        gamePower = false;
+        throw new IllegalArgumentException("잘못된 형식의 입력입니다. 프로그램을 종료합니다.");
+    }
+
+    public static int compareAnswer(List<Integer> randomAnswer, Set<Integer> userGuessSet) {
+        int ball = 0, strike = 0;
+        ArrayList<Integer> userGuessArr = new ArrayList<>(userGuessSet);
+        for(int i = 0; i < userGuessArr.size(); i++){
+            int match = randomAnswer.indexOf(userGuessArr.get(i));
+            if(match==-1){
+                continue;
+            } else if(match==i){
+                strike++;
+                continue;
+            }
+            ball++;
+        }
+        return ball;
+//        printResult(ball, strike);
+    }
+
+    private static void printResult(int ball, int strike) {
 
     }
 
