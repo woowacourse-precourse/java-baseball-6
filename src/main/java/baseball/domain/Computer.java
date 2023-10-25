@@ -17,7 +17,6 @@ public abstract class Computer {
         while (numbers.size() < rule.digits()) {
             generateEachNumber(rule);
         }
-        System.out.println(numbers);
     }
 
     private void generateEachNumber(Rule rule) {
