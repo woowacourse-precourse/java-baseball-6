@@ -85,23 +85,28 @@ public class BaseballGame {
         }
         countBall(target, userNum);
         System.out.println("ball:" + ball);
-        if (strike == 0 && ball == 0) {
-            message = "낫싱";
-        } else {
-            if (strike == 0) {
-                message = ball + "볼";
-            } else if (ball == 0) {
-                message = strike + "스트라이크";
-            } else {
-                message = ball + "볼 " + strike + "스트라이크";
-            }
-        }
+        calculateScore();
         resetStrike();
         resetBall();
         System.out.println(message);
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
         play(reTarget, userInput);
+    }
+
+    private void calculateScore() {
+        if (ball > 0) {
+            message = ball + "볼";
+        }
+        if (strike > 0) {
+            if (!message.isEmpty()) {
+                message += " ";
+            }
+            message += strike + "스트라이크";
+        }
+        if (message.isEmpty()) {
+            message = "낫싱";
+        }
     }
 
 
