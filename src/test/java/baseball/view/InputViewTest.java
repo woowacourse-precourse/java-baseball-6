@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.in;
 
 class InputViewTest {
 
@@ -30,5 +31,16 @@ class InputViewTest {
         assertThatThrownBy(() -> inputView.validateIsOneOrTwo(choice))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1 또는 2의 숫자만 선택해야 합니다.");
+    }
+
+    @DisplayName("숫자를 입력받을때 숫자가 아닌 단어가 있다면 Exception이 발생한다.")
+    @Test
+    void validateIsNumeric() {
+        // given
+        String input = "3a2";
+        // when // then
+        assertThatThrownBy(() -> inputView.validateIsNumeric(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 입력은 오로지 숫자로만 이루어져 있어야 합니다.");
     }
 }
