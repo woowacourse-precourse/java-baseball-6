@@ -1,6 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashSet;
+import java.util.Set;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -63,32 +66,46 @@ public class Application {
 
     private static int getUserInput(int min, int max) {
         int num = 0;
-
         try {
-            String str = readLine();
+            String input = readLine();
             boolean isNumeric = true;
+            boolean containsZero = false;
+            Set<Character> uniqueDigits = new HashSet<>();
 
-            for (int i = 0; i < str.length(); i++) {
-                char tmp = str.charAt(i);
+            for (int i = 0; i < input.length(); i++) {
+                char ch = input.charAt(i);
 
-                if (Character.isDigit(tmp)) {
-                    continue;
+                if (Character.isDigit(ch)) {
+                    if (ch == '0') {
+                        containsZero = true;
+                    }
+
+                    if (uniqueDigits.contains(ch)) {
+                        throw new IllegalArgumentException("중복된 숫자를 입력하지 마세요.");
+                    } else {
+                        uniqueDigits.add(ch);
+                    }
                 } else {
                     isNumeric = false;
                     break;
                 }
             }
 
-            if (!isNumeric || (isNumeric && (num = Integer.parseInt(str)) < min || num > max)) {
-                status = GAME_OVER;
+            if (!isNumeric || containsZero) {
+                throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
+            }
+
+            num = Integer.parseInt(input);
+
+            if (num < min || num > max) {
                 throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            status = GAME_OVER;
         }
         return num;
     }
-
 
     private static int[] getDigits(int number) {
         String numberString = String.valueOf(number);
