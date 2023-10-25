@@ -21,6 +21,7 @@ public class GamePlayController {
             }
         }
     }
+
     public void selectGameRestart() throws IllegalArgumentException{
         String restartNum = userInputGameRestart();
         if (restartNum.equals("1")){
@@ -33,6 +34,7 @@ public class GamePlayController {
             throw new IllegalArgumentException("1 또는 2를 입력하세요");
         }
     }
+
     public void restartGame(){
         computerNumber.generateNumber();
         gameStatus = true;

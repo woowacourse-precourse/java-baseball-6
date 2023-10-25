@@ -41,8 +41,6 @@ public class CompareNumber {
         }
     }
 
-
-
     public void printStrikeBall() {
         if (strike == 0 && ball == 0) {
             System.out.println(NOTHING_MESSAGE);
