@@ -36,7 +36,6 @@ public class Baseball {
             String inputNum = INPUT_CONTROL.getNumber();
             validation.validateUserInput(inputNum);
 
-            // countingResult에서의 셈이 수월하도록 IntegerList로 변환 후 진행
             userNum = converter.toIntegerList(inputNum);
             countResult.countingResult(computerNum, userNum);
 
