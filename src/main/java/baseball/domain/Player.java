@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.utils.Constants.NUMBER_SIZE;
+
 import baseball.utils.ErrorMessages;
 import baseball.utils.IntegerConvertor;
 import java.util.Arrays;
@@ -7,8 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Player {
-    private static final int NUMBER_SIZE = 3;
-
     private final List<Integer> numbers;
 
 

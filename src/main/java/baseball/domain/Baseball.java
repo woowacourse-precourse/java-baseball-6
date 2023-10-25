@@ -1,10 +1,11 @@
 package baseball.domain;
 
+import static baseball.utils.Constants.NUMBER_SIZE;
+
 import baseball.utils.ErrorMessages;
 import java.util.Objects;
 
 public class Baseball {
-    private static final int NUMBER_SIZE = 3;
     private final int ball;
     private final int strike;
 

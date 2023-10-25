@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import static baseball.utils.Constants.QUIT_NUMBER;
+import static baseball.utils.Constants.RETRY_NUMBER;
+
 import baseball.utils.ErrorMessages;
 
 public enum GameState {
@@ -18,8 +21,8 @@ public enum GameState {
 
     public static GameState of(int input) {
         return switch (input) {
-            case 1 -> RETRY;
-            case 2 -> QUIT;
+            case RETRY_NUMBER -> RETRY;
+            case QUIT_NUMBER -> QUIT;
             default -> throw new IllegalArgumentException(ErrorMessages.NOT_INVALID_RETRY_INPUT);
         };
     }

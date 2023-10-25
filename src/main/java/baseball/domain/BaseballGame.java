@@ -1,10 +1,10 @@
 package baseball.domain;
 
+import static baseball.utils.Constants.NUMBER_SIZE;
+
 import java.util.stream.IntStream;
 
 public class BaseballGame {
-    private static final int NUMBER_SIZE = 3;
-
     private final Computer computer;
     private final Player player;
 
