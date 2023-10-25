@@ -7,20 +7,14 @@ import java.util.List;
 
 public class PlayerNumbers {
     private List<Integer> numbers;
-    private final NumbersConverter numbersConverter;
 
-    public PlayerNumbers(NumbersConverter numbersConverter) {
-        this.numbersConverter = numbersConverter;
+    public PlayerNumbers() {
         this.numbers = new ArrayList<>();
-    }
-
-    public List<Integer> getNumbers() {
-        return numbers;
     }
 
     public void inputNumbers(String numbers) {
         if(this.numbers.size() == 0) {
-            List<Integer> inputNumbers = numbersConverter.convertNumbers(numbers);
+            List<Integer> inputNumbers = NumbersConverter.convertNumbers(numbers);
             this.numbers.addAll(inputNumbers);
         }
     }
@@ -29,5 +23,9 @@ public class PlayerNumbers {
         if(numbers.size() > 0) {
             numbers.clear();
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
