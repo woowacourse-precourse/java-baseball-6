@@ -26,6 +26,7 @@ public class GameController {
     //각 게임 전 데이터 초기화
     public void before() {
         game.initAnswer();
+        outputController.printNoticeln(START);
     }
 
     //게임 흐름 담고있는 함수

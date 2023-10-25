@@ -14,14 +14,8 @@ public class Application {
 
         InputController inputController = new InputController();
         OutputController outputController = new OutputController();
-
-        outputController.printNoticeln(START);
-        Game game;
-        Player player;
-
-        game = new Game();
-        player  = new Player();
-
+        Game game = new Game();
+        Player player=new Player();
         GameController gameController = new GameController(inputController,outputController,game,player);
 
         gameController.start();
