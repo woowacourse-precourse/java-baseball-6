@@ -1,10 +1,8 @@
 package baseball.util;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public final class Validator {
     public static void validateListSize(List<Integer> list) {
@@ -25,6 +23,13 @@ public final class Validator {
             if(!Character.isDigit(c) || c == '0') {
                 throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 프로그램을 종료합니다.");
             }
+        }
+    }
+
+    public static void validateInputSize(String input) {
+        int inputSize = input.length();
+        if(inputSize != 3) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해야합니다. 프로그램을 종료합니다.");
         }
     }
 

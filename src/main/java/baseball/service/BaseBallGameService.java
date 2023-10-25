@@ -27,6 +27,7 @@ public class BaseBallGameService {
             String userInputNumbers = readLine();
             Validator.validateInput(userInputNumbers);
             Validator.validateInputDuplication(userInputNumbers);
+            Validator.validateInputSize(userInputNumbers);
             User user = User.readInputNumbers(userInputNumbers);
             List<Integer> inputNumberList = user.getInputNumberList();
             playBaseBall(randomNumbersList, inputNumberList, ballStrike);

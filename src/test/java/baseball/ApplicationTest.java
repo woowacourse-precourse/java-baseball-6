@@ -41,8 +41,6 @@ class ApplicationTest extends NsTest {
         assertThat(randomNumbersList.size()).isEqualTo(3);
     }
 
-
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
