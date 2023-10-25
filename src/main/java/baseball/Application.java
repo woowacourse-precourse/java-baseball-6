@@ -1,12 +1,14 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
 
     }
@@ -20,6 +22,28 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    private static List inputNumberUser() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+
+        Pattern pattern = Pattern.compile("[1-9][1-9][1-9]");
+        Matcher matcher = pattern.matcher(userInput);
+
+        if(!matcher.matches() || userInput.isEmpty()) {
+            throw new IllegalArgumentException("각 자리가 [1-9]인 세자리 숫자가 아닙니다.");
+        }
+
+        List<Integer> user  = new ArrayList<>();
+        for(int i = 0; i < userInput.length(); i++) {
+            if(!user.contains((int)userInput.charAt(i) - 48)) {
+                user.add((int) userInput.charAt(i) - 48);
+            } else {
+                throw new IllegalArgumentException("각 자리 중 서로 같은 수가 있습니다.");
+            }
+        }
+        return user;
     }
 
 }
