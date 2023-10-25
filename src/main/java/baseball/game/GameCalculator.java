@@ -15,11 +15,9 @@ public class GameCalculator {
                     ballCount++;
                 }
 
-
             }
         }
-        Result result = new Result(ballCount, strikeCount);
-        return result;
+        return new Result(ballCount, strikeCount);
     }
 
     public record Result(int ballCount, int strikeCount) {

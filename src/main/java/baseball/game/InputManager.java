@@ -4,9 +4,7 @@ package baseball.game;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class InputManager {
 
@@ -41,12 +39,6 @@ public class InputManager {
         if (inputBall.contains(0)) {
             throw new IllegalArgumentException("잘못된 수를 입력했습니다.");
         }
-
-
-
-
-
-
 
 
         return inputBall;
