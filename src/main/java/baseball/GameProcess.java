@@ -6,7 +6,7 @@ import java.util.*;
 
 public class GameProcess {
     private static List<Integer> input;
-    private static Implementation implementation = new Implementation();
+    private static BaseballScorer baseballScorer = new BaseballScorer();
     public List<Integer> getInput() {
         return input;
     }
@@ -17,7 +17,7 @@ public class GameProcess {
         input = new ArrayList<>();
         String num;
         int start_or_exit;
-        Implementation implementation1 = new Implementation();
+        BaseballScorer baseballScorer1 = new BaseballScorer();
         Computer computer1 = new Computer();
         List<Integer> computerNumbers = computer1.generateRandomNumbers();
         while (true) {
@@ -52,10 +52,10 @@ public class GameProcess {
                 if (input.get(0) == input.get(1) || input.get(1) == input.get(2) || input.get(0) == input.get(2)) {
                     throw new IllegalAccessException("입력된 숫자는 서로 다른 3자리 수가 아닙니다.");
                 }
-                int strike = implementation.countStrike(computerNumbers, input);
-                int ball = implementation.countBall(computerNumbers, input);
+                int strike = baseballScorer.countStrike(computerNumbers, input);
+                int ball = baseballScorer.countBall(computerNumbers, input);
 
-                if (strike == 3) { // Implementation 함수로 들어가서 3개 다 맞췄다면
+                if (strike == 3) { // BaseballScorer 함수로 들어가서 3개 다 맞췄다면
                     System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
