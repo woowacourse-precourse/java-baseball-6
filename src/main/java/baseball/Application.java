@@ -6,6 +6,7 @@ import baseball.io.OutputWriter;
 import baseball.service.BaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
@@ -14,6 +15,8 @@ public class Application {
 
     public static void main(String[] args) {
         createBaseballController().run();
+
+        releaseResource();
     }
 
     private static BaseballController createBaseballController() {
@@ -21,5 +24,9 @@ public class Application {
         OutputView outputView = new OutputView(outputWriter);
         BaseballService baseballService = new BaseballService();
         return new BaseballController(inputView, outputView, baseballService);
+    }
+
+    private static void releaseResource() {
+        Console.close();
     }
 }
