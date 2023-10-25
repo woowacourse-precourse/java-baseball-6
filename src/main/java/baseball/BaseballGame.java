@@ -27,7 +27,7 @@ public class BaseballGame {
 		return randomNumber;
 	}
 
-	public int[] userNumberToArray(int userNumber) {
+	private int[] userNumberToArray(int userNumber) {
 		int[] arr = new int[3];
 
 		arr[0] = userNumber / 100;
@@ -37,7 +37,7 @@ public class BaseballGame {
 		return arr;
 	}
 
-	public void compare(int i, int[] userNumbers) {
+	private void compare(int i, int[] userNumbers) {
 		if (randomNumber.contains(userNumbers[i])) {
 			ball++;
 			if (randomNumber.get(i) == userNumbers[i]) {
@@ -47,7 +47,7 @@ public class BaseballGame {
 		}
 	}
 
-	public void printScore() {
+	private void printScore() {
 		if (strike == 0 && ball == 0) {
 			System.out.println("낫싱");
 			return;
@@ -70,12 +70,7 @@ public class BaseballGame {
 		System.out.print("숫자를 입력해주세요 : ");
 	}
 
-	public void printRestartQuestion() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-	}
-
-	public void gameStart() {
-		User user = new User();
+	public void gameStart(User user) {
 		while (strike != 3) {
 			int[] userNumbers = userNumberToArray(user.input3DigitNumber());
 			strike = 0;
