@@ -1,7 +1,13 @@
 package baseball;
 
+import baseball.game.Balls;
+import baseball.game.PlayGame;
+
 public class Application {
+    private static PlayGame playGame = new PlayGame();
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        while(true){
+            if(!playGame.play()) break;
+        }
     }
 }
