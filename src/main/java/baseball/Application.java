@@ -52,6 +52,11 @@ public class Application {
         return result; // 정답 여부 반환
     }
 
+    /**
+     * 재시작, 종료 여부를 사용자에게 질문
+     *
+     * @return 재시작 : true, 종료 : false
+     */
     private static boolean reGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Number number = new Number(Console.readLine()); // 사용자의 선택 입력받기
