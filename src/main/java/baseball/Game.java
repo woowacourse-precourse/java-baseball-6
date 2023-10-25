@@ -42,6 +42,18 @@ public class Game {
         this.strike = 0;
     }
 
+    public boolean checkNothing() {
+        return this.ball == 0 && this.strike == 0;
+    }
+
+    public boolean checkSuccess() {
+        return this.strike == 3;
+    }
+
+    public boolean checkHint() {
+        return this.ball != 0 || this.strike != 0;
+    }
+
     private void addBallCount() {
         this.ball++;
     }
