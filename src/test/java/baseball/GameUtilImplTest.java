@@ -1,4 +1,4 @@
-package baseball.status;
+package baseball;
 
 import static baseball.status.GameSetting.COUNT_NUM;
 import static baseball.status.GameSetting.MAX_NUM;
