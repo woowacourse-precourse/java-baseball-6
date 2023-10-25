@@ -91,7 +91,9 @@ public class Application {
         }
 
         int strike = countStrike(computerNumber, userNumber);
-        int ball = countBall(computerNumber, userNumber);
+        // 컴퓨터와 유저의 숫자 중 같은 숫자가 몇 개인지 알아낸 뒤
+        // 스트라이크의 개수를 빼면 볼의 개수를 구할 수 있다.
+        int ball = countSameNumber(computerNumber, userNumber) - strike;
 
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
@@ -132,16 +134,16 @@ public class Application {
     }
 
     /**
-     * 볼의 개수를 반환한다.
+     * 컴퓨터의 수와 유저의 수 중 같은 숫자의 개수를 반환한다..
      * @param computerNumber
      * @param userNumber
      * @return count
      */
-    private static int countBall(int computerNumber, int userNumber) {
+    private static int countSameNumber(int computerNumber, int userNumber) {
         String[] computerValue = String.valueOf(computerNumber).split("");
         String[] userValue = String.valueOf(userNumber).split("");
 
-        /*HashSet<String> computerSet = new HashSet<>();
+        HashSet<String> computerSet = new HashSet<>();
         int count = 0;
 
         for (String character : computerValue) {
@@ -152,8 +154,8 @@ public class Application {
             if (computerSet.contains(character)) {
                 count++;
             }
-        }*/
-        int count = 0;
+        }
+        /*int count = 0;
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -164,7 +166,7 @@ public class Application {
                     count++;
                 }
             }
-        }
+        }*/
 
         return count;
     }
