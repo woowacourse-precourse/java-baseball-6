@@ -27,11 +27,6 @@ public class Game {
                 computer.add(randomNumber);
             }
         }
-        System.out.print("답:");
-        for (int e: computer) {
-            System.out.print(e);
-        }
-        System.out.println("");
     }
 
     private void getUserInput() {
@@ -39,20 +34,18 @@ public class Game {
 
         System.out.print("숫자를 입력해주세요 : ");
         String userInputString = readLine();
-        while (userInputString.length() != 3) {
-            System.out.println("잘못된 입력입니다. 세 자리 수로 다시 입력해주세요.");
-            userInputString = readLine();
+
+        if (userInputString.length() != 3) {
+            throw new IllegalArgumentException();
         }
 
         int userInputInt = parseInt(userInputString);
-//        System.out.println(userInputInt);
 
         for (int i = 0; i < 3; i++) {
             user.add(userInputInt % 10);
             userInputInt = userInputInt / 10;
         }
         Collections.reverse(user);
-//        System.out.println("getUserInput 끝");
     }
 
     private void printResult() {
@@ -60,7 +53,7 @@ public class Game {
         int ball = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (user.get(i) == computer.get(i)) {
+            if (user.get(i).equals(computer.get(i))) {
                 strike++;
             } else if (computer.contains(user.get(i))) {
                 ball++;
@@ -68,6 +61,7 @@ public class Game {
         }
 
         if (strike == 3) {
+            System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             gameRunning = false;
         } else if (strike == 0 && ball == 0) {
@@ -81,19 +75,16 @@ public class Game {
 
     private void examineNewGameOrNot() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
         String userInput = readLine();
-        while (!userInput.equals("1") && !userInput.equals("2")) {
-            System.out.println("잘못된 입력입니다.");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            userInput = readLine();
+        if (!userInput.equals("1") && !userInput.equals("2")) {
+            throw new IllegalArgumentException();
         }
-        if (userInput.equals("1")) {
-            programRunning = true;
-        } else if (userInput.equals("2")) {
+
+        if (userInput.equals("2")) {
             programRunning = false;
         }
     }
-
 
     private void startGame() {
         generateRandomNumber();
@@ -106,7 +97,6 @@ public class Game {
 
     private void resetData() {
         computer = new ArrayList<>();
-        programRunning = true;
         gameRunning = true;
     }
 
