@@ -1,4 +1,4 @@
-package baseball.io;
+package baseball.view;
 
 public enum ConsoleMessage {
 

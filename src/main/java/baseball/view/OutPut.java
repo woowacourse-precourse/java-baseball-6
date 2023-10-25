@@ -1,4 +1,4 @@
-package baseball.io;
+package baseball.view;
 
 import java.io.IOException;
 
