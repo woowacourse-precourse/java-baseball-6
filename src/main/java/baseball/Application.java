@@ -28,6 +28,7 @@ public class Application {
             if (input.equals("2")) {
                 break;
             }
+            throw new IllegalArgumentException("1 또는 2만 입력해주세요");
         }
     }
 }
