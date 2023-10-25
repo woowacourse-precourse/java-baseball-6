@@ -53,7 +53,7 @@ public class Controller {
         return end.equals(RESTART);
     }
 
-    private static void validateEndInput(String end) {
+    private void validateEndInput(String end) {
         if (!end.equals(FIN) && !end.equals(RESTART)) {
             throw new IllegalArgumentException("Input is incorrect");
         }
