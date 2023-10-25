@@ -18,29 +18,14 @@ public class StringUtil {
 
     public static String convertZeroToEmptyString(int value) {
         String stringValue = String.valueOf(value);
+        stringValue = handleZeroValue(value, stringValue);
+        return stringValue;
+    }
+
+    public static String handleZeroValue(int value, String stringValue) {
         if (value == 0) {
             stringValue = "";
         }
         return stringValue;
-    }
-
-    public static void validateShortLength(String string, int minLength) {
-        if (string.length() < minLength) {
-            ExceptionUtil.throwInvalidValueException(TOO_SHORT_LENGTH_MESSAGE);
-        }
-    }
-
-    public static void validateLongLength(String string, int maxLength) {
-        if (string.length() > maxLength) {
-            ExceptionUtil.throwInvalidValueException(TOO_LONG_LENGTH_MESSAGE);
-        }
-    }
-
-    public static void validateDuplicated(String string) {
-        Set valueSet = StringUtil.toHashSet(string);
-
-        if (valueSet.size() < NUMBER_LENGTH) {
-            ExceptionUtil.throwInvalidValueException(DUPLICATE_DIGITS_MESSAGE);
-        }
     }
 }
