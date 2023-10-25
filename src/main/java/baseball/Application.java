@@ -51,7 +51,7 @@ public class Application {
                 if (!computer.contains(input.get(i))) continue;     //플레이어가 입력한 숫자가 컴퓨터가 정한 숫자 리스트에 포함 되어 있지 않을 때
                 if (computer.get(i) == input.get(i))                //같은 자리에 숫자가 있을 때
                     strike++;
-                else ball++;                                        //포함만 되어 잇을 때
+                else ball++;                                        //포함만 돼 았을 때
             }
 
             if (strike == 0 && ball == 0) {                         //스트라이크, 볼 카운터가 0일 때
