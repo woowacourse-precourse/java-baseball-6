@@ -10,13 +10,14 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameService {
     private Computer computer = new Computer();
     private User user = new User();
-    private int strikeCount = 0;
-    private int ballCount = 0;
+    private int strikeCount;
+    private int ballCount;
 
     private Converter converter = new Converter();
 
     public void play() {
         while (true) {
+            resetCount();
             getUserNumber();
             getResult(user.getInputNumber());
 
@@ -71,5 +72,10 @@ public class GameService {
         } else {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void resetCount() {
+        strikeCount = 0;
+        ballCount = 0;
     }
 }
