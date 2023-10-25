@@ -23,7 +23,7 @@ public class BaseBallGame {
 
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_MESSAGE);
         boolean quit = false;
         computer.generateComputerBaseBallNumber();
 
@@ -84,5 +84,28 @@ public class BaseBallGame {
             stringBuilder.append(NOTHING_MESSAGE);
             System.out.println(stringBuilder);
         }
+    }
+
+    private boolean isGameEnd() {
+        if (strikeCount == INPUT_LENGTH) {
+            System.out.println(WIN_MESSAGE);
+            return askRetry();
+        }
+        return false;
+    }
+
+    private boolean askRetry() {
+        System.out.println(RETRY_MESSAGE);
+        String quitInput = Console.readLine();
+
+        if (quitInput.equals(RESTART_NUMBER)) {
+            computer.generateComputerBaseBallNumber();
+            return false;
+        }
+        if (quitInput.equals(QUIT_NUMBER)) {
+            System.out.println(QUIT_MESSAGE);
+            return true;
+        }
+        throw new IllegalArgumentException(EXCEPTION_MESSAGE);
     }
 }
