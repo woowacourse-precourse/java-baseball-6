@@ -3,7 +3,6 @@ package baseball.player;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
-
     private final String INPUT_NUM_REGEX = "[1-9]{3}";
 
     public Player() {
@@ -17,5 +16,4 @@ public class Player {
         }
         return num;
     }
-
 }

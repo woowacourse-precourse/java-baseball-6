@@ -5,7 +5,6 @@ import baseball.message.Message;
 import baseball.player.Player;
 
 public class Game {
-
     private Computer computer;
     private Player player;
 
@@ -23,5 +22,4 @@ public class Game {
             }
         }
     }
-
 }

@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Computer {
-
     private final Map<Integer, Integer> answer;
     private final int NUM_SIZE = 3;
 

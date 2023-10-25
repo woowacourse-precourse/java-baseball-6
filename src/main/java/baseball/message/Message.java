@@ -1,7 +1,6 @@
 package baseball.message;
 
 public enum Message {
-
     FIRST_GAME_START("숫자 야구 게임을 시작합니다."),
     CORRECT_ANSWER("3스트라이크\n" +
             "3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
