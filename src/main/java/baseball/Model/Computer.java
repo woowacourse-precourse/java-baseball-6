@@ -6,11 +6,7 @@ import java.util.List;
 
 public class Computer {
 
-    public static void setRandomNumber() {
-        List<Integer> randomNumber = generateRandomNumber();
-    }
-
-    private static List<Integer> generateRandomNumber() {
+    public static List<Integer> generateRandomNumber() {
         List<Integer> randomNum = new ArrayList<>();
         while(randomNum.size() < 3) {
             int randomNumberByComputer = Randoms.pickNumberInRange(1, 9);

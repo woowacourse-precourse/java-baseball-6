@@ -1,5 +1,7 @@
 package baseball.Utils;
 
+import java.util.List;
+
 public class CheckValidNumber {
     /**
      * 유효 숫자 확인
@@ -33,5 +35,11 @@ public class CheckValidNumber {
             }
         }
         return IsDifferentNumber;
+    }
+
+    public static void checkNewOrQuit(String Inputstring)
+    {
+        List<String> possibleNumber = List.of("1", "2");
+        if (!possibleNumber.contains(Inputstring)) throw new IllegalArgumentException();
     }
 }

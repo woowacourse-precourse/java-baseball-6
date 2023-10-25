@@ -1,12 +1,16 @@
 package baseball.Service;
 
+import baseball.Utils.CheckValidNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.Model.Player;
 import baseball.Model.Computer;
+import baseball.Model.Hint;
 import baseball.View.StartGameView;
 import baseball.View.PlayGameView;
 import baseball.View.EndGameView;
+
+import java.util.List;
 
 public class GameService {
 
@@ -16,22 +20,31 @@ public class GameService {
         do {
             startNewGame();
         } while(restartGame());
+        cleanGame();
     }
     public static void startNewGame(){
-        Computer.setRandomNumber();
-        playGame();
+        do {
+            List<Integer> computer = Computer.generateRandomNumber();
+            playGame(computer);
+        } while(!Hint.isThreeBall);
+        PlayGameView.printCorrectAnswer();
     }
 
-    private static void playGame() {
+    private static void playGame(List<Integer> computer) {
         PlayGameView.printInputNumber();
-        Player.getPlayerNumber(Console.readLine());
+        List<Integer> player = Player.getPlayerNumber(Console.readLine());
+        Hint.compareNumber(computer, player);
     }
 
-    private static void endGame() {
-
-    }
 
     private static Boolean restartGame() {
-        return true;
+        EndGameView.printGameEnd();
+        String restartOrQuit = Console.readLine();
+        CheckValidNumber.checkNewOrQuit(restartOrQuit);
+        return restartOrQuit.equals("1");
+    }
+
+    private static void cleanGame() {
+        Console.close();
     }
 }

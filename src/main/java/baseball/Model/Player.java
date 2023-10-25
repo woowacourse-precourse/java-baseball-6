@@ -6,11 +6,10 @@ import java.util.List;
 
 public class Player {
     public static String playerNumber;
-    public static List<Integer> playerNumberList;
 
-    public static void getPlayerNumber(String inputNumber) {
+    public static List<Integer> getPlayerNumber(String inputNumber) {
         playerNumber = inputNumber;
         CheckValidNumber.IsValidNumber(inputNumber);
-        playerNumberList = ChangeArray.stringToList(inputNumber);
+        return ChangeArray.stringToList(inputNumber);
     }
 }
