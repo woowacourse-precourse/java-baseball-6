@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-
 public class BaseballGame {
     public void startGame() {
         boolean playAgain = true;
@@ -57,28 +56,40 @@ public class BaseballGame {
         return result;
     }
 
-
     private int[] getUserNumbers() {
         int[] userNumbers = new int[3];
+
         while (true) {
             try {
-                System.out.print("세 자리 숫자를 입력하세요: ");
-                String userInput = Console.readLine();
-                if (userInput.length() != 3) {
-                    throw new IllegalArgumentException("세 자리 숫자를 입력하세요.");
-                }
-                for (int i = 0; i < 3; i++) {
-                    userNumbers[i] = userInput.charAt(i) - '0';
-                    if (userNumbers[i] < 1 || userNumbers[i] > 9) {
-                        throw new IllegalArgumentException("1에서 9 사이의 숫자를 입력하세요.");
-                    }
-                }
+                String userInput = readUserInput();
+                userNumbers = parseUserInput(userInput);
                 return userNumbers;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                System.exit(0); // 프로그램 종료
+                System.exit(0);
             }
         }
+    }
+
+    private String readUserInput() {
+        System.out.print("세 자리 숫자를 입력하세요: ");
+        return Console.readLine();
+    }
+
+    private int[] parseUserInput(String userInput) {
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException("세 자리 숫자를 입력하세요.");
+        }
+
+        int[] userNumbers = new int[3];
+        for (int i = 0; i < 3; i++) {
+            userNumbers[i] = userInput.charAt(i) - '0';
+            if (userNumbers[i] < 1 || userNumbers[i] > 9) {
+                throw new IllegalArgumentException("1에서 9 사이의 숫자를 입력하세요.");
+            }
+        }
+
+        return userNumbers;
     }
 
     private int[] calculateResult(int[] computerNumbers, int[] userNumbers) {
@@ -105,7 +116,6 @@ public class BaseballGame {
         return false;
     }
 
-
     private static void printResult(int[] result) {
         if (result[1] > 0) {
             System.out.print(result[1] + "볼 ");
@@ -131,5 +141,4 @@ public class BaseballGame {
             return askToPlayAgain();
         }
     }
-
 }
