@@ -10,12 +10,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ComputerTest {
+    BaseballGameRuleTest baseballGameRuleTest = new BaseballGameRuleTest();
     @Test
     @DisplayName("3 자리의 숫자 인지 확인한다.")
     public void pick3NumberTest() {
         Computer computer = new Computer();
         List<Integer> computersRandomNumbers = computer.pickNumbers();
-        assertThat(computersRandomNumbers.size()).isEqualTo(3);
+        assertThat(computersRandomNumbers.size()).isEqualTo(baseballGameRuleTest.getBaseballMaxAmount());
         assertThat(GameValidate.isCorrectSize(computersRandomNumbers)).isTrue();
     }
     @Test

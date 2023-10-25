@@ -3,6 +3,7 @@ package baseball.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.model.BaseballGameRuleTest;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class InputTest extends NsTest {
+    private BaseballGameRuleTest baseballGameRuleTest = new BaseballGameRuleTest();
     @Test
     @DisplayName("플레이어의 3자리 수를 화면에서 입력받는다.")
     public void inputThreeNumberTest(){
@@ -66,7 +68,7 @@ public class InputTest extends NsTest {
         String inputNumber = "1";
         run(inputNumber);
         InputController inputController = new InputController();
-        assertThat(inputController.getPlayerRestartNumber()).isEqualTo(1);
+        assertThat(inputController.getPlayerRestartNumber()).isEqualTo(baseballGameRuleTest.getBaseballGameRestart());
     }
     @Override
     protected void runMain() {
