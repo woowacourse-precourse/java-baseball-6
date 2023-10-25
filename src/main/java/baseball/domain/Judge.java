@@ -29,8 +29,7 @@ public class Judge {
 
     public void generateResultMessage(GameResult gameResult) {
         if (gameResult.isBallStrike()) {
-            System.out.printf(GameMessage.BALL_STRIKE.getMessage(), gameResult.ballCnt(),
-                    gameResult.strikeCnt());
+            System.out.printf(GameMessage.BALL_STRIKE.getMessage(), gameResult.ballCnt(), gameResult.strikeCnt());
         } else if (gameResult.isOnlyStrike() && !gameResult.isThreeStrike()) {
             System.out.printf(GameMessage.STRIKE.getMessage(), gameResult.strikeCnt());
         } else if (gameResult.isOnlyBall()) {
@@ -39,8 +38,7 @@ public class Judge {
             System.out.println(GameMessage.NOTHING.getMessage());
         } else if (gameResult.isThreeStrike()) {
             System.out.printf(GameMessage.STRIKE.getMessage(), gameResult.strikeCnt());
-            System.out.printf(GameMessage.THREE_STRIKE.getMessage(),
-                    GameConstant.MAXIMUM_STRIKE_COUNT.getConstant());
+            System.out.printf(GameMessage.THREE_STRIKE.getMessage(), GameConstant.MAXIMUM_STRIKE_COUNT.getConstant());
         }
     }
 
