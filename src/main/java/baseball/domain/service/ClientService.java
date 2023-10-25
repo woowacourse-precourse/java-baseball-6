@@ -22,7 +22,8 @@ public class ClientService {
 	}
 
 	private void validateRestartInput(String input) {
-		if (!input.equals(CommonStringType.RESTART.getContent()) && !input.equals(CommonStringType.FINISH.getContent())) {
+		if (!input.equals(CommonStringType.RESTART.getContent()) && !input.equals(
+				CommonStringType.FINISH.getContent())) {
 			throw new IllegalArgumentException(OutputType.EXCEPTION.getComment());
 		}
 	}

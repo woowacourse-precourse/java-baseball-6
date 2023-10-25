@@ -39,7 +39,7 @@ public class ConsoleUtil {
 	private static boolean ballAndStrikeExistOutput(int ball, int strike, StringBuilder stringBuilder) {
 		if (existsBall(ball) && existsStrike(strike)) {
 			stringBuilder.append(OutputType.SPACE.getComment()).append(strike).append(OutputType.STRIKE.getComment())
-				.append(OutputType.NEXT_LINE.getComment());
+					.append(OutputType.NEXT_LINE.getComment());
 			System.out.println(stringBuilder);
 			return true;
 		}

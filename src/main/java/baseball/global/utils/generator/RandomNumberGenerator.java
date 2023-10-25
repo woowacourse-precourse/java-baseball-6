@@ -24,8 +24,8 @@ public class RandomNumberGenerator implements NumberGenerator {
 
 	private int getRandomNumber() {
 		return Randoms.pickNumberInRange(
-			MIN_RANGE_OF_DIGITS,
-			MAX_RANGE_OF_DIGITS
+				MIN_RANGE_OF_DIGITS,
+				MAX_RANGE_OF_DIGITS
 		);
 	}
 }
