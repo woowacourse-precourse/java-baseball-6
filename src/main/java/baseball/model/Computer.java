@@ -16,9 +16,7 @@ public class Computer extends Number {
 
     private void putRandomNumber() {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
-        if (!isContained(randomNumber)) {
-            numbers.add(randomNumber);
-        }
+        putNumber(randomNumber);
     }
 
 }

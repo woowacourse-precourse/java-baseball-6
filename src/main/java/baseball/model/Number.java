@@ -18,4 +18,10 @@ public class Number {
     public boolean isCompleted() {
         return numbers.size() == NUMBER_SIZE;
     }
+
+    public void putNumber(int num) {
+        if (!isContained(num)) {
+            numbers.add(num);
+        }
+    }
 }
