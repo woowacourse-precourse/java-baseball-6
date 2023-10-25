@@ -11,16 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private Score score;
     private final List<Integer> predictions = new ArrayList<>();
-
+    private Score score;
 
     public Score getScore() {
         return score;
     }
+
     public Integer getPrediction(int index) {
         return predictions.get(index);
     }
+
     public void predict() {
         initPredictions();
         String numberString = readNumberString();
