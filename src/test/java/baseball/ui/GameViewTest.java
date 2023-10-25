@@ -91,17 +91,9 @@ class GameViewTest {
     }
 
     private GameView getGameView(GameController gameController) {
-        return new GameView(gameController, new UserInputValidator(), new InputComponent() {
-            @Override
-            public String getUserAnswer() {
-                return "123";
-            }
-
-            @Override
-            public String getUserResumeChoice() {
-                return "2";
-            }
-        }, new OutputComponentImpl(), new ResultFormatStringCreatorImpl());
+        return new GameView(gameController,
+                () -> "123", () -> "2",
+                new OutputComponentImpl(), new ResultFormatStringCreatorImpl());
     }
 
     private static GameController getGameController(BooleanSupplier booleanSupplier) {

@@ -9,16 +9,18 @@ import java.util.Map;
 public class GameView {
 
     private GameController gameController;
-    private final UserInputValidator validator;
-    private final InputComponent inputComponent;
+    //    private final InputAnswerValidator validator;
+    private final InputComponent inputUserAnswer;
+    private final InputComponent inputUserResume;
     private final OutputComponent outputComponent;
     private final ResultFormatStringCreator creator;
 
-    public GameView(GameController gameController, UserInputValidator validator, InputComponent inputComponent,
+    public GameView(GameController gameController,
+                    InputComponent inputUserAnswer, InputComponent inputUserResume,
                     OutputComponent outputComponent, ResultFormatStringCreator creator) {
         this.gameController = gameController;
-        this.validator = validator;
-        this.inputComponent = inputComponent;
+        this.inputUserAnswer = inputUserAnswer;
+        this.inputUserResume = inputUserResume;
         this.outputComponent = outputComponent;
         this.creator = creator;
     }
@@ -40,21 +42,21 @@ public class GameView {
 
     private void guess() {
         outputComponent.print("숫자를 입력해주세요 : ");
-        String validUserAnswer = validator.check(inputUserAnswer());
+        String validUserAnswer = inputUserAnswer.getValidUserInput();
         Map<String, Integer> resultMap = gameController.checkAnswer(validUserAnswer);
         System.out.println(creator.toString(resultMap));
     }
 
     private void flowAfterCorrect() {
         outputComponent.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-        int validUserChoice = validator.checkResume(inputComponent.getUserResumeChoice());
+        String validUserChoice = inputUserResume.getValidUserInput();
         determineFlow(validUserChoice);
     }
 
-    private void determineFlow(int validUserChoice) {
-        if (validUserChoice == 1 && gameController.isAbleToRestart()) {
+    private void determineFlow(String validUserChoice) {
+        if (validUserChoice.contentEquals("1") && gameController.isAbleToRestart()) {
             this.restart();
-        } else if (validUserChoice == 2 && gameController.isAbleToTerminate()) {
+        } else if (validUserChoice.contentEquals("2") && gameController.isAbleToTerminate()) {
             outputComponent.print("게임 종료");
         }
     }
@@ -63,10 +65,6 @@ public class GameView {
         this.gameController = new GameControllerImpl(new Scoring(RandomNumberCreator.create(3)));
         this.gameController.start();
         guessUntilCorrect();
-    }
-
-    private String inputUserAnswer() {
-        return inputComponent.getUserAnswer();
     }
 
 }
