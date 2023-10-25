@@ -12,6 +12,7 @@ public class OutputResult {
     public Boolean result(int strike, int ball) {
 
         StartGame startGame = new StartGame();
+        ExceptionProcess exceptionProcess = new ExceptionProcess();
 
         if (ball == 0 && strike == 0) {
             System.out.println(GameMessage.NOTHING);
@@ -22,6 +23,8 @@ public class OutputResult {
                 System.out.println(GameMessage.OUTPUT);
                 System.out.println(GameMessage.CHOICE);
                 String choice = Console.readLine();
+                exceptionProcess.enterRestartAndExitException(choice);
+                // 1 or 2를 제외한 입력시 예외 처리
                 if (choice.equals(REGAME)) {
                     startGame.reStart();
                     return false;
@@ -29,7 +32,6 @@ public class OutputResult {
                     System.out.println(GameMessage.END);
                     return false;
                 } else {
-                    ExceptionProcess.missingInputException();
                     return null;
                 }
             } else {
