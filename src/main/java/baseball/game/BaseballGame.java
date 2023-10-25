@@ -1,38 +1,51 @@
 package baseball.game;
 
-import baseball.NumberFactory;
 import baseball.error.ErrorCode;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Game {
+public class BaseballGame {
 
-    private static final int LIMIT = 3;
-    private static final int RESTART_INPUT_LIMIT = 1;
+    private final int RESET = 0;
 
     private final List<Integer> ANSWER_NUMBERS;
 
-    private RecordTable recordTable;
-
     private int strike;
+
     private int ball;
 
-    public Game() {
-        this.ANSWER_NUMBERS = NumberFactory.createNumbers();
-        this.recordTable = new RecordTable();
+    public BaseballGame(List<Integer> numbers) {
+        this.ANSWER_NUMBERS = numbers;
+        this.strike = RESET;
+        this.ball = RESET;
     }
 
-    public void check(String userInput) {
+    public void tryUserInput(String userInput) {
         valid(userInput);
         List<Integer> userNumbers = convertToIntegerList(userInput);
+        matching(userNumbers);
 
-        resetRecord();
+    }
+
+    public void matching(List<Integer> userNumbers) {
+        reset();
         for (Integer userNumber : userNumbers) {
             if (ANSWER_NUMBERS.contains(userNumber)) {
                 checkStrike(userNumber, userNumbers);
             }
         }
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
     }
 
     private void checkStrike(Integer userNumber, List<Integer> userNumbers) {
@@ -43,9 +56,9 @@ public class Game {
         ball++;
     }
 
-    private void resetRecord() {
-        strike = 0;
-        ball = 0;
+    private void reset() {
+        strike = RESET;
+        ball = RESET;
     }
 
 
