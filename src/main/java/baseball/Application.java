@@ -27,16 +27,7 @@ public class Application {
 
                 System.out.print("숫자를 입력해주세요 : ");
                 String response = Console.readLine();
-                List<Integer> prediction = new ArrayList<>();
-                for (int i = 0; i < response.length(); i++) {
-                    if (!prediction.contains(response.charAt(i) - '0') && 1 <= response.charAt(i) - '0' && response.charAt(i) - '0' <= 10) {
-                        prediction.add(response.charAt(i) - '0');
-                    }
-                }
-
-                if (prediction.size() != 3 || response.length() != 3) {
-                    throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
-                }
+                List<Integer> prediction = validateUserInput(response);
 
                 for (int i = 0; i < prediction.size(); i++) {
                     if (prediction.get(i).equals(numbers.get(i))) {
@@ -83,6 +74,23 @@ public class Application {
             }
         }
 
+    }
+
+    private static List<Integer> validateUserInput(String response) throws IllegalArgumentException {
+        List<Integer> prediction = new ArrayList<>();
+
+        for (int i = 0; i < response.length(); i++) {
+            int nextNumber = response.charAt(i) - '0';
+            if (!prediction.contains(nextNumber) && 1 <= nextNumber && nextNumber <= 9) {
+                prediction.add(response.charAt(i) - '0');
+            }
+        }
+
+        if (prediction.size() != 3 || response.length() != 3) {
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+        }
+
+        return prediction;
     }
 
     private static List<Integer> getThreeRandomNumbers() {
