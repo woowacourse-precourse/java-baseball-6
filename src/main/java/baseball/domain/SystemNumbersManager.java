@@ -8,19 +8,19 @@ import java.util.List;
 
 public class SystemNumbersManager {
 
-    public static String createSystemNumbers() {
-        List<String> systemNumbers = new ArrayList<>();
+    public static List<Integer> createSystemNumbers() {
+        List<Integer> systemNumbers = new ArrayList<>();
         while (systemNumbers.size() < 3) {
             duplicateNumberCheck(systemNumbers, createSingleNumber());
         }
-        return String.join("", systemNumbers);
+        return systemNumbers;
     }
 
-    private static String createSingleNumber() {
-        return Integer.toString(Randoms.pickNumberInRange(GameValue.MIN_NUMBER, GameValue.MAX_NUMBER));
+    private static int createSingleNumber() {
+        return Randoms.pickNumberInRange(GameValue.MIN_NUMBER, GameValue.MAX_NUMBER);
     }
 
-    private static void duplicateNumberCheck(List<String> numberList, String number) {
+    private static void duplicateNumberCheck(List<Integer> numberList, int number) {
         if (!numberList.contains(number)) {
             numberList.add(number);
         }
