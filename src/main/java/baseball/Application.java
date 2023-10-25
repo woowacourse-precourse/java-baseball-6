@@ -72,7 +72,7 @@ public class Application {
 
         List<Integer> userNum = new ArrayList<>();
         for(int i = 0; i<num.length(); i++){
-            if('1' <= num.charAt(i) && num.charAt(i) <= '9')
+            if(('1' <= num.charAt(i) && num.charAt(i) <= '9') && !userNum.contains(num.charAt(i) - '0'))
                 userNum.add(num.charAt(i) - '0');
             else
                 throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
