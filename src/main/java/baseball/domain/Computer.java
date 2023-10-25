@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.Operator;
+import baseball.utils.Operator;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 
@@ -11,7 +11,6 @@ public class Computer {
         do {
             numbers = pickNumbers();
         } while (!Operator.isDuplicated(numbers));
-
     }
 
     public int[] pickNumbers() {
