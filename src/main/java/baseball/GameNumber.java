@@ -37,4 +37,23 @@ public class GameNumber {
     private static boolean hasDistinctDigits(String input) {
         return input.chars().distinct().count() == 3;
     }
+
+    public GameResult judge(GameNumber guessed) {
+        int strike = 0;
+        int ball = 0;
+        boolean isCorrectAnswer;
+
+        // TODO: for문 리팩토링 구조 고민해보기
+        for (int i = 0; i < 3; i++) {
+            if (this.value.charAt(i) == guessed.value.charAt(i)) {
+                strike++;
+            } else if (this.value.contains(String.valueOf(guessed.value.charAt(i)))) {
+                ball++;
+            }
+        }
+
+        isCorrectAnswer = (strike == 3);
+
+        return new GameResult(strike, ball, isCorrectAnswer);
+    }
 }
