@@ -1,35 +1,64 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import java.util.List;
 
-class ApplicationTest extends NsTest {
-    @Test
-    void 게임종료_후_재시작() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-                },
-                1, 3, 5, 5, 8, 9
-        );
-    }
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ApplicationTest {
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+    public void 스트라이크_볼_개수세기() {
+        List<Character> user = List.of('1', '2', '3');
+        List<Character> computer = List.of('3', '2', '1');
+
+        int[] result = Application.count(user, computer);
+
+        // 1스트라이크 2볼
+        assertEquals(1, result[1]);
+        assertEquals(2, result[0]);
     }
 
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
+    @Test
+    public void 스트라이크_볼_출력확인() {
+        int[] result = {2, 1};
+        String output = Application.output(result);
+
+        assertEquals("2볼 1스트라이크", output);
     }
+
+    @Test
+    public void 유효한숫자예측() {
+        String validGuess = "123";
+
+        assertDoesNotThrow(() -> Application.guess(validGuess));
+    }
+
+    @Test
+    public void 세자리아님() {
+
+        String invalidGuess = "12";
+        assertThrows(IllegalArgumentException.class, () -> Application.guess(invalidGuess));
+    }
+
+    @Test
+    public void 숫자가아님() {
+
+        String nonNumericGuess = "1a2";
+        assertThrows(IllegalArgumentException.class, () -> Application.guess(nonNumericGuess));
+    }
+
+    @Test
+    public void 중복된숫자() {
+        String duplicateGuess = "112";
+        assertThrows(IllegalArgumentException.class, () -> Application.guess(duplicateGuess));
+    }
+
+    @Test
+    public void 범위벗어나는숫자() {
+        String outOfRangeGuess = "012";
+        assertThrows(IllegalArgumentException.class, () -> Application.guess(outOfRangeGuess));
+    }
+
 }
