@@ -1,9 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class BaseBallGame {
 
@@ -11,7 +9,7 @@ public class BaseBallGame {
 
     public int numOfBall = 0;
     public int numOfStrike = 0;
-    public final String INPUT_REGEX = "([1-9])(?!\\1)([1-9])(?!\\1|\\2)([1-9])";
+
     public final String ONE_OR_TWO = "[12]";
 
     public static BaseBallGame getInstance() {
@@ -34,7 +32,7 @@ public class BaseBallGame {
             // 정답 확인용 임시 코드
             System.out.println(Arrays.toString(computer.getRandomNumber().toArray()));
 
-            checkAnswer(computer);
+            guessNumber(computer);
 
             System.out.println(OutputMessage.END_OR_NOT);
 
@@ -42,36 +40,19 @@ public class BaseBallGame {
     }
 
 
-    private void checkAnswer(Computer computer) {
+    private void guessNumber(Computer computer) {
         do {
             System.out.print(OutputMessage.ENTER_NUMBER);
-            List<Integer> input = getInput();
-            compareAnswerToInput(computer, input);
+            User user = new User();
+            compareAnswerToInput(computer, user);
         } while (!getResult());
     }
 
-    private static List<Integer> getInput() {
-        String st = Console.readLine();
-        throwException(st);
-        String[] arr = st.split("");
 
-        List<Integer> input = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            input.add(Integer.parseInt(arr[i]));
-        }
-        return input;
-    }
-
-    private static void throwException(String st) {
-        if (!st.matches(baseBallGame.INPUT_REGEX)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void compareAnswerToInput(Computer computer, List<Integer> input) {
+    private void compareAnswerToInput(Computer computer, User user) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (computer.getRandomNumber().get(i).equals(input.get(j))) {
+                if (computer.getRandomNumber().get(i).equals(user.getInputNumber().get(j))) {
                     if (i == j) {
                         numOfStrike++;
                         break;
