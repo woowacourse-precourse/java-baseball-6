@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.util.SplitLine;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -46,9 +47,10 @@ public class BaseBallManager {
         return compareResult;
     }
 
-        if (nothingCount == 3) playerResult.put(NOTHING, 1);
-
-        return playerResult;
+    private BallNumberGroup generateBallGroup(String numbers) {
+        List<Integer> playerBalls = SplitLine.splitLine(numbers);
+        BallNumberGroup ballNumberGroup = new BallNumberGroup(playerBalls);
+        return ballNumberGroup;
     }
 
     private List<Integer> generateUniqueRandomNumbers() {
