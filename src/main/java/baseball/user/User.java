@@ -16,7 +16,6 @@ public class User {
 
     public void inputUserNumber() {
         UserNumber userNumber = new UserNumber(Console.readLine());
-
         this.userNumber = userNumber.getUserNumber();
     }
 
