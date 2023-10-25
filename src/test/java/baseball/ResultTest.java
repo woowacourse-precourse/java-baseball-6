@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ReportTest {
+public class ResultTest {
 
     @Test
     void strike3() {
