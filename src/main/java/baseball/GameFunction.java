@@ -41,7 +41,6 @@ public class GameFunction {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         getComputerNumber();
         while(true) {
-            try {
                 strike = 0;
                 ball = 0;
                 System.out.print("숫자를 입력해주세요 : ");
@@ -75,18 +74,19 @@ public class GameFunction {
                 if (strike == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    int quitcheck = Integer.parseInt(br.readLine());
-                    if (quitcheck != 1) {
+                    String quitcheck = br.readLine();
+                    if (quitcheck.equals("1")) {
+                        getComputerNumber();
+//                        continue;
+                    }
+                    else if (quitcheck.equals("2")) {
                         System.out.println("게임종료");
                         break;
                     }
                     else {
-                        getComputerNumber();
+                        throw new IllegalArgumentException();
+                    }
                     }
                 }
-            } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException();
             }
         }
-    }
-}
