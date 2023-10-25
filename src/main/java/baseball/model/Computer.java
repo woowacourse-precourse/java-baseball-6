@@ -37,7 +37,7 @@ public class Computer {
         return getStringResult(strike, ball);
     }
 
-    private static List<Integer> convertToIntegerList(String inputs) {
+    private List<Integer> convertToIntegerList(String inputs) {
         List<Integer> list = new ArrayList<>();
         char[] charArray = inputs.toCharArray();
         for (char c : charArray) {
@@ -46,7 +46,7 @@ public class Computer {
         return list;
     }
 
-    private static String getStringResult(int strike, int ball) {
+    private String getStringResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             return NOTHING;
         }
