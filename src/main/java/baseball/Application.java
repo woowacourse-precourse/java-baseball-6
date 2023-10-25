@@ -76,7 +76,7 @@ public class Application {
         return gameState == 1;
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         Scanner scanner = new Scanner(System.in);
@@ -87,8 +87,6 @@ public class Application {
 
             // 사용자 입력
             System.out.print("숫자를 입력해주세요 : ");
-
-
             String userValue = readLine();
 
             if (userValue.length() != 3) {
