@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
+    private static String answerComputer;
     final int INPUT_LENGTH_MAX = 3;
     final int BALL_MIN = 1;
     final int BALL_MAX = 9;
@@ -16,7 +17,7 @@ public class Model {
     final int STRIKE = 0;
     final int BALL = 1;
 
-    public static String initComputerAnswer() {
+    public static void initComputerAnswer() {
         //model
         List<Integer> computer = new ArrayList<>();
         StringBuilder answerBuilder = new StringBuilder();
@@ -27,27 +28,42 @@ public class Model {
                 answerBuilder.append(Integer.toString(randomNumber));
             }
         }
-        return answerBuilder.toString();
+        answerComputer = answerBuilder.toString();
     }
 
-    public Integer[] countStrikeBallHits(String source, String answer) {
+    public Integer[] countStrikeBallHits(String source) {
         Integer[] score = new Integer[]{0, 0};
 
         char sourceChar, answerChar;
         for (int i = 0; i < source.length(); i++) {
             sourceChar = source.charAt(i);
-            answerChar = answer.charAt(i);
+            answerChar = answerComputer.charAt(i);
             if (sourceChar == answerChar) {
                 score[STRIKE]++; // Increment strikes
                 continue;
             }
-            if (answer.contains(String.valueOf(sourceChar))) {
+            if (answerComputer.contains(String.valueOf(sourceChar))) {
                 score[BALL]++; // Increment balls
             }
         }
 
         return score;
     }
+
+
+
+    public boolean restartGame(String playerInput) {
+        if (playerInput.equals("1")) {
+            initComputerAnswer();
+            return true;
+        }
+        if (playerInput.equals("2")) {
+            return false;
+        }
+        return false;
+    }
+
+
 
     public void validateCheckInputAnswer(String inputPlayer) {
         exceptLengthInvalid(inputPlayer, INPUT_LENGTH_MAX);
