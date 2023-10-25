@@ -5,7 +5,7 @@ import controller.ComputerController;
 
 public class GameView {
     private static GameView instance = new GameView();
-    private static ComputerController computerController = new ComputerController();
+    private static ComputerController computerController = ComputerController.getInstance();
 
     private GameView() { }
 
