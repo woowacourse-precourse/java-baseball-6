@@ -36,6 +36,12 @@ public class UserInputException {
         }
     }
 
+    public void validateRestartInput(String userInput) {
+        if (!"1".equals(userInput) && !"2".equals(userInput)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public void validateUserInput(String userInput) {
         validateLength(userInput);
         validateIsNumber(userInput);
