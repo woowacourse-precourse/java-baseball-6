@@ -2,11 +2,16 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import baseball.view.GameView;
+import baseball.model.BaseballGame;
+import baseball.model.RetryNumber;
+import baseball.controller.GameController;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 
 class ApplicationTest extends NsTest {
     @Test
@@ -19,7 +24,19 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+    @Test
+    void 랜덤_숫자_테스트(){
+        BaseballGame baseballGame =new BaseballGame();
 
+        assertThat(baseballGame.getComputerNumbers().size()).isEqualTo(3);
+    }
+    @Test
+    void 재시작_입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> RetryNumber.isCorrectRetryNumber("3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
