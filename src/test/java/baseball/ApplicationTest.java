@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private List<Integer> computerNumber;
     private String myNumber;
-    private Application baseballGame;
+    private Game baseballGame;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -42,7 +42,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 스트라이크_볼_갯수세기(){
-        baseballGame = new Application(0,0);
+        baseballGame = new Game();
         computerNumber = Arrays.asList(1,3,2);
         myNumber = "123";
         baseballGame.countStrikeAndBall(myNumber,computerNumber);
@@ -53,7 +53,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 숫자야구_결과_테스트(){
         System.setOut(new PrintStream(outContent));
-        Application baseballGame = new Application(0,0);
+        baseballGame = new Game();
         baseballGame.displayBaseballGameResult(2,0);
         String consoleOutput = outContent.toString().trim();
         Assertions.assertEquals("2스트라이크",consoleOutput);
