@@ -1,8 +1,9 @@
 package baseball.domain;
 
-import static baseball.domain.AnswerFactory.ANSWER_SIZE;
-
 public class Referee {
+
+    private static final int STRIKE_FULL_COUNT = 3;
+    public static final int ZERO_COUNT = 0;
     private final Strike strike;
     private final Ball ball;
 
@@ -13,11 +14,11 @@ public class Referee {
 
 
     public boolean judgment(){
-        return strike.getStrike() == ANSWER_SIZE;
+        return strike.getStrike() == STRIKE_FULL_COUNT;
     }
 
     public boolean judgmentZero(){
-        return strike.getStrike() == 0 && ball.getBall() == 0;
+        return strike.getStrike() == ZERO_COUNT && ball.getBall() == ZERO_COUNT;
     }
 
     public int getStrikeScore() {

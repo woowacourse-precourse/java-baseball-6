@@ -3,8 +3,8 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class AnswerFactory {
-    public static final int ANSWER_SIZE =3;
-    private static final int NUMBER_MAX_SIZE =10;
+    public static final int ANSWER_SIZE = 3;
+    private static final int NUMBER_MAX_SIZE = 10;
     private static final int START_RANG = 1;
     private static final int END_RANG = 9;
 

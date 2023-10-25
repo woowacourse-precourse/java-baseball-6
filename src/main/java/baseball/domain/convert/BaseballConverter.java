@@ -1,5 +1,7 @@
 package baseball.domain.convert;
 
+import static baseball.domain.Referee.*;
+
 import baseball.domain.Referee;
 import java.util.stream.Stream;
 
@@ -14,12 +16,12 @@ public class BaseballConverter {
     }
 
     public StringBuilder convertRefereeToScoreTextView(Referee referee){
-        if(referee.getStrikeScore() == 0){
+        if(referee.getStrikeScore() == ZERO_COUNT){
             return new StringBuilder().append(referee.getBallScore())
                 .append("볼");
         }
 
-        if(referee.getBallScore()== 0){
+        if(referee.getBallScore()== ZERO_COUNT){
             return new StringBuilder().append(referee.getStrikeScore())
                 .append("스트라이크");
         }
