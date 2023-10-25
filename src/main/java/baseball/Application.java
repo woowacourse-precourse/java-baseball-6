@@ -10,18 +10,16 @@ import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
-import java.util.Random;
+
 
 public class Application {
 
     // 서로 다른 세자리 랜덤 숫자 생성
     public static List<Integer> generateRandomNumber() {
         List<Integer> computer = new ArrayList<>();
-        Random random = new Random();
 
         while (computer.size() < 3) {
-            int randomNumber = random.nextInt(9) + 1; // 1부터 9 사이의 랜덤 숫자 생성
+            int randomNumber = Randoms.pickNumberInRange(1,9); // 1부터 9 사이의 랜덤 숫자 생성
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
@@ -70,16 +68,15 @@ public class Application {
         return false;
     }
 
-    public static boolean playAgain(Scanner scanner) {
+    public static boolean playAgain() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int gameState = scanner.nextInt();
+        int gameState = Integer.parseInt(readLine());
         return gameState == 1;
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Scanner scanner = new Scanner(System.in);
 
         List<Integer> computer = generateRandomNumber();
 
@@ -98,13 +95,14 @@ public class Application {
 
 
             List<Integer> user = convertNumberToList(userNumber);
+//            System.out.println(computer);
 
             // 숫자 야구 검사
             boolean gameOver = playBaseball(user, computer);
 
             if (gameOver) {
                 // 게임 종료
-                if (!playAgain(scanner)) {
+                if (!playAgain()) {
                     break;
                 } else { // 게임 재시작
                     computer = generateRandomNumber();
