@@ -31,10 +31,11 @@ public class Game {
             System.out.print(e);
         }
         System.out.println("");
-
     }
 
     private void getUserInput() {
+        user = new ArrayList<>();
+
         System.out.print("숫자를 입력해주세요 : ");
         String userInputString = readLine();
         while (userInputString.length() != 3) {
