@@ -1,15 +1,15 @@
 package baseball.model;
 
+import baseball.view.ResultView;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Objects;
 
 enum GameStatusCode {
     PLAYING,
-    STOP;
+    STOP
 }
 public class GameParticipant {
-    private String playerGuessedNumber;
     private GameStatusCode playerStatus;
     private GameManager game;
 
@@ -18,13 +18,13 @@ public class GameParticipant {
         this.game = new GameManager();
     }
 
-    public GameStatusCode playGameByRequest() {
+    private GameStatusCode playGameByRequest() {
         while (playerStatus == GameStatusCode.PLAYING) {
             String guessedNumber = getUserInput();
             playerStatus = game.processTurn(guessedNumber);
         }
 
-        System.out.println("3개의 숫자를 모두 맞췄습니다. 게임 종료");
+        ResultView.endMessage();
         String replayChoice = askForReplay();
         if (Objects.equals(replayChoice, "1")) {
             playerStatus = GameStatusCode.PLAYING;
@@ -39,18 +39,19 @@ public class GameParticipant {
     }
 
     public void run() {
+        ResultView.startMessage();
         while (playerStatus != GameStatusCode.STOP) {
             playerStatus = playGameByRequest();
         }
     }
 
     private String getUserInput() {
-        System.out.print("숫자를 입력해주세요: ");
+        ResultView.processMessage();
         return Console.readLine();
     }
 
     private String askForReplay() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        ResultView.isReplayMessage();
         return Console.readLine();
     }
 }
