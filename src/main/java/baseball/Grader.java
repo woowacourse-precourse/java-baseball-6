@@ -39,7 +39,7 @@ public class Grader {
     }
 
     private void validatePlayerNumbersSize(List<Integer> playerNumbers) {
-        if (playerNumbers.size() > answer.size()) {
+        if (playerNumbers.size() != answer.size()) {
             throw new IllegalArgumentException();
         }
     }
