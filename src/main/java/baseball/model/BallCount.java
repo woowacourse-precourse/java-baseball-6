@@ -20,7 +20,7 @@ public class BallCount {
         this.ball = ballCount.get();
     }
 
-    public static BallCount calculate(BaseBallNumber computerNumber, BaseBallNumber inputNumber) {
+    public static BallCount generateBallCount(BaseBallNumber computerNumber, BaseBallNumber inputNumber) {
         return new BallCount(computerNumber, inputNumber);
     }
 
@@ -37,10 +37,18 @@ public class BallCount {
         return !hasBallCount() && strike == BaseBallGameConfig.BASEBALL_NUMBER_SIZE.getValue();
     }
 
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
     private void calculateStrikeAndBall(BaseBallNumber computerNumber,
-                                               BaseBallNumber inputNumber,
-                                               AtomicInteger strike,
-                                               AtomicInteger ball) {
+                                        BaseBallNumber inputNumber,
+                                        AtomicInteger strike,
+                                        AtomicInteger ball) {
 
         computerNumber.compare((computerNum, computerIndex) ->
                 inputNumber.compare((inputNum, inputIndex) -> {
