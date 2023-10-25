@@ -5,19 +5,20 @@ import java.util.List;
 
 public class InvalidInputException {
 
-    public void checkInputForGame(String playerInputNums) {
-        isEmpty(playerInputNums); // 입력이 비었을 경우
-        isNull(playerInputNums); // 입력이 null일 경우
-        isNumber(playerInputNums); // 숫자가 아닌 경우
-        isThreeDigits(playerInputNums); // 3자리 수가 아닌 경우
-        hasDistinctDigits(playerInputNums); // 3자리 수 중에 중복이 있는 경우
-    }
-
-    public void checkRestartChoice(String playerInputNum) {
+    public void checkInputForGame(String playerInputNum, int size) {
         isEmpty(playerInputNum); // 입력이 비었을 경우
         isNull(playerInputNum); // 입력이 null일 경우
         isNumber(playerInputNum); // 숫자가 아닌 경우
-        isOneOrTwo(playerInputNum); // 1과 2 외의 다른 수가 입력될 경우
+        isSingleOrThreeDigitNumber(playerInputNum, size); // 길이가 알맞은지
+        if (size == 1) isOneOrTwo(playerInputNum);
+        if (size == 3) hasDistinctDigits(playerInputNum);
+    }
+
+    private void isSingleOrThreeDigitNumber(String playerInputNum, int size) {
+        if (playerInputNum.length() != size) {
+            System.out.println("길이가 틀렸당~!");
+            throw new IllegalArgumentException();
+        }
     }
 
     private void isEmpty(String nums) {
@@ -39,13 +40,6 @@ public class InvalidInputException {
             Integer.parseInt(nums);
         } catch (NumberFormatException ex) {
             System.out.println("숫자가 아닙니다!");
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void isThreeDigits(String nums) {
-        if (nums.length() != 3) {
-            System.out.println("3자리 수가 아닙니다!");
             throw new IllegalArgumentException();
         }
     }
