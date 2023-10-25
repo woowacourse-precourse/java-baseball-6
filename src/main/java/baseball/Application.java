@@ -1,15 +1,14 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class Application {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = createComputer();
@@ -52,9 +51,9 @@ public class Application {
 
     public static List<Integer> createPlayer(){
         System.out.print("숫자를 입력해주세요 : ");
-        Scanner sc = new Scanner(System.in);
         List<Integer> player = new ArrayList<>();
-        String input = sc.next();
+
+        String input = Console.readLine();
         try {
             if(!checkNumeric(input) || input.length() != 3 || repeatStringCheck(input)) throw new IllegalArgumentException();
         }catch (IllegalArgumentException e){
@@ -125,8 +124,8 @@ public class Application {
 
     public static boolean reStart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
+
+        int num = Integer.parseInt(Console.readLine());
         switch (num) {
             case 1 -> {
                 return true;
