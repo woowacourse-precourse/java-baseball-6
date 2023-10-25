@@ -3,7 +3,13 @@ package baseball.service;
 import static baseball.utils.BaseballGameUserInputUtils.isInputContainsUniqueValue;
 import static baseball.utils.BaseballGameUserInputUtils.isValidInputLength;
 import static baseball.utils.BaseballGameUserInputUtils.isValidInputValue;
+import static baseball.vo.BaseballGameResultStatus.BALL;
+import static baseball.vo.BaseballGameResultStatus.BALL_AND_STRIKE;
+import static baseball.vo.BaseballGameResultStatus.NOTHING;
+import static baseball.vo.BaseballGameResultStatus.STRIKE;
 
+import baseball.vo.BaseballGameResultDTO;
+import baseball.vo.BaseballGameResultStatus;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -21,6 +27,9 @@ public class BaseballGameService {
 
         // 3. 입력 => 사용자로부터 서로 다른 3자리 수 입력받음
         String input = readUserAnswerInput();
+
+        // 4. 입력 결과 분석 => 사용자의 입력 값과 컴퓨터의 값을 비교하여 스트라이크, 볼, 낫싱 판단
+        BaseballGameResultDTO gameResultDTO = calResult(input.toCharArray(), computerAnswers);
     }
 
     private List<Integer> createComputerValue() {
@@ -50,5 +59,48 @@ public class BaseballGameService {
         }
 
         return input;
+    }
+
+    private BaseballGameResultDTO calResult(char[] userInputArray, List<Integer> computerAnswers) {
+        int inputValue = 0;
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < userInputArray.length; i++) {
+            inputValue = Character.getNumericValue(userInputArray[i]);
+            for (int j = 0; j < computerAnswers.size(); j++) {
+                if (inputValue == computerAnswers.get(j)) {
+                    if (i == j) {
+                        strike++;
+                    } else {
+                        ball++;
+                    }
+                }
+            }
+        }
+
+        BaseballGameResultStatus resultStatus = calResultStatus(strike, ball);
+
+        return new BaseballGameResultDTO(resultStatus, ball, strike);
+    }
+
+    private BaseballGameResultStatus calResultStatus(int strike, int ball) {
+        BaseballGameResultStatus baseballGameResultStatus;
+
+        if (strike != 0) {
+            if (ball != 0) {
+                baseballGameResultStatus = BALL_AND_STRIKE;
+            } else {
+                baseballGameResultStatus = STRIKE;
+            }
+        } else {
+            if (ball != 0) {
+                baseballGameResultStatus = BALL;
+            } else {
+                baseballGameResultStatus = NOTHING;
+            }
+        }
+
+        return baseballGameResultStatus;
     }
 }
