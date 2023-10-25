@@ -19,8 +19,4 @@ public class BallCount {
     public void putBall() {
         this.ball += 1;
     }
-
-    public boolean isNothing() {
-        return this.strike == 0 && this.ball == 0;
-    }
 }
