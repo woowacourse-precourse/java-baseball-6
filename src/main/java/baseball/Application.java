@@ -3,15 +3,14 @@ package baseball;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Game game = new BaseballGame(
-            new ConsoleReader(),
-            new PrintWriter(),
-            new BaseballNumberValidator(),
+        BaseballGameView baseballGameView = new BaseballGameView(new ConsoleReader(), new PrintWriter());
+        BaseballGameController baseballGameController = new BaseballGameController(
+            baseballGameView,
             new GameTerminationValidator(),
-            new BaseballGameProcessorImpl(),
+            new BaseballGame(baseballGameView, new BaseballNumberValidator()),
             new BaseballRandomGenerator()
         );
 
-        game.play();
+        baseballGameController.playGame();
     }
 }

@@ -2,51 +2,22 @@ package baseball;
 
 import static baseball.BaseballConstants.*;
 
-public class BaseballGame implements Game {
+public class BaseballGame {
 
-    private Reader reader;
-    private Writer writer;
+    private BaseballGameView baseballGameView;
     private Validator baseballNumValidator;
-    private Validator terminateValidator;
-    private BaseballGameProcessor processor;
-    private RandomNumberGenerator randomNumberGenerator;
 
-    public BaseballGame(Reader reader, Writer writer, Validator baseballNumValidator,
-        Validator terminateValidator, BaseballGameProcessor processor,
-        RandomNumberGenerator randomNumberGenerator) {
-
-        this.reader = reader;
-        this.writer = writer;
+    public BaseballGame(BaseballGameView baseballGameView, Validator baseballNumValidator) {
+        this.baseballGameView = baseballGameView;
         this.baseballNumValidator = baseballNumValidator;
-        this.terminateValidator = terminateValidator;
-        this.processor = processor;
-        this.randomNumberGenerator = randomNumberGenerator;
     }
 
-    @Override
-    public void play() {
-        writer.write(START_MESSAGE);
+    public void play(BaseballNumber baseballNumber) {
         while (true) {
-            String computerNumber = randomNumberGenerator.generateNonRepeatingRandomDigitSequence(
-                BASEBALL_NUMBER_SIZE);
-            playMainContent(computerNumber);
-            writer.write(END_MESSAGE);
-            writer.write(NEXT_GAME_MESSAGE);
-            String endNumber = reader.read();
-            terminateValidator.validate(endNumber);
-            if (isEnd(endNumber)) {
-                break;
-            }
-        }
-    }
-
-    private void playMainContent(String computerNumber) {
-        while (true) {
-            writer.write(INPUT_MESSAGE);
-            String inputNumber = reader.read();
+            String inputNumber = baseballGameView.inputBaseballNumber();
             baseballNumValidator.validate(inputNumber);
-            String result = processor.process(computerNumber, inputNumber);
-            writer.write(result);
+            String result = baseballNumber.compare(inputNumber);
+            baseballGameView.print(result);
             if (isAllStrike(result)) {
                 break;
             }
@@ -56,9 +27,4 @@ public class BaseballGame implements Game {
     private boolean isAllStrike(String result) {
         return result.equals(ALL_STRIKE);
     }
-
-    private boolean isEnd(String input) {
-        return (Integer.parseInt(input) == END_GAME_NUMBER);
-    }
-
 }
