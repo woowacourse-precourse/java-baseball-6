@@ -11,7 +11,7 @@ public class ComputerUtil {
     public List<Integer> generateNumber(){
         List<Integer> computerNums = new ArrayList<>();
 
-        while (computerNums.size() < 3) {
+        while (computerNums.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNums.contains(randomNumber)) {
                 computerNums.add(randomNumber);
