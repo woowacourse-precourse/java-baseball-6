@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.constant.GameRule;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public class Computer {
 
     public void generateComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
+        while (computerNumber.size() < GameRule.DIGITS_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);

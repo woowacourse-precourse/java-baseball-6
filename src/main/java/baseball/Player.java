@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.constant.GameRule;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -19,4 +20,15 @@ public class Player {
         return playerNumber;
     }
 
+    public boolean restartOrEnd() {
+        String str = Console.readLine();
+        int restartOrEnd = Integer.parseInt(str);
+
+        if (restartOrEnd == GameRule.RESTART) {
+            return true;
+        } else if (restartOrEnd == GameRule.END) {
+            return false;
+        }
+        return false;
+    }
 }
