@@ -1,7 +1,8 @@
 package baseball;
 
-import java.util.HashMap;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashMap;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 class BaseballGame{
