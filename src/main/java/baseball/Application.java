@@ -12,14 +12,16 @@ public class Application {
 
 
     public static void main(String[] args) {
+        boolean start = true;
+        boolean game = true;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(true){
+        while(start){
             //컴퓨터 숫자 세팅
             List<Integer> comNum = createRandomNum();
 
-            while(true){
+            while(game){
                 //사용자 숫자 세팅(다 맞을 때까지 계속 입력 받기)
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
@@ -38,13 +40,12 @@ public class Application {
                 //결과 출력
                 printResult(result);
 
-                if(result[1] == 3) break;
-
+                if(result[1] == 3) game = false;
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String s = Console.readLine();
-            if(s.equals("2")) break;
+            String restart = Console.readLine();
+            if(restart.equals("2")) start = false;
 
         }
 
@@ -71,7 +72,7 @@ public class Application {
 
         List<Integer> userNum = new ArrayList<>();
         for(int i = 0; i<num.length(); i++){
-            if('0' <= num.charAt(i) && num.charAt(i) <= '9')
+            if('1' <= num.charAt(i) && num.charAt(i) <= '9')
                 userNum.add(num.charAt(i) - '0');
             else
                 throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
