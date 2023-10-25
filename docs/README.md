@@ -43,3 +43,4 @@
 
 * `FrontController`
     * [x] : FrontController에서만 BaseBallController를 호출하도록 만들어 BaseBallController의 View 의존성 제거
+    * [x] : FrontController만 InputView와 OutputView에게 메시지를 보낼 수 있다.

@@ -28,13 +28,11 @@ public class Application {
                 new BaseBallGameController(baseBallGameService));
         Score gameResult;
 
-        outputView.printGameStart();
+        frontController.sayGameStart();
 
         do {
             List<Integer> answerNumbers = frontController.createAnswerNumber();
-            gameResult = frontController.gameStart(answerNumbers);
-
-            outputView.printGameFinish();
+            gameResult = frontController.startGame(answerNumbers);
         } while (playingGame(gameResult, inputView));
     }
 

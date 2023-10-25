@@ -19,11 +19,15 @@ public class FrontController {
         this.controller = controller;
     }
 
+    public void sayGameStart() {
+        outputView.printGameStart();
+    }
+
     public List<Integer> createAnswerNumber() {
         return controller.createAnswerNumber();
     }
 
-    public Score gameStart(List<Integer> answerNumbers) {
+    public Score startGame(List<Integer> answerNumbers) {
         Score gameResult;
 
         do {
@@ -31,6 +35,7 @@ public class FrontController {
             gameResult = controller.competeWith(tryNumbers, answerNumbers);
             outputView.printGameResult(gameResult.getName());
         } while (notThreeStrike(gameResult));
+        outputView.printGameFinish();
         return gameResult;
     }
 
