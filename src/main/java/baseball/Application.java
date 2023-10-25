@@ -54,7 +54,9 @@ public class Application {
                 throw new IllegalArgumentException("# 에러 메세지: 숫자만 입력해주세요.");
             }
 
-            if (userInputNumber < 100 || userInputNumber > 999) {
+            int x = 100;
+            int y = 999;
+            if (userInputNumber < x || userInputNumber > y) {
                 throw new IllegalArgumentException("# 에러 메세지: 입력된 숫자의 자릿수를 확인해주세요.");
             }
 
