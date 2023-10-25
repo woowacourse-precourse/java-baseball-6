@@ -27,42 +27,24 @@ public class BaseballGame {
 		return randomNumber;
 	}
 
-	public void compare(int userNumber) {
-		strike = 0;
-		ball = 0;
-		int[] numbers = new int[3];
+	public int[] userNumberToArray(int userNumber) {
+		int[] arr = new int[3];
 
-		numbers[0] = userNumber / 100;
-		numbers[1] = userNumber % 100 / 10;
-		numbers[2] = userNumber % 100 % 10;
+		arr[0] = userNumber / 100;
+		arr[1] = userNumber % 100 / 10;
+		arr[2] = userNumber % 100 % 10;
 
-		for (int i = 0; i < 3; i++) {
-			if (randomNumber.get(0) == numbers[i]) {
-				if (i == 0) {
-					strike++;
-				} else {
-					ball++;
-				}
-			}
+		return arr;
+	}
 
-			if (randomNumber.get(1) == numbers[i]) {
-				if (i == 1) {
-					strike++;
-				} else {
-					ball++;
-				}
-			}
-
-			if (randomNumber.get(2) == numbers[i]) {
-				if (i == 2) {
-					strike++;
-				} else {
-					ball++;
-				}
+	public void compare(int i, int[] userNumbers) {
+		if (randomNumber.contains(userNumbers[i])) {
+			ball++;
+			if (randomNumber.get(i) == userNumbers[i]) {
+				strike++;
+				ball--;
 			}
 		}
-
-		printScore();
 	}
 
 	public void printScore() {
@@ -95,8 +77,14 @@ public class BaseballGame {
 	public void gameStart() {
 		User user = new User();
 		while (strike != 3) {
+			int[] userNumbers = userNumberToArray(user.input3DigitNumber());
+			strike = 0;
+			ball = 0;
 			printNumberQuestion();
-			compare(user.input3DigitNumber());
+			for (int i = 0; i < userNumbers.length; i++) {
+				compare(i, userNumbers);
+			}
+			printScore();
 		}
 	}
 }
