@@ -1,4 +1,4 @@
-package domain.baseball;
+package domain;
 
 import baseball.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
