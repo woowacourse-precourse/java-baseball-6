@@ -1,8 +1,8 @@
 package baseball;
 
+import baseball.feature.Confirm;
 import baseball.feature.RandomNumberMaker;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
@@ -12,11 +12,20 @@ public class Application {
         RandomNumberMaker randomNumberMaker = new RandomNumberMaker();
         List<Integer> computerNums = randomNumberMaker.maker();
 
-        // 입력
-        String userInput = Console.readLine();
         // 문자열 리스트로 변환
-        List<Integer> userNumbers = makeUserNumber(userInput);
-        System.out.println(userNumbers);
+        List<Integer> userNumbers;
+        String result = "";
+        // 볼, 스트라이크, 낫싱 판별
+        Confirm baseballConfirm = new Confirm(computerNums);
+
+
+        while (!result.equals("3스트라이크")) {
+            // 입력, 문자열 리스트로 변환
+            userNumbers = makeUserNumber(Console.readLine());
+            baseballConfirm.takeNumbers(userNumbers);
+            result = baseballConfirm.referee();
+            System.out.println(result);
+        }
 
     }
 
