@@ -1,10 +1,9 @@
-package baseball;
+package baseballgame;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Game {
   private static final String RESTART_OPTION = "1";
