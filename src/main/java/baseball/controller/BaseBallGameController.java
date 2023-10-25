@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.application.BaseBallResult;
 import baseball.application.GameUseCase;
 import baseball.domain.Hint;
+import baseball.controller.dto.BaseBallGameDto;
 
 public class BaseBallGameController implements Game {
 
@@ -13,8 +14,8 @@ public class BaseBallGameController implements Game {
     }
 
     @Override
-    public String play(String input) {
-        BaseBallResult report = gameUseCase.umpire(new NumericString(input));
+    public String play(BaseBallGameDto input) {
+        BaseBallResult report = gameUseCase.umpire(new NumericString(input.getInput()));
 
         if (report.isNoting()) {
             return Hint.NOTHING.toString();

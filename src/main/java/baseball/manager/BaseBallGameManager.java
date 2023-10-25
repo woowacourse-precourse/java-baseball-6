@@ -3,6 +3,7 @@ package baseball.manager;
 import baseball.application.BaseBallGame;
 import baseball.controller.BaseBallGameController;
 import baseball.controller.Game;
+import baseball.controller.dto.BaseBallGameDto;
 import baseball.domain.BaseBallNumberList;
 import baseball.ui.UIFacade;
 
@@ -39,7 +40,7 @@ public class BaseBallGameManager implements GameManager {
 
         while (!isExit()) {
             ui.rendering(GameOutputTemplate.INPUT.toString());
-            ui.rendering(game.play(ui.intercept()) + "\n");
+            ui.rendering(game.play(new BaseBallGameDto(ui.intercept())) + "\n");
         }
 
         ui.rendering(GameOutputTemplate.EXIT.toString());

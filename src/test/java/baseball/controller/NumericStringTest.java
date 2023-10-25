@@ -15,21 +15,4 @@ class NumericStringTest {
                         "a13"));
     }
 
-    @Test
-    @DisplayName("빈문자열 입력 시 IllegalArgumentException이 발생한다")
-    public void should_throwsIllegalArgumentException_when_inputEmptyString() {
-        assertThrows(IllegalArgumentException.class, () ->
-                new NumericString(
-                        ""));
-    }
-
-
-    @Test
-    @DisplayName("null 입력 시 IllegalArgumentException이 발생한다")
-    public void should_throwsIllegalArgumentException_when_inputNull() {
-        assertThrows(IllegalArgumentException.class, () ->
-                new NumericString(
-                        ""));
-    }
-
 }

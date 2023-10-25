@@ -1,6 +1,8 @@
 package baseball.controller;
 
+import baseball.controller.dto.BaseBallGameDto;
+
 public interface Game {
 
-    String play(String input);
+    String play(BaseBallGameDto input);
 }
