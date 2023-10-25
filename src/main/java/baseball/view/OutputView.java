@@ -3,7 +3,6 @@ package baseball.view;
 import baseball.constants.MessageConstants;
 
 public class OutputView {
-
     public void printlnMessage(MessageConstants message) {
         System.out.println(message.getMessage());
     }
