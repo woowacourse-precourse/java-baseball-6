@@ -2,8 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -53,25 +52,19 @@ public class Application {
     }
 
     static void checkInputValue(String input) {
-        if (!checkMaxLength(input)) {
-            throw new IllegalArgumentException();
-        } else if (!checkInteger(input)) {
-            throw new IllegalArgumentException();
-        } else if (checkContainZero(input)) {
-            throw new IllegalArgumentException();
-        } else if (checkContinue(input)) {
+        if (!isEqualsMaxLength(input)
+                || !isAllInteger(input)
+                || isContainZero(input)
+                || isDuplicate(input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    static boolean checkMaxLength(String input) {
-        if (input.length() != MAX_COUNT) {
-            return false;
-        }
-        return true;
+    static boolean isEqualsMaxLength(String input) {
+        return input.length() == MAX_COUNT;
     }
 
-    static boolean checkInteger(String input) {
+    static boolean isAllInteger(String input) {
         try {
             Integer.parseInt(input);
             return true;
@@ -80,7 +73,7 @@ public class Application {
         }
     }
 
-    static boolean checkContainZero(String input) {
+    static boolean isContainZero(String input) {
         String[] inputArr = input.split("");
         for (String num : inputArr) {
             if ("0".equals(num)) {
@@ -90,14 +83,10 @@ public class Application {
         return false;
     }
 
-    static boolean checkContinue(String input) {
+    static boolean isDuplicate(String input) {
         String[] inputArr = input.split("");
-        if (Integer.parseInt(inputArr[0]) - Integer.parseInt(inputArr[1]) == 0) {
-            return true;
-        } else if (Integer.parseInt(inputArr[0]) - Integer.parseInt(inputArr[2]) == 0) {
-            return true;
-        }
-        return false;
+        Set<String> set = new HashSet<>(Arrays.asList(inputArr));
+        return set.size() != MAX_COUNT;
     }
 
     public static int countStrikes(List<Integer> number, List<Integer> computer) {
