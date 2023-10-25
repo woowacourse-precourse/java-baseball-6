@@ -35,6 +35,16 @@ public class OutputData {
         return "";
     }
 
+    private static String printStrikeCount(String ballCount, int count) {
+        if (3 == count) {
+            return count + ballCount + "\n" + THREE_STRIKE_WIN_MESSAGE;
+        }
+        if (0 != count) {
+            return checkJustStrike(ballCount, count);
+        }
+        return "";
+    }
+
     private static String checkJustStrike(String ballCount, int count) {
         if ("".equals(output)) {
             return count + ballCount;
