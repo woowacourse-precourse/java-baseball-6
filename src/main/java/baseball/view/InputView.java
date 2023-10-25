@@ -2,7 +2,7 @@ package baseball.view;
 
 import baseball.util.ConsoleMessage;
 import baseball.util.ExceptionMessage;
-import baseball.util.Validator;
+import baseball.util.validation.Validator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;

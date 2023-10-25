@@ -12,7 +12,7 @@ import baseball.util.resultFomat.ResultFormatter;
 public class OutputView {
 
     public void printGameStart() {
-        System.out.println(ConsoleMessage.START_GAME);
+        System.out.println(ConsoleMessage.START_GAME.getMessage());
     }
 
     public void printGameResult(Result result) {
