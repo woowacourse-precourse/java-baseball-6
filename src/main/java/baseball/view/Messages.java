@@ -27,6 +27,6 @@ public class Messages {
     }
 
     public static void printEndGameMessage() {
-        System.out.println("숫자 야구 게임을 종료합니다.");
+        System.out.println("게임 종료");
     }
 }
