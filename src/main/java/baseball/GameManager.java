@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameManager {
     private Match match;
 
-    public void runGame() {
+    public void runGame() throws IllegalArgumentException {
         while(true) {
             displayGameStart();
 
@@ -15,6 +15,10 @@ public class GameManager {
 
             displayGameEnd();
             String choice = askForRestart();
+
+            if (isInValidChoice(choice)) {
+                throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+            }
 
             if (isGameEnd(choice)) {
                 break;
@@ -35,7 +39,15 @@ public class GameManager {
         return Console.readLine();
     }
 
+    public boolean isInValidChoice(String choice) {
+        return !(isGameEnd(choice) || isGameRestart(choice));
+    }
+
     public boolean isGameEnd(String choice) {
         return choice.equals(Constant.EXIT);
+    }
+
+    public boolean isGameRestart(String choice) {
+        return choice.equals(Constant.RESTART);
     }
 }
