@@ -25,7 +25,7 @@ public class GameManager {
 			outputView.printGameStartMessage();
 			playGameUntilOver();
 			gameRestartFlag = inputView.gameRestartFlag();
-		} while (gameRestartFlag != Constant.GAME_END_FLAG);
+		} while (gameRestartFlag == Constant.GAME_RESTART_FLAG);
 	}
 
 	private void playGameUntilOver() {
