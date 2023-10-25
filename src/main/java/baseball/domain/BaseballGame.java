@@ -34,4 +34,8 @@ public class BaseballGame {
         return UserBalls.from(GameInputView.readBallNumbers());
     }
 
+    public ComputerBalls computerBalls() {
+        return computerBalls;
+    }
+
 }
