@@ -16,16 +16,21 @@ public class User {
             this.userNumberStr = userNumberStr;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            // 게임 종료 구현
         }
     }
 
-    public List<Integer> convertInputToList() {
-        List<Integer> user = new ArrayList<>();
+    public void convertInputToList(List<Integer> user) {
         int userNumber = Integer.parseInt(userNumberStr);
         user.add(userNumber / 100);                     // 100의 자리
         user.add((userNumber % 100) / 10);             // 10의 자리
         user.add(userNumber % 10);                     // 1의 자리
+    }
+
+    public List<Integer> getUsetNumberList() {
+        List<Integer> user = new ArrayList<>();
+        inputUserNumber(new String());
+        convertInputToList(user);
+
         return user;
     }
 

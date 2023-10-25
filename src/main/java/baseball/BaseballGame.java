@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
@@ -15,7 +14,8 @@ public class BaseballGame {
             CompareNumber compareNumber = new CompareNumber();
             while (!compareNumber.isStrikeThree()) {
                 showInputUserNumber();
-                List<Integer> userNumberList = getUsetNumberList();
+                User user = new User();
+                List<Integer> userNumberList = user.getUsetNumberList();
                 compareResult = compareNumber.getCompareResult(userNumberList, computerNumberList);
                 showCount(compareResult);
             }
@@ -42,16 +42,6 @@ public class BaseballGame {
             return true;
         }
         return false;
-    }
-
-    private static List<Integer> getUsetNumberList() {
-        List<Integer> userNumberList = new ArrayList<>();
-        User user = new User();
-        String userNumberStr = new String();
-        user.inputUserNumber(userNumberStr);
-        userNumberList = user.convertInputToList();
-
-        return userNumberList;
     }
 
     private static void showCount(int[] compareResult) {
