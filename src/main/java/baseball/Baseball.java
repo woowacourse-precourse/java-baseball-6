@@ -6,6 +6,13 @@ public class Baseball {
     private int strike;
     private int ball;
 
+    public Baseball(String computer, String randomNum, int strike, int ball) {
+        this.computer = computer;
+        this.randomNum = randomNum;
+        this.strike = strike;
+        this.ball = ball;
+    }
+
     public String getComputer() {
         return this.computer;
     }
@@ -22,19 +29,11 @@ public class Baseball {
         return this.ball;
     }
 
-    public void setComputer(String computer) {
-        this.computer = computer;
-    }
-
-    public void setRandomNum(String randomNum){
-        this.randomNum = randomNum;
-    }
-
-    public void setStrike(){
+    public void setStrike(int strike){
         this.strike = strike;
     }
 
-    public void setBall() {
+    public void setBall(int ball) {
         this.ball = ball;
     }
 }
