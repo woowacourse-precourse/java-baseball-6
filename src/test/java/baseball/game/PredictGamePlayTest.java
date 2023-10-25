@@ -118,4 +118,22 @@ class PredictGamePlayTest {
                 .hasMessage(msg);
     }
 
+    @Test
+    @DisplayName("입력된 값에 같은 숫자가 여러번 존재할 경우, 예외를 던집니다.")
+    public void testExceptionInputDuplicated() throws Exception {
+        // given
+        Computer.number = "123";
+        String test1 = "112";
+
+        String msg = "잘못된 입력입니다, 예측 가능한 수는 세자리(1~9) 숫자입니다.";
+
+        // when
+        PredictGamePlay predictGamePlay = new PredictGamePlay();
+
+        // then
+        Assertions.assertThatThrownBy(() -> predictGamePlay.play(List.of(test1)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(msg);
+    }
+
 }
