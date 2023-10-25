@@ -9,8 +9,8 @@ class RefereeTest {
         Player userPlayer = new UserPlayer("123");
         Player computerUserPlayer = new UserPlayer("713");
 
-        Referee referee = new Referee(userPlayer, computerUserPlayer);
-        System.out.println(referee.result());
+        Referee referee = new Referee();
+        System.out.println(referee.result(userPlayer, computerUserPlayer));
 
     }
 }

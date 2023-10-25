@@ -28,8 +28,7 @@ public class GameManager {
         Player userPlayer;
         while (!referee.isGameOver()) {
             userPlayer = new UserPlayer(viewer.pleaseInputNumberView());
-            referee = new Referee(userPlayer, computerUserPlayer);
-            viewer.resultView(referee.result());
+            viewer.resultView(referee.result(userPlayer, computerUserPlayer));
         }
         viewer.threeStrikeView();
     }
