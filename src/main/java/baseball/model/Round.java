@@ -3,24 +3,24 @@ package baseball.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Round {
-    private String randomNumber;
+    private final String randomNumber;
 
     public Round() {
-        generateRandomNumber();
+        this.randomNumber = generateRandomNumber();
     }
 
-    public void generateRandomNumber() {
+    public String generateRandomNumber() {
         StringBuilder sb = new StringBuilder();
         while (sb.length() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (sb.indexOf(String.valueOf(randomNumber)) == -1) {
-                sb.append(randomNumber);
+            int randomDigit = Randoms.pickNumberInRange(1, 9);
+            if (sb.indexOf(String.valueOf(randomDigit)) == -1) {
+                sb.append(randomDigit);
             }
         }
-        randomNumber = sb.toString();
+        return sb.toString();
     }
 
     public String getRandomNumber() {
-        return randomNumber;
+        return this.randomNumber;
     }
 }
