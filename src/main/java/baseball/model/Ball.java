@@ -14,6 +14,7 @@ public class Ball {
     }
 
     private boolean ball_validator(int number, int digits) {
+        //TODO : overlapping number
         return checkNumber(number)&&checkDigits(digits);
     }
 

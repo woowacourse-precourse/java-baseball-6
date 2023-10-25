@@ -15,11 +15,12 @@
   - strike : number일치, digits 일치
 - Play : 게임 진행, 다시 시작, 종료
 - Generater : 컴퓨터의 랜덤balls값을 생성
-- Config : 사용자의 입/출력 값 제한사항 check/Error 메세지 처리
+- Config : 사용자의 입/출력 값 제한사항 check/Exception 메세지 처리
 ### view
 - 입력
 - 출력
 ##  2. 입력 제한사항
 - 임의의 숫자(0~9) "세개"가 연속으로 들어온다.
-  - 특수문자, 문자열, 실수등 정수가 아닌 경우 return Error
-  - 두자리, 네자리 등 숫자 3개가 아닌 경우 return Error
+  - 특수문자, 문자열, 실수등 정수가 아닌 경우 return Exception
+  - 두자리, 네자리 등 숫자 3개가 아닌 경우 return Exception
+  - 세 자리 수 중 중복된 수가 있는 경우 return Exception
