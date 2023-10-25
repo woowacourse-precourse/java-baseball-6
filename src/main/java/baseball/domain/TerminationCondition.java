@@ -2,6 +2,10 @@ package baseball.domain;
 
 import baseball.console.Constant;
 
+/**
+ * 종료, 재진행 여부를 나타내는 클래스.
+ * 생성 시 사용자가 입력한 조건이 올바른 형식인지 확인한다.
+ */
 public class TerminationCondition {
 
     private static final int RESTART_NUMBER = 1;

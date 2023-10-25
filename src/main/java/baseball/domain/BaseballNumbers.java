@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
+/**
+ * 컴퓨터와 사용자의 3자리 숫자를 나타내는 클래스.
+ * 생성 시 숫자의 사이즈와 숫자의 중복 여부를 검증한다. 컴퓨터와 사용자의 수를 비교하여 스트라이크, 볼, 낫싱의 여부를 판단하기 위한 계산 기능을 가진다.
+ */
 public class BaseballNumbers {
 
     private static final int NUMBERS_MAX_SIXE = 3;

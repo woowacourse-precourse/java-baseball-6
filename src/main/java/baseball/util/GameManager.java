@@ -5,6 +5,9 @@ import baseball.console.Output;
 import baseball.domain.BaseballGame;
 import baseball.domain.TerminationCondition;
 
+/**
+ * 게임의 시작, 재시작, 종료를 관리하는 클래스.
+ */
 public class GameManager {
 
     public void run() {

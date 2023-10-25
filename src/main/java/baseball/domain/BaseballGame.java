@@ -6,6 +6,11 @@ import baseball.console.Output;
 import baseball.util.Computer;
 import baseball.util.GameFactory;
 
+/**
+ * 게임의 시작부터 정답까지 전체 진행을 관리하는 클래스.
+ * 컴퓨터의 3자리 수를 생성한 후 사용자로부터 3자리 수 입력을 받는다. 이 때 1회 입력을 게임 1회 시도라고 간주한다.
+ * 매 시도 마다, 컴퓨터와 사용자의 수를 비교한 후 힌트를 출력한 후, 정답 여부를 확인하여 정답일 경우 게임을 종료한다.
+ */
 public class BaseballGame {
 
     private BaseballNumbers computerNumbers;

@@ -9,6 +9,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * 컴퓨터와 사용자의 3자리 숫자를 생성하는 클래스.
+ */
 public class GameFactory {
 
     private static final int NUMBERS_MAX_SIXE = 3;
