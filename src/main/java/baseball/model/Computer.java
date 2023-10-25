@@ -2,17 +2,16 @@ package baseball.model;
 
 import baseball.counter.CountResult;
 import baseball.counter.Counter;
-import baseball.message.MessageGenerator;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-    private static final int NUMBER_OF_DIGITS = 3;
+import static baseball.rules.GameConstants.MAX_NUMBER;
+import static baseball.rules.GameConstants.MIN_NUMBER;
+import static baseball.rules.GameConstants.NUMBER_OF_DIGITS;
 
+public class Computer {
     private final List<Integer> numbers;
 
     public Computer() {
@@ -39,8 +38,7 @@ public class Computer {
         return this.numbers.contains(randomNumber);
     }
 
-    public String getGameResultMessage(Player player) {
-        CountResult countStrikeAndBall = Counter.countStrikeAndBall(this.numbers, player.getNumbers());
-        return MessageGenerator.generateGameResultMessage(countStrikeAndBall);
+    public CountResult getGameResult(Player player) {
+        return Counter.countStrikeAndBall(this.numbers, player.getNumbers());
     }
 }
