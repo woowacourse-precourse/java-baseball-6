@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Computer {
     private List<Integer> computerAnswer = new ArrayList<>();
-    private AnswerCreator answerCreator = new AnswerCreator();
+    private final AnswerCreator answerCreator = new AnswerCreator();
 
     public List<Integer> getComputerAnswer() {
         return computerAnswer;
