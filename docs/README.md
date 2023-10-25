@@ -30,3 +30,5 @@
     - Baseball에서는 입력을 받지 않기에 IllegalCheck를 InputLineConverter 클래스에 역할부여
 - [x] initRandomNumber() 세부로직 리팩토링
   - 가독성을 위해 Stream형태로 변경
+- [x] checkGameScore() 메서드
+  - 불명확한 변수명 변경 및 불필요한 매개변수 제거
