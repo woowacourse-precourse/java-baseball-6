@@ -1,5 +1,8 @@
 package baseball.model;
 
+import baseball.model.dto.AnswerComparisonResult;
+import baseball.utils.GameAnswerManager;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,5 +43,9 @@ public class UserAnswer {
         if (set.size() != numbers.size()) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER);
         }
+    }
+
+    public AnswerComparisonResult compareAnswer(GameAnswerManager gameAnswerManager) {
+        return gameAnswerManager.compareAnswer(this.numbers);
     }
 }
