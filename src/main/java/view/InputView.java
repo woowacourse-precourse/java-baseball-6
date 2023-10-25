@@ -10,6 +10,7 @@ public class InputView {
     private static final String INPUT_NUMBER= "숫자를 입력해주세요: ";
     private static final String CHOOES_RESTART_OR_EXIT= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String CORRECT_3NUMBER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static final int NUMBER_LENGTH = 3;
     List<Integer> userInputNumberList = new ArrayList<>();
 
     public void StartGameMessage() {
@@ -20,17 +21,22 @@ public class InputView {
     }
 
     public List<Integer> InputUserNumber() {
-        while (userInputNumberList.size() < 3) {
-            System.out.println(INPUT_NUMBER);
-            String inputs = ValidateInputNumber(Console.readLine());
-            for (int i = 0; i < inputs.length(); i++) {
-                char input = inputs.charAt(i);
-                if (!userInputNumberList.contains(input - '0')) {
-                    userInputNumberList.add(Integer.valueOf(input - '0'));
-                }
-            }
+        System.out.print(INPUT_NUMBER);
+        String inputString = Console.readLine();
+        System.out.println(inputString);
+        ValidateInputNumber(inputString); // 이걸 여기서?? 분리 하고 싶음 > 기능이 다름
+
+        return AddNumber(inputString);
+    }
+
+    public List<Integer> AddNumber(String input) {
+        List<Integer> userNumbers = new ArrayList<>(); // refect 이때 초기화가 되니까 clear 안해도 됨
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            int number = input.charAt(i) - '0';
+            // 여기에 중복검사 함수 호출
+            userNumbers.add(number);
         }
-        return userInputNumberList;
+        return userNumbers;
     }
 
     public  String ValidateInputNumber(String inputs) {
