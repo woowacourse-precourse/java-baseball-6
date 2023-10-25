@@ -22,9 +22,13 @@ public class NumberBaseball {
     private GameStatus gameStatus;
     private BallContainer computerBalls;
 
+    public NumberBaseball(ComNumberGenerator comNumberGenerator, UserNumberGenerator userNumberGenerator) {
+        this.comNumberGenerator = comNumberGenerator;
+        this.userNumberGenerator = userNumberGenerator;
+    }
+
     public NumberBaseball() {
-        this.comNumberGenerator = new ComNumberGenerator();
-        this.userNumberGenerator = new UserNumberGenerator();
+        this(new ComNumberGenerator(), new UserNumberGenerator());
     }
 
     public void startGame() {
@@ -43,7 +47,7 @@ public class NumberBaseball {
         computerBalls = BallContainer.getFromNumbers(comNumbers);
     }
 
-    protected List<Integer> getComNumber() {
+    private List<Integer> getComNumber() {
         return comNumberGenerator.generate();
     }
 
@@ -56,7 +60,7 @@ public class NumberBaseball {
         }
     }
 
-    protected BallContainer createUserBalls() {
+    private BallContainer createUserBalls() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
