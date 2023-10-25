@@ -39,6 +39,7 @@
 -[ ] 사용자에게 입력을 받는다.
     - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.  
       **[예외]** 0을 제외한 1에서 9 사이의 3자리 숫자를 입력하지 않은 경우 `IllegalArgumentException`을 발생시킨다.
+      **[예외]** 서로 다른 3자리 숫자를 입력하지 않은 경우 `IllegalArgumentException`을 발생시킨다.
 
 ### d. 스트라이크, 볼 계산
 
