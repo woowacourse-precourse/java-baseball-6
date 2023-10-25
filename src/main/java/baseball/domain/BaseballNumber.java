@@ -9,9 +9,12 @@ public class BaseballNumber {
         this.baseballNumberList = baseballNumberList;
     }
 
-    // 인덱스의 숫자를 반환하는 기능
     public Integer getIndexNumber(int index){
         return baseballNumberList.get(index);
+    }
+
+    public int getSize(){
+        return baseballNumberList.size();
     }
 
     public boolean contains(int number) {
