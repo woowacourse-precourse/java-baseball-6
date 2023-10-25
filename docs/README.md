@@ -48,11 +48,11 @@
   - ✅ 사용자가 입력한 값의 배열 안의 숫자들이 허용된 범위 안에 존재하는 지 확인 : 예외인 경우 -> IllegalArgumentException
 
 ### Controller(컨트롤러)
-- [x] gameStart 메서드 구현
-  - [x] game 초기화 하기
-  - [x] game play 하기
-  - [x] `printRequestRestartOrFinish` 메서드로 사용자의 게임 재시작 여부 물어보기
-  - [x] `validateRange`메서드로 재시작 여부 범위 확인 하기
+- ✅ gameStart 메서드 구현
+  - ✅ game 초기화 하기
+  - ✅ game play 하기
+  - ✅ `printRequestRestartOrFinish` 메서드로 사용자의 게임 재시작 여부 물어보기
+  - ✅ `validateRange`메서드로 재시작 여부 범위 확인 하기
 - ✅ printRequestRestartOrFinish 메서드 구현
   - ✅ "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." 문구 출력
 - ✅ validateRange 메서드 구현

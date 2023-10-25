@@ -27,8 +27,9 @@ public class Game {
 
     public void gamePlay() {
         List<Integer> userNumbers;
+        System.out.println(START_MESSAGE);
         while (strike < DESIGNED_NUM) {
-            System.out.println(INPUT_MESSAGE);
+            System.out.print(INPUT_MESSAGE);
             String inputNumbers = readLine();
             validateDataType(inputNumbers);
             userNumbers = toIntegerList(inputNumbers);
