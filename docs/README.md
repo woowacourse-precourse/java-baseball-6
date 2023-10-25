@@ -17,7 +17,7 @@
 
         String result(List<Integer> gameResult) //player 입력에 대한 결과 문구 return
 
-## 2. BaseBallNumberGameMachine class
+## 2. NumberBaseBallGameMachine class
 - 게임 진행 관련 메서드 
 
          void play() //종료를 입력 받기 전까지, 게임을 계속 진행
@@ -66,3 +66,11 @@
          List<Integer> generateRandomAnswer() //서로 다른 3개의 숫자를 가진 Integer List return
       
          int generateRandomNumber() //지정된 범위 안에서 랜덤한 숫자 return
+
+## 6. Class Flow
+- 전체적 클래스 별 흐름
+
+        NumberBaseBallGameMachine.play() => Message.start() => NumberBaseBallGameMachine.gameProcess()
+        => Message.requestInput() => InputValidate.validatePlayerInput() => InputValidate.convertPlayerInput()
+        => Referee.judgePlayerInput() => Mesaage.result() => NumberBaseBallGameMachine.isSuccess()
+        => Message.requestNewGameOrEnd() => NumberBaseBallGameMachine.isGameEnd() => Message.gameEnd()
