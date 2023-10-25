@@ -1,7 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,18 +10,14 @@ public class Computer {
     private List<Integer> answer;
     private Map<String, Integer> sol;
 
-    Computer(){}
-
-    public List<Integer> getAnswer() {
-        return this.answer;
-    }
-
-    public void setAnswer(List<Integer> answer) {
-        this.answer = answer;
+    Computer() {
+        answer = new ArrayList<>();
+        sol = new HashMap<>();
     }
 
     public void generateAnswer() {
-        while(answer.size() < 3){
+        answer.clear();
+        while (answer.size() < 3) {
             int random = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(random)) {
                 answer.add(random);
@@ -28,32 +25,33 @@ public class Computer {
         }
     }
 
-    public Map<String, Integer> resolve(List<Integer> userInput){
+    public Map<String, Integer> resolve(List<Integer> userInput) {
         int ball = 0;
         int strike = 0;
+        int answerIndex = 0;
 
-        if(answer.containsAll(userInput)){
+        if (answer.containsAll(userInput)) {
             if (answer.get(0) == userInput.get(0)) {
-                if(answer.get(1) == userInput.get(1)){
+                if (answer.get(1) == userInput.get(1)) {
                     if (answer.get(2) == userInput.get(2)) {
                         strike = 3;
                     }
                 }
             }
-        }
-        else {
+        } else {
             for (int c : answer) {
+                int userInputIndex = 0;
                 for (int u : userInput) {
-                    if (c == u){
-                        if(answer.indexOf(c) == userInput.indexOf(u)){
+                    if (c == u) {
+                        if (userInputIndex == answerIndex) {
                             strike++;
-                        }else{
+                        } else {
                             ball++;
                         }
-                    }else{
-                        break;
                     }
+                    userInputIndex++;
                 }
+                answerIndex++;
             }
         }
 
@@ -62,7 +60,6 @@ public class Computer {
 
         return sol;
     }
-
 
 
 }

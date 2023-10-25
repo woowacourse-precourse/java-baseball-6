@@ -44,11 +44,11 @@ public class Game {
         } else if(sol.get("볼") == 0 && sol.get("스트라이크") == 0){
             System.out.println("낫싱");
         } else if(sol.get("볼") == 0){
-            System.out.printf("%d스트라이크", sol.get("스트라이크"));
+            System.out.printf("%d스트라이크%n", sol.get("스트라이크"));
         } else if(sol.get("스트라이크") == 0){
-            System.out.printf("%d볼", sol.get("볼"));
+            System.out.printf("%d볼%n", sol.get("볼"));
         } else {
-            System.out.printf("%d볼 %d스트라이크", sol.get("볼"), sol.get("스트라이크"));
+            System.out.printf("%d볼 %d스트라이크%n", sol.get("볼"), sol.get("스트라이크"));
         }
         return false;
     }

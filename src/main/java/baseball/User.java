@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,13 +17,14 @@ public class User {
         return this.userInput;
     }
 
-    public void setUserInput(List<Integer> userInput){
-        this.userInput = userInput;
-    }
-
     public void input(){
         try {
-            int num = Integer.parseInt(Console.readLine());
+            userInput = new ArrayList<>();
+            String input = Console.readLine();
+            if(input.length() != 3){
+                throw  new Exception();
+            }
+            int num = Integer.parseInt(input);
             digit(num);
             hasDuplicate(userInput);
         } catch (Exception e) {
@@ -31,9 +33,9 @@ public class User {
     }
 
     public void digit(int num){
-        this.userInput.add(num/100);
-        this.userInput.add((num%100)/10);
-        this.userInput.add((num%100)%10);
+        userInput.add(0, num/100);
+        userInput.add(1, (num%100)/10);
+        userInput.add(2, (num%100)%10);
     }
 
     public void hasDuplicate(List<Integer> userInput) throws Exception{
