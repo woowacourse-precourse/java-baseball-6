@@ -5,9 +5,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserNumbersGenerator extends NumbersGenerator{
+public class UserNumbersGenerator implements NumbersGenerator{
+    @Override
+    public List<Integer> generate() {
+        Numbers numbers = new Numbers(createUserNumbers());
+        return numbers.getNumbers();
+    }
 
-    public List<Integer> createNumbers() {
+    private List<Integer> createUserNumbers() {
         List<Integer> userNumbers = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
