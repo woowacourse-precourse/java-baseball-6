@@ -20,7 +20,7 @@ public class GameNumber {
         this.computerNumbers = generateNumbers();
     }
 
-    public List<Integer> generateNumbers() {
+    private List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < GameConst.NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -33,11 +33,7 @@ public class GameNumber {
 
     public GameResult compare(UserNumber userNumber) {
         List<Integer> userNumbers = userNumber.getNumbers();
-
-        if (this.computerNumbers.size() != userNumbers.size()) {
-            throw new IllegalArgumentException();
-        }
-
+        
         int strike = 0;
         int ball = 0;
 
