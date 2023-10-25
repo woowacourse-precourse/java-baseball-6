@@ -27,7 +27,7 @@ class JudgeTest {
         List<Integer> player = Arrays.asList(1, 2, 3);
 
         // when
-        String expectStrike = judge.judgement(computer, player);
+        String expectStrike = judge.judge(computer, player);
 
         // then
         assertThat("3스트라이크").isEqualTo(expectStrike);
@@ -41,7 +41,7 @@ class JudgeTest {
         List<Integer> player = Arrays.asList(3, 1, 2);
 
         // when
-        String expectBall = judge.judgement(computer, player);
+        String expectBall = judge.judge(computer, player);
 
         // then
         assertThat("3볼").isEqualTo(expectBall);
@@ -54,7 +54,7 @@ class JudgeTest {
         List<Integer> player = Arrays.asList(4, 5, 6);
 
         // when
-        String expectNothing = judge.judgement(computer, player);
+        String expectNothing = judge.judge(computer, player);
 
         // then
         assertThat("낫싱").isEqualTo(expectNothing);

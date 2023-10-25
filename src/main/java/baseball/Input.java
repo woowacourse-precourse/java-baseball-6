@@ -8,6 +8,7 @@ import java.util.List;
 public class Input {
     public List<Integer> playerNumber() {
         System.out.println("숫자를 입력해주세요 : ");
+
         try {
             String input = Console.readLine();
             List<Integer> playerNum = new ArrayList<>();

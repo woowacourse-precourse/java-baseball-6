@@ -7,16 +7,16 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class GenerateRandomNumTest {
+class GenerateRandomNumberTest {
 
     @Test
     @DisplayName("랜덤 숫자 생성")
     void create() {
         // given
-        GenerateRandomNum generateRandomNum = new GenerateRandomNum();
+        GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
 
         // when
-        List<Integer> integers = generateRandomNum.create();
+        List<Integer> integers = generateRandomNumber.create();
 
         // then
         assertThat(3).isEqualTo(integers.size());
