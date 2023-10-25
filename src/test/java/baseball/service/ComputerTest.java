@@ -29,7 +29,7 @@ class ComputerTest {
         List<Integer> numbers2 = Arrays.asList(2, 1, 7);
         Computer computer = new Computer();
         //when
-        String result = computer.getResult(numbers1, numbers1);
+        String result = computer.getResult(numbers1, numbers2);
         //then
         Assertions.assertEquals("2볼", result);
     }
@@ -42,7 +42,7 @@ class ComputerTest {
         List<Integer> numbers2 = Arrays.asList(1, 3, 5);
         Computer computer = new Computer();
         //when
-        String result = computer.getResult(numbers1, numbers1);
+        String result = computer.getResult(numbers1, numbers2);
         //then
         Assertions.assertEquals("1볼 1스트라이크", result);
     }
@@ -55,7 +55,7 @@ class ComputerTest {
         List<Integer> numbers2 = Arrays.asList(6, 7, 8);
         Computer computer = new Computer();
         //when
-        String result = computer.getResult(numbers1, numbers1);
+        String result = computer.getResult(numbers1, numbers2);
         //then
         Assertions.assertEquals("낫싱", result);
     }
@@ -68,7 +68,7 @@ class ComputerTest {
         List<Integer> numbers2 = Arrays.asList(1, 2, 3);
         Computer computer = new Computer();
         //when
-        String result = computer.getResult(numbers1, numbers1);
+        String result = computer.getResult(numbers1, numbers2);
         //then
         Assertions.assertEquals("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료", result);
     }
