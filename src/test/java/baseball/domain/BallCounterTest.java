@@ -16,7 +16,7 @@ class BallCounterTest {
     void 볼_카운터는_유저와_컴퓨터의_숫자_결과를_게임_규칙에_맞게_생성함(RepetitionInfo repetitionInfo) {
         // given
         computer.generatePlayerNumber(3);
-        List<Integer> guessNumber = List.of(1, 2, 3);
+        List<Ball> guessNumber = List.of(new Ball(1), new Ball(2), new Ball(3));
 
         // when
         BallCounter ballCounter = new BallCounter(computer.getNumbers(), guessNumber);

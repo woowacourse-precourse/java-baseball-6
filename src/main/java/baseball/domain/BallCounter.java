@@ -7,10 +7,10 @@ public class BallCounter {
     private int strikeCount;
     private int ballCount;
 
-    public BallCounter(List<Integer> targetNumber, List<Integer> guessNumber) {
+    public BallCounter(List<Ball> targetNumber, List<Ball> guessNumber) {
         int index = 0;
 
-        for (int ball : targetNumber) {
+        for (Ball ball : targetNumber) {
             if (isStrike(guessNumber, ball, index++)) {
                 ++strikeCount;
             } else if (isBall(guessNumber, ball)) {
@@ -19,11 +19,11 @@ public class BallCounter {
         }
     }
 
-    private boolean isStrike(List<Integer> guessNumber, int ball, int index) {
-        return guessNumber.get(index) == ball;
+    private boolean isStrike(List<Ball> guessNumber, Ball ball, int index) {
+        return guessNumber.get(index).equals(ball);
     }
 
-    private boolean isBall(List<Integer> guessNumber, int ball) {
+    private boolean isBall(List<Ball> guessNumber, Ball ball) {
         return guessNumber.contains(ball);
     }
 
@@ -51,7 +51,7 @@ public class BallCounter {
         String strikeString = getStrike();
 
         if (isNotting(ballString, strikeString)) {
-            return "낫싱\n";
+            return "낫싱";
         }
         return (ballString + strikeString).trim();
     }

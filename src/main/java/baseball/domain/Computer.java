@@ -8,13 +8,13 @@ import java.util.List;
 public class Computer implements Player {
 
     private final Output output;
-    private List<Integer> numbers;
+    private List<Ball> numbers;
 
     public Computer(Output output) {
         this.output = output;
     }
 
-    public List<Integer> getNumbers() {
+    public List<Ball> getNumbers() {
         return numbers;
     }
 
@@ -23,12 +23,12 @@ public class Computer implements Player {
         numbers = generateRandomNumber(NUMBER_BALLS);
     }
 
-    private List<Integer> generateRandomNumber(int NUMBER_BALLS) {
-        List<Integer> randomNumbers = new ArrayList<>();
+    private List<Ball> generateRandomNumber(int NUMBER_BALLS) {
+        List<Ball> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < NUMBER_BALLS) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumbers.contains(randomNumber)) {
-                randomNumbers.add(randomNumber);
+            Ball randomBall = new Ball(Randoms.pickNumberInRange(1, 9));
+            if (!randomNumbers.contains(randomBall)) {
+                randomNumbers.add(randomBall);
             }
         }
         return randomNumbers;
@@ -37,5 +37,4 @@ public class Computer implements Player {
     public void announceResult(BallCounter ballCounter) {
         output.print(ballCounter.toString());
     }
-
 }

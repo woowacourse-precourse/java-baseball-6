@@ -66,7 +66,7 @@ public class Game {
         return ballCounter;
     }
 
-    private List<Integer> guessNumber() {
+    private List<Ball> guessNumber() {
         output.print(Message.REQUEST_INPUT);
         user.generatePlayerNumber(NUMBER_BALLS);
         return Utility.convertStringToBall(user.getNumbers(), NUMBER_BALLS);
