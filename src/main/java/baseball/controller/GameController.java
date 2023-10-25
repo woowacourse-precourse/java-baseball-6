@@ -4,9 +4,9 @@ import baseball.model.BaseballGame;
 import baseball.model.Validator;
 import baseball.view.UserView;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.model.BaseballGame.stringToListOfIntegers;
 import static baseball.model.Constants.*;
 
 public class GameController {
@@ -34,18 +34,6 @@ public class GameController {
         }
 
         throw new IllegalArgumentException();
-    }
-
-    public static List<Integer> stringToListOfIntegers(String userNumber) {
-        List<Integer> integerList = new ArrayList<>();
-
-        for (int i = 0; i < userNumber.length(); i++) {
-            char digitChar = userNumber.charAt(i);
-            int digit = Character.getNumericValue(digitChar);
-            integerList.add(digit);
-        }
-
-        return integerList;
     }
 
     public void playGame() {

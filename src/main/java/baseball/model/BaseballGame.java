@@ -103,4 +103,16 @@ public class BaseballGame {
         }
         return false;
     }
+
+    public static List<Integer> stringToListOfIntegers(String userNumber) {
+        List<Integer> integerList = new ArrayList<>();
+
+        for (int i = 0; i < userNumber.length(); i++) {
+            char digitChar = userNumber.charAt(i);
+            int digit = Character.getNumericValue(digitChar);
+            integerList.add(digit);
+        }
+
+        return integerList;
+    }
 }
