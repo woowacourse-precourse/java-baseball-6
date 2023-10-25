@@ -9,7 +9,9 @@ public class Application {
         // TODO: 프로그램 구현
         getStartingMessage();
         while(true){
+
             PlayBaseballGame.play();
+
             getRestartOrEndMessage();
             String input = Console.readLine();
             try {

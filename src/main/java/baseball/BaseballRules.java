@@ -15,7 +15,7 @@ public class BaseballRules {
         return countTwoStringSame(stringSplitToCharactersArray(target), stringSplitToCharactersArray(input));
     }
 
-    public static int ball(String target, String input){
+    public static int balls(String target, String input){
         return twoNumbersLength(target, input) - duplicateRemovedCombinedTwoNumbersSize(target, input) - strikes(target, input);
     }
 
@@ -26,18 +26,18 @@ public class BaseballRules {
     public static StringBuilder outputOfJudgment(String target, String input) {
         StringBuilder builder = new StringBuilder();
         int strikesCount = strikes(target,input);
-        int ballCount = ball(target,input);
+        int ballCount = balls(target,input);
         if (ballCount == 0 && strikesCount == 0) {
             builder.append(nothing());
         }
         if (ballCount != 0) {
-            builder.append(String.format("%d볼", ball(target,input)));
+            builder.append(String.format("%d볼", ballCount));
         }
         if (ballCount != 0 && strikesCount != 0) {
             builder.append(" ");
         }
         if (strikesCount !=0) {
-            builder.append(String.format("%d스트라이크", strikes(target,input)));
+            builder.append(String.format("%d스트라이크", strikesCount));
         }
         return builder;
     }
