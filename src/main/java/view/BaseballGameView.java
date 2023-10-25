@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BaseballGameView {
 
-    public String printMessage(MessageType messageType){
+    public String getGameMessage(MessageType messageType){
         String message= "";
         switch (messageType){
             case GAME_START -> message = MessageType.GAME_START.getMessage();

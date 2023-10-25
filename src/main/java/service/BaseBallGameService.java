@@ -31,7 +31,7 @@ public class BaseBallGameService {
 
     public void runGame(){
         //게임 시작
-        baseballGameView.print(baseballGameView.printMessage(GAME_START));
+        baseballGameView.print(baseballGameView.getGameMessage(GAME_START));
         String flag = NEW_GAME.getMessage();
         String computerNumber = "";
         do{
@@ -42,7 +42,7 @@ public class BaseBallGameService {
             }
 
             //사용자 입력값 받기
-            baseballGameView.print(baseballGameView.printMessage(INPUT_NUMBER));
+            baseballGameView.print(baseballGameView.getGameMessage(INPUT_NUMBER));
             user.setUserNumber();
             String userNumber = user.getNumber();
 
@@ -58,7 +58,7 @@ public class BaseBallGameService {
                     continue;
                 }
                 //게임 종료
-                baseballGameView.print(baseballGameView.printMessage(GAME_END));
+                baseballGameView.print(baseballGameView.getGameMessage(GAME_END));
                 flag = Console.readLine();
                 computerNumber = "";
             }
