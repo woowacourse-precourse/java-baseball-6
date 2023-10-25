@@ -8,6 +8,8 @@ import java.util.List;
 public class Model {
 
     private static final int length = 3;
+    public static final String exit = "2";
+    private static final String restart = "1";
 
     public List<Integer> makeRandomNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -56,5 +58,12 @@ public class Model {
         }
     }
 
+    public void validateRetryNumber(String input) throws IllegalArgumentException {
+        // 1 or 2
+        // 한자리 수가 아닌 경우
+        if (!input.equals(restart) && !input.equals(exit)) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
