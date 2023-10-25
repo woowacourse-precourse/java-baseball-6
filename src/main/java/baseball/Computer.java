@@ -12,10 +12,10 @@ public class Computer {
     }
 
     public Computer() {
-        this.answerNumber = Note.writeDown(generateRandomCount());
+        this.answerNumber = Note.writeDown(generateRandomNumber());
     }
 
-    private String generateRandomCount() {
+    private String generateRandomNumber() {
         Set<Integer> threeDigits = new HashSet<>();
 
         final int upperDigitBound = 3;
