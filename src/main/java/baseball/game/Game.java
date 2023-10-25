@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    public static final String GAME_SUCCESSFULLY_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static final String INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
+
     private MountResult mountResult;
     private BaseBallMount computerMount;
     private BaseBallMount playerMount;
@@ -17,9 +21,8 @@ public class Game {
     }
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START_MESSAGE);
 
-        // 초기화
         initializeComputerMount();
 
         do {
@@ -33,7 +36,8 @@ public class Game {
             String result = mountResult.referee(computerMount, playerMount);
             System.out.println(result);
         } while (mountResult.isNotAllStrike());
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+        System.out.println(GAME_SUCCESSFULLY_END_MESSAGE);
     }
 
     private void initializeMountResult() {
@@ -41,25 +45,23 @@ public class Game {
     }
 
     private void initializeComputerMount() {
-        List<BaseBall> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.stream().map(BaseBall::getValue).toList().contains(randomNumber)) {
-                computer.add(new BaseBall(randomNumber));
+        List<BaseBall> computerBaseBalls = new ArrayList<>();
+        while (computerBaseBalls.size() < BaseBallMount.VALID_BASEBALL_MOUNT_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(BaseBall.MIN_VALUE, BaseBall.MAX_VALUE);
+
+            List<Integer> computerBaseBallValues = computerBaseBalls.stream().map(BaseBall::getValue).toList();
+            if (!computerBaseBallValues.contains(randomNumber)) {
+                computerBaseBalls.add(new BaseBall(randomNumber));
             }
         }
-        this.computerMount = new BaseBallMount(computer);
+        this.computerMount = new BaseBallMount(computerBaseBalls);
     }
 
     private List<BaseBall> resolveBaseBallsFromInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_GUIDE_MESSAGE);
         String input = Console.readLine();
 
         try {
-            if (input.length() != 3) {
-                throw new IllegalArgumentException("세자리 수를 입력해주세요");
-            }
-
             List<BaseBall> baseBalls = new ArrayList<>();
             for (String number : input.split("")) {
                 int value = Integer.parseInt(number);

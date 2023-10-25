@@ -5,6 +5,7 @@ import java.util.Objects;
 public class BaseBall {
     public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = 9;
+    private static final String INVALID_BASEBALL_VALUE_MESSAGE = "1 ~ 9 만 입력해주세요";
 
     private final int value;
 
@@ -18,8 +19,8 @@ public class BaseBall {
     }
 
     private void validateBallRange(int value) {
-        if (value < 1 || value > 9) {
-            throw new IllegalArgumentException("1 ~ 9 만 입력해주세요");
+        if (value < MIN_VALUE || value > MAX_VALUE) {
+            throw new IllegalArgumentException(INVALID_BASEBALL_VALUE_MESSAGE);
         }
     }
 

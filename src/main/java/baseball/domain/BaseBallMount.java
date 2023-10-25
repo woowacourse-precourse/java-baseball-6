@@ -3,7 +3,7 @@ package baseball.domain;
 import java.util.List;
 
 public class BaseBallMount {
-    private static final int VALID_BASEBALL_MOUNT_SIZE = 3;
+    public static final int VALID_BASEBALL_MOUNT_SIZE = 3;
     public static final String INVALID_BASEBALL_MOUNT_SIZE_MESSAGE = "세자리 수를 입력해주세요";
     public static final String DUPLICATE_BASEBALL_MOUNT_MESSAGE = "각각 다른 수를 입력해주세요";
 
