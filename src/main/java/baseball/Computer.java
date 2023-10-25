@@ -16,8 +16,9 @@ public class Computer {
         answer = new ArrayList<>();
         while (answer.size() < 3) {
             randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber))
+            if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
+            }
         }
     }
 
@@ -25,12 +26,15 @@ public class Computer {
         int strike;
 
         strike = 0;
-        if (answer.get(0).equals(userInput.get(0)))
+        if (answer.get(0).equals(userInput.get(0))) {
             strike++;
-        if (answer.get(1).equals(userInput.get(1)))
+        }
+        if (answer.get(1).equals(userInput.get(1))) {
             strike++;
-        if (answer.get(2).equals(userInput.get(2)))
+        }
+        if (answer.get(2).equals(userInput.get(2))) {
             strike++;
+        }
         return (strike);
     }
 
@@ -38,12 +42,15 @@ public class Computer {
         int ball;
 
         ball = 0;
-        if (answer.contains(userInput.get(0)))
+        if (answer.contains(userInput.get(0))) {
             ball++;
-        if (answer.contains(userInput.get(1)))
+        }
+        if (answer.contains(userInput.get(1))) {
             ball++;
-        if (answer.contains(userInput.get(2)))
+        }
+        if (answer.contains(userInput.get(2))) {
             ball++;
+        }
         ball = ball - strike;
         return (ball);
     }
@@ -53,8 +60,9 @@ public class Computer {
     }
     boolean terminateBaseballGame() {
         outputManager.printRetryOrEndMessage();
-        if (inputManager.takeUserEndOrRetryInput() == 2)
+        if (inputManager.takeUserEndOrRetryInput() == 2) {
             return (true);
+        }
         return (false);
     }
 
