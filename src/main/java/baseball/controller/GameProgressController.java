@@ -23,7 +23,7 @@ public class GameProgressController {
     }
 
     private boolean userRestartOrExit(String userInputString) {
-        int userInputRestartOrExitNumber = userInputValidator.userInputRestartOrExitValidate(userInputString);
+        int userInputRestartOrExitNumber = userInputValidator.validateRestartOrExitInput(userInputString);
         if (userInputRestartOrExitNumber == 1) {
             return true;
         }

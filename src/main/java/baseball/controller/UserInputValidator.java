@@ -35,7 +35,7 @@ public class UserInputValidator {
         return convertStringToIntegerList(userInputString);
     }
 
-    public int userInputRestartOrExitValidate(String userInputString) {
+    public int validateRestartOrExitInput(String userInputString) {
         if (!isOneOrTwo(userInputString)) {
             throw new IllegalArgumentException(WRONG_RANGE_RESET_STRING_MESSAGE);
         }
