@@ -29,7 +29,7 @@ public class Computer {
     }
 
     private int updateCountForBall(final int gameNumberOfPlayer, int count) {
-        if (!gameNumbersOfComputer.isContains(gameNumberOfPlayer)) {
+        if (gameNumbersOfComputer.isContains(gameNumberOfPlayer)) {
             count += 1;
         }
         return count;
