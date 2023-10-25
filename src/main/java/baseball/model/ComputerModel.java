@@ -9,14 +9,14 @@ public class ComputerModel {
     public int[] computerNumbers;
 
     public ComputerModel() {
-        computerNumbers = createComputerNumbers();
+        do {
+            computerNumbers = createComputerNumbers();
+        } while(Util.isDuplicateNumber(computerNumbers));
     }
 
     private static int[] createComputerNumbers() {
-        return Arrays.stream(new int[100])
+        return Arrays.stream(new int[3])
                 .map(num -> Randoms.pickNumberInRange(1, 9))
-                .distinct()
-                .limit(3)
                 .toArray();
     }
 
