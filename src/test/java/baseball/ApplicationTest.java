@@ -102,6 +102,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 입력숫자_예외_0포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 게임종료_선택_예외_다른숫자() {
         assertRandomNumberInRangeTest(
                 () -> {

@@ -26,7 +26,7 @@ public class PlayerNumbers {
         if (isNotValidLength(readLine)) {
             throw new IllegalArgumentException();
         }
-        if (isNotNumber(readLine)) {
+        if (isNotValidNumber(readLine)) {
             throw new IllegalArgumentException();
 
         }
@@ -40,7 +40,7 @@ public class PlayerNumbers {
         return readLine.length() != NUMBER_LENGTH;
     }
 
-    private boolean isNotNumber(String readLine) {
+    private boolean isNotValidNumber(String readLine) {
         for (int i = 0; i < readLine.length(); i++) {
             char letter = readLine.charAt(i);
             if (letter < '1' || letter > '9') {
