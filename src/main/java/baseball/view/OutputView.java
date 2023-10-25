@@ -36,7 +36,7 @@ public class OutputView {
         }
     }
 
-    public static void printRoundResult(Round round) {
+    public void printRoundResult(Round round) {
         StringBuilder sb = new StringBuilder();
         addBallMessage(round, sb);
         addStrikeMessage(round, sb);

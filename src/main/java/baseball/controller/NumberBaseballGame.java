@@ -7,14 +7,16 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class NumberBaseballGame {
+    InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
 
-    static void gameStart() {
+    void gameStart() {
         ComputerNumbers computerNumbers = new ComputerNumbers();
         boolean isGameEnd = false;
         while (!isGameEnd) {
-            UserNumbers userNumbers = new UserNumbers(InputView.readUserNumber());
+            UserNumbers userNumbers = new UserNumbers(inputView.readUserNumber());
             Round round = new Round(computerNumbers, userNumbers);
-            OutputView.printRoundResult(round);
+            outputView.printRoundResult(round);
             isGameEnd = round.isGameEnd();
         }
     }
@@ -25,7 +27,7 @@ public class NumberBaseballGame {
         while (shouldPlay) {
             gameStart();
             OutputView.printEndMessage();
-            shouldPlay = InputView.readShouldReplay();
+            shouldPlay = inputView.readShouldReplay();
         }
     }
 

@@ -27,13 +27,13 @@ public class InputView {
         return user;
     }
 
-    public static List<Integer> readUserNumber() {
+    public List<Integer> readUserNumber() {
         System.out.print(NUMBER_INPUT_MESSAGE);
         String input = Console.readLine();
         return convertUserInput(input);
     }
 
-    public static boolean readShouldReplay() {
+    public boolean readShouldReplay() {
         System.out.println(REPLAY_INPUT_MESSAGE);
         String input = Console.readLine();
         ReplayType replayType = ReplayType.findTypeByInput(input);
