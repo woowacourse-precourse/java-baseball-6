@@ -8,13 +8,17 @@ public class Output {
     public static void print(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             printNothingMessage();
-        } else if (ball == 0) {
-            printStrikeMessage(strike);
-        } else if (strike == 0) {
-            printBallMessage(ball);
-        } else {
-            printBallAndStirkeMessage(ball, strike);
+            return;
         }
+        if (ball == 0) {
+            printStrikeMessage(strike);
+            return;
+        }
+        if (strike == 0) {
+            printBallMessage(ball);
+            return;
+        }
+        printBallAndStirkeMessage(ball, strike);
     }
 
     public static void printBallMessage(int ball) {
