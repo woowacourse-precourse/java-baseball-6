@@ -40,8 +40,8 @@ public class Computer {
         String answerNumber = answer.toString();
         StringBuilder gameResult = new StringBuilder();
 
-        String ballCount = isBall(guessNumber, answerNumber);
-        String strikeCount = isStrike(guessNumber, answerNumber);
+        String ballCount = countBall(guessNumber, answerNumber);
+        String strikeCount = countStrike(guessNumber, answerNumber);
 
         gameResult.append(ballCount.isEmpty() ? "" : ballCount + " ");
         gameResult.append(strikeCount.isEmpty() ? "" : strikeCount + " ");
@@ -49,7 +49,7 @@ public class Computer {
         return isNothing(gameResult.toString()).trim();
     }
 
-    private String isStrike(String guessNumber, String answerNumber) {
+    private String countStrike(String guessNumber, String answerNumber) {
         int count = 0;
         for (int i = 0; i < guessNumber.length(); i++) {
             if (guessNumber.charAt(i) == answerNumber.charAt(i)) {
@@ -59,7 +59,7 @@ public class Computer {
         return (count == 0) ? "" : count + "스트라이크";
     }
 
-    private String isBall(String guessNumber, String answerNumber) {
+    private String countBall(String guessNumber, String answerNumber) {
         int count = 0;
         for (int i = 0; i < guessNumber.length(); i++) {
             count = isPresentOtherDigit(guessNumber, answerNumber, i) ? count + 1 : count;
