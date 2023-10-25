@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+class Game {
 
     private static final String MESSAGE_GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String MESSAGE_ENTER_NUMBER = "숫자를 입력해주세요 : ";
@@ -49,7 +49,12 @@ public class Game {
     }
 
     private static void checkUserReplayInput(String replayNumber) {
-        
+
+        if (replayNumber.equals("1") || replayNumber.equals("2")) {
+            return;
+        }
+
+        throw new IllegalArgumentException("올바른 수를 입력해 주세요");
     }
 
     private static String userReplayInput() {
@@ -67,15 +72,36 @@ public class Game {
                 temp.add(randomNumber);
             }
         }
-        return temp.toString();
+        StringBuffer ret = new StringBuffer();
+        for (int i = 0; i < 3; i++) {
+            ret.append(temp.get(i));
+        }
+        return ret.toString();
     }
 
-    private static int calculateStrike(String randomNumber, String GuessingNumber) {
-
+    private static int calculateStrike(String randomNumber, String guessingNumber) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (randomNumber.charAt(i) == guessingNumber.charAt(i)) {
+                strike++;
+            }
+        }
+        return strike;
     }
 
     private static int calculateBall(String randomNumber, String GuessingNumber) {
-
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == j) {
+                    continue;
+                }
+                if (randomNumber.charAt(i) == GuessingNumber.charAt(j)) {
+                    ball++;
+                }
+            }
+        }
+        return ball;
     }
 
     private static void printResult(int strike, int ball) {
@@ -95,43 +121,45 @@ public class Game {
         System.out.println();
     }
 
-    private static boolean endGameOrNot(int strike) {
+    private static boolean checkEndGame() {
         System.out.println(MESSAGE_GAME_END);
         System.out.println(MESSAGE_GAME_END_ASK);
-        return userReplayInput().equals("2");
+        return userReplayInput().equals("1");
     }
 
 
-    private static boolean play(String randomNumber, String guessingNumber) {
+    private static boolean play() {
         System.out.println(MESSAGE_GAME_START);
-        boolean isRunning = true;
-        while (isRunning) {
+        String randomNumber = generateRandomNumber();
+
+        while (true) {
             System.out.println(MESSAGE_ENTER_NUMBER);
+            String guessingNumber = userGuessingNumberInput();
+//            System.out.println(randomNumber + " " + guessingNumber);
             int strike = calculateStrike(randomNumber, guessingNumber);
             int ball = calculateBall(randomNumber, guessingNumber);
 
             printResult(strike, ball);
             if (strike == 3) {
-                isRunning = endGameOrNot(strike);
+                break;
             }
 
         }
-        return false;
+
+        return checkEndGame();
     }
 
 
     public void start() {
-        while (play(generateRandomNumber(), userGuessingNumberInput())) {
+        while (play()) {
         }
     }
 
 }
 
-
 public class Application {
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         Game game = new Game();
         game.start();
     }
