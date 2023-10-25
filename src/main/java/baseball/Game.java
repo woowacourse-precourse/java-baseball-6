@@ -17,8 +17,8 @@ public class Game {
         setRandomNumbers();
     }
 
-    public int getStrike() {
-        return strike;
+    public boolean is3Strike() {
+        return strike == 3;
     }
 
     /**

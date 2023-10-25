@@ -41,7 +41,7 @@ public class GameRunner {
     }
 
     public static boolean isEnd() {
-        if (game.getStrike() == 3) {
+        if (game.is3Strike()) {
             System.out.println(Message.SUCCESS_MSG);
             String input = Console.readLine();
             if (InputHandler.checkRestartInput(input)) {

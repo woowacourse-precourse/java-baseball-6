@@ -14,7 +14,7 @@ public class Application {
             GameRunner.count(GameRunner.readInput());
             //step4. 결과 출력
             GameRunner.printResult();
-            //step5. 만약 결과가 3strike라면 게임을 새로 시작할건지 사용자에게 질문
+            //step5. 만약 결과가 3Strike라면 게임을 새로 시작할건지 사용자에게 질문
             if (GameRunner.isEnd()) {
                 return;
             }
