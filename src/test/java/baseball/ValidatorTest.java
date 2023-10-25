@@ -91,7 +91,7 @@ public class ValidatorTest {
     }
 
     @Test
-    @DisplayName("공백을 입력한 테스ㅌ")
+    @DisplayName("공백을 입력한 테스트")
     void gameTerminateValidatorTestWithWrongInput5() {
         Assertions.assertThatThrownBy(() -> gameTerminateValidator.validate(""))
             .isInstanceOf(IllegalArgumentException.class);
