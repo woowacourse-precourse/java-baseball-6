@@ -1,7 +1,6 @@
 package baseball.utils;
 
 import baseball.constants.Constants;
-import baseball.utils.AnswerGenerator;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class AnswerGeneratorTest {
         List<Integer> ans = AnswerGenerator.generateAnswers();
 
         // then
-        Assertions.assertEquals(Constants.ANS_LEN, ans.size());
+        Assertions.assertEquals(Constants.CORRECT_ANSWER_LENGTH, ans.size());
     }
 
     @Test

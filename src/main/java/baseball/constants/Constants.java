@@ -1,7 +1,7 @@
 package baseball.constants;
 
 public class Constants {
-    public static final int ANS_LEN = 3;
+    public static final int CORRECT_ANSWER_LENGTH = 3;
     public static final int RESTART_LEN = 1;
     public static final String CODE_CONTINUE_GAME = "1";
     public static final String CODE_EXIT_GAME = "2";

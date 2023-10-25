@@ -5,7 +5,7 @@ import baseball.constants.Messages;
 
 public class Validator {
     public static void validateUserInput(String userInput) throws IllegalArgumentException {
-        if (isNull(userInput) || !meetsLengthCondition(userInput, Constants.ANS_LEN) ||
+        if (isNull(userInput) || !meetsLengthCondition(userInput, Constants.CORRECT_ANSWER_LENGTH) ||
                 !meetsRangeCondition(userInput, '1', '9') || containsDuplicateNum(userInput)) {
             throw new IllegalArgumentException(Messages.ERROR_MESSAGE);
         }

@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class UserInputReceiver {
-    public static void getUserGuessInput(List<Integer> generatedAnswers) throws IllegalArgumentException {
+    public static void getUserGuessInput(List<Integer> generatedAnswers) {
         String userInput = null;
         do {
             System.out.print(Messages.ENTER_USER_INPUT);
