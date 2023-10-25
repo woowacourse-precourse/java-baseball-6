@@ -15,7 +15,7 @@
 * `Ball` : 볼 안에 있는 숫자를 관리한다.
     * [x] : 볼에 있는 숫자와 다른 볼에 있는 숫자를 비교한다.
 
-* `InputDevice`
+* `InputView`
     * [x] : 서로 다른 세자리수를 입력한다.
         * [x] : 테스트 코드 작성을 위한 대역 생성(DoubleConsoleService)과 서비스 추상화(ConsoleService)
     * [x] : 재시작/종료를 위해 1과 2를 입력받는다.

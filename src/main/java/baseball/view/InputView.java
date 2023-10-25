@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InputDevice {
+public class InputView {
 
     private static final String INPUT_NUMBER_MENT = "숫자를 입력해주세요 : ";
     private static final String NO_SPACE = "";
@@ -13,7 +13,7 @@ public class InputDevice {
     private final ConsoleService consoleService;
     private final InputValidator inputValidator;
 
-    public InputDevice(ConsoleService consoleService, InputValidator inputValidator) {
+    public InputView(ConsoleService consoleService, InputValidator inputValidator) {
         this.consoleService = consoleService;
         this.inputValidator = inputValidator;
     }

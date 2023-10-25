@@ -3,19 +3,19 @@ package baseball.controller;
 import static baseball.domain.Score.THREE_STRIKE;
 
 import baseball.domain.BaseBallGame;
-import baseball.view.InputDevice;
-import baseball.view.OutputDevice;
 import baseball.domain.Score;
+import baseball.view.InputView;
+import baseball.view.OutputDevice;
 import java.util.List;
 
 public class BaseBallGameController {
 
-    private final InputDevice inputDevice;
+    private final InputView inputView;
     private final BaseBallGame baseBallGame;
     private final OutputDevice outputDevice;
 
-    public BaseBallGameController(InputDevice inputDevice, BaseBallGame baseBallGame, OutputDevice outputDevice) {
-        this.inputDevice = inputDevice;
+    public BaseBallGameController(InputView inputView, BaseBallGame baseBallGame, OutputDevice outputDevice) {
+        this.inputView = inputView;
         this.baseBallGame = baseBallGame;
         this.outputDevice = outputDevice;
     }
@@ -23,7 +23,7 @@ public class BaseBallGameController {
     public Score competeWith(List<Integer> answerNumbers) {
         Score gameResult;
         do {
-            List<Integer> tryNumbers = inputDevice.inputTryNumber();
+            List<Integer> tryNumbers = inputView.inputTryNumber();
             gameResult = baseBallGame.createGameResult(tryNumbers, answerNumbers);
             outputDevice.printGameResult(gameResult.getName());
         } while (notThreeStrike(gameResult));
