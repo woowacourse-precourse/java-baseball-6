@@ -15,9 +15,6 @@ public class Game {
     static boolean programRunning = true;
     static boolean gameRunning = true;
 
-    static int strike = 0;
-    static int ball = 0;
-
     private void printGameStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -56,7 +53,27 @@ public class Game {
     }
 
     private void printResult() {
+        int strike = 0;
+        int ball = 0;
 
+        for (int i = 0; i < 3; i++) {
+            if (user.get(i) == computer.get(i)) {
+                strike++;
+            } else if (computer.contains(user.get(i))) {
+                ball++;
+            }
+        }
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            gameRunning = false;
+        } else if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else {
+            if (ball != 0) System.out.print(ball + "볼 ");
+            if (strike != 0) System.out.print(strike + "스트라이크");
+            System.out.println("");
+        }
     }
 
     private void examineNewGameOrNot() {
