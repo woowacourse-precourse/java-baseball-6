@@ -50,6 +50,21 @@ public class Application {
         checkRestart(); //재시작, 종료 여부 확인
     }
 
+    private static void checkRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String answer = Console.readLine();
+
+        if (answer.equals("1")) {
+            CONTINUE_GAME = true;
+        }
+        if (answer.equals("2")) {
+            CONTINUE_GAME = false;
+        }
+        if (!answer.equals("1") && !answer.equals("2")) { //플레이어가 잘못된 입력을 한 경우
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static void printResult(int ball, int strike) {
         if (strike == 3) {
             System.out.println("3스트라이크");
