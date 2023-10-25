@@ -1,10 +1,6 @@
 package baseball.domain;
 
-import static baseball.console.Constant.INT_ZERO;
-import static baseball.console.Constant.RESULT_BALL;
-import static baseball.console.Constant.RESULT_NOTHING;
-import static baseball.console.Constant.RESULT_STRIKE;
-
+import baseball.console.Constant;
 import baseball.console.Input;
 import baseball.console.Output;
 import baseball.util.Computer;
@@ -32,10 +28,6 @@ public class BaseballGame {
         return GameFactory.createUserNumbers(Input.receiveBaseballNumber());
     }
 
-    private boolean isCorrect() {
-        return computerNumbers.equals(userNumbers);
-    }
-
     private String printResult() {
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -43,16 +35,20 @@ public class BaseballGame {
         int strikeCount = computerNumbers.getStrikeCount(userNumbers);
         int ballCount = computerNumbers.getBallCount(userNumbers);
 
-        if (strikeCount == INT_ZERO && ballCount == INT_ZERO) {
-            stringBuilder.append(RESULT_NOTHING);
-        } else if (strikeCount != INT_ZERO && ballCount != INT_ZERO) {
-            stringBuilder.append(ballCount).append(RESULT_BALL).append(" ")
-                    .append(strikeCount).append(RESULT_STRIKE);
-        } else if (strikeCount != INT_ZERO) {
-            stringBuilder.append(strikeCount).append(RESULT_STRIKE);
-        } else if (ballCount != INT_ZERO) {
-            stringBuilder.append(ballCount).append(RESULT_BALL);
+        if (strikeCount == Constant.INT_ZERO && ballCount == Constant.INT_ZERO) {
+            stringBuilder.append(Constant.RESULT_NOTHING);
+        } else if (strikeCount != Constant.INT_ZERO && ballCount != Constant.INT_ZERO) {
+            stringBuilder.append(ballCount).append(Constant.RESULT_BALL).append(" ")
+                    .append(strikeCount).append(Constant.RESULT_STRIKE);
+        } else if (strikeCount != Constant.INT_ZERO) {
+            stringBuilder.append(strikeCount).append(Constant.RESULT_STRIKE);
+        } else if (ballCount != Constant.INT_ZERO) {
+            stringBuilder.append(ballCount).append(Constant.RESULT_BALL);
         }
         return stringBuilder.toString();
+    }
+
+    private boolean isCorrect() {
+        return computerNumbers.equals(userNumbers);
     }
 }

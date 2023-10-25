@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import static baseball.console.Constant.EXCEPTION_RESTART_CONDITION_FORMAT_MESSAGE;
-
 import baseball.console.Constant;
 
 public class TerminationCondition {
@@ -18,9 +16,8 @@ public class TerminationCondition {
     }
 
     private static void isValidFormat(int number) {
-
         if (number != RESTART_NUMBER && number != TERMINATION_NUMBER) {
-            throw new IllegalArgumentException(EXCEPTION_RESTART_CONDITION_FORMAT_MESSAGE);
+            throw new IllegalArgumentException(Constant.EXCEPTION_RESTART_CONDITION_FORMAT_MESSAGE);
         }
     }
 

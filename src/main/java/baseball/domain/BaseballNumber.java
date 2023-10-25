@@ -1,7 +1,6 @@
 package baseball.domain;
 
-import static baseball.console.Constant.EXCEPTION_BASEBALL_NUMBER_FORMAT_MESSAGE;
-
+import baseball.console.Constant;
 import java.util.Objects;
 
 public class BaseballNumber {
@@ -16,19 +15,19 @@ public class BaseballNumber {
 
     private static void isValidFormat(int number) {
         if (number < NUMBER_MIN_VALUE || number > NUMBER_MAX_VALUE) {
-            throw new IllegalArgumentException(EXCEPTION_BASEBALL_NUMBER_FORMAT_MESSAGE);
+            throw new IllegalArgumentException(Constant.EXCEPTION_BASEBALL_NUMBER_FORMAT_MESSAGE);
         }
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object other) {
+        if (this == other) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (other == null || getClass() != other.getClass()) {
             return false;
         }
-        BaseballNumber that = (BaseballNumber) o;
+        BaseballNumber that = (BaseballNumber) other;
         return number == that.number;
     }
 

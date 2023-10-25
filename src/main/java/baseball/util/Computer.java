@@ -1,7 +1,6 @@
 package baseball.util;
 
 import baseball.domain.BaseballNumbers;
-import baseball.util.GameFactory;
 
 public class Computer {
 
