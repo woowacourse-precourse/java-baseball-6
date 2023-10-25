@@ -10,6 +10,48 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
+    void 잘못된_재시작_입력_값_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("246", "3")).
+                            isInstanceOf(IllegalArgumentException.class);
+                },
+                2, 4, 6
+        );
+    }
+
+    @Test
+    void 공백_입력_값_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("123 "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 기준_갯수가_아닌_입력_값_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복된_값_입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void  숫자_이외의_값_입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("가1나"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
