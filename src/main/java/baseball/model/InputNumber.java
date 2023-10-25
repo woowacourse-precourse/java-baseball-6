@@ -35,7 +35,7 @@ public class InputNumber {
 
     public void setQuitNumber(String playerInput) throws IllegalArgumentException {
         if (!playerInput.equals(RESTART_NUMBER) && !playerInput.equals(QUIT_NUMBER)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(QUIT_EXCEPTION_MESSAGE);
         }
         quitNumber = playerInput;
     }

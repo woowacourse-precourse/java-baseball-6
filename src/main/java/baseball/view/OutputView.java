@@ -1,7 +1,5 @@
 package baseball.view;
 
-import baseball.model.InputNumber;
-
 public class OutputView {
     private static final int NUMBER_OF_DIGITS = 3;
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
