@@ -12,7 +12,7 @@ public class InputView {
         return userInputString;
     }
 
-    public String askRestartOrExitNumber() {
+    public String askRestartNumber() {
         System.out.println(RESTART_EXIT_INPUT_MESSAGE);
         String userInputRestartOrExitString = Console.readLine();
         return userInputRestartOrExitString;

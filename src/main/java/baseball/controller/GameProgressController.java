@@ -18,7 +18,7 @@ public class GameProgressController {
             outputView.printGameStart();
             computerController.createAndSaveAnswer(gameNumber);
             progressUserGuessing();
-            progressState = getRestartState(inputView.askRestartOrExitNumber());
+            progressState = getRestartState(inputView.askRestartNumber());
         }
     }
 
