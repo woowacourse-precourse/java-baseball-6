@@ -20,7 +20,6 @@ public class Computer {
 
         SelectedBalls newSelectedBalls = SelectedBalls.getNewSelectedBalls();
         this.computerBalls = newSelectedBalls.getStringOfBalls();
-        System.out.println("computerBalls = " + computerBalls); //@todo: remove
 
         while (true) {
             String inputData = Input.inputBalls();
