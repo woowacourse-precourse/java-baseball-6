@@ -10,6 +10,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerController {
 	InputView inputView = new InputView();
+	public static final String NOTHING_MESSAGE = "낫싱";
+	public static final String STRIKE_MESSAGE = "스트라이크";
+	public static final String BALL_MASSAGE = "볼";
+	public static final String SPACE_MESSAGE = " ";
+	public static final String NULL_MESSAGE = "";
 
 	public List<Integer> getComputerNumber() {
 		List<Integer> computer = new ArrayList<>();
@@ -55,5 +60,35 @@ public class ComputerController {
 		playerData.setStrikeCountAndBallCount(strikeCount, ballCount);
 
 		return playerData;
+	}
+
+	public String strikeAndBallMessage(Game playerData) {
+		String message = NULL_MESSAGE;
+		if (isNothing(playerData)) {
+			message += NOTHING_MESSAGE;
+		}
+		if (isBall(playerData)) {
+			message += playerData.getBallCount() + BALL_MASSAGE + SPACE_MESSAGE;
+		}
+		if (isStrike(playerData)) {
+			message += playerData.getStrikeCount() + STRIKE_MESSAGE;
+		}
+		return message;
+	}
+
+	public boolean isStrike(Game playerData) {
+		return playerData.getStrikeCount() > 0;
+	}
+
+	public boolean isBall(Game playerData) {
+		return playerData.getBallCount() > 0;
+	}
+
+	public boolean isNothing(Game playerData) {
+		return playerData.getStrikeCount() == 0 && playerData.getBallCount() == 0;
+	}
+
+	public boolean isThreeStrike(Game playerData) {
+		return playerData.getStrikeCount() == 3;
 	}
 }
