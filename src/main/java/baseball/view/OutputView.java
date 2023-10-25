@@ -30,4 +30,16 @@ public class OutputView {
     public void printSelectMessage() {
         System.out.println(SELECT_GAME_AGAIN_MESSAGE);
     }
+
+    public void printGameResultMessage(int ballCnt, int strikeCnt) {
+        if (ballCnt > 0 && strikeCnt > 0) {
+            System.out.println(ballCnt + BALL + " " + strikeCnt + STRIKE);
+        } else if (ballCnt > 0 && strikeCnt == 0) {
+            System.out.println(ballCnt + BALL);
+        } else if (ballCnt == 0 && strikeCnt > 0) {
+            System.out.println(strikeCnt + STRIKE);
+        } else if (ballCnt == 0 && strikeCnt == 0) {
+            System.out.println(NOTHING);
+        }
+    }
 }

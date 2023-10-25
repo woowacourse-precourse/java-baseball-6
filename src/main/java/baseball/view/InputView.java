@@ -11,4 +11,12 @@ public class InputView {
 
         return Integer.parseInt(userInput);
     }
+
+    public int enterRestartOrEnd(NumberValidation validation) {
+        String userInput = Console.readLine();
+        validation.validateGap(userInput);
+        validation.validateRestartOrEnd(userInput);
+
+        return Integer.parseInt(userInput);
+    }
 }
