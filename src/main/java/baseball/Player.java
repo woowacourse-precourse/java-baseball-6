@@ -5,7 +5,7 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Player {
+public class Player extends Number{
     private List<Integer> userNum;
 
     public List<Integer> getUserNum() {
@@ -16,8 +16,7 @@ public class Player {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         List<Integer> inputNum = convertStringToList(input);
-        Number number = new Number(inputNum);
-        number.validate();
+        validate(inputNum);
         userNum = inputNum;
     }
 

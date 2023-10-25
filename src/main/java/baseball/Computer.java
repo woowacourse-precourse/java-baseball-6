@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
+public class Computer extends Number{
     private List<Integer> computerNum;
 
     public List<Integer> getComputerNum() {
@@ -14,15 +14,14 @@ public class Computer {
 
     public void createComputerNum() {
         computerNum = new ArrayList<>();
-        while (computerNum.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computerNum.size() < SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MINRANGE, MAXRANGE);
             if (!computerNum.contains(randomNumber)) {
                 computerNum.add(randomNumber);
             }
         }
-        Number number = new Number(computerNum);
         try {
-            number.validate();
+            validate(computerNum);
         } catch (IllegalArgumentException e) {
             createComputerNum();
         }
