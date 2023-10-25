@@ -28,7 +28,7 @@ class ValidateCheckerUtils {
 
         countNum = 0;
         for (int userInputIndex = 0; userInputIndex < input.length(); userInputIndex++) {
-            if (input.charAt(i) == target)
+            if (input.charAt(userInputIndex) == target)
                 countNum++;
         }
         return (countNum);
@@ -49,7 +49,7 @@ class ValidateCheckerUtils {
 
     void checkDuplicateValidate(String userInput) {
         for (int userInputIndex = 0; userInputIndex < userInput.length(); userInputIndex++) {
-            if (count(userInput, userInput.charAt(i)) > 1)
+            if (count(userInput, userInput.charAt(userInputIndex)) > 1)
                 exception.generateInvalidAnswerDuplicateException();
         }
     }
