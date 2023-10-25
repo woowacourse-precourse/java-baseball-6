@@ -18,8 +18,8 @@
 - 게임 컨트롤러 클래스
     - [x] 잘못된 값 입력시 `IllegalArgumentException` 발생 후 종료
         - [x] 낫싱 판별
-        - [ ] 게임 시작 함수
-        - [ ] 사용자에게 값을 입력받는 함수
+        - [x] 게임 시작 함수
+        - [x] 사용자에게 값을 입력받는 함수
             - camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
         - [x] 판별한 값 출력하는 함수
-        - [ ] 게임 종료 함수
+        - [x] 게임 종료 질문 기능
