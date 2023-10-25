@@ -7,12 +7,8 @@ public class UserModel {
 
     public UserModel() {
         String numberString = InputView.inputThreeNumbers();
+        numbers = Util.stringToIntArray(numberString);
         correctNumbers(numberString);
-        numbers = new int[numberString.length()];
-        int i = 0;
-        for (char num : numberString.toCharArray()) {
-            this.numbers[i++] = (num - '0');
-        }
     }
 
     private static void correctNumbers(String input) {
