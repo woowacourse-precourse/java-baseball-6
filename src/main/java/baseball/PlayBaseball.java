@@ -22,7 +22,6 @@ public class PlayBaseball {
 
     public boolean compareTry(List<Integer> answer, int[] userTry) {
         int strikes = 0, balls = 0;
-        boolean nothing = false;
         for (int i = 0; i < 3; i++) {
             int userNumber = userTry[i];
             if (answer.get(i) == userNumber) {
@@ -51,26 +50,21 @@ public class PlayBaseball {
         boolean doContinue;
 
         while (true) {
-            try {
-                System.out.print("숫자를 입력하세요 : ");
-                String input = Console.readLine();
-                String[] userInput = input.split("");
+            System.out.print("숫자를 입력하세요 : ");
+            String input = Console.readLine();
+            String[] userInput = input.split("");
 
-                if (userInput.length != 3) {
-                    throw new IllegalArgumentException("잘못된 입력값입니다. 애플리케이션을 종료합니다.");
-                }
+            if (userInput.length != 3) {
+                throw new IllegalArgumentException("잘못된 입력값입니다. 애플리케이션을 종료합니다.");
+            }
 
-                int[] userTry = new int[3];
-                for (int i = 0; i < 3; i++) {
-                    userTry[i] = Integer.parseInt(userInput[i]);
-                }
-                doContinue = compareTry(answer, userTry);
-                if (!doContinue) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
-            } catch (IllegalArgumentException e) {
-                System.out.println("잘못된 입력값입니다. 애플리케이션을 종료합니다.");
+            int[] userTry = new int[3];
+            for (int i = 0; i < 3; i++) {
+                userTry[i] = Integer.parseInt(userInput[i]);
+            }
+            doContinue = compareTry(answer, userTry);
+            if (!doContinue) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
