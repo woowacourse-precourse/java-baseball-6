@@ -2,13 +2,15 @@
 
 ## 🌏 목차
 
-- ### [GameManager.java](#GameManager.java)
-- ### [Computer.java](#Computer.java)
-- ### [Global.Strike.java](#Global.Strike.java)
-- ### [Global.Ball.java](#Global.Ball.java)
-- ### [NumberArray.java](#NumberArray.java)
+- ### [GameManager.java](#-gamemanager.java)
+- ### [Computer.java](#-computer.java)
+- ### [Global.Strike.java](#-global.strike.java)
+- ### [Global.Ball.java](#-global.ball.java)
+- ### [NumberArray.java](#-numberarray.java)
 
-## 👍&nbsp;&nbsp;GameManager.java
+---
+
+## 👍 GameManager.java
 
 ### 1. start()
 
@@ -43,7 +45,7 @@
 
 - 스트라이크 수를 출력합니다.
 
-## 👍&nbsp;&nbsp;Computer.java
+## 👍 Computer.java
 
 ### 1. check()
 
@@ -59,17 +61,17 @@
 - 컴퓨터가 생성한 세자리 수가 저장된 리스트안에서 파라미터로 받은 index에 위치한 숫자를 꺼내 파라미터로 받은 숫자와 같은지 비교합니다.
 - 같으면 strike수를 한개 올리고 같지 않다면 ball수를 한개 올립니다.
 
-## 👍&nbsp;&nbsp;Global.Strike.java
+## 👍 Global.Strike.java
 
 - strike 수를 멤버 변수로 가지고 있습니다.
 - 싱글톤으로 제작했기 때문에 게임 도중 check()로 strike 수를 판단 후 저장하고 game()에서 접근해 유저에게 알려줍니다.
 
-## 👍&nbsp;&nbsp;Global.Ball.java
+## 👍 Global.Ball.java
 
 - ball 수를 멤버 변수로 가지고 있습니다.
 - 싱글톤으로 제작했기 때문에 게임 도중 check()로 ball 수를 판단 후 저장하고 game()에서 접근해 유저에게 알려줍니다.
 
-## 👍&nbsp;&nbsp;NumberArray.java
+## 👍 NumberArray.java
 
 - 3개의 숫자를 저장하는 리스트 멤버변수를 감싸주는 클래스입니다.
 
