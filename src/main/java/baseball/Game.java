@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Game {
@@ -15,17 +14,13 @@ public class Game {
         boolean correctAnswer = false;
 
         do {
-            System.out.print("숫자를 입력해주세요 : ");
-
-            String userInput = getUserInput();
-
-            int[] validInput = InputValidator.validateAndParseUserInput(userInput);
+            int[] validInput = InputUI.getUserNumbers();
 
             correctAnswer = computer.isCorrectGuess(validInput);
-        } while (!correctAnswer);
-    }
 
-    private String getUserInput() {
-        return Console.readLine();
+            if (!correctAnswer) {
+                Hint.provideHint(randomNumbers, validInput);
+            }
+        } while (!correctAnswer);
     }
 }
