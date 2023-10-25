@@ -1,12 +1,12 @@
 package baseball;
 
-import static baseball.Constant.BALL_MESSAGE;
-import static baseball.Constant.CORRECT_MESSAGE;
-import static baseball.Constant.INPUT_MESSAGE;
-import static baseball.Constant.NOTHING_MESSAGE;
-import static baseball.Constant.RESTART_MESSAGE;
-import static baseball.Constant.START_MESSAGE;
-import static baseball.Constant.STRIKE_MESSAGE;
+import static baseball.Message.BALL_MESSAGE;
+import static baseball.Message.CORRECT_MESSAGE;
+import static baseball.Message.INPUT_MESSAGE;
+import static baseball.Message.NOTHING_MESSAGE;
+import static baseball.Message.RESTART_MESSAGE;
+import static baseball.Message.START_MESSAGE;
+import static baseball.Message.STRIKE_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;

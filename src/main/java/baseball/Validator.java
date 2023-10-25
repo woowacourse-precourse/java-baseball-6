@@ -1,9 +1,9 @@
 package baseball;
 
-import static baseball.Constant.DUPLICATE_INPUT_MESSAGE;
-import static baseball.Constant.INVALID_INPUT_MESSAGE;
-import static baseball.Constant.LENGTH_ERROR_MESSAGE;
-import static baseball.Constant.RESTART_ERROR_MESSAGE;
+import static baseball.Message.DUPLICATE_INPUT_MESSAGE;
+import static baseball.Message.INVALID_INPUT_MESSAGE;
+import static baseball.Message.LENGTH_ERROR_MESSAGE;
+import static baseball.Message.RESTART_ERROR_MESSAGE;
 
 import java.util.HashSet;
 import java.util.List;
