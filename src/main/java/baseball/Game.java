@@ -34,6 +34,19 @@ public class Game {
     }
 
 
+    private static boolean checkRestart() {
+        System.out.println(CHECK_RESTART_MESSAGE);
+        String input = readLine();
+        System.out.println("input:" + input);
+        if (input.equals(RESTART_GAME)) {
+            return true;
+        } else if (input.equals(EXIT_GAME)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static boolean compareAnswer(List<Integer> answer) {
         // 1. 스트라이크 2. 볼 3. 정답 4. 낫싱
         String resultMessage = "";
