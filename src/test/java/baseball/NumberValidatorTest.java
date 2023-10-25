@@ -60,7 +60,7 @@ public class NumberValidatorTest {
     void isValidNumberTest_caseTrue() {
         String playerInput = "123";
 
-        assertThat(numberValidator.isValidNumber(playerInput)).isTrue();
+        assertThat(numberValidator.isValidNumbers(playerInput)).isTrue();
     }
 
     @Test
@@ -69,7 +69,7 @@ public class NumberValidatorTest {
         String playerInput = "1234";
 
         try {
-            numberValidator.isValidNumber(playerInput);
+            numberValidator.isValidNumbers(playerInput);
             fail("IllegalArgumentException 가 발생해야한다.");
         } catch (IllegalArgumentException e) {
             assertThat(e.getMessage()).isEqualTo(errorMessage);
@@ -82,7 +82,7 @@ public class NumberValidatorTest {
         String playerInput = "0일공";
 
         try {
-            numberValidator.isValidNumber(playerInput);
+            numberValidator.isValidNumbers(playerInput);
             fail("IllegalArgumentException 가 발생해야한다.");
         } catch (IllegalArgumentException e) {
             assertThat(e.getMessage()).isEqualTo(errorMessage);
@@ -95,7 +95,7 @@ public class NumberValidatorTest {
         String playerInput = "332";
 
         try {
-            numberValidator.isValidNumber(playerInput);
+            numberValidator.isValidNumbers(playerInput);
             fail("IllegalArgumentException 가 발생해야한다.");
         } catch (IllegalArgumentException e) {
             assertThat(e.getMessage()).isEqualTo(errorMessage);
@@ -106,7 +106,7 @@ public class NumberValidatorTest {
     void testIsValidNumber_caseTrue() {
         String playerInput = "345";
 
-        assertThat(numberValidator.isValidNumber(playerInput)).isTrue();
+        assertThat(numberValidator.isValidNumbers(playerInput)).isTrue();
     }
 
     @Test

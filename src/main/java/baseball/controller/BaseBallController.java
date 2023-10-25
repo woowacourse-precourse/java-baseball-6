@@ -54,7 +54,7 @@ public class BaseBallController {
 
     private void updatePlayerNumbers() {
         playerInput = INPUT_VIEW.enterPlayerInput();
-        INPUT_VALIDATOR.isValidNumber(playerInput);
+        INPUT_VALIDATOR.isValidNumbers(playerInput);
         List<Integer> parsedPlayerInput = PLAYER_INPUT_PARSER.parsePlayerInput(playerInput);
         PLAYER_NUMBERS.setNumbers(parsedPlayerInput);
     }
