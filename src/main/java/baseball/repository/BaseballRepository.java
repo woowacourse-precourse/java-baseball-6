@@ -11,4 +11,11 @@ public class BaseballRepository {
         Computer.getInstance().setComputerNumbers(numbers);
     }
 
+    public List<Integer> getUser() {
+        return User.getInstance().getUserNumbers();
+    }
+
+    public void saveUser(String numbers) {
+        User.getInstance().setUserNumbers(numbers);
+    }
 }
