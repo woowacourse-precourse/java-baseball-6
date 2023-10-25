@@ -12,14 +12,14 @@ public class InputView {
     }
 
     public int requestBaseballNumberInput(){
-        System.out.println(GameMessage.REQUEST_INPUT_MESSAGE);
+        System.out.println(GameMessage.REQUEST_INPUT_MESSAGE.getMessage());
         String playerInput = Console.readLine();
         inputValidator.validateBaseballNumberInput(playerInput);
         return Integer.parseInt(playerInput);
     }
 
     public int requestGameCodeInput(){
-        System.out.println(GameMessage.GAME_WIN_MESSAGE);
+        System.out.println(GameMessage.GAME_WIN_MESSAGE.getMessage());
         String playerInput = Console.readLine();
         inputValidator.validateGameCodeInput(playerInput);
         return Integer.parseInt(playerInput);
