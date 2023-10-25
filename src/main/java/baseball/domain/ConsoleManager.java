@@ -20,7 +20,9 @@ public class ConsoleManager {
     public int readGameInput() {
         System.out.print(REQUIRE_INPUT_MESSAGE);
         String line = Console.readLine();
+        if (line.contains("1") && line.contains("2") && line.contains("3")) {
 
+        }
         InputVerifier ballNumberVerifier = new BallNumberVerifier();
         ballNumberVerifier.verify(line);
         return Integer.parseInt(line);

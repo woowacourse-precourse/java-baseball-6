@@ -1,26 +1,27 @@
 package baseball.controller;
 
+import baseball.ExceptionMessage;
 import baseball.SYSTEM_VALUE.GameStatusValue;
 
 public class GameStatusVerifier implements InputVerifier {
     @Override
-    public void verify(String input) throws IllegalArgumentException {
+    public void verify(String input) {
         isNumeric(input);
         isControlNumber(input);
     }
 
-    private void isNumeric(String input) throws IllegalArgumentException {
+    private void isNumeric(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionMessage.NOT_NUMERIC);
         }
     }
 
     private void isControlNumber(String input) {
         int integerInput = Integer.parseInt(input);
         if (integerInput != GameStatusValue.GAME_RESTART && integerInput != GameStatusValue.GAME_EXIT) {
-            throw new IllegalArgumentException("1 또는 2가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionMessage.UNKNOWN_CONTROL_INPUT);
         }
     }
 }
