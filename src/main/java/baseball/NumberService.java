@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class NumberService {
-    private static final int NUMBER_LENGTH = 3;
+    public static final int NUMBER_LENGTH = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     

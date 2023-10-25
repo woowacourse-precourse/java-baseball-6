@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameSystem {
     private static final int MAX_STRIKE_COUNT = 3;
-    private static final String RESTART_NUMBER = "1";
-    private static final String END_NUMBER = "2";
+    private static final String RESTART_INPUT = "1";
+    private static final String END_INPUT = "2";
     
     private NumberService numberService;
     private CalculateService calculateService;
@@ -81,7 +81,7 @@ public class GameSystem {
 
     // 재시작, 종료 여부의 사용자 입력을 검증하는 메서드
     private String verifyUserInput(String userInput) {
-        if (!userInput.equals(RESTART_NUMBER) && !userInput.equals(END_NUMBER)) {
+        if (!userInput.equals(RESTART_INPUT) && !userInput.equals(END_INPUT)) {
             throw new IllegalArgumentException();
         }
         return userInput;
@@ -90,9 +90,9 @@ public class GameSystem {
     // 사용자의 입력에 따른 재시작 혹은 종료를 위한 준비 메서드
     private void readyRestartOrEnd() {
         userInput = verifyUserInput(getUserInput());
-        if (userInput.equals(RESTART_NUMBER)) {
+        if (userInput.equals(RESTART_INPUT)) {
             updateComputerNumber();
-        } else if (userInput.equals(END_NUMBER)) {
+        } else if (userInput.equals(END_INPUT)) {
             end = true;
         }
     }

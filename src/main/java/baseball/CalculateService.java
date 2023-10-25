@@ -1,8 +1,8 @@
 package baseball;
 
+import static baseball.NumberService.NUMBER_LENGTH;
+
 public class CalculateService {
-    private static final int NUMBER_LENGTH = 3;
-    
     private int ballCount;
     private int strikeCount;
     private String resultMessage;
