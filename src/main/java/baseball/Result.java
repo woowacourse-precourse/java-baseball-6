@@ -10,12 +10,13 @@ public class Result {
     private final Integer strike;
     private final Integer ball;
 
-
+    // Result 저장
     public Result(Integer strike, Integer ball) {
         this.strike = strike;
         this.ball = ball;
     }
 
+    // strike, ball 카운트
     public static Result checkBallList(BallList comBallList, BallList userBallList) {
         int strike = 0;
         int ball = 0;
@@ -46,7 +47,8 @@ public class Result {
     private boolean isBall() {
         return strike == 0 && 0 < ball;
     }
-
+    
+    // 결과 출력
     public String getResultMessage() {
         if (isNothing()) {
             return NOTHING;
