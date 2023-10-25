@@ -42,6 +42,39 @@ public class Application {
     }
 
 
+    // check computer and user number
+    public static int baseball(List<Integer> computer, List<Integer> user){
+        int flag = 1, ball = 0, strike = 0;
+        for (int i = 0;i <3; i++){
+            if (computer.contains(user.get(i))){
+                if (Objects.equals(computer.get(i), user.get(i))){
+                    strike++;
+                }
+                else {
+                    ball++;
+                }
+            }
+        }
+
+        // 결과 출력
+        if (ball != 0){
+            System.out.printf("%d볼 ", ball);
+        }
+        if (strike != 0){
+            System.out.printf("%d스트라이크" ,strike);
+        }
+        if (ball == 0 && strike == 0){
+            System.out.print("낫싱");
+        }
+        System.out.println();
+
+        if (strike != 3){
+            flag = 0;
+        }
+        return flag;
+    }
+
+
     public static int main(String[] args) {
         // random number setting
         List<Integer> computer = new ArrayList<>();
@@ -57,6 +90,10 @@ public class Application {
         List<Integer> user = userInput();
         System.out.print("user input: ");
         System.out.println(user);
+
+        int result;
+        result = baseball(computer, user);
+
         return 0;
     }
 }
