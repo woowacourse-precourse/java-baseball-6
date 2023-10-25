@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class User {
+    public static final int NUMBER_LENGTH = 3;
     public static ArrayList<Integer> inputUserGuess() {
         // 1부터 9까지 서로 다른 세 자리의 수 입력받기 (사용자)
         System.out.print("숫자를 입력해주세요 : ");
@@ -37,7 +38,7 @@ public class User {
     }
 
     private static void validateInputLength(ArrayList<Integer> userNumArray) {
-        if (userNumArray.size() != 3) {
+        if (userNumArray.size() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
