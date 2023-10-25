@@ -137,7 +137,6 @@ class Game {
         while (true) {
             System.out.println(MESSAGE_ENTER_NUMBER);
             String guessingNumber = userGuessingNumberInput();
-//            System.out.println(randomNumber + " " + guessingNumber);
             int strike = calculateStrike(randomNumber, guessingNumber);
             int ball = calculateBall(randomNumber, guessingNumber);
 
