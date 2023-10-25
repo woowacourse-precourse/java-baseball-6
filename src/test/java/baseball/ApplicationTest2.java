@@ -29,6 +29,14 @@ class ApplicationTest2 extends NsTest {
     }
 
     @Test
+    void 숫자사이공백_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1 3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 문자열_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("abcd"))
@@ -43,7 +51,7 @@ class ApplicationTest2 extends NsTest {
         );
     }
     @Test
-    void 재시작_예외_테스트() {
+    void 재시작_예외_테스트1() {
         assertRandomNumberInRangeTest(
                 () -> {
                     assertThatThrownBy(() -> run("135", "12"))
@@ -52,6 +60,28 @@ class ApplicationTest2 extends NsTest {
                 1, 3, 5
         );
     }
+
+    @Test
+    void 재시작_outOfRange_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("135", "3"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5
+        );
+    }
+    @Test
+    void 재시작_숫자아님_예외_테스트2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("135", "a"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5
+        );
+    }
+
 
     @Override
     public void runMain() {
