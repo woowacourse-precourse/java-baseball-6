@@ -1,6 +1,6 @@
 Application 클래스 : 프로그램 실행 클래스
 - main : 프로그램 실행
-- 
+
 GameNumber 클래스 : 게임에 필요한 수를 다루는 클래스
 - generateComputerNumber : 컴퓨터 랜덤 번호 생성한다
 - convertUserNumber : 입력 받은 유저 넘버을 자리수 별로 나누고 변환해준다
