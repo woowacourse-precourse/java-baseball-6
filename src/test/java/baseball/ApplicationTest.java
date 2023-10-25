@@ -59,8 +59,6 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-    // TODO: Invalid test - Application INPUT
-
 
     @Override
     public void runMain() {

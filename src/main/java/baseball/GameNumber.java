@@ -9,7 +9,7 @@ public class GameNumber {
     private static final int BOARD_LIMIT = 3;
     private final List<Integer> board = new ArrayList<Integer>();
     private static final String INPUT_DUPLICATE_ERROR_MESSAGE = "입력은 서로다른 3자리 수만 가능합니다.";
-    private static final String INPUT_OUT_OF_BOUND_ERROR_MESSAGE = "입력은 서로다른 3자리 수만 가능합니다.";
+    private static final String INPUT_OUT_OF_BOUND_ERROR_MESSAGE = "입력은 3자리 수만 가능합니다.";
     private static final String INPUT_NUMERIC_ERROR_MESSAGE = "양의 정수만 입력 가능합니다.";
 
     private void validateDuplicateNumber(int number) {
