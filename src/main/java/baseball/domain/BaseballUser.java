@@ -1,17 +1,17 @@
 package baseball.domain;
 
-import baseball.policy.UserValidationPolicy;
 
+import baseball.policy.ValidationPolicy;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class BaseballUser implements User {
 
-    private UserValidationPolicy userValidationPolicy;
+    private ValidationPolicy userValidationPolicy;
     private List<Integer> numbers;
 
-    public BaseballUser(UserValidationPolicy userValidationPolicy) {
+    public BaseballUser(ValidationPolicy userValidationPolicy) {
         this.userValidationPolicy = userValidationPolicy;
     }
 
@@ -32,7 +32,7 @@ public class BaseballUser implements User {
     private void validationUserInput(String userInput) {
         userValidationPolicy.isNullOrEmpty(userInput);
         userValidationPolicy.hasNoDuplicateNumber(userInput);
-        userValidationPolicy.isCorrectLength(userInput, 3);
+        userValidationPolicy.isCorrectLength(userInput);
         userValidationPolicy.isNumericString(userInput);
         userValidationPolicy.hasNoZero(userInput);
     }

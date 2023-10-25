@@ -1,13 +1,14 @@
 package baseball.domain;
 
 import baseball.policy.BaseballJudgmentPolicy;
+import baseball.policy.JudgmentPolicy;
 import baseball.utility.BaseballScore;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame implements Game {
 
-    BaseballComputer computer;
-    BaseballUser user;
+    private BaseballComputer computer;
+    private BaseballUser user;
     private BaseballJudgmentPolicy baseballJudgmentPolicy;
 
     public BaseballGame(BaseballComputer computer, BaseballUser user, BaseballJudgmentPolicy baseballJudgmentPolicy) {

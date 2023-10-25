@@ -5,7 +5,7 @@ import baseball.utility.BaseballScore;
 
 import java.util.List;
 
-public class BaseballJudgmentPolicy {
+public class BaseballJudgmentPolicy implements JudgmentPolicy {
 
     public BaseballScore compareNumbers(List<Integer> computerNumbers, List<Integer> userNumbers) {
 
