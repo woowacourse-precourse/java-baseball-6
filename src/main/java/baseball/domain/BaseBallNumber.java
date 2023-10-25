@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,55 +16,61 @@ public class BaseBallNumber{
         initBaseballNumberCounterMap();
 
     }
+
+    public BaseBallNumber(String baseballNumber) {
+        this.baseballNumber = stringToList(baseballNumber);
+        initBaseballNumberCounterMap();
+    }
+
     private void initBaseballNumberCounterMap(){
         for (Integer c : baseballNumber) {
             baseballNumberCounterMap.put(c, baseballNumberCounterMap.getOrDefault(c, 0) + 1);
         }
     }
 
+    public int getNumberSize() {
+        return this.baseballNumber.size();
+    }
+
     public List<Integer> getBaseballNumber() {
-        return baseballNumber;
+        return this.baseballNumber;
     }
 
     public Map<Integer, Integer> getBaseballNumberCounterMap() {
-        return baseballNumberCounterMap;
+        return this.baseballNumberCounterMap;
     }
 
-    public Integer[] calcBallsAndStrikes(BaseBallNumber inputNumber){
-        Map<Integer, Integer> inputCounterMap = inputNumber.getBaseballNumberCounterMap();
-        List<Integer> inputBaseballNumber = inputNumber.getBaseballNumber();
+    private List<Integer> stringToList(String input) {
+        List<Integer> result = new ArrayList<>();
 
-        int balls = getNumberCounterUnion(inputCounterMap);
-        int strikes = getStrikes(inputBaseballNumber);
-
-        balls -= strikes;
-
-        return new Integer[]{balls, strikes};
-    }
-
-    private int getStrikes(List<Integer> inputBaseballNumber) {
-        int strikes = 0;
-
-        for (int i = 0; i < baseballNumber.size(); i++) {
-            if (inputBaseballNumber.get(i).equals(baseballNumber.get(i))) {
-                strikes++;
-            }
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            int digit = Character.getNumericValue(c);
+            result.add(digit);
         }
 
-        return strikes;
+        return result;
     }
 
-    private int getNumberCounterUnion(Map<Integer, Integer> inputCounterMap) {
-        int balls = 0;
-
-        for (Integer key : baseballNumberCounterMap.keySet()) {
-            if (inputCounterMap.containsKey(key)) {
-                balls += Math.min(baseballNumberCounterMap.get(key), inputCounterMap.get(key));
+    public static BaseBallNumber generateRandomNumber(){
+        List<Integer> cpuNumber = new ArrayList<>();
+        while (cpuNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!cpuNumber.contains(randomNumber)) {
+                cpuNumber.add(randomNumber);
             }
         }
-
-        return balls;
+        return new BaseBallNumber(cpuNumber);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
 
+        for (int number : baseballNumber) {
+            result.append(number);
+        }
+
+        return result.toString();
+    }
 }

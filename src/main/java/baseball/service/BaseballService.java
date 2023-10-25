@@ -1,18 +1,17 @@
 package baseball.service;
 
+import baseball.domain.BallAndStrike;
 import baseball.domain.BaseBallNumber;
 
 public class BaseballService {
-    // TODO: 야구게임 로직
+    // TODO: 야구게임 로직 실행
     private BaseBallNumber ansBaseBallNumber;
 
     public BaseballService(BaseBallNumber ansBaseBallNumber) {
         this.ansBaseBallNumber = ansBaseBallNumber;
     }
 
-    public Integer[] checkBallAndStrike(BaseBallNumber inputNumber) {
-        Integer[] ballsAndStrikes = ansBaseBallNumber.calcBallsAndStrikes(inputNumber);
-
-        return ballsAndStrikes;
+    public BallAndStrike checkBallAndStrike(BaseBallNumber inputNumber) {
+        return BallAndStrike.calcBallsAndStrikes(this.ansBaseBallNumber, inputNumber);
     }
 }
