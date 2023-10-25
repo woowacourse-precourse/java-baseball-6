@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.Message.Constant.RequestMessage;
 import baseball.service.GameService;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -33,6 +34,7 @@ public class Controller {
 
 
     private void Retry() throws IllegalArgumentException {
+        System.out.println(RequestMessage.REQUEST_RETRY_MESSAGE);
         if (getInputNum() == RESTART_GAME) {
             run();
         }
