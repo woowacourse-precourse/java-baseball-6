@@ -8,7 +8,8 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
 
     private static List<Integer> computer = new ArrayList<>();
-    
+
+    //랜덤값 생성
     public static void RandomNumberGenerator() {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,7 +18,7 @@ public class Application {
             }
         }
     }
-
+    //사용자의 입력 올바른지 확인
     public static boolean UserInputValidCheck(String s) {
         if(s.length() != 3) return false;
         if(s.charAt(0) == s.charAt(1) || s.charAt(1) == s.charAt(2) || s.charAt(2) == s.charAt(0)) return false;
