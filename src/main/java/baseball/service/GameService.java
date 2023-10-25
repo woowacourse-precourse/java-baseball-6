@@ -2,7 +2,6 @@ package baseball.service;
 
 import baseball.model.GameResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
