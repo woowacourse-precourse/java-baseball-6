@@ -12,8 +12,7 @@ public class Computer {
     private static final int GAME_NUMBER_LENGTH = 3;
     private List<Integer> numbers;
 
-    public Computer() {
-    }
+    public Computer() {}
 
     public List<Integer> getNumbers() {
         if(numbers.isEmpty()) {

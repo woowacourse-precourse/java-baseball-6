@@ -6,8 +6,7 @@ public class Hint {
 
     private static final int GAME_NUMBER_LENGTH = 3;
 
-    public Hint() {
-    }
+    public Hint() {}
 
     public int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int ballCount = 0;
