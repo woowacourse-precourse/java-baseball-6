@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -15,19 +16,16 @@ public class Application {
             int strikeCount = 0;
 
             while (true) {
-                System.out.print("숫자를 입력해주세요: ");
+                System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
 
                 if (input.length() != 3 || !input.matches("[1-9]+")) {
-                    System.out.println("유효하지 않은 값입니다. 1부터 9까지의 서로 다른 숫자 3개를 입력하세요.");
-                    continue;
+                    throw new IllegalArgumentException("유효하지 않은 값입니다. 프로그램 종료");
                 }
-
                 List<Integer> user = input.chars().mapToObj(Character::getNumericValue).toList();
 
                 if (user.stream().distinct().count() < 3) {
-                    System.out.println("중복 숫자가 있습니다! 다시 입력해주세요!");
-                    continue;
+                    throw new IllegalArgumentException("유효하지 않은 값입니다. 프로그램 종료");
                 }
 
                 ballCount = countBalls(user, computer);
@@ -36,15 +34,16 @@ public class Application {
                 if (ballCount > 0) {
                     System.out.printf("%d볼 ", ballCount);
                 }
-
                 if (strikeCount > 0) {
                     System.out.printf("%d스트라이크 ", strikeCount);
                 }
-
-                System.out.println();
+                if(ballCount==0&&strikeCount==0){
+                    System.out.println("낫싱");
+                }
+                    System.out.println();
 
                 if (strikeCount == 3) {
-                    System.out.println("3개의 숫자를 모두 맞혔습니다! 게임 종료");
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
                     String select = Console.readLine();
 
@@ -53,13 +52,15 @@ public class Application {
                     } else if (select.equals("2")) {
                         break;
                     } else {
-                        System.out.println("유효하지 않은 입력입니다. 게임을 종료합니다.");
-                        break;
+                        throw new IllegalArgumentException("유효하지 않은 값입니다. 프로그램 종료");
+
                     }
                 }
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println("잘못된 값을 입력하셨습니다.");
+        }catch(IllegalArgumentException e){
+            return;
+        }catch (Exception e) {
+            return; // 정상 종료
         }
     }
 
