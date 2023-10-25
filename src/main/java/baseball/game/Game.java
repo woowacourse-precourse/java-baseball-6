@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.game.vo.BallCount;
+import baseball.game.dto.BallCount;
 import baseball.view.GameView;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class Game {
 
         while (isPlay()) {
             gameView.inputMessage();
-            List<Integer> query = playerQuery();
+            List<Integer> query = inputPlayerQuery();
             BallCount ballCount = determineQuery(answer, query);
             hitterResult(ballCount);
         }
@@ -86,7 +86,7 @@ public class Game {
         return !answer.contains(queryElement);
     }
 
-    private List<Integer> playerQuery() {
+    private List<Integer> inputPlayerQuery() {
         String query = Console.readLine();
         Validation.querySizeCheck(query);
         Validation.allPossibleDigit(query);

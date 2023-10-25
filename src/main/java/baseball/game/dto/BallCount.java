@@ -1,4 +1,4 @@
-package baseball.game.vo;
+package baseball.game.dto;
 
 public class BallCount {
     private int strike;

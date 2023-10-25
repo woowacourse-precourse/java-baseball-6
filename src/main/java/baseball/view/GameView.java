@@ -25,7 +25,9 @@ public class GameView {
 
     public void strikeBallView(int strike, int ball) {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format(BALL, ball)).append(" ").append(String.format(STRIKE, strike));
+        sb.append(String.format(BALL, ball))
+                .append(" ")
+                .append(String.format(STRIKE, strike));
 
         System.out.println(sb);
     }
