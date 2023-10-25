@@ -1,7 +1,14 @@
 package baseball.view;
 
+import baseball.model.GameResultDto;
+
 import static baseball.utility.Constants.GAME_START_MESSAGE;
 import static baseball.utility.Constants.NUMBER_INPUT_PROMPT_MESSAGE;
+import static baseball.utility.Constants.BALL;
+import static baseball.utility.Constants.STRIKE;
+import static baseball.utility.Constants.NOTHING;
+import static baseball.utility.Constants.NUMBER_CORRECT_MESSAGE;
+
 
 public class UserView {
     public UserView(){};
@@ -11,5 +18,27 @@ public class UserView {
 
     public void printNumberInputPrompt(){
         System.out.print(NUMBER_INPUT_PROMPT_MESSAGE);
+    }
+
+    public void printResultOfJudgement(GameResultDto gameResultDto){
+        int strikeCount = gameResultDto.getStrikeCount();
+        int ballCount = gameResultDto.getBallCount();
+
+        if((strikeCount != 0) && (ballCount != 0)){
+            System.out.print(ballCount + BALL + " " + strikeCount + STRIKE);
+        }
+        else if((strikeCount == 3) && (ballCount == 0)){
+            System.out.print(strikeCount + STRIKE);
+            System.out.print(NUMBER_CORRECT_MESSAGE);
+        }
+        else if((strikeCount != 0) && (strikeCount != 3) && (ballCount == 0)){
+            System.out.print(strikeCount + STRIKE);
+        }
+        else if((strikeCount == 0) && (ballCount != 0)){
+            System.out.print(ballCount + BALL);
+        }
+        else if((strikeCount == 0) && (ballCount == 0)){
+            System.out.print(NOTHING);
+        }
     }
 }

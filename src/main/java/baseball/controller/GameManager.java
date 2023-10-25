@@ -31,5 +31,6 @@ public class GameManager {
         userView.printNumberInputPrompt(); //user input 프롬포트 메시지 출력
         userNumberDto = user.readUserNumberInput(); //user input 시행
         gameResultDto = judgement.compareNumbers(computerNumberDto,userNumberDto); //컴퓨터 숫자와 사용자 입력 숫자 비교
+        userView.printResultOfJudgement(gameResultDto); //게임 결과 값 출력
     }
 }
