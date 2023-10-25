@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.process.Process;
 import baseball.view.View;
 import baseball.view.ViewType;
 import camp.nextstep.edu.missionutils.Console;
@@ -19,7 +20,7 @@ public class BaseBallGame {
         while (true) {
             round();
             view.println(ViewType.RESTART.getType());
-            String isRestart = view.getInput();
+            String isRestart = view.getInput(ViewType.RESTART.getPattern());
             if (isRestart.equals("2")) {
                 break;
             }
@@ -31,7 +32,7 @@ public class BaseBallGame {
     private void round() {
         while (true) {
             view.print(ViewType.ROUND.getType());
-            boolean correctBall = process.isCorrectBall(view.getInput());
+            boolean correctBall = process.isCorrectBall(view.getInput(ViewType.ROUND.getPattern()));
             view.println(process.getCurrentHint().toString());
             if (correctBall) {
                 view.println(ViewType.END.getType());
