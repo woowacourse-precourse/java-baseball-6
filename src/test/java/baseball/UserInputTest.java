@@ -9,7 +9,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class UserInputTest {
-
     UserInputValidator userInputValidator = new UserInputValidator();
 
     @Test
@@ -74,5 +73,27 @@ public class UserInputTest {
         assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.userInputStringValidate(userInputString)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세 자리 모두 서로 다른 숫자를 입력해주세요.");
+    }
+
+    @Test
+    void 유저_재시작_입력_정상() {
+        String userInputString = "1";
+        assertThat(userInputValidator.userInputRestartOrExitValidate(userInputString))
+                .isEqualTo(1);
+    }
+
+    @Test
+    void 유저_재시작_입력_범위초과_오류() {
+        String userInputString = "3";
+        assertThatThrownBy(() -> userInputValidator.userInputRestartOrExitValidate(userInputString))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 또는 2를 입력해주세요.");
+    }
+
+    @Test
+    void 유저_게임종료_입력_정상() {
+        String userInputString = "2";
+        assertThat(userInputValidator.userInputRestartOrExitValidate(userInputString))
+                .isEqualTo(2);
     }
 }
