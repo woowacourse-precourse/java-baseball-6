@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.compare;
 
 import baseball.vo.InputNumbers;
 import baseball.vo.RandomNumbers;
@@ -6,8 +6,6 @@ import baseball.vo.RandomNumbers;
 import java.util.List;
 
 public class BaseBallCompare {
-    private StringBuilder sb;
-    private List<Integer> randomNumbers;
     private boolean[] check;
     private int strike;
     private int ball;
@@ -18,26 +16,24 @@ public class BaseBallCompare {
         this.ball = 0;
     }
 
-    public void setRandomNumbers() {
-        this.randomNumbers = new RandomNumbers().getRandomNumbers();
-    }
-
-    public boolean compare(InputNumbers inputs) {
+    public boolean compare(RandomNumbers randoms, InputNumbers inputs) {
         initScore();
         int[] inputNumbers = inputs.getInputNumbers();
+        List<Integer> randomNumbers = randoms.getRandomNumbers();
 
         for (int i = 0; i < inputNumbers.length; i++) {
-            if (isStrike(inputNumbers, i)) {
+            if (isStrike(randomNumbers, inputNumbers, i)) {
                 continue;
             }
 
-            isBall(inputNumbers, i);
+            isBall(randomNumbers, inputNumbers, i);
         }
 
         return threeStrikeCheck();
     }
 
-    private boolean isStrike(int[] inputNumbers, int index) {
+    private boolean isStrike(List<Integer> randomNumbers,
+                             int[] inputNumbers, int index) {
         if (randomNumbers.get(index) == inputNumbers[index]) {
             if (check[inputNumbers[index]]) {
                 ball--;
@@ -51,7 +47,8 @@ public class BaseBallCompare {
         return false;
     }
 
-    private void isBall(int[] inputNumbers, int index) {
+    private void isBall(List<Integer> randomNumbers,
+                        int[] inputNumbers, int index) {
         if (randomNumbers.contains(inputNumbers[index]) &&
                 !check[inputNumbers[index]]) {
             check[inputNumbers[index]] = true;
@@ -60,14 +57,14 @@ public class BaseBallCompare {
     }
 
     public String getResultMessage() {
-        sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         if (ball != 0) {
-            sb.append(ball + "볼 ");
+            sb.append(ball).append("볼 ");
         }
 
         if (strike != 0) {
-            sb.append(strike + "스트라이크");
+            sb.append(strike).append("스트라이크");
         }
 
         return sb.length() != 0 ? sb.toString() : "낫싱";
