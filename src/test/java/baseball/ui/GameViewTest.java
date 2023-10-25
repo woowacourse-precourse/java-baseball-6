@@ -4,13 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.controller.AbstractGameController;
 import baseball.controller.GameController;
+import baseball.controller.GameControllerFactory;
 import baseball.state.Scoring;
+import baseball.ui.input.component.InputComponent;
 import baseball.ui.output.component.OutputComponentImpl;
 import baseball.ui.output.format.ResultFormatStringCreatorImpl;
 import baseball.util.DefaultRandomNumberCreatorByDigit;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BooleanSupplier;
@@ -35,9 +35,7 @@ class GameViewTest {
 
     @Test
     public void 게임시작_시작안내문구를_출력한다() {
-        AtomicInteger count = new AtomicInteger(0);
-        GameController mockGameControllerOnce = getGameController(() -> count.getAndIncrement() < 1);
-        GameView gameView = getGameView(mockGameControllerOnce);
+        GameView gameView = getGameViewTerminateAfterGetRight(() -> getMockControllerTry(1));
 
         gameView.start();
 
@@ -47,9 +45,7 @@ class GameViewTest {
 
     @Test
     public void 추측시작_입력안내문구를_출력한다() {
-        AtomicInteger count = new AtomicInteger(0);
-        GameController mockGameControllerOnce = getGameController(() -> count.getAndIncrement() < 1);
-        GameView gameView = getGameView(mockGameControllerOnce);
+        GameView gameView = getGameViewTerminateAfterGetRight(() -> getMockControllerTry(1));
 
         gameView.guessUntilCorrect();
 
@@ -58,9 +54,7 @@ class GameViewTest {
 
     @Test
     public void 추측_실패시_다시_추측한다() {
-        AtomicInteger count = new AtomicInteger(0);
-        GameController mockGameControllerTerminateAfterTwice = getGameController(() -> count.getAndIncrement() < 2);
-        GameView gameView = getGameView(mockGameControllerTerminateAfterTwice);
+        GameView gameView = getGameViewTerminateAfterGetRight(() -> getMockControllerTry(2));
 
         gameView.guessUntilCorrect();
 
@@ -70,18 +64,25 @@ class GameViewTest {
 
     @Test
     public void 정답_후_재시작() {
+        GameView gameView = getGameViewRestartAfterGetRight(this::getMockGameControllerThatUserGetRight);
 
+        gameView.determineFlow("1");
+
+        assertExpectedStringIsContainedInTargetString("숫자를 입력해주세요 : ", outputStreamCaptor.toString().trim());
     }
 
     @Test
     public void 정답_후_종료() {
+        GameView gameView = getGameViewTerminateAfterGetRight(this::getMockGameControllerThatUserGetRight);
 
+        gameView.determineFlow("2");
+
+        assertExpectedStringIsContainedInTargetString("게임 종료", outputStreamCaptor.toString().trim());
     }
 
     @Test
     public void 추측_성공시_성공문구_출력한다() {
-        GameController mockGameControllerTerminateInstantly = getGameController(() -> false);
-        GameView gameView = getGameView(mockGameControllerTerminateInstantly);
+        GameView gameView = getGameViewTerminateAfterGetRight(this::getMockGameControllerThatUserGetRight);
 
         gameView.guessUntilCorrect();
 
@@ -92,27 +93,43 @@ class GameViewTest {
         assertThat(targetString.contains(expectedString));
     }
 
-    private GameView getGameView(GameController gameController) {
-        return new GameView(gameController,
-                () -> "123", () -> "2",
+    private GameView getGameViewRestartAfterGetRight(GameControllerFactory gameControllerFactory) {
+        return getGameViewAfterRight(gameControllerFactory, () -> "1");
+    }
+
+    private GameView getGameViewTerminateAfterGetRight(GameControllerFactory gameControllerFactory) {
+        return getGameViewAfterRight(gameControllerFactory, () -> "2");
+    }
+
+    private GameView getGameViewAfterRight(GameControllerFactory gameControllerFactory,
+                                           InputComponent mockResumeInput) {
+        return new GameView(gameControllerFactory,
+                mockUserAnswerInput(), mockResumeInput,
                 new OutputComponentImpl(), new ResultFormatStringCreatorImpl());
     }
 
-    private static GameController getGameController(BooleanSupplier booleanSupplier) {
-        GameController mockGameController = new AbstractGameController(
+    private GameController getMockControllerTry(int targetCount) {
+        AtomicInteger count = new AtomicInteger(0);
+        return getGameControllerMockingCorrectCondition(
+                () -> count.getAndIncrement() < targetCount);
+    }
+
+    private GameController getMockGameControllerThatUserGetRight() {
+        return getGameControllerMockingCorrectCondition(() -> true);
+    }
+
+    private GameController getGameControllerMockingCorrectCondition(BooleanSupplier didUserGetRight) {
+        return new AbstractGameController(
                 getDefaultScoring()) {
             @Override
             public boolean isStillWrong() {
-                return booleanSupplier.getAsBoolean();
+                return !didUserGetRight.getAsBoolean();
             }
         };
-        return mockGameController;
     }
 
-    private static void mockInput() {
-        String input = "123";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+    private static InputComponent mockUserAnswerInput() {
+        return () -> "123";
     }
 
     private static Scoring getDefaultScoring() {

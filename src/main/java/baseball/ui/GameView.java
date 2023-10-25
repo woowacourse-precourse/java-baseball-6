@@ -1,15 +1,14 @@
 package baseball.ui;
 
 import baseball.controller.GameController;
-import baseball.controller.GameControllerImpl;
-import baseball.state.Scoring;
+import baseball.controller.GameControllerFactory;
 import baseball.ui.input.component.InputComponent;
 import baseball.ui.output.component.OutputComponent;
 import baseball.ui.output.format.ResultFormatStringCreator;
-import baseball.util.DefaultRandomNumberCreatorByDigit;
 import java.util.Map;
 
 public class GameView {
+    private GameControllerFactory gameControllerFactory;
 
     private GameController gameController;
     private final InputComponent inputUserAnswer;
@@ -17,10 +16,11 @@ public class GameView {
     private final OutputComponent outputComponent;
     private final ResultFormatStringCreator creator;
 
-    public GameView(GameController gameController,
+    public GameView(GameControllerFactory gameControllerFactory,
                     InputComponent inputUserAnswer, InputComponent inputUserResume,
                     OutputComponent outputComponent, ResultFormatStringCreator creator) {
-        this.gameController = gameController;
+        this.gameControllerFactory = gameControllerFactory;
+        this.gameController = gameControllerFactory.get();
         this.inputUserAnswer = inputUserAnswer;
         this.inputUserResume = inputUserResume;
         this.outputComponent = outputComponent;
@@ -55,7 +55,7 @@ public class GameView {
         determineFlow(validUserChoice);
     }
 
-    private void determineFlow(String validUserChoice) {
+    public void determineFlow(String validUserChoice) {
         if (validUserChoice.contentEquals("1") && gameController.isAbleToRestart()) {
             this.restart();
         } else if (validUserChoice.contentEquals("2") && gameController.isAbleToTerminate()) {
@@ -64,7 +64,8 @@ public class GameView {
     }
 
     private void restart() {
-        this.gameController = new GameControllerImpl(new Scoring(new DefaultRandomNumberCreatorByDigit().create(3)));
+        this.gameController = gameControllerFactory.get();
+//        this.gameController = new GameControllerImpl(new Scoring(new DefaultRandomNumberCreatorByDigit().create(3)));
         this.gameController.start();
         guessUntilCorrect();
     }
