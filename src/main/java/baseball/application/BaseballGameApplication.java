@@ -11,7 +11,6 @@ public class BaseballGameApplication {
     private final InputView inputView;
     private final OutputView outputView;
 
-
     public BaseballGameApplication() {
         this.scoreCalculator = new ScoreCalculator();
         this.inputView = new InputView();
