@@ -24,22 +24,28 @@ public class BaseballGame {
     private int[] board;
 
     public void start() {
-        Balls computer = createComputerBalls();
         do {
-            initBoard();
+            Balls computer = createComputerBalls();
             play(computer);
-        } while (!isMatch());
-        printEnd();
-    }
-
-    public boolean isEnd() {
-        int option = getOptionNumber();
-        return option == EndOption.END.getValue();
+        } while (!isEnd());
     }
 
     private Balls createComputerBalls() {
         List<Integer> numbers = createRandomNumbers();
         return new Balls(numbers);
+    }
+
+    private void play(Balls computer) {
+        do {
+            initBoard();
+            process(computer);
+        } while (!isMatch());
+        printEnd();
+    }
+
+    private boolean isEnd() {
+        int option = getOptionNumber();
+        return option == EndOption.END.getValue();
     }
 
     private void initBoard() {
@@ -50,7 +56,7 @@ public class BaseballGame {
         return board[BallStatus.STRIKE.getValue()] == BALL_SIZE;
     }
 
-    private void play(Balls computer) {
+    private void process(Balls computer) {
         List<BallNumber> ballNumbers = getBallNumbers();
         for (int i = 0; i < BALL_SIZE; i++) {
             int result = computer.compare(ballNumbers.get(i), i);
