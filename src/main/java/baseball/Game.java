@@ -16,7 +16,8 @@ public class Game {
     public void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         answer = createRandomNumber();
-        playerInputNum = inputNum();
+        playerInputNum = inputNum(); // 검증까지 끝
+
     }
 
     // 랜덤 세자리 수 정답 생성
@@ -76,5 +77,26 @@ public class Game {
         if (!isValidNumber(input) || !isThreeDigit(input) || isNotDuplicate(input)) {
             throw new IllegalArgumentException();
         }
+    }
+
+
+    public int countStrike(List<Integer> answer, List<Integer> input) {
+        int cnt = 0;
+        for (int i =0; i < answer.size(); i++) {
+            if(answer.get(i).equals(input.get(i))) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+    public int countBall(List<Integer> answer, List<Integer> input) {
+        int cnt = 0;
+        for (int i =0; i < answer.size(); i++) {
+            if(!answer.get(i).equals(input.get(i)) && answer.contains(input.get(i))) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
 }
