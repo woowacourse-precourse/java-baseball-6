@@ -10,5 +10,6 @@ public class Application {
             com_num = String.valueOf(randomDigit);
         }
         System.out.println(com_num);
+
     }
 }
