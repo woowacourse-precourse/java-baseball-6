@@ -6,8 +6,10 @@ public class GameController {
     private GameService gameService = new GameService();
 
     public void run() {
-        setGame();
-        playGame();
+        do {
+            setGame();
+            playGame();
+        } while (requestGameRetry());
     }
 
     private void setGame() {
@@ -18,8 +20,8 @@ public class GameController {
         gameService.play();
     }
 
-    private void requestGameRetry() {
-        gameService.getUserRetryRequest();
+    private boolean requestGameRetry() {
+        return gameService.getUserRetryRequest();
     }
 
 
