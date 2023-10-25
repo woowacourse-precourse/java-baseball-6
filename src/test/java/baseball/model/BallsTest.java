@@ -51,7 +51,7 @@ public class BallsTest {
     @ParameterizedTest
     @MethodSource("generatePlayerNumbers")
     @DisplayName("비교 결과에서 스트라이크의 개수를 구할 수 있다.")
-    void existsSameNumberInSamePosition_Then_Strike(
+    void hasSameNumberInSamePosition_Then_NumberOfStrikesObtain(
             final Balls playerNumbers,
             final long numberOfStrikes
     ) {
@@ -63,7 +63,7 @@ public class BallsTest {
     @ParameterizedTest
     @MethodSource("generatePlayerNumbers")
     @DisplayName("비교 결과에서 볼의 개수를 구할 수 있다.")
-    void existsSameNumberInSamePosition_Then_Ball(
+    void hasSameNumberInSamePosition_Then_NumberOfBallsObtain(
             final Balls playerNumbers,
             final long numberOfStrikes
     ) {
