@@ -25,7 +25,6 @@ public class Game {
         String answer = getAnswer();
         validateAnswer(answer);
         return Integer.valueOf(answer) == 1;
-
     }
 
     public void clear() {
