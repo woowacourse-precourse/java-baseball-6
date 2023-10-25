@@ -29,6 +29,10 @@ public class Computer {
             }
         }
 
+        if(strike == 3) {
+            isThreeStrike = true;
+        }
+
         return strike;
     }
 
@@ -36,9 +40,6 @@ public class Computer {
         int ball = ballCount(computer.getGeneratedNumber(), inputNumber);
         int strike = strikeCount(computer.getGeneratedNumber(), inputNumber);
 
-        if(strike == 3) {
-            isThreeStrike = true;
-        }
         return new int[] {ball - strike, strike};
     }
 
