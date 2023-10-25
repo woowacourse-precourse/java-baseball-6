@@ -7,6 +7,7 @@ public class GameResultMessageGenerator {
     private static final String STRIKE_MESSAGE = " %d스트라이크";
     private static final String BALL_MESSAGE = "%d볼";
     private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String EMPTY_MESSAGE = "";
 
     public static String createGameResultMessage(final GameResult gameResult) {
         if (gameResult.isNothing()) {
@@ -17,7 +18,7 @@ public class GameResultMessageGenerator {
 
     private static String createBallMessage(final GameResult gameResult) {
         if (gameResult.isZeroBall()) {
-            return createStrikeMessage(gameResult, "");
+            return createStrikeMessage(gameResult, EMPTY_MESSAGE);
         }
         return createStrikeMessage(gameResult, String.format(BALL_MESSAGE, gameResult.ball()));
     }
