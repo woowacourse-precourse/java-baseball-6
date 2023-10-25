@@ -12,11 +12,10 @@ public class GameManager {
 
     /**
      * 게임 시작
-     *
-     * @param computer
      * @throws IOException
      */
-    public List<Integer> startGame(Computer computer){
+    public List<Integer> startGame( ){
+        Computer computer = new Computer();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         //컴퓨터 무작위 3자리 숫자를 생성
