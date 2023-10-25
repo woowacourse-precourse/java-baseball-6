@@ -52,7 +52,7 @@ public class BaseballGame {
 
     public static void printStrikeCount(int[] count) {
         if (count[1] != 0) {
-            OutputView.printCount(count[0]);
+            OutputView.printCount(count[1]);
             OutputView.printStrike();
         }
     }
