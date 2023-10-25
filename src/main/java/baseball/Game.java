@@ -7,16 +7,7 @@ import java.util.*;
 
 public class Game {
     int ball, strike;
-    private List<Integer> makeRandomNumber(){
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
+
     private void playBall(List<Integer> computer, List<Integer> user){
         for(int i=0;i<3;i++){
             if(computer.get(i) == user.get(i)){
@@ -64,7 +55,8 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true){
-            List<Integer> number = makeRandomNumber();
+            Computer computer = new Computer();
+            List<Integer> number = computer.run();
 
             while(true){
                 ball = 0;
