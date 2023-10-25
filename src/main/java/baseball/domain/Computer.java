@@ -12,32 +12,28 @@ public class Computer {
     public static final int NUMBER_SIZE = 3;
 
     private List<Integer> targetNumber;
-    private int ballCount;
-    private int strikeCount;
     private boolean isFinish;
+    private boolean isGameEnd;
 
     public void run() {
         View.printGameStartMessage();
 
         while (!isFinish) {
+            isGameEnd = false;
             gameStart();
         }
     }
 
     public void gameStart() {
-        initializeGameSetting();
         generateTargetNumber();
 
-        while (isGameContinue()) {
+        while (!isGameEnd) {
             String playerNumber = View.readPlayerNumber();
-            calculateResult(playerNumber);
-            View.printResultMessage(ballCount, strikeCount);
+            GameResult gameResult = new GameResult();
+            gameResult.calculate(targetNumber, playerNumber);
+            View.printResultMessage(gameResult);
+            checkGameOver(gameResult);
         }
-    }
-
-    private void initializeGameSetting() {
-        ballCount = 0;
-        strikeCount = 0;
     }
 
     private void generateTargetNumber() {
@@ -51,46 +47,14 @@ public class Computer {
         this.targetNumber = targetNumber;
     }
 
-    private boolean isGameContinue() {
-        if (strikeCount == 3) {
+    private void checkGameOver(GameResult gameResult) {
+        if (gameResult.isEnd()) {
             String command = View.readGameEndCommand();
 
             if (command.equals(FINISH_COMMAND)) {
                 isFinish = true;
             }
-            return false;
+            isGameEnd = true;
         }
-
-        return true;
-    }
-
-    private void calculateResult(String playerNumber) {
-        int ballCount = 0;
-        int strikeCount = 0;
-
-        for (int i = 0; i < 3; i++) {
-            int value = Integer.parseInt(playerNumber.substring(i, i + 1));
-            if (isNothing(value)) {
-                continue;
-            }
-            if (isStrike(value, i)) {
-                strikeCount++;
-                continue;
-            }
-            ballCount++;
-        }
-
-        this.ballCount = ballCount;
-        this.strikeCount = strikeCount;
-    }
-
-    private boolean isNothing(int value) {
-        return !targetNumber.contains(value);
-    }
-
-    private boolean isStrike(int value, int index) {
-        int indexInTargetNumber = targetNumber.indexOf(value);
-
-        return indexInTargetNumber == index;
     }
 }
