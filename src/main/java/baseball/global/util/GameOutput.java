@@ -9,6 +9,7 @@ import static baseball.global.enums.GuideMessage.RESTART_MENU;
  */
 public final class GameOutput {
 
+    //== 기본 안내 분구 출력 메서드 ==//
     public static void printResult(String result) {
         System.out.println(result);
     }
@@ -21,6 +22,9 @@ public final class GameOutput {
         System.out.println(RESTART_MENU.message);
     }
 
+    /**
+     * 사용자 입력에 대한 프롬프트 출력
+     */
     public static void inputCommand() {
         System.out.print(INPUT_COMMAND.message);
     }

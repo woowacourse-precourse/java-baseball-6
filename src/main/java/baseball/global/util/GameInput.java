@@ -14,7 +14,12 @@ import static baseball.global.enums.ErrorMessage.NO_ZERO_IN_NUM;
  */
 public final class GameInput {
 
-
+    /**
+     * 게임이 종료된 후, 재시작 여부에 대한 메뉴 입력에서의 Validation 체크 메서드
+     *
+     * @param input
+     * @return
+     */
     public static int validateMenu(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_INPUT_VALUE.message);
@@ -25,6 +30,11 @@ public final class GameInput {
         return Integer.parseInt(input);
     }
 
+    /**
+     * 세 자리 수에 대한 Validaton 체크 메서드
+     *
+     * @param input
+     */
     public static void validateNum(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_INPUT_VALUE.message);

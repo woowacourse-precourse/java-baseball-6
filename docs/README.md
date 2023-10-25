@@ -75,6 +75,6 @@
 - [x]  외부 라이브러리 사용 X
 - [x]  [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java)가이드를 준수하며 프로그래밍
 - [x]  프로그램 종료 시`System.exit()`를 호출 X
-    - [ ]  🚨 비정상 종료 호출 시 예외처리 - IllegalArgumentException 로 던지기
+    - [x]  🚨 비정상 종료 호출 시 예외처리 - IllegalArgumentException 로 던지기
 - [x]  모든 테스트를 성공해야 제출 인정
 - [x]  파일, 패키지 이름 수정 및 이동 X
