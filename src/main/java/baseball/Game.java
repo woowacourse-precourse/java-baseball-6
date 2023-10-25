@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
-
 public class Game {
 
     private Computer computer;
@@ -16,16 +14,21 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
         computer = new Computer();
         computer.createComputerNum();
-        System.out.println(computer.getComputerNum());
         player = new Player();
         while(!EXIT){
             resetResult();
             player.createUserNum();
-            check();
+            checkPlayerNumber();
+
             printResult();
-            if(strike == 3){
-                checkRestart();
-            }
+            isAnswer();
+        }
+    }
+
+    public void isAnswer(){
+        if(strike == 3){
+            System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            checkRestart();
         }
     }
 
@@ -47,30 +50,32 @@ public class Game {
         strike = 0;
     }
 
-    public void check(){
-        List<Integer> computerNum = computer.getComputerNum();
-        List<Integer> userNum = player.getUserNum();
+    public void checkPlayerNumber(){
         for(int i = 0; i < 3; i++){
-            if(computerNum.get(i).equals(userNum.get(i))){
+            if(checkIfStrike(i)){
                 strike++;
-            }else if(computerNum.contains(userNum.get(i))){
+            }
+            if(checkIfBall(i)){
                 ball++;
             }
         }
+    }
 
+    private boolean checkIfStrike(int numIdx){
+        return computer.getComputerNum().get(numIdx).equals(player.getUserNum().get(numIdx));
+    }
+
+    private boolean checkIfBall(int numIdx){
+        return !checkIfStrike(numIdx) && computer.getComputerNum().contains(player.getUserNum().get(numIdx));
     }
 
     public void printResult(){
         StringBuilder sb = new StringBuilder();
-        System.out.println("strike : " + strike + ", ball:" + ball);
         if (ball != 0) {
             sb.append(ball).append("볼 ");
         }
         if (strike != 0) {
             sb.append(strike).append("스트라이크");
-        }
-        if(strike == 3){
-            sb.append("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
         if(ball == 0 && strike == 0){
             sb.append("낫싱");
