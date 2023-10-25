@@ -43,7 +43,7 @@ public class BaseballGame {
         this.strike++;
     }
 
-    public List<Integer> stringToIntegerList(String input) {
+    private List<Integer> stringToIntegerList(String input) {
         List<Integer> userNum = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             userNum.add(Character.getNumericValue(input.charAt(i)));
@@ -51,7 +51,7 @@ public class BaseballGame {
         return userNum;
     }
 
-    public void reStart() {
+    private void reStart() {
         resetMessage();
         resetBall();
         resetStrike();
@@ -70,7 +70,7 @@ public class BaseballGame {
     }
 
 
-    public void play(List<Integer> target, String input) {
+    private void play(List<Integer> target, String input) {
         resetMessage();
 
         List<Integer> reTarget = new ArrayList<>(target);
@@ -109,8 +109,7 @@ public class BaseballGame {
         }
     }
 
-
-    public void ending() {
+    private void ending() {
         System.out.println(
                 this.strike + "스트라이크\n"
                         + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
@@ -134,7 +133,7 @@ public class BaseballGame {
         }
     }
 
-    public void countBall(List<Integer> target, List<Integer> userNum) {
+    private void countBall(List<Integer> target, List<Integer> userNum) {
         for (int i = 0; i < 3; i++) {
             if (userNum.contains(target.get(i)) && !userNum.get(i).equals(target.get(i))) {
                 upBall();
