@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import static baseball.enums.Constant.GAME_END_COMMAND;
 import static baseball.enums.Constant.GAME_RESTART_COMMAND;
 
 import baseball.domain.BaseBallGameService;
@@ -43,22 +42,17 @@ public class BaseBallGameController {
             outputView.printFinishMessage();
             outputView.printRestartOrEndMessage();
 
-            String userGameCommand = inputView.getUserGameCommand();
+            String userGameCommand = inputView.getUserInput();
             inputValidate.validateGameCommand(userGameCommand);
             int numericValue = Character.getNumericValue(userGameCommand.charAt(0));
             if (numericValue == GAME_RESTART_COMMAND.getConstant()) {
                 shouldStartGame = true;
-                continue;
-            }
-
-            if (numericValue == GAME_END_COMMAND.getConstant()) {
-                shouldStartGame = false;
             }
         }
     }
 
     private void startGame() {
-        updateRandomNumber();
+        computerRandomNumbers = new ComputerRandomNumbers();
 
         while (true) {
             outputView.printInputNumberMessage();
@@ -73,11 +67,6 @@ public class BaseBallGameController {
                 return;
             }
         }
-    }
-
-    // 새로운 랜덤 숫자 모음 생성
-    private void updateRandomNumber() {
-        computerRandomNumbers = new ComputerRandomNumbers();
     }
 
     // 게임 진행시 사용자의 숫자 모음 입력을 검증

@@ -9,9 +9,4 @@ public class InputView {
         return input;
     }
 
-    public String getUserGameCommand() {
-        String input = Console.readLine();
-        return input;
-    }
-
 }
