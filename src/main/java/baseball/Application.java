@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    public static final int RESTART = 1;
+    public static final int END = 2;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application.start();
@@ -102,7 +106,7 @@ public class Application {
     public static boolean isOneOrTwo(String userInputStartOrEnd) {
         int userInputNumber = userInputStartOrEnd.charAt(0) - '0';
 
-        if ((userInputNumber == 1) || (userInputNumber == 2)) {
+        if ((userInputNumber == RESTART) || (userInputNumber == END)) {
             return true;
         } else {
             throw new IllegalArgumentException("입력이 1 또는 2가 아닌 잘못된 입력입니다.");
@@ -199,9 +203,9 @@ public class Application {
         while (true) {
             int startOrEnd = Application.startGame();
 
-            if (startOrEnd == 1) {
+            if (startOrEnd == RESTART) {
                 continue;
-            } else {
+            } else if (startOrEnd == END) {
                 break;
             }
         }
