@@ -45,7 +45,7 @@ public class Application {
                     else {
                         throw new IllegalArgumentException("잘못된 입력입니다.");
                     }
-                } catch (IllegalArgumentException e) {
+                } catch (NumberFormatException e) {
                     System.err.println(e.getMessage());
                     return;
                 }
