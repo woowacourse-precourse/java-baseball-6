@@ -36,21 +36,21 @@ public class BaseballGame {
 
     }
 
-    public void matching(List<Integer> userNumbers) {
-        reset();
-        for (Integer userNumber : userNumbers) {
-            if (ANSWER_NUMBERS.contains(userNumber)) {
-                checkStrike(userNumber, userNumbers);
-            }
-        }
-    }
-
     public int getStrike() {
         return strike;
     }
 
     public int getBall() {
         return ball;
+    }
+
+    private void matching(List<Integer> userNumbers) {
+        reset();
+        for (Integer userNumber : userNumbers) {
+            if (ANSWER_NUMBERS.contains(userNumber)) {
+                checkStrike(userNumber, userNumbers);
+            }
+        }
     }
 
     private void checkStrike(Integer userNumber, List<Integer> userNumbers) {
