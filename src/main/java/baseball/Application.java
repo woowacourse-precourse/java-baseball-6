@@ -16,7 +16,7 @@ public class Application {
             int numsCheck;
             for(int i = 0; i<gamenumslen; i++){
                 numsCheck = nums.charAt(i) -'0';
-                if(numsCheck<1&&9<numsCheck){
+                if(numsCheck<1||9<numsCheck){
                     return false;
                 }
             }
