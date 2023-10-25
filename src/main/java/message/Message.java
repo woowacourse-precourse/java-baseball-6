@@ -1,9 +1,9 @@
 package message;
 
-import static utils.BaseballRules.hasBallButNoStrike;
-import static utils.BaseballRules.hasStrikeAndBall;
-import static utils.BaseballRules.hasStrikeButNoBall;
-import static utils.BaseballRules.noStrikeAndBall;
+import static rules.BaseballRules.hasBallButNoStrike;
+import static rules.BaseballRules.hasStrikeAndBall;
+import static rules.BaseballRules.hasStrikeButNoBall;
+import static rules.BaseballRules.noStrikeAndBall;
 
 import score.BaseballScore;
 

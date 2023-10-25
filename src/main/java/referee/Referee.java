@@ -1,6 +1,6 @@
 package referee;
 
-import static utils.BaseballRules.isThreeStrike;
+import static rules.BaseballRules.isThreeStrike;
 
 import camp.nextstep.edu.missionutils.Console;
 import message.Message;

@@ -1,4 +1,4 @@
-package utils;
+package rules;
 
 public class BaseballRules {
 
