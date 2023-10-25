@@ -17,12 +17,14 @@ public class GameStart {
     private List<Integer> computerList; // 컴퓨터의 3개의 랜덤 숫자 리스트
     private List<Integer> userList; // 입력을 받는 userList
     private GameProgress gameProgress; // 게임 진행 클래스
+    private String numInputOfUser; // 입력받는 문자열
 
 
     public GameStart() {
         gameProgress = new GameProgress();
         computerList = new ArrayList<>();
         userList = new ArrayList<>();
+        numInputOfUser = "";
     }
 
     public void run() {
@@ -79,8 +81,8 @@ public class GameStart {
     private void makeUserListFromInputTreeNum() {
         initUserList();
         printMsgBeforInputNum(); // 입력을 받기 전 출력 문구 "숫자를 입력해주세요 : "
-        String numInputOfUser = Utill.inputNum(); // 숫자 입력을 받는다.
-        addNumber2userListFromInputStr(userList, numInputOfUser); // 입력을 받은 문자렬을 split을 한다음 userList에 추가를 한다. => [ 1, 2, 3]
+        numInputOfUser = Utill.inputNum(); // 숫자 입력을 받는다.
+        addNumber2userListFromInputStr(userList); // 입력을 받은 문자렬을 split을 한다음 userList에 추가를 한다. => [ 1, 2, 3]
     }
 
     /**
@@ -93,10 +95,9 @@ public class GameStart {
     /**
      * 입력 받은 문자열 "123"을 InputList에 1, 2, 3 을 추가한다.
      *
-     * @param inputList      입력받는 문자열을 추가한 리스트 {1, 2, 3}
-     * @param numInputOfUser 입력받는 문자열 "123"
+     * @param inputList 입력받는 문자열을 추가한 리스트 {1, 2, 3}
      */
-    private void addNumber2userListFromInputStr(List<Integer> inputList, String numInputOfUser) {
+    private void addNumber2userListFromInputStr(List<Integer> inputList) {
         String[] inputStrArr = new String[USER_INPUT_SIZE];
 
         inputStrArr = Utill.getSplitStrArr(numInputOfUser);
