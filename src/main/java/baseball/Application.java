@@ -1,7 +1,16 @@
 package baseball;
 
+import baseball.application.BaseballApplication;
+import baseball.application.config.BaseballConfig;
+import baseball.application.config.IoConfig;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseballConfig baseballConfig = new BaseballConfig();
+        IoConfig ioConfig = new IoConfig();
+
+        BaseballApplication baseballApplication
+            = new BaseballApplication(baseballConfig, ioConfig);
+        baseballApplication.play();
     }
 }
