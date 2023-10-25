@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -47,5 +48,18 @@ class NumberTest {
         assertFalse(firstIndex);
         assertTrue(secondIndex);
         assertFalse(thirdIndex);
+    }
+
+    @Test
+    void size() {
+        // given
+        List<Integer> list1 = new ArrayList<>(List.of(1, 2, 3));
+        Number number1 = new Number(list1);
+
+        // when
+        int size = number1.size();
+
+        // then
+        assertThat(size).isEqualTo(3);
     }
 }
