@@ -11,6 +11,7 @@ public class Baseball {
     Score score = new Score();
 
     public void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             startRound();
             if(selectQuit()) {
@@ -36,7 +37,6 @@ public class Baseball {
 
     private void startRound() {
         List<Integer> computerNumber = RandomUtil.generateRandomNumber(3);
-        System.out.println("숫자 야구 게임을 시작합니다.");
 
         do {
             System.out.print("숫자를 입력해주세요 : ");
@@ -48,7 +48,6 @@ public class Baseball {
             printHint();
         } while (score.getStrike() != 3);
 
-        printHint();
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
