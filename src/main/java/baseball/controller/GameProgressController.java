@@ -17,7 +17,7 @@ public class GameProgressController {
         while (progressState) {
             outputView.printGameStart();
             computerController.createAndSaveAnswer(gameNumber);
-            userGuessing();
+            progressUserGuessing();
             progressState = userRestartOrExit(inputView.getUserRestartOrExitNumber());
         }
     }
@@ -33,7 +33,7 @@ public class GameProgressController {
         throw new IllegalArgumentException();
     }
 
-    private void userGuessing() {
+    private void progressUserGuessing() {
         boolean isAnswer = false;
         while (!isAnswer) {
             String userInputString = inputView.getUserGuessingNumbers();
