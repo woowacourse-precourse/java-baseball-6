@@ -3,6 +3,7 @@ package baseball;
 import java.util.HashMap;
 
 public class CompareResult {
+
     private final HashMap<String, Integer> compareResult = new HashMap<>();
 
     public CompareResult(int strikeCount, int ballCount) {
@@ -15,7 +16,7 @@ public class CompareResult {
         int ballCount = getBallCount();
 
         if (ballCount != 0) {
-            System.out.println(ballCount + "볼" + " ");
+            System.out.print(ballCount + "볼" + " ");
         }
 
         if (strikeCount != 0) {
@@ -23,7 +24,7 @@ public class CompareResult {
         }
 
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
 
         System.out.println();

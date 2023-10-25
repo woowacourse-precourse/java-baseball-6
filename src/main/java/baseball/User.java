@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    
+
     private final List<Integer> userNumber = new ArrayList<>();
 
     public User(String number) {
@@ -24,7 +24,7 @@ public class User {
 
     private void checkLength(String number) {
         if (number.length() != Constant.NUMBER_LENGTH) {
-            throw new IllegalArgumentException("길이가 " + Constant.NUMBER_LENGTH + "이 아닙니다.");
+            throw new IllegalArgumentException(ErrorMessages.NUMBER_LENGTH);
         }
     }
 
@@ -37,7 +37,7 @@ public class User {
 
     private void checkForDuplicate(int intNumber) {
         if (userNumber.contains(intNumber)) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException(ErrorMessages.DUPLICATE_NUMBER);
         }
     }
 
@@ -51,7 +51,7 @@ public class User {
         try {
             int intNumber = Integer.parseInt(stringNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닌 값이 포함되어 있습니다.");
+            throw new IllegalArgumentException(ErrorMessages.VALIDATE_NUMBER);
         }
     }
 
