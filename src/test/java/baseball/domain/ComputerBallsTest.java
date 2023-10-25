@@ -3,9 +3,7 @@ package baseball.domain;
 import static baseball.util.TestDataUtil.createGuessResult;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
-import baseball.dto.GuessResult;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;

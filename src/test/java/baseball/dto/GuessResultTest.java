@@ -4,6 +4,7 @@ import static baseball.util.TestDataUtil.createGuessResult;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.BallStatus;
+import baseball.domain.GuessResult;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

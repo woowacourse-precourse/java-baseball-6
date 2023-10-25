@@ -1,7 +1,7 @@
 package baseball.view.output;
 
 import baseball.domain.BallStatus;
-import baseball.dto.GuessResult;
+import baseball.domain.GuessResult;
 
 public class GameOutputView {
 

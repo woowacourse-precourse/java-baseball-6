@@ -2,7 +2,6 @@ package baseball.domain;
 
 import baseball.domain.strategy.BallNumbersGenerateStrategy;
 import baseball.view.input.GameInputView;
-import baseball.dto.GuessResult;
 import baseball.view.output.GameOutputView;
 
 public class BaseballGame {

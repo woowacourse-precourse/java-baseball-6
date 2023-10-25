@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.domain.strategy.BallNumbersGenerateStrategy;
-import baseball.dto.GuessResult;
 import java.util.List;
 
 public class ComputerBalls extends AbstractBalls {

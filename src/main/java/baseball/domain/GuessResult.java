@@ -1,6 +1,5 @@
-package baseball.dto;
+package baseball.domain;
 
-import baseball.domain.BallStatus;
 import java.util.EnumMap;
 import java.util.Objects;
 
