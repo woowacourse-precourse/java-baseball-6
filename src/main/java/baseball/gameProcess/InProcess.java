@@ -17,13 +17,17 @@ public class InProcess {
     private boolean isCorrect;
 
     public InProcess(GameRole gameRole, List<Integer> computer) throws Exception{
-        initVariables(computer);
+        try {
+            initVariables(computer);
 
-        printInputNumberPhrase();
-        inputNumber();
-        checkInputNumber(gameRole);
+            printInputNumberPhrase();
+            inputNumber();
+            checkInputNumber(gameRole);
 
-        judgeInputNumber(gameRole, computer);
+            judgeInputNumber(gameRole, computer);
+        } catch(Exception e) {
+            throw e;
+        }
     }
 
     public boolean isNumberCorrect() {
@@ -44,7 +48,6 @@ public class InProcess {
     }
 
     private void inputNumber() {
-
         try {
             number = Integer.parseInt(readLine());
         }
@@ -54,9 +57,13 @@ public class InProcess {
     }
 
     private void checkInputNumber(GameRole gameRole) {
-        checkNumberThree(gameRole);
-        checkNumberOneToNineDifferent(gameRole);
-        numberToList(gameRole);
+        try {
+            checkNumberThree(gameRole);
+            checkNumberOneToNineDifferent(gameRole);
+            numberToList(gameRole);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     private void checkNumberThree(GameRole gameRole) {
