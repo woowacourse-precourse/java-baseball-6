@@ -28,7 +28,7 @@ public class Application {
         }
     }
 
-    public static String printScore(int strike, int ball) {
+    public static void printScore(int strike, int ball) {
         String result = "";
         if (strike == 0 && ball == 0) {
             result = "낫싱";
@@ -37,9 +37,9 @@ public class Application {
             result += ball + "볼 ";
         }
         if (strike != 0) {
-            result += strike + "볼";
+            result += strike + "스트라이크";
         }
-        return result;
+        System.out.println(result);;
     }
 
     private static List<Integer> getRandomNumber() {
