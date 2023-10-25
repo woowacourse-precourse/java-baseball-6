@@ -7,10 +7,10 @@ public class ConsoleOutput implements Output {
 
     /**
      * 콘솔로 출력한다.
-     * @param s 출력할 문자열
+     * @param output 출력할 문자열
      */
     @Override
-    public void print(String s) {
-        System.out.print(s);
+    public void print(String output) {
+        System.out.print(output);
     }
 }
