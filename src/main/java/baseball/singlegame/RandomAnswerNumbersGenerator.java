@@ -3,30 +3,23 @@ package baseball.singlegame;
 import baseball.domain.AnswerNumbers;
 import baseball.domain.AnswerNumbersGenerator;
 import camp.nextstep.edu.missionutils.Randoms;
-import exception.DuplicateBaseBallNumber;
-import exception.OutOfBaseBallNumbersSize;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public final class RandomAnswerNumbersGenerator implements AnswerNumbersGenerator {
 
     @Override
     public AnswerNumbers create() {
-        AnswerNumbers baseballNumbers = AnswerNumbers.empty();
-        while (baseballNumbers.size() < AnswerNumbers.MAX_BASE_BALL_SIZE) {
-            addBaseBallNumber(baseballNumbers);
-        }
-        return baseballNumbers;
+        final Set<Integer> randomDistinctNumbers = IntStream.generate(this::createRandomNumber)
+                .distinct()
+                .limit(AnswerNumbers.MAX_BASE_BALL_SIZE)
+                .boxed()
+                .collect(Collectors.toSet());
+        return AnswerNumbers.of(randomDistinctNumbers);
     }
 
     private int createRandomNumber() {
         return Randoms.pickNumberInRange(AnswerNumbers.MIN_BASE_BALL_NUMBER, AnswerNumbers.MAX_BASE_BALL_NUMBER);
-    }
-
-    private void addBaseBallNumber(AnswerNumbers baseballNumbers) {
-        try {
-            int number = createRandomNumber();
-            baseballNumbers.add(number);
-        } catch (DuplicateBaseBallNumber | OutOfBaseBallNumbersSize ignored) {
-            return;
-        }
     }
 }

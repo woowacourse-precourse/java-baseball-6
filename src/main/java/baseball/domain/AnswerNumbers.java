@@ -1,11 +1,11 @@
 package baseball.domain;
 
-import exception.DuplicateBaseBallNumber;
 import exception.OutOfBaseBallNumbersSize;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -17,21 +17,23 @@ public final class AnswerNumbers {
 
     private final List<Integer> values;
 
-    private AnswerNumbers() {
-        this.values = new ArrayList<>();
+    private AnswerNumbers(Set<Integer> numbers) {
+        validateNumbersSize(numbers);
+        this.values = numbers.stream()
+                .peek(this::validateNumberRange)
+                .toList();
     }
 
-    private AnswerNumbers(IntStream numbers) {
-        this.values = new ArrayList<>();
-        numbers.forEach(this::add);
-    }
-
-    public static AnswerNumbers empty() {
-        return new AnswerNumbers();
+    public static AnswerNumbers of(Set<Integer> numbers) {
+        return new AnswerNumbers(numbers);
     }
 
     public static AnswerNumbers of(String[] numbers) {
-        IntStream numbersStream = Stream.of(numbers).mapToInt(Integer::parseInt);
+        Set<Integer> numbersStream = Stream.of(numbers)
+                .mapToInt(Integer::parseInt)
+                .distinct()
+                .boxed()
+                .collect(Collectors.toSet());
         return new AnswerNumbers(numbersStream);
     }
 
@@ -39,21 +41,8 @@ public final class AnswerNumbers {
         return values.size();
     }
 
-    public void add(int number) {
-        validateDuplicate(number);
-        validateNumberRange(number);
-        validateNumbersSize();
-        this.values.add(number);
-    }
-
-    public void validateDuplicate(int number) {
-        if (this.values.contains(number)) {
-            throw new DuplicateBaseBallNumber(String.format("Number %d already exists", number));
-        }
-    }
-
-    public void validateNumbersSize() {
-        if (this.size() >= MAX_BASE_BALL_SIZE) {
+    public void validateNumbersSize(Set<Integer> numbers) {
+        if (numbers.size() != MAX_BASE_BALL_SIZE) {
             throw new OutOfBaseBallNumbersSize(String.format("max size of baseball numbers is %d", MAX_BASE_BALL_SIZE));
         }
     }
@@ -65,7 +54,10 @@ public final class AnswerNumbers {
     }
 
     private boolean isInBaseBallNumberRange(int number) {
-        return number >= MIN_BASE_BALL_NUMBER && number <= MAX_BASE_BALL_NUMBER;
+        return IntStream.range(MIN_BASE_BALL_NUMBER, MAX_BASE_BALL_NUMBER)
+                .boxed()
+                .toList()
+                .contains(number);
     }
 
     public int count(Predicate<Integer> predicate) {
