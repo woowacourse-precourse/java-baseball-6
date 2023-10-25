@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.GameNumber.NUMBER_LENGTH;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Questioner {
@@ -15,7 +17,7 @@ public class Questioner {
         while (true) {
             StringBuilder targetNumber = new StringBuilder();
 
-            for (int i = 0; i < GameNumber.NUMBER_LENGTH; i++) {
+            for (int i = 0; i < NUMBER_LENGTH; i++) {
                 targetNumber.append(Randoms.pickNumberInRange(1, 9));
             }
 
