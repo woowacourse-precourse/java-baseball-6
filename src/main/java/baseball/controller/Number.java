@@ -27,11 +27,19 @@ public class Number
 
     public static List<Integer> receive()
     {
-        System.out.print("Insert number with three digits: ");
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        /* Check if the input has overlapping numbers */
-        // implement later : after separating methods and classes
+        char[] digits = input.toCharArray();
+
+        if (!input.matches("\\d{3}"))
+        {
+            throw new IllegalArgumentException("서로 다른 세 자리 수를 입력해야 합니다.");
+        }
+        else if (digits[0] == digits[1] || digits[1] == digits[2] || digits[0] == digits[2])
+        {
+            throw new IllegalArgumentException("서로 다른 세 자리 수를 입력해야 합니다.");
+        }
 
         /* Make input as array */
         List<Integer> user = new ArrayList<>();
@@ -72,12 +80,10 @@ public class Number
             }
         }
 
-        if (strikes == 0 && balls == 0) System.out.println("Nothing");
-        else if (strikes == 0) System.out.println(balls + " ball");
-        else if (balls == 0) System.out.println(strikes + " strike");
-        else System.out.println(strikes + " strike " + balls + " ball");
-
-        System.out.println("computer number: " + computer);
+        if (strikes == 0 && balls == 0) System.out.println("낫싱");
+        else if (strikes == 0) System.out.println(balls + "볼");
+        else if (balls == 0) System.out.println(strikes + "스트라이크");
+        else System.out.println(balls + "볼 " + strikes + "스트라이크 ");
 
         return strikes;
     }

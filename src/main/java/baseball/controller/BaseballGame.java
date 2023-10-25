@@ -9,7 +9,7 @@ public class BaseballGame
     public static void start()
     {
         /* Print game start message */
-        System.out.println("Starting number baseball game.");
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public static void play()
@@ -27,20 +27,19 @@ public class BaseballGame
             strikeNum = Number.check(computer, user);
         }
 
-        System.out.println("You have the correct answer!");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static int askReplay()
     {
         /* Ask whether the user will play the game again */
-        System.out.print("Are you going to play it again? (1 for yes, 2 for no): ");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int replay = Integer.parseInt(Console.readLine());
 
         if (replay == 1 || replay == 2) {
             return replay;
         } else {
-            System.out.print("Wrong number. ");
-            return askReplay();
+            throw new IllegalArgumentException("1과 2 중 하나를 입력해야 합니다.");
         }
     }
 }
