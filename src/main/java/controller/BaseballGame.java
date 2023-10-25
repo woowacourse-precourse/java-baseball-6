@@ -5,7 +5,6 @@ import model.CompareNumber;
 import model.RandomNumber;
 import view.InputView;
 import view.OutputView;
-
 import java.util.List;
 
 public class BaseballGame {
@@ -39,8 +38,13 @@ public class BaseballGame {
             compareNumber.CompareComputerAndUser();
             outputView.printResult();
 
-            if (outputView.PrintReStart() == inputView.exit) {
-                return false;
+            if (ballStrikeNothing.strike == inputView.NUMBER_LENGTH) {
+                String code = outputView.PrintReStart();
+                if (code.equals(inputView.exit)) {
+                    return false;
+                } else if(code.equals(inputView.reStart)) {
+                    computer = randomNumber.GenerateRandomNumber();
+                }
             }
         }
     }
