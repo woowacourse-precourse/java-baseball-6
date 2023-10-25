@@ -10,11 +10,11 @@ import java.util.Objects;
 
 
 public class gameManage implements gameManageInterface {
-    private final printGameMessage GameMessage = new printGameMessage();
+    private final printGameMessage gameMessage = new printGameMessage();
     private final playerService playerService = new playerService();
 
     public void init() {
-        GameMessage.gameStartMessage();
+        gameMessage.gameStartMessage();
         try {
             do {
                 play();
@@ -54,7 +54,7 @@ public class gameManage implements gameManageInterface {
         printNumberFormat printNumber = new printNumberFormat();
         if (strikeCount == gameConstant.ALL_STRIKE) {
             printResult = printNumber.printStrike(strikeCount);
-            GameMessage.matchResultMessage(printResult);
+            gameMessage.matchResultMessage(printResult);
             return gameConstant.MATCH;
         }
         if (strikeCount == gameConstant.NO_STRIKE && ballCount == gameConstant.NO_BALL) {
@@ -66,7 +66,7 @@ public class gameManage implements gameManageInterface {
         if (strikeCount != gameConstant.NO_STRIKE) {
             printResult += printNumber.printStrike(strikeCount);
         }
-        GameMessage.matchResultMessage(printResult);
+        gameMessage.matchResultMessage(printResult);
         return gameConstant.NOT_MATCH;
     }
 
@@ -76,14 +76,14 @@ public class gameManage implements gameManageInterface {
             List<Integer> playerNumbers = playerService.selectPlayerNumber();
             Integer matchResult = judgeNumber(playerNumbers, computerNumbers);
             if (matchResult == gameConstant.MATCH) {
-                GameMessage.numberMatchMessage();
+                gameMessage.numberMatchMessage();
                 break;
             }
         }
     }
 
     public boolean isPlayAgain() {
-        GameMessage.gameRestartMessage();
+        gameMessage.gameRestartMessage();
         int checkAgain = Integer.parseInt(Console.readLine());
         if (checkAgain != gameConstant.PLAY_AGAIN && checkAgain != gameConstant.EXIT_GAME) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");

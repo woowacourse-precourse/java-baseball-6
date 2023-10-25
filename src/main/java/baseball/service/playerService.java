@@ -18,13 +18,13 @@ public class playerService {
         }
 
         List<Integer> playerNumbers = stringToIntArray(playerNumber);
-        if (checkDuplication(playerNumbers) || checkNotNumberInput(playerNumbers)) {
+        if (isDuplicate(playerNumbers) || isNotNumberInput(playerNumbers)) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
         return playerNumbers;
     }
 
-    public boolean checkNotNumberInput(List<Integer> playerNumbers) {
+    public boolean isNotNumberInput(List<Integer> playerNumbers) {
         for (Integer playerNumber : playerNumbers) {
             if (playerNumber > 9 || playerNumber < 1) {
                 return true;
@@ -33,7 +33,7 @@ public class playerService {
         return false;
     }
 
-    public boolean checkDuplication(List<Integer> playerNumbers) {
+    public boolean isDuplicate(List<Integer> playerNumbers) {
         for (int i = 0; i < playerNumbers.size(); i++) {
             int element = playerNumbers.get(i);
             if (isDuplicateElementInArray(element, playerNumbers)) {
