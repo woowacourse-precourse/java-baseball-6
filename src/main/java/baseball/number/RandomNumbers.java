@@ -1,5 +1,8 @@
 package baseball.number;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumbers {
@@ -13,6 +16,18 @@ public class RandomNumbers {
         this.randomNumbers = extractRandomNumbers();
 
     }
+    private List<BaseBallNumber> extractRandomNumbers() {
+        List<BaseBallNumber> randomNumbers = new ArrayList<>();
+
+        while (randomNumbers.size() != COUNT) {
+            BaseBallNumber randomNumber = new BaseBallNumber(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
+        }
+        return randomNumbers;
+    }
+
 
 
 }
