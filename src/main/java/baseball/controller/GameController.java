@@ -18,20 +18,22 @@ public class GameController {
 
     public void startGame() {
         System.out.println(GAME_START.getMessage());
-        doGame();
-    }
-
-    public void doGame() {
         this.player = new Player();
         this.computer = new Computer();
         BaseballNumber computerWithRandomNumber = ComputerService.createComputerWithRandomNumber();
         computer.updateBaseballNumber(computerWithRandomNumber);
+        doGame();
+    }
+
+    public void doGame() {
         do {
             setPlayerBaseballNumber();
-        } while (!checkGuessNumber()); //맞을 때까지
+        } while (!checkGuessNumber());
         System.out.println(GAME_END.getMessage());
 
         if (wantsToKeepPlaying()) {
+            BaseballNumber computerWithRandomNumber = ComputerService.createComputerWithRandomNumber();
+            computer.updateBaseballNumber(computerWithRandomNumber);
             doGame();
         }
     }
