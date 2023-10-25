@@ -42,15 +42,15 @@ public class PlayResult {
         return getCountOf(CompareResult.BALL);
     }
 
-    private long getCountOf(final CompareResult compareResult) {
-        return countByResult.getOrDefault(compareResult, 0L);
-    }
-
     public boolean hasStrike() {
-        return getStrikes() > 0;
+        return getCountOf(CompareResult.STRIKE) > 0;
     }
 
     public boolean hasBall() {
-        return getBalls() > 0;
+        return getCountOf(CompareResult.BALL) > 0;
+    }
+
+    private long getCountOf(final CompareResult compareResult) {
+        return countByResult.getOrDefault(compareResult, 0L);
     }
 }
