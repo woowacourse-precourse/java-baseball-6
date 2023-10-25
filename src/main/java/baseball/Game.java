@@ -21,9 +21,10 @@ public class Game {
             Output.printNewGameOrGameEndMessage();
             //종료선택시 프로그램 종료
             String input = Console.readLine();
-            int choice = Integer.parseInt(input);
+            //예외처리 추가
+            //int choice = Integer.parseInt(input);
 
-            if(choice == 2)
+            if(myInput.choiceRetryOrEnd(input))
             {
                 break;
             }
