@@ -19,6 +19,10 @@ public class Computer {
         this.computerNumber = createRandomNumbers();
     }
 
+    public List<Integer> getComputerNumber() {
+        return computerNumber;
+    }
+
     public List<Integer> createRandomNumbers() {
         Set<Integer> numbers = new HashSet<>();
         while (numbers.size() < RANDOM_NUMBERS_SIZE) {

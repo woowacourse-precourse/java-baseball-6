@@ -14,6 +14,10 @@ public class Player {
         this. playerNumber = transformPlayerNumber(validatedNumber);
     }
 
+    public List<Integer> getPlayerNumber() {
+        return playerNumber;
+    }
+
     private List<Integer> transformPlayerNumber(String validatedNumber) {
         List<Integer> numbers = new ArrayList<>();
         for(char number : validatedNumber.toCharArray()){
