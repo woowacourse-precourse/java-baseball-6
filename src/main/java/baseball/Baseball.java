@@ -24,11 +24,11 @@ public class Baseball {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartOrQuit = readLine();
 
-        if(restartOrQuit.equals("2")) {
+        if("2".equals(restartOrQuit)) {
             return true;
         }
 
-        if (restartOrQuit.equals("1")) {
+        if ("1".equals(restartOrQuit)) {
             return false;
         }
 
@@ -57,9 +57,9 @@ public class Baseball {
 
         for (int i = 0; i < 3; i++) {
             var result = compareNumber(computerNumber, userNumber.get(i), i);
-            if (result.equals("스트라이크")) {
+            if ("스트라이크".equals(result)) {
                 strike++;
-            } else if (result.equals("볼")) {
+            } else if ("볼".equals(result)) {
                 ball++;
             }
         }
