@@ -9,7 +9,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ComputerTest {
+public class NumbersGeneratorTest {
 
     /**
      * 30회 반복 : 대략 1경 번당 2번 성공 오차
@@ -18,11 +18,11 @@ public class ComputerTest {
     @Test
     public void checkRandomNumbers() throws Exception {
         //given
-        Computer computer = new Computer();
+        NumbersGenerator numbersGenerator = new NumbersGenerator();
 
         for (int i = 0; i < 30; i++) {
             //when
-            List<Integer> randomNumbers = computer.createRandomNumbers();
+            List<Integer> randomNumbers = numbersGenerator.createRandomNumbers();
             Set<Integer> set = new HashSet<>(randomNumbers);
 
             //then

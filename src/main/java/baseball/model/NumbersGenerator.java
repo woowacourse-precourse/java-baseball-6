@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Computer {
+public class NumbersGenerator {
 
     public List<Integer> createRandomNumbers() {
         Set<Integer> set = new HashSet<>();

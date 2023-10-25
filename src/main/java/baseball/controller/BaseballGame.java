@@ -1,23 +1,23 @@
 package baseball.controller;
 
 import baseball.model.Balls;
-import baseball.model.Computer;
-import baseball.model.NumberInput;
+import baseball.model.InputNumbers;
+import baseball.model.NumbersGenerator;
 import baseball.model.PlayResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
-    private final Computer computer = new Computer();
+    private final NumbersGenerator numbersGenerator = new NumbersGenerator();
 
-    public void playGame() {
+    public void play() {
         InputView.printStartOfGame();
-        newGame();
+        playGame();
     }
 
-    private void newGame() {
-        Balls answerBalls = new Balls(computer.createRandomNumbers());
+    private void playGame() {
+        Balls answerBalls = new Balls(numbersGenerator.createRandomNumbers());
 
         playGameUntilCorrect(answerBalls);
 
@@ -41,9 +41,9 @@ public class BaseballGame {
         return new Balls(getInput());
     }
 
-    private NumberInput getInput() {
+    private InputNumbers getInput() {
         InputView.demandInput();
-        return NumberInput.of(Console.readLine());
+        return InputNumbers.of(Console.readLine());
     }
 
     private void askRetry() {
@@ -55,7 +55,7 @@ public class BaseballGame {
         }
 
         if (input.equals("1")) {
-            newGame();
+            playGame();
             return;
         }
 

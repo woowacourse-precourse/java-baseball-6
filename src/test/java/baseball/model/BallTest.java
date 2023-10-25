@@ -58,7 +58,7 @@ public class BallTest {
         assertThat(ball1.equals(ball2)).isFalse();
     }
 
-    @DisplayName("특정 인덱스의 Ball과 Balls을 비교 : 1 STRIKE 2NOTHING")
+    @DisplayName("특정 인덱스의 Ball과 Balls을 비교 : 1STRIKE 2NOTHING")
     @Test
     public void compareBallWithBalls_1STRIKE() throws Exception {
         //given
@@ -73,7 +73,7 @@ public class BallTest {
         assertThat(ballStatuses).containsExactly(BallStatus.STRIKE, BallStatus.NOTHING, BallStatus.NOTHING);
     }
 
-    @DisplayName("특정 인덱스의 Ball과 Balls을 비교 : 1 BALL 2NOTHING")
+    @DisplayName("특정 인덱스의 Ball과 Balls을 비교 : 1BALL 2NOTHING")
     @Test
     public void compareBallWithBalls_1BALL() throws Exception {
         //given

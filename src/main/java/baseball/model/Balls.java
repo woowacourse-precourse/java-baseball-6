@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.util.InputUtils.inputToIntegerList;
+import static baseball.util.InputUtils.inputNumbersToIntegerList;
 
 public class Balls {
     private List<Ball> balls;
@@ -18,8 +18,8 @@ public class Balls {
                 .toList();
     }
 
-    public Balls(NumberInput numberInput) {
-        this(inputToIntegerList(numberInput));
+    public Balls(InputNumbers inputNumbers) {
+        this(inputNumbersToIntegerList(inputNumbers));
     }
 
     public PlayResult checkBalls(Balls targetBalls) {
