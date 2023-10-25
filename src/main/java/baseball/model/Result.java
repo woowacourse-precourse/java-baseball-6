@@ -32,7 +32,7 @@ public class Result {
 
 
     public boolean isThreeStrike() {
-        return result.getOrDefault(BallCount.STRIKE, 0) == BALL_LENGTH;
+        return result.getOrDefault(BallCount.STRIKE, 0).equals(BALL_LENGTH);
     }
-    
+
 }

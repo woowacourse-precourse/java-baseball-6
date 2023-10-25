@@ -6,8 +6,10 @@ import baseball.model.GameStatus;
 import baseball.model.Player;
 import baseball.model.Result;
 import baseball.model.UserComputerCompare;
+import baseball.util.GameStatusHelper;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.stream.IntStream;
 
 public class GameController {
     private final InputView inputView;
@@ -30,30 +32,48 @@ public class GameController {
 
     private void playUntilExit() {
         outputView.printGameStart();
-        while (!GameStatus.isApplicationExit(gameStatus)) {
-            Computer computer = Computer.createByNumber();
-            playUntilThreeStrikes(computer);
-            handleRetry();
-        }
+
+        IntStream.generate(() -> 0) // generate an infinite stream
+                .takeWhile(i -> !GameStatus.isApplicationExit(gameStatus)) // condition to continue
+                .forEach(i -> {
+                    playSingleGame();
+                    handleRetry();
+                });
     }
 
-    private void playUntilThreeStrikes(Computer computer) {
-        while (!GameStatus.isGameOver(gameStatus)) {
-            Player player = Player.createByNumber(inputView.readPlayerNumber());
-            UserComputerCompare referee = UserComputerCompare.judge(computer, player);
-            Result result = referee.ResultgetBallCountJudgement();
-            outputView.printGameResult(result);
-            gameStatus = GameStatus.fromIsThreeStrike(result.isThreeStrike());
-        }
+    private void playSingleGame() {
+        Computer computer = Computer.createByNumber();
+
+        IntStream.generate(() -> 0) // generate an infinite stream
+                .takeWhile(i -> !GameStatus.isGameOver(gameStatus)) // condition to continue
+                .forEach(i -> {
+                    Player player = getPlayerFromInput();
+                    Result result = getResultFromComparison(computer, player);
+                    outputView.printGameResult(result);
+                    updateGameStatus(result);
+                });
+
         outputView.printThreeStrike();
     }
 
+    private Player getPlayerFromInput() {
+        return Player.createByNumber(inputView.readPlayerNumber());
+    }
+
+    private Result getResultFromComparison(Computer computer, Player player) {
+        UserComputerCompare referee = UserComputerCompare.judge(computer, player);
+        return referee.ResultgetBallCountJudgement();
+    }
+
+    private void updateGameStatus(Result result) {
+        gameStatus = GameStatusHelper.fromIsThreeStrike(result.isThreeStrike());
+    }
+
     private void handleRetry() {
-        gameStatus = GameStatus.fromSelectedRetry(isSelectedRetry());
+        gameStatus = GameStatusHelper.fromSelectedRetry(isSelectedRetry());
     }
 
     private boolean isSelectedRetry() {
-
         return GameCommand.from(inputView.readGameCommand()).selectedRetry();
     }
 
@@ -61,6 +81,5 @@ public class GameController {
         outputView.printExceptionMessage(exception);
         throw exception;
     }
-
 }
 
