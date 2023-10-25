@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
 
-    public int getUserGuess() {
+    public String getUserGuess() {
         System.out.print("숫자를 입력해주세요 : ");
-        try{
-            int input = Integer.parseInt(Console.readLine());
-            if (String.valueOf(input).matches("\\d{3}")) {
+        try {
+            String input = Console.readLine();
+            if (input.matches("\\d{3}")) {
                 return input;
             } else {
                 throw new IllegalArgumentException();

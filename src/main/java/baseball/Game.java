@@ -21,12 +21,13 @@ public class Game {
 
     public void saveUserInput() {
         userGuess.clear();
-        int input = userInput.getUserGuess();
+        String inputString = userInput.getUserGuess();
 
-        String inputString = String.valueOf(input);
         if (inputString.length() != 3) {
             throw new IllegalArgumentException();
         }
+        
+        int input=Integer.parseInt(inputString);
 
         while (input > 0) {
             userGuess.add(input % 10);
@@ -57,7 +58,7 @@ public class Game {
                 if (choice == 1) {
                     computer = new Computer();
                 } else if (choice == 2) {
-                    System.out.println("게임 종료");
+                    System.out.print("게임 종료");
                     break;
                 }
             }
