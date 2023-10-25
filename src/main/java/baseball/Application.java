@@ -1,13 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.InputMismatchException;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 public class Application {
@@ -23,12 +21,12 @@ public static void main(String[] args) {
 
     boolean flag = true;
 
-    Scanner scanner = new Scanner(new InputStreamReader(System.in));
     try {
         while (flag) {
 //            System.out.println("computer: " + computer);
             System.out.print("숫자를 입력해주세요 : ");
-            int number = scanner.nextInt();
+            String input = Console.readLine();
+            int number = Integer.parseInt(input);
 
             if (number <= 0 || number > 999 || !IsDifferentDigits(number)) {
                 throw new IllegalArgumentException();
@@ -42,7 +40,8 @@ public static void main(String[] args) {
             if (cntStrike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int selectLast = scanner.nextInt();
+                String inputLast = Console.readLine();
+                int selectLast = Integer.parseInt(inputLast);
 
                 switch (selectLast) {
                     case 1:
@@ -64,18 +63,10 @@ public static void main(String[] args) {
             }
         }
 
-    } catch (IllegalArgumentException e) {
-        e.printStackTrace();
-//        throw new IllegalArgumentException(e);
-    } catch (InputMismatchException ie) {
-//        System.out.println("InputMismatchException");
-//        IllegalArgumentException iae = new IllegalArgumentException();
-//        iae.initCause(ie);
-//        throw ie;
-////        ie.printStackTrace();
+    } catch (RuntimeException e) {
+
         throw new IllegalArgumentException();
-    } finally {
-        scanner.close();
+
     }
 
 }
