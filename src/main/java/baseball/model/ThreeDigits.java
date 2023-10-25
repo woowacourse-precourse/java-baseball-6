@@ -34,7 +34,7 @@ public class ThreeDigits {
         final int second,
         final int third
     ){
-        int radix = 10;
+        int radix = 10; // 10진수
         return new ThreeDigits(
             Character.forDigit(first,radix),
             Character.forDigit(second,radix),
@@ -55,13 +55,13 @@ public class ThreeDigits {
         return new StrikeBallCount(strikeCount,ballCount);
     }
 
-    private static int checkStrike(char answerChar, char inputChar){
-        //* 스트라이크 확인 자기 위치에 같은 Char값이 있는지 확인*/
+    private static int checkStrike(final char answerChar, final char inputChar){
+        //* 스트라이크 확인 자기 위치에 같은 Char값이 있는지 확인 */
         return (answerChar == inputChar) ? Constant.STRIKE : Constant.NOT_STRIKE;
     }
 
     private static int checkBall(final int index, final ThreeDigits answer, final ThreeDigits input){
-        //* 볼 개수 세기  자기 위치 빼고 같은게 있는지 보기*/
+        //* 볼 개수 세기 자기 위치 빼고 같은게 있는지 보기 */
         char answerCharacter = getCharByIndex(answer,index);
         for(int i=0; i < Constant.DIGIT_LENGTH; i++){
             if(i != index && getCharByIndex(input,i) == answerCharacter){
@@ -71,7 +71,7 @@ public class ThreeDigits {
         return Constant.NOT_BALL;
     }
 
-    private static char getCharByIndex(ThreeDigits digits,int index){
+    private static char getCharByIndex(final ThreeDigits digits, final int index){
         if(index == 0)
             return digits.getFirst();
         
@@ -81,5 +81,4 @@ public class ThreeDigits {
         else
             return digits.getThird();
     }
-
 }

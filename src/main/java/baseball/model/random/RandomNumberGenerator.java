@@ -1,4 +1,4 @@
-package baseball.random;
+package baseball.model.random;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

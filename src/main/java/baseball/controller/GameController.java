@@ -15,7 +15,6 @@ public class GameController {
         do{ 
             baseballGame.start();
         } while(isContinue());
-        
     }
 
     private boolean isContinue(){
