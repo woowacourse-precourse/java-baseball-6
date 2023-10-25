@@ -6,7 +6,6 @@ import baseball.domain.game.Game;
 import baseball.domain.game.GameOperator;
 import baseball.domain.picker.BallPicker;
 import baseball.domain.picker.RandomBallPicker;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     private static final BallPicker ballPicker = new RandomBallPicker();
@@ -18,7 +17,5 @@ public class Application {
         Output.showStart();
 
         game.play();
-
-        Console.close();
     }
 }
