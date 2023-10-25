@@ -1,7 +1,6 @@
 package baseball.model;
 
-
-import static baseball.model.GameNumber.NUM_LENGTH;
+import static baseball.controller.BaseballController.NUM_LENGTH;
 
 import java.util.List;
 
