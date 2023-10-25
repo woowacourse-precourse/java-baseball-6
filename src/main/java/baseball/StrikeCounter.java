@@ -10,7 +10,6 @@ public class StrikeCounter implements Counter {
     }
 
     private boolean compare(List<Integer> computer, List<Integer> number, Integer n) {
-        System.out.println("스트라이크: " + computer.indexOf(n) + number.indexOf(n));
         return computer.indexOf(n) == number.indexOf(n);
     }
 }

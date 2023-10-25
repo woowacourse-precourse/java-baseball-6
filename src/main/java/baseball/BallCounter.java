@@ -10,7 +10,6 @@ public class BallCounter implements Counter {
     }
 
     private boolean compare(List<Integer> computer, List<Integer> number, Integer n) {
-        System.out.println("볼: " + computer.indexOf(n) + number.indexOf(n));
         return computer.contains(n) && computer.indexOf(n) != number.indexOf(n);
     }
 }
