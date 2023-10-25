@@ -47,11 +47,11 @@ public class Game {
     }
 
     public static void checkRetry(int userRetryNum){
-        if(userRetryNum==1){
-            Computer.InitGame();
-            OutputView.printStart();
+        if(userRetryNum == 1){
+            retryEnd=true;
+            gameContinue=true;
         }
-        else if(userRetryNum == 2){
+        else if(userRetryNum==2){
             retryEnd=false;
         }
     }
