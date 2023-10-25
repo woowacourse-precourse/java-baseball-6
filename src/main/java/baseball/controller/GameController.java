@@ -66,6 +66,7 @@ public class GameController {
     }
 
     private void getRandomNumber() {
+        computer.clear();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -90,7 +91,7 @@ public class GameController {
         }
         ballCount = ballCount - strikeCount;
 
-        return new GameResult(strikeCount, ballCount);
+        return new GameResult(ballCount, strikeCount);
     }
 
     private void validateBaseballInput(String input) {
