@@ -4,12 +4,12 @@ import static baseball.global.BaseballConstant.GUESS_NUMBER_SIZE;
 
 import java.util.stream.IntStream;
 
-public class Catcher {
+public class Umpire {
 
     private final int strikeCount;
     private final int ballCount;
 
-    public Catcher(Computer computer, Player player) {
+    public Umpire(Computer computer, Player player) {
         this.strikeCount = countStrike(computer, player);
         this.ballCount = countBall(computer, player);
     }
