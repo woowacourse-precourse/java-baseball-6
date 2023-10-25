@@ -12,15 +12,16 @@ public class Computer {
         answer = "";
     }
 
-    public void setAnswer() {
-        answer = "";
+    public void generateRandomAnswer() {
+        StringBuilder answerBuilder = new StringBuilder();
         HashSet<Integer> set = new HashSet<>();
         while (set.size() != NUMBER_LENGTH) {
             set.add(Randoms.pickNumberInRange(1, 9));
         }
         for (int i : set) {
-            answer += i;
+            answerBuilder.append(i);
         }
+        answer = answerBuilder.toString();
     }
 
     public String getAnswer() {

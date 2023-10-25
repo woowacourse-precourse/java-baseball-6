@@ -19,7 +19,7 @@ public class BaseballGame {
     }
 
     public void start() {
-        computer.setAnswer();
+        computer.generateRandomAnswer();
         user.setNumber(Input.get());
         while (!isCorrect()) {
             user.setNumber(Input.get());
