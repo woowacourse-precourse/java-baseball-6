@@ -6,7 +6,7 @@ public class Validator {
     private static final int MAX_INPUT_SIZE = 3;
 
     public static void validInputSize(String input) {
-        if (input.length() > MAX_INPUT_SIZE) {
+        if (input.length() != MAX_INPUT_SIZE) {
             throw new IllegalArgumentException();
         }
     }

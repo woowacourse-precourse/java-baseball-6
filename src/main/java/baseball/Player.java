@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Validator.validInputSize;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
@@ -16,7 +18,7 @@ public class Player {
     private String loadInput() {
         System.out.printf(REQUEST_NUMBERS);
         String input = Console.readLine();
-        Validator.validInputSize(input);
+        validInputSize(input);
         return input;
     }
 
