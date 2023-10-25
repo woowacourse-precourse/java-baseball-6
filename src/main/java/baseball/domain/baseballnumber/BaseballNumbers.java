@@ -20,6 +20,23 @@ public class BaseballNumbers {
         numbers = baseballNumbers;
     }
 
+    private void validateSizeAndDuplicated(List<Integer> input) {
+        if (!isRightSizeInput(input)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_WRONG_SIZE);
+        } else if (!isDuplicated(input)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_DUPLICATED);
+        }
+    }
+
+    private boolean isRightSizeInput(List<Integer> input) {
+        return input.size() == NUMBERS_SIZE;
+    }
+
+    private boolean isDuplicated(List<Integer> input) {
+        Set<Integer> set = new HashSet<>(input);
+        return set.size() == NUMBERS_SIZE;
+    }
+
     public List<BaseballNumber> numbers() {
         return numbers;
     }
@@ -39,22 +56,5 @@ public class BaseballNumbers {
     private boolean isSameIndex(BaseballNumber baseballNumber, int index) {
         int indexOfBaseballNumber = numbers.indexOf(baseballNumber);
         return indexOfBaseballNumber == index;
-    }
-
-    private void validateSizeAndDuplicated(List<Integer> input) {
-        if (!isRightSizeInput(input)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_WRONG_SIZE);
-        } else if (!isDuplicated(input)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_DUPLICATED);
-        }
-    }
-
-    private boolean isRightSizeInput(List<Integer> input) {
-        return input.size() == NUMBERS_SIZE;
-    }
-
-    private boolean isDuplicated(List<Integer> input) {
-        Set<Integer> set = new HashSet<>(input);
-        return set.size() == NUMBERS_SIZE;
     }
 }

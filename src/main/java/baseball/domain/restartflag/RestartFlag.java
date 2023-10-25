@@ -13,10 +13,6 @@ public class RestartFlag {
         this.flag = flag;
     }
 
-    public boolean isRestart() {
-        return flag == RESTART_GAME_FLAG;
-    }
-
     private void validateInput(int flag) {
         if (!isRightValue(flag)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_WRONG_INPUT);
@@ -25,5 +21,9 @@ public class RestartFlag {
 
     private boolean isRightValue(int flag) {
         return flag == RESTART_GAME_FLAG || flag == END_GAME_FLAG;
+    }
+
+    public boolean isRestart() {
+        return flag == RESTART_GAME_FLAG;
     }
 }
