@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GenerateNumberList {
 
@@ -22,6 +21,6 @@ public class GenerateNumberList {
     public static List<Integer> generateInputValueToUser(String user_input_value){
         return user_input_value.chars()
                                 .mapToObj(Character::getNumericValue)
-                                        .collect(Collectors.toList());
+                                .toList();
     }
 }
