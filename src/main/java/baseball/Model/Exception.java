@@ -5,13 +5,8 @@ import java.util.Set;
 
 public class Exception {
     public static boolean checkIsNumber(String userInput) {
-        for (int i = 0; i < userInput.length(); i++) {
-            char digitChar = userInput.charAt(i);
-            if (!Character.isDigit(digitChar)) {
-                return false;
-            }
-        }
-        return true;
+        return userInput.chars()
+                .allMatch(Character::isDigit);
     }
 
     public static boolean checkIsDuplicated(String userInput) {
