@@ -1,6 +1,7 @@
 package baseball.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Console.close;
 
 public class ConsoleImpl implements Console {
     private void println(String message) {
@@ -33,7 +34,9 @@ public class ConsoleImpl implements Console {
 
     @Override
     public String getUserInput() {
-        return readLine();
+        String input = readLine();
+        close();
+        return input;
     }
 
     @Override
