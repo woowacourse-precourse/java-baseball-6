@@ -8,19 +8,20 @@ public class BaseballController {
 
     // 게임 시작 함수
     public void startBaseball() {
-        int strike = 0;
 
         baseballView.printBaseballStart();
         String computer = baseballService.getComputerNum();
 
+        int strike = 0;
+
+
         // 3스트라이크가 될 때까지 반복
         while (strike<3) {
-            strike = 0;
             String randomNum = baseballView.inputRandomNum();
-            baseballService.verifyRandomInput(randomNum);
-            strike = baseballService.getStrike(computer, randomNum);
-            int ball = baseballService.getBall(computer, randomNum);
-            baseballView.printStrikeOrBall(strike, ball);
+            Baseball baseball = new Baseball(computer, randomNum, 0, 0);
+            compareNums(baseball);
+            strike = baseball.getStrike();
+            System.out.println(baseball.getStrike());
         }
 
         // 3스트라이크인 경우, 게임 종료
@@ -38,12 +39,10 @@ public class BaseballController {
         }
     }
 
-    public void compareNums(int strike, String computer){
-        strike = 0;
-        String randomNum = baseballView.inputRandomNum();
-        baseballService.verifyRandomInput(randomNum);
-        strike = baseballService.getStrike(computer, randomNum);
-        int ball = baseballService.getBall(computer, randomNum);
-        baseballView.printStrikeOrBall(strike, ball);
+    public void compareNums(Baseball baseball){
+        baseballService.verifyRandomInput(baseball.getRandomNum());
+        baseball.setStrike(baseballService.getStrike(baseball.getComputer(), baseball.getRandomNum()));
+        baseball.setBall(baseballService.getBall(baseball.getComputer(), baseball.getRandomNum()));
+        baseballView.printStrikeOrBall(baseball.getStrike(), baseball.getBall());
     }
 }
