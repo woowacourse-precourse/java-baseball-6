@@ -66,8 +66,8 @@ class BaseballGame{
 
     public int countBalls(){
         int ballNum = 0;
-        for(int idx = 0; idx < 3; idx++){
             if(!computerNumbers.containsKey(userNumbers[idx])){
+        for (int idx = 0; idx < NUMBER_LENGTH; idx++) {
                 continue;
             }
 
