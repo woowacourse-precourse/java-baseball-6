@@ -79,7 +79,7 @@ public class Game {
             input = Integer.parseInt(readLine());
             if(input!=1 && input!=2) throw new IllegalArgumentException();
         }catch (IllegalArgumentException e) {
-            System.out.println("잘못된 입력입니다.");
+            throw e;
         }
         return input;
     }

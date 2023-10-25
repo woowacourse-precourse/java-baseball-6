@@ -30,7 +30,7 @@ public class UserNumber {
             }
 
         }catch (IllegalArgumentException e){
-            System.out.println("잘못된 입력입니다.");
+            throw new IllegalArgumentException();
         }
     }
 
