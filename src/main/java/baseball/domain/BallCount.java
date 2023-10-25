@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.constant.ErrorMessage;
 import baseball.constant.ResultStatus;
 import baseball.constant.StrikeBall;
 
@@ -19,7 +20,7 @@ public final class BallCount {
 
     private void validate(final List<StrikeBall> ballCount) {
         if (hasInvalidSize(ballCount)) {
-            throw new IllegalStateException();
+            throw new IllegalStateException(ErrorMessage.INVALID_BALL_COUNT_SIZE.toValue());
         }
     }
 

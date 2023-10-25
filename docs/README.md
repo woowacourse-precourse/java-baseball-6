@@ -109,6 +109,8 @@
 
 - RetryStatus: 재시도 상태를 가진다
 
+- ErrorMessage: 에러 메시지를 가진다
+
 ## 테스트 목록
 
 - [x] Application

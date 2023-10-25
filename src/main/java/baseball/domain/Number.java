@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.constant.ErrorMessage;
+
 import java.util.Objects;
 
 public final class Number {
@@ -19,7 +21,7 @@ public final class Number {
 
     private void validate(final Integer value) {
         if (isInvalidValue(value)) {
-            throw new IllegalStateException();
+            throw new IllegalStateException(ErrorMessage.INVALID_NUMBER_RANGE.toValue());
         }
     }
 

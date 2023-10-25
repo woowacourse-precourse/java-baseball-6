@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.constant.ErrorMessage;
+
 import java.util.List;
 
 public final class Numbers {
@@ -14,7 +16,7 @@ public final class Numbers {
 
     private void validate(final List<Integer> numbers) {
         if (hasInvalidSize(numbers) || isNotUnique(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBERS.toValue());
         }
     }
 
