@@ -32,6 +32,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 스트라이크_3개_테스트() {
+        Computer computer = new Computer();
+        computer.strikeCount("123", "123");
+        assertThat(computer.getIsThreeStrike()).isEqualTo(true);
+    }
+
+    @Test
     void 컴퓨터_랜덤생성_길이테스트() {
         NumberGenerator computerNumber = new NumberGenerator();
         String generatedNumber = computerNumber.getGeneratedNumber();
