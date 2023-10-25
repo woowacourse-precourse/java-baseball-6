@@ -16,8 +16,6 @@ public class Application {
     	}
     	checkRandomNum(randomList);
     	
-    	System.out.println(randomList);
-    	
     	boolean n = true;
     	while(n) {
     		n = BaseballGame(randomList);
