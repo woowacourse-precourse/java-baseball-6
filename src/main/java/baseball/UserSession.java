@@ -13,27 +13,47 @@ public class UserSession {
         while (true) {
             String input = promptForRound();
             int[] result = game.playRound(input);
-            showUserResult(result);
+            showRoundResult(result);
             if (game.isWin(result)) {
-                System.out.println(game.getNumberSize() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(new StringBuilder()
+                        .append(game.getNumberSize())
+                        .append("개의 숫자를 모두 맞히셨습니다! 게임 종료")
+                );
                 if (!promptForNewGame()) break;
                 game.setNewGame();
             }
         }
     }
 
-    // change in implementation guide
-    // TODO: String Builder
-    private void showUserResult(int[] result) {
-        if (result[0] == 0 && result[1] == 0) System.out.println("낫싱");
-         else if (result[0] > 0 && result[1] > 0) System.out.println(result[1] + "볼 " + result[0] + "스트라이크");
-         else if (result[0] > 0 && result[1] == 0) System.out.println(result[0] + "스트라이크");
-         else if (result[0] == 0 && result[1] > 0) System.out.println(result[1] + "볼");
+    // Change of plan from docs/README.md
+    private void showRoundResult(int[] result) {
+        if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        }
+        else if (result[0] > 0 && result[1] > 0) {
+            System.out.println(new StringBuilder()
+                    .append(result[1])
+                    .append("볼 ")
+                    .append(result[0])
+                    .append("스트라이크")
+            );
+        } else if (result[0] > 0 && result[1] == 0) {
+            System.out.println(new StringBuilder()
+                    .append(result[0])
+                    .append("스트라이크")
+            );
+        }
+        else if (result[0] == 0 && result[1] > 0) {
+            System.out.println(new StringBuilder()
+                    .append(result[1])
+                    .append("볼")
+            );
+        }
     }
 
+    // Change of plan in docs/README.md
     private String promptForRound() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
-        // change in implementation guide: Don't check user input. Since the Game class handles it.
         return Console.readLine();
     }
 
@@ -42,6 +62,6 @@ public class UserSession {
         String input = Console.readLine();
         if (input.equals("1")) return true;
         else if (input.equals("2")) return false;
-        else throw new IllegalArgumentException("Wrong input");
+        else throw new IllegalArgumentException("Invalid user input in prompt for new game");
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Game {
 
-    // Change in the implementation guide
+    // Change of plan in docs/README.md
     private static final int NUMBER_SIZE = 3;
 
     private List<Integer> target;
@@ -28,7 +28,6 @@ public class Game {
     }
 
     /**
-     *
      * @param input The user's input
      * @return An array of two elements:
      * the first element represents the number of strikes,
@@ -40,35 +39,33 @@ public class Game {
         return compareUserInput(userInput);
     }
 
-    // Change in the implementation guide.
+    // Change of plan in docs/README.md
     private int[] parseUserInput(String input) throws IllegalArgumentException {
         if (input == null || input.length() != 3) {
-            throw new IllegalArgumentException("Invalid input for game.");
+            throw new IllegalArgumentException("User didn't give 3 digits");
         }
         int[] userInput = new int[NUMBER_SIZE];
         for (int i = 0; i < NUMBER_SIZE; i++) {
             userInput[i] = input.charAt(i) - '0';
-            if (userInput[i] < 1 || userInput[i] > 9) throw new IllegalArgumentException("Invalid input for game");
+            if (userInput[i] < 1 || userInput[i] > 9) throw new IllegalArgumentException("User's input include character which is not included in 1 to 9");
             for (int j = 0; j < i; j++) {
-                if (userInput[i] == userInput[j]) throw new IllegalArgumentException("Invalid input for game");
+                if (userInput[i] == userInput[j]) throw new IllegalArgumentException("There are duplicate digits in the user input");
             }
         }
         return userInput;
     }
 
-    // TODO: refactor
-    //
-    // Change in the implementation guide
+    // Change of plan in docs/README.md
     private int[] compareUserInput(int[] userInput) {
-        int[] ret = new int[]{0, 0};
+        int[] result = new int[]{0, 0};
         for (int i = 0; i < NUMBER_SIZE; i++) {
             for (int j = 0; j < NUMBER_SIZE; j++) {
                 if (target.get(i) != userInput[j]) continue;
-                if (i == j) ret[0]++;
-                else ret[1]++;
+                if (i == j) result[0]++;
+                else result[1]++;
             }
         }
-        return ret;
+        return result;
     }
 
     public boolean isWin(int[] result) {
