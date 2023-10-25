@@ -25,4 +25,8 @@ public class Notification {
             System.out.println(strikeBallArray[1] + "볼 " + strikeBallArray[0] + "스트라이크");
         }
     }
+
+    public static void notifyGameStart() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 }
