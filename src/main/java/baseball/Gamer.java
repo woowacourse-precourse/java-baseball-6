@@ -14,16 +14,12 @@ public class Gamer {
     }
 
     public List<Integer> receiveNumber() {
-        try {
             System.out.print("숫자를 입력해주세요 : ");
             String input = readLine(); // readLine() 메소드를 사용하여 입력값을 받아옴
             validateNumeric(input); // 입력받은 문자열이 숫자로만 구성되어 있는지 검사
             number = Arrays.stream(input.split("")).map(Integer::parseInt).toList(); // 입력값을 Integer로 변환하여 리스트에 저장
             validateNumber(); // 입력한 숫자의 유효성 검사
-        } catch (IllegalArgumentException e) { // 예외 발생 시 프로그램 종료
-            System.out.println(e.getMessage());
-            System.exit(0);
-        }
+
         return number;
     }
 

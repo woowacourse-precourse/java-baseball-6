@@ -26,7 +26,7 @@ public class Game {
         this.strike = 0;
         this.ball = 0;
 
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<input_number.size(); i++) {
             if(computer_number.get(i) == input_number.get(i)) this.strike++;
             else if(computer_number.contains(input_number.get(i))) this.ball++;
         }
@@ -35,6 +35,7 @@ public class Game {
     public boolean getResult(List<Integer> gamer_number) { //게임의 결과를 출력
         calculateStrikeAndBall(gamer_number);
         if(this.strike == 3) { //3개의 숫자를 모두 맞힌 경우
+            System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
