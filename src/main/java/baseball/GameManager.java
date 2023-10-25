@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager {
+    private static String regameMent = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private final static GameManager Instance = new GameManager();
     ExceptionHandler exceptionHandler = ExceptionHandler.getInstance();
+
     private GameManager() {
+        //Singleton 구현
     }
 
     public static GameManager getInstance() {
@@ -18,7 +21,6 @@ public class GameManager {
 
     public void gameStart() {
 
-        //생성자를 통해 상대방(컴퓨터)의 수를 전달
         //게임 실행
         while(true) {
 
@@ -31,31 +33,30 @@ public class GameManager {
                 }
             }
 
-
+            //생성자를 통해 상대방(컴퓨터)의 수를 전달
             PlayGame playGame = new PlayGame(computer);
 
-            boolean gameCheck = playGame.game();
+            //게임 실행
+            playGame.game();
 
-            if(!gameCheck) {
-                throw new IllegalArgumentException("Invalid");
-            }
 
             //정상 게임 종료 시
+            System.out.println(regameMent);
             String input = Console.readLine();
 
-            boolean inputCheck = exceptionHandler.afterValidation(input);
-
-            if(!inputCheck) throw new IllegalArgumentException("Invalid");
+            //0 또는 1의 플래그값에 대한 유효성 검사
+            exceptionHandler.afterValidation(input);
 
             //정상 입력이 들어온 경우
             int flag = input.charAt(0) - '0';
-            if(flag == 1) {
-                //새로운 게임 실행
-            } else {
-                return;
-            }
+
+            //종료 Case
+            if(flag == 2) return;
 
         }
+
+
+
 
     }
 }
