@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.domain;
 
 
 import java.util.Arrays;
@@ -6,10 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserNumber {
-    private List<Integer> userNumber;
+    private final List<Integer> userNumber;
+
+    private static final int SIZE = 3;
 
     public UserNumber(String userNumber) {
-        isValid(userNumber);
+        validate(userNumber);
         this.userNumber =  Arrays.stream(userNumber.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -19,19 +21,19 @@ public class UserNumber {
         return userNumber;
     }
 
-    private void isValid(String userNumber) {
-        isCorrectSize(userNumber);
-        isInteger(userNumber);
-        isContainZero(userNumber);
-        isDuplicate(userNumber);
+    private void validate(String userNumber) {
+        validateNumberLength(userNumber);
+        validateInteger(userNumber);
+        validateNotContainZero(userNumber);
+        validateNotDuplication(userNumber);
     }
 
-    private void isCorrectSize(String userNumber) {
-        if(userNumber.length()!=3)
+    private void validateNumberLength(String userNumber) {
+        if(userNumber.length() != SIZE)
             throw new IllegalArgumentException();
     }
 
-    private void isInteger(String userNumber) {
+    private void validateInteger(String userNumber) {
         try {
             Integer.parseInt(userNumber);
         } catch (NumberFormatException e) {
@@ -39,17 +41,17 @@ public class UserNumber {
         }
     }
 
-    private void isContainZero(String userNumber) {
+    private void validateNotContainZero(String userNumber) {
         if(userNumber.contains("0"))
             throw new IllegalArgumentException();
     }
 
 
-    private void isDuplicate(String userNumber) {
+    private void validateNotDuplication(String userNumber) {
         int setSize = Arrays.asList(userNumber.split("")).stream()
                 .distinct()
                 .collect(Collectors.joining()).length();
-        if(!(setSize==3))
+        if(!(setSize == SIZE))
             throw new IllegalArgumentException();
     }
 

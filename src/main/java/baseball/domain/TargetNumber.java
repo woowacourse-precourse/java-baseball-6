@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TargetNumber {
-    List<Integer> targetNumber;
+    private List<Integer> targetNumber;
 
     public List<Integer> getTargetNumber() {
         return targetNumber;

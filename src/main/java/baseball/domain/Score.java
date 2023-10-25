@@ -1,13 +1,13 @@
-package baseball.model;
+package baseball.domain;
 
 public class Score {
 
     private int ballCount;
     private int strikeCount;
 
-    public Score() {
-        ballCount = 0;
+    public void resetScore() {
         strikeCount = 0;
+        ballCount = 0;
     }
     public int getBallCount(){
         return ballCount;
@@ -15,10 +15,7 @@ public class Score {
     public int getStrikeCount() {
         return strikeCount;
     }
-    public void resetScore() {
-        strikeCount = 0;
-        ballCount = 0;
-    }
+
     public void incStrikeCount() {
         strikeCount += 1;
     }
