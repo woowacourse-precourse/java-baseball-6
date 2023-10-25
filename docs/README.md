@@ -1,47 +1,46 @@
-# 개요<hr/>
-
+# 개요
 
 BaseballGameManager의 run()은 한 번의 게임을 실행한다.
 게임의 시작, 반복, 종료는 Application이 관리한다.
 BaseballGameManager는 싱글톤으로 관리하며, 게임 반복 시 공통적으로 사용되는 대표적인 필드를 private 멤버 변수로 선언해 재사용한다.
 (재사용 목적: 메모리 절약, 가독성 향상, 변수 이름으로 프로젝트 전체 이해를 용이하게 함)
 
-# 게임 반복 시 공통적으로 사용되는 필드<hr/>
+# 게임 반복 시 공통적으로 사용되는 필드
 - 컴퓨터의 랜덤 숫자: List<Integer>
 - 사용자의 입력 숫자: List<Integer>
 - 사용자의 입력 숫자: Integer
 - 두 랜덤 숫자 대조 후 결과(볼, 스트라이크): Map<String, Integer>
 - 볼, 스트라이크 숫자 카운트: AtomicInteger
 
-# 기능 구현 목록<hr/>
+# 기능 구현 목록
 ## Role 1. 게임 전체 관리자 - Application
 public
-- [ ] main(): 전체 게임 프로세스 관리 
+- [x] main(): 전체 게임 프로세스 관리 
 
 private
-- [ ] endGame(): 게임 종료 의사 확인
+- [x] endGame(): 게임 종료 의사 확인
 
-## Role 2. 야구 게임 관리자 - BaseballManager<hr/>
+## Role 2. 야구 게임 관리자 - BaseballManager
 public
-- [ ] getInstance() 싱글톤 패턴 구현
-- [ ] run(): 한 번의 게임 실행 프로세스 관리
+- [x] getInstance() 싱글톤 패턴 구현
+- [x] run(): 한 번의 게임 실행 프로세스 관리
 
 private
-- [ ] generateRandomNumber() 컴퓨터의 랜덤 숫자 생성
-- [ ] getUserInput() 사용자의 입력 받기(정답 맞추기 시도)
-- [ ] validateUserInput() 사용자의 입력 유효성 검사 
+- [x] generateRandomNumber() 컴퓨터의 랜덤 숫자 생성
+- [x] getUserInput() 사용자의 입력 받기(정답 맞추기 시도)
+- [x] validateUserInput() 사용자의 입력 유효성 검사 
   - 중복 숫자 입력 유효성 검사 
   - 숫자 입력 범위 유효성 검사(1~9)
   - 3자리 숫자 유효성 검사
-- [ ] getBaseBallResult() 사용자의 입력에 대한 결과 평가
-- [ ] printResult() 야구 게임 결과 출력
-- [ ] isCorrect() 게임 종료 여부 확인
+- [x] getBaseBallResult() 사용자의 입력에 대한 결과 평가
+- [x] printResult() 야구 게임 결과 출력
+- [x] isCorrect() 게임 종료 여부 확인
 
 
 Application.main()과 BaseballGameManager.run()은 게임을 실행하기 위한 전체 프로세스를 관리하며, 보조 함수를 호출한다. 
 보조 함수는 최대한 게임 프로세스를 이해하기 쉽도록 이름을 짓는다. 
 
-# Exception 처리<hr/>
+# Exception 처리
 
 **사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.**
 
@@ -51,7 +50,7 @@ Application.main()과 BaseballGameManager.run()은 게임을 실행하기 위한
 - 사용자가 입력한 숫자가 1~9 범위가 아닌 경우 IllegalArgumentException을 던진다.
 - 사용자가 입력한 숫자가 중복된 숫자가 있는 경우 IllegalArgumentException을 던진다.
 
-# 기타<hr/>
+# 기타
 ### Exception 종류
 java.lang.Exception > java.lang.RuntimeException > java.lang.IllegalArgumentException
 java.lang.Exception > java.lang.RuntimeException > java.util.NoSuchElementException > java.util.InputMismatchException
