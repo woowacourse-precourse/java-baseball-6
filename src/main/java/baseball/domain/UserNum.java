@@ -13,7 +13,12 @@ public class UserNum {
     private final int LIST_LENGTH = 3;
     private List<Integer> userNum = new ArrayList<>();
     public UserNum(String inputNum){
-        this.userNum = Arrays.asList(Integer.parseInt(inputNum));
+        List<Integer> list = new ArrayList<>();
+        for(int i=0;i<inputNum.length();i++){
+            list.add(inputNum.charAt(i)-'0');
+        }
+
+        this.userNum = list;
     }
 
     public List<Integer> getUserNum(){

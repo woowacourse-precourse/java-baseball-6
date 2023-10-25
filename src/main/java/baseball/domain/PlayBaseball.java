@@ -9,6 +9,7 @@ public class PlayBaseball {
 
     public PlayBaseball(){
         this.computerNum = new ComputerNum().getComputerNum();
+        System.out.println(this.computerNum);
     }
     public void gameResult(){
         this.gameScoreSet = new GameScoreSet(computerNum, userNum);

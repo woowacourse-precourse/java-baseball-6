@@ -10,7 +10,7 @@ public class GameScoreSet {
         this.ballNum = ballByCompareNums(compNum, userNum);
     }
 
-    public int strikeByCompareNums(List<Integer> compNum, List<Integer> userNum){
+    public int ballByCompareNums(List<Integer> compNum, List<Integer> userNum){
         return (int)Stream
                 .iterate(0, i->i+1)
                 .limit(compNum.size())
@@ -18,7 +18,7 @@ public class GameScoreSet {
                 .count();
     }
 
-    public int ballByCompareNums(List<Integer> compNum, List<Integer> userNum){
+    public int strikeByCompareNums(List<Integer> compNum, List<Integer> userNum){
         return (int) Stream
                 .iterate(0, i->i+1)
                 .limit(compNum.size())

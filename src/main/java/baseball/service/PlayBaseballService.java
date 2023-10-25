@@ -19,6 +19,8 @@ public class PlayBaseballService {
 
     public GameScoreSet showGameResult(String inputNum){
         playBaseball.inputUserNum(inputNum);
+        playBaseball.gameResult();
+
         return playBaseball.getGameScoreSet();
     }
 

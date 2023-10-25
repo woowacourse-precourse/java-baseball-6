@@ -29,9 +29,9 @@ public class PlayBaseballController {
                 //사용자 숫자 입력
                 String inputNum = insertMethod();
                 //스트라이크와 볼 점수 출력 메서드
-                result = printStrikeAndBallScore(playBaseballService.showGameResult(inputNum));
-
-            }while(checkStrikeScore(result)); //3스트라이크인지 여부 확인 메서드
+                result = DefineStrikeAndBallScore(playBaseballService.showGameResult(inputNum));
+                printScore(result);
+            }while(!checkStrikeScore(result)); //3스트라이크인지 여부 확인 메서드
 
             //게임 재시작 또는 게임 종료 여부 입력
             System.out.println(inputMenuComment);
@@ -45,11 +45,23 @@ public class PlayBaseballController {
         return Console.readLine();
     }
 
-    public String printStrikeAndBallScore(GameScoreSet gameScoreSet){
+    public String DefineStrikeAndBallScore(GameScoreSet gameScoreSet){
+        int ballScore = gameScoreSet.getBallNum();
+        int strikeScore = gameScoreSet.getStrikeNum();
         String result = "";
-        result += gameScoreSet.getBallNum()+"볼 ";
-        result += gameScoreSet.getStrikeNum()+"스트라이크";
+        if(checkIsNotShing(ballScore, strikeScore)) return "낫싱";
+
+        if(ballScore >0) result += ballScore + "볼 ";
+        if(strikeScore >0) result += strikeScore + "스트라이크";
         return result;
+    }
+
+    public boolean checkIsNotShing(int ballScore, int strikeScore){
+        return ballScore == 0 && strikeScore == 0;
+    }
+
+    public void printScore(String result){
+        System.out.println(result);
     }
 
     public boolean checkStrikeScore(String result){
