@@ -24,14 +24,12 @@ public class GameSystem {
         inputMsgView.printStartMsg();
 
         Computer computer = new Computer();
-        computer.generateNumbers();
-        List<Integer> computerNumbers = computer.getNumbers();
+        List<Integer> computerNumbers = computer.generateNumbers();
 
         do {
         inputMsgView.printInputNumberMsg();
 
-        user.generateNumbers();
-        List<Integer> userNumbers = user.getNumbers();
+        List<Integer> userNumbers = user.generateNumbers();
 
         ballStrikeCounter = new BallStrikeCounter(computerNumbers, userNumbers);
         ballStrikeCounter.countBallAndStrikes();
