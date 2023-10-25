@@ -15,10 +15,15 @@ public class ComputerNum {
     }
 
     public List<Integer> createRandomNum(){
-        return Arrays
+        List<Integer> list =
+                Arrays
                 .stream(new List[LIST_LENGTH])
                 .map(aNumber -> Randoms.pickNumberInRange(START_RANGE, END_RANGE))
                 .collect(Collectors.toList());
+        if(list.stream().distinct().count() == 3){
+            return list;
+        }
+        return createRandomNum();
     }
 
     public List<Integer> getComputerNum(){
