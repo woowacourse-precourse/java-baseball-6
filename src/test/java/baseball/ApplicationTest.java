@@ -76,4 +76,17 @@ class ApplicationTest extends NsTest {
         //then
         assertThat("스트라이크").isEqualTo(result);
     }
+
+    @Test
+    public void compareNumber낫싱() throws Exception {
+        //given
+        List<Integer> computerNumber = Arrays.asList(1, 2, 3);
+        Baseball baseball = new Baseball();
+
+        //when
+        String result = baseball.compareNumber(computerNumber, 4, 0);
+
+        //then
+        assertThat("낫싱").isEqualTo(result);
+    }
 }
