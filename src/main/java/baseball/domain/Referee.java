@@ -4,15 +4,20 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Referee {
-    private static final int MAX_SIZE = 3;
+    private static final String RESULT_NOTHING_MESSAGE = "낫싱";
+    private static final String RESULT_BALL_MESSAGE = "볼";
+    private static final String RESULT_STRIKE_MESSAGE = "스트라이크";
+    private static final String CHARACTER_SPACING = " ";
+    private static final int MAX_BALL_SIZE = 3;
     private static final int BALL_INDEX = 0;
     private static final int STRIKE_INDEX = 1;
+    private static final int ZERO_COUNT = 0;
 
     public boolean compareNumberByPlayerAndComputer(List<Integer> player, List<Integer> computer) {
         List<Integer> result = compare(player, computer);
         judge(result);
 
-        return result.get(STRIKE_INDEX) != MAX_SIZE;
+        return result.get(STRIKE_INDEX) != MAX_BALL_SIZE;
     }
 
     private void judge(List<Integer> result) {
@@ -20,14 +25,14 @@ public class Referee {
         int ballCount = result.get(BALL_INDEX);
         int strikeCount = result.get(STRIKE_INDEX);
 
-        if (ballCount == 0 && strikeCount == 0) {
-            sb.append("낫싱");
+        if (ballCount == ZERO_COUNT && strikeCount == ZERO_COUNT) {
+            sb.append(RESULT_NOTHING_MESSAGE);
         }
-        if (ballCount > 0) {
-            sb.append(ballCount).append("볼").append(" ");
+        if (ballCount > ZERO_COUNT) {
+            sb.append(ballCount).append(RESULT_BALL_MESSAGE).append(CHARACTER_SPACING);
         }
-        if (strikeCount > 0) {
-            sb.append(strikeCount).append("스트라이크");
+        if (strikeCount > ZERO_COUNT) {
+            sb.append(strikeCount).append(RESULT_STRIKE_MESSAGE);
         }
 
         System.out.println(sb.toString().trim());
@@ -37,7 +42,7 @@ public class Referee {
         int ballCount = 0;
         int strikeCount = 0;
 
-        for (int i = 0; i < MAX_SIZE; i++) {
+        for (int i = 0; i < MAX_BALL_SIZE; i++) {
             if (computer.contains(player.get(i))) {
                 if (computer.get(i).equals(player.get(i))) {
                     strikeCount++;
@@ -48,5 +53,4 @@ public class Referee {
         }
         return Arrays.asList(ballCount, strikeCount);
     }
-
 }
