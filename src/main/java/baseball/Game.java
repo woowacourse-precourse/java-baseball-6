@@ -2,21 +2,29 @@ package baseball;
 
 import baseball.player.Opponent;
 import baseball.player.User;
-import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Game {
 
-    private Opponent opponent;
-    private User user;
-    private Score score;
+    private final Opponent opponent;
+    private final User user;
+    private final Score score;
+    InputValidator inputValidator;
+    StringPrinter stringPrinter;
+    InputReader inputReader;
+    NumbersManager numbersManager;
 
-    public Game(Opponent opponent, User user, Score score) {
-        this.opponent = opponent;
-        this.user = user;
-        this.score = score;
+    public Game() {
+        opponent = new Opponent();
+        user = new User();
+        score = new Score();
+        inputValidator = InputValidator.getInstance();
+        stringPrinter = StringPrinter.getInstance();
+        inputReader = InputReader.getInstance();
+        numbersManager = NumbersManager.getInstance();
     }
 
-    public void newGame() throws IllegalArgumentException{
+    public void newGame(){
         while(true){
             // empty each lists instead of creating new object on new game
             user.emptyList();
@@ -24,45 +32,47 @@ public class Game {
             play();
 
             // below process start upon user's win
-            System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int endInput = Integer.parseInt(Console.readLine());
+            stringPrinter.printEndOfGame();
+            int endInput = inputReader.getFinishedGameInput();
 
             // end loop on input number 2
             if (endInput == 2) {
                 break;
             }
-            // wrong input exception
-            if (endInput != 1 && endInput != 2) {
-                throw new IllegalArgumentException();
-            }
         }
     }
 
     private void play() {
-        while (true) {
-
-            user.setNumberList();
-            opponent.setNumberList();
+        do {
+            setUserNumbers();
+            setOpponentNumbers();
             score.setScore(user, opponent);
 
             int ballCounter = score.getBallCounter();
             int strikeCounter = score.getStrikeCounter();
 
-            if (ballCounter > 0){
-                System.out.print(ballCounter + "볼 ");
-            }
-            if (strikeCounter > 0) {
-                System.out.print(strikeCounter + "스트라이크 ");
-            }
+            stringPrinter.printGuessResult(ballCounter, strikeCounter);
+        } while (!isOver());
+    }
 
-            // end loop at win condition
-            if (score.isOver()) {
-                break;
-            }
-            if (ballCounter == 0 && strikeCounter == 0) {
-                System.out.print("낫싱");
-            }
-        }
+    // set opponent's numbers
+    private void setOpponentNumbers(){
+        List<Integer> numbers = opponent.getNumbers();
+        opponent.setNumbers(numbersManager.setOpponentNumbers(numbers));
+    }
+
+    // set user's numbers
+    private void setUserNumbers(){
+        List<Integer> numbers = user.getNumbers();
+        stringPrinter.printPlayerInput();
+        int inputNumber = inputReader.getGuessInput();
+        numbers.clear();
+        user.setNumbers(numbersManager.setUserNumbers(numbers, inputNumber));
+    }
+
+    // game ending condition
+    private boolean isOver(){
+        int strikeCounter = score.getStrikeCounter();
+        return strikeCounter == 3;
     }
 }

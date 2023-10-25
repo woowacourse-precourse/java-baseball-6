@@ -1,17 +1,10 @@
 package baseball.player;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
 
-public class Opponent extends PlayerEntity {
+public class Opponent extends BasePlayer {
     @Override
-    public void setNumberList() {
-        while (numberList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-            // avoid duplicates
-            if (!numberList.contains(randomNumber)) {
-                numberList.add(randomNumber);
-            }
-        }
+    public void setNumbers(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 }
