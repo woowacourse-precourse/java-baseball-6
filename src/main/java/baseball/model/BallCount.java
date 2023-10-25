@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.config.BaseBallGameConfig;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -30,6 +31,10 @@ public class BallCount {
         if(hasStrikeCount()) returnMessage.append(String.format(BallCountMessage.STRIKE.getMessage(), strike));
         returnMessage.append("\n");
         return returnMessage.toString();
+    }
+
+    public boolean isFinished() {
+        return !hasBallCount() && strike == BaseBallGameConfig.BASEBALL_NUMBER_SIZE.getValue();
     }
 
     private void calculateStrikeAndBall(BaseBallNumber computerNumber,
