@@ -19,10 +19,8 @@ public class Computer {
             if (answer.contains(randomNumber)) {
                 continue;
             }
-
             answer.add(randomNumber);
         }
-
         return new GameNumbers(answer);
     }
 
@@ -40,7 +38,6 @@ public class Computer {
                 strike++;
             }
         }
-
         return new Hint(List.of(ball, strike));
     }
 
