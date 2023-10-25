@@ -7,12 +7,10 @@ import java.util.List;
 
 public class RandomNumberGenerator {
     private static final int REQUIRED_NUMBERS_SIZE = 3;
-    private final List<Integer> numbers = new ArrayList<>();
+    private List<Integer> numbers;
 
     public RandomNumberGenerator() {
-        while (numbers.size() < REQUIRED_NUMBERS_SIZE) {
-            addUniqueRandomNumber();
-        }
+        generateNumbers();
     }
 
     public int generateRandomNumber() {
@@ -25,6 +23,18 @@ public class RandomNumberGenerator {
 
     public List<Integer> getNumbers() {
         return new ArrayList<>(numbers);
+    }
+
+    public List<Integer> generateNewNumbers(){
+        generateNumbers();
+        return getNumbers();
+    }
+
+    private void generateNumbers() {
+        numbers = new ArrayList<>();
+        while (numbers.size() < REQUIRED_NUMBERS_SIZE) {
+            addUniqueRandomNumber();
+        }
     }
 
     private void addUniqueRandomNumber() {

@@ -7,11 +7,13 @@ import java.util.List;
 
 public class Computer {
     private final JudgeResult judgeResult;
+    private final RandomNumberGenerator randomNumberGenerator;
     private List<Integer> computerNumbers;
 
 
-    public Computer() {
-        this.judgeResult = new JudgeResult();
+    public Computer(JudgeResult judgeResult, RandomNumberGenerator randomNumberGenerator) {
+        this.judgeResult = judgeResult;
+        this.randomNumberGenerator = randomNumberGenerator;
         this.computerNumbers = generateNumbers();
     }
 
@@ -20,11 +22,11 @@ public class Computer {
     }
 
     public void restartGame() {
-        computerNumbers = generateNumbers();
+        computerNumbers = randomNumberGenerator.generateNewNumbers();
     }
 
     private List<Integer> generateNumbers() {
-        return new RandomNumberGenerator().getNumbers();
+        return randomNumberGenerator.getNumbers();
     }
 }
 
