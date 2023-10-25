@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Application {
@@ -31,7 +29,6 @@ class ComputerNum {
 class UserInput {
     String userString = Console.readLine();
     public List<Character> putInList() {
-        Set<Character> set = new HashSet<>();
         List<Character> digits = new ArrayList<>();
         for (int i = 0; i < userString.length(); i++) {
 
@@ -62,7 +59,6 @@ class CheckTheList {
         return strikeCounts;
     }
     public int correctBallCount(List<Integer> list1, List<Integer> list2) {
-
         int ballCount = 0;
         for (int i = 0; i < 3; i++) {
             if (list1.contains(list2.get(i))) {
@@ -145,7 +141,6 @@ class PlayingProgress {
         ComputerNum computerNum = new ComputerNum();
         List<Integer> listComFixed = new ArrayList<>(computerNum.computer());
         System.out.println(listComFixed);
-
         OutputForBalls outputForBalls = new OutputForBalls();
         outputForBalls.checkingStream(listComFixed);
     }
