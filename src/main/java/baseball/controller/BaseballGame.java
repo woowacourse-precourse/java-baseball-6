@@ -28,20 +28,20 @@ public class BaseballGame {
     }
 
     private void startOneGame() {
-        gamePreparation();
+        oneGamePreparation();
         while (true) {
-            if (gameProgress()) {
+            if (oneGameProgress()) {
                 break;
             }
         }
     }
 
-    public void gamePreparation() {
+    public void oneGamePreparation() {
         Computer computer = new Computer();
         computerNumber = computer.getComputerNumber();
     }
 
-    public boolean gameProgress() {
+    public boolean oneGameProgress() {
         userNumber = inputUserNumber();
         List<Integer> gameResult = gameService.playGame(computerNumber, userNumber);
         return OutputView.outputResult(gameResult);
