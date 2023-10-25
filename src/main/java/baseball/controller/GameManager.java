@@ -1,15 +1,14 @@
 package baseball.controller;
 
-import baseball.model.Calculator;
-import baseball.model.NumberGenerator;
 import baseball.model.Score;
+import baseball.util.Constant;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameManager {
 	private final InputView inputView = new InputView();
 	private final OutputView outputView = new OutputView();
-	private final NumberGenerator numberGenerator = new NumberGenerator();
+	private final BaseballManager baseballManager = new BaseballManager();
 
 	public void initGame() {
 		try {
@@ -26,14 +25,14 @@ public class GameManager {
 			outputView.printGameStartMessage();
 			playGameUntilOver();
 			gameRestartFlag = inputView.gameRestartFlag();
-		} while (gameRestartFlag == 1);
+		} while (gameRestartFlag != Constant.GAME_END_FLAG);
 	}
 
 	private void playGameUntilOver() {
 		Score userScore;
 		do {
-			String userInput = inputView.userInputNumber();
-			userScore = Calculator.calculateScore(userInput, numberGenerator.generateNumber());
+			int userInput = inputView.userInputNumber();
+			userScore = baseballManager.userScore(userInput);
 		} while (!userScore.isGameOver());
 	}
 }
