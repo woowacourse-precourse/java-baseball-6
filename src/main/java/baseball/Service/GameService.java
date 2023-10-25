@@ -22,7 +22,6 @@ public class GameService {
 
             if (strikeCount == 3) {
                 OutputMessage.printWinMessage();
-                InputMessage.printRePlayInputMessage();
                 break;
             }
         }
@@ -58,5 +57,11 @@ public class GameService {
         InputMessage.printUserInputMessage();
         String input = Console.readLine();
         user.setInputNumber(converter.convertUserInputToInt(input));
+    }
+
+    public int getUserRetryRequest() {
+        InputMessage.printRePlayInputMessage();
+        String input = Console.readLine();
+        return converter.convertUserInputToInt(input);
     }
 }
