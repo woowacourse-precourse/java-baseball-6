@@ -3,15 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class Computer {
-    private static final int INPUT_NUMBER_LENGTH = 3;
-    private static final int START_NUMBER = 1;
-    private static final int LAST_NUMBER = 9;
-    private static Player player;
-    private static Game game;
 
     public int cntStrike = 0;
     public int cntBall = 0;
@@ -20,8 +14,8 @@ public class Computer {
 
     public List<Integer> selectNumbers() {
         computer = new ArrayList<>();
-        while (computer.size() < INPUT_NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(START_NUMBER, LAST_NUMBER);
+        while (computer.size() < Game.INPUT_NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(Game.START_NUMBER, Game.LAST_NUMBER);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
@@ -35,7 +29,7 @@ public class Computer {
         cntBall = 0;
 
         for (int i = 0; i < computer.size(); i++) {
-            int num = player.inputStrParseInt(input, i);
+            int num = Player.inputStrParseInt(input, i);
             if ((num) == computer.get(i)) {
                 cntStrike += 1;
             } else if (computer.contains(num)) {
@@ -53,18 +47,18 @@ public class Computer {
             System.out.println(cntBall + "볼 "+ cntStrike + "스트라이크");
         } else if (cntStrike > 0 && cntBall == 0 ) {
             System.out.println(cntStrike + "스트라이크");
-            if (cntStrike ==INPUT_NUMBER_LENGTH) {
-                System.out.println(INPUT_NUMBER_LENGTH+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if (cntStrike ==Game.INPUT_NUMBER_LENGTH) {
+                System.out.println(Game.INPUT_NUMBER_LENGTH+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
         }
 
     }
 
     public void gameResult() {
-        if (cntStrike == INPUT_NUMBER_LENGTH && cntBall == 0) {
-            game.restartOrNot();
+        if (cntStrike == Game.INPUT_NUMBER_LENGTH && cntBall == 0) {
+            Game.restartOrNot();
         } else {
-            game.startGame();
+            Game.startGame();
         }
     }
 }
