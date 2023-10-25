@@ -18,6 +18,5 @@ public class Constants {
 
     public static final String END_MESSAGE = "게임 종료";
 
-
     public static final String INTEGER_REGEX = "-?\\d+";
 }

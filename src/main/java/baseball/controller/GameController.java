@@ -62,7 +62,7 @@ public class GameController {
 
             String restartOrEnd = restartOrEnd(resultMessage);
             if (restartOrEnd.equals("2")) {
-                System.out.println(END_MESSAGE);
+                UserView.displayEndMessage();
                 return;
             } else if (restartOrEnd.equals("1")) {
                 playGame();
@@ -73,7 +73,7 @@ public class GameController {
 
     private String restartOrEnd (String resultMessage) {
         if (resultMessage.equals(GAME_NUMBER_LENGTH + STRIKE)) {
-            System.out.println(WIN_MESSAGE);
+            UserView.displayWinMessage();
             String restartOrEnd = UserView.getRestartOrEnd();
             validator.validateRestartOrEndNumber(restartOrEnd);
             return restartOrEnd;

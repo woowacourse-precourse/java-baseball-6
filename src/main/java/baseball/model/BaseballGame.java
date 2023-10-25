@@ -26,6 +26,12 @@ public class BaseballGame {
         }
     }
 
+    /**
+     * 공통수 = 볼 + 스트라이크
+     * @param computerNumber
+     * @param userNumber
+     * @return
+     */
     private static Integer countCommonElements(List<Integer> computerNumber, List<Integer> userNumber){
         // List를 Set으로 변환하여 중복을 제거
         Set<Integer> set1 = new HashSet<>(computerNumber);

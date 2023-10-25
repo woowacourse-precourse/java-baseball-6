@@ -27,7 +27,6 @@ public class Validator {
         return false;
     }
 
-
     private boolean isInteger(String userNumber) {
         if (userNumber.matches(Constants.INTEGER_REGEX)) {
             return true;
@@ -45,6 +44,12 @@ public class Validator {
         return true;
     }
 
+    /**
+     * 재시작/종료 입력값 유효성검사
+     * (1)정수인지 (2)1글자인지 (3)1또는2인지
+     * @param restartOrEndNumber
+     * @throws IllegalArgumentException
+     */
     public void validateRestartOrEndNumber(String restartOrEndNumber) throws IllegalArgumentException{
         if (!isInteger(restartOrEndNumber) && !isValidLength(restartOrEndNumber, 1) && !isOneOrTwo(restartOrEndNumber)) {
             throw new IllegalArgumentException();
