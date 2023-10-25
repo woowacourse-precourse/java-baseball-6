@@ -16,12 +16,10 @@ public class Application {
         String answer;
 
 
-        // 게임 프로그램
+        // 숫자 야구 게임 프로그램
         while(run) {
 
-
-
-            // 숫자 야구 게임 숫자 만들기
+            // 컴퓨터 : 숫자 야구 게임 숫자 만들기
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -30,29 +28,29 @@ public class Application {
                 }
             }
 
+            // 하나의 게임 진행
             while(true) {
 
-                int ball = 0;
-                int strike = 0;
+                int ball = 0;       // 볼 수
+                int strike = 0;     // 스트라이크 수
 
                 // 숫자 게임 입력 받기
-                System.out.println(computer);
+                // System.out.println(computer);
                 System.out.print("숫자를 입력해주세요 : ");
 
                 answer = Console.readLine();
                 System.out.println(answer);
-                // 사용자 숫자 받는 것 구분 필요
-                if(answer.length() != 3){
-                    throw new IllegalArgumentException("입력값은 3자리수만 됩니다.");
+
+                // 입력값이 서로 다른 3자리의 숫자인지 판별
+                if(!numberCheck(answer)){
+                    throw new IllegalArgumentException("입력값은 서로 다른 3자리 수만 됩니다.");
                 }
-
-
-
 
                 // 결과 분석
                 for(int i =0; i <3; i++){
                     // 스트라이크인 경우
                     int answer_value = answer.charAt(i) - '0';
+
                     if(answer_value == computer.get(i)){
                         strike++;
                     } else {
@@ -113,10 +111,38 @@ public class Application {
 
             } // 야구 한 게임 종료
 
-
-
         } // 게임 프로그램 종료
 
 
+    }
+
+    /**
+     *  입력값이 서로 다른 3자리 숫자인 지 비교하는 메서드
+     * */
+    public static boolean numberCheck(String answer){
+
+        // 3자리가 아닌 경우
+        if(answer.length() != 3) {
+            return false;
+        }
+
+        // 3자리인 경우
+        for(int i=0; i < 3; i++) {
+            char digit = answer.charAt(i);
+
+            // 숫자가 아닌 경우
+            if(!Character.isDigit(digit)) {
+                return false;
+            }
+
+            // 숫자인 경우 각 자리수 비교
+            for(int j = i+1 ; j < 3; j++) {
+                // 같은 숫자가 존재할 경우
+                if(digit == answer.charAt(j)){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
