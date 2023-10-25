@@ -6,7 +6,7 @@ public class Referee {
 
     private Computer computer;
 
-    public void initComputer() {
+    public void initComputerNumbers() {
         List<Integer> numbers = ComputerNumberGenerator.generate();
         computer = new Computer(numbers);
     }

@@ -14,16 +14,16 @@ public class MainController {
 
     public void run() {
         inputController.printStart();
-        play();
+        playNewGame();
     }
 
-    private void play() {
-        referee.initComputer();
-        playGame();
+    private void playNewGame() {
+        referee.initComputerNumbers();
+        play();
         askNewGame();
     }
 
-    private void playGame() {
+    private void play() {
         playUntilThreeStrike();
         outputView.printGameFinish();
     }
@@ -42,7 +42,7 @@ public class MainController {
         String command = inputController.getRestartCommand();
         ProgramCommand.validate(command);
         if (ProgramCommand.isRetry(command)) {
-            play();
+            playNewGame();
         }
         if (ProgramCommand.isFinish(command)) {
             finishProgram();
