@@ -1,18 +1,11 @@
 package baseball;
 
-import baseball.io.OutPut;
-import baseball.io.ConsoleOutput;
-import java.io.IOException;
+import baseball.controller.BaseBallApp;
 
 public class Application {
-    private static final OutPut output = new ConsoleOutput();
-    private static final BaseBallApp baseBallApp = new BaseBallApp(output);
+    private static final BaseBallApp baseBallApp = new BaseBallApp();
 
     public static void main(String[] args) {
-        try {
-            baseBallApp.run();
-        } catch (IOException e) {
-            throw new IllegalArgumentException(String.format("IOExcption 발생 : %s", e.getMessage()));
-        }
+        baseBallApp.run();
     }
 }
