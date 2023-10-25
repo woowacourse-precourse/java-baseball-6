@@ -21,12 +21,4 @@ public class Computer extends Number {
         }
     }
 
-    private boolean isContained(int randomNumber) {
-        return numbers.contains(randomNumber);
-    }
-
-    private boolean isCompleted() {
-        return numbers.size() == NUMBER_SIZE;
-    }
-
 }

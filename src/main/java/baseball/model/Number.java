@@ -10,4 +10,12 @@ public class Number {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public boolean isContained(int number) {
+        return numbers.contains(number);
+    }
+
+    public boolean isCompleted() {
+        return numbers.size() == NUMBER_SIZE;
+    }
 }
