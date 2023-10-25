@@ -25,8 +25,15 @@ public class Application {
                 int ballCount = 0;
                 List<Integer> userNum = new ArrayList<>();
                 for(int i =0; i < comNumber.size(); i++){
+                    int num =userInput.charAt(i)-48;
+                    for(int j=0; j<i; j++){
+                        if(userNum.get(j) == num){
+                            throw new IllegalArgumentException();
+                        }
+                    }
                     userNum.add((int) userInput.charAt(i) -48);
                 }
+//                동일 숫자 존재시 오류 발생
 
                 for(int i =0; i<userNum.size(); i++){
                     if(userNum.get(i) == comNumber.get(i)){
@@ -74,7 +81,6 @@ public class Application {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!comNumber.contains(randomNumber)) {
                 comNumber.add(randomNumber);
-                System.out.print(randomNumber);
             }
         }
 
