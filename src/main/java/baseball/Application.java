@@ -11,7 +11,6 @@ public class Application {
     static String ASK_INPUT = "숫자를 입력해주세요 : ";
     static String CLEAR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static String RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    static String ERROR = "잘못된 입력입니다.";
 
     public static void main(String[] args) {
 
@@ -71,7 +70,7 @@ public class Application {
                         }
                     } else {
                         // 겹치는 숫자가 있거나 1~9 이외의 입력값인 경우
-                        throw new IllegalArgumentException( ERROR );
+                        throw new IllegalArgumentException();
                     }
 
                 }
@@ -84,7 +83,7 @@ public class Application {
                     return;
                 } else if (restartInput != 1){
 
-                    throw new IllegalArgumentException( ERROR );
+                    throw new IllegalArgumentException();
                 }
             } catch ( Exception e ) {
 
