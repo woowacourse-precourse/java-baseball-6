@@ -43,21 +43,19 @@
 - [x] 추측 숫자에 대한 피드백 출력
 - [x] 3스트라이크 경우의 게임종료 출력
 
-
-# 추후 보완이 필요한 부분 🚨🚨
-- [x] 결과를 담는 dto 필요할까? 아니면 클래스라도?
-- [x] 컨트롤러에서 checkGameWin를 하는 게 역할 상 맞을까? 이걸 판단하는 게임 객체가 있고 개의 역할이 아닐까?
-- [x] getStrikeCount, ballCount 같은 기능의 stream인데 중복 제거 시도해보기
-- [x] strike 구하는 메소드 변경따른 테스트 수정 실행
-- x] 패키지별 분류
-- [x] retry나 볼 숫자 입력할 때 공백이면 null이 발생하나?
-- [x] view static 제거하고 instance로 호출하기
-- [x] outputView if 간략화
-
-
 # 기타 참고 사항 (추후 삭제)
-
-
+# 모든 메소드 테스트 했는지 TDD 체크
+-[ ] BaseballGame
+-[ ] Ball
+-[ ] Balls
+-[ ] GameResult
+-[x] GameStatus
+-[x] RandomBallsGenerator
+-[x] RandomNumberGenerator
+-[x] Retry     
+ -~~[ ] TryResult~~
+-[ ] InputConvertor
+-[ ] InputValidator
 
 # 프로그래밍 요구 사항 자체 목표
 - indent(인덴트, 들여쓰기) depth를 2를 넘지 않도록 구현한다. 1까지만 허용한다.

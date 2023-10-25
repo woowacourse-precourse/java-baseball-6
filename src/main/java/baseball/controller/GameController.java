@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.Ball;
 import baseball.domain.Balls;
 import baseball.domain.BallsGenerator;
+import baseball.domain.BaseballGame;
 import baseball.domain.GameResult;
 import baseball.domain.NumberGenerator;
 import baseball.domain.RandomBallsGenerator;
@@ -10,7 +11,10 @@ import baseball.domain.RandomNumberGenerator;
 import baseball.domain.Retry;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class GameController {
 
@@ -43,9 +47,9 @@ public class GameController {
     }
 
     private Balls generateAnswerBalls() {
-        NumberGenerator numberGenerator = new RandomNumberGenerator();
-        BallsGenerator randomBallsGenerator = new RandomBallsGenerator();
-        List<Ball> answerBalls = randomBallsGenerator.generate(numberGenerator);
-        return new Balls(answerBalls);
+        NumberGenerator numberGenerator = RandomNumberGenerator.init();
+        BallsGenerator randomBallsGenerator = RandomBallsGenerator.init();
+        List<Ball> answerBalls = randomBallsGenerator.generateBalls(numberGenerator);
+        return Balls.from(answerBalls);
     }
 }
