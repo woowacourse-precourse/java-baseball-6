@@ -5,6 +5,8 @@ import baseball.service.BaseballService;
 import baseball.view.ConsoleInput;
 import baseball.view.ConsoleOutput;
 
+import java.util.List;
+
 public class BaseballController {
 
     /**
@@ -13,12 +15,19 @@ public class BaseballController {
     public void init() throws InvalidInputException {
         BaseballService service = new BaseballService();
 
-        ConsoleOutput.init();
-        service.init();
+        while (true){
 
-        ConsoleOutput.requestInput();
-        ConsoleInput.readDigitNumber(3);
+            ConsoleOutput.init();
+            service.init();
 
+            ConsoleOutput.requestInput();
+            List<Integer> user = ConsoleInput.readDigitNumber(3);
 
+            if (service.checkVictory(user)) {
+                break;
+            }
+
+            String hint = service.compareToComputer(user);
+        }
     }
 }
