@@ -26,7 +26,7 @@ public class BaseBallController {
         } while (restartGame());
     }
 
-    public boolean restartGame() {
+    private boolean restartGame() {
         OutputView.printRetryMessage();
         String command = InputView.inputRetryCommand();
         if (command.equals(RESTART)) {
