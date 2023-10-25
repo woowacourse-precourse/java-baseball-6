@@ -50,6 +50,25 @@ public class Application {
         checkRestart(); //재시작, 종료 여부 확인
     }
 
+    private static void printResult(int ball, int strike) {
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            SUCCESS = true;
+        }
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
+        if (ball != 0 && strike == 0) {
+            System.out.println(ball + "볼");
+        }
+        if (ball == 0 && strike != 0 && strike != 3) {
+            System.out.println(strike + "스트라이크");
+        }
+        if (ball != 0 && strike != 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+    }
+
     //플레이어의 숫자 세팅하는 함수
     private static void setPlayerNum() throws IllegalArgumentException {
         player = new ArrayList<>();
