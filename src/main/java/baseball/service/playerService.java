@@ -18,10 +18,19 @@ public class playerService {
         }
 
         List<Integer> playerNumbers = stringToIntArray(playerNumber);
-        if (checkDuplication(playerNumbers)) {
+        if (checkDuplication(playerNumbers) || checkNotNumberInput(playerNumbers)) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
         return playerNumbers;
+    }
+
+    public boolean checkNotNumberInput(List<Integer> playerNumbers) {
+        for (Integer playerNumber : playerNumbers) {
+            if (playerNumber > 9 || playerNumber < 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean checkDuplication(List<Integer> playerNumbers) {
