@@ -59,9 +59,17 @@ public class GameService {
         user.setInputNumber(converter.convertUserChooseInputToInt(input));
     }
 
-    public int getUserRetryRequest() {
+    public boolean getUserRetryRequest() {
         InputMessage.printRePlayInputMessage();
         String input = Console.readLine();
-        return converter.convertUserInputToInt(input);
+        int convertedInput = converter.convertUserInputToInt(input);
+
+        if (convertedInput == 1) {
+            return true;
+        } else if (convertedInput == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
