@@ -2,7 +2,7 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.constant.GameConstant.*;
+import static baseball.constant.GameConstant.SUCCESS_STRIKE_COUNT;
 
 public class UserInterface {
 
