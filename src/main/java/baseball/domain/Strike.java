@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 public class Strike {
     private int strike;

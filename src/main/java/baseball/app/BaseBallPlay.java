@@ -1,4 +1,9 @@
-package baseball;
+package baseball.app;
+
+import baseball.domain.Ball;
+import baseball.domain.ComNums;
+import baseball.domain.Strike;
+import baseball.domain.UserNums;
 
 public class BaseBallPlay {
     private final String ENTER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
