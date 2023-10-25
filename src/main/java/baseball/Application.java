@@ -80,5 +80,19 @@ public class Application {
 	    }
 	}
 }
+class GameSet{
+    List<Integer> ComputerNum;
+    List<Integer> PlayerNum;
+    public GameSet() {
+        ComputerNum = new ComputerNum().computerNum;
+        PlayerNum = new PlayerNum().playerNum;
+        GamePlay gamePlay = new GamePlay(ComputerNum, PlayerNum);
+        while (!gamePlay.numCheck) {
+            PlayerNum = new PlayerNum().playerNum;
+            gamePlay = new GamePlay(ComputerNum, PlayerNum);
+        }
+        new GameEnd();
+    }
+}
 
 
