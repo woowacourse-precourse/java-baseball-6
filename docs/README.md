@@ -17,45 +17,37 @@
     - 유효성 검사 후 필요하다면 IllegalArgumentException을 던진다.
 5. 이닝을 재시작하거나 게임을 종료한다.
 
-![img_3.png](img_3.png)
 ![img.png](img.png)
+![img_1.png](img_1.png)
 
 # 테스트 구현 목표
 
 1. Game
     - Inning()이 3스트라이크로 종료 시 재시작/종료 안내 문구가 요구사항대로 출력되는지 확인한다.
 2. Inning
-    - printResult()시
-        - Result 변수의 값과 같은 값이 요구사항대로 출력되는지 확인한다.
-        - Nothing일 경우, 요구사항대로 출력되는지 확인한다.
-    - endInning()시
+    - startInning()시
         - 3스트라이크 시, 종료 문구가 요구사항대로 출력되는지 확인한다.
-3. User
-    - validateNumber()시
-        - 세 자리 숫자가 아닐 경우 IllegalArgumentException을 반환하는지 확인한다.
-        - 음수일 경우 IllegalArgumentException을 반환하는지 확인한다.
-4. Computer
-    - validateNumber()시
-        - 세 자리 숫자가 아닐 경우 IllegalArgumentException을 반환하는지 확인한다.
-        - 음수일 경우 IllegalArgumentException을 반환하는지 확인한다.
-5. Number
+3. Number
     - getXDigit()시 해당 숫자가 잘 반환되는지 확인한다.
-6. Result
-    - checkValidate()시 strike + ball의 값이 0이상 3이하의 값이 아니라면 IllegalArgumentException을 반환한다.
-    - checkNothing()시
-        - 낫싱일 경우 true를 반환하는지 확인한다.
-        - 낫싱이 아닐 경우 false를 반환하는지 확인한다.
-    - printStrike()시
-        - 문제에서 요구하는 형식에 맞춰 출력되는지 확인한다.
-        - 변수의 개수와 동일하게 출력되는지 확인한다.
-    - printBall()시
-        - 문제에서 요구하는 형식에 맞춰 출력되는지 확인한다.
-        - 변수의 개수와 동일하게 출력되는지 확인한다.
-7. Players
+4. Players
     - compareNumbers()시
-        - 정답과 맞는 값이 객체에 담겨있는지 확인한다.
-8. Status
-    - Getter가 동작하는지 확인한다.
-    - checkValidate()시
-        - 음수의 값이 나오면 IllegalArgumentException을 반환하는지 확인한다.
-        - 3 초과의 값이 나오면 IllegalArgumentException을 반환하는지 확인한다.
+        - 두 객체가 잘 비교되는지 확인한다.
+5. Result
+    - checkResult()시
+        - 0볼 0스트라이크일 경우, 낫싱이 출력되는지 확인한다.
+        - 낫싱이 아닐 경우 볼과 스트라이크가 값대로 출력되는지 확인한다.
+    - isWin()시
+        - 3스트라이크일 경우, true가 반환되는지 확인한다.
+        - 3스트라이크가 아닐 경우, false가 반환되는지 확인한다.
+    - printWin()시
+        - 축하메시지가 출력되는지 확인한다.
+6. NumberValidate
+    - validateInput()시
+        - 1이나 2가 아닐 경우 IllegalArgumentException이 반환되는지 확인한다.
+    - convertToNumber()시
+        - 반환 인스턴스가 Number의 인스턴스인지 확인한다.
+    - checkNumberValidate()시
+        - 0이하 10이상일 경우 IllegalArgumentException이 반환되는지 확인한다.
+7. 전체 테스트
+    - 세 자리 초과 글자를 입력할 경우 IllegalArgumentException이 반환되는지 확인한다.
+    - 숫자가 아닌 값을 입력할 경우 IllegalArgumentException이 반환되는지 확인한다.
