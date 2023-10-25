@@ -45,7 +45,7 @@ public class Player extends Number {
         if (!isBetween1And9()) {
             throw new IllegalArgumentException("1-9 사이 숫자만 입력해주세요.");
         }
-        return Integer.valueOf(i);
+        return i - '0';
     }
 
     private boolean isBetween1And9() {
