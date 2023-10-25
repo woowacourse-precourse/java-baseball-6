@@ -69,6 +69,7 @@ public class GameManager {
             gamePrinter.printBallCount(ballCount.toString());
         } else if (strikeCount == MAX_COUNT) {
             gamePrinter.printStrikeCount(strikeCount.toString());
+            gamePrinter.noticeWin();
             isContinue = false;
         } else {
             gamePrinter.printBallAndStrikeCount(strikeCount.toString(), ballCount.toString());
