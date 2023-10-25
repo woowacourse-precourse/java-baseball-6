@@ -7,6 +7,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputManager {
     public List<Integer> getPlayerInputNumbers() throws IllegalArgumentException{
+
         String inputLine = readLine();
         if(inputLine.length() != 3) throw new IllegalArgumentException();
         List<Integer> numbers = new ArrayList<>();
@@ -21,8 +22,22 @@ public class InputManager {
     }
 
     public boolean checkUserContinue() throws IllegalArgumentException {
-        //TODO Player 게임 계속 여부 입력 처리
-        return false;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputLine = readLine();
+
+        int userAnswer = 0;
+
+        try{
+            userAnswer = Integer.parseInt(inputLine);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+
+        switch (userAnswer){
+            case 1: return true;
+            case 2: return false;
+            default: throw new IllegalArgumentException();
+        }
     }
 
 }
