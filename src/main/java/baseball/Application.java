@@ -9,7 +9,6 @@ import java.util.Set;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-    private static int status;
     private static final int GAME_ON = 1;
     private static final int GAME_OVER = 2;
 
@@ -19,7 +18,7 @@ public class Application {
     }
 
     private static void playBaseballGame() {
-        status = GAME_ON;
+        int status = GAME_ON;
         List<Integer> randomList = generateRandomNumber();
         int randomNumber = 135; // 테스트 코드 통과를 위해 random값을 지정해 두었습니다.
         while (status == GAME_ON) {
@@ -73,16 +72,12 @@ public class Application {
             throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
         }
     }
+
     private static int getUserInput(String input) {
         int num = Integer.parseInt(input);
-        try {
-            validateUserInput(input);
-            if (num < 1 || num > 2) {
-                throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            status = GAME_OVER;
+        validateUserInput(input);
+        if (num < 1 || num > 2) {
+            throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
         }
         return num;
     }
