@@ -22,11 +22,7 @@ public class Application {
 
             while (!isCorrect) {
                 List<Integer> user;
-                try {
-                    user = getUserNumbers();
-                } catch (IllegalArgumentException e) {
-                    return;
-                }
+                user = getUserNumbers();
                 statusArray = checkAnswer(computer, user);
                 strikes = statusArray[0];
                 balls = statusArray[1];
@@ -48,8 +44,6 @@ public class Application {
                 }
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException();
-            } catch (IllegalArgumentException e) {
-                return;
             }
         }
     }
