@@ -1,5 +1,7 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.close;
+
 public class SequenceManager {
 
     private MessageManager messageManager = new MessageManager();
@@ -32,6 +34,10 @@ public class SequenceManager {
         if (validateRestart() && data.getIsNoError()) {
             String continueResponse = messageManager.getContinueResponse();
             data.setRestartResponse(continueResponse);
+        }
+
+        if (!validateRestart()) {
+            close();
         }
     }
 
