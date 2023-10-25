@@ -49,7 +49,7 @@ BUILD SUCCESSFUL in 0s
 
 ## 🚀 기능 구현 체크리스트
 
-1. [ ] 게임 시작 메소드
+1. [x] 게임 시작 메소드
 2. [ ] 랜덤한 3자리 수 생성 메소드
     3. [ ] `camp.nextstep.edu.missionutils`에서 제공하는`Randoms` 사용
     4. [ ] 서로 다른 3자리의 수인지 체크
