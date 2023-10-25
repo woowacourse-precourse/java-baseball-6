@@ -12,7 +12,7 @@ public class UserModel {
     }
 
     private static void correctNumbers(String input) {
-        if (input.length() != 3 || !input.matches("[1-9]+"))
+        if (input.length() != 3 || !input.matches("[1-9]+") || Util.isDuplicateNumber(input))
             throw new IllegalArgumentException();
     }
 
