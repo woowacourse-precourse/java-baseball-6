@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static baseball.global.common.GameMessage.INPUT_NUMBER_MESSAGE;
+import static baseball.global.regex.RegularExpression.GUESS_NUMBER_PATTERN;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -11,6 +12,8 @@ public class Player {
 
     private final List<Integer> numbers;
 
+    private final static String SEPERATOR = "";
+
     public Player() {
         this.numbers = input();
     }
@@ -20,7 +23,7 @@ public class Player {
         String input = Console.readLine().trim();
         validateNumberFormat(input);
         validateNoDuplicate(input);
-        String[] inputNumbers = input.split("");
+        String[] inputNumbers = input.split(SEPERATOR);
 
         return Arrays.stream(inputNumbers)
                 .map(Integer::valueOf)
@@ -29,7 +32,7 @@ public class Player {
 
     private void validateNumberFormat(String input) {
         // 입력 값이 1~9 사이 3자리 숫자가 아닐 경우 판명
-        if (!input.matches("^[1-9]{3}$")) {
+        if (!input.matches(GUESS_NUMBER_PATTERN)) {
             throw new IllegalArgumentException();
         }
     }
