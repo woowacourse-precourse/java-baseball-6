@@ -11,7 +11,7 @@ public class BaseballService {
     /**
      * 초기 게임 세팅
      */
-    public void init(){
+    public void setNewGame(){
         this.computerBall = new ComputerBall();
     }
 

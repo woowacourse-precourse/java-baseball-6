@@ -20,7 +20,6 @@ public class BaseballController {
      */
     public void init() {
         ConsoleOutput.init();
-        service.init();
     }
 
     /**
@@ -28,6 +27,7 @@ public class BaseballController {
      */
     public void startGame() throws InvalidInputException {
         do{
+            service.setNewGame();
             while (true){
                 ConsoleOutput.requestInput();
                 List<Integer> user = ConsoleInput.readDigitNumber(3);

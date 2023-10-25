@@ -28,7 +28,7 @@ public class ConsoleOutput {
      * 승리 문구
      */
     public static void displayVictory(){
-        System.out.println("3스트라이크\n 3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
 
