@@ -11,7 +11,7 @@ public class ComputerNumber {
     public ComputerNumber(){
         this.computerNumber=createRandomNumber();
     }
-    public List<Integer> createRandomNumber() {//컴퓨터 3자리 자연수 랜덤 생성 메서드
+    public List<Integer> createRandomNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < Constants.RANDOM_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(Constants.START_RANGE_NUMBER, Constants.END_RANGE_NUMBER);

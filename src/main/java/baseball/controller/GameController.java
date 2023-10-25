@@ -4,40 +4,45 @@ import baseball.constants.Constants;
 import baseball.model.ComputerNumber;
 import baseball.model.GameStatusNumber;
 import baseball.model.UserNumber;
+import baseball.view.StartView;
 import baseball.view.EndView;
 import baseball.view.MainView;
-import baseball.view.StartView;
-import com.sun.tools.javac.Main;
+
+import java.util.List;
 
 public class GameController {
-    public void startGame(){
-        StartView startView=new StartView();
+    private StartView startView = new StartView();
+    private UserInputController userInputController = new UserInputController();
+
+    public void startGame() {
         startView.beginMessage();
         playGame();
     }
 
-    public void playGame(){
-        ComputerNumber computerNumber=new ComputerNumber();
-        UserInputHandler userInputHandler=new UserInputHandler();
-        GameStatusNumber gameStatusNumber=new GameStatusNumber();
+    public void playGame() {
+        ComputerNumber computerNumber = new ComputerNumber();
+        GameStatusNumber gameStatusNumber = new GameStatusNumber();
         MainView mainView = new MainView();
-        EndView endView=new EndView();
+        EndView endView = new EndView();
 
-        while(true){
-            UserNumber userNumber=userInputHandler.getUserInputNumber();
-            int strike=gameStatusNumber.countStrike(userNumber.getUserNumber(),computerNumber.getNumbers());
-            int ball=gameStatusNumber.countBall(userNumber.getUserNumber(),computerNumber.getNumbers());
-            int nothing = gameStatusNumber.countNothing(userNumber.getUserNumber(), computerNumber.getNumbers());
 
-            mainView.displayResult(strike,ball,nothing);
-            if(strike== Constants.THREE_STRIKE){
-                endView.displayEndMessage();
-                if(userInputHandler.getRestartInput()){
+        while (true) {
+            UserNumber userNumber = userInputController.getUserInputNumber();
+            List<Integer> userNumbers = userNumber.getUserNumber();
+            int strike = gameStatusNumber.countStrike(userNumbers, computerNumber.getNumbers());
+            int ball = gameStatusNumber.countBall(userNumbers, computerNumber.getNumbers());
+            int nothing = gameStatusNumber.countNothing(userNumbers, computerNumber.getNumbers());
+
+            mainView.displayResult(strike, ball, nothing);
+            if (strike == Constants.THREE_STRIKE) {
+                if (userInputController.getRestartInput()) {
                     computerNumber.resetNumber();
+                    userInputController.resetDuplicateNumber();
+
+                } else {
+                    break;
                 }
-                break;
             }
         }
-
     }
 }
