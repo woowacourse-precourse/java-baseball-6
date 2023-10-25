@@ -38,7 +38,7 @@ public class BaseballController {
 	}
 
 	private boolean isRestart() {
-		ConsoleUtil.commonOutput(OutputType.CHOOSE_RESTART.getComment());
+		ConsoleUtil.commonOutputLine(OutputType.CHOOSE_RESTART.getComment());
 		String restart = clientService.getRestartInput();
 		return restart.equals(CommonStringType.RESTART.getContent());
 	}
