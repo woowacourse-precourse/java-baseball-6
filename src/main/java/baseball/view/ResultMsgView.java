@@ -1,4 +1,6 @@
-package baseball;
+package baseball.view;
+
+import baseball.utils.ResultMsgSelector;
 
 public class ResultMsgView {
     public void printGameResultMsg(int ballCount, int strikeCount) {

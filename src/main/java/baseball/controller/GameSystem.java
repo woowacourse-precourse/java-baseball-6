@@ -1,5 +1,10 @@
-package baseball;
+package baseball.controller;
 
+import baseball.utils.BallStrikeCounter;
+import baseball.model.Computer;
+import baseball.view.InputMsgView;
+import baseball.view.ResultMsgView;
+import baseball.model.User;
 import java.util.List;
 
 public class GameSystem {

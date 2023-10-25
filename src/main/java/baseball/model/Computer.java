@@ -1,5 +1,6 @@
-package baseball;
+package baseball.model;
 
+import baseball.utils.RandomNumbersGenerator;
 import java.util.List;
 
 public class Computer {
