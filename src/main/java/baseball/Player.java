@@ -12,7 +12,15 @@ public class Player {
         System.out.println("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         if(isValidateInput(inputNumber)) {
-            numberList = changeToList(inputNumber);
+            numberList = stringToList(inputNumber);
+        }
+        return numberList;
+    }
+
+    private List<Integer> stringToList(String inputNumber) {
+        List<Integer> numberList = new ArrayList<>();
+        for(int i = 0; i < inputNumber.length(); i++) {
+            numberList.add(Integer.parseInt(String.valueOf(inputNumber.charAt(i))));
         }
         return numberList;
     }
