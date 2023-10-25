@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumber {
-    private static List<Integer> arr;
+    private List<Integer> arr;
     private final int min = 1;
     private final int max = 9;
 
