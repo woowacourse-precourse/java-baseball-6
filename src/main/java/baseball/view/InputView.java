@@ -30,4 +30,9 @@ public class InputView {
         }
     }
 
+    public void validateIsNumeric(String input) {
+        if (!input.matches("\\d+")) {
+            throw new IllegalArgumentException("[ERROR] 입력은 오로지 숫자로만 이루어져 있어야 합니다.");
+        }
+    }
 }
