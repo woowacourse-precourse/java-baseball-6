@@ -1,7 +1,10 @@
 package baseball.game;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -18,10 +21,11 @@ public class GameLogic {
 
     private List<Integer> generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
+        Set<Integer> usedNumbers = new HashSet<>();
 
         while (numbers.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (!numbers.contains(randomNumber)) {
+            if (usedNumbers.add(randomNumber)) {
                 numbers.add(randomNumber);
             }
         }
@@ -32,31 +36,34 @@ public class GameLogic {
     public List<Integer> getPlayerNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        validate(input);
-
-        List<Integer> numbers = new ArrayList<>();
-        String[] splitInput = input.split("");
-        for (String s : splitInput) {
-            int num = Integer.parseInt(s);
-            numbers.add(num);
-        }
+        List<Integer> numbers = parseUserInput(input);
+        validateInput(numbers);
 
         return numbers;
     }
 
-    private void validate(String input) {
-        if (input.length() != NUMBER_COUNT) {
+    private List<Integer> parseUserInput(String input) {
+        List<Integer> numbers = new ArrayList<>();
+        for (char c : input.toCharArray()) {
+            if (Character.isDigit(c)) {
+                numbers.add(Character.getNumericValue(c));
+            }
+        }
+        return numbers;
+    }
+
+    private void validateInput(List<Integer> numbers) {
+        if (numbers.size() != NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
 
-        int[] count = new int[10];
-        for (int i = 0; i < input.length(); i++) {
-            char ch = input.charAt(i);
-            if (ch < '1' || ch > '9') {
-                throw new IllegalArgumentException();
-            }
-            count[ch - '0']++;
-            if (count[ch - '0'] > 1) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != NUMBER_COUNT) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int num : numbers) {
+            if (num < MIN_NUMBER || num > MAX_NUMBER) {
                 throw new IllegalArgumentException();
             }
         }
