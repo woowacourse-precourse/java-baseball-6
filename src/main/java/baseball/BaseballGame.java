@@ -24,16 +24,16 @@ public class BaseballGame {
         int ball = 0;
         String message = "";
 
-        List<Integer> inputNumbers = new ArrayList<>();
+        List<Integer> userNum = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            inputNumbers.add(Character.getNumericValue(input.charAt(i)));
+            userNum.add(Character.getNumericValue(input.charAt(i)));
         }
 
         for (int i = 0; i < 3; i++) {
-            if (inputNumbers.get(i).equals(target.get(i))) {
+            if (userNum.get(i).equals(target.get(i))) {
                 strike++;
-                inputNumbers.set(i, -1);  // set to an impossible value
-                target.set(i, -2);        // set to another impossible value
+                userNum.set(i, -1);
+                target.set(i, -2);
             }
         }
 
@@ -52,7 +52,7 @@ public class BaseballGame {
         } else {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
-                    if (target.get(i).equals(inputNumbers.get(j))) {
+                    if (target.get(i).equals(userNum.get(j))) {
                         if (i != j) {
                             ball++;
                         }
