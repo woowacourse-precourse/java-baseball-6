@@ -38,35 +38,14 @@ public class Application {
                 }
             }
 
-            // 조건에 따라 게임 진행
-            if (strike == 0 && ball == 0) { // 둘다 0인 경우
-                System.out.println("낫싱");
-            } else if (strike == 0) { // strike 만 0인 경우
-                System.out.printf("%d볼%n", ball);
-            } else if (strike != NUMBER_COUNT && ball == 0) { // ball 이 0이고 정답이 아닌 경우
-                System.out.printf("%d스트라이크%n", strike);
-            } else if (strike != NUMBER_COUNT) { // 위 상황을 제외하고 정답이 아닌 경우
-                System.out.printf("%d볼 %d스트라이크%n", ball, strike);
-            } else { // 정답에 대한 처리
-                System.out.printf("%d스트라이크%n", NUMBER_COUNT);
-                System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", NUMBER_COUNT);
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            handleGameResult(strike, ball);
+
+            if (isGameWon(strike, ball)) {
+                if (endGameProcess()) break;
                 computerArray.clear();
-
-                // 종료 단계 입력받기
-                String restartValue = Console.readLine();
-
-                // 입력 값에 따라 수행
-                if (restartValue.equals("1")) {
-                    computerArray = generateComputerNumbers();
-                } else if (restartValue.equals("2")) {
-                    break;
-                } else {
-                    throw new IllegalArgumentException("잘못된 입력 형식입니다.");
-                }
+                userArray.clear();
+                computerArray = generateComputerNumbers();
             }
-            // 턴 종료 및 초기화
-            userArray.clear();
         }
         Console.close();
     }
@@ -107,5 +86,37 @@ public class Application {
             }
         }
         set.clear();
+    }
+
+    private static void handleGameResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) { // 둘다 0인 경우
+            System.out.println("낫싱");
+        } else if (strike == 0) { // strike 만 0인 경우
+            System.out.printf("%d볼%n", ball);
+        } else if (strike != NUMBER_COUNT && ball == 0) { // ball 이 0이고 정답이 아닌 경우
+            System.out.printf("%d스트라이크%n", strike);
+        } else if (strike != NUMBER_COUNT) { // 위 상황을 제외하고 정답이 아닌 경우
+            System.out.printf("%d볼 %d스트라이크%n", ball, strike);
+        } else { // 정답에 대한 처리
+            System.out.printf("%d스트라이크%n", NUMBER_COUNT);
+        }
+    }
+
+    private static boolean isGameWon(int strike, int ball) {
+        return strike == NUMBER_COUNT;
+    }
+
+    private static boolean endGameProcess() {
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", NUMBER_COUNT);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartValue = Console.readLine();
+        validateRestartValue(restartValue);
+        return restartValue.equals("2");
+    }
+
+    private static void validateRestartValue(String restartValue) {
+        if (!restartValue.equals("1") && !restartValue.equals("2")) {
+            throw new IllegalArgumentException("잘못된 입력 형식입니다.");
+        }
     }
 }
