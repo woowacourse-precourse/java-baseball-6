@@ -17,7 +17,7 @@ public class Referee {
     this.answerBalls = answerBalls;
   }
 
-  public void reset() {
+  public void resetCount() {
     this.ball = 0;
     this.strike = 0;
   }
@@ -50,7 +50,7 @@ public class Referee {
     this.strike++;
   }
 
-  public boolean isThreeStrike() {
+  public boolean isStrikeOut() {
     return this.strike == BallsFactory.DIGIT_COUNT;
   }
 }
