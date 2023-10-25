@@ -20,8 +20,8 @@ public class BaseballNumbers {
     public Result checkResult(PlayerNumbers playerNumbers) {
         int strike = 0, ball = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            if (playerNumbers.contains(numbers.get(i))) ball++;
-            if (numbers.get(i).equals(playerNumbers.get(i))) strike++;
+            if (playerNumbers.isBall(numbers.get(i))) ball++;
+            if (playerNumbers.isStrike(i, numbers.get(i))) strike++;
         }
         ball -= strike;
 

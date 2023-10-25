@@ -39,11 +39,11 @@ public class PlayerNumbers {
         }
     }
 
-    public boolean contains(Integer number) {
+    public boolean isBall(Integer number) {
         return numbers.contains(number);
     }
 
-    public Integer get(Integer index) {
-        return numbers.get(index);
+    public boolean isStrike(int index, Integer number) {
+        return numbers.get(index).equals(number);
     }
 }
