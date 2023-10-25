@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Model {
     private static String answerComputer;
+    private static String answerPlayer;
+
     final int INPUT_LENGTH_MAX = 3;
     final int BALL_MIN = 1;
     final int BALL_MAX = 9;
@@ -17,7 +19,7 @@ public class Model {
     final int STRIKE = 0;
     final int BALL = 1;
 
-    public static void initComputerAnswer() {
+    public void initComputerAnswer() {
         //model
         List<Integer> computer = new ArrayList<>();
         StringBuilder answerBuilder = new StringBuilder();
@@ -31,12 +33,12 @@ public class Model {
         answerComputer = answerBuilder.toString();
     }
 
-    public Integer[] countStrikeBallHits(String source) {
+    public Integer[] countStrikeBallHits() {
         Integer[] score = new Integer[]{0, 0};
 
         char sourceChar, answerChar;
-        for (int i = 0; i < source.length(); i++) {
-            sourceChar = source.charAt(i);
+        for (int i = 0; i < answerPlayer.length(); i++) {
+            sourceChar = answerPlayer.charAt(i);
             answerChar = answerComputer.charAt(i);
             if (sourceChar == answerChar) {
                 score[STRIKE]++; // Increment strikes
@@ -70,6 +72,7 @@ public class Model {
         exceptNotInteger(inputPlayer);
         exceptInvalidRange(inputPlayer, BALL_MIN, BALL_MAX);
         exceptInputSameNumber(inputPlayer);
+        this.answerPlayer = inputPlayer;
 
     }
 
