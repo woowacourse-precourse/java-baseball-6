@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class GameRunner {
 
@@ -8,7 +9,7 @@ public class GameRunner {
 
     private GameRunner() {
 
-    };
+    }
 
     private static Game getInstance() {
         if (game == null) {
@@ -25,14 +26,14 @@ public class GameRunner {
         game = getInstance();
     }
 
-    public static void readInput() {
+    public static List<Integer> readInput() {
         System.out.print(Message.INPUT_MSG);
         String input = Console.readLine();
-        game.setUserNumbers(input);
+        return InputHandler.inputToList(input);
     }
 
-    public static void count() {
-        game.count();
+    public static void count(List<Integer> user) {
+        game.count(user);
     }
 
     public static void printResult() {
@@ -40,10 +41,10 @@ public class GameRunner {
     }
 
     public static boolean isEnd() {
-        if(game.getStrike() == 3) {
+        if (game.getStrike() == 3) {
             System.out.println(Message.SUCCESS_MSG);
             String input = Console.readLine();
-            if(game.checkRestart(input)){
+            if (game.checkRestart(input)) {
                 game = null;
                 return false;
             } else {
