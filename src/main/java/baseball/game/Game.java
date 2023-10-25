@@ -23,7 +23,6 @@ public class Game {
 
     private void BaseBallGameRunner() {
         GameController gameController = new GameController();
-        gameController.randoms();
         boolean isCorrect;
 
         do {

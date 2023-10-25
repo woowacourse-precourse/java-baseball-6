@@ -9,24 +9,18 @@ public class GameController {
     private int strike = 0;
     private int ball = 0;
 
-
-    private void clearStrikeAndBall() {
-        this.strike = 0;
-        this.ball = 0;
-    }
-
-    protected void randoms() {
-
-        if (!this.answer.isEmpty()) {
-            this.answer.clear();
-        }
-
+    public GameController() {
         while (this.answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!this.answer.contains(randomNumber)) {
                 this.answer.add(randomNumber);
             }
         }
+    }
+
+    private void clearStrikeAndBall() {
+        this.strike = 0;
+        this.ball = 0;
     }
 
     protected void isStrikeOrBall(List<Integer> userInput) {
