@@ -2,20 +2,22 @@ package baseball.game;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.numbers.ComputerNumbersGenerator;
 import java.util.Objects;
 
-public class SetOfGame {
+public class SetOfGame extends Game {
 
-//    public SetOfGame() {
-//
-//    }
+    private final UnitOfGameFactory unitOfGameFactory;
 
+    public SetOfGame(UnitOfGameFactory unitOfGameFactory) {
+        this.unitOfGameFactory = unitOfGameFactory;
+    }
+
+    @Override
     public void play() {
         String userInput;
 
         do {
-            UnitOfGame unitOfGame = new UnitOfGame(new ComputerNumbersGenerator());
+            UnitOfGame unitOfGame = unitOfGameFactory.create();
             unitOfGame.play();
             userInput = promptUserInput();
         } while (Objects.equals(userInput, "1"));

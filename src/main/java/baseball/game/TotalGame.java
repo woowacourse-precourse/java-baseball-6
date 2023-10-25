@@ -1,10 +1,15 @@
 package baseball.game;
 
-public class TotalGame {
+public class TotalGame extends Game{
+    private final SetOfGameFactory setOfGameFactory;
 
-    public static void play() {
+    public TotalGame(SetOfGameFactory setOfGameFactory) {
+        this.setOfGameFactory = setOfGameFactory;
+    }
+    @Override
+    public void play() {
         GameView.printBeforeTotalGame();
-        SetOfGame setOfGame = new SetOfGame();
+        SetOfGame setOfGame = setOfGameFactory.create();
         setOfGame.play();
         GameView.printAfterTotalGame();
     }

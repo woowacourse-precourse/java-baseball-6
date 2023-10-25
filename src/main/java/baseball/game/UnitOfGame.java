@@ -1,16 +1,18 @@
 package baseball.game;
 
+import baseball.Constants;
 import baseball.numbers.NumbersGenerator;
 import baseball.numbers.UserNumbersGenerator;
 import java.util.List;
 
-public class UnitOfGame {
+public class UnitOfGame extends Game {
     private final List<Integer> computerNumbers;
 
     public UnitOfGame(NumbersGenerator numbersGenerator) {
         this.computerNumbers = numbersGenerator.generate();
     }
 
+    @Override
     public void play() {
         int strike;
 
@@ -20,6 +22,6 @@ public class UnitOfGame {
             int ball = CalculateScore.countBall(computerNumbers, userNumbers);
             strike = CalculateScore.countStrike(computerNumbers, userNumbers);
             GameView.printAfterUnitOfGame(ball, strike);
-        } while (strike != 3);
+        } while (strike != Constants.SCORE_OF_STRIKE);
     }
 }
