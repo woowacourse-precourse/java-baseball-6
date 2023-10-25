@@ -34,6 +34,10 @@ public class Validator {
         }
     }
 
+    private boolean isDuplicated(List<Character> numbers, char number) {
+        return numbers.contains(number);
+    }
+
     public boolean isNotOneOrTwo(String input) {
         return !input.equals(RESTART_NUMBER) && !input.equals(EXIT_NUMBER);
     }
