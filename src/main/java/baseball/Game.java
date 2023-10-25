@@ -3,13 +3,39 @@ package baseball;
 import java.util.List;
 
 public class Game {
+
+    private Computer computer;
+    private Player player;
+    int strike;
+    int ball;
+
     public void run(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Computer computer = new Computer();
-        List<Integer> computerNum = computer.getComputerNum();
-        Player player = new Player();
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> userNum = player.createUserNum();
-        System.out.println(userNum);
+        computer = new Computer();
+        player = new Player();
+        player.createUserNum();
+
+        check();
     }
+
+    public void check(){
+        List<Integer> computerNum = computer.getComputerNum();
+        List<Integer> userNum = player.getUserNum();
+        for(int i = 0; i < 3; i++){
+            if(computerNum.get(i).equals(userNum.get(i))){
+                strike++;
+            }else if(computerNum.contains(userNum.get(i))){
+                ball++;
+            }
+        }
+        if(ball == 0 && strike == 0){
+            System.out.println("낫싱");
+        }
+    }
+
+
+
+
+
+
 }

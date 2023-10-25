@@ -8,12 +8,16 @@ import camp.nextstep.edu.missionutils.Console;
 public class Player {
     private List<Integer> userNum;
 
-    public List<Integer> createUserNum() {
+    public List<Integer> getUserNum(){
+        return userNum;
+    }
+
+    public void createUserNum() {
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         List<Integer> inputNum = convertStringToList(input);
         validateInput(inputNum);
         userNum = inputNum;
-        return userNum;
     }
 
     public List<Integer> convertStringToList(String input) {

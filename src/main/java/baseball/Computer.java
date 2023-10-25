@@ -24,7 +24,7 @@ public class Computer {
     }
     public void createComputerNum() {
         while (computerNum.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 13);
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!computerNum.contains(randomNumber)){
                 computerNum.add(randomNumber);
             }
