@@ -13,28 +13,43 @@ public class GameLogic {
      * throws IllegalArgumentException 사용자 input이 내부 규칙에 유효하지 않을 시 발생
      */
     public List<Integer> validateAndReturnBaseBallNumber(String playerGuess) throws IllegalArgumentException {
+        vaildateInputLength(playerGuess);
+
         List<Integer> playerGuessNumbers = new ArrayList<>();
-
-        if (playerGuess.length() != 3) {
-            throw new IllegalArgumentException("유효하지 않은 입력 : 3자리 숫자 입력 필요합니다.");
-        }
-
         char[] charArr = playerGuess.toCharArray();
-
         for (char c: charArr) {
-            if (Character.isDigit(c)) {
-                int number = Character.getNumericValue(c);
-                if (number > 0 && !playerGuessNumbers.contains(number)) {
-                    playerGuessNumbers.add(number);
-                } else {
-                    throw new IllegalArgumentException("유효하지 않은 입력 : 1부터 9까지의 자연수 입력, 중복되지 않은 숫자 입력이 필요합니다.");
-                }
-            } else {
-                throw new IllegalArgumentException("유효하지 않은 입력 : 1부터 9까지의 자연수만 입력해야 합니다.");
-            }
+            validateIsNumber(c);
+            int number = Character.getNumericValue(c);
+            validateIsNotZero(number);
+            validateNotDuplicated(number,playerGuessNumbers);
+            playerGuessNumbers.add(number);
         }
 
         return playerGuessNumbers;
+    }
+
+    public void vaildateInputLength(String playerGuess) throws IllegalArgumentException {
+        if (playerGuess.length() != 3) {
+            throw new IllegalArgumentException("유효하지 않은 입력 : 3자리 숫자 입력 필요합니다.");
+        }
+    }
+
+    public void validateIsNumber(char c) throws IllegalArgumentException {
+        if (!Character.isDigit(c)) {
+            throw new IllegalArgumentException("유효하지 않은 입력 : 1부터 9까지의 자연수만 입력해야 합니다.");
+        }
+    }
+
+    public void validateIsNotZero(int number) throws IllegalArgumentException {
+        if (number == 0) {
+            throw new IllegalArgumentException("유효하지 않은 입력 : 0은 입력이 불가합니다. 1부터 9까지의 자연수만 입력해야 합니다.");
+        }
+    }
+
+    public void validateNotDuplicated(int number, List<Integer> playerGuessNumbers) {
+        if (playerGuessNumbers.contains(number)) {
+            throw new IllegalArgumentException("유효하지 않은 입력 : 중복된 숫자 입력은 불가합니다.");
+        }
     }
 
     /**
