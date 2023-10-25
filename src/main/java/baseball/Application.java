@@ -6,18 +6,21 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class Application {
-    static final int SIZE_REQUIRE_NUMBER = 3;
+    static final int START_RANDOM_NUMBER = 1;
+    static final int END_RANDOM_NUMBER = 9;
+    static final int DIGIT_GAME_NUMBER = 3;
     static final int MAINTAIN_GAME = 0;
     static final int RESTART_GAME = 1;
     static final int EXIT_GAME = 2;
 
     public static List<Integer> makeRandomNumberList() {
         List<Integer> computer = new ArrayList<>();
-        int randomNumber = 0;
-        while (computer.size() < SIZE_REQUIRE_NUMBER) {
-            randomNumber = Randoms.pickNumberInRange(1, 9);
+
+        while (computer.size() < DIGIT_GAME_NUMBER) {
+            int randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
@@ -28,23 +31,17 @@ public class Application {
 
     public static int[] inputAndGetUserNumbers() {
         int[] arrayPlayerNumber = null;
-        int userInputNumber = 0;
-        String stringPlayerNumber = "";
+        String stringPlayerNumber = Console.readLine();
 
         try {
-            userInputNumber = Integer.parseInt(Console.readLine());
+            Integer.parseInt(stringPlayerNumber);
+            arrayPlayerNumber = Stream.of(stringPlayerNumber.split("")).mapToInt(Integer::parseInt).toArray();
+
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("정수만 입력 해야 합니다.");
         }
 
-        stringPlayerNumber = Integer.toString(userInputNumber);
-        arrayPlayerNumber = new int[stringPlayerNumber.length()];
-
-        for (int i = 0; i < stringPlayerNumber.length(); i++) {
-            arrayPlayerNumber[i] = stringPlayerNumber.charAt(i) - '0';
-        }
-
-        if (arrayPlayerNumber.length != SIZE_REQUIRE_NUMBER) {
+        if (stringPlayerNumber.length() != DIGIT_GAME_NUMBER) {
             throw new IllegalArgumentException("3자리의 정수가 입력 되지 않았습니다.");
         }
 
@@ -55,11 +52,11 @@ public class Application {
         return arrayPlayerNumber;
     }
 
-    public static boolean checkDuplicateInput(int[] playerArray) {
+    public static boolean checkDuplicateInput(int[] playerNumberArray) {
         List<Integer> list = new ArrayList<>();
         Set<Integer> set = null;
 
-        for (int j : playerArray) {
+        for (int j : playerNumberArray) {
             list.add(j);
         }
 
@@ -84,7 +81,6 @@ public class Application {
         }
 
         if ((numberOfBalls == 0) && (numberOfStrikes == 0)) {
-            System.out.println();
             System.out.println("낫싱");
 
             return MAINTAIN_GAME;
