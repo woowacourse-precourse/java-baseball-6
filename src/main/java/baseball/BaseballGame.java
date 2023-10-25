@@ -25,7 +25,6 @@ public class BaseballGame {
         return computerNums.contains(playerNum) && computerNums.get(idx) != playerNum;
     }
 
-
     public boolean isNothing(int playerNum, List<Integer> computerNums) {
         return !computerNums.contains(playerNum);
     }
@@ -61,22 +60,32 @@ public class BaseballGame {
     }
 
     private void printResult(List<Integer> results) {
-        if (results.get(NOTHING_IDX) == DEFAULT_SIZE) {
-            System.out.print("낫싱");
-            return;
-        }
-
-        if (results.get(BALL_IDX) != 0) {
-            System.out.print(results.get(BALL_IDX) + "볼");
-        }
-
+        if (printNothing(results)) return;
+        printBall(results);
         if (results.get(BALL_IDX) != 0 && results.get(STRIKE_IDX) != 0) {
             System.out.print(" ");
         }
+        printStrike(results);
+    }
 
+    private static void printStrike(List<Integer> results) {
         if (results.get(STRIKE_IDX) != 0) {
             System.out.print(results.get(STRIKE_IDX) + "스트라이크");
         }
+    }
+
+    private static void printBall(List<Integer> results) {
+        if (results.get(BALL_IDX) != 0) {
+            System.out.print(results.get(BALL_IDX) + "볼");
+        }
+    }
+
+    private static boolean printNothing(List<Integer> results) {
+        if (results.get(NOTHING_IDX) == DEFAULT_SIZE) {
+            System.out.print("낫싱");
+            return true;
+        }
+        return false;
     }
 
     public int run() throws IllegalArgumentException, NumberFormatException {
