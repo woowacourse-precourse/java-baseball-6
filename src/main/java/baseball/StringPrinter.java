@@ -25,14 +25,16 @@ public class StringPrinter {
     }
 
     public void printGuessResult(int ballCounter, int strikeCounter){
+        if (ballCounter == 0 && strikeCounter == 0) {
+            System.out.print("낫싱");
+            return;
+        }
+
         if (ballCounter > 0){
             System.out.print(ballCounter + "볼 ");
         }
         if (strikeCounter > 0) {
             System.out.print(strikeCounter + "스트라이크 ");
-        }
-        if (ballCounter == 0 && strikeCounter == 0) {
-            System.out.print("낫싱");
         }
     }
 }
