@@ -31,10 +31,10 @@ public class Application {
                 s = getScoreMessage(answers, userGuess);
                 System.out.println(s);
             }
-
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             moreGame = isGameOver();
         }
-        System.out.println("게임 종료");
+        System.out.println("프로그램 종료");
     }
 
     /**
