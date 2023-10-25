@@ -31,7 +31,8 @@ public class GameSystem {
     }
 
     private boolean restartGame() {
-        // TO-DO restart game 로직 작성
+        InputMsgView inputMsgView = new InputMsgView();
+        inputMsgView.printRestartMsg();
 
         return false;
     }
