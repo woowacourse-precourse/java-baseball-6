@@ -15,25 +15,23 @@ public class Referee {
     }
 
     private static int judgeBall(List<Integer> computer, List<Integer> number) {
-        int count = 0;
-        for (int i = 0; i < number.size(); i++) {
-            for (int j = 0; j < computer.size(); j++) {
-                if (i != j && number.get(i).equals(computer.get(j))) {
-                    count++;
-                }
-            }
-        }
-        return count;
+        return (int) number.stream()
+                .filter(n -> isBall(computer, number, n))
+                .count();
+    }
+
+    private static boolean isBall(List<Integer> computer, List<Integer> number, Integer n) {
+        return computer.contains(n) && computer.indexOf(n) != number.indexOf(n);
     }
 
     private static int judgeStrike(List<Integer> computer, List<Integer> number) {
-        int count = 0;
-        for (int i = 0; i < number.size(); i++) {
-            if (number.get(i).equals(computer.get(i))) {
-                count++;
-            }
-        }
-        return count;
+        return (int) number.stream()
+                .filter(n -> isStrike(computer, number, n))
+                .count();
+    }
+
+    private static boolean isStrike(List<Integer> computer, List<Integer> number, Integer n) {
+        return computer.indexOf(n) == number.indexOf(n);
     }
 
     private static boolean printJudge(int ballCount, int strikeCount) {
