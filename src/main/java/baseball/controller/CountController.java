@@ -2,8 +2,6 @@ package baseball.controller;
 
 import baseball.model.InputNumber;
 
-import static baseball.controller.GameController.ANSWER_NUMBER;
-
 public class CountController {
     private static final String BALL_MESSAGE = "볼 ";
     private static final String STRIKE_MESSAGE = "스트라이크";
@@ -13,8 +11,8 @@ public class CountController {
     public int getStrikeCount(InputNumber inputNumber) {
         int strikeCount = 0;
 
-        for (int i = 0; i < ANSWER_NUMBER.getRandomNumber().size(); i++) {
-            int elementOfAnswer = ANSWER_NUMBER.getRandomNumber().get(i);
+        for (int i = 0; i < GameController.ANSWER_NUMBER.getRandomNumber().size(); i++) {
+            int elementOfAnswer = GameController.ANSWER_NUMBER.getRandomNumber().get(i);
             int elementOfInput = inputNumber.getInputNumber().get(i);
 
             if (elementOfAnswer == elementOfInput) {
@@ -27,11 +25,11 @@ public class CountController {
     public int getBallCount(InputNumber inputNumber) {
         int ballCount = 0;
 
-        for (int i = 0; i < ANSWER_NUMBER.getRandomNumber().size(); i++) {
-            int elementOfAnswer = ANSWER_NUMBER.getRandomNumber().get(i);
+        for (int i = 0; i < GameController.ANSWER_NUMBER.getRandomNumber().size(); i++) {
+            int elementOfAnswer = GameController.ANSWER_NUMBER.getRandomNumber().get(i);
             int elementOfInput = inputNumber.getInputNumber().get(i);
 
-            if (elementOfAnswer != elementOfInput && ANSWER_NUMBER.getRandomNumber().contains(elementOfInput)) {
+            if (elementOfAnswer != elementOfInput && GameController.ANSWER_NUMBER.getRandomNumber().contains(elementOfInput)) {
                 ballCount++;
             }
         }

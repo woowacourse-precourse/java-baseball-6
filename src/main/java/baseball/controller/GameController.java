@@ -6,7 +6,7 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    static final int NUMBER_OF_DIGITS = 3;
+    private static final int NUMBER_OF_DIGITS = 3;
     private static final String QUIT_NUMBER = "2";
     static final AnswerNumber ANSWER_NUMBER = new AnswerNumber();
     private CountController countController = new CountController();
