@@ -15,7 +15,7 @@ public class GameConsole {
     private static boolean restartOrEnd(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String inputValue = Console.readLine();
-        ValidateInput.validateRestart(inputValue, REGEX_RESTART_OR_END);
+        ValidateInput.validate(inputValue, REGEX_RESTART_OR_END, "1 또는 2숫자를 입력해주세요.");
         return inputValue.equals("1");
     }
 }

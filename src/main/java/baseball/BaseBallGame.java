@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class BaseBallGame extends Game {
     private static final String REGEX_THREE_NUMBER = "^[1-9]{3}"; // 3개의 1에서 9까지 수
@@ -39,11 +38,10 @@ public class BaseBallGame extends Game {
         }
         ballNumber -= strikeNumber;
         printStatus(ballNumber, strikeNumber);
-
         return strikeNumber != 3;
     }
 
-    private void printStatus(int strikeNumber, int ballNumber){
+    private void printStatus(int ballNumber, int strikeNumber){
         if(ballNumber == 0 && strikeNumber == 0){
             System.out.println(("낫싱"));
         }
