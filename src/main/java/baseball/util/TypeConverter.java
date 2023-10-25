@@ -1,7 +1,6 @@
 package baseball.util;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TypeConverter {
@@ -13,7 +12,7 @@ public class TypeConverter {
         try {
             return Stream.of(input.split(BLANK))
                     .map(Integer::parseInt)
-                    .collect(Collectors.toList());
+                    .toList();
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(WRONG_INPUT_MSG);
         }

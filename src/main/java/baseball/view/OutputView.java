@@ -15,10 +15,11 @@ public class OutputView {
     }
 
     public void printResult(PlayResult result) {
-        if (result.hasBall()) System.out.print(result.getBall() + BALL_MSG);
-        if (result.hasStrike()) System.out.print(result.getStrike() + STRIKE_MSG);
-        if (result.isNothing()) System.out.print(NOTHING_MSG);
-        System.out.println();
+        String resultStr = "";
+        if (result.hasBall()) resultStr += result.getBall() + BALL_MSG;
+        if (result.hasStrike()) resultStr += result.getStrike() + STRIKE_MSG;
+        if (result.isNothing()) resultStr += NOTHING_MSG;
+        System.out.println(resultStr.trim());
     }
 
     public void printGameClear() {
