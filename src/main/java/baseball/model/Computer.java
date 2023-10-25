@@ -10,7 +10,9 @@ public class Computer {
         this.balls = new Balls(numbers);
     }
 
-    public PlayResult compute(final Balls playerBalls) {
-        return PlayResult.from(balls.compareAll(playerBalls));
+    public PlayResult compute(final List<Integer> guessNumbers) {
+        final Balls playerBalls = new Balls(guessNumbers);
+        final CompareResults compareResults = balls.compareAll(playerBalls);
+        return PlayResult.from(compareResults);
     }
 }

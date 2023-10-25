@@ -4,9 +4,9 @@ import baseball.model.Computer;
 import baseball.model.ComputerGenerator;
 import baseball.model.GameOption;
 import baseball.model.PlayResult;
-import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class BaseballGameController {
 
@@ -33,14 +33,13 @@ public class BaseballGameController {
     }
 
     private PlayResult play(final Computer computer) {
-        final Player player = createPlayer();
-        final PlayResult playResult = player.play(computer);
+        final PlayResult playResult = computer.compute(guessNumbers());
         OutputView.printResult(playResult);
         return playResult;
     }
 
-    private Player createPlayer() {
-        return new Player(InputView.readNumbers());
+    private List<Integer> guessNumbers() {
+        return InputView.readNumbers();
     }
 
     private void askForContinue() {
