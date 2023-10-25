@@ -1,7 +1,13 @@
 package baseball;
 
+import baseball.Controller.BaseballController;
+
 public class Application {
+
+    private static final BaseballController baseballController = new BaseballController();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        baseballController.startGame();
     }
 }
