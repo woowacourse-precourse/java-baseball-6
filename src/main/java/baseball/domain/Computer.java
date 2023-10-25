@@ -17,4 +17,9 @@ public class Computer {
         }
         this.randomNumber = str;
     }
+
+    // 선택한 임의의 숫자 3개를 리턴합니다.
+    public String getRandomNumber() {
+        return randomNumber;
+    }
 }
