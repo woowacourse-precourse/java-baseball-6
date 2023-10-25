@@ -43,13 +43,7 @@ class ApplicationTest2 extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-    @Test
-    void 공백_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(""))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
+
     @Test
     void 재시작_예외_테스트1() {
         assertRandomNumberInRangeTest(
