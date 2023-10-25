@@ -34,7 +34,7 @@ public class AnswerEvaluatorImpl implements Evaluator {
                 balls += 1;
             }
         }
-        return new BallStrike(balls, strikes);
+        return new BallStrike(balls, strikes, strikes == answer.size());
     }
 
     @Override

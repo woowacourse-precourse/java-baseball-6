@@ -1,5 +1,6 @@
 package baseball.phase.impl;
 
+import baseball.evaluation.result.EvalResult;
 import baseball.game.BaseballGame;
 import baseball.phase.Phase;
 import baseball.phase.PhaseID;
@@ -9,8 +10,10 @@ import java.util.List;
 
 public class GuessPhase implements Phase {
     private BaseballGame baseballGame;
+    private boolean isFinished;
 
     public GuessPhase() {
+        isFinished = false;
     }
 
     @Override
@@ -23,7 +26,8 @@ public class GuessPhase implements Phase {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         List<Integer> guess = extractGuess(input);
-
+        EvalResult result = this.baseballGame.getEvaluator().evaluate(guess);
+        result.printResult();
     }
 
     @Override
