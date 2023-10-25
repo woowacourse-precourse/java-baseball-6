@@ -51,7 +51,7 @@ public class GameManager {
             checkStrikeAndBall(playerNumber, computerNumber, computerNumbers);
         }
         checkGameResult();
-        return checkThreeStrike();
+        return checkNotThreeStrike();
     }
 
     private void checkStrikeAndBall(int playerNumber, int computerNumber, List<Integer> computerNumbers) {
@@ -77,7 +77,7 @@ public class GameManager {
         MessagePrinter.printStrikeAndBallMessage(result.toString());
     }
 
-    private boolean checkThreeStrike() {
+    private boolean checkNotThreeStrike() {
         if (strikeCount == WINNING_STRIKE_COUNT) {
             MessagePrinter.printWinnerMessage();
             return false;
