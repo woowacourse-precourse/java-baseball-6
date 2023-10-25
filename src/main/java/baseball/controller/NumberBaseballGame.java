@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.domain.ComputerNumbers;
-import baseball.domain.ReplayType;
 import baseball.domain.Round;
 import baseball.domain.UserNumbers;
 import baseball.view.InputView;
@@ -13,7 +12,7 @@ public class NumberBaseballGame {
         ComputerNumbers computerNumbers = new ComputerNumbers();
         boolean isGameEnd = false;
         while (!isGameEnd) {
-            UserNumbers userNumbers = InputView.readUserNumber();
+            UserNumbers userNumbers = new UserNumbers(InputView.readUserNumber());
             Round round = new Round(computerNumbers, userNumbers);
             OutputView.printRoundResult(round);
             isGameEnd = round.isGameEnd();
@@ -26,8 +25,7 @@ public class NumberBaseballGame {
         while (shouldPlay) {
             gameStart();
             OutputView.printEndMessage();
-            ReplayType replayType = InputView.readShouldReplay();
-            shouldPlay = replayType.isReplay();
+            shouldPlay = InputView.readShouldReplay();
         }
     }
 
