@@ -1,16 +1,16 @@
 package baseball.model;
 
-import baseball.model.generator.ComputerGenerator;
+import baseball.model.generator.ComputerNumberGenerator;
 
 import java.util.List;
 
 
 public class Computer {
-    private final ComputerGenerator computerGenerator;
+    private final ComputerNumberGenerator computerNumberGenerator;
     private List<Integer> randomNumber;
 
-    public Computer(ComputerGenerator computerGenerator) {
-        this.computerGenerator = computerGenerator;
+    public Computer(ComputerNumberGenerator computerNumberGenerator) {
+        this.computerNumberGenerator = computerNumberGenerator;
     }
 
     public List<Integer> speakNumbers() {
@@ -19,6 +19,6 @@ public class Computer {
     }
 
     private void chooseNumbers() {
-        this.randomNumber = computerGenerator.generateList();
+        this.randomNumber = computerNumberGenerator.generateList();
     }
 }

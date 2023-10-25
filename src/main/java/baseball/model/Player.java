@@ -1,15 +1,15 @@
 package baseball.model;
 
-import baseball.model.generator.PlayerGenerator;
+import baseball.model.generator.PlayerNumberGenerator;
 
 import java.util.List;
 
 public class Player {
-    private final PlayerGenerator playerGenerator;
+    private final PlayerNumberGenerator playerNumberGenerator;
     private List<Integer> userNumberList;
 
-    public Player(PlayerGenerator playerGenerator) {
-        this.playerGenerator = playerGenerator;
+    public Player(PlayerNumberGenerator playerNumberGenerator) {
+        this.playerNumberGenerator = playerNumberGenerator;
     }
 
 
@@ -19,10 +19,10 @@ public class Player {
     }
 
     private void chooseNumbers() {
-        this.userNumberList = playerGenerator.generateList();
+        this.userNumberList = playerNumberGenerator.generateList();
     }
     
     public boolean speakRestart() {
-        return playerGenerator.generateRestart();
+        return playerNumberGenerator.generateRestart();
     }
 }

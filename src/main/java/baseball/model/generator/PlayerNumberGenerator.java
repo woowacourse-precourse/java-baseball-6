@@ -8,7 +8,7 @@ import static baseball.Viewer.readNumber;
 import static baseball.Viewer.readNumbers;
 
 
-public class PlayerGenerator extends NumberGenerator {
+public class PlayerNumberGenerator extends NumberGenerator {
     static final String INVALID_SIZE_OF_INPUT = LIST_SIZE + "개의 숫자를 입력해주세요.";
     static final String INVALID_RANGE_OF_INPUT = "1~9 사이의 숫자를 입력해주세요.";
     static final String ALREADY_EXIST_NUMBER = "중복된 숫자가 있습니다.";

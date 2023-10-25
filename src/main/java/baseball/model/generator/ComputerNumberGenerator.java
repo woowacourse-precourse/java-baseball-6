@@ -5,7 +5,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
-public class ComputerGenerator extends NumberGenerator {
+public class ComputerNumberGenerator extends NumberGenerator {
 
     @Override
     public List<Integer> generateList() {
