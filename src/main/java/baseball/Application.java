@@ -53,39 +53,33 @@ public class Application {
         return Console.readLine();
     }
 
-    static void validateUserInput(String str) {
-        if (str.length() != NUMBER_OF_DIGITS) {
-            throw new IllegalArgumentException();
-        }
-        if (hasDuplicates(str)) {
-            throw new IllegalArgumentException();
-        }
-        //char[] arr = new char[str.length()]; // 생각해보니 0으로 시작하는 숫자는 어카지..
 
+    static void validateUserInput(String input) {
+        if (input.length() != NUMBER_OF_DIGITS) {
+            throw new IllegalArgumentException("입력값의 자리수가 유효하지 않습니다. 입력값의 자리수: " + input.length());
+        }
+        if (contains('0', input)) {
+            throw new IllegalArgumentException("입력값에 0이 포함되었습니다. 유효 숫자 범위: 1~9");
+        }
+        if (hasDuplicates(input)) {
+            throw new IllegalArgumentException("입력값 중 중복되는 숫자가 있습니다.");
+        }
     }
 
     static void evaluateGuess(String input, int[] answer) {
         ball = 0;
         strike = 0;
-        int[] inputArray = new int[input.length()];
-        for (int i = 0; i < input.length(); i++) {
-            inputArray[i] = input.charAt(i) - '0';
-        }
 
-        int value;
+        int[] inputArray = convertStringToIntArray(input);
+
         for (int i = 0; i < answer.length; i++) {
-            value = answer[i];
-            for (int j = 0; j < inputArray.length; j++) {
-                if (value == inputArray[j]) {
-                    if (i == j) {
-                        strike++;
-                    } else {
-                        ball++;
-                    }
-                }
+            int value = answer[i];
+            if (inputArray[i] == value) {
+                strike++;
+            } else if (contains(value, inputArray)) {
+                ball++;
             }
         }
-        // 출력
         printResultMessage();
     }
 
@@ -113,27 +107,27 @@ public class Application {
         try {
             userChoice = Integer.parseInt(userChoiceStr);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값이 유효하지 않습니다.");
         }
 
         if (userChoice != GAME_CONTINUE && userChoice != GAME_QUIT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값이 유효하지 않습니다. 1과 2 이외의 숫자 입력");
         }
         return userChoice;
     }
 
-    static boolean hasDuplicates(int[] answer, int randomNumber) {
-        for (int i : answer) {
-            if (i == randomNumber) {
+    static boolean hasDuplicates(int[] targetNumber, int singleDigit) {
+        for (int i : targetNumber) {
+            if (i == singleDigit) {
                 return true;
             }
         }
         return false;
     }
 
-    static boolean hasDuplicates(String str) {
+    static boolean hasDuplicates(String input) {
         boolean[] board = new boolean[10];
-        char[] charArray = str.toCharArray();
+        char[] charArray = input.toCharArray();
         for (char c : charArray) {
             if (board[c - '0']) {
                 return true;
@@ -142,4 +136,31 @@ public class Application {
         }
         return false;
     }
+
+    static boolean contains(char character, String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == character) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static boolean contains(int value, int[] array) {
+        for (int item : array) {
+            if (item == value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static int[] convertStringToIntArray(String input) {
+        int[] intArray = new int[input.length()];
+        for (int i = 0; i < input.length(); i++) {
+            intArray[i] = input.charAt(i) - '0';
+        }
+        return intArray;
+    }
+
 }
