@@ -92,4 +92,14 @@ public class Play {
         }
     }
 
+    private int getStrike(int[] inputNumber){
+        int strike= 0;
+        for(int i = 0; i < result.size(); i++){
+            if(inputNumber[i] == result.get(i)){
+                strike++;
+            }
+        }
+        return strike;
+    }
+
 }
