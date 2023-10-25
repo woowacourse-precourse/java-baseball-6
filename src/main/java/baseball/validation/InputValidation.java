@@ -35,7 +35,7 @@ public class InputValidation {
     }
 
     public void validateLengthAtLeastFour(String input) {
-        if (input.length() >= 4) {
+        if (input.length() > INPUT_LENGTH) {
             throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION_MSG);
         }
     }
