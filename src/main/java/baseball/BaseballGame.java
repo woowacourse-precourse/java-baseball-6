@@ -10,7 +10,6 @@ public class BaseballGame {
     private String answerPlayer;
     private boolean isPlaying;
     final int INPUT_LENGTH_MAX = 3;
-
     final int BALL_MIN = 1;
     final int BALL_MAX = 9;
 
@@ -29,10 +28,12 @@ public class BaseballGame {
 
             inputAnswerPlayer();
 
+            //answer player
             messageScore = countStrikeBallHits(answerPlayer, answerComputer);
 
             System.out.println(messageScore);
 
+            //answer player
             if (answerPlayer.equals(answerComputer)) {
                 System.out.println("3개의 숫자 를 모두 맞히셨습니다! 게임 종료");
                 isPlaying = restartGame();
@@ -41,17 +42,21 @@ public class BaseballGame {
     }
 
     private void inputAnswerPlayer() {
+        //view
         System.out.print("숫자를 입력해주세요 : ");
         String inputPlayer = Console.readLine();
+        //model
         exceptLengthInvalid(inputPlayer, INPUT_LENGTH_MAX);
         exceptNotInteger(inputPlayer);
         exceptInvalidRange(inputPlayer, BALL_MIN, BALL_MAX);
         exceptInputSameNumber(inputPlayer);
+        //answer player
         this.answerPlayer = inputPlayer;
 
     }
 
     public String countStrikeBallHits(String source, String answer) {
+        //model
         int ballCnt = 0;
         int strikeCnt = 0;
         String messageScore = "";
@@ -85,15 +90,20 @@ public class BaseballGame {
 
 
     public void initGame() {
+        //controller
         answerComputer = "";
+        //answer player
         answerPlayer = "";
+        //model
         initAnswer();
+        //view
         System.out.println("숫자 야구 게임을 시작합니다.");
         isPlaying = true;
         System.out.println("생성된 숫자는 " + answerComputer);
     }
 
     public void initAnswer() {
+        //model
         List<Integer> computer = new ArrayList<>();
         StringBuilder answerBuilder = new StringBuilder();
         while (computer.size() < 3) {
@@ -108,8 +118,10 @@ public class BaseballGame {
     }
 
     public boolean restartGame() {
+        //view
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String playerInput = Console.readLine();
+        //model
         exceptLengthInvalid(playerInput, INPUT_RESTART_LENGTH_MAX);
         exceptNotInteger(playerInput);
         exceptInvalidRange(playerInput, INPUT_RESTART_MIN, INPUT_RESTART_MAX);
@@ -125,6 +137,16 @@ public class BaseballGame {
         return false;
     }
 
+    //utils
+    public ArrayList<Integer> parseStringToInteger(String source) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < source.length(); i++) {
+            list.add(Character.getNumericValue(source.charAt(i)));
+        }
+        return list;
+    }
+
+    //model
     public void exceptLengthInvalid(String source, int exclusive) {
         if (source.length() != exclusive) {
             throw new IllegalArgumentException("입력값의 길이는 " + Integer.toString(exclusive) + " 과(와) 같아야 합니다.");
@@ -132,6 +154,7 @@ public class BaseballGame {
     }
 
 
+    //model
     public void exceptNotInteger(String source) {
         for (int i = 0; i < source.length(); i++) {
             if (!Character.isDigit(source.charAt(i))) {
@@ -140,6 +163,7 @@ public class BaseballGame {
         }
     }
 
+    //model
     public void exceptInvalidRange(String source, final int startInclusive, final int endInclusive) {
         int eachDigit;
         for (int i = 0; i < source.length(); i++) {
@@ -150,6 +174,7 @@ public class BaseballGame {
         }
     }
 
+    //model
     public void exceptInputSameNumber(String source) {
         for (int i = 0; i < source.length(); i++) {
             for (int j = i + 1; j < source.length(); j++) {
