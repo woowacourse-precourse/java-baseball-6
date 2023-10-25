@@ -1,16 +1,21 @@
 package baseball.controller;
 
+import baseball.model.Ball;
+
+import java.util.List;
+
 public class PlayController {
     private CountController countController;
+    private RandomGenerator randomGenerator;
     private boolean restart;
     private boolean retry;
-    public PlayController(){
+    public PlayController() throws Exception {
         restart=true;
         retry=true;
         initGame();
     }
 
-    private void initGame() {
+    private void initGame() throws Exception {
         //TODO : Output view 숫자 야구 게임을 시작합니다.
         while(restart) {
             playGame();
@@ -19,20 +24,20 @@ public class PlayController {
 
     }
 
-    private void playGame() {
-        //TODO : make computer randomInt
+    private void playGame() throws Exception {
+        randomGenerator = new RandomGenerator();
+        List<Ball> computer = randomGenerator.getComputer();
         while(retry) {
             //TODO : Input view 숫자를 입력해주세요 : 123
             countController = new CountController();
-            countController.count_ball(computer, user);
+            //countController.count_ball(computer, user);
             //TODO : Output view 1볼 1스트라이크
             this.retry = !check_finish(countController.getStrike());
         }
         //TODO : Output view 3개의 숫자를 모두 맞히셨습니다! 게임 종료
     }
 
-
-    private boolean check_finish(int strike) {
+    public boolean check_finish(int strike) {
         return strike==3;
     }
 }
