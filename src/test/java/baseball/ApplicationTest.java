@@ -95,6 +95,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("재시작 종료 확인 테스트")
+    void 재시작_종료_확인_테스트() {
+        String one = "1";
+        String two = "2";
+        String notRightLength = "12";
+        String notDigitNumber = "a12b";
+        String notOneOrTwoNumber = "3";
+
+        assertThat(Application.inputStartOrEnd(one)).isEqualTo(1);
+        assertThat(Application.inputStartOrEnd(two)).isEqualTo(2);
+        assertThatThrownBy(() -> Application.inputStartOrEnd(notRightLength))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.inputStartOrEnd(notDigitNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.inputStartOrEnd(notOneOrTwoNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("입력 1인지 2인지 테스트")
     void 입력_1인지_2인지_테스트() {
         String one = "1";
