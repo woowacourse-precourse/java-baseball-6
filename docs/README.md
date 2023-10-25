@@ -24,7 +24,7 @@
         - If the result is 1, call setNewGame method on the game.
         - If the result is 2, return.
 #### showRoundResult()
-    private void showRoundResult(int[] result)
+    private void showRoundResult(List<Integer> result)
 - Print out the result of a round as the mission specified.
 #### promptForRound()
     private String promptForRound() throws IllegalArgumentException
@@ -64,21 +64,21 @@
 - Initialize target randomly using pickNumberInRange() of camp.nextstep.edu.missionutils.Randoms.
 - Must adhere to the Rules in definition of the target
 #### playRound()
-    public int[] playRound(String input) throws IllegalArgumentException
+    public List<Integer> playRound(String input) throws IllegalArgumentException
 - The input parameter is String type to encapsulate the target and its related logic.
 - Return array is two elemented array. The first is the number of strikes and the second is the number of balls.
 #### parseUserInput()
-    private int[] parseUserInput(String input) throws IllegalArgumentException
+    private List<Integer> parseUserInput(String input) throws IllegalArgumentException
 - If the input doesn't adhere to the definition of the target in the Rules, throw IllegalArgumentException.
 - Parse user input to array of int according to the definition of the target in the Rules.
 - Return is array of int with size of NUMBER_SIZE.
 #### compareUserInput()
-    private int[] compareUserInput(int[] userInput)
+    private List<Integer> compareUserInput(List<Integer> userInput)
 - Compare the target and the input according to Rules.
 - Return is array of int with size of two.
   - The first int is the number of strikes and the second is of balls.
 #### isWin()
-    public boolean isWin(int[] result)
+    public boolean isWin(List<Integer> result)
 - Determine whether the result is considered as win in the Rules.
 #### getNumberSize()
     public int getNumberSize()
