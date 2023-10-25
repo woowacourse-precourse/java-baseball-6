@@ -7,29 +7,21 @@ import java.util.Arrays;
 
 public class Computer {
 
-    private final int digits;
+    private final int digitNumber;
     private String targetNumber;
 
     public Computer(int digitNumber) {
-        this.digits = digitNumber;
+        this.digitNumber = digitNumber;
         this.targetNumber = String.valueOf(randomize());
     }
 
-    /**
-     * 다음을 만족하는 임의의 수를 생성한다.
-     *
-     * <p>1. 임의의 수는 서로 다른 수이다.<br>
-     * 2. 임의의 수의 각 자리수는 0이 아닌 자연수이다.
-     *
-     * @return 생성된 임의의 수
-     */
     public int randomize() {
-        if (digits < 1 || digits > 8) {
+        if (digitNumber < 1 || digitNumber > 8) {
             throw new IllegalArgumentException();
         }
         ArrayList<Integer> selectedNumbers = new ArrayList<>();
 
-        while (selectedNumbers.size() < digits) {
+        while (selectedNumbers.size() < digitNumber) {
             int n = Randoms.pickNumberInRange(1, 9);
 
             if (!selectedNumbers.contains(n)) {
@@ -39,17 +31,12 @@ public class Computer {
         return selectedNumbers.stream().mapToInt(Integer::intValue).reduce(0, (a, b) -> a * 10 + b);
     }
 
-    /**
-     * 입력값을 평가한다.
-     *
-     * @param input 입력값
-     */
-    public String evaluate(String input, String targetNumber) {
-        if (isNaN(input) || isNotUnique(input) || isNotNaturalNumber(input) || input.length() != digits) {
+    public String evaluate(String sourceNumber, String targetNumber) {
+        if (isNotValid(sourceNumber)) {
             throw new IllegalArgumentException();
         }
-        int[] candidates = candidateNumbers(input, targetNumber);
-        int numberOfStrikes = numberOfStrikes(targetNumber, input, candidates);
+        int[] candidates = candidateNumbers(sourceNumber, targetNumber);
+        int numberOfStrikes = numberOfStrikes(sourceNumber, targetNumber, candidates);
         int numberOfBalls = candidates.length - numberOfStrikes;
         return Prompt.printResult(numberOfBalls, numberOfStrikes);
     }
@@ -76,65 +63,47 @@ public class Computer {
         this.targetNumber = String.valueOf(randomize());
     }
 
-    private int[] candidateNumbers(String input, String targetNumber) {
-        return input.chars().filter(c -> containsDigit(targetNumber, c)).toArray();
+    private int[] candidateNumbers(String sourceNumber, String targetNumber) {
+        return sourceNumber.chars().filter(digit -> containsDigit(targetNumber, digit)).toArray();
     }
 
-    private int numberOfStrikes(String targetNumber, String input, int[] numbers) {
-        return (int) Arrays.stream(numbers).filter(c -> isOnSamePosition(targetNumber, input, c)).count();
+    private int numberOfStrikes(String sourceNumber, String targetNumber, int[] numbers) {
+        return (int) Arrays.stream(numbers)
+                .filter(digit -> isOnSamePosition(sourceNumber, targetNumber, digit))
+                .count();
     }
 
-    private boolean isOnSamePosition(String targetNumber, String input, int ch) {
-        return targetNumber.indexOf(ch) == input.indexOf(ch);
+    private boolean isOnSamePosition(String sourceNumber, String targetNumber, int digit) {
+        return sourceNumber.indexOf(digit) == targetNumber.indexOf(digit);
     }
 
-    /**
-     * 입력값에 특정 숫자가 포함되어 있는지 확인한다.
-     *
-     * @param input 입력값
-     * @param ch    특정 숫자
-     * @return 입력값에 특정 숫자가 포함되어 있으면 참, 없으면 거짓
-     */
-    private boolean containsDigit(String input, int ch) {
-        return input.indexOf(ch) != -1;
+    private boolean containsDigit(String sourceNumber, int digit) {
+        return sourceNumber.indexOf(digit) != -1;
     }
 
-    /**
-     * 입력값이 숫자가 아닌지 확인한다.
-     *
-     * @param input 입력값
-     * @return 입력값이 숫자가 아니면 참, 숫자이면 거짓
-     */
-    private boolean isNaN(String input) {
-        if (input == null) {
+    private boolean isNotValid(String sourceNumber) {
+        return isNaN(sourceNumber) || isNotUnique(sourceNumber) || isNotNaturalNumber(sourceNumber)
+                || sourceNumber.length() != digitNumber;
+    }
+
+    private boolean isNaN(String sourceNumber) {
+        if (sourceNumber == null) {
             return true;
         }
-        return !input.chars().allMatch(Character::isDigit);
+        return !sourceNumber.chars().allMatch(Character::isDigit);
     }
 
-    /**
-     * 입력값에 중복되는 숫자가 있는지 확인한다.
-     *
-     * @param input 입력값
-     * @return 입력값에 중복되는 숫자가 있으면 참, 없으면 거짓
-     */
-    private boolean isNotUnique(String input) {
-        if (input == null) {
+    private boolean isNotUnique(String sourceNumber) {
+        if (sourceNumber == null) {
             throw new IllegalArgumentException();
         }
-        return input.chars().distinct().count() != input.length();
+        return sourceNumber.chars().distinct().count() != sourceNumber.length();
     }
 
-    /**
-     * 입력값에 0이 있는지 확인한다.
-     *
-     * @param input 입력값
-     * @return 입력값에 0이 있으면 참, 없으면 거짓
-     */
-    private boolean isNotNaturalNumber(String input) {
-        if (input == null) {
+    private boolean isNotNaturalNumber(String sourceNumber) {
+        if (sourceNumber == null) {
             throw new IllegalArgumentException();
         }
-        return input.chars().anyMatch(c -> c == '0');
+        return sourceNumber.chars().anyMatch(c -> c == '0');
     }
 }

@@ -18,6 +18,7 @@ public class Application {
             System.out.println(result);
 
             if (result.equals(Prompt.winningCond(DIGIT_NUMBER))) {
+                // 승리 조건을 만족한 경우
                 Prompt.GAME_OVER.println();
                 Prompt.CONTINUE_OR.println();
                 String option = Console.readLine();
