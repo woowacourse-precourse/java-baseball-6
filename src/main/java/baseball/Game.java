@@ -27,6 +27,7 @@ public class Game {
       }
 
       int strikeCount = countStrikes(guessNumbers);
+      int ballCount = countBalls(guessNumbers);
     }
   }
 
@@ -64,4 +65,16 @@ public class Game {
     }
     return strikeCount;
   }
+
+  private int countBalls(List<Integer> guessNumbers){
+    int ballCount = 0;
+    for (int i = 0; i < guessNumbers.size(); i++){
+      int guess = guessNumbers.get(i);
+      if (computerNumbers.contains(guess) && !computerNumbers.get(i).equals(guess)) {
+        ballCount++;
+      }
+    }
+    return ballCount;
+  }
+
 }
