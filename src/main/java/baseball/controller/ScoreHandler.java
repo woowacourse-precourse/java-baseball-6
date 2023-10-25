@@ -20,7 +20,6 @@ public class ScoreHandler {
         }
     }
 
-
     public boolean isThreeStrikes() {
         if (strike == 3) return true;
         else return false;
