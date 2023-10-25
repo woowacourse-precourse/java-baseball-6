@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import static java.util.stream.Collectors.toMap;
 

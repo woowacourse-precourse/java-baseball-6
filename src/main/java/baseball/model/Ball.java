@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 public record Ball(Number number, Position position) {
 

@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.PlayResult;
+import baseball.model.PlayResult;
 import java.util.StringJoiner;
 
 public class OutputView {

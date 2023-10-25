@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 public record Number(int number) {
 
