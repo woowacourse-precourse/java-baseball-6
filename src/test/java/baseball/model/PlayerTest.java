@@ -34,9 +34,15 @@ class PlayerTest {
         //given (주어진 값)
         Player player = new Player();
         String number = "12a";
+        String str = "a , 2, b, c";
+        String none = "";
+        String check = "1,2,";
 
         //then (기능 작동 후 결과)
         assertThrows(IllegalArgumentException.class, () -> player.inputPlayerNumber(number));
+        assertThrows(IllegalArgumentException.class, () -> player.inputPlayerNumber(str));
+        assertThrows(IllegalArgumentException.class, () -> player.inputPlayerNumber(none));
+        assertThrows(IllegalArgumentException.class, () -> player.inputPlayerNumber(check));
     }
 
     @Test
@@ -45,9 +51,15 @@ class PlayerTest {
         //given (주어진 값)
         Player player = new Player();
         String number = "1234";
+        String one = "1";
+        String two = "12";
+        String many = "123456789";
 
         //then (기능 작동 후 결과)
         assertThrows(IllegalArgumentException.class, () -> player.inputPlayerNumber(number));
+        assertThrows(IllegalArgumentException.class, () -> player.inputPlayerNumber(one));
+        assertThrows(IllegalArgumentException.class, () -> player.inputPlayerNumber(two));
+        assertThrows(IllegalArgumentException.class, () -> player.inputPlayerNumber(many));
     }
 
     @Test
@@ -56,9 +68,11 @@ class PlayerTest {
         //given (주어진 값)
         Player player = new Player();
         String number = "122";
+        String three = "111";
 
         //then (기능 작동 후 결과)
         assertThrows(IllegalArgumentException.class, () -> player.inputPlayerNumber(number));
+        assertThrows(IllegalArgumentException.class, () -> player.inputPlayerNumber(three));
     }
 
     @Test
@@ -66,14 +80,19 @@ class PlayerTest {
     public void test() throws Exception{
         //given (주어진 값)
         Player player = new Player();
-        String number = "1";
+        String one = "1";
+        String two = "2";
 
         //when (기능 작동)
-        player.answerRestartOrEnd(number);
-        int answer = player.getAnswerNumber();
+        player.answerRestartOrEnd(one);
+        int again = player.getAnswerNumber();
+
+        player.answerRestartOrEnd(two);
+        int end = player.getAnswerNumber();
 
         //then (기능 작동 후 결과)
-        Assertions.assertThat(answer).isEqualTo(1);
+        Assertions.assertThat(again).isEqualTo(1);
+        Assertions.assertThat(end).isEqualTo(2);
     }
 
     @Test
@@ -81,9 +100,13 @@ class PlayerTest {
     public void isNotAnswerNumber() throws Exception{
         //given (주어진 값)
         Player player = new Player();
-        String number = "a";
+        String str = "a";
+        String none = "";
+        String number = ";'";
 
         //then (기능 작동 후 결과)
+        assertThrows(IllegalArgumentException.class, () -> player.answerRestartOrEnd(str));
+        assertThrows(IllegalArgumentException.class, () -> player.answerRestartOrEnd(none));
         assertThrows(IllegalArgumentException.class, () -> player.answerRestartOrEnd(number));
     }
 
@@ -92,10 +115,14 @@ class PlayerTest {
     public void isNotAnswerNumberSize() throws Exception{
         //given (주어진 값)
         Player player = new Player();
-        String number = "12";
+        String two = "12";
+        String three = "456";
+        String many = "123456789123";
 
         //then (기능 작동 후 결과)
-        assertThrows(IllegalArgumentException.class, () -> player.answerRestartOrEnd(number));
+        assertThrows(IllegalArgumentException.class, () -> player.answerRestartOrEnd(two));
+        assertThrows(IllegalArgumentException.class, () -> player.answerRestartOrEnd(three));
+        assertThrows(IllegalArgumentException.class, () -> player.answerRestartOrEnd(many));
     }
 
     @Test
