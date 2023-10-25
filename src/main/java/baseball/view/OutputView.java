@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class OutputView {
     private final static String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String BALL_MESSAGE = "%d볼";
     private static final String STRIKE_MESSAGE = "%d스트라이크";
     private static final String NOTHING_MESSAGE = "낫싱";
@@ -14,6 +15,10 @@ public class OutputView {
 
     public static void printStartGame() {
         System.out.println(GAME_START_MESSAGE);
+    }
+
+    public static void printInputMessage() {
+        System.out.print(INPUT_NUMBER_MESSAGE);
     }
 
     public static void printSuccessMessage() {
