@@ -14,10 +14,7 @@ public class BaseballGame {
     private void toFalse() {
         on = false;
     }
-
-    private void toTrue() {
-        on = true;
-    }
+    
 
     private void resetStrike() {
         this.strike = 0;
