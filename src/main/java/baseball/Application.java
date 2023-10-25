@@ -22,7 +22,7 @@ public class Application {
 
         Judge judge = new Judge();
 
-        String result = judge.compare(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3));
+        String result = judge.compare(Arrays.asList(4,5,6), Arrays.asList(1, 2, 3));
         System.out.println(result);
     }
 }
