@@ -6,20 +6,20 @@ import java.util.Objects;
 public class Referee {
 
     boolean threeStrike = false;
-    private Player playerOne;
-    private Player playerTwo;
+    private UserPlayer userPlayerOne;
+    private UserPlayer userPlayerTwo;
 
     public Referee() {
     }
 
-    public Referee(Player playerOne, Player playerTwo) {
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
+    public Referee(UserPlayer userPlayerOne, UserPlayer userPlayerTwo) {
+        this.userPlayerOne = userPlayerOne;
+        this.userPlayerTwo = userPlayerTwo;
     }
 
     public String result() {
-        GameResult gameResult = calculateStrikeAndBall(playerOne.getNumbersList(),
-                playerTwo.getNumbersList());
+        GameResult gameResult = calculateStrikeAndBall(userPlayerOne.getNumbersList(),
+                userPlayerTwo.getNumbersList());
 
         if (gameResult.isThreeStrike()) {
             threeStrike = true;

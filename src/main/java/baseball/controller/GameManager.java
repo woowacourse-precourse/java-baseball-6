@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.entity.Player;
+import baseball.entity.UserPlayer;
 import baseball.entity.Referee;
 import baseball.view.Viewer;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -24,19 +24,19 @@ public class GameManager {
 
     }
 
-    private void game(Player computerPlayer) {
+    private void game(UserPlayer computerUserPlayer) {
 
         Referee referee = new Referee();
-        Player player;
+        UserPlayer userPlayer;
         while (!referee.isThreeStrike()) {
-            player = new Player(viewer.pleaseInputNumberView());
-            referee = new Referee(player, computerPlayer);
+            userPlayer = new UserPlayer(viewer.pleaseInputNumberView());
+            referee = new Referee(userPlayer, computerUserPlayer);
             viewer.resultView(referee.result());
         }
         viewer.threeStrikeView();
     }
 
-    private Player getComputerPlayer() {
+    private UserPlayer getComputerPlayer() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -48,6 +48,6 @@ public class GameManager {
 
         System.out.println(computer);
 
-        return new Player(computer.stream().map(String::valueOf).collect(Collectors.joining("")));
+        return new UserPlayer(computer.stream().map(String::valueOf).collect(Collectors.joining("")));
     }
 }

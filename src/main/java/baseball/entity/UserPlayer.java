@@ -3,16 +3,16 @@ package baseball.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class UserPlayer {
 
     private final int number;
 
-    public Player(int number) {
+    public UserPlayer(int number) {
         valid(number);
         this.number = number;
     }
 
-    public Player(String number) {
+    public UserPlayer(String number) {
         try {
             int intNumber = Integer.parseInt(number);
             valid(intNumber);

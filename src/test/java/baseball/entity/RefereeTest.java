@@ -6,10 +6,10 @@ class RefereeTest {
 
     @Test
     void test() {
-        Player player = new Player(123);
-        Player computerPlayer = new Player(713);
+        UserPlayer userPlayer = new UserPlayer(123);
+        UserPlayer computerUserPlayer = new UserPlayer(713);
 
-        Referee referee = new Referee(player, computerPlayer);
+        Referee referee = new Referee(userPlayer, computerUserPlayer);
         System.out.println(referee.result());
 
     }
