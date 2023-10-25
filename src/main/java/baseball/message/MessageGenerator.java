@@ -1,6 +1,6 @@
 package baseball.message;
 
-import baseball.counter.CountResult;
+import baseball.counter.StrikeBallCount;
 
 import static baseball.message.Messages.BALL;
 import static baseball.message.Messages.RESULT_3_STRIKE;
@@ -8,7 +8,7 @@ import static baseball.message.Messages.RESULT_NOTHING;
 import static baseball.message.Messages.STRIKE;
 
 public class MessageGenerator {
-    public static String generateGameResultMessage(CountResult countStrikeAndBall) {
+    public static String generateGameResultMessage(StrikeBallCount countStrikeAndBall) {
         int strike = countStrikeAndBall.strike();
         int ball = countStrikeAndBall.ball();
 

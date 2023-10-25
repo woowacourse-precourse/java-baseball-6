@@ -3,7 +3,7 @@ package baseball.counter;
 import java.util.List;
 
 public class Counter {
-    public static CountResult countStrikeAndBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    public static StrikeBallCount countStrikeAndBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int strike = 0;
         int ball = 0;
 
@@ -21,6 +21,6 @@ public class Counter {
             }
         }
 
-        return new CountResult(strike, ball);
+        return new StrikeBallCount(strike, ball);
     }
 }

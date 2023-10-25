@@ -1,6 +1,6 @@
 package baseball.arcade;
 
-import baseball.counter.CountResult;
+import baseball.counter.StrikeBallCount;
 import baseball.message.MessageGenerator;
 import baseball.model.Computer;
 import baseball.rules.InputValidator;
@@ -36,7 +36,7 @@ public class NumberBaseballGame {
         String playerNumbersInput = getPlayerNumbersInput();
         Player player = Player.generatePlayerAsInput(playerNumbersInput);
 
-        CountResult gameResult = computer.getGameResult(player);
+        StrikeBallCount gameResult = computer.getGameResult(player);
 
         if (gameResult.strike() == 3) {
             isGameEnd = true;
@@ -77,7 +77,7 @@ public class NumberBaseballGame {
         return Integer.parseInt(input);
     }
 
-    private void printGameResultMessage(CountResult gameResult) {
+    private void printGameResultMessage(StrikeBallCount gameResult) {
         System.out.println(MessageGenerator.generateGameResultMessage(gameResult));
     }
 }

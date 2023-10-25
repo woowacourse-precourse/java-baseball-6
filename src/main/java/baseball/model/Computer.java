@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.counter.CountResult;
+import baseball.counter.StrikeBallCount;
 import baseball.counter.Counter;
 
 public class Computer {
@@ -14,7 +14,7 @@ public class Computer {
         return new Computer(Numbers.createRandomNumbers());
     }
 
-    public CountResult getGameResult(Player player) {
+    public StrikeBallCount getGameResult(Player player) {
         return Counter.countStrikeAndBall(this.numbers.getNumbers(), player.getNumbers());
     }
 }
