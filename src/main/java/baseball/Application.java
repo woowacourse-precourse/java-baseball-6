@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.controller.Judge;
-import baseball.model.RandomNum;
+import baseball.model.RandomNumGenrator;
 import baseball.model.StartGame;
 import baseball.view.RestartGame;
 
@@ -11,7 +11,7 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        RandomNum randomNumGenerator = new RandomNum();
+        RandomNumGenrator randomNumGenratorGenerator = new RandomNumGenrator();
         StartGame startGame = new StartGame();
         Judge judge = new Judge();
         RestartGame restartGame = new RestartGame();
@@ -19,7 +19,7 @@ public class Application {
         boolean again = true;
 
         while (again) {
-            List<Integer> computer = randomNumGenerator.RandomNumber();
+            List<Integer> computer = randomNumGenratorGenerator.RandomNumber();
             String result = "";
             while (!result.equals("3스트라이크")) {
                 result = judge.judge(computer, startGame.playerNum());

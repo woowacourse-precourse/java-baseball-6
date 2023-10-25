@@ -5,7 +5,7 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomNum {
+public class RandomNumGenrator {
     public List<Integer> RandomNumber() {
 
         List<Integer> comNum = new ArrayList<>();
