@@ -12,6 +12,7 @@ import java.util.Objects;
 public class BaseballGame {
     private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
     private static final String RESTART = "1";
+    private static
 
     InputView inputView = new InputView();
     GenerateRandomNumbers generateRandomNumbers = new GenerateRandomNumbers();
@@ -21,13 +22,17 @@ public class BaseballGame {
     public void startGame() {
         OutputView.printStartGame();
         do {
-            List<Integer> getRandomNumbers = generateRandomNumbers.getRandomNumbers();
-            gameNumber.setComputerNumbers(getRandomNumbers);
+            initComputerNumbers();
             oneGame();
         } while (restart());
     }
 
-    public void oneGame() {
+    private void initComputerNumbers() {
+        List<Integer> getRandomNumbers = generateRandomNumbers.getRandomNumbers();
+        gameNumber.setComputerNumbers(getRandomNumbers);
+    }
+
+    private void oneGame() {
         GameResult result;
         do {
             String inputNumber = inputView.readGameNumber();
@@ -40,9 +45,10 @@ public class BaseballGame {
         OutputView.printEndGame();
     }
 
-    public GameResult compareNumbers(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+    private GameResult compareNumbers(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         int ballCount = countBall(playerNumbers, computerNumbers);
         int strikeCount = countStrike(playerNumbers, computerNumbers);
+
         return new GameResult(ballCount, strikeCount);
     }
 
