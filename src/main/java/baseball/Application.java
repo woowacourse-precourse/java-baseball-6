@@ -9,10 +9,44 @@ import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
+        // TODO: 프로그램 구현
+
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        boolean replay = true;
+        while(replay) {
+            replay = newGame();
+        }
     }
 
+    private static boolean newGame() {
+        List<Integer> numberComputer = randomNumberComputer();
+
+        while(true) {
+            List<Integer> numberUser = inputNumberUser();
+            System.out.println(numberComputer);
+            System.out.println(numberUser);
+            if(numberResult(numberComputer,numberUser)) {
+                return endGameInput();
+            }
+        }
+    }
+
+    private static boolean endGameInput() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+
+        Pattern pattern = Pattern.compile("[1-2]");
+        Matcher matcher = pattern.matcher(userInput);
+
+        if(!matcher.matches()) {
+            throw new IllegalArgumentException("[1-2] 사이의 한자리 값이 아닙니다.");
+        } else if(userInput.equals("1")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     private static List randomNumberComputer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
