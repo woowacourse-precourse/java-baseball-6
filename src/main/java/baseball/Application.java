@@ -2,20 +2,20 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     static List<Integer> computerNumbers;
-    static List<Integer> playerNumbers ;
+    static List<Integer> playerNumbers;
 
     public static void main(String[] args) {
         Application application = new Application();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        computerStart : while(true) {
+        computerStart:
+        while (true) {
             computerNumbers = new ArrayList<>();
             boolean isGameTermination = false;
 
@@ -41,7 +41,7 @@ public class Application {
                         break computerStart;
                     }
                 }
-            } while(!isGameTermination);
+            } while (!isGameTermination);
         }
     }
 
@@ -147,7 +147,7 @@ public class Application {
 
         for (int i = 0; i < 3; i++) {
             if (!isNumberInRange(input.charAt(i) - '0', 1, 9)) {
-               throw new IllegalArgumentException("Invalid input: Input must be numbers between 1 and 9 only.");
+                throw new IllegalArgumentException("Invalid input: Input must be numbers between 1 and 9 only.");
             }
         }
     }
@@ -165,7 +165,7 @@ public class Application {
             return true;
         }
 
-         return false;
+        return false;
     }
 
     public boolean isNumberInRange(int number, int start, int end) {
