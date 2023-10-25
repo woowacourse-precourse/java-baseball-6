@@ -8,7 +8,8 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         String start = "1";
-        while(start == "1") {
+
+        while(start.equals("1")){
             Computer computer = new Computer();
 
             Game game = new Game();
@@ -17,9 +18,8 @@ public class Application {
 
             game.play(user);
             start = game.askRestart();
+            System.out.println(start);
                 }
             }
         }
 
-        //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-        
