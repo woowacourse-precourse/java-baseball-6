@@ -4,9 +4,9 @@ public class Input {
     User user = new User();
     Text text = new Text();
 
-    public void userNum() {
+    public String userNum() {
         text.inputNum();
-        user.getNum();
+        return user.getNum();
     }
 
     public boolean restartOrEndOption() {

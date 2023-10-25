@@ -19,8 +19,8 @@ public class App {
     public void game() {
         do {
             game.clear();
-            input.userNum();
-            game.listCompare(computer.numbers, user.number);
+            String userNum = input.userNum();
+            game.listCompare(computer.numbers, userNum);
             output.scorePrint(game.ball, game.strike);
         } while (game.strike == 3);
     }

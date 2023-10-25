@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    public String number;
     private int optionNum = 0;
 
-    public void getNum() {
+    public String getNum() {
+        String number = null;
         try {
             InputStreamReader ir = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(ir);
@@ -17,6 +17,7 @@ public class User {
             getNumberError(number);
         } catch (Exception e) {
         }
+        return number;
     }
 
     public void getNumberError(String getNumber) {
