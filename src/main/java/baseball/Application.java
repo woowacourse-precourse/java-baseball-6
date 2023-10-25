@@ -41,13 +41,13 @@ public class Application {
                 //결과 출력
                 printResult(result);
 
-                if(result[1] == 3) game = false;
+                if(result[1] == 3) game = false;//현재 게임만 종료
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restart = Console.readLine();
-            if(restart.equals("2")) start = false; //전체 종료
-            else game = false; //현재 게임만 종료
+            if(restart.equals("2"))
+                start = false; //전체 종료
 
         }
 
@@ -68,7 +68,6 @@ public class Application {
     }
 
     private static List<Integer> checkUserNum(String num) throws IllegalArgumentException{
-        //num 3자리가 아닐 때
         if(num.length() != 3)
             throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
 
@@ -113,7 +112,6 @@ public class Application {
         }else if(ball == 0 && strike == 0){
             System.out.println("낫싱");
         }
-
     }
 
 
