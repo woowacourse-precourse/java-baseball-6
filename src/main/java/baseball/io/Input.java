@@ -10,6 +10,7 @@ public class Input {
         }
         return inputNumbers;
     }
+
     public int getKeepPlaying() {
         int inputNumber = Integer.parseInt(Console.readLine());
         if (inputNumber != 1 && inputNumber != 2) {
