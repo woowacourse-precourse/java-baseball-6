@@ -10,6 +10,7 @@ public class Application {
     static List<Integer> playerNumbers;
 
     public static void main(String[] args) {
+
         Application application = new Application();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -128,13 +129,18 @@ public class Application {
     }
 
     public void checkPlayerNumberValidity(String input) {
-        if (isStringEmpty(input) || input.length() != 3 || !hasUniqueElementsOnly(input)) {
-            throw new IllegalArgumentException("Invalid input: Input must be numbers between 1 and 9 only.");
+        if (isStringEmpty(input) || input.length() != 3) {
+            throw new IllegalArgumentException("Invalid input: The length of the input must be 3");
+        }
+
+        if (!hasUniqueElementsOnly(input)) {
+            throw new IllegalArgumentException(
+                    "Invalid input: Each number making up the input value must not be duplicated");
         }
 
         for (int i = 0; i < 3; i++) {
             if (!isNumberInRange(input.charAt(i) - '0', 1, 9)) {
-                throw new IllegalArgumentException("Invalid input: Input must be numbers between 1 and 9 only.");
+                throw new IllegalArgumentException("Invalid input: Input must be numbers between 1 and 9 only");
             }
         }
     }
