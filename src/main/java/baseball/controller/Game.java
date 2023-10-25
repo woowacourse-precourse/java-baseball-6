@@ -28,7 +28,7 @@ public class Game {
             System.out.print("숫자를 입력해주세요 : ");
             userNum = Console.readLine();
             calculator.numberAnalysis(computerNum, userNum);
-            if (gameWin() == false) {
+            if (gameWin() == true) {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String inputRestart = Console.readLine();
                 return restartGame(inputRestart);
@@ -39,12 +39,12 @@ public class Game {
     public boolean restartGame(String inputRestart) {
         if (inputRestart.equals("1")) {
             setGame();
-            return true;
-        }
-        if (inputRestart.equals("2")) {
             return false;
         }
-        return false;
+        if (inputRestart.equals("2")) {
+            return true;
+        }
+        return true;
     }
 
     public boolean gameWin() {
