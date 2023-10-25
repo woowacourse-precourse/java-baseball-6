@@ -7,6 +7,29 @@ import java.util.Objects;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+class BaseballGame{
+    private List<Integer> computer;
+
+    public BaseballGame(){
+        computer = generateRandomNumbers();
+    }
+
+    private List<Integer> generateRandomNumbers(){
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
+            int randomNumber = pickNumberInRange(1, 9);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
+        return numbers;
+    }
+
+    public List<Integer> getComputerNumbers(){
+        return computer;
+    }
+}
+
 public class Application {
 
     private static void isSutable(String s) throws IllegalArgumentException{
@@ -35,14 +58,9 @@ public class Application {
         // 문제 출제
         System.out.println("숫자 야구 게임을 시작합니다");
 
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        System.out.println(computer);
+        BaseballGame game = new BaseballGame();
+        List<Integer> computer=game.getComputerNumbers();
+
         // 문제 풀기-반복처리
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
