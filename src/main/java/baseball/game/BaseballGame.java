@@ -14,10 +14,10 @@ import java.util.stream.Collectors;
 
 public class BaseballGame {
 
-    private OutputView outputView;
-    private InputView inputView;
-    private Rule rule;
-    private Computer computer;
+    private final OutputView outputView;
+    private final InputView inputView;
+    private final Rule rule;
+    private final Computer computer;
 
     public BaseballGame(InputView inputView, OutputView outputView, Rule rule, Computer computer) {
         this.inputView = inputView;
@@ -33,18 +33,15 @@ public class BaseballGame {
     public void process() {
         boolean running = true;
         while (running) {
-            outputView.showInputNumberMessage();
             Result result = rule.check(inputUserNumber(), computer);
             outputView.showResult(result);
             if (result.isGameClear()) {
                 running = checkRestart();
             }
         }
-        outputView.showEndMessage();
     }
 
     private boolean checkRestart() {
-        outputView.showOptionMenu();
         Command command = inputUserCommand();
         if (command.isRestartCommand()) {
             computer.changeNumbers();
@@ -54,10 +51,12 @@ public class BaseballGame {
     }
 
     private Command inputUserCommand() {
+        outputView.showOptionMenu();
         return new Command(validateNumber(inputView.inputNumber()));
     }
 
     private GameNumber inputUserNumber() {
+        outputView.showInputNumberMessage();
         return toGameNumber(inputView.inputNumber());
     }
 

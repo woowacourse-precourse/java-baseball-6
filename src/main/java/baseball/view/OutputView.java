@@ -27,10 +27,6 @@ public class OutputView {
         System.out.println();
     }
 
-    public void showEndMessage() {
-        System.out.println(Messages.GAME_END_MESSAGE);
-    }
-
     private void showBall(Result result) {
         if (result.ball() > 0) {
             System.out.print(result.ball() + Messages.BALL);
