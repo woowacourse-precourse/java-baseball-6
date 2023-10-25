@@ -7,7 +7,7 @@ import java.util.Map;
 public class GameController {
 
     private NumberController numberController = new NumberController();
-    private ExceptionController exceptionController = new ExceptionController();
+    private InputValidatorController inputValidatorController = new InputValidatorController();
 
     public void gameStart() {
         List<Integer> computerNumberList = numberController.generateComputerNumberList();
@@ -22,7 +22,7 @@ public class GameController {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             Integer inputNum = Integer.parseInt(input);
-            exceptionController.validateThreeDigitNumber(inputNum);
+            inputValidatorController.validateThreeDigitNumber(inputNum);
             List<Integer> inputNumList = numberController.splitter(inputNum);
 
             Map<String, Integer> report = numberController.compareNumberList(computerNumberList,
@@ -48,7 +48,7 @@ public class GameController {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int gameProgressNumber = Integer.parseInt(Console.readLine());
-        exceptionController.validateGameProgressNumber(gameProgressNumber);
+        inputValidatorController.validateGameProgressNumber(gameProgressNumber);
 
         if (gameProgressNumber == 1) {
             return true;

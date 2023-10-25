@@ -32,10 +32,10 @@ public class FunctionTest {
 
     @Test
     void 입력숫자_유효성검사기능_테스트() {
-        ExceptionController exceptionController = new ExceptionController();
+        InputValidatorController inputValidatorController = new InputValidatorController();
 
-        exceptionController.validateThreeDigitNumber(99);
-        exceptionController.validateGameProgressNumber(5);
+        inputValidatorController.validateThreeDigitNumber(99);
+        inputValidatorController.validateGameProgressNumber(5);
     }
 
 }

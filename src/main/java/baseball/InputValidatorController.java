@@ -1,6 +1,6 @@
 package baseball;
 
-public class ExceptionController {
+public class InputValidatorController {
 
     public void validateThreeDigitNumber(int num) {
         if (num < 100 || 999 < num) {
