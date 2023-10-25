@@ -58,7 +58,7 @@ public class BaseballController {
         return false;
     }
 
-    public List<Integer> getPlayerNumberInput() {
+    private List<Integer> getPlayerNumberInput() {
         baseballView.displayMessage(MessageType.ASK_FOR_NUMBER);
         String input = baseballView.readInput();
         validateNumberInput(input);
@@ -66,7 +66,7 @@ public class BaseballController {
         return getDigits(Integer.parseInt(input));
     }
 
-    public String getEndGameInput() {
+    private String getEndGameInput() {
         baseballView.displayMessage(MessageType.ASK_FOR_RESTART);
         String endInput = baseballView.readInput();
         validateEndInput(endInput);

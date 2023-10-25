@@ -21,7 +21,7 @@ public class Validator {
         }
     }
 
-    public static void validateIsNumber(String input) {
+    private static void validateIsNumber(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -29,19 +29,19 @@ public class Validator {
         }
     }
 
-    public static void validateLength(String input) {
+    private static void validateLength(String input) {
         if (input.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException("잘못된 길이의 값을 입력했습니다. 3자리 정수를 입력해주세요.");
         }
     }
 
-    public static void validateRange(String input) {
+    private static void validateRange(String input) {
         if (input.contains("0")) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다. 0을 포함하지 않는 3자리 정수를 입력해주세요.");
         }
     }
 
-    public static void validateNoDuplication(String input) {
+    private static void validateNoDuplication(String input) {
         Set<Character> inputs = new HashSet<>();
 
         for (char a : input.toCharArray()) {
