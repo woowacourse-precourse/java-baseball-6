@@ -58,7 +58,7 @@ public class TargetBaseballNumbers {
         }
     }
 
-    private GameResult createGameResult(List<BaseballNumber> playerBaseballNumbers) {
+    private GameResult createGameResult(final List<BaseballNumber> playerBaseballNumbers) {
         int correctCount = 0;
         int similarCount = 0;
 
