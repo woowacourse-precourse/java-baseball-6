@@ -4,7 +4,9 @@ import baseball.GameRole;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InProcess {
     private int number;
@@ -14,13 +16,12 @@ public class InProcess {
     private int strike;
     private boolean isCorrect;
 
-    public InProcess(GameRole gameRole, List<Integer> computer) {
+    public InProcess(GameRole gameRole, List<Integer> computer) throws Exception{
         initVariables(computer);
 
         printInputNumberPhrase();
         inputNumber();
         checkInputNumber(gameRole);
-
 
         judgeInputNumber(gameRole, computer);
     }
@@ -43,10 +44,9 @@ public class InProcess {
     }
 
     private void inputNumber() {
-        Scanner sc = new Scanner(System.in);
 
         try {
-            number = sc.nextInt();
+            number = Integer.parseInt(readLine());
         }
         catch (Exception e) {
             throw new IllegalArgumentException();
