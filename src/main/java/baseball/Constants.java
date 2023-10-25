@@ -2,6 +2,7 @@ package baseball;
 
 public class Constants {
     public static final String startState = "숫자 야구 게임을 시작합니다.";
+    public static final String inputState = "숫자를 입력해주세요 : ";
     public static final String strikeState = "스트라이크";
     public static final String ballState = "볼";
     public static final String nothingState = "낫싱";

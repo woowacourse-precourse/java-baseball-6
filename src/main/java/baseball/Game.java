@@ -8,8 +8,13 @@ public class Game {
 
     public void start() {
         System.out.println(Constants.startState);
+        game();
+    }
+
+    public void game() {
         computer.makeNumberSet();
         while (true) {
+            System.out.print(Constants.inputState);
             List<Integer> input = player.getGameInput();
             String result = computer.makeResult(input);
             System.out.println(result);
@@ -28,7 +33,7 @@ public class Game {
             return;
         }
         if (input.equals(Constants.gameRestartState)) {
-            start();
+            game();
         }
     }
 }

@@ -64,8 +64,8 @@ public class Computer {
         return result.get(Constants.ballState) == 0;
     }
 
-    private void checkValueResult(int predictedValue, int readValue) {
-        if (predictedValue == readValue) {
+    private void checkValueResult(int predictedValue, int realValue) {
+        if (predictedValue == realValue) {
             result.put(Constants.strikeState, result.get(Constants.strikeState) + 1);
         } else if (number.contains(predictedValue)) {
             result.put(Constants.ballState, result.get(Constants.ballState) + 1);
