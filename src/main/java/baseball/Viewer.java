@@ -6,7 +6,7 @@ import java.util.List;
 import static baseball.Exception.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class Reader {
+public class Viewer {
     public static int readNumber() {
         return Integer.parseInt(readLine());
     }

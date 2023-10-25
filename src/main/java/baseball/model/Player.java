@@ -2,11 +2,12 @@ package baseball;
 
 import java.util.List;
 
-import static baseball.Reader.*;
+import static baseball.Viewer.*;
 
 
 public class Player {
     private List<Integer> userNumberList;
+
 
     public List<Integer> speakNumbers() {
         chooseNumbers();
@@ -17,7 +18,7 @@ public class Player {
         this.userNumberList = readNumbers();
     }
     
-    public boolean chooseFinishGame() {
+    public boolean speakRestart() {
         return readIsFinish();
     }
 }

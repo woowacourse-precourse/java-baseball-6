@@ -2,28 +2,10 @@ package baseball;
 
 import java.util.List;
 
-import static baseball.Printer.*;
 
 public class Judge {
-    public void announceStartGame() {
-        printStartGameComment();
-    }
-
-    public void announceResult(Result result) {
-        printRoundResult(result);
-    }
-
-    public void announceGameOver() {
-        printEndGameComment();
-    }
-
     public boolean checkGameOver(Result result) {
         return result.isAllStrike();
-    }
-
-    public boolean checkRestart(Player player) {
-        printRestartGameComment();
-        return player.chooseFinishGame();
     }
 
     public Result makeResult(List<Integer> playerNumbers, List<Integer> answer) {

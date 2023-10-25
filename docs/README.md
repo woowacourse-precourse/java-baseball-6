@@ -78,11 +78,14 @@
 
 ## Result
 
+- strike
+- ball
+
 ## Judge
 - 결과를 생성한다.
   - generateResult()
 
-## Validator
+~~Validator~~
 
 - 유효성을 검증한다.
 - 중복을 검증한다.
@@ -90,8 +93,12 @@
 
 ## Viewer
 
+- 입력값을 읽는다.
+
+## Generator
 - 숫자 리스트를 생성한다.
   - generateNumberList()
+- 숫자를 생성한다.
 
 ## Announcer
 
