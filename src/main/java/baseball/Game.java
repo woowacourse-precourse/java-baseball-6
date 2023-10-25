@@ -31,6 +31,7 @@ public class Game {
     }
 
     public void run() {
+        alertStart();
         while (restart.getRestart()) {
             start();
             game();
@@ -41,7 +42,6 @@ public class Game {
 
     private void start() {
         pickAnswerNumbers();
-        alertStart();
     }
 
     private void game() {
