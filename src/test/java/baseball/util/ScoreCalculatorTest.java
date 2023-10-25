@@ -14,8 +14,8 @@ class ScoreCalculatorTest {
     @DisplayName("컴퓨터가 생성한 숫자게임의 정답과 사용자가 입력한 3개의 숫자를 비교해 스트라이크를 계산한다.")
     void calculateStrike_Test() {
         // given
-        List<GuessNumber> playerInput = playerInputThreeNumber(1, 2, 3);
         List<Integer> answer = Arrays.asList(1, 2, 3);
+        List<GuessNumber> playerInput = playerInputThreeNumber(1, 2, 3);
 
         Integer strikes = ScoreCalculator.calculateStrike(playerInput, answer);
 
@@ -26,8 +26,8 @@ class ScoreCalculatorTest {
     @DisplayName("컴퓨터가 생성한 숫자게임의 정답과 사용자가 입력한 3개의 숫자를 비교해 볼을 계산한다.")
     void calculateBall_Test() {
         // given
-        List<GuessNumber> playerInput = playerInputThreeNumber(3, 1, 2);
         List<Integer> answer = Arrays.asList(2, 3, 1);
+        List<GuessNumber> playerInput = playerInputThreeNumber(3, 1, 2);
 
         Integer ball = ScoreCalculator.calculateBall(playerInput, answer);
 
