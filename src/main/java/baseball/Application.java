@@ -31,9 +31,9 @@ public class Application {
             if (strike == 3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 reply = reStart();
-//                if(reply){
-//                    computer = createComputer();
-//                }
+                if(reply){
+                    computer = createComputer();
+                }
             }
         }
     }
@@ -56,7 +56,7 @@ public class Application {
         List<Integer> player = new ArrayList<>();
         String input = sc.next();
         try {
-            if(!checkNumeric(input) || input.length() != 3) throw new IllegalArgumentException();
+            if(!checkNumeric(input) || input.length() != 3 || repeatStringCheck(input)) throw new IllegalArgumentException();
         }catch (IllegalArgumentException e){
             System.exit(0);
         }
