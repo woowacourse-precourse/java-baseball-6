@@ -4,3 +4,6 @@
 - Random 이용해서 새로운 guess number 생성
 - Player 에게서 정확한 input을 제공받는 method
 - game logic 구현
+- game loop 구현
+- game test를 위해 test method 구현
+- game testing
