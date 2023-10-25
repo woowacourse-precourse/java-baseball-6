@@ -1,9 +1,8 @@
 package baseball.domain.game;
 
-import static baseball.domain.ball.BallNumbersTest.createTripleBallNumbers;
 import static org.assertj.core.api.Assertions.assertThat;
+import static testutils.TripleBallNumbersCreator.createTripleBallNumbers;
 
-import baseball.domain.TripleNumberPicker;
 import baseball.domain.ball.AnswerCreator;
 import baseball.domain.ball.BallNumber;
 import baseball.domain.ball.Guess;
@@ -11,6 +10,7 @@ import collection.Triple;
 import number.NumberPicker;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import testutils.TripleNumberPicker;
 
 final class ComputerTest {
 
