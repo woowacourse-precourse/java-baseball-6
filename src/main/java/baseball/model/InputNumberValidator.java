@@ -3,15 +3,14 @@ package baseball.model;
 public class InputNumberValidator {
     public static final int VALID_DIGIT_LENGTH = 3;
     private static final String HAS_THREE_DIGITS_MESSAGE = "입력값은 3자리여야 합니다.";
-    private static final String IS_NUMBER_MESSAGE = "숫자만 입력해야 합니다.";
+    private static final String IS_ONE_TO_NINE_NUMBER_MESSAGE = "1부터 9까지의 자연수만 입력해야 합니다.";
     private static final String ARE_DIGITS_UNIQUE_MESSAGE = "서로 다른 수들만 입력해야 합니다.";
     private static final String IS_ONE_OR_TWO_MESSAGE = "1 또는 2만 입력해야 합니다.";
-    public static final String NUMBER_REGEX = "[+-]?\\d*(\\.\\d+)?";
+    public static final String NUMBER_REGEX = "^[1-9]{3}$";
 
     public String validateAllInput(String input) {
         hasThreeDigits(input);
-        isNumber(input);
-        isNumber(input);
+        isOneToNineNumber(input);
         areDigitsUnique(input);
         return input;
     }
@@ -31,9 +30,9 @@ public class InputNumberValidator {
         }
     }
 
-    private void isNumber(String input) {
+    private void isOneToNineNumber(String input) {
         if (!input.matches(NUMBER_REGEX)) {
-            throwIAExceptionWithMessage(IS_NUMBER_MESSAGE);
+            throwIAExceptionWithMessage(IS_ONE_TO_NINE_NUMBER_MESSAGE);
         }
     }
 
