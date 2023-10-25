@@ -38,10 +38,7 @@ public class Result {
         if (strike != 0 && ball == 0) {
             return Integer.toString(strike) + "스트라이크";
         }
-        if (strike != 0 && ball != 0) {
-            return Integer.toString(ball) + "볼" + " " + Integer.toString(strike) + "스트라이크";
-        }
-        return "에러";
+        return Integer.toString(ball) + "볼" + " " + Integer.toString(strike) + "스트라이크";
     }
 
     public boolean isThreeStrike() {
