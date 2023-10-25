@@ -35,11 +35,11 @@ public class BaseballGame {
     public void start(){
         ThreeDigits answer = generateAnswer();
         boolean isGameEnd = false;
-
         while(!isGameEnd){
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            InputValidator.validateInput(input);
+            InputValidator.validateThreeDigitsInput(input);
+            
             ThreeDigits inputThreeDigits = ThreeDigits.toThreeDigits(input);
             StrikeBallCount strikeBallCount = calculateStrikeBallCount(answer, inputThreeDigits);
 

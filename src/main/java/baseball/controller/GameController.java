@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.service.BaseballGame;
+import baseball.util.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
@@ -20,7 +21,8 @@ public class GameController {
     private boolean isContinue(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String mod = Console.readLine();
+        InputValidator.validateGameModeInput(mod);
         
-        return !mod.equals("2");
+        return mod.equals("1");
     }
 }

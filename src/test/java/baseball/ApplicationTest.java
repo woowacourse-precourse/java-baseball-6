@@ -1,6 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -17,6 +20,14 @@ class ApplicationTest extends NsTest {
                     assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
                 },
                 1, 3, 5, 5, 8, 9
+        );
+    }
+
+    @Test
+    void 예외_테스트_게임모드_유효성_검증() {
+        assertSimpleTest(() ->
+                assertThrows(IllegalArgumentException.class, () -> runException("3"), 
+                "게임 모드는 1 또는 2만 입력해야 합니다.")
         );
     }
 
