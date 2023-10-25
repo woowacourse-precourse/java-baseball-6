@@ -7,7 +7,7 @@ public record BaseballNumber(int value) {
     public static int END_NUMBER = 9;
     public BaseballNumber {
         if (value < START_NUMBER || END_NUMBER < value) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("야구 게임 숫자 범위는 " + START_NUMBER + "부터 " + END_NUMBER + "까지입니다.");
         }
     }
 
