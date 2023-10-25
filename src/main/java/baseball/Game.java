@@ -1,4 +1,4 @@
-package main.java.baseball;
+package baseball;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ public class Game {
 
         String inputString = String.valueOf(input);
         if (inputString.length() != 3) {
-            throw new IllegamArgumentException;
+            throw new IllegalArgumentException();
         }
 
         while (input > 0) {
@@ -37,7 +37,6 @@ public class Game {
 
     public void playGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         while (true) {
             saveUserInput();
             strikeCount = 0;
