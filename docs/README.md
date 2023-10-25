@@ -138,7 +138,7 @@ Process finished with exit code 1
 #### 2. 숫자 요청 문구 출력 및 문자 입력 기능
 
 - 숫자 요청 문구 출력 (_printInputNumber()_)
-- 문자열을 입력받고 공백들을 제거하여 리턴 (_playerInputGuessingNumber()_ & _removeSpace()_)
+- 문자열을 입력받고 공백들을 제거하여 리턴 (_playerInputNumber()_)
 
 #### 3. 입력 받은 값을 숫자 타입으로 저장하는 기능 (_playerGenerateNum()_)
 
@@ -178,7 +178,7 @@ Process finished with exit code 1
 #### 6. 재게임 여부 입력 관련 기능
 
 - 재게임 안내 문구 출력 (_printRestart()_)
-- 문자열을 입력받고 공백들을 제거한 값 리턴 (_playerInputRestartNumber()_ & _removeSpace()_)
+- 문자열을 입력받고 공백들을 제거한 값 리턴 (_playerInputNumber()_)
 - 재게임 여부를 나타내는 입력값 판단 (_ifRestart()_)
     - "1"이라는 값을 받으면 'true'를 리턴해 'ifGameContinue'에 할당
     - "2"라는 값을 받으면 'false'를 리턴해 'ifGameContinue'에 할당
