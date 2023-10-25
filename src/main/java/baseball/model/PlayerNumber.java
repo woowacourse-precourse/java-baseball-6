@@ -18,9 +18,10 @@ public class PlayerNumber {
 
         return playerNumberList;
     }
-
+    
+    //String으로 입력받은 숫자를 List<Integer>로 변환
     public void setPlayerNumber(String playerInput) {
-        if (!isValidInput(playerInput)) {
+        if (!PlayerValidator.isValidInput(playerInput)) {
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다. 3자리 숫자만 입력되어야 합니다.");
         }
 
@@ -36,8 +37,4 @@ public class PlayerNumber {
         PlayerValidator.isNumberExistInRange(playerNumberList);
     }
 
-    private boolean isValidInput(String playerInput) {
-        // 입력값이 3자리 숫자인지 확인
-        return playerInput.matches("^[0-9]{3}$");
-    }
 }

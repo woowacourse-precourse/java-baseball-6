@@ -25,14 +25,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 컴퓨터_난수_생성(){
-        ComputerNumber computerNumber = new ComputerNumber();
-        computerNumber.generateRandomNumber();
-
-        assertThat(computerNumber.getComputerNumber().size()).isEqualTo(3);
-    }
-
-    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))

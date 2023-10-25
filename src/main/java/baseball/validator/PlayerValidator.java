@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.Set;
 
 public class PlayerValidator {
-
+    public static boolean isValidInput(String playerInput) {
+        // 입력값이 3자리 숫자인지 확인
+        return playerInput.matches("^[0-9]{3}$");
+    }
 
     public static void isNumberExistInRange(List<Integer> playerNumberList)throws IllegalArgumentException{
         for(Integer number : playerNumberList){
