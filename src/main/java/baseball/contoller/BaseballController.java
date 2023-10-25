@@ -22,41 +22,42 @@ import camp.nextstep.edu.missionutils.Console;
 // Todo : 메서드 명은 동사로 시작, camelCase
 public class BaseballController {
 
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
-    private BaseballService baseballService = new BaseballService();
+    private final BaseballService baseballService;
+
+    public BaseballController() {
+        this.baseballService = new BaseballService();
+    }
 
     private boolean restart;
 
-    public void startGame(){
-        outputView.printGameStartMessage();
-        do{
+    public void startGame() {
+        OutputView.printGameStartMessage();
+        do {
             restart = true;
             Computer computer = new Computer();
             Player player = new Player();
 
-            callNumberToMatch(computer,player);
-        }while(restart);
+            callNumberToMatch(computer, player);
+        } while (restart);
         Console.close();
     }
 
-    void callNumberToMatch(Computer computer, Player player){
-        do{
-            String number = inputView.inputNumbers();
+    void callNumberToMatch(Computer computer, Player player) {
+        do {
+            String number = InputView.inputNumbers();
             baseballService.verifyException(number);
             player.callNumber(number);
 
-            Referee referee = new Referee(computer,player);
-
+            Referee referee = new Referee(computer, player);
             referee.checkResult();
 
-            outputView.printResultMessage(referee.getStrike(),referee.getBall());
+            OutputView.printResultMessage(referee.getStrike(), referee.getBall());
 
-            if(referee.getStrike() == 3){
-                outputView.printMatchAllNumberMessage();
-                restart = baseballService.restart(inputView.inputRestart());
+            if (referee.getStrike() == 3) {
+                OutputView.printMatchAllNumberMessage();
+                restart = baseballService.restart(InputView.inputRestart());
                 return;
             }
-        }while(restart);
+        } while (restart);
     }
 }
