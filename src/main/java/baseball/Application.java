@@ -9,12 +9,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
+    private static final int INPUT_SIZE = 3;
     public static void main(String[] args) {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
+            while (computer.size() < INPUT_SIZE) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
                 if (!computer.contains(randomNumber)) {
                     computer.add(randomNumber);
@@ -25,7 +26,7 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 String user = Console.readLine();
 
-                if (user.length() != 3 || !isInteger(user)) {
+                if (user.length() != INPUT_SIZE || !isInteger(user)) {
                     throw new IllegalArgumentException();
                 }
 
@@ -41,7 +42,7 @@ public class Application {
                 }
                 int strikeCount = 0;
                 int ballCount = 0;
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < INPUT_SIZE; i++) {
                     if (userInputList.get(i) == computer.get(i)) {
                         strikeCount++;
                     } else if (computer.contains(userInputList.get(i))) {
