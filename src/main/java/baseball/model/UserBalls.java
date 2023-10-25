@@ -12,7 +12,7 @@ public class UserBalls {
 
     public UserBalls(String input) {
         validateIsThreeDigits(input);
-        validateDiffVals(input);
+        validateNoRepeat(input);
         this.userBalls = input.chars()
                 .mapToObj(val -> new Ball((char) val))
                 .collect(Collectors.toList());
@@ -22,14 +22,14 @@ public class UserBalls {
         return this.userBalls;
     }
 
-    void validateIsThreeDigits(String input) {
-        if (input.length() != BALLS_SIZE) {
+    void validateIsThreeDigits(String stringInput) {
+        if (stringInput.length() != BALLS_SIZE) {
             throw new IllegalArgumentException(BALLS_SIZE_MESSAGE);
         }
     }
 
-    void validateDiffVals(String input) {
-        if (input.chars().distinct().count() != BALLS_SIZE) {
+    void validateNoRepeat(String stringInput) {
+        if (stringInput.chars().distinct().count() != BALLS_SIZE) {
             throw new IllegalArgumentException(NO_REPEAT_MESSAGE);
         }
     }
