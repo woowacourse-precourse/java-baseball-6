@@ -50,13 +50,15 @@
 - Confirm 클래스 완성
 - 3스트라이크 찾을때까지 반복 (while문추가)
 - application의 main함수에 완성도 올리기
+- 경기 재시작 또는 종료
+    - application 의 main함수에서 while 반복문과 starttoggle 변수활용해서 구현
 
 ### 취소
 
-- 비슷한 Confirm기능을 담당한 클래스들 삭제 
+- 비슷한 Confirm기능을 담당한 클래스들 삭제
 
 ### 진행중
-- 경기 재시작 또는 종료
+
 - 에러처리
   
     
