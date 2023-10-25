@@ -8,22 +8,22 @@ import org.junit.jupiter.api.Test;
 
 public class ComputerTest {
 
-  @Test
-  public void 서로다른_랜점_숫자_제작() throws Exception {
-    //given
-    Computer computer = new Computer();
+    @Test
+    public void 서로다른_랜점_숫자_제작() throws Exception {
+        //given
+        Computer computer = new Computer();
 
-    for (int i = 0; i < 100; i++) {
-      computer.makeAnswer();
-      List<Integer> answer = computer.getAnswer();
+        for (int i = 0; i < 100; i++) {
+            computer.makeAnswer();
+            List<Integer> answer = computer.getAnswer();
 
-      Assertions.assertThat(answer.size())
-          .isEqualTo(3);
+            Assertions.assertThat(answer.size())
+                    .isEqualTo(3);
 
-      Set<Integer> set = new HashSet<>(answer);
-      Assertions.assertThat(set.size())
-          .isEqualTo(3);
+            Set<Integer> set = new HashSet<>(answer);
+            Assertions.assertThat(set.size())
+                    .isEqualTo(3);
+        }
     }
-  }
 
 }
