@@ -28,8 +28,7 @@ public class Application {
                 int num = Integer.parseInt(Console.readLine());
 
                 if (num < 100 || num > 999) {
-                    System.out.println("3자리 수만 입력 가능합니다.");
-                    continue;
+                    throw new IllegalArgumentException();
                 }
 
                 int result1 = 0, result2 = 0;
@@ -50,13 +49,14 @@ public class Application {
                 }
 
                 if (result1 == 3) {
-                    System.out.println("3스크라이크\n3개의 숫자를 모두 맞히셨습니다. 게임종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다. 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     while (true) {
                         int game = Integer.parseInt(Console.readLine());
 
                         if (game == 1) {
                             break loop2;
                         } else if (game == 2) {
+                            System.out.println("게임 종료");
                             break loop1;
                         } else {
                             System.out.println("1 아니면 2만 입력 가능합니다. 다시 입력해주세요.");
@@ -67,9 +67,9 @@ public class Application {
                 } else if (result1 == 0) {
                     System.out.println(result2 + "볼");
                 } else if (result2 == 0) {
-                    System.out.println(result1 + "스크라이크");
+                    System.out.println(result1 + "스트라이크");
                 } else {
-                    System.out.println(result2 + "볼 " + result1 + "스크라이크");
+                    System.out.println(result2 + "볼 " + result1 + "스트라이크");
                 }
             }   // end while
 
