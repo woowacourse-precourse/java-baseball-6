@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Computer implements BaseballPlayer {
 
-    private static final int MINT_NUMBER = 1;
+    private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final int BASEBALL_LENGTH = 3;
     private BaseballNumbers baseballNumbers;
@@ -28,7 +28,7 @@ public class Computer implements BaseballPlayer {
     }
 
     private void addUniqueNumber(List<BaseballNumber> baseballNumbers) {
-        int baseballNumber = Randoms.pickNumberInRange(MINT_NUMBER,
+        int baseballNumber = Randoms.pickNumberInRange(MIN_NUMBER,
                 MAX_NUMBER);
         if (!baseballNumbers.contains(new BaseballNumber(baseballNumber))) {
             baseballNumbers.add(new BaseballNumber(baseballNumber));
