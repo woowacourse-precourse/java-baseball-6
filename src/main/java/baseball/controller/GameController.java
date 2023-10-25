@@ -25,7 +25,6 @@ public class GameController {
         while (!Game.isGameWon()) {
             SystemMessagePrinter.printInputNumberMessage();
             getUserInput();
-            validateUserInput(userInput);
             int[] hint = Game.generateHint(userInput, pickedNumbers);
             ball = hint[0];
             strike = hint[1];
@@ -43,6 +42,7 @@ public class GameController {
 
     public static void getUserInput() {
         userInput = Console.readLine();
+        validateUserInput(userInput);
     }
 
     // 사용자 입력 처리
