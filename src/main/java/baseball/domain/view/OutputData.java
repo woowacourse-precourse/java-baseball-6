@@ -15,6 +15,14 @@ public class OutputData {
     private OutputData() {
     }
 
+    public static void gameResultPrint(ResultDto resultDto) {
+        Map<String, Integer> result = resultDto.getResult();
+        for (String ballCount : result.keySet()) {
+            checkBallCount(ballCount, result.get(ballCount));
+        }
+        printOutput();
+    }
+
     private static void printOutput() {
         System.out.print(output);
         System.out.println();
