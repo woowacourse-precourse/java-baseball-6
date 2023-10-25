@@ -5,8 +5,7 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Game {
-    private static boolean gameFlag = true;
-
+    private boolean gameFlag = true;
     private static final String AGAIN = "1";
     private static final String STOP = "2";
 
@@ -32,10 +31,14 @@ public class Game {
     private void checkAgainOrStop(String input) {
         if (input.equals(AGAIN)) {
             gameFlag = true;
+            return;
         }
 
         if (input.equals(STOP)) {
             gameFlag = false;
+            return;
         }
+
+        throw new IllegalArgumentException("1(재시작)과 2(종료)중에 입력하세요.");
     }
 }

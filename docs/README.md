@@ -29,13 +29,13 @@
 
 ### Controller
 
-- [ ]  Game
+- [x]  Game
     - [x]  게임 시작
     - [x]  게임 종료
     - [x]  재시작 여부 확인
         - 1일 경우 재시작
         - 2일 경우 종료
-    - [ ]  사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션을 종료
+    - [x]  사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션을 종료
 - [x]  Play
     - [x]  3스트라이크가 나오기 전까지 게임 반복
     - [x]  사용자의 입력마다 해당하는 결과 출력
