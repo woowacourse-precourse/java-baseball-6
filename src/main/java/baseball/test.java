@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-public class Application {
+public class test {
     public static void main(String[] args) {
     	
     	System.out.println("숫자 야구 게임을 시작합니다.");
@@ -17,33 +17,27 @@ public class Application {
             }
         }
         while(true) {
-        	//사용자가 값을 입력
+
+        //사용자가 값을 입력
         	System.out.println("숫자를 입력해주세요 :");
         	int Strike = 0 ; int Ball = 0 ;
         	String Input = Console.readLine() ;
         	String[] arr = Input.split("") ;
-        	//입력값 예외 catch
         	try {
         		for(int i = 0; i<=2; i++) {
         		int num = Integer.parseInt(arr[i]) ;
         		}
         	} catch (NumberFormatException e) {
-        	    throw new IllegalArgumentException();
-        	} catch (ArrayIndexOutOfBoundsException e) {
-        		throw new IllegalArgumentException();
+        	    // catch exception
+        	    throw new IllegalArgumentException("서로 다른 3개의 숫자를 입력해 주세요.");
         	}
-        	if (arr.length!=3) {
-        	    throw new IllegalArgumentException();
-        	}
-        	else if (arr[0]==arr[1] | arr[1]==arr[2] | arr[0]==arr[2]) {
-        		throw new IllegalArgumentException();
-        	}
+        	
         	ArrayList<Integer> user = new ArrayList<Integer>();
         	for(int i = 0; i<=2; i++) {
         		int a = Integer.parseInt(arr[i]) ;
         		user.add(a) ;
         		}
-        	//Strike와 Ball 판별
+        
         	for(int j=0 ; j<=2; j++) { 
         		int b = user.get(j) ;
         		if(computer.contains(b)==true){
@@ -55,7 +49,7 @@ public class Application {
         			}
         		}
         	}
-        	//경우에 따라 출력
+        
         	if(Strike==0 & Ball==0) {
         		System.out.println("낫싱") ;
         	}
@@ -69,8 +63,10 @@ public class Application {
         		else {
         			System.out.printf("%d볼 %d스트라이크\n",Ball,Strike);
         		}
+        		
         	}
-        	//조건 검수 후 게임 종료or재시작
+        	
+        	
             if(Strike==3) {
             	System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료") ;
             	System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.") ;
@@ -87,9 +83,6 @@ public class Application {
                             computer.add(randomNumber);
                         }
                 	}
-            	}
-            	else {
-            		throw new IllegalArgumentException();
             	}
             }
         }
