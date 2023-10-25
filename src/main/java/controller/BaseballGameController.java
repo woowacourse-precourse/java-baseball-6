@@ -5,6 +5,7 @@ import view.PlayerNumberInputView;
 import model.Computer;
 import model.Player;
 import model.Referee;
+import util.PlayerGameRestartUtil;
 
 import java.util.Set;
 
@@ -14,6 +15,7 @@ public class BaseballGameController {
     Computer computer = new Computer();
     Player player = new Player();
     Referee referee = new Referee();
+    PlayerGameRestartUtil playerGameRestartUtil = new PlayerGameRestartUtil();
 
     public void gameProgress() {
         playGameInformationOutputView.printGameStart();
@@ -26,5 +28,7 @@ public class BaseballGameController {
 
         String gameResult = referee.judgeValue(computerBalls, playerBalls);
         System.out.println(gameResult);
+
+        playerGameRestartUtil.gameRestartQuestion();
     }
 }

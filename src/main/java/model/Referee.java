@@ -22,7 +22,7 @@ public class Referee {
         if (strikeNumber > 0) {
             gameResult += strikeNumber + "스트라이크";
         }
-        
+
         return gameResult;
     }
 
