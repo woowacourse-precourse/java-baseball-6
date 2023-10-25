@@ -2,7 +2,7 @@
 
 ## 비밀 숫자 생성
 
-- [] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API
+- [o] 정답 랜덤 숫자 3자리 생성
 
 ## 게임 시작
 
