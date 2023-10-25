@@ -1,6 +1,8 @@
 package baseball.service;
 
 import baseball.constant.Constant;
+import baseball.domain.ComputerNumber;
+import baseball.domain.PlayerNumber;
 import baseball.dto.ResultDTO;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -20,6 +22,31 @@ public class NumberBaseballService {
     public NumberBaseballService() {
         outputView = new OutputView();
         inputView = new InputView();
+    }
+
+    /**
+     * 랜덤 답안 생성 및 사용자 입력을 통한 숫자야구 게임 진행
+     *
+     * @func calculateResult() : 컴퓨터와 사용자 입력값 비교 후 결과 반환
+     * @func isReGame() : 컴퓨터의 숫자와 입력값이 순서까지 일치하는 경우, 게임진행여부 확인
+     */
+    public void gameStart() {
+        outputView.printStartMessage();
+        ComputerNumber computerNumber = new ComputerNumber(generateGameNumbers());
+        boolean end = false;
+        while (!end) {
+            PlayerNumber playerNumber = new PlayerNumber(inputView.generateInputList());
+            ResultDTO resultDTO = calculateResult(computerNumber.getComputerNumbers(),
+                    playerNumber.getPlayerNumbers());
+            outputView.printResult(resultDTO);
+            if (resultDTO.getStrikeCount() == Constant.GAME_NUMBERS_SIZE) {
+                end = true;
+            }
+            if (end && isReGame()) {
+                computerNumber = new ComputerNumber(generateGameNumbers());
+                end = false;
+            }
+        }
     }
 
     /**
