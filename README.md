@@ -124,6 +124,6 @@ gradlew.bat clean test
  
 ## 📜 UML(클래스 다이어그램):
 
-![클래스다이어그램]('우테코1주차.drawio.png')
+![클래스다이어그램]('./우테코1주차.drawio.png')
 
 
