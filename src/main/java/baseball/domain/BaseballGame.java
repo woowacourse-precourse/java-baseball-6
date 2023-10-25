@@ -39,9 +39,7 @@ public class BaseballGame {
     public void compareNumbers() {
         ballCount = 0;
         strikeCount = 0;
-        for (int i = 0; i < 3; i++) {
-            System.out.print(computer.getNumberOf(i) + " ");
-        }
+
         for (int i = 0; i < NUMBER_SIZE; i++) {
             int computerNumber = computer.getNumberOf(i);
             int playerNumber = player.getNumberOf(i);
@@ -64,7 +62,7 @@ public class BaseballGame {
             result += ballCount + "볼";
         }
         if (strikeCount != 0) {
-            result += strikeCount + "스트라이크";
+            result += (result.isEmpty() ? "" : " ") + strikeCount + "스트라이크";
         }
         if (result.isEmpty()) {
             result = "낫싱";
