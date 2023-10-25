@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
@@ -25,6 +26,9 @@ public class Application {
                     while(strike != 3){
                         try {
                         System.out.println("숫자를 입력해주세요 : ");
+                        
+                        String[] input = Console.readLine().split("");
+                        
                                 if(inputNum.size() != 3 || inputNum.contains(0)) {
                                 throw new IllegalArgumentException("잘못된 값을 입력했습니다."); 
                            
