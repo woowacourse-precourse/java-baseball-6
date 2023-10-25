@@ -44,9 +44,6 @@ public class Application {
                     throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
                 }
 
-                System.out.println("컴퓨터의 숫자: " + computer);
-                System.out.println("사용자의 숫자: " + userNumber);
-
                 // play game
                 int strike = 0;
                 int ball = 0;
