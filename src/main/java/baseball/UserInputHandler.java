@@ -1,13 +1,42 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserInputHandler {
-    final static int INPUT_LOWER_BOUND = 100;
-    final static int INPUT_UPPER_BOUND = 999;
 
-    private String getUserInput() {
-        return Console.readLine();
+    public List<Integer> getUserGuess() {
+        String userInput = Console.readLine();
+        validateUserGuessInput(userInput);
+        return convertGuessToList(userInput);
+    }
+
+    public Boolean askUserRestart() {
+        String userInput = Console.readLine();
+        int userInt = validateUserRestartInput(userInput);
+        return returnRestartInput(userInt);
+    }
+
+    private List<Integer> convertGuessToList(String userInput) {
+        List<Integer> userInputList = new ArrayList<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            char eachCharInput = userInput.charAt(i);
+            int eachIntInput = Character.getNumericValue(eachCharInput);
+            userInputList.add(eachIntInput);
+        }
+        return userInputList;
+    }
+
+    private int validateUserRestartInput(String userInput) throws IllegalArgumentException {
+        checkStringLengthEqualToTarget(userInput, 1);
+        int userInt = convertStringToInteger(userInput);
+        checkIntegerInRange(userInt, 1, 2);
+        return userInt;
+    }
+
+    private Boolean returnRestartInput(int input) {
+        return input == 1;
     }
 
     public boolean validateUserGuessInput(String userInput) {
@@ -18,7 +47,7 @@ public class UserInputHandler {
         return true;
     }
 
-    private int convertStringToInteger(String userInput) throws IllegalArgumentException {
+    private int convertStringToInteger(String userInput) {
         try {
             return Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
@@ -26,13 +55,13 @@ public class UserInputHandler {
         }
     }
 
-    private void checkIntegerInRange(int input, int startInclusive, int endInclusive) throws IllegalArgumentException {
+    private void checkIntegerInRange(int input, int startInclusive, int endInclusive) {
         if (input < startInclusive && input > endInclusive) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void checkStringLengthEqualToTarget(String input, int target) throws IllegalArgumentException {
+    private void checkStringLengthEqualToTarget(String input, int target) {
         if (input.length() != target) {
             throw new IllegalArgumentException();
         }
