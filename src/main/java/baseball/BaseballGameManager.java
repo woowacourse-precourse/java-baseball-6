@@ -33,6 +33,7 @@ public class BaseballGameManager {
         while(true) {
             getUserInput();
             getBaseBallResult();
+            printResult();
         }
     }
 
@@ -73,5 +74,19 @@ public class BaseballGameManager {
                 "볼", ballCount.get(),
                 "스트라이크", strikeCount.get()
         );
+    }
+
+    private void printResult() {
+        Integer ballCountResult = baseballResult.get("볼");
+        Integer strikeCountResult = baseballResult.get("스트라이크");
+
+        if (ballCountResult == 0 && strikeCountResult == 0) {
+            System.out.print("낫싱");
+        }
+        else {
+            if (ballCountResult > 0) System.out.print(ballCountResult + "볼 ");
+            if (strikeCountResult > 0) System.out.print(strikeCountResult + "스트라이크");
+        }
+        System.out.println();
     }
 }
