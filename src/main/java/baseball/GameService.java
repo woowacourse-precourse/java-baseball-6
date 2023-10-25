@@ -15,9 +15,8 @@ public class GameService {
 
     public static void runOneGame() {
         Com.setAnswerNumbers();
-        Player.initBallAndStrikeCount();
-
         do {
+            Player.initBallAndStrikeCount();
             inputPlayerNumbers();
             countBallStrike();
             OutputMessage.printResultMessage(Player.ballCount, Player.strikeCount);
