@@ -9,7 +9,7 @@ public class InputEndChoice {
         RESTART, QUIT, INVALID
     }
 
-    public Choice InputEndChoice(String input) {
+    public Choice checkInputChoice(String input) {
         checkSize(input);
         return (checkValidNumber(input));
     }
