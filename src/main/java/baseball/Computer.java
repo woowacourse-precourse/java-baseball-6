@@ -29,7 +29,7 @@ public class Computer {
         cntBall = 0;
 
         for (int i = 0; i < computer.size(); i++) {
-            int num = Player.inputStrParseInt(input, i);
+            int num = Utils.stringToInt(input, i);
             if ((num) == computer.get(i)) {
                 cntStrike += 1;
             } else if (computer.contains(num)) {
@@ -38,6 +38,7 @@ public class Computer {
 
         }
     }
+
     public void countResult() {
         if (cntStrike == 0 && cntBall == 0) {
             System.out.println("낫싱");

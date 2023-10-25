@@ -16,6 +16,7 @@ public class Game {
     private static List<Integer> computerSelectNumbers;
 
     public static void startMessage() {
+
         System.out.print("숫자를 입력해주세요: ");
     }
 
@@ -33,8 +34,6 @@ public class Game {
     }
 
     public static void getCountResult() {
-         int strike = computer.cntStrike;
-         int ball = computer.cntBall;
         computer.countResult();
         computer.gameResult();
     }
