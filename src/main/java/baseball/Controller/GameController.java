@@ -17,6 +17,7 @@ public class GameController {
 
     public void playGame() {
         boolean isStart = true;
+        outputView.startGame();
         while(isStart){
             GameStart();
             repeatAnswer();
@@ -25,7 +26,6 @@ public class GameController {
     }
 
     private void GameStart(){
-        outputView.startGame();
         computerController.StartGame(playNumber);
     }
 
