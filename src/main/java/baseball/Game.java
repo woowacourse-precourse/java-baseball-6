@@ -77,7 +77,18 @@ public class Game {
     }
 
     private void examineNewGameOrNot() {
-
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = readLine();
+        while (!userInput.equals("1") && !userInput.equals("2")) {
+            System.out.println("잘못된 입력입니다.");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            userInput = readLine();
+        }
+        if (userInput.equals("1")) {
+            programRunning = true;
+        } else if (userInput.equals("2")) {
+            programRunning = false;
+        }
     }
 
 
@@ -91,6 +102,9 @@ public class Game {
     }
 
     private void resetData() {
+        computer = new ArrayList<>();
+        programRunning = true;
+        gameRunning = true;
     }
 
     public void startProgram() {
