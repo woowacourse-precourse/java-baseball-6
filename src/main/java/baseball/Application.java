@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.*;
 public class Application {
     public static boolean play;
     public static int Size = 3;
+    public static int strike;
+    public static int ball;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -15,25 +17,12 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
 
-            if(!check(answer, input)){                  // Input 유효성 검사
+            if(!check(answer, input)) {                  // Input 유효성 검사
                 throw new IllegalArgumentException();
             }
-
-            int strike = 0;
-            int ball = 0;
-
-            for(int i = 0; i < Size; i++){
-                for(int j = 0; j < Size; j++){
-                    if(answer.charAt(i) == input.charAt(j)){
-                        if(i == j){
-                            strike++;
-                        }
-                        else{
-                            ball++;
-                        }
-                    }
-                }
-            }
+            strike = 0;
+            ball = 0;
+            count(answer, input);
             if(strike + ball == 0){
                 System.out.println("낫싱");
             }
@@ -60,7 +49,7 @@ public class Application {
 
     }
 
-    // 정답 생성
+    // 정답 난수 생성
     public static String makeAnswer(){
         String answer = "";
         while(answer.length() < Size){
@@ -85,5 +74,20 @@ public class Application {
             }
         }
         return true;
+    }
+
+    public static void count(String answer, String input){
+        for(int i = 0; i < Size; i++){
+            for(int j = 0; j < Size; j++){
+                if(answer.charAt(i) == input.charAt(j)){
+                    if(i == j){
+                        strike++;
+                    }
+                    else{
+                        ball++;
+                    }
+                }
+            }
+        }
     }
 }
