@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.model.GameNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
 import java.util.List;
 
 public class GameProgressController {

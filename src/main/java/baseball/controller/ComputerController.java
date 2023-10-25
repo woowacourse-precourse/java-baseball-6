@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.model.GameNumber;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +12,6 @@ public class ComputerController {
     private static final String BALL_STRING_MESSAGE = "볼";
     private static final String NOTHING_STRING_MESSAGE = "낫싱";
     private static final String SPACING_STRING_MESSAGE = " ";
-
     private int strikeCount;
     private int ballCount;
 
