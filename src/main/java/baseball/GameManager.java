@@ -49,10 +49,7 @@ public class GameManager {
     }
 
     private boolean validateUserInputForRestartGame(String userInput) {
-        if (userInput.equals("1") || userInput.equals("2")) {
-            return true;
-        }
-        return false;
+        return userInput.equals("1") || userInput.equals("2");
     }
 
     private void printComputerGeneratedNumbers() {
@@ -99,7 +96,7 @@ public class GameManager {
                 throw new IllegalArgumentException();
             }
             userGuessJudgement = computer.judgeUserGuess(this.getUserInputVal());
-            computer.printUserGuessJudgementResult(userGuessJudgement);
+            computer.printUserGuessJudgmentResult(userGuessJudgement);
             if (checkGuessStageEnd()) {
                 user.win();
                 printGameRestartMessage();
