@@ -30,3 +30,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+caches/jars-9/o_98a43433901bde28705d213d3e42324b/android.jar
+caches/jars-9/o_b4e3882235a772613591d406d4cd64bd/app.jar

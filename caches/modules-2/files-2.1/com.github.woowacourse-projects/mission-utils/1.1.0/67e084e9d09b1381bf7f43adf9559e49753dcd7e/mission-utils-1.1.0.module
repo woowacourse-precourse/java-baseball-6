@@ -1,0 +1,92 @@
+{
+  "formatVersion" : "1.1",
+  "createdBy" : {
+    "gradle" : {
+      "version" : "6.8.1",
+      "buildId" : "6usqmd3wnvai3a3somh2lzdqoa"
+    }
+  },
+  "component" : {
+    "group" : "com.github.woowacourse-projects",
+    "module" : "mission-utils",
+    "version" : "1.1.0",
+    "attributes" : {
+      "org.gradle.status" : "release"
+    }
+  },
+  "variants" : [ {
+    "name" : "apiElements",
+    "attributes" : {
+      "org.gradle.category" : "library",
+      "org.gradle.dependency.bundling" : "external",
+      "org.gradle.jvm.version" : "8",
+      "org.gradle.libraryelements" : "jar",
+      "org.gradle.usage" : "java-api"
+    },
+    "dependencies" : [ {
+      "group" : "org.assertj",
+      "module" : "assertj-core",
+      "version" : {
+        "requires" : "3.21.0"
+      }
+    }, {
+      "group" : "org.junit.jupiter",
+      "module" : "junit-jupiter",
+      "version" : {
+        "requires" : "5.8.1"
+      }
+    }, {
+      "group" : "org.mockito",
+      "module" : "mockito-inline",
+      "version" : {
+        "requires" : "3.12.4"
+      }
+    } ],
+    "files" : [ {
+      "name" : "mission-utils-1.1.0.jar",
+      "url" : "mission-utils-1.1.0.jar",
+      "size" : 6677,
+      "sha512" : "c29a0c3dfd43552848961991ace3a6a79dae94948234ed2e5f57c5fec72dc92761f1c983b85b04b88a6616947faca787ee9ae3bf512153435684c5771e077d63",
+      "sha256" : "edff359589f701ab4e497f6526211a8015422b0503c672f064a0f023c4ac1975",
+      "sha1" : "a4b1a3600a51a05d44913c93181de7d143fadce2",
+      "md5" : "bfc5d089a3f284cb199c728132606415"
+    } ]
+  }, {
+    "name" : "runtimeElements",
+    "attributes" : {
+      "org.gradle.category" : "library",
+      "org.gradle.dependency.bundling" : "external",
+      "org.gradle.jvm.version" : "8",
+      "org.gradle.libraryelements" : "jar",
+      "org.gradle.usage" : "java-runtime"
+    },
+    "dependencies" : [ {
+      "group" : "org.assertj",
+      "module" : "assertj-core",
+      "version" : {
+        "requires" : "3.21.0"
+      }
+    }, {
+      "group" : "org.junit.jupiter",
+      "module" : "junit-jupiter",
+      "version" : {
+        "requires" : "5.8.1"
+      }
+    }, {
+      "group" : "org.mockito",
+      "module" : "mockito-inline",
+      "version" : {
+        "requires" : "3.12.4"
+      }
+    } ],
+    "files" : [ {
+      "name" : "mission-utils-1.1.0.jar",
+      "url" : "mission-utils-1.1.0.jar",
+      "size" : 6677,
+      "sha512" : "c29a0c3dfd43552848961991ace3a6a79dae94948234ed2e5f57c5fec72dc92761f1c983b85b04b88a6616947faca787ee9ae3bf512153435684c5771e077d63",
+      "sha256" : "edff359589f701ab4e497f6526211a8015422b0503c672f064a0f023c4ac1975",
+      "sha1" : "a4b1a3600a51a05d44913c93181de7d143fadce2",
+      "md5" : "bfc5d089a3f284cb199c728132606415"
+    } ]
+  } ]
+}
