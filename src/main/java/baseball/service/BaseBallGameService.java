@@ -22,9 +22,7 @@ public class BaseBallGameService {
         while(ballStrike.getStrikeCount() < 3) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInputNumbers = readLine();
-            Validator.validateInput(userInputNumbers);
-            Validator.validateInputDuplication(userInputNumbers);
-            Validator.validateInputSize(userInputNumbers);
+            Validator.validateUserInput(userInputNumbers);
             User user = User.readInputNumbers(userInputNumbers);
             List<Integer> inputNumberList = user.getInputNumberList();
             playBaseBall(randomNumbersList, inputNumberList, ballStrike);

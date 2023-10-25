@@ -7,6 +7,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class Validator {
+    public static void validateUserInput(String input) {
+        validateInput(input);
+        validateInputSize(input);
+        validateInputDuplication(input);
+    }
+
     public static void validateInput(String input) {
         for (char c : input.toCharArray()) {
             if(!Character.isDigit(c) || c == '0') {
