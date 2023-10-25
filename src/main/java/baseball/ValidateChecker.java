@@ -13,8 +13,7 @@ public class ValidateChecker {
     }
 
     void isRetryInputValidate(String retryInput) {
-        if (retryInput.length() != 1)
-            exception.generateInvalidRetryInputLengthException();
+        validateCheckerUtils.checkLengthValidate(retryInput, 1);
         if (!validateCheckerUtils.isRangeValidate(retryInput, '1', '2'))
             exception.generateInvalidRetryInputRangeException();
     }
@@ -36,7 +35,12 @@ class ValidateCheckerUtils {
 
     void checkLengthValidate(String userInput, int length) {
         if (userInput.length() != length) {
-            exception.generateInvalidAnswerLengthException();
+            if (length == 3) {
+                exception.generateInvalidAnswerLengthException();
+            }
+            if (length == 1) {
+                exception.generateInvalidRetryInputLengthException();
+            }
         }
     }
 
