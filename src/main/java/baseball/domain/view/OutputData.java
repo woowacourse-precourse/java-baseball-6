@@ -21,4 +21,11 @@ public class OutputData {
         output = "";
     }
 
+    private static String printOutCount(int count) {
+        if (3 == count) {
+            return "낫싱";
+        }
+        return "";
+    }
+
 }
