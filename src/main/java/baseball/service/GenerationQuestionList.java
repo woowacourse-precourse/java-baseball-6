@@ -9,6 +9,8 @@ import java.util.List;
 
 public class GenerationQuestionList {
 
+    private final static String LESS_THAN_OUTCOUNT_ERROR = "설정 하신 값의 범위는 설정하신 아웃카운트 보다 작습니다.";
+
     private final List<Integer> ballCountList;
 
     public GenerationQuestionList(ArrayList<Integer> ballCountList) {
@@ -18,7 +20,7 @@ public class GenerationQuestionList {
     public List<Integer> generateRandomNumberList(withinRange randomNumberInRange) {
 
         if (!validWithinRange(randomNumberInRange)) {
-            throw new IllegalArgumentException("설정 하신 값의 범위는 설정하신 아웃카운트 보다 작습니다.");
+            throw new IllegalArgumentException(LESS_THAN_OUTCOUNT_ERROR);
         }
 
         while (ballCountList.size() < getThreeOutCount()) {
