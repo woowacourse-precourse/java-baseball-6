@@ -27,10 +27,17 @@ public class GameService {
         int strike = 0;
         while (strike != 3) {
             game.initBaseBall();
-            user.setUserNumbers(/**입력값**/);
+            user.setUserNumbers(getUserNumber());
             computeScore();/** 게임 숫자와 사용자 숫자간 비교 **/
+            systemMessage.printScoreMessage(game.getBallCount(), game.getStrikeCount());
             strike = game.getStrikeCount(); /**스트라이크 숫자 확인 **/
         }
+    }
+
+    private int[] getUserNumber() throws IllegalArgumentException {
+        RequestInput.requestInputData();
+        String input = Console.readLine();
+        return validator.validateUserInput(input, size);
     }
 
     public void setGame(int size, int start, int end) {
