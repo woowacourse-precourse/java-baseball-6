@@ -20,35 +20,42 @@ public class BaseballController {
     }
 
     public void startGame() {
-        baseballView.displayMessage(MessageType.START);
 
-        GameResult gameResult = baseballModel.gameResult;
+        while (true) {
+            baseballView.displayMessage(MessageType.START);
 
-        List<Integer> computerNumber = baseballModel.generateRandomUniqueNumbers();
-        /** For debugging purpose */
-        System.out.println("컴퓨터: " + computerNumber);
+            GameResult gameResult = baseballModel.gameResult;
 
-        while (!gameResult.isGameEnded()) {
-            List<Integer> playerNumber = getPlayerNumberInput();
+            List<Integer> computerNumber = baseballModel.generateRandomUniqueNumbers();
+            /** For debugging purpose */
+            System.out.println("컴퓨터: " + computerNumber);
 
-            gameResult = baseballModel.calculateGameResult(computerNumber, playerNumber);
+            while (!gameResult.isGameEnded()) {
+                List<Integer> playerNumber = getPlayerNumberInput();
 
-            baseballView.displayScore(gameResult);
+                gameResult = baseballModel.calculateGameResult(computerNumber, playerNumber);
 
-            gameResult.resetCounts();
+                baseballView.displayScore(gameResult);
+
+                gameResult.resetCounts();
+            }
+            if (!askForRestart(gameResult)) {
+                break;
+            }
         }
-        askForRestart(gameResult);
     }
 
-    private void askForRestart(GameResult gameResult) {
+    private boolean askForRestart(GameResult gameResult) {
         String endInput = getEndGameInput();
 
         if (endInput.equals(MessageType.RESTART.getMessage())) {
             gameResult.restartGame();
-            startGame();
+            return true;
         } else if (endInput.equals(MessageType.FINISH.getMessage())) {
             baseballView.displayMessage(MessageType.GAME_ENDED);
+            return false;
         }
+        return false;
     }
 
     public List<Integer> getPlayerNumberInput() {
