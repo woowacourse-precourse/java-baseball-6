@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Arrays;
+
 public class InputValidator {
     public static final int INPUT_LIMIT = 3;
 
@@ -44,6 +46,6 @@ public class InputValidator {
     }
 
     private static int[] parseUserInput(String input) {
-        return input.chars().map(c -> Integer.parseInt(String.valueOf(c))).toArray();
+        return Arrays.stream(input.split("")).mapToInt(Integer::parseInt).toArray();
     }
 }
