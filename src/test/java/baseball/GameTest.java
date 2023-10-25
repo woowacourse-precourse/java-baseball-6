@@ -1,3 +1,5 @@
+package baseball;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import baseball.Game;
