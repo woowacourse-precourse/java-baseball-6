@@ -1,4 +1,4 @@
-package baseball;
+package baseball.validator;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
