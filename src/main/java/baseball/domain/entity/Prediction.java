@@ -10,6 +10,7 @@ public record Prediction(List<Integer> numberList) {
         validateIfNull(numberList);
         validateIfOutOfRange(numberList);
         validateIfInvalidLength(numberList);
+        validateIfDuplicated(numberList);
     }
 
     private void validateIfNull(final List<Integer> numberList) {
@@ -27,6 +28,12 @@ public record Prediction(List<Integer> numberList) {
     private void validateIfInvalidLength(final List<Integer> numberList) {
         if (numberList.size() != Answer.ANSWER_LENGTH) {
             throw new IllegalArgumentException(ErrorConst.INVALID_LENGTH.getMessage());
+        }
+    }
+
+    private void validateIfDuplicated(final List<Integer> numberList) {
+        if (numberList.stream().distinct().count() != Answer.ANSWER_LENGTH) {
+            throw new IllegalArgumentException(ErrorConst.INVALID_INPUT.getMessage());
         }
     }
 }
