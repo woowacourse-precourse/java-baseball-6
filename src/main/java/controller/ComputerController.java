@@ -1,5 +1,6 @@
 package controller;
 
+import dto.GuessResultDto;
 import view.GameView;
 import service.ComputerService;
 
@@ -24,6 +25,7 @@ public class ComputerController {
     }
 
     public void guessNumber(String guessingNum) {
-        computerService.guessNumber(guessingNum);
+        GuessResultDto guessResultDto = computerService.guessNumber(guessingNum);
+        gameView.guessResult(guessResultDto);
     }
 }
