@@ -65,13 +65,7 @@ public class BaseballGame {
 
         List<Integer> userNum = stringToIntegerList(input);
 
-        for (int i = 0; i < 3; i++) {
-            if (userNum.get(i).equals(target.get(i))) {
-                upStrike();
-                userNum.set(i, -1);
-                target.set(i, -2);
-            }
-        }
+        countStrike(target, userNum);
 
         if (strike == 3) {
             ending();
@@ -98,6 +92,7 @@ public class BaseballGame {
         play(reTarget, userInput);
     }
 
+
     public void ending() {
         System.out.println(
                 strike + "스트라이크\n"
@@ -109,6 +104,16 @@ public class BaseballGame {
             reStart();
         } else if (userDecide.equals("2")) {
             onToFalse();
+        }
+    }
+
+    private void countStrike(List<Integer> target, List<Integer> userNum) {
+        for (int i = 0; i < 3; i++) {
+            if (userNum.get(i).equals(target.get(i))) {
+                upStrike();
+                userNum.set(i, -1);
+                target.set(i, -2);
+            }
         }
     }
 
