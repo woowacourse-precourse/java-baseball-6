@@ -40,7 +40,7 @@ public class Application {
         }
         return true;
     }
-    public static boolean gameRetryCheck(String nums){//게임을 재진행하는지 확인하기 위한 사용자의 값이 올바른지 확인
+    public static boolean confirmUserRetryAnswer(String nums){//게임을 재진행하는지 확인하기 위한 사용자의 값이 올바른지 확인
         if(nums.length() != 1){
             return false;
         }
@@ -70,7 +70,7 @@ public class Application {
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String retrychecknnum = readLine();
-            if(!gameRetryCheck(retrychecknnum)){
+            if(!confirmUserRetryAnswer(retrychecknnum)){
                 throw new IllegalArgumentException();
             }
             else{
