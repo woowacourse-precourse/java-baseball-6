@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.enum_class.Message.INPUT_USERNUMBER_MESSAGE;
 
-public class UserFunction {
+public class UserInputNumberManager implements UserNumberManager{
     private String userNumber;
+
     ExceptionContoller exceptionContoller = new ExceptionContoller();
 
     public String getUserNumber() {
@@ -14,7 +15,7 @@ public class UserFunction {
 
         exceptionContoller.notIntegerException(userNumber);
         exceptionContoller.notThreeDigitException(userNumber);
-        exceptionContoller.reduplicationException(userNumber);
+        exceptionContoller.duplicationException(userNumber);
         exceptionContoller.zeroValueException(userNumber);
 
         return userNumber;

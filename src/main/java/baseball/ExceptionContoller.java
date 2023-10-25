@@ -15,7 +15,7 @@ public class ExceptionContoller {
         }
     }
 
-    public void reduplicationException(String Number) {
+    public void duplicationException(String Number) {
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < COUNT.getNumberInfo(); i++) {
             set.add(Number.charAt(i));

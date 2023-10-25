@@ -9,7 +9,11 @@ import static baseball.enum_class.NumberInfo.*;
 import static baseball.enum_class.Message.*;
 
 public class RandomRuleManager implements NumberManager {
-    UserFunction userFunction = new UserFunction();
+    private final UserNumberManager userNumberManager;
+
+    RandomRuleManager(UserNumberManager userNumberManager){
+        this.userNumberManager = userNumberManager;
+    }
 
     public List<Integer> createNumber() {
         List<Integer> randomNumber = new ArrayList<>();
@@ -25,10 +29,9 @@ public class RandomRuleManager implements NumberManager {
         return randomNumber;
     }
 
-
     public void countCalculate(List<Integer> randomNumber) {
         while (true) {
-            String userNumber = userFunction.getUserNumber();
+            String userNumber = userNumberManager.getUserNumber();
 
             int ballCount = 0;
             int strikeCount = 0;
