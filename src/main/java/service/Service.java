@@ -18,6 +18,7 @@ public class Service {
 
     public static List<Integer> setNumber() {
 
+
         do {
             numList = Randoms.pickUniqueNumbersInRange(0, 9, 3);
         } while (numList.get(0) == 0);
