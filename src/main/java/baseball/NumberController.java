@@ -9,25 +9,25 @@ import java.util.Map;
 
 public class NumberController {
 
-  public List<Integer> generateComputerNumberList() {
-    List<Integer> computer = new ArrayList<>();
-    while (computer.size() < 3) {
-      int randomNumber = Randoms.pickNumberInRange(1, 9);
-      if (!computer.contains(randomNumber)) {
-        computer.add(randomNumber);
-      }
+    public List<Integer> generateComputerNumberList() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
-    return computer;
-  }
 
     public List<Integer> splitter(int num) {
-      List<Integer> numList = new ArrayList<>(3);
+        List<Integer> numList = new ArrayList<>(3);
 
-      numList.add(num/100);
-      numList.add((num%100)/10);
-      numList.add(num%10);
+        numList.add(num / 100);
+        numList.add((num % 100) / 10);
+        numList.add(num % 10);
 
-      return numList;
+        return numList;
     }
 
     public Map<String, Integer> compareNumberList(List<Integer> numList1, List<Integer> numList2) {
