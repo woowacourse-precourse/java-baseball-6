@@ -23,6 +23,15 @@ public class BallCount {
         return new BallCount(computerNumber, inputNumber);
     }
 
+    public String getResultMessage() {
+        StringBuilder returnMessage = new StringBuilder();
+        if(!hasStrikeCount() && !hasBallCount()) return BallCountMessage.NOTHING.getMessage();
+        if(hasBallCount()) returnMessage.append(String.format(BallCountMessage.BALL.getMessage(), ball));
+        if(hasStrikeCount()) returnMessage.append(String.format(BallCountMessage.STRIKE.getMessage(), strike));
+        returnMessage.append("\n");
+        return returnMessage.toString();
+    }
+
     private void calculateStrikeAndBall(BaseBallNumber computerNumber,
                                                BaseBallNumber inputNumber,
                                                AtomicInteger strike,
@@ -39,5 +48,13 @@ public class BallCount {
                     }
                 })
         );
+    }
+
+    private boolean hasStrikeCount() {
+        return strike > 0;
+    }
+
+    private boolean hasBallCount() {
+        return ball > 0;
     }
 }
