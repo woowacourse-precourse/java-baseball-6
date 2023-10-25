@@ -8,20 +8,16 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        try {
-            while (true) {
-                boolean gameContinues = playGame();
-                if (!gameContinues) {
-                    break;
-                }
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String input = Console.readLine();
-                if (input.equals("2")) {
-                    break;
-                }
+        while (true) {
+            boolean gameContinues = playGame();
+            if (!gameContinues) {
+                break;
             }
-        } catch (IllegalArgumentException e) {
-            return;
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = Console.readLine();
+            if (input.equals("2")) {
+                break;
+            }
         }
     }
 
@@ -35,7 +31,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
+        //System.out.println(computer);
         return computer;
     }
 
