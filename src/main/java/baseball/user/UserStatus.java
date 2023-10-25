@@ -1,11 +1,11 @@
 package baseball.user;
 
-public class UserStauts {
+public class UserStatus {
     public static final String CONTINUE_COMMAND = "1";
     public static final String EXIT_COMMAND = "2";
     private final String status;
 
-    public UserStauts(String status) {
+    public UserStatus(String status) {
         validateCommand(status);
         this.status = status;
     }

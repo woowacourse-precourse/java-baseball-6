@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class User {
 
     private String userNumber;
-    private UserStauts userStatus;
+    private UserStatus userStatus;
 
     public User() {
     }
@@ -22,7 +22,7 @@ public class User {
     }
 
     public void inputUserStatus() {
-        this.userStatus = new UserStauts(Console.readLine());
+        this.userStatus = new UserStatus(Console.readLine());
     }
 
     public String getUserStatus() {

@@ -4,8 +4,7 @@ import static baseball.game.GameUI.displayCorrectAnswerMessage;
 
 import baseball.Computer;
 import baseball.user.User;
-import baseball.user.UserStauts;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.user.UserStatus;
 
 public class Game {
 
@@ -42,7 +41,7 @@ public class Game {
                     displayCorrectAnswerMessage();
 
                     user.inputUserStatus();
-                    if (user.getUserStatus().equals(UserStauts.EXIT_COMMAND)) {
+                    if (user.getUserStatus().equals(UserStatus.EXIT_COMMAND)) {
                         break;
                     }
 
