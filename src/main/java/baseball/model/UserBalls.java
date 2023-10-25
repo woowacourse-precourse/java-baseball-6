@@ -5,6 +5,7 @@ import static baseball.util.AppConstants.BALLS_SIZE_MESSAGE;
 import static baseball.util.AppConstants.NOT_INTEGER_MESSAGE;
 import static baseball.util.AppConstants.NO_REPEAT_MESSAGE;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,8 +16,8 @@ public class UserBalls {
         validateIsThreeLetters(stringInput);
         validateNoRepeat(stringInput);
         validateAreNumbers(stringInput);
-        this.userBalls = stringInput.chars()
-                .mapToObj(Ball::new)
+        this.userBalls = convertStringToIntSequence(stringInput).stream()
+                .map(Ball::new)
                 .collect(Collectors.toList());
     }
 
@@ -42,5 +43,11 @@ public class UserBalls {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NOT_INTEGER_MESSAGE);
         }
+    }
+
+    private List<Integer> convertStringToIntSequence(String stringInput) {
+        return Arrays.stream(stringInput.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
