@@ -32,11 +32,4 @@ public class Computer {
     public boolean isComputerContains(int number){
         return computer.contains(number);
     }
-
-    public void printComputerNumber(){
-        System.out.println("Computer.printComputerNumber");
-        for (Integer num : computer) {
-            System.out.print(num);
-        }
-    }
 }
