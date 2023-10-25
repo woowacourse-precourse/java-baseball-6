@@ -22,7 +22,13 @@ public class Baseball {
             printResult();
         } while (strike < 3);
 
-        boolean result = isGameExit();
+        boolean result;
+        try {
+            result = isGameExit();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            throw e;
+        }
         return result;
     }
 
@@ -114,16 +120,16 @@ public class Baseball {
         System.out.println();
     }
 
-    private boolean isGameExit() {
+    private boolean isGameExit() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String exitGame = Console.readLine();
         if(exitGame.equals("1")) {
             return true;
         }
-        else if(exitGame.equals("2")) {
+        if(exitGame.equals("2")) {
             System.out.println("게임 종료");
             return false;
         }
-        return true;
+        throw new IllegalArgumentException("1이나 2로만 입력해야 합니다.");
     }
 }
