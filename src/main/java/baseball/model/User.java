@@ -7,8 +7,8 @@ public class User {
     private List<Integer> userNumbers;
 
     public void inputNumber(String numberString) {
+        validateNumberDigits(numberString);
         userNumbers = numberStringToList(numberString);
-        validateNumberDigits(userNumbers);
         validateNumberUnique(userNumbers);
     }
 
@@ -20,8 +20,8 @@ public class User {
         return numbers;
     }
 
-    private void validateNumberDigits(List<Integer> userNumbers) {
-        if (userNumbers.size() != 3) {
+    private void validateNumberDigits(String numberString) {
+        if (numberString.length() != 3) {
             throw new IllegalArgumentException("the number must be 3 digits");
         }
     }
