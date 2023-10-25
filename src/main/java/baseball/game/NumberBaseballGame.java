@@ -12,10 +12,14 @@ public class NumberBaseballGame {
 
     public NumberBaseballGame() {
         this.computer = new Computer();
-        OutputView.printStartGame();
     }
 
-    public void run() {
+    public void start() {
+        OutputView.printStartGame();
+        run();
+    }
+
+    private void run() {
         setGame();
         playGame();
         endGame();
