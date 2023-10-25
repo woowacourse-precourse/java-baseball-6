@@ -16,7 +16,6 @@ public class ComputerController {
 	private static final String SPACE_MESSAGE = " ";
 	private static final String NULL_MESSAGE = "";
 	private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
-
 	InputView inputView = new InputView();
 
 	public List<Integer> getComputerNumber() {
@@ -24,6 +23,7 @@ public class ComputerController {
 
 		while (computer.size() < BASEBALL_GAME_NUMBER_LENGTH) {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
+
 			if (!computer.contains(randomNumber)) {
 				computer.add(randomNumber);
 			}
@@ -52,6 +52,7 @@ public class ComputerController {
 	public Game compareNumber(Game computerData, Game playerData) {
 		int strikeCount = 0;
 		int ballCount = 0;
+
 		for (int i = 0; i < BASEBALL_GAME_NUMBER_LENGTH; i++) {
 			for (int j = 0; j < BASEBALL_GAME_NUMBER_LENGTH; j++) {
 				if ((computerData.getGameNumbers().get(i) == playerData.getGameNumbers().get(j)) && (i == j)) {
@@ -69,6 +70,7 @@ public class ComputerController {
 
 	public String strikeAndBallMessage(Game playerData) {
 		String message = NULL_MESSAGE;
+
 		if (isNothing(playerData)) {
 			message += NOTHING_MESSAGE;
 		}
@@ -90,7 +92,7 @@ public class ComputerController {
 	}
 
 	public boolean isNothing(Game playerData) {
-		return playerData.getStrikeCount() == 0 && playerData.getBallCount() == 0;
+		return (playerData.getStrikeCount() == 0) && (playerData.getBallCount() == 0);
 	}
 
 	public boolean isThreeStrike(Game playerData) {
