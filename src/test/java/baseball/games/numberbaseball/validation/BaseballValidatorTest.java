@@ -39,4 +39,12 @@ class BaseballValidatorTest {
             validator.validateOptionInput("4");
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("숫자가 아닌 옵션 입력에 대한 IllegalArgumentException")
+    void validateNotDigitOptionInput() {
+        assertThatThrownBy(() -> {
+            validator.validateOptionInput("a");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
