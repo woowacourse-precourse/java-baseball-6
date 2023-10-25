@@ -9,8 +9,8 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseballExecutor implements GamingConsole {
     private final NumberGenerator numberGenerator;
 
-    public BaseballExecutor(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
+    public BaseballExecutor() {
+        this.numberGenerator = new NumberGenerator();
     }
 
     @Override
