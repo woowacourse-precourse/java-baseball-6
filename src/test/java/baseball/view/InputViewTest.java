@@ -19,10 +19,10 @@ class InputViewTest {
     public void 숫자_입력() throws Exception {
 
         // given
-        setReadLine("1234");
+        setReadLine("123");
 
         // when
-        UserNumberRequest expect = new UserNumberRequest("1234");
+        UserNumberRequest expect = new UserNumberRequest("123");
         UserNumberRequest actual = InputView.requestUserNumber();
 
         // then
