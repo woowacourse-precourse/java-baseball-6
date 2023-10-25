@@ -28,14 +28,14 @@ public class NumberBaseballGame {
     }
 
     public void playGame() {
-        gameUI.displayMessage("game starts!");
+        gameUI.displayMessage("숫자 야구 게임을 시작합니다.");
         boolean gameOver = false;
         while (!gameOver) {
             String userGuess = gameUI.getUserGuess();
             int[] result = checkGuess(userGuess);
             gameUI.displayResult(result);
             if (result[0] == STRIKE_NUMBER) {
-                gameUI.displayMessage("3개의 숫자를 모두 맞히셨습니다!");
+                gameUI.displayMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 int choice = gameUI.askForRestart();
                 if (choice == 2) {
                     gameOver = true;

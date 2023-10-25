@@ -19,7 +19,7 @@ public class GameUI {
         String guess;
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.print("insert different 3 number");
+            System.out.print("숫자를 입력해주세요 : ");
             guess = Console.readLine();
             if (guessValidator.isValidGuess(guess)) {
                 break;
@@ -31,11 +31,19 @@ public class GameUI {
     }
 
     public void displayResult(int[] result) {
-        System.out.println("result: " + result[0] + " strike, " + result[1] + " ball");
+        if(result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        }else if(result[0] == 0 && result[1] != 0){
+            System.out.println(result[1] + "볼");
+        }else if(result[0] != 0 && result[1] == 0){
+            System.out.println(result[0] + "스트라이크");
+        }else {
+            System.out.println(result[0] + "스트라이크" + result[1] + "볼");
+        }
     }
 
     public int askForRestart() {
-        System.out.print("quit 2, restart 1 : ");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int choice = scanner.nextInt();
         if (choice != 1 && choice != 2) {
             System.out.println("not valid, just 2 or 1.");
