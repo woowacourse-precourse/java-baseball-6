@@ -1,4 +1,6 @@
-package baseball;
+package baseball.controller;
+
+import baseball.controller.Compare;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +13,9 @@ public class RandomNum {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!comNum.contains(randomNumber)) {
                 comNum.add(randomNumber);
-
             }
 
         }
         return comNum;
-
     }
-
-
 }

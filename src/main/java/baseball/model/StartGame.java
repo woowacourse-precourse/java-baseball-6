@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -24,6 +24,5 @@ public class StartGame {
             throw new IllegalArgumentException("세자리 수를 입력해주세요.");
         }
     }
-
 }
 
