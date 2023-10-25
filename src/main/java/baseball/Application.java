@@ -20,12 +20,23 @@ public class Application {
 
         return computer;
     }
+
+    // 사용자 숫자 입력 기능
+    static List<Integer> getInputNumbers() {
+        List<Integer> clientNumbers = new ArrayList<>();
+
+        String number = Console.readLine();
+        for(int idx=0; idx<number.length(); idx++)
+            clientNumbers.add(Character.getNumericValue(number.charAt(idx)));
+
+        return clientNumbers;
+    }
+
     public static void main(String[] args) {
 
-        // 임의의 수 3가지
+        // 임의의 수 3가지, 사용자 입력 수
         List<Integer> randomNumbers;
-        // 사용자가 입력한 숫자
-        int guessNumbers;
+        List<Integer> guessNumbers;
 
         // 게임 시작 문구 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -38,7 +49,7 @@ public class Application {
 
         // 사용자 숫자 입력
         try {
-            guessNumbers = Integer.parseInt(Console.readLine());
+            guessNumbers = getInputNumbers();
         }
         catch (IllegalArgumentException e) {
             return;
