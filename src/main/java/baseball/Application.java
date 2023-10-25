@@ -1,7 +1,10 @@
 package baseball;
 
+import baseball.view.ConsoleView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        ConsoleView consoleView = new ConsoleView();
+        consoleView.startGame();
     }
 }
