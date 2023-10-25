@@ -16,8 +16,14 @@ public class BaseballConsole {
         while (true) {
             String answer = getInput("숫자를 입력해주세요 : ", "[1-9]{3}");
             game.setUserNumbers(answer);
+            System.out.println(game.getBallScoreMessage());
+            if (game.isWin()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
+
 
     public static String getInput(String message, String regex) {
         System.out.print(message);

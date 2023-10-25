@@ -16,4 +16,8 @@ public class BaseballGame {
         return numbers.checkBalls().getNumberMessage();
     }
 
+    public boolean isWin() {
+        return numbers.strikeOf(3);
+    }
+
 }
