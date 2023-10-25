@@ -1,9 +1,11 @@
 package baseball.model;
 
+import static baseball.model.Constants.INPUT_CHOICE_LENGTH;
+import static baseball.model.Constants.QUIT;
+import static baseball.model.Constants.RESTART;
+
 public class InputEndChoice {
-    private static final int RESTART = 1;
-    private static final int QUIT = 2;
-    private static final int INPUT_CHOICE_LENGTH = 1;
+
 
     public enum Choice {
         RESTART, QUIT

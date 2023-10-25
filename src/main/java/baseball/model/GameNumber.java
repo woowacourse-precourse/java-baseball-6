@@ -1,12 +1,14 @@
 package baseball.model;
 
+import static baseball.model.Constants.MAX_VALUE;
+import static baseball.model.Constants.MIN_VALUE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameNumber {
-    private static final int MIN_VALUE = 1;
-    private static final int MAX_VALUE = 9;
+
     List<Integer> gameNumbers = new ArrayList<>();
 
     public void createRandomNumbers() {

@@ -1,9 +1,11 @@
 package baseball.model;
 
+import static baseball.model.Constants.INPUT_LENGTH;
+
 public class Hint {
     private final GameNumber gameNumber;
     private final InputNumbers inputNumbers;
-    private static final int INPUT_LENGTH = 3;
+
 
     public Hint(GameNumber gameNumber, InputNumbers inputNumbers) {
         this.gameNumber = gameNumber;
