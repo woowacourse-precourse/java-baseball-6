@@ -16,17 +16,22 @@ public class BaseballInput {
         return userInput;
     }
 
+    public static void decideIllegalArgumentException(int num){
+        if (num < 123 || num > 987 ) {
+            IllegalArgumentException e = new IllegalArgumentException("IllegalArgumentException");
+            throw e;
+        }
+    }
+
     public static void setUserInput() {
         userInput = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
         try {
             int inputStrToInt = Integer.parseInt(inputString);
+
             //세 자리수 입력 판단
-            if (inputStrToInt < 123 || inputStrToInt > 987 ) {
-                IllegalArgumentException e = new IllegalArgumentException("IllegalArgumentException");
-                throw e;
-            }
+            decideIllegalArgumentException(inputStrToInt);
 
             // 서로 다른 수인지 판단
             for(int i=2; i>=0; i--) {
