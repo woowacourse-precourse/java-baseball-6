@@ -1,7 +1,10 @@
 package baseball;
 
+import baseball.client.Player;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Player p = new Player();
+        p.start();
     }
 }
