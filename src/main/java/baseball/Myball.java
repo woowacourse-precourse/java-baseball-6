@@ -3,14 +3,14 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Myball {
-	
+
 	private int[] numbers = new int[3];
 
 	public void input() {
 
-		String input = Console.readLine();
-
 		System.out.print("숫자를 입력해주세요: ");
+
+		String input = Console.readLine();
 
 		// 길이가 3이 아닐 경우
 		if (input.length() != 3) {
