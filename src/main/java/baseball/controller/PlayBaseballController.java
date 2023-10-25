@@ -16,30 +16,48 @@ public class PlayBaseballController {
     }
 
     public void play(){
+        String menu = "1";
         do{
             //게임시작 출력문
             System.out.println(initComment);
             //서비스 클래스의 도메인 생성 메서드
             playBaseballService.playGame();
-            String menu = "1";
+            String result = "";
             do{
                 //숫자입력 출력문
                 System.out.print(inputNumComment);
-                //숫자 입력 메서드
+                //사용자 숫자 입력
                 String inputNum = insertMethod();
                 //스트라이크와 볼 점수 출력 메서드
-                printStrikeAndBallScore(playBaseballService.showGameResult(inputNum));
-                //3스트라이크인지 여부 확인 메서드
-                Boolean hasThreeStrike = checkStrikeScore(playBaseballService.showGameResult(inputNum));
-                if(hasThreeStrike){
-                    System.out.println(inputMenuComment);
-                    menu = insertMethod();
-                }
-            }while(playBaseballService.checkMenu(menu));
+                result = printStrikeAndBallScore(playBaseballService.showGameResult(inputNum));
 
+            }while(checkStrikeScore(result)); //3스트라이크인지 여부 확인 메서드
 
+            //게임 재시작 또는 게임 종료 여부 입력
+            System.out.println(inputMenuComment);
+            menu = insertMethod();
 
-        }while(true);
+        }while(checkMenuRestart(menu));
 
     }
+
+    public String insertMethod(){
+        return Console.readLine();
+    }
+
+    public String printStrikeAndBallScore(GameScoreSet gameScoreSet){
+        String result = "";
+        result += gameScoreSet.getBallNum()+"볼 ";
+        result += gameScoreSet.getStrikeNum()+"스트라이크";
+        return result;
+    }
+
+    public boolean checkStrikeScore(String result){
+        return result.equals("3스트라이크");
+    }
+
+    public boolean checkMenuRestart(String menu){
+        return menu.equals("1");
+    }
+
 }

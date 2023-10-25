@@ -14,7 +14,7 @@ public class PlayBaseballService {
     }
 
     public boolean checkMenu(String inputMenu){
-        return inputMenu.equals(GAME_END_MENU);
+        return inputMenu.equals(RESTART_MENU);
     }
 
     public GameScoreSet showGameResult(String inputNum){
