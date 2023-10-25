@@ -20,29 +20,28 @@
 
 역할: 게임의 진행 여부를 Controller 하는 클래스, 게임의 시작과 재시작을 관리한다.
 
-- [ ]  `initNumberBaseBallGame()` : 게임 시작 요청을 받으면 안내 메시지를 출력하고 게임 시작을 한다.
-- [ ]  `initGame()` : 게임 시작 전 게임에 참여 Player와 Computer를 생성하고 두 참가자로 게임을 시작한다.
-- [ ]  `restartGame()` : Player의 요청을 전달 받아 재시작 여부를 판단한다. 요청 값이 1이면 재시작한다.
-    - 재시작 → `initGame()`;
-        - game → player.askRestart → Controller.restart
+- [x]  `initNumberBaseBallGame()` : 게임 시작 요청을 받으면 안내 메시지를 출력하고 게임 시작을 한다.
+- [x]  `initGame()` : 게임 시작 전 게임에 참여 Player와 Computer를 생성하고 두 참가자로 게임을 시작한다.
+- [x]  `restartGame()` : Player의 요청을 전달 받아 재시작 여부를 판단한다. 요청 값이 1이면 재시작한다.
+    - 재시작 → `initGame()`
     - 종료 → 아무것도 안함.
 
 ### NumberBaseballGame
 
 역할: 메인 게임, 참가자인 Player와 Computer를 상대로 숫자 야구 게임을 진행함. (이하 숫자 야구 게임은 ‘게임’이라 칭함.)
 
-- [ ]  `gameStart()` : 게임이 시작되면 game에 필요한 세팅을 하고 게임을 진행한다.
-- [ ]  `gameSetting()` : 게임 세팅 단계에는 참가한 Computer의 정답을 setting한다.
-- [ ]  게임 진행 `game()`
+- [x]  `gameStart()` : 게임이 시작되면 game에 필요한 세팅을 하고 게임을 진행한다.
+- [x]  `gameSetting()` : 게임 세팅 단계에는 참가한 Computer의 정답을 setting한다.
+- [x]  `game()` : 게임 진행 , Player의 입력에 따른 결과를 알려준다.
     - Player에게 Player가 생각하는 Input을 입력받는다.
     - 전달 받은 Input을 Computer에게 전달해 결과를 물어본다.
     - 전달 받은 결과를 출력한다.
     - 결과가 정답이면 게임 재시작 여부를 Player에게 물어본다.
     - 결과가 정답이 아니면, 게임을 계속 진행하기 위해 Player에게 결과를 알려주고 다음 입력을 받는다.
 
-- [ ]  `isFinish()`  : 결과를 확인한다. 결과가 ‘3스트라이크’면 true를 그 외면 false를 반환한다.
-- [ ]  `handleGame()` : 결과를 바탕으로 게임 재시작 또는 계속 진행을 결정한다.
-- [ ]  `printResult()` : Computer로 부터 전달받은 결과를 출력한다.
+- [x]  `isFinish()`  : 결과를 확인한다. 결과가 ‘3스트라이크’면 true를 그 외면 false를 반환한다.
+- [x]  `handleGame()` : 결과를 바탕으로 게임 재시작 또는 계속 진행을 결정한다.
+- [x]  `printResult()` : Computer로 부터 전달받은 결과를 출력한다.
 
 ### Player
 
