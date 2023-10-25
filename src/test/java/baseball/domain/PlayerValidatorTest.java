@@ -27,4 +27,10 @@ class PlayerValidatorTest {
         List<Integer> numbers = Arrays.asList(2, 6, 6); // 2가 중복됩니다.
         assertThrows(IllegalArgumentException.class, () -> PlayerValidator.validate(numbers));
     }
+
+    @Test
+    void 범위를_벗어난_수가_있으면_예외_발생(){
+        List<Integer> numbers = Arrays.asList(0, 2, 3); // 0은 범위 외의 숫자입니다.
+        assertThrows(IllegalArgumentException.class, () -> PlayerValidator.validate(numbers));
+    }
 }
