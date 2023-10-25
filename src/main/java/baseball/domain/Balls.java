@@ -38,6 +38,10 @@ public class Balls {
         return new Balls();
     }
 
+    public BallNumber get(int index) {
+        return balls.get(index);
+    }
+
     public BallStatus compare(BallNumber ball, int i) {
         if (balls.get(i).equals(ball)) {
             return STRIKE;

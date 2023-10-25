@@ -16,17 +16,18 @@ public class Game {
         board = new Board();
     }
 
-    public Board play(List<BallNumber> ballNumbers) {
+    public boolean isEnd(int option) {
+        return EndOption.isEnd(option);
+    }
+
+    public Board play(List<Integer> numbers) {
+        Balls balls = new Balls(numbers);
         board.reset();
         for (int i = 0; i < BALL_SIZE; i++) {
-            BallStatus result = computer.compare(ballNumbers.get(i), i);
+            BallStatus result = computer.compare(balls.get(i), i);
             board.scoring(result);
         }
         return board;
-    }
-
-    public boolean isEnd(int option) {
-        return EndOption.isEnd(option);
     }
 
     public boolean isMatch() {
