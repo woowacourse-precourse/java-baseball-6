@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.number;
 
 import java.util.HashSet;
 import java.util.Set;
