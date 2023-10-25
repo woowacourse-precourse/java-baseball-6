@@ -55,8 +55,12 @@ public class BaseBallService {
             System.out.println(sb);
             return true;
         }
-        else
-            sb.append(ball + "볼" + " " + strike + "스트라이크");
+        else {
+            if(ball != 0)
+                sb.append(ball + "볼 ");
+            if(strike != 0)
+                sb.append(strike + "스트라이크");
+        }
 
         System.out.println(sb);
         return false;
