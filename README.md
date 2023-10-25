@@ -58,8 +58,13 @@
 <img width="300"  src="image/테스트코드결과이미지.png">
 
 
-## 시스템 매커니즘(구현 후)
+## 시스템 매커니즘 및 객체들의 역(구현 후)
+
 <img width="400" height = "600" src="image/숫자야구게임_메커니즘20231025.png">
+
+</br>
+
+<img width="400" height = "600" src="image/객체들의역할과기능.png">
 
 
 ## 기능 요구사항 되돌아보기
