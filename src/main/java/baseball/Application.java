@@ -23,12 +23,16 @@ public class Application {
     }
 
     public static void resolve(Game game, User user) {
-        while (!(game.getNumberOfStrike() == 3 && game.getNumberOfBall() == 0)) {
+        while (!isCorrect(game)) {
             game.reset();
             user.predict();
             game.countStrikeOrBall(user.getPrediction());
             printResultMessage(game.getNumberOfStrike(), game.getNumberOfBall());
         }
+    }
+
+    public static boolean isCorrect(Game game) {
+        return game.getNumberOfStrike() == 3 && game.getNumberOfBall() == 0;
     }
 
     public static void printReGameMessage() {
