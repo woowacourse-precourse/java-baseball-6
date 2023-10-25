@@ -54,6 +54,13 @@ public class Game {
         String input = Console.readLine().trim();
         Integer value;
 
+        value = validateContinueInput(input);
+
+        return value == 1;
+    }
+
+    private Integer validateContinueInput(String input) {
+        Integer value;
         try {
             value = Integer.valueOf(input);
         } catch (NumberFormatException e) {
@@ -62,24 +69,22 @@ public class Game {
 
         if (value != 1 && value != 2)
             throw new IllegalArgumentException(WRONG_INPUT);
-
-        return value == 1;
+        return value;
     }
 
-    private List<Integer> getUserNumbers() {
+    private List<Integer> handleUserInput() {
         System.out.print(NUMBER_INPUT);
         String input = Console.readLine().trim();
         Integer value;
 
-        try {
-            value = Integer.valueOf(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(WRONG_INPUT);
-        }
+        value = validateUserInput(input);
 
-        if (value / 100 <= 0 || value / 100 >= 10)
-            throw new IllegalArgumentException(WRONG_INPUT);
+        List<Integer> userNumbers = getUserNumbers(value);
 
+        return userNumbers;
+    }
+
+    private List<Integer> getUserNumbers(Integer value) {
         Stack<Integer> stack = new Stack<>();
 
         while (value > 0) {
@@ -98,15 +103,27 @@ public class Game {
 
         if (validateSet.size() < 3)
             throw new IllegalArgumentException(WRONG_INPUT);
-
         return userNumbers;
+    }
+
+    private Integer validateUserInput(String input) {
+        Integer value;
+        try {
+            value = Integer.valueOf(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(WRONG_INPUT);
+        }
+
+        if (value / 100 <= 0 || value / 100 >= 10)
+            throw new IllegalArgumentException(WRONG_INPUT);
+        return value;
     }
 
     public void run() {
         printGameStart();
         computer.generateRandomNumber();
         while (true) {
-            List<Integer> userNumbers = getUserNumbers();
+            List<Integer> userNumbers = handleUserInput();
             int ball = computer.getBallCount(userNumbers);
             int strike = computer.getStrikeCount(userNumbers);
 
