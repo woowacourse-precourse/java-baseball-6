@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.model.OutputModel;
+
 public class View {
     public static void gameStartPrint() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -17,7 +19,7 @@ public class View {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void baseballHintPrint(String baseballHint) {
-        System.out.println(baseballHint);
+    public static void baseballHintPrint() {
+        System.out.println(OutputModel.getBaseballHint());
     }
 }
