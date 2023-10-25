@@ -13,7 +13,8 @@ public class InputView {
         return mapToInteger(splitNumberString);
     }
 
-    private static List<Integer> mapToInteger(String[] splitNumberString) throws IllegalArgumentException{
+    private static List<Integer> mapToInteger(String[] splitNumberString)
+            throws IllegalArgumentException {
         return Arrays.stream(splitNumberString)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());

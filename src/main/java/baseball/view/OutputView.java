@@ -14,7 +14,6 @@ public class OutputView {
     private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
 
-
     public static void printStartGame() {
         System.out.println(START_GAME_MESSAGE);
     }
@@ -23,7 +22,7 @@ public class OutputView {
         System.out.print(GET_NUMBER_MESSAGE);
     }
 
-    public static void printInputRestartGame(){
+    public static void printInputRestartGame() {
         System.out.println(GET_RESTART_GAME);
     }
 
@@ -34,31 +33,31 @@ public class OutputView {
         printStrikeAndBall(gameResult);
     }
 
-    public static void printGameEnd(){
+    public static void printGameEnd() {
         System.out.println(GAME_END_MESSAGE);
     }
 
     public static void printNoting(GameResult gameResult) {
-        if (gameResult.isBallZero() && gameResult.isStrikeZero()){
+        if (gameResult.isBallZero() && gameResult.isStrikeZero()) {
             System.out.println(NOTING_MESSAGE);
         }
     }
 
     public static void printStrike(GameResult gameResult) {
-        if (gameResult.isBallZero() && !gameResult.isStrikeZero()){
+        if (gameResult.isBallZero() && !gameResult.isStrikeZero()) {
             System.out.printf(STRIKE_MESSAGE, gameResult.strike());
         }
     }
 
     public static void printBall(GameResult gameResult) {
-        if (!gameResult.isBallZero() && gameResult.isStrikeZero()){
+        if (!gameResult.isBallZero() && gameResult.isStrikeZero()) {
             System.out.printf(BALL_MESSAGE, gameResult.ball());
         }
 
     }
 
     public static void printStrikeAndBall(GameResult gameResult) {
-        if (!gameResult.isBallZero() && !gameResult.isStrikeZero()){
+        if (!gameResult.isBallZero() && !gameResult.isStrikeZero()) {
             System.out.printf(BALL_STRIKE_MESSAGE, gameResult.ball(), gameResult.strike());
         }
     }

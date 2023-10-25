@@ -1,8 +1,8 @@
 package baseball.service;
 
-import baseball.domain.NumberBall;
 import baseball.domain.GameResult;
 import baseball.domain.MatchResult;
+import baseball.domain.NumberBall;
 import baseball.view.OutputView;
 import java.util.HashSet;
 import java.util.List;
