@@ -28,25 +28,38 @@ class ApplicationTest extends NsTest {
         );
     }
 
-//    @Test
-//    void 같은_숫자_입력(){
-//
-//    }
-//
-//    @Test
-//    void _0_포함_입력(){
-//
-//    }
-//
-//    @Test
-//    void 세자리_아닌_입력(){
-//
-//    }
-//
-//    @Test
-//    void 숫자_아닌_입력(){
-//
-//    }
+    @Test
+    void 같은_숫자_입력(){
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("111","353"))
+                    .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void _0_포함_입력(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("603", "900"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 세자리_아닌_입력(){;
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12", "8", "45787", ""))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자_아닌_문자_입력(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("*12", "abc", ".12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
