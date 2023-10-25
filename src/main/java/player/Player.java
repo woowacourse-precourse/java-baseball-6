@@ -10,7 +10,7 @@ public class Player {
 
     public Player(){}
 
-    public String start(){
+    public String getInputString(){
         String inputString = Input.readInput();
         chkInputString(inputString);
         return inputString;

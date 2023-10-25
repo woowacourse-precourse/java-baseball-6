@@ -59,7 +59,7 @@ public class Computer {
         player = new Player();
         String playerInput;
         do{
-            playerInput = player.start();
+            playerInput = player.getInputString();
         }while (!chkResult(playerInput));
     }
 
@@ -91,57 +91,4 @@ public class Computer {
             throw new IllegalArgumentException(OPTION_INPUT_ERROR_MESSAGE);
         }
     }
-
-
-//    /**
-//     * strike 갯수 Count
-//     * @param inputNum
-//     * @return strike 갯수
-//     */
-//    private int cntStrike(String inputNum) {
-//        int strike = 0;
-//        for (int i = 0; i < INPUT_LENGTH; i++) {
-//            if (randomString.charAt(i) == inputNum.charAt(i)) {
-//                strike++;
-//            }
-//        }
-//        return strike;
-//    }
-//
-//    /**
-//     * ball 갯수 Count
-//     * @param inputNum
-//     * @return ball 갯수
-//     */
-//    private int cntBall(String inputNum) {
-//        int ball = 0;
-//        for (int i = 0; i < INPUT_LENGTH; i++) {
-//            char tmp = inputNum.charAt(i);
-//            if (randomString.contains(String.valueOf(tmp)) && randomString.charAt(i) != tmp) {
-//                ball++;
-//            }
-//        }
-//        return ball;
-//    }
-
-    // 결과 출력
-//    private void printHintMessage(int ball, int strike) {
-//
-//        if (ball == NOTHING) {
-//            if (strike == NOTHING) {
-//                System.out.println(NOTHING_MESSAGE);
-//            } else if (strike == SUCCESS_STRIKE) {
-//                System.out.println(strike + STRIKE_MESSAGE);
-//                System.out.println(SUCCESS_MESSAGE);
-//            } else {
-//                System.out.println(strike + STRIKE_MESSAGE);
-//            }
-//        } else {
-//            if (strike == NOTHING) {
-//                System.out.println(ball + BALL_MESSAGE);
-//            } else {
-//                System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
-//            }
-//        }
-//    }
 }
