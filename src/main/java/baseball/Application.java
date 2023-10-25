@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.Computer;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -11,18 +12,18 @@ public class Application {
     public static final String BALL = "볼";
     public static final String NOTHING = "낫싱";
     public static void main(String[] args) {
+        User user = new User();
+        Computer computer = new Computer();
         int exit = 1;
         while (exit == 1) { // 외부 while문 시작
             System.out.println("숫자 야구 게임을 시작합니다.");
             // 1부터 9까지 서로 다른 세 자리의 수 생성 (컴퓨터)
-            List<Integer> computerNum = new ArrayList<>();
-            computer.generateComputerNum(computerNum, NUMBER_LENGTH);
+            ArrayList<Integer> computerNumArray = computer.generateComputerNum(NUMBER_LENGTH);
 
             int strike = 0;
             int ball = 0;
 
             while (strike < NUMBER_LENGTH) { // 내부 while문 시작
-
                 ArrayList<Integer> userNumArray = user.inputUserGuess(NUMBER_LENGTH);
 
                 // 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱
@@ -30,14 +31,14 @@ public class Application {
                 ball = 0;
 
                 for (int i = 0; i < userNumArray.size(); i++) {
-                    if (userNumArray.get(i) == computerNum.get(i)) {
+                    if (userNumArray.get(i) == computerNumArray.get(i)) {
                         userNumArray.set(i, 0);
                         strike++;
                     }
                 }
 
                 for (int i : userNumArray) {
-                    if (computer.contains(i)) {
+                    if (computerNumArray.contains(i)) {
                         ball++;
                     }
                 }
@@ -56,7 +57,7 @@ public class Application {
                 if ((ball == 0) && (strike == 0)) {
                     output += String.format("%s", NOTHING);
                 }
-                System.out.println(computerNum);
+                System.out.println(computerNumArray);
                 System.out.println(output);
             } // 내부 while문 끝
             // 3개의 숫자를 모두 맞히면 종료, 다시 시작하거나 완전히 종료
