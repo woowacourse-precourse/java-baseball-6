@@ -14,11 +14,13 @@ import java.util.List;
 
 public class Application {
     static void isThreeDigitNumbers(String input) {
+        if(input.length()!=3) throw new IllegalArgumentException("범위 오류");
+        char first=input.charAt(0);
+        char middle=input.charAt(1);
+        char last=input.charAt(2);
+        if(first==middle || middle==last||last==first) throw new IllegalArgumentException("중복된 숫자 존재");
         try {
             int number = Integer.parseInt(input);
-            if (number < 100 || number > 999) {
-                throw new IllegalArgumentException("숫자 범위 오류");
-            }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자가 아님");
         }
@@ -46,6 +48,7 @@ public class Application {
                 //에러 판단 함수
                 isThreeDigitNumbers(input);
             }catch (IllegalArgumentException e){
+                System.out.println(e);
                 isnoterror=false;
             }
         }
