@@ -1,5 +1,6 @@
-package baseball.application;
+package baseball;
 
+import baseball.application.ConsoleInputOutput;
 import baseball.controller.output.Output;
 import baseball.domain.game.Game;
 import baseball.domain.game.GameOperator;
