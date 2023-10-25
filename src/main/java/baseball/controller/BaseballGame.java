@@ -7,6 +7,7 @@ import baseball.view.OutputView;
 
 public class BaseballGame {
     private static final int STRIKE_THRESHOLD = 3;
+    private static final int RESTART = 1;
     private Computer computer;
     private Player player;
     private boolean isExit;
@@ -43,7 +44,7 @@ public class BaseballGame {
         OutputView.printGameExitMessage();
         int restartOrExitNumber = InputView.inputRestartOrExitNumber();
 
-        if (restartOrExitNumber == 1) {
+        if (restartOrExitNumber == RESTART) {
             computer.generateRandomNumbers();
             return false;
         }
