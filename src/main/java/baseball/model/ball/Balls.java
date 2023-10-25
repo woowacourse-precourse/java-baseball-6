@@ -1,16 +1,17 @@
 package baseball.model.ball;
 
+import baseball.model.BaseballGameRule;
 import baseball.model.Hint;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Balls {
+public class Balls extends BaseballGameRule {
 
     private List<Ball> balls = new ArrayList<>();
 
     public Balls(List<Integer> givenNumbers) {
-        int position = 1;
+        int position = BASEBALL_START_POSITION;
         for (Integer number : givenNumbers) {
             this.balls.add(new Ball(position++, number));
         }

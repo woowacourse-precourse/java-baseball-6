@@ -1,14 +1,13 @@
 package baseball.controller;
 
 import baseball.model.BaseBallGamePlayer;
+import baseball.model.BaseballGameRule;
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.ball.Balls;
 import java.util.List;
 
-public class GameController {
-
-    private static final Integer PLAY_BASEBALL_GAME = 1;
+public class GameController extends BaseballGameRule {
     private final OutputController outputController;
     private final InputController inputController;
     private final Computer gameComputer;

@@ -18,13 +18,13 @@ public class NumbersValidateTest {
     @Test
     @DisplayName("3 자리의 숫자 인지 확인한다. 숫자가 3개인 경우")
     public void numbersSizeTest() {
-        assertThat(NumbersValidate.isCorrectSize(computersRandomNumbers)).isTrue();
+        assertThat(GameValidate.isCorrectSize(computersRandomNumbers)).isTrue();
     }
     @Test
     @DisplayName("3 자리의 숫자 인지 확인한다. 숫자가 1개인 경우")
     public void numbersSizeTestError() {
         computersRandomNumbers = List.of(1);
-        assertThat(NumbersValidate.isCorrectSize(computersRandomNumbers)).isFalse();
+        assertThat(GameValidate.isCorrectSize(computersRandomNumbers)).isFalse();
     }
     @Test
     @DisplayName("3 자리의 숫자 인지 확인한다. 숫자가 아닌 경우")
@@ -41,6 +41,6 @@ public class NumbersValidateTest {
     @Test
     @DisplayName("숫자의 한 자리수의 범위가 1~9 인지 확인한다.")
     public void pick3NumberRangeTest() {
-        assertThat(NumbersValidate.isNumberInRange(computersRandomNumbers)).isTrue();
+        assertThat(GameValidate.isNumberInRange(computersRandomNumbers)).isTrue();
     }
 }

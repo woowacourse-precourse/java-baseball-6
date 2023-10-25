@@ -2,10 +2,10 @@ package baseball.model;
 
 import baseball.model.ball.BallStatus;
 
-public class Hint {
+public class Hint extends BaseballGameRule {
 
-    int strikeCount = 0;
-    int ballCount = 0;
+    int strikeCount = NO_HIT;
+    int ballCount = NO_HIT;
 
     public void report(BallStatus ballStatus) {
         if (ballStatus.isNothing()) {
@@ -28,19 +28,20 @@ public class Hint {
     }
 
     public boolean isAllStrike() {
-        return strikeCount == 3;
+        return strikeCount == BASEBALL_MAX_AMOUNT;
     }
 
     public String getHintMessage() {
-        if (strikeCount == 0 && ballCount == 0) {
-            return "낫싱";
+        if (strikeCount == NO_HIT && ballCount == NO_HIT) {
+            return BASEBALL_GAME_MESSAGE_NOTHING_KOR;
         }
-        if (strikeCount == 0) {
-            return ballCount + "볼";
+        if (strikeCount == NO_HIT) {
+            return ballCount + BASEBALL_GAME_MESSAGE_BALL_KOR;
         }
-        if (ballCount == 0) {
-            return strikeCount + "스트라이크";
+        if (ballCount == NO_HIT) {
+            return strikeCount + BASEBALL_GAME_MESSAGE_STRIKE_KOR;
         }
-        return ballCount + "볼" + " " + strikeCount + "스트라이크";
+        return ballCount + BASEBALL_GAME_MESSAGE_BALL_KOR + " " + strikeCount
+            + BASEBALL_GAME_MESSAGE_STRIKE_KOR;
     }
 }

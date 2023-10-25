@@ -5,14 +5,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
+public class Computer extends BaseballGameRule{
 
     Balls balls;
 
     public List<Integer> pickNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (numbers.size() < BASEBALL_MAX_AMOUNT) {
+            int randomNumber = Randoms.pickNumberInRange(BASEBALL_MIN_VALUE, BASEBALL_MAX_VALUE);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
