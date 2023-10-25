@@ -44,17 +44,18 @@ public class NumberService {
         String input = readLine();
 
         validateInputType(input);
+        validateInputSize(input, RESTART_INPUT_SIZE);
         validateRestartNumber(input);
 
         return parseInt(input);
     }
 
-    private static void validateInputSize(String input, int size) {
+    public static void validateInputSize(String input, int size) {
         if (input.length() != size)
             throw new IllegalArgumentException(INPUT_SIZE_ERROR + "\n필요 : " + size + " 실제 : " + input.length());
     }
 
-    private static void validateInputType(String input) {
+    public static void validateInputType(String input) {
         for (int i = 0; i < input.length(); i++) {
             int digit = input.charAt(i);
 
@@ -63,7 +64,7 @@ public class NumberService {
         }
     }
 
-    private static void validateInputDuplicate(List<Integer> inputNumbers) {
+    public static void validateInputDuplicate(List<Integer> inputNumbers) {
         List<Integer> duplicate = new ArrayList<>();
 
         for (Integer n : inputNumbers) {
@@ -73,7 +74,7 @@ public class NumberService {
         }
     }
 
-    private static void validateRestartNumber(String input) {
+    public static void validateRestartNumber(String input) {
         int restartNumber = parseInt(input);
 
         if (restartNumber != RESTART_INPUT_NUM && restartNumber != QUIT_INPUT_NUM)
