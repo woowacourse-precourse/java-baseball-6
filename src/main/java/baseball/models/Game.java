@@ -42,6 +42,7 @@ public class Game {
 
     // 정답을 맞힌 경우 게임 재시작 여부 입력 요청하는 메소드
     public void askForRestart() {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int playerInput = Integer.parseInt(Console.readLine());
         utils.validateRestartInput(playerInput);
         if (playerInput == 2) {
