@@ -2,10 +2,10 @@ package baseball.domain;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class GameLaunch {
+public class GameScoreSet {
     private int strikeNum;
     private int ballNum;
-    public GameLaunch(List<Integer> compNum, List<Integer> userNum){
+    public GameScoreSet(List<Integer> compNum, List<Integer> userNum){
         this.strikeNum = strikeByCompareNums(compNum, userNum);
         this.ballNum = ballByCompareNums(compNum, userNum);
     }

@@ -12,15 +12,8 @@ public class UserNum {
     private final int END_RANGE = 9;
     private final int LIST_LENGTH = 3;
     private List<Integer> userNum = new ArrayList<>();
-    public UserNum(){
-        this.userNum = createRandomNum();
-    }
-
-    public List<Integer> createRandomNum(){
-        return Arrays
-                .stream(new List[LIST_LENGTH])
-                .map(aNumber -> Randoms.pickNumberInRange(START_RANGE, END_RANGE))
-                .collect(Collectors.toList());
+    public UserNum(String inputNum){
+        this.userNum = Arrays.asList(Integer.parseInt(inputNum));
     }
 
     public List<Integer> getUserNum(){

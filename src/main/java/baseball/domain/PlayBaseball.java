@@ -5,16 +5,22 @@ import java.util.List;
 public class PlayBaseball {
     private List<Integer> computerNum = new ArrayList<>();
     private List<Integer> userNum = new ArrayList<>();
-    private GameLaunch gameLaunch = new GameLaunch(computerNum, userNum);
+    private GameScoreSet gameScoreSet;
 
     public PlayBaseball(){
         this.computerNum = new ComputerNum().getComputerNum();
-        this.userNum = new UserNum().getUserNum();
+    }
+    public void gameResult(){
+        this.gameScoreSet = new GameScoreSet(computerNum, userNum);
+    }
+    public void inputUserNum(String inputNum){
+        userNum = new UserNum(inputNum).getUserNum();
     }
 
-    public GameLaunch getGameLaunch(){
-        return gameLaunch;
+    public GameScoreSet getGameScoreSet(){
+        return this.gameScoreSet;
     }
+
 
 
 }
