@@ -22,7 +22,8 @@ public class GameView {
         }
         else if (result.getBalls() == 0) {
             displayMessage(result.getStrikes() + "스트라이크");
-        } else {
+        }
+        else {
             displayMessage(result.getBalls() + "볼 " + result.getStrikes() + "스트라이크");
         }
     }
