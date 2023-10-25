@@ -9,7 +9,13 @@ public class Application {
     public static void main(String[] args) {
         while (true) {
             List<Integer> computer = generateRandomNumber();
-            playGame(computer);
+
+            try {
+                playGame(computer);
+            } catch (IllegalArgumentException e) {
+                break;
+            }
+
             if (!continueGame()) {
                 break;
             }
@@ -29,12 +35,11 @@ public class Application {
         return computer;
     }
 
-    private static void playGame(List<Integer> computer) {
-        System.out.println("숫자야구 게임을 시작합니다!");
-        List<Integer> user = new ArrayList<>();
+    private static void playGame(List<Integer> computer) throws IllegalArgumentException {
+        System.out.println("숫자야구 게임을 시작합니다.");
 
         while (true) {
-            user = getUserInput();
+            List<Integer> user = getUserInput();
             int strike = countStrike(computer, user);
             int ball = countBall(computer, user);
 
@@ -47,15 +52,34 @@ public class Application {
         }
     }
 
-    private static List<Integer> getUserInput() {
-        List<Integer> user = new ArrayList<>();
-
+    private static List<Integer> getUserInput() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+        return checkException(input);
+    }
+    private static List<Integer> checkException(String input) throws IllegalArgumentException {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
 
-        user.add(Integer.parseInt(input.substring(0, 1)));
-        user.add(Integer.parseInt(input.substring(1, 2)));
-        user.add(Integer.parseInt(input.substring(2, 3)));
+        if (!input.matches("\\d{3}")) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+
+        List<Integer> user = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int number = Integer.parseInt(input.substring(i, i + 1));
+
+            if (number == 0 || number > 9) {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
+
+            if (user.contains(number)) {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
+
+            user.add(number);
+        }
 
         return user;
     }
