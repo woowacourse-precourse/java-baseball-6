@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
-    public static final String RESULT_NOTHING = "낫싱";
-    private final int RANDOM_NUMBER_START = 1;
-    private final int RANDOM_NUMBER_END = 9;
+    private static final String RESULT_NOTHING = "낫싱";
+    private static final int RANDOM_NUMBER_START = 1;
+    private static final int RANDOM_NUMBER_END = 9;
     private Picks randomPicks = new Picks();
     private Result result = new Result();
 
@@ -26,16 +26,17 @@ public class Computer {
 
         if (result.isNothing()) {
             System.out.println(RESULT_NOTHING);
+            return;
         }
         if (result.onlyBall()) {
             System.out.printf("%d볼\n", result.getBall());
+            return;
         }
         if (result.onlyStrike()) {
             System.out.printf("%d스트라이크\n", result.getStrike());
+            return;
         }
-        if (result.strikeNBall()) {
-            System.out.printf("%d볼 %d스트라이크\n", result.getBall(), result.getStrike());
-        }
+        System.out.printf("%d볼 %d스트라이크\n", result.getBall(), result.getStrike());
     }
 
     public boolean gameFinished(Picks picks) {

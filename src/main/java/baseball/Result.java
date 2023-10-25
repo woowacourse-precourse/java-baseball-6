@@ -1,6 +1,7 @@
 package baseball;
 
 public class Result {
+
     private int strike = 0;
     private int ball = 0;
 
@@ -26,10 +27,6 @@ public class Result {
 
     public boolean onlyStrike() {
         return strike > 0 && ball == 0;
-    }
-
-    public boolean strikeNBall() {
-        return strike > 0 && ball > 0;
     }
 
     public int getStrike() {

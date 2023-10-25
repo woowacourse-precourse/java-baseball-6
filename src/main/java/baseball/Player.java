@@ -5,6 +5,7 @@ import static baseball.Validator.validInputSize;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
+
     public static final String REQUEST_NUMBERS = "숫자를 입력해주세요 : ";
 
     private final Picks picks = new Picks();
@@ -25,5 +26,4 @@ public class Player {
     public Picks getPicks() {
         return picks;
     }
-
 }

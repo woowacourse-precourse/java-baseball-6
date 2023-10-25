@@ -3,6 +3,7 @@ package baseball;
 import java.util.List;
 
 public class Validator {
+
     private static final int MAX_INPUT_SIZE = 3;
 
     public static void validInputSize(String input) {

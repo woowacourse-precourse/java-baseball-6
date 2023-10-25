@@ -3,6 +3,7 @@ package baseball;
 import java.util.Objects;
 
 public class Pick {
+
     private final int number;
 
     public Pick(int number) {
@@ -25,5 +26,4 @@ public class Pick {
     public int hashCode() {
         return Objects.hash(number);
     }
-
 }
