@@ -1,12 +1,16 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import baseball.model.Computer;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.HashSet;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -26,6 +30,43 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 중복_숫자_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("331"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("asd"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("120"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+
+    @Test
+    @DisplayName("컴퓨터가 랜덤으로 3자리 숫자를 생성하는지 테스트")
+    void 컴퓨터_숫자_생성_테스트() {
+        Computer randomNumbers = Computer.createRandomNumbers();
+        List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
+
+        assertThat(randomNumbersList.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 컴퓨터_숫자_생성_중복_테스트() {
+        Computer randomNumbers = Computer.createRandomNumbers();
+        List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
+
+        assertThat(randomNumbersList.size()).isEqualTo(new HashSet<>(randomNumbersList).size());
     }
 
     @Override
