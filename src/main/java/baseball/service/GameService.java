@@ -32,13 +32,6 @@ public class GameService {
             outputVIew.printRequestInputNumberMessage();
             String str = Console.readLine();
 
-            try {
-                validate.combinedValidation(str);
-            } catch (IllegalArgumentException e) {
-                gamePause();
-                e.setStackTrace(e.getStackTrace());
-            }
-
             if ((validate.combinedValidation(str))) {
                 checkResult(str, answerRandomList);
             }
@@ -99,19 +92,15 @@ public class GameService {
         outputVIew.printGameClear();
         String input = Console.readLine();
 
-        try {
-            if (validate.validationReplayInput(input)) {
-                if (input.equals(RE_PLAY)) {
-                    playBallGame();
-                }
-
-                if (input.equals(GAME_OVER)) {
-                    gamePause();
-                    outputVIew.printGameOver();
-                }
+        if (validate.validationReplayInput(input)) {
+            if (input.equals(RE_PLAY)) {
+                playBallGame();
             }
-        } catch (IllegalArgumentException e) {
-            gamePause();
+
+            if (input.equals(GAME_OVER)) {
+                gamePause();
+                outputVIew.printGameOver();
+            }
         }
     }
 }
