@@ -19,6 +19,7 @@ public class BaseballFeatureTest extends NsTest {
     @Test
     void 랜덤하게_고른_숫자가_1에서_9까지의_서로_다른_3자리_숫자인지_확인() {
         Computer computer = new Computer();
+        computer.pickRandomNumbers();
         int count = (int) IntStream.rangeClosed(MIN_RANGE, MAX_RANGE)
                 .filter(computer::numbersContains)
                 .count();
@@ -101,7 +102,7 @@ public class BaseballFeatureTest extends NsTest {
                 1, 3, 5
         );
     }
-    
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
