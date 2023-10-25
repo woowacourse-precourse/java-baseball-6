@@ -14,9 +14,6 @@ public class Application {
         Game();
 
 
-        int ball;
-        int strike;
-        int nothing;
 
 
 
