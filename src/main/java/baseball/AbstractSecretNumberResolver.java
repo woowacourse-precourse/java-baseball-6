@@ -10,9 +10,9 @@ public abstract class AbstractSecretNumberResolver implements SecretNumberResolv
 
     private List<Digit> resolveDigits() {
         return resolveIntegers()
-            .stream()
-            .map(Digit::from)
-            .collect(Collectors.toList());
+                .stream()
+                .map(Digit::from)
+                .collect(Collectors.toList());
     }
 
     protected abstract List<Integer> resolveIntegers();

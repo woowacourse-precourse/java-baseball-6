@@ -10,7 +10,7 @@ public class ConsoleSecretNumberResolver extends AbstractSecretNumberResolver {
     @Override
     protected List<Integer> resolveIntegers() {
         return Stream.of(Console.readLine().split(""))
-            .map(Integer::parseInt)
-            .collect(Collectors.toList());
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
