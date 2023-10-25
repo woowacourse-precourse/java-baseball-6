@@ -9,8 +9,6 @@ public class MainController {
     private final View view;
     private final InteractionController interactionController;
     private final BusinessController businessController;
-    private Number userNumber;
-    private Number computerNumber;
 
     public MainController(View view, InteractionController interactionController, BusinessController businessController) {
         this.view = view;
@@ -18,28 +16,32 @@ public class MainController {
         this.businessController = businessController;
     }
 
-    public void startBaseballGame() {
+    public void startGame() {
         view.showStartLine();
         boolean isAnswer = false;
-        computerNumber = businessController.generateComputerNumber();
+        Number computerNumber = businessController.generateComputerNumber();
         while (!isAnswer) {
             view.showInputLine();
-            userNumber = businessController.generateUserNumber();
+            Number userNumber = businessController.generateUserNumber();
             Result result = businessController.compareUserNumberAndComputerNumber(userNumber, computerNumber);
-            ResultCase resultCase = result.getResultCase();
-            switch (resultCase) {
-                case CORRECT -> {
-                    view.showResultByCorrectAnswer();
-                    isAnswer = true;
-                }
-                case PARTIAL_MISMATCH -> view.showResultByPartialMismatchAnswer(result);
-                case ALL_MISMATCH -> view.showResultByAllMismatchAnswer();
-            }
+            isAnswer = calculateResult(isAnswer, result);
         }
         view.showEndLine();
-        Integer choiceData = interactionController.readChoiceData();
-        if (choiceData == 1) {
-            startBaseballGame();
+        if (interactionController.readChoiceData() == 1) {
+            startGame();
         }
+    }
+
+    private boolean calculateResult(boolean isAnswer, Result result) {
+        ResultCase resultCase = result.getResultCase();
+        switch (resultCase) {
+            case CORRECT -> {
+                view.showCorrectLine();
+                isAnswer = true;
+            }
+            case PARTIAL_MISMATCH -> view.showPartialMismatchLine(result);
+            case ALL_MISMATCH -> view.showAllMismatchLine();
+        }
+        return isAnswer;
     }
 }
