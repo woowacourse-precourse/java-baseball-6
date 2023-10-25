@@ -15,9 +15,8 @@ class StringToGuessNumberListConverterTest {
     @DisplayName("문자열을 List<GuessNumber> 형태로 변환한다.")
     void StringToGuessNumberList_Test() {
         // given
-        String input = "12345";
-        List<GuessNumber> expectedList = List.of(new GuessNumber(1), new GuessNumber(2), new GuessNumber(3),
-                new GuessNumber(4), new GuessNumber(5));
+        String input = "123";
+        List<GuessNumber> expectedList = List.of(new GuessNumber(1), new GuessNumber(2), new GuessNumber(3));
 
         // when
         List<GuessNumber> resultList = StringToGuessNumberListConverter.StringToGuessNumberList(input);
