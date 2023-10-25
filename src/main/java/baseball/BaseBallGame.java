@@ -65,4 +65,9 @@ public class BaseBallGame extends Game {
         return input.chars().boxed().map(Character::getNumericValue).toList();
     }
 
+    private void validateUserNumber(String input){
+        ValidateInput.validate(input, REGEX_THREE_NUMBER, "3자리 수를 입력해주세요.");
+        ValidateInput.validateDuplicate(input);
+    }
+
 }
