@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,8 +10,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static java.lang.Integer.parseInt;
 
 public class Game {
-    static List<Integer> computer = new ArrayList<>();
-    static List<Integer> user = new ArrayList<>();
+    static List<Integer> computer;
+    static List<Integer> user;
     static boolean programRunning = true;
     static boolean gameRunning = true;
 
@@ -21,6 +20,7 @@ public class Game {
     }
 
     private void generateRandomNumber() {
+        computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -36,7 +36,7 @@ public class Game {
         String userInputString = readLine();
 
         if (userInputString.length() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력은 3자리 수여야 합니다.");
         }
 
         int userInputInt = parseInt(userInputString);
@@ -78,7 +78,7 @@ public class Game {
 
         String userInput = readLine();
         if (!userInput.equals("1") && !userInput.equals("2")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력은 1 혹은 2여야 합니다.");
         }
 
         if (userInput.equals("2")) {
@@ -88,23 +88,19 @@ public class Game {
 
     private void startGame() {
         generateRandomNumber();
-
+        gameRunning = true;
         while (gameRunning) {
             getUserInput();
             printResult();
         }
     }
 
-    private void resetData() {
-        computer = new ArrayList<>();
-        gameRunning = true;
-    }
 
     public void startProgram() {
         printGameStartMessage();
+        programRunning = true;
         while (programRunning) {
             startGame();
-            resetData();
             examineNewGameOrNot();
         }
     }
