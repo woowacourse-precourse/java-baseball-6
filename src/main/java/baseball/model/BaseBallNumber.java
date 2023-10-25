@@ -1,13 +1,15 @@
 package baseball.model;
 
+import static baseball.config.BaseBallGameConfig.BASEBALL_MAX_NUMBER;
+import static baseball.config.BaseBallGameConfig.BASEBALL_MIN_NUMBER;
+import static baseball.config.BaseBallGameConfig.BASEBALL_NUMBER_SIZE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
 public class BaseBallNumber {
-
-    private static final int DIGIT = 3;
     private final int[] numbers;
 
     private BaseBallNumber(int[] numbers) {
@@ -19,8 +21,9 @@ public class BaseBallNumber {
     public static BaseBallNumber generateRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
 
-        while (randomNumbers.size() < DIGIT) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (randomNumbers.size() < BASEBALL_NUMBER_SIZE.getValue()) {
+            int randomNumber = Randoms.pickNumberInRange(BASEBALL_MIN_NUMBER.getValue(),
+                    BASEBALL_MAX_NUMBER.getValue());
 
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
@@ -56,13 +59,16 @@ public class BaseBallNumber {
         return numbers.length;
     }
 
+    // todo : 숫자야구게임을 위한 커스텀 예외 생성
     private void validateSize(int[] numbers) {
-        if(numbers.length != DIGIT) throw new IllegalArgumentException("입력된 숫자는 3개로만 이루어져야 합니다.");
+        if(numbers.length != BASEBALL_NUMBER_SIZE.getValue())
+            throw new IllegalArgumentException();
     }
 
     private void validateWithinRange(int[] numbers) {
         for(int number : numbers) {
-            if(number < 1 || number > 9) throw new IllegalArgumentException("숫자는 1 ~ 9 사이의 값만 가능합니다.");
+            if(number < BASEBALL_MIN_NUMBER.getValue() || number > BASEBALL_MAX_NUMBER.getValue())
+                throw new IllegalArgumentException();
         }
     }
 
