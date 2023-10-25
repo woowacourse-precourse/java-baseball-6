@@ -22,11 +22,12 @@ public class BaseballGameController {
     public void playGame() {
         if (isFirstGame) {
             baseballGameView.displayStartMessage();
+            baseballGameModel.generateRandomNumbers();
             isFirstGame = false;
         }
 
-        baseballGameModel.generateRandomNumbers();
         List<Integer> computerNumbers = baseballGameModel.getComputerNumbers();
+        System.out.println("computerNumbers = " + computerNumbers);
 
         String userInput = baseballGameView.getUserInput();
         List<Integer> processedUserInput = processInput(userInput, 3);
@@ -36,6 +37,8 @@ public class BaseballGameController {
 
         if (computeResult.get("strike") == computerNumbers.size()) {
             handleGameEnd();
+        } else {
+            playGame();
         }
 
 
@@ -69,25 +72,27 @@ public class BaseballGameController {
     }
 
     public HashMap<String, Integer> computeResult(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        ArrayList<Integer> copyComputerNumbers = new ArrayList<>();
         HashMap<String, Integer> resultHashMap = new HashMap<String, Integer>();
         int strikes = 0;
         int balls = 0;
+        copyComputerNumbers.addAll(computerNumbers);
 
         for (int i = 0; i < userNumbers.size(); i++) {
-            if (userNumbers.get(i).equals(computerNumbers.get(i))) {
+            if (userNumbers.get(i).equals(copyComputerNumbers.get(i))) {
                 strikes++;
                 userNumbers.remove(i);
-                computerNumbers.remove(i);
+                copyComputerNumbers.remove(i);
                 i--;
             }
         }
 
         for (int i = 0; i < userNumbers.size(); i++) {
-            for (int j = 0; j < computerNumbers.size(); j++) {
-                if (userNumbers.get(i).equals(computerNumbers.get(j))) {
+            for (int j = 0; j < copyComputerNumbers.size(); j++) {
+                if (userNumbers.get(i).equals(copyComputerNumbers.get(j))) {
                     balls++;
                     userNumbers.remove(i);
-                    computerNumbers.remove(j);
+                    copyComputerNumbers.remove(j);
                     i--;
                     break;
                 }
@@ -106,6 +111,7 @@ public class BaseballGameController {
         }
         else if (restartChoice.get(0) == 1) {
             baseballGameModel.clearComputerNumbers();
+            baseballGameModel.generateRandomNumbers();
             playGame();
         }
 
