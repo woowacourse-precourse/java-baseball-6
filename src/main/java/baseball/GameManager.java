@@ -2,6 +2,9 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.domain.ComputerNumbers;
+import baseball.domain.PlayerNumbers;
+import baseball.domain.Result;
 import java.util.ArrayList;
 import java.util.List;
 

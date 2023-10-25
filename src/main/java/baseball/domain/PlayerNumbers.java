@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ public class PlayerNumbers{
 
     List<Integer> playerNumbers;
 
-    PlayerNumbers(List<Integer> playerNumbers){
+    public PlayerNumbers(List<Integer> playerNumbers){
         throwIfInvalidLength(playerNumbers);
         throwIfDuplicated(playerNumbers);
         throwIfNotInRange(playerNumbers);

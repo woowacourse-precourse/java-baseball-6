@@ -2,6 +2,8 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.domain.ComputerNumbers;
+
 public class NumberBaseballApp{
 
     private final GameManager gm = new GameManager();

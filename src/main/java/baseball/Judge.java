@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.domain.ComputerNumbers;
+import baseball.domain.PlayerNumbers;
+import baseball.domain.Result;
 import java.util.List;
 
 public class Judge{

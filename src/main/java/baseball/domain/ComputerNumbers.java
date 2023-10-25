@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ public class ComputerNumbers{
 
     private List<Integer> computerNumbers;
 
-    ComputerNumbers(){
+    public ComputerNumbers(){
         this.computerNumbers = createComputerRandomNumber();
     }
 
