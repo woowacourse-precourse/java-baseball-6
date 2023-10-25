@@ -45,7 +45,7 @@ public class Application {
     private static boolean turnOff() {
         computerPower = false;
         gamePower = false;
-        throw new IllegalArgumentException("잘못된 형식의 입력입니다. 프로그램을 종료합니다.");
+        throw new IllegalArgumentException();
     }
 
     public static void compareAnswer(List<Integer> randomAnswer, Set<Integer> userGuessSet) {
@@ -91,6 +91,11 @@ public class Application {
         // 1. 입력이 3자리 수 인가
         // 2. 3자리중 중복이 없는가
         // set<int>에다 저장하고 size가 3인가 확인.
+        for(int i = 0; i < userGuessStr.length(); i++){
+            if(!Character.isDigit(userGuessStr.charAt(i))){
+                turnOff();
+            }
+        }
         Set<Integer> userGuessSet = new LinkedHashSet<>();
         userGuessSet.add(userGuessStr.charAt(0)-'0');
         userGuessSet.add(userGuessStr.charAt(1)-'0');
