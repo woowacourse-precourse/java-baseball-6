@@ -1,8 +1,9 @@
 package baseball.run;
 
-import baseball.service.BaseBallCompare;
+import baseball.compare.BaseBallCompare;
 import baseball.view.BaseBallView;
 import baseball.vo.InputNumbers;
+import baseball.vo.RandomNumbers;
 
 public class BaseBallRun {
     private final BaseBallView baseBallView;
@@ -19,9 +20,9 @@ public class BaseBallRun {
     }
 
     public void startGame() {
-        baseBallCompare.setRandomNumbers();
+        RandomNumbers randomNumbers = new RandomNumbers();
 
-        if (playBaseBallGame()) {
+        if (playBaseBallGame(randomNumbers)) {
             String inputStr = baseBallView.endGame();
 
             if (restartCheck(inputStr)) {
@@ -30,16 +31,16 @@ public class BaseBallRun {
         }
     }
 
-    public boolean playBaseBallGame() {
+    public boolean playBaseBallGame(RandomNumbers randomNumbers) {
         InputNumbers inputNumbers = new InputNumbers(baseBallView.inputNumber());
-        if (baseBallCompare.compare(inputNumbers)) {
+        if (baseBallCompare.compare(randomNumbers, inputNumbers)) {
 
             baseBallView.outputResult(baseBallCompare.getResultMessage());
             return true;
         }
         baseBallView.outputResult(baseBallCompare.getResultMessage());
 
-        return playBaseBallGame();
+        return playBaseBallGame(randomNumbers);
     }
 
     private boolean restartCheck(String inputStr) {
