@@ -21,4 +21,7 @@ public class Questioner {
             }
         }
     }
+    public GameResult judge(GameNumber guessed) {
+        return targetNumber.judge(guessed);
+    }
 }
