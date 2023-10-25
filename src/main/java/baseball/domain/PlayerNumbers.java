@@ -9,8 +9,8 @@ public class PlayerNumbers {
 
     private final List<Integer> numbers;
 
-    public PlayerNumbers(String numbers) {
-        List<Integer> integerNumbers = convertStringToList(numbers);
+    public PlayerNumbers(String numbers) throws IllegalArgumentException {
+        List<Integer> integerNumbers = this.convertStringToList(numbers);
         this.validateNumbers(integerNumbers);
         this.numbers = integerNumbers;
     }

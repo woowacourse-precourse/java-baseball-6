@@ -11,7 +11,7 @@ public enum GameControlCommand {
         this.commandNumber = commandNumber;
     }
 
-    public static GameControlCommand of(String commandNumber) {
+    public static GameControlCommand of(String commandNumber) throws IllegalArgumentException {
         int commandNumberInt = Integer.parseInt(commandNumber);
         for (GameControlCommand command : GameControlCommand.values()) {
             if (command.commandNumber == commandNumberInt) {

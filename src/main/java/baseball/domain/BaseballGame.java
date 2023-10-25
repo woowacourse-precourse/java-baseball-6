@@ -17,7 +17,7 @@ public class BaseballGame {
             Result result = baseballNumbers.checkResult(playerNumbers);
             View.printResult(result);
 
-            if (result.isThreeStrike()) isDone = true;
+            if (result.isAllHit()) isDone = true;
         }
     }
 }

@@ -14,7 +14,7 @@ public class Result {
         this.ball = ball;
     }
 
-    public boolean isThreeStrike() {
+    public boolean isAllHit() {
         return this.strike == 3;
     }
 
