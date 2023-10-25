@@ -30,8 +30,6 @@ public class Game {
         inputUser();
         String result = printResult();
         System.out.println(result);
-        System.out.println(computer.getPlayerNumbers());
-
         if (checkEndGame()) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             questionRestartGame();
@@ -46,7 +44,7 @@ public class Game {
         String[] inputNumbers = inputData.split("");
         List<Integer> userNumbers = new ArrayList<>(3);
         for (int i = 0; i < 3; i++) {
-            int tempNumber = Integer.parseInt(inputNumbers[i]); //
+            int tempNumber = Integer.parseInt(inputNumbers[i]);
             userNumbers.add(tempNumber);
         }
         this.user.setPlayerNumbers(userNumbers);
@@ -55,7 +53,7 @@ public class Game {
     public void initComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>(3);
         while (computerNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9); //
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
@@ -122,9 +120,9 @@ public class Game {
         if (!userInput.equals(GameRestartState.GAME_CONTINUE.getGameState()) && !userInput.equals(GameRestartState.GAME_STOP.getGameState())) {
             throw new IllegalArgumentException("잘못된 값을 입력하여서 프로그램을 종료합니다.");
         }
-        if (userInput.equals(GameRestartState.GAME_CONTINUE.getGameState())) { // 게임 다시 시작
+        if (userInput.equals(GameRestartState.GAME_CONTINUE.getGameState())) {
             this.gameRestartState = GameRestartState.GAME_CONTINUE;
-            initComputerNumbers(); // 게임 재시작을 위해서 컴퓨터의 숫자들을 다시 설정
+            initComputerNumbers();
         }
         if (userInput.equals(GameRestartState.GAME_STOP.getGameState())) {
             this.gameRestartState = GameRestartState.GAME_STOP;
