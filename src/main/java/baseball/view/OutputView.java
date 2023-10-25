@@ -10,6 +10,7 @@ public class OutputView {
     public static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String NOTHING_MESSAGE = "낫싱\n";
     public static final String BALL_MESSAGE = "%d볼\n";
+    public static final String STRIKE_MESSAGE = "%d스트라이크\n";
 
 
     public static void printGameStart() {
@@ -37,6 +38,12 @@ public class OutputView {
     private static void printBall(GameResponse response) {
         if (response.hasNoStrike() && !response.hasNoBall()) {
             System.out.printf(BALL_MESSAGE, response.getBall());
+        }
+    }
+
+    private static void printStrike(GameResponse response) {
+        if (!response.hasNoStrike() && response.hasNoBall()) {
+            System.out.printf(STRIKE_MESSAGE, response.getStrike());
         }
     }
 }
