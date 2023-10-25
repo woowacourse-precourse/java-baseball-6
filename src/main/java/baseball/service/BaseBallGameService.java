@@ -18,9 +18,6 @@ public class BaseBallGameService {
 
         Computer randomNumbers = Computer.createRandomNumbers();
         List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
-        Validator.validateListSize(randomNumbersList);
-        Validator.validateDuplicateList(randomNumbersList);
-
 
         while(ballStrike.getStrikeCount() < 3) {
             System.out.print("숫자를 입력해주세요 : ");
