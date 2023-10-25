@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constants.Constants;
 import baseball.model.UserNumber;
 import baseball.view.EndView;
 import camp.nextstep.edu.missionutils.Console;
@@ -12,7 +13,7 @@ public class UserInputHandler {
     private List<List<Integer>> duplicatedNum=new ArrayList<>();
 
     public UserNumber getUserInputNumber(){//사용자로부터 숫자 입력
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Constants.USER_INPUT_MESSAGE);
         String userInput= Console.readLine();
         List<Integer> userNumber=changeUserInputNumber(userInput);
         if(!containNumber(duplicatedNum,userNumber)&&userNumber.size()==3){
@@ -20,10 +21,10 @@ public class UserInputHandler {
             return new UserNumber(userNumber);
         }
         else if(containNumber(duplicatedNum,userNumber)){
-            System.out.println("중복된 숫자입니다. 다시 입력해주세요");
+            System.out.println(Constants.DUPLICATE_NUMBER_MESSAGE);
         }
         else{
-            System.out.println("3자리 자연수를 입력하세요");
+            System.out.println(Constants.ERROR_MESSAGE);
         }
         return new UserNumber(userNumber);
     }
@@ -54,12 +55,12 @@ public class UserInputHandler {
                 inputNumber.add(changeType);
             }
             else{
-                throw new IllegalArgumentException("3자리 자연수를 입력하세요");
+                throw new IllegalArgumentException(Constants.ERROR_MESSAGE);
 
             }
         }
-        if(inputNumber.size()!=3){
-            throw new IllegalArgumentException("3자리 자연수를 입력하세요");
+        if(inputNumber.size()!=Constants.RANDOM_NUMBER_LENGTH){
+            throw new IllegalArgumentException(Constants.ERROR_MESSAGE);
         }
             return inputNumber;
     }
@@ -67,14 +68,14 @@ public class UserInputHandler {
         endView.displayRestartMessage();
         while(true){
             int restartInput=Integer.parseInt(Console.readLine());
-            if(restartInput==1){
+            if(restartInput== Constants.RESTART_GAME_NUMBER){
                 return true;
             }
-            else if(restartInput==2){
+            else if(restartInput==Constants.END_GAME_NUMBER){
                 return false;
             }
             else{
-                System.out.println("숫자를 다시 입력해주세요.");
+                System.out.println(Constants.RETRY_MESSAGE);
             }
         }
     }

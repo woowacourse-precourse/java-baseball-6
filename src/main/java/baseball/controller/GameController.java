@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constants.Constants;
 import baseball.model.ComputerNumber;
 import baseball.model.GameStatusNumber;
 import baseball.model.UserNumber;
@@ -29,7 +30,7 @@ public class GameController {
             int nothing = gameStatusNumber.countNothing(userNumber.getUserNumber(), computerNumber.getNumbers());
 
             mainView.displayResult(strike,ball,nothing);
-            if(strike==3){
+            if(strike== Constants.THREE_STRIKE){
                 endView.displayEndMessage();
                 if(userInputHandler.getRestartInput()){
                     computerNumber.resetNumber();
