@@ -14,12 +14,12 @@ public class Computer {
 
     public List<Integer> getComputerNum(){
         createComputerNum();
-        try{
-            validateRangeForAll();
-            validateSize();
-        }catch (IllegalArgumentException e){
-            getComputerNum();
-        }
+//        try{
+//            validateRangeForAll();
+//            validateSize();
+//        }catch (IllegalArgumentException e){
+//            getComputerNum();
+//        }
         return computerNum;
     }
     public void createComputerNum() {
@@ -44,7 +44,7 @@ public class Computer {
     }
 
     public void validateSize(){
-        if(computerNum.size() > 3){
+        if(computerNum.size() != 3){
             throw new IllegalArgumentException("3자리 수 숫자여야 합니다.");
         }
     }
