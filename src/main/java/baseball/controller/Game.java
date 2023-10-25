@@ -60,4 +60,20 @@ public class Game {
         OutputView.printResult(Compare.getStrike(), Compare.getBall());
     }
 
+    //게임 종료 후 게임 재시작 여부 입력받기
+    public static boolean isRestart() {
+        String restartInput = InputView.restart();
+
+        if (restartInput.equals("1")){
+            return true;
+        }
+
+        if (restartInput.equals("2")){
+            OutputView.end();
+            return false;
+        }
+
+        throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+    }
+
 }
