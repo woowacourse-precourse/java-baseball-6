@@ -8,42 +8,34 @@ import java.util.ArrayList;
 public class Baseball {
 
     private final PrintMessage printMessage = new PrintMessage();
-    private final Illegalcheck illegalcheck = new Illegalcheck();
-    private final MyInputNumber myInputNumber = new MyInputNumber();
-
+    private final InputLineConverter InputNumberConverter = new InputLineConverter();
     private ArrayList<Integer> answerNumberList = new ArrayList<>();
+    private ArrayList<Integer> myInputNumber = new ArrayList<>();
 
     public void run(){
         printMessage.gameStartMessage();
         startGame();
     }
 
-    /**
-     * Todo
-     * inputNumberList = getNumberInputList(); // 리팩토링이 필요한 부분
-     *
-     * MyInputNumber객체를 통해 checkGameScore사용
-     *
-     * 인풋은 MyInputNumber객체에게 역할을 넘김
-     *
-     * 에러체크는 누구에게 넘겨야하는가 고민
-     */
     public void startGame(){
         int commandNumber;
-        ArrayList<Integer> inputNumberList;
         do {
             initRandomNumberList();
 
-            inputNumberList = getNumberInputList(); // 리팩토링이 필요한 부분
+            myInputNumber = InputNumberConverter.stringToIntegerList().orElseThrow(
+                    () -> new IllegalArgumentException("입력값이 잘못되었습니다.")
+            );
 
-            while(!checkGameScore(answerNumberList, inputNumberList)){ // MyInputNumber객체를 통해 checkGameScore사용
-                inputNumberList = getNumberInputList();
+            while(!checkGameScore(answerNumberList, myInputNumber)){ // MyInputNumber객체를 통해 checkGameScore사용
+                myInputNumber = InputNumberConverter.stringToIntegerList().orElseThrow(
+                        () -> new IllegalArgumentException("입력값이 잘못되었습니다.")
+                );
             }
 
             printMessage.endGameCommand();
-            commandNumber = Integer.parseInt(Console.readLine()); // 인풋은 MyInputNumber객체에게 역할을 넘김
-
-            illegalcheck.commandCheck(commandNumber); // 에러체크는 누구에게 넘겨야하는가 고민
+            commandNumber = InputNumberConverter.commandNumber().orElseThrow(
+                    () -> new IllegalArgumentException("입력값이 잘못되었습니다.")
+            );
 
         }while (commandNumber == 1);
     }
@@ -74,18 +66,6 @@ public class Baseball {
         }
 
         return answerNumberList;
-    }
-    // TODO: 2023-10-25 : MyInputNumber객체로 역할 분산
-    public ArrayList<Integer> getNumberInputList(){
-        printMessage.inputNumberMessage();
-        String inputData = Console.readLine();
-        illegalcheck.gameNumberFilter(inputData);
-
-        ArrayList<Integer> inputNumberList = new ArrayList<>();
-        for(int i = 0; i < inputData.length(); i++) {
-            inputNumberList.add(Integer.parseInt(String.valueOf(inputData.charAt(i))));
-        }
-        return inputNumberList;
     }
 
     // TODO: 2023-10-25 : 체크할 때 로직 최적화 확인

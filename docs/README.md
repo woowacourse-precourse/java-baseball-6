@@ -16,11 +16,16 @@
     - [x] 3자리 미만
     - [x] 문자
   - [x] while문 endGameCommand의 1,2가 아닌 다른 값
+    - 1, 2가 아닌 다른 수
+    - 문자를 넣었을 때 IllegalException이 아닌 NumberformatException이 발생했을 것, 때문에 CommandCheck로직 변경 필요
 - [x] 예외관련 테스트코드 추가
   - [x] 야구숫자 테스트
   - [x] CommandLine 테스트
 
-
-#리팩토링
+---
+# 리팩토링
 - [ ] 역할분산
-  - [ ] 입력값 리스트를 분배
+  - [ ] 입력값을 따로 관리하는 클래스 생성
+    - 입력값 숫자야구번호와 게임관리하는 command를 InputLineConverter를 통해 관리.
+    - Baseball에서는 입력을 받지 않기에 IllegalCheck를 InputLineConverter 클래스에 역할부여
+    

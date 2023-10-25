@@ -2,14 +2,14 @@ package baseball;
 
 public class Illegalcheck {
 
-    public void commandCheck(int commandNumber){
-        if(commandNumber == 1 || commandNumber == 2){
-            return;
+    public boolean commandAvailable(String commandLine){
+        if(commandLine.equals("1") || commandLine.equals("2")){
+            return true;
         }
         throw new IllegalArgumentException("입력값은 1 or 2 입니다.");
     }
 
-    public void gameNumberFilter(String inputNumberLine){
+    public boolean gameNumberAvailable(String inputNumberLine){
         if(inputNumberLine.length() != 3){
             throw new IllegalArgumentException("3자리수의 숫자를 입력해야 합니다.");
         }
@@ -35,5 +35,7 @@ public class Illegalcheck {
                 }
             }
         }
+
+        return true;
     }
 }
