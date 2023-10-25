@@ -2,6 +2,8 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class NumberBaseball {
     public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -13,7 +15,20 @@ public class NumberBaseball {
     }
 
     private void startGame() {
-        new PlayerPartner().startGame();
+        int[] answers = pickNumberInRange();
+        PlayerPartner playerPartner = PlayerPartner.inputAnswerOf(answers);
+
+        playerPartner.startGame();
+    }
+
+    private int[] pickNumberInRange() {
+        int[] answers = new int[3];
+
+        for (int i = 0; i < 3; i++) {
+            answers[i] = Randoms.pickNumberInRange(1, 9);
+        }
+
+        return answers;
     }
 
     private boolean isContinue(String command) {
@@ -27,7 +42,8 @@ public class NumberBaseball {
             return true;
         }
 
-        return endGame();
+        endGame();
+        return false;
     }
 
     private void validateRight(String command) {
@@ -36,9 +52,8 @@ public class NumberBaseball {
         }
     }
 
-    private static boolean endGame() {
+    private void endGame() {
         System.out.println("게임 종료");
-        return false;
     }
 
 

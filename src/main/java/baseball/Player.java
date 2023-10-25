@@ -4,7 +4,7 @@ public class Player {
     private int number;
     private int[] numbers = new int[10];
 
-    public static Player nextNumberOf(String stringNumber) {
+    public static Player inputNumberOf(String stringNumber) {
         return new Player(stringNumber);
     }
 

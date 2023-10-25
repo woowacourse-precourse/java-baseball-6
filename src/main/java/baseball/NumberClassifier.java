@@ -28,11 +28,11 @@ public abstract class NumberClassifier {
             int playerNumber = playerNumbers % 10;
             int partnerNumber = partnerNumbers % 10;
 
-            if (validateBallStrike(playerNumber)) {
+            if (isBallStrike(playerNumber)) {
                 ballsCount[0]++;
             }
 
-            if (validateStrike(playerNumber, partnerNumber)) {
+            if (isStrike(playerNumber, partnerNumber)) {
                 ballsCount[1]++;
             }
 
@@ -43,9 +43,9 @@ public abstract class NumberClassifier {
         return ballsCount;
     }
 
-    protected abstract boolean validateBallStrike(int playerNumber);
+    protected abstract boolean isBallStrike(int playerNumber);
 
-    protected abstract boolean validateStrike(int playerNumber, int partnerNumber);
+    protected abstract boolean isStrike(int playerNumber, int partnerNumber);
 
     private int getBallCount(int allCount, int strikeCount) {
         if (allCount - strikeCount < 0) {
