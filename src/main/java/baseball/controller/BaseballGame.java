@@ -4,7 +4,8 @@ import baseball.domain.balls.Balls;
 import baseball.domain.restart.RestartStatus;
 import baseball.domain.results.Results;
 import baseball.dto.BallsDifferenceDto;
-import baseball.utility.BallsUtils;
+import baseball.domain.balls.RandomBallsGenerator;
+import baseball.utility.ConvertorUtils;
 import baseball.view.ConsoleView;
 import baseball.view.View;
 
@@ -17,35 +18,39 @@ public class BaseballGame implements Game {
     private Results results;
 
     public void run() {
-
         view.displayGameStartMessage();
+        do {
+            playGame();
+        } while (gonnaRestart());
+    }
+
+    private void playGame() {
+        generateAnswer();
 
         do {
-            generateAnswer();
+            tryAnswer();
+        } while (!isAnswer());
 
-            do {
-                view.displayRequestNumberMessage();
-                inputBalls();
-
-                determineResults();
-                view.displayResults(results);
-
-            } while (!isAnswer());
-
-            view.displayCongratulationMessage();
-            view.displayAskRestartMessage();
-
-        } while (gonnaRestart());
-
+        view.displayCongratulationMessage();
+        view.displayAskRestartMessage();
     }
 
     private void generateAnswer() {
-        answerBalls = BallsUtils.generateRandomBalls(1,9,3);
+        RandomBallsGenerator randomBallsGenerator = new RandomBallsGenerator();
+        answerBalls = randomBallsGenerator.generate();
+    }
+
+    private void tryAnswer() {
+        view.displayRequestNumberMessage();
+        inputBalls();
+
+        determineResults();
+        view.displayResults(results);
     }
 
     private void inputBalls() {
         String inputString = view.inputString();
-        balls = BallsUtils.convertStringToBalls(inputString);
+        balls = ConvertorUtils.convertStringToBalls(inputString);
     }
 
     private void determineResults() {
