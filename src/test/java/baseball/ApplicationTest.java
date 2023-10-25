@@ -29,8 +29,10 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 중복_검사_함수() {
-
+    void 입력시_중복_검사_예외처리_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("441"))
+                        .isInstanceOf(IllegalArgumentException.class));
     }
 
     @Override
