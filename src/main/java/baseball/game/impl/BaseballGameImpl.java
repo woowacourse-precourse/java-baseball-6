@@ -13,11 +13,16 @@ public class BaseballGameImpl implements BaseballGame {
 
     public BaseballGameImpl(int numSize) {
         evaluator = new AnswerEvaluatorImpl(numSize);
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        this.currentPhase = this.phases[PhaseID.GUESS.getId()];
+    }
+
+    @Override
+    public void init() {
         for (PhaseID phase : PhaseID.values()) {
             phases[phase.getId()] = phase.getPhase(this);
         }
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        this.currentPhase = this.phases[PhaseID.GUESS.getId()];
+        evaluator.resetAnswer();
     }
 
     @Override

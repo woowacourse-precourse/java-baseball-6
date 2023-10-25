@@ -3,6 +3,8 @@ package baseball.game;
 import baseball.evaluation.evaluator.Evaluator;
 
 public interface BaseballGame {
+    void init();
+
     void display();
 
     void validateInput(String input);
