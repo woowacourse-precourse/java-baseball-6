@@ -7,7 +7,7 @@ public class CountResult {
     public static int ball;
     public static int strike;
 
-    // countingResult는 CountingBall과 CountingStrike를 합쳐놓은 메서드
+    /*ball과 strike를 세는 메서드*/
     public static void countingResult(List<Integer> computerAns, List<Integer> userInput) {
         countingBall(computerAns, userInput);
         countingStrike(computerAns, userInput);
