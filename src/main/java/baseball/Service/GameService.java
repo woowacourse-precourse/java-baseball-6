@@ -56,7 +56,7 @@ public class GameService {
     private void getUserNumber() {
         InputMessage.printUserInputMessage();
         String input = Console.readLine();
-        user.setInputNumber(converter.convertUserInputToInt(input));
+        user.setInputNumber(converter.convertUserChooseInputToInt(input));
     }
 
     public int getUserRetryRequest() {
