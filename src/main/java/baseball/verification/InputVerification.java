@@ -6,7 +6,7 @@ import java.util.Set;
 public class InputVerification {
     public static void verifyNumber(String input) {
         if (input.length() != 3 || !input.matches("^[1-9]{3}$") || checkDuplicateNumbers(input)) {
-            throw new IllegalArgumentException("중복되지 않는 세 자리 \"숫자\"만 허용합니다(일의 자리가 0인 경우도 허용하지 않습니다.)");
+            throw new IllegalArgumentException("중복되지 않는 1~9까지의 세 자리 \"숫자\"만 허용합니다");
         }
     }
 
