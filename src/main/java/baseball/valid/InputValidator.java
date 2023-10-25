@@ -13,7 +13,7 @@ public class InputValidator {
 
     public void isMatchNumber(String userNum) {
         final String REGEX = "[1-9]+";
-        if (!userNum.matches(REGEX)){
+        if (!userNum.matches(REGEX)) {
             throw new IllegalArgumentException("1-9로 만들어진 숫자가 아닙니다.");
         }
     }
@@ -40,8 +40,9 @@ public class InputValidator {
 
     public void isMatchAgainNumber(String userNum) {
         final String REGEX = "[1-2]+";
-        if (!userNum.matches(REGEX)){
+        if (!userNum.matches(REGEX)) {
             throw new IllegalArgumentException("1-2로 만들어진 숫자가 아닙니다.");
         }
     }
+
 }

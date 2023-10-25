@@ -1,11 +1,10 @@
 package baseball.controller;
 
 import baseball.model.BaseBallGame;
-import baseball.model.TryAgain;
 import baseball.model.Computer;
+import baseball.model.TryAgain;
 import baseball.valid.InputValidator;
 import baseball.view.ConsoleView;
-
 import java.util.List;
 
 public class BaseBallGameController {
@@ -15,7 +14,8 @@ public class BaseBallGameController {
     private final InputValidator validator;
     private final TryAgain tryAgain;
 
-    public BaseBallGameController(ConsoleView consoleView, BaseBallGame baseBallGame, InputValidator validator, TryAgain tryAgain) {
+    public BaseBallGameController(ConsoleView consoleView, BaseBallGame baseBallGame, InputValidator validator,
+                                  TryAgain tryAgain) {
         this.consoleView = consoleView;
         this.baseBallGame = baseBallGame;
         this.validator = validator;
@@ -25,7 +25,7 @@ public class BaseBallGameController {
     public void startGame() {
         consoleView.printGameStart();
         List<Integer> computerNum = computer.makeRandomNumbers();
-        while(tryAgain.getIsStatus()){
+        while (tryAgain.getIsStatus()) {
             String userNum = consoleView.getUserInput();
             List<Integer> userNumList = checkUserNum(userNum);
 
@@ -59,4 +59,5 @@ public class BaseBallGameController {
         validator.isMatch1Size(userNum);
         validator.isMatchAgainNumber(userNum);
     }
+
 }

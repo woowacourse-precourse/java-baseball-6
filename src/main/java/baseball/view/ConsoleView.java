@@ -17,13 +17,13 @@ public class ConsoleView {
 
     public void printResult(int[] result) {
         String resultContent = "";
-        if (result[0]!= 0) {
-            resultContent += result[0] +"볼 ";
+        if (result[0] != 0) {
+            resultContent += result[0] + "볼 ";
         }
-        if (result[1]!=0) {
+        if (result[1] != 0) {
             resultContent += result[1] + "스트라이크";
         }
-        if (result[2]!=0) {
+        if (result[2] != 0) {
             resultContent = "낫싱";
         }
         System.out.println(resultContent);
@@ -39,4 +39,5 @@ public class ConsoleView {
         String input = console.readLine();
         return input;
     }
+
 }

@@ -1,8 +1,8 @@
 package baseball;
 
 import baseball.controller.BaseBallGameController;
-import baseball.model.TryAgain;
 import baseball.model.BaseBallGame;
+import baseball.model.TryAgain;
 import baseball.valid.InputValidator;
 import baseball.view.ConsoleView;
 
@@ -13,7 +13,9 @@ public class Application {
         InputValidator inputValidator = new InputValidator();
         ConsoleView consoleView = new ConsoleView();
         TryAgain tryAgain = new TryAgain();
-        BaseBallGameController baseBallGameController = new BaseBallGameController(consoleView, baseBallGame, inputValidator, tryAgain);
+        BaseBallGameController baseBallGameController = new BaseBallGameController(consoleView, baseBallGame,
+                inputValidator, tryAgain);
         baseBallGameController.startGame();
     }
+
 }

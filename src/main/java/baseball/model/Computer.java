@@ -1,8 +1,8 @@
 package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Computer {
     public List<Integer> makeRandomNumbers() {
@@ -15,4 +15,5 @@ public class Computer {
         }
         return computer;
     }
+
 }
