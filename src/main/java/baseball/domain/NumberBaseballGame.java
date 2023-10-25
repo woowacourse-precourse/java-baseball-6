@@ -41,11 +41,12 @@ public class NumberBaseballGame {
         return false;
     }
 
-    private void handleGame(boolean tag) {
-        if (tag) {
+    private void handleGame(boolean isFinish) {
+        if (isFinish) {
             String restart = player.getRestartMessage();
             GameController.restartGame(restart);
-        } else {
+        }
+        if (!isFinish) {
             game();
         }
     }
