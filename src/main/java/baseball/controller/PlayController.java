@@ -21,9 +21,18 @@ public class PlayController {
         view.game_start();
         while(restart) {
             playGame();
-            //TODO : Input view 1, 2 입력
+            check_end();
         }
 
+    }
+
+    private boolean check_end() throws Exception {
+        int rst_num = Integer.parseInt(view.restart_num());
+        if(rst_num!=1 && rst_num!=2){
+            throw new Exception("1 또는 2로 입력해야합니다.");
+        }
+        if(rst_num==2) return restart==true;
+        return restart==false;
     }
 
     private void playGame() throws Exception {
