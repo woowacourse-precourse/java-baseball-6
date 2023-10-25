@@ -23,5 +23,4 @@ public class GameNumber {
         user.add(userNumber % 10);
         return user;
     }
-
 }

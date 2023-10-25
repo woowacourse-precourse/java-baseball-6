@@ -21,10 +21,10 @@ public class Validator {
     }
 
     private static boolean isUserNumberOverlap(int userNumber) {
-        int tripleDigit = userNumber / 100;
-        int doubleDigit = (userNumber / 10) % 10;
-        int singleDigit = userNumber % 10;
-        return (tripleDigit == doubleDigit) || (doubleDigit == singleDigit) || (tripleDigit == singleDigit);
+        int firstDigit = userNumber / 100;
+        int secondDigit = (userNumber / 10) % 10;
+        int thirdDigit = userNumber % 10;
+        return (firstDigit == secondDigit) || (secondDigit == thirdDigit) || (firstDigit == thirdDigit);
     }
 
     public static int validateGameStatusDecision(int gameStatusDecision) {
