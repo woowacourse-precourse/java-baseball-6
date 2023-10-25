@@ -22,13 +22,18 @@ public class BaseballGameController {
         while (true) {
             System.out.print(INPUT_MESSAGE);
 
+            user = new User();
+            user.setNumber(Console.readLine());
+
             hint = new Hint();
             hint.gamePlay(pc.getNumber(), user.getNumber());
             hint.printHint();
 
             if(hint.getGameOver()) {
-
-                break;
+                System.out.println(RESTART_OR_SHUTDOWN_MESSAGE);
+                if(Console.readLine().equals("1")){
+                    initializePc();
+                }else break;
             }
             /*
                    Todo
