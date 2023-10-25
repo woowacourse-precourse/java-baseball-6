@@ -1,8 +1,5 @@
 package baseball.Player;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Player {
