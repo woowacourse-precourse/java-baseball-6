@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.domain.gamedata.BaseballNumber;
 import baseball.domain.gamedata.GameData;
-import baseball.domain.GameResult;
+import baseball.domain.dto.GameResult;
 import baseball.model.Model;
 import baseball.model.ModelConst;
 import baseball.service.GameService;

@@ -1,7 +1,7 @@
 package baseball.domain.gamedata;
 
 import baseball.domain.BaseballNumberMaker;
-import baseball.domain.GameResult;
+import baseball.domain.dto.GameResult;
 import java.util.ArrayList;
 import java.util.List;
 

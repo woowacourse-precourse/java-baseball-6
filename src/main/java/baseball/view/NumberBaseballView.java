@@ -2,7 +2,7 @@ package baseball.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.domain.GameResult;
+import baseball.domain.dto.GameResult;
 import baseball.exception.BusinessException;
 import baseball.exception.ExceptionCode;
 import baseball.model.Model;

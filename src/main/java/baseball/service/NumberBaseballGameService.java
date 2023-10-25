@@ -1,7 +1,7 @@
 package baseball.service;
 
 import baseball.domain.BaseballNumberMaker;
-import baseball.domain.GameResult;
+import baseball.domain.dto.GameResult;
 import baseball.domain.gamedata.BaseballNumber;
 import baseball.domain.gamedata.GameData;
 

@@ -1,4 +1,6 @@
-package baseball.domain;
+package baseball.domain.dto;
+
+import baseball.domain.BaseballNumberMaker;
 
 public record GameResult(
         int strike,

@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.domain.GameResult;
+import baseball.domain.dto.GameResult;
 import baseball.domain.gamedata.GameData;
 
 public interface GameService {
