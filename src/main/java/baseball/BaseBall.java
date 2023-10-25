@@ -36,7 +36,13 @@ public class BaseBall {
     }
 
     public void reset() {
-        this.answer = Randoms.pickUniqueNumbersInRange(0, 9, ANSWER_LENGTH);
+        this.answer = new ArrayList<>();
+        while (this.answer.size() < this.ANSWER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
+            }
+        }
         this.ended = false;
     }
 
