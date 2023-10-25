@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.GameResult;
+import baseball.model.GameResult;
 import service.BaseBallService;
 import baseball.view.UserInputView;
 import baseball.view.UserOutputView;

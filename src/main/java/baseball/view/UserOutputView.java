@@ -1,5 +1,5 @@
 package baseball.view;
-import baseball.domain.GameResult;
+import baseball.model.GameResult;
 public class UserOutputView {
     private static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다";
     private static final String STRIKE_MESSAGE = "스트라이크";

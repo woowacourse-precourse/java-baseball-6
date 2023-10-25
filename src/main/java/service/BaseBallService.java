@@ -1,7 +1,7 @@
 package service;
 
-import baseball.domain.Game;
-import baseball.domain.GameResult;
+import baseball.model.Game;
+import baseball.model.GameResult;
 import baseball.exception.PlayInputException;
 
 public class BaseBallService {
