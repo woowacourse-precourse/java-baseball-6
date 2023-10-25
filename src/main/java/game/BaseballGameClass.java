@@ -22,6 +22,7 @@ public class BaseballGameClass implements Game{
     @Override
     public void gameInit() {
         RandomAnswerGeneratedInInit = RandomNumberGenerator();
+        System.out.println("RandomAnswerGeneratedInInit = " + RandomAnswerGeneratedInInit);
     }
 
 
@@ -37,28 +38,11 @@ public class BaseballGameClass implements Game{
             exceptionHandler.UnexpectedValue(inputNumber);
             exceptionHandler.DuplicatedValue(inputNumber);
 
-            Integer ballCount = 0, strikeCount = 0;
-            for (int i = 0; i < inputNumber.length(); i++) {
-                if (inputNumber.charAt(i) == RandomAnswerGeneratedInInit.get(i)+'0') {
-                    strikeCount += 1;
-                    continue;
-                }
-                if (RandomAnswerGeneratedInInit.contains(inputNumber.charAt(i)-'0')) {
-                    ballCount += 1;
-                }
-            }
-            if(ballCount == 0 && strikeCount == 0){
-                System.out.println("낫싱");
-                continue;
-            }
-            if(ballCount != 0){
-                System.out.printf(ballCount.toString()+"볼 ");
-            }
-            if(strikeCount != 0){
-                System.out.printf(strikeCount.toString()+"스트라이크");
-            }
-            System.out.println();
-            if(strikeCount == 3){
+            CountManager countManager = new CountManager();
+            countManager.CalculateCount(inputNumber, RandomAnswerGeneratedInInit);
+            String ballstrikeString = countManager.BallStrikeStringManager();
+            System.out.println(ballstrikeString);
+            if(countManager.gameRestartChecker()){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return;
             }
