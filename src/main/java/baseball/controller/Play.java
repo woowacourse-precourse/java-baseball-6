@@ -6,6 +6,9 @@ import baseball.model.UserNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Play {
@@ -67,5 +70,13 @@ public class Play {
 
     private boolean checkNumberPattern(String input) {
         return Pattern.matches(USER_NUMBER_PATTERN, input);
+    }
+
+    private boolean checkDuplicateNumber(List<Integer> userNumber) {
+        Set<Integer> userNumberOfSet = new HashSet<>(userNumber);
+        int sizeOfSet = userNumberOfSet.size();
+        int sizeOfList = userNumber.size();
+
+        return sizeOfList == sizeOfSet;
     }
 }
