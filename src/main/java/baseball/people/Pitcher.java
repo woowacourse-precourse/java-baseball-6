@@ -9,7 +9,8 @@ public class Pitcher {
     private static final String ASK_TO_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ";
     private static final String RESTART = "1";
     private static final String QUIT = "2";
-    Pitcher() {
+
+    private Pitcher() {
     }
 
     /**
@@ -69,7 +70,7 @@ public class Pitcher {
         }
 
         boolean[] duplicationCheck = new boolean[10];
-        for (char c:input.toCharArray()) {
+        for (char c : input.toCharArray()) {
             if (c < '1' || c > '9' || duplicationCheck[(c - '0')]) {
                 return false;
             }

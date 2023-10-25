@@ -10,7 +10,7 @@ public class Referee {
     private static final String STRIKE = "%d스트라이크";
     private static final String NOTHING = "낫싱";
 
-    Referee() {
+    private Referee() {
     }
 
     /**
