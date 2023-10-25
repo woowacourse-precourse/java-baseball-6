@@ -17,4 +17,8 @@ public class Computer {
             }
         }
     }
+
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
+    }
 }

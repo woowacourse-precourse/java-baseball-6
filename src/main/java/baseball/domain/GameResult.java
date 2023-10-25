@@ -9,7 +9,25 @@ public class GameResult {
 
 
     public GameResult(Computer computer, Player player) {
-        //TODO 게임 결과 계산
+        List<Integer> computerNumbers = computer.getComputerNumbers();
+        List<Integer> playerNumbers = player.getPlayerNumbers();
+
+        for(int i = 0 ; i < 3 ; i++){
+            if(isNowNumStrike(computerNumbers.get(i), playerNumbers.get(i))){
+                strike++;
+            }
+            else if(isNowNumBall(computerNumbers, playerNumbers.get(i))){
+                ball++;
+            }
+        }
+    }
+
+    private static boolean isNowNumStrike(Integer computerNumberNow, Integer playerNumberNow) {
+        return computerNumberNow == playerNumberNow;
+    }
+
+    private static boolean isNowNumBall(List<Integer> computerNumbers, Integer playerNumberNow) {
+        return computerNumbers.contains(playerNumberNow);
     }
 
     public boolean isRight() {

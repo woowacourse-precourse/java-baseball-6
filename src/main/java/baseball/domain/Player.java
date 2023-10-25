@@ -9,4 +9,7 @@ public class Player {
         playerNumbers = userInput;
     }
 
+    public List<Integer> getPlayerNumbers() {
+        return playerNumbers;
+    }
 }
