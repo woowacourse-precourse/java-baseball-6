@@ -63,6 +63,13 @@ public class BaseballGame {
         }
     }
 
+    private List<Integer> getUserAnswer() {
+        String[] userInput = Console.readLine().split(SEPARATOR);
+        return Arrays.stream(userInput)
+                .map(input -> convertStringToInteger(input))
+                .toList();
+    }
+
     private void validAnswer(List<Integer> userAnswer) {
         validDigit(userAnswer);
         validDistinct(userAnswer);
