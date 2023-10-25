@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.ArrayList;
 
+
 public class Application {
+
   public static void main(String[] args) {
     // TODO: 프로그램 구현
     List<Integer> computer = new ArrayList<>();
@@ -21,19 +23,24 @@ public class Application {
     while (true) {
       System.out.print(inputMsg);
       String guessNumber = Console.readLine();
-      System.out.println(guessNumber);
       List<Integer> guessNumberList = new ArrayList<>();
 
       // 입력받아서 숫자 list에 추가
       for (int i = 0; i < guessNumber.length(); i++) {
         char digitChar = guessNumber.charAt(i); // 문자열의 i번째 문자를 가져옴
-        int digit = Character.getNumericValue(digitChar); // 문자를 정수로 변환
-        guessNumberList.add(digit); // List에 추가
+        if (Character.isDigit(digitChar)){ // 입력이 숫자인지 검사
+          int digit = Character.getNumericValue(digitChar); // 문자를 정수로 변환
+          guessNumberList.add(digit); // List에 추가
+        } else {
+          throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
+        }
       }
       if (guessNumberList.size() != 3) {
         //IllegalArgumentException 발생
         throw new IllegalArgumentException("잘못된 입력입니다.");
       }
+
+
       int strikeCount = 0;
       int ballCount = 0;
 
