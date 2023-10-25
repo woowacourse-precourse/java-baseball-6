@@ -4,17 +4,20 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
-    private Computer computer;
-    private Player player;
+    private final Computer computer;
+    private final Player player;
     int strike;
     int ball;
     boolean EXIT = false;
 
+    public Game(){
+        computer = new Computer();
+        player = new Player();
+    }
+
     public void run(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        computer = new Computer();
         computer.createComputerNum();
-        player = new Player();
         while(!EXIT){
             resetResult();
             player.createUserNum();
