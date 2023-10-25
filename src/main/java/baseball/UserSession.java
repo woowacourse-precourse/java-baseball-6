@@ -16,10 +16,7 @@ public class UserSession {
             List<Integer> result = game.playRound(input);
             showRoundResult(result);
             if (game.isWin(result)) {
-                System.out.println(new StringBuilder()
-                        .append(game.getNumberSize())
-                        .append("개의 숫자를 모두 맞히셨습니다! 게임 종료")
-                );
+                System.out.println(game.getNumberSize() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 if (!promptForNewGame()) break;
                 game.setNewGame();
             }
@@ -29,25 +26,12 @@ public class UserSession {
     private void showRoundResult(List<Integer> result) {
         if (result.get(0) == 0 && result.get(1) == 0) {
             System.out.println("낫싱");
-        }
-        else if (result.get(0) > 0 && result.get(1) > 0) {
-            System.out.println(new StringBuilder()
-                    .append(result.get(1))
-                    .append("볼 ")
-                    .append(result.get(0))
-                    .append("스트라이크")
-            );
+        } else if (result.get(0) > 0 && result.get(1) > 0) {
+            System.out.println(result.get(1) + "볼 " + result.get(0) + "스트라이크");
         } else if (result.get(0) > 0 && result.get(1) == 0) {
-            System.out.println(new StringBuilder()
-                    .append(result.get(0))
-                    .append("스트라이크")
-            );
-        }
-        else if (result.get(0) == 0 && result.get(1) > 0) {
-            System.out.println(new StringBuilder()
-                    .append(result.get(1))
-                    .append("볼")
-            );
+            System.out.println(result.get(0) + "스트라이크");
+        } else if (result.get(0) == 0 && result.get(1) > 0) {
+            System.out.println(result.get(1) + "볼");
         }
     }
 
