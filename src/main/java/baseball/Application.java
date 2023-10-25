@@ -16,13 +16,14 @@ public class Game {
 
     private static void checkUserGuessingNumberInput(String guessingNumber) {
 
-        boolean isValid = false;
-        if (a.length() != 3) {
-            isValid = true;
+        boolean isValid = true;
+        if (guessingNumber.length() != 3) {
+            isValid = false;
         }
-        for (int i = 0; i < a.length(); i++) {
-            if (a.charAt(i) < '1' || a.charAt(i) > '9') {
-                isValid = true;
+        for (int i = 0; i < guessingNumber.length(); i++) {
+            if (guessingNumber.charAt(i) < '1' || guessingNumber.charAt(i) > '9') {
+                isValid = false;
+                break;
             }
         }
         for (int i = 0; i < 3; i++) {
@@ -30,12 +31,13 @@ public class Game {
                 if (i == j) {
                     continue;
                 }
-                if (a.charAt(i) == a.charAt(j)) {
-                    isValid = true;
+                if (guessingNumber.charAt(i) == guessingNumber.charAt(j)) {
+                    isValid = false;
+                    break;
                 }
             }
         }
-        if (isValid) {
+        if (!isValid) {
             throw new IllegalArgumentException("올바른 수를 입력해 주세요");
         }
     }
