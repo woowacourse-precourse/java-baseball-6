@@ -54,7 +54,7 @@ public class Application {
     }
 
     private static boolean gameOver(String gameResult) {
-        if (gameResult.equals("3스트라이크")) {
+        if (gameResult.equals(GameStatus.WIN_GAME.getValue())) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
