@@ -49,7 +49,6 @@ public class BaseballGameController {
 
     private void validateUserInput(String userInput){
         try{
-            int number = Integer.parseInt(userInput);
             if (userInput.length() != 3) {
                 throw new IllegalArgumentException("세자리 수를 입력해야합니다.");
             }
