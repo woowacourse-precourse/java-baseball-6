@@ -14,9 +14,14 @@ public final class MessagePrinter {
     }
 
     public static void printResultMessage(int strike, int ball) {
-        if (ball > 0) System.out.print(ball + "볼 ");
-        if (strike > 0) System.out.println(strike + "스트라이크");
-        if (strike == 0 & ball == 0) System.out.println("낫싱");
+        System.out.println(
+                (strike == 0 && ball == 0) ? "낫싱" :
+                        new StringBuilder()
+                                .append(ball > 0 ? ball + "볼" : "")
+                                .append(strike > 0 && ball > 0 ? " " : "")
+                                .append(strike > 0 ? strike + "스트라이크" : "")
+                                .toString());
+
     }
 
     public static void printGameEndMessage() {
