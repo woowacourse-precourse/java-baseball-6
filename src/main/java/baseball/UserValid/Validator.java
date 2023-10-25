@@ -15,9 +15,8 @@ public class Validator {
     }
 
     public static void CheckNumber(String userNum){
-        int checkIntNUm;
         try {
-            checkIntNUm = Integer.parseInt(userNum);
+            int number = Integer.parseInt(userNum);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
@@ -37,7 +36,8 @@ public class Validator {
         }
     }
     public static void  CheckLength(String userNum){
-        if (userNum.length() != MAX_LEN) {
+        int L = userNum.length();
+        if (L > MAX_LEN || L<MAX_LEN) {
             throw new IllegalArgumentException();
         }
     }
