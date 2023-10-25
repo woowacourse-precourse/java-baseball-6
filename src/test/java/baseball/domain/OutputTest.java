@@ -2,23 +2,23 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.io.Output;
+import baseball.umpire.Result;
 import org.junit.jupiter.api.Test;
 
 class OutputTest {
 
-    Output output = new Output();
-
     @Test
     void printResult() {
         //Given
-        int[] oneStrikeOneBall = {1, 1};
-        int[] twoStrikeTwoBall = {2, 2};
-        int[] threeStrike = {3, 0};
+        Result oneStrikeOneBall = new Result(1, 1);
+        Result twoStrikeTwoBall = new Result(2, 2);
+        Result threeStrike = new Result(3, 0);
 
         //When
-        boolean test1 = output.printResult(oneStrikeOneBall);
-        boolean test2 = output.printResult(twoStrikeTwoBall);
-        boolean test3 = output.printResult(threeStrike);
+        boolean test1 = Output.printResult(oneStrikeOneBall);
+        boolean test2 = Output.printResult(twoStrikeTwoBall);
+        boolean test3 = Output.printResult(threeStrike);
 
         //Then
         assertThat(test1).isEqualTo(true);

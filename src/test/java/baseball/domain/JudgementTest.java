@@ -2,13 +2,13 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.umpire.Judgement;
+import baseball.umpire.Result;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class JudgementTest {
-
-    Judgement judgement = new Judgement();
 
     @Test
     void judgement() {
@@ -24,10 +24,10 @@ class JudgementTest {
         player.add(4);
 
         //When
-        int[] result = judgement.judgement(opponent, player);
+        Result result = Judgement.countSB(opponent, player);
 
         //Then
-        assertThat(result[0]).isEqualTo(2);
-        assertThat(result[1]).isEqualTo(0);
+        assertThat(result.getStrike()).isEqualTo(2);
+        assertThat(result.getBall()).isEqualTo(0);
     }
 }
