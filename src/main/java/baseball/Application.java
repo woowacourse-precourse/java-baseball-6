@@ -23,6 +23,26 @@ public class Application {
         return numbers;
     }
 
+    private static List<Integer> getUserInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+
+        if (input.length() != NUM_DIGITS || !input.matches("[1-9]{3}")) {
+            throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해야 합니다.");
+        }
+
+        List<Integer> numbers = new ArrayList<>();
+        for (char ch : input.toCharArray()) {
+            int num = ch - '0';
+            if (!numbers.contains(num)) {
+                numbers.add(num);
+            } else {
+                throw new IllegalArgumentException("서로 다른 3자리의 수를 입력해야 합니다.");
+            }
+        }
+        return numbers;
+    }
+
     public static void main(String[] args) {
 
     }
