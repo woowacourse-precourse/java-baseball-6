@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import baseball.domain.User;
 public class Application {
+    public static final int NUMBER_LENGTH = 3;
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
     public static final String NOTHING = "낫싱";
@@ -14,27 +15,22 @@ public class Application {
         while (exit == 1) { // 외부 while문 시작
             System.out.println("숫자 야구 게임을 시작합니다.");
             // 1부터 9까지 서로 다른 세 자리의 수 생성 (컴퓨터)
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
+            List<Integer> computerNum = new ArrayList<>();
+            computer.generateComputerNum(computerNum, NUMBER_LENGTH);
 
             int strike = 0;
             int ball = 0;
 
             while (strike < 3) { // 내부 while문 시작
-                User user = new User();
-                ArrayList<Integer> userNumArray = user.inputUserGuess();
+
+                ArrayList<Integer> userNumArray = user.inputUserGuess(NUMBER_LENGTH);
 
                 // 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱
                 strike = 0;
                 ball = 0;
 
                 for (int i = 0; i < userNumArray.size(); i++) {
-                    if (userNumArray.get(i) == computer.get(i)) {
+                    if (userNumArray.get(i) == computerNum.get(i)) {
                         userNumArray.set(i, 0);
                         strike++;
                     }
@@ -60,7 +56,7 @@ public class Application {
                 if ((ball == 0) && (strike == 0)) {
                     output += String.format("%s", NOTHING);
                 }
-                System.out.println(computer);
+                System.out.println(computerNum);
                 System.out.println(output);
             } // 내부 while문 끝
             // 3개의 숫자를 모두 맞히면 종료, 다시 시작하거나 완전히 종료
