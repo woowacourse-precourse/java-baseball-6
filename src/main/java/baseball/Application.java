@@ -104,7 +104,7 @@ class GameProcess{
         // 문제 풀기-반복처리
         List<Integer> computer=game.getComputerNumbers();
 
-        while(true) {
+        do {
             System.out.print("숫자를 입력해주세요 : ");
             String answer = readLine();
 
@@ -118,9 +118,23 @@ class GameProcess{
             // 정답시
             if(game.isCorrectAnswer(answer)){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                askForRestart();
                 break;
             }
+        } while(true);
+    }
+
+    private static void askForRestart() throws IllegalArgumentException{
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        try{
+            int restart=Integer.parseInt(readLine());
+            if(restart==1){
+                startGame();
+            }else if(restart!=2){
+                throw new IllegalArgumentException();
+            }
+        }catch(IllegalArgumentException e){
+            throw new IllegalArgumentException();
         }
     }
 }
