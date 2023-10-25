@@ -12,9 +12,7 @@ import org.junit.jupiter.api.Test;
 class NumberBaseballGameControllerTest {
 
     private final GameView gameView = new NumberBaseballGameView("src/main/resources/messages/messages.properties");
-    private final Supplier<Game> mockSupplier = () -> {
-        return null;
-    };
+    private final Supplier<Game> mockSupplier = () -> null;
 
     @Test
     void InputNot1Or2() {
