@@ -63,7 +63,6 @@ public class Application {
         System.out.println("숫자를 입력해주세요: ");
         String input = Console.readLine();
         if (input.length() != 3) throw new IllegalArgumentException();
-
         int i = 0;
         for (String s : input.split("")) {
             if (!(Character.isDigit(s.charAt(0)))) {
