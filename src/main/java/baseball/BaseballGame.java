@@ -47,7 +47,6 @@ public class BaseballGame {
     private void play(List<Integer> correctAnswer) {
         while (true) {
             hintScore.clear();
-            System.out.print(USER_INPUT);
             List<Integer> userAnswer = getUserAnswer();
             validAnswer(userAnswer);
             hintScore.calculateHint(correctAnswer, userAnswer);
@@ -60,6 +59,7 @@ public class BaseballGame {
     }
 
     private List<Integer> getUserAnswer() {
+        System.out.print(USER_INPUT);
         String[] userInput = Console.readLine().split(SEPARATOR);
         return Arrays.stream(userInput)
                 .map(input -> convertStringToInteger(input))
