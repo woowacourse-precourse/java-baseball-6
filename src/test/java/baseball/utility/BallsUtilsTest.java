@@ -1,7 +1,7 @@
-package baseball.utils;
+package baseball.utility;
 
-import baseball.balls.Ball;
-import baseball.balls.Balls;
+import baseball.domain.balls.Ball;
+import baseball.domain.balls.Balls;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

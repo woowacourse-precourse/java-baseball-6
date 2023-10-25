@@ -1,4 +1,4 @@
-package baseball.validators;
+package baseball.validator;
 
 public final class IntegerValidators {
 

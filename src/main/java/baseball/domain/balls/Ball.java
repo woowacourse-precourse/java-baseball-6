@@ -1,4 +1,4 @@
-package baseball.balls;
+package baseball.domain.balls;
 
 import java.util.Objects;
 

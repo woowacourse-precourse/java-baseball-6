@@ -1,9 +1,10 @@
-package baseball.game;
+package baseball.controller;
 
-import baseball.balls.Balls;
-import baseball.results.Results;
-import baseball.utils.BallsUtils;
-import baseball.utils.ResultsUtils;
+import baseball.domain.balls.Balls;
+import baseball.domain.restart.RestartStatus;
+import baseball.domain.results.Results;
+import baseball.dto.BallsDifferenceDto;
+import baseball.utility.BallsUtils;
 import baseball.view.ConsoleView;
 import baseball.view.View;
 
@@ -48,7 +49,8 @@ public class BaseballGame implements Game {
     }
 
     private void determineResults() {
-        results = ResultsUtils.determineResults(balls, answerBalls);
+        BallsDifferenceDto ballsDifferenceDto = balls.getDifference(answerBalls);
+        results = new Results(ballsDifferenceDto);
     }
 
     private boolean isAnswer() {

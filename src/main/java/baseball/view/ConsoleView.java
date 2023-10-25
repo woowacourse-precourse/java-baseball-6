@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.results.Results;
+import baseball.domain.results.Results;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleView implements View {

@@ -1,6 +1,8 @@
-package baseball.balls;
+package baseball.domain.balls;
 
-import baseball.validators.ListValidators;
+import baseball.domain.results.ResultStatus;
+import baseball.dto.BallsDifferenceDto;
+import baseball.validator.ListValidators;
 import java.util.List;
 
 public class Balls {
@@ -45,8 +47,16 @@ public class Balls {
                 .anyMatch(ball -> ball.equals(anotherBall));
     }
 
-    public List<Ball> getBalls() {
-        return balls;
+    public BallsDifferenceDto getDifference(Balls anotherBalls) {
+        int sameBallCount = (int) balls.stream()
+                .filter(anotherBalls::hasSameBall)
+                .count();
+        int sameValueBallCount = (int) balls.stream()
+                .filter(anotherBalls::hasSameValueBall)
+                .count() - sameBallCount;
+        int differentBallCount = BALL_COUNT - sameBallCount - sameValueBallCount;
+
+        return new BallsDifferenceDto(sameBallCount, sameValueBallCount, differentBallCount);
     }
 
 }

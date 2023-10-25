@@ -1,6 +1,6 @@
-package baseball.balls;
+package baseball.domain.balls;
 
-import baseball.validators.IntegerValidators;
+import baseball.validator.IntegerValidators;
 import java.util.Objects;
 
 public class BallIndex {

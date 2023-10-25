@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.domain.restart;
 
 import java.util.Arrays;
 
