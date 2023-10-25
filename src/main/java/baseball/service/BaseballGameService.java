@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGameService {
-    public static final int ANSWER_LENGTH = 3;
-    public static final String BALL_ANSWER_STRING = "볼";
-    public static final String STRIKE_ANSWER_STRING = "스트라이크";
-    public static final String NOTHING_ANSWER_STRING = "낫싱";
+    private static final int ANSWER_LENGTH = 3;
+    private static final String BALL_ANSWER_STRING = "볼";
+    private static final String STRIKE_ANSWER_STRING = "스트라이크";
+    private static final String NOTHING_ANSWER_STRING = "낫싱";
 
     public void playBaseballGame() {
         BaseballGameResultStatus resultStatus = null;

@@ -1,17 +1,17 @@
 package baseball.utils;
 
 public class BaseballGameUserInputUtils {
-    public static final int allowInputLength = 3;
-    public static final String allowInputValueRegex = "[1-9]+";
+    private static final int ALLOW_INPUT_LENGTH = 3;
+    private static final String ALLOW_INPUT_VALUE_REGEX = "[1-9]+";
     public static final String RESTART_GAME_INPUT_COMMAND = "1";
     public static final String EXIT_GAME_INPUT_COMMAND = "2";
 
     public static boolean isValidInputLength(String input) {
-        return (input.length() == allowInputLength);
+        return (input.length() == ALLOW_INPUT_LENGTH);
     }
 
     public static boolean isValidInputValue(String input) {
-        return input.matches(allowInputValueRegex);
+        return input.matches(ALLOW_INPUT_VALUE_REGEX);
     }
 
     public static boolean isInputContainsUniqueValue(String input) {
