@@ -20,6 +20,6 @@ public enum GameContinuationOption {
         return Arrays.stream(GameContinuationOption.values())
                 .filter(option -> option.getValue().equals(inputString))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(ErrorCode.INVALID_GAME_END_OPTION.getMessage()));
+                .orElseThrow(() -> new IllegalArgumentException(ErrorCode.INVALID_CONTINUATION_INPUT.getMessage()));
     }
 }
