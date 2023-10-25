@@ -15,4 +15,9 @@ class StrikeCounterTest {
                 .isEqualTo(0);
     }
 
+    @Test
+    void 스트라이크가_1개_존재한다() {
+        assertThat(strikeCounter.count(List.of(1, 2, 3), List.of(1, 8, 9)))
+                .isEqualTo(1);
+    }
 }
