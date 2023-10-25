@@ -24,10 +24,9 @@ public class GameService {
     }
 
     public void playBallGame() {
+        gameStart();
         GenerationQuestionList answerRandomListFactory = new GenerationQuestionList(new ArrayList<>());
         List<Integer> answerRandomList = answerRandomListFactory.generateRandomNumberList(new withinRange(1, 9));
-
-        System.out.println(answerRandomList);
 
         while (play) {
             outputVIew.printRequestInputNumberMessage();
@@ -44,6 +43,10 @@ public class GameService {
                 checkResult(str, answerRandomList);
             }
         }
+    }
+
+    private void gameStart() {
+        play = true;
     }
 
     private void gamePause() {
@@ -109,8 +112,6 @@ public class GameService {
             }
         } catch (IllegalArgumentException e) {
             gamePause();
-            outputVIew.printWrongInput();
-            e.getMessage();
         }
     }
 }
