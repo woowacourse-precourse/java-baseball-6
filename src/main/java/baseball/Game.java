@@ -32,7 +32,7 @@ public class Game {
         end();
     }
 
-    private Result playRound(List<Integer> answer) {
+    private void playRound(List<Integer> answer) {
         announcer.announceToSpeakNumber();
         List<Integer> playerNumbers = player.speakNumbers();
 
@@ -40,7 +40,6 @@ public class Game {
         announcer.announceResult(result);
 
         if (!judge.checkGameOver(result)) playRound(answer);
-        return result;
     }
 
     private void end() {
