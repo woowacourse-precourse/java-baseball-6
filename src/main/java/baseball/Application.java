@@ -8,14 +8,20 @@ import java.lang.String;
 public class Application {
     final static int gamenumslen = 3;
     public static boolean confirmUserCorrectAnswer(String nums){//컴퓨터에 값을 맞추기 위한 사용자의 값이 올바른지 확인
+        boolean[] userNumsBucket = {false, false, false, false, false, false, false, false, false, false};
         if(nums.length() != gamenumslen){
             return false;
         }
         else{
             for(int i = 0; i<gamenumslen; i++){
-                if(nums.charAt(i) -'0'<1&&9<nums.charAt(i)-'0'){
+                int numsCheck = nums.charAt(i) -'0';
+                if(numsCheck<1&&9<numsCheck){
                     return false;
                 }
+                if(!userNumsBucket[numsCheck]){
+                    userNumsBucket[numsCheck] = true;
+                }
+                else return false;
             }
             return true;
         }
