@@ -30,4 +30,11 @@ class GameControllerTest {
         assertEquals(GameStatus.END, gameStatus);
     }
 
+    @Test
+    void 스트라이크_세_개가_아닐_때_게임_지속_상태를_반환한다() {
+        gameController.initializeGame();
+        GameStatus gameStatus = gameController.playGameRound(Arrays.asList(1, 2, 7));
+
+        assertEquals(GameStatus.CONTINUE, gameStatus);
+    }
 }
