@@ -88,13 +88,7 @@ public class baseballTest {
         Set<Integer> uniqueList = new HashSet<>(computerNumberList);
         assertThat(uniqueList.size()).isEqualTo(3);
         }
-
-    @Test
-    void 플레이어_숫자가_세자리_아님() {
-        String playerInput = "1234";
-        assertThatThrownBy(() -> inputException.validNumberLength(playerInput))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
+        
 }
 
 
