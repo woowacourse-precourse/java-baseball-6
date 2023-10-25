@@ -13,9 +13,9 @@ public class OutputView {
     BallStrikeNothing ballStrikeNothing;
 
     public void printResult() {
-        System.out.println(OutputFormat());
+        System.out.println(outputFormat());
     }
-    public String OutputFormat() {
+    public String outputFormat() {
         StringBuilder sb = new StringBuilder(32);
         if (ballStrikeNothing.ball > 0) {
             sb.append(ballStrikeNothing.ball + BALL + " ");
@@ -30,9 +30,9 @@ public class OutputView {
         return sb.toString();
     }
 
-    public String PrintReStart() {
+    public String printReStart() {
         System.out.println(inputView.CHOOES_RESTART_OR_EXIT);
-        String inputCode = inputView.ProgramReStartOrExit();
+        String inputCode = inputView.programReStartOrExit();
         System.out.println(inputCode);
         return inputCode;
     }

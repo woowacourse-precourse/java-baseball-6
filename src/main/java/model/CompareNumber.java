@@ -14,28 +14,28 @@ public class CompareNumber {
         this.computer = computer;
     }
 
-    public void CompareComputerAndUser() {
+    public void compareComputerAndUser() {
 
-        ballStrikeNothing.strike = StrikeCount();
-        ballStrikeNothing.ball = BallCount();
-        ballStrikeNothing.nothing = NothingCount();
+        ballStrikeNothing.strike = strikeCount();
+        ballStrikeNothing.ball = ballCount();
+        ballStrikeNothing.nothing = nothingCount();
 
         List<Integer> result = List.of(ballStrikeNothing.ball, ballStrikeNothing.strike, ballStrikeNothing.nothing);
     }
 
-    public int StrikeCount() {
+    public int strikeCount() {
         return (int) IntStream.range(0, user.size())
                 .filter(i -> computer.get(i).equals(user.get(i)))
                 .count();
     }
 
-    public int BallCount() {
+    public int ballCount() {
         return (int) IntStream.range(0, user.size())
                 .filter(i -> computer.contains(user.get(i)))
                 .count() - ballStrikeNothing.strike;
     }
 
-    public int NothingCount() {
+    public int nothingCount() {
         return 3 - ballStrikeNothing.strike - ballStrikeNothing.ball;
     }
 }

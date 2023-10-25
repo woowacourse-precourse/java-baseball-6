@@ -14,44 +14,44 @@ public class InputView {
     public static final String reStart = "1";
     public static final int NUMBER_LENGTH = 3;
 
-    public List<Integer> InputUserNumber() {
+    public List<Integer> inputUserNumber() {
         System.out.print(INPUT_NUMBER);
         String inputString = Console.readLine();
         System.out.println(inputString);
-        ValidateInputNumber(inputString);
+        validateInputNumber(inputString);
 
-        return AddNumber(inputString);
+        return addNumber(inputString);
     }
 
-    public List<Integer> AddNumber(String input) {
+    public List<Integer> addNumber(String input) {
         List<Integer> userNumbers = new ArrayList<>();
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             int number = input.charAt(i) - '0';
-            ValidateDuplicate(userNumbers, number);
+            validateDuplicate(userNumbers, number);
             userNumbers.add(number);
         }
         return userNumbers;
     }
 
-    public void ValidateDuplicate(List<Integer> userNumbers, int number) {
+    public void validateDuplicate(List<Integer> userNumbers, int number) {
         if (userNumbers.contains(number)) {
             throw new IllegalArgumentException("중복된 숫자를 입력헸습니다.");
         }
     }
 
-    public void ValidateInputNumber(String inputs) {
+    public void validateInputNumber(String inputs) {
         if (!inputs.matches(NUMBER_REGULAR_EXPRESSION)) {
             throw new IllegalArgumentException("3자리의 숫자를 입력해야 합니다.");
         }
     }
 
-    public String ProgramReStartOrExit() {
+    public String programReStartOrExit() {
         String number = Console.readLine();
-        ValidateReStartOrExit(number);
+        validateReStartOrExit(number);
         return number;
     }
 
-    public void ValidateReStartOrExit(String input) {
+    public void validateReStartOrExit(String input) {
         if (!input.matches(EXIT_REGULAR_EXPRESSION)) {
             throw new IllegalArgumentException("1 과 2 만 입력할 수 있습니다.");
         }

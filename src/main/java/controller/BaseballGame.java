@@ -23,7 +23,7 @@ public class BaseballGame {
     public void start() {
         System.out.println(inputView.GAME_START_MESSAGE);
         while (true) {
-            boolean play = Play();
+            boolean play = play();
             if (!play) {
                 System.out.println(outputView.GAME_SET);
                 break;
@@ -31,19 +31,19 @@ public class BaseballGame {
         }
     }
 
-    public boolean Play() {
-        computer = randomNumber.GenerateRandomNumber();
+    public boolean play() {
+        computer = randomNumber.generateRandomNumber();
         while (true) {
-            CompareNumber compareNumber = new CompareNumber(inputView.InputUserNumber(), computer);
-            compareNumber.CompareComputerAndUser();
+            CompareNumber compareNumber = new CompareNumber(inputView.inputUserNumber(), computer);
+            compareNumber.compareComputerAndUser();
             outputView.printResult();
 
             if (ballStrikeNothing.strike == inputView.NUMBER_LENGTH) {
-                String code = outputView.PrintReStart();
+                String code = outputView.printReStart();
                 if (code.equals(inputView.exit)) {
                     return false;
                 } else if(code.equals(inputView.reStart)) {
-                    computer = randomNumber.GenerateRandomNumber();
+                    computer = randomNumber.generateRandomNumber();
                 }
             }
         }
