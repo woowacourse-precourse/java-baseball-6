@@ -18,13 +18,13 @@ public class ComputerNumber {
     }
 
     private static List<Integer> pickRandomNumber() {
-        return Arrays.stream(new List[Constant.NUMBER_LENGTH_LIMIT])
+        return Arrays.stream(new List[Constant.LENGTH_LIMIT])
                 .map(num -> Randoms.pickNumberInRange(Constant.START_NUMBER, Constant.END_NUMBER))
                 .collect(Collectors.toList());
     }
 
     private boolean validateRandomNumberDuplicate(List<Integer> randomNumbs) {
-        return randomNumbs.stream().distinct().count() == Constant.NUMBER_LENGTH_LIMIT;
+        return randomNumbs.stream().distinct().count() == Constant.LENGTH_LIMIT;
     }
 
     private boolean validateRandomNumberRange(List<Integer> randomNumbs) {

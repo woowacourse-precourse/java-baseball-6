@@ -12,19 +12,19 @@ public class UserNumber {
 
     public UserNumber(String input) {
         List<Integer> userNumberList = createUserNumber(input);
-        validateUserInputLength(userNumberList);
-        validateUserInputRange(userNumberList);
-        validateUserInputDuplicate(userNumberList);
+        validateUserNumberLength(userNumberList);
+        validateUserNumberRange(userNumberList);
+        validateUserNumberDuplicate(userNumberList);
         this.userNumber = userNumberList;
     }
 
     private List<Integer> createUserNumber(String input) {
         return Arrays.stream(input.split(""))
-                .map(UserNumber::validateUserInputNumber)
+                .map(UserNumber::validateUserNumberInteger)
                 .collect(Collectors.toList());
     }
 
-    private static int validateUserInputNumber(String input) {
+    private static int validateUserNumberInteger(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -32,20 +32,20 @@ public class UserNumber {
         }
     }
 
-    private void validateUserInputLength(List<Integer> userNum) {
-        if (userNum.size() != Constant.ZERO_NUMBER && userNum.size() != Constant.NUMBER_LENGTH_LIMIT) {
+    private void validateUserNumberLength(List<Integer> userNum) {
+        if (userNum.size() != Constant.ZERO_NUMBER && userNum.size() != Constant.LENGTH_LIMIT) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateUserInputRange(List<Integer> userNum) {
+    private void validateUserNumberRange(List<Integer> userNum) {
         if (userNum.stream().anyMatch(num -> Constant.START_NUMBER > num || num > Constant.END_NUMBER)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateUserInputDuplicate(List<Integer> userNum) {
-        if (userNum.stream().distinct().count() != Constant.NUMBER_LENGTH_LIMIT) {
+    private void validateUserNumberDuplicate(List<Integer> userNum) {
+        if (userNum.stream().distinct().count() != Constant.LENGTH_LIMIT) {
             throw new IllegalArgumentException();
         }
     }

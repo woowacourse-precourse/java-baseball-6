@@ -26,7 +26,7 @@ public class BaseballGameController {
             List<Integer> computerNumber = new ComputerNumber().getComputerNumber();
             compareUserToComputer(computerNumber);
             OutputView.printClearMessage();
-            input = InputView.inputGameRestartMessage();
+            input = InputView.inputUserRestartMessage();
         } while (validateGameReplay(input));
     }
 
@@ -37,7 +37,7 @@ public class BaseballGameController {
     private void compareUserToComputer(List<Integer> computerNumber) {
         BaseballGameResult gameResult;
         do {
-            String input = InputView.inputGameNumberMessage();
+            String input = InputView.inputUserNumberMessage();
             List<Integer> userNumber = new UserNumber(input).getUserNumber();
             gameResult = new BaseballGameResult(computerNumber, userNumber);
             new OutputView(gameResult).printGameResult();
