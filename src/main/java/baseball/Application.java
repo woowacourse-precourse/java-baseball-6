@@ -7,48 +7,44 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        while (true) {
-            List<Integer> computer = generateRandomNumber();
-
-            try {
-                playGame(computer);
-            } catch (IllegalArgumentException e) {
-                break;
-            }
-
-            if (!continueGame()) {
-                break;
-            }
-        }
+        List<Integer> computer = generateRandomNumber();
+        playGame(computer);
     }
 
     private static List<Integer> generateRandomNumber() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+            addUniqueRandomNumber(computer);
         }
 
         return computer;
     }
 
-    private static void playGame(List<Integer> computer) throws IllegalArgumentException {
+    private static void addUniqueRandomNumber(List<Integer> list) {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!list.contains(randomNumber)) {
+            list.add(randomNumber);
+        }
+    }
+
+    private static void playGame(List<Integer> computer) {
         System.out.println("숫자야구 게임을 시작합니다.");
 
         while (true) {
-            List<Integer> user = getUserInput();
-            int strike = countStrike(computer, user);
-            int ball = countBall(computer, user);
-
-            printResult(strike, ball);
-
-            if (strike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if (!playRound(computer) || !continueGame()) {
                 break;
             }
+        }
+    }
+
+    private static boolean playRound(List<Integer> computer) {
+        try {
+            List<Integer> user = getUserInput();
+            return !checkResult(computer, user);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 
@@ -57,6 +53,7 @@ public class Application {
         String input = Console.readLine();
         return checkException(input);
     }
+
     private static List<Integer> checkException(String input) throws IllegalArgumentException {
         if (input.length() != 3) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
@@ -84,28 +81,41 @@ public class Application {
         return user;
     }
 
+    private static boolean checkResult(List<Integer> computer, List<Integer> user) {
+        int strike = countStrike(computer, user);
+        int ball = countBall(computer, user);
+
+        printResult(strike, ball);
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
     private static int countStrike(List<Integer> computer, List<Integer> user) {
         int strike = 0;
-
         for (int i = 0; i < computer.size(); i++) {
-            if (computer.get(i).equals(user.get(i))) {
-                strike++;
-            }
+            strike += compareIndex(computer, user, i);
         }
-
         return strike;
+    }
+
+    private static int compareIndex(List<Integer> computer, List<Integer> user, int i) {
+        return computer.get(i).equals(user.get(i)) ? 1 : 0;
     }
 
     private static int countBall(List<Integer> computer, List<Integer> user) {
         int ball = 0;
-
         for (int i = 0; i < computer.size(); i++) {
-            if (computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i))) {
-                ball++;
-            }
+            ball += checkBall(computer, user, i);
         }
-
         return ball;
+    }
+
+    private static int checkBall(List<Integer> computer, List<Integer> user, int i) {
+        return computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i)) ? 1 : 0;
     }
 
     private static void printResult(int strike, int ball) {
@@ -118,7 +128,6 @@ public class Application {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         }
-
     }
 
     private static boolean continueGame() {
