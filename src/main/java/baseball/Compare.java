@@ -3,7 +3,6 @@ package baseball;
 import java.util.List;
 
 public class Compare {
-    // Compare Computer num and Player num, Count hit processing
     public int Hit(List<Integer> computer, List<Integer> player) {
         int result = 0;
 
@@ -13,7 +12,6 @@ public class Compare {
         return result;
     }
 
-    // Only Count hit strike
     public int countStrike(List<Integer> computer, List<Integer> player) {
         int strike = 0;
 
