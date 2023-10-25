@@ -32,7 +32,7 @@ public class BaseballGameRound {
             userPlayer.updateUserNumbers(inputView.nextIntArray());
             strikeBall = computerPlayer.compareTo(userPlayer.getUserNumbers());
 
-            outputView.println(strikeBall.makeStrikeBallMessage());
+            outputView.printStrikeBallResult(strikeBall);
 
             if(strikeBall.isStrikeSuccess()) outputView.printThreeStrikeSuccess();
         } while (strikeBall.getStrike() < Constants.strikeTarget);
