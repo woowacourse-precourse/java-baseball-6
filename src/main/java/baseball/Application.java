@@ -136,7 +136,6 @@ public class Application {
         int indexZero = userInput.charAt(0) - '0';
         int indexOne = userInput.charAt(1) - '0';
         int indexTwo = userInput.charAt(2) - '0';
-
         if ((1 <= indexZero && indexZero <= 9) && (1 <= indexOne && indexOne <= 9)
                 && (1 <= indexTwo && indexTwo <= 9)) {
             return true;
@@ -148,12 +147,22 @@ public class Application {
         int indexZero = userInput.charAt(0) - '0';
         int indexOne = userInput.charAt(1) - '0';
         int indexTwo = userInput.charAt(2) - '0';
-
         if ((indexZero != indexOne) && (indexOne != indexTwo)
                 && (indexTwo != indexZero)) {
             return true;
         }
         throw new IllegalArgumentException("입력에 중복된 숫자가 포함된 잘못된 입력입니다.");
+    }
+
+    public static void outputOneGameBaseball(List<Integer> userInputList, List<Integer> result) {
+        int strike = Application.getStrikeCount(userInputList, result);
+        int ball = Application.getBallCount(userInputList, result);
+
+        if ((strike != 0) && (ball != 0)) {
+            ball -= strike;
+        }
+
+        outputBaseball(strike, ball);
     }
 
     public static void startOneGame(List<Integer> result) {
@@ -163,15 +172,9 @@ public class Application {
 
             List<Integer> userInputList = Application.inputBaseball(userInput);
 
+            outputOneGameBaseball(userInputList, result);
+
             int strike = Application.getStrikeCount(userInputList, result);
-            int ball = Application.getBallCount(userInputList, result);
-
-            if ((strike != 0) && (ball != 0)) {
-                ball -= strike;
-            }
-
-            outputBaseball(strike, ball);
-
             if (strike == 3) {
                 break;
             }
