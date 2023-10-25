@@ -9,10 +9,6 @@ public class BaseballGameNumbers {
     private static final int NUMBER_SIZE = 3;
     private final RandomNumberPicker randomNumberPicker = new RandomNumberPicker();
 
-    public int getNumberSize() {
-        return NUMBER_SIZE;
-    }
-
     public Grader getRandomNumbersGrader() {
         return new Grader(randomNumberPicker.pickDistinctNumbersInRange(START_NUMBER,
             END_NUMBER, NUMBER_SIZE));
@@ -31,5 +27,9 @@ public class BaseballGameNumbers {
         if (NUMBER_SIZE != count) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public int getNumberSize() {
+        return NUMBER_SIZE;
     }
 }
