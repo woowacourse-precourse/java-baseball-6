@@ -10,6 +10,11 @@ public class Computer {
     private List<Integer> computerNumbers = new ArrayList<>();
 
     public Computer(){
-        //TODO 랜덤 숫자 뽑기
+        while (computerNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
+            }
+        }
     }
 }
