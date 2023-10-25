@@ -16,7 +16,7 @@ public class GameService {
     public void createAnswerBalls() {
 
         List<Integer> randomNumbers = Util.createRandomNumbers(3);
-        answerBalls = new Balls(randomNumbers);
+        answerBalls = Balls.create(randomNumbers);
     }
 
     public void play(String userInput) {
@@ -45,7 +45,7 @@ public class GameService {
 
     private Balls createUserBalls(String userInput) {
 
-        return new Balls(Util.stringToIntegerList(userInput));
+        return Balls.create(Util.stringToIntegerList(userInput));
     }
 
     private Score createScore() {

@@ -1,15 +1,20 @@
 package baseball.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Balls {
 
-    private final List<Integer> balls;
+    private final List<Integer> balls = new ArrayList<>();
 
-    public Balls(List<Integer> balls) {
+    public static Balls create(List<Integer> inputBalls) {
 
-        this.balls = balls;
+        Balls balls = new Balls();
+
+        inputBalls.forEach(balls.balls::add);
+
+        return balls;
     }
 
     public List<Integer> getBalls() {
