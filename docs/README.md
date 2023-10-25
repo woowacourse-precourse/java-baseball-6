@@ -11,12 +11,18 @@
             - 게임 재시작 또는 게임 종료 선택
         2. 숫자와 자릿수가 같을 경우 Strike 카운트 +1만큼 증가
         3. 숫자는 같지만, 자릿수가 다를경우 Ball 카운트 +1만큼 증가
-- 게임을 위한 domain package에 *BaseBall* Class를 생성한다.
+- 게임을 위한 domain package에 *BaseBall.class* 를 생성한다.
     - player, computer 각각 인스턴스를 생성한다.
-- 상수 문자열 처리를 위한 *Constant* Class를 생성한다.
+- 게임 진행 시 필요한 기능은 *BaseBallService.class* 에서 처리한다.
+  - 3Strike인가?
+  - 이외의 경우 
+  - 사용자 입력 값에 대한 결과 출력
+  - 게임 재시작 또는 종료 안내
+- 상수 문자열 처리를 위한 *Constant.class* 를 생성한다.
 
 ## 📌 예외처리 목록
 #### 모든 예외는 IllegalArgumentException으로 처리한 후 Application을 종료한다.
+- 상수 문자열 처리를 위한 *InputValidate.class* 를 생성한다.
 - 숫자를 3개 초과 또는 미만 입력했을 경우
 - 1~9 까지의 숫자가 아닌 다른 값을 입력했을 경우
 - 게임 종료 후 재시작 1번 또는 종료 2번 이외의 값을 입력했을 경우
