@@ -26,8 +26,7 @@ public class Play {
     public void play(ComputerNumber computerNumber) {
         checkThreeStrike(score);
         while (playFlag) {
-            userNumber.newUserNumber(InputView.userNumberInput());
-            score.countScore(userNumber.getUserNumber(), computerNumber.getComputerNumber());
+            score.countScore(checkUserNumberInput(), computerNumber.getComputerNumber());
             printResult(score);
             checkThreeStrike(score);
             score.resetScore();
@@ -66,6 +65,22 @@ public class Play {
             OutputView.strikeAndBall(strike, ball);
             return;
         }
+    }
+
+    private List<Integer> checkUserNumberInput() {
+        String input = InputView.userNumberInput();
+
+        if (!checkNumberPattern(input)) {
+            throw new IllegalArgumentException();
+        }
+
+        userNumber.newUserNumber(input);
+
+        if (!checkDuplicateNumber(userNumber.getUserNumber())) {
+            throw new IllegalArgumentException();
+        }
+
+        return userNumber.getUserNumber();
     }
 
     private boolean checkNumberPattern(String input) {
