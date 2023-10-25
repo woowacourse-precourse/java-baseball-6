@@ -19,7 +19,7 @@ public class PlayerValidation {
         return isDifferentNumbers(numbers);
     }
 
-    private static void isNullNumber(String numbers) {
+    public static void isNullNumber(String numbers) {
         if(numbers.isBlank() || numbers == null){
             throw new IllegalArgumentException(NULL_ERROR_MESSAGE);
         }
