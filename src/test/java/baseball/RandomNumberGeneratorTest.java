@@ -20,7 +20,7 @@ public class RandomNumberGeneratorTest {
 
     @Test
     void testGenerateRandomNumber() {
-        List<Integer> generatedNumbers = randomNumberGenerator.GenerateRandomNumber();
+        List<Integer> generatedNumbers = randomNumberGenerator.generateRandomNumber();
 
         boolean isSizeThree = generatedNumbers.size() == 3;
         boolean hasDuplication = hasDuplicationInList(generatedNumbers);

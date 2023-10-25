@@ -19,6 +19,6 @@ public class PlayerInputParserTest {
             add(5);
         }};
 
-        assertThat(playerInputParser.ParsePlayerInput(validPlayerInput)).isEqualTo(expectedList);
+        assertThat(playerInputParser.parsePlayerInput(validPlayerInput)).isEqualTo(expectedList);
     }
 }

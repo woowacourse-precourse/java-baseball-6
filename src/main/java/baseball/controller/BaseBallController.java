@@ -33,7 +33,7 @@ public class BaseBallController {
     private void initGame() {
         this.ballCount = 0;
         this.strikeCount = 0;
-        ANSWER_NUMBERS.setNumbers(RANDOM_NUMBER_GENERATOR.GenerateRandomNumber());
+        ANSWER_NUMBERS.setNumbers(RANDOM_NUMBER_GENERATOR.generateRandomNumber());
     }
 
     private void runGame() {
@@ -55,7 +55,7 @@ public class BaseBallController {
     private void updatePlayerNumbers() {
         playerInput = INPUT_VIEW.enterPlayerInput();
         INPUT_VALIDATOR.isValidNumber(playerInput);
-        List<Integer> parsedPlayerInput = PLAYER_INPUT_PARSER.ParsePlayerInput(playerInput);
+        List<Integer> parsedPlayerInput = PLAYER_INPUT_PARSER.parsePlayerInput(playerInput);
         PLAYER_NUMBERS.setNumbers(parsedPlayerInput);
     }
 
