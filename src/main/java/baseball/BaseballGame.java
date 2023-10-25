@@ -156,7 +156,7 @@ public class BaseballGame {
         }
     }
 
-    private boolean isInteger(String userInput) {
+    private static boolean isInteger(String userInput) {
         try {
             Integer.parseInt(userInput);
             return true;
