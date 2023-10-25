@@ -1,10 +1,13 @@
 package baseball.games.numberbaseball.util;
 
+import baseball.games.numberbaseball.validation.BaseballValidator;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberGenerator {
+    private final BaseballValidator validator = new BaseballValidator();
 
     public List<Integer> generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
@@ -15,5 +18,13 @@ public class NumberGenerator {
             }
         }
         return numbers;
+    }
+
+    public List<Integer> createValidatedNumbers(String playerNumbers) {
+        validator.validateNumbersInput(playerNumbers);
+        return playerNumbers.chars()
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toList());
     }
 }

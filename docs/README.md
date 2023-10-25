@@ -32,8 +32,8 @@
 
 ### 입력 및 변환 기능 구현 -> NumberGenerator
 
-- [ ] NumbersGenerator에 플레이어의 세자리 수가 될 수 있는 문자열을 입력받아 넣어준다.
-    - [ ] 이 문자열을 List 형태로 반환한다.
+- [x] NumberGenerator에 플레이어의 세자리 수가 될 수 있는 문자열을 입력받아 넣어준다.
+    - [x] 이 문자열을 검증하고 List 형태로 반환한다.
 - [ ] NumberGenerator에 플레이어의 옵션이 될 수 있는 문자열을 입력받아 넣어준다.
     - [ ] 이 한자리 문자열을 통해 RESTART 혹은 END라는 Enum타입을 반환한다.
 
