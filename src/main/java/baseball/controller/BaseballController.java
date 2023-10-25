@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.domain.Hint;
 import baseball.domain.Numbers;
 import baseball.service.AnswerService;
-import baseball.service.ExceptionHandlingService;
+import baseball.service.ValidationService;
 import baseball.view.View;
 
 import java.util.ArrayList;
@@ -13,12 +13,12 @@ public class BaseballController {
 
     private final AnswerService answerService;
     private final View view;
-    private final ExceptionHandlingService exceptionHandlingService;
+    private final ValidationService validationService;
 
-    public BaseballController(AnswerService answerService, View view, ExceptionHandlingService exceptionHandlingService) {
+    public BaseballController(AnswerService answerService, View view, ValidationService validationService) {
         this.answerService = answerService;
         this.view = view;
-        this.exceptionHandlingService = exceptionHandlingService;
+        this.validationService = validationService;
     }
 
     public void run() {
@@ -34,7 +34,7 @@ public class BaseballController {
     private void getNumbers() {
         String[] numbersString = view.getNumbers().split("");
 
-        exceptionHandlingService.checkGetNumbers(numbersString);
+        validationService.validateGetNumbers(numbersString);
 
         Numbers numbers = numbersStringToInteger(numbersString);
         Hint hint = answerService.getHint(numbers);
@@ -54,7 +54,7 @@ public class BaseballController {
     private void startNewGame() {
         String select = view.startNewGame();
 
-        exceptionHandlingService.checkStartNewGame(select);
+        validationService.validateStartNewGame(select);
 
         if (select.equals("1")) {
             saveAnswer();
