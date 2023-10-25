@@ -22,7 +22,7 @@ public class Application {
             int numberOfStrike = 0;
             int numberOfBall = 0;
 
-            while (true) {
+            while (!(numberOfStrike == 3 && numberOfBall == 0)) {
 
                 numberOfStrike = 0;
                 numberOfBall = 0;
@@ -36,27 +36,8 @@ public class Application {
                 numberOfStrike = result.get("strike");
                 numberOfBall = result.get("ball");
 
-                if (numberOfStrike == 3 && numberOfBall == 0) {
-                    System.out.println("3스트라이크\n3개 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
+                printResultMessage(numberOfStrike, numberOfBall);
 
-                if (numberOfStrike == 0 && numberOfBall == 0) {
-                    System.out.println("낫싱");
-                    continue;
-                }
-
-                if (numberOfStrike == 0) {
-                    System.out.printf("%d볼%n", numberOfBall);
-                    continue;
-                }
-
-                if (numberOfBall == 0) {
-                    System.out.printf("%d스트라이크%n", numberOfStrike);
-                    continue;
-                }
-
-                System.out.printf("%d볼 %d스트라이크%n", numberOfBall, numberOfStrike);
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -71,6 +52,30 @@ public class Application {
             }
         }
 
+    }
+
+    private static void printResultMessage(int numberOfStrike, int numberOfBall) {
+        if (numberOfStrike == 3 && numberOfBall == 0) {
+            System.out.println("3스트라이크\n3개 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
+
+        if (numberOfStrike == 0 && numberOfBall == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (numberOfStrike == 0) {
+            System.out.printf("%d볼%n", numberOfBall);
+            return;
+        }
+
+        if (numberOfBall == 0) {
+            System.out.printf("%d스트라이크%n", numberOfStrike);
+            return;
+        }
+
+        System.out.printf("%d볼 %d스트라이크%n", numberOfBall, numberOfStrike);
     }
 
     private static Map<String, Integer> countStrikeOrBall(List<Integer> numbers, List<Integer> prediction) {
