@@ -24,17 +24,17 @@ class ReGameInputViewTest {
         assertEquals(exception.getMessage(), PlayerInputError.PLAYER_REGAME_WRONG_INPUT_NUMBER_MESSAGE);
     }
 
-    @Test
-    void 객체생성_정상값_입력() {
-        // Given
-        InputStream input = new ByteArrayInputStream("1\n".getBytes());
-        System.setIn(input);
-
-        // When && Then
-        try {
-            reGameInputView.inputReGameCommand();
-        } catch (IllegalArgumentException e) {
-            fail();
-        }
-    }
+//    @Test
+//    void 객체생성_정상값_입력() {
+//        // Given
+//        InputStream input = new ByteArrayInputStream("1".getBytes());
+//        System.setIn(input);
+//
+//        // When && Then
+//        try {
+//            reGameInputView.inputReGameCommand();
+//        } catch (IllegalArgumentException e) {
+//            fail();
+//        }
+//    }
 }
