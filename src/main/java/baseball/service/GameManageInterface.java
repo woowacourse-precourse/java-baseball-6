@@ -2,7 +2,7 @@ package baseball.service;
 
 import java.util.List;
 
-public interface gameManageInterface {
+public interface GameManageInterface {
     void init();
 
     List<Integer> selectComputerNumber();

@@ -1,6 +1,6 @@
 package baseball.view;
 
-public class printNumberFormat {
+public class PrintNumberFormat {
     public String printStrike(int strike) {
         return " " + strike + "스트라이크";
     }

@@ -1,19 +1,19 @@
 package baseball.service;
 
-import baseball.view.printGameMessage;
+import baseball.view.PrintGameMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class playerService {
-    private final printGameMessage gameMessage = new printGameMessage();
+public class PlayerService {
+    private final PrintGameMessage gameMessage = new PrintGameMessage();
 
     public List<Integer> selectPlayerNumber() {
         gameMessage.inputNumberMessage();
         String playerNumber = Console.readLine();
 
-        if (playerNumber.length() > gameConstant.NUMBER_MAXSIZE) {
+        if (playerNumber.length() > GameConstant.NUMBER_MAXSIZE) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
 
@@ -50,7 +50,7 @@ public class playerService {
                 elementCount++;
             }
         }
-        return elementCount > gameConstant.NOT_DUPLICATE;
+        return elementCount > GameConstant.NOT_DUPLICATE;
     }
 
     public List<Integer> stringToIntArray(String playerNumber) {
