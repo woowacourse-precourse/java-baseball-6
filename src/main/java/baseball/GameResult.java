@@ -6,10 +6,12 @@ import java.util.Map;
 
 public class GameResult {
     private static final int PLUS_COUNT = 1;
+    private static final int THREE_STRIKE = 3;
+    private static final int DEFAULT = 0;
     private final Map<CompareStatus, Integer> result = new EnumMap<>(CompareStatus.class);
 
     public int get(CompareStatus compareStatus) {
-        return result.getOrDefault(compareStatus, 0);
+        return result.getOrDefault(compareStatus, DEFAULT);
     }
 
     public boolean isNothing() {
@@ -17,7 +19,7 @@ public class GameResult {
     }
 
     public boolean isNotThreeStrike() {
-        return result.getOrDefault(CompareStatus.STRIKE, 0) != 3;
+        return result.getOrDefault(CompareStatus.STRIKE, DEFAULT) != THREE_STRIKE;
     }
 
     public List<String> getBallAndStrikeResult() {
