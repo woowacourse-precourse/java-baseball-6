@@ -1,5 +1,7 @@
 package baseball.number;
 
+import baseball.utils.match.MatchResult;
+import baseball.utils.match.MatchResults;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,6 +54,26 @@ public class Numbers {
 
     public boolean isMoreSelect() {
         return numbers.size() != NUMBERS_LENGTH;
+    }
+
+    public MatchResults compare(Numbers otherNumbers) {
+        MatchResults matchResults = new MatchResults();
+
+        for (Number otherNumber : otherNumbers.getNumbers()) {
+            matchResults.match(compareNumber(otherNumber, otherNumbers.getNumbers().indexOf(otherNumber)));
+        }
+
+        return matchResults;
+    }
+
+    private MatchResult compareNumber(Number otherNumber, int index) {
+        if (numbers.indexOf(otherNumber) == index) {
+            return MatchResult.STRIKE;
+        }
+        if (numbers.contains(otherNumber)) {
+            return MatchResult.BALL;
+        }
+        return MatchResult.NOTHING;
     }
 
     public List<Number> getNumbers() {

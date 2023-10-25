@@ -1,6 +1,7 @@
 package baseball.game;
 
 import baseball.computer.Computer;
+import baseball.utils.match.MatchResults;
 import baseball.player.Player;
 import baseball.utils.view.Input;
 import baseball.utils.view.Messages;
@@ -33,6 +34,12 @@ public class BaseballGame {
     private void selectPlayerNumbers() {
         while (gameStatus.isPlay()) {
             inputNumbers();
+            MatchResults results = computer.compare(player.getNumbers());
+            output.printMessageLine(results.getResultMessage());
+            if (results.isAllStrike()) {
+                gameStatus = GameStatus.FINISH;
+                output.printMessageLine(Messages.FINISH.getMessage());
+            }
         }
     }
 
