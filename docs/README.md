@@ -11,11 +11,11 @@
 
 ## 🛢️Collection
 
-# Computer
+Computer
 - seelectComputers | StringBuilder
 
-# User
+User
 - selectUsers | String
 
-# Result
+Result
 - playResult | HashMap<String, Integer>
