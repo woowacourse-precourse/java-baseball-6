@@ -26,10 +26,15 @@ public class BaseballRule implements GameRule {
 
         if (strikes == 0 && balls == 0) {
             System.out.println("낫싱");
-            return GameStatus.ONGOING;
+        } else {
+            if (balls != 0) {
+                System.out.print(balls + "볼 ");
+            }
+            if (strikes != 0) {
+                System.out.print(strikes + "스트라이크");
+            }
+            System.out.println();
         }
-
-        System.out.println(balls + "볼 " + strikes + "스트라이크");
         return GameStatus.ONGOING;
     }
 }
