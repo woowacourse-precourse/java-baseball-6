@@ -60,7 +60,14 @@ $ cd java-baseball-vina
 
 <br>
 
-## :computer: 화면 구성 (추가 예정)
+## :computer: 화면 구성
+
+
+
+| 게임시작                      | 게임진행                     | 게임종료                      |
+|---------------------------|--------------------------|---------------------------|
+| ![game1](./img/game1.png) | ![game2](./img/game2.png) | ![game3](./img/game3.png) |
+
 
 <br>
 
@@ -83,3 +90,7 @@ $ cd java-baseball-vina
 
 ## :mag: 아키텍쳐 (추가 예정)
 ### 디렉토리 구조
+![architecture1](./img/architecture1.PNG)
+
+### 작업 흐름
+![architecture2](./img/architecture2.PNG)
