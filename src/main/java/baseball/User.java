@@ -36,7 +36,7 @@ public class User {
         return (numbers / 1000 != 0);
     }
 
-    public void getOptionNum() {
+    public int getOptionNum() {
         String getOption;
         try {
             InputStreamReader ir = new InputStreamReader(System.in);
@@ -45,6 +45,7 @@ public class User {
             optionNum = Integer.parseInt(getOption);
         } catch (Exception e) {
         }
+        return optionNum;
     }
 
     public boolean option(int optionNum) {
