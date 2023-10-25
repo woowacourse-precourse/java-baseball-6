@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static baseball.utils.ErrorMessage.NUMBERS_NOT_POSITIVE_INTEGER;
+import static baseball.utils.ErrorMessage.NUMBERS_OUT_OF_RANGE;
 import static baseball.utils.ErrorMessage.NUMBERS_SIZE_IS_INVALID;
 
 import java.util.Arrays;
@@ -19,6 +20,7 @@ public class Player {
     public Player(String numberStr) {
         validateSize(numberStr);
         validatePositiveInteger(numberStr);
+        validateRange(numberStr);
         this.numbers = changeStringToIntegerList(numberStr);
     }
 
@@ -33,6 +35,14 @@ public class Player {
             Integer.parseUnsignedInt(numberStr);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMBERS_NOT_POSITIVE_INTEGER);
+        }
+    }
+
+    public void validateRange(String numberStr) {
+        for (Character number : numberStr.toCharArray()) {
+            if (number - '0' < MIN_NUMBER || number - '0' > MAX_NUMBER) {
+                throw new IllegalArgumentException(NUMBERS_OUT_OF_RANGE);
+            }
         }
     }
 
