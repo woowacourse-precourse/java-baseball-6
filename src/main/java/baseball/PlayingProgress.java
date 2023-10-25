@@ -17,7 +17,6 @@ public class PlayingProgress {
     public void gameLoop() {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         int newGame = 1;
 
         do {
@@ -30,12 +29,11 @@ public class PlayingProgress {
     public int continueOrNot() {
 
         String gameOrNot = Console.readLine();
-
         int newOrEnd = Integer.parseInt(gameOrNot);
 
-        if(newOrEnd != 1 && newOrEnd !=2)
+        if(newOrEnd != 1 && newOrEnd !=2) {
             throw new IllegalArgumentException();
-
+        }
         return newOrEnd;
     }
 }

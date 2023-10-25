@@ -5,10 +5,9 @@ public class BallCases extends StrikeAndBall {
     }
 
     public void checkingNoStrikes (int strkies , int correctBalls){
-
         if(correctBalls>0){
             if(strkies == 0){
-            System.out.println(correctBalls + "볼");
+                System.out.println(correctBalls + "볼");
             }
         }
     }
@@ -35,7 +34,6 @@ public class BallCases extends StrikeAndBall {
                 allBallisStrkie = true;
             }
         }
-
         return allBallisStrkie;
     }
 

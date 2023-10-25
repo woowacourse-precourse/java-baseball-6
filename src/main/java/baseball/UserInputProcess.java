@@ -19,7 +19,6 @@ public class UserInputProcess {
     }
 
     public List<Integer> listUserFixedReturn(){
-
         List<Integer> listUserFixedReturn = this.listUserFixed;
         return  listUserFixedReturn;
     }

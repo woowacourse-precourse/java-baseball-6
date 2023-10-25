@@ -20,12 +20,12 @@ public class UserInput {
             if (!checkContainSameThings.add(userString.charAt(i))) {
                 throw new IllegalArgumentException();
             }
-
-            if (userString.charAt(i) >= '1' && userString.charAt(i) <= '9')
+            if (userString.charAt(i) >= '1' && userString.charAt(i) <= '9') {
                 extractDigit.add(userString.charAt(i));
-
-            if (!Pattern.matches("[1-9]{3}",userString))
+            }
+            if (!Pattern.matches("[1-9]{3}",userString)){
                 throw new IllegalArgumentException();
+            }
         }
         return extractDigit;
     }
@@ -38,7 +38,6 @@ public class UserInput {
             int num = Character.getNumericValue(chr);
             changeCharToInt.add(num);
         }
-
         return changeCharToInt;
     }
 }

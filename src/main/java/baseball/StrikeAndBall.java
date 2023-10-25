@@ -11,7 +11,6 @@ public class StrikeAndBall {
             if (computerList.get(i).equals(userList.get(i)))
                 strikeCounts++;
         }
-
         return strikeCounts;
     }
 
@@ -24,7 +23,6 @@ public class StrikeAndBall {
                 correctBallCount++;
             }
         }
-
         return correctBallCount;
     }
 
