@@ -24,7 +24,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class ApplicationTest extends NsTest {
     @Test
-    @Disabled
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -165,6 +164,18 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining(ValidationMessage.NOT_DUPLICATE_NUMBER.getValue());
     }
 
+    @Test
+    void 게임_참여자의_게임_입력값_저장_테스트() {
+        // give
+        final String userInput = "234";
+        final List<Integer> tempList = Arrays.asList(1, 2, 3);
+        OperatorService operatorService = OperatorService.getInstance();
+        // when
+        operatorService.operateGame(tempList, userInput);
+        // then
+        assertThat(operatorService.generateGameNumberList(userInput))
+                .isEqualTo(operatorService.getPlayerGameNumberList());
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});

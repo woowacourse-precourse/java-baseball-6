@@ -1,12 +1,19 @@
 package baseball.service;
 
 import baseball.vo.enums.GameRule;
+import baseball.vo.enums.UserInterfaceMessage;
 import baseball.vo.enums.ValidationMessage;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class OperatorService {
+	private List<Integer> playerGameNumberList;
+
 	private OperatorService() {
 	}
 
@@ -50,5 +57,62 @@ public class OperatorService {
 		return (arrUserInput.length != userInputSet.size());
 	}
 
-	// @TODO: 게임운영에 관련된 코드 작성
+	public String operateGame(List<Integer> computerBaseballGameNumberList, String inputGameNumber) {
+		this.playerGameNumberList = generateGameNumberList(inputGameNumber);
+		Integer[] gameResult = ComputerBaseballService.getInstance().getGameResult(computerBaseballGameNumberList);
+		printGameResult(gameResult);
+		if (gameResult[1] == GameRule.GAME_NUMBER_LEN.getValue()) {
+			return strikeProcess();
+		}
+		return "1"; // 게임 계속 진행
+	}
+
+	public List<Integer> generateGameNumberList(String playerInputGameNumber) {
+		String[] arrPlayerInputGameNumber = playerInputGameNumber.split("");
+		List<Integer> playerInputList = new ArrayList<>();
+		for (String playerInputNum : arrPlayerInputGameNumber) {
+			playerInputList.add(Integer.parseInt(playerInputNum));
+		}
+		return playerInputList;
+	}
+
+	public List<Integer> getPlayerGameNumberList() {
+		return playerGameNumberList;
+	}
+
+
+	private String strikeProcess() {
+		System.out.println(String.valueOf(GameRule.GAME_NUMBER_LEN.getValue()) + UserInterfaceMessage.GAME_RESULT_SUCCESS.getValue());
+		System.out.println(UserInterfaceMessage.GAME_END_RESTART.getValue());
+		String inputGameNumber = readLine();
+		System.out.println(inputGameNumber);
+		if (inputGameNumber.equals("1")) {
+			ComputerBaseballService.getInstance().createNewBaseballGameNumberList();
+		}
+		return inputGameNumber;
+	}
+
+	private void printGameResult(Integer[] gameResultArray) {
+		System.out.println(gameResultArray2String(gameResultArray));
+	}
+
+	private String gameResultArray2String(Integer[] gameResultArray) {
+		if (gameResultArray[0] != 0 && gameResultArray[1] != 0) { // 볼 & 스트라이크
+			return String.valueOf(gameResultArray[0]) + UserInterfaceMessage.GAME_RESULT_BALL.getValue() + " "
+					+ String.valueOf(gameResultArray[1]) + UserInterfaceMessage.GAME_RESULT_STRIKE.getValue();
+		}
+		if (gameResultArray[0] != 0 && gameResultArray[1] == 0) { // 볼
+			return String.valueOf(gameResultArray[0]) + UserInterfaceMessage.GAME_RESULT_BALL.getValue();
+		}
+		if (gameResultArray[0] == 0 && gameResultArray[1] != 0) { // 스트라이크
+			return String.valueOf(gameResultArray[1]) + UserInterfaceMessage.GAME_RESULT_STRIKE.getValue();
+		}
+
+		return UserInterfaceMessage.GAME_RESULT_NOTHING.getValue(); // if (gameResultArray[0] == 0 && gameResultArray[1] == 0)
+	}
+
+
+	public void printGameStartMessage() {
+		System.out.println(UserInterfaceMessage.GAME_INFO.getValue());
+	}
 }
