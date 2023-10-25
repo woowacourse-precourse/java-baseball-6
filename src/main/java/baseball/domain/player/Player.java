@@ -9,7 +9,7 @@ public class Player {
         this.playerNumbers = playerNumbers;
     }
 
-    public void inputNumbers(String numbers) {
+    public void createPlayerNumbers(String numbers) {
         clearNumbers();
         this.playerNumbers.inputNumbers(numbers);
         validateNumbersAreDifferent();
