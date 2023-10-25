@@ -9,6 +9,7 @@ public record GameStartView(OutputView outputView) implements DefaultView {
     @Override
     public ScenarioResultType execute() {
         outputView.printGameStartMessage();
+
         return ScenarioResultType.NEXT;
     }
 }

@@ -13,8 +13,8 @@ import java.util.stream.IntStream;
 public record InitializeComputerView(EventListener eventListener) implements DefaultView {
     @Override
     public ScenarioResultType execute() {
-
         eventListener.listen(InitializeComputerEvent::new);
+
         return ScenarioResultType.NEXT;
     }
 

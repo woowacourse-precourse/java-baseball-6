@@ -39,6 +39,7 @@ public record RefereeView(EventListener eventListener, OutputView outputView) im
                             .filter(j -> Objects.equals(computerNumber.get(i), userNumber.get(j)))
                             .count())
                     .sum();
+
             return new Score(strikeCount, ballCount);
         }
     }
@@ -50,11 +51,11 @@ public record RefereeView(EventListener eventListener, OutputView outputView) im
         }
 
         String getScoreText() {
-            final var stringBuilder = new StringBuilder();
-
             if (strike == 0 && ball == 0) {
-                stringBuilder.append("낫싱");
+                return "낫싱";
             }
+
+            final var stringBuilder = new StringBuilder();
             if (ball > 0) {
                 stringBuilder.append(ball).append("볼 ");
             }

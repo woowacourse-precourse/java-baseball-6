@@ -15,6 +15,7 @@ public class Application {
                 new OutputView(),
                 new EventListener(new EventContext())
         );
+        
         new BaseballApplication(viewContainer).run();
     }
 }
