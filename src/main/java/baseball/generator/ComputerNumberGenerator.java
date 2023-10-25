@@ -1,6 +1,6 @@
 package baseball.generator;
 
-import baseball.game.constant.GameConstant;
+import baseball.constant.GameConstant;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

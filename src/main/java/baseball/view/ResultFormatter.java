@@ -1,6 +1,6 @@
 package baseball.view;
 
-import static baseball.game.constant.GameConstant.GAME_DIGIT;
+import static baseball.constant.GameConstant.GAME_DIGIT;
 import static baseball.view.GameMessage.*;
 
 public class ResultFormatter {

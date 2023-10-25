@@ -2,7 +2,7 @@ package baseball.view;
 
 import baseball.dto.GameResult;
 
-import static baseball.game.constant.GameConstant.*;
+import static baseball.constant.GameConstant.*;
 import static baseball.view.GameMessage.*;
 
 public class OutputView {

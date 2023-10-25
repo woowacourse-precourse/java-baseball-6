@@ -1,24 +1,30 @@
 package baseball.game;
 
 import baseball.dto.GameResult;
-import baseball.game.constant.GameConstant;
+import baseball.constant.GameConstant;
 import baseball.generator.ComputerNumberGenerator;
 import baseball.generator.ResultGenerator;
-import baseball.input.InputProcessor;
+import baseball.input.ChoiceInputProcessor;
+import baseball.input.GuessInputProcessor;
 import baseball.view.OutputView;
 
 import java.util.List;
 
 public class GameController {
-    private final InputProcessor inputProcessor;
+    private final ChoiceInputProcessor choiceInputProcessor;
+    private final GuessInputProcessor guessInputProcessor;
     private final ComputerNumberGenerator computerNumberGenerator;
     private final OutputView outputView;
     private final ResultGenerator resultGenerator;
     private List<Integer> computerNumbers;
 
-    public GameController(InputProcessor inputProcessor, ComputerNumberGenerator computerNumberGenerator,
-                          OutputView outputView, ResultGenerator resultGenerator) {
-        this.inputProcessor = inputProcessor;
+    public GameController(ChoiceInputProcessor choiceInputProcessor,
+                          GuessInputProcessor guessInputProcessor,
+                          ComputerNumberGenerator computerNumberGenerator,
+                          OutputView outputView,
+                          ResultGenerator resultGenerator) {
+        this.choiceInputProcessor = choiceInputProcessor;
+        this.guessInputProcessor =guessInputProcessor;
         this.computerNumberGenerator = computerNumberGenerator;
         this.outputView = outputView;
         this.resultGenerator = resultGenerator;
@@ -39,7 +45,7 @@ public class GameController {
 
     private boolean playSingleRound(){
         outputView.printInputMessage();
-        List<Integer> userGuess = inputProcessor.obtainValidUserGuess();
+        List<Integer> userGuess = guessInputProcessor.obtainValidUserGuess();
         return checkGuessResult(userGuess);
     }
 
@@ -52,7 +58,7 @@ public class GameController {
     private boolean askForGameRestart() {
         outputView.printEndMessage();
         outputView.printRestartMessage();
-        int restartChoice = inputProcessor.obtainValidUserChoice();
+        int restartChoice = choiceInputProcessor.obtainValidUserChoice();
         return restartChoice == GameConstant.RESTART_CHOICE.getValue();
     }
 }

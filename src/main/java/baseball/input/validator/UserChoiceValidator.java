@@ -1,9 +1,16 @@
-package baseball.input;
+package baseball.input.validator;
 
-import static baseball.game.constant.GameConstant.*;
+import static baseball.constant.GameConstant.*;
 import static baseball.view.ErrorMessage.*;
 
-public class InputValidator {
+public class UserChoiceValidator implements Validator {
+
+    @Override
+    public void validate(String userInput) {
+        validateNotNull(userInput);
+        validateIsInteger(userInput);
+        validateChoice(userInput);
+    }
 
     public void validateNotNull(String userInput){
         if(userInput.isEmpty())
@@ -15,20 +22,6 @@ public class InputValidator {
             Integer.parseInt(userInput);
         }catch(Exception e){
             throw new IllegalArgumentException(INVALID_INTEGER.getMessage());
-        }
-    }
-
-    public void validateNoDuplicate(String userInput){
-        boolean hasDuplicateCharacters = userInput.chars().distinct().count()!=userInput.length();
-        if (hasDuplicateCharacters)
-            throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
-    }
-
-    public void validateLength(String userInput){
-        boolean isInCorrectLength = userInput.length()!= GAME_DIGIT.getValue();
-        if (isInCorrectLength){
-            throw new IllegalArgumentException(
-                    WRONG_DIGIT.formatMessage(GAME_DIGIT.getValue()));
         }
     }
 

@@ -1,4 +1,4 @@
-package baseball.game.constant;
+package baseball.constant;
 
 public enum GameConstant {
     GAME_DIGIT(3),
