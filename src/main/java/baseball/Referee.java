@@ -18,10 +18,10 @@ public class Referee {
     public boolean judge(List<Integer> computer, List<Integer> number) {
         int ballCount = ballCounter.count(computer, number);
         int strikeCount = strikeCounter.count(computer, number);
-        return say(ballCount, strikeCount);
+        return print(ballCount, strikeCount);
     }
 
-    private boolean say(int ballCount, int strikeCount) {
+    private boolean print(int ballCount, int strikeCount) {
         if (ballCount > 0) {
             System.out.print(ballCount + BALL + SINGLE_BLANK);
         }
