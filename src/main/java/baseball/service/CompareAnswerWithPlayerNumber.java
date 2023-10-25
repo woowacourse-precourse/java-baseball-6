@@ -22,7 +22,7 @@ public class CompareAnswerWithPlayerNumber {
 
     public void compareBall(List<Integer> player, List<Integer> computer) {
         for (int i = 0; i < player.size(); i++) {
-            if (computer.contains(player.get(i))) {
+            if (computer.contains(player.get(i)) && computer.get(i) != player.get(i)) {
                 ball++;
             }
         }
