@@ -6,6 +6,7 @@ import baseball.number.RandomNumbers;
 import baseball.view.InputView;
 import baseball.view.ResultView;
 
+
 public class BaseballGameController {
 
     private static final String CONTINUE = "1";
@@ -23,7 +24,7 @@ public class BaseballGameController {
 
         RandomNumbers randomNumbers = new RandomNumbers();
         while (strikeCount != THREE_STRIKE) {
-            BaseBallNumbers baseBallNumbers = new BaseBallNumbers(InputView.requireBaseBallNumber());
+            BaseBallNumbers baseBallNumbers = new BaseBallNumbers(InputView.requireBASEBALLNUMBER());
             ballCount = baseBallNumbers.calculateBallCount(randomNumbers.randomNumbers());
             strikeCount = baseBallNumbers.calculateStrikeCount(randomNumbers.randomNumbers());
             ResultView.printResult(ballCount, strikeCount);
