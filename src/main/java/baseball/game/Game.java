@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    List<Integer> numbers;
-    InputHandler inputHandler;
-    OutputHandler outputHandler;
-    Message message;
+    private List<Integer> numbers;
+    private InputHandler inputHandler;
+    private OutputHandler outputHandler;
+    private Message message;
 
     public Game(InputHandler inputHandler, OutputHandler outputHandler, Message message) {
         this.inputHandler = inputHandler;
