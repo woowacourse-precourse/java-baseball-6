@@ -1,22 +1,43 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Arrays;
 
 public class Application {
     public static void main(String[] args) {
+        while (true) {
+            String s = playBaseballGame();
+            if (s.length() != 1) throw new IllegalArgumentException("입력한 숫자는 1자리여야 합니다.");
+            if (s.equals("1")) {
+            } else if (s.equals("2")) {
+                break;
+            } else {
+                throw new IllegalArgumentException("입력한 숫자는 1 또는 2 이어야 합니다");
+            }
+
+        }
+    }
+    public static String playBaseballGame() {
         int[] randomNumber = generateRandomNumber();
+        int strikes = 0;
+        int balls = 0;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요: ");
-        String inputNumber = Console.readLine();
-        int[] inputNumber2Array = processInputNumber(inputNumber);
+            System.out.println("숫자 야구 게임을 시작합니다.");
 
-        int strikes = calculateStrikes(inputNumber2Array, randomNumber);
-        int balls = calculateBalls(inputNumber2Array, randomNumber);
+            while (strikes != 3) {
 
-        printResult(strikes, balls);
+            System.out.print("숫자를 입력해주세요: ");
+            String inputNumber = Console.readLine();
+            int[] inputNumber2Array = processInputNumber(inputNumber);
+
+            strikes = calculateStrikes(inputNumber2Array, randomNumber);
+            balls = calculateBalls(inputNumber2Array, randomNumber);
+
+            printResult(strikes, balls);
+        }
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료 \n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Console.readLine();
     }
 
     private static int[] generateRandomNumber() {
@@ -28,12 +49,6 @@ public class Application {
     }
 
     private static int[] processInputNumber(String inputNumber) {
-        for (char c : inputNumber.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException("입력한 숫자는 3자리의 숫자여야 합니다.");
-            }
-        }
-
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException("입력한 숫자는 3자리여야 합니다.");
         }
