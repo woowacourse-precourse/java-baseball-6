@@ -1,11 +1,11 @@
-package baseball;
+package baseball.exeption;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static baseball.enum_class.NumberInfo.*;
 
-public class ExceptionContoller {
+public class ExceptionContoller implements GlobalExceptionController{
 
     public void notIntegerException(String Number) {
         for (int i = 0; i < COUNT.getNumberInfo(); i++) {
