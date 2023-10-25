@@ -3,14 +3,14 @@ package baseball;
 public class BaseballGame {
     private ComputerNumber computerNum;
     private static PlayerNumber playerNum;
-    private Validator validator;
+    private CompareScore validator;
 
     public BaseballGame() {
         computerNum = new ComputerNumber();
-        validator = new Validator();
+        validator = new CompareScore();
     }
 
-    public void start() {
+    public void play() {
         do {
             getNumberFromPlayer();
             OutputView.printScoreMessage(getCompareNumber());
@@ -20,8 +20,8 @@ public class BaseballGame {
     }
 
     public void getNumberFromPlayer() {
-        playerNum = new PlayerNumber(InputView.setUserNumber());
-        playerNum.getPlayerNumber();
+        playerNum = new PlayerNumber(InputView.readPlayerNumber());
+//        playerNum.getPlayerNumber();
     }
 
     public int[] getCompareNumber() {
@@ -29,7 +29,7 @@ public class BaseballGame {
     }
 
     public boolean isGameSet() {
-        if (validator.isThreeStrike()) {
+        if (validator.isSuccess()) {
             OutputView.printGameEndMessage();
             return true;
         }

@@ -1,11 +1,11 @@
 package baseball;
 
-public class CompareNumber {
-    private int ball;
-    private int strike;
+public class NumberValidator {
+    private int ballNum;
+    private int strikeNum;
 
-    public int getStrike() {
-        return strike;
+    public int getStrikeNum() {
+        return strikeNum;
     }
 
     public int[] compareResult(String computerNumber, String playerNumber) {
@@ -14,13 +14,13 @@ public class CompareNumber {
         strikeCount(computerNumber, playerNumber);
         strikeExceptBall();
 
-        return new int[]{ball, strike};
+        return new int[]{ballNum, strikeNum};
 
     }
 
     public void resetCount() {
-        ball = 0;
-        strike = 0;
+        ballNum = 0;
+        strikeNum = 0;
 
     }
 
@@ -28,7 +28,7 @@ public class CompareNumber {
         for (int i = 0; i < playerNumber.length(); i++) {
             char digit = playerNumber.charAt(i);
             if (computerNumber.contains(Character.toString(digit))) {
-                ball++;
+                ballNum++;
             }
         }
     }
@@ -36,13 +36,13 @@ public class CompareNumber {
     public void strikeCount(String computerNumber, String playerNumber) {
         for (char playerNum : playerNumber.toCharArray()) {
             if (computerNumber.indexOf(playerNum) == playerNumber.indexOf(playerNum)) {
-                strike++;
+                strikeNum++;
             }
         }
     }
 
     public void strikeExceptBall() {
 
-        ball = ball - strike;
+        ballNum = ballNum - strikeNum;
     }
 }

@@ -14,6 +14,8 @@ public class PlayerNumber {
         isDifferentNumbers(playerNumber);
 
         this.playerNumber = playerNumber;
+
+
     }
 
     public String getPlayerNumber() {
@@ -26,6 +28,8 @@ public class PlayerNumber {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 1-9 사이의 수를 입력하세요.");
         }
+
+
     }
 
     public static void isInRange(String input) throws IllegalArgumentException {
