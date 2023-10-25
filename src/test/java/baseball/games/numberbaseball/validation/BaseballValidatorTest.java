@@ -47,4 +47,12 @@ class BaseballValidatorTest {
             validator.validateOptionInput("a");
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("한 자리의 수가 아닌 입력에 대한 IllegalArgumentException")
+    void validateOverSizeInput() {
+        assertThatThrownBy(() -> {
+            validator.validateNumbersInput("12");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
