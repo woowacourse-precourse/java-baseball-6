@@ -39,7 +39,7 @@ public class GameController {
     }
 
     public void run() {
-        while (gameContinues()) {
+        while (gameContinue()) {
             playOneRound();
             if (userWon()) {
                 endOrContinueGame();
@@ -47,14 +47,13 @@ public class GameController {
         }
     }
 
-    // 추가: 각 메서드가 한 가지 일만 하도록 분리
     private void initializeGame() {
         resultView.printInit();
         computer.generateNumbers();
         gameManager.setPlayMode(PLAY_GAME);
     }
 
-    private boolean gameContinues() {
+    private boolean gameContinue() {
         return !gameManager.isEndMode();
     }
 
