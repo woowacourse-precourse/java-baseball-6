@@ -21,11 +21,11 @@ public class ResultView {
             System.out.println("낫싱");
         }
 
-        if(balls != 0 && strikes == 0) {
+        if(balls != 0) {
             System.out.println(balls + "볼");
         }
 
-        if(balls == 0 & strikes != 0) {
+        if(strikes != 0) {
             System.out.println(strikes + "스트라이크");
         }
 
