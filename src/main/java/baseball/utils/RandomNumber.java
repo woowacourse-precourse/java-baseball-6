@@ -4,6 +4,9 @@ import baseball.view.SystemMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Arrays;
+
 
 public class RandomNumber {
     private List<Integer> numbers;
@@ -40,6 +43,8 @@ public class RandomNumber {
         this.ballCount = 0;
         if (!checkSize(input)) {
             throw new IllegalArgumentException();
+        } else if (!isUnique(input)) {
+            throw new IllegalArgumentException();
         } else {
             inputNumber = getParsedInt(input);
         }
@@ -60,6 +65,14 @@ public class RandomNumber {
 
     private boolean checkSize(String input) {
         return input.length() == 3;
+    }
+
+    private boolean isUnique(String input) {
+        String[] InputArray = input.split("");
+        HashSet<String> hashSet = new HashSet<>(Arrays.asList(InputArray));
+        InputArray = hashSet.toArray(new String[0]);
+        System.out.println(Arrays.toString(InputArray));
+        return InputArray.length == 3;
     }
 
     private int[] getParsedInt(String input) {
