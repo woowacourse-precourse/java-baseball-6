@@ -2,6 +2,7 @@ package baseball.view.output;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.domain.ball.Hint;
 import baseball.domain.game.GameResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,10 +17,10 @@ final class HintViewTest {
         final HintView view = new HintView(result);
 
         // when
-        final String renderedString = view.renderToString();
+        final String renderedString = view.render();
 
         // then
-        assertThat(renderedString).contains(HintView.NOTHING);
+        assertThat(renderedString).contains(Hint.NOTHING.getValue());
     }
 
     @DisplayName("ball이 3, strike가 0이면 HintView.BALL만 렌더링한다.")
@@ -32,12 +33,12 @@ final class HintViewTest {
         final HintView view = new HintView(result);
 
         // when
-        final String renderedString = view.renderToString();
+        final String renderedString = view.render();
 
         // then
         assertThat(renderedString)
-                .contains(HintView.BALL)
-                .doesNotContain(HintView.STRIKE);
+                .contains(Hint.BALL.getValue())
+                .doesNotContain(Hint.STRIKE.getValue());
     }
 
     @DisplayName("ball이 0, strike가 3이면 HintView.STRIKE만 렌더링한다.")
@@ -50,12 +51,12 @@ final class HintViewTest {
         final HintView view = new HintView(result);
 
         // when
-        final String renderedString = view.renderToString();
+        final String renderedString = view.render();
 
         // then
         assertThat(renderedString)
-                .doesNotContain(HintView.BALL)
-                .contains(HintView.STRIKE);
+                .doesNotContain(Hint.BALL.getValue())
+                .contains(Hint.STRIKE.getValue());
     }
 
     @DisplayName("ball이 1, strike가 2이면 HintView.BALL, STRIKE 둘 다 렌더링한다.")
@@ -68,11 +69,11 @@ final class HintViewTest {
         final HintView view = new HintView(result);
 
         // when
-        final String renderedString = view.renderToString();
+        final String renderedString = view.render();
 
         // then
         assertThat(renderedString)
-                .contains(HintView.BALL)
-                .contains(HintView.STRIKE);
+                .contains(Hint.BALL.getValue())
+                .contains(Hint.STRIKE.getValue());
     }
 }

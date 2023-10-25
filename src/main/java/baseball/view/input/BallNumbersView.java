@@ -13,7 +13,7 @@ public final class BallNumbersView implements Renderable {
     }
 
     @Override
-    public String renderToString() {
+    public String render() {
         if (isGameStart) {
             return GAME_START_MESSAGE + INPUT_BALL_NUMBER_MESSAGE;
         }

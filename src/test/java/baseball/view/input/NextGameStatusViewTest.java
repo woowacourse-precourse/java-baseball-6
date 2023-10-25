@@ -14,7 +14,7 @@ final class NextGameStatusViewTest {
         final NextGameStatusView view = new NextGameStatusView();
 
         // when
-        final String renderedView = view.renderToString();
+        final String renderedView = view.render();
 
         // then
         assertThat(renderedView)

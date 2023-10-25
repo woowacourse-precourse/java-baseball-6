@@ -1,12 +1,17 @@
 package baseball.view.output;
 
+import static baseball.domain.ball.Hint.BALL;
+import static baseball.domain.ball.Hint.NOTHING;
+import static baseball.domain.ball.Hint.STRIKE;
+
+import baseball.domain.ball.Hint;
 import baseball.domain.game.GameResult;
 import io.Renderable;
 
 public final class HintView implements Renderable {
-    public static final String NOTHING = "낫싱";
-    public static final String STRIKE = "스트라이크";
-    public static final String BALL = "볼";
+    public static final String DELIMITER = " ";
+    public static final String EMPTY = "";
+    public static final String LINE_BREAK = "\n";
 
     private final GameResult result;
 
@@ -15,22 +20,22 @@ public final class HintView implements Renderable {
     }
 
     @Override
-    public String renderToString() {
+    public String render() {
         if (result.hasNothing()) {
-            return NOTHING;
+            return NOTHING.getValue();
         }
-        return String.join(" ",
+        return String.join(DELIMITER,
                 renderHint(BALL, result.ballCount()),
-                renderHint(STRIKE, result.strikeCount())).trim() + "\n";
+                renderHint(STRIKE, result.strikeCount())).trim() + LINE_BREAK;
     }
 
     private String renderHint(
-            final String hint,
+            final Hint hint,
             final int count
     ) {
         return switch (count) {
-            case 0 -> "";
-            default -> count + hint;
+            case 0 -> EMPTY;
+            default -> count + hint.getValue();
         };
     }
 }

@@ -1,5 +1,5 @@
 package io;
 
 public interface Renderable {
-    String renderToString();
+    String render();
 }

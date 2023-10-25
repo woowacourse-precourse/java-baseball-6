@@ -14,7 +14,7 @@ final class BallNumbersViewTest {
         final BallNumbersView view = new BallNumbersView(true);
 
         // when
-        final String renderedView = view.renderToString();
+        final String renderedView = view.render();
 
         // then
         assertThat(renderedView)
@@ -31,7 +31,7 @@ final class BallNumbersViewTest {
         final BallNumbersView view = new BallNumbersView(false);
 
         // when
-        final String renderedView = view.renderToString();
+        final String renderedView = view.render();
 
         // then
         assertThat(renderedView)
@@ -39,5 +39,5 @@ final class BallNumbersViewTest {
                 .doesNotContain(BallNumbersView.GAME_START_MESSAGE);
     }
 
-   
+
 }
