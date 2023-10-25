@@ -10,7 +10,7 @@ import static baseball.CommandLine.showln;
 
 public class Computer {
 
-    private Computer() {}
+    Computer() {}
 
     public static Computer create() {
         return new Computer();
@@ -79,21 +79,21 @@ public class Computer {
         }
         if (counter.matchAny()) {
             if (counter.isOnlyBall()) {
-                showln(counter.getCountB() + "볼");
+                showln(counter.getcountBall() + "볼");
             }
             if (counter.isOnlyStrike()) {
-                showln(counter.getCountS() + "스트라이크");
+                showln(counter.getcountStrike() + "스트라이크");
             }
             if (counter.isBallAndStrike()) {
-                showln(counter.getCountB() + "볼 " + counter.getCountS() + "스트라이크");
+                showln(counter.getcountBall() + "볼 " + counter.getcountStrike() + "스트라이크");
             }
-            return strikeCountIsThree(counter.getCountS());
+            return strikeCountIsThree(counter.getcountStrike());
         }
         return false;
     }
 
-    private static boolean strikeCountIsThree(int countS) {
-        if (countS == 3) {
+    private static boolean strikeCountIsThree(int countStrike) {
+        if (countStrike == 3) {
             showln("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
@@ -108,6 +108,8 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
+        // 테스트를 위해 숫자 미리 보여주기
+        // showln("answer for test : " + String.join("", computer.stream().map(String::valueOf).toList()));
         return computer;
     }
 }

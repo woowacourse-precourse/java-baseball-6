@@ -5,8 +5,8 @@ import java.util.List;
 public class Counter {
 
     private int count;
-    private int countS;
-    private int countB;
+    private int countStrike;
+    private int countBall;
 
     private Counter() {}
 
@@ -15,11 +15,11 @@ public class Counter {
     }
 
     private void plusBall(){
-        countB++;
+        countBall++;
     }
 
     private void plusStrike(){
-        countS++;
+        countStrike++;
     }
 
     public boolean matchAny() {
@@ -31,41 +31,50 @@ public class Counter {
     }
 
     public boolean isOnlyBall(){
-        return countB > 0 && countS == 0;
+        return countBall > 0 && countStrike == 0;
     }
 
     public boolean isOnlyStrike(){
-        return countS > 0 && countB == 0;
+        return countStrike > 0 && countBall == 0;
     }
 
     public boolean isBallAndStrike() {
-        return countB > 0 && countS > 0;
+        return countBall > 0 && countStrike > 0;
     }
 
     public static Counter of(String[] arr, List<Integer> computer){
         Counter counter = new Counter();
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < computer.size(); j++) {
-                if (arr[i].contains(String.valueOf(computer.get(j)))) {
-                    counter.plusCount();
-                    if (i == j) {
-                        counter.plusStrike();
-                        break;
-                    } else {
-                        counter.plusBall();
-                        break;
-                    }
-                }
-            }
+            count(arr, computer, i, counter);
         }
         return counter;
     }
 
-    public int getCountS() {
-        return countS;
+    private static void count(String[] arr, List<Integer> computer, int i, Counter counter) {
+        for (int j = 0; j < computer.size(); j++) {
+            if (countCommand(arr, computer, i, counter, j)) break;
+        }
     }
 
-    public int getCountB() {
-        return countB;
+    private static boolean countCommand(String[] arr, List<Integer> computer, int i, Counter counter, int j) {
+        if (arr[i].contains(String.valueOf(computer.get(j)))) {
+            counter.plusCount();
+            if (i == j) {
+                counter.plusStrike();
+                return true;
+            } else {
+                counter.plusBall();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getcountStrike() {
+        return countStrike;
+    }
+
+    public int getcountBall() {
+        return countBall;
     }
 }
