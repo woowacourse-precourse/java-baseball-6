@@ -17,35 +17,50 @@ public class Application {
             boolean isVictory = false;
 
             while (!isVictory) {
-                System.out.print("숫자를 입력해주세요 : ");
                 List<Integer> userGuessAnswer = guessComputerAnswer();
-                int strike = 0;
-                int ball = 0;
-                for (int i = 0; i < userGuessAnswer.size(); i++) {
-                    if (computerAnswer.get(i).equals(userGuessAnswer.get(i))) {
-                        strike++;
-                    } else if (computerAnswer.contains(userGuessAnswer.get(i))) {
-                        ball++;
-                    }
-                }
-                if (strike != 0 && ball == 0) { // 스트라이크가 있고 볼은 없는 경우
-                    System.out.println(strike + "스트라이크");
-                    if (strike == 3) {
-                        System.out.println(strike + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                        isVictory = true;
-                    }
-                } else if (strike == 0 && ball != 0) { // 스트라이크는 없고 볼만 있는 경우
-                    System.out.println(ball + "볼");
-                } else if (strike != 0 && ball != 0) { // 스트라이크와 볼이 둘 다 있는 경우
-                    System.out.println(ball + "볼 " + strike + "스트라이크");
-                } else if (strike == 0 && ball == 0) {
-                    System.out.println("낫싱");
-                }
+                isVictory = evaluateGuess(computerAnswer, isVictory, userGuessAnswer);
             }
 
             isPlayingGame = askToPlayAgain(isPlayingGame);
 
         }
+    }
+
+    private static boolean evaluateGuess(List<Integer> computerAnswer, boolean isVictory,
+                                         List<Integer> userGuessAnswer) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < userGuessAnswer.size(); i++) {
+            if (computerAnswer.get(i).equals(userGuessAnswer.get(i))) {
+                strike++;
+            } else if (computerAnswer.contains(userGuessAnswer.get(i))) {
+                ball++;
+            }
+        }
+
+        isVictory = evaluateGuessResult(isVictory, strike, ball);
+
+        return isVictory;
+    }
+
+    private static boolean evaluateGuessResult(boolean isVictory, int strike, int ball) {
+
+        if (strike != 0 && ball == 0) { // 스트라이크가 있고 볼은 없는 경우
+            System.out.println(strike + "스트라이크");
+            if (strike == 3) {
+                System.out.println(strike + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                isVictory = true;
+            }
+        } else if (strike == 0 && ball != 0) { // 스트라이크는 없고 볼만 있는 경우
+            System.out.println(ball + "볼");
+        } else if (strike != 0 && ball != 0) { // 스트라이크와 볼이 둘 다 있는 경우
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        } else if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        }
+
+        return isVictory;
     }
 
     private static boolean askToPlayAgain(boolean isPlayingGame) {
@@ -58,6 +73,7 @@ public class Application {
         } else if (playAgain == 2) {
             isPlayingGame = false;
         }
+
         return isPlayingGame;
     }
 
@@ -79,7 +95,7 @@ public class Application {
     }
 
     private static List<Integer> guessComputerAnswer() {
-
+        System.out.print("숫자를 입력해주세요 : ");
         final int ANSWER_LENGTH = 3;
         List<Integer> userGuessAnswer = new ArrayList<>();
         String userInput = Console.readLine();
