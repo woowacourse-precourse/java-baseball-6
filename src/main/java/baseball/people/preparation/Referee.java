@@ -14,6 +14,7 @@ public class Referee {
      * @return Referee 객체
      */
     public static Referee enter() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         return new Referee();
     }
 
