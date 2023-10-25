@@ -45,9 +45,7 @@ public class Application {
             modules.isTypeInt(expected_num_str);
 
             String[] expected_num_split = expected_num_str.split("");
-            List<String> expected_num_lst = Arrays.asList(expected_num_split);
-            Set<String> set_expected_num = new HashSet<>(expected_num_lst);
-            List<String> set_lst_expected_num = new ArrayList<>(set_expected_num);
+            List<String> set_lst_expected_num = modules.dropDuplicateFromArray2List(expected_num_split);
             if (set_lst_expected_num.size() != 3) {
                 throw new IllegalArgumentException();
             }
