@@ -35,35 +35,23 @@ public class Application {
 
         do {
             System.out.print("숫자를 입력해주세요 : ");
-            //
-            String input =Console.readLine();
-            if(input.length() != NUM_COUNT || !input.matches("[1-9]*")){
-                throw new IllegalArgumentException();
-            }
-            List<Integer> numberList = new ArrayList<>();
-
-            for(char c: input.toCharArray()){
-                numberList.add(c-'0');
-            }
-            userNums =  numberList;
-            //
-
+            userNums = convertInputToNumberList(Console.readLine());
             printResult(getStrikeCount(computerNums, userNums), getBallCount(computerNums, userNums));
         } while(!computerNums.equals(userNums));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-//    private static List<Integer> convertInputToNumberList(String input) throws IllegalArgumentException {
-//        if(input.length() != NUM_COUNT || !input.matches("[1-9]*")){
-//            throw new IllegalArgumentException();
-//        }
-//        List<Integer> numberList = new ArrayList<>();
-//
-//        for(char c: input.toCharArray()){
-//            numberList.add(c-'0');
-//        }
-//        return numberList;
-//    }
+    private static List<Integer> convertInputToNumberList(String input) throws IllegalArgumentException {
+        if(input.length() != NUM_COUNT || !input.matches("[1-9]*")){
+            throw new IllegalArgumentException();
+        }
+        List<Integer> numberList = new ArrayList<>();
+
+        for(char c: input.toCharArray()){
+            numberList.add(c-'0');
+        }
+        return numberList;
+    }
     private static List<Integer> generateRandomNumbers(){
         List<Integer> numbers = new ArrayList<>();
         while(numbers.size()<NUM_COUNT){
