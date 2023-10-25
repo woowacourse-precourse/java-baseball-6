@@ -28,16 +28,16 @@ public class Game {
 
         setGame();
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Print.START_GAME);
 
         while (isPlaying()){
             computer.init();
 
-            // 상대방(컴퓨터)은제 1에서 9까지 서로 다른 임의의 수(랜덤) 3개를 선택
+            // 상대방(컴퓨터)은 1에서 9까지 서로 다른 임의의 수(랜덤) 3개를 선택
             computer.selectRandomNumber();
 
             while (isThreeStrike()){
-                System.out.print("숫자를 입력 해 주세요 : ");
+                System.out.print(Print.GET_INPUT);
                 user.init();
                 user.selectUserNumber();
 
@@ -75,17 +75,17 @@ public class Game {
         //  String값을 넘기는 것이 아닌 getStrikeCnt()와 getBallCnt()를 사용하여 다른 클래스에서 출력 할 수 있도록 바꿀 필요가 있어보임
         if(strikeCnt > 0){
             if(strikeCnt == 3){
-                return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+                return Print.THREE_STRIKE;
             }
             if(ballCnt > 0){
-                return ballCnt+"볼 "+strikeCnt+"스트라이크";
+                return Print.N_BALL_N_STRIKE(ballCnt, strikeCnt);
             }
-            return strikeCnt+"스트라이크";
+            return Print.ONLY_STRIKE(strikeCnt);
         }
         else if(ballCnt > 0){
-            return ballCnt+"볼";
+            return Print.ONLY_BALL(ballCnt);
         }
-        return "낫싱";
+        return Print.NOTHING;
     }
 
     public boolean isOneOrTwo(String str) {
@@ -93,7 +93,7 @@ public class Game {
     }
 
     public void isReplay(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Print.REPLAY_GAME);
         String input = Console.readLine();
         if(!isOneOrTwo(input)){
             throw new IllegalArgumentException("게임을 시작하려면 1혹은 2를 입력해야 합니다.");
