@@ -13,7 +13,7 @@ import java.util.Random;
 public class Application {
     static private final BaseBallController controller = new BaseBallController();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         controller.doBaseBall();
     }
 }
