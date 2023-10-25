@@ -18,6 +18,16 @@ public class Application {
         List<Integer> userNum = consoleInput.inputNum();
 
         // 4. computerNum과 userNum을 비교하여 숫자 야구 진행
-        
+        PlayGame playBaseball = new PlayGame();
+        boolean gameContinues = playBaseball.compareNum(computerNum, userNum);
+
+        while (true) {
+            if (!gameContinues) {
+                break;
+            }
+            userNum = consoleInput.inputNum();
+            gameContinues = playBaseball.compareNum(computerNum, userNum);
+        }
+
     }
 }
