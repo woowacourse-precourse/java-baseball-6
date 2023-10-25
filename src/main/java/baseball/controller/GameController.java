@@ -11,12 +11,10 @@ import java.util.Map;
 
 public class GameController {
     private final GameIO gameIO;
-    private final Computer computer;
     private final GameLogic gameLogic;
 
-    public GameController(GameIO gameIO, Computer computer, GameLogic gameLogic) {
+    public GameController(GameIO gameIO, GameLogic gameLogic) {
         this.gameIO = gameIO;
-        this.computer = computer;
         this.gameLogic = gameLogic;
     }
     public void init() {
@@ -26,11 +24,13 @@ public class GameController {
         boolean continueRequested;
 
         do {
+            Computer computer = new Computer();
             List<Integer> computerNumbers = new ArrayList<>();
             computerNumbers = computer.createRandomNumber();
 
             Map compareResult = new HashMap<>();
             do {
+                GameLogic gameLogic = new GameLogic();
                 String playerGuess = gameIO.readPlayerGuess();
 
                 List<Integer> playerGuessNumbers = new ArrayList<>();
