@@ -18,6 +18,7 @@ public class Game {
                 System.out.printf("숫자를 입력해주세요 : ");
                 String userNumber = Console.readLine();
                 List<Integer> user = getUserInput(userNumber);
+                calculateResult(computer, user);
             }
         }
     }
@@ -55,5 +56,33 @@ public class Game {
             }
         }
         return user;
+    }
+
+    public void calculateResult(List<Integer> computer, List<Integer> user){
+        strike = 0;
+        ball = 0;
+
+        //computer의 i번째 인덱스랑 user의 모든 원소들을 비교
+        for(int i = 0; i < computer.size(); i++) {
+            for(int j = 0; j < user.size(); j++){
+                //같은 수이면서 인덱스도 동일하면 스트라이크 증가
+                if(computer.get(i) == user.get(j) && i == j) {
+                    strike++;
+                } else if (computer.get(i) == user.get(j) && i != j) {
+                    ball++;
+                }
+            }
+        }
+
+        if (strike == 0 && ball == 0) {
+            System.out.printf("낫싱");
+        }
+        if (ball != 0){
+            System.out.printf(ball + "볼 ");
+        }
+        if (strike != 0){
+            System.out.printf(strike + "스트라이크");
+        }
+        System.out.println();
     }
 }
