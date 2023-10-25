@@ -1,7 +1,7 @@
 package baseball.validation;
 
 public class InputValidation {
-    public static void number(String input) {
+    public static void numbers(String input) {
         if (!input.matches("^[1-9][1-9]{2}$")) {
             throw new IllegalArgumentException("세 자리 숫자이고, 각 자리수가 1에서 9까지인 숫자를 입력해주세요.\"");
         }

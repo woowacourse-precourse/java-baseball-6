@@ -13,8 +13,9 @@ public class Application {
 
         while(playAgain) {
             playGame();
+
             Output.printGameEnd();
-            playAgain = Input.playAgain();
+            playAgain = Input.endCommand();
         }
     }
 

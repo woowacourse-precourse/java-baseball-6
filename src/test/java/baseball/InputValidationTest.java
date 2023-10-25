@@ -8,28 +8,28 @@ import org.junit.jupiter.api.Test;
 class InputValidationTest {
     @Test
     void 입력된_값이_3자리가_맞는지_테스트() {
-        assertThatThrownBy(() -> InputValidation.number("12"))
+        assertThatThrownBy(() -> InputValidation.numbers("12"))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(() -> InputValidation.number("1234"))
+        assertThatThrownBy(() -> InputValidation.numbers("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 입력된_값이_숫자인지_테스트() {
-        assertThatThrownBy(() -> InputValidation.number("abc"))
+        assertThatThrownBy(() -> InputValidation.numbers("abc"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 입력된_값이_중복되지_않는지_테스트() {
-        assertThatThrownBy(() -> InputValidation.number("112"))
+        assertThatThrownBy(() -> InputValidation.numbers("112"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 입력된_값이_0이_포함되지_않는지_테스트() {
-        assertThatThrownBy(() -> InputValidation.number("102"))
+        assertThatThrownBy(() -> InputValidation.numbers("102"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
