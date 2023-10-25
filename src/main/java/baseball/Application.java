@@ -62,23 +62,18 @@ public class Application {
         
         System.out.println("숫자를 입력해주세요 : ");
         String user = Console.readLine();
+
+        if (user.length() != 3) {
+            throw new IllegalArgumentException("입력된 숫자가 올바르지 않습니다.");
+        }
         
-        try {
-            if (user.length() != 3) {
+        for(int i=0; i < user.length(); i++) {
+            char digit = user.charAt(i);
+            int number = Character.getNumericValue(digit); // (int)digit - '0'
+            if (number < 1 || number > 9) {
                 throw new IllegalArgumentException("입력된 숫자가 올바르지 않습니다.");
             }
-
-            for(int i=0; i < user.length(); i++) {
-                char digit = user.charAt(i);
-                int number = Character.getNumericValue(digit); // (int)digit - '0'
-                if (number < 1 || number > 9) {
-                    throw new IllegalArgumentException("입력된 숫자가 올바르지 않습니다.");
-                }
-                userList.add(number);
-            }
-
-        } catch(IllegalArgumentException e) {
-            throw new IllegalArgumentException("입력된 숫자가 올바르지 않습니다.");
+            userList.add(number);
         }
 
         return userList;
@@ -86,25 +81,25 @@ public class Application {
     }
 
     private static String calresult(List<Integer> c, List<Integer> u) {
-        int strake = 0;
+        int strike = 0;
         int ball = 0;
 
         for (int i=0; i<c.size(); i++) {
             if (c.get(i) == u.get(i)) {
-                strake++;
+                strike++;
             } else if(c.contains(u.get(i))){
                 ball++;
             }
         }
 
-        if (strake == 0 && ball == 0) {
+        if (strike == 0 && ball == 0) {
             return "낫싱";
-        } else if (strake == 0 && ball != 0) {
+        } else if (strike == 0 && ball != 0) {
             return ball + "볼";
-        } else if (strake != 0 && ball == 0) {
-            return strake + "스트라이크";
+        } else if (strike != 0 && ball == 0) {
+            return strike + "스트라이크";
         } else {
-            return ball + "볼 "+strake + "스트라이크";
+            return ball + "볼 "+strike + "스트라이크";
         }
     }
 }
