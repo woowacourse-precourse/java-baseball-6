@@ -116,10 +116,17 @@ public class BaseballGame {
                         + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String userDecide = readLine();
-        if (userDecide.equals("1")) {
-            reStart();
-        } else if (userDecide.equals("2")) {
-            onToFalse();
+        switch (userDecide) {
+            case "1":
+                reStart();
+                break;
+            case "2":
+                onToFalse();
+                break;
+            default:
+                System.out.println("잘못된 입력입니다. 프로그램을 종료합니다.");
+                onToFalse();
+                break;
         }
     }
 
