@@ -8,12 +8,12 @@ import baseball.entity.User;
 import java.util.HashSet;
 
 public class BaseballGame {
-    private final String startMessage = "숫자 야구 게임을 시작합니다.";
+    private final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private User user;
     private Computer computer;
 
     public BaseballGame() {
-        System.out.println(startMessage);
+        System.out.println(START_MESSAGE);
         user = new User();
         computer = new Computer();
     }

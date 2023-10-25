@@ -6,11 +6,11 @@ import java.util.HashSet;
 
 public class Input {
 
-    private static final String inputMessage = "숫자를 입력해주세요 : ";
-    private static final String restartMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static String get() {
-        System.out.print(inputMessage);
+        System.out.print(INPUT_MESSAGE);
         String number = Console.readLine();
         if (!isValidateNumber(number)) {
             throw new IllegalArgumentException();
@@ -19,7 +19,7 @@ public class Input {
     }
 
     public static String restart() {
-        System.out.println(restartMessage);
+        System.out.println(RESTART_MESSAGE);
         String restartNumber = Console.readLine();
         if (!isValidRestartNumber(restartNumber)) {
             throw new IllegalArgumentException();
