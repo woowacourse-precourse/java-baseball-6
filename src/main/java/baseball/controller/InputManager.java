@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.ball.BallNumber;
+import baseball.domain.ball.Guess;
 import baseball.domain.game.GameStatus;
 import baseball.parser.InputParser;
 import baseball.view.input.BallNumbersView;
@@ -25,10 +26,11 @@ public final class InputManager {
         this.parser = parser;
     }
 
-    public Triple<BallNumber> inputBallNumbers() {
+    public Guess inputGuess() {
         printer.print(new BallNumbersView(isGameStart));
         isGameStart = false;
-        return parser.parseBallNumbersInput(reader.readLine());
+        final Triple<BallNumber> ballNumbers = parser.parseBallNumbersInput(reader.readLine());
+        return Guess.of(ballNumbers);
     }
 
     public GameStatus inputNextGameStatus() {

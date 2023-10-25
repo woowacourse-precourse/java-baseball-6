@@ -1,11 +1,9 @@
 package baseball.controller;
 
-import baseball.domain.ball.BallNumber;
 import baseball.domain.ball.Guess;
 import baseball.domain.game.Computer;
 import baseball.domain.game.GameResult;
 import baseball.domain.game.GameStatus;
-import collection.Triple;
 
 public final class GameController {
 
@@ -39,8 +37,7 @@ public final class GameController {
     }
 
     private GameResult askGuess(final Computer computer) {
-        final Triple<BallNumber> ballNumbers = inputManager.inputBallNumbers();
-        final Guess guess = Guess.of(ballNumbers);
+        final Guess guess = inputManager.inputGuess();
         return computer.check(guess);
     }
 
