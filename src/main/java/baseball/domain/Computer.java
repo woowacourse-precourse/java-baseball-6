@@ -1,12 +1,14 @@
-package baseball;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.domain.Game.NUM_DIGITS;
+
+
 public class Computer {
-    private static final int NUM_DIGITS = 3; // 타겟 넘버 자릿 수
     private List<Integer> targetNumber;
 
     public Computer() {
@@ -14,12 +16,16 @@ public class Computer {
         generateTargetNumber();
     }
 
-    private void generateTargetNumber() {
+    public void generateTargetNumber() {
         while (targetNumber.size() < NUM_DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!targetNumber.contains(randomNumber)) {
                 targetNumber.add(randomNumber);
             }
         }
+    }
+
+    public List<Integer> getTargetNumber() {
+        return targetNumber;
     }
 }
