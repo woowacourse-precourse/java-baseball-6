@@ -11,7 +11,7 @@ public class Computer {
     public String generateRandomNumbers() {
         randomNumbers = EMPTY_STRING;
 
-        while (randomNumbers.length() != Constants.NUMBER_OF_NUMBERS) {
+        while (Validation.isNotThreeNumber(randomNumbers)) {
             String randomNumber = String.valueOf(
                     Randoms.pickNumberInRange(Constants.START_NUMBER, Constants.END_NUMBER));
 

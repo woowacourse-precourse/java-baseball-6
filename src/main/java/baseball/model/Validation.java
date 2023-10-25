@@ -24,6 +24,10 @@ public class Validation {
         }
     }
 
+    public static boolean isNotThreeNumber(String number) {
+        return number.length() != Constants.NUMBER_OF_NUMBERS;
+    }
+
     private static void validateSameNumber(String numbers) {
         List<Character> checkList = new ArrayList<>();
 
@@ -46,7 +50,7 @@ public class Validation {
     }
 
     private static void validateNumberOfNumbers(String numbers) {
-        if (numbers.length() != Constants.NUMBER_OF_NUMBERS) {
+        if (isNotThreeNumber(numbers)) {
             throw new IllegalArgumentException(NUMBER_OF_NUMBERS_EXCEPTION_MESSAGE);
         }
     }
