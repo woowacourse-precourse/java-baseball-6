@@ -17,30 +17,33 @@ public class BaseballGame implements Game {
     private Results results;
 
     public void run() {
-
         view.displayGameStartMessage();
+        do {
+            playGame();
+        } while (gonnaRestart());
+    }
+
+    private void playGame() {
+        generateAnswer();
 
         do {
-            generateAnswer();
+            tryAnswer();
+        } while (!isAnswer());
 
-            do {
-                view.displayRequestNumberMessage();
-                inputBalls();
-
-                determineResults();
-                view.displayResults(results);
-
-            } while (!isAnswer());
-
-            view.displayCongratulationMessage();
-            view.displayAskRestartMessage();
-
-        } while (gonnaRestart());
-
+        view.displayCongratulationMessage();
+        view.displayAskRestartMessage();
     }
 
     private void generateAnswer() {
-        answerBalls = BallsUtils.generateRandomBalls(1,9,3);
+        answerBalls = BallsUtils.generateRandomBalls(1, 9, 3);
+    }
+
+    private void tryAnswer() {
+        view.displayRequestNumberMessage();
+        inputBalls();
+
+        determineResults();
+        view.displayResults(results);
     }
 
     private void inputBalls() {
