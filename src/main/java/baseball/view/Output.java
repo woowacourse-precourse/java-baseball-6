@@ -6,14 +6,12 @@ import java.util.List;
 
 public class Output {
 
-    public static void printCount(List<Integer> strikeBall) {
-        int ball = strikeBall.get(0);
-        int strike = strikeBall.get(1);
-
+    public static void printCount(List<Integer> ballStrike) {
+        int ball = ballStrike.get(0);
+        int strike = ballStrike.get(1);
         StringBuilder result = new StringBuilder();
 
-
-        checkNothing(strikeBall, result);
+        checkNothing(ballStrike, result);
         checkBall(ball, result);
         checkStrike(strike, result);
 

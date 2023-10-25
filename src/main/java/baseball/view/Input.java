@@ -13,8 +13,8 @@ public class Input {
         System.out.print(ConsoleMessage.INPUT_NUMBER.getMessage());
         String userInput = Console.readLine();
 
-        errorManage.checkNumberLength(userInput);
         errorManage.checkIsNumber(userInput);
+        errorManage.checkNumberLength(userInput);
 
         String[] userNumberString = userInput.split("");
 

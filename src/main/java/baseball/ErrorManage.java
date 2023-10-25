@@ -42,13 +42,13 @@ public class ErrorManage {
         }
     }
 
+    private boolean isRange(int num) {
+        return num < 1 || num > 9;
+    }
+
     public static void wrongGameFlag(int gameFlag) {
         if (gameFlag != 1 && gameFlag != 2) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_GAMEFLAG.getMessage());
         }
-    }
-
-    private boolean isRange(int num) {
-        return num < 1 || num > 9;
     }
 }

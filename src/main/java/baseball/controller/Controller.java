@@ -17,26 +17,24 @@ public class Controller {
 
         System.out.println(ConsoleMessage.START_GAME.getMessage());
 
-        do{
-            gameFlag = playGame(strike);
-        }while(gameFlag == 1);
+        do {
+            playGame(strike);
+            gameFlag = Input.inputGameFlag();
+        } while (gameFlag == 1);
     }
 
-    private int playGame(int strike) {
+    private void playGame(int strike) {
         ComputerNumber computerNumber = new ComputerNumber(new RandomNumberGenerator());
 
-        while(strike != 3){
+        while (strike != 3) {
             List<Integer> userNumber = Input.inputUserNumber();
-            CheckCount checkCount = new CheckCount(computerNumber, userNumber);
 
+            CheckCount checkCount = new CheckCount(computerNumber, userNumber);
             List<Integer> ballStrike = checkCount.compareNumber();
 
             Output.printCount(ballStrike);
             strike = ballStrike.get(1);
         }
-
         System.out.println(ConsoleMessage.RE_GAME.getMessage());
-
-        return Input.inputGameFlag();
     }
 }

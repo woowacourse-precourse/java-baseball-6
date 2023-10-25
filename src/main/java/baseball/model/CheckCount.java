@@ -12,7 +12,6 @@ public class CheckCount {
     public CheckCount(ComputerNumber computerNumber, List<Integer> userNumberList) {
         this.computerNumberList = computerNumber.getComputerNumber();
         this.userNumberList = userNumberList;
-
         this.length = computerNumberList.size();
     }
 
@@ -28,7 +27,6 @@ public class CheckCount {
                 sameNum += 1;
             }
         }
-
         return sameNum;
     }
 
@@ -40,7 +38,6 @@ public class CheckCount {
                 strike += 1;
             }
         }
-
         return strike;
     }
 
