@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,17 +15,16 @@ public class Game {
     public Game(){
         System.out.println("숫자 야구 게임을 시작합니다");
     }
-    int[] convert(String line) throws IllegalArgumentException{
+    List<Integer> convert(String line) throws IllegalArgumentException{
         if(line.length()!= MAX_NUM) throw new IllegalArgumentException("3개의 숫자를 입력해 주세요");
-        int[] arr = new int[MAX_NUM];
-        int cnt=0;
+        List<Integer> inputList = new ArrayList<>();
         for(char c: line.toCharArray()){
             if(c<'1' || c>'9') throw new IllegalArgumentException();
-            arr[cnt++]=c-'0';
+            inputList.add(c-'0');
         }
-        if(arr[0] == arr[1] || arr[1] == arr[2] || arr[2] == arr[0])
+        if(new HashSet<>(inputList).size()!=inputList.size())
             throw new IllegalArgumentException("입력은 서로 다른 숫자 3개입니다");
-        return arr;
+        return inputList;
     }
     String getResultPrompt(int ballCount, int strikeCount){
         StringBuilder out = new StringBuilder();
@@ -38,10 +38,10 @@ public class Game {
         return out.toString();
     }
     boolean userTry(String inputLine){
-        int[] input = convert(inputLine);
+        List<Integer> input = convert(inputLine);
         int ballCount = 0, strikeCount = 0;
         for (int i = 0; i < MAX_NUM; i++) {
-            int num = input[i];
+            int num = input.get(i);
             if (numSet.contains(num)) {
                 if (num == numList.get(i)) {
                     strikeCount++;
