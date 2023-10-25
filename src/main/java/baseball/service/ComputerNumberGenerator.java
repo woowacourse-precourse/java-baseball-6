@@ -7,8 +7,8 @@ public class ComputerNumberGenerator {
 
     private static ComputerNumberGenerator instance = new ComputerNumberGenerator();
 
-    private static final int COMPUTERNUMBER_START_RANGE=1;
-    private static final int COMPUTER_NUMBER_LAST_RANGE=9;
+    private static final int COMPUTERNUMBER_START_RANGE = 1;
+    private static final int COMPUTER_NUMBER_LAST_RANGE = 9;
 
     private ComputerNumberGenerator() {
 
@@ -21,7 +21,8 @@ public class ComputerNumberGenerator {
     public String generate() {
         StringBuilder comNumberBuilder = new StringBuilder();
         while (isShorterThanNumberLength(comNumberBuilder)) {
-            int randomNumber = Randoms.pickNumberInRange(COMPUTERNUMBER_START_RANGE, COMPUTER_NUMBER_LAST_RANGE);
+            int randomNumber = Randoms.pickNumberInRange(COMPUTERNUMBER_START_RANGE,
+                COMPUTER_NUMBER_LAST_RANGE);
             if (isDuplicated(comNumberBuilder, randomNumber)) {
                 continue;
             }

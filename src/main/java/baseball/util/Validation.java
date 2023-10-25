@@ -22,13 +22,15 @@ public class Validation {
 
     private static void checkRightRestartNumber(String number) {
         if (!number.matches(RESTART_NUMBER_REGEX)) {
-            throw new IllegalArgumentException(ValidateException.RESTART_INPUT_NUMBER_EXCEPTION.getMsg());
+            throw new IllegalArgumentException(
+                ValidateException.RESTART_INPUT_NUMBER_EXCEPTION.getMsg());
         }
     }
 
     private void validateRestartNumberLength(String number) {
         if (number.length() != NumberConstant.RESTART_INPUT_LENGTH.getNumber()) {
-            throw new IllegalArgumentException(ValidateException.RESTART_INPUT_NUMBER_LENGTH_EXCEPTION.getMsg());
+            throw new IllegalArgumentException(
+                ValidateException.RESTART_INPUT_NUMBER_LENGTH_EXCEPTION.getMsg());
         }
     }
 
@@ -49,7 +51,8 @@ public class Validation {
     private static void findDuplicateNumber(String number, int index1, int index2) {
         if (index1 != index2) {
             if (number.charAt(index1) == number.charAt(index2)) {
-                throw new IllegalArgumentException(ValidateException.DUPLICATE_NUMBER_EXCEPTION.getMsg());
+                throw new IllegalArgumentException(
+                    ValidateException.DUPLICATE_NUMBER_EXCEPTION.getMsg());
             }
         }
     }
@@ -62,7 +65,8 @@ public class Validation {
 
     private void validateIsRightLength(String number) {
         if (number.length() != NumberConstant.INPUT_LENGTH.getNumber()) {
-            throw new IllegalArgumentException(ValidateException.INPUT_NUMBER_LENGTH_EXCEPTION.getMsg());
+            throw new IllegalArgumentException(
+                ValidateException.INPUT_NUMBER_LENGTH_EXCEPTION.getMsg());
         }
     }
 

@@ -17,7 +17,6 @@ public class GameController {
     private final Validation validation = new Validation();
 
 
-
     public GameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
@@ -28,7 +27,7 @@ public class GameController {
         computerNumber = getComputerNumber();
         try {
             logicStart();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
