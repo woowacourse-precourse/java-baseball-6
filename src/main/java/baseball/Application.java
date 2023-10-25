@@ -15,7 +15,8 @@ public class Application {
         while (playAgain) {
             List<Integer> randomNumbers = randomComputerNumber();
 
-            System.out.println("randomComputerNumber() = " + randomNumbers);
+//            테스트용 출력
+//            System.out.println("randomComputerNumber() = " + randomNumbers);
 
             int cnt_strike = 0;
             int cnt_ball;
@@ -30,11 +31,14 @@ public class Application {
                 try {
                     int input = Integer.parseInt(Console.readLine());
 
+                    int[] inputArray = inputArray(input);
+
                     if (100 > input || input > 999) {
                         throw new IllegalArgumentException("1~9로 이루어진 세 자리 숫자를 입력해주세요.");
+                    } else if (inputArray[0] == inputArray[1] || inputArray[0] == inputArray[2]
+                            || inputArray[1] == inputArray[2]) {
+                        throw new IllegalArgumentException("각 자리 숫자는 중복되면 안 됩니다.");
                     }
-
-                    int[] inputArray = inputArray(input);
 
                     // 스트라이크, 볼 판정
                     for (int i = 0; i < randomNumbers.size(); i++) {
