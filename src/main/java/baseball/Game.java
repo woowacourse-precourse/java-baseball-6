@@ -27,4 +27,9 @@ public class Game {
             }
         }
     }
+
+    public void clear() {
+        ball = 0;
+        strike = 0;
+    }
 }
