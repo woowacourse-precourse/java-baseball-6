@@ -12,7 +12,8 @@ public class NumberArray {
     public List<Integer> getNumList() {
         return Collections.unmodifiableList(numList);
     }
-
+ 
+    // used to create 3 different numbers
     public NumberArray() {
         while (numList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -20,29 +21,37 @@ public class NumberArray {
                 numList.add(randomNumber);
             }
         }
-        System.out.println("computer:" + numList);
     }
 
+    //used to store user input numbers
     public NumberArray(String num) {
         int length = num.length();
-        System.out.println(length);
+        validateNumberLength(length);
+        for (int i = 0; i < length; i++) {
+            char character = num.charAt(i);
+            validateOnlyNumber(character);
+            numList.add(validateDifferentThreeNumbers(character));
+        }
+    }
+
+    void validateNumberLength(int length) {
         if (length != 3) {
             throw new IllegalArgumentException("3개의 값만 입력하세요.");
         }
+    }
 
-        for (int i = 0; i < length; i++) {
-            char character = num.charAt(i);
-            if (((int) character > 57) || ((int) character < 48)) {
-                System.out.println((int) character);
-                throw new IllegalArgumentException("입력하신 값이 숫자가 아닙니다");
-            }
-
-            int intValue = Character.getNumericValue(character);
-            if (numList.contains(intValue)) {
-                throw new IllegalArgumentException("서로다른 숫자 3개를 입력하셔야 합니다.");
-
-            }
-            numList.add(intValue);
+    void validateOnlyNumber(char character) {
+        if (((int) character > 57) || ((int) character < 48)) {
+            throw new IllegalArgumentException("입력하신 값이 숫자가 아닙니다");
         }
+    }
+
+    int validateDifferentThreeNumbers(char character) {
+        int intValue = Character.getNumericValue(character);
+
+        if (numList.contains(intValue)) {
+            throw new IllegalArgumentException("서로다른 숫자 3개를 입력하셔야 합니다.");
+        }
+        return intValue;
     }
 }

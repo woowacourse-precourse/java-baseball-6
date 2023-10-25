@@ -1,8 +1,7 @@
-package baseball;
+package baseball.Global;
 
 public class Ball {
     private int ballNum = 0;
-
     private static Ball instance = new Ball();
 
     private Ball() {
@@ -19,6 +18,4 @@ public class Ball {
     public void setBallNum(int ballNum) {
         this.ballNum = ballNum;
     }
-
-
 }

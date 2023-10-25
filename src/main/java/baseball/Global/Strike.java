@@ -1,12 +1,10 @@
-package baseball;
+package baseball.Global;
 
 public class Strike {
     private int num = 0;
-
     private static Strike instance = new Strike();
 
     private Strike() {
-
     }
 
     public static Strike getInstance() {
@@ -20,5 +18,4 @@ public class Strike {
     public void setNum(int num) {
         this.num = num;
     }
-
 }
