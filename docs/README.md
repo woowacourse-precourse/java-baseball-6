@@ -8,6 +8,12 @@ https://velog.io/@mquat/git-git%EA%B3%BC-github-wrap-up
 https://jjeongil.tistory.com/2124
 --객체 클래스 개념
 
+https://printf-hellojudyworld.tistory.com/63
+--Java 네이밍 규칙
+
+https://ikkison.tistory.com/82
+--refactoring 방법
+
 라이브러리
 camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
 Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
@@ -86,3 +92,4 @@ https://nongue.tistory.com/152
 
 https://velog.io/@ssuh0o0/%ED%98%BC%EC%9E%90%EC%84%9C-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0springExpecting-code-to-raise-a-throwable.-java.lang.AssertionError
 에러해결법
+
