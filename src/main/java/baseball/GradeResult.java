@@ -1,14 +1,18 @@
 package baseball;
 
-public class GradeResult {
+public final class GradeResult {
     private final int ball;
     private final int strike;
 
     private static final int ANSWER_STRIKE_NUM = 3;
 
-    public GradeResult(int ball, int strike) {
+    private GradeResult(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
+    }
+
+    public static GradeResult of(int ball, int strike) {
+        return new GradeResult(ball, strike);
     }
 
     public boolean isAnswer() {
