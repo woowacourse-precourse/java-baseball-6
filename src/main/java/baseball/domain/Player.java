@@ -4,6 +4,9 @@ import static baseball.utils.ErrorMessage.NUMBERS_DUPLICATED;
 import static baseball.utils.ErrorMessage.NUMBERS_NOT_POSITIVE_INTEGER;
 import static baseball.utils.ErrorMessage.NUMBERS_OUT_OF_RANGE;
 import static baseball.utils.ErrorMessage.NUMBERS_SIZE_IS_INVALID;
+import static baseball.utils.GameSetting.MAX_NUMBER;
+import static baseball.utils.GameSetting.MIN_NUMBER;
+import static baseball.utils.GameSetting.NUMBER_SIZE;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,9 +15,6 @@ import java.util.stream.Collectors;
 
 public class Player {
     private List<Integer> numbers;
-    private static final int NUMBER_SIZE = 3;
-    private static final int MAX_NUMBER = 9;
-    private static final int MIN_NUMBER = 1;
 
     public Player() {
     }
