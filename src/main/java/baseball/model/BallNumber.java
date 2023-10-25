@@ -4,16 +4,14 @@ import baseball.ExceptionMessage;
 import baseball.GameMessage;
 
 public class BallNumber {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-    private int number;
+    private Integer number;
 
-    public BallNumber(int number) {
+    public BallNumber(Integer number) {
         validateBallNumberRange(number);
         this.number = number;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
