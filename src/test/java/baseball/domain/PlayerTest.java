@@ -24,4 +24,10 @@ class PlayerTest {
         assertThrows(IllegalArgumentException.class, () -> player.setNumbers(invalidNumbers));
     }
 
+    @Test
+    void 올바른_숫자_설정_시_정상적으로_설정() {
+        List<Integer> validNumbers = Arrays.asList(1, 2, 3);
+        player.setNumbers(validNumbers);
+        assertEquals(validNumbers, player.getNumbers());
+    }
 }
