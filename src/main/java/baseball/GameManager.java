@@ -28,7 +28,7 @@ public class GameManager {
     private void playGame() {
         Boolean isGameEnd = false;
         while (!isGameEnd) {
-            view.printNumberInputMessage();
+            view.printInputNumberMessage();
             GameResult result = computer.calculateGameResult(controller.getInputGameNumber());
             view.printResultMessage(result);
             isGameEnd = result.isAnswer();

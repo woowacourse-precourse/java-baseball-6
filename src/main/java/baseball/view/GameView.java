@@ -10,11 +10,11 @@ public class GameView {
     }
 
     public void printInputGameDecisionMessage() {
-        System.out.println(GameMessage.INPUT_GAMEDECISION);
+        System.out.println(GameMessage.INPUT_GAME_DECISION);
     }
 
-    public void printNumberInputMessage() {
-        System.out.print(GameMessage.NUMBER_INPUT);
+    public void printInputNumberMessage() {
+        System.out.print(GameMessage.INPUT_NUMBER);
     }
 
     public void printGameEndMessage() {

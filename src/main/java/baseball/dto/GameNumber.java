@@ -15,7 +15,7 @@ public class GameNumber {
     }
 
     public static GameNumber makeGameNumberByInput(String input) {
-        InputValidator.validateInputAnswer(input);
+        InputValidator.validateInputNumber(input);
         return new GameNumber(inputToNumbers(input));
     }
 

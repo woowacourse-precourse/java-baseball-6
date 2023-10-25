@@ -14,7 +14,7 @@ public class GameDecision {
     }
 
     public static GameDecision makeGameDecisionByInput(String input) {
-        InputValidator.validateGameDecision(input);
+        InputValidator.validateInputGameDecision(input);
         return new GameDecision(input);
     }
 
