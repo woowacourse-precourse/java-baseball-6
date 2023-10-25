@@ -94,6 +94,18 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("입력 1인지 2인지 테스트")
+    void 입력_1인지_2인지_테스트() {
+        String one = "1";
+        String two = "2";
+        String three = "3";
+
+        assertThat(Application.isOneOrTwo(one)).isEqualTo(true);
+        assertThat(Application.isOneOrTwo(two)).isEqualTo(true);
+        assertThatThrownBy(() -> Application.isOneOrTwo(three))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     @DisplayName("길이 3인지 테스트")
