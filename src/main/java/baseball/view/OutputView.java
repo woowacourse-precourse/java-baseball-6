@@ -1,27 +1,27 @@
 package baseball.view;
 
+import static baseball.enums.Constant.MAX_NUMBER_LENGTH;
+import static baseball.enums.Message.GAME_FINISHED_MESSAGE;
+import static baseball.enums.Message.GAME_INPUT_NUMBER_MESSAGE;
+import static baseball.enums.Message.GAME_RESTART_OR_END_MESSAGE;
+import static baseball.enums.Message.GAME_START_MESSAGE;
+
 public class OutputView {
 
-    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String GAME_INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String GAME_FINISHED_MESSAGE = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String GAME_RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려 2를 입력하세요.";
-    private static final int MAX_NUMBER_LENGTH = 3;
-
     public void printStartMessage() {
-        System.out.println(GAME_START_MESSAGE);
+        System.out.println(GAME_START_MESSAGE.getMessage());
     }
 
     public void printInputNumberMessage() {
-        System.out.print(GAME_INPUT_NUMBER_MESSAGE);
+        System.out.print(GAME_INPUT_NUMBER_MESSAGE.getMessage());
     }
 
     public void printFinishMessage() {
-        System.out.println(MAX_NUMBER_LENGTH + GAME_FINISHED_MESSAGE);
+        System.out.println(MAX_NUMBER_LENGTH.getConstant() + GAME_FINISHED_MESSAGE.getMessage());
     }
 
     public void printRestartOrEndMessage() {
-        System.out.println(GAME_RESTART_OR_END_MESSAGE);
+        System.out.println(GAME_RESTART_OR_END_MESSAGE.getMessage());
     }
 
     public void printResult(String result) {
