@@ -21,7 +21,13 @@
 - List<Integer> 타입의 컬렉션에 야구공들의 수를 저장한다.
 - 생성자에서 Validation 클래스를 이용해 입력을 검증한다.
 - 생성자에서 Converter 클래스를 이용해 입력을 변환한다.
-
+    - getBallsSize 메소드
+        - Balls 인스턴스에 저장되어 있는 balls의 길이를 리턴한다.
+    - getBall 메소드
+        - 인덱스 값을 파라미터로 받아서 balls의 해당 인덱스의 요소 값을 리턴한다.
+    - compareByDigit 메소드
+        - 인덱스 값과 또 다른 Balls 인스턴스의 balls 중 하나의 요소값을 파라미터로 받아 두 값을 비교한다. 같을 시 true를 리턴하고 다른 값일 시 false를 리턴한다.
+      
 ### BaseballGame
 
 사용자의 입출력을 전담한다.
