@@ -1,92 +1,155 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.*;
-import java.util.Random;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
+    private record Data(boolean result, String message) {
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자야구 게임을 시작합니다. 1부터 9까지의 숫자 중 중복되지 않는 3자리 숫자를 맞춰보세요.");
 
-        Scanner scanner = new Scanner(System.in);  // Scanner를 main 메소드 내에서 선언
-        List<Integer> computer = generateRandomNumber();
-        int attempts = 0;
+        List<Integer> randomGameNumbers = getRandomGameNumber();
 
-        while (true) {
-            List<Integer> userGuess = getUserGuess();  // scanner를 getUserGuess 메소드에 전달
-            int strikes = 0;
-            int balls = 0;
 
-            for (int i = 0; i < 3; i++) {
-                if (userGuess.get(i).equals(computer.get(i))) {
-                    strikes++;
-                } else if (computer.contains(userGuess.get(i))) {
-                    balls++;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while(true) {
+            //게임 준비
+            List<Integer> inputNumbers;
+
+            try {
+                inputNumbers = inputNum();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                System.out.println("잘못된 입력으로 프로그램을 종료합니다.");
+                throw new IllegalArgumentException();
+            }
+
+            Data win = checkGameResult(randomGameNumbers, inputNumbers);
+            System.out.println(win.message);
+
+            //게임에서 이겼을 때 통과하는 로직
+            if (win.result()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+                try {
+                    boolean restart = inputAndRestart(randomGameNumbers);
+
+                    if (!restart)
+                        break;
+
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("잘못된 입력으로 프로그램을 종료합니다.");
+                    throw new IllegalArgumentException();
                 }
             }
 
-            System.out.println("결과: " + strikes + " 스트라이크, " + balls + " 볼");
-            attempts++;
-
-            if (strikes == 3) {
-                System.out.println("축하합니다! " + attempts + "번 만에 숫자를 맞추셨습니다.");
-                System.out.print("게임을 종료하려면 1, 재시작하려면 2를 입력하세요: ");
-                int choice = scanner.nextInt();
-                if (choice == 1) {
-                    break; // 게임 종료
-                } else if (choice == 2) {
-                    // 게임을 다시 시작 (원하는 동작 수행)
-                } else {
-                    System.out.println("올바른 선택이 아닙니다. 다시 입력하세요.");
-                }
-            }
         }
+
     }
 
-
-
-    private static List<Integer> generateRandomNumber() {
+    /**
+     * 3자리 게임 난수 생성기
+     * @return List<Integer>
+     */
+    private static List<Integer> getRandomGameNumber() {
         List<Integer> computer = new ArrayList<>();
-        Random random = new Random();
+
         while (computer.size() < 3) {
-            int randomNumber = random.nextInt(9) + 1;
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
+
         return computer;
     }
 
-    private static List<Integer> getUserGuess() {
-        Scanner scanner = new Scanner(System.in);
-        List<Integer> userGuess = new ArrayList<>();
+    /**
+     * 3자리 입력 검사, 0~9까지의 자연수 입력 검사 진행, 검사 통과 시 3자리 자연수 리턴
+     * @return readStr
+     * @throws IllegalArgumentException
+     */
+    private static List<Integer> inputNum() throws IllegalArgumentException{
+        System.out.print("숫자를 입력해주세요 : ");
 
-        System.out.print("숫자 3자리를 입력하세요 (1부터 9까지, 중복 없이): ");
-        try {
-            int number = scanner.nextInt();
-            if (number < 100 || number > 999) {
-                throw new InputMismatchException("올바른 입력이 아닙니다. 3자리 숫자를 입력하세요.");
-            }
+        String readStr = readLine();
 
-            int digit;
-            Set<Integer> digitSet = new HashSet<>();
+        if (readStr.length() != 3)
+            throw new IllegalArgumentException("3자리를 입력해주세요");
 
-            while (number > 0) {
-                digit = number % 10;
-                if (digit < 1 || digit > 9 || digitSet.contains(digit)) {
-                    throw new InputMismatchException("올바른 입력이 아닙니다. 1부터 9까지의 중복되지 않는 숫자로 입력하세요.");
-                }
-                digitSet.add(digit);
-                userGuess.add(digit);
-                number /= 10;
-            }
-            if (userGuess.size() != 3) {
-                throw new InputMismatchException("올바른 입력이 아닙니다. 3자리 숫자를 입력하세요.");
-            }
-        } catch (InputMismatchException e) {
-            System.out.println(e.getMessage());
-            return getUserGuess();
+        List<Integer> numbers = new ArrayList<>();
+
+        for (int i = 0; i < readStr.length(); i++) {
+            char c = readStr.charAt(i);
+            if (c < '1' || c > '9')
+                throw new IllegalArgumentException("1~9까지의 자연수를 입력해주세요");
+
+            int digit = Character.getNumericValue(c);
+            numbers.add(digit);
         }
-        return userGuess;
+
+        return numbers;
+    }
+
+    private static Data checkGameResult(List<Integer> sysNum, List<Integer> userGuess) {
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (sysNum.get(i).equals(userGuess.get(i))) {
+                strike++;
+            } else if (sysNum.contains(userGuess.get(i))) {
+                ball++;
+            }
+        }
+
+        return createGameData(ball, strike);
+    }
+
+    private static Data createGameData(int ball, int strike) {
+
+        if (strike == 3) {
+            return new Data(true, "3스트라이크");
+        }
+        if (ball == 0 && strike == 0) {
+            return new Data(false, "낫싱");
+        }
+
+        List<String> resultMessages = new ArrayList<>();
+        if (ball > 0) {
+            resultMessages.add(ball + "볼");
+        }
+
+        if (strike > 0) {
+            resultMessages.add(strike + "스트라이크");
+        }
+
+
+        return new Data(false, String.join(" ", resultMessages));
+    }
+
+
+    private static boolean inputAndRestart(List<Integer> randomGameNumbers) throws IllegalArgumentException{
+        String userInput = readLine();
+
+        if (!(userInput.equals("1") || userInput.equals("2"))) {
+            throw new IllegalArgumentException("숫자 1과 2를 입력하셔야 합니다.");
+        }
+
+        if (userInput.equals("2")) {
+            return false;
+        }
+
+        randomGameNumbers.clear();
+        randomGameNumbers.addAll(getRandomGameNumber());
+
+        return true;
     }
 }
