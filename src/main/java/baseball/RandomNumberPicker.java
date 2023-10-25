@@ -1,9 +1,8 @@
 package baseball;
 
-import java.util.Collections;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RandomNumberPicker {
 
@@ -12,16 +11,21 @@ public class RandomNumberPicker {
         validateNumberRange(startNumber, endNumber);
         validateCanPickDistinctNumbers(startNumber, endNumber, numberSize);
 
-        List<Integer> numbersInRange = getNumbersInRange(startNumber, endNumber);
-        Collections.shuffle(numbersInRange);
-
-        return numbersInRange.subList(0, numberSize);
+        return getRandomNumbers(startNumber, endNumber, numberSize);
     }
 
-    private List<Integer> getNumbersInRange(int startNumber, int endNumber) {
-        return IntStream.range(startNumber, endNumber)
-            .boxed()
-            .collect(Collectors.toList());
+    private List<Integer> getRandomNumbers(int startNumber, int endNumber,
+        int numberSize) {
+        List<Integer> numbers = new ArrayList<>();
+
+        while (numbers.size() < numberSize) {
+            int randomNumber = Randoms.pickNumberInRange(startNumber, endNumber - 1);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
+
+        return numbers;
     }
 
     private void validateNumberRange(int startNumber, int endNumber) {
