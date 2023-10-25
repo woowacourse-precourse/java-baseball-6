@@ -23,4 +23,8 @@ public class BaseballService {
 
         return ballCount;
     }
+
+    public boolean checkGameSet(int[] ballCount) {
+        return ballCount[1] == 3;
+    }
 }
