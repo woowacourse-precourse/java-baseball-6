@@ -54,11 +54,18 @@ public class GameView {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String choice = Console.readLine();
+        validateChoice(choice);
         if (choice.equals(Constants.GAME_RESTART_FLAG)) {
             computerController.restartGame();
         }
         else if (choice.equals(Constants.GAME_END_FLAG)) {
             computerController.endGame();
+        }
+    }
+
+    private void validateChoice(String choice) {
+        if (!(choice.equals("1") || choice.equals("2"))) {
+            throw new IllegalArgumentException("1 또는 2의 숫자만 입력할 수 있습니다.");
         }
     }
 }
