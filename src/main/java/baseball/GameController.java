@@ -2,6 +2,11 @@ package baseball;
 
 public class GameController {
 
-    private Game game;
-    private GameView gameView;
+    private final Game game;
+    private final GameView gameView;
+
+    GameController() {
+        this.game = new Game();
+        this.gameView = new GameView();
+    }
 }
