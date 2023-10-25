@@ -62,7 +62,7 @@
 
 - [x] 시작 메시지와 끝 메시지를 출력한다.
 - [x] 정답을 맞추지 못할 때 마다 NUMBER_INPUT_PROMPT를 출력한다.
-- [ ] 정답을 맞추면 CORRECT_MESSAGE를 출력하고, OPTION_INPUT_PROMPT를 출력한다.
+- [x] 정답을 맞추면 CORRECT_MESSAGE를 출력하고, OPTION_INPUT_PROMPT를 출력한다.
 
 --------------------------------------------------------
 
