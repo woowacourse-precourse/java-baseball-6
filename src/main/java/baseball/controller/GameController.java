@@ -22,7 +22,6 @@ public class GameController {
     private final static OutputView outputView = new OutputView();
 
     public void start(){
-        computer.printComputer();
         outputView.printGameStartMessage();
         boolean gameLoopCommand = true;
         while (gameLoopCommand){

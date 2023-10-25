@@ -33,8 +33,4 @@ public class Computer {
     private boolean checkBallNumber(int userNumber){
         return this.computerNumberList.contains(userNumber);
     }
-
-    public void printComputer(){
-        System.out.println(computerNumberList.toString());
-    }
 }
