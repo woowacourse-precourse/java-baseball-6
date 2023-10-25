@@ -1,14 +1,14 @@
-package baseball.vo;
+package baseball.domain;
 
 import static baseball.constant.GameConstant.SUCCESS_STRIKE_COUNT;
 
-public class GuessResultVO {
+public class GuessResult {
 
     private int strikeCount;
     private int ballCount;
     private boolean isCorrectAnswer;
 
-    public GuessResultVO(int strikeCount, int ballCount) {
+    public GuessResult(int strikeCount, int ballCount) {
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
         this.isCorrectAnswer = (strikeCount == SUCCESS_STRIKE_COUNT);

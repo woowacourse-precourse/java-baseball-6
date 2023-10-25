@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import static baseball.constant.GameConstant.NUMBER_LENGTH;
 
-public class BaseballUtil {
+public class NumberGenerator {
 
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;

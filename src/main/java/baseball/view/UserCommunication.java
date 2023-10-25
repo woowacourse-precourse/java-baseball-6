@@ -1,11 +1,11 @@
 package baseball.view;
 
-import baseball.vo.GuessResultVO;
+import baseball.domain.GuessResult;
 import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.constant.GameConstant.SUCCESS_STRIKE_COUNT;
 
-public class UserInterface {
+public class UserCommunication {
 
     public static final String RESTART_CODE = "1";
     public static final String EXIT_CODE = "2";
@@ -34,7 +34,7 @@ public class UserInterface {
         throw new IllegalArgumentException(String.format("%s와 %s 두 번호 중 중 하나가 입력되어야 합니다.", RESTART_CODE, EXIT_CODE));
     }
 
-    public static void printGameStatus(GuessResultVO guessResult) {
+    public static void printGameStatus(GuessResult guessResult) {
         int strikeCount = guessResult.getStrikeCount();
         int ballCount = guessResult.getBallCount();
 
