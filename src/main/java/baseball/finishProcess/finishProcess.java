@@ -32,4 +32,9 @@ public class finishProcess {
         else if (finishAnswer == finishNotice.exitCode) isRestart = true;
         else throw new IllegalArgumentException();
     }
+
+    public boolean isRestartGame() {
+        if (isRestart) return true;
+        else return false;
+    }
 }
