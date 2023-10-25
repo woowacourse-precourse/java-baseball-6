@@ -1,7 +1,7 @@
 package baseball;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +11,7 @@ public class User {
     public String getNum() {
         String number = null;
         try {
-            InputStreamReader ir = new InputStreamReader(System.in);
-            BufferedReader br = new BufferedReader(ir);
-            number = br.readLine();
+            number = Console.readLine();
             getNumberError(number);
         } catch (Exception e) {
         }
@@ -39,9 +37,7 @@ public class User {
     public int getOptionNum() {
         String getOption;
         try {
-            InputStreamReader ir = new InputStreamReader(System.in);
-            BufferedReader br = new BufferedReader(ir);
-            getOption = br.readLine();
+            getOption = Console.readLine();
             optionNum = Integer.parseInt(getOption);
         } catch (Exception e) {
         }

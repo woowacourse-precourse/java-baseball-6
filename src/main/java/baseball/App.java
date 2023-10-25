@@ -17,9 +17,10 @@ public class App {
     }
 
     public void game() {
+        String userNum;
         do {
             game.clear();
-            String userNum = input.userNum();
+            userNum = input.userNum();
             game.listCompare(computer.numbers, userNum);
             output.scorePrint(game.ball, game.strike);
         } while (game.strike != 3);
