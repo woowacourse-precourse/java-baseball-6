@@ -36,4 +36,24 @@ public class GameManager {
         }
         return ballCount;
     }
+
+    // 스트라이크,볼,낫싱의 결과값을 리턴하는 메서드.
+    public String result() {
+        StringBuilder builder = new StringBuilder();
+
+        if (strikeCount == 0 && ballCount == 0) {
+            builder.append("낫싱");
+            return builder.toString();
+        }
+
+        if (ballCount > 0) {
+            builder.append(ballCount).append("볼 ");
+        }
+
+        if (strikeCount > 0) {
+            builder.append(strikeCount).append("스트라이크");
+        }
+
+        return builder.toString();
+    }
 }
