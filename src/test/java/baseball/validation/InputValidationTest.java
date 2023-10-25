@@ -25,7 +25,7 @@ class InputValidationTest {
 
     @Test
     @DisplayName("입력된 문자열이 자연수로 이루어져 있는지 테스트")
-    void validateNaturalNumberTest() {
+    void validateNaturalNumberRangeTest() {
         // given
         InputValidation inputValidation = new InputValidation();
 
@@ -36,26 +36,26 @@ class InputValidationTest {
         String blankSpaceString = "   ";
 
         // then
-        assertThatThrownBy(() -> inputValidation.validateNaturalNumber(invalidNaturalNumber1))
+        assertThatThrownBy(() -> inputValidation.validateNaturalNumberRange(invalidNaturalNumber1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INPUT_RANGE_NATURAL_EXCEPTION_MSG);
 
-        assertThatThrownBy(() -> inputValidation.validateNaturalNumber(invalidNaturalNumber2))
+        assertThatThrownBy(() -> inputValidation.validateNaturalNumberRange(invalidNaturalNumber2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INPUT_RANGE_NATURAL_EXCEPTION_MSG);
 
-        assertThatThrownBy(() -> inputValidation.validateNaturalNumber(emptyString))
+        assertThatThrownBy(() -> inputValidation.validateNaturalNumberRange(emptyString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INPUT_RANGE_NATURAL_EXCEPTION_MSG);
 
-        assertThatThrownBy(() -> inputValidation.validateNaturalNumber(blankSpaceString))
+        assertThatThrownBy(() -> inputValidation.validateNaturalNumberRange(blankSpaceString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INPUT_RANGE_NATURAL_EXCEPTION_MSG);
     }
 
     @Test
     @DisplayName("입력된 문자열의 길이가 4이상인지 테스트")
-    void isLengthAtLeastFourTest() {
+    void validateInputRangeTest() {
         // given
         InputValidation inputValidation = new InputValidation();
 
@@ -63,7 +63,7 @@ class InputValidationTest {
         String stringWithFourOrMore = "1234";
 
         // then
-        assertThatThrownBy(() -> inputValidation.validateLengthAtLeastFour(stringWithFourOrMore))
+        assertThatThrownBy(() -> inputValidation.validateInputRange(stringWithFourOrMore))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INPUT_LENGTH_EXCEPTION_MSG);
     }

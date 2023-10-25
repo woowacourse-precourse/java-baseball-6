@@ -19,8 +19,8 @@ public class InputValidation {
      */
     public void validateInputNum(String input) {
         validateNull(input);
-        validateLengthAtLeastFour(input);
-        validateNaturalNumber(input);
+        validateInputRange(input);
+        validateNaturalNumberRange(input);
         validateUniqueIntegers(input);
     }
 
@@ -29,7 +29,7 @@ public class InputValidation {
      *
      * @param input 유저의 입력값
      */
-    public void validateNaturalNumber(String input) {
+    public void validateNaturalNumberRange(String input) {
         Pattern pattern = Pattern.compile("^[" + START_NUM + "-" + END_NUM + "]+$");
         Matcher matcher = pattern.matcher(input);
 
@@ -43,7 +43,7 @@ public class InputValidation {
      *
      * @param input 유저의 입력값
      */
-    public void validateLengthAtLeastFour(String input) {
+    public void validateInputRange(String input) {
         if (input.length() > INPUT_LENGTH) {
             throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION_MSG);
         }
