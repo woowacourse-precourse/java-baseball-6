@@ -1,5 +1,6 @@
 package baseball;
 
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -189,3 +190,10 @@ class GameEnd {
     }
 }
 
+=======
+public class Application {
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+    }
+}
+>>>>>>> branch 'master' of https://github.com/TaeDongUm/java-baseball-6.git

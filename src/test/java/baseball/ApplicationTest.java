@@ -21,6 +21,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+<<<<<<< HEAD
     void 예외_테스트1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
@@ -60,6 +61,15 @@ class ApplicationTest extends NsTest {
         );
     }
     
+=======
+    void 예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+>>>>>>> branch 'master' of https://github.com/TaeDongUm/java-baseball-6.git
     @Override
     public void runMain() {
         Application.main(new String[]{});

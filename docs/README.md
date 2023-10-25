@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## 구현 기능 목록(엄태동)
 
 
@@ -39,3 +40,5 @@
 
 
 # 
+=======
+>>>>>>> branch 'master' of https://github.com/TaeDongUm/java-baseball-6.git
