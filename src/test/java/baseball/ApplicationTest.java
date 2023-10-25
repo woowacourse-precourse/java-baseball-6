@@ -21,10 +21,56 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_길이_오류() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_문자_입력() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("abc"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_중복_숫자_입력() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("111"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_0_입력() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("102"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_재시작_옵션_문자_입력() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                assertThatThrownBy(() -> runException("123", "q"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            },
+            1, 2, 3
+        );
+    }
+
+    @Test
+    void 예외_테스트_재시작_옵션_다른숫자_입력() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                assertThatThrownBy(() -> runException("123", "3"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            },
+            1, 2, 3
         );
     }
 
