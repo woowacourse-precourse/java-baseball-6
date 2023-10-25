@@ -13,6 +13,7 @@ public class Computer {
     private final Set<Integer> computerBall = new LinkedHashSet<>();
 
     public Set<Integer> generateBalls() {
+        initComputerBall();
         while (computerBall.size() < NUMBER_RANGE) {
             int randomNumber = Randoms.pickNumberInRange(MINIUM_NUMBER, MAXIUM_NUMBER);
             if (computerBall.contains(randomNumber)) {

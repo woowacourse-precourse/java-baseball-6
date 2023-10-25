@@ -17,18 +17,28 @@ public class BaseballGameController {
     Referee referee = new Referee();
     PlayerGameRestartUtil playerGameRestartUtil = new PlayerGameRestartUtil();
 
+    private boolean isFirstRound = true;
+
     public void gameProgress() {
-        playGameInformationOutputView.printGameStart();
-        computer.generateBalls();
-        Set<Integer> computerBalls = computer.getComputerNumber();
+        while (true) {
+            Set<Integer> computerBalls = null;
+            Set<Integer> playerBalls = null;
 
-        playerNumberInputView.guideInformation();
-        player.generateBalls(playerNumberInputView.receiveNumber());
-        Set<Integer> playerBalls = player.getPlayerNumber();
+            if (isFirstRound) {
+                playGameInformationOutputView.printGameStart();
+                computer.generateBalls();
+                computerBalls = computer.getComputerNumber();
+                isFirstRound = true;
+            }
 
-        String gameResult = referee.judgeValue(computerBalls, playerBalls);
-        System.out.println(gameResult);
+            playerNumberInputView.guideInformation();
+            player.generateBalls(playerNumberInputView.receiveNumber());
+            playerBalls = player.getPlayerNumber();
 
-        playerGameRestartUtil.gameRestartQuestion();
+            String gameResult = referee.judgeValue(computerBalls, playerBalls);
+            System.out.println(gameResult);
+
+            playerGameRestartUtil.gameRestartQuestion();
+        }
     }
 }
