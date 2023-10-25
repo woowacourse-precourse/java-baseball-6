@@ -1,13 +1,18 @@
 package baseball.model;
 
-import java.util.List;
-
 public class Computer {
     private Numbers savedNumbers = new Numbers();
     private Hint hint = new Hint();
 
-    public void saveNumbers(List<Integer> generatedNumbers) {
-        this.savedNumbers = Numbers.from(generatedNumbers);
+    public Computer() {
+    }
+
+    public Computer(Numbers generatedNumbers) {
+        this.savedNumbers = generatedNumbers;
+    }
+
+    public static Computer from(Numbers generatedNumbers) {
+        return new Computer(generatedNumbers);
     }
 
     public String provideHint(Numbers inputNumbers) {

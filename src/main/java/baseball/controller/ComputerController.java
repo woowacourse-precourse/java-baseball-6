@@ -4,8 +4,6 @@ import baseball.model.Computer;
 import baseball.model.Numbers;
 import baseball.utils.RandomNumberGenerator;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerController {
@@ -15,7 +13,7 @@ public class ComputerController {
 
     public void saveRandomNumbers() {
         Numbers generatedNumbers = RandomNumberGenerator.generateRandomNumbers();
-        computer.saveNumbers(generatedNumbers);
+        computer = Computer.from(generatedNumbers);
     }
 
     public void provideHint(List<Integer> inputNumbers) {
