@@ -7,21 +7,21 @@ import baseball.view.output.GameOutputView;
 
 public class BaseballGame {
 
-    private final Balls computerBalls;
+    private final ComputerBalls computerBalls;
 
-    private BaseballGame(Balls computerBalls) {
+    private BaseballGame(ComputerBalls computerBalls) {
         this.computerBalls = computerBalls;
     }
 
     public static BaseballGame newGame(BallNumbersGenerateStrategy generateStrategy) {
-        return new BaseballGame(Balls.from(generateStrategy.generate()));
+        return new BaseballGame(ComputerBalls.from(generateStrategy));
     }
 
     public void play() {
         boolean correct;
 
         do {
-            Balls userBalls = readUserBalls();
+            UserBalls userBalls = readUserBalls();
 
             GuessResult guessResult = computerBalls.guess(userBalls);
             GameOutputView.printGuessResult(guessResult);
@@ -29,9 +29,9 @@ public class BaseballGame {
         } while (!correct);
     }
 
-    private Balls readUserBalls() {
+    private UserBalls readUserBalls() {
         GameOutputView.printEnterBallNumbersScript();
-        return Balls.from(GameInputView.readBallNumbers());
+        return UserBalls.from(GameInputView.readBallNumbers());
     }
 
 }

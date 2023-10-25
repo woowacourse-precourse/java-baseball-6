@@ -1,7 +1,7 @@
 package baseball.system;
 
 import baseball.domain.BaseballGame;
-import baseball.domain.strategy.RandomBallNumbersGenerateStrategy;
+import baseball.domain.strategy.RandomUniqueBallNumbersGenerateStrategy;
 import baseball.view.input.MainInputView;
 import baseball.view.output.MainOutputView;
 
@@ -17,7 +17,7 @@ public class MainController {
     public void play() {
         MainOutputView.printGameStartScript();
         do {
-            BaseballGame baseballGame = BaseballGame.newGame(RandomBallNumbersGenerateStrategy.instance());
+            BaseballGame baseballGame = BaseballGame.newGame(RandomUniqueBallNumbersGenerateStrategy.instance());
             baseballGame.play();
 
             MainOutputView.printGameEndScript();
