@@ -79,5 +79,17 @@ public class Play {
         }
     }
 
+    //재시작 여부 확인
+    private boolean restart(){
+        System.out.println(RESTART_MESSAGE);
+        String inputString = Console.readLine();
+        if(inputString.equals(RESTART_INPUT_STRING)){
+            return true;
+        }else if(inputString.equals(TERMINATE_INPUT_STRING)){
+            return false;
+        }else{
+            throw new IllegalArgumentException(wrontInputError);
+        }
+    }
 
 }

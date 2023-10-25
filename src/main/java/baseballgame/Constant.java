@@ -21,5 +21,12 @@ public class Constant {
     //예외
     public static String wrongTypeInputError = "잘못된 타입의 입력입니다.";
     public static String wrongLengthInputError = "잘못된 길이의 입력입니다.";
+    public static String wrontInputError ="잘못된 입력입니다.";
+
+
+    //재시작
+    public static String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static String RESTART_INPUT_STRING = "1";
+    public static String TERMINATE_INPUT_STRING = "2";
 
 }
