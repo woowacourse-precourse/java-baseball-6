@@ -50,6 +50,25 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("숫자가 아닌 문자의 입력에 대한 예외 발생")
+    void notNumberExceptionTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12c"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("1에서 9까지의 수가 아닌 0이 입력될 경우 예외 발생")
+    void zeroInputExceptionTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("100"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
