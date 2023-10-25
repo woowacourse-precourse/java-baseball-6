@@ -1,6 +1,8 @@
 package baseball.finishProcess;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class FinishProcess {
     private int finishAnswer;
@@ -23,10 +25,9 @@ public class FinishProcess {
     }
 
     private void inputFinishAnswer() {
-        Scanner sc = new Scanner(System.in);
 
         try {
-            finishAnswer = sc.nextInt();
+            finishAnswer = Integer.parseInt(readLine());
         }
         catch (Exception e) {
             throw new IllegalArgumentException();
