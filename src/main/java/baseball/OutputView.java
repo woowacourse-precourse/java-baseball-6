@@ -32,6 +32,7 @@ public class OutputView {
 
     public void printThreeStrike() {
         System.out.println(ProcessMessage.THREE_STRIKE);
+        printRestartOrExit();
     }
 
     public void printRestartOrExit() {
