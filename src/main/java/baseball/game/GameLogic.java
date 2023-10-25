@@ -3,33 +3,28 @@ package baseball.game;
 import baseball.user.UserStatus;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class GameLogic {
+
+    private static final int numberLength = 3;
 
     public GameLogic() {
     }
 
 
     public int countStrike(String userNumber, ArrayList<Integer> computerNumber) {
-        int result = 0;
-        for (int i = 0; i < 3; i++) {
-            if (userNumber.charAt(i) - 48 == computerNumber.get(i)) {
-                result++;
-            }
-        }
-        return result;
+        return (int) IntStream.range(0, numberLength)
+            .filter(i -> Character.getNumericValue(userNumber.charAt(i)) == computerNumber.get(i))
+            .count();
     }
 
     public int countBall(String userNumber, ArrayList<Integer> computerNumber) {
-        int result = 0;
-        for (int i = 0; i < 3; i++) {
-            if (userNumber.charAt(i) - 48 != computerNumber.get(i) && computerNumber.contains(
-                userNumber.charAt(i) - 48)) {
-                result++;
-            }
-        }
-        return result;
+        return (int) IntStream.range(0, numberLength)
+            .filter(i -> Character.getNumericValue(userNumber.charAt(i)) != computerNumber.get(i)
+                && computerNumber.contains(Character.getNumericValue(userNumber.charAt(i))))
+            .count();
     }
 
     boolean isNothing(int strike, int ball) {
