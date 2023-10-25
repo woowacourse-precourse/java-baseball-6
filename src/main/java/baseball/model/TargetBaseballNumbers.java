@@ -46,7 +46,7 @@ public class TargetBaseballNumbers {
 
     private void verifyInputNumberSize(final List<Integer> inputNumbers) {
         if (TargetBaseballNumbers.BASEBALL_NUMBER_SIZE != inputNumbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값의 길이가 " + BASEBALL_NUMBER_SIZE + "이 아닙니다.");
         }
     }
 
@@ -54,7 +54,7 @@ public class TargetBaseballNumbers {
         Set<Integer> uniqueNumbers = new HashSet<>(inputNumbers);
 
         if (uniqueNumbers.size() != inputNumbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복된 값이 존재합니다.");
         }
     }
 
