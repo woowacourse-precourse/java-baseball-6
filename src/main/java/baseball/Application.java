@@ -9,14 +9,13 @@ public class Application {
     private static final int RESTART_GAME = 1;
     private static final int END_GAME = 2;
 
-
     static int[] createNewArray(){
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         //정답이 될 3개의 숫자를 만들기
         int[] answer = new int[ANSWER_LENGTH];
-        for(int i=0;i<ANSWER_LENGTH;i++){
+        for(int i=0; i < ANSWER_LENGTH; i++){
             answer[i] = Randoms.pickNumberInRange(1, 9);
             for(int j=0; j < i; j++){
                 if(answer[j] == answer[i]) {
@@ -31,12 +30,11 @@ public class Application {
     static int[] receiveNewArray() {
 
         int[] arr = new int[ANSWER_LENGTH];
-
         System.out.print("숫자를 입력해주세요 : ");
 
         //사용자로부터 3개의 숫자 입력받기
         String readLine = Console.readLine();
-        if(readLine.length()!=ANSWER_LENGTH) {
+        if(readLine.length() != ANSWER_LENGTH) {
             throw new IllegalArgumentException("입력은 공백 없이 한자릿수 숫자 3개여야 합니다.");
         }
         for (int i = 0; i < ANSWER_LENGTH; i++) {
@@ -56,29 +54,29 @@ public class Application {
 
     static boolean testInput(int[] answer, int[] ask){
 
-        int strike=0;
-        int ball=0;
+        int strike = 0;
+        int ball = 0;
 
-        for(int i=0;i<ANSWER_LENGTH;i++){
-            for(int j=0;j<ANSWER_LENGTH;j++) {
+        for(int i = 0; i < ANSWER_LENGTH; i++){
+            for(int j=0; j < ANSWER_LENGTH; j++) {
                 if (answer[j] == ask[i]) {
-                    if(i==j) strike++;
+                    if(i == j) strike++;
                     else ball++;
                 }
             }
         }
 
-        if(ball==0 && strike==0) {
+        if(ball == 0 && strike == 0) {
             System.out.print("낫싱");
         }
-        if(ball!=0) {
+        if(ball != 0) {
             System.out.print(ball + "볼 ");
         }
-        if(strike!=0) {
+        if(strike != 0) {
             System.out.print(strike + "스트라이크");
         }
         System.out.println();
-        if(strike==ANSWER_LENGTH){
+        if(strike == ANSWER_LENGTH){
             System.out.println(ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
@@ -88,7 +86,7 @@ public class Application {
     static int endGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String readLine = Console.readLine();
-        if(readLine.length()!=1) {
+        if(readLine.length() != 1) {
             throw new IllegalArgumentException("입력은 한자리 숫자 하나여야 합니다.");
         }
         int temp = readLine.charAt(0) - '0';
@@ -103,10 +101,9 @@ public class Application {
         do {
 
             int[] answer = createNewArray();
-            int[] userInput;
-
             try {
 
+                int[] userInput;
                 do {
                     userInput = receiveNewArray();
                 } while (!testInput(answer, userInput));
@@ -117,6 +114,6 @@ public class Application {
                 break;
             }
 
-        } while (key==1);
+        } while (key == 1);
     }
 }
