@@ -24,7 +24,7 @@ public class CompareResult {
 
     private void addBallMessage(StringBuilder resultMessage) {
         if (ballCount > 0) {
-            resultMessage.append(this.ballCount).append(BALL_MESSAGE).append(" ");
+            resultMessage.append(this.ballCount).append(BALL_MESSAGE);
         }
     }
 
@@ -42,5 +42,14 @@ public class CompareResult {
         if (resultMessage.isEmpty()) {
             resultMessage.append(NOTHING_MESSAGE);
         }
+    }
+
+    public boolean isAnswer() {
+        boolean isAnswer = false;
+        if (strikeCount == 3) {
+            isAnswer = true;
+        }
+
+        return isAnswer;
     }
 }
