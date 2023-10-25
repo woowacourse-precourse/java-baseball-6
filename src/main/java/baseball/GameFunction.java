@@ -24,12 +24,11 @@ public class GameFunction {
             }
         }
         return computer;
-        //System.out.println(computer);
     }
     public static void getUserNumber(String num) {
-        if(num.length() != 3) {
-            throw new IllegalArgumentException("잘못된 값 입력");
-        }
+//        if(num.length() != 3) {
+//            throw new IllegalArgumentException("잘못된 값 입력");
+//        }
         for(int i = 0; i < 3; i ++) {
             userNum[i] = Character.getNumericValue(num.charAt(i));
         }
@@ -41,7 +40,7 @@ public class GameFunction {
         }
     }
 
-    public static void gametry() throws IllegalArgumentException, IOException {
+    public static void gametry() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         getComputerNumber();
         while(true) {
@@ -50,6 +49,9 @@ public class GameFunction {
                 ball = 0;
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = br.readLine();
+                if (num.length() != 3) {
+                    throw new IllegalArgumentException("잘못된 값 입력");
+                }
                 getUserNumber(num);
                 System.out.println("computer num : " + Arrays.toString(compNum));
                 System.out.println("user num : " + Arrays.toString(userNum));
@@ -86,7 +88,7 @@ public class GameFunction {
                     }
                 }
             } catch (IllegalArgumentException e) {
-                break;
+                throw new IllegalArgumentException();
             }
         }
     }
