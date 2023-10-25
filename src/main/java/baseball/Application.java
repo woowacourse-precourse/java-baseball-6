@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.Set;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException {
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (true) {
             // computer
             List<Integer> computer = new ArrayList<>();
@@ -22,7 +23,7 @@ public class Application {
 
             // user
             while (true) {
-                System.out.println("숫자를 입력해주세요 : ");
+                System.out.print("숫자를 입력해주세요 : ");
 
                 String input = Console.readLine();
                 if (input.length() != 3) {
@@ -43,8 +44,8 @@ public class Application {
                     throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
                 }
 
-//                System.out.println("컴퓨터의 숫자: " + computer);
-//                System.out.println("사용자의 숫자: " + userNumber);
+                System.out.println("컴퓨터의 숫자: " + computer);
+                System.out.println("사용자의 숫자: " + userNumber);
 
                 // play game
                 int strike = 0;
@@ -58,6 +59,7 @@ public class Application {
                 }
 
                 if (strike == 3) {
+                    System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
