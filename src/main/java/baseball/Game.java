@@ -8,7 +8,7 @@ public class Game {
     private int ballCnt;
 
     static int FINISH_THE_GAME = 2;
-    static int NUMBER_OF_INPUT_NUMBERS = 3;
+    static int COUNT_OF_INPUT_NUMBERS = 3;
 
     private void init(){
         strikeCnt = 0;
@@ -47,7 +47,7 @@ public class Game {
     public void gameLogic(Computer computer, User user){
         init();
 
-        for(int index = 0; index < NUMBER_OF_INPUT_NUMBERS; index++){
+        for(int index = 0; index < COUNT_OF_INPUT_NUMBERS; index++){
             if(computer.getComputerNumber(index) == user.getUserNumber(index)){
                 strikeCnt++;
             } else if(computer.isComputerContains(user.getUserNumber(index))){
@@ -58,7 +58,7 @@ public class Game {
 
     public String getGameResult(){
         if(strikeCnt > 0){
-            if(strikeCnt == NUMBER_OF_INPUT_NUMBERS){ return Print.THREE_STRIKE; }
+            if(strikeCnt == COUNT_OF_INPUT_NUMBERS){ return Print.THREE_STRIKE; }
             if(ballCnt > 0){ return Print.N_BALL_N_STRIKE(ballCnt, strikeCnt); }
             return Print.ONLY_STRIKE(strikeCnt);
         }
@@ -80,6 +80,6 @@ public class Game {
     }
 
     public boolean isThreeStrike(){
-        return strikeCnt == NUMBER_OF_INPUT_NUMBERS;
+        return strikeCnt == COUNT_OF_INPUT_NUMBERS;
     }
 }
