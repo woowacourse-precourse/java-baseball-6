@@ -43,9 +43,6 @@ public class Hint {
      * <p>
      * ex) 1볼 1스트라이크, ex) 1스트라이크
      * </p>
-     *
-     * @param playerNumber   : 사용자가 입력한 수
-     * @param computerNumber : 컴퓨터의 랜덤 수
      */
     public void showHint() {
 

@@ -21,9 +21,10 @@ public class Computer {
     }
 
     /**
-     * Get random number
+     * 게임에서 사용되는 컴퓨터의 숫자(게임의 정답)을 리턴하는 함수
      * <p>
-     * numberOfDigits자리수고 각 자리수가 startRange ~ endRange 사이이며, 각 자리수가 서로다른 수인 랜덤수를 리턴하는 함수
+     * numberOfDigits자리수고 각 자리수가 startRange ~ endRange 사이이며,
+     * <br>각 자리수가 서로다른 수인 랜덤수를 리턴하는 함수
      * </p>
      *
      * @param startRange :시작 범위
