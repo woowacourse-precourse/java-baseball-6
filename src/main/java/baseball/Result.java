@@ -1,5 +1,10 @@
 package baseball;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
 public class Result {
 
   private int Strike = 0;
@@ -8,16 +13,20 @@ public class Result {
   public Result() {
   }
 
-  public void addStrike() {
-    Strike++;
-  }
-
-  public void addBall() {
-    Ball++;
-  }
-
   public boolean isEnd() {
     return Strike == Constant.SIZE;
+  }
+
+  public void calculateResult(List<Integer> ComputerNum, List<Integer> playerNum) {
+    Set<Integer> computerNumSet = new HashSet<>(ComputerNum);
+
+    for (int i = 0; i < Constant.SIZE; i++) {
+      if (Objects.equals(playerNum.get(i), ComputerNum.get(i))) {
+        Strike++;
+      } else if (computerNumSet.contains(playerNum.get(i))) {
+        Ball++;
+      }
+    }
   }
 
   public String getResult() {

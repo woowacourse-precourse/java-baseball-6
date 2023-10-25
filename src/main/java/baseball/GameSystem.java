@@ -21,25 +21,13 @@ public class GameSystem {
       Player player = new Player();
       Result result = new Result();
 
-      calcurateResult(computer.getComputerNum(), player.getPlayerNum(), result);
+      result.calculateResult(computer.getComputerNum(), player.getPlayerNum());
       System.out.println(result.getResult());
 
       if (result.isEnd()) {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         reStart();
         break;
-      }
-    }
-  }
-
-  public void calcurateResult(List<Integer> ComputerNum, List<Integer> playerNum, Result result) {
-    Set<Integer> computerNumSet = new HashSet<>(ComputerNum);
-
-    for (int i = 0; i < Constant.SIZE; i++) {
-      if (Objects.equals(playerNum.get(i), ComputerNum.get(i))) {
-        result.addStrike();
-      } else if (computerNumSet.contains(playerNum.get(i))) {
-        result.addBall();
       }
     }
   }
