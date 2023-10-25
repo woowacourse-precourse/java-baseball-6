@@ -107,7 +107,7 @@ class InputUtilTest {
     }
 
     @Nested
-    @DisplayName("사용자의 3자리 수를 입력받는 기능")
+    @DisplayName("재시작 여부를 입력받는 기능")
     class RestartInfoTest extends NsTest {
         @Test
         @DisplayName("정상 입력")
