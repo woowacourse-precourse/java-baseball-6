@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
-    public int strike = 0, ball = 0;
+    private int strike = 0, ball = 0;
     Validator validator = new Validator();
 
-    protected void startSystem() {
+    void startSystem() {
         sayStart();
         runGames();
     }
