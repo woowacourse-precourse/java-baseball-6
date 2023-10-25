@@ -79,7 +79,8 @@ public class Game {
         List<Integer> userNumbers = this.user.getPlayerNumbers();
         for (int i = 0; i < 3; i++) {
             int currentNumber = userNumbers.get(i);
-            if (computerNumbers.contains(currentNumber) && userNumbers.indexOf(currentNumber) != computerNumbers.indexOf(currentNumber)) {
+            if (computerNumbers.contains(currentNumber)
+                    && userNumbers.indexOf(currentNumber) != computerNumbers.indexOf(currentNumber)) {
                 ballCount++;
             }
         }
@@ -117,7 +118,8 @@ public class Game {
     public void questionRestartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
-        if (!userInput.equals(GameRestartState.GAME_CONTINUE.getGameState()) && !userInput.equals(GameRestartState.GAME_STOP.getGameState())) {
+        if (!userInput.equals(GameRestartState.GAME_CONTINUE.getGameState()) && !userInput.equals(
+                GameRestartState.GAME_STOP.getGameState())) {
             throw new IllegalArgumentException("잘못된 값을 입력하여서 프로그램을 종료합니다.");
         }
         if (userInput.equals(GameRestartState.GAME_CONTINUE.getGameState())) {

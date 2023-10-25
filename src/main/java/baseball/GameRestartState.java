@@ -1,8 +1,7 @@
 package baseball;
 
 public enum GameRestartState {
-    GAME_CONTINUE("1"),
-    GAME_STOP("2");
+    GAME_CONTINUE("1"), GAME_STOP("2");
 
     String gameState;
 

@@ -11,7 +11,7 @@ public enum Number {
         this.title = title;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return this.title;
     }
 }
