@@ -1,7 +1,14 @@
 package baseball;
 
+import baseball.domain.BaseballGame;
+import baseball.utils.RandomNumbers;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RandomNumbers randomNumbers = new RandomNumbers();
+        BaseballGame baseballGame = new BaseballGame(randomNumbers);
+        baseballGame.run();
+
     }
 }
+
