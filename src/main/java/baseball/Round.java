@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Round {
-    private final int NUMBER_LENGTH = 3;
+
     private final int roundResult;
 
     public Round(Computer computer) {
@@ -12,7 +12,7 @@ public class Round {
     }
 
     public boolean isGameEnd() {
-        if (roundResult == NUMBER_LENGTH) {
+        if (roundResult == Constant.NUMBER_LENGTH) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }

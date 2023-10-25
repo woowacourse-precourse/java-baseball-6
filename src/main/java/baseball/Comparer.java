@@ -3,7 +3,6 @@ package baseball;
 import java.util.List;
 
 public class Comparer {
-    private final int NUMBER_LENGTH = 3;
     private final CompareResult compareResult;
     private final List<Integer> computerNumber;
     private final List<Integer> userNumber;
@@ -29,7 +28,7 @@ public class Comparer {
     // Strike 개수 화인
     private int calculateStrikeCount() {
         int strikeCount = 0;
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
             strikeCount += isStrike(i);
         }
         return strikeCount;
@@ -38,7 +37,7 @@ public class Comparer {
     // Ball 개수 확인
     private int calculateBallCount() {
         int ballCount = 0;
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
             ballCount += isBall(i);
         }
         return ballCount;

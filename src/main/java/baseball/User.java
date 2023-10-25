@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-
-    private final int USER_NUMBER_LENGTH = 3;
+    
     private final List<Integer> userNumber = new ArrayList<>();
 
     public User(String number) {
@@ -24,8 +23,8 @@ public class User {
     }
 
     private void checkLength(String number) {
-        if (number.length() != USER_NUMBER_LENGTH) {
-            throw new IllegalArgumentException("길이가 " + USER_NUMBER_LENGTH + "이 아닙니다.");
+        if (number.length() != Constant.NUMBER_LENGTH) {
+            throw new IllegalArgumentException("길이가 " + Constant.NUMBER_LENGTH + "이 아닙니다.");
         }
     }
 
