@@ -1,4 +1,4 @@
-package baseball.global.util;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -12,11 +12,11 @@ public class RandomBaseballNumberGenerator {
     private static final int MAX_VALUE = 9;
 
     // 게임 조건의 자릿수에 따른 난수 생성 기능
-    public static List<Integer> generateRandomBaseballNumbers(int size){
+    public static BaseballNumber generateRandomBaseballNumber(int size){
         Set<Integer> randomBaseballNumbers = new HashSet<>();
         while (randomBaseballNumbers.size() < size){
             randomBaseballNumbers.add(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE));
         }
-        return List.copyOf(randomBaseballNumbers);
+        return new BaseballNumber(List.copyOf(randomBaseballNumbers));
     }
 }
