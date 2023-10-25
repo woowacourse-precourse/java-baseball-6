@@ -21,12 +21,12 @@ public class BaseballGameController {
     public void startGame() {
         outputView.printGameStart();
         while (!isGameEnd()) {
-            playRound();
-            stopGame();
+            startRound();
+            endRound();
         }
     }
 
-    public void playRound() {
+    private void startRound() {
         String computerNumber = new Round().getRandomNumber();
         Turn turn;
         do {
@@ -38,8 +38,8 @@ public class BaseballGameController {
         } while (!turn.isThreeStrike());
     }
 
-    public void stopGame() {
-        outputView.printGameStop();
+    private void endRound() {
+        outputView.printRoundEnd();
         String userInput = inputView.getGameContinuationInput();
         GameContinuationOption option = GameContinuationOption.fromString(userInput);
         if (option == GameContinuationOption.END) {
@@ -47,7 +47,7 @@ public class BaseballGameController {
         }
     }
 
-    public boolean isGameEnd() {
+    private boolean isGameEnd() {
         return game.isEnd();
     }
 }
