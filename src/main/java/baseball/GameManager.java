@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.math.MathContext;
-
 public class GameManager {
     private Match match;
 

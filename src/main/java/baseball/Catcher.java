@@ -2,27 +2,28 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
-
-public class Catcher {
-    private List<Integer> numbers;
-
-    public Catcher() {
-        this.numbers = new ArrayList<>();
+public class Catcher extends Player {
+    @Override
+    public void setNumbers() {
+        clearNumbers();
+        generateRandomNumbers();
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public void clearNumbers() {
+        numbers.clear();
     }
 
     public void generateRandomNumbers() {
-        numbers.clear();
         while (numbers.size() < Constant.MAX_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-            if (!numbers.contains(randomNumber)) {
+            if (!isNumbersContains(randomNumber)) {
                 numbers.add(randomNumber);
             }
         }
+    }
+
+    public boolean isNumbersContains(int number) {
+        return numbers.contains(number);
     }
 }

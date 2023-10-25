@@ -2,25 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.Arrays;
 
-public class Pitcher {
-    private List<Integer> numbers;
-
-    public Pitcher() {
-        this.numbers = new ArrayList<>();
-    }
-
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
-    public void getPlayerInput() throws IllegalArgumentException {
-        System.out.print("숫자를 입력해주세요 : ");
-        Stack<Integer> split = new Stack<>();
-        String input = Console.readLine();
+public class Pitcher extends Player {
+    @Override
+    public void setNumbers() throws IllegalArgumentException {
+        String input = inputNumbers();
 
         if (isOverMaxLength(input)) {
             throw new IllegalArgumentException("최대 길이 " + Constant.MAX_NUMBER_SIZE + "를 넘어가는 입력입니다.");
@@ -29,9 +16,16 @@ public class Pitcher {
             throw new IllegalArgumentException("올바른 입력이 아닙니다. 정수를 입력해야합니다.");
         }
 
-        int number = Integer.parseInt(input);
-        splitNumbers(split, number);
+        int[] split = splitNumbers(input);
+        if (isDuplicate(split)) {
+            throw new IllegalArgumentException("입력한 숫자가 중복됩니다.");
+        }
         updateNumbers(split);
+    }
+
+    public String inputNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return Console.readLine();
     }
 
     public boolean isOverMaxLength(String input) {
@@ -47,21 +41,18 @@ public class Pitcher {
         }
     }
 
-    public void splitNumbers(Stack<Integer> split, int number) throws IllegalArgumentException {
-        while (number != 0) {
-            int digit = number % 10;
-            if (split.contains(digit)) {
-                throw new IllegalArgumentException("서로 다른 수를 입력 해야 합니다.");
-            }
-            split.push(digit);
-            number /= 10;
-        }
+    public int[] splitNumbers(String number) throws IllegalArgumentException {
+        return number.chars()
+                .map(i -> i - '0')
+                .toArray();
     }
 
-    public void updateNumbers(Stack<Integer> split) {
+    public boolean isDuplicate(int[] split) {
+        return Arrays.stream(split).distinct().count() != split.length;
+    }
+
+    public void updateNumbers(int[] split) {
         numbers.clear();
-        while (numbers.size() < Constant.MAX_NUMBER_SIZE) {
-            numbers.add(split.pop());
-        }
+        Arrays.stream(split).forEach(num -> numbers.add(num));
     }
 }

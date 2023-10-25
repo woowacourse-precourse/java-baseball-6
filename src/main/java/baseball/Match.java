@@ -24,7 +24,7 @@ public class Match {
     }
 
     public RoundResult playRound() {
-        pitcher.getPlayerInput();
+        pitcher.setNumbers();
         RoundResult roundResult = referee.judge(catcher.getNumbers(), pitcher.getNumbers());
         System.out.println(roundResult);
 
