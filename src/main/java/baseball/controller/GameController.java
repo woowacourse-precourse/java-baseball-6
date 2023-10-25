@@ -23,9 +23,9 @@ public class GameController extends BaseballGameRule {
         return new GameController();
     }
     public void startGame() {
+        outputController.showIntroMessage();
         Integer gameProcess = PLAY_BASEBALL_GAME;
         while (gameProcess.equals(PLAY_BASEBALL_GAME)) {
-            outputController.showIntroMessage();
             Balls answer = gameComputer.initBallsForGame(gameComputer.pickNumbers());
             playSingleGame(answer);
             outputController.showGameRestartInputMessage();
