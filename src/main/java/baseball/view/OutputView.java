@@ -21,7 +21,7 @@ public class OutputView {
     }
 
     public void printPlayerNumberInputPrompt() {
-        System.out.println(PLAYER_NUMBER_INPUT_PROMPT);
+        System.out.print(PLAYER_NUMBER_INPUT_PROMPT);
     }
 
     public void printContinueGameChoicePrompt() {
