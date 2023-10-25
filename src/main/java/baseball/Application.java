@@ -1,7 +1,6 @@
 package baseball;
 import camp.nextstep.edu.missionutils.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -9,7 +8,7 @@ public class Application {
         try {
             Game();
             StopOrRestart();
-        } catch(PlayerNumbersException e) {
+        } catch(IllegalArgumentException e) {
             System.out.println("!!서로 다른 세자리 수를 공백 없이 입력해주세요.!!");
         } catch(StopOrRestartException se) {
             System.out.println("!!1,2 중 하나의 숫자를 입력해주세요.!!");
@@ -17,7 +16,7 @@ public class Application {
 
     }
 
-    public static void Game() throws PlayerNumbersException {
+    public static void Game() throws IllegalArgumentException {
         int strike = 0;
         int ball = 0;
         ArrayList<Integer> computerNumbers = ComputerNumbers();
@@ -50,7 +49,7 @@ public class Application {
         }
     }
 
-    public static void StopOrRestart() throws PlayerNumbersException, StopOrRestartException {
+    public static void StopOrRestart() throws IllegalArgumentException, StopOrRestartException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String menuNumber = Console.readLine();
         if(menuNumber.trim().equals("2")) {
@@ -73,13 +72,13 @@ public class Application {
         return computer;
     }
 
-    public static ArrayList<Integer> PlayerNumbers() throws PlayerNumbersException {
+    public static ArrayList<Integer> PlayerNumbers() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String playerNumber = Console.readLine();
         String[] playerNumberArray = playerNumber.split("");
 
         if(!threeLetters(playerNumberArray))
-            throw new PlayerNumbersException("잘못된 숫자 형식을 입력하셨습니다.");
+            throw new IllegalArgumentException("잘못된 숫자 형식을 입력하셨습니다.");
 
         ArrayList<Integer> playerNumbers = new ArrayList<>();
         for(int i=0; i<playerNumberArray.length; i++) {
@@ -98,8 +97,8 @@ public class Application {
 
 }
 
-class PlayerNumbersException extends Exception {
-    PlayerNumbersException(String msg) { super(msg); }
+class IllegalArgumentException extends Exception {
+    IllegalArgumentException(String msg) { super(msg); }
 }
 
 class StopOrRestartException extends Exception {
