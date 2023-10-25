@@ -2,6 +2,7 @@ package baseball.domain;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +43,12 @@ class NumberBallTest {
     void matchReturnNoting() {
         NumberBall userNumberBall = new NumberBall(1, 9);
         assertEquals(userNumberBall.match(computerNumberBalls), MatchResult.NOTHING);
+    }
+
+    @Test
+    @DisplayName("숫자야구 판정 낫싱인 경우 스트라이크와 비교")
+    void matchNotEquals() {
+        NumberBall userNumberBall = new NumberBall(1, 9);
+        assertNotEquals(userNumberBall.match(computerNumberBalls), MatchResult.STRIKE);
     }
 }
