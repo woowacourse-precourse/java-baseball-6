@@ -27,7 +27,6 @@ public class BaseballController {
 
     public void playGame() {
         coumputerNumberList = computerNumber.generateNumber();
-        try {
         while (true) {
             strike = 0;
             ball = 0;
@@ -42,9 +41,6 @@ public class BaseballController {
             }
          }
         gameOption();
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
     }
     public boolean judgeResult(int strike, int ball) {
         if(strike==0 && ball==0) {
