@@ -19,13 +19,11 @@ public class BaseballGame {
     }
 
     public void rePlay() {
-        RandomNumber randomNumbers = new RandomNumber();
-        List<Integer> cpuNewInput = randomNumbers.getRandomNumbers();
+        List<Integer> cpuNewInput = new RandomNumber().getRandomNumbers();
         System.out.println("컴퓨터 숫자:" + cpuNewInput);
         System.out.print("숫자를 입력해주세요 : ");
         String userNewInput = readLine();
-        BaseballGame baseballGame = new BaseballGame();
-        baseballGame.play(cpuNewInput, userNewInput);
+        new BaseballGame().play(cpuNewInput, userNewInput);
     }
 
     public void start(List<Integer> target, String input) {
