@@ -12,6 +12,7 @@ public class BaseballGame {
     private static int INPUTLENGTH = 3;
     private static int MIN_RANGE = 1;
     private static int MAX_RANGE = 9;
+    private static int INITIAL_VALUE = 0;
 
     public void initializeGame() {
         computerNumbers = generateRandomNumbers();
@@ -32,8 +33,8 @@ public class BaseballGame {
     }
 
     private int countStrikes(List<Integer> playerNumbers) {
-        int strikes = 0;
-        for (int i = 0; i < INPUTLENGTH; i++) {
+        Integer strikes = Integer.valueOf(0);
+        for (int i = INITIAL_VALUE; i < INPUTLENGTH; i++) {
             if (computerNumbers.get(i).equals(playerNumbers.get(i))) {
                 strikes++;
             }
@@ -43,9 +44,9 @@ public class BaseballGame {
     }
 
     private int countBalls(List<Integer> playerNumbers) {
-        int balls = 0;
+        Integer balls = Integer.valueOf(0);
 
-        for (int i = 0; i < INPUTLENGTH; i++) {
+        for (int i = INITIAL_VALUE; i < INPUTLENGTH; i++) {
             if (!computerNumbers.get(i).equals(playerNumbers.get(i)) && playerNumbers.contains(
                     computerNumbers.get(i))) {
                 balls++;

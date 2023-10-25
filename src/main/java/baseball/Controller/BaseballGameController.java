@@ -11,14 +11,14 @@ public class BaseballGameController {
         BaseballGame baseballGame = new BaseballGame();
 
         outputView.displayGameStartMessage();
-        boolean continueGame = true;
+        boolean continueBaseballGame = true;
 
-        while (continueGame) {
+        while (continueBaseballGame) {
             baseballGame.initializeGame();
             boolean isGameWon = baseballGame.play(inputView, outputView);
             outputView.displayGameEndMessage(isGameWon);
 
-            continueGame = inputView.readRestartNumber();
+            continueBaseballGame = inputView.readRestartNumber();
         }
 
         outputView.displayGameExitMessage();

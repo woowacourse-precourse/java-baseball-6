@@ -6,6 +6,7 @@ public class NumValidator {
     private final static int INPUT_LENGTH = 3;
     private final static int MIN_RANGE_NUMBER = 1;
     private final static int MAX_RANGE_NUMBER = 9;
+
     private final static String INVALID_INPUT_MESSAGE = "입력 길이는 3입니다.";
     private final static String INVALID_NUMBER_MESSAGE = "숫자로만 이루어진 값을 입력해주세요";
     private final static String OUT_RANGE_NUMBER_MESSAGE = "숫자는 1과 9 사이의 숫자입니다.";
