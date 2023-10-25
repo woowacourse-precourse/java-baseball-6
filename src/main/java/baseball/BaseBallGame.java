@@ -11,6 +11,7 @@ public class BaseBallGame extends Game {
 
     @Override
     public boolean initGame() {
+        printWelcomeMessage();
         return true;
     }
 
@@ -78,6 +79,10 @@ public class BaseBallGame extends Game {
             }
         }
         return computer;
+    }
+
+    private void printWelcomeMessage(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 }
 

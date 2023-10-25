@@ -6,6 +6,7 @@ public class GameConsole {
     private static final String REGEX_CONTINUE_OR_END = "^[1-2]{1}";
 
     public static void play(Game game) {
+        game.initGame();
         do {
             game.playGame();
         } while (continueOrEnd());
