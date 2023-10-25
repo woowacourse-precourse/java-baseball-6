@@ -1,7 +1,7 @@
 package baseball;
 
 public class GameNumber {
-    private static final int NUMBER_LENGTH = 3;
+    public static final int NUMBER_LENGTH = 3;
     private final String value;
 
     private GameNumber(String value) {
