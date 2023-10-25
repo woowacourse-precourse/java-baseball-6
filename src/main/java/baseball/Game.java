@@ -20,8 +20,10 @@ public class Game {
             //종료or 재시작 선택 메시지 출력
             Output.printNewGameOrGameEndMessage();
             //종료선택시 프로그램 종료
-            
-            //if
+            String input = Console.readLine();
+            int choice = Integer.parseInt(input);
+
+            if(choice == 2)
             {
                 break;
             }
