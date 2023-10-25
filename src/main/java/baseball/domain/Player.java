@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static baseball.global.util.GameInput.validateNum;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.global.enums.GuideMessage;
@@ -38,6 +39,10 @@ public class Player {
         num.clear();  // 예외상황을 대비하여 리스트 초기화
         String s = readLine();
 
+        if (s.isEmpty()) {
+            throw new IllegalArgumentException("입력값이 비어 있습니다.");
+        }
+
         if (s.length() != 3) {
             throw new IllegalArgumentException("세 자리 수를 입력해야 합니다.");
         }
@@ -53,17 +58,11 @@ public class Player {
             }
 
             validateNum(order);
+
+            if (num.contains(order)) {
+                throw new IllegalArgumentException("서로 다른 세 자리 수를 입력하세요.");
+            }
             num.add(order);
-        }
-    }
-
-    private void validateNum(int order) {
-        if (order == 0) {
-            throw new IllegalArgumentException("0은 숫자에 포함할 수 없습니다.");
-        }
-
-        if (num.contains(order)) {
-            throw new IllegalArgumentException("서로 다른 세 자리 수를 입력하세요.");
         }
     }
 

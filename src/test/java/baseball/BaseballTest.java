@@ -2,9 +2,8 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.app.Baseball;
-import baseball.domain.Computer;
-import baseball.domain.Player;
+import baseball.domain.Baseball;
+import baseball.app.Computer;
 import baseball.domain.RandomNumber;
 import java.util.Arrays;
 import java.util.List;

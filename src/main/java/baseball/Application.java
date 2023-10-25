@@ -1,8 +1,6 @@
 package baseball;
 
-import baseball.domain.Computer;
-import baseball.domain.Player;
-import baseball.domain.RandomNumber;
+import baseball.app.Computer;
 
 public class Application {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package baseball.app;
+package baseball.domain;
 
 import baseball.global.enums.GameResult;
 import java.util.Arrays;
