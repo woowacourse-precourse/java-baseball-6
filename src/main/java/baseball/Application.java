@@ -15,7 +15,7 @@ public class Application {
         status = true;
 
         while (status) {
-            gameStart();
+            startGame();
             boolean inputNum = true;
 
             while (inputNum) {
@@ -62,7 +62,7 @@ public class Application {
         } else if (choice == 2) {
             status = false;
         } else {
-            status = false; // 다시확인
+            status = false;
             throw new IllegalArgumentException();
         }
     }
@@ -73,19 +73,22 @@ public class Application {
                 computer.add(randomNumber);
         }
     }
-    private static void gameStart(){
+    private static void startGame(){
         System.out.println(InfoMessage.START.getMessage());
         computer = new ArrayList<>();
         makeRandomNumber();
     }
     private static void checkInput(String str){
         if (str.length() != 3) {
-            throw new IllegalArgumentException();
+            illegalArgumentException();
         }
         try {
             Integer.parseInt(str);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            illegalArgumentException();
         }
+    }
+    private static void illegalArgumentException() {
+        throw new IllegalArgumentException();
     }
 }
