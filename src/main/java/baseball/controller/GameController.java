@@ -47,9 +47,14 @@ public class GameController {
     // 사용자 입력 처리
     // 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
     public static void validateUserInput(String value) {
-        if (!InputManager.isNumberInRange(userInput, MIN_NUMBER, MAX_NUMBER) ||
-                !InputManager.isSizeValid(userInput, SIZE) || !InputManager.hasDuplicates(userInput, SIZE)) {
-            throw new IllegalArgumentException("유효하지 않은 입력입니다.");
+        if (!InputManager.isNumberInRange(userInput, MIN_NUMBER, MAX_NUMBER)) {
+            throw new IllegalArgumentException(MIN_NUMBER + '~' + MAX_NUMBER + "에 해당하는 수만 입력해주세요.");
+        }
+        if (!InputManager.isSizeValid(userInput, SIZE)) {
+            throw new IllegalArgumentException(SIZE + "자리의 수를 입력해주세요.");
+        }
+        if (InputManager.hasDuplicates(userInput, SIZE)) {
+            throw new IllegalArgumentException("수를 중복되지 않게 입력해주세요.");
         }
     }
 
@@ -65,7 +70,7 @@ public class GameController {
         SystemMessagePrinter.printRestartOrExit();
         int userInput = Integer.parseInt(Console.readLine());
         if (!InputManager.isRestartInputValid(userInput)) {
-            throw new IllegalArgumentException("유효하지 않은 입력입니다.");
+            throw new IllegalArgumentException(RESTART + " 혹은 " + EXIT + "를 입력해주세요.");
         }
         if (userInput == RESTART) {
             SystemMessagePrinter.printRestartGame();
