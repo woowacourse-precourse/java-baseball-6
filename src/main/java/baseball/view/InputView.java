@@ -1,7 +1,6 @@
 package baseball.view;
 
 import baseball.util.InputUtil;
-import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
     public static String inputNumbers() {

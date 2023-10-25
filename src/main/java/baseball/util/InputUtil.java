@@ -6,4 +6,8 @@ public class InputUtil {
     public static String getString() {
         return Console.readLine();
     }
+
+    public static void closeConsole() {
+        Console.close();
+    }
 }
