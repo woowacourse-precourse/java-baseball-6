@@ -6,110 +6,140 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     static int ball = 0;
     static int strike = 0;
+    static final int GAME_CONTINUE = 1;
+    static final int GAME_QUIT = 2;
+    static final int NUMBER_OF_DIGITS = 3;
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         playGame();
     }
+
     static void playGame() {
         // 초기화
         ball = 0;
         strike = 0;
-        // 랜덤 숫자 생성
-        int[] answer = new int[3];
-        int answerIndex = 0;
-        while (answerIndex < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!isContained(answer, randomNumber)) { // 중복인지 체크
-                answer[answerIndex++] = randomNumber;
-            }
-        }
-        // 사용자 입력
-        while (strike != 3) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String userInput = Console.readLine();
-            checkInputNumber(userInput);
-            // check Answer - 결과 출력
-            checkAnswer(userInput, answer);
+        int[] answer = makeRandomNumber();
+        while (!isGameWon()) {
+            String userInput = getInputFromUser();
+            validateUserInput(userInput);
+            evaluateGuess(userInput, answer);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        int gameStatus = keepOrStopGame();
-        if (gameStatus == 1) {
+        int gameStatus = getUserChoiceToContinueOrQuit();
+        if (gameStatus == GAME_CONTINUE) {
             playGame();
         }
     }
 
-    static int keepOrStopGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userChoiceStr = Console.readLine();
-        int userChoice = Integer.parseInt(userChoiceStr);
-        if (userChoice != 1 && userChoice != 2)
-            throw new IllegalArgumentException();
-        return userChoice;
-    }
-
-    static boolean isContained(int[] answer, int randomNumber) {
-        for (int i : answer) {
-            if (i == randomNumber)
-                return true;
-        }
-        return false;
-    }
-
-    static boolean isContained(String str) {
-        boolean[] board = new boolean[10];
-        char[] charArray = str.toCharArray();
-        for (char c : charArray) {
-            if (board[c-'0']) {
-                return true;
+    static int[] makeRandomNumber() {
+        int[] targetNumber = new int[NUMBER_OF_DIGITS];
+        int answerIndex = 0;
+        while (answerIndex < NUMBER_OF_DIGITS) {
+            int singleDigit = Randoms.pickNumberInRange(1, 9);
+            if (!hasDuplicates(targetNumber, singleDigit)) {
+                targetNumber[answerIndex++] = singleDigit;
             }
-            board[c-'0'] = true;
         }
-        return false;
+        return targetNumber;
     }
 
-    static void checkInputNumber(String str) {
-        if (str.length() != 3){
+    static boolean isGameWon() {
+        return strike == 3;
+    }
+
+    static String getInputFromUser() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return Console.readLine();
+    }
+
+    static void validateUserInput(String str) {
+        if (str.length() != NUMBER_OF_DIGITS) {
             throw new IllegalArgumentException();
         }
-        if (isContained(str)){ // 중복 체크
+        if (hasDuplicates(str)) {
             throw new IllegalArgumentException();
         }
         //char[] arr = new char[str.length()]; // 생각해보니 0으로 시작하는 숫자는 어카지..
 
     }
-    static void checkAnswer(String input, int[] answer) {
+
+    static void evaluateGuess(String input, int[] answer) {
         ball = 0;
         strike = 0;
         int[] inputArray = new int[input.length()];
         for (int i = 0; i < input.length(); i++) {
-            inputArray[i] = input.charAt(i)-'0';
+            inputArray[i] = input.charAt(i) - '0';
         }
 
         int value;
         for (int i = 0; i < answer.length; i++) {
             value = answer[i];
             for (int j = 0; j < inputArray.length; j++) {
-                if (value == inputArray[j]){
-                    if (i == j)
+                if (value == inputArray[j]) {
+                    if (i == j) {
                         strike++;
-                    else
+                    } else {
                         ball++;
+                    }
                 }
             }
         }
         // 출력
-        String ballComment="";
-        String strikeComment="";
-        if (ball > 0)
+        printResultMessage();
+    }
+
+    static void printResultMessage() {
+        String ballComment = "";
+        String strikeComment = "";
+        if (ball > 0) {
             ballComment = ball + "볼 ";
-        if (strike > 0)
+        }
+        if (strike > 0) {
             strikeComment = strike + "스트라이크 ";
+        }
 
-        if (ball == 0 && strike == 0)
+        if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
-        else
+        } else {
             System.out.println(ballComment + strikeComment);
+        }
+    }
 
+    static int getUserChoiceToContinueOrQuit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userChoiceStr = Console.readLine();
+        int userChoice;
+        try {
+            userChoice = Integer.parseInt(userChoiceStr);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (userChoice != GAME_CONTINUE && userChoice != GAME_QUIT) {
+            throw new IllegalArgumentException();
+        }
+        return userChoice;
+    }
+
+    static boolean hasDuplicates(int[] answer, int randomNumber) {
+        for (int i : answer) {
+            if (i == randomNumber) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static boolean hasDuplicates(String str) {
+        boolean[] board = new boolean[10];
+        char[] charArray = str.toCharArray();
+        for (char c : charArray) {
+            if (board[c - '0']) {
+                return true;
+            }
+            board[c - '0'] = true;
+        }
+        return false;
     }
 }
