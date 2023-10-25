@@ -8,7 +8,7 @@ public class Play {
 
     List<Integer> computer;
 
-    public void game(String input) {
+    public int game(String input) {
 
         computer = new Computer().anotherNumber();
         int value = 0;
@@ -16,19 +16,12 @@ public class Play {
 
             List<Integer> player = numbers(input);
             if (player.size() == 0) {
-                return;
+                return -1;
             }
-
             value = compare(player, computer);
         }
-        System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
-        System.out.println("게임 종료");
-
-        int newgame = new Input(input).newGameCheck();
-        if (newgame == 1) {
-            System.out.println(1);
-            new Application();
-        }
+        System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        return 0;
     }
 
     public List<Integer> numbers(String input) {
@@ -54,7 +47,7 @@ public class Play {
 
     private boolean inputCheck(List<Integer> numbers) {
         try {
-            if (numbers.size() == 3) {
+            if (numbers.size() != 3) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
