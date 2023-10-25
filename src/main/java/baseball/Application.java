@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class Application {
@@ -20,10 +21,10 @@ public class Application {
             int strike = 0;
             int ball = 0;
             //숫자 입력 받기
-            Scanner s = new Scanner(System.in);
             System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
 
-            int in = s.nextInt();
+            int in = Integer.parseInt(input);
             int in2 = in;
 
             //예외 처리
@@ -61,8 +62,9 @@ public class Application {
                     System.out.println(strike + "스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    Scanner input = new Scanner(System.in);
-                    int choice = input.nextInt();
+                    String choiceInput = Console.readLine();
+                    int choice = Integer.parseInt(choiceInput);
+
                     if(choice == 1){
                         computer = shuffleNumber();
                     } else if (choice == 2) {
