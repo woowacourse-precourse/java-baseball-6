@@ -1,6 +1,6 @@
 package baseball.view;
 
-import static baseball.model.BaseballModel.MAX_STRIKES;
+import static baseball.model.BaseballModel.MAX_SCORE;
 
 import baseball.entity.Ball;
 import baseball.entity.GameResult;
@@ -19,15 +19,25 @@ public class BaseballView {
             return;
         }
 
+        if (isMaxBall(ball)) {
+            displayBall(ball);
+            return;
+        }
+
         if (isNoScore(ball, strike)) {
             displayMessage(MessageType.NOTHING);
             return;
         }
+
         displayBallAndStrike(ball, strike);
     }
 
     private boolean isMaxStrike(Strike strike) {
-        return strike.getCount() == MAX_STRIKES;
+        return strike.getCount() == MAX_SCORE;
+    }
+
+    private boolean isMaxBall(Ball ball) {
+        return ball.getCount() == MAX_SCORE;
     }
 
     private boolean isNoScore(Ball ball, Strike strike) {
@@ -37,6 +47,10 @@ public class BaseballView {
     private void displayBallAndStrike(Ball ball, Strike strike) {
         System.out.print(ball.getCount() + MessageType.BALL.getMessage() + " ");
         System.out.println(strike.getCount() + MessageType.STRIKE.getMessage());
+    }
+
+    private void displayBall(Ball ball) {
+        System.out.println(ball.getCount() + MessageType.BALL.getMessage());
     }
 
     private void displayStrike(Strike strike) {
