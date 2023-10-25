@@ -11,24 +11,37 @@ public class Number {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     
+    private String computersNumber;
+    private String userNumber;
+    
+    public String getComputersNumber() {
+        setComputersNumber();
+        return computersNumber;
+    }
+    
+    public String getUserNumber(String userInput) {
+        setUserNumber(userInput);
+        return userNumber;
+    }
+    
     // 컴퓨터의 숫자를 설정하는 메서드
-    public String setComputersNumber() {
+    private void setComputersNumber() {
         Set<Integer> digits = new LinkedHashSet<>();
         
         while (digits.size() < NUMBERS_LENGTH) {
             digits.add(getRandomNumber());
         }
         
-        return convertIntegerSetToString(digits);
+        computersNumber = convertIntegerSetToString(digits);
     }
     
     // 사용자의 숫자를 설정하는 메서드
-    public String setUserNumber(String userInput) {
+    private void setUserNumber(String userInput) {
         if (!isValidNumber(userInput)) {
             throw new IllegalArgumentException();
         }
         
-        return userInput;
+        userNumber = userInput;
     }
     
     // Randoms 클래스를 통해 난수를 가져오는 메서드

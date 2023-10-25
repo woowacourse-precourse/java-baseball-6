@@ -13,13 +13,13 @@ class NumberTest {
     
     @DisplayName("설정되는 컴퓨터의 숫자는 총 3자리의 수이다.")
     @Test
-    void setComputersNumberWithThreeSize() {
+    void getComputersNumberWithThreeSize() {
         // given
         Number number = new Number();
         int targetLength = 3;
         
         // when
-        String computersNumber = number.setComputersNumber();
+        String computersNumber = number.getComputersNumber();
         
         // then
         assertThat(computersNumber.length()).isEqualTo(targetLength);
@@ -27,14 +27,14 @@ class NumberTest {
     
     @DisplayName("설정되는 컴퓨터의 숫자는 1부터 9까지의 숫자로 구성된다.")
     @Test
-    void setComputersNumberInOneToNine() {
+    void getComputersNumberInOneToNine() {
         // given
         Number number = new Number();
         int minNumber = 1;
         int maxNumber = 9;
         
         // when
-        String computersNumber = number.setComputersNumber();
+        String computersNumber = number.getComputersNumber();
         
         // then
         for (char digit : computersNumber.toCharArray()) {
@@ -45,12 +45,12 @@ class NumberTest {
     
     @DisplayName("설정되는 컴퓨터의 숫자는 서로 다른 숫자들로 구성된다.")
     @Test
-    void setComputersNumberWithNonDuplicated() {
+    void getComputersNumberWithNonDuplicated() {
         // given
         Number number = new Number();
         
         // when
-        String computersNumber = number.setComputersNumber();
+        String computersNumber = number.getComputersNumber();
         
         // then
         Set<Character> digits = new HashSet<>();
@@ -62,12 +62,12 @@ class NumberTest {
     
     @DisplayName("설정되는 컴퓨터의 숫자는 문자열 타입을 반환한다.")
     @Test
-    void setComputersNumberInStringType() {
+    void getComputersNumberInStringType() {
         // given
         Number number = new Number();
         
         // when
-        String computersNumber = number.setComputersNumber();
+        String computersNumber = number.getComputersNumber();
         
         // then
         assertThat(computersNumber).isInstanceOf(String.class);
@@ -82,9 +82,9 @@ class NumberTest {
         String punctuationSymbols = "!@#";
         
         // when // then
-        assertThatThrownBy(() -> number.setUserNumber(alphabets))
+        assertThatThrownBy(() -> number.getUserNumber(alphabets))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> number.setUserNumber(punctuationSymbols))
+        assertThatThrownBy(() -> number.getUserNumber(punctuationSymbols))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     
@@ -97,9 +97,9 @@ class NumberTest {
         String moreThanThreeLengthNumber = "12456";
         
         // when // then
-        assertThatThrownBy(() -> number.setUserNumber(lessThanThreeLengthNumber))
+        assertThatThrownBy(() -> number.getUserNumber(lessThanThreeLengthNumber))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> number.setUserNumber(moreThanThreeLengthNumber))
+        assertThatThrownBy(() -> number.getUserNumber(moreThanThreeLengthNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     
@@ -111,7 +111,7 @@ class NumberTest {
         String nonNumberBetweenOneAndNine = "908";
         
         // when // then
-        assertThatThrownBy(() -> number.setUserNumber(nonNumberBetweenOneAndNine))
+        assertThatThrownBy(() -> number.getUserNumber(nonNumberBetweenOneAndNine))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     
@@ -123,7 +123,7 @@ class NumberTest {
         String duplicateNumber = "998";
         
         // when // then
-        assertThatThrownBy(() -> number.setUserNumber(duplicateNumber))
+        assertThatThrownBy(() -> number.getUserNumber(duplicateNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -49,13 +49,13 @@ public class GameSystem {
     
     // 컴퓨터의 숫자를 업데이트하는 메서드
     private void updateComputerNumber() {
-        computerNumber = number.setComputersNumber();
+        computerNumber = number.getComputersNumber();
     }
     
     // 사용자의 숫자를 업데이트하는 메서드
     private void updateUserNumber() {
         userInput = getUserInput();
-        userNumber = number.setUserNumber(userInput);
+        userNumber = number.getUserNumber(userInput);
     }
     
     // 사용자의 입력을 받는 메서드
