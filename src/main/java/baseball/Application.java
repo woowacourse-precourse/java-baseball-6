@@ -201,9 +201,6 @@ class Game {
                 if (!checkList[i-1]) {
                     checkList[i-1] = false;
                 }
-
-
-
             }
         }
         for (boolean j : checkList) {
@@ -237,6 +234,4 @@ class Array {
         }
         return arr;
     }
-
-
 }
