@@ -1,5 +1,9 @@
 package model;
 
+import static constants.GameConstant.BALL;
+import static constants.GameConstant.NOTHING;
+import static constants.GameConstant.STRIKE;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +23,21 @@ public class Game {
 
     public List<String> createBaseballScoreList(String computerNumber, String userNumber){
         List<String> baseballScoreList = new ArrayList<>();
+        for(int i=0; i < userNumber.length(); i++){
+            char userChar = userNumber.charAt(i);
 
+            if(computerNumber.contains(userChar + "")){
+                String scoreResult = BALL;
+                if(userChar == computerNumber.charAt(i)){
+                    scoreResult = STRIKE;
+                }
+                baseballScoreList.add(scoreResult);
+            }
+        }
+
+        if(baseballScoreList.size() == 0){
+            baseballScoreList.add(NOTHING);
+        }
         return baseballScoreList;
     }
 
