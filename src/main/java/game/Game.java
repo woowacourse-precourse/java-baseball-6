@@ -46,10 +46,10 @@ public class Game {
             throw new IllegalArgumentException(RANGE_EXCEPTION_MSG);
         }
 
-        return compareRestart(Input);
+        return isRerun(Input);
     }
 
-    private boolean compareRestart(char Input) {
+    private boolean isRerun(char Input) {
         if (Input == RESTART_GAME_NUMBER) {
             return true;
         }
@@ -59,7 +59,7 @@ public class Game {
         return false;
     }
 
-    //게임 결과 판독
+    //게임 시작
     public void gameStart(int strike) {
         List<Integer> targetNumber = new ArrayList<>(getRandomNum());
         start(strike, targetNumber);
@@ -72,11 +72,12 @@ public class Game {
         }
         System.out.print(ASK_INPUT_NUMBER_MSG);
         List<Integer> inputNumber = new ArrayList<>(getInputNum());
-        strike = getCompare(targetNumber, inputNumber);
+        strike = getResult(targetNumber, inputNumber);
         return start(strike, targetNumber);
     }
 
-    private int getCompare(List<Integer> inputNumber, List<Integer> targetNumber) {
+    //게임 결과 판독
+    private int getResult(List<Integer> inputNumber, List<Integer> targetNumber) {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < NUM_DIGITS; i++) {
@@ -89,11 +90,11 @@ public class Game {
                 }
             }
         }
-        getResult(ball, strike);
+        getHint(ball, strike);
         return strike;
     }
 
-    private void getResult(int ball, int strike) {
+    private void getHint(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.print(NOTHING_MSG);
         }
