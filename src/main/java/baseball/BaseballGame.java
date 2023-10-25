@@ -12,5 +12,8 @@ public class BaseballGame {
         this.numbers.setUser(numbers);
     }
 
+    public void getBallScoreMessage() {
+
+    }
 
 }
