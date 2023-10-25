@@ -1,6 +1,5 @@
 package model;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,15 +9,15 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CreateGameNumberTest {
+public class GameNumberGeneratorTest {
 
     @Test
     @DisplayName("생성된 숫자가 세 개가 맞는지 확인")
     void 컴퓨터숫자_개수(){
         //given
-        CreateGameNumber cn = new CreateGameNumber();
+        GameNumberGenerator gameNumberGenerator = new GameNumberGenerator();
         //when
-        List<Integer> gameNumber = cn.createNum();
+        List<Integer> gameNumber = gameNumberGenerator.createNum();
         //then
         assertEquals(3, gameNumber.size());
     }
@@ -27,9 +26,9 @@ public class CreateGameNumberTest {
     @DisplayName("생성된 숫자가 각각 다른 숫자인지 확인")
     void 중복숫자_확인(){
         //given
-        CreateGameNumber cn = new CreateGameNumber();
+        GameNumberGenerator gameNumberGenerator = new GameNumberGenerator();
         //when
-        List<Integer> gameNumber = cn.createNum();
+        List<Integer> gameNumber = gameNumberGenerator.createNum();
         //then
         Set<Integer> numberSet = new HashSet<>(gameNumber);
         assertEquals(gameNumber.size(), numberSet.size());
@@ -40,9 +39,9 @@ public class CreateGameNumberTest {
     @DisplayName("생성된 숫자가 1~9사이의 숫자인지 확인")
     void 숫자범위_확인(){
         //given
-        CreateGameNumber cn = new CreateGameNumber();
+        GameNumberGenerator gameNumberGenerator = new GameNumberGenerator();
         //when
-        List<Integer> gameNumber = cn.createNum();
+        List<Integer> gameNumber = gameNumberGenerator.createNum();
         //then
         assertTrue(gameNumber.stream().allMatch(number -> number >= 1 && number <= 9));
     }
