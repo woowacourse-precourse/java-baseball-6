@@ -6,12 +6,16 @@ public class GameController {
     private GameService gameService = new GameService();
 
     public void run() {
+        startGame();
         do {
             setGame();
             playGame();
         } while (requestGameRetry());
     }
 
+    private void startGame() {
+        gameService.startGame();
+    }
     private void setGame() {
         gameService.setGame();
     }

@@ -49,9 +49,12 @@ public class GameService {
         }
     }
 
+    public void startGame() {
+        OutputMessage.printStartMessage();
+    }
+
     public void setGame() {
         computer.generateNumber();
-        OutputMessage.printStartMessage();
     }
 
     private void getUserNumber() {
