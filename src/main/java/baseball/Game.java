@@ -61,7 +61,6 @@ class Game {
             play();
         } else if (choice.equals(OVER.getStringValue())) {
             gameOutput.printMessage(GAME_OVER.getMsg());
-            gameInput.close();
         }
     }
 }

@@ -48,18 +48,28 @@ public class GameInputImpl implements GameInput {
      * @param input 입력 값
      */
     private void validationInput(String[] input) {
-        if (input.length != COUNT_NUM.getValue()) {
-            throw new IllegalArgumentException(INVALID_LENGTH_INPUT.getMsg());
-        }
+        validationLengthInput(input);
+        validationFormatInput(input);
+        validationDistinctInput(input);
+    }
 
+    private void validationDistinctInput(String[] input) {
+        if (Arrays.stream(input).distinct().count() != COUNT_NUM.getValue()) {
+            throw new IllegalArgumentException(INVALID_DISTINCT_INPUT.getMsg());
+        }
+    }
+
+    private void validationFormatInput(String[] input) {
         for (String s : input) {
             if (!s.matches(INPUT_REGEX.getStringValue())) {
                 throw new IllegalArgumentException(INVALID_FORMAT_INPUT.getMsg());
             }
         }
+    }
 
-        if (Arrays.stream(input).distinct().count() != COUNT_NUM.getValue()) {
-            throw new IllegalArgumentException(INVALID_DISTINCT_INPUT.getMsg());
+    private void validationLengthInput(String[] input) {
+        if (input.length != COUNT_NUM.getValue()) {
+            throw new IllegalArgumentException(INVALID_LENGTH_INPUT.getMsg());
         }
     }
 
