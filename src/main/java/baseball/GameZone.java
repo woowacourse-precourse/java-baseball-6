@@ -7,7 +7,15 @@ import baseball.model.Player;
 import baseball.model.generator.ComputerNumberGenerator;
 import baseball.model.generator.PlayerNumberGenerator;
 
+import static baseball.Printer.print;
+
 public class GameZone {
+    private static final String START_GAME_COMMENT = "숫자 야구 게임을 시작합니다.";
+
+    public GameZone() {
+        print(START_GAME_COMMENT);
+    }
+
     public void initGame() {
 
         Computer computer = new Computer(new ComputerNumberGenerator());

@@ -22,11 +22,6 @@ public class Game {
     }
 
     public void start() {
-        announcer.announceStartGame();
-        play();
-    }
-
-    public void play() {
         List<Integer> answer = computer.speakNumbers();
         playRound(answer);
         end();
