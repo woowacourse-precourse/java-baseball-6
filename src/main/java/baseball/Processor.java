@@ -32,8 +32,8 @@ public class Processor {
             
             Set<Integer> compare = new HashSet<>(numGet);
             //입력 받은 수의 유효성 검사
-            if(numGet.size() != 3 || compare.size() != 3) {
-                throw new IllegalArgumentException("Invalid Input: Duplicate number");
+            if(numGet.size() != 3 || compare.size() != 3 || numGet.contains(0)) {
+                throw new IllegalArgumentException("Invalid Input: Input numbers are not suitable");
             }
             
             Processor.compareNum(numGet, numGenerated, answerBox);

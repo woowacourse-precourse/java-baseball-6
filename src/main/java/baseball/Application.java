@@ -13,7 +13,7 @@ public class Application {
         
         System.out.println("숫자 야구 게임을 시작합니다.");
         
-        while(button != 2) { // 게임: 종료 버튼(2) 안눌리면 계속 진행됨 
+        while(button == 1) { // 게임: 종료 버튼(2) 안눌리면 계속 진행됨 
             numGenerated = NumGen.generate();
             answerBox.setScore(0, 0)
                     .setMessage("낫싱");
@@ -26,7 +26,7 @@ public class Application {
             button = Integer.parseInt(Console.readLine());
             
             if( button != 1 && button != 2 ) {
-                throw new IllegalArgumentException("1 혹은 2만 입력할 수 있습니다.");
+                throw new IllegalArgumentException("Invalid input: Cannot enter anything other than 1 or 2");
             }
         }
         
