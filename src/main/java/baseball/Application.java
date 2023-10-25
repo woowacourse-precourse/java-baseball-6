@@ -27,4 +27,13 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+    // convertInputToList 메서드 추가
+    private static List<Integer> convertInputToList(String input) {
+        List<Integer> numbers = new ArrayList<>();
+        for (char ch : input.toCharArray()) {
+            numbers.add(Character.getNumericValue(ch));
+        }
+        return numbers;
+    }
 }
