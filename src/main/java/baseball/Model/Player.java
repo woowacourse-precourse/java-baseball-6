@@ -10,7 +10,7 @@ public class Player {
 
     public static void getPlayerNumber(String inputNumber) {
         playerNumber = inputNumber;
-        CheckValidNumber.IsValidNumber();
+        CheckValidNumber.IsValidNumber(inputNumber);
         playerNumberList = ChangeArray.stringToList(inputNumber);
     }
 }

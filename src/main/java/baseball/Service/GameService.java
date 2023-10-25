@@ -10,8 +10,14 @@ import baseball.View.EndGameView;
 
 public class GameService {
 
-    public static void startGame(){
+    public static void startGame()
+    {
         StartGameView.printGameStart();
+        do {
+            startNewGame();
+        } while(restartGame());
+    }
+    public static void startNewGame(){
         Computer.setRandomNumber();
         playGame();
     }
@@ -23,5 +29,9 @@ public class GameService {
 
     private static void endGame() {
 
+    }
+
+    private static Boolean restartGame() {
+        return true;
     }
 }
