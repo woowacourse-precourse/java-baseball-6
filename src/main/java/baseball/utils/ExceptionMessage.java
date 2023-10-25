@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.utils;
 
 public enum ExceptionMessage {
     NOT_NUMERIC("%s는 숫자가 아닌 문자입니다."),

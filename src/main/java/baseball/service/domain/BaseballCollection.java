@@ -1,12 +1,12 @@
 package baseball.service.domain;
 
-import static baseball.exception.ExceptionMessage.NOT_NUMERIC;
-import static baseball.exception.ExceptionMessage.NOT_UNIQUE;
-import static baseball.exception.ExceptionMessage.OUT_OF_LENGTH;
-import static baseball.exception.ExceptionMessage.OUT_OF_RANGE;
 import static baseball.service.domain.BaseballConstants.BASEBALL_END_NUMBER;
 import static baseball.service.domain.BaseballConstants.BASEBALL_START_NUMBER;
 import static baseball.service.domain.BaseballConstants.DEFAULT_CAPACITY;
+import static baseball.utils.ExceptionMessage.NOT_NUMERIC;
+import static baseball.utils.ExceptionMessage.NOT_UNIQUE;
+import static baseball.utils.ExceptionMessage.OUT_OF_LENGTH;
+import static baseball.utils.ExceptionMessage.OUT_OF_RANGE;
 
 import java.util.Arrays;
 import java.util.List;
