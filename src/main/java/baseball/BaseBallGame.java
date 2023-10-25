@@ -10,17 +10,11 @@ public class BaseBallGame {
     private NumberGenerator numberGenerator;
     private PlayerNumber playerNumber;
 
-    private boolean allStrike;
-    private boolean playOrNot;
-
-    public BaseBallGame(){
-        this.playOrNot = true;
-        this.allStrike = false;
-    }
     //최초 실행
     public void playGame(){
         System.out.println(GAME_START);
 
+        boolean playOrNot = true;
         //게임 실행 메소드 호출
         while (playOrNot) {
             //랜덤 숫자 생성
@@ -38,6 +32,7 @@ public class BaseBallGame {
 
     //게임 실행
     public void runGame(){
+        boolean allStrike = false;
         while (!allStrike) {
             //입력 받기
             playerNumber = PlayerNumber.inputPlayer();
