@@ -14,8 +14,8 @@ public class Application {
 
         printStartMessage();
 
-        int continued = 1;
-        while (continued == 1) {
+        boolean isContinued = true;
+        while (isContinued) {
 
             List<Integer> numbers = getThreeRandomNumbers();
 
@@ -38,18 +38,21 @@ public class Application {
 
             }
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            try {
-                continued = Integer.parseInt(Console.readLine());
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
-            }
-
-            if (1 > continued || continued > 2) {
-                throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+            printReGameMessage();
+            String reply = Console.readLine();
+            if (reply.equals("1")) {
+                isContinued = true;
+            } else if (reply.equals("2")) {
+                isContinued = false;
+            } else {
+                throw new IllegalArgumentException("잘못도니 값을 입력했습니다.");
             }
         }
 
+    }
+
+    private static void printReGameMessage() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     private static List<Integer> receiveUserInput() {
