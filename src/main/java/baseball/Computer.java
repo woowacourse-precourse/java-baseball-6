@@ -13,7 +13,7 @@ public class Computer {
     private String getRandomNumber() {
         StringBuilder str = new StringBuilder();
 
-        while (str.length() < 3) {
+        while (str.length() < Constants.NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             StringBuilder n = new StringBuilder();
             n.append(randomNumber);
@@ -31,7 +31,7 @@ public class Computer {
     public int[] getResult(String userInput) {
         int[] score = new int[2];
 
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < Constants.NUMBER_SIZE; ++i) {
             char n = userInput.charAt(i);
             if (this.numbers.charAt(i) == n) {
                 ++score[0];
