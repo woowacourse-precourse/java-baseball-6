@@ -1,6 +1,7 @@
 package view;
 
 import validator.NumberInputValidator;
+import camp.nextstep.edu.missionutils.Console;
 
 public class PlayerNumberInputView {
     NumberInputValidator numberInputValidator = new NumberInputValidator();
@@ -24,6 +25,7 @@ public class PlayerNumberInputView {
     }
 
     public String receiveNumber() {
-        return numberInputValidator.validNumber();
+        String balls = Console.readLine();
+        return numberInputValidator.validNumber(balls);
     }
 }

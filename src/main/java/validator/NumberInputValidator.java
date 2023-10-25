@@ -3,11 +3,8 @@ package validator;
 import java.util.HashSet;
 import java.util.Set;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class NumberInputValidator {
-    public String validNumber() {
-        String balls = Console.readLine();
+    public String validNumber(String balls) {
         vaildNumberUnderThreeDigits(balls);
         vaildNumberOverThreeDigits(balls);
         vaildNumberRange(balls);
