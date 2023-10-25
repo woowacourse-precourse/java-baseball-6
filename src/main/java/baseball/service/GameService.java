@@ -52,7 +52,7 @@ public class GameService {
     private void compute(int[] gameNumber, int[] userNumber, int index) {
         int pos = -1;
         for (int i = 0; i < gameNumber.length; i++) {
-            if (gameNumber[i] == userNumber[i]) {
+            if (gameNumber[i] == userNumber[index]) {
                 pos = i;
                 break;
             }
