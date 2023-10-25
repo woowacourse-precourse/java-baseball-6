@@ -1,5 +1,11 @@
 package baseball;
 
+import static baseball.InputValidator.CONTAINS_ZERO_ERROR_MESSAGE;
+import static baseball.InputValidator.DUPLICATE_NUMBER_ERROR_MESSAGE;
+import static baseball.InputValidator.NOT_INT_ERROR_MESSAGE;
+import static baseball.InputValidator.NOT_THREE_DIGIT_ERROR_MESSAGE;
+import static baseball.InputValidator.RESTART_OR_EXIT_ERROR_MESSAGE;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,7 +21,8 @@ class InputValidatorTest {
 
         // when // then
         Assertions.assertThatThrownBy(() -> validator.validTryNumber(given))
-                .isExactlyInstanceOf(IllegalArgumentException.class);
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_INT_ERROR_MESSAGE);
     }
 
     @ParameterizedTest
@@ -27,7 +34,8 @@ class InputValidatorTest {
 
         // when // then
         Assertions.assertThatThrownBy(() -> validator.validTryNumber(given))
-                .isExactlyInstanceOf(IllegalArgumentException.class);
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CONTAINS_ZERO_ERROR_MESSAGE);
     }
 
     @ParameterizedTest
@@ -39,7 +47,8 @@ class InputValidatorTest {
 
         // when // then
         Assertions.assertThatThrownBy(() -> validator.validTryNumber(given))
-                .isExactlyInstanceOf(IllegalArgumentException.class);
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_THREE_DIGIT_ERROR_MESSAGE);
     }
 
     @ParameterizedTest
@@ -51,7 +60,8 @@ class InputValidatorTest {
 
         // when // then
         Assertions.assertThatThrownBy(() -> validator.validTryNumber(given))
-                .isExactlyInstanceOf(IllegalArgumentException.class);
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(DUPLICATE_NUMBER_ERROR_MESSAGE);
     }
 
     @ParameterizedTest
@@ -63,6 +73,7 @@ class InputValidatorTest {
 
         // when // then
         Assertions.assertThatThrownBy(() -> validator.validRestartOrExit(given))
-                .isExactlyInstanceOf(IllegalArgumentException.class);
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(RESTART_OR_EXIT_ERROR_MESSAGE);
     }
 }
