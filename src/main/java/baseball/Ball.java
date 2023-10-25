@@ -4,8 +4,8 @@ public class Ball {
     private final int number;
 
     public Ball(int number) {
+        validate(number);
         this.number = number;
-        validate();
     }
 
     public Ball(char ch) {
@@ -14,7 +14,7 @@ public class Ball {
 
     public int getNumber() { return number; }
 
-    public void validate() {
+    public void validate(int number) {
         if ( number < 1 || 9 < number ) throw new IllegalArgumentException("공의 숫자는 1~9의 자연수만 가능합니다.");
     }
 

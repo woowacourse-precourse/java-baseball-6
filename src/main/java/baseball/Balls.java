@@ -19,7 +19,9 @@ public class Balls {
         balls = new ArrayList<>();
 
         for (char ch : chars) {
-            balls.add(new Ball(ch));
+            try {
+                balls.add(new Ball(ch));
+            } catch (NumberFormatException e) { throw new IllegalArgumentException("1~9 사이의 자연수만 입력이 가능합니다."); }
         }
     }
 

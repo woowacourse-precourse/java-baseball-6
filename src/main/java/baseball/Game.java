@@ -52,8 +52,7 @@ public class Game {
                 validateUserInput(userInput);
 
                 user = new Balls(userInput);
-            } catch (NumberFormatException e) { System.out.println("3개의 1~9 사이의 중복되지 않는 수만 입력할 수 있습니다."); }
-            catch (Exception e) { e.printStackTrace(); }
+            } catch (Exception e) { e.printStackTrace(); }
         }
 
         return user;
