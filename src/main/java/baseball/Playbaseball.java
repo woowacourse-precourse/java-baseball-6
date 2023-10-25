@@ -91,6 +91,9 @@ public class Playbaseball {
         if (gameControlInput == RESTART_NUM) {
             computerNums = computerUtil.createNumber();
         }
+        if ((gameControlInput != RESTART_NUM) && (gameControlInput != FINISH_NUM)) {
+            validator.validateReGameInput();
+        }
     }
 }
 

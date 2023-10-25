@@ -49,5 +49,8 @@ public class Validation {
         }
     }
 
+    public void validateReGameInput() {
+        throw new IllegalArgumentException();
+    }
 }
 
