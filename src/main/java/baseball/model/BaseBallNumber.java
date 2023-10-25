@@ -42,7 +42,7 @@ public class BaseBallNumber {
         return new BaseBallNumber((numbers));
     }
 
-    public void calculate(BiConsumer<Integer,Integer> biConsumer){
+    public void compare(BiConsumer<Integer,Integer> biConsumer){
         for(int i = 0; i < numbers.length; i++) {
             biConsumer.accept(numbers[i], i);
         }
