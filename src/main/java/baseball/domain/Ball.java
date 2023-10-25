@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,6 +11,13 @@ public class Ball {
     public static final int MINIMUM_VALID_NUMBER = 1;
     public static final int MAXIMUM_VALID_NUMBER = 9;
     private static final Pattern VALID_NUMBER_PATTERN = Pattern.compile("[1-9]");
+    private static final Map<Integer, Ball> CACHED_BALLS = new HashMap<>();
+
+    static {
+        for (int i = MINIMUM_VALID_NUMBER; i <= MAXIMUM_VALID_NUMBER; i++) {
+            CACHED_BALLS.put(i, new Ball(i));
+        }
+    }
 
     private final int number;
 
@@ -18,7 +27,7 @@ public class Ball {
 
     public static Ball from(String stringNumber) {
         validateStringNumber(stringNumber);
-        return new Ball(Integer.parseInt(stringNumber));
+        return CACHED_BALLS.get(Integer.parseInt(stringNumber));
     }
 
     private static void validateStringNumber(String stringNumber) {
@@ -30,7 +39,7 @@ public class Ball {
 
     public static Ball from(Integer number) {
         validateNumber(number);
-        return new Ball(number);
+        return CACHED_BALLS.get(number);
     }
 
     private static void validateNumber(Integer number) {

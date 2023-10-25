@@ -45,6 +45,13 @@ class BallTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("Ball 생성 시 캐싱된 인스턴스가 반환된다")
+    @Test
+    void instanceCaching() {
+        assertThat(Ball.from(3)).isSameAs(Ball.from(3));
+        assertThat(Ball.from(4)).isSameAs(Ball.from("4"));
+    }
+
     @DisplayName("Ball이 가진 number를 기준으로 동등성 비교가 이루어진다")
     @Test
     void equals() {
