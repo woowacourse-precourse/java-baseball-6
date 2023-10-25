@@ -20,4 +20,11 @@ public class Application {
         }
         return computer;
     }
+
+    // validateInput 메서드 추가
+    private static void validateInput(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
