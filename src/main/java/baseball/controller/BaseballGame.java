@@ -24,19 +24,14 @@ public class BaseballGame {
     private final Validator validator;
     private final Comparator comparator;
 
-    private BaseballGame(Generator generator,
-                         Validator validator,
-                         Comparator comparator) {
+    private BaseballGame(Generator generator, Validator validator, Comparator comparator) {
         this.generator = generator;
         this.validator = validator;
         this.comparator = comparator;
     }
 
     public static BaseballGame create() {
-        return new BaseballGame(
-                new GeneratorImp(),
-                new ValidatorImp(),
-                new Comparator()
+        return new BaseballGame(new GeneratorImp(), new ValidatorImp(), new Comparator()
         );
     }
 
