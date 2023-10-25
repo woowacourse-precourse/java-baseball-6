@@ -48,19 +48,24 @@ class Game {
         gameOutput.printMessage(REPLAY_OR_OVER_MESSAGE.getMsg());
         String input = gameInput.setInput();
         String choice = gameInput.getReplayOrOverInput(input);
-        replayOrOver(choice);
+        if (replay(choice)) {
+            play();
+        }
     }
 
     /**
      * 종료 여부에 따른 게임 재시작, 게임 종료
      *
      * @param choice 종료 여부
+     * @return 종료 여부
      */
-    private void replayOrOver(String choice) {
+    public boolean replay(String choice) {
         if (choice.equals(REPLAY.getStringValue())) {
-            play();
+            return true;
         } else if (choice.equals(OVER.getStringValue())) {
             gameOutput.printMessage(GAME_OVER.getMsg());
+            return false;
         }
+        return false;
     }
 }
