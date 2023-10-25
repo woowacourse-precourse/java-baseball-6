@@ -1,5 +1,8 @@
 package baseball.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Result {
     private final int strikeNumber;
     private final int ballNumber;
@@ -11,28 +14,29 @@ public class Result {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        getBall(sb);
-        getStrike(sb);
-        checkNothing(sb);
-        return sb.toString();
+        List<String> messages = new ArrayList<>();
+        getBallNumberMessage(messages);
+        getStrikeNumberMessage(messages);
+        checkNothing(messages);
+
+        return String.join(" ", messages);
     }
 
-    private void checkNothing(StringBuilder sb) {
+    private void checkNothing(List<String> messages) {
         if (ballNumber == 0 && strikeNumber == 0) {
-            sb.append("낫싱 ");
+            messages.add("낫싱");
         }
     }
 
-    private void getStrike(StringBuilder sb) {
+    private void getStrikeNumberMessage(List<String> messages) {
         if (strikeNumber != 0) {
-            sb.append(strikeNumber).append("스트라이크 ");
+            messages.add(strikeNumber + "스트라이크");
         }
     }
 
-    private void getBall(StringBuilder sb) {
+    private void getBallNumberMessage(List<String> messages) {
         if (ballNumber != 0) {
-            sb.append(ballNumber).append("볼 ");
+            messages.add(ballNumber + "볼");
         }
     }
 
