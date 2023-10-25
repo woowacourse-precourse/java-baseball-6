@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import static baseball.domain.BallStatus.BALL;
+import static baseball.domain.BallStatus.NOTHING;
+import static baseball.domain.BallStatus.STRIKE;
 import static baseball.domain.ErrorCode.INVALID_BALL_SIZE;
 import static baseball.domain.ErrorCode.NOT_OTHER_NUMBERS;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,6 +11,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class BallsTest {
 
@@ -66,27 +71,33 @@ class BallsTest {
         assertThat(result).isNotNull();
     }
 
-    @Test
-    void 볼() {
-        assertThat(balls.compare(new BallNumber(4), 1)).isEqualTo(BallStatus.BALL);
-        assertThat(balls.compare(new BallNumber(4), 2)).isEqualTo(BallStatus.BALL);
-        assertThat(balls.compare(new BallNumber(3), 0)).isEqualTo(BallStatus.BALL);
-        assertThat(balls.compare(new BallNumber(3), 2)).isEqualTo(BallStatus.BALL);
-        assertThat(balls.compare(new BallNumber(7), 0)).isEqualTo(BallStatus.BALL);
-        assertThat(balls.compare(new BallNumber(7), 1)).isEqualTo(BallStatus.BALL);
+    @ParameterizedTest
+    @CsvSource(value = {"4,1", "4,2", "3,0", "3,2", "7,0", "7,1"})
+    void 볼_검증(int number, int position) {
+        // when
+        BallStatus result = balls.compare(new BallNumber(number), position);
+
+        // then
+        assertThat(result).isEqualTo(BALL);
     }
 
-    @Test
-    void 스트라이크() {
-        assertThat(balls.compare(new BallNumber(4), 0)).isEqualTo(BallStatus.STRIKE);
-        assertThat(balls.compare(new BallNumber(3), 1)).isEqualTo(BallStatus.STRIKE);
-        assertThat(balls.compare(new BallNumber(7), 2)).isEqualTo(BallStatus.STRIKE);
+    @ParameterizedTest
+    @CsvSource(value = {"4,0", "3,1", "7,2"})
+    void 스트라이크_검증(int number, int position) {
+        // when
+        BallStatus result = balls.compare(new BallNumber(number), position);
+
+        // then
+        assertThat(result).isEqualTo(STRIKE);
     }
 
-    @Test
-    void 낫싱() {
-        assertThat(balls.compare(new BallNumber(2), 0)).isEqualTo(BallStatus.NOTHING);
-        assertThat(balls.compare(new BallNumber(6), 1)).isEqualTo(BallStatus.NOTHING);
-        assertThat(balls.compare(new BallNumber(1), 2)).isEqualTo(BallStatus.NOTHING);
+    @ParameterizedTest
+    @CsvSource(value = {"2,0", "6,1", "1,2"})
+    void 낫싱_검증(int number, int position) {
+        // when
+        BallStatus result = balls.compare(new BallNumber(number), position);
+
+        // then
+        assertThat(result).isEqualTo(NOTHING);
     }
 }
