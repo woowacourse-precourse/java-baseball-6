@@ -19,8 +19,8 @@ public class Input {
     }
 
     public void userChoice(){
-        int userChoice = Integer.parseInt(Console.readLine());
-        status.setStatus(userChoice);
+        String userInput = Console.readLine();
+        status.setStatus(userInput);
     }
 }
 

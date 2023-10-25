@@ -28,7 +28,6 @@ public class GameController {
             }
         }
         handleGameEnd();
-
     }
 
     private void handleGameEnd() {

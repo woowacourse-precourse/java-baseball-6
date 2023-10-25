@@ -9,16 +9,23 @@ public class Status{
     private boolean status = true;
 
 
-    public void setStatus(int userChoice) {
+    public void setStatus(String userInput) {
+        int userChoice;
+
+        try {
+            userChoice = Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
+        }
+
         if (userChoice == RESTART_GAME) {
             status = GO;
-            return ;
-        }
-        if (userChoice == END_GAME) {
+        } else if (userChoice == END_GAME) {
             status = STOP;
-            return ;
+        } else {
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
-        throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
+
     }
 
     public void resetStatus(){

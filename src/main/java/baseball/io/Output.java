@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Output {
     private static final String STARTING_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String ALL_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String ALL_STRIKE_MESSAGE = Game.SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String USER_CHOICE_MESSAGE= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final int BALL_INDEX = 0;
     private static final int STRIKE_INDEX = 1;
