@@ -11,20 +11,15 @@ public class Application {
     public static void main(String[] args) {
         boolean game = true;
         while (game) {
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }//컴퓨터 숫자 생성 while문
+            List<Integer> computer = makeNumber();
+
             while (game) {
                 System.out.println("숫자 야구 게임을 시작합니다.");
                 System.out.print("숫자를 입력해주세요 : ");
-                String num  = Console.readLine();
-                //IllegalArgumentException
-                if (num.length()!=3){
-                    throw  new IllegalArgumentException("세자리 수를 입력하세요");
+                String num = Console.readLine();
+                // 사용자 입렵값IllegalArgumentException 예외처리
+                if (num.length() != 3) {
+                    throw new IllegalArgumentException("세자리 수를 입력하세요");
                 }
                 List<Integer> me = new ArrayList<>();
                 for (int i = 0; i < num.length(); i++) {
@@ -44,8 +39,8 @@ public class Application {
                                     "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                                     "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                             int data = Integer.parseInt(Console.readLine());
-                            if(data != 1 && data !=2){
-                                throw  new IllegalArgumentException("1과 2의 숫자중에 입력바랍니다.");
+                            if (data != 1 && data != 2) {
+                                throw new IllegalArgumentException("1과 2의 숫자중에 입력바랍니다.");
                             }
                             if (data == 2) {
                                 game = false;
@@ -63,8 +58,18 @@ public class Application {
             }//사용자 입력 while문
         }//전체 게임 while문
 
+    }
 
-    }//메인함수
+    public static List<Integer> makeNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }   //컴퓨터 난수 생성 메소드
 
     public static List<Integer> baseball(List<Integer> com, List<Integer> me) {
         List<Integer> result = new ArrayList<>(Arrays.asList(0, 0));
@@ -81,4 +86,5 @@ public class Application {
         }
         return result;
     }//baseball 메소드
-}
+
+}//메인함수
