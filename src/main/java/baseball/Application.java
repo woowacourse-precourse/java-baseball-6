@@ -30,9 +30,7 @@ public class Application {
         int strikeCount = 0;
 
         for (int i = 0; i < result.size(); i++) {
-            if (userInput.get(i) == result.get(i)) {
-                strikeCount++;
-            }
+            strikeCount += countUp(userInput.get(i), result.get(i));
         }
 
         return strikeCount;
@@ -43,9 +41,7 @@ public class Application {
 
         for (int i = 0; i < result.size(); i++) {
             for (int j = 0; j < result.size(); j++) {
-                if (userInput.get(i) == result.get(j)) {
-                    ballCount++;
-                }
+                ballCount += countUp(userInput.get(i), result.get(j));
             }
         }
 
