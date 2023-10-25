@@ -6,23 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final List<Integer> computerNum;
-
-    public Computer(){
-        computerNum = new ArrayList<>();
-    }
+    private List<Integer> computerNum;
 
     public List<Integer> getComputerNum(){
-        createComputerNum();
-//        try{
-//            validateRangeForAll();
-//            validateSize();
-//        }catch (IllegalArgumentException e){
-//            getComputerNum();
-//        }
         return computerNum;
     }
     public void createComputerNum() {
+        computerNum = new ArrayList<>();
         while (computerNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!computerNum.contains(randomNumber)){
