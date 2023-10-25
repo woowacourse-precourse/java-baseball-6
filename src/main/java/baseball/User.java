@@ -59,4 +59,37 @@ public class User extends Number {
     public static void addStrikeCount() {
         strikeCount++;
     }
+
+    public static boolean isWinner() {
+        return strikeCount == COUNT;
+    }
+
+    public static boolean isReplay() {
+
+        System.out.println(COUNT+CELEBRATION_MESSAGE);
+
+        StringBuilder replayGuide = new StringBuilder();
+
+        replayGuide
+                .append("게임을 새로 시작하려면 ")
+                .append(RESTART_KEY)
+                .append(", 종료하려면 ")
+                .append(QUIT_KEY)
+                .append("를 입력하세요.");
+
+        System.out.println(replayGuide);
+        String answer = Console.readLine();
+
+        if(RESTART_KEY.equals(answer)) {
+            return true;
+        }
+
+        if(QUIT_KEY.equals(answer)) {
+            return false;
+        }
+
+        String errorMessage = RESTART_KEY+" 또는 "+QUIT_KEY+"만 입력하세요.";
+
+        throw new IllegalArgumentException(errorMessage);
+    }
 }

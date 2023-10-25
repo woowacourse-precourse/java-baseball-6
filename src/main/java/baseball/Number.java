@@ -32,6 +32,7 @@ public class Number {
         validateLength(input);
 
         String[] inputArr = input.split("");
+
         for(String numStr:inputArr) {
             validateType(numStr);
             validateRange(numStr);
@@ -48,6 +49,7 @@ public class Number {
     private void validateType(String numStr) {
         try {
             Integer.parseInt(numStr);
+
         } catch(NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다");
         }

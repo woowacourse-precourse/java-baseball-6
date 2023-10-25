@@ -25,11 +25,16 @@ public class Game {
     }
 
     private void play() {
+
+        User.resetCounts();
         Number inputValues = User.getInputNums();
+
         for(int i=0;i < inputValues.getSize();i++) {
             calcCounts(i, inputValues.getNum(i));
         }
+
         User.printResult();
+        checkWin();
     }
 
     private void calcCounts(int index, int value) {
@@ -42,6 +47,18 @@ public class Game {
         if(computer.hasValue(value)) {
             User.addBallCount();
         }
-
     }
+
+    private void checkWin() {
+        if(!(User.isWinner())) {
+            return;
+        }
+
+        replay = User.isReplay();
+
+        if(replay) {
+            computer.generateNumbers();
+        }
+    }
+
 }
