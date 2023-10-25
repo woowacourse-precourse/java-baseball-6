@@ -1,11 +1,10 @@
 package baseball.controller;
 
-import baseball.state.Scoring;
-import baseball.util.DefaultRandomNumberCreatorByDigit;
+import baseball.state.ScoringFactory;
 
 public class DefaultGameControllerFactory implements GameControllerFactory {
     @Override
-    public GameController get() {
-        return new GameControllerImpl(new Scoring(new DefaultRandomNumberCreatorByDigit().create(3)));
+    public GameController get(ScoringFactory scoringFactory) {
+        return new GameControllerImpl(scoringFactory);
     }
 }

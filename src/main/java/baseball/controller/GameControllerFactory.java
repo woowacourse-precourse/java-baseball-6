@@ -1,6 +1,8 @@
 package baseball.controller;
 
+import baseball.state.ScoringFactory;
+
 public interface GameControllerFactory {
 
-    GameController get();
+    GameController get(ScoringFactory scoringFactory);
 }

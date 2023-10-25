@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class GameControllerTest {
 
-    GameControllerImpl gameController = new GameControllerImpl(new Scoring(123));
+    GameControllerImpl gameController = new GameControllerImpl(() -> new Scoring(123));
 
     @Test
     public void 게임시작_플레이_상태로_변하고_채점_준비한다() {

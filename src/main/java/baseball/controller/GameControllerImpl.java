@@ -1,11 +1,11 @@
 package baseball.controller;
 
-import baseball.state.Scoring;
+import baseball.state.ScoringFactory;
 
 public class GameControllerImpl extends AbstractGameController {
 
-    public GameControllerImpl(Scoring scoring) {
-        super(scoring);
+    public GameControllerImpl(ScoringFactory scoringFactory) {
+        super(scoringFactory.get());
     }
 
     @Override

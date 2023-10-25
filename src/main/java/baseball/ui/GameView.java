@@ -2,12 +2,14 @@ package baseball.ui;
 
 import baseball.controller.GameController;
 import baseball.controller.GameControllerFactory;
+import baseball.state.ScoringFactory;
 import baseball.ui.input.component.InputComponent;
 import baseball.ui.output.component.OutputComponent;
 import baseball.ui.output.format.ResultFormatStringCreator;
 import java.util.Map;
 
 public class GameView {
+    private ScoringFactory scoringFactory;
     private GameControllerFactory gameControllerFactory;
 
     private GameController gameController;
@@ -16,11 +18,12 @@ public class GameView {
     private final OutputComponent outputComponent;
     private final ResultFormatStringCreator creator;
 
-    public GameView(GameControllerFactory gameControllerFactory,
+    public GameView(ScoringFactory scoringFactory, GameControllerFactory gameControllerFactory,
                     InputComponent inputUserAnswer, InputComponent inputUserResume,
                     OutputComponent outputComponent, ResultFormatStringCreator creator) {
+        this.gameController = gameControllerFactory.get(scoringFactory);
+        this.scoringFactory = scoringFactory;
         this.gameControllerFactory = gameControllerFactory;
-        this.gameController = gameControllerFactory.get();
         this.inputUserAnswer = inputUserAnswer;
         this.inputUserResume = inputUserResume;
         this.outputComponent = outputComponent;
@@ -64,8 +67,7 @@ public class GameView {
     }
 
     private void restart() {
-        this.gameController = gameControllerFactory.get();
-//        this.gameController = new GameControllerImpl(new Scoring(new DefaultRandomNumberCreatorByDigit().create(3)));
+        this.gameController = gameControllerFactory.get(scoringFactory);
         this.gameController.start();
         guessUntilCorrect();
     }
