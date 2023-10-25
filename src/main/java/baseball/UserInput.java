@@ -5,7 +5,16 @@ public class UserInput {
     public String getInput() {
         return Console.readLine();
     }
-
+    private boolean hasDuplicates(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public int[] validateAndParseInput(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("입력은 3자리여야 합니다.");
@@ -27,14 +36,5 @@ public class UserInput {
         return guess;
     }
 
-    private boolean hasDuplicates(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] == arr[j]) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+
 }
