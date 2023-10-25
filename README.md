@@ -71,4 +71,4 @@ __4. 클린 코드를 지키려고 하였습니다.__
 * 메서드의 인자 수를 2개 이하로 구현하였습니다.
 * 메서드가 한가지 기능만 담당하도록 구현하였습니다.
 
-소감: https://messy-passbook-e0b.notion.site/1-d8fa86e25ca6437ab3c991636e46a2e0?pvs=4
+__소감:__ https://messy-passbook-e0b.notion.site/1-d8fa86e25ca6437ab3c991636e46a2e0?pvs=4
