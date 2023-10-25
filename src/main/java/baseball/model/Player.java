@@ -1,27 +1,19 @@
 package baseball.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.rules.GameConstants.NUMBER_OF_DIGITS;
-
 public class Player {
-    private final List<Integer> numbers;
+    private final Numbers numbers;
 
-    public Player() {
-        this.numbers = new ArrayList<>(NUMBER_OF_DIGITS);
+    public Player(Numbers numbers) {
+        this.numbers = numbers;
     }
 
-    public void inputNumbers(String input) {
-        this.numbers.clear();
-
-        for (String number : input.split("")) {
-            this.numbers.add(Integer.parseInt(number));
-        }
+    public static Player generatePlayerAsInput(String playerInput) {
+        return new Player(Numbers.createPlayerNumbersFromInput(playerInput));
     }
 
     public List<Integer> getNumbers() {
-        return this.numbers;
+        return this.numbers.getNumbers();
     }
-
 }

@@ -13,18 +13,16 @@ import static baseball.message.Messages.GAME_START;
 import static baseball.message.Messages.INPUT_NUMBERS;
 
 public class NumberBaseballGame {
-    private final Computer computer;
-    private final Player player;
+    private Computer computer;
     private boolean isGameEnd;
 
     public NumberBaseballGame() {
-        this.computer = new Computer();
-        this.player = new Player();
+        this.computer = Computer.generateComputerAsRandomNumbers();
         this.isGameEnd = false;
     }
 
     public void run() {
-        System.out.println(GAME_START);
+        printGameStartMessage();
 
         do {
             playGame();
@@ -35,8 +33,8 @@ public class NumberBaseballGame {
     }
 
     private void playGame() {
-        String playerNumbersInput = getAndValidatePlayerNumbersInput();
-        player.inputNumbers(playerNumbersInput);
+        String playerNumbersInput = getPlayerNumbersInput();
+        Player player = Player.generatePlayerAsInput(playerNumbersInput);
 
         CountResult gameResult = computer.getGameResult(player);
 
@@ -51,7 +49,7 @@ public class NumberBaseballGame {
         int restart = getAndValidateRestartInput();
 
         if (restart == 1) {
-            computer.generateNumbers();
+            computer = Computer.generateComputerAsRandomNumbers();
             isGameEnd = false;
             return;
         }
@@ -61,13 +59,13 @@ public class NumberBaseballGame {
         }
     }
 
-    private String getAndValidatePlayerNumbersInput() {
+    private void printGameStartMessage() {
+        System.out.println(GAME_START);
+    }
+
+    private String getPlayerNumbersInput() {
         System.out.print(INPUT_NUMBERS);
-        String input = Console.readLine();
-
-        InputValidator.validatePlayerNumbers(input);
-
-        return input;
+        return Console.readLine();
     }
 
     private int getAndValidateRestartInput() {
