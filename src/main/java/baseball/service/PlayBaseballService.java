@@ -17,7 +17,7 @@ public class PlayBaseballService {
         return inputMenu.equals(GAME_END_MENU);
     }
 
-    public GameScoreSet showPlayBaseballGame(String inputNum){
+    public GameScoreSet showGameResult(String inputNum){
         playBaseball.inputUserNum(inputNum);
         return playBaseball.getGameScoreSet();
     }
