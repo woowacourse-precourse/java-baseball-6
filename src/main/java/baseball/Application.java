@@ -17,7 +17,9 @@ public class Application {
     		int[] result = checkNum(computer, user);
     		int strike = result[0], ball = result[1];
     		printResult(strike, ball, computer, user);
-    		if (strike == user.size()) break;
+    		if (strike == user.size()) {
+    			break;
+    		}
     	}
     } // end of main
     
