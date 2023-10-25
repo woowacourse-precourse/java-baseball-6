@@ -11,7 +11,7 @@ import java.util.List;
 public class Computer {
     private final ScoreProcessor scoreProcessor;
     private Numbers numbers;
-    
+
     public Computer(ScoreProcessor scoreProcessor) {
         this.scoreProcessor = scoreProcessor;
     }
@@ -31,6 +31,9 @@ public class Computer {
     }
 
     public Score guess(Numbers playerNumbers) {
+        if (playerNumbers == null) {
+            throw new IllegalArgumentException();
+        }
         return scoreProcessor.processScore(this.numbers, playerNumbers);
     }
 }
