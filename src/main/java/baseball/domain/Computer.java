@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
@@ -12,12 +11,13 @@ public class Computer {
 
     private final List<BaseballNumber> computer;
 
-    public Computer(){
+    public Computer() {
         computer = new ArrayList<>();
         generateNumber();
     }
 
-    public List<BaseballNumber> getComputerList(){
+    public List<BaseballNumber> getComputerList() {
+
         return computer;
     }
 

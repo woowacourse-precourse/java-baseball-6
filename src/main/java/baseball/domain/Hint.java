@@ -15,7 +15,7 @@ public class Hint {
     private int strike = 0;
     private int ball = 0;
 
-    public void initStatus(){
+    public void initStatus() {
         strike = 0;
         ball = 0;
         isTrue = false;

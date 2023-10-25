@@ -8,12 +8,12 @@ public class BaseballNumber {
     private static final int BASEBALL_NUMBER_END = 9;
     private final int number;
 
-    BaseballNumber(final int number){
+    BaseballNumber(final int number) {
         vaildateRange(number);
         this.number = number;
     }
 
-    private static void vaildateRange(final int value){
+    private static void vaildateRange(final int value) {
         if(value < BASEBALL_NUMBER_START || value > BASEBALL_NUMBER_END) {
             throw new IllegalArgumentException("숫자 범위가 벗어났습니다.");
         }
