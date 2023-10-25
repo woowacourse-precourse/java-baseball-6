@@ -29,7 +29,6 @@ public class BaseballGame {
     private static void start() {
 
         List<Integer> answer = Computer.newNumber();
-        System.out.println(answer);
         String result = "";
 
         while (!result.equals("3스트라이크")) {
