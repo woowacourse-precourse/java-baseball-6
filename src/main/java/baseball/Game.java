@@ -20,6 +20,7 @@ public class Game {
         }
 
         nextNum = GAME_START;
+        // 랜덤값 생성 및 저장
         controller.createComputerNumber();
 
         while (nextNum == GAME_START) {
