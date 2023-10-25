@@ -1,7 +1,8 @@
 package baseball.controller;
 
+import baseball.model.Computer;
 import baseball.model.GameResult;
-import baseball.model.Numbers;
+import baseball.model.User;
 import baseball.validator.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -18,25 +19,17 @@ public class BaseballGame {
     private void playOneGame() {
         OutputView.printGameStartMessage();
 
-        Numbers computerNumber = createComputerNumber();
-        Numbers userNumber;
+        Computer computer = new Computer();
+        User user;
         GameResult gameResult;
 
         do {
-            userNumber = inputUserNumber(InputView.getUserNumber());
-            gameResult = userNumber.compareNumbers(computerNumber);
+            user = new User(InputView.getUserNumber());
+            gameResult = computer.compareNumbers(user);
             OutputView.printOneGameResult(gameResult.getStrike(), gameResult.getBall());
         } while (!gameResult.isSuccess());
 
         OutputView.printThreeStrikeMessage();
-    }
-
-    private Numbers createComputerNumber() {
-        return new Numbers();
-    }
-
-    private Numbers inputUserNumber(String input) {
-        return new Numbers(input);
     }
 
     private boolean restart() {
