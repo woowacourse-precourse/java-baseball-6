@@ -1,12 +1,42 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (true) {
+            List<Integer> computer = generateComputerNumbers();
+            boolean gameEnded = false;
+
+            while (!gameEnded) {
+                System.out.print("숫자를 입력해주세요 : ");
+                String userInput = Console.readLine();
+                validateInput(userInput);
+
+                List<Integer> userNumbers = convertInputToList(userInput);
+
+                String result = checkNumbers(computer, userNumbers);
+
+                System.out.println(result);
+
+                if ("3스트라이크".equals(result)) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    gameEnded = true;
+                }
+            }
+
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. : ");
+            String restartInput = Console.readLine();
+            if ("2".equals(restartInput)) {
+                break;
+            }
+        }
+
     }
 
     // generateComputerNumbers 메서드 추가
