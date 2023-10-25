@@ -16,7 +16,6 @@ public class GameController {
     }
 
     public void start() {
-
         Result result;
         do {
             result = getNumberCompare();
@@ -25,36 +24,30 @@ public class GameController {
     }
 
     public List<String> getNumberFromUser() {
-
         List<String> userInputNumbers = getUserInputAsList();
         validateUserInputNumbers(userInputNumbers);
         return userInputNumbers;
     }
 
     private List<String> getUserInputAsList() {
-
         return InputView.UserNumbertoList();
     }
 
     private void validateUserInputNumbers(List<String> numbers) {
-
         NumberValidator.checkLength(numbers);
         NumberValidator.checkRedundancy(numbers);
         NumberValidator.checkZero(numbers);
     }
 
     public Result getNumberCompare(){
-
         return NumberComparator.compareNumber(computer.getNumbers(),getNumberFromUser());
     }
 
     public void printCount(Result count){
-
         OutputView.printResultMessage(count.ball, count.strike);
     }
 
     public boolean isGameSet(Result count) {
-
         if(count.strike == 3){
             OutputView.printGameSetMessage();
             computer.resetNumbers();

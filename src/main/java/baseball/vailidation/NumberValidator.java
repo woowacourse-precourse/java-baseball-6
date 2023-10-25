@@ -6,7 +6,6 @@ public class NumberValidator {
 
     //입력값 길이 검사
     public static void checkLength(List<String> input){
-
         if (input.size() > 3) {
             throw new IllegalArgumentException("입력된 숫자가 세자리 이상이다.");
         }
@@ -14,7 +13,6 @@ public class NumberValidator {
 
     //재시작 입력값 유효성 검사.
     public static boolean checkRestartFormat(String input){
-
         if(input.equals("1")){
             return true;
         }
@@ -28,7 +26,6 @@ public class NumberValidator {
 
     //입력값에 0이 포함되는지 검사.
     public static void checkZero(List<String> input){
-
         if (input.contains("0")) {
             throw new IllegalArgumentException("입력에 0이 포함되어있다.(입력값 포멧 : 1~9까지 서로 다른 수로 이루어진 세자리 수)");
         }
@@ -45,7 +42,6 @@ public class NumberValidator {
 
     //입력값 유효성 검사
     public static int parseAndVaiidateInput(String s){
-
         try{
             return Integer.parseInt(s);
         } catch (NumberFormatException e) {
