@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -29,9 +30,12 @@ class ComputerNum {
 class UserInput {
     String userString = Console.readLine();
     public List<Character> putInList() {
+        HashSet<Character> sameNumCheck = new HashSet<>();
         List<Character> digits = new ArrayList<>();
         for (int i = 0; i < userString.length(); i++) {
-
+            if (!sameNumCheck.add(userString.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
             if (userString.charAt(i) >= '1' && userString.charAt(i) <= '9')
                 digits.add(userString.charAt(i));
 
