@@ -1,5 +1,6 @@
 package baseball.console;
 
+import baseball.constants.RestartChoice;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
@@ -11,8 +12,6 @@ import static baseball.constants.Messages.RESTART_MESSAGE;
 public class Input {
 
     private static final char ZERO = '0';
-    private static final String RESTART_CHOICE_ONE = "1";
-    private static final String RESTART_CHOICE_TWO = "2";
 
     public static String get() {
         System.out.print(INPUT_MESSAGE.getMessage());
@@ -26,7 +25,7 @@ public class Input {
     public static String restart() {
         System.out.println(RESTART_MESSAGE.getMessage());
         String restartNumber = Console.readLine();
-        if (!isValidRestartNumber(restartNumber)) {
+        if (!RestartChoice.isValidChoice(restartNumber)) {
             throw new IllegalArgumentException();
         }
 
@@ -70,15 +69,11 @@ public class Input {
     public static boolean isDuplicate(String number) {
         HashSet<Character> set = new HashSet<Character>();
         for (char c : number.toCharArray()) {
-            if(!set.isEmpty() && set.contains(c)) {
+            if (!set.isEmpty() && set.contains(c)) {
                 return true;
             }
             set.add(c);
         }
         return false;
-    }
-
-    public static boolean isValidRestartNumber(String number) {
-        return RESTART_CHOICE_ONE.equals(number) || RESTART_CHOICE_TWO.equals(number);
     }
 }

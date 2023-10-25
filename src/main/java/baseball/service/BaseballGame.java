@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.console.Input;
 import baseball.console.Output;
+import baseball.constants.RestartChoice;
 import baseball.entity.Computer;
 import baseball.entity.User;
 
@@ -12,8 +13,6 @@ import static baseball.constants.Constants.REQUIRED_STRIKES_FOR_WIN;
 import static baseball.constants.Messages.START_MESSAGE;
 
 public class BaseballGame {
-
-    private static final String RESTART_CHOICE = "1";
 
     private User user;
     private Computer computer;
@@ -41,7 +40,7 @@ public class BaseballGame {
     }
 
     private boolean isUserWantsToRestart() {
-        return RESTART_CHOICE.equals(Input.restart());
+        return RestartChoice.RESTART.matches(Input.restart());
     }
 }
 

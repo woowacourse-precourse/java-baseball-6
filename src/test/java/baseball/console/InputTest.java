@@ -1,5 +1,6 @@
 package baseball.console;
 
+import baseball.constants.RestartChoice;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,9 +35,9 @@ class InputTest {
 
     @Test
     void isValidRestartNumber() {
-        assertTrue(Input.isValidRestartNumber("1"));
-        assertTrue(Input.isValidRestartNumber("2"));
-        assertFalse(Input.isValidRestartNumber("3"));
+        assertTrue(RestartChoice.isValidChoice("1"));
+        assertTrue(RestartChoice.isValidChoice("2"));
+        assertFalse(RestartChoice.isValidChoice("3"));
     }
 }
 
