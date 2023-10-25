@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class BaseBallGame {
     private static BaseBallGame baseBallGame;
     public int numOfBall = 0;
     public int numOfStrike = 0;
-    public final String INPUT_REGEX = "\\d{3}";
+    public final String INPUT_REGEX = "([1-9])(?!\\1)([1-9])(?!\\1|\\2)([1-9])";
     public final String ONE_OR_TWO = "[12]";
 
     public static BaseBallGame getInstance() {
@@ -81,24 +80,29 @@ public class BaseBallGame {
     private void compareAnswerToInput(List<Integer> answer, List<Integer> input) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if(answer.get(i).equals(input.get(j)))
-                    if(i==j) {
+                if (answer.get(i).equals(input.get(j))) {
+                    if (i == j) {
                         numOfStrike++;
                         break;
                     } else {
                         numOfBall++;
                         break;
                     }
+                }
             }
         }
     }
 
     private boolean getResult() {
-        if (numOfBall==0 && numOfStrike==0)
+        if (numOfBall == 0 && numOfStrike == 0) {
             System.out.print("낫싱");
-        else {
-            if (!(numOfBall==0)) System.out.printf("%d볼 ", numOfBall);
-            if (!(numOfStrike==0)) System.out.printf("%d스트라이크", numOfStrike);
+        } else {
+            if (!(numOfBall == 0)) {
+                System.out.printf("%d볼 ", numOfBall);
+            }
+            if (!(numOfStrike == 0)) {
+                System.out.printf("%d스트라이크", numOfStrike);
+            }
         }
 
         if (numOfStrike == 3) {
