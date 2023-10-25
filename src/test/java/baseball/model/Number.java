@@ -18,4 +18,8 @@ abstract class Number {
 
         return this.digits.get(index);
     }
+
+    public List<Integer> getDigits() {
+        return this.digits;
+    }
 }
