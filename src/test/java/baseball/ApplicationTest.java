@@ -77,9 +77,14 @@ class ApplicationTest extends NsTest {
         System.out.println(입력_받은_수의_정답_여부(inputNumbers,answer));
     }
     List<Integer> 정답_생성() {
-        List<Integer> randNumbers = Randoms.pickUniqueNumbersInRange(1,9,3);
-        randNumbers.forEach(System.out::println);
-        return randNumbers;
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 
     String 입력_받은_수의_정답_여부(List<Integer> inputNumbers, List<Integer> answer) {
