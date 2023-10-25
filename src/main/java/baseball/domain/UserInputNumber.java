@@ -22,9 +22,9 @@ public class UserInputNumber {
         throw new IllegalArgumentException();
     }
     private List<Integer> StringToInt(String userInput) {
-        for(String number : userInput.split("")){
-            this.userNumber.add(Integer.parseInt(number));
-        }
+        this.userNumber = userInput.chars()
+                .mapToObj(Character::getNumericValue)
+                .collect(Collectors.toList());
         return userNumber;
    }
     public List<Integer> getUserNumber() {
