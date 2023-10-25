@@ -3,46 +3,54 @@ package baseball.utils;
 import baseball.constants.Constants;
 import baseball.constants.Messages;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Validator {
-    public static void validateUserInput(String userInput) throws IllegalArgumentException {
-        if (isNull(userInput) || !meetsLengthCondition(userInput, Constants.CORRECT_ANSWER_LENGTH) ||
-                !meetsRangeCondition(userInput, '1', '9') || containsDuplicateNum(userInput)) {
-            throw new IllegalArgumentException(Messages.ERROR_MESSAGE);
+    public static void validateGuessInput(String input) {
+        checkNotNull(input);
+        checkValidLength(input, Constants.CORRECT_ANSWER_LENGTH);
+        checkValidRange(input, Constants.START_GUESS_INPUT_RANGE, Constants.END_GUESS_INPUT_RANGE);
+        checkNonDuplicate(input);
+    }
+
+    public static void validateRestartInput(String input) {
+        checkNotNull(input);
+        checkValidLength(input, Constants.RESTART_INPUT_LENGTH);
+        checkValidRange(input, Constants.START_RESTART_INPUT_RANGE, Constants.END_RESTART_INPUT_RANGE);
+    }
+
+    private static void checkNotNull(String input) throws IllegalArgumentException {
+        if (input == null) {
+            throw new IllegalArgumentException(Messages.ERROR_MESSAGE_CONTAINS_NULL);
         }
     }
 
-    public static void validateRestartInput(String userInput) throws IllegalArgumentException {
-        if (isNull(userInput) || !meetsLengthCondition(userInput, Constants.RESTART_LEN) ||
-                !meetsRangeCondition(userInput, '1', '2')) {
-            throw new IllegalArgumentException(Messages.ERROR_MESSAGE);
+    private static void checkValidLength(String input, int length) throws IllegalArgumentException {
+        if (input.length() != length) {
+            throw new IllegalArgumentException(Messages.ERROR_MESSAGE_NOT_VALID_LENGTH);
         }
     }
 
-    private static boolean isNull(String userInput) {
-        return userInput == null;
-    }
+    private static void checkValidRange(String input, char start, char end) throws IllegalArgumentException {
+        boolean isValid = input.chars().allMatch(
+                cur -> (start <= cur && cur <= end)
+        );
 
-    private static boolean meetsLengthCondition(String userInput, int lengthLimit) {
-        return userInput.length() == lengthLimit;
-    }
-
-    private static boolean meetsRangeCondition(String userInput, char start, char end) {
-        for (char ch : userInput.toCharArray()) {
-            if (!(start <= ch && ch <= end)) {
-                return false;
-            }
+        if (!isValid) {
+            throw new IllegalArgumentException(Messages.ERROR_MESSAGE_NOT_VALID_RANGE);
         }
-        return true;
     }
 
-    private static boolean containsDuplicateNum(String userInput) {
-        int[] count = new int[10];
-        for (char ch : userInput.toCharArray()) {
-            int curCnt = ++count[ch - '0'];
-            if (curCnt > 1) {
-                return true;
-            }
+    private static void checkNonDuplicate(String input) throws IllegalArgumentException {
+        Set<Integer> seen = new HashSet<>();
+
+        boolean isValid = input.chars().allMatch(
+                cur -> seen.add(cur)
+        );
+
+        if (!isValid) {
+            throw new IllegalArgumentException(Messages.ERROR_MESSAGE_DUPLICATE_INPUT);
         }
-        return false;
     }
 }

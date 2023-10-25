@@ -1,6 +1,5 @@
 package baseball.utils;
 
-import baseball.utils.Validator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -66,7 +65,7 @@ public class ValidatorTest {
 
     private void assertValidation(String userInput) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            validator.validateUserInput(userInput);
+            validator.validateGuessInput(userInput);
         });
     }
 
@@ -104,6 +103,24 @@ public class ValidatorTest {
     void restart시_사용자_입력이_숫자가_아닌_값을_포함하면_예외발생() {
         // given
         String userInput = "a";
+
+        // when, then
+        assertRestartValidation(userInput);
+    }
+
+    @Test
+    void restart시_사용자_입력이_범위보다_작은_수를_포함하면_예외발생() {
+        // given
+        String userInput = "0";
+
+        // when, then
+        assertRestartValidation(userInput);
+    }
+
+    @Test
+    void restart시_사용자_입력이_범위보다_큰_수를_포함하면_예외발생() {
+        // given
+        String userInput = "3";
 
         // when, then
         assertRestartValidation(userInput);

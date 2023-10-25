@@ -12,7 +12,7 @@ public class UserInputReceiver {
         do {
             System.out.print(Messages.ENTER_USER_INPUT);
             userInput = Console.readLine();
-            Validator.validateUserInput(userInput);
+            Validator.validateGuessInput(userInput);
             System.out.println(Judge.judgeScore(generatedAnswers, userInput));
         } while (!Judge.isCorrectAnswer(Convertor.listToString(generatedAnswers), userInput));
     }
