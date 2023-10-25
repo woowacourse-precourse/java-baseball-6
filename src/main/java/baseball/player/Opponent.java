@@ -1,9 +1,9 @@
 package baseball.player;
 import java.util.List;
 
-public class Opponent extends PlayerEntity {
+public class Opponent extends BasePlayer {
     @Override
-    public void setNumberList(List<Integer> numberList) {
-        this.numberList = numberList;
+    public void setNumbers(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 }

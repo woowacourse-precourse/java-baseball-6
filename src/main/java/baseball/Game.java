@@ -46,8 +46,8 @@ public class Game {
 
     private void play() {
         while (true) {
-            setUserNumberList();
-            setOpponentNumberList();
+            setUserNumbers();
+            setOpponentNumbers();
             score.setScore(user, opponent);
 
             int ballCounter = score.getBallCounter();
@@ -61,38 +61,38 @@ public class Game {
         }
     }
 
-    // set opponent's numberList
-    private void setOpponentNumberList(){
-        List<Integer> numberList = opponent.getNumberList();
-        while (numberList.size() < 3) {
+    // set opponent's numbers
+    private void setOpponentNumbers(){
+        List<Integer> numbers = opponent.getNumbers();
+        while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             // avoid duplicates
-            if (!numberList.contains(randomNumber)) {
-                numberList.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
-        opponent.setNumberList(numberList);
+        opponent.setNumbers(numbers);
     }
 
     // set user's numberList
-    private void setUserNumberList(){
-        List<Integer> numberList = user.getNumberList();
+    private void setUserNumbers(){
+        List<Integer> numbers = user.getNumbers();
         stringPrinter.printPlayerInput();
         int inputNumber = inputReader.getInput();
 
         // validate 3-digit
         inputValidator.validateThreeDigit(inputNumber);
 
-        numberList.clear();
+        numbers.clear();
         while (inputNumber > 0) {
             int extractedNumber = inputNumber % 10; // extract number from 1's up to 100's
-            numberList.add(extractedNumber);
+            numbers.add(extractedNumber);
             inputNumber /= 10; // remove last digit
         }
 
         // reverse arrange list for correct order (above logic adds 1s digit first)
-        Collections.reverse(numberList);
-        user.setNumberList(numberList);
+        Collections.reverse(numbers);
+        user.setNumbers(numbers);
     }
 
     private boolean isOver(){
