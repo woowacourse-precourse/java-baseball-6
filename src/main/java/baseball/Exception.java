@@ -9,11 +9,11 @@ import java.util.Set;
 public class Exception {
 
     public static void verifyException(List<Integer> input){
-        duplicate_Num(input);
+        duplicateNum(input);
         invalidInput(input);
     }
 
-    public static void duplicate_Num(List<Integer> input) {
+    public static void duplicateNum(List<Integer> input) {
         Set<Integer> set = new HashSet<>();
 
         for (Integer item : input) {

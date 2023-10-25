@@ -15,7 +15,7 @@ public class BaseballTest {
     @Test
     void 같은_숫자_넣었을_때_예외처리() {
         List<Integer> duplicateList = Arrays.asList(1, 2, 2);
-        assertThrows(IllegalStateException.class, () -> Exception.duplicate_Num(duplicateList));
+        assertThrows(IllegalStateException.class, () -> Exception.duplicateNum(duplicateList));
     }
 
     @Test

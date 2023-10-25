@@ -28,7 +28,7 @@ public class BaseballController {
         Message.reStart();
         int game = Integer.parseInt(Console.readLine());
         if (game == GameNumber.GAME_START) {
-            List<Integer> computerNumber = GameNumber.RandomNumberGenerator();
+            List<Integer> computerNumber = GameNumber.randomNumberGenerator();
             playGame(computerNumber);
         } else if (game == GameNumber.GAME_END) {
             return;

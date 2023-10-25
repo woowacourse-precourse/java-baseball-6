@@ -12,7 +12,7 @@ public class GameNumber {
     public static final int GAME_START = 1;
     public static final int GAME_END = 2;
 
-    public static List<Integer> RandomNumberGenerator() {
+    public static List<Integer> randomNumberGenerator() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
