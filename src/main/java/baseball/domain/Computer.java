@@ -32,4 +32,10 @@ public class Computer {
         }
         return new ArrayList<>(ballNumbers);
     }
+
+    // 테스트 에서만 사용하는 set (set을 없애기 위한 방법을 찾는중)
+    public void setBaseballs(Baseballs mockBaseballs) {
+        this.baseballs = mockBaseballs;
+    }
+
 }

@@ -25,4 +25,9 @@ public class Baseballs {
     public Integer getBaseball(int index) {
         return baseballs.get(index);
     }
+
+    // 테스트 용 매서드
+    public int size() {
+        return baseballs.size();
+    }
 }
