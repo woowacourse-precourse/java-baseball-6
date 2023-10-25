@@ -68,7 +68,7 @@
           * 게임을 진행한다.
         * private String fowardText(String text)
             * game에게 텍스트를 받아서 gameMarchine으로 넘긴다.
-        * private String askForInput(String case)
+        * private String getTextFromMarchine(String case)
             * 입력을 gameMarchine에게 요구하여 받아온다.
         * private List\<Integer> generateGameNumber()
             * 컴퓨터가 랜덤 숫자 3개를 골라서 리턴하는 메소드

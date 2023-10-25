@@ -14,7 +14,7 @@ public class NumberBaseballGameImpl implements Game {
 
     @Override
     public void runGame() {
-        forwardOutputToMarchine(GameOutputText.STARTING_GAME);
+        giveOutputToMarchine(GameOutputText.STARTING_GAME);
         do {
             runGameLogic();
         } while (askForReGame());
@@ -29,23 +29,23 @@ public class NumberBaseballGameImpl implements Game {
         gameNumList = generateComputerNumber();
 
         do {
-            forwardOutputToMarchine(GameOutputText.ASKING_USER_INPUT);
-            userNumber = askForInput();
+            giveOutputToMarchine(GameOutputText.ASKING_USER_INPUT);
+            userNumber = getTextFromMarchine();
             HandleException.exceptionHandlingForUserNumber(userNumber);
             List<Integer> userNumList = stringToList(userNumber);
-            resultArray = compare(userNumList, gameNumList);
+            resultArray = compareComputerWithUser(userNumList, gameNumList);
             forwardResultToMarchine(resultArray);
         } while (!checkResult(resultArray));
     }
 
     @Override
-    public void forwardOutputToMarchine(String text) {
+    public void giveOutputToMarchine(String text) {
         GameMachineImpl.printText(text);
     }
 
     @Override
-    public String askForInput() {
-        String input = GameMachineImpl.getInput();
+    public String getTextFromMarchine() {
+        String input = GameMachineImpl.getTextFromUser();
         return input;
     }
 
@@ -61,7 +61,7 @@ public class NumberBaseballGameImpl implements Game {
         return computerNumList;
     }
 
-    public static int[] compare(List<Integer> computerNumList, List<Integer> userNumList) {
+    public static int[] compareComputerWithUser(List<Integer> computerNumList, List<Integer> userNumList) {
         //변수 선언
         // resultArray의 인덱스 0은 stikeNum을 위한 자리, 인덱스 1은 ballNum을 위한 자리이다.
         int[] resultArray;
@@ -119,13 +119,13 @@ public class NumberBaseballGameImpl implements Game {
         if (strikeNum == 0 && ballNum == 0) {
             resultString = GameOutputText.NOTHING + "\n";
         }
-        forwardOutputToMarchine(resultString);
+        giveOutputToMarchine(resultString);
     }
 
     private boolean checkResult(int[] resultArray) {
         //스트라이크 개수가 3개면 true리턴 아니면 false 리턴
         if (resultArray[0] == 3) {
-            forwardOutputToMarchine(GameOutputText.ENDING);
+            giveOutputToMarchine(GameOutputText.ENDING);
             return true;
         } else {
             return false;
@@ -133,8 +133,8 @@ public class NumberBaseballGameImpl implements Game {
     }
 
     public boolean askForReGame() {
-        forwardOutputToMarchine(GameOutputText.ASKING_REGAME);
-        String userInput = askForInput();
+        giveOutputToMarchine(GameOutputText.ASKING_REGAME);
+        String userInput = getTextFromMarchine();
         HandleException.exceptionHandlingForUserInput(userInput);
         int checkValue = Integer.parseInt(userInput);
         if (checkValue == 1) {

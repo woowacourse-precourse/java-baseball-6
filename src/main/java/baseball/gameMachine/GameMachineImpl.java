@@ -26,7 +26,7 @@ public class GameMachineImpl implements GameMachine {
         System.out.print(text);
     }
 
-    public static String getInput() {
+    public static String getTextFromUser() {
         String userInput = user.inputUserNumber();
         return userInput;
     }
