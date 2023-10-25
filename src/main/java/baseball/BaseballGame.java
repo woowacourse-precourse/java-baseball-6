@@ -31,6 +31,10 @@ public class BaseballGame {
         this.ball++;
     }
 
+    private void upStrike() {
+        this.strike++;
+    }
+
     public void reStart() {
         resetStrike();
         resetBall();
@@ -61,7 +65,7 @@ public class BaseballGame {
 
         for (int i = 0; i < 3; i++) {
             if (userNum.get(i).equals(target.get(i))) {
-                strike++;
+                upStrike();
                 userNum.set(i, -1);
                 target.set(i, -2);
             }
