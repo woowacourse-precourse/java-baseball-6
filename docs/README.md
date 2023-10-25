@@ -88,7 +88,7 @@ $ cd java-baseball-vina
 
 <br>
 
-## :mag: 아키텍쳐 (추가 예정)
+## :mag: 아키텍쳐
 ### 디렉토리 구조
 ![architecture1](./img/architecture1.PNG)
 
