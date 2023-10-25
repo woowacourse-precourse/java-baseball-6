@@ -25,7 +25,7 @@ public class BaseballComparator {
                 .count();
     }
 
-    public boolean checkThreeStrike() {
+    public boolean isThreeStrike() {
         return strikeCount == GameConstant.MAX_NUM;
     }
 }

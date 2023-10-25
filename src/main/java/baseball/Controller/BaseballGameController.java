@@ -22,7 +22,7 @@ public class BaseballGameController {
             int[] user = new UserNumberPicker().user;
             BaseballComparator round = new BaseballComparator(computer, user);
             OutputView.printGameResult(round.strikeCount, round.ballCount);
-            threeStrike = round.checkThreeStrike();
+            threeStrike = round.isThreeStrike();
         } while (!threeStrike);
         OutputView.printEnd();
     }
