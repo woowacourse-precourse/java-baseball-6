@@ -32,19 +32,13 @@ public class Game<T> {
             BaseballDataCompareResult compareResult = this.computerBaseballData.compare(
                     userBaseballData);
             this.checkStrikeBallCount(compareResult);
-            if (compareResult.strike == this.computerBaseballData.getSize()) {
-                if (checkGameEnd()) {
-                    break;
+            if (this.checkGameOver(compareResult, computerBaseballData)) {
+                if (this.checkGameContinue()) {
+                    continue;
                 }
+                break;
             }
         }
-    }
-
-    private boolean isValidInput(String input) {
-        String regex = "^(?!.*(.).*\\1)[1-9]+$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(input);
-        return matcher.matches();
     }
 
     private void checkStrikeBallCount(BaseballDataCompareResult compareResult) {

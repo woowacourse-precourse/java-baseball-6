@@ -44,8 +44,8 @@ public class BaseballDataBuilderForThreeNumber implements IBaseballDataBuilder<I
     }
 
     @Override
-    public IBaseballData createUserData(String userInput) {
-        String regex = "^[1-9]{3}$";
+    public IBaseballData<Integer> createUserData(String userInput) {
+        String regex = "^(?!\\d*(\\d)\\d*\\1)([1-9]{3})$";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(userInput);
