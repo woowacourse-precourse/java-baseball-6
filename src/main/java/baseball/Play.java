@@ -17,13 +17,23 @@ public class Play {
             List<Integer> player = input.numbers();
             if (player.size() == 0)
                 return;
+            printNumber(player);
             compare(player, another);
 
         }
         Input input = new Input();
         int newgame = input.newGameCheck();
-        if (newgame == 1)
+        if (newgame == 1) {
+            System.out.println(1);
             game();
+        }
+    }
+
+    private void printNumber(List<Integer> input) {
+        for (Integer num : input) {
+            System.out.print(num);
+        }
+        System.out.println();
     }
 
     private void compare(List<Integer> player, List<Integer> answer) {
