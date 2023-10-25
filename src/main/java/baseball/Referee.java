@@ -12,8 +12,8 @@ public class Referee {
     private final StrikeCounter strikeCounter = new StrikeCounter();
 
     public boolean judge(List<Integer> computer, List<Integer> number) {
-        int ballCount = ballCounter.judge(computer, number);
-        int strikeCount = strikeCounter.judge(computer, number);
+        int ballCount = ballCounter.count(computer, number);
+        int strikeCount = strikeCounter.count(computer, number);
         return say(ballCount, strikeCount);
     }
 
