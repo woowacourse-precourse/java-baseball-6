@@ -40,4 +40,10 @@ public class Game {
     public void compareNum(){
         Compare.compareNum(computer.getComputerNum(), user.getUserNum());
     }
+
+    //결과 출력
+    public void printResult(){
+        OutputView.printResult(Compare.getStrike(), Compare.getBall());
+    }
+    
 }
