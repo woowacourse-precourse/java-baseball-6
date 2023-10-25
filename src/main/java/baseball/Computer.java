@@ -33,15 +33,15 @@ public class Computer {
         return new Pair<Integer, Integer>(strike, ball);
     }
 
-    public void printUserGuessJudgementResult(Pair<Integer, Integer> userGuessJudgement) {
-        if (userGuessJudgement.getFirst() == 0 && userGuessJudgement.getSecond() == 0) {
+    public void printUserGuessJudgmentResult(Pair<Integer, Integer> userGuessJudgment) {
+        if (userGuessJudgment.getFirst() == 0 && userGuessJudgment.getSecond() == 0) {
             System.out.printf("낫싱\n");
-        } else if (userGuessJudgement.getFirst() == 0) {
-            System.out.printf("%d볼\n", userGuessJudgement.getSecond());
-        } else if (userGuessJudgement.getSecond() == 0) {
-            System.out.printf("%d스트라이크\n", userGuessJudgement.getFirst());
+        } else if (userGuessJudgment.getFirst() == 0) {
+            System.out.printf("%d볼\n", userGuessJudgment.getSecond());
+        } else if (userGuessJudgment.getSecond() == 0) {
+            System.out.printf("%d스트라이크\n", userGuessJudgment.getFirst());
         } else {
-            System.out.printf("%d볼 %d스트라이크\n", userGuessJudgement.getSecond(), userGuessJudgement.getFirst());
+            System.out.printf("%d볼 %d스트라이크\n", userGuessJudgment.getSecond(), userGuessJudgment.getFirst());
         }
     }
 

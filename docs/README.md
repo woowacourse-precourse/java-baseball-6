@@ -21,6 +21,6 @@
 - 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다.
     - `Computer`의 `GenerateRandomNumbers` 메서드를 활용한다.
 - `User`는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한 결과를 출력한다.
-    - `User`의 `getConsoleInput()`과 `Computer`의 `printUserGuessJudgementResult` 메서드를 활용한다.
+    - `User`의 `getConsoleInput()`과 `Computer`의 `printUserGuessJudgmentResult` 메서드를 활용한다.
 - 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
     - `GameManager`의 `checkGameEnd` 메서드를 활용한다.
