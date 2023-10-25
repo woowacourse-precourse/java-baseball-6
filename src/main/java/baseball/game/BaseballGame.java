@@ -2,11 +2,9 @@ package baseball.game;
 
 import baseball.generator.ComputerNumberGenerator;
 import baseball.generator.ResultGenerator;
-import baseball.input.GuessInputProcessor;
-import baseball.input.converter.InputConverter;
-import baseball.input.ChoiceInputProcessor;
-import baseball.input.validator.UserChoiceValidator;
-import baseball.input.validator.UserGuessValidator;
+import baseball.input.InputProcessor;
+import baseball.input.InputConverter;
+import baseball.input.InputValidator;
 import baseball.view.OutputView;
 
 public class BaseballGame {
@@ -14,12 +12,10 @@ public class BaseballGame {
 
     public BaseballGame () {
         InputConverter inputConverter = new InputConverter();
-        UserGuessValidator userGuessValidator= new UserGuessValidator();
-        UserChoiceValidator userChoiceValidator = new UserChoiceValidator();
+        InputValidator inputValidator = new InputValidator();
 
         gameController  = new GameController.Builder()
-                .withGuessInputProcessor(new GuessInputProcessor(inputConverter, userGuessValidator))
-                .withChoiceInputProcessor(new ChoiceInputProcessor(inputConverter, userChoiceValidator))
+                .withGuessInputProcessor(new InputProcessor(inputConverter, inputValidator))
                 .withComputerNumberGenerator(new ComputerNumberGenerator())
                 .withOutputView(new OutputView())
                 .withResultGenerator(new ResultGenerator())

@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.view.message;
 
 public enum ErrorMessage {
     INVALID_NULL("값을 입력해 주세요."),

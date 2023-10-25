@@ -1,7 +1,7 @@
 package baseball.view;
 
 import static baseball.constant.GameConstant.GAME_DIGIT;
-import static baseball.view.GameMessage.*;
+import static baseball.view.message.GameMessage.*;
 
 public class ResultFormatter {
     public static String formatResult(int strike, int ball){

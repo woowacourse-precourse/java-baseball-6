@@ -1,6 +1,6 @@
 package baseball.module;
 
-import baseball.input.converter.InputConverter;
+import baseball.input.InputConverter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package baseball.input.converter;
+package baseball.input;
 
 import java.util.ArrayList;
 import java.util.List;
