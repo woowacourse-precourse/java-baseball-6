@@ -11,20 +11,37 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class BallTest {
 
-    @DisplayName("1-9사이의 한 자리 숫자가 입력되면 Ball이 생성된다")
+    @DisplayName("1-9사이의 한 자리 문자열이 입력되면 Ball이 생성된다")
     @ParameterizedTest
     @ValueSource(strings = {"1", "5", "9"})
-    void from(String givenValue) {
-        Ball ball = assertDoesNotThrow(() -> Ball.from(givenValue));
+    void from(String stringNumber) {
+        Ball ball = assertDoesNotThrow(() -> Ball.from(stringNumber));
 
-        assertThat(ball.number()).isEqualTo(Integer.parseInt(givenValue));
+        assertThat(ball.number()).isEqualTo(Integer.parseInt(stringNumber));
     }
 
-    @DisplayName("숫자가 아닌 문자나 2자리 이상 숫자, 0이 입력되면 예외가 발생한다")
+    @DisplayName("숫자가 아니거나 1-9 범위 밖의 문자열이 입력되면 예외가 발생한다")
     @ParameterizedTest
-    @ValueSource(strings = {"abc", "1a", "$a", "53", "0", ""})
-    void invalid_from(String givenValue) {
-        assertThatThrownBy(() -> Ball.from(givenValue))
+    @ValueSource(strings = {"abc", "1a", "$a", "53", "0", "-1", "-2", ""})
+    void invalid_from(String stringNumber) {
+        assertThatThrownBy(() -> Ball.from(stringNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1-9사이의 숫자가 입력되면 Ball이 생성된다")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 9})
+    void from(Integer number) {
+        Ball ball = assertDoesNotThrow(() -> Ball.from(number));
+
+        assertThat(ball.number()).isEqualTo(number);
+    }
+
+    @DisplayName("1-9 범위를 벗어나는 숫자가 입력되면 예외가 발생한다")
+    @ParameterizedTest
+    @ValueSource(ints = {53, 0, -1, -2})
+    void invalid_from(Integer number) {
+        assertThatThrownBy(() -> Ball.from(number))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

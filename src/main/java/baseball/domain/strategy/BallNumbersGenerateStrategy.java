@@ -1,8 +1,10 @@
 package baseball.domain.strategy;
 
+import java.util.List;
+
 @FunctionalInterface
 public interface BallNumbersGenerateStrategy {
 
-    String generate(int startInclusive, int endInclusive, int count);
+    List<Integer> generate(int startInclusive, int endInclusive, int count);
 
 }

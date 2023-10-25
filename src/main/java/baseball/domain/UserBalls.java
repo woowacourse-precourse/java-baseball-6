@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -24,6 +25,17 @@ public class UserBalls extends AbstractBalls {
             throw new IllegalArgumentException(
                     VALID_BALL_COUNT + "자리 숫자만 입력될 수 있습니다. 입력 값은 " + numbersLength + "자리입니다.");
         }
+    }
+
+    private static List<Ball> mapToBalls(String rawNumbers) {
+        List<String> numbers = new ArrayList<>();
+        for (char number : rawNumbers.toCharArray()) {
+            numbers.add(String.valueOf(number));
+        }
+
+        return numbers.stream()
+                .map(Ball::from)
+                .toList();
     }
 
     private static void validateBallsNotDuplicated(List<Ball> balls) {

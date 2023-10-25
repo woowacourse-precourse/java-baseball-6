@@ -16,15 +16,25 @@ public class Ball {
         this.number = number;
     }
 
-    public static Ball from(String number) {
-        validateNumber(number);
-
-        return new Ball(Integer.parseInt(number));
+    public static Ball from(String stringNumber) {
+        validateStringNumber(stringNumber);
+        return new Ball(Integer.parseInt(stringNumber));
     }
 
-    private static void validateNumber(String number) {
-        Matcher matcher = VALID_NUMBER_PATTERN.matcher(number);
+    private static void validateStringNumber(String stringNumber) {
+        Matcher matcher = VALID_NUMBER_PATTERN.matcher(stringNumber);
         if (!matcher.matches()) {
+            throw new IllegalArgumentException(stringNumber + "은 유효한 값이 아닙니다.");
+        }
+    }
+
+    public static Ball from(Integer number) {
+        validateNumber(number);
+        return new Ball(number);
+    }
+
+    private static void validateNumber(Integer number) {
+        if (number < MINIMUM_VALID_NUMBER || number > MAXIMUM_VALID_NUMBER) {
             throw new IllegalArgumentException(number + "은 유효한 값이 아닙니다.");
         }
     }

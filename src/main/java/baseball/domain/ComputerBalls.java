@@ -11,9 +11,15 @@ public class ComputerBalls extends AbstractBalls {
     }
 
     public static ComputerBalls from(BallNumbersGenerateStrategy generateStrategy) {
-        String ballNumbers = generateStrategy.generate(Ball.MINIMUM_VALID_NUMBER, Ball.MAXIMUM_VALID_NUMBER,
+        List<Integer> ballNumbers = generateStrategy.generate(Ball.MINIMUM_VALID_NUMBER, Ball.MAXIMUM_VALID_NUMBER,
                 VALID_BALL_COUNT);
         return new ComputerBalls(mapToBalls(ballNumbers));
+    }
+
+    private static List<Ball> mapToBalls(List<Integer> ballNumbers) {
+        return ballNumbers.stream()
+                .map(Ball::from)
+                .toList();
     }
 
     public GuessResult guess(Balls otherBalls) {

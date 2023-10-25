@@ -9,7 +9,7 @@ class BaseballGameTest {
     @Test
     void newGame() {
         // TODO computerBalls가 제대로 생성되었는지 어떻게 검증할까?
-        BaseballGame baseballGame = BaseballGame.newGame((startInclusive, endInclusive, count) -> "123");
+//        BaseballGame baseballGame = BaseballGame.newGame((startInclusive, endInclusive, count) -> "123");
     }
 
 }

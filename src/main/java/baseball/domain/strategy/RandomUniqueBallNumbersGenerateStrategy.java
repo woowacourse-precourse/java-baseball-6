@@ -2,8 +2,8 @@ package baseball.domain.strategy;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RandomUniqueBallNumbersGenerateStrategy implements BallNumbersGenerateStrategy {
 
@@ -15,7 +15,7 @@ public class RandomUniqueBallNumbersGenerateStrategy implements BallNumbersGener
     }
 
     @Override
-    public String generate(int startInclusive, int endInclusive, int count) {
+    public List<Integer> generate(int startInclusive, int endInclusive, int count) {
         List<Integer> randomNumbers = new ArrayList<>(count);
 
         while (randomNumbers.size() < count) {
@@ -23,9 +23,7 @@ public class RandomUniqueBallNumbersGenerateStrategy implements BallNumbersGener
             addIfNotContains(randomNumbers, randomNumber);
         }
 
-        return randomNumbers.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining());
+        return Collections.unmodifiableList(randomNumbers);
     }
 
     private void addIfNotContains(List<Integer> randomNumbers, int randomNumber) {
