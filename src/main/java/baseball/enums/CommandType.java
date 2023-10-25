@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public enum CommandType {
     RETRY("1"),
-    END("0");
+    END("2");
 
     private String code;
 
