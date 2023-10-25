@@ -10,6 +10,7 @@ public class Application {
     private int[] item = new int[2];
     public Application(){
         this.com3Digit();
+        this.user3Digit();
     }
     public static void start(){
         //create an instance for one game
@@ -22,6 +23,15 @@ public class Application {
         for(int i=0; i<this.computer.length; i++){
             //save the random value range of 1-9
             this.computer[i] = Randoms.pickNumberInRange(1, 9);
+        }
+    }
+    public void user3Digit(){
+        System.out.println("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        int i = 0;
+        for (String s : input.split("")){
+            this.user[i] = Integer.parseInt(s);
+            i++;
         }
     }
     public static void main(String[] args) {
