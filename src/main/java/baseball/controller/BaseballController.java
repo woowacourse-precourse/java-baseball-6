@@ -1,11 +1,10 @@
 package baseball.controller;
 
 import baseball.model.GameResult;
-import baseball.service.BaseballNumberGenerator;
 import baseball.service.BaseballService;
+import baseball.util.BaseballNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
 import java.util.List;
 
 public class BaseballController {
@@ -14,7 +13,8 @@ public class BaseballController {
     private final BaseballNumberGenerator baseballNumberGenerator;
     private final BaseballService baseballService;
 
-    public BaseballController(InputView inputView, OutputView outputView, BaseballNumberGenerator baseballNumberGenerator, BaseballService baseballService) {
+    public BaseballController(InputView inputView, OutputView outputView,
+                              BaseballNumberGenerator baseballNumberGenerator, BaseballService baseballService) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.baseballNumberGenerator = baseballNumberGenerator;
