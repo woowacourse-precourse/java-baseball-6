@@ -18,7 +18,7 @@ public class Initializer {
     }
 
     public List<Integer> setCom(){
-
+        comNum.clear();
         while(comNum.size()<3){
             this.comNum.add(Randoms.pickNumberInRange(1,9));
         }
