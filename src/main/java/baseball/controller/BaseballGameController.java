@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.common.contents.GameCommand;
 import baseball.domain.BaseballNumber;
 import baseball.dto.BaseballGameResultDto;
 import baseball.service.BaseballService;
@@ -22,6 +23,10 @@ public class BaseballGameController {
 
     }
 
+    public void decideAnswer(){
+        baseballService.decideAnswer();
+    }
+
     public void greet() {
         outputView.printGreet();
     }
@@ -36,5 +41,15 @@ public class BaseballGameController {
 
         BaseballGameResultDto result = baseballService.judge(new BaseballNumber(numbers));
         outputView.printResult(result);
+    }
+
+    public void end(){
+        outputView.printEnd();
+        String command = inputView.readRestart();
+        baseballService.processRestartMode(GameCommand.from(Integer.parseInt(command)));
+    }
+
+    public boolean isGameEnd(){
+        return baseballService.isGameEnd();
     }
 }

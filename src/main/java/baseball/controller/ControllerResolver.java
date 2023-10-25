@@ -9,10 +9,22 @@ public class ControllerResolver {
 
     public void run() {
         greet();
-        //비교, 결과 추가 예정
+        process();
     }
 
     private void greet() {
         baseballGameController.greet();
+    }
+
+    private void process() {
+        baseballGameController.decideAnswer();
+        while (!baseballGameController.isGameEnd()) {
+            baseballGameController.guess();
+        }
+        baseballGameController.end();
+        boolean selectRestartMode = !baseballGameController.isGameEnd();
+        if (selectRestartMode) {
+            process();
+        }
     }
 }

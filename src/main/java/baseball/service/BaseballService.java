@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.common.contents.GameCommand;
 import baseball.domain.BaseballGame;
 import baseball.domain.BaseballNumber;
 import baseball.domain.RandomNumberGenerator;
@@ -20,5 +21,17 @@ public class BaseballService {
         RandomNumberGenerator randomNumberGenerator = RandomNumberGaneratorRepository.find();
         Referee referee = RefereeRepository.find();
         referee.decideAnswer(randomNumberGenerator.generate());
+    }
+
+    public void processRestartMode(GameCommand command) {
+        BaseballGame baseballGame = BaseballGameRepository.find();
+        if (command.equals(GameCommand.RESTART)) {
+            baseballGame.restart();
+        }
+    }
+
+    public boolean isGameEnd() {
+        BaseballGame baseballGame = BaseballGameRepository.find();
+        return baseballGame.isGameEnd();
     }
 }

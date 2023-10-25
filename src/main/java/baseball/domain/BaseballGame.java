@@ -13,6 +13,14 @@ public class BaseballGame {
         this.gameState = gameState;
     }
 
+    public void restart() {
+        changeMode(GameState.PLAY);
+    }
+
+    public boolean isGameEnd() {
+        return gameState.equals(GameState.END);
+    }
+
     public BaseballGameResultDto judge(BaseballNumber guess, Referee referee) {
         BaseballGameResultDto baseballGameResultDto = referee.judge(guess);
         if (isHitNumber(baseballGameResultDto)) {
