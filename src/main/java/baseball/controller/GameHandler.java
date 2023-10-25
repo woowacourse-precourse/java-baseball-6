@@ -1,4 +1,6 @@
-package baseball;
+package baseball.controller;
+
+import baseball.service.Game;
 
 public class GameHandler {
     private Game game;

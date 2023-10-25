@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.BaseballGame;
+import baseball.service.BaseballGame;
 
 import java.util.*;
 
