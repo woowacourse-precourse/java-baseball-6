@@ -1,5 +1,7 @@
 package baseball.view;
 
+import java.util.HashMap;
+
 public class BaseballGameView {
 
     void displayStartMessage() {
@@ -10,7 +12,7 @@ public class BaseballGameView {
         return null;
     }
 
-    void displayResult(int[] result) {
+    void displayResult(HashMap<String, Integer> result) {
 
     }
 

@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import java.util.HashMap;
+
 public class BaseballGameController {
 
     void playGame() {
@@ -10,7 +12,7 @@ public class BaseballGameController {
         return false;
     }
 
-    int[] computeResult(int[] userNumbers, int[] computerNumbers) {
+    HashMap<String, Integer> computeResult(int[] userNumbers, int[] computerNumbers) {
         return null;
     }
 
