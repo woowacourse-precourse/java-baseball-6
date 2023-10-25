@@ -7,7 +7,6 @@ public class Validator {
     public Validator() {
     }
 
-
     public void verifyNullAndEmpty(String input) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException("null 이거나 빈 문자열은 또는 공백으로 이루어질 수 없습니다.");
@@ -30,11 +29,12 @@ public class Validator {
     }
 
     public void verifyNumberPerUnit(String input) {
-        for (char character : input.toCharArray()) {
-            if (!Character.isDigit(character)) {
-                throw new IllegalArgumentException("숫자 형식이 아닙니다.");
-            }
-        }
+        input.chars()
+                .filter(character -> !Character.isDigit(character))
+                .findAny()
+                .ifPresent((v) -> {
+                    throw new IllegalArgumentException("숫자 형식이 아닌 것이 존재합니다.");
+                });
     }
 
     public void verifyLength(String input, int limit) {
