@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.util.ListUtility;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public class RandomNumberGenerator {
         return Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
     }
 
-    public List<Integer> makeRandomNumbers() {
+    public static List<Integer> makeRandomNumbers() {
         List<Integer> randNumbers = new ArrayList<>();
         do {
             int randNum = makeRandomNumberInRange();
@@ -24,5 +25,10 @@ public class RandomNumberGenerator {
             }
         } while (randNumbers.size() < BallNumber.LENGTH);
         return randNumbers;
+    }
+
+    public static int makeComputerNumber() {
+        List<Integer> randNumbers = makeRandomNumbers();
+        return ListUtility.parseRandomNumbersToInt(randNumbers);
     }
 }
