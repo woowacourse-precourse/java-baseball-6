@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Player {
 
+    private static final int VALID_NUMBER_LENGTH = 3;
+    private static final int INVALID_NUMBER = 0;
     private final List<Integer> numbers;
 
     public Player(List<Integer> numbers) {
@@ -22,20 +24,20 @@ public class Player {
     }
 
     private void validateRange(List<Integer> numbers) {
-        if (numbers.contains(0)) {
+        if (numbers.contains(INVALID_NUMBER)) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateDuplication(List<Integer> numbers) {
         long count = numbers.stream().distinct().count();
-        if (count != 3) {
+        if (count != VALID_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() > 3) {
+        if (numbers.size() > VALID_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
