@@ -84,6 +84,16 @@ public class Application {
         }
     }
 
+    public static boolean isOneOrTwo(String userInputStartOrEnd) {
+        int userInputNumber = userInputStartOrEnd.charAt(0) - '0';
+
+        if ((userInputNumber == 1) || (userInputNumber == 2)) {
+            return true;
+        } else {
+            throw new IllegalArgumentException("입력이 1 또는 2가 아닌 잘못된 입력입니다.");
+        }
+    }
+
     public static boolean isRightLength(String userInput, int inputLength) {
         if (userInput.length() == inputLength) {
             return true;
