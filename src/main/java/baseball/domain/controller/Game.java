@@ -35,6 +35,8 @@ public class Game {
             GameController gameController = new GameController(computerBalls);
 
             playBaseball(gameController);
+
+            isProgress = gameController.restartGame(new UserInputDto(InputData.inputIsGameRestart()));
         }
     }
 
