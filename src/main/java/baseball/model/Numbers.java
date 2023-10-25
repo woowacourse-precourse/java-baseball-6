@@ -2,7 +2,6 @@ package baseball.model;
 
 import baseball.validator.Validator;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,11 +17,15 @@ public class Numbers {
         numbers = new ArrayList<>();
 
         while (numbers.size() < NUMBERS_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            addRandomNumber();
+        }
+    }
 
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
+    private void addRandomNumber() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber);
         }
     }
 
@@ -38,34 +41,31 @@ public class Numbers {
     }
 
     public GameResult compareNumbers(Numbers input) {
-        int strike = countStrike(input);
-        int ball = countBall(input);
+        int strike = 0;
+        int ball = 0;
+
+        for (int num : numbers) {
+            strike += isStrike(input, num);
+            ball += isBall(input, num);
+        }
 
         return new GameResult(strike, ball);
     }
 
-    private int countStrike(Numbers input) {
-        int strike = 0;
-
-        for (int num : numbers) {
-            if (input.indexOf(num) == numbers.indexOf(num)) {
-                strike++;
-            }
+    private int isStrike(Numbers input, int num) {
+        if (input.indexOf(num) == numbers.indexOf(num)) {
+            return 1;
         }
 
-        return strike;
+        return 0;
     }
 
-    private int countBall(Numbers input) {
-        int ball = 0;
-
-        for (int num : numbers) {
-            if (input.indexOf(num) != numbers.indexOf(num) && input.contains(num)) {
-                ball++;
-            }
+    private int isBall(Numbers input, int num) {
+        if (input.indexOf(num) != numbers.indexOf(num) && input.contains(num)) {
+            return 1;
         }
 
-        return ball;
+        return 0;
     }
 
     private int indexOf(int num) {
