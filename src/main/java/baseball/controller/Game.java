@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.util.Compare;
 import baseball.util.Exception;
 import baseball.model.Computer;
 import baseball.model.User;
@@ -35,4 +36,8 @@ public class Game {
         user.convertInput(input); //입력 값 int 형으로 변환
     }
 
+    //user 수와 computer 수 비교
+    public void compareNum(){
+        Compare.compareNum(computer.getComputerNum(), user.getUserNum());
+    }
 }
