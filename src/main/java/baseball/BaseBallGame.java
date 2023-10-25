@@ -61,4 +61,28 @@ public class BaseBallGame {
             }
         }
     }
+
+    private void printResultMessage() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (ballCount > 0 && strikeCount > 0) {
+            stringBuilder.append(ballCount + BALL_MESSAGE + " " + strikeCount + STRIKE_MESSAGE);
+            System.out.println(stringBuilder);
+            return;
+        }
+        if (ballCount > 0 && strikeCount == 0) {
+            stringBuilder.append(ballCount + BALL_MESSAGE);
+            System.out.println(stringBuilder);
+            return;
+        }
+        if (ballCount == 0 && strikeCount > 0) {
+            stringBuilder.append(strikeCount + STRIKE_MESSAGE);
+            System.out.println(stringBuilder);
+            return;
+        }
+        if (ballCount == 0 && strikeCount == 0) {
+            stringBuilder.append(NOTHING_MESSAGE);
+            System.out.println(stringBuilder);
+        }
+    }
 }
