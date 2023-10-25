@@ -11,7 +11,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public String selectReplayMsg() {
+    public String askReplayMsg() {
         System.out.print(SELECT_REPLAY_MSG);
         return Console.readLine();
     }
