@@ -26,8 +26,8 @@ class ComputerTest {
     }
 
     @Test
-    @DisplayName("initScore 메소드 호출 시 strike, ball 값은 0 이어야 한다.")
-    void testInitScore() {
+    @DisplayName("strike, ball 값은 0 이어야 한다.")
+    void initScore_Test() {
         // given
         computer.makeAnswer();
         List<GuessNumber> playerInput = playerGuessAnswer(1, 2, 3);
@@ -58,7 +58,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("낫싱 점수 계산 테스트")
-    void calculateScoreTest_Nothing() throws Exception {
+    void calculateScore_Nothing_Test() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -73,7 +73,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("1스트라이크 점수 계산 테스트")
-    void calculateScoreTest_OneStrike() throws Exception {
+    void calculateScore_OneStrike_Test() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -88,7 +88,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("2스트라이크 점수 계산 테스트")
-    void calculateScoreTest_TwoStrike() throws Exception {
+    void calculateScore_TwoStrike_Test() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -103,7 +103,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("3스트라이크 점수 계산 테스트")
-    void calculateScoreTest_ThreeStrike() throws Exception {
+    void calculateScore_ThreeStrike_Test() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -118,7 +118,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("1볼 점수 계산 테스트")
-    void calculateScoreTest_OneBall() throws Exception {
+    void calculateScore_OneBall_Test() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -133,7 +133,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("2볼 점수 계산 테스트")
-    void calculateScoreTest_TwoBall() throws Exception {
+    void calculateScore_TwoBall_Test() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -148,7 +148,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("3볼 점수 계산 테스트")
-    void calculateScoreTest_ThreeBall() throws Exception {
+    void calculateScore_ThreeBall_Test() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -163,7 +163,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("1볼 1스트라이크 점수 계산 테스트")
-    void calculateScoreTest_OneBall_OneStrike() throws Exception {
+    void calculateScore_OneBall_OneStrike_Test() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -178,7 +178,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("2볼 1스트라이크 점수 계산 테스트")
-    void calculateScoreTest_TwoBall_OneStrike() throws Exception {
+    void calculateScore_TwoBall_OneStrike_Test() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));
 
@@ -192,7 +192,7 @@ class ComputerTest {
     }
 
     @Test
-    @DisplayName("3 스트라이크인 경우 isAllStrike()는 true를 리턴해야 한다.")
+    @DisplayName("3 스트라이크인 경우 true를 반환해야 한다.")
     void isAllStrikeTest() throws Exception {
         // given
         computerMakeAnswer(List.of(1, 2, 3));

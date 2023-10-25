@@ -27,7 +27,7 @@ class PlayerTest {
     }
 
     @Test
-    @DisplayName("플레이어가 입력한 숫자게임의 값은 GuessNumbers에 저장되어야 한다.")
+    @DisplayName("플레이어가 입력한 숫자게임의 값은 GuessNumbers 필드에 저장된다.")
     void getGuessNumbers_Test() throws Exception {
         // given
         List<GuessNumber> playerInput = List.of(new GuessNumber(1), new GuessNumber(2), new GuessNumber(3));
@@ -41,7 +41,7 @@ class PlayerTest {
     }
 
     @Test
-    @DisplayName("재시작/종료여부에 대한 입력값이 1인 경우 게임을 계속 진행한다.")
+    @DisplayName("재시작/종료여부에 대한 입력값이 1인 경우 true를 반환한다.")
     void gameState_RESTART_Test() throws Exception {
         // when
         setGameState(RESTART);
@@ -51,7 +51,7 @@ class PlayerTest {
     }
 
     @Test
-    @DisplayName("재시작/종료여부에 대한 입력값이 2인 경우 게임을 종료한다.")
+    @DisplayName("재시작/종료여부에 대한 입력값이 2인 경우 false를 반환한다.")
     void gameState_EXIT_Test() throws Exception {
         // when
         setGameState(EXIT);

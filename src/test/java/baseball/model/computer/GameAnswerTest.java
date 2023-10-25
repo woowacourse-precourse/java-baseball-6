@@ -22,7 +22,7 @@ class GameAnswerTest {
     }
 
     @Test
-    @DisplayName("컴퓨터는 중복없는 숫자 3개를 생성한다.")
+    @DisplayName("컴퓨터는 1에서 9사이의 중복 없는 숫자 3개를 생성한다.")
     void makeAnswer_Test() {
         // when
         gameAnswer.makeAnswer();

@@ -36,7 +36,7 @@ class ScoreTest {
     }
 
     @Test
-    @DisplayName("컴퓨터가 생성한 숫자게임의 정답과 사용자가 입력한 3개의 숫자를 비교해 일치하면 true를 리턴한다.")
+    @DisplayName("컴퓨터가 생성한 숫자게임의 정답과 사용자가 입력한 3개의 숫자를 비교해 일치하면 true를 반환한다.")
     void isAllStrike_true_Test() {
         // given
         List<GuessNumber> playerInput = playerInputThreeNumber(1, 2, 3);
@@ -51,7 +51,7 @@ class ScoreTest {
     }
 
     @Test
-    @DisplayName("컴퓨터가 생성한 숫자게임의 정답과 사용자가 입력한 3개의 숫자를 비교해 일치하지 않으면 false를 리턴한다.")
+    @DisplayName("컴퓨터가 생성한 숫자게임의 정답과 사용자가 입력한 3개의 숫자를 비교해 일치하지 않으면 false를 반환한다.")
     void isAllStrike_false_Test() {
         // given
         List<GuessNumber> playerInput = playerInputThreeNumber(1, 2, 3);
