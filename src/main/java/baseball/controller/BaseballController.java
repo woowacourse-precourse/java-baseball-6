@@ -2,7 +2,7 @@ package baseball.controller;
 
 import static baseball.utils.NumberUtils.getDigits;
 import static baseball.utils.Validator.validateEndInput;
-import static baseball.utils.Validator.validateInput;
+import static baseball.utils.Validator.validateNumberInput;
 
 import baseball.entity.GameResult;
 import baseball.enums.MessageType;
@@ -61,7 +61,7 @@ public class BaseballController {
     public List<Integer> getPlayerNumberInput() {
         baseballView.displayMessage(MessageType.ASK_FOR_NUMBER);
         String input = baseballView.readInput();
-        validateInput(input);
+        validateNumberInput(input);
 
         return getDigits(Integer.parseInt(input));
     }

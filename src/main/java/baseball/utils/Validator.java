@@ -7,7 +7,7 @@ import java.util.Set;
 public class Validator {
     public static final int NUMBER_LENGTH = 3;
 
-    public static void validateInput(String input) {
+    public static void validateNumberInput(String input) {
         validateIsNumber(input);
         validateLength(input);
         validateRange(input);
