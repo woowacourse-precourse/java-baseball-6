@@ -32,3 +32,20 @@
 3) 게임 종료 시, 재시작 여부 확인 후 "1"이면 새 게임 시작
 4) "2"이면 전체 어플리케이션 종료
 
+---
+
+# 전체 패키지 구조
+
+    └── baseball
+        ├── Application
+        ├── io
+        │   ├── InputHandler
+        │   └── OutputHandler
+        ├── model
+        │   ├── CompareResult
+        │   ├── ComputerNumber
+        │   ├── PlayerNumber
+        │   └── RetryOption
+        └── service
+            ├── BaseballGame
+            └── NumberChecker
