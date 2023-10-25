@@ -54,10 +54,12 @@ public class Application {
         List<Integer> player = new ArrayList<>();
 
         String input = Console.readLine();
-        try {
-            if(!checkNumeric(input) || input.length() != 3 || repeatStringCheck(input)) throw new IllegalArgumentException();
-        }catch (IllegalArgumentException e){
-            System.exit(0);
+        if(!checkNumeric(input)){
+            throw new IllegalArgumentException("숫자를 입력해 주세요");
+        }else if(repeatStringCheck(input)){
+            throw new IllegalArgumentException("서로 다른 숫자를 입력해 주세요");
+        }else if(input.length() != 3){
+            throw new IllegalArgumentException("3글자 입력해 주세요");
         }
 
         for (String s : input.split("")){
