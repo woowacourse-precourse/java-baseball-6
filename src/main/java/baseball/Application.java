@@ -8,7 +8,7 @@ public class Application {
 
     public static void main(String[] args) {
         Result result = new Result();
-
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(!result.isGameOver()){
             Computer computer = new Computer(); //객체 생성 동시에 컴퓨터 랜덤 수 생성
