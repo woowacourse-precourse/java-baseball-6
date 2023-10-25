@@ -4,19 +4,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
-public final class Computer {
-    private List<Integer> answer;
+public final class Answer {
+    private List<Integer> numbers;
 
-    public Computer() {
-        this.answer = generateNumbersForBaseball();
+    public Answer() {
+        this.numbers = generateNumbersForBaseball();
     }
 
-    public List<Integer> getAnswer() {
-        return answer;
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     public void resetAnswer() {
-        this.answer = generateNumbersForBaseball();
+        this.numbers = generateNumbersForBaseball();
     }
 
     private List<Integer> generateNumbersForBaseball() {
