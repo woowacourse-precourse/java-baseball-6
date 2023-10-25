@@ -6,7 +6,7 @@ public enum GameState {
     NOTHING("낫싱"),
     END_GAME("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-    private String message;
+    private final String message;
 
     private GameState(String message) {
         this.message = message;
