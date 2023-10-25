@@ -1,5 +1,6 @@
 package baseball.games.numberbaseball.util;
 
+import baseball.games.numberbaseball.enums.PlayerOption;
 import baseball.games.numberbaseball.validation.BaseballValidator;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -26,5 +27,13 @@ public class NumberGenerator {
                 .map(Character::getNumericValue)
                 .boxed()
                 .collect(Collectors.toList());
+    }
+
+    public PlayerOption createValidatedOption(String playerOption) {
+        validator.validateOptionInput(playerOption);
+        if (playerOption.charAt(0) == '1') {
+            return PlayerOption.RESTART;
+        }
+        return PlayerOption.END;
     }
 }
