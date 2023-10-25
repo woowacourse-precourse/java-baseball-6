@@ -47,7 +47,7 @@ RestartNum class의 유효성을 검사해주는 class이다
 
 * boolean isError(String) : 문제가 발생하면 true 문제가 없으면 false를 반환해준다
 
-### Print class 구현
+### Printer class 구현
 
 야구게임에서 스트라이크 볼 낫싱을 판정해 print해주는 class이다
 
