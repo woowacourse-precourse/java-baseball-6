@@ -17,12 +17,12 @@ public class InputManager {
         this.outputManager = new OutputManager();
     }
 
-    public List<Integer> readInput() throws IllegalArgumentException {
+    public List<Integer> readInput() {
         outputManager.printGuessMessage();
         return InputUtils.parseInput(prompt(validator::isValidInput));
     }
 
-    public String readReplayOrStopInput() throws IllegalArgumentException {
+    public String readReplayOrStopInput() {
         outputManager.printReplayOrStopMessage();
         return prompt(validator::isReplayOrStopInputValid);
     }
