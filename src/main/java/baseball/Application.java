@@ -1,12 +1,98 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+
 public class Application {
     public static void main(String[] args) {
+        boolean isGameStart = true;
+        
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        Game game = new Game();
-        game.startGame();
+        while (isGameStart) {
+            int strike = 0;
+            int ball = 0;
 
-        
+            //컴퓨터가 랜덤하게 숫자를 고른다.
+            int[] comNumber = new int[3];
+            for (int i = 0; i < 3; i++) {
+                comNumber[i] = Randoms.pickNumberInRange(1, 9);
+            }
+            System.out.println();
+
+            for (int i = 0; i < 3; i++) {
+                System.out.print(comNumber[i]); 
+            }
+
+            //사용자로부터 수를 입력받는다.
+            while (strike != 3) {
+                strike = 0;
+                ball = 0;
+
+                System.out.println("숫자를 입력해주세요 : ");
+                
+                int[] userNumber = new int[3]; 
+                int k = 0;
+                String input;
+
+                try {
+                    input = Console.readLine(); //사용자 넘버 입력받기
+                    if (input.length() > 3) {
+                        throw new IllegalArgumentException();
+                    }
+                } catch(IllegalArgumentException e) {
+                    System.out.println("3자리의 수를 입력해주세요.");
+                    isGameStart = false;
+                    break;
+                }
+
+                for (String s : input.split("")) {
+                    userNumber[k] = Integer.parseInt(s);
+                    k++;
+                }
+
+                
+                //스트라이크, 볼, 낫싱 판별
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        if (i == j && comNumber[i] == userNumber[j]) {
+                            strike++;
+                        }
+                        else if (i != j && comNumber[i] == userNumber[j]) {
+                            ball++;
+                        }
+                    }
+                }
+
+                if (strike > 0 && ball > 0) {
+                    System.out.println(ball + "볼 " + strike + "스트라이크");
+                }
+                else if (strike > 0 && ball == 0) {
+                    System.out.println(strike + "스트라이크");
+                }
+                else if (strike == 0 && ball > 0) {
+                    System.out.println(ball + "볼");
+                }
+                else {
+                    System.out.println("낫싱");
+                }
+
+                //게임이 끝나면 재시작 할지 물어본다.
+                if (strike == 3) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+                    String replay = Console.readLine();
+                    int replayNum = Integer.parseInt(replay); 
+
+                    if (replayNum == 1) isGameStart = true;
+                    else if (replayNum == 2) isGameStart = false;
+
+                }
+            }
+
+            
+        }
     }
 }
