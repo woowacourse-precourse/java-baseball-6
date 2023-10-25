@@ -34,22 +34,22 @@ public class ClientService {
 	}
 
 	private boolean isWrongInput(String input) {
-		return !(checkDuplication(input) && checkNumberRange(input) && checkDigit(input) && checkInputType(input));
+		return !(isNotDuplication(input) && allowsNumberRange(input) && isDigit(input) && allowsInputType(input));
 	}
 
-	private boolean checkDuplication(String input) {
+	private boolean isNotDuplication(String input) {
 		return input.length() == input.chars().distinct().count();
 	}
 
-	private boolean checkNumberRange(String input) {
+	private boolean allowsNumberRange(String input) {
 		return !input.contains(NOT_ALLOWED_INPUT);
 	}
 
-	private boolean checkDigit(String input) {
+	private boolean isDigit(String input) {
 		return input.length() == CommonNumberType.LENGTH_OF_NUMBERS.getValue();
 	}
 
-	private boolean checkInputType(String input) {
+	private boolean allowsInputType(String input) {
 		return input.chars().allMatch(Character::isDigit);
 	}
 
