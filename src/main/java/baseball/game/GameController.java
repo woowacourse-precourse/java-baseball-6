@@ -10,7 +10,7 @@ public class GameController {
     private int ball = 0;
 
     public GameController() {
-        while (this.answer.size() < 3) {
+        while (this.answer.size() < AnswerLength.ANSWER_LENGTH.getAnswerLength()) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!this.answer.contains(randomNumber)) {
                 this.answer.add(randomNumber);
