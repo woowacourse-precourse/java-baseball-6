@@ -13,13 +13,13 @@ public class view {
     public void startView(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+
     public void endView() {
         System.out.println("게임 종료");
     }
 
     public int initView(){
        try{
-
            System.out.print("숫자를 입력해주세요 : ");
            String initNumber = readLine();
 
@@ -31,7 +31,7 @@ public class view {
 
        }catch (Exception e) {
             e.printStackTrace();
-            throw  new IllegalArgumentException();
+            throw  new IllegalArgumentException("잘못된 입력입니다.");
        }
     }
 
@@ -47,7 +47,7 @@ public class view {
 
         }catch (Exception e) {
             e.printStackTrace();
-            throw  new IllegalArgumentException();
+            throw  new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
 
@@ -60,6 +60,5 @@ public class view {
         }else{
             System.out.println(converter.convertRefereeToScoreTextView(referee));
         }
-
     }
 }

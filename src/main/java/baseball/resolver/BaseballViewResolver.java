@@ -9,22 +9,23 @@ public class BaseballViewResolver {
     view view = new view();
     BaseballConverter converter = new BaseballConverter();
 
-    public void startView(){
+    public void startView() {
         view.startView();
     }
 
-    public void endGame(){
+    public void endGame() {
         view.endView();
     }
 
-    public int[] contactViewAndPlayControl(){
+    public int[] contactViewAndPlayControl() {
         return converter.convertNumberToArray(view.initView());
     }
-    public int contactViewAndResultController(Referee referee){
+
+    public int contactViewAndResultController(Referee referee) {
         view.resultTextView(referee);
-        if(referee.judgment()){
+        if (referee.judgment()) {
             return view.restartView();
         }
-       return 0;
+        return 0;
     }
 }

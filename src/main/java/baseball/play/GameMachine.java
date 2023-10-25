@@ -7,7 +7,7 @@ import baseball.setting.ReadyGame;
 public class GameMachine {
 
     BaseballViewResolver baseballViewResolver = new BaseballViewResolver();
-    private int answer;
+    private int gameResult;
 
     public void play() {
         while (true) {
@@ -16,7 +16,7 @@ public class GameMachine {
             baseballViewResolver.startView();
             BaseballController controller = readyGame.injection();
             engin(controller);
-            if (answer == 2) {
+            if (gameResult == 2) {
                 baseballViewResolver.endGame();
                 break;
             }
@@ -25,13 +25,12 @@ public class GameMachine {
 
     private void engin(BaseballController controller) {
         while (true) {
-            answer = baseballViewResolver.contactViewAndResultController(
+           gameResult = baseballViewResolver.contactViewAndResultController(
                 controller.startBaseBall(
                     baseballViewResolver.contactViewAndPlayControl()
-                )
-            );
+                ));
 
-            if (answer == 2 || answer == 1) {
+            if (gameResult == 2 || gameResult == 1) {
                 break;
             }
         }
