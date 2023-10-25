@@ -2,7 +2,10 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        GamePlayer gamePlayer = new GamePlayer(new GameState(Output.startGame()), new GameNumber());
+        GameStatus gameStatus = new GameStatus(Output.startGame());
+        GameNumber gameNumber = new GameNumber();
+
+        GamePlayer gamePlayer = new GamePlayer(gameStatus, gameNumber);
         gamePlayer.playGame();
     }
 }

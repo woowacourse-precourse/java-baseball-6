@@ -9,32 +9,32 @@ public class Validator {
         }
     }
 
-    public static int validateNumberSuggestion(int numberSuggestion) {
-        if (isNumberSuggestionOutOfRange(numberSuggestion) || isNumberSuggestionOverlap(numberSuggestion)) {
+    public static int validateUserNumber(int userNumber) {
+        if (isUserNumberOutOfRange(userNumber) || isUserNumberOverlap(userNumber)) {
             throw new IllegalArgumentException();
         }
-        return numberSuggestion;
+        return userNumber;
     }
 
-    public static boolean isNumberSuggestionOutOfRange(int numberSuggestion) {
-        return numberSuggestion > 999 || numberSuggestion < 100;
+    private static boolean isUserNumberOutOfRange(int userNumber) {
+        return userNumber > 999 || userNumber < 100;
     }
 
-    public static boolean isNumberSuggestionOverlap(int numberSuggestion) {
-        int tripleDigit = numberSuggestion / 100;
-        int doubleDigit = (numberSuggestion / 10) % 10;
-        int singleDigit = numberSuggestion % 10;
+    private static boolean isUserNumberOverlap(int userNumber) {
+        int tripleDigit = userNumber / 100;
+        int doubleDigit = (userNumber / 10) % 10;
+        int singleDigit = userNumber % 10;
         return (tripleDigit == doubleDigit) || (doubleDigit == singleDigit) || (tripleDigit == singleDigit);
     }
 
-    public static int validateRetryOrEnd(int retryOrEnd) {
-        if (isRetryOrEndMismatch(retryOrEnd)) {
+    public static int validateGameStatusDecision(int gameStatusDecision) {
+        if (isGameStatusDecisionMismatch(gameStatusDecision)) {
             throw new IllegalArgumentException();
         }
-        return retryOrEnd;
+        return gameStatusDecision;
     }
 
-    public static boolean isRetryOrEndMismatch(int retryOrEnd) {
-        return retryOrEnd != 1 && retryOrEnd != 2;
+    private static boolean isGameStatusDecisionMismatch(int gameStatusDecision) {
+        return gameStatusDecision != 1 && gameStatusDecision != 2;
     }
 }

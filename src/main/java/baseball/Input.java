@@ -7,13 +7,13 @@ public class Input {
         return Validator.validateInputData(Console.readLine());
     }
 
-    public static int inputNumberSuggestion() {
+    public static int inputUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-        return Validator.validateNumberSuggestion(inputData());
+        return Validator.validateUserNumber(inputData());
     }
 
-    public static int chooseRetryOrEnd() {
+    public static int inputGameStatusDecision() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Validator.validateRetryOrEnd(inputData());
+        return Validator.validateGameStatusDecision(inputData());
     }
 }

@@ -1,14 +1,14 @@
 package baseball;
 
-import static baseball.GameState.PROGRESS_STATE;
+import static baseball.GameStatus.GAME_PROGRESS_STATUS;
 
 public class Output {
     public static int startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        return PROGRESS_STATE;
+        return GAME_PROGRESS_STATUS;
     }
 
-    public static void notifyGameScore(int ball, int strike) {
+    public static void printRoundScore(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         }
@@ -23,7 +23,7 @@ public class Output {
         }
     }
 
-    public static void notifyGameSuccess() {
+    public static void printGameSuccessMessage() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
