@@ -13,8 +13,7 @@ public class Player {
     private static final int MAX_INPUT = 9;
     private static final int CNT_INPUT = 3;
 
-
-    List<Integer> input(){
+    public List<Integer> input(){
         System.out.print("숫자를 입력해주세요 : ");
         String user = Console.readLine();
         checkType(user);
@@ -24,11 +23,11 @@ public class Player {
         return stringToList(user);
     }
 
-    void checkLength(String user){
+    private void checkLength(String user){
         if(user.length() != CNT_INPUT) throw new IllegalArgumentException(String.format("%d자리 숫자를 입력해주세요", CNT_INPUT));
     }
 
-    void checkMinAndMax(String user){
+    private void checkMinAndMax(String user){
         for(int i = 0; i<user.length(); i++){
             int inputChar = Integer.parseInt(user.substring(i,i+1));
             if(inputChar < MIN_INPUT || inputChar > MAX_INPUT) {
@@ -37,7 +36,7 @@ public class Player {
         }
     }
 
-    void checkDuplication(String user){
+    private void checkDuplication(String user){
         Set<Character> set = new HashSet<>();
         for(char c : user.toCharArray()){
             if(set.contains(c)) throw new IllegalArgumentException("중복된 숫자가 있습니다.");
@@ -45,7 +44,7 @@ public class Player {
         }
     }
 
-    void checkType(String user){
+    private void checkType(String user){
         try{
             Integer.parseInt(user);
         }catch (NumberFormatException e){
@@ -53,7 +52,7 @@ public class Player {
         }
     }
 
-    List<Integer> stringToList(String input){
+    private List<Integer> stringToList(String input){
         List<Integer> list = new ArrayList<>();
         String[] arr = input.split("");
         for(String s : arr) list.add(Integer.parseInt(s));

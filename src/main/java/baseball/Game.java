@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Game {
 
-    void run(){
+    public void run(){
         while(true){
             play();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -16,7 +16,7 @@ public class Game {
         }
     }
 
-    void play(){
+    private void play(){
         Computer computer = new Computer();
         Player player = new Player();
 
