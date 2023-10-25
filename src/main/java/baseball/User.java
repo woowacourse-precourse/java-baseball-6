@@ -1,40 +1,35 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import errorHandle.ErrorHandle;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class User{
-
+public class User {
+    final int userFixLength = 3;
     private List<Integer> user = new ArrayList<>();
 
-    public void setUser() throws IllegalArgumentException{
+    ErrorHandle error = new ErrorHandle();
 
-       int num = Integer.parseInt(Console.readLine());
-        int first = num/100;
-        int second = (num%100)/10;
-        int last  = num %10;
-        num = checkError(num,first,second,last);
-        user.add(first);
-        user.add(second);
-        user.add(last);
+    public void setUser() throws IllegalArgumentException {
+        String userInput = Console.readLine();
+        error.checkLengthInput(userInput);
+        error.checkSameInput(userInput);
+
+        for (int index = 0; index < userFixLength; index++) {
+            user.add(Integer.parseInt(String.valueOf(userInput.charAt(index))));
+        }
 
     }
 
-    public void clearUser(){
-        user.clear();
-    }
-
-    List<Integer> getUser(){
+    List<Integer> getUser() {
         return user;
     }
 
-    public int checkError(int num,int first, int second, int last) throws IllegalArgumentException{
-        if(num<100 || num >1000 || first == second  || second == last || first == last){
-            throw new IllegalArgumentException();
-        }
-        return num;
+    public void clearUser() {
+        user.clear();
     }
+
 
 }
