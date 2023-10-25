@@ -1,6 +1,6 @@
 package baseball.gameProcess;
 
-public class inNotice {
+public class InNotice {
     public static final String inputNumberPhrase = "숫자를 입력해주세요 : ";
 
     public static final String ball = "볼";
