@@ -28,16 +28,20 @@ public class Application {
         while (true) {
             playGame(computer);
 
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int choice = Integer.parseInt(Console.readLine());
+            try {
+                System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int choice = Integer.parseInt(Console.readLine());
 
-            if (choice == 2) {
-                System.out.println("게임을 종료합니다. 감사합니다!");
-                break;
-            } else if (choice == 1) {
-                computer = generateRandomNumbers();
-            } else {
-                System.out.print("올바른 수를 입력하세요.");
+                if (choice == 2) {
+                    System.out.println("게임을 종료합니다. 감사합니다!");
+                    break;
+                } else if (choice == 1) {
+                    computer = generateRandomNumbers();
+                } else {
+                    throw new IllegalArgumentException("올바른 수를 입력하세요.");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("올바른 선택을 입력하세요.");
             }
         }
     }
@@ -66,6 +70,11 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
+
+            // 입력값 길이 확인
+            if (input.length() != 3) {
+                throw new IllegalArgumentException("3자리 숫자를 입력해주세요..");
+            }
 
             try {
                 // 사용자 입력 파싱
