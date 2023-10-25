@@ -30,6 +30,15 @@
       ``` java
       boolean isInteger(String userInput)
       ```
+  - 3자리 수인지 확인
+      ``` java
+      boolean isThreeDigits(String userInput)
+      ```
+  - 음수인지 확인
+      ``` java
+      boolean isNegative(String userInput)
+      ```
+    
 <br></br>
 - 게임 결과 관련 기능들
   - 스트라이크 개수 세기
