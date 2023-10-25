@@ -28,7 +28,9 @@ public class Application {
         // 1. 숫자형식 구현
         // 2. 컴퓨터 랜덤 구현
         // 3. 정답 구현
-        while (true){
+        //에러판단 변수 정의
+        boolean isnoterror=true;
+        while (isnoterror){
             List<Integer> computer=new ArrayList<>();
             while (computer.size()<3){
                 int randomNumber= Randoms.pickNumberInRange(1,9);
@@ -44,6 +46,7 @@ public class Application {
                 //에러 판단 함수
                 isThreeDigitNumbers(input);
             }catch (IllegalArgumentException e){
+                isnoterror=false;
             }
         }
     }
