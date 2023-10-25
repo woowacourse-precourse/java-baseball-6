@@ -7,6 +7,7 @@ public class RandomNumberGenerator {
 
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
+    public static final int RANDOM_NUMBER_SIZE = 3;
     private final RandomService randomService;
 
     public RandomNumberGenerator(RandomService randomService) {
@@ -24,7 +25,7 @@ public class RandomNumberGenerator {
     }
 
     private boolean isSizeNotOver(List<Integer> numbers) {
-        return numbers.size() < 3;
+        return numbers.size() < RANDOM_NUMBER_SIZE;
     }
 
     private void addNumberIfNotDuplicate(List<Integer> numbers) {
