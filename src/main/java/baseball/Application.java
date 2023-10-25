@@ -10,10 +10,10 @@ public class Application {
     public static void main(String[] args) {
 
         boolean play = true;
+        List<Integer> computer = new ArrayList<>();
 
         while (play){
             //컴퓨터 랜덤 숫자 뽑기 및 리스트에 담기
-            List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
                 int randomNum = Randoms.pickNumberInRange(1, 9);
                 if (!computer.contains(randomNum)) {
@@ -34,7 +34,7 @@ public class Application {
                 }
             } catch (IllegalAccessException e){
                 System.out.println("3자리 숫자를 입력해주세요.");
-                play = false;
+                break;
             }
 
             // 3자리 수 리스트에 넣기
@@ -56,6 +56,16 @@ public class Application {
             if(strike == 3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int continued = Integer.parseInt(Console.readLine());
+
+                if (continued == 1){
+                    if (!computer.isEmpty()) {
+                        computer.subList(0, computer.size()).clear();
+                    }
+                }
+                if (continued == 2){
+                    play = false;
+                }
             } else if (strike == 0) {
                 System.out.println(ball + "볼");
             } else if (ball == 0) {
