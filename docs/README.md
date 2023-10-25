@@ -8,7 +8,7 @@
 
     - case 2. 룰렛 숫자 뽑기처럼 1~9 까지의 숫자가 들어있는 리스트에서 원소를 뽑아서 랜덤 순열 만들기
 
-    - ✔️ case 3. 우테코 자체 라이브러리에서 제공하는 Randoms.pickNumberInRange(1, 9) 메소드를 사용하기
+    - case 3. 우테코 자체 라이브러리에서 제공하는 Randoms.pickNumberInRange(1, 9) 메서드 사용하기 ✅
 
 
 2. 사용자 입력을 받는 method
