@@ -18,6 +18,12 @@ public class PredictGamePlay implements GamePlay {
             throw new IllegalArgumentException(errMsg);
         }
 
+        if (inputNumber.charAt(0) == inputNumber.charAt(1) ||
+                inputNumber.charAt(1) == inputNumber.charAt(2) ||
+                inputNumber.charAt(2) == inputNumber.charAt(0)) {
+            throw new IllegalArgumentException(errMsg);
+        }
+
         int nStrike = 0;
         int nBall = 0;
 
