@@ -1,13 +1,12 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BaseBallNumber{
+public class BaseBallNumber {
     private List<Integer> baseballNumber;
     private Map<Integer, Integer> baseballNumberCounterMap = new HashMap<>();
 
@@ -22,7 +21,7 @@ public class BaseBallNumber{
         initBaseballNumberCounterMap();
     }
 
-    private void initBaseballNumberCounterMap(){
+    private void initBaseballNumberCounterMap() {
         for (Integer c : baseballNumber) {
             baseballNumberCounterMap.put(c, baseballNumberCounterMap.getOrDefault(c, 0) + 1);
         }
@@ -52,7 +51,7 @@ public class BaseBallNumber{
         return result;
     }
 
-    public static BaseBallNumber generateRandomNumber(){
+    public static BaseBallNumber generateRandomNumber() {
         List<Integer> cpuNumber = new ArrayList<>();
         while (cpuNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

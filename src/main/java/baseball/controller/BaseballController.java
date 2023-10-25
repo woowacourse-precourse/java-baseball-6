@@ -4,24 +4,22 @@ import baseball.domain.BallAndStrike;
 import baseball.domain.BaseBallNumber;
 import baseball.view.BaseballView;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.HashSet;
 
 
 public class BaseballController {
     // TODO: 유저 입력 검사, 출력
-
     private int numSize;
 
     public BaseballController(int numSize) {
         this.numSize = numSize;
     }
 
-    public void userGameStart(){
+    public void userGameStart() {
         BaseballView.printGameStart();
     }
 
-    public BaseBallNumber requestUserBaseBallNumberInput(){
+    public BaseBallNumber requestUserBaseBallNumberInput() {
         BaseballView.requestUserInput();
 
         BaseBallNumber userNumber = new BaseBallNumber(Console.readLine());
@@ -30,12 +28,10 @@ public class BaseballController {
         return userNumber;
     }
 
-    public String requestUserGameExit(){
+    public String requestUserGameExit() {
         BaseballView.requestGameExit();
         return Console.readLine();
     }
-
-
 
     private void validateCorrectInputNumber(BaseBallNumber baseBallNumber) throws IllegalArgumentException {
         HashSet<Integer> baseballNumberSet = new HashSet<>(baseBallNumber.getBaseballNumber());
@@ -49,10 +45,11 @@ public class BaseballController {
         }
     }
 
-    public void userGuessBallAndStrike(BallAndStrike ballAndStrike){
+    public void userGuessBallAndStrike(BallAndStrike ballAndStrike) {
         BaseballView.printGuessValue(ballAndStrike);
     }
-    public void userGameEnd(){
+
+    public void userGameEnd() {
         BaseballView.printGameEnd();
     }
 }

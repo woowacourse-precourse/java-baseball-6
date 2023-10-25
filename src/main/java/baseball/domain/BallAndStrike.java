@@ -12,7 +12,7 @@ public class BallAndStrike {
         this.strikes = strikes;
     }
 
-    public static BallAndStrike calcBallsAndStrikes(BaseBallNumber inputNumber, BaseBallNumber targetNumber){
+    public static BallAndStrike calcBallsAndStrikes(BaseBallNumber inputNumber, BaseBallNumber targetNumber) {
         Map<Integer, Integer> inputCounterMap = inputNumber.getBaseballNumberCounterMap();
         Map<Integer, Integer> targetCounterMap = targetNumber.getBaseballNumberCounterMap();
 
@@ -24,11 +24,8 @@ public class BallAndStrike {
 
         balls -= strikes;
 
-
         return new BallAndStrike(balls, strikes);
     }
-
-
 
     private static int getStrikes(List<Integer> inputBaseballNumber, List<Integer> targetBaseballNumber) {
         int strikes = 0;
@@ -42,7 +39,8 @@ public class BallAndStrike {
         return strikes;
     }
 
-    private static int getNumberCounterUnion(Map<Integer, Integer> inputCounterMap, Map<Integer, Integer> targetCounterMap) {
+    private static int getNumberCounterUnion(Map<Integer, Integer> inputCounterMap,
+                                             Map<Integer, Integer> targetCounterMap) {
         int balls = 0;
 
         for (Integer key : targetCounterMap.keySet()) {

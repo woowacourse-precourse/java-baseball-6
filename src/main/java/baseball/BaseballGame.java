@@ -10,7 +10,7 @@ public class BaseballGame {
     private final static String GAME_EXIT_CMD = "2";
     private boolean restartFlag = false;
 
-    public void run(int numSize){
+    public void run(int numSize) {
         BaseballController baseballController = new BaseballController(numSize);
         baseballController.userGameStart();
 
@@ -37,8 +37,16 @@ public class BaseballGame {
 
         String command = "";
         command = baseballController.requestUserGameExit();
+        validateCommand(command);
+
         if (command.equals(GAME_EXIT_CMD)) {
             restartFlag = true;
+        }
+    }
+
+    private void validateCommand(String command) {
+        if (!(command.equals(GAME_EXIT_CMD) || command.equals(GAME_RESET_CMD))) {
+            throw new IllegalArgumentException("커맨드를 다시 입력해주세요");
         }
     }
 
