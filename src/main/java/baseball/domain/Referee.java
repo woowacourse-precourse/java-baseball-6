@@ -44,4 +44,11 @@ public class Referee {
             }
         }
     }
+
+    public GameStatus isGameEnd() {
+        if (strike == 3) {
+            return GameStatus.END;
+        }
+        return GameStatus.CONTINUE;
+    }
 }
