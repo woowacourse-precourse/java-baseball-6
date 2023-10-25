@@ -1,6 +1,5 @@
 package baseball.utils;
 
-import baseball.domain.Response;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,20 +43,5 @@ public class Utility {
         Utility.checkIfIsPositiveDigitInteger(input);
         Utility.checkIfIsDifferent(input);
         Utility.checkIfIsValidLength(length, input);
-    }
-
-    public static String convertResponseToResult(Response response) {
-        int strikes = response.getStrikeCount();
-        int balls = response.getBallCount();
-
-        if (strikes == 0 && balls == 0) {
-            return "낫싱\n";
-        } else if (strikes > 0 && balls == 0) {
-            return strikes + "스트라이크\n";
-        } else if (strikes == 0 && balls > 0) {
-            return balls + "볼\n";
-        } else {
-            return balls + "볼 " + strikes + "스트라이크\n";
-        }
     }
 }

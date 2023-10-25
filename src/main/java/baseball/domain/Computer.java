@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.ui.Output;
-import baseball.utils.Utility;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +9,13 @@ public class Computer implements Player {
 
     private final Output output;
     private List<Integer> numbers;
-    private Response response;
 
     public Computer(Output output) {
         this.output = output;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     @Override
@@ -31,36 +33,4 @@ public class Computer implements Player {
         }
         return randomNumbers;
     }
-
-    public boolean respondsTo(User user) {
-        checkResult(user);
-        announceResult();
-
-        return response.isWrongAnswer();
-    }
-
-    private void checkResult(User user) {
-        int strikeCount = 0;
-        int ballCount = 0;
-        int index = 0;
-
-        for (int ball : numbers) {
-            if (user.checkIfIsStrike(ball, index++)) {
-                ++strikeCount;
-            } else if (user.checkIfIsBall(ball)) {
-                ++ballCount;
-            }
-        }
-
-        response = new Response(List.of(strikeCount, ballCount), numbers.size());
-    }
-
-    public int countNumberBalls() {
-        return numbers.size();
-    }
-
-    private void announceResult() {
-        output.print(Utility.convertResponseToResult(response));
-    }
-
 }

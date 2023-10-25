@@ -1,14 +1,16 @@
 package baseball.domain;
 
-import static baseball.utils.Utility.convertStringToBall;
-
 import baseball.ui.Input;
-import java.util.List;
 
 public class User implements Player {
 
     private final Input input;
-    private List<Integer> numbers;
+//    private List<Integer> numbers;
+    private String numbers;
+
+    public String getNumbers() {
+        return numbers;
+    }
 
     public User(Input input) {
         this.input = input;
@@ -19,22 +21,12 @@ public class User implements Player {
         this.numbers = generateInputNumber(NUMBER_BALLS);
     }
 
-    public boolean checkIfIsStrike(int ball, int index) {
-        return numbers.get(index) == ball;
-    }
-
-    public boolean checkIfIsBall(int ball) {
-        return numbers.contains(ball);
-    }
-
     public int countNumberBalls() {
-        return numbers.size();
+        return numbers.length();
     }
 
-    private List<Integer> generateInputNumber(int NUMBER_BALLS) {
-        String input = this.input.scan();
-
-        return convertStringToBall(input, NUMBER_BALLS);
+    private String generateInputNumber(int NUMBER_BALLS) {
+        return this.input.scan();
     }
 
     public Command selectCommand() {

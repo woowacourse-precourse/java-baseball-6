@@ -1,8 +1,9 @@
 package baseball.domain;
 
 import baseball.ui.Input;
-import baseball.ui.Output;
 import baseball.ui.Message;
+import baseball.ui.Output;
+import baseball.utils.Utility;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -42,7 +43,7 @@ public class Game {
     private void play() {
         initPlayer();
         while (true) {
-            if (isUserGuessAnswer()) {
+            if (isAnswer()) {
                 break;
             }
         }
@@ -55,14 +56,21 @@ public class Game {
         computer.generatePlayerNumber(NUMBER_BALLS);
     }
 
-    private boolean isUserGuessAnswer() {
-        guessNumberComputer();
-        return !computer.respondsTo(user);
+    private boolean isAnswer() {
+        BallCounter ballCounter = checkResult();
+        return ballCounter.isAllStrike(NUMBER_BALLS);
     }
 
-    private void guessNumberComputer() {
+    private BallCounter checkResult() {
+        BallCounter ballCounter = new BallCounter(computer.getNumbers(), guessNumber());
+        output.print(ballCounter.toString());
+        return ballCounter;
+    }
+
+    private List<Integer> guessNumber() {
         output.print(Message.REQUEST_INPUT);
         user.generatePlayerNumber(NUMBER_BALLS);
+        return Utility.convertStringToBall(user.getNumbers(), NUMBER_BALLS);
     }
 
     private boolean isRestart() {
