@@ -1,12 +1,20 @@
 package baseball.model;
 
 public class InputNumberValidator {
+    private static final InputNumberValidator singleton = new InputNumberValidator();
     public static final int VALID_DIGIT_LENGTH = 3;
     private static final String HAS_THREE_DIGITS_MESSAGE = "입력값은 3자리여야 합니다.";
     private static final String IS_ONE_TO_NINE_NUMBER_MESSAGE = "1부터 9까지의 자연수만 입력해야 합니다.";
     private static final String ARE_DIGITS_UNIQUE_MESSAGE = "서로 다른 수들만 입력해야 합니다.";
     private static final String IS_ONE_OR_TWO_MESSAGE = "1 또는 2만 입력해야 합니다.";
     public static final String NUMBER_REGEX = "^[1-9]{3}$";
+
+    private InputNumberValidator() {
+    }
+
+    public static InputNumberValidator getInstance() {
+        return singleton;
+    }
 
     public String validateAllInput(String input) {
         hasThreeDigits(input);

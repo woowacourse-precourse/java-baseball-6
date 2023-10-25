@@ -12,7 +12,7 @@ import baseball.model.StrikeBallCounter;
 import baseball.model.StrikeBallCounter.StrikeBallCounterData;
 
 public class BaseballGameService {
-    private final InputNumberValidator validator = new InputNumberValidator();
+    private final InputNumberValidator validator = InputNumberValidator.getInstance();
     private final StrikeBallCounter strikeBallCounter = new StrikeBallCounter();
     private final GameResult gameResult = new GameResult();
     private final GameResultDto gameResultDto = new GameResultDto();
