@@ -13,8 +13,7 @@ public class BaseballGame {
     public void start() {
         showStart();
         Computer computer = new Computer();
-        boolean playAgain = true;
-        while (playAgain) {
+        do {
             List<Integer> computerNumberList = computer.generateComputerNumber();
             CompareNumber compareNumber = new CompareNumber();
             while (!compareNumber.isStrikeThree()) {
@@ -24,8 +23,7 @@ public class BaseballGame {
                 showCount(compareResult);
             }
             isMatchShowFinish(compareResult);
-            playAgain = retry();
-        }
+        } while (retryOrExit());
     }
 
     private static void showStart() {
@@ -40,13 +38,17 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private static boolean retry() throws IllegalArgumentException {
+    private static boolean retryOrExit() {
         showAskRetry();
         int inputNum = Integer.parseInt(Console.readLine());
         if (inputNum == 1) {
             return true;
         }
         return false;
+    }
+
+    private static void inputOptionNumber(int number) {
+
     }
 
     private static List<Integer> getUsetNumberList() {
