@@ -23,12 +23,10 @@ public class GamePlayer {
 
         Map<String,Integer> score = new HashMap<>();
 
-
         Integer strike = (int)Stream.iterate(0,(i)->i+1).
                 limit(userNums.size()).
                 filter(i->userNums.get(i).equals(computerNums.get(i))).
                 count();
-
 
         Integer ball = (int)computerNums.stream().
                 filter(userNums::contains).
@@ -69,6 +67,7 @@ public class GamePlayer {
             }
         }
     }
+
     public void playGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -81,6 +80,7 @@ public class GamePlayer {
 
         }
     }
+
     private void validateInput(Integer select) throws IllegalArgumentException{
         if(select!=1 && select!=2){
             throw new IllegalArgumentException("잘못된 입력입니다.");
