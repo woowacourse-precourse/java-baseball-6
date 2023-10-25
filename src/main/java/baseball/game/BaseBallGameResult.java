@@ -9,7 +9,7 @@ public class BaseBallGameResult {
         this.ball = ball;
     }
 
-    public static BaseBallGameResult create(int strike, int ball){
+    public static BaseBallGameResult create(int strike, int ball) {
         return new BaseBallGameResult(strike, ball);
     }
 

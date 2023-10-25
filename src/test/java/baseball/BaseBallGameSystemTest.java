@@ -1,16 +1,34 @@
 package baseball;
 
 
+import static baseball.util.GameResults.GAME_OVER;
+import static baseball.util.GameResults.ONE_STRIKE;
+import static baseball.util.GameResults.THREE_STRIKE;
+import static baseball.util.GameResults.TWO_BALL;
+import static baseball.util.TestConstants.DUPLICATE_NUMBER_STRING;
+import static baseball.util.TestConstants.EMPTY_STRING;
+import static baseball.util.TestConstants.EXPECTED_TWO_BALL_ONE_STRIKE;
+import static baseball.util.TestConstants.FIRST_SUCCESS_STRING;
+import static baseball.util.TestConstants.FULL_LIST_FIRST_ELEMENT;
+import static baseball.util.TestConstants.FULL_LIST_REMAINING_ELEMENTS;
+import static baseball.util.TestConstants.LONGER_THAN_NUMBER_LENGTH_LIMIT;
+import static baseball.util.TestConstants.NEITHER_RESTART_NOR_TERMINATE;
+import static baseball.util.TestConstants.NOT_NUMBER_STRING;
+import static baseball.util.TestConstants.NULL_STRING;
+import static baseball.util.TestConstants.OUT_OF_RANGE_NUMBER;
+import static baseball.util.TestConstants.RESTART;
+import static baseball.util.TestConstants.SECOND_SUCCESS_STRING;
+import static baseball.util.TestConstants.SHORTER_THAN_NUMBER_LENGTH_LIMIT;
+import static baseball.util.TestConstants.TERMINATE;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static baseball.util.TestConstants.*;
-import static baseball.util.GameResults.*;
-import static org.assertj.core.api.Assertions.*;
 
 public class BaseBallGameSystemTest extends NsTest {
 
@@ -37,7 +55,8 @@ public class BaseBallGameSystemTest extends NsTest {
 
             assertRandomNumberInRangeTest(
                     () -> {
-                        run(FIRST_SUCCESS_STRING, RESTART, EXPECTED_TWO_BALL_ONE_STRIKE, SECOND_SUCCESS_STRING, TERMINATE);
+                        run(FIRST_SUCCESS_STRING, RESTART,
+                                EXPECTED_TWO_BALL_ONE_STRIKE, SECOND_SUCCESS_STRING, TERMINATE);
                         assertThat(output()).contains(TWO_BALL + ONE_STRIKE, THREE_STRIKE, GAME_OVER);
                     },
                     FULL_LIST_FIRST_ELEMENT, FULL_LIST_REMAINING_ELEMENTS
@@ -155,7 +174,7 @@ public class BaseBallGameSystemTest extends NsTest {
             @DisplayName("범위를 벗어난 입력을 하면 예외가 발생한다.")
             void inputOutOfRange() {
                 assertRandomNumberInRangeTest(() ->
-                        assertThatThrownBy(() -> runException(FIRST_SUCCESS_STRING, NEITHER_RESTART_NOR_TERMINATE)),
+                                assertThatThrownBy(() -> runException(FIRST_SUCCESS_STRING, NEITHER_RESTART_NOR_TERMINATE)),
                         FULL_LIST_FIRST_ELEMENT, FULL_LIST_REMAINING_ELEMENTS
 
                 );
