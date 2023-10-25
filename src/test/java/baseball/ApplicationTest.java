@@ -7,6 +7,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -21,12 +22,26 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+    void 예외_테스트1() {
+        assertThrows(IllegalArgumentException.class, () -> Application.checkUserNum("1234"));
     }
+
+    @Test
+    public void 예외_테스트2() {
+        assertThrows(IllegalArgumentException.class, () -> Application.checkUserNum("51오"));
+    }
+
+    @Test
+    public void 예외_테스트3() {
+        assertThrows(IllegalArgumentException.class, () -> Application.checkUserNum("51o"));
+    }
+
+    @Test
+    public void 예외_테스트4() {
+        assertThrows(IllegalArgumentException.class, () -> Application.checkUserNum("664"));
+    }
+
+
 
     @Override
     public void runMain() {

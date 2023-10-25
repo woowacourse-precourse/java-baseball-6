@@ -58,7 +58,7 @@ public class Application {
     }
 
 
-    private static List<Integer> createRandomNum(){ //[4, 3, 5]
+    public static List<Integer> createRandomNum(){ //[4, 3, 5]
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -69,7 +69,7 @@ public class Application {
         return computer;
     }
 
-    private static List<Integer> checkUserNum(String num) throws IllegalArgumentException{
+    public static List<Integer> checkUserNum(String num) throws IllegalArgumentException{
         if(num.length() != 3)
             throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
 
@@ -83,7 +83,7 @@ public class Application {
 
         return userNum;
     }
-    private static int[] matchNum(List<Integer> comNum, List<Integer> userNum) {
+    public static int[] matchNum(List<Integer> comNum, List<Integer> userNum) {
         int[] result = new int[2]; //0: ball, 1:strike
 
         for(int i = 0; i < comNum.size(); i++){
@@ -98,7 +98,7 @@ public class Application {
         return result;
     }
 
-    private static void printResult(int[] result) {
+    public static void printResult(int[] result) {
         int ball = result[0];
         int strike = result[1];
 
