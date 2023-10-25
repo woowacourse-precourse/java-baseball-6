@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballController {
-    public static final OutputView outputView = new OutputView();
-    public static final InputView inputView = new InputView();
-    public static final ComputerNumber computerNumber = new ComputerNumber();
-    public static final PlayerNumber playerNumber = new PlayerNumber();
-    public static final PlayGame playGame = new PlayGame();
+    public static OutputView outputView = new OutputView();
+    public static InputView inputView = new InputView();
+    public static ComputerNumber computerNumber = new ComputerNumber();
+    public static PlayerNumber playerNumber = new PlayerNumber();
+    public static PlayGame playGame = new PlayGame();
     private List<Integer> coumputerNumberList;
     private List<Integer> playerNumberList;
     private int strike = 0;
