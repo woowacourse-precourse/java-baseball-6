@@ -10,8 +10,12 @@ public class ConsoleUtil {
 		return Console.readLine();
 	}
 
-	public static void commonOutput(String output) {
+	public static void commonOutputLine(String output) {
 		System.out.println(output);
+	}
+
+	public static void commonOutput(String output) {
+		System.out.print(output);
 	}
 
 	public static void ballAndStrikeCountOutput(int ball, int strike) {
