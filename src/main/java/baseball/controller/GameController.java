@@ -21,14 +21,23 @@ public class GameController {
 
         while (retryNumber == Number.RESTART) {
 
-            List<Integer> userNumbers = userService.readUserNumber();
-            boolean gameResult = computerService.printResult(computerNumbers, userNumbers);
+            playRound(computerNumbers);
 
+            retryNumber = userService.readRetryNumber();
+            if (retryNumber == Number.RESTART) {
+                computerNumbers = computerService.generateComputerNumbers();
 
-            if (gameResult) {
-                retryNumber = userService.readRetryNumber();
-                if (retryNumber == Number.RESTART) computerNumbers = computerService.generateComputerNumbers();
             }
         }
     }
+
+    private void playRound(List<Integer> computerNumbers){
+        boolean gameResult = false;
+        while(!gameResult){
+            List<Integer> userNumbers = userService.readUserNumber();
+            gameResult = computerService.printResult(computerNumbers, userNumbers);
+        }
+
+    }
+
 }
