@@ -16,13 +16,13 @@ public class User {
         numbers = new ArrayList<>();
     }
 
-    public void enterNumber() {
+    public List<Integer> enterNumber() {
         System.out.println("숫자를 입력해주세요 : ");
         String inputNum = Console.readLine();
         if (checkInvalid(inputNum)) {
             throw new IllegalArgumentException();
         }
-        numbers = convertStrToList(inputNum);
+        return convertStrToList(inputNum);
     }
 
     // String -> List 변환
