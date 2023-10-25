@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.io.PrintStream;
 
 public class CommandLine {
