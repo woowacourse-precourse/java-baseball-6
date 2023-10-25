@@ -9,7 +9,7 @@ public class GameService {
     }
 
     public boolean isThreeStrike(int[] gameResult) {
-        int threeStrike = 3;
+        final int threeStrike = 3;
         return gameResult[0] == threeStrike;
     }
 
@@ -17,7 +17,7 @@ public class GameService {
         int strike = 0;
         int ball = 0;
         int nothing = 0;
-        int[] gameResult = generateGameResult();
+        int[] gameResult = new int[3];
 
         for (int i = 0; i < 3; i++) {
             if (randomNumbers.get(i).equals(playersNumbers[i])) {
@@ -33,9 +33,5 @@ public class GameService {
         }
 
         return gameResult;
-    }
-
-    private int[] generateGameResult() {
-        return new int[3];
     }
 }
