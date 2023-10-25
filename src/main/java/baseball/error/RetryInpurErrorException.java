@@ -16,7 +16,7 @@ public class RetryInpurErrorException implements ErrorException{
     }
 
     private static boolean isNumeric(String checkNumber) {
-        return checkNumber.matches("-?\\d+(\\.\\d+)?");
+        return checkNumber.matches(CHECK_NUMBER_STRING);
     }
 
     private static boolean isNumberOneOrTwo(String checkNumber){
