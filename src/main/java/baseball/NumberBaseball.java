@@ -8,17 +8,12 @@ public class NumberBaseball implements Game {
     private final int ballCount = 3;
     private final BaseballResult  baseballResult = new BaseballResult(ballCount);
 
-    private final int ANSWER_LENGTH = 3;
     private String[] answer;
     private HashSet<String> answerSet;
 
-    private boolean isFinished;
-
     @Override
     public void init() {
-        isFinished = false;
         initializeAnswer();
-        initializeTurnResult();
     }
 
     @Override
@@ -38,8 +33,7 @@ public class NumberBaseball implements Game {
             }
         }
 
-        isFinished = baseballResult.get(BaseballResultType.STRIKE) == ANSWER_LENGTH;
-        return this.gameResultToString();
+        return baseballResult.toString();
     }
 
     @Override
@@ -58,7 +52,7 @@ public class NumberBaseball implements Game {
 
     @Override
     public boolean isFinished() {
-        return isFinished;
+        return baseballResult.strikeCount() == ballCount;
     }
 
     @Override

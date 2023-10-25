@@ -18,19 +18,19 @@ public class GameMaster<T extends Game> {
     public void play() {
         println(game.getStartPrompt());
 
-        boolean isRunningGame = true;
-        while (isRunningGame) {
+        boolean isPlayGame = true;
+        while (isPlayGame) {
             game.init();
 
-            while (!game.isFinished()) {
+            do {
                 print(game.getPlayTurnPrompt());
 
                 String gameOutput = game.playTurn(input());
                 println(gameOutput);
-            }
+            } while (!game.isFinished());
             println(game.getFinishPrompt());
 
-            isRunningGame = isContinueGame();
+            isPlayGame = isContinueGame();
         }
     }
 
