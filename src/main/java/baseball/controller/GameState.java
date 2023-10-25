@@ -40,6 +40,10 @@ public class GameState {
         return this.state == State.PLAYING;
     }
 
+    public boolean isTerminated() {
+        return this.state == State.TERMINATED;
+    }
+
     public State getState() {
         return state;
     }

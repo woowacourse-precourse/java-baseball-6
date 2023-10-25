@@ -7,4 +7,9 @@ public class InputComponentImpl implements InputComponent {
     public String getUserAnswer() {
         return Console.readLine();
     }
+
+    @Override
+    public String getUserResumeChoice() {
+        return Console.readLine();
+    }
 }

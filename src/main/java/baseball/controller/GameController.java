@@ -8,4 +8,8 @@ public interface GameController {
     void start();
 
     Map<String, Integer> checkAnswer(String validUserAnswer);
+
+    boolean isAbleToRestart();
+
+    boolean isAbleToTerminate();
 }

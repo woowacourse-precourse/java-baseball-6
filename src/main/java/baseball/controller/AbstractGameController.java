@@ -5,7 +5,7 @@ import java.util.Map;
 
 public abstract class AbstractGameController implements GameController {
     private final GameState gameState;
-    private Scoring scoring;
+    private final Scoring scoring;
 
     public AbstractGameController(Scoring scoring) {
         this.gameState = new GameState(State.TERMINATED);
@@ -29,6 +29,16 @@ public abstract class AbstractGameController implements GameController {
 
     private static boolean isCorrect(Map<String, Integer> scoreResult) {
         return scoreResult.getOrDefault("스트라이크", 0) == 3;
+    }
+
+    @Override
+    public boolean isAbleToRestart() {
+        return gameState.isTerminated();
+    }
+
+    @Override
+    public boolean isAbleToTerminate() {
+        return gameState.isTerminated();
     }
 
     public GameState getGameState() {

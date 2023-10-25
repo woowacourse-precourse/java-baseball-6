@@ -1,7 +1,6 @@
 package baseball.ui;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import baseball.controller.AbstractGameController;
 import baseball.controller.GameController;
@@ -36,12 +35,11 @@ class GameViewTest {
     public void 게임시작_시작안내문구를_출력한다() {
         AtomicInteger count = new AtomicInteger(0);
         GameController mockGameControllerOnce = getGameController(() -> count.getAndIncrement() < 1);
-        GameView gameView = new GameView(mockGameControllerOnce, new UserInputValidator(), () -> "123",
-                new OutputComponentImpl(), new ResultFormatStringCreatorImpl());
+        GameView gameView = getGameView(mockGameControllerOnce);
 
         gameView.start();
 
-        assertThat(outputStreamCaptor.toString().trim().contains("숫자 야구 게임을 시작합니다."));
+        assertExpectedStringIsContainedInTargetString("숫자 야구 게임을 시작합니다.", outputStreamCaptor.toString().trim());
 
     }
 
@@ -53,7 +51,7 @@ class GameViewTest {
 
         gameView.guessUntilCorrect();
 
-        assertThat(outputStreamCaptor.toString().trim().contains("숫자를 입력해주세요 : "));
+        assertExpectedStringIsContainedInTargetString("숫자를 입력해주세요 : ", outputStreamCaptor.toString().trim());
     }
 
     @Test
@@ -64,7 +62,18 @@ class GameViewTest {
 
         gameView.guessUntilCorrect();
 
-        assertThat(outputStreamCaptor.toString().trim().contains("숫자를 입력해주세요 : 숫자를 입력해주세요 : "));
+        assertExpectedStringIsContainedInTargetString("숫자를 입력해주세요 : 숫자를 입력해주세요 : ",
+                outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    public void 정답_후_재시작() {
+
+    }
+
+    @Test
+    public void 정답_후_종료() {
+
     }
 
     @Test
@@ -74,12 +83,24 @@ class GameViewTest {
 
         gameView.guessUntilCorrect();
 
-        assertEquals("3개의 숫자를 모두 맞히셨습니다! 게임 종료", outputStreamCaptor.toString().trim());
+        assertExpectedStringIsContainedInTargetString("3개의 숫자를 모두 맞히셨습니다! 게임 종료", outputStreamCaptor.toString().trim());
+    }
+
+    private void assertExpectedStringIsContainedInTargetString(String expectedString, String targetString) {
+        assertThat(targetString.contains(expectedString));
     }
 
     private GameView getGameView(GameController gameController) {
-        return new GameView(gameController, new UserInputValidator(), () -> {
-            return "123";
+        return new GameView(gameController, new UserInputValidator(), new InputComponent() {
+            @Override
+            public String getUserAnswer() {
+                return "123";
+            }
+
+            @Override
+            public String getUserResumeChoice() {
+                return "2";
+            }
         }, new OutputComponentImpl(), new ResultFormatStringCreatorImpl());
     }
 

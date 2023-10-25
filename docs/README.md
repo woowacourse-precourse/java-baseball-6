@@ -22,14 +22,14 @@
 
 <img width="907" alt="스크린샷 2023-10-24 오후 1 21 12" src="https://github.com/Mingadinga/2023_Study_CS/assets/53958188/12095419-51ec-4bf7-89f2-6af23c7ab176">
 
-- [ ] GameView : printResumeMenu, inputResume, validateInputResume
-- [ ] GameState : isAbleToTerminate
-- [ ] GameController : terminate
+- [x] GameView : printResumeMenu, inputResume, validateInputResume
+- [x] GameState : isAbleToTerminate
+- [x] GameController : terminate
 
 ## Feat4. 게임 재시작
 
 <img width="901" alt="스크린샷 2023-10-24 오후 1 20 54" src="https://github.com/Mingadinga/2023_Study_CS/assets/53958188/26b7140d-18c9-4936-ae44-404a6c665417">
 
-- [ ] GameState : isAbleToStart
+- [x] GameState : isAbleToStart
 
 
