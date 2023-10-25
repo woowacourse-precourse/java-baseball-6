@@ -11,7 +11,7 @@ public class GameManager {
 
     public static GameManager createGameManager() {
         if (gameManager == null) {
-            return new GameManager();
+            gameManager = new GameManager();
         }
         return gameManager;
     }
