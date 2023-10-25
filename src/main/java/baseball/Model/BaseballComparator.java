@@ -14,13 +14,7 @@ public class BaseballComparator {
     }
 
     private int checkStrike(int[] computer, int[] user) {
-        int strikeCount = 0;
-        for (int i = 0; i < GameConstant.MAX_NUM; i++) {
-            if (user[i] == computer[i]) {
-                strikeCount++;
-            }
-        }
-        return strikeCount;
+        return (int) IntStream.range(0, GameConstant.MAX_NUM).filter(i -> user[i] == computer[i]).count();
     }
 
     private int checkBall(int[] computer, int[] user) {
