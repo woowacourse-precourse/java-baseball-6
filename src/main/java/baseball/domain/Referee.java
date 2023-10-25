@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.response.GameResponse;
 import java.util.List;
 
 public class Referee {
@@ -50,5 +51,9 @@ public class Referee {
             return GameStatus.END;
         }
         return GameStatus.CONTINUE;
+    }
+
+    public GameResponse toResponse() {
+        return new GameResponse(isGameEnd(), strike, ball);
     }
 }
