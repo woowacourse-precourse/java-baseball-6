@@ -35,9 +35,7 @@ public class Application {
         while (true) {
             getPlayNum(player);
 
-            int total = 0;
-            int strike = 0;
-            int ball = 0;
+            int total, strike, ball = 0;
 
             total = getTotal(player, computer);
             strike = getStrike(player, computer);
@@ -95,7 +93,7 @@ public class Application {
 
     private static int getStrike(List<Integer> player, List<Integer> computer) {
         return (int) IntStream.range(0, player.size())
-                .filter(i -> player.get(i) == computer.get(i))
+                .filter(i -> player.get(i).equals(computer.get(i)))
                 .count();
     }
 
