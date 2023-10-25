@@ -1,12 +1,14 @@
 package baseball;
 
 import baseball.domain.Computer;
+import baseball.domain.GameElements;
 import baseball.domain.User;
 import java.util.List;
 
 public class Game {
     Computer computer = new Computer();
     User user = new User();
+    GameElements gameElements = new GameElements();
 
     public void startGame() {
         runGame();
@@ -21,48 +23,41 @@ public class Game {
 
     private void gamingUtilWin(List<Integer> answerNumberList) {
         List<Integer> userNumberList;
-        int strike = 0;
 
-        while (strike < 3) {
+        while (gameElements.getStrike() < 3) {
+            gameElements.resetElements();
             userNumberList = user.getThreeDigitNumberForUser();
-            strike = compareNumbers(answerNumberList, userNumberList);
+            compareNumbers(answerNumberList, userNumberList);
         }
     }
 
-    private int compareNumbers(List<Integer> answerNumberList, List<Integer> userNumberList) {
-        int ball = 0;
-        int strike = 0;
-
+    private void compareNumbers(List<Integer> answerNumberList, List<Integer> userNumberList) {
         for (int oneDigit = 0; oneDigit < answerNumberList.size(); oneDigit++) {
-            checkBallAndStrike(ball, strike, answerNumberList, userNumberList.get(oneDigit));
+            checkBallAndStrike(answerNumberList, answerNumberList.get(oneDigit), userNumberList.get(oneDigit));
         }
 
-        checkResult(ball, strike);
-
-        return strike;
+        checkResult(gameElements);
     }
 
-    private void checkBallAndStrike(int ball, int strike, List<Integer> answerNumberList, int userNumber) {
-        if (answerNumberList.equals(userNumber)) {
-            strike++;
+    private void checkBallAndStrike(List<Integer> answerNumberList, int answerNumber, int userNumber) {
+        if (answerNumber == userNumber) {
+            gameElements.incrementStrike();
         }
 
-        if (answerNumberList.contains(userNumber)) {
-            ball++;
+        if (answerNumberList.contains(userNumber) && answerNumber != userNumber) {
+            gameElements.incrementBall();
         }
-
-        //List 형식으로 ball과 strike를 묶어서 반환
     }
 
-    private void checkResult(int ball, int strike) {
-        if (strike == 0 && ball == 0) {
+    private void checkResult(GameElements gameElements) {
+        if (gameElements.getStrike() == 0 && gameElements.getBall() == 0) {
             View.printNothingMessage();
-        } else if (strike == 0) {
-            View.printBallMessage(ball);
-        } else if (ball == 0) {
-            View.printStrikeMessage(strike);
+        } else if (gameElements.getStrike() == 0) {
+            View.printBallMessage(gameElements.getBall());
+        } else if (gameElements.getBall() == 0) {
+            View.printStrikeMessage(gameElements.getStrike());
         } else {
-            View.printBallAndStrikeMessage(ball, strike);
+            View.printBallAndStrikeMessage(gameElements.getBall(), gameElements.getStrike());
         }
     }
 
@@ -70,6 +65,7 @@ public class Game {
         View.printPlayAgain();
 
         if (user.getNumberForPlayAgain() == 1) {
+            gameElements.resetElements();
             startGame();
         }
     }
