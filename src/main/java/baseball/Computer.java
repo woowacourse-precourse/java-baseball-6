@@ -19,7 +19,7 @@ public class Computer {
     }
 
     private void generateRandomNumbers() {
-        while (randomNumbers.size() < 3) {
+        while (randomNumbers.size() < SIZE_OF_NUMBERS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
