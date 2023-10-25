@@ -1,12 +1,18 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class Computer {
-    int computer_num;
+    int firstNumber;
+    int secondNumber;
+    int thirdNumber;
 
-    public Computer(int computer_num) {
-        this.computer_num = computer_num;
+    public Computer(int firstNumber, int secondNumber, int thirdNumber) {
+        this.firstNumber = firstNumber;
+        this.secondNumber = secondNumber;
+        this.thirdNumber = thirdNumber;
     }
+
+    int createNumber(int firstNumber, int secondNumber, int thirdNumber) {
+        return firstNumber * 100 + secondNumber * 10 + thirdNumber;
+    }
+
 }
