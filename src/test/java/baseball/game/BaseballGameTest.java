@@ -90,4 +90,16 @@ class BaseballGameTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorCode.DUPLICATION_ERROR.message);
     }
+
+    @ValueSource(strings = {"012", "150", "102"})
+    @ParameterizedTest
+    void 숫자_범위를_넘어설_때(String input) {
+        //given, when
+        BaseballGame game = new BaseballGame(List.of(1, 2, 3));
+
+        //then
+        assertThatThrownBy(() -> game.tryUserInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorCode.RANGE_ERROR.message);
+    }
 }

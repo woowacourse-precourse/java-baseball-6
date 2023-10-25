@@ -74,16 +74,17 @@ public class BaseballGame {
     private void valid(String userInput) {
         validateSize(userInput);
         validateDigit(userInput);
+        validateRange(userInput);
         validateDuplication(userInput);
     }
 
-    private static void validateSize(String userInput) {
+    private void validateSize(String userInput) {
         if (userInput.length() != GameConfig.SIZE) {
             throw new IllegalArgumentException(ErrorCode.SIZE_ERROR.message);
         }
     }
 
-    private static void validateDigit(String userInput) {
+    private void validateDigit(String userInput) {
         for (char target : userInput.toCharArray()) {
             if (!Character.isDigit(target)) {
                 throw new IllegalArgumentException(ErrorCode.DIGIT_ERROR.message);
@@ -91,7 +92,17 @@ public class BaseballGame {
         }
     }
 
-    private static void validateDuplication(String userInput) {
+    private void validateRange(String userInput) {
+        String[] arr = userInput.split("");
+        long count = Arrays.stream(arr).map(Integer::valueOf)
+                .filter(n -> GameConfig.START_INCLUSIVE <= n && n <= GameConfig.END_INCLUSIVE)
+                .count();
+        if (count != GameConfig.SIZE) {
+            throw new IllegalArgumentException(ErrorCode.RANGE_ERROR.message);
+        }
+    }
+
+    private void validateDuplication(String userInput) {
         Set<Character> temp = new HashSet<>();
 
         for (char userNumber : userInput.toCharArray()) {
