@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.common.Constants;
 import baseball.game.status.BaseballGameRoundStatus;
 import baseball.player.ComputerPlayer;
 import baseball.player.UserPlayer;
@@ -8,11 +9,11 @@ import baseball.view.OutputView;
 
 public class BaseballGameRound {
 
-    private final ComputerPlayer computerPlayer;
-    private final UserPlayer userPlayer;
+    private ComputerPlayer computerPlayer;
+    private UserPlayer userPlayer;
     private BaseballGameRoundStatus baseballGameRoundStatus;
-    private final InputView inputView;
-    private final OutputView outputView;
+    private InputView inputView;
+    private OutputView outputView;
 
     public BaseballGameRound(ComputerPlayer computerPlayer, UserPlayer userPlayer) {
         this.computerPlayer = computerPlayer;
@@ -25,17 +26,15 @@ public class BaseballGameRound {
     public void start() {
         StrikeBall strikeBall;
 
+        outputView.printBaseballGameStart();
         do {
-            outputView.printBaseballGameStart();
             outputView.printUserNumberInput();
             userPlayer.updateUserNumbers(inputView.nextIntArray());
             strikeBall = computerPlayer.compareTo(userPlayer.getUserNumbers());
-            outputView.printStrikeBallResult(strikeBall);
 
-            if(strikeBall.isStrikeSuccess()) {
-                outputView.printThreeStrikeSuccess();
-                baseballGameRoundStatus = BaseballGameRoundStatus.EXIT;
-            }
-        } while (baseballGameRoundStatus.equals(BaseballGameRoundStatus.EXIT));
+            outputView.println(strikeBall.makeStrikeBallMessage());
+
+            if(strikeBall.isStrikeSuccess()) outputView.printThreeStrikeSuccess();
+        } while (strikeBall.getStrike() < Constants.strikeTarget);
     }
 }

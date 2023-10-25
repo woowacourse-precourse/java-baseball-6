@@ -12,18 +12,22 @@ public class StrikeBall {
     }
 
     public int getStrike() {
-        return this.strike;
+        return strike;
     }
 
-    private boolean isNoting() {
+    public int getBall() {
+        return ball;
+    }
+
+    public boolean isNoting() {
         return this.strike == 0 && this.ball == 0;
     }
 
-    private boolean hasBallCount() {
+    public boolean hasBallCount() {
         return this.ball > 0;
     }
 
-    private boolean hasStrikeCount() {
+    public boolean hasStrikeCount() {
         return this.strike > 0;
     }
 

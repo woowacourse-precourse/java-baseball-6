@@ -2,7 +2,6 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class InputView {
     public String next() {
