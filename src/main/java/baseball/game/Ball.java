@@ -49,7 +49,7 @@ class Ball {
             int guessIdx = guess.indexOf(current + '0');
             if (guessIdx == idx) {
                 strike += 1;
-            } else if (guessIdx > 0) {
+            } else if (guessIdx >= 0) {
                 ball += 1;
             }
         }
