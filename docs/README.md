@@ -27,6 +27,6 @@
 
 ### 3.1.2 주요 메소드
 - **'playGame(): void'**: 게임을 시작하고 사용자 입력을 처리하여 게임 흐름을 관리합니다.
-- **'isValidInput(String userInput): boolean'**: 입력이 유효한지 확인합니다.
+- **'processInput(String userInput, int length_limit): List<Integer>'**: 입력이 유효한지 확인합니다.
 - **'computeResult(List<Integer> userNumbers, List<Integer> computerNumbers): Hashmap<String, Integer>'**: 사용자 입력과 컴퓨터가 선택한 숫자를 비교하여 결과를 계산하고 반환합니다.
 - **'handleGameEnd(): void'**: 게임이 종료되면 재시작 또는 완전 종료 여부를 처리합니다.
