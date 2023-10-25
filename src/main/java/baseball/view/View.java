@@ -4,67 +4,22 @@ import baseball.domain.Computer;
 import baseball.domain.GameResult;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
-
 public class View {
 
     public static String readPlayerNumber() {
         printInputNumberMessage();
         String playerNumber = Console.readLine();
-        checkInputNumber(playerNumber);
+        Computer.validatePlayerNumber(playerNumber);
 
         return playerNumber;
-    }
-
-    private static void checkInputNumber(String playerNumber) {
-        checkIsNumber(playerNumber);
-        checkNumberSize(playerNumber);
-        checkNumberRange(playerNumber);
-        checkDuplicatedNumber(playerNumber);
-    }
-
-    private static void checkIsNumber(String playerNumber) {
-        try {
-            Integer.parseInt(playerNumber);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력이 가능합니다.");
-        }
-    }
-
-    private static void checkNumberSize(String playerNumber) {
-        if (playerNumber.length() != Computer.NUMBER_SIZE) {
-            throw new IllegalArgumentException("반드시 3개의 숫자여야 합니다.");
-        }
-    }
-
-    private static void checkNumberRange(String playerNumber) {
-        if (playerNumber.contains("0")) {
-            throw new IllegalArgumentException("1부터 9까지의 숫자만 입력이 가능합니다.");
-        }
-    }
-
-    private static void checkDuplicatedNumber(String playerNumber) {
-        String[] numbers = playerNumber.split("");
-        long count = Arrays.stream(numbers).distinct().count();
-
-        if (count != Computer.NUMBER_SIZE) {
-            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
-        }
     }
 
     public static String readGameEndCommand() {
         printGameEndMessage();
         String command = Console.readLine();
-
-        checkEndCommandType(command);
+        Computer.validateEndCommandType(command);
 
         return command;
-    }
-
-    private static void checkEndCommandType(String command) {
-        if (!command.equals(Computer.FINISH_COMMAND) && !command.equals(Computer.RESTART_COMMAND)) {
-            throw new IllegalArgumentException("잘못된 종료 커멘드입니다.");
-        }
     }
 
     public static void printGameStartMessage() {
