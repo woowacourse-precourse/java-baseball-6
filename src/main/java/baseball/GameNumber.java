@@ -1,6 +1,7 @@
 package baseball;
 
 public class GameNumber {
+    private static final int NUMBER_LENGTH = 3;
     private final String value;
 
     private GameNumber(String value) {
@@ -27,7 +28,7 @@ public class GameNumber {
     }
 
     private static boolean hasThreeDigits(String input) {
-        return input.length() == 3;
+        return input.length() == NUMBER_LENGTH;
     }
 
     private static boolean hasProperRange(String input) {
@@ -35,7 +36,7 @@ public class GameNumber {
     }
 
     private static boolean hasDistinctDigits(String input) {
-        return input.chars().distinct().count() == 3;
+        return input.chars().distinct().count() == NUMBER_LENGTH;
     }
 
     public GameResult judge(GameNumber guessed) {
@@ -44,7 +45,7 @@ public class GameNumber {
         boolean isCorrectAnswer;
 
         // TODO: for문 리팩토링 구조 고민해보기
-        for (int idx = 0; idx < 3; idx++) {
+        for (int idx = 0; idx < NUMBER_LENGTH; idx++) {
             if (isStrike(guessed, idx)) {
                 strike++;
             } else if (isBall(guessed, idx)) {
@@ -52,7 +53,7 @@ public class GameNumber {
             }
         }
 
-        isCorrectAnswer = (strike == 3);
+        isCorrectAnswer = (strike == NUMBER_LENGTH);
 
         return new GameResult(strike, ball, isCorrectAnswer);
     }
