@@ -11,8 +11,7 @@ public class Application {
 	static ArrayList<Integer> computer = new ArrayList<>();
 	static int ball=0;
 	static int strike=0;
-	static int x=0;
-	static int y=0;
+	static int input=0;
 
 	static String s;
 	
@@ -36,70 +35,55 @@ public class Application {
     	return;
     }
     
-    static void runException(String s) throws IllegalArgumentException
-    {
-    	y=0/1234-Integer.parseInt(s);
+    static void runException(String s) throws IllegalArgumentException {
+        if (s.length() != 3 ) {
+        	throw new IllegalArgumentException();
+        }
     }
     
-    static void player_turn()
-    {
+    
+    static void player_turn() {
+        do {
+            strike = 0;
+            ball = 0;
 
-    	
-    	do{
-    		strike=0;
-    		ball=0;
+            System.out.print("숫자를 입력해 주세요 : ");
+            s = Console.readLine();
 
-    		System.out.print("숫자를 입력해 주세요 : ");   
-			s=Console.readLine();
+            runException(s);
 
-    		try {
-    			runException(s);
-    		}
-    		catch(IllegalArgumentException e)
-    		{
-    			return;
-    		}
-            x=Integer.parseInt(s);
-    		for(int i=2; i>=0; i--) 
-    		{
-    			System.out.println(computer.get(i));
-    			if(computer.contains(x%10))
-    			{
-    				if(computer.get(i)==x%10)
-    				{
-    					strike++;
-    				}
-    				else
-    				{
-    					ball++;
-    				}
-    			}
-    			x=x/10;
-    		}
-    		if(strike==0&&ball==0)
-    			System.out.println("낫싱");
-    		else
-    			System.out.println(ball+"볼 "+strike+"스트라이크");
-    	}while(strike!=3);
-    	System.out.println("3스트라이크");
-    	System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    	System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            input = Integer.parseInt(s);
 
-    	x=Integer.parseInt(Console.readLine());	
-    	if(x==1)
-    	{
-    		computer.clear();
-    		com_turn();
-    	}
-    	else
-    	{
-    		if(x==2)
-    		{
-    			return;
-    		}
-    			
-    	}
+            for (int i = 2; i >= 0; i--) {
+                System.out.println(computer.get(i));
+                if (computer.contains(input % 10)) {
+                    if (computer.get(i) == input % 10) {
+                        strike++;
+                    } else {
+                        ball++;
+                    }
+                }
+                input = input / 10;
+            }
+            if (strike == 0 && ball == 0)
+                System.out.println("낫싱");
+            else
+                System.out.println(ball + "볼 " + strike + "스트라이크");
+        } while (strike != 3);
+
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        input = Integer.parseInt(Console.readLine());
+        if (input == 1) {
+            computer.clear();
+            com_turn();
+        } else if (input == 2) {
+            return;
+        }
     }
+
     
 }
 
