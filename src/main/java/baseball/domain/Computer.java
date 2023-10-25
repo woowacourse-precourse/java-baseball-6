@@ -16,10 +16,10 @@ public class Computer {
     public void initTargets() {
         targets.clear();
         for (int i = 0; i < NUMBER_OF_TARGET; ++i) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-            while (targets.contains(randomNumber)) {
+            int randomNumber;
+            do {
                 randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-            }
+            } while (targets.contains(randomNumber));
             targets.add(randomNumber);
         }
     }
