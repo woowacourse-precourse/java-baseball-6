@@ -20,6 +20,6 @@ public enum GameEndOption {
                 return option;
             }
         }
-        throw new IllegalArgumentException(ErrorCode.INVALID_GAME_CHOICE.getMessage());
+        throw new IllegalArgumentException(ErrorCode.INVALID_GAME_END_OPTION.getMessage());
     }
 }
