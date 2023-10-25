@@ -1,11 +1,13 @@
 package baseball.domain;
 
+import static baseball.utils.ErrorMessage.NUMBERS_DUPLICATED;
 import static baseball.utils.ErrorMessage.NUMBERS_NOT_POSITIVE_INTEGER;
 import static baseball.utils.ErrorMessage.NUMBERS_OUT_OF_RANGE;
 import static baseball.utils.ErrorMessage.NUMBERS_SIZE_IS_INVALID;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Player {
@@ -21,6 +23,7 @@ public class Player {
         validateSize(numberStr);
         validatePositiveInteger(numberStr);
         validateRange(numberStr);
+        validateDuplicatedNumbers(numberStr);
         this.numbers = changeStringToIntegerList(numberStr);
     }
 
@@ -43,6 +46,13 @@ public class Player {
             if (number - '0' < MIN_NUMBER || number - '0' > MAX_NUMBER) {
                 throw new IllegalArgumentException(NUMBERS_OUT_OF_RANGE);
             }
+        }
+    }
+
+    public void validateDuplicatedNumbers(String numberStr) {
+        Set<String> numberSet = Set.copyOf(Arrays.asList(numberStr.split("")));
+        if (numberSet.size() != NUMBER_SIZE) {
+            throw new IllegalArgumentException(NUMBERS_DUPLICATED);
         }
     }
 
