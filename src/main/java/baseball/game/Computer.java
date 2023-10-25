@@ -10,12 +10,10 @@ import java.util.Map;
 public class Computer {
 
     public List<Integer> randomNums;
-    public User user;
 
     public Computer(User user) {
 
         genNumbers();
-        this.user = user;
     }
 
     public void genNumbers() {
@@ -72,24 +70,6 @@ public class Computer {
         }
 
         return false;
-    }
-
-    public boolean gameOver() {
-
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        String gameOverCode = user.getInput();
-
-        if (gameOverCode.equals("1")) {
-            genNumbers();
-        } else if (gameOverCode.equals("2")) {
-            return false;
-        } else {
-            throw new IllegalArgumentException("1이나 2만 입력해주세요");
-        }
-
-        return true;
     }
 
 }
