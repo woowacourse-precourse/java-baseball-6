@@ -6,7 +6,7 @@ public class Validator {
         try {
             result = Integer.parseInt(str);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
+            throwIllegalArgumentException("숫자로 입력받아야 합니다.", e);
         }
         return result;
     }
@@ -16,14 +16,22 @@ public class Validator {
         int divideBy = (int) Math.pow(10, (ciphers - 1));
         int divisionResult = value / divideBy;
         if (divisionResult <= 0 || divisionResult >= 10) {
-            throw new IllegalArgumentException("자릿수가 맞지 않습니다.");
+            throwIllegalArgumentException("자릿수가 맞지 않습니다.");
         }
     }
 
     public static void validateInRange(int value, int from, int to) {
         if (value < from || value > to) {
             String format = String.format("%d에서 %d 숫자만 입력해주셔야 합니다.", from, to);
-            throw new IllegalArgumentException(format);
+            throwIllegalArgumentException(format);
         }
+    }
+
+    private static void throwIllegalArgumentException(String message, Throwable e) {
+        throw new IllegalArgumentException(message, e);
+    }
+
+    private static void throwIllegalArgumentException(String message) {
+        throw new IllegalArgumentException(message);
     }
 }
