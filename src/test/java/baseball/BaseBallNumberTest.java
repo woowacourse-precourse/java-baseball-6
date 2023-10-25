@@ -66,7 +66,7 @@ class BaseBallNumberTest {
     @ParameterizedTest(name = "입력값 = {0} ->  {1} 스트라이크 {2} 볼")
     @MethodSource("InputStringStream")
     @DisplayName("두 BaseBallNumber 간의 strike와 ball에 대한 계산이 제대로 이루어지는지 확인하는 테스트")
-    void calculate_Success(String inputString, int strikeCount, int ballCount) {
+    void compare_Success(String inputString, int strikeCount, int ballCount) {
         // given
         BaseBallNumber computerNumber = BaseBallNumber.generateNumber("123");
         AtomicInteger strike = new AtomicInteger(0);
@@ -75,8 +75,8 @@ class BaseBallNumberTest {
         // when
         BaseBallNumber inputBaseBallNumber = BaseBallNumber.generateNumber(inputString);
 
-        computerNumber.calculate((targetNumber, computerIndex) ->
-                inputBaseBallNumber.calculate((inputNumber, inputIndex) -> {
+        computerNumber.compare((targetNumber, computerIndex) ->
+                inputBaseBallNumber.compare((inputNumber, inputIndex) -> {
                     if(!Objects.equals(targetNumber, inputNumber)) return;
 
                     if(computerIndex.equals(inputIndex)) {
