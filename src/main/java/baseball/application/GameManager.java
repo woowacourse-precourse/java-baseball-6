@@ -6,9 +6,15 @@ import baseball.presentation.UserOutput;
 import java.util.List;
 
 public class GameManager {
-    Generator generator = new Generator();
-    UserInput userInput = new UserInput();
-    UserOutput userOutput = new UserOutput();
+    private final Generator generator;
+    private final UserInput userInput;
+    private final UserOutput userOutput;
+
+    public GameManager(Generator generator, UserInput userInput, UserOutput userOutput) {
+        this.generator = generator;
+        this.userInput = userInput;
+        this.userOutput = userOutput;
+    }
 
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -51,10 +57,5 @@ public class GameManager {
                 run();
             }
         }
-    }
-
-    public static void main(String[] args) {
-        GameManager gameManager = new GameManager();
-        gameManager.run();
     }
 }
