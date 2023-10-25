@@ -23,6 +23,7 @@ public class BaseballGame {
 
     public static void run(){
         BaseballGame baseballGame;
+        System.out.println(START_MESSAGE);
         do{
             baseballGame = new BaseballGame();
             baseballGame.playGameOnce();
