@@ -45,10 +45,10 @@ public class Batter implements BaseballPlayer {
     public Boolean decideToPlayMore(){
         String input = readLine();
         if(input.equals("1")){
-            return false;
+            return true;
         }
         if(input.equals("2")){
-            return true;
+            return false;
         }
         throw new IllegalArgumentException(INVALID_INPUT);
     }
