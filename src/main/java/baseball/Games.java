@@ -28,6 +28,9 @@ public class Games {
             if (set_lst_expected_num.size() != 3) {
                 throw new IllegalArgumentException();
             }
+            if (set_lst_expected_num.contains("0")) {
+                throw new IllegalArgumentException();
+            }
 
             Results results = new Results(random_list, expected_num_split);
             String result_str = results.resultBallStrike();
