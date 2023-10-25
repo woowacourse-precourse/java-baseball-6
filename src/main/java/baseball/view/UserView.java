@@ -25,20 +25,20 @@ public class UserView {
         int ballCount = gameResultDto.getBallCount();
 
         if((strikeCount != 0) && (ballCount != 0)){
-            System.out.print(ballCount + BALL + " " + strikeCount + STRIKE);
+            System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
         }
         else if((strikeCount == 3) && (ballCount == 0)){
-            System.out.print(strikeCount + STRIKE);
-            System.out.print(NUMBER_CORRECT_MESSAGE);
+            System.out.println(strikeCount + STRIKE);
+            System.out.println(NUMBER_CORRECT_MESSAGE);
         }
         else if((strikeCount != 0) && (strikeCount != 3) && (ballCount == 0)){
-            System.out.print(strikeCount + STRIKE);
+            System.out.println(strikeCount + STRIKE);
         }
         else if((strikeCount == 0) && (ballCount != 0)){
-            System.out.print(ballCount + BALL);
+            System.out.println(ballCount + BALL);
         }
         else if((strikeCount == 0) && (ballCount == 0)){
-            System.out.print(NOTHING);
+            System.out.println(NOTHING);
         }
     }
 }
