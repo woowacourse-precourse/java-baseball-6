@@ -6,14 +6,14 @@ public class Game {
     static final int NUMBER = 3;
 
     private static final int RETRY = 1;
-    private static final int EXIT = 1;
+    private static final int EXIT = 2;
 
     Array arr = new Array();
     Hint hint = new Hint();
 
     void startGame(){
         arr.getRandomAnswer();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        //System.out.printf("%d%d%d\n", arr.answer[0], arr.answer[1], arr.answer[2]);
         playGame();
     }
 
@@ -38,8 +38,9 @@ public class Game {
     }
 
     void restartGame() {
-        arr.getRandomAnswer();
-        hint.init();
-        playGame();
+        /*arr.getRandomAnswer();
+        hint.init();*/
+        Game newGame = new Game();
+        newGame.startGame();
     }
 }
