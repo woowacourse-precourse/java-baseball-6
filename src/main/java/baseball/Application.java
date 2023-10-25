@@ -1,5 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -32,6 +35,17 @@ public class Application {
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료"); //숫자 3개 다 맞혔다면 게임 종료
         checkRestart(); //재시작, 종료 여부 확인
+    }
+
+    //컴퓨터의 숫자 세팅하는 함수
+    private static void setComputerNum() {
+        computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
     }
 
     private static void gameStart() {
