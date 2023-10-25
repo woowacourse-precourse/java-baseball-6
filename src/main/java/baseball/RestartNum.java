@@ -3,7 +3,7 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class RestartNum {
-    int restartNum;
+    int number;
 
     public RestartNum() throws IllegalArgumentException {
         String restartStr;
@@ -13,11 +13,10 @@ public class RestartNum {
         if (CheckRestartNum.isError(restartStr)) {
             throw new IllegalArgumentException("RestartNum 입력값 오류.");
         }
-        restartNum = Character.getNumericValue(restartStr.charAt(0));
+        number = Character.getNumericValue(restartStr.charAt(0));
     }
 
     int getRestartNum() {
-        System.out.println("restart num : " + restartNum);
-        return (restartNum);
+        return (number);
     }
 }

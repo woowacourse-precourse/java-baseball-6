@@ -2,18 +2,29 @@ package baseball;
 
 public class CheckBaseballNum {
     static boolean isError(String baseballNum) {
-        return (baseballNum.length() != 3 ||
+        if (isNull(baseballNum)) {
+            return (true);
+        }
+        return (!isCorrectLength(baseballNum) ||
                 isDuplicated(baseballNum) ||
-                isCorrectRange(baseballNum));
+                !isCorrectRange(baseballNum));
+    }
+
+    static boolean isNull(String baseballNum) {
+        return (baseballNum == null);
+    }
+
+    static boolean isCorrectLength(String baseballNum) {
+        return (baseballNum.length() == 3);
     }
 
     static boolean isCorrectRange(String baseballNum) {
         for (int i = 0; i < 3; i++) {
             if (!isDigit(baseballNum.charAt(i))) {
-                return (true);
+                return (false);
             }
         }
-        return (false);
+        return (true);
     }
 
     static boolean isDuplicated(String baseballNum) {

@@ -13,7 +13,7 @@ public class Computer {
         }
         int strike = computerNum.isSamePositionNum(userNum);
         int ball = computerNum.isContainsNum(userNum) - strike;
-        Printer.baseball(strike, ball);
+        Printer.printBaseballCount(strike, ball);
         return (strike == 3);
     }
 }
