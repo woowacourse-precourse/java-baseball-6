@@ -52,6 +52,8 @@ public class Application {
                     }
                     if (choice == 1){
                         Application.game();
+                    } else {
+                        System.out.println("게임 종료");
                     }
                 } catch (NumberFormatException ex4) {
                     ex4.printStackTrace();
@@ -78,7 +80,7 @@ public class Application {
                 } else if (strike == 0){
                     System.out.println((ball - strike) + "볼");
                 } else {
-                    System.out.println(strike + "스트라이크 " + (ball - strike) + "볼");
+                    System.out.println((ball - strike) + "볼 " + strike + "스트라이크");
                 }
 
                 while (strike != 3) {
@@ -115,6 +117,8 @@ public class Application {
                                 }
                                 if (choice == 1) {
                                     Application.game();
+                                } else {
+                                    System.out.println("게임 종료");
                                 }
                             } catch (NumberFormatException ex4) {
                                 ex4.printStackTrace();
@@ -144,7 +148,7 @@ public class Application {
                             } else if (strike == 0){
                                 System.out.println((ball - strike) + "볼");
                             }  else {
-                                System.out.println(strike + "스트라이크 " + (ball - strike) + "볼");
+                                System.out.println((ball - strike) + "볼 " + strike + "스트라이크");
                             }
                         }
                     } catch (NumberFormatException ex6) {
