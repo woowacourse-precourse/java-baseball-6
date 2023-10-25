@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 class Computer {
-
     private static final int BALL_SIZE = 3;
-
     private final List<Integer> balls;
 
     Computer() {

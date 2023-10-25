@@ -14,20 +14,23 @@ public class Game {
     public void start() {
         printer.printStartMessage();
         proceed();
-        printer.printEndMessage();
     }
 
     private void proceed() {
         computer.pickBalls();
-
         while (true) {
             printer.printInputMessage();
             Ball playerBalls = player.pickBalls();
             StrikeBallCount strikeBallCount = computer.compare(playerBalls);
+            printer.printResult(strikeBallCount);
             if (strikeBallCount.strike() == 3) {
                 break;
             }
-            printer.printResult(strikeBallCount);
+        }
+        printer.printEndMessage();
+
+        if (player.isReGame()) {
+            proceed();
         }
     }
 }
