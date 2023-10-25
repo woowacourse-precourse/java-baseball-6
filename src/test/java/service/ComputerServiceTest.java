@@ -1,4 +1,4 @@
-package domain;
+package service;
 
 import baseball.domain.Baseballs;
 import baseball.domain.Computer;
@@ -10,16 +10,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class ComputerTest {
+public class ComputerServiceTest {
     Computer computer = new Computer();
     Player player = new Player();
 
     @Test
     void 컴퓨터_공_초기화_테스트() {
         // given
-        Computer computer = new Computer();
+        ComputerService computerService = new ComputerService(computer, player);
         // when
-        computer.setup();
+        computerService.setup();
         // then
         Baseballs baseballs = computer.getBaseballs();
         Assertions.assertNotNull(baseballs); // baseballs 객체가 null이 아닌지 확인
