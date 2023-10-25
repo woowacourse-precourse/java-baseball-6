@@ -75,7 +75,7 @@ public class Application {
     }
 
     public static void outputBaseball(int strike, int ball) {
-        if ((strike == 3) && (ball == 3)) {
+        if ((strike == 3)) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         } else if ((strike == 0) && (ball == 0)) {
@@ -85,7 +85,6 @@ public class Application {
         } else if ((strike != 0) && (ball == 0)) {
             System.out.println(strike + "스트라이크");
         } else {
-            ball -= strike;
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
@@ -171,6 +170,10 @@ public class Application {
 
             int strike = Application.getStrikeCount(userInputList, result);
             int ball = Application.getBallCount(userInputList, result);
+
+            if ((strike != 0) && (ball != 0)) {
+                ball -= strike;
+            }
 
             outputBaseball(strike, ball);
 
