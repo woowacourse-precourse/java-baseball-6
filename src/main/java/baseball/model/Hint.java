@@ -20,7 +20,7 @@ public class Hint {
     private String checkStrikes() {
         int strikes = countStrikes();
         if (strikes == 0) {
-            return null;
+            return "";
         }
         return strikes + "스트라이크";
     }
@@ -28,7 +28,7 @@ public class Hint {
     private String checkBalls() {
         int balls = countBalls();
         if (balls == 0) {
-            return null;
+            return "";
         }
         return balls + "볼";
     }
@@ -37,11 +37,15 @@ public class Hint {
         String strikeMessage = checkStrikes();
         String ballMessage = checkBalls();
         String hintMessage;
-        if (strikeMessage == null && ballMessage == null) {
+        if (strikeMessage.isEmpty() && ballMessage.isEmpty()) {
             return "낫싱";
         }
-        if (strikeMessage != null) {
-            hintMessage = ballMessage + " " + strikeMessage;
+        if (!strikeMessage.isEmpty()) {
+            if (ballMessage.isEmpty()) {
+                hintMessage = strikeMessage;
+            } else {
+                hintMessage = ballMessage + " " + strikeMessage;
+            }
         } else {
             hintMessage = ballMessage;
         }
