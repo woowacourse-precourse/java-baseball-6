@@ -32,7 +32,7 @@ class GameStateNumberValidatorTest {
     @DisplayName("길이가 2이상인 입력이 들어오면 예외가 발생한다.")
     void isLengthOne_Test() {
         assertThrows(IllegalArgumentException.class, () -> {
-            GameStateNumberValidator.isGameStateNumberValid("123");
+            GameStateNumberValidator.isGameStateNumberValid("12");
         });
     }
 
