@@ -30,7 +30,7 @@ class ResultMapperTest {
     public void testGetResult3() {
         ResultMapper resultMapper = new ResultMapper();
 
-        assertEquals("2스트라이크 1볼", resultMapper.getResult(2, 1));
+        assertEquals("1볼 1스트라이크", resultMapper.getResult(1, 1));
 
     }
 
@@ -39,7 +39,7 @@ class ResultMapperTest {
     public void testGetResult4() {
         ResultMapper resultMapper = new ResultMapper();
 
-        assertEquals("1스트라이크 2볼", resultMapper.getResult(1, 2));
+        assertEquals("2볼 1스트라이크", resultMapper.getResult(1, 2));
 
     }
 

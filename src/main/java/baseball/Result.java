@@ -2,19 +2,19 @@ package baseball;
 
 public class Result {
 
-    private int equalsNumber;
-    private int equalsPosition;
+    private int strike;
+    private int ball;
 
-    public Result(int equalsNumber, int equalsPosition) {
-        this.equalsNumber = equalsNumber;
-        this.equalsPosition = equalsPosition;
+    public Result(int strike, int ball) {
+        this.strike = strike;
+        this.ball = ball;
     }
 
-    public int getEqualsNumber() {
-        return equalsNumber;
+    public int getStrike() {
+        return strike;
     }
 
-    public int getEqualsPosition() {
-        return equalsPosition;
+    public int getBall() {
+        return ball;
     }
 }

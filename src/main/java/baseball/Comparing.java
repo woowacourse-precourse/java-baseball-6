@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Comparing {
-    int equalsNumber = 0;
-    int equalsPosition = 0;
+    int strike = 0;
+    int ball = 0;
     public Result compareNumbers(String readLine, List<Integer> computer) {
         List<Integer> user = new ArrayList<>();
 
@@ -13,7 +13,7 @@ public class Comparing {
 
         compareIndex(computer, user);
 
-        return new Result(equalsNumber, equalsPosition);
+        return new Result(strike, ball);
     }
 
     private static void generateUserNumbers(String readLine, List<Integer> user) {
@@ -23,20 +23,21 @@ public class Comparing {
     }
 
     private void compareIndex(List<Integer> computer, List<Integer> user) {
-        for (int i = 0; i < user.size(); i++) {
-            int userIndex = user.get(i);
-            int computerIndex = computer.get(i);
 
-            countEqualsNumberAndPosition(computer, userIndex, computerIndex);
+        for (int i = 0; i < user.size(); i++) {
+            countResults(computer, user, i);
         }
     }
 
-    private void countEqualsNumberAndPosition(List<Integer> computer, Integer userIndex, Integer computerIndex) {
+    private void countResults(List<Integer> computer, List<Integer> user, int i) {
+        int userIndex = user.get(i);
+        int computerIndex = computer.get(i);
+
         if (userIndex == computerIndex) {
-            equalsPosition++;
+            strike++;
         }
-        if (computer.contains(userIndex)) {
-            equalsNumber++;
+        if (userIndex != computerIndex && computer.contains(userIndex)) {
+            ball++;
         }
     }
 }

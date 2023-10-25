@@ -26,7 +26,7 @@ class ComparingTest {
         Result result = comparing.compareNumbers("123", givenComputer);
 
         //then
-        assertEquals(expect, result.getEqualsPosition());
+        assertEquals(expect, result.getStrike());
     }
 
 
@@ -38,7 +38,7 @@ class ComparingTest {
         Result result = comparing.compareNumbers("231", givenComputer);
 
         //then
-        assertEquals(expect, result.getEqualsNumber());
+        assertEquals(expect, result.getBall());
     }
     @Test
     @DisplayName("3 볼 테스트 엣지 케이스 검토")
@@ -48,7 +48,7 @@ class ComparingTest {
         Result resultThree = comparing.compareNumbers("312", givenComputer);
 
         //then
-        assertEquals(expect, resultThree.getEqualsNumber());
+        assertEquals(expect, resultThree.getBall());
     }
 
 }

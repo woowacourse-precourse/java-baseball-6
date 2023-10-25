@@ -12,17 +12,17 @@ import java.util.List;
 
 public class GameManager {
 
-    private boolean isNewGame = true;
+    private boolean isGameActive = true;
 
-    public boolean isNewGame() {
-        return isNewGame;
+    public boolean isGameActive() {
+        return isGameActive;
     }
 
     public void run() {
         UserInterface.printMessage(Message.START);
 
-        while (isNewGame) {
-            if (isNewGame) {
+        while (isGameActive) {
+            if (isGameActive) {
                 playGame();
             }
         }
@@ -34,13 +34,13 @@ public class GameManager {
         ExceptionHandler.handleExit(response);
 
         if (response.equals(RESTART.getMessage())) {
-            isNewGame = true;
+            isGameActive = true;
             Computer.resetGeneratedComputer();
         }
 
         if (response.equals(COMPLETE.getMessage())) {
             System.out.println(GAME_OVER.getMessage());
-            isNewGame = false;
+            isGameActive = false;
             return;
         }
     }
@@ -65,11 +65,11 @@ public class GameManager {
     private String compareNumbers(String readLine, List<Integer> computer) {
         Comparing comparing = new Comparing();
         Result result = comparing.compareNumbers(readLine, computer);
-        int equalsNumber = result.getEqualsNumber();
-        int equalsPosition = result.getEqualsPosition();
+        int strike = result.getStrike();
+        int ball = result.getBall();
         ResultMapper resultMapper = new ResultMapper();
 
-        return resultMapper.getResult(equalsNumber, equalsPosition);
+        return resultMapper.getResult(strike, ball);
     }
 
     private String getCompareResult() {
@@ -83,6 +83,5 @@ public class GameManager {
         System.out.println(inputResult);
         return inputResult;
     }
-
 }
 
