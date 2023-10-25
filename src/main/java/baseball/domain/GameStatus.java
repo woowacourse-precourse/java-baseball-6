@@ -5,6 +5,8 @@ public enum GameStatus {
     RESTART(1),
     END(2);
 
+    public static final String WRONG_INPUT_OPTION_EX_MESSAGE = "재시작은 1 또는 2를 입력해야 합니다. \n";
+
     private final int status;
 
     GameStatus(int status) {
@@ -21,6 +23,6 @@ public enum GameStatus {
                 return status;
             }
         }
-        return null;
+        throw new IllegalArgumentException(WRONG_INPUT_OPTION_EX_MESSAGE);
     }
 }
