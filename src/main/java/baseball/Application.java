@@ -1,7 +1,20 @@
 package baseball;
 
+import static baseball.GameController.printInputMessage;
+import static baseball.GameController.printStartMessage;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameController gameController = new GameController();
+        boolean retry = true;
+        printStartMessage();
+
+        while (retry) {
+            printInputMessage();
+            gameController.run();
+            Result.printSuccessMessage();
+            Result.printRetryOrExitMessage();
+            retry = gameController.retryOrExit();
+        }
     }
 }
