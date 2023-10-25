@@ -76,7 +76,7 @@ public class BaseballNumber {
 
     private int calculationBallCount(BaseballNumber other, int strikeCount) {
         return (int) numbers.stream()
-                .filter(it -> other.numbers.contains(it))
+                .filter(other.numbers::contains)
                 .count() - strikeCount;
     }
 }
