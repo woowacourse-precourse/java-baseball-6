@@ -2,7 +2,13 @@ package baseball.message;
 
 import baseball.counter.StrikeBallCount;
 
-import static baseball.message.Messages.*;
+import static baseball.message.Messages.STRIKE;
+import static baseball.message.Messages.BALL;
+import static baseball.message.Messages.RESULT_3_STRIKE;
+import static baseball.message.Messages.RESULT_NOTHING;
+import static baseball.message.Messages.GAME_START;
+import static baseball.message.Messages.INPUT_NUMBERS;
+import static baseball.message.Messages.CHOOSE_RESTART;
 
 public class MessagePrinter {
     public static void printGameResultMessage(StrikeBallCount countStrikeAndBall) {
