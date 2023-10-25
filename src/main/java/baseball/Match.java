@@ -17,9 +17,7 @@ public class Match {
 
     public void run() {
         while (true) {
-            RoundResult roundResult = playRound();
-
-            if (roundResult.isStrikeOut()) {
+            if (playRound().isStrikeOut()) {
                 break;
             }
         }

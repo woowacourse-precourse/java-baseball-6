@@ -20,15 +20,31 @@ public class Pitcher {
     public void getPlayerInput() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         Stack<Integer> split = new Stack<>();
-        String inputStr = Console.readLine();
+        String input = Console.readLine();
 
-        if (inputStr.length() > Constant.MAX_NUMBER_SIZE) {
+        if (isOverMaxLength(input)) {
             throw new IllegalArgumentException("최대 길이 " + Constant.MAX_NUMBER_SIZE + "를 넘어가는 입력입니다.");
         }
+        else if (isInValidInput(input)) {
+            throw new IllegalArgumentException("올바른 입력이 아닙니다. 정수를 입력해야합니다.");
+        }
 
-        int inputNumber = Integer.parseInt(inputStr);
-        splitNumbers(split, inputNumber);
+        int number = Integer.parseInt(input);
+        splitNumbers(split, number);
         updateNumbers(split);
+    }
+
+    public boolean isOverMaxLength(String input) {
+        return input.length() > Constant.MAX_NUMBER_SIZE;
+    }
+
+    public boolean isInValidInput(String input) {
+        try {
+            Integer.parseInt(input);
+            return false;
+        } catch (Exception e) {
+            return true;
+        }
     }
 
     public void splitNumbers(Stack<Integer> split, int number) throws IllegalArgumentException {
