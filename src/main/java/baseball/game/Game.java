@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.exception.InvalidInputException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
@@ -47,7 +48,7 @@ public class Game {
         } else if (input.equals("2")) {
 
         } else {
-            throw new IllegalArgumentException("입력 받은 값이 유효하지 않습니다.");
+            throw new InvalidInputException();
         }
     }
 }

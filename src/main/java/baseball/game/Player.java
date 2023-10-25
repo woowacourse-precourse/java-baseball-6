@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.exception.InvalidInputException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
@@ -9,7 +10,7 @@ public class Player {
         String answer = Console.readLine();
 
         if (!isValidNum(answer)) {
-            throw new IllegalArgumentException("입력 받은 숫자가 유효하지 않습니다.");
+            throw new InvalidInputException();
         }
         return answer;
     }
