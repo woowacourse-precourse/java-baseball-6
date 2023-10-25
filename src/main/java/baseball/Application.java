@@ -20,36 +20,19 @@ public class Application {
             Game(answer);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            select = Input();
+            select = Input.In_Sec();
 
         }
 
     }
 
-    public static String Input(){
-
-        String input;
-        input = Console.readLine();
-
-        if(input.length() > 3){
-            throw new IllegalArgumentException("잘못된 입력입니다.");
-        }
-
-        for(int i = 0; i < input.length(); i++){
-            if(input.charAt(i) < '0' || input.charAt(i) > '9'){
-                throw new IllegalArgumentException("잘못된 입력입니다.");
-            }
-        }
-
-        return input;
-    }
 
     public static void Game(String answer){
 
         int success = 0;
 
         while(success != 1){
-            success = Comp(Input(), answer);
+            success = Comp(Input.In_Fir(), answer);
         }
 
     }
