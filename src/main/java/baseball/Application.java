@@ -12,6 +12,7 @@ import static baseball.others.ProgramController.compareDigits;
 import static baseball.others.ProgramController.ifRestart;
 import static baseball.others.ProgramController.resultJudgment;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
@@ -36,6 +37,7 @@ public class Application {
             String restartNumber = playerInputRestartNumber();
             ifGameContinue = ifRestart(restartNumber);
         } while (ifGameContinue);
+        Console.close();
     }
 
     private static void resetSetting() {
