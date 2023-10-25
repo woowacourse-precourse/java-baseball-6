@@ -52,10 +52,7 @@ public class BaseballGame {
     }
 
     public void reStart() {
-        resetStrike();
-        resetBall();
-        resetMessage();
-        onToFalse();
+
         List<Integer> cpuNewInput = new RandomNumber().getRandomNumbers();
         System.out.println("컴퓨터 숫자:" + cpuNewInput);
         System.out.print("숫자를 입력해주세요 : ");
