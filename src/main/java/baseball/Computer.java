@@ -7,13 +7,6 @@ import java.util.List;
 
 public class Computer {
 
-    @Override
-    public String toString() {
-        return "Computer{" +
-                "Number=" + Number +
-                '}';
-    }
-
     private List<Integer> Number = new ArrayList<>(3);
 
     // Constructor Set Random value
@@ -37,7 +30,7 @@ public class Computer {
         }
     }
 
-
+    // Compare Computer & Human
     public BaseballResult compareNumber(List<Integer> Human) {
         int strikeBall = 0;
 
