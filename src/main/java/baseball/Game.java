@@ -25,6 +25,8 @@ public class Game {
       if (guessNumbers.size() != 3) {
         throw new IllegalArgumentException("잘못된 입력입니다.");
       }
+
+      int strikeCount = countStrikes(guessNumbers);
     }
   }
 
@@ -51,5 +53,15 @@ public class Game {
       }
     }
     return guessNumberList;
+  }
+
+  private int countStrikes(List<Integer> guessNumbers) {
+    int strikeCount = 0;
+    for (int i = 0; i < guessNumbers.size(); i++) {
+      if (computerNumbers.get(i).equals(guessNumbers.get(i))) {
+        strikeCount++;
+      }
+    }
+    return strikeCount;
   }
 }
