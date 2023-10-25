@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.domain.BaseballNumber;
+
 public class BallCountStrategy extends CountStrategy {
 
     public BallCountStrategy(BaseballNumber computerBaseballNumber, BaseballNumber userBaseballNumber) {

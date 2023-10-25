@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.domain.BaseballNumber;
+
 public abstract class CountStrategy {
     protected BaseballNumber computerBaseballNumber;
     protected BaseballNumber userBaseballNumber;

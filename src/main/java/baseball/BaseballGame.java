@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.domain.BaseballNumber;
+import baseball.dto.BaseballCount;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
