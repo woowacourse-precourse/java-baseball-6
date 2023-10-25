@@ -8,21 +8,38 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> randomNumber = getRandomNumber();
-        System.out.println(randomNumber);
+        while (true) {
+            List<Integer> randomNumber = getRandomNumber();
+            System.out.println(randomNumber);
+            loopGame(randomNumber);
+        }
+    }
+
+    private static void loopGame(List<Integer> randomNumber) {
         while (true) {
             List<Integer> userNumber = inputUserNumber();
             int strike = strike(randomNumber, userNumber);
             int ball = ball(randomNumber, userNumber);
-
-            // test
-            System.out.println(strike);
-            System.out.println(ball);
+            printScore(strike, ball);
             if(strike == 3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return;
             }
         }
+    }
+
+    public static String printScore(int strike, int ball) {
+        String result = "";
+        if (strike == 0 && ball == 0) {
+            result = "낫싱";
+        }
+        if (ball != 0) {
+            result += ball + "볼 ";
+        }
+        if (strike != 0) {
+            result += strike + "볼";
+        }
+        return result;
     }
 
     private static List<Integer> getRandomNumber() {
@@ -86,5 +103,17 @@ public class Application {
             }
         }
         return ball;
+    }
+
+    public static boolean restartOrNot() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        if (userInput.equals("1")) {
+            return true;
+        }
+        if (userInput.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException("1또는 2를 입력해주세요.");
     }
 }
