@@ -55,11 +55,18 @@ public class Game {
     private List<Integer> inputUserGuess() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
-
+        isNumber(input);
         isTripleDigit(input);
         hasNoOverlap(input);
-
         return toArrayList(input);
+    }
+
+    private void isNumber(String input) throws IllegalArgumentException {
+        for (char c : input.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     private void isTripleDigit(String input) throws IllegalArgumentException {
@@ -74,9 +81,7 @@ public class Game {
         for (char c : input.toCharArray()) {
             uniqueSet.add(c);
         }
-
-        if (uniqueSet.size() == 3) {
-        } else {
+        if (uniqueSet.size() != 3) {
             throw new IllegalArgumentException();
         }
     }
