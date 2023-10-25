@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class finishProcess {
     int finishAnswer;
+    boolean isRestart;
 
     public finishProcess() {
         printFinishPhrase();
         inputFinishAnswer();
+        checkFinishAnswer();
     }
 
     private void printFinishPhrase() {
@@ -23,5 +25,11 @@ public class finishProcess {
         catch (Exception e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void checkFinishAnswer() {
+        if (finishAnswer == finishNotice.restartCode) isRestart = false;
+        else if (finishAnswer == finishNotice.exitCode) isRestart = true;
+        else throw new IllegalArgumentException();
     }
 }
