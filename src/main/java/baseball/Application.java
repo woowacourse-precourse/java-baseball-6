@@ -9,8 +9,6 @@ public class Application {
         // TODO: 프로그램 구현
 
         boolean game = true;
-
-
         // 먼저 랜덤 숫자 만들어야 됨, Randoms이용해서
 
         List computer = shuffleNumber();
@@ -27,6 +25,7 @@ public class Application {
 
             int in = s.nextInt();
             int in2 = in;
+
             //예외 처리
             Set<Integer> exceptList = new HashSet<>();
             while(in2 > 0){
@@ -34,14 +33,19 @@ public class Application {
                 in2 /= 10;
             }
             List<Integer> inputList = new ArrayList<>();
-            if(in > 0 && in < 1000 && exceptList.size() == 3){
-                while (in > 0) {
-                    inputList.add(in % 10);
-                    in /= 10;
+            try{
+                if(in > 0 && in < 1000 && exceptList.size() == 3){
+                    while (in > 0) {
+                        inputList.add(in % 10);
+                        in /= 10;
+                    }
+                }else{
+                    throw new IllegalArgumentException();
                 }
-            }else{
-                throw new IllegalArgumentException();
+            } catch (IllegalArgumentException e){
+                break;
             }
+
 
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
