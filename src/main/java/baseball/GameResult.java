@@ -1,6 +1,7 @@
 package baseball;
 
 public class GameResult {
+
     private int ball;
     private int strike;
 
