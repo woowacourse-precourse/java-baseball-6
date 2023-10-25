@@ -16,6 +16,9 @@ public class Processor {
             System.out.print("숫자를 입력해 주세요: ");
            
             String input = Console.readLine();
+            if(input.isEmpty()) {
+                throw new IllegalArgumentException("Invalid Input: Empty");
+            }
             // 입력받은 String 의 input 을 List<Integer>형태로 변환
             List<Integer> numGet;
             
