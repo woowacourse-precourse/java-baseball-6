@@ -11,12 +11,18 @@ public class RandomNum {
     private final static int COMPUTER_NUM_SIZE = 3;
 
 
-    private final List<Integer> computer = new ArrayList<>();
+    public List<Integer> computer = new ArrayList<>();
 
-    private List<Integer> ComputerSet() {
+    public void resetComputer() {
+        List<Integer> computer = new ArrayList<>();
+        ComputerSet();
 
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public List<Integer> ComputerSet() {
+
+
         while (computer.size() < COMPUTER_NUM_SIZE) {
             setComputerPrice(Randoms.pickNumberInRange(MIN_RANDOM_RANGE, MAX_RANDOM_RANGE));
 
@@ -24,14 +30,13 @@ public class RandomNum {
         }
         return computer;
     }
+
     public void setComputerPrice(int price) {
 
         if (!computer.contains(price)) {
             computer.add(price);
         }
-        if (computer.size() == 3) {
-            System.out.println(computer);
-        }
+
     }
 
 
