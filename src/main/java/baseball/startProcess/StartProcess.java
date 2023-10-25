@@ -9,14 +9,18 @@ import java.util.List;
 public class StartProcess {
     private List<Integer> computer;
 
-    public StartProcess(GameRole gameRole) {
+    public void resetGame(GameRole gameRole) {
         initVariable();
-        printStartPhrase();
         inputComputerNumber(gameRole);
     }
 
-    public void resetGame(GameRole gameRole) {
-        computer = new ArrayList<>();
+    public List<Integer> getComputerNumber() {
+        return computer;
+    }
+
+    public StartProcess(GameRole gameRole) {
+        initVariable();
+        printStartPhrase();
         inputComputerNumber(gameRole);
     }
 
@@ -35,9 +39,5 @@ public class StartProcess {
                 computer.add(randomNumber);
             }
         }
-    }
-
-    public List<Integer> getComputerNumber() {
-        return computer;
     }
 }
