@@ -1,25 +1,25 @@
 package baseball.enums;
 
+import java.util.Arrays;
+
 public enum GameEndOption {
     RESTART("1"),
     END("2");
 
-    private final String option;
+    private final String inputString;
 
-    GameEndOption(String option) {
-        this.option = option;
+    GameEndOption(String inputString) {
+        this.inputString = inputString;
     }
 
-    public String getOptionValue() {
-        return option;
+    public String getValue() {
+        return inputString;
     }
 
-    public static GameEndOption fromString(String optionValue) {
-        for (GameEndOption option : GameEndOption.values()) {
-            if (option.getOptionValue().equals(optionValue)) {
-                return option;
-            }
-        }
-        throw new IllegalArgumentException(ErrorCode.INVALID_GAME_END_OPTION.getMessage());
+    public static GameEndOption fromString(String inputString) {
+        return Arrays.stream(GameEndOption.values())
+                .filter(option -> option.getValue().equals(inputString))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorCode.INVALID_GAME_END_OPTION.getMessage()));
     }
 }
