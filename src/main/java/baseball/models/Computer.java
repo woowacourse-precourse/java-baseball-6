@@ -6,9 +6,9 @@ import baseball.utils.Utils;
 
 public class Computer {
 
-    Utils utils = new Utils();
-
     private String answerNumber;
+
+    Utils utils = new Utils();
 
     // 1부터 9까지 서로 다른 수로 이루어진 수 선택
     public void chooseNumber(int length) {
