@@ -29,23 +29,24 @@ public class OutputView {
     }
 
     public void printGameFailResult(int[] gameResult) {
-        final int strikeIndex = GameHint.STRIKE.getResultIndex();
-        final int ballIndex = GameHint.BALL.getResultIndex();
-        final int nothingIndex = GameHint.NOTHING.getResultIndex();
         final int noCount = 0;
         final int maxCount = 3;
 
-        if (gameResult[strikeIndex] > noCount && gameResult[ballIndex] > noCount) {
-            printStrikeAndBallHint(gameResult[strikeIndex], gameResult[ballIndex]);
+        int strikeCount = gameResult[GameHint.STRIKE.getResultIndex()];
+        int ballCount = gameResult[GameHint.BALL.getResultIndex()];
+        int nothingCount = gameResult[GameHint.NOTHING.getResultIndex()];
+
+        if (strikeCount > noCount && ballCount > noCount) {
+            printStrikeAndBallHint(strikeCount, ballCount);
             return;
         }
-        if (gameResult[strikeIndex] > noCount && gameResult[strikeIndex] < maxCount) {
-            printStrikeHint(gameResult[strikeIndex]);
+        if (strikeCount > noCount && strikeCount < maxCount) {
+            printStrikeHint(strikeCount);
         }
-        if (gameResult[ballIndex] > noCount) {
-            printBallHint(gameResult[ballIndex]);
+        if (ballCount > noCount) {
+            printBallHint(ballCount);
         }
-        if (gameResult[nothingIndex] > noCount) {
+        if (nothingCount > noCount) {
             printNothingHint();
         }
     }
