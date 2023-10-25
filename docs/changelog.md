@@ -41,6 +41,7 @@
 
 ## 10.25
 - Confirm 기능을 Confirm클래스 내부에 작성
+  - accordNumber 메소드 추가 (일치여부 확인(볼))
 - 비슷한 Confirm기능을 담당한 클래스들 삭제 
   
     
