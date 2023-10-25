@@ -14,7 +14,9 @@ public class Application {
         game.startGame(NUMBER_SIZE);
 
         while (game.getStatus() == GameStatus.RUN) {
-
+            game.receiveNums();
+            game.checkReceivedNums();
+            game.restartOrQuit(NUMBER_SIZE);
         }
     }
 }

@@ -16,7 +16,7 @@ public class NumberGenerater {
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if(!nums.contains(randomNumber)) {
                 nums.add(randomNumber);
-            }
+            }else {i -= 1;}
         }
         return nums;
     }

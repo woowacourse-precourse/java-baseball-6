@@ -1,21 +1,41 @@
 package baseball.util;
 
-import baseball.exception.NumExceptionEnum;
+import baseball.en.NumExceptionEnum;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Validator {
 
-    public static void checkRxNums(String nums, int numSize) {
+    public static void checkRxNums(String numsInput, int numSize) {
 
-        if (nums.length() != numSize) {
-            throw new IllegalArgumentException(NumExceptionEnum.WRONG_SIZE_NUM.msg);
+        isCorrectSize(numsInput, numSize);
+
+        isNumber(numsInput);
+
+        isAllNumUnique(numsInput);
+
+    }
+
+    private static void isAllNumUnique(String numsInput){
+        ArrayList<Character> nums = new ArrayList<>();
+
+        for(char num : nums) {
+            if (nums.contains(num)){
+                throw new IllegalArgumentException(NumExceptionEnum.DUPLICATION.msg);
+            }
+            nums.add(num);
         }
-
-        if (isNumber(nums)) {
-            throw new IllegalArgumentException(NumExceptionEnum.NOT_INTEGER.msg);
+    }
+    public static void isCorrectSize(String numsInput, int numSize) {
+        if (numsInput.length() != numSize) {
+            throw new IllegalArgumentException(NumExceptionEnum.WRONG_SIZE_NUM.msg);
         }
     }
 
-    private static boolean isNumber(String value) {
-        return value != null && value.matches("^[^0]\\d*");
+    public static void isNumber(String value){
+        if (value != null && !value.matches("^[^0]\\d*")){
+            throw new IllegalArgumentException(NumExceptionEnum.NOT_INTEGER.msg);
+        }
     }
 }
