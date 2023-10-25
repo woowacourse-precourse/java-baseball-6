@@ -3,10 +3,13 @@ package baseball.domain.controller;
 import baseball.domain.dto.ResultDto;
 import baseball.domain.dto.UserInputDto;
 import baseball.domain.model.Computer;
+import baseball.utils.InputValidator;
 import baseball.domain.model.Score;
 import baseball.domain.model.User;
 
 import java.util.List;
+
+import static baseball.domain.controller.Game.RESTART_SIGNAL;
 
 public class GameController {
     private final Computer computer;
@@ -20,5 +23,11 @@ public class GameController {
         Score score = new Score(this.computer, user);
 
         return new ResultDto(score);
+    }
+
+    public Boolean restartGame(UserInputDto userInputDto) {
+        InputValidator.checkRestartInput(userInputDto.getUserInput());
+
+        return RESTART_SIGNAL.equals(userInputDto.getUserInput());
     }
 }
