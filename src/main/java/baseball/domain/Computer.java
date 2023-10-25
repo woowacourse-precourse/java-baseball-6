@@ -4,18 +4,17 @@ import baseball.ui.ConsoleOutput;
 import baseball.utils.Utility;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Computer implements IPlayer {
 
-    private final ConsoleOutput CONSOLE_OUTPUT;
+    private final ConsoleOutput consoleOutput;
     private final int NUMBER_BALLS;
     private List<Integer> numbers;
     private Response response;
 
     public Computer(ConsoleOutput consoleOutput, final int NUMBER_BALLS) {
-        CONSOLE_OUTPUT = consoleOutput;
+        this.consoleOutput = consoleOutput;
         this.NUMBER_BALLS = NUMBER_BALLS;
     }
 
@@ -48,11 +47,14 @@ public class Computer implements IPlayer {
         int index = 0;
 
         for (int ball : numbers) {
-            if (user.checkIfIsStrike(ball, index++)) ++strikeCount;
-            else if (user.checkIfIsBall(ball)) ++ballCount;
+            if (user.checkIfIsStrike(ball, index++)) {
+                ++strikeCount;
+            } else if (user.checkIfIsBall(ball)) {
+                ++ballCount;
+            }
         }
 
-        response = new Response(new ArrayList<>(Arrays.asList(strikeCount, ballCount)), NUMBER_BALLS);
+        response = new Response(List.of(strikeCount, ballCount), NUMBER_BALLS);
     }
 
     public int countNumberBalls() {
@@ -60,7 +62,7 @@ public class Computer implements IPlayer {
     }
 
     private void announceResult() {
-        CONSOLE_OUTPUT.printMessage(Utility.convertResponseToResult(response));
+        consoleOutput.printMessage(Utility.convertResponseToResult(response));
     }
 
 }

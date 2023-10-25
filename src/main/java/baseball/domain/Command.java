@@ -11,8 +11,8 @@ public enum Command {
     }
 
     public static Command findCommand(String inputCommand) {
-        for(Command command : Command.values()) {
-            if(command.getCommand().equals(inputCommand)) {
+        for (Command command : Command.values()) {
+            if (command.getCommand().equals(inputCommand)) {
                 return command;
             }
         }

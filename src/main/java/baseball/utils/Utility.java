@@ -18,7 +18,9 @@ public class Utility {
         Set<Character> digitSet = new HashSet<>();
 
         for (char number : numbers.toCharArray()) {
-            if (!digitSet.add(number)) throw new IllegalArgumentException("서로 다른 숫자를 입력해야 합니다.");
+            if (!digitSet.add(number)) {
+                throw new IllegalArgumentException("서로 다른 숫자를 입력해야 합니다.");
+            }
         }
     }
 

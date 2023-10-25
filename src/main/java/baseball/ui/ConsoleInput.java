@@ -12,11 +12,14 @@ public class ConsoleInput implements IInput {
 
     public String scanGameNumber(final int length) {
         String input = scan();
+        validateInput(length, input);
 
+        return input;
+    }
+
+    private static void validateInput(int length, String input) {
         Utility.checkIfIsPositiveDigitInteger(input);
         Utility.checkIfIsDifferent(input);
         Utility.checkIfIsValidLength(length, input);
-
-        return input;
     }
 }

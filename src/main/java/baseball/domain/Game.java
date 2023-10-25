@@ -9,45 +9,68 @@ import java.util.Objects;
 public class Game {
 
     private final int NUMBER_BALLS;
-    private final ConsoleInput CONSOLE_INPUT;
-    private final ConsoleOutput CONSOLE_OUTPUT;
+    private final ConsoleInput consoleInput;
+    private final ConsoleOutput consoleOutput;
     private List<Command> commands = new ArrayList<>();
     private Computer computer;
     private User user;
 
-    public Game(final int numberBalls, final ConsoleInput CONSOLE_INPUT, final ConsoleOutput CONSOLE_OUTPUT) {
-        this.NUMBER_BALLS = numberBalls;
-        this.CONSOLE_INPUT = CONSOLE_INPUT;
-        this.CONSOLE_OUTPUT = CONSOLE_OUTPUT;
+    public Game(final int NUMBER_BALLS, final ConsoleInput consoleInput, final ConsoleOutput consoleOutput) {
+        this.NUMBER_BALLS = NUMBER_BALLS;
+        this.consoleInput = consoleInput;
+        this.consoleOutput = consoleOutput;
 
+        initGameCommand();
+    }
+
+    private void initGameCommand() {
         commands.add(Command.RESTART);
         commands.add(Command.END);
     }
 
     public void run() {
-        do {
-            CONSOLE_OUTPUT.printMessage("숫자 야구 게임을 시작합니다.\n");
+        while (true) {
+            consoleOutput.printMessage("숫자 야구 게임을 시작합니다.\n");
             play();
-        } while (isRestart());
+            if (!isRestart()) {
+                break;
+            }
+        }
     }
 
     private void play() {
-        user = new User(CONSOLE_INPUT, NUMBER_BALLS);
-        computer = new Computer(CONSOLE_OUTPUT, NUMBER_BALLS);
+        initPlayer();
+        while (true) {
+            if (isUserGuessAnswer()) {
+                break;
+            }
+        }
+        consoleOutput.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+    }
+
+    private void initPlayer() {
+        user = new User(consoleInput, NUMBER_BALLS);
+        computer = new Computer(consoleOutput, NUMBER_BALLS);
         computer.generatePlayerNumber(NUMBER_BALLS);
+    }
 
-        do {
-            CONSOLE_OUTPUT.printMessage("숫자를 입력해주세요 : ");
-            user.generatePlayerNumber(NUMBER_BALLS);
-        } while (computer.respondsTo(user));
+    private boolean isUserGuessAnswer() {
+        guessNumberComputer();
+        return !computer.respondsTo(user);
+    }
 
-        CONSOLE_OUTPUT.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+    private void guessNumberComputer() {
+        consoleOutput.printMessage("숫자를 입력해주세요 : ");
+        user.generatePlayerNumber(NUMBER_BALLS);
     }
 
     private boolean isRestart() {
-        CONSOLE_OUTPUT.printMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-        Command command = user.selectCommand();
-
+        Command command = chooseRestartGame();
         return Objects.equals(command.getCommand(), "1");
+    }
+
+    private Command chooseRestartGame() {
+        consoleOutput.printMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        return user.selectCommand();
     }
 }

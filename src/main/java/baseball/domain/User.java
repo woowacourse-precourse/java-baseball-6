@@ -7,12 +7,12 @@ import java.util.List;
 
 public class User implements IPlayer {
 
-    private final ConsoleInput CONSOLE_INPUT;
+    private final ConsoleInput consoleInput;
     private final int NUMBER_BALLS;
     private List<Integer> numbers;
 
     public User(ConsoleInput consoleInput, final int NUMBER_BALLS) {
-        CONSOLE_INPUT = consoleInput;
+        this.consoleInput = consoleInput;
         this.NUMBER_BALLS = NUMBER_BALLS;
     }
 
@@ -34,13 +34,13 @@ public class User implements IPlayer {
     }
 
     private List<Integer> generateInputNumber(int NUMBER_BALLS) {
-        String input = CONSOLE_INPUT.scanGameNumber(NUMBER_BALLS);
+        String input = consoleInput.scanGameNumber(NUMBER_BALLS);
 
         return convertStringToIntegerList(input);
     }
 
     public Command selectCommand() {
-        String inputCommand = CONSOLE_INPUT.scan();
+        String inputCommand = consoleInput.scan();
 
         return Command.findCommand(inputCommand);
     }
