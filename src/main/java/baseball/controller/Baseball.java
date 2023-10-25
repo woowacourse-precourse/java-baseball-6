@@ -26,7 +26,7 @@ public class Baseball {
             Message.inputMessage();
             guess.generateInputNumbers(numberLength, inputString());
         } while (!findResult(answer, guess));
-        Message.winMessage();
+        Message.winMessage(numberLength);
     }
 
     private boolean findResult(Numbers answer, Numbers guess) {

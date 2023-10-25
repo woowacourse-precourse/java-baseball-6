@@ -50,7 +50,8 @@ public class Message {
         System.out.println();
     }
 
-    public static void winMessage() {
+    public static void winMessage(int numberLength) {
+        System.out.print(numberLength);
         System.out.println(WIN_MESSAGE);
     }
 
