@@ -5,22 +5,15 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.controller.GameController;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.Command;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class ApplicationTest extends NsTest {
-
-    @BeforeEach
-    void playing_변수_초기화() {
-        GameController.setPlayingTrue();
-    }
 
     @Test
     void 게임종료_후_재시작() {

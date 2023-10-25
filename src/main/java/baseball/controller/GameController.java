@@ -11,13 +11,14 @@ public class GameController {
 
     GameService service = new GameService();
     BaseballNumbers computerNumbers;
-    private static boolean playing = true;
+    private static boolean playing;
 
     private void init() {
         computerNumbers = service.generateNumbers();
     }
 
     public void play() {
+        setPlaying(true);
         InputView.printStart();
         while (playing) {
             if (computerNumbers == null) {
@@ -39,7 +40,7 @@ public class GameController {
     private void restartOrNot(String input) {
         Command.validate(input);
         if (Command.isExit(input)) {
-            playing = false;
+            setPlaying(false);
         }
         if (Command.isRestart(input)) {
             init();
@@ -54,14 +55,13 @@ public class GameController {
     }
 
     private BaseballNumbers getBaseballNumbers() {
-//        InputView.printCheat(computerNumbers);
+        InputView.printCheat(computerNumbers); // 값 확인용
         InputView.printRequestingInput();
         return InputView.getUserNumbers();
     }
 
-    public static void setPlayingTrue() {
-        playing = true;
+    private void setPlaying(boolean value) {
+        playing = value;
     }
-
 
 }
