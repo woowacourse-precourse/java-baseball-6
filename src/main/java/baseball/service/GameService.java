@@ -13,7 +13,7 @@ import static baseball.constant.MessageConst.SUCCESS_MSG;
 import static baseball.constant.NumberConst.*;
 
 /**
- * 야구 게임의 비즈니스 로직을 처리하는 서비스
+ * 게임의 비즈니스 로직을 처리하는 클래스
  */
 public class GameService {
     public List<Integer> createRandomDistinctThreeDigit() {

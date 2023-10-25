@@ -12,7 +12,7 @@ import java.util.List;
 import static baseball.constant.MessageConst.*;
 
 /**
- * 유저의 입출력을 처리하는 컨트롤러
+ * 게임의 입출력을 처리하는 클래스
  */
 public class GameController {
     private final InputValidation inputValidation = new InputValidation();

@@ -2,6 +2,9 @@ package baseball.domain;
 
 import java.util.List;
 
+/**
+ * 게임에 대한 정보를 담는 클래스
+ */
 public class GameInfo {
     private int ball;
     private int strike;

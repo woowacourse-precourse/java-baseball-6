@@ -14,6 +14,8 @@ public class InputValidation {
 
     /**
      * 사용자의 입력값에 대한 모든 검증을 진행한다.
+     *
+     * @param input 유저의 입력값
      */
     public void validateInputNum(String input) {
         validateNull(input);
@@ -23,7 +25,9 @@ public class InputValidation {
     }
 
     /**
-     * 사용자의 숫자 입력값이 자연수로만 이루어져 있는지 검증한다.
+     * 입력값이 1~9 사이의 숫자 인지 검증한다.
+     *
+     * @param input 유저의 입력값
      */
     public void validateNaturalNumber(String input) {
         Pattern pattern = Pattern.compile("^[" + START_NUM + "-" + END_NUM + "]+$");
@@ -34,12 +38,22 @@ public class InputValidation {
         }
     }
 
+    /**
+     * 입력값의 길이가 3인지 검증한다.
+     *
+     * @param input 유저의 입력값
+     */
     public void validateLengthAtLeastFour(String input) {
         if (input.length() > INPUT_LENGTH) {
             throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION_MSG);
         }
     }
 
+    /**
+     * 입력값에 중복된 숫자가 있는지 검증한다.
+     *
+     * @param input 유저의 입력값
+     */
     public void validateUniqueIntegers(String input) {
         String[] integers = input.split("");
         long distinctIntegerCount = Arrays.stream(integers)
@@ -54,6 +68,8 @@ public class InputValidation {
 
     /**
      * 재입력된 값이 1 또는 2인지 검증한다.
+     *
+     * @param input 유저의 입력값
      */
     public void validateOneOrTwo(int input) {
         if (input != RESTART_NUM && input != EXIT_NUM) {
@@ -63,6 +79,8 @@ public class InputValidation {
 
     /**
      * 입력된 값이 null인지 검증한다.
+     *
+     * @param input 유저의 입력값
      */
     public void validateNull(String input) {
         if (input == null) {
