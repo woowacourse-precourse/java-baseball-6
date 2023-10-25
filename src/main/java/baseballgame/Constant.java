@@ -11,6 +11,8 @@ public class Constant {
     public static String INPUT_NUMBER_STRING = "숫자를 입력해주세요 :";
     public static boolean SUCCESS_BOOLEAN =true;
 
+    //게임 결과 확인
+    public static int SUCCESS_STRIKE = 3;
 
 
 
