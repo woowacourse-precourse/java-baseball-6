@@ -9,6 +9,8 @@ import baseball.parser.InputParser;
 import baseball.validator.InputValidator;
 import io.Printer;
 import io.Reader;
+import io.StandardPrinter;
+import io.StandardReader;
 import number.RandomNumberPicker;
 
 public final class Configuration {
@@ -19,8 +21,8 @@ public final class Configuration {
         // ensureIsNotInitialized();
         final AnswerCreator answerCreator = new AnswerCreator(new RandomNumberPicker());
         final InputParser inputParser = new InputParser(new InputValidator());
-        final Printer printer = new Printer();
-        final Reader reader = new Reader();
+        final Printer printer = new StandardPrinter();
+        final Reader reader = new StandardReader();
 
         return new GameController(
                 new InputManager(printer, reader, inputParser),
