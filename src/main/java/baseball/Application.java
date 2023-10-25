@@ -59,13 +59,14 @@ public class Application {
     }
 
     private static int getUserInput() {
+        Validation validation = new Validation();
         int validateNumber = 0;
 
         System.out.print("숫자를 입력해주세요 : ");
         String userInputString = readLine();
 
         try {
-            validateNumber = isValidateNumber(userInputString);
+            validateNumber = validation.isValidateNumber(userInputString);
         } catch (IllegalArgumentException e) {
             String message = e.getMessage();
             System.out.println(message);
@@ -73,33 +74,6 @@ public class Application {
         return validateNumber;
     }
 
-    private static int isValidateNumber(String userInput){
-        int inputNumber;
-
-        // Integer.parseInt가 되지 않는 경우
-        try {
-            inputNumber = parseInt(userInput);
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("정수가 아닌 문자열입니다.");
-        }
-
-        // 3자리 숫자가 아닌 경우 예외 발생
-        if (userInput.length() != 3) {
-            throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
-        }
-
-        // 사용자의 입력에 0이 포함된 경우 예외 발생
-        if (userInput.contains("0")) {
-            throw new IllegalArgumentException("0이 포함되어 있으면 안됩니다.");
-        }
-
-        // 사용자의 입력에 중복된 숫자가 포함된 경우 예외 발생
-        if (isDuplicate(userInput)) {
-            throw new IllegalArgumentException("중복된 숫자가 포함되어 있으면 안됩니다.");
-        }
-
-        return inputNumber;
-    }
 
     /**
      * 스트라이크의 개수와 볼의 개수가 같으면 스트라이크의 개수를 출력하고, 볼은 0으로 처리해야 한다.
@@ -203,18 +177,5 @@ public class Application {
         return parseInt(userInput);
     }
 
-    /**
-     * 사용자가 입력한 문자열 안에 중복된 숫자가 있는지 검사한다.
-     * set은 중복을 허용하지 않기 때문에 중복된 숫자가 있다면,
-     * 처음 입력받은 userInput과 charSet의 길이가 다를 것이다.
-     * @param userInput
-     * @return charSet.size() != userInput.length()
-     */
-    private static boolean isDuplicate(String userInput) {
-        HashSet<Character> charSet = new HashSet<>();
-        for (int i = 0; i < userInput.length(); i++) {
-            charSet.add(userInput.charAt(i));
-        }
-        return charSet.size() != userInput.length();    // 길이가 달라야 중복인 것.
-    }
+
 }
