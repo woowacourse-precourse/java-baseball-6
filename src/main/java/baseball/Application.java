@@ -23,13 +23,13 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
-            for (int computernum:computer
-            ) {
-                System.out.print(computernum);
-            }
-            System.out.println("");
+//            for (int computerNum : computer) {
+//                System.out.print(computerNum);
+//            }
+//            System.out.println("");
+            // 컴퓨터 숫자 확인
 
-            while(true){
+            while (true) {
                 // 유저 인풋 그리고 숫자,길이 판별 그리고 변환
                 System.out.println("숫자를 입력해주세요");
                 String numString = Console.readLine();
@@ -47,28 +47,27 @@ public class Application {
                 // 판별하기
                 int[] strikeBall = compareNumber.compareNumber(computer, user);
 
-                if(strikeBall[0]!=3){
-                    if(strikeBall[0]==0 && strikeBall[1] != 0){
-                        System.out.println(strikeBall[1]+"볼");
-                    }else if(strikeBall[0]==0 && strikeBall[1]==0){
-                        System.out.println("낫싱");
-                    }else{
-                        System.out.println(strikeBall[1]+"볼 "+strikeBall[0]+"스트라이크");
-                    }
-                }else{
-                    System.out.println("3스트라이크\n"
-                        + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                if (strikeBall[0] == 3) {
+                    System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
+                } else if (strikeBall[0] == 0 && strikeBall[1] != 0) {
+                    System.out.println(strikeBall[1] + "볼");
+                } else if (strikeBall[0] != 0 && strikeBall[1] == 0) {
+                    System.out.println(strikeBall[0] + "스트라이크");
+                } else if (strikeBall[0] == 0) {
+                    System.out.println("낫싱");
+                } else {
+                    System.out.println(strikeBall[1] + "볼 " + strikeBall[0] + "스트라이크");
+                }// 출력하기
 
-                }
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String num = Console.readLine();
-            if(num.equals("1")){
-            }else if(num.equals("2")){
+            if (num.equals("1")) {
+            } else if (num.equals("2")) {
                 break;
-            }else{
+            } else {
                 throw new IllegalArgumentException();
             }
         }

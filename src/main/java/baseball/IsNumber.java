@@ -12,7 +12,7 @@ public class IsNumber {
 
     public Boolean isInteger(String s) {
         try {
-            Double.parseDouble(s);
+            Integer.parseInt(s);
             return true;
         } catch (NumberFormatException numberFormatException) {
             return false;
