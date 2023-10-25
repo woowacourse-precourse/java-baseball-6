@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.Computer;
 import baseball.service.GameService;
 import baseball.utils.GameMessage;
+import baseball.utils.RequiredGameExitAnswer;
 import baseball.validation.GameExitValidation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -10,7 +11,6 @@ import java.util.List;
 
 public class BaseballGame {
     private final GameService gameService;
-    private final static String exitNumber = "2";
     private static boolean endOrNot = false;
     private static List<Integer> userNumber;
     private static List<Integer> computerNumber;
@@ -62,7 +62,7 @@ public class BaseballGame {
         System.out.println(GameMessage.DECIDE_CONTINUE_OR_EXIT.getMessage());
         String exitAnswer = InputView.Input();
         GameExitValidation.validateExitAnswer(exitAnswer);
-        if (exitAnswer.equals(exitNumber)) {
+        if (exitAnswer.equals(RequiredGameExitAnswer.EXIT_ANSWER.getMessage())) {
             endOrNot = false;
         }
     }
