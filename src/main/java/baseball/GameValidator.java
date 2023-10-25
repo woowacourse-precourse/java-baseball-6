@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static baseball.Application.inputNumber;
+import static baseball.Application.*;
 
-public class InputValidator {
+public class GameValidator {
     public static void isThreeDigitNumber() {
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException();
@@ -32,6 +32,12 @@ public class InputValidator {
         Set<Character> digitSet = new HashSet<>(digitList);
 
         if (digitList.size() != digitSet.size()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void isValidTerminationChoice() {
+        if (!(restartOrEndFlag.equals(TERMINATE) || restartOrEndFlag.equals(RESTART))) {
             throw new IllegalArgumentException();
         }
     }

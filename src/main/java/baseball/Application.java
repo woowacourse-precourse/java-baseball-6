@@ -1,15 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import static baseball.GameResultPrinter.printAnswerHint;
-import static baseball.InputValidator.*;
+import static baseball.GameValidator.*;
 import static baseball.RandomNumberGenerator.makeRandomNumber;
 
 public class Application {
@@ -18,10 +12,10 @@ public class Application {
     public static int ball;
     public static int strike;
     private static boolean isOver;
-    private static String restartOrEndFlag;
+    public static String restartOrEndFlag;
     private static boolean isSucceed;
-    private static final String RESTART = "1";
-    private static final String TERMINATE = "2";
+    public static final String RESTART = "1";
+    public static final String TERMINATE = "2";
 
     public static void main(String[] args) throws IllegalArgumentException {
         //TODO: 숫자 야구 게임 구현
@@ -71,12 +65,6 @@ public class Application {
     public static void isSucceed() {
         if (strike == 3) {
             isSucceed = true;
-        }
-    }
-
-    public static void isValidTerminationChoice() {
-        if (!(restartOrEndFlag.equals(TERMINATE) || restartOrEndFlag.equals(RESTART))) {
-            throw new IllegalArgumentException();
         }
     }
 
