@@ -29,10 +29,10 @@ public class Game {
     // 사용자에게 숫자 입력을 요청하는 메소드
     public String askForGuess() {
         System.out.print("숫자를 입력해주세요 : ");
-        String result = Console.readLine();
-        utils.validateInputValue(result, NUM_LENGTH);
+        String playerInput = Console.readLine();
+        utils.validateInputValue(playerInput, NUM_LENGTH);
 
-        return result;
+        return playerInput;
     }
 
     // 정답을 맞힌 경우 게임 재시작 여부 입력 요청하는 메소드
