@@ -19,14 +19,16 @@
 #### Exception
 1. 사용자가 3개의 수를 입력할 때
 - [x] 숫자가 아닌 문자를 입력한 경우 (Ex : 12a) >> IllegalArgumentException 발생
-- [x] 숫자를 3개 초과로 입력한 경우 (Ex : 1234) >> IllegalArgumentException 발생
+- ✅ 숫자를 3개 초과로 입력한 경우 (Ex : 1234) >> IllegalArgumentException 발생
 - [x] 중복이 존재하는 경우 (Ex : 223) >> IllegalArgumentException 발생
-- [x] 1 ~ 9에 해당하지 않는 수가 있을 경우 (Ex : 012) >> IllegalArgumentException 발생
+- ✅ 1 ~ 9에 해당하지 않는 수가 있을 경우 (Ex : 012) >> IllegalArgumentException 발생
 
 2. 재시작/종료 여부를 입력할 때
 - [x] 숫자가 아닌 문자를 입력한 경우
 - [x] 1 or 2를 제외한 수를 입력한 경우
 - [x] 입력을 하지 않은 경우
 
+#### Test
+- 
 
 

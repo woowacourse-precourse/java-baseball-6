@@ -21,9 +21,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 초과입력_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자범위초과_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
