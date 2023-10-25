@@ -101,8 +101,8 @@ class ApplicationTest extends NsTest {
         String threeNumber = "123";
         String notThreeNumber = "1234";
 
-        assertThat(Application.isLengthThree(threeNumber)).isEqualTo(true);
-        assertThatThrownBy(() -> Application.isLengthThree(notThreeNumber))
+        assertThat(Application.isRightLength(threeNumber, 3)).isEqualTo(true);
+        assertThatThrownBy(() -> Application.isRightLength(notThreeNumber, 3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -149,7 +149,7 @@ class ApplicationTest extends NsTest {
             threeRandomNumberString += Integer.toString(threeRandomNumber.get(i));
         }
 
-        boolean lengthThree = Application.isLengthThree(threeRandomNumberString);
+        boolean lengthThree = Application.isRightLength(threeRandomNumberString, 3);
         boolean digitNumber = Application.isDigitNumber(threeRandomNumberString);
         boolean rightRangeNumber = Application.isRightRangeNumber(threeRandomNumberString);
         boolean differentNumber = Application.isDifferentNumber(threeRandomNumberString);

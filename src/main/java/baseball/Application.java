@@ -61,7 +61,7 @@ public class Application {
     public static List<Integer> inputBaseball(String userInput) {
         List<Integer> numberList = new ArrayList<>();
 
-        if (isLengthThree(userInput)
+        if (isRightLength(userInput, 3)
                 && isDigitNumber(userInput)
                 && isRightRangeNumber(userInput)
                 && isDifferentNumber(userInput)) {
