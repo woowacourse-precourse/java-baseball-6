@@ -6,10 +6,6 @@ import baseball.Model.GameConstant;
 import baseball.Model.UserNumberPicker;
 import baseball.View.InputView;
 import baseball.View.OutputView;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BaseballGameController {
     public void startGame() {
