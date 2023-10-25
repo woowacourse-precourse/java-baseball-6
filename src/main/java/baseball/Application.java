@@ -1,7 +1,17 @@
 package baseball;
 
+import baseball.application.BaseballGame;
+import baseball.view.InputView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        InputView.printStartGameMessage();
+        boolean gameContinue = false;
+
+        while(!gameContinue) {
+            new BaseballGame().play();
+            gameContinue = InputView.askGameEnd();
+        }
     }
 }
