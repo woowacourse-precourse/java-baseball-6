@@ -5,10 +5,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 
+import static java.lang.Integer.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -112,15 +114,17 @@ class BaseballGameViewTest {
     @Test
     void restartGame () {
         // given
-        when(baseballGameView.getUserRestartInput()).thenReturn(1);
+        String simulatedInput = "1";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         //when
-        int restartInput = baseballGameView.getUserRestartInput();
+        int restartInput = parseInt(baseballGameView.getUserRestartInput());
 
         //then
         assertEquals("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n", outputMessage.toString());
         assertThat(restartInput).isEqualTo(1);
 
+        System.setIn(System.in);
     }
 
     @Test

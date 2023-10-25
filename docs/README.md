@@ -15,9 +15,9 @@
 
 ### 2.1.2 주요 메소드
 - **'displayStartMessage(): void'**: 게임 시작 메시지를 출력합니다.
-- **'getUserInput(): int[]'**: 사용자로부터 서로 다른 3자리의 수를 입력받아 배열로 반환합니다.
+- **'getUserInput(): String'**: 사용자로부터 서로 다른 3자리의 수를 입력받아 배열로 반환합니다.
 - **'displayResult(Hashmap<String, Integer> result): void'**: 게임 결과를 출력합니다.
-- **'getUserRestartInput(): int'**: 게임이 끝난 후 재시작 또는 종료 여부를 입력받아 반환합니다.
+- **'getUserRestartInput(): String'**: 게임이 끝난 후 재시작 또는 종료 여부를 입력받아 반환합니다.
 
 # 3. Controller
 ### 3.1 클래스: 'BaseballGameController'
