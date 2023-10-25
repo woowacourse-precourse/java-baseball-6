@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final List<Integer> randomNumber = new ArrayList<>();
 
-    private List<Integer> generateRandomNumber() {
+    public static void setRandomNumber() {
+        List<Integer> randomNumber = generateRandomNumber();
+    }
+
+    private static List<Integer> generateRandomNumber() {
         List<Integer> randomNum = new ArrayList<>();
         while(randomNum.size() < 3) {
             int randomNumberByComputer = Randoms.pickNumberInRange(1, 9);
