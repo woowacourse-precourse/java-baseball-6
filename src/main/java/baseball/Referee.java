@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class Referee {
-    public GameResult judgeGameResult(List<Integer> catcher, List<Integer> pitcher) {
+    public RoundResult judge(List<Integer> catcher, List<Integer> pitcher) {
         int strike = 0, ball = 0;
 
         for (int i = 0; i < catcher.size(); i++) {
@@ -16,6 +16,6 @@ public class Referee {
             }
         }
 
-        return new GameResult(strike, ball);
+        return new RoundResult(strike, ball);
     }
 }

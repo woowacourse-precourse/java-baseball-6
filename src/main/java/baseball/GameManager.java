@@ -2,36 +2,23 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.math.MathContext;
+
 public class GameManager {
-    private Catcher catcher;
-    private Pitcher pitcher;
-    private Referee referee;
+    private Match match;
 
-    public GameManager() {
-        this.catcher = new Catcher();
-        this.pitcher = new Pitcher();
-        this.referee = new Referee();
-    }
-
-    public void playGame() {
+    public void runGame() {
         while(true) {
             displayGameStart();
-            catcher.generateRandomNumbers();
 
-            while (true) {
-                pitcher.getPlayerInput();
+            match = new Match(new Catcher(), new Pitcher(), new Referee());
+            match.init();
+            match.run();
 
-                GameResult gameResult = referee.judgeGameResult(catcher.getNumbers(), pitcher.getNumbers());
-                System.out.println(gameResult);
-
-                if (gameResult.isStrikeOut()) {
-                    displayGameEnd();
-                    break;
-                }
-            }
-
+            displayGameEnd();
             String choice = askForRestart();
-            if (choice.equals(Constant.EXIT)) {
+
+            if (isGameEnd(choice)) {
                 break;
             }
         }
@@ -48,5 +35,9 @@ public class GameManager {
     public String askForRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return Console.readLine();
+    }
+
+    public boolean isGameEnd(String choice) {
+        return choice.equals(Constant.EXIT);
     }
 }
