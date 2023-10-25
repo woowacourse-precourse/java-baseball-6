@@ -11,10 +11,13 @@ public class Application {
 
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
-                Player player = new Player(Console.readLine());
-                System.out.println(computer.compare(player));
 
-                if ("3스트라이크".equals(computer.compare(player))) {
+                Player player = new Player(Console.readLine());
+
+                String result = computer.compare(player);
+                System.out.println(result);
+
+                if ("3스트라이크".equals(result)) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }

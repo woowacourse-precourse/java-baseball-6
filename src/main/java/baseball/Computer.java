@@ -24,21 +24,25 @@ public class Computer {
         int ballCount = 0;
 
         for (int i = 0; i < computerNumbers.size(); i++) {
-            if (computerNumbers.get(i).equals(player.playerNumbers.get(i))) {
+            int playerNumber = player.playerNumbers.get(i);
+            if (computerNumbers.get(i).equals(playerNumber)) {
                 strikeCount++;
-            } else if (computerNumbers.contains(player.playerNumbers.get(i))) {
+            } else if (computerNumbers.contains(playerNumber)) {
                 ballCount++;
             }
         }
 
+        String ball = ballCount + BALL;
+        String strike = strikeCount + STRIKE;
+
         if (strikeCount == 0 && ballCount == 0) {
             return NOTHING;
         } else if (strikeCount == 0) {
-            return ballCount + BALL;
+            return ball;
         } else if (ballCount == 0) {
-            return strikeCount + STRIKE;
+            return strike;
         } else {
-            return ballCount + BALL + " " + strikeCount + STRIKE;
+            return ball + " " + strike;
         }
     }
 }
