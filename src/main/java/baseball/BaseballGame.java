@@ -3,39 +3,41 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class BaseballGame {
-    private final Integer BALL_INDEX = 0;
-    private final Integer STRIKE_INDEX = 1;
+    private final String BALL_KEY = "ball";
+    private final String STRIKE_KEY = "strike";
     private final Integer NOTHING = 0;
     public static final BaseballGame game = new BaseballGame();
 
-    private List<Integer> compareAnswerWithUserInput(List<Integer> answer, List<Integer> userInput) {
-        List<Integer> compared = new ArrayList<>();
+    private Map<String, Integer> compareAnswerWithUserInput(List<Integer> answer, List<Integer> userInput) {
+        Map<String, Integer> comparedResult = new HashMap<>();
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < Validate.BASEBALL_NUM_OF_DIGITS; i++) {
-            if (answer.contains(userInput.get(i))) {
+            if (answer.get(i).equals(userInput.get(i))) {
+                strike++;
+            } else if (answer.contains(userInput.get(i))) {
                 ball++;
-                if (answer.get(i).equals(userInput.get(i))) {
-                    strike++;
-                    ball--;
-                }
             }
         }
-        compared.add(ball);
-        compared.add(strike);
-        return compared;
+        comparedResult.put(BALL_KEY, ball);
+        comparedResult.put(STRIKE_KEY, strike);
+        return comparedResult;
     }
 
-    private Boolean isNothing(List<Integer> compared) {
-        return compared.get(BALL_INDEX) == NOTHING && compared.get(STRIKE_INDEX) == NOTHING;
+    private Boolean isNothing(Map<String, Integer> comparedResult) {
+        return Objects.equals(comparedResult.get(BALL_KEY), NOTHING)
+                && Objects.equals(comparedResult.get(STRIKE_KEY), NOTHING);
     }
 
-    private Boolean isCorrect(List<Integer> compared) {
+    private Boolean isCorrect(Map<String, Integer> comparedResult) {
         int maxNumOfCorrectness = 3;
-        return compared.get(STRIKE_INDEX) == maxNumOfCorrectness;
+        return comparedResult.get(STRIKE_KEY) == maxNumOfCorrectness;
     }
 
     private List<Integer> convertUserInputToList(String input) {
@@ -46,18 +48,18 @@ public class BaseballGame {
         return list;
     }
 
-    private Boolean isContinue(String game) {
+    private Boolean isRestart(String game) {
         int continueValue = 1;
         return Integer.parseInt(game) == continueValue;
     }
 
-    private void printResult(List<Integer> comparing) {
+    private void printResult(Map<String, Integer> comparedResult) {
         String result = "";
-        if (comparing.get(BALL_INDEX) > NOTHING) {
-            result += String.format(Message.BALL, comparing.get(BALL_INDEX));
+        if (comparedResult.get(BALL_KEY) > NOTHING) {
+            result += String.format(Message.BALL, comparedResult.get(BALL_KEY));
         }
-        if (comparing.get(STRIKE_INDEX) > NOTHING) {
-            result += String.format(Message.STRIKE, comparing.get(STRIKE_INDEX));
+        if (comparedResult.get(STRIKE_KEY) > NOTHING) {
+            result += String.format(Message.STRIKE, comparedResult.get(STRIKE_KEY));
         }
         if (result.length() > NOTHING) {
             System.out.println(result);
@@ -65,32 +67,41 @@ public class BaseballGame {
     }
 
     public void run() {
-        String continueGame;
+        String restartGame;
         System.out.println(Message.START);
         do {
             doGame();
-            System.out.println(Message.IS_CONTINUE);
-            continueGame = readLine();
-            Validate.validateContinueGame(continueGame);
-        } while (isContinue(continueGame));
+            System.out.println(Message.RESTART);
+            restartGame = getRestartGame();
+        } while (isRestart(restartGame));
+    }
+
+    private List<Integer> getUserInput() {
+        String number = readLine();
+        Validate.validateNumber(number);
+        return convertUserInputToList(number);
+    }
+
+    private String getRestartGame() {
+        String restartGame = readLine();
+        Validate.validateContinueGame(restartGame);
+        return restartGame;
     }
 
     private void doGame() {
-        String number;
-        List<Integer> userInput, compared;
+        List<Integer> userInput;
+        Map<String, Integer> comparedResult;
         Answer.answer.generateAnswer();
         while (true) {
             System.out.print(Message.INPUT);
-            number = readLine();
-            Validate.validateNumber(number);
-            userInput = convertUserInputToList(number);
-            compared = compareAnswerWithUserInput(Answer.answer.getNumber(), userInput);
-            printResult(compared);
-            if (isCorrect(compared)) {
+            userInput = getUserInput();
+            comparedResult = compareAnswerWithUserInput(Answer.answer.getNumber(), userInput);
+            printResult(comparedResult);
+            if (isCorrect(comparedResult)) {
                 System.out.println(Message.CORRECT);
                 break;
             }
-            if (isNothing(compared)) {
+            if (isNothing(comparedResult)) {
                 System.out.println(Message.NOTHING);
             }
         }
