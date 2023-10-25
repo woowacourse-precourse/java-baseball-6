@@ -35,6 +35,10 @@ public class BaseballGame {
 
         baseballController.userGameEnd();
 
+        requestUserCommand(baseballController);
+    }
+
+    private void requestUserCommand(BaseballController baseballController) {
         String command = "";
         command = baseballController.requestUserGameExit();
         validateCommand(command);
