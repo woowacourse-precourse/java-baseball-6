@@ -23,6 +23,7 @@ public class Play {
             userInput = Console.readLine();
             inputValidator.checkRetryInput(userInput);
         } while (userInput.equals("1"));
+        printGuide.printOutro();
     }
 
     void play() {
@@ -43,6 +44,5 @@ public class Play {
                 break;
             }
         }
-        printGuide.printOutro();
     }
 }
