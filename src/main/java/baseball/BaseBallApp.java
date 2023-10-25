@@ -32,7 +32,7 @@ public class BaseBallApp {
             output.printResult(result.strike(), result.ball());
 
             if(baseBallGame.isFinished()) {
-                output.print(ConsoleMessage.CORRECT_ANSWER.getMessage());
+                output.collect(result.strike());
                 output.print(ConsoleMessage.RESTART.getMessage());
                 String command = Console.readLine();
 
