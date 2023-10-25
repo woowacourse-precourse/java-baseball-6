@@ -2,26 +2,20 @@ package baseball.controller;
 
 import static baseball.CONSTANT.GAME_SIZE;
 
+import baseball.domain.Computer;
 import baseball.dto.GameResultDTO;
-import baseball.service.CheckService;
 import baseball.view.ProcessView;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BasicController {
-    private List<Integer> computerNumber;
+    Computer computer;
 
     public void createComputerNumber() {
-        computerNumber = new ArrayList<>();
-
-        while (computerNumber.size() < GAME_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
+        if (computer == null) {
+            computer = new Computer();
         }
-
+        computer.createRandomNumber();
     }
 
     public Boolean checkNumber(String userInput) {
@@ -29,7 +23,7 @@ public class BasicController {
         List<Integer> userNum = makeIntegerArray(userInput);
 
         // service -> 1 0 0 과 같은 정보 리턴
-        GameResultDTO gameResult = CheckService.matchNumber(userNum, computerNumber);
+        GameResultDTO gameResult = computer.compareNumber(userNum);
 
         // view -> 해당 결과 출력 요청
         ProcessView.printResult(gameResult);
@@ -40,7 +34,6 @@ public class BasicController {
         }
 
         return false;
-
     }
 
     private List<Integer> makeIntegerArray(String userInput) {
