@@ -16,18 +16,22 @@ public class RoundResult {
         }
 
         StringBuilder sb = new StringBuilder();
-        if (ball != 0) {
-            sb.append(ball).append("볼 ");
-        }
-        if (strike != 0) {
-            sb.append(strike).append("스트라이크 ");
-        }
+        sb.append(hasBall() ? (ball + "볼 ") : "");
+        sb.append(hasStrike() ? (strike + "스트라이크 ") : "");
 
         return sb.toString();
     }
 
     public boolean isNothing() {
         return strike == 0 && ball == 0;
+    }
+
+    public boolean hasBall() {
+        return ball > 0;
+    }
+
+    public boolean hasStrike() {
+        return strike > 0;
     }
 
     public boolean isStrikeOut() {
