@@ -23,4 +23,8 @@ public class Hint {
         }
         return "낫싱";
     }
+
+    public boolean isThreeStrike() {
+        return strike.equals(3);
+    }
 }

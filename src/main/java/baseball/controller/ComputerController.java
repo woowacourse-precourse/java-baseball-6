@@ -12,8 +12,8 @@ public class ComputerController {
         this.computer = RandomNumberGenerator.generateRandomNumbers();
     }
 
-    public Boolean checkCorrectAnswer() {
-        return computer.isCorrectAnswer();
+    public boolean checkCorrectAnswer(Hint hint) {
+        return hint.isThreeStrike();
     }
 
     public Hint provideHint(Numbers player) {

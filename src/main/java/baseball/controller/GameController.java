@@ -35,7 +35,7 @@ public class GameController {
             outputView.printMessage(GameMessages.NUMBER_REQUEST_MESSAGE);
             Hint hint = computerController.provideHint(getPlayerNumber());
             outputView.printContents(hint.generateHintMessage());
-            isCorrectAnswer = computerController.checkCorrectAnswer();
+            isCorrectAnswer = computerController.checkCorrectAnswer(hint);
         }
         outputView.printlnMessage(GameMessages.CORRECT_ANSWER_MESSAGE);
     }
