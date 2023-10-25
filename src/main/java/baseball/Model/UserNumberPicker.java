@@ -2,6 +2,8 @@ package baseball.Model;
 
 import baseball.View.InputView;
 
+import java.util.stream.IntStream;
+
 public class UserNumberPicker {
     public final int[] user;
 
@@ -14,10 +16,9 @@ public class UserNumberPicker {
     }
 
     private int[] convertStringToIntArray(String userInput) {
-        int[] user = new int[GameConstant.MAX_NUM];
-        for (int i = 0; i < userInput.length(); i++) {
-            user[i] = userInput.charAt(i) - '0';
-        }
+        int[] user = IntStream.range(0, GameConstant.MAX_NUM)
+                .map(i -> userInput.charAt(i) - '0')
+                .toArray();
         return user;
     }
 
