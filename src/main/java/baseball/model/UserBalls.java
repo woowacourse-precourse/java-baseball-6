@@ -2,6 +2,7 @@ package baseball.model;
 
 import static baseball.util.AppConstants.BALLS_SIZE;
 import static baseball.util.AppConstants.BALLS_SIZE_MESSAGE;
+import static baseball.util.AppConstants.NOT_INTEGER_MESSAGE;
 import static baseball.util.AppConstants.NO_REPEAT_MESSAGE;
 
 import java.util.List;
@@ -11,10 +12,11 @@ public class UserBalls {
     private final List<Ball> userBalls;
 
     public UserBalls(String stringInput) {
-        validateIsThreeDigits(stringInput);
+        validateIsThreeLetters(stringInput);
         validateNoRepeat(stringInput);
+        validateAreNumbers(stringInput);
         this.userBalls = stringInput.chars()
-                .mapToObj(val -> new Ball((char) val))
+                .mapToObj(Ball::new)
                 .collect(Collectors.toList());
     }
 
@@ -22,15 +24,23 @@ public class UserBalls {
         return this.userBalls;
     }
 
-    void validateIsThreeDigits(String stringInput) {
+    private void validateIsThreeLetters(String stringInput) {
         if (stringInput.length() != BALLS_SIZE) {
             throw new IllegalArgumentException(BALLS_SIZE_MESSAGE);
         }
     }
 
-    void validateNoRepeat(String stringInput) {
+    private void validateNoRepeat(String stringInput) {
         if (stringInput.chars().distinct().count() != BALLS_SIZE) {
             throw new IllegalArgumentException(NO_REPEAT_MESSAGE);
+        }
+    }
+
+    private void validateAreNumbers(String stringInput) {
+        try {
+            Integer.parseInt(stringInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(NOT_INTEGER_MESSAGE);
         }
     }
 }

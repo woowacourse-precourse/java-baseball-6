@@ -16,6 +16,6 @@ public class AppConstants {
     public static final String NO_REPEAT_MESSAGE = "입력값은 중복되지 않는 3자리 숫자여야 합니다.";
     public static final String BALLS_SIZE_MESSAGE = "입력값은 " + BALLS_SIZE + "자리 숫자여야 합니다.";
     public static final String OUT_OF_RANGE_MESSAGE = "각 입력값은 " + INT_MIN_NUMBER + "과 "+ INT_MAX_NUMBER +" 사이의 숫자여야 합니다.";
-
+    public static final String NOT_INTEGER_MESSAGE = "입력값은 숫자여야 합니다.";
 
 }
