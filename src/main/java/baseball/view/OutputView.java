@@ -2,7 +2,6 @@ package baseball.view;
 
 import baseball.model.Result;
 import baseball.util.ConsoleMessage;
-import baseball.util.ExceptionMessage;
 import baseball.util.ResultHandler.BallAndStrikeHandler;
 import baseball.util.ResultHandler.BallHandler;
 import baseball.util.ResultHandler.NothingHandler;
@@ -27,7 +26,7 @@ public class OutputView {
     }
 
     public void printExceptionMessage(Exception exception) {
-        System.out.printf(ExceptionMessage.BASE.getMessage(), exception.getMessage());
+        System.out.printf(exception.getMessage());
     }
 
 
