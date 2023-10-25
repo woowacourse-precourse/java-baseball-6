@@ -41,6 +41,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("플레이어 숫자들이 3자리의 수가 아닌 적은 수가 입력될 시 예외 발생")
+    void lessInputExceptionTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
