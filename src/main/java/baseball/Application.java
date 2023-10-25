@@ -4,8 +4,6 @@ import baseball.controller.BaseballController;
 import baseball.exception.InvalidInputException;
 import baseball.service.BaseballService;
 
-import java.util.List;
-
 public class Application {
 
     public static void main(String[] args) {

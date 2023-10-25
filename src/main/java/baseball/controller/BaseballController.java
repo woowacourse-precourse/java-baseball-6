@@ -27,25 +27,35 @@ public class BaseballController {
      * 게임 시작
      */
     public void startGame() throws InvalidInputException {
-        List<Integer> user;
         do {
             service.setNewGame();
-            while (true) {
-                ConsoleOutput.requestInput();
-                user = ConsoleInput.readDigitNumber(3);
-
-                if (service.checkVictory(user)) {
-                    ConsoleOutput.displayVictory();
-                    break;
-                }
-                ConsoleOutput.displayHint(service.getHint(user));
-            }
+            playSingleRound();
         } while (askRestartGame());
+    }
+
+    /**
+     * 야구 한 게임 진행
+     */
+    private void playSingleRound() {
+        List<Integer> user;
+
+        while (!service.checkVictory(user = askUserNumber())) {
+            ConsoleOutput.displayHint(service.getHint(user));
+        }
+        ConsoleOutput.displayVictory();
+    }
+
+    /**
+     * 숫자 입력
+     */
+    private List<Integer> askUserNumber() throws InvalidInputException {
+        ConsoleOutput.requestInput();
+        return ConsoleInput.readDigitNumber(3);
     }
 
 
     /**
-     * 재시작 여부
+     * 재시작 여부 입력
      */
     private boolean askRestartGame() throws InvalidInputException {
         ConsoleOutput.requestRestart();
