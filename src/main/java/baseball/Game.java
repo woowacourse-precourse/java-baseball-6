@@ -28,6 +28,8 @@ public class Game {
 
       int strikeCount = countStrikes(guessNumbers);
       int ballCount = countBalls(guessNumbers);
+
+      calculateResult(strikeCount, ballCount);
     }
   }
 
@@ -66,7 +68,7 @@ public class Game {
     return strikeCount;
   }
 
-  private int countBalls(List<Integer> guessNumbers){
+  private int countBalls(List<Integer> guessNumbers) {
     int ballCount = 0;
     for (int i = 0; i < guessNumbers.size(); i++){
       int guess = guessNumbers.get(i);
@@ -77,4 +79,22 @@ public class Game {
     return ballCount;
   }
 
+  private void calculateResult(int strikeCount, int ballCount) {
+    if (strikeCount == 3) {
+      System.out.println("3스트라이크");
+      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+      // restart function 추가
+    } else if (strikeCount == 0 && ballCount == 0) {
+      System.out.println("낫싱");
+    } else if (strikeCount != 0 && ballCount != 0) {
+      String result = String.format("%d볼 %d스트라이크", ballCount, strikeCount);
+      System.out.println(result);
+    } else if (strikeCount != 0) {
+      String result = String.format("%d스트라이크", strikeCount);
+      System.out.println(result);
+    } else if (ballCount != 0) {
+      String result = String.format("%d볼", ballCount);
+      System.out.println(result);
+    }
+  }
 }
