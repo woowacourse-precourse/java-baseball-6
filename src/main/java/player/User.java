@@ -8,4 +8,8 @@ public class User {
     public User(String inputNumber) {
         userNumber = new NumberInput(inputNumber);
     }
+
+    public String getUserInput() {
+        return userNumber.getInputNumber();
+    }
 }
