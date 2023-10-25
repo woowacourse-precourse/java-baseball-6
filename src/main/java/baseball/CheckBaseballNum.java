@@ -1,13 +1,19 @@
 package baseball;
 
 public class CheckBaseballNum {
-    static boolean isError(String baseballNum) {
+    static void isError(String baseballNum) throws IllegalArgumentException {
         if (Util.isNull(baseballNum)) {
-            return (true);
+            throw new IllegalArgumentException("BaseballNum 입력값 오류 : null이 입력되었습니다.");
         }
-        return (!Util.isCorrectLength(baseballNum, 3) ||
-                isDuplicated(baseballNum) ||
-                !isCorrectRange(baseballNum));
+        if (!Util.isCorrectLength(baseballNum, 3)) {
+            throw new IllegalArgumentException("BaseballNum 입력값 오류 : 올바른 길이(3)가 아닙니다");
+        }
+        if (!isCorrectRange(baseballNum)) {
+            throw new IllegalArgumentException("BaseballNum 입력값 오류 : 1 ~ 9 범위 바깥의 수가 입력되었습니다");
+        }
+        if (isDuplicated(baseballNum)) {
+            throw new IllegalArgumentException("BaseballNum 입력값 오류 : 같은 값이 입력되었습니다");
+        }
     }
 
     static boolean isCorrectRange(String baseballNum) {

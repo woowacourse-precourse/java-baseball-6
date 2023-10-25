@@ -6,6 +6,9 @@ public class Util {
     }
 
     static boolean isCorrectLength(String inputString, int len) {
+        if (Util.isNull(inputString)) {
+            return (false);
+        }
         return (inputString.length() == len);
     }
 }

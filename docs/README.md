@@ -19,7 +19,7 @@
 
 야구게임에서 사용하는 1 ~ 9 범위의 수 3개를 가지고있는 class(일급 컬렉션)이다
 
-* BaseballNum(String) : 문자열을 메개변수로 받아 초기화해주는 생성자이다 이때 잘못된 값이 들어오면 IllegalArgumentException을 발생시킨다
+* BaseballNum(String) : 문자열을 메개변수로 받아 초기화해주는 생성자이다
 * BaseballNum() : 기본적인 생성자로 랜덤한 수 3개를 얻어 초기화해주는 생성자이다
 * int getNum(int) : 원하는 index의 값을 반환해준다
 * int isSamePositionNum(BaseballNum) : 비교할 BaseballNum을 받아서 자신의 값과 같은 인덱스에 같은 값을 가지고있는 개수를 반환한다
@@ -29,7 +29,7 @@
 
 BaseballNum class의 유효성을 검사해주는 class이다
 
-boolean isError(string) : 문제가 발생하면 true 문제가 없으면 false를 반환해준다
+void isError(string) : 문제가 발생하면 IllegalArgumentException을 발생시킨다
 boolean isCorrectRange(string) : 값이 1 ~ 9 사이로 맞게 들어왔는지를 검사해준다
 boolean isDuplicated(string) : 중복된 값이 있는지 검사해준다
 boolean isDigit(char num) : 값이 1 ~ 9 사이인지 검사해준다
@@ -38,14 +38,14 @@ boolean isDigit(char num) : 값이 1 ~ 9 사이인지 검사해준다
 
 재시작을 선택하는 값 1 ~ 2 범위의 수 1개를 가지고 있는 class(일급 컬렉션)
 
-* restartNum() : 기본적인 생성자로 입력을 받아서 값을 변수에 넣어준다 이때 잘못된 값이 들어오면 IllegalArgumentException을 발생시킨다
+* restartNum() : 기본적인 생성자로 입력을 받아서 값을 변수에 넣어준다
 * int getRestartNum() : 값을 반환해준다
 
 ### CheckRestartNum class 구현
 
 RestartNum class의 유효성을 검사해주는 class이다
 
-* boolean isError(String) : 문제가 발생하면 true 문제가 없으면 false를 반환해준다
+* void isError(String) : 문제가 발생하면 IllegalArgumentException을 발생시킨다
 * boolean isCorrectValue(string) : string의 값이 맞는 값(1 or 2)인지 판단해준다
 
 ### Printer class 구현

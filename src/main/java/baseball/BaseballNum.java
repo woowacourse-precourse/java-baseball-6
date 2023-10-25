@@ -7,10 +7,8 @@ import java.util.List;
 public class BaseballNum {
     private final List<Integer> number = new ArrayList<>();
 
-    public BaseballNum(String inputNum) throws IllegalArgumentException {
-        if (CheckBaseballNum.isError(inputNum)) {
-            throw new IllegalArgumentException("BaseballNum 입력값 오류.");
-        }
+    public BaseballNum(String inputNum) {
+        CheckBaseballNum.isError(inputNum);
         number.add(Character.getNumericValue(inputNum.charAt(0)));
         number.add(Character.getNumericValue(inputNum.charAt(1)));
         number.add(Character.getNumericValue(inputNum.charAt(2)));
