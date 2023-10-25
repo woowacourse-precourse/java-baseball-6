@@ -21,7 +21,7 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 String user = Console.readLine();
 
-                //사용자가 잘못 입력했는지 체크
+                //사용자가 잘못 입력했는지 체크 -> Ill
                 ExcepCheck.excepCheck(user);
 
                 ArrayList<Integer> userInput = new ArrayList<>(3);
@@ -41,11 +41,11 @@ public class Application {
                     }
                 }
 
+                System.out.println(ResultMessage(strikeCount, ballCount));
+
                 if (strikeCount == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     checkResult = false;
-                } else {
-                    System.out.println(resultMessage(strikeCount, ballCount));
                 }
             }
 
@@ -60,23 +60,21 @@ public class Application {
             }
         }
     }
+    private static String ResultMessage(int strikeCount, int ballCount) {
+        String resultMessage;
 
-    private static String resultMessage(int strikeCount, int ballCount) {
-        String resultMessage = "";
-
-        if (strikeCount > 0) {
-            resultMessage += strikeCount + "스트라이크";
-        }
-
-        if (ballCount > 0) {
-            if (strikeCount > 0) {
-                resultMessage += " ";
+        if (strikeCount == 0) {
+            if (ballCount == 0) {
+                resultMessage = "낫싱";
+            } else {
+                resultMessage = ballCount + "볼";
             }
-            resultMessage += ballCount + "볼";
-        }
-
-        if (resultMessage.isEmpty()) {
-            resultMessage = "낫싱";
+        } else {
+            if (ballCount == 0) {
+                resultMessage = strikeCount + "스트라이크";
+            } else {
+                resultMessage = ballCount + "볼 " + strikeCount + "스트라이크";
+            }
         }
         return resultMessage;
     }
