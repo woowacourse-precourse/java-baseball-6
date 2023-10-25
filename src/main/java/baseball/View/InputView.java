@@ -1,14 +1,14 @@
 package baseball.View;
 
-import baseball.validator.NumValidator;
-import baseball.validator.RestartNumValidator;
+import baseball.Validator.NumValidator;
+import baseball.Validator.RestartNumValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputView {
 
-    // 사용자 숫자 입력 처리 (인스턴스 메서드로 변경)
+    // 사용자 숫자 입력 처리
     public List<Integer> readNumbers() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();

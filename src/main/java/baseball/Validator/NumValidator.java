@@ -1,4 +1,4 @@
-package baseball.validator;
+package baseball.Validator;
 
 import java.util.Arrays;
 
