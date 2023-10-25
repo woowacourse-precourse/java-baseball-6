@@ -28,7 +28,7 @@ public class Input {
         return restartNumber;
     }
 
-    private static boolean isValidateNumber(String number) {
+    static boolean isValidateNumber(String number) {
         if (number.length() != 3) {
             return false;
         }
