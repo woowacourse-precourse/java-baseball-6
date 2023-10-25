@@ -37,6 +37,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_2나_1이_아닌_숫자_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("246", "135", "1", "597", "589", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 예외_테스트_중복_숫자_입력() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("223"))
