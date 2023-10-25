@@ -1,6 +1,7 @@
 package baseball;
 
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.Objects;
@@ -33,21 +34,36 @@ public class BaseBall {
 
     public void reset() {
         this.answer = Randoms.pickUniqueNumbersInRange(0, 9, ANSWER_LENGTH);
-        System.out.println(this.answer);
         this.ended = false;
     }
 
-    public boolean evaluate(String inputString) {
+    public void run() throws IllegalArgumentException {
+        while (true) {
+            if (this.ended) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String inputExitStatus = Console.readLine();
+                if (!inputExitStatus.equals("1") && !inputExitStatus.equals("2")) {
+                    throw new IllegalArgumentException();
+                }
+                if (inputExitStatus.equals("2")) {
+                    break;
+                }
+                this.reset();
+            }
+            System.out.print("숫자를 입력해주세요 : ");
+            this.evaluate(Console.readLine());
+        }
+    }
+
+    public void evaluate(String inputString) throws IllegalArgumentException {
         this.validateInputString(inputString);
         List<Integer> input = NumericModule.stringToIntegerList(inputString);
         this.compareAnswerToInput(this.answer, input);
         this.printScore();
         if (this.strike == this.ANSWER_LENGTH) {
-            System.out.println("숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             this.ended = true;
-            return true;
         }
-        return false;
     }
 
     public void printScore() {
@@ -76,12 +92,12 @@ public class BaseBall {
         }
     }
 
-    private void validateInputString(String inputString) {
+    private void validateInputString(String inputString) throws IllegalArgumentException {
         if (inputString.length() != ANSWER_LENGTH) {
-            throw new IllegalArgumentException(ANSWER_LENGTH + "개의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException();
         }
         if (!NumericModule.isNumeric(inputString)) {
-            throw new IllegalArgumentException("숫자만 입력해주세요.");
+            throw new IllegalArgumentException();
         }
     }
 }
