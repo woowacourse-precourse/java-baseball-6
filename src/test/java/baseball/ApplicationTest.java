@@ -6,7 +6,6 @@ import model.NumberInput;
 import org.junit.jupiter.api.Test;
 import player.Computer;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
