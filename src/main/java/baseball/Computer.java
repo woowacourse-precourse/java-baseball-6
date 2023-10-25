@@ -20,6 +20,11 @@ public class Computer {
         }
     }
 
+    public void setComputerObject(){
+        init();
+        selectRandomNumber();
+    }
+
     public int getComputerNumber(int index){
         return computer.get(index);
     }

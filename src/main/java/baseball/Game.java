@@ -22,35 +22,28 @@ public class Game {
     }
 
     public void run(){
-        // TODO: 해당 메소드 로직 줄이기
         Computer computer = new Computer();
         User user = new User();
 
         setGame();
-
         System.out.println(Print.START_GAME);
 
         while (isPlaying()){
-            computer.init();
+            computer.setComputerObject();
 
-            // 상대방(컴퓨터)은 1에서 9까지 서로 다른 임의의 수(랜덤) 3개를 선택
-            computer.selectRandomNumber();
-
-            while (isThreeStrike()){
+            while (!isThreeStrike()){
                 System.out.print(Print.GET_INPUT);
-                user.init();
-                user.selectUserNumber();
+                user.setUserObject();
 
                 // 입력한 숫자에 대한 결과 출력
-                play(computer, user);
+                gameLogic(computer, user);
                 System.out.println(getGameResult());
             }
-
-            isReplay();
+            askReplay();
         }
     }
 
-    public void play(Computer computer, User user){
+    public void gameLogic(Computer computer, User user){
         init();
 
         for(int index=0; index<3; index++){
@@ -92,7 +85,7 @@ public class Game {
         return Pattern.matches("[1|2]", str);
     }
 
-    public void isReplay(){
+    public void askReplay(){
         System.out.println(Print.REPLAY_GAME);
         String input = Console.readLine();
         if(!isOneOrTwo(input)){
@@ -106,6 +99,6 @@ public class Game {
     }
 
     public boolean isThreeStrike(){
-        return !(strikeCnt == 3);
+        return strikeCnt == 3;
     }
 }
