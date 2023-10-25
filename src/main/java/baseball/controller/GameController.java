@@ -8,6 +8,9 @@ import baseball.view.Console;
 import java.util.Objects;
 
 public class GameController {
+    public final static String RESTART_GAME_NUMBER = "1";
+    public final static String END_GAME_NUMBER = "2";
+
     private final ComputerNumbers computer;
     private static PlayerNumbers player;
     private final Validate validate;
@@ -52,10 +55,10 @@ public class GameController {
 
     private void restartGame() {
         String restart = Console.setRegame();
-        if (Objects.equals(restart, "1")) {
+        if (Objects.equals(restart, RESTART_GAME_NUMBER)) {
             GameController newGame = new GameController();
             newGame.start();
-        } else if (!Objects.equals(restart, "2")) {
+        } else if (!Objects.equals(restart, END_GAME_NUMBER)) {
             throw new IllegalArgumentException("[ERROR] 1 또는 2가 아닌 수 입력");
         }
     }
