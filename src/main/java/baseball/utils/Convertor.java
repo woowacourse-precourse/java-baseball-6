@@ -1,13 +1,13 @@
 package baseball.utils;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Convertor {
-    public static String convertToString(List<Integer> list) {
-        String ans = "";
-        for (int i = 0; i < list.size(); i++) {
-            ans += list.get(i);
-        }
-        return ans;
+    public static String listToString(List<Integer> list) {
+        String result = list.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+        return result;
     }
 }

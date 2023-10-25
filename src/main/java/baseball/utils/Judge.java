@@ -1,11 +1,12 @@
 package baseball.utils;
 
 import baseball.constants.Constants;
+import baseball.constants.Messages;
 import baseball.domain.Score;
 
 import java.util.List;
 
-public class ScoreJudge {
+public class Judge {
     public static String judgeScore(List<Integer> generatedAnswers, String userInput) {
         Score score = new Score();
         char[] charArray = userInput.toCharArray();
@@ -21,5 +22,13 @@ public class ScoreJudge {
             }
         }
         return score.printScore();
+    }
+
+    public static boolean isCorrectAnswer(String expected, String actual) {
+        if (actual.equals(expected)) {
+            System.out.println(Messages.GAME_COMPLETE_MESSAGE);
+            return true;
+        }
+        return false;
     }
 }

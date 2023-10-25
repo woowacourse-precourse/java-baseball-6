@@ -1,6 +1,5 @@
 package baseball.utils;
 
-import baseball.utils.ScoreJudge;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScoreJudgeTest {
+public class JudgeTest {
     List<Integer> correctAnswer = new ArrayList<>();    // 정답은 123
 
     @BeforeEach
@@ -59,7 +58,7 @@ public class ScoreJudgeTest {
     }
 
     private void assertResult(String expected, String userInput) {
-        String guessResult = ScoreJudge.judgeScore(correctAnswer, userInput);
+        String guessResult = Judge.judgeScore(correctAnswer, userInput);
         Assertions.assertEquals(expected, guessResult);
     }
 }
