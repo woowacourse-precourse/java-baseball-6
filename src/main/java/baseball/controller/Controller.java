@@ -14,14 +14,11 @@ public class Controller {
     private final static View view = new View();
 
     public void start() {
-        String end;
         view.printStart();
         do {
             computer.prepareGame();
             playGame();
-            end = view.inputEnd();
-            validateEndInput(end);
-        } while (end.equals(RESTART));
+        } while (isEnd());
         view.closeConsole();
     }
 
@@ -48,6 +45,12 @@ public class Controller {
             throw new IllegalArgumentException("numbers cannot be duplicated");
         }
 
+    }
+
+    private Boolean isEnd() {
+        String end = view.inputEnd();
+        validateEndInput(end);
+        return end.equals(RESTART);
     }
 
     private static void validateEndInput(String end) {
