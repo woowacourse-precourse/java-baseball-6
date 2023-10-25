@@ -27,8 +27,7 @@ public class User {
         Set<Integer> checkuserInput = new HashSet<>();
         List<Integer> setting = new ArrayList<>();
         char[] userInputList = userInput.toCharArray();
-//
-//
+
         if(userInputList.length != 3){
             throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
         }

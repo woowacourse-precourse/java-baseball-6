@@ -8,6 +8,7 @@ public class Hint {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
+    private static final String PLAYDONE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
     private static final String BLANK = " ";
 
     private boolean gameOver = false;
@@ -23,6 +24,7 @@ public class Hint {
 
         // 볼 카운트하기
         Set<Integer> ballCounts = new HashSet<>();
+
         for (int i = 0; i < 3; i++) {
             int nowPcCnt = computerNum.get(i);
             int nowUserCnt = userNum.get(i);
@@ -38,7 +40,7 @@ public class Hint {
         if(strikeCnt == 0 && ballCnt == 0){
             System.out.println(NOTHING);
         }else if(strikeCnt ==  3){
-            System.out.println(strikeCnt + STRIKE);
+            System.out.println(strikeCnt + STRIKE + BLANK + PLAYDONE);
             gameOver = true;
         }else if(strikeCnt != 0 && ballCnt == 0){
             System.out.println(strikeCnt + STRIKE);

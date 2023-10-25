@@ -9,7 +9,9 @@ import java.util.Set;
 public class Computer {
     private List<Integer> number;
     public Computer(){
+
         number = new ArrayList<>();
+        setNumber();
     }
 
     public List<Integer> getNumber() {
@@ -18,7 +20,6 @@ public class Computer {
 
     public void setNumber(){
          number = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-
     }
 
 }

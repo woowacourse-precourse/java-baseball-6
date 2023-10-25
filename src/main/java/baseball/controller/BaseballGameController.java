@@ -40,6 +40,6 @@ public class BaseballGameController {
 
     public void initializePc(){
         pc = new Computer();
-        pc.setNumber();
+//        pc.setNumber();
     }
 }
