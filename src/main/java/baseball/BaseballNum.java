@@ -2,10 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.List;
 
 public class BaseballNum {
-    private final List<Integer> number = new ArrayList<>();
+    private final ArrayList<Integer> number = new ArrayList<>();
 
     public BaseballNum(String inputNum) {
         CheckBaseballNum.isError(inputNum);
@@ -30,8 +29,8 @@ public class BaseballNum {
     int isSamePositionNum(BaseballNum comparedNum) {
         int sameNumCnt = 0;
 
-        for (int idx = 0; idx < 3; idx++) {
-            if (number.get(idx).equals(comparedNum.getNum(idx))) {
+        for (int index = 0; index < 3; index++) {
+            if (number.get(index).equals(comparedNum.getNum(index))) {
                 sameNumCnt++;
             }
         }
