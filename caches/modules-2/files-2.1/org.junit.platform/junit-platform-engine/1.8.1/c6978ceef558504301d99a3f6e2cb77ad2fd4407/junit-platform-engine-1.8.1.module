@@ -1,0 +1,161 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.junit.platform",
+    "module": "junit-platform-engine",
+    "version": "1.8.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.junit",
+          "module": "junit-bom",
+          "version": {
+            "requires": "5.8.1"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "org.opentest4j",
+          "module": "opentest4j",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "org.junit.platform",
+          "module": "junit-platform-commons",
+          "version": {
+            "requires": "1.8.1"
+          }
+        },
+        {
+          "group": "org.apiguardian",
+          "module": "apiguardian-api",
+          "version": {
+            "requires": "1.1.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "junit-platform-engine-1.8.1.jar",
+          "url": "junit-platform-engine-1.8.1.jar",
+          "size": 185778,
+          "sha512": "840d67896a10a70de95eaf3e0bbd267f30d2ffed19672162bdc8c62deaf8d25731ccb8b33dae46b746e90e7e93c99f95923ba64a18ea61bfdee4abe6353d6a9a",
+          "sha256": "702868ed7e86b9b4672ede0f1e185e905baca9afab57746a7c650be3c7bca047",
+          "sha1": "e6c63bf990dc88a6527b4ed617b23e47048f07e0",
+          "md5": "73659fbb057bda54e14825c08661e98b"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.junit",
+          "module": "junit-bom",
+          "version": {
+            "requires": "5.8.1"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "org.opentest4j",
+          "module": "opentest4j",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "org.junit.platform",
+          "module": "junit-platform-commons",
+          "version": {
+            "requires": "1.8.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "junit-platform-engine-1.8.1.jar",
+          "url": "junit-platform-engine-1.8.1.jar",
+          "size": 185778,
+          "sha512": "840d67896a10a70de95eaf3e0bbd267f30d2ffed19672162bdc8c62deaf8d25731ccb8b33dae46b746e90e7e93c99f95923ba64a18ea61bfdee4abe6353d6a9a",
+          "sha256": "702868ed7e86b9b4672ede0f1e185e905baca9afab57746a7c650be3c7bca047",
+          "sha1": "e6c63bf990dc88a6527b4ed617b23e47048f07e0",
+          "md5": "73659fbb057bda54e14825c08661e98b"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "junit-platform-engine-1.8.1-javadoc.jar",
+          "url": "junit-platform-engine-1.8.1-javadoc.jar",
+          "size": 625934,
+          "sha512": "b2bba5ac3ec6e4001f291a5b95647e6ef0410705c6e839b0858a8bc7dff67b1701d6b181a2ebcb68ea90766a69a510fd9a21916306c8c157b181612aa383ea2f",
+          "sha256": "a2f63c50d1c5ab009cc0c0d63343deeb369c849b4b95ccac2d18bf80d95c86ac",
+          "sha1": "936aa3c58b4b85776c6595ebbb0e7894097d079a",
+          "md5": "ad49c0d78064178463fb4a4344ef2850"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "junit-platform-engine-1.8.1-sources.jar",
+          "url": "junit-platform-engine-1.8.1-sources.jar",
+          "size": 132983,
+          "sha512": "c63dd816d00db7c08c87a6f8757ecd7bc73c519af41b60389720f44fcf34df003a8beb7b7c29742ed0a9fd0fe4629a9f874fc1826f7a816c7212d9dc396a799c",
+          "sha256": "f9139af4f7efb614457e941614762a486891489b2832300a2925fb90f2ad4648",
+          "sha1": "9d87ea7959823714ad803aa91e0618bf2213b52c",
+          "md5": "dab110e4a480abcce10e09b1d2622be9"
+        }
+      ]
+    }
+  ]
+}
