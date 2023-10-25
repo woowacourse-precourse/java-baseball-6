@@ -1,9 +1,9 @@
 package baseball.game;
 
-import java.util.List;
+import baseball.evaluation.evaluator.Evaluator;
 
 public interface BaseballGame {
     void init() throws IllegalArgumentException;
 
-    List<Integer> getAnswer();
+    Evaluator getEvaluator();
 }

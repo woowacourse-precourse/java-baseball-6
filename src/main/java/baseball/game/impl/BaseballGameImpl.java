@@ -1,18 +1,18 @@
 package baseball.game.impl;
 
+import baseball.evaluation.evaluator.Evaluator;
+import baseball.evaluation.evaluator.impl.AnswerEvaluatorImpl;
 import baseball.game.BaseballGame;
 import baseball.phase.Phase;
 import baseball.phase.PhaseID;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BaseballGameImpl implements BaseballGame {
     private Phase currentPhase;
     private Phase[] phases = new Phase[PhaseID.values().length];
-    private List<Integer> answer;
+    private Evaluator evaluator;
 
     public BaseballGameImpl(int numSize) {
-        answer = new ArrayList<>(numSize);
+        evaluator = new AnswerEvaluatorImpl(numSize);
         for (PhaseID phase : PhaseID.values()) {
             phases[phase.getId()] = phase.getPhase(this);
         }
@@ -32,7 +32,7 @@ public class BaseballGameImpl implements BaseballGame {
     }
 
     @Override
-    public List<Integer> getAnswer() {
-        return answer;
+    public Evaluator getEvaluator() {
+        return this.evaluator;
     }
 }
