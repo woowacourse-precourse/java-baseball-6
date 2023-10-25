@@ -50,7 +50,7 @@ public class Game {
     }
     public void checkIsNumber(int index)
     {
-        if (input.charAt(index) < '0' || input.charAt(index) > '9') {
+        if (input.charAt(index) < '1' || input.charAt(index) > '9') {
             throw new IllegalArgumentException();
         }
     }
