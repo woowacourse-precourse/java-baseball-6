@@ -68,10 +68,10 @@ public class BaseballGame {
             messageStrike = String.valueOf(countStrike) + "스트라이크";
         }
 
-        if (countBall + countStrike > 0) {
-            messageScore = messageBall + messageStrike;
-        } else if (countBall + countStrike == 0) {
+        if (countBall == 3) {
             messageScore = "낫싱";
+        } else if (countBall + countStrike > 0) {
+            messageScore = messageBall + messageStrike;
         }
         return messageScore;
     }
@@ -110,6 +110,14 @@ public class BaseballGame {
         String input = Console.readLine();
         this.playerAnswer = input;
         System.out.println("사용자입력숫자: " + this.playerAnswer);
+    }
+
+    public void exceptNotInteger(String source) {
+        for (int i = 0; i < source.length(); i++) {
+            if (!Character.isDigit(source.charAt(i))) {
+                throw new IllegalArgumentException("입력값은 반드시 정수여야 합니다.");
+            }
+        }
     }
 
 }
