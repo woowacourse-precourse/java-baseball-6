@@ -8,30 +8,32 @@ public class Computer {
 
     private List<Integer> computerNumbers;
 
-    private final int MAX_NUMBER = 9;
-    private final int MIN_NUMBER = 1;
-
-    private final int LIST_SIZE = 3;
-
     private Integer ball = 0;
     private Integer strike = 0;
-    private Boolean complete = false;
+    private Boolean complete;
 
     public void generateNumber() {
+
+        final int MAX_NUMBER = 9;
+        final int MIN_NUMBER = 1;
+        this.complete = false;
+
         List<Integer> randomNumbers = new ArrayList<>();
+
         while (randomNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
         }
+
         computerNumbers = randomNumbers;
     }
 
     public String getResult(List<Integer> randomNumbers, List<Integer> numbers) {
-        for (int i = 0; i < LIST_SIZE; i++) {
-            for (int j = 0; j < LIST_SIZE; j++) {
-                if (randomNumbers.get(i) == numbers.get(j)) {
+        for (int i = 0; i < randomNumbers.size(); i++) {
+            for (int j = 0; j < randomNumbers.size(); j++) {
+                if (randomNumbers.get(i).equals(numbers.get(j))) {
                     if (i == j) {
                         this.strike++;
                     } else {
@@ -65,10 +67,6 @@ public class Computer {
 
     public Boolean getComplete() {
         return complete;
-    }
-
-    public void isComplete(Boolean complete) {
-        this.complete = complete;
     }
 
     public List<Integer> getComputerNumbers() {

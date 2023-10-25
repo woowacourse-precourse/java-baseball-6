@@ -15,6 +15,7 @@ public class GameManager {
 
     public void runGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (this.restart) {
             computer.generateNumber();
             while (!computer.getComplete()) {
@@ -33,7 +34,6 @@ public class GameManager {
         if (menu == 2) {
             this.restart = false;
         } else {
-            computer.isComplete(false);
             this.restart = true;
         }
     }
