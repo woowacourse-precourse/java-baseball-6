@@ -2,7 +2,7 @@ package baseball.service;
 
 import static baseball.util.ThreeOutCount.getThreeOutCount;
 
-import baseball.config.withinRange;
+import baseball.config.WithinRange;
 import baseball.util.Validate;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -26,7 +26,7 @@ public class GameService {
     public void playBallGame() {
         gameStart();
         GenerationQuestionList answerRandomListFactory = new GenerationQuestionList(new ArrayList<>());
-        List<Integer> answerRandomList = answerRandomListFactory.generateRandomNumberList(new withinRange(1, 9));
+        List<Integer> answerRandomList = answerRandomListFactory.generateRandomNumberList(new WithinRange(1, 9));
 
         while (play) {
             outputVIew.printRequestInputNumberMessage();

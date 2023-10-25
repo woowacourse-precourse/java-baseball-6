@@ -2,7 +2,7 @@ package baseball.service;
 
 import static baseball.util.ThreeOutCount.getThreeOutCount;
 
-import baseball.config.withinRange;
+import baseball.config.WithinRange;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class GenerationQuestionList {
         this.ballCountList = ballCountList;
     }
 
-    public List<Integer> generateRandomNumberList(withinRange randomNumberInRange) {
+    public List<Integer> generateRandomNumberList(WithinRange randomNumberInRange) {
 
         if (!validWithinRange(randomNumberInRange)) {
             throw new IllegalArgumentException(LESS_THAN_OUTCOUNT_ERROR);
@@ -38,7 +38,7 @@ public class GenerationQuestionList {
         return checkedList.contains(randomNumber);
     }
 
-    public boolean validWithinRange(withinRange randomNumberInRange) {
+    public boolean validWithinRange(WithinRange randomNumberInRange) {
         int result = (randomNumberInRange.endInclusive() - randomNumberInRange.startInclusive()) + 1;
         if (getThreeOutCount() > result) {
             System.out.println();

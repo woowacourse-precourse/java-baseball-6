@@ -1,6 +1,6 @@
 package baseball.config;
 
-public record withinRange(int startInclusive, int endInclusive) {
+public record WithinRange(int startInclusive, int endInclusive) {
 
     @Override
     public int startInclusive() {

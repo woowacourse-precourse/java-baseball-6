@@ -3,7 +3,7 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.config.withinRange;
+import baseball.config.WithinRange;
 import baseball.service.GenerationQuestionList;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ class GenerationQuestionTest {
         GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
 
         //when
-        List<Integer> answerRandomList = computer.generateRandomNumberList(new withinRange(1, 9));
+        List<Integer> answerRandomList = computer.generateRandomNumberList(new WithinRange(1, 9));
 
         //then
         assertThat(answerRandomList.size()).isEqualTo(3);
@@ -34,7 +34,7 @@ class GenerationQuestionTest {
         GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
 
         //when
-        List<Integer> answerRandomList = computer.generateRandomNumberList(new withinRange(1, 9));
+        List<Integer> answerRandomList = computer.generateRandomNumberList(new WithinRange(1, 9));
         long count = answerRandomList.stream().distinct().count();
 
         //then
@@ -47,7 +47,7 @@ class GenerationQuestionTest {
 
         //given
         GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
-        withinRange withinRange = new withinRange(1, 9);
+        WithinRange withinRange = new WithinRange(1, 9);
         //when
         List<Integer> answerRandomList = computer.generateRandomNumberList(withinRange);
 
@@ -65,7 +65,7 @@ class GenerationQuestionTest {
         GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
         int startInclusive = 4;
         int endInclusive = 8;
-        withinRange withinRange = new withinRange(startInclusive, endInclusive);
+        WithinRange withinRange = new WithinRange(startInclusive, endInclusive);
 
         //when
         List<Integer> answerRandomList = computer.generateRandomNumberList(withinRange);
@@ -84,7 +84,7 @@ class GenerationQuestionTest {
         GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
         int startInclusive = 1;
         int endInclusive = 2;
-        withinRange withinRange = new withinRange(startInclusive, endInclusive);
+        WithinRange withinRange = new WithinRange(startInclusive, endInclusive);
 
         //then
         assertThatThrownBy(() -> computer.generateRandomNumberList(withinRange))
@@ -99,7 +99,7 @@ class GenerationQuestionTest {
         GenerationQuestionList computer = new GenerationQuestionList(new ArrayList<>());
         int startInclusive = 1;
         int endInclusive = 3;
-        withinRange withinRange = new withinRange(startInclusive, endInclusive);
+        WithinRange withinRange = new WithinRange(startInclusive, endInclusive);
 
         List<Integer> randomNumberList = computer.generateRandomNumberList(withinRange);
 
