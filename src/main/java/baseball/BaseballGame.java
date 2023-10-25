@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.domain.Balls.createRandomBalls;
 import static baseball.view.InputView.getEndOption;
 import static baseball.view.InputView.getNumbers;
 import static baseball.view.OutputView.printEnd;
@@ -10,7 +11,6 @@ import baseball.domain.BallStatus;
 import baseball.domain.Balls;
 import baseball.domain.Board;
 import baseball.domain.EndOption;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,22 +20,22 @@ public class BaseballGame {
 
     private static final int BALL_SIZE = 3;
 
+    private Balls computer;
     private Board board;
 
     public void start() {
         do {
-            Balls computer = createComputerBalls();
-            board = new Board();
-            play(computer);
+            init();
+            play();
         } while (!isEnd());
     }
 
-    private Balls createComputerBalls() {
-        List<Integer> numbers = createRandomNumbers();
-        return new Balls(numbers);
+    private void init() {
+        computer = createRandomBalls();
+        board = new Board();
     }
 
-    private void play(Balls computer) {
+    private void play() {
         do {
             board.reset();
             process(computer);
@@ -55,17 +55,6 @@ public class BaseballGame {
             board.scoring(result);
         }
         printHint(board);
-    }
-
-    private List<Integer> createRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < BALL_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-        return numbers;
     }
 
     private List<BallNumber> getBallNumbers() {
@@ -107,5 +96,6 @@ public class BaseballGame {
             throw new IllegalArgumentException("잘못된 입력입니다. 1(재시작) 또는 2(종료)를 입력해주세요.");
         }
     }
+
 }
 

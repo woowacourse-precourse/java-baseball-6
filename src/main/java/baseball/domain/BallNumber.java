@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Objects;
 
 public class BallNumber {
@@ -9,9 +10,17 @@ public class BallNumber {
 
     private final int number;
 
+    private BallNumber() {
+        number = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+    }
+
     public BallNumber(int number) {
         validateNumber(number);
         this.number = number;
+    }
+
+    public static BallNumber createRandomBallNumber() {
+        return new BallNumber();
     }
 
     @Override
