@@ -31,7 +31,7 @@ public class BallStrike implements EvalResult {
     }
 
     @Override
-    public boolean isClear(int answerLength) {
+    public boolean isClear() {
         return isSuccess;
     }
 }

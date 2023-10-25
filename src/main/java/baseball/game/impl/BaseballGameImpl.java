@@ -16,19 +16,29 @@ public class BaseballGameImpl implements BaseballGame {
         for (PhaseID phase : PhaseID.values()) {
             phases[phase.getId()] = phase.getPhase(this);
         }
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        this.currentPhase = this.phases[PhaseID.GUESS.getId()];
     }
 
     @Override
-    public void init() throws IllegalArgumentException {
-        this.currentPhase = phases[PhaseID.INIT.getId()];
-        while (true) {
-            this.currentPhase.play();
-            PhaseID nextPhase = this.currentPhase.nextPhase();
-            if (nextPhase == null) {
-                break;
-            }
-            this.currentPhase = this.phases[nextPhase.getId()];
-        }
+    public void display() {
+        this.currentPhase.display();
+    }
+
+    @Override
+    public void validateInput(String input) {
+        this.currentPhase.validateInput(input);
+    }
+
+    @Override
+    public void action(String input) {
+        PhaseID nextPhase = this.currentPhase.action(input);
+        this.currentPhase = this.phases[nextPhase.getId()];
+    }
+
+    @Override
+    public boolean isOver() {
+        return this.currentPhase == null;
     }
 
     @Override

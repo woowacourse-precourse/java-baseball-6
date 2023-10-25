@@ -10,14 +10,20 @@ public class MenuPhase implements Phase {
     public MenuPhase() {
     }
 
+
     @Override
-    public PhaseID nextPhase() {
-        return null;
+    public void display() {
+
     }
 
     @Override
-    public void play() {
+    public void validateInput(String input) {
 
+    }
+
+    @Override
+    public PhaseID action(String input) {
+        return null;
     }
 
     @Override

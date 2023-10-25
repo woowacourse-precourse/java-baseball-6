@@ -3,9 +3,11 @@ package baseball.phase;
 import baseball.game.BaseballGame;
 
 public interface Phase {
-    PhaseID nextPhase();
+    void display();
 
-    void play();
+    void validateInput(String input);
+
+    PhaseID action(String input);
 
     void setGame(BaseballGame game);
 }
