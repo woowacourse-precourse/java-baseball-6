@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Referee {
 
-    static final int THREE_STRIKE = 3;
+    private static final int THREE_STRIKE = 3;
     private int strike;
     private int ball;
 
