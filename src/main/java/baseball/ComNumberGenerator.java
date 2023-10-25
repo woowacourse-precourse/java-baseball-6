@@ -14,8 +14,7 @@ public class ComNumberGenerator {
         resetComNumbers();
 
         while (isNotFull()) {
-            int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
-            updateComNumbers(randomNumber);
+            updateComNumbers(getRandomNumber());
         }
 
         return comNumbers;
@@ -34,5 +33,9 @@ public class ComNumberGenerator {
             return;
         }
         comNumbers.add(randomNumber);
+    }
+
+    protected int getRandomNumber() {
+        return Randoms.pickNumberInRange(START_RANGE, END_RANGE);
     }
 }
