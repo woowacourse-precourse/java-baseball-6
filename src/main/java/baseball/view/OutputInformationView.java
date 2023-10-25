@@ -11,4 +11,9 @@ public class OutputInformationView {
     public void startGuide() {
         System.out.println(start);
     }
+
+    // "3개의 숫자를 모두 맞추셨습니다." 문장을 출력하는 메서드.
+    public void checkAnswerGuide() {
+        System.out.print(checkAnswer);
+    }
 }
