@@ -13,11 +13,15 @@ public class Application {
             return false;
         }
         else{
+            int numsCheck;
             for(int i = 0; i<gamenumslen; i++){
-                int numsCheck = nums.charAt(i) -'0';
+                numsCheck = nums.charAt(i) -'0';
                 if(numsCheck<1&&9<numsCheck){
                     return false;
                 }
+            }
+            for(int i = 0; i<gamenumslen; i++){
+                numsCheck = nums.charAt(i) -'0';
                 if(!userNumsBucket[numsCheck]){
                     userNumsBucket[numsCheck] = true;
                 }
