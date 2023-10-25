@@ -1,17 +1,24 @@
 package baseball.controller;
 
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InteractionController {
+    private final Validator validator;
+
+    public InteractionController(Validator validator) {
+        this.validator = validator;
+    }
+
     public String readInputData() {
         String inputData = Console.readLine();
-        // TODO input data validate logic
+        validator.validateInputData(inputData);
         return inputData;
     }
 
     public Integer readChoiceData() {
         String choiceData = Console.readLine();
-        // TODO choice data validate logic
+        validator.validateChoiceData(choiceData);
         return Integer.valueOf(choiceData);
     }
 }
