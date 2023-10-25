@@ -21,9 +21,49 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임종료_후_재시작_입력_예외_테스트_숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("246", "135", "1", "597", "589", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 게임종료_후_재시작_입력_예외_테스트_문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("246", "135", "1", "597", "589", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 한자리_숫자_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 두자리_숫자_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복된_숫자_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
