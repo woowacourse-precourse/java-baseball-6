@@ -23,6 +23,9 @@ public class TestConstant {
     public static final String FIRST_ANSWER = "123";
     public static final String SECOND_ANSWER = "456";
     public static final List<Integer> FIRST_ANSWER_SPLIT = List.of(1, 2, 3);
+    public static final Integer FIRST_ANSWER_FIRST_ELEM = FIRST_ANSWER_SPLIT.get(0);
+    public static final Integer[] FIRST_ANSWER_OTHER_ELEM = FIRST_ANSWER_SPLIT.subList(1, FIRST_ANSWER_SPLIT.size())
+            .stream().toArray(Integer[]::new);
     public static final List<Integer> SECOND_ANSWER_SPLIT = List.of(4, 5, 6);
     public static final List<Integer> ANSWER_LIST = List.of(Integer.parseInt(FIRST_ANSWER),
             Integer.parseInt(SECOND_ANSWER));
