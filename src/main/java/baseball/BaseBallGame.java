@@ -1,13 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BaseBallGame {
 
     private static BaseBallGame baseBallGame;
+
     public int numOfBall = 0;
     public int numOfStrike = 0;
     public final String INPUT_REGEX = "([1-9])(?!\\1)([1-9])(?!\\1|\\2)([1-9])";
@@ -28,34 +29,24 @@ public class BaseBallGame {
     public void run() {
         do {
             System.out.print(OutputMessage.START_GAME);
-            List<Integer> answer = setAnswer();
 
+            Computer computer = new Computer();
             // 정답 확인용 임시 코드
-            System.out.println(answer);
+            System.out.println(Arrays.toString(computer.getRandomNumber().toArray()));
 
-            checkAnswer(answer);
+            checkAnswer(computer);
 
             System.out.println(OutputMessage.END_OR_NOT);
 
         } while (!askWhetherToEnd());
     }
 
-    private static List<Integer> setAnswer() {
-        List<Integer> answer = new ArrayList<>();
-        while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
-        }
-        return answer;
-    }
 
-    private void checkAnswer(List<Integer> answer) {
+    private void checkAnswer(Computer computer) {
         do {
             System.out.print(OutputMessage.ENTER_NUMBER);
             List<Integer> input = getInput();
-            compareAnswerToInput(answer, input);
+            compareAnswerToInput(computer, input);
         } while (!getResult());
     }
 
@@ -77,10 +68,10 @@ public class BaseBallGame {
         }
     }
 
-    private void compareAnswerToInput(List<Integer> answer, List<Integer> input) {
+    private void compareAnswerToInput(Computer computer, List<Integer> input) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (answer.get(i).equals(input.get(j))) {
+                if (computer.getRandomNumber().get(i).equals(input.get(j))) {
                     if (i == j) {
                         numOfStrike++;
                         break;
