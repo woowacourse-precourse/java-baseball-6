@@ -10,8 +10,21 @@ public class OutputMessage {
         System.out.println("숫자를 입력해주세요 : ");
     }
 
-    public static void continueGame() {
+    public static void demandContinueFlag() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public static void printResultMessage(int ballCount, int strikeCount) {
+        if (strikeCount == 3)
+            resultCorrect();
+        else if (ballCount == 0 && strikeCount == 0)
+            resultNothing();
+        else if (ballCount > 0 && strikeCount == 0)
+            resultBallCount(ballCount);
+        else if (ballCount == 0 && strikeCount > 0)
+            resultStrikeCount(strikeCount);
+        else if (ballCount > 0 && strikeCount > 0)
+            resultBallAndStrikeCount(ballCount, strikeCount);
     }
 
     public static void resultBallCount(int ballCount) {
@@ -19,11 +32,11 @@ public class OutputMessage {
     }
 
     public static void resultStrikeCount(int strikeCount) {
-        System.out.println(strikeCount+"+스트라이크");
+        System.out.println(strikeCount+"스트라이크");
     }
 
     public static void resultBallAndStrikeCount(int ballCount, int strikeCount) {
-        System.out.println(ballCount+"볼 "+strikeCount+"+스트라이크");
+        System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
     }
 
     public static void resultNothing() {
