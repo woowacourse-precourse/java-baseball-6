@@ -10,8 +10,8 @@ public class Application {
     private static final String RESTART = "1";
 
     public static void main(String[] args) {
-        do{
-            new Game(INPUT_VIEW,OUTPUT_VIEW).playOnce();
-        }while (INPUT_VIEW.decideRestart().equals(RESTART));
+        do {
+            new Game(INPUT_VIEW, OUTPUT_VIEW).playOnce();
+        } while (INPUT_VIEW.decideRestart().equals(RESTART));
     }
 }
