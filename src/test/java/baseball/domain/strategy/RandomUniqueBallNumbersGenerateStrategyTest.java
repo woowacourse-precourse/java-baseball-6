@@ -19,6 +19,6 @@ class RandomUniqueBallNumbersGenerateStrategyTest {
 
         assertThat(ballNumbers).allMatch(ballNumber -> ballNumber >= startInclusive);
         assertThat(ballNumbers).allMatch(ballNumber -> ballNumber <= endInclusive);
-        assertThat(ballNumbers.size()).isEqualTo(new HashSet<>(ballNumbers).size());
+        assertThat(ballNumbers).hasSameSizeAs(new HashSet<>(ballNumbers));
     }
 }
