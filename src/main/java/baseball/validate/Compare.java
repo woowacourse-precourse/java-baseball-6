@@ -4,6 +4,7 @@ import baseball.model.Computer;
 import baseball.model.Player;
 
 public class Compare {
+
     private Computer computer;
     private Player player;
 
@@ -12,6 +13,7 @@ public class Compare {
         this.player = player;
     }
 
+    // 컴퓨터와 사용자의 수를 비교
     public int[] compareNumbers() {
         String computerNumbers = computer.getComputerNumber();
         String playerNumbers = player.getPlayerNumber();
