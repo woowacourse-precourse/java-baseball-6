@@ -150,6 +150,8 @@ public class Game {
             return;
         }
 
+        throw new IllegalArgumentException();
+
     }
 
     public void setComputerAnswer(int num) {
