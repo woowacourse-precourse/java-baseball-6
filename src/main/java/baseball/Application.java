@@ -103,7 +103,7 @@ public class Application {
                         System.out.println(strikeCount + "스트라이크");
                         UserInput(computer);
                 } else {
-                        System.out.println(ballCount + "볼, " + strikeCount + "스트라이크");        // 출력
+                        System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");        // 출력
                         UserInput(computer);
                 }
 
