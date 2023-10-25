@@ -25,7 +25,7 @@ public class Application {
             exist.put(randomNumber, true);
             computer.add(randomNumber);
         }
-
+        System.out.println(computer);
         // 정답 입력
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
@@ -46,5 +46,7 @@ public class Application {
         else {
             for (String key : result.keySet()) System.out.print(result.get(key) + key + " ");
         }
+
+        if (result.getOrDefault("스트라이크", 0) == NUMBER_OF_DIGITS) System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
