@@ -30,16 +30,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-//    @Test
-//    void 매치_테스트() {
-//        final Application application = new Application();
-//        final List<Integer> random;
-//
-//
-//        assertThat()
-//
-//    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
