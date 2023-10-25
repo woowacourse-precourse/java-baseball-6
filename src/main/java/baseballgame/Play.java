@@ -1,6 +1,7 @@
 package baseballgame;
 
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -21,4 +22,25 @@ public class Play {
             }
         }
     }
+
+    public static void run(){
+        //객체 선언
+        Play play;
+        do{
+            //컴퓨터 숫자생성
+            play = new Play();
+            //게임 시행
+            play.
+        }while(/*게임 재시작 여부확인*/);
+    }
+
+    //게임 1회 시행
+    public void playOnce(){
+        String inputString;
+        do{
+            System.out.print(INPUT_NUMBER_STRING);
+            inputString = Console.readLine();
+        }while(/*게임결과확인*/ != SUCCESS_BOOLEAN);
+    }
+
 }
