@@ -40,6 +40,7 @@ public class BaseballGameController {
                 }else break;
             }
         }
+        Console.close();
     }
 
     public void initializePc(){
