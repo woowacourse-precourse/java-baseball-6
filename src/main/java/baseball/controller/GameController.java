@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.GameNumber;
+import baseball.model.GameNumber;
 import baseball.service.JudgeAndCount;
 import baseball.utility.RandomNumberGeneration;
 import baseball.utility.InputValidation;
