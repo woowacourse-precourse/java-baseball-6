@@ -23,7 +23,7 @@ public class GameView {
     }
 
     public void guessNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         computerController.guessNumber(Console.readLine());
     }
 
