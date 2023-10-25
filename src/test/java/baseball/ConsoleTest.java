@@ -43,6 +43,15 @@ public class ConsoleTest {
             }
 
             @Test
+            @DisplayName("빈 문자열을 입력하면 예외가 발생한다.")
+            void inputEmpty() {
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException(EMPTY_STRING))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+            @Test
             @DisplayName("숫자가 아닌 입력을 하면 예외가 발생한다.")
             void inputNotNumber() {
                 assertSimpleTest(() ->
@@ -153,6 +162,15 @@ public class ConsoleTest {
             void inputNull() {
                 assertSimpleTest(() ->
                         assertThatThrownBy(() -> runException(NULL_STRING))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+            @Test
+            @DisplayName("빈 문자열을 입력하면 예외가 발생한다.")
+            void inputEmpty() {
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException(EMPTY_STRING))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
