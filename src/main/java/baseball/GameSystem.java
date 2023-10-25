@@ -9,6 +9,7 @@ public class GameSystem {
     
     private final NumberService numberService;
     private final CalculateService calculateService;
+    
     private String computerNumber;
     private String userInput;
     private String userNumber;

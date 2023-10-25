@@ -2,6 +2,8 @@ package baseball;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +15,7 @@ class NumberServiceTest {
     
     @DisplayName("설정되는 컴퓨터의 숫자는 총 3자리의 수이다.")
     @Test
-    void getComputerNumberWithThreeSize() {
+    void computerNumberShouldBeThreeDigits() {
         // given
         NumberService numberService = new NumberService();
         int targetLength = 3;
@@ -22,12 +24,12 @@ class NumberServiceTest {
         String computerNumber = numberService.getComputerNumber();
         
         // then
-        assertThat(computerNumber.length()).isEqualTo(targetLength);
+        assertThat(computerNumber).hasSize(targetLength);
     }
     
     @DisplayName("설정되는 컴퓨터의 숫자는 1부터 9까지의 숫자로 구성된다.")
     @Test
-    void getComputerNumberInOneToNine() {
+    void computerNumberShouldBeBetweenOneAndNine() {
         // given
         NumberService numberService = new NumberService();
         int minNumber = 1;
@@ -45,7 +47,7 @@ class NumberServiceTest {
     
     @DisplayName("설정되는 컴퓨터의 숫자는 서로 다른 숫자들로 구성된다.")
     @Test
-    void getComputerNumberWithNonDuplicated() {
+    void computerNumberShouldNotContainDuplicateDigits() {
         // given
         NumberService numberService = new NumberService();
         
@@ -62,7 +64,7 @@ class NumberServiceTest {
     
     @DisplayName("설정되는 컴퓨터의 숫자는 문자열 타입을 반환한다.")
     @Test
-    void getComputerNumberInStringType() {
+    void computerNumberShouldBeStringType() {
         // given
         NumberService numberService = new NumberService();
         
@@ -74,32 +76,26 @@ class NumberServiceTest {
     }
     
     @DisplayName("사용자의 입력은 숫자만 들어울 수 있다.")
-    @Test
-    void userInputShouldContainOnlyDigit() {
+    @ParameterizedTest
+    @ValueSource(strings = {"abc", "!@#"})
+    void userInputShouldContainOnlyDigit(String userInput) {
         // given
         NumberService numberService = new NumberService();
-        String alphabets = "abc";
-        String punctuationSymbols = "!@#";
         
         // when // then
-        assertThatThrownBy(() -> numberService.getUserNumber(alphabets))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> numberService.getUserNumber(punctuationSymbols))
+        assertThatThrownBy(() -> numberService.getUserNumber(userInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     
     @DisplayName("사용자가 입력하는 숫자가 총 3자리의 수이다.")
-    @Test
-    void userNumberShouldBeThreeDigits() {
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "12", "1234", "12345"})
+    void userNumberShouldBeThreeDigits(String userInput) {
         // given
         NumberService numberService = new NumberService();
-        String lessThanThreeLengthNumber = "1";
-        String moreThanThreeLengthNumber = "12456";
         
         // when // then
-        assertThatThrownBy(() -> numberService.getUserNumber(lessThanThreeLengthNumber))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> numberService.getUserNumber(moreThanThreeLengthNumber))
+        assertThatThrownBy(() -> numberService.getUserNumber(userInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     

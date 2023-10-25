@@ -7,12 +7,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CalculateServiceTest {
     
-    CalculateService calculateService = new CalculateService();
-    
     @DisplayName("다른 위치, 같은 숫자가 있는 경우, 볼의 개수가 1 증가한다.")
     @Test
     void getBallCount() {
         // given
+        CalculateService calculateService = new CalculateService();
         String computerNumber = "123";
         String userNumber = "345";
         
@@ -27,6 +26,7 @@ class CalculateServiceTest {
     @Test
     void getStrikeCount() {
         // given
+        CalculateService calculateService = new CalculateService();
         String computerNumber = "123";
         String userNumber = "125";
         
@@ -41,6 +41,7 @@ class CalculateServiceTest {
     @Test
     void displayIfBallCountExistsOnly() {
         // given
+        CalculateService calculateService = new CalculateService();
         int ballCount = 2;
         int strikeCount = 0;
         
@@ -55,6 +56,7 @@ class CalculateServiceTest {
     @Test
     void displayIfStrikeCountExistsOnly() {
         // given
+        CalculateService calculateService = new CalculateService();
         int ballCount = 0;
         int strikeCount = 2;
         
@@ -69,6 +71,7 @@ class CalculateServiceTest {
     @Test
     void displayIfBallAndStrikeCountExist() {
         // given
+        CalculateService calculateService = new CalculateService();
         int ballCount = 2;
         int strikeCount = 1;
         
@@ -83,6 +86,7 @@ class CalculateServiceTest {
     @Test
     void displayIfNothing() {
         // given
+        CalculateService calculateService = new CalculateService();
         int ballCount = 0;
         int strikeCount = 0;
         
