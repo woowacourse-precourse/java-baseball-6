@@ -32,7 +32,6 @@ public class BaseballController {
         // 사용자가 2를 입력할 때까지 게임 반복
         do {
             tryGame();
-            outputView.printStartNewGameOrEndGame();
             inputStartNewGame = inputView.inputStartNewGame();
             validateInputStartNewGame(inputStartNewGame);
         } while ("1".equals(inputStartNewGame));
@@ -48,7 +47,6 @@ public class BaseballController {
         // 3스트라이크가 될 때까지 숫자 입력 반복
         do {
             // 3자리 숫자 입력 받기
-            outputView.printInputNumbers();
             String inputNumbers = inputView.inputNumbers();
             validateNumberDuplication(inputNumbers);
 
