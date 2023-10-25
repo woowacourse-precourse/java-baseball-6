@@ -85,7 +85,7 @@ public class InputViewTest {
         System.setIn(in);
 
         // When/Then
-        assertThatThrownBy(() -> inputView.readNumberInput())
+        assertThatThrownBy(() -> inputView.readFinishInput())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.FINISH_INPUT_IS_WRONG.getMessage());
     }
