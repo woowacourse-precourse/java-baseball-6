@@ -10,7 +10,7 @@ public class ProgramManager {
     }
 
     public void startGame() {
-        answer = new Answer();
+        answer = Answer.from();
         Writer.writeStartMent();
         proceedGame();
     }

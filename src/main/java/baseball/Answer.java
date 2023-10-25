@@ -2,57 +2,82 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Answer {
+public final class Answer {
     private static final char ZERO_CHAR = '0';
     private static final int ANSWER_LENGTH = 3;
-    private static int ball;
-    private static int strike;
-    private List<Integer> input;
-    private final List<Integer> answer = new ArrayList<>();
+    private static final String STRIKE = "strike";
+    private static final String BALL = "ball";
+    private static final int MINIMUM_VALUE = 1;
+    private static final int MAXIMUM_VALUE = 9;
+    private final List<Integer> answer;
 
-    public Answer() {
-        // answer = new ArrayList<>();
-        while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+    private Answer() {
+        answer = new ArrayList<>();
+        while (answer.size() < ANSWER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MINIMUM_VALUE, MAXIMUM_VALUE);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }
         }
     }
 
+    public static Answer from() {
+        return new Answer();
+    }
+
     public GradeResult gradeInput(String answerInput) {
 
-        strike = 0;
-        ball = 0;
-        input = new ArrayList<>();
+        List<Integer> input = new ArrayList<>();
 
         for (char number : answerInput.toCharArray()) {
             input.add(charToInt(number));
         }
 
-        compareAnswerWithInput();
+        Map<String, Integer> gradeResultMap = compareAnswerWithInput(input);
 
-        return GradeResult.of(ball, strike);
+        return GradeResult.of(getBallCount(gradeResultMap), getStrikeCount(gradeResultMap));
     }
 
-    private void compareAnswerWithInput() {
+    private Map<String, Integer> compareAnswerWithInput(List<Integer> input) {
+
+        Map<String, Integer> gradeResultMap = initializeResultMap();
+
         for (int answerIndex = 0; answerIndex < ANSWER_LENGTH; answerIndex++) {
             for (int inputIndex = 0; inputIndex < ANSWER_LENGTH; inputIndex++) {
-                increaseValue(answerIndex, inputIndex);
+                increaseValue(answerIndex, inputIndex, input, gradeResultMap);
             }
+        }
+        return gradeResultMap;
+    }
+
+    private Map<String, Integer> initializeResultMap() {
+        Map<String, Integer> gradeResultMap = new HashMap<>();
+        gradeResultMap.put(BALL, 0);
+        gradeResultMap.put(STRIKE, 0);
+        return gradeResultMap;
+    }
+
+    private void increaseValue(int answerIndex, int inputIndex, List<Integer> input,
+                               Map<String, Integer> gradeResultMap) {
+        if (answer.get(answerIndex).equals(input.get(inputIndex))) {
+            if (answerIndex == inputIndex) {
+                gradeResultMap.put(STRIKE, getStrikeCount(gradeResultMap) + 1);
+                return;
+            }
+            gradeResultMap.put(BALL, getBallCount(gradeResultMap) + 1);
         }
     }
 
-    private void increaseValue(int answerIndex, int inputIndex) {
-        if (answer.get(answerIndex).equals(input.get(inputIndex))) {
-            if (answerIndex == inputIndex) {
-                strike += 1;
-                return;
-            }
-            ball += 1;
-        }
+    private Integer getBallCount(Map<String, Integer> gradeResultMap) {
+        return gradeResultMap.get(BALL);
+    }
+
+    private Integer getStrikeCount(Map<String, Integer> gradeResultMap) {
+        return gradeResultMap.get(STRIKE);
     }
 
     private int charToInt(char number) {
