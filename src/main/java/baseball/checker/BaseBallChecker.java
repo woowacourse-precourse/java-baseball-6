@@ -4,7 +4,7 @@ package baseball.checker;
 public class BaseBallChecker {
     private final static int LENGTH_LIMIT = 3;
 
-    public static int checkGameResult(String userInput, String targetNumber) {
+    public int checkGameResult(String userInput, String targetNumber) {
         Result result = new Result();
 
         for(int i = 0; i < LENGTH_LIMIT; i++) {

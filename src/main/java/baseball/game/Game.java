@@ -1,8 +1,8 @@
 package baseball.game;
 
+import baseball.checker.BaseBallChecker;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.checker.BaseBallChecker.*;
 import static baseball.checker.InputValueChecker.*;
 import static baseball.factory.NumberFactory.*;
 import static baseball.message.GameDefaultMessage.*;
@@ -11,6 +11,7 @@ import static baseball.message.GameResultMessage.*;
 // 게임 진행을 위한 클래스
 public class Game {
     private final static String END_SIGNAL = "2";
+    private final static BaseBallChecker checker = getInstance();
 
     public static void startGame() {
         printGameStartMessage();
@@ -23,7 +24,7 @@ public class Game {
             inputValue = Console.readLine();
             checkNumberValidation(inputValue);
 
-            int resultCode = checkGameResult(inputValue, targetNumber);
+            int resultCode = checker.checkGameResult(inputValue, targetNumber);
 
             printGameResultMessage(resultCode);
 
@@ -41,6 +42,10 @@ public class Game {
         }
 
         Console.close();
+    }
+
+    private static BaseBallChecker getInstance() {
+        return new BaseBallChecker();
     }
 
     private static void printGameStartMessage() {
