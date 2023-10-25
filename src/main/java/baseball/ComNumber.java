@@ -1,13 +1,14 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Randoms.*;
+import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class ComNumber {
     int[] comNumber = new int[3];
 
-    public void makeComNumber() {
-        Randoms.pickNumberInRange(1, 9);
+    public int makeComNumber() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+        return randomNumber;
     }
-    
 }

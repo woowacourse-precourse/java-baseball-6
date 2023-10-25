@@ -1,9 +1,9 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Randoms.*;
-import static camp.nextstep.edu.missionutils.Console.*;
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
-import java.io.Console;
+import java.lang.IllegalArgumentException;
 import java.util.*;
 
 
@@ -15,8 +15,6 @@ public class Game {
     int countBall = 0;
 
     int replay;
-    final int RESTART = 1;
-    final int END = 2;
 
     public void startGame() {
         // 정답인 3가지 숫자 만들기
@@ -24,7 +22,6 @@ public class Game {
             comNumber[i].makeComNumber();
         }
         
-
         // 게임 시작
         while (countStrike < 3) {
             // 새로운 회차를 위해 0으로 초기화
@@ -33,10 +30,10 @@ public class Game {
 
             // 사용자에게 3가지 숫자 입력받기
             
-            Console.print("숫자를 입력해주세요 : ");
+            System.out.println("숫자를 입력해주세요 : ");
             
             for (int i = 0; i < 3; i++) {
-                userNumber[i].inputUserNumber();
+                userNumber[i] = inputUserNumber();
 
                 try {
                     if (userNumber[i] == 0) {
@@ -52,7 +49,7 @@ public class Game {
 
         // 정답이면 재시작할지 종료할지 정함
         if (countStrike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            decideReplay();
         }
 
     }
@@ -84,23 +81,24 @@ public class Game {
         }
     }
 
+
     // 재시작할지 결정
     public void decideReplay() {
-
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         
-        int answer = Console.readLine();
+        String answer = Console.readLine();
     
-        if (answer == RESTART) {
+        if (answer == "1") {
             startGame();
         }
     
-        else if (answer == END) {
+        else if (answer == "2") {
             return;
         }
         //예외 : 1, 2가 아닌 다른 수일 경우
         try {
-            if (answer != 1 || answer != 2) {
+            if (answer != "1" || answer != "2") {
                 throw new IllegalArgumentException("1 또는 2 중에 입력해주세요.");
             }
         } catch (IllegalArgumentException e) {
