@@ -5,18 +5,33 @@ import java.util.List;
 public class GameResultController {
 
     public String calculateResult(List<Integer> computerNumber, List<Integer> userNumber) {
-        int strikeCount = 0;
-        int ballCount = 0;
+        int strikeCount = calculateStrikes(computerNumber, userNumber);
+        int ballCount = calculateBalls(computerNumber, userNumber);
 
-        for (int i=0; i<computerNumber.size(); i++) {
+
+        return generateResultMessage(ballCount, strikeCount);
+    }
+
+    private int calculateStrikes(List<Integer> computerNumber, List<Integer> userNumber) {
+        int strikeCount = 0;
+
+        for(int i=0; i<computerNumber.size(); i++) {
             if(userNumber.get(i).equals(computerNumber.get(i))) {
                 strikeCount++;
-            } else if (computerNumber.contains(userNumber.get(i))) {
+            }
+        }
+        return strikeCount;
+    }
+
+    private int calculateBalls(List<Integer> computerNumber, List<Integer> userNumber) {
+        int ballCount = 0;
+
+        for(int i=0; i<userNumber.size(); i++) {
+            if(computerNumber.contains(userNumber.get(i))) {
                 ballCount++;
             }
         }
-
-        return generateResultMessage(ballCount, strikeCount);
+        return ballCount;
     }
 
     private String generateResultMessage(int ballCount, int strikeCount) {
