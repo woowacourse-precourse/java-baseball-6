@@ -61,7 +61,7 @@ public class Game {
     }
 
     private static void validateSize(String userInput) {
-        if (userInput.length() != LIMIT) {
+        if (userInput.length() != GameConfig.SIZE) {
             throw new IllegalArgumentException(ErrorCode.SIZE_ERROR.message);
         }
     }
@@ -81,7 +81,7 @@ public class Game {
             temp.add(userNumber);
         }
 
-        if (temp.size() != LIMIT) {
+        if (temp.size() != GameConfig.SIZE) {
             throw new IllegalArgumentException(ErrorCode.DUPLICATION_ERROR.message);
         }
     }
