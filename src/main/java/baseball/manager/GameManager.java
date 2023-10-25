@@ -23,30 +23,11 @@ public class GameManager {
     public void run() {
         outputManager.printStartMessage();
         while (true) {
-            if (!playGameAndHandleException()) {
-                break;
-            }
-            if (!askForReplayAndHandleException()) {
+            playRound();
+            if (!askForReplay()) {
                 break;
             }
             baseballGame.resetGame();
-        }
-    }
-
-    private boolean playGameAndHandleException() {
-        try {
-            playRound();
-            return true;
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-    }
-
-    private boolean askForReplayAndHandleException() {
-        try {
-            return askForReplay();
-        } catch (IllegalArgumentException e) {
-            return false;
         }
     }
 
