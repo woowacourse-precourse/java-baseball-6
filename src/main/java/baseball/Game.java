@@ -7,10 +7,12 @@ import java.util.List;
 
 public class Game {
     public void start() {
+        boolean reStart = true;
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         String computerNumber = shuffleNumber();
 
-        while (true) {
+        while (reStart) {
             System.out.print("숫자를 입력해주세요 : ");
             String userNumber = Console.readLine();
 
@@ -32,22 +34,13 @@ public class Game {
             System.out.println();
 
             if (strike == 3) {
-                int reStartValue;
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-                reStartValue = Integer.parseInt(Console.readLine());
-                if (reStartValue != 1 && reStartValue != 2) {
-                    throw new IllegalArgumentException("1 혹은 2의 값만 입력해주세요");
-                }
-
-                if (reStartValue == 2) {
-                    break;
-                }
+                reStart = checkReStart();
 
                 computerNumber = shuffleNumber();
             }
         }
-
     }
 
     private String shuffleNumber() {
@@ -69,12 +62,12 @@ public class Game {
         if (!userNumber.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("숫자만 입력해주세요");
         }
-        String tmp = "";
+        StringBuilder tmp = new StringBuilder();
         for (char c : userNumber.toCharArray()) {
-            if (tmp.contains(String.valueOf(c))) {
+            if (tmp.toString().contains(String.valueOf(c))) {
                 throw new IllegalArgumentException("중복되지 않는 숫자로 입력해주세요");
             }
-            tmp += String.valueOf(c);
+            tmp.append(c);
         }
     }
 
@@ -102,5 +95,15 @@ public class Game {
 
     private boolean strikeCount(int computerNumber, int userNumber) {
         return computerNumber == userNumber;
+    }
+
+    private boolean checkReStart() {
+        int reStartValue = Integer.parseInt(Console.readLine());
+
+        if (reStartValue != 1 && reStartValue != 2) {
+            throw new IllegalArgumentException("1 혹은 2의 값만 입력해주세요");
+        }
+
+        return reStartValue != 2;
     }
 }
