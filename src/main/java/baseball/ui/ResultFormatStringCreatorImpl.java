@@ -9,14 +9,14 @@ public class ResultFormatStringCreatorImpl implements ResultFormatStringCreator 
         if (resultMap.size() == 0) {
             return "낫싱";
         }
-        if (resultMap.containsKey("스트라이크")) {
-            sb.append(resultMap.get("스트라이크")).append("스트라이크");
-        }
         if (resultMap.containsKey("볼")) {
+            sb.append(resultMap.get("볼")).append("볼");
+        }
+        if (resultMap.containsKey("스트라이크")) {
             if (resultMap.size() == 2) {
                 sb.append(" ");
             }
-            sb.append(resultMap.get("볼")).append("볼");
+            sb.append(resultMap.get("스트라이크")).append("스트라이크");
         }
         return sb.toString();
     }

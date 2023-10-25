@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 
-class ResultFormatStringCreatorTest {
+class ResultFormatStringCreatorImplTest {
 
     ResultFormatStringCreator creator = new ResultFormatStringCreatorImpl();
 
@@ -29,7 +29,7 @@ class ResultFormatStringCreatorTest {
 
         String resultString = creator.toString(resultMap);
 
-        assertEquals(resultString, "1스트라이크 2볼");
+        assertEquals(resultString, "2볼 1스트라이크");
     }
 
     @Test
