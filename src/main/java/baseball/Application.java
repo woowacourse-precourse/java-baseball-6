@@ -7,7 +7,7 @@ public class Application {
     private static final int NUMBER_SIZE = 3;
 
     public static void main(String[] args) {
-        View.gameStartMessage();
+        Output.gameStartMessage();
 
         boolean gameOn = true;
         while (gameOn) {
@@ -24,10 +24,10 @@ public class Application {
             int strike = strike(randomNumber, userNumber);
             int ball = ball(randomNumber, userNumber);
 
-            View.printScore(strike, ball);
+            Output.printScore(strike, ball);
 
             if (strike == NUMBER_SIZE) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                Output.gameEndMessage();
                 return;
             }
         }
