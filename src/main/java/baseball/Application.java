@@ -74,7 +74,7 @@ public class Application {
         return num;
     }
 
-    // 문자가 들어 있거나 0이 포함된 입력값 검증
+    // 문자나 0이 포함된 입력값, 중복 숫자 검증
     private static void validateUserInput(String input) {
         boolean isNumeric = true;
         boolean containsZero = false;
