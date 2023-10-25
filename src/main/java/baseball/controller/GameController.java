@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.NumberBaseballGame;
 import baseball.domain.dto.Result;
+import baseball.global.constant.GameCode;
 import baseball.global.constant.RuleValue;
 import baseball.global.message.GameMessage;
 import baseball.view.InputView;
@@ -21,6 +22,19 @@ public class GameController {
 
     public void run(){
         System.out.println(GameMessage.GAME_START_MESSAGE.getMessage());
+        playUntilInputQuitCode();
+    }
+
+    private void playUntilInputQuitCode() {
+        int gameCodeInput;
+        do {
+            numberBaseballGame.initGameSetting();
+            playUntilBaseballNumberMatch();
+            gameCodeInput = inputView.requestGameCodeInput();
+        } while (gameCodeInput == GameCode.RESTART_CODE);
+    }
+
+    private void playUntilBaseballNumberMatch() {
         Result result;
         do {
             numberBaseballGame.initGameSetting();
