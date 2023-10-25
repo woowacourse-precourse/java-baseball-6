@@ -10,6 +10,14 @@ public class Game {
     }
 
     public void play() {
-        System.out.println("TODO: 게임 플레이");
+        while (true) {
+            GameNumber guessed = player.guess();
+            GameResult result = questioner.judge(guessed);
+            result.announce();
+
+            if (result.isCorrectAnswer()) {
+                break;
+            }
+        }
     }
 }
