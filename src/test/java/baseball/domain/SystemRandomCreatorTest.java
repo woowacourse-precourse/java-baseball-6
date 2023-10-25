@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,5 +17,11 @@ class SystemRandomCreatorTest {
 
         assertTrue(randomNumber >= SystemRandomCreator.MIN_NUMBER
             && randomNumber <= SystemRandomCreator.MAX_NUMBER);
+    }
+
+    @Test
+    void 세_자리_수를_올바르게_생성하는지_확인() {
+        List<Integer> randomNumbers = randomCreator.createRandomNumbers();
+        assertEquals(Referee.NUMBERS_SIZE, randomNumbers.size());
     }
 }
