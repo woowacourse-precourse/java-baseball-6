@@ -12,7 +12,7 @@ public class BallCountPrinter {
 
         if(strike == 0 && ball == 0) System.out.println("낫싱");
 
-        if(ball > 0) System.out.println(ball + "볼 ");
+        if(ball > 0) System.out.print(ball + "볼 ");
 
         if(strike > 0) System.out.println(ballCount[0] + "스트라이크");
 
