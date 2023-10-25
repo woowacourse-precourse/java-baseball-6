@@ -43,4 +43,19 @@ public class BaseBallGame extends Game {
         return strikeNumber != 3;
     }
 
+    private void printStatus(int strikeNumber, int ballNumber){
+        if(ballNumber == 0 && strikeNumber == 0){
+            System.out.println(("낫싱"));
+        }
+        if(ballNumber != 0 && strikeNumber == 0){
+            System.out.printf("%d볼", ballNumber).println();
+        }
+        if(ballNumber == 0 && strikeNumber != 0){
+            System.out.printf("%d스트라이크", strikeNumber).println();
+        }
+        if(ballNumber != 0 && strikeNumber != 0){
+            System.out.printf("%d볼 %d스트라이크", ballNumber, strikeNumber).println();
+        }
+    }
+
 }
