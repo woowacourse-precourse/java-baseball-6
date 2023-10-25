@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class UserInterface {
+public class UserInputProvider {
     private static String user;
 
 
@@ -10,7 +10,4 @@ public class UserInterface {
         return Console.readLine();
     }
 
-    public static void printMessage (Message message) {
-        System.out.println(message.getMessage());
-    }
 }

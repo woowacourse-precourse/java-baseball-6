@@ -19,7 +19,7 @@ public class GameManager {
     }
 
     public void run() {
-        UserInterface.printMessage(Message.START);
+        MessagePrinter.printMessage(Message.START);
 
         while (isGameActive) {
             if (isGameActive) {
@@ -30,7 +30,7 @@ public class GameManager {
 
     private void chooseNewGame() {
         System.out.println(CHOICE.getMessage());
-        String response = UserInterface.requestUserInput();
+        String response = UserInputProvider.requestUserInput();
         ExceptionHandler.handleExit(response);
 
         if (response.equals(RESTART.getMessage())) {
@@ -55,8 +55,8 @@ public class GameManager {
     }
 
     private String getRequest() {
-        UserInterface.printMessage(Message.INPUT);
-        String userInput = UserInterface.requestUserInput();
+        MessagePrinter.printMessage(Message.INPUT);
+        String userInput = UserInputProvider.requestUserInput();
         System.out.println(userInput);
         ExceptionHandler.handleExecute(userInput);
         return userInput;

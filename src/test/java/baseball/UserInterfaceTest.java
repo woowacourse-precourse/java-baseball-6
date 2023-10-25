@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class UserInterfaceTest {
 
-    private UserInterface userInterface;
+    private UserInputProvider userInterface;
 
     public static InputStream setReadLine(String readLine) {
         return new ByteArrayInputStream(readLine.getBytes());
@@ -17,7 +17,7 @@ class UserInterfaceTest {
 
     @BeforeEach
     void given() {
-        userInterface = new UserInterface();
+        userInterface = new UserInputProvider();
     }
 
     @Test
