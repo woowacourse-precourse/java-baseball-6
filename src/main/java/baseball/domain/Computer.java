@@ -12,32 +12,17 @@ public class Computer {
     public static final String FINISH_COMMAND = "2";
     public static final int NUMBER_SIZE = 3;
 
-    private List<Integer> targetNumber;
     private boolean isFinish;
-    private boolean isGameEnd;
 
     public void run() {
         View.printGameStartMessage();
 
         while (!isFinish) {
-            isGameEnd = false;
-            gameStart();
+            Game.makeNewGame(this).start();
         }
     }
 
-    public void gameStart() {
-        generateTargetNumber();
-
-        while (!isGameEnd) {
-            String playerNumber = View.readPlayerNumber();
-            GameResult gameResult = new GameResult();
-            gameResult.calculate(targetNumber, playerNumber);
-            View.printResultMessage(gameResult);
-            checkGameOver(gameResult);
-        }
-    }
-
-    private void generateTargetNumber() {
+    public List<Integer> generateTargetNumber() {
         List<Integer> targetNumber = new ArrayList<>();
         while (targetNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -45,18 +30,18 @@ public class Computer {
                 targetNumber.add(randomNumber);
             }
         }
-        this.targetNumber = targetNumber;
+
+        return targetNumber;
     }
 
-    private void checkGameOver(GameResult gameResult) {
-        if (gameResult.isEnd()) {
-            String command = View.readGameEndCommand();
-
-            if (command.equals(FINISH_COMMAND)) {
-                isFinish = true;
-            }
-            isGameEnd = true;
+    public void checkFinishCommand(String command) {
+        if (command.equals(FINISH_COMMAND)) {
+            shutDown();
         }
+    }
+
+    private void shutDown() {
+        this.isFinish = true;
     }
 
     public static void validatePlayerNumber(String playerNumber) {
