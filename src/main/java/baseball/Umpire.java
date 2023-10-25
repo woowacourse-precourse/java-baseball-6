@@ -27,5 +27,19 @@ public class Umpire {
         return ball - getStrikeCount(computerNumber, userNumber);
     }
 
+    public String getBaseballResult(int strikeCount, int ballCount) {
+        if (strikeCount > INIT_NUMBER && ballCount > INIT_NUMBER) {
+            return ballCount + "볼 " + strikeCount + "스트라이크";
+        }
 
+        if (strikeCount > INIT_NUMBER) {
+            return strikeCount + "스트라이크";
+        }
+
+        if (ballCount > INIT_NUMBER) {
+            return ballCount + "볼";
+        }
+
+        return "낫싱";
+    }
 }
