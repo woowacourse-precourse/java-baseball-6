@@ -9,19 +9,18 @@ import java.util.stream.Collectors;
 
 public class UserInputNumber {
     private List<Integer> userNumber = new ArrayList<>();
-    private UserInputException userInputException;
 
     public UserInputNumber(String userInput) {
-        this.userInputException = new UserInputException();
         this.userNumber = createUserNumber(userInput);
     }
 
-    private List<Integer> createUserNumber(String userInput) throws IllegalArgumentException {
+    private List<Integer> createUserNumber(String userInput) {
         List<Integer> userNumber = stringToInt(userInput);
-        if(userInputException.Validation(userNumber)) {
-            return userNumber;
-        }
-        throw new IllegalArgumentException();
+        UserInputException.isDigit(userNumber);
+        UserInputException.isDuplicate(userNumber);
+        UserInputException.isRange(userNumber);
+
+        return userNumber;
     }
 
     private List<Integer> stringToInt(String userInput) {

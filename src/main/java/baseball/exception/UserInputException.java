@@ -4,20 +4,23 @@ package baseball.exception;
 import java.util.List;
 
 public class UserInputException {
-    private final int listLength = 3;
-    private final int startPoint = 1;
-    private final int endPoint = 9;
-    public boolean Validation(List<Integer> userNumber) {
-        return isDigit(userNumber) && isDuplicate(userNumber) && isRange(userNumber);
+    private static final int LIST_LENGTH = 3;
+    private static final int START_POINT = 1;
+    private static final int END_POINT = 9;
+
+    public static void isDigit(List<Integer> userNumber) throws IllegalArgumentException {
+        if(userNumber.size() != LIST_LENGTH) {
+            throw new IllegalArgumentException("3자리 수의 숫자를 입력하세요");
+        }
     }
-    private boolean isDigit(List<Integer> userNumber){
-        return userNumber.size() == listLength;
+    public static void isDuplicate(List<Integer> userNumber) throws IllegalArgumentException {
+        if (!(userNumber.size() == userNumber.stream().distinct().count())) {
+            throw new IllegalArgumentException("중복된 숫자를 입력하셨습니다. 숫자를 다시 확인하세요");
+        }
     }
-    private boolean isDuplicate(List<Integer> userNumber) {
-        return userNumber.size() == userNumber.stream().distinct().count();
-    }
-    private boolean isRange(List<Integer> userName) {
-        return userName.stream()
-                .allMatch(num -> num >= startPoint && num <= endPoint);
+    public static void isRange(List<Integer> userNumber) throws IllegalArgumentException {
+        if (!(userNumber.stream().allMatch(num -> num >= START_POINT && num <= END_POINT))) {
+            throw new IllegalArgumentException("1부터 9까지의 숫자만 입력해주세요");
+        }
     }
 }
