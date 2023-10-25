@@ -36,7 +36,7 @@ public class BaseballGame implements Game {
     }
 
     private void generateAnswer() {
-        answerBalls = RandomBallsGenerator.generateRandomBalls(1, 9, 3);
+        answerBalls = RandomBallsGenerator.generate();
     }
 
     private void tryAnswer() {
