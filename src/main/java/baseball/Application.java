@@ -15,7 +15,6 @@ public class Application {
             Input input = new Input(userInput);
             input.checkException();
 
-
             Output output = new Output();
             output.setScore(computerNumber, userInput);
             output.printOutput();
@@ -25,11 +24,9 @@ public class Application {
                 String continueOrEnd = Console.readLine();
 
                 InputContinueOrEnd inputContinueOrEnd = new InputContinueOrEnd();
-
                 if (inputContinueOrEnd.error(continueOrEnd)) throw new IllegalArgumentException();
-
-
                 if (inputContinueOrEnd.quit(continueOrEnd)) break;
+
                 computerNumber = new Init().getComputerNumber();
             }
         }

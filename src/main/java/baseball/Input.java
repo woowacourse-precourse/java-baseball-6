@@ -45,5 +45,4 @@ public class Input {
     public void checkException()throws IllegalArgumentException{
         if(error()) throw new IllegalArgumentException();
     }
-
 }

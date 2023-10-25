@@ -15,6 +15,4 @@ public class Init {
         }
         return computerNumber;
     }
-
-
 }
