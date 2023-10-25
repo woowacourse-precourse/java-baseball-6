@@ -1,7 +1,7 @@
 package baseball.service;
+
 import baseball.constants.AppConstants;
 import baseball.model.GameScoreDTO;
-
 import java.util.List;
 import java.util.Objects;
 public class GameService {

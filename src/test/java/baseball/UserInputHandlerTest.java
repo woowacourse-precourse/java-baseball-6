@@ -8,11 +8,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
+
 public class UserInputHandlerTest {
     private InputStream originalSystemIn;
 
@@ -38,6 +37,7 @@ public class UserInputHandlerTest {
         Assertions.assertThat(userInputHandler.getUserInput()).isEqualTo(List.of(1, 2, 3));
         Console.close();
     }
+
     @Test
     void 플레이어_입력값_테스트_빈값() {
         systemIn("");
@@ -47,6 +47,7 @@ public class UserInputHandlerTest {
                 .hasMessage(AppConstants.ERR_WRONG_INPUT);
         Console.close();
     }
+
     @Test
     void 플레이어_입력값_테스트_숫자만() {
         systemIn("한글로");
@@ -62,6 +63,7 @@ public class UserInputHandlerTest {
                 .hasMessage(AppConstants.ERR_WRONG_INPUT);
         Console.close();
     }
+
     @Test
     void 플레이어_입력값_한자리() {
         systemIn("1");
@@ -71,6 +73,7 @@ public class UserInputHandlerTest {
                 .hasMessage(AppConstants.ERR_WRONG_INPUT);
         Console.close();
     }
+
     @Test
     void 플레이어_입력값_0포함() {
         systemIn("012");
@@ -80,6 +83,7 @@ public class UserInputHandlerTest {
                 .hasMessage(AppConstants.ERR_WRONG_INPUT);
         Console.close();
     }
+
     @Test
     void 플레이어_입력값_중복체크() {
         systemIn("111");
@@ -89,6 +93,7 @@ public class UserInputHandlerTest {
                 .hasMessage(AppConstants.ERR_WRONG_INPUT);
         Console.close();
     }
+
     @Test
     void 게임_재시작값_1() {
         systemIn("1");
@@ -98,6 +103,7 @@ public class UserInputHandlerTest {
         Assertions.assertThat(userInputHandler.isContinueGame(gameScoreDTO)).isEqualTo(true);
         Console.close();
     }
+
     @Test
     void 게임_재시작값_2() {
         systemIn("2");
@@ -107,6 +113,7 @@ public class UserInputHandlerTest {
         Assertions.assertThat(userInputHandler.isContinueGame(gameScoreDTO)).isEqualTo(false);
         Console.close();
     }
+
     @Test
     void 게임_재시작값_다른값() {
         systemIn("5");

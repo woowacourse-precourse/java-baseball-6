@@ -1,13 +1,12 @@
 package baseball.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import baseball.constants.AppConstants;
 import baseball.model.GameScoreDTO;
 import baseball.service.GameService;
 import baseball.view.GameIO;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameManager {
     private final int DIGIT_LIMIT;
@@ -15,10 +14,11 @@ public class GameManager {
     private GameIO gameIO;
 
     public GameManager(GameIO gameIO) {
-        this.gameIO      = gameIO;
-        this.computer    = new ArrayList<>();
+        this.gameIO = gameIO;
+        this.computer = new ArrayList<>();
         DIGIT_LIMIT = AppConstants.NUM_DISIT_LIMIT;
     }
+
     public void gameStart() {
         gameIO.printStartGame();
         initializeNewGame();
@@ -29,12 +29,13 @@ public class GameManager {
             GameService baseballService = new GameService(computer, user);
             gameScoreDTO = baseballService.calculate();
             checkScore(gameScoreDTO);
-        }while (userInputHandler.isContinueGame(gameScoreDTO));
+        } while (userInputHandler.isContinueGame(gameScoreDTO));
     }
 
     public void initializeNewGame() {
         computer = generateRandomNumbers();
     }
+
     private List<Integer> generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < DIGIT_LIMIT) {
@@ -45,6 +46,7 @@ public class GameManager {
         }
         return computer;
     }
+
     private void checkScore(GameScoreDTO gameScoreDTO) {
         int strike = gameScoreDTO.getStrike();
         int ball = gameScoreDTO.getBall();
@@ -58,7 +60,7 @@ public class GameManager {
             gameIO.printStrike(strike);
         } else if (ball > 0) {
             gameIO.printBall(ball);
-        } else {
+        } else if (ball == 0 && strike == 0) {
             gameIO.printNoting();
         }
     }

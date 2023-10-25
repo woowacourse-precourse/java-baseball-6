@@ -8,7 +8,6 @@ public final class AppConstants {
     public static final String REGEX_VALID_INPUT = "^(?!.*(.).*\\1)[1-9]{3}$";
     public static final String REGEX_CONTINUE_VALUE = "^(1|2)$";
 
-
     public static final String MSG_START_GAME = "숫자 야구 게임을 시작합니다.";
     public static final String MSG_RESTART_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String MSG_INPUT_NUMBER = "숫자를 입력해주세요 : ";

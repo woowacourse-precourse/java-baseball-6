@@ -3,8 +3,6 @@ package baseball.controller;
 import baseball.constants.AppConstants;
 import baseball.model.GameScoreDTO;
 import baseball.view.GameIO;
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +48,9 @@ public class UserInputHandler {
     }
 
     public boolean isContinueGame(GameScoreDTO gameScoreDTO) {
-        if(gameScoreDTO ==null)
+        if(gameScoreDTO ==null) {
             return false;
+        }
         if (!gameScoreDTO.isGameOver()) {
             return true;
         }
@@ -59,9 +58,9 @@ public class UserInputHandler {
         String input = gameIO.getContinueGameString();
         String regex = AppConstants.REGEX_CONTINUE_VALUE;
 
-        if(!input.matches(regex))
+        if(!input.matches(regex)) {
             throw new IllegalArgumentException(AppConstants.ERR_INVALID_RESTART_VALUE);
-
+        }
         if ( "1".equals(input)) {
             gameManager.initializeNewGame();
             gameScoreDTO.setGameOver(false);
