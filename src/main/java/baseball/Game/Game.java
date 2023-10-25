@@ -9,27 +9,26 @@ import static baseball.Computer.Computer.*;
 import static main.java.baseball.UserValid.Validator.*;
 
 public class Game {
-    private static int[] userNumbers;
-    private static boolean gameContinue = true;
-    private static boolean retryEnd = true;
-    public static void Run(){
-        Computer.InitGame();
-        OutputView.printStart();
-        while(retryEnd){
-            CreateBall();
-            checkNum(userNumbers);
-            endRound();
-            checkGameEnd();
-            if(!gameContinue){
-                int userRetry = InputView.readRetryNumber();
-                checkRetry(userRetry);
-            }
-        }
-    }
+    public static int[] userNumbers;
+    public static boolean gameContinue = true;
+    public static boolean retryEnd = true;
+    //public static void Run(){
+    //    Computer.InitGame();
+    //    OutputView.printStart();
+    //    while(retryEnd){
+    //        CreateBall();
+    //        checkNum(userNumbers);
+    //        endRound();
+    //        checkGameEnd();
+     //       if(!gameContinue){
+      //          int userRetry = InputView.readRetryNumber();
+       //         checkRetry(userRetry);
+        //    }
+       // }
+    //}
 
-    public static void CreateBall(){
-        OutputView.printInput();
-        String userInputs = InputView.readGameNumber();
+    public static void CreateBall(String userInputs){
+
         CheckNumber(userInputs);
         CheckDuplicate(userInputs);
         CheckLength(userInputs);
@@ -47,7 +46,7 @@ public class Game {
         BallCount.ResetCount();
     }
 
-    private static void checkRetry(int userRetryNum){
+    public static void checkRetry(int userRetryNum){
         if(userRetryNum==1){
             Computer.InitGame();
             OutputView.printStart();
