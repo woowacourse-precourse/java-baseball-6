@@ -26,7 +26,7 @@ public class GameController {
     protected void isStrikeOrBall(List<Integer> userInput) {
 
         if (userInput.equals(answer)) {
-            this.strike = 3;
+            this.strike = this.answer.size();
             return;
         }
 
@@ -40,7 +40,7 @@ public class GameController {
     }
 
     protected boolean printResultPhrase() {
-        if (strike == 3) {
+        if (strike == this.answer.size()) {
             GamePhrases.strikePhrase(strike);
             GamePhrases.answerPhrase();
             GamePhrases.endPhrase();
