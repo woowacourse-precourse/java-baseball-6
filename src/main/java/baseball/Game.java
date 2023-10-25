@@ -3,77 +3,85 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
-    private static String start = "숫자 야구 게임을 시작합니다.";
-    private static String finish = "숫자 야구 게임을 완전히 종료합니다.";
-    private static String complete = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static String more = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static String startStr = "숫자 야구 게임을 시작합니다.";
+    private static String finishStr = "숫자 야구 게임을 완전히 종료합니다.";
+    private static String completeStr = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static String moreOrNotStr = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public String getComplete() {
-        return complete;
+    public Game(){
+        printStartStr();
     }
 
-    public String getFinish() {
-        return finish;
+    public String getCompleteStr() {
+        return completeStr;
     }
 
-    public String getStart() {
-        return start;
+    public String getFinishStr() {
+        return finishStr;
     }
 
-    public String getMore() {
-        return more;
+    public String getStartStr() {
+        return startStr;
     }
 
-    public static void setComplete(String complete) {
-        Game.complete = complete;
+    public String getMoreOrNotStr() {
+        return moreOrNotStr;
     }
 
-    public static void setFinish(String finish) {
-        Game.finish = finish;
+    public static void setCompleteStr(String completeStr) {
+        Game.completeStr = completeStr;
     }
 
-    public static void setMore(String more) {
-        Game.more = more;
+    public static void setFinishStr(String finishStr) {
+        Game.finishStr = finishStr;
     }
 
-    public static void setStart(String start) {
-        Game.start = start;
+    public static void setMoreOrNotStr(String moreOrNotStr) {
+        Game.moreOrNotStr = moreOrNotStr;
     }
 
-    public void printStart(){
-        System.out.println(start);
+    public static void setStartStr(String startStr) {
+        Game.startStr = startStr;
     }
 
-    public void printMore(){
-        System.out.println(more);
+    public void printStartStr(){
+        System.out.println(startStr);
     }
 
-    public void printFinish(){
-        System.out.println(finish);
+    public void printMoreOrNotStr(){
+        System.out.println(moreOrNotStr);
     }
 
-    public void printComplete(){
-        System.out.println(complete);
+    public void printFinishStr(){
+        System.out.println(finishStr);
+    }
+
+    public void printCompleteStr(){
+        System.out.println(completeStr);
     }
 
     public void run(){
         ComputerNumber computerNumber = new ComputerNumber();
         computerNumber.setNumberList();
+
         while (true) {
             UserNumber userNumber = new UserNumber();
             userNumber.setNumberList();
-            Hint hint = new Hint(userNumber.getNumberList(), computerNumber.getNumberList());
-            hint.printHint();
-            if(hint.getIsSame()){
-                printComplete();
+
+            Hint hint = new Hint(userNumber, computerNumber);
+            hint.makeHint();
+
+            if(hint.getIsComplete()){
+                printCompleteStr();
                 if(getInput() == 1) run();
+                else printFinishStr();
                 return;
             }
         }
     }
 
     public int getInput(){
-        printMore();
+        printMoreOrNotStr();
         int input=0;
         try{
             input = Integer.parseInt(readLine());
