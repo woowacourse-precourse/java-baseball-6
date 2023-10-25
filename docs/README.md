@@ -2,13 +2,14 @@
 
 ## 0. 기본 요구 사항
 
--[ ] JDK 17 버전에서 실행 가능해야 한다.
--[ ] 프로그램 실행의 시작점은 `Application`의 `main()`으로 한다.
--[ ] `build.gradle` 파일을 변경하지 않고 외부 라이브러리를 사용하지 않는다.
--[ ] [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java) 가이드를 준수하며 프로그래밍한다.
+-[x] JDK 17 버전에서 실행 가능해야 한다.
+-[x] 프로그램 실행의 시작점은 `Application`의 `main()`으로 한다.
+-[x] `build.gradle` 파일을 변경하지 않고 외부 라이브러리를 사용하지 않는다.
+-[ ] [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java) 가이드를
+ 준수하며 프로그래밍한다.
 -[ ] 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
 -[ ] `ApplicationTest`의 모든 테스트가 성공해야 한다.
--[ ] 파일, 패키지 이름을 수정하거나 이동하지 않는다.
+-[x] 파일, 패키지 이름을 수정하거나 이동하지 않는다.
 
 ## 1. 게임 시작
 
@@ -25,7 +26,7 @@
 
 ### a. 컴퓨터 숫자 선택
 
--[ ] 랜덤으로 0을 제외한 1에서 9 사이의 서로 다른 임의의 수 3개를 선택한다.
+-[x] 랜덤으로 0을 제외한 1에서 9 사이의 서로 다른 임의의 수 3개를 선택한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
     - 추출한 3개의 숫자는 서로 달라야 한다.
 
