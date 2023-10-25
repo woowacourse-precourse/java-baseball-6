@@ -11,9 +11,9 @@ import static baseball.model.Constants.*;
 
 public class GameController {
 
-    private UserView userView;
-    private Validator validator;
-    private BaseballGame baseballGame;
+    private final UserView userView;
+    private final Validator validator;
+    private final BaseballGame baseballGame;
 
     public GameController() {
         userView = new UserView();
