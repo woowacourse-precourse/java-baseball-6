@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class GameService {
+    private static final String END_TYPE_ERROR_MESSAGE = "숫자 1이나 2만 입력 가능합니다.";
 
     public Game createGame(){
         StartView.printGameStart();
@@ -35,6 +36,6 @@ public class GameService {
         String exitType = Console.readLine();
         if(exitType.equals("2")) return true;
         else if (exitType.equals("1")) return false;
-        else throw new IllegalArgumentException();
+        else throw new IllegalArgumentException(END_TYPE_ERROR_MESSAGE);
     }
 }
