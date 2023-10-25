@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class HintGeneratorTest {
-
     @Test
     public void 볼1_스트라이크1() {
         // given

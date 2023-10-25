@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 class RestartOrExitValidatorTest {
-
     @Test
     public void 재시작_혹은_종료_여부를_정상적으로_입력한다() {
         // given

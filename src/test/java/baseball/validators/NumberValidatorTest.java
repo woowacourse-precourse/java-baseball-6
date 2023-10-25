@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 class NumberValidatorTest {
-
     @Test
     public void 올바른_입력으로_검증을_통과한다() {
         String inputString = "123";

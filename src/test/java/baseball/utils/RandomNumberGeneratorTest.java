@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 class RandomNumberGeneratorTest {
-
     @Test
     public void 무작위로_생성된_숫자_리스트의_크기는_3이다() {
         // when
