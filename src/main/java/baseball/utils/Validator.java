@@ -9,7 +9,7 @@ public class Validator {
 
     private void checkSize(String input, int size) throws IllegalArgumentException{
         if (input.length() != size){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자의 크기는 3개를 넘어가면 안됩니다.");
         }
     }
 
@@ -18,7 +18,7 @@ public class Validator {
 
         for (int i = 0; i < input.length(); i++){
             if (!checkDigit(input, i)){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("숫자를 입력해주세요");
             }
             validateInt[i] = convertCharToInt(input, i);
         }
@@ -28,6 +28,8 @@ public class Validator {
     private int convertCharToInt(String input, int i) {return input.charAt(i) - '0';}
 
     private Boolean checkDigit(String input, int i) {return '0' <= input.charAt(i) && input.charAt(i) <= '9';}
+
+
 
 
 
