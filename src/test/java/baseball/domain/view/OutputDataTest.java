@@ -39,4 +39,13 @@ class OutputDataTest {
         OutputData.gameResultPrint(new ResultDto(new Score(result)));
     }
 
+    @Test
+    void 결과_출력3() {
+        result.put(BallCount.OUT, 1);
+        result.put(BallCount.BALL, 2);
+        result.put(BallCount.STRIKE, 0);
+
+        OutputData.gameResultPrint(new ResultDto(new Score(result)));
+    }
+
 }
