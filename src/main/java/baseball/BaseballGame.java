@@ -10,6 +10,14 @@ public class BaseballGame {
     private boolean on = true;
     private int strike = 0;
 
+    private void toFalse() {
+        on = false;
+    }
+
+    private void toTrue() {
+        on = true;
+    }
+
     public void rePlay() {
         RandomNumber randomNumbers = new RandomNumber();
         List<Integer> cpuNewInput = randomNumbers.getRandomNumbers();
@@ -34,9 +42,10 @@ public class BaseballGame {
 
         String userDecide = readLine();
         if (userDecide.equals("1")) {
+            strike = 0;
             rePlay();
         } else if (userDecide.equals("2")) {
-            on = false;
+            toFalse();
         }
     }
 
