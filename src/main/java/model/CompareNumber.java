@@ -1,7 +1,5 @@
 package model;
 
-import model.BallStrikeNothing;
-
 import java.util.List;
 import java.util.stream.IntStream;
 
