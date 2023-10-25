@@ -61,7 +61,7 @@ public class Application {
             UserNumberStorage userMemory = new UserNumberStorage(userNumberList);
 
             // 낫띵, 볼, 스트라이크가 몇개인지 체크 후 반환
-            List<Integer> result = CalculateNumbers.checkBall(comMemory.getNumbers(), userNumberList);
+            List<Integer> result = CalculateNumbers.checkBall(comMemory.getNumbers(), userMemory.getNumbers());
             PrintText.calculateResult(result.get(0), result.get(1), result.get(2));
 
             // 만약 3스트라이크이면, 성공 문구를 출력 후 while문을 종료
