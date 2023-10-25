@@ -6,7 +6,7 @@ public class OutputMessage {
     }
 
     public static void printResultMessage(int strike, int ball) {
-        System.out.println(ball + "볼 " + strike + " ");
+        System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 
     public static void printWinMessage() {
