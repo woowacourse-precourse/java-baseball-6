@@ -54,6 +54,7 @@ public class Application {
         return randomNumbers.get(0) * 100 + randomNumbers.get(1) * 10 + randomNumbers.get(2);
     }
 
+    // 세자리 숫자 검증
     private static int runException(String input) {
         validateUserInput(input);
         if (input.length() != 3) {
@@ -62,6 +63,7 @@ public class Application {
         return Integer.parseInt(input);
     }
 
+    // 1 또는 2 입력값 검증
     private static int getUserInput() {
         String input = readLine();
         int num = Integer.parseInt(input);
@@ -72,6 +74,7 @@ public class Application {
         return num;
     }
 
+    // 문자가 들어 있거나 0이 포함된 입력값 검증
     private static void validateUserInput(String input) {
         boolean isNumeric = true;
         boolean containsZero = false;
@@ -146,6 +149,7 @@ public class Application {
         }
     }
 
+    // 정답 시 게임 재시작 혹은 종료 처리
     private static void handleGameEnd() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
