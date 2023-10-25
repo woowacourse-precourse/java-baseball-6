@@ -26,4 +26,22 @@ public class Game {
         this.answer = computer.toString().replaceAll("[^0-9]", "");
     }
 
+    public void checkAnswer() {
+        for (int i = 0; i < answer.length(); i++) {
+            if (answer.charAt(i) == userInput.charAt(i)) {
+                addStrikeCount();
+            } else if (answer.contains(String.valueOf(userInput.charAt(i)))) {
+                addBallCount();
+            }
+        }
+    }
+
+    private void addBallCount() {
+        this.ball++;
+    }
+
+    private void addStrikeCount() {
+        this.strike++;
+    }
+
 }
