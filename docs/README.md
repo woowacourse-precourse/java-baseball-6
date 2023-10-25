@@ -35,7 +35,7 @@
 - [x] boolean checkRestart() : 게임 재시작 여부 확인
 
 ### HintCalculator
-컴퓨터 수와 사용자 수를 비교하여 스트라이크 수와 볼 수를 저장하는 클래스
+컴퓨터 수와 사용자 수를 비교하여 스트라이크, 볼 개수를 판단하고 힌트를 생성하는 클래스
 
 - [x] HintCalculator(List <Integer>, List <Integer>) : user, computer 비교 후 ball, strike count 저장
 - [x] boolean isThreeStrike() : 3스트라이크인지 반환
