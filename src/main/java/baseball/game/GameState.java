@@ -1,18 +1,14 @@
 package baseball.game;
 
+import baseball.PrintMessage;
+import baseball.Rule;
 import camp.nextstep.edu.missionutils.Console;
 
-public class GameState {
-    private final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private final String REGAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
-    private final int STATE_PLAY = 1;
-    private final int STATE_TERMINATE = 2;
-
+public class GameState implements Rule {
     int state;
 
     void gameStart() {
-        System.out.println(START_MESSAGE);
+        PrintMessage.start();
         state = STATE_PLAY;
     }
 
@@ -21,7 +17,7 @@ public class GameState {
     }
 
     void askRegame() {
-        System.out.println(REGAME_MESSAGE);
+        PrintMessage.regame();
         String input = Console.readLine();
         validateInput(input);
     }

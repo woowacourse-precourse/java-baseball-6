@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumbers implements Rule {
-    static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-
     public static List<BaseballNumber> selectByRandom() {
         List<BaseballNumber> numbers = new ArrayList<>();
         while (numbers.size() < DIGIT_SIZE) {
@@ -25,7 +23,7 @@ public class BaseballNumbers implements Rule {
     }
 
     public static List<BaseballNumber> selectByInput() {
-        System.out.print(INPUT_MESSAGE);
+        PrintMessage.input();
         String input = Console.readLine();
         validateInput(input);
         return generateNumbers(input.split(""));

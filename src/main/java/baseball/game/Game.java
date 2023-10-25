@@ -1,13 +1,12 @@
 package baseball.game;
 
 import baseball.BaseballNumber;
+import baseball.PrintMessage;
 import baseball.Rule;
 import baseball.player.Computer;
 import baseball.player.User;
 
 public class Game implements Rule {
-    private final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-
     private GameState state;
     private Computer computer;
     private User user;
@@ -35,7 +34,7 @@ public class Game implements Rule {
             result.print();
             allStrike = result.isAllStrike();
         }
-        System.out.println(GAME_OVER_MESSAGE);
+        PrintMessage.gameOver();
     }
 
     private GameResult testMatch() {
