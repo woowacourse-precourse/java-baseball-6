@@ -124,9 +124,8 @@ public class BaseballGame {
                 onToFalse();
                 break;
             default:
-                System.out.println("잘못된 입력입니다. 프로그램을 종료합니다.");
-                onToFalse();
-                break;
+                throw new IllegalArgumentException("잘못된 입력입니다. 프로그램을 종료합니다.");
+
         }
     }
 
