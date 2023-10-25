@@ -1,67 +1,40 @@
 package baseball.Controller;
 
-import static baseball.Model.Count.ball;
-import static baseball.Model.Count.strike;
-import static baseball.View.InputView.printRestartPick;
-import static baseball.View.OutputView.printStartGame;
-
-import baseball.Model.Computer;
-import baseball.Model.Count;
-import baseball.Model.User;
-import baseball.View.InputView;
+import baseball.Model.BaseballGame;
+import baseball.View.ConsoleView;
 
 public class BaseballController {
-    private static final String RESTART_GAME = "1";
-    private static final String CLOSE_GAME = "2";
-    Count counter = new Count();
-    Computer computer = new Computer();
-    User user = new User();
+    public static final String RESTART_GAME = "1";
+    public static final String CLOSE_GAME = "2";
+    private final ConsoleView consoleView;
+    private final BaseballGame baseballGame;
 
-    public void setGame() {
-        counter.resetBall();
-        counter.resetStrike();
-        computer.generateRandom();
+    public BaseballController() {
+        baseballGame = new BaseballGame();
+        consoleView = new ConsoleView();
+        consoleView.printStartGame();
     }
 
-    public void starGame() {
-        setGame();
-        printStartGame();
-        tryStrike();
-        printRestartPick();
-        replayGame();
-    }
-
-    private void tryStrike() {
-        while (strike != 3) {
-            InputView.printRequestUserNum();
-            String userInputNum = user.getUserNum();
-            user.handleException(userInputNum);
-            counter.resetBall();
-            counter.resetStrike();
-            for (int numIndex = 0; numIndex < 3; numIndex++) {
-                int userNumIndex = Character.getNumericValue(userInputNum.charAt(numIndex));
-                counter.checkBallAndStrike(numIndex, userNumIndex);
-            }
-            if (counter.countingBall(strike, ball)) {
-                break;
-            }
+    public void startGame() {
+        baseballGame.initializeSetting();
+        while (baseballGame.strike != 3) {
+            consoleView.printRequestUserNum();
+            String userNum = consoleView.getUserNum();
+            baseballGame.tryStrike(userNum);
+            consoleView.printBallAndStrike(baseballGame.ball, baseballGame.strike);
         }
+        consoleView.printEndMessage();
+        restartGame();
     }
 
-    public void replayGame() {
-        String replayChoose = user.getUserNum();
-        handleReplayException(replayChoose);
+    public void restartGame() {
+        consoleView.printNewGame();
+        String replayChoose = consoleView.getReplayNum();
         if (replayChoose.equals(RESTART_GAME)) {
-            starGame();
+            startGame();
         }
         if (replayChoose.equals(CLOSE_GAME)) {
             return;
-        }
-    }
-
-    public void handleReplayException(String replayChoose) {
-        if (!replayChoose.equals(RESTART_GAME) && !replayChoose.equals(CLOSE_GAME)) {
-            throw new IllegalArgumentException();
         }
     }
 }
