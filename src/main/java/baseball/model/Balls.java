@@ -3,14 +3,16 @@ package baseball.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.exception.ErrorMessage.INVALID_BALLS_SIZE;
 import static baseball.util.InputUtils.inputNumbersToIntegerList;
 
 public class Balls {
+    public static final int BALLS_SIZE = 3;
     private List<Ball> balls;
 
     public Balls(List<Integer> nums) {
-        if (nums.size() != 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+        if (nums.size() != BALLS_SIZE) {
+            throw new IllegalArgumentException(INVALID_BALLS_SIZE.toString());
         }
 
         this.balls = nums.stream()
@@ -37,11 +39,11 @@ public class Balls {
         return balls;
     }
 
-    public int size() {
-        return balls.size();
-    }
-
     public Ball getBall(int i) {
         return balls.get(i);
+    }
+
+    public int size() {
+        return balls.size();
     }
 }

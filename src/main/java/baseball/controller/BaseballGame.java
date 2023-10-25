@@ -8,7 +8,11 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.exception.ErrorMessage.INVALID_ANSWER_ABOUT_RETRY;
+
 public class BaseballGame {
+    public static final String RETRY = "1";
+    public static final String QUIT = "2";
     private final NumbersGenerator numbersGenerator = new NumbersGenerator();
 
     public void play() {
@@ -50,16 +54,15 @@ public class BaseballGame {
         InputView.askRetry();
         String input = Console.readLine().trim();
 
-        if (input.equals("2")) {
-            return;
-        }
-
-        if (input.equals("1")) {
+        if (input.equals(RETRY)) {
             playGame();
             return;
         }
 
-//        InputView.askRetry();
-//        askRetry();
+        if (input.equals(QUIT)) {
+            return;
+        }
+
+        throw new IllegalArgumentException(INVALID_ANSWER_ABOUT_RETRY.toString());
     }
 }

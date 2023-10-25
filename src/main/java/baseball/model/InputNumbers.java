@@ -1,5 +1,6 @@
 package baseball.model;
 
+import static baseball.exception.ErrorMessage.INVALID_BALL_NUMBER;
 import static baseball.util.InputUtils.INPUT_NUMBERS_REGEX;
 
 public class InputNumbers {
@@ -8,7 +9,7 @@ public class InputNumbers {
 
     public InputNumbers(String input) {
         if (!INPUT_NUMBERS_REGEX.matcher(input).matches()) {
-            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_BALL_NUMBER.toString());
         }
 
         this.input = input;

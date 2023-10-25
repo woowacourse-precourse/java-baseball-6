@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.model.Ball.END_RANGE;
+import static baseball.model.Ball.START_RANGE;
+import static baseball.model.Balls.BALLS_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class NumbersGeneratorTest {
@@ -26,9 +29,9 @@ public class NumbersGeneratorTest {
             Set<Integer> set = new HashSet<>(randomNumbers);
 
             //then
-            assertThat(set.size()).isEqualTo(3);
+            assertThat(set.size()).isEqualTo(BALLS_SIZE);
             for (int num : set) {
-                assertThat(num).isBetween(1, 9);
+                assertThat(num).isBetween(START_RANGE, END_RANGE);
             }
         }
     }

@@ -3,6 +3,8 @@ package baseball.model;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static baseball.exception.ErrorMessage.INVALID_BALL_NUMBER;
+
 public class Ball {
     public static final int START_RANGE = 1;
     public static final int END_RANGE = 9;
@@ -10,7 +12,7 @@ public class Ball {
 
     public Ball(int num) {
         if (!isInRange(num)) {
-            throw new IllegalArgumentException("1-9사이의 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException(INVALID_BALL_NUMBER.toString());
         }
         this.num = num;
     }

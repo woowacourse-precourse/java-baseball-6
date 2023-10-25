@@ -8,6 +8,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
+import static baseball.exception.ErrorMessage.INVALID_BALL_NUMBER;
+import static baseball.model.BallStatus.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -30,7 +32,7 @@ public class BallTest {
     public void createBall_exception_invalid_num(int illegalNumber) throws Exception {
         //when, then
         assertThatThrownBy(() -> new Ball(illegalNumber)).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1-9사이의 숫자를 입력해야 합니다.");
+                .hasMessageContaining(INVALID_BALL_NUMBER.toString());
     }
 
 
@@ -70,7 +72,7 @@ public class BallTest {
         List<BallStatus> ballStatuses = ball.checkBalls(index, balls);
 
         //then
-        assertThat(ballStatuses).containsExactly(BallStatus.STRIKE, BallStatus.NOTHING, BallStatus.NOTHING);
+        assertThat(ballStatuses).containsExactly(STRIKE, NOTHING, NOTHING);
     }
 
     @DisplayName("특정 인덱스의 Ball과 Balls을 비교 : 1BALL 2NOTHING")
@@ -85,6 +87,6 @@ public class BallTest {
         List<BallStatus> ballStatuses = ball.checkBalls(index, balls);
 
         //then
-        assertThat(ballStatuses).containsExactly(BallStatus.BALL, BallStatus.NOTHING, BallStatus.NOTHING);
+        assertThat(ballStatuses).containsExactly(BALL, NOTHING, NOTHING);
     }
 }

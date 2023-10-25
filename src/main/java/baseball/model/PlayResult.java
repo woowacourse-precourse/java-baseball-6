@@ -2,10 +2,10 @@ package baseball.model;
 
 import java.util.List;
 
+import static baseball.model.BallStatus.*;
+
 public class PlayResult {
     public static final String SPACE = " ";
-    public static final String STRIKE_STRING = "스트라이크";
-    public static final String BALL_STRING = "볼";
     private int strikeCount;
     private int ballCount;
 
@@ -18,25 +18,25 @@ public class PlayResult {
     }
 
     private void count(BallStatus status) {
-        if (status == BallStatus.STRIKE) strikeCount++;
-        if (status == BallStatus.BALL) ballCount++;
+        if (status == STRIKE) strikeCount++;
+        if (status == BALL) ballCount++;
     }
 
     @Override
     public String toString() {
         if (strikeCount != 0 && ballCount == 0) {
-            return strikeCount + STRIKE_STRING;
+            return strikeCount + STRIKE.toString();
         }
 
         if (strikeCount != 0 && ballCount != 0) {
-            return ballCount + BALL_STRING + SPACE + strikeCount + STRIKE_STRING;
+            return ballCount + BALL.toString() + SPACE + strikeCount + STRIKE.toString();
         }
 
         if (strikeCount == 0 && ballCount != 0) {
-            return ballCount + BALL_STRING;
+            return ballCount + BALL.toString();
         }
 
-        return "낫싱";
+        return NOTHING.toString();
     }
 
     public boolean isCorrect() {

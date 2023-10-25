@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
+import static baseball.exception.ErrorMessage.INVALID_BALLS_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -33,11 +34,10 @@ public class BallsTest {
     public void createBalls_randomNums_exception_sizeNotMatch() throws Exception {
         //given
         List<Integer> IllegalList = List.of(1, 2);
-
         //when, then
         assertThatThrownBy(() -> new Balls(IllegalList))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("3자리 숫자를 입력해주세요.");
+                .hasMessageContaining(INVALID_BALLS_SIZE.toString());
     }
 
     @DisplayName("랜덤한 숫자를 입력받는 Balls 생성 예외 : null 값이 주어진 경우 예외 발생")
