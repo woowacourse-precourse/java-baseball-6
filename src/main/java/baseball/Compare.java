@@ -28,12 +28,12 @@ public class Compare {
         int strike = Strikes(computer, user);
         int ball = total - strike;
         if (total == 0) {
-            return "??";
+            return "낫싱";
         } else if (strike == 0) {
-            return ball + "?";
+            return ball + "볼";
         } else if (ball == 0) {
-            return strike + "?????";
+            return strike + "스트라이크";
         }
-        return ball + "? " + strike + "?????";
+        return ball + "볼 " + strike + "스트라이크";
     }
 }
