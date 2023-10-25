@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    private GameLogic gameLogic = new GameLogic();
-    private Result result = new Result();
+    private final GameLogic gameLogic = new GameLogic();
 
     public static void main(String[] args) {
         Application app = new Application();
@@ -21,13 +20,17 @@ public class Application {
         while (isGameContinue) {
             gameLogic.startGame();
             boolean isMatch = false;
-            List<Integer> playerNumbers = new ArrayList<>();
+            List<Integer> playerNumbers;
 
             while (!isMatch) {
-                playerNumbers = gameLogic.getPlayerNumbers();
-                isMatch = gameLogic.checkMatch(playerNumbers);
-                List<Integer> resultCounts = gameLogic.computeResult(playerNumbers);
-                result.printResult(resultCounts.get(1), resultCounts.get(0));
+                try {
+                    playerNumbers = gameLogic.getPlayerNumbers();
+                    isMatch = gameLogic.checkMatch(playerNumbers);
+                    List<Integer> resultCounts = gameLogic.computeResult(playerNumbers);
+                    Result.printResult(resultCounts.get(1), resultCounts.get(0));
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException();
+                }
             }
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
