@@ -1,12 +1,10 @@
 package baseball;
 
+import baseball.controller.ScoreJudgement;
 import baseball.model.Generator;
 import baseball.model.Validation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.Arrays;
-import java.util.HashSet;
 
 public class Application {
 
@@ -52,10 +50,10 @@ public class Application {
             return;
         }
 
-        int strike = countStrike(computerNumber, userNumber);
+        int strike = ScoreJudgement.countStrike(computerNumber, userNumber);
         // 컴퓨터와 유저의 숫자 중 같은 숫자가 몇 개인지 알아낸 뒤
         // 스트라이크의 개수를 빼면 볼의 개수를 구할 수 있다.
-        int ball = countSameNumber(computerNumber, userNumber) - strike;
+        int ball = ScoreJudgement.countSameNumber(computerNumber, userNumber) - strike;
 
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
@@ -73,42 +71,6 @@ public class Application {
         }
 
         System.out.printf("%d볼 %d스트라이크\n", ball, strike);
-
-    }
-
-    /**
-     * 스트라이크 개수를 반환한다.
-     */
-    private static int countStrike(int computerNumber, int userNumber) {
-        String computerValue = String.valueOf(computerNumber);
-        String userValue = String.valueOf(userNumber);
-        int count = 0;
-
-        for (int i = 0; i < computerValue.length(); i++) {
-            if (computerValue.charAt(i) == userValue.charAt(i)) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    /**
-     * 컴퓨터의 수와 유저의 수 중 같은 숫자의 개수를 반환한다..
-     */
-    private static int countSameNumber(int computerNumber, int userNumber) {
-        String[] computerValue = String.valueOf(computerNumber).split("");
-        String[] userValue = String.valueOf(userNumber).split("");
-
-        int count = 0;
-
-        HashSet<String> computerSet = new HashSet<>(Arrays.asList(computerValue));
-
-        for (String character : userValue) {
-            if (computerSet.contains(character)) {
-                count++;
-            }
-        }
-        return count;
     }
 
 }
