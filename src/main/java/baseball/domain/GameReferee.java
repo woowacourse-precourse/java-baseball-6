@@ -1,6 +1,6 @@
-package baseball;
+package baseball.domain;
 
-import static baseball.Score.NOTHING;
+import static baseball.domain.Score.NOTHING;
 
 public class GameReferee {
     private final Ball answerBall;

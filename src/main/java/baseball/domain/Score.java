@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 public enum Score {
     THREE_STRIKE("3스트라이크", 0, 3),

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.service;
 
 public class DoubleRandomService implements RandomService {
     public static final String NOT_RANGE_IN_ONE_TO_NINE_ERROR_MESSAGE = "랜덤 값이 1 ~ 9 사이가 아닙니다.";

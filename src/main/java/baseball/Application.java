@@ -1,7 +1,16 @@
 package baseball;
 
-import static baseball.Score.THREE_STRIKE;
+import static baseball.domain.Score.THREE_STRIKE;
 
+import baseball.controller.BaseBallGameController;
+import baseball.domain.BaseBallGame;
+import baseball.domain.RandomNumberGenerator;
+import baseball.domain.Score;
+import baseball.service.DefaultConsoleService;
+import baseball.service.DefaultRandomService;
+import baseball.view.InputDevice;
+import baseball.view.InputValidator;
+import baseball.view.OutputDevice;
 import java.util.List;
 
 public class Application {

@@ -1,7 +1,11 @@
-package baseball;
+package baseball.controller;
 
-import static baseball.Score.THREE_STRIKE;
+import static baseball.domain.Score.THREE_STRIKE;
 
+import baseball.domain.BaseBallGame;
+import baseball.view.InputDevice;
+import baseball.view.OutputDevice;
+import baseball.domain.Score;
 import java.util.List;
 
 public class BaseBallGameController {

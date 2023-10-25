@@ -1,10 +1,10 @@
-package baseball;
+package baseball.view;
 
-import static baseball.InputValidator.CONTAINS_ZERO_ERROR_MESSAGE;
-import static baseball.InputValidator.DUPLICATE_NUMBER_ERROR_MESSAGE;
-import static baseball.InputValidator.NOT_INT_ERROR_MESSAGE;
-import static baseball.InputValidator.NOT_THREE_DIGIT_ERROR_MESSAGE;
-import static baseball.InputValidator.RESTART_OR_EXIT_ERROR_MESSAGE;
+import static baseball.view.InputValidator.CONTAINS_ZERO_ERROR_MESSAGE;
+import static baseball.view.InputValidator.DUPLICATE_NUMBER_ERROR_MESSAGE;
+import static baseball.view.InputValidator.NOT_INT_ERROR_MESSAGE;
+import static baseball.view.InputValidator.NOT_THREE_DIGIT_ERROR_MESSAGE;
+import static baseball.view.InputValidator.RESTART_OR_EXIT_ERROR_MESSAGE;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

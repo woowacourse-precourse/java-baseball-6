@@ -1,13 +1,13 @@
-package baseball;
+package baseball.domain;
 
-import static baseball.Score.NOTHING;
-import static baseball.Score.ONE_BALL;
-import static baseball.Score.ONE_BALL_ONE_STRIKE;
-import static baseball.Score.ONE_STRIKE;
-import static baseball.Score.THREE_STRIKE;
-import static baseball.Score.TWO_BALL;
-import static baseball.Score.TWO_BALL_ONE_STRIKE;
-import static baseball.Score.TWO_STRIKE;
+import static baseball.domain.Score.NOTHING;
+import static baseball.domain.Score.ONE_BALL;
+import static baseball.domain.Score.ONE_BALL_ONE_STRIKE;
+import static baseball.domain.Score.ONE_STRIKE;
+import static baseball.domain.Score.THREE_STRIKE;
+import static baseball.domain.Score.TWO_BALL;
+import static baseball.domain.Score.TWO_BALL_ONE_STRIKE;
+import static baseball.domain.Score.TWO_STRIKE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;

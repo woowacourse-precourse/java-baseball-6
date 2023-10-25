@@ -1,4 +1,4 @@
-package baseball;
+package baseball.woowacourse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

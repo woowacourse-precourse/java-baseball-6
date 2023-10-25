@@ -1,4 +1,4 @@
-package baseball;
+package baseball.service;
 
 public interface ConsoleService {
 

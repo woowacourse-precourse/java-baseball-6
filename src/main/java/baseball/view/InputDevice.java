@@ -1,5 +1,6 @@
-package baseball;
+package baseball.view;
 
+import baseball.service.ConsoleService;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

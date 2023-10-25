@@ -1,10 +1,11 @@
-package baseball;
+package baseball.view;
 
-import static baseball.InputValidator.EXIT;
-import static baseball.InputValidator.RESTART;
+import static baseball.view.InputValidator.EXIT;
+import static baseball.view.InputValidator.RESTART;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.service.DoubleConsoleService;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
