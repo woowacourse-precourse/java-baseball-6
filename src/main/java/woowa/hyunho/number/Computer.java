@@ -13,7 +13,6 @@ public class Computer {
 			int randomNumber = generateNumber();
 			addNumber(randomNumber);
 		}
-		System.out.println(computerRandomNumber);
 		return computerRandomNumber;
 	}
 	
