@@ -4,10 +4,8 @@ import baseball.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
-    private final String ANSWERMESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-
     public String getPlayerInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(UIMessage.INPUT_MESSAGE.getMessage());
         String input = Console.readLine();
         InputValidator.validatePlayNumber(input);
 
@@ -15,7 +13,7 @@ public class GameView {
     }
 
     public int gameContinue() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(UIMessage.RESTART_OR_END.getMessage());
         String input = Console.readLine();
         InputValidator.validateGameContinue(input);
 
@@ -23,26 +21,26 @@ public class GameView {
     }
 
     public void showIntro() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(UIMessage.GAME_INTRO.getMessage());
     }
     public void showResult(int strike, int ball) {
         if(strike > 0 && ball == 0) {
-            System.out.println(strike + "스트라이크");
+            System.out.println(strike + UIMessage.STRIKE.getMessage());
             if(strike == 3) {
-                System.out.println(ANSWERMESSAGE);
+                System.out.println(UIMessage.END_MESSAGE);
             }
         }
 
         else if(strike == 0 && ball > 0) {
-            System.out.println(ball + "볼");
+            System.out.println(ball + UIMessage.BALL.getMessage());
         }
 
         else if(strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            System.out.println(UIMessage.NOTHING);
         }
 
         else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            System.out.println(ball + UIMessage.BALL.getMessage() + " " + strike + UIMessage.STRIKE.getMessage());
         }
     }
 }
