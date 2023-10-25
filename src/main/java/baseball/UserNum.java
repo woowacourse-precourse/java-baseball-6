@@ -7,10 +7,9 @@ import java.util.StringTokenizer;
 
 public class UserNum {
 
-    List<Integer> numArr = new ArrayList<>();
-
     public List inputNum() {
 
+        List<Integer> numArr = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
 
         StringTokenizer st = new StringTokenizer(Console.readLine());
