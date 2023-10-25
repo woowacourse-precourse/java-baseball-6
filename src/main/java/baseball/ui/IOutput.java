@@ -2,5 +2,7 @@ package baseball.ui;
 
 public interface IOutput {
 
-    void printMessage(String message);
+    void print(Message message);
+
+    void print(String message);
 }

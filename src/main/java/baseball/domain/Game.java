@@ -2,6 +2,7 @@ package baseball.domain;
 
 import baseball.ui.ConsoleInput;
 import baseball.ui.ConsoleOutput;
+import baseball.ui.Message;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,7 +31,7 @@ public class Game {
 
     public void run() {
         while (true) {
-            consoleOutput.printMessage("숫자 야구 게임을 시작합니다.\n");
+            consoleOutput.print(Message.START);
             play();
             if (!isRestart()) {
                 break;
@@ -45,7 +46,7 @@ public class Game {
                 break;
             }
         }
-        consoleOutput.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        consoleOutput.print(Message.END);
     }
 
     private void initPlayer() {
@@ -60,7 +61,7 @@ public class Game {
     }
 
     private void guessNumberComputer() {
-        consoleOutput.printMessage("숫자를 입력해주세요 : ");
+        consoleOutput.print(Message.REQUEST_INPUT);
         user.generatePlayerNumber(NUMBER_BALLS);
     }
 
@@ -70,7 +71,7 @@ public class Game {
     }
 
     private Command chooseRestartGame() {
-        consoleOutput.printMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        consoleOutput.print(Message.RESTART);
         return user.selectCommand();
     }
 }

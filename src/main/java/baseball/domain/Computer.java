@@ -62,7 +62,7 @@ public class Computer implements IPlayer {
     }
 
     private void announceResult() {
-        consoleOutput.printMessage(Utility.convertResponseToResult(response));
+        consoleOutput.print(Utility.convertResponseToResult(response));
     }
 
 }
