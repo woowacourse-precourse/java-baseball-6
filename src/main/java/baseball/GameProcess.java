@@ -29,21 +29,24 @@ public class GameProcess {
             try {
                 System.out.print("숫자를 입력해주세요 : ");
                 num = Console.readLine();
-
+                System.out.println(num.length());
                 if (num.length() != 3) {
-                    throw new IllegalAccessException("입력된 숫자는 3자리가 아닙니다.");
-                    //break;
+                    throw new IllegalArgumentException("입력된 숫자는 3자리가 아닙니다.");
                 }
                 input.clear();
 
                 for (int i = 0; i < 3; i++) {
                     char digitChar = num.charAt(i); // 문자열 num에서 인덱스 i에 있는 문자를 가져와 digitChar 변수에 저장
                     String digitStr = String.valueOf(digitChar); // 문자 digitChar를 문자열로 반환하여 digitStr 변수에 저장
-                    int digit = Integer.parseInt(digitStr); // 문자열 digitStr을 정수로 변환하여 digit 변수에 저장
-                    if (!(1<=digit && digit <= 9)) {
-                        throw new IllegalAccessException("입력된 숫자는 1부터 9사이의 정수가 아닙니다");
+                    try {
+                        int digit = Integer.parseInt(digitStr); // 문자열 digitStr을 정수로 변환하여 digit 변수에 저장
+                        if (!(1<=digit && digit <= 9)) {
+                            throw new IllegalAccessException("입력된 숫자는 1부터 9사이의 정수가 아닙니다");
+                        }
+                        input.add(digit); // 변환된 숫자 digit를 리스트 input에 추가
+                    } catch (NumberFormatException e) {
+                        System.out.println("숫자로 변환할 수 없는 값이 입력되었습니다");
                     }
-                    input.add(digit); // 변환된 숫자 digit를 리스트 input에 추가
                 }
 
                 Set<Integer> inputset = new HashSet<>(input);
