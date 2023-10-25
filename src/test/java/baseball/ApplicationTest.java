@@ -36,12 +36,21 @@ class ApplicationTest extends NsTest {
                 () -> {
                     run("521", "524", "1", "718", "1", "352", "2");
                     long count = Arrays.stream(output().split("\n"))
-                                    .filter(line -> line.contains("숫자 야구 게임을 시작합니다."))
-                                    .count();
+                            .filter(line -> line.contains("숫자 야구 게임을 시작합니다."))
+                            .count();
                     Assertions.assertEquals(1, count);
                 },
-                5,2,4,7,1,8,3,5,2
+                5, 2, 4, 7, 1, 8, 3, 5, 2
         );
+    }
+
+    @Test
+    void 재시작_명령어_예외_테스트() {
+        assertThatThrownBy(() -> assertRandomNumberInRangeTest(() -> {
+                    run("798", "3");
+                },
+                7, 9, 8
+        )).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
