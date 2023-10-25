@@ -1,14 +1,15 @@
 package baseball;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
+    private ArrayList<Integer> answer;
     OutputManager outputManager = new OutputManager();
     InputManager inputManager = new InputManager();
-    ArrayList<Integer> makeAnswer() {
-        ArrayList<Integer> answer;
+    void makeAnswer() {
         int randomNumber;
 
         answer = new ArrayList<>();
@@ -17,11 +18,10 @@ public class Computer {
             if (!answer.contains(randomNumber))
                 answer.add(randomNumber);
         }
-        return (answer);
     }
 
 
-    int JudgeHowManyStrike(ArrayList<Integer> answer, ArrayList<Integer> userInput) {
+    int JudgeHowManyStrike(ArrayList<Integer> userInput) {
         int strike;
 
         strike = 0;
@@ -34,7 +34,7 @@ public class Computer {
         return (strike);
     }
 
-    int JudgeHowManyBall(ArrayList<Integer> answer, ArrayList<Integer> userInput, int strike) {
+    int JudgeHowManyBall(ArrayList<Integer> userInput, int strike) {
         int ball;
 
         ball = 0;
@@ -48,7 +48,7 @@ public class Computer {
         return (ball);
     }
 
-    boolean playBaseball(ArrayList<Integer> answer) {
+    boolean playBaseball() {
         ArrayList<Integer> userInput;
         int ball;
         int strike;
@@ -56,11 +56,11 @@ public class Computer {
 
         is_end = false;
         outputManager.printStartMessage();
-        while (!is_end) {
+        while (true) {
             outputManager.printRequestInputMessage();
             userInput = inputManager.takeUserAnswerInput();
-            strike =  JudgeHowManyStrike(answer, userInput);
-            ball = JudgeHowManyBall(answer, userInput, strike);
+            strike =  JudgeHowManyStrike(userInput);
+            ball = JudgeHowManyBall(userInput, strike);
             outputManager.printStrikeOrBallMessage(ball, strike);
             if (ball == 0 && strike == 3) {
                 outputManager.printRetryOrEndMessage();
@@ -76,12 +76,11 @@ public class Computer {
 
     void startBaseballGame() {
         boolean is_end;
-        ArrayList<Integer> answer;
 
         is_end = false;
         while (!is_end) {
-            answer = makeAnswer();
-            is_end = playBaseball(answer);
+            makeAnswer();
+            is_end = playBaseball();
         }
 
     }
