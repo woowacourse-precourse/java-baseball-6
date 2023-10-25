@@ -7,7 +7,6 @@ import baseball.utils.MessageUtils;
 import baseball.utils.UserUtils;
 import baseball.verification.InputVerification;
 import baseball.verification.RestartVerification;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -18,7 +17,7 @@ public class Application {
         List<Integer> computerNumber = computerUtils.generateComputerNumber(); // ComputerUtils 객체를 사용하여 컴퓨터의 숫자를 생성하고, computerNumber 리스트에 저장
 
         while (true) {
-            List<Integer> userNumber = new ArrayList<>(); // user의 세자리 숫자를 저장할 list 선언
+            List<Integer> userNumber; // user의 세자리 숫자를 저장할 list 선언
             MessageUtils.inputPromptMessage(); // 입력 메세지 출력
             String stringFormInputNumber = userUtils.inputUserNumber(); // user가 입력한 세자리 숫자를 stringFormInputNumber에 저장
 
