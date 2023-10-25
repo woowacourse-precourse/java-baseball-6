@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import baseball.start.ComputerNumbers;
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -34,22 +35,6 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
-    }
-
-    @Test
-    void 예외_테스트_문자() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("가나다"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void 예외_테스트_같은숫자() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("112"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
     }
 
     @Test
@@ -97,6 +82,42 @@ class ApplicationTest extends NsTest {
                             .contains("1스트라이크", "3스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
                 },
                 1, 3, 5, 5, 8, 9
+        );
+    }
+
+    @Test
+    void 입려숫자_예외_문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("가나다"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력숫자_예외_같은숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 게임종료_선택_예외_다른숫자() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThrows(IllegalArgumentException.class, () -> run("135", "3"));
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 게임종료_선택_예외_문자() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThrows(IllegalArgumentException.class, () -> run("135", "w"));
+                },
+                1, 3, 5
         );
     }
 }
