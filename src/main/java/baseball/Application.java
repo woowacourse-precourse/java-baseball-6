@@ -31,10 +31,10 @@ public class Application {
     private static void gameContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if(input=="1"){
+        if(input.equals("1")){
             return;
         }
-        else if(input=="2"){
+        else if(input.equals("2")){
             computerPower=false;
         }
         else{
