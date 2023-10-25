@@ -1,6 +1,7 @@
 package baseball.util;
 
 import baseball.constants.NumberConstants;
+import baseball.constants.StringConstants;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.Set;
@@ -38,6 +39,6 @@ public class RandomNumbersGenerator {
     private static String getStringNumbers() {
         return set.stream()
                 .map(String::valueOf)
-                .collect(Collectors.joining(""));
+                .collect(Collectors.joining(StringConstants.BLANK));
     }
 }

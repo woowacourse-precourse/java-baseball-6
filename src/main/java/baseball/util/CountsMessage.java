@@ -32,7 +32,7 @@ public class CountsMessage {
             return;
         }
         if (!messageBuilder.isEmpty()) {
-            messageBuilder.append(StringConstants.BLANK);
+            messageBuilder.append(StringConstants.SPACE);
         }
         if (!isZero(strike)) {
             messageBuilder.append(strike)

@@ -4,6 +4,7 @@ import static baseball.validation.ValidationUtility.throwIfContainsNonNumber;
 
 import baseball.constants.MessageConstants;
 import baseball.constants.NumberConstants;
+import baseball.constants.StringConstants;
 import baseball.view.Output;
 import java.util.HashSet;
 import java.util.List;
@@ -27,14 +28,14 @@ public class NumbersInputValidator implements Validator {
     }
 
     private static void throwIfContainsZero(String numbers) {
-        if (numbers.contains(String.valueOf(NumberConstants.ZERO_CHAR))) {
+        if (numbers.contains(StringConstants.ZERO_STRING)) {
             Output.printErrorMessage(MessageConstants.INVALID_NUMBERS_CONTAINS_ZERO);
             throw new IllegalArgumentException();
         }
     }
 
     private static void throwIfContainsDuplicateNumbers(String numbers) {
-        Set<String> set = new HashSet<>(List.of(numbers.split("")));
+        Set<String> set = new HashSet<>(List.of(numbers.split(StringConstants.BLANK)));
         if (set.size() != NumberConstants.MAX_BALL_SIZE) {
             Output.printErrorMessage(MessageConstants.INVALID_NUMBERS_CONTAINS_DUPLICATE_NUMBER);
             throw new IllegalArgumentException();
