@@ -30,4 +30,8 @@ public class Computer {
     public boolean numbersContains(int number) {
         return this.numbers.contains(number);
     }
+
+    public int getNumberOf(int index) {
+        return this.numbers.get(index);
+    }
 }

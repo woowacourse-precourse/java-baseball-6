@@ -46,4 +46,8 @@ public class Player {
             throw new IllegalArgumentException();
         }
     }
+
+    public int getNumberOf(int index) {
+        return this.numbers.get(index);
+    }
 }
