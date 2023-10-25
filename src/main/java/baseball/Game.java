@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Game {
@@ -11,7 +12,6 @@ public class Game {
     }
 
     public static Game startNewGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         return new Game(RandomNumberGenerator.generateThreeDigits());
     }
 
@@ -39,5 +39,32 @@ public class Game {
         }
 
         return (ballCounts > 0 ? ballCounts + "볼 " : "") + (strikeCounts > 0 ? strikeCounts + "스트라이크" : "");
+    }
+
+    public void gameLoop() {
+        while (true) {
+            Player player = Player.fromUserInput();
+            List<Integer> playerNumbers = player.getPlayerNumbers();
+
+            String result = play(playerNumbers);
+            System.out.println(result);
+
+            if (result.contains("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+                if (isRestartGame()) {
+                    Game newGame = Game.startNewGame();
+                    newGame.gameLoop();
+                }
+                break;
+            }
+        }
+    }
+
+    private boolean isRestartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int isRestart = Integer.parseInt(Console.readLine());
+
+        return isRestart == 1;
     }
 }

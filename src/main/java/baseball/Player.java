@@ -21,14 +21,14 @@ public class Player {
             int number = Integer.parseInt(input);
 
             if (userInputNumbers.contains(number) || number < 1 || number > 9) {
-                throw new IllegalArgumentException("올바르지 않은 숫자입니다. 1부터 9사이의 서로 다른 숫자 3개를 입력해주세요.");
+                throw new IllegalArgumentException();
             }
 
             userInputNumbers.add(number);
         }
 
         if (userInputNumbers.size() != 3) {
-            throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException();
         }
 
         return new Player(userInputNumbers);
