@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Numbers {
@@ -9,7 +10,7 @@ public class Numbers {
         if (numbers == null || numbers.size() != 3) {
             throw new IllegalArgumentException();
         }
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
     }
 
     public List<Integer> getNumbers() {
