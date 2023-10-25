@@ -6,7 +6,7 @@ import baseball.service.GameService;
 import baseball.service.hint.HintService;
 import baseball.util.ExceptionUtil;
 import baseball.util.InputUtil;
-import baseball.util.IntegerUtil;
+import baseball.validation.IntegerValidator;
 import baseball.view.*;
 
 public class GameController {
@@ -52,7 +52,7 @@ public class GameController {
         restartView.displayRestartChoiceMessage();
         String regameNum = InputUtil.inputString();
 
-        IntegerUtil.validateInteger(regameNum);
+        IntegerValidator.validateInteger(regameNum);
         int parsedRegameNum = Integer.parseInt(regameNum);
         Restart restart = RestartController.validateValue(parsedRegameNum);
 

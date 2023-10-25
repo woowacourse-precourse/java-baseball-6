@@ -5,6 +5,8 @@ import static baseball.domain.GameConstants.MIN_DIGIT;
 import static baseball.domain.GameConstants.NUMBER_LENGTH;
 
 import baseball.util.*;
+import baseball.validation.IntegerValidator;
+import baseball.validation.StringValidator;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
@@ -49,11 +51,11 @@ public class NumberBaseball {
     }
 
     private static void validateStringValue(String stringValue) {
-        IntegerUtil.validateInteger(stringValue);
-        StringUtil.validateShortLength(stringValue, NUMBER_LENGTH);
-        StringUtil.validateLongLength(stringValue, NUMBER_LENGTH);
-        StringUtil.validateDuplicated(stringValue);
-        StringUtil.validateOutOfRange(stringValue, MIN_DIGIT, MAX_DIGIT);
+        IntegerValidator.validateInteger(stringValue);
+        StringValidator.validateShortLength(stringValue, NUMBER_LENGTH);
+        StringValidator.validateLongLength(stringValue, NUMBER_LENGTH);
+        StringValidator.validateDuplicated(stringValue);
+        StringValidator.validateOutOfRange(stringValue, MIN_DIGIT, MAX_DIGIT);
     }
 
 }

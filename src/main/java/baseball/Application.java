@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.controller.GameController;
-import baseball.service.GameService;
 import baseball.service.GameServiceImpl;
 import baseball.service.hint.HintService;
 import baseball.service.hint.HintServiceImpl;
@@ -13,7 +12,7 @@ import baseball.view.*;
 public class Application {
     public static void main(String[] args) {
         GameController gameController = new GameController(
-                new StartView(),
+                new StartView(), //TODO: View를 GameController가 다 알아야할까?
                 new InputView(),
                 new HintView(),
                 new EndView(),
