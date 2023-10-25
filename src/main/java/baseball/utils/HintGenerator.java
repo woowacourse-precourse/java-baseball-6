@@ -7,7 +7,7 @@ import baseball.model.Hint;
 import baseball.model.Numbers;
 import java.util.stream.IntStream;
 
-public class HintGenerator {
+public final class HintGenerator {
     public static Hint generate(Numbers computer, Numbers player) {
         return Hint.from(countStrike(computer, player), countBall(computer, player));
     }

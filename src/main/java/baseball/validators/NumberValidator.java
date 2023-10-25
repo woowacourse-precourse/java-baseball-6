@@ -2,7 +2,7 @@ package baseball.validators;
 
 import static baseball.constants.DigitConstants.NUMBER_SIZE;
 
-public class NumberValidator {
+public final class NumberValidator {
     public static void validateNumber(String numbers) {
         validateOutOfRange(numbers);
         validateInputSize(numbers);
