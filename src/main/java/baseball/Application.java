@@ -13,7 +13,7 @@ public class Application {
         view.printGameStart();
         model.setComputer_number(controller.randomNumber());
 
-        while (true) {
+        do {
             String input_str = controller.numberInput();
             int[] input_number = controller.stringToIntArray(input_str);
 
@@ -21,7 +21,6 @@ public class Application {
             controller.exceptionUserInput(model.getInput_number());
             controller.checkStrikeAndBall(model);
 
-            if (controller.checkRestart(controller, model)) break;
-        }
+        } while (!controller.checkRestart(controller, model));
     }
 }
