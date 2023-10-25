@@ -2,7 +2,7 @@ package baseball.View;
 
 public class PlayGameView {
     public static void printInputNumber() {
-        System.out.println("숫자를 입력해주세요 :");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public static void printCorrectAnswer() {
@@ -14,10 +14,10 @@ public class PlayGameView {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
         }
-        if (ballCount != 0) {
+        if (strikeCount == 0 && ballCount > 0) {
             System.out.println(ballCount + "볼");
         }
-        if (strikeCount != 0) {
+        if (strikeCount > 0 && ballCount == 0) {
             System.out.println(strikeCount + "스트라이크");
         }
         if(ballCount != 0 && strikeCount != 0 ) {

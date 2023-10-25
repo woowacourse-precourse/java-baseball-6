@@ -9,13 +9,14 @@ public class Hint {
         int ballCount = 0, strikeCount = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (playerInput.get(i).equals(computerNumber.get(i))) {
+            int player = playerInput.get(i);
+            if (player == computerNumber.get(i)) {
                 strikeCount++;
-            } else if (computerNumber.contains(playerInput.get(i))) {
+            } else if (computerNumber.contains(player)) {
                 ballCount++;
             }
         }
-        if(ballCount == 3)
+        if(strikeCount == 3)
             isThreeBall = true;
         PlayGameView.printHint(ballCount, strikeCount);
     }
