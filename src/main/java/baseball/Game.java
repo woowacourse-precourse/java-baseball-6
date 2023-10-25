@@ -12,24 +12,13 @@ public class Game {
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-
             String userNumber = Console.readLine();
+
             checkNumber(userNumber);
 
-            int ball = 0;
-            int strike = 0;
-
-            for (int i = 0; i < computerNumber.length(); i++) {
-                char computerDigit = computerNumber.charAt(i);
-                char userDigit = userNumber.charAt(i);
-                if (strikeCount(computerDigit, userDigit)) {
-                    strike += 1;
-                    continue;
-                }
-                if (ballCount(computerNumber, String.valueOf(userDigit))) {
-                    ball += 1;
-                }
-            }
+            int[] countNumber = compareNumber(computerNumber, userNumber);
+            int strike = countNumber[0];
+            int ball = countNumber[1];
 
             if (ball != 0) {
                 System.out.print(ball + "볼 ");
@@ -87,6 +76,24 @@ public class Game {
             }
             tmp += String.valueOf(c);
         }
+    }
+
+    private int[] compareNumber(String computerNumber, String userNumber) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < computerNumber.length(); i++) {
+            char computerDigit = computerNumber.charAt(i);
+            char userDigit = userNumber.charAt(i);
+            if (strikeCount(computerDigit, userDigit)) {
+                strike += 1;
+                continue;
+            }
+            if (ballCount(computerNumber, String.valueOf(userDigit))) {
+                ball += 1;
+            }
+        }
+        return new int[]{strike, ball};
     }
 
     private boolean ballCount(String computerNumber, String userNumber) {
