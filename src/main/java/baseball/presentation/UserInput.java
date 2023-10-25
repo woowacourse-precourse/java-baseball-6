@@ -27,6 +27,10 @@ public class UserInput {
         if (input.length() != 3) {
             throw new IllegalArgumentException("세 자리 숫자여야 합니다.");
         }
+
+        if (input.chars().distinct().count() != 3) {
+            throw new IllegalArgumentException("서로 다른 세 자리 숫자여야 합니다.");
+        }
     }
 
     private void inputRestartNumberExceptionHandler(String input) {
