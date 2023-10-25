@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
-    private static String answerComputer;
-    private static String answerPlayer;
-
+    private String answerComputer;
+    private String answerPlayer;
     final int INPUT_LENGTH_MAX = 3;
     final int BALL_MIN = 1;
     final int BALL_MAX = 9;
@@ -15,12 +14,10 @@ public class Model {
     final int INPUT_RESTART_MIN = 1;
     final int INPUT_RESTART_MAX = 2;
 
-
     final int STRIKE = 0;
     final int BALL = 1;
 
     public void initComputerAnswer() {
-        //model
         List<Integer> computer = new ArrayList<>();
         StringBuilder answerBuilder = new StringBuilder();
         while (computer.size() < 3) {
@@ -33,25 +30,23 @@ public class Model {
         answerComputer = answerBuilder.toString();
     }
 
-    public Integer[] countStrikeBallHits() {
-        Integer[] score = new Integer[]{0, 0};
+    public int[] countStrikeBallHits() {
+        int[] score = new int[]{0, 0};
 
         char sourceChar, answerChar;
         for (int i = 0; i < answerPlayer.length(); i++) {
             sourceChar = answerPlayer.charAt(i);
             answerChar = answerComputer.charAt(i);
             if (sourceChar == answerChar) {
-                score[STRIKE]++; // Increment strikes
+                score[STRIKE]++;
                 continue;
             }
             if (answerComputer.contains(String.valueOf(sourceChar))) {
-                score[BALL]++; // Increment balls
+                score[BALL]++;
             }
         }
-
         return score;
     }
-
 
 
     public boolean restartGame(String playerInput) {
@@ -64,8 +59,6 @@ public class Model {
         }
         return false;
     }
-
-
 
     public void validateCheckInputAnswer(String inputPlayer) {
         exceptLengthInvalid(inputPlayer, INPUT_LENGTH_MAX);
@@ -89,8 +82,6 @@ public class Model {
         }
     }
 
-
-    //model
     public void exceptNotInteger(String source) {
         for (int i = 0; i < source.length(); i++) {
             if (!Character.isDigit(source.charAt(i))) {
@@ -99,7 +90,6 @@ public class Model {
         }
     }
 
-    //model
     public void exceptInvalidRange(String source, final int startInclusive, final int endInclusive) {
         int eachDigit;
         for (int i = 0; i < source.length(); i++) {
@@ -110,7 +100,6 @@ public class Model {
         }
     }
 
-    //model
     public void exceptInputSameNumber(String source) {
         for (int i = 0; i < source.length(); i++) {
             for (int j = i + 1; j < source.length(); j++) {
@@ -121,12 +110,4 @@ public class Model {
         }
     }
 
-    //utils
-    public ArrayList<Integer> parseStringToInteger(String source) {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < source.length(); i++) {
-            list.add(Character.getNumericValue(source.charAt(i)));
-        }
-        return list;
-    }
 }
