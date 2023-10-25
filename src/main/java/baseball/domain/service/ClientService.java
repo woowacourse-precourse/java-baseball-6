@@ -35,7 +35,8 @@ public class ClientService {
 	}
 
 	private boolean isWrongInput(String input) {
-		return !(isNotDuplication(input) && allowsNumberRange(input) && isDigit(input) && allowsInputType(input));
+		return !(isNotDuplication(input) && allowsNumberRange(input) &&
+				shouldInvalidLength(input) && allowsInputType(input));
 	}
 
 	private boolean isNotDuplication(String input) {
@@ -46,7 +47,7 @@ public class ClientService {
 		return !input.contains(NOT_ALLOWED_INPUT);
 	}
 
-	private boolean isDigit(String input) {
+	private boolean shouldInvalidLength(String input) {
 		return input.length() == CommonNumberType.LENGTH_OF_NUMBERS.getValue();
 	}
 
