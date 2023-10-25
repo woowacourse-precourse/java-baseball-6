@@ -5,7 +5,6 @@ import static constant.Constant.ZERO;
 import java.util.List;
 import java.util.Objects;
 
-
 public class InningResult {
     private int numberOfBalls;
     private int numberOfStrikes;

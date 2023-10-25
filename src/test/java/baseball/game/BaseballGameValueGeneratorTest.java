@@ -13,7 +13,7 @@ class BaseballGameValueGeneratorTest {
     }
 
     @Test
-    void 세개의_수를_생성해야_함() {
+    void 세개의_랜덤한_수를_생성해야_함() {
         Assertions.assertEquals(3, generator.generateThreeRandomNumbers().size());
         Assertions.assertEquals(3, generator.generateThreeRandomNumbers().size());
         Assertions.assertEquals(3, generator.generateThreeRandomNumbers().size());
