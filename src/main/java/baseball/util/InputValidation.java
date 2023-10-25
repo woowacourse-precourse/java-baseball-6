@@ -24,26 +24,26 @@ public final class InputValidation {
         validateIntegerStrings(input);
     }
 
-    public static void validateInputSize(List<String> input) {
-        if (input.size() != MAX_INPUT_LENGTH) {
+    private static void validateInputSize(List<String> input) {
+        if (MAX_INPUT_LENGTH != input.size()) {
             throw new IllegalArgumentException(INVALID_INPUT_SIZE);
         }
     }
 
-    public static void validateDuplicateInputList(List<String> input) {
+    private static void validateDuplicateInputList(List<String> input) {
         if (input.size() != input.stream().distinct().count()) {
             throw new IllegalArgumentException(DUPLICATED_INPUT);
         }
     }
 
-    public static void validateIntegerStrings(List<String> input) {
+    private static void validateIntegerStrings(List<String> input) {
         for (String number : input) {
             validateInteger(number);
             validateInputRange(number);
         }
     }
 
-    public static void validateInteger(String number) {
+    private static void validateInteger(String number) {
         try {
             Integer.parseInt(number);
         } catch (NumberFormatException e) {
@@ -51,7 +51,7 @@ public final class InputValidation {
         }
     }
 
-    public static void validateInputRange(String input) {
+    private static void validateInputRange(String input) {
         int number = Integer.parseInt(input);
         boolean isOutOfRange = (number < MIN_INPUT_RANGE || number > MAX_INPUT_RANGE);
         if (isOutOfRange) {
@@ -67,7 +67,7 @@ public final class InputValidation {
         validateRestartOrExitValue(input);
     }
 
-    public static void validateRestartOrExitValue(String input) {
+    private static void validateRestartOrExitValue(String input) {
         if (!input.equals(RESTART_INPUT) && !input.equals(EXIT_INPUT)) {
             throw new IllegalArgumentException(INVALID_INPUT);
         }
