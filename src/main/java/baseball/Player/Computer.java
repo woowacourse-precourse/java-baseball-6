@@ -28,19 +28,19 @@ public class Computer extends Player {
     public boolean compareAnswer(List<Integer> userAnswer) {
         int[] pitchCount = new int[3]; // 0: strike, 1: ball, 2: nothing
         for (int i = 0; i < ANSWER_SIZE; i++) {
-            int result = compare(userAnswer, pitchCount, i);
+            int result = compare(userAnswer.get(i), pitchCount, i);
             pitchCount[result]++;
         }
         System.out.println(getCompareResult(pitchCount));
         return (pitchCount[STRIKE_COUNT] == ANSWER_SIZE);
     }
 
-    private int compare(List<Integer> userAnswer, int[] pitchCount, int i) {
-        int compareResult = answer.indexOf(userAnswer.get(i));
-        if (compareResult == i) {
+    private int compare(int userAnswer, int[] pitchCount, int computerAnswerIndex) {
+        int userAnswerIndex = answer.indexOf(userAnswer);
+        if (userAnswerIndex == computerAnswerIndex) {
             return STRIKE_COUNT;
         }
-        if (compareResult != -1) {
+        if (userAnswerIndex != -1) {
             return BALL_COUNT;
         }
         return NOTHING_COUNT;
