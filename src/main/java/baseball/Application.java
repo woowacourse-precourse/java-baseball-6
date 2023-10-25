@@ -12,6 +12,7 @@ public class Application {
         List<Integer> randomNumber = Make();
         // Game 메서드 호출
         Game(randomNumber);
+
     }
     public static List<Integer> Make(){
         int num;
@@ -72,10 +73,17 @@ public class Application {
                 // Game 메서드 호출
                 Game(randomNumber);
             }
-        } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크:");
+        } else if(strike==0){
+            System.out.println(ball + "볼");
+            Game(randomNumber);
+        } else if(ball==0){
+            System.out.println(strike + "스트라이크");
+            Game(randomNumber);
+        }else{
+            System.out.println(ball + "볼 "+strike + "스트라이크");
             Game(randomNumber);
         }
+
     }
 
     private static boolean isValidInput(String input) {
