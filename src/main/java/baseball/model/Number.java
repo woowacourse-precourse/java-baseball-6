@@ -6,6 +6,10 @@ import java.util.List;
 public class Number {
     private final List<Integer> number;
 
+    public Number(List<Integer> number) {
+        this.number = number;
+    }
+
     public Number() {
         number = new ArrayList<>();
     }
@@ -29,5 +33,9 @@ public class Number {
 
     public Integer get(int index){
         return number.get(index);
+    }
+
+    public List<Integer> getList() {
+        return this.number;
     }
 }
