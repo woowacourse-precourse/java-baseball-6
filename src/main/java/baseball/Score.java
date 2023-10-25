@@ -56,7 +56,7 @@ public class Score {
         return false;
     }
 
-    public void initializeScore() {
+    private void initializeScore() {
         numOfBall = 0;
         numOfStrike = 0;
     }
