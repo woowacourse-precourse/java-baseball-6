@@ -34,11 +34,15 @@ public class GameController {
         gameService.setGame();
         do{
             inputView.printNumberRequestMessage();
-            UserNumber userNumber = new UserNumber(Console.readLine());
-            score = gameService.playGame(userNumber);
-            outputView.printScoreMessage(score.getStrikeCount(), score.getBallCount());
+            answerHint();
         } while(!(score.getStrikeCount()==3));
         outputView.printGameEndingMessage();
+    }
+
+    public void answerHint() {
+        UserNumber userNumber = new UserNumber(Console.readLine());
+        score = gameService.playGame(userNumber);
+        outputView.printScoreMessage(score.getStrikeCount(), score.getBallCount());
     }
 
     private boolean retry() {
