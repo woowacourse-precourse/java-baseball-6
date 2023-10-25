@@ -35,12 +35,17 @@ IllegalArgumentException
 - [o] 숫자가 아닌 경우 체크
 - [o] 3자리가 서로 다른 숫자인지 체크
 - [o] 각 자리수가 1~9사이에 있어야한다.
-- [] 재시작 질문 선택지에서 1 or 2외에 선택을 했을 경우
 
 ## 그외 적용사항
 
 - jdk 17 버젼 적용
 - 우아한테크코스 코드 컨벤션 적용
+
+## MVC 패턴 적용해보기
+
+- [] Controller
+- [] model - computer, player
+- [] view
 
 ## 잊지 말 것 !!
 
