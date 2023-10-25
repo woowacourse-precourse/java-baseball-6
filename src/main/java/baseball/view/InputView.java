@@ -11,6 +11,9 @@ public class InputView {
         playerAnswer.clear();
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();  //입력받기
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("3자리 숫자를 입력하세요");
+        }
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
             if (Character.isDigit(c)) {
