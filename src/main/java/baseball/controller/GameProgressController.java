@@ -18,7 +18,7 @@ public class GameProgressController {
             outputView.printGameStart();
             computerController.createAndSaveAnswer(gameNumber);
             progressUserGuessing();
-            progressState = getRestartOrExit(inputView.getUserRestartOrExitNumber());
+            progressState = getRestartOrExit(inputView.askRestartOrExitNumber());
         }
     }
 
@@ -36,7 +36,7 @@ public class GameProgressController {
     private void progressUserGuessing() {
         boolean isAnswer = false;
         while (!isAnswer) {
-            String userInputString = inputView.getUserGuessingNumbers();
+            String userInputString = inputView.askGuessingNumbers();
             saveUserNumbers(userInputString);
             isAnswer = computerController.checkUserInputWithAnswer(gameNumber);
             outputView.printHint(computerController.createHintMessage());
