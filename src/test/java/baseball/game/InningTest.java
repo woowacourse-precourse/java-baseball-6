@@ -2,8 +2,8 @@ package baseball.game;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.util.Result;
-import baseball.util.Status;
+import baseball.result.Result;
+import baseball.result.Status;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Field;

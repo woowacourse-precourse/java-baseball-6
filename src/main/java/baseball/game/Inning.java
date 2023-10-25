@@ -1,7 +1,7 @@
 package baseball.game;
 
 import baseball.player.Players;
-import baseball.util.Result;
+import baseball.result.Result;
 
 public class Inning {
     private Players players;
@@ -9,23 +9,19 @@ public class Inning {
 
     public Inning() {
         this.players = new Players();
-        this.result = null;
     }
 
     public void startInning() {
         players.createComputerNumber();
 
-        while (result == null || !result.isWin()) {
+        do {
             players.createUserNumber();
 
             result = players.compareNumbers();
 
             result.checkResult();
-        }
-        endInning();
-    }
+        } while (!result.isWin());
 
-    private void endInning() {
         result.printWin();
     }
 }

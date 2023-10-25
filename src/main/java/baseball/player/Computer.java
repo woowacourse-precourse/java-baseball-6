@@ -1,32 +1,38 @@
 package baseball.player;
 
-import baseball.util.Number;
-import baseball.util.Result;
+import baseball.number.Number;
+import baseball.number.Numbers;
+import baseball.result.Result;
+import baseball.util.NumberValidator;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Computer extends Player {
-
-    public Computer() {
-        super();
-    }
+    private final int MAX_SIZE = 3;
 
     @Override
     public void createNumbers() {
-        while (!numbers.validateSize()) {
-            numbers.addNumber(generateUniqueNumber());
+        List<Number> numbers = new ArrayList<>();
+        while (numbers.size() < MAX_SIZE) {
+            addUniqueNumber(numbers);
+        }
+
+        this.numbers = new Numbers(numbers);
+    }
+
+    private void addUniqueNumber(List<Number> numbers) {
+        Number number = generateNumber(numbers);
+
+        NumberValidator.checkValidate(number);
+        if (!numbers.contains(number)) {
+            numbers.add(number);
         }
     }
 
-    private Number generateUniqueNumber() {
+    private Number generateNumber(List<Number> numbers) {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
-        Number number = new Number(randomNumber);
-
-        if (numbers.includeNumber(number) != -1) {
-            return null;
-        }
-        number.checkValidate();
-
-        return number;
+        return new Number(randomNumber);
     }
 
     @Override
