@@ -7,6 +7,7 @@ public final class Constants {
     public final static int MIN_INPUT_RANGE = 1;
     public final static int MAX_INPUT_RANGE = 9;
     public final static int MAX_INPUT_LENGTH = 3;
+    public final static int MAX_STRIKES = 3;
     /*
     문자열 상수
     */
