@@ -46,11 +46,9 @@ public class Application {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if ((human.get(i) == compuet.get(j)) && i == j) //두 숫자가 같고 위치가 같으면
-                {
+                if ((human.get(i) == compuet.get(j)) && i == j) {
                     strick++;
-                } else if ((human.get(i) == compuet.get(j)) && i != j) //두숫자는 같지만 위치가 다르면
-                {
+                } else if ((human.get(i) == compuet.get(j)) && i != j) {
                     ball++;
                 }
             }
@@ -82,10 +80,10 @@ public class Application {
         String input;
 
         while (continu.equals("1")) {
-            computer = numMaker(); // 정답 생성
+            computer = numMaker();
             System.out.println(computer);
-            human = null; // 초기화
-
+            human = null;
+            
             while (true) {
                 System.out.println("숫자를 입력해주세요 : ");
                 input = Console.readLine();
