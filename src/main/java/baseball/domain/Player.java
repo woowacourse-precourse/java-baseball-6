@@ -21,4 +21,9 @@ public class Player {
         inputValidation.validation(inputNumber);
         this.inputNumber = inputNumber;
     }
+
+    // Player 가 입력한 임의의 3자리 수를 리턴하는 메서드.
+    public String getInputNumber() {
+        return inputNumber;
+    }
 }
