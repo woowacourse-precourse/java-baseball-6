@@ -17,24 +17,24 @@ public class Umpire {
         printStrikeAndBallCount(strikeCount, ballCount);
     }
 
-    public int getStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
+    public int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int strike = INIT_NUMBER;
         for (int i = INIT_NUMBER; i < MAX_NUMBER_SIZE; i++) {
-            if (computerNumber.get(i) == userNumber.get(i)) {
+            if (computerNumbers.get(i) == playerNumbers.get(i)) {
                 strike++;
             }
         }
         return strike;
     }
 
-    public int getBallCount(List<Integer> computerNumber, List<Integer> userNumber) {
+    public int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int ball = INIT_NUMBER;
         for (int i = INIT_NUMBER; i < MAX_NUMBER_SIZE; i++) {
-            if (computerNumber.contains(userNumber.get(i))) {
+            if (computerNumbers.contains(playerNumbers.get(i))) {
                 ball++;
             }
         }
-        return ball - getStrikeCount(computerNumber, userNumber);
+        return ball - getStrikeCount(computerNumbers, playerNumbers);
     }
 
     public String getBaseballResult(int strikeCount, int ballCount) {
