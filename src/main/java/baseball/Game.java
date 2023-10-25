@@ -118,8 +118,8 @@ public class Game {
     public void questionRestartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
-        if (!userInput.equals(GameRestartState.GAME_CONTINUE.getGameState()) && !userInput.equals(
-                GameRestartState.GAME_STOP.getGameState())) {
+        if (!userInput.equals(GameRestartState.GAME_CONTINUE.getGameState())
+                && !userInput.equals(GameRestartState.GAME_STOP.getGameState())) {
             throw new IllegalArgumentException("잘못된 값을 입력하여서 프로그램을 종료합니다.");
         }
         if (userInput.equals(GameRestartState.GAME_CONTINUE.getGameState())) {
@@ -129,8 +129,5 @@ public class Game {
         if (userInput.equals(GameRestartState.GAME_STOP.getGameState())) {
             this.gameRestartState = GameRestartState.GAME_STOP;
         }
-
     }
-
-
 }
