@@ -1,7 +1,14 @@
 package baseball;
 
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        while (true) {
+            Round round = new Round();
+            boolean gameResult = round.gameplay();
+            if (!gameResult) {
+                break;
+            }
+        }
     }
 }
