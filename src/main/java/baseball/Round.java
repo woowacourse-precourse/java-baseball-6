@@ -13,7 +13,7 @@ public class Round {
 
     public boolean isGameEnd() {
         if (roundResult == Constant.NUMBER_LENGTH) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(SystemMessage.GAME_END_MESSAGE);
             return true;
         }
         return false;
@@ -33,7 +33,7 @@ public class Round {
     }
 
     private String getUserInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(SystemMessage.NUMBER_INPUT_MESSAGE);
         return Console.readLine();
     }
 }

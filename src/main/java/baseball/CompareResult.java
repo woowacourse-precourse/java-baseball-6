@@ -26,7 +26,6 @@ public class CompareResult {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.print("낫싱");
         }
-
         System.out.println();
     }
 
