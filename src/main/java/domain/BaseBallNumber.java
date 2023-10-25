@@ -1,4 +1,4 @@
-package baseball.domain;
+package domain;
 
 import lombok.Getter;
 

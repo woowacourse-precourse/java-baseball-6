@@ -1,4 +1,4 @@
-package baseball.parsing;
+package parsing;
 
 import java.util.List;
 import java.util.stream.*;

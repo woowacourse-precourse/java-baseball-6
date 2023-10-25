@@ -1,4 +1,4 @@
-package baseball.gameRunner;
+package gameRunner;
 
 import java.util.List;
 

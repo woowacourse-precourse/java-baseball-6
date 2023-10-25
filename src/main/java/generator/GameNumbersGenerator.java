@@ -1,4 +1,4 @@
-package baseball.generator;
+package generator;
 
 import java.util.List;
 

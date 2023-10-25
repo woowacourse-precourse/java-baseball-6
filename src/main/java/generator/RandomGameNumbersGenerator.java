@@ -1,4 +1,4 @@
-package baseball.generator;
+package generator;
 
 import static domain.BaseBallNumber.*;
 import static gameRunner.BaseBallGame.*;

@@ -1,4 +1,4 @@
-package baseball.io;
+package io;
 
 import java.io.InputStream;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package baseball.io;
+package io;
 
 import domain.baseBalls.QuestionBaseBalls;
 
