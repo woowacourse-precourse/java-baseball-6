@@ -1,7 +1,8 @@
-package Controller;
+package baseball.Controller;
 
-import Player.Computer;
-import Player.User;
+import baseball.Player.Computer;
+import baseball.Player.User;
+import baseball.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
