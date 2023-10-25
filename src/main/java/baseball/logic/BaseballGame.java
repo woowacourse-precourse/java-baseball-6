@@ -1,6 +1,7 @@
 package baseball.logic;
 
 import baseball.domain.Player;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -13,6 +14,16 @@ public class BaseballGame {
     private Player player;
     public static String RESTART = "1";
     public static String EXIT = "2";
+    public static String NOTHING = "낫싱";
+    public static String BALL = "볼";
+    public static String STRIKE = "스트라이크";
+    public static int GAME_OVER_STRIKE = 3;
+    public static int NUMBERS_LENGTH = 3;
+    public static int NUMBERS_RANGE_START = 1;
+    public static int NUMBERS_RANGE_END = 9;
+    public static int COUNT_INIT_NUMBER = 0;
+
+
 
     public BaseballGame() {
         this.computerNumbers = new ArrayList<>();
@@ -21,7 +32,7 @@ public class BaseballGame {
     }
 
     public String play() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        OutputView.printGameIntroduction();
         ExtractComputerRandomNumber();
 
         player = new Player();
@@ -30,8 +41,8 @@ public class BaseballGame {
             player.guessNumbers();
             giveScore(player.getNumbers());
             printScores();
-            if (isThreeStrike()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if (isGameOver()) {
+                OutputView.printGameOver();
                 playerAnswer = player.replayOrExit();
                 if (playerAnswer.equals(RESTART)) {
                     return RESTART;
@@ -45,13 +56,12 @@ public class BaseballGame {
     }
 
     private List<Integer> ExtractComputerRandomNumber() {
-        while (computerNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computerNumbers.size() < NUMBERS_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(NUMBERS_RANGE_START, NUMBERS_RANGE_END);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
         }
-//        System.out.println("컴퓨터 숫자: "+ computerNumbers);
         return computerNumbers;
     }
 
@@ -74,24 +84,14 @@ public class BaseballGame {
     }
 
     private void resetCount() {
-        this.strikeCount = 0;
-        this.ballCount = 0;
+        this.strikeCount = COUNT_INIT_NUMBER;
+        this.ballCount = COUNT_INIT_NUMBER;
     }
     private void printScores() {
-        if (ballCount == 0 && strikeCount == 0){
-            System.out.println("낫싱");
-            return;
-        } else if(ballCount != 0 && strikeCount != 0){
-            System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
-            return;
-        } else if (ballCount != 0) {
-            System.out.println(ballCount + "볼");
-        } else if (strikeCount != 0) {
-            System.out.println(strikeCount + "스트라이크");
-        }
+        OutputView.printScores(ballCount, strikeCount);
     }
-    private boolean isThreeStrike() {
-        if (strikeCount == 3) {
+    private boolean isGameOver() {
+        if (strikeCount == GAME_OVER_STRIKE) {
             return true;
         }else {
             return false;

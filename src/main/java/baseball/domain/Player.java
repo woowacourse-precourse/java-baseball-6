@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.view.InputView;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
