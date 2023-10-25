@@ -75,4 +75,12 @@ public class BallAndStrike {
 
         return result.toString();
     }
+
+    public int getBalls() {
+        return balls;
+    }
+
+    public int getStrikes() {
+        return strikes;
+    }
 }
