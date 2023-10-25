@@ -20,7 +20,22 @@ public class BaseballView {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public void printResultGameMessage(String message) {
+    public void printResultGameMessage(int ballCount, int strikeCount) {
+
+        String message = "";
+
+        if (ballCount != 0) {
+            message = ballCount + "볼 ";
+        }
+
+        if (strikeCount != 0) {
+            message += strikeCount + "스트라이크";
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            message = "낫싱";
+        }
+
         System.out.println(message);
     }
 
