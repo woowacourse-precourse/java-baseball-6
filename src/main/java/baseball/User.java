@@ -18,10 +18,6 @@ public class User extends Number {
     private static final String RESTART_KEY = "1";
     private static final String QUIT_KEY = "2";
 
-    User() {
-        resetCounts();
-    }
-
     public static Number getInputNums() {
         System.out.print(INPUTREQUEST_MESSAGE);
         String input = Console.readLine();

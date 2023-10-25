@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
-    private final Computer computer;
     private boolean replay;
     private static final String INTRO_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private final Computer computer;
 
     public Game() {
         this.computer = new Computer();

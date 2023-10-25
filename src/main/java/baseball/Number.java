@@ -17,6 +17,23 @@ public class Number {
         this.nums = inputNums(str);
     }
 
+    public boolean hasValueAtSameIndex(int index, int value) {
+        int savedIndex = this.nums.indexOf(value);
+        return savedIndex == index;
+    }
+
+    public boolean hasValue(int value) {
+        return this.nums.contains(value);
+    }
+
+    protected int getNum(int index) {
+        return this.nums.get(index);
+    }
+
+    protected int getSize() {
+        return this.nums.size();
+    }
+
     private List<Integer> inputNums(String input) {
         List<Integer> nums = new ArrayList<>();
 
@@ -75,23 +92,6 @@ public class Number {
                 throw new IllegalArgumentException("서로 다른 숫자를 입력하세요");
             }
         }
-    }
-
-    public boolean hasValueAtSameIndex(int index, int value) {
-        int savedIndex = this.nums.indexOf(value);
-        return savedIndex == index;
-    }
-
-    public boolean hasValue(int value) {
-        return this.nums.contains(value);
-    }
-
-    protected int getNum(int index) {
-        return this.nums.get(index);
-    }
-
-    protected int getSize() {
-        return this.nums.size();
     }
 
 }

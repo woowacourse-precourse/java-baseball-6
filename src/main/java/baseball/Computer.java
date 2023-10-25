@@ -13,7 +13,7 @@ public class Computer extends Number {
     }
 
     public void generateNumbers() {
-        super.nums = generate();
+        this.nums = generate();
     }
 
     private List<Integer> generate() {
