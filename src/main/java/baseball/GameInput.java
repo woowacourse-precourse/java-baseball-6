@@ -6,32 +6,38 @@ import java.util.ArrayList;
 
 public class GameInput {
     public List<Integer> getUserNumber(){
-        // FEAT : 3. 사용자에게 수를 입력받는 기능
         String userInput = Console.readLine();
-        // end
-        // FEAT : 4. 사용자가 잘못된 값을 입력할 경우 예외를 발생시키는 기능
         List<Integer> userNumber = new ArrayList<>();
-        if (userInput != null && userInput.length() == 3 && userInput.matches("[1-9.]+")) {
-            for (int i = 0; i < userInput.length(); i++) {
-                int parseNumber = userInput.charAt(i) - '0';
-                userNumber.add(parseNumber);
-            }
-        } else {
+
+        if (!isValid(userInput)){
             throw new IllegalArgumentException();
         }
+
+        for (int i = 0; i < userInput.length(); i++) {
+            userNumber.add(toInt(userInput.charAt(i)));
+        }
+
         return userNumber;
-        // end
     }
-    public static Boolean getRestartOption(){
+    public static int getRestartOption(){
         String restartOption = Console.readLine();
-        if (restartOption.equals("1")|| restartOption.equals("2")) {
-            if (restartOption.equals("1")) {
-                return true;
-            }else{
-                return false;
-            }
-        } else {
+        if (restartOption.equals("1")) {
+            return 1;
+        }else if(restartOption.equals("2")){
+            return 2;
+        }else{
             throw new IllegalArgumentException();
+        }
+    }
+
+    public static Integer toInt(char str){
+        return str-'0';
+    }
+    public static Boolean isValid(String str){
+        if (str != null && str.length() == 3 && str.matches("[1-9.]+")) {
+            return true;
+        } else{
+            return false;
         }
     }
 }

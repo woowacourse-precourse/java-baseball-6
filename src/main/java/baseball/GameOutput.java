@@ -1,9 +1,7 @@
 package baseball;
 
 public class GameOutput {
-    public static void displayStartPrompt(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
+    public static void displayStartPrompt() { System.out.println("숫자 야구 게임을 시작합니다."); }
     public static void displayResumePrompt(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
@@ -21,7 +19,6 @@ public class GameOutput {
             System.out.print(strike + "스트라이크");
         }
         System.out.print("\n");
-        // FEAT : 7. 게임을 종료 문구를 출력하는 기능
     }
     public static void displayInputNumberPrompt(){
         System.out.print("숫자를 입력해주세요 : ");
