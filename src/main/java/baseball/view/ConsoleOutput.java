@@ -4,48 +4,45 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-public class ConsoleOutput implements OutPut {
-    private final BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-    @Override
-    public void gameStart() throws IOException {
-        output.write(ConsoleMessage.GAME_START.getMessage());
-        output.flush();
-    }
+public class ConsoleOutput {
+    private static final BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    @Override
-    public void print(String msg) throws IOException {
-        output.write(msg);
-        output.flush();
-    }
-
-    @Override
-    public void printResult(int strikeCount, int ballCount) throws IOException {
-        if(ballCount == 0 && strikeCount == 0) {
-            output.write(ConsoleMessage.NOTHING.getMessage());
+    public static void gameStart() {
+//        output.write(ConsoleMessage.GAME_START.getMessage());
+//        output.flush();
+        try {
+            output.write(ConsoleMessage.GAME_START.getMessage());
+            output.flush();
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
         }
-        else {
-            if(ballCount > 0) {
-                output.write(String.valueOf(ballCount) + ConsoleMessage.BALL.getMessage());
-            }
-            if(strikeCount > 0) {
-                output.write(String.valueOf(strikeCount) + ConsoleMessage.STRIKE.getMessage());
-            }
+    }
+
+    public static void print(String msg) {
+        try {
+            output.write(msg);
+            output.flush();
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
         }
-        output.newLine();
-        output.flush();
     }
 
-    @Override
-    public void collect(int strikeCount) throws IOException {
-        output.write(String.valueOf(strikeCount));
-        output.write(ConsoleMessage.CORRECT_ANSWER.getMessage());
-        output.flush();
+    public static void collect(){
+        try {
+            output.write(ConsoleMessage.CORRECT_ANSWER.getMessage());
+            output.flush();
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
-    @Override
-    public void close() throws IOException {
-        if(output != null) {
-            output.close();
+    public static void close() {
+        try {
+            if(output != null) {
+                output.close();
+            }
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
         }
     }
 }
