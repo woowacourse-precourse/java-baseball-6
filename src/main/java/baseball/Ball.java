@@ -2,12 +2,11 @@ package baseball;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 public class Ball {
     private static final int BALLS_SIZE = 3;
-    private List<Integer> balls;
+    private final List<Integer> balls;
 
     public Ball(List<Integer> balls) {
         validateSize(balls);
