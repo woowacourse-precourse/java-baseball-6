@@ -26,12 +26,12 @@ public class Input {
     void setPlayerNumber (String s) throws IllegalArgumentException {
         for (char c : s.toCharArray()) {
             if (!Character.isDigit(c)){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("1부터 9까지 서로 다른 3개의 숫자만 입력해 주세요");
             }
             inputs.add(Character.getNumericValue(c));
         }
         if (inputs.size() != 3 || hasDuplicateElements(inputs) || inputs.contains(0)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1부터 9까지 서로 다른 3개의 숫자만 입력해 주세요");
         }
     }
 
@@ -61,7 +61,7 @@ public class Input {
                 System.out.println("게임이 종료 되었습니다.");
                 yield true;
             }
-            default -> throw new IllegalArgumentException();
+            default -> throw new IllegalArgumentException("1 또는 2만 입력해주세요");
         };
     }
 }
