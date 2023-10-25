@@ -15,7 +15,7 @@ public class BaseballGameView {
     public UserNumber readUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
 
-        Integer input = Integer.parseInt(Console.readLine());
+        int input = Integer.parseInt(Console.readLine());
         UserNumber userNumber = new UserNumber(input);
 
         return userNumber;

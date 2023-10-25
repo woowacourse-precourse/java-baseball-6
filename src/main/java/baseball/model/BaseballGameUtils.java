@@ -6,8 +6,8 @@ public class BaseballGameUtils {
     public BaseballGameUtils() {}
 
     public Score checkScore(List<Integer> computerNumber, List<Integer> userNumber) {
-        int ball = 0;
-        int strike = 0;
+        int ball;
+        int strike;
 
         ball = checkBall(computerNumber, userNumber);
         strike = checkStrike(computerNumber, userNumber);

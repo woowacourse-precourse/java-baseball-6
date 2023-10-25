@@ -5,13 +5,13 @@ import java.util.*;
 public class UserNumber {
     private List<Integer> userNumber;
 
-    public UserNumber(Integer input) {
+    public UserNumber(int input) {
         userNumber = new ArrayList<>();
         assignNumber(input);
         verifyUserNumber();
     }
 
-    private void assignNumber(Integer input) {
+    private void assignNumber(int input) {
         while (input / 10 != 0) {
             userNumber.add(0, input % 10);
             input /= 10;

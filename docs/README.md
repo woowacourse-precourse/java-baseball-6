@@ -20,6 +20,7 @@
 >* ApplicationTest 에서 java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker (alternate: null)  
 >오류가 발생 mockito-core와 byte-buddy가 최신버전이면 오류가 사라질 가능성이 있음을 확인  
 >build.gradle에 최신버전으로 의존성 추가해서 해결  
+>build.gradle 건드리면 안되므로, 해결법 찾아보자
 >
 >* 기존에 있던 테스트 "게임종료_후_재시작"에서 인자에 문제가 있어보여서 수정
 >테스트코드를 다시 생각해보니 테스트코드 오류가 아닌, 랜덤 숫자를 받아올 때 하나씩 세번 받아와야 되는데 한번에 세 자리수를 받아와서 문제가 생긴것으로, 랜덤숫자 생성 구현의 방식을 변경해야 함  
@@ -43,8 +44,7 @@
 >      refactor : 코드 리팩토링  
 >      test : 테스트 코드, 리팩토링 테스트 코드 추가  
 >      chore : 빌드 업무 수정, 패키지 매니저 수정  
->      build : 빌드 관련 파일 수정에 대한 커밋  
->      docs : 문서 수정에 대한 커밋  
+>      build : 빌드 관련 파일 수정에 대한 커밋
 >      form : 코드 형식, 정렬, 주석 등의 변경 커밋  
 >      release : 버전 릴리즈 커밋  
 >      init : 프로젝트 생성 후 첫 커밋  
