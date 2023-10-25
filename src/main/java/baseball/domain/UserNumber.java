@@ -3,7 +3,7 @@ package baseball.domain;
 import java.util.List;
 
 public class UserNumber {
-    private List<CompareNumber> userNumber;
+    private final List<CompareNumber> userNumber;
 
     public UserNumber(List<CompareNumber> userNumber) {
         this.userNumber = userNumber;
