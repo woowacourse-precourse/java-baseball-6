@@ -14,15 +14,18 @@ public class Application {
 
     public static void main(String[] args) {
 
-        startGame();
+        MessageGenerator messageGenerator = new MessageGenerator();
+
+        messageGenerator.startGame();
         int computerNumber = generateComputerNumber();
         System.out.println("computerNumber = " + computerNumber);
 
         while (true) {
             // 게임에서 3스트라이크를 했을 때 수행
             if (is3Strike) {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                messageGenerator.selectOption();
                 String optionString = readLine();
+
                 int optionNumber = getOptionNumber(optionString);
                 if (optionNumber == 1) {
                     computerNumber = generateComputerNumber();
@@ -39,10 +42,6 @@ public class Application {
             printHint(computerNumber,userNumber);
         }
 
-    }
-
-    private static void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public static int generateComputerNumber() {
@@ -155,19 +154,6 @@ public class Application {
                 count++;
             }
         }
-        /*int count = 0;
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (computerValue[i].equals(userValue[j])) {
-                    count++;
-                }
-            }
-        }*/
-
         return count;
     }
 
