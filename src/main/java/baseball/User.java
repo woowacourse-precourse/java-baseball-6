@@ -12,14 +12,12 @@ public class User {
   ArrayList<Integer> userNumbers = new ArrayList<Integer>();
   public  void inputUserNumbers(){
     userNumbers.clear();
- 
      
      try {
         String inputStr = Console.readLine();
-        if(inputStr.length()>3 || inputStr.length()<1)
+        if(inputStr.length() != 3)
           throw new IllegalArgumentException("3개의 숫자가 입력되지 않았습니다.");
-
-        //ArrayList<Integer> inputNumbers = new ArrayList<Integer>(3);
+        
         for(int i=0;i<3;i++){
           int parsedNum=inputStr.charAt(i)-'0';
           if(parsedNum<1 || parsedNum>9)
@@ -29,24 +27,23 @@ public class User {
             if(userNumbers.get(j)==parsedNum)
               throw new IllegalArgumentException("숫자에 중복이 존재합니다");
           }
-
           userNumbers.add(parsedNum);
         }
-        
+
       }
       catch (Exception e){
-        ///System.out.println(e);
         throw new IllegalArgumentException("입력값이 잘못되었습니다.");
       }
-     
-     
-//      for(int i=0;i<3;i++){
-//        userNumbers.add(input.charAt(i)-'0');
-//        //userNumbers.add(1);
-//      }
-
 
    
 
+  }
+
+public boolean inputUserRegame() {
+  String restartInput = Console.readLine();
+  if (!(restartInput.equals("1") || restartInput.equals("2")))
+    throw new IllegalArgumentException("잘못된 입력값 입니다.");
+  return restartInput.equals("1");
+  
   }
 }

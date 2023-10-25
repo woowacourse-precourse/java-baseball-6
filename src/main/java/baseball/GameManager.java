@@ -6,23 +6,25 @@ import java.util.ArrayList;
 
 public class GameManager {
   static ArrayList<Integer> resultArr = new ArrayList<Integer>();
+
+  public static void setIsGameRestart(boolean isGameRestart) {
+    GameManager.isGameRestart = isGameRestart;
+    
+  }
+
   static boolean isGameRestart = true;
 
   static {
-    resultArr.add(0);
-    resultArr.add(0);
-  }
-
-  public static void setIsGameRestart() {
-    String restartInput = Console.readLine();
-    if(restartInput.equals("1"))
-      isGameRestart = true;
-    else
-      isGameRestart = false;
-
+  resultArr.add(0);
+  resultArr.add(0);
+}  
+ 
+  public static void initGameManager(){
     resultArr.set(0,0);
     resultArr.set(1,0);
+    isGameRestart = true;
   }
+
 
  
   public static void calculateResult(ArrayList<Integer> userNumbers, ArrayList<Integer> comNumbers){

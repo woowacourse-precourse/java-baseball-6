@@ -1,17 +1,16 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-
 public class Application {
     public static void main(String[] args) {
-      
       
       Computer computer = new Computer();
       User user = new User();
       
       View.printGameStart();
+      GameManager.initGameManager();
       while(GameManager.isGameRestart){
+      
+        GameManager.initGameManager();
         
         //컴퓨터 숫자 초기화
         computer.init();
@@ -27,7 +26,7 @@ public class Application {
           
         }
         View.printGameEnd();
-        GameManager.setIsGameRestart();
+        GameManager.setIsGameRestart(user.inputUserRegame());
         
         }
     }
