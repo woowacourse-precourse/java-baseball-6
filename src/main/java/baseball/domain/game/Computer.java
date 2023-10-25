@@ -19,8 +19,8 @@ public final class Computer {
 
     public GameResult check(final Guess guess) {
         return new GameResult(
-                answer.getBallCount(guess),
-                answer.getStrikeCount(guess)
+                answer.countBalls(guess),
+                answer.countStrikes(guess)
         );
     }
 }

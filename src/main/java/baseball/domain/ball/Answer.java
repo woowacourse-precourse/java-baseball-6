@@ -13,13 +13,13 @@ public final class Answer extends BallNumbers {
         return new Answer(numbers);
     }
 
-    public int getStrikeCount(final Guess guess) {
+    public int countStrikes(final Guess guess) {
         return (int) IntStream.range(0, BALL_COUNT)
                 .filter(i -> equalsAt(i, guess))
                 .count();
     }
 
-    public int getBallCount(final Guess guess) {
+    public int countBalls(final Guess guess) {
         return (int) IntStream.range(0, BALL_COUNT)
                 .filter(i -> containsAtDifferentIndex(i, guess))
                 .count();
