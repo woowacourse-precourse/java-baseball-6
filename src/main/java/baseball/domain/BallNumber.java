@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.Util.ListUtility;
+import baseball.util.ListUtility;
 import java.util.List;
 
 public class BallNumber {
