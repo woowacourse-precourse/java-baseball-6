@@ -14,7 +14,7 @@ public class Confirm {
         computerNumbers = ComputerNumbers;
     }
 
-    // 3개의 숫자를 모두 맞히지 못했을 시 재입력 메소드
+    // 3개의 숫자를 모두 맞히지 못했을 시 재입력 메소드 .
     public void takeNumbers(List<Integer> UserNumbers) {
         userNumbers = UserNumbers;
     }

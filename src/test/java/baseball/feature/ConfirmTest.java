@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class ConfirmTest {
 
-    //일치 갯수 테스트
+    //일치 갯수 테스트.
     @ParameterizedTest
     @MethodSource("provideTestCases")
     public void testAccordNumber(List<Integer> userNumbers, List<Integer> computerNumbers,
