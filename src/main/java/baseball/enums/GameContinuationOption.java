@@ -2,13 +2,13 @@ package baseball.enums;
 
 import java.util.Arrays;
 
-public enum GameEndOption {
+public enum GameContinuationOption {
     RESTART("1"),
     END("2");
 
     private final String inputString;
 
-    GameEndOption(String inputString) {
+    GameContinuationOption(String inputString) {
         this.inputString = inputString;
     }
 
@@ -16,8 +16,8 @@ public enum GameEndOption {
         return inputString;
     }
 
-    public static GameEndOption fromString(String inputString) {
-        return Arrays.stream(GameEndOption.values())
+    public static GameContinuationOption fromString(String inputString) {
+        return Arrays.stream(GameContinuationOption.values())
                 .filter(option -> option.getValue().equals(inputString))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ErrorCode.INVALID_GAME_END_OPTION.getMessage()));

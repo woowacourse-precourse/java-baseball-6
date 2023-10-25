@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.enums.GameEndOption;
+import baseball.enums.GameContinuationOption;
 import baseball.model.Game;
 import baseball.model.Round;
 import baseball.model.Turn;
@@ -40,9 +40,9 @@ public class BaseballGameController {
 
     public void stop() {
         outputView.printGameStop();
-        String continueChoice = inputView.getGameContinueChoice();
-        GameEndOption option = GameEndOption.fromString(continueChoice);
-        if (option == GameEndOption.END) {
+        String userInput = inputView.getGameContinuationInput();
+        GameContinuationOption option = GameContinuationOption.fromString(userInput);
+        if (option == GameContinuationOption.END) {
             game.end();
         }
     }
