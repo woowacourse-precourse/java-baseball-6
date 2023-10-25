@@ -1,12 +1,16 @@
 package baseball.service;
 
 import baseball.Game;
+import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameService {
     int size;
     Game game;
+
+    Parser parser = new Parser();
+
 
     public void playGame() {
 
@@ -23,17 +27,8 @@ public class GameService {
         if (input.length() != size) {
             throw new IllegalArgumentException();
         }
-        return getParseInt(input, size);
+        return parser.parseUserInput(input, size);
     }
 
-    private int[] getParseInt(String input, int size) throws IllegalArgumentException {
-        int[] parseInt = new int[size];
-        for (int i = 0; i < input.length(); i++) {
-            if (!('0' <= input.charAt(i) && input.charAt(i) <= '9')) {
-                throw new IllegalArgumentException();
-            }
-            parseInt[i] = input.charAt(i) - '0';
-        }
-        return parseInt;
-    }
+
 }
