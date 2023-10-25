@@ -55,29 +55,13 @@ public class Game {
         }
     }
 
-    public int getStrikeCnt(){
-        return strikeCnt;
-    }
-
-    public int getBallCnt(){
-        return ballCnt;
-    }
-
     public String getGameResult(){
-        // TODO: 리팩토링
-        //  String값을 넘기는 것이 아닌 getStrikeCnt()와 getBallCnt()를 사용하여 다른 클래스에서 출력 할 수 있도록 바꿀 필요가 있어보임
         if(strikeCnt > 0){
-            if(strikeCnt == 3){
-                return Print.THREE_STRIKE;
-            }
-            if(ballCnt > 0){
-                return Print.N_BALL_N_STRIKE(ballCnt, strikeCnt);
-            }
+            if(strikeCnt == 3){ return Print.THREE_STRIKE; }
+            if(ballCnt > 0){ return Print.N_BALL_N_STRIKE(ballCnt, strikeCnt); }
             return Print.ONLY_STRIKE(strikeCnt);
         }
-        else if(ballCnt > 0){
-            return Print.ONLY_BALL(ballCnt);
-        }
+        else if(ballCnt > 0){ return Print.ONLY_BALL(ballCnt); }
         return Print.NOTHING;
     }
 
