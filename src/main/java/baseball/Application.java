@@ -54,7 +54,7 @@ public class Application {
             for (var i=0; i<3; i++) {
                 if (Integer.parseInt(expected_num_split[i]) == random_list.get(i)) { // strike
                     cnt_lst[1] += 1;
-                } else if (random_list.contains(Integer.parseInt(expected_num_split[i])))) { // ball
+                } else if (random_list.contains(Integer.parseInt(expected_num_split[i]))) { // ball
                     cnt_lst[0] += 1;
                 }
             }
