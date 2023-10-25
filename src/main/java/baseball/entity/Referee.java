@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Referee {
 
-    boolean treeStrike = false;
+    boolean threeStrike = false;
     private Player playerOne;
     private Player playerTwo;
 
@@ -21,13 +21,11 @@ public class Referee {
         GameResult gameResult = calculateStrikeAndBall(playerOne.getNumbersList(),
                 playerTwo.getNumbersList());
 
-        String result = gameResult.getResult();
-
-        if (result.equals("3스트라이크")) {
-            treeStrike = true;
+        if (gameResult.isThreeStrike()) {
+            threeStrike = true;
         }
 
-        return result;
+        return gameResult.getResult();
     }
 
     private GameResult calculateStrikeAndBall(List<Integer> playerOneNumbers,
@@ -45,7 +43,7 @@ public class Referee {
         return new GameResult(strike, ball);
     }
 
-    public boolean isTreeStrike() {
-        return treeStrike;
+    public boolean isThreeStrike() {
+        return threeStrike;
     }
 }

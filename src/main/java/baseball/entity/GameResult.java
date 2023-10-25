@@ -2,6 +2,7 @@ package baseball.entity;
 
 public class GameResult {
 
+    static final int THREE_STRIKE = 3;
     private final int strike;
     private final int ball;
 
@@ -22,6 +23,10 @@ public class GameResult {
             sb.append(strike).append("스트라이크");
         }
         return sb.toString();
+    }
+
+    public boolean isThreeStrike() {
+        return strike == THREE_STRIKE;
     }
 
 }
