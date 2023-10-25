@@ -56,12 +56,13 @@ public class InputValidation {
      */
     public void validateUniqueIntegers(String input) {
         String[] integers = input.split("");
+        int integerCount = integers.length;
         long distinctIntegerCount = Arrays.stream(integers)
                 .mapToInt(Integer::parseInt)
                 .distinct()
                 .count();
 
-        if (distinctIntegerCount != INPUT_LENGTH) {
+        if (distinctIntegerCount != integerCount) {
             throw new IllegalArgumentException(INPUT_DUPLICATE_EXCEPTION_MSG);
         }
     }
