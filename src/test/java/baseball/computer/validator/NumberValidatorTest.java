@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 
 class NumberValidatorTest {
 
-    @DisplayName("양의 정수인 5를 넣으면 예외가 발생하지 않는다.")
+    @DisplayName("validateNaturalNumber()로 양의 정수인 5를 넣으면 예외가 발생하지 않는다.")
     @Test
     void validate_natural_number() {
         // given
@@ -29,7 +29,7 @@ class NumberValidatorTest {
                 .doesNotThrowAnyException();
     }
 
-    @DisplayName("양의 정수의 경계선인 0을 넣으면 예외가 발생한다.")
+    @DisplayName("validateNaturalNumber()로 양의 정수의 경계선인 0을 넣으면 예외가 발생한다.")
     @Test
     void validate_natural_number_with_zero() {
         // given
@@ -42,7 +42,7 @@ class NumberValidatorTest {
                 .hasMessage(NATURAL_NUMBER);
     }
 
-    @DisplayName("양의 정수의 경계선인 10을 넣으면 예외가 발생한다.")
+    @DisplayName("validateNaturalNumber()로 양의 정수의 경계선인 10을 넣으면 예외가 발생한다.")
     @Test
     void validate_natural_number_with_ten() {
         // given
@@ -55,7 +55,7 @@ class NumberValidatorTest {
                 .hasMessage(NATURAL_NUMBER);
     }
 
-    @DisplayName("경계인 3이라면 False를 반환한다.")
+    @DisplayName("isBelowThreeLength()로 경계인 3이라면 False를 반환한다.")
     @Test
     void is_below_required_length() {
         // given
@@ -66,7 +66,7 @@ class NumberValidatorTest {
         assertThat(NumberValidator.isBelowThreeLength(invalidNumber)).isFalse();
     }
 
-    @DisplayName("경계인 3보다 작다면 True를 반환한다.")
+    @DisplayName("isBelowThreeLength()로 경계인 3보다 작다면 True를 반환한다.")
     @Test
     void is_below_required_length_with_two() {
         // given
@@ -77,7 +77,7 @@ class NumberValidatorTest {
         assertThat(NumberValidator.isBelowThreeLength(invalidNumber)).isTrue();
     }
 
-    @DisplayName("중복된 숫자가 있다면 예외가 발생한다.")
+    @DisplayName("validateDuplicateNumber()로 중복된 숫자가 있다면 예외가 발생한다.")
     @Test
     void validate_duplicate_number_with_duplicate_number() {
         // given
@@ -90,7 +90,7 @@ class NumberValidatorTest {
                 .hasMessage(duplicateNumber + DUPLICATE_NUMBER);
     }
 
-    @DisplayName("중복된 숫자가 없다면 예외가 발생하지 않는다.")
+    @DisplayName("validateDuplicateNumber()로 중복된 숫자가 없다면 예외가 발생하지 않는다.")
     @Test
     void validate_duplicate_number_with_valid_number() {
         // given
@@ -102,7 +102,7 @@ class NumberValidatorTest {
                 .doesNotThrowAnyException();
     }
 
-    @DisplayName("3자리 문자 중 숫자 외의 값을 넣으면 예외가 발생한다.")
+    @DisplayName("validateAllDigits()로 3자리 문자 중 숫자 외의 값을 넣으면 예외가 발생한다.")
     @Test
     void validate_all_digits_with_string() {
         // given
@@ -115,7 +115,7 @@ class NumberValidatorTest {
                 .hasMessage(invalidInput + NOT_NUMBER);
     }
 
-    @DisplayName("3자리 문자 중 숫자만을 넣었으므로 예외가 발생하지 않는다.")
+    @DisplayName("validateAllDigits()로 3자리 문자 중 숫자만을 넣었으므로 예외가 발생하지 않는다.")
     @Test
     void validate_all_digits_with_only_digit() {
         // given
@@ -127,9 +127,9 @@ class NumberValidatorTest {
                 .doesNotThrowAnyException();
     }
 
-    @DisplayName("입력 받는 문자가 3글자이기 때문에 예외가 발생하지 않는다.")
+    @DisplayName("validateThreeLength()로 입력 받는 문자가 3글자이기 때문에 예외가 발생하지 않는다.")
     @Test
-    void validate_required_length_with_three() {
+    void validate_three_length_with_three() {
         // given
         String validInput = "123";
 
@@ -139,9 +139,9 @@ class NumberValidatorTest {
                 .doesNotThrowAnyException();
     }
 
-    @DisplayName("입력 받는 문자가 3글자가 아니라면 예외를 발생한다.")
+    @DisplayName("validateThreeLength()로 입력 받는 문자가 3글자가 아니라면 예외를 발생한다.")
     @Test
-    void validate_required_length_with_not_three() {
+    void validate_three_length_with_not_three() {
         // given
         String invalidInput = "1234";
 
