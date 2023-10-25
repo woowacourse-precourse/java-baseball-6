@@ -12,13 +12,14 @@ class GameTest {
 
     @Test
     void 세자리의_수를_생성한다() {
-        Assertions.assertThat(number.size()).isEqualTo(3);
+        Assertions.assertThat(number.size())
+                .isEqualTo(3);
     }
 
     @Test
     void 서로_다른_수로_이루어진_세자리의_수를_생성한다() {
         Set<Integer> uniqueNumber = new HashSet<>(number);
-
-        Assertions.assertThat(uniqueNumber.size()).isEqualTo(3);
+        Assertions.assertThat(uniqueNumber.size())
+                .isEqualTo(3);
     }
 }
