@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    static Game game = new Game();
     public static void main(String[] args) {
-        Game game = new Game();
-        game.run();
+        game.start();
     }
 }
