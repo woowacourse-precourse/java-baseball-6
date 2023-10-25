@@ -70,13 +70,16 @@ public class Application {
     }
 
     public static List<Integer> checkUserNum(String num) throws IllegalArgumentException{
+        //1부터 9까지
+        //서로 다른 숫자
+        // 3자리 수
         List<Integer> userNum = new ArrayList<>();
 
         if(num.length() != 3)
             throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
         else {
             for(int i = 0; i<num.length(); i++){
-                if(('1' <= num.charAt(i) && num.charAt(i) <= '9') && !userNum.contains(num.charAt(i) - '0'))
+                if(validateUserNum(num.charAt(i) - '0', userNum))
                     userNum.add(num.charAt(i) - '0');
                 else
                     throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
@@ -84,6 +87,13 @@ public class Application {
         }
 
         return userNum;
+    }
+
+    public static boolean validateUserNum(Integer n, List<Integer> userNum){
+        if((1 <= n && n <= 9) && !userNum.contains(n)){
+            return true;
+        }
+        return false;
     }
 
     public static int[] matchNum(List<Integer> comNum, List<Integer> userNum) {

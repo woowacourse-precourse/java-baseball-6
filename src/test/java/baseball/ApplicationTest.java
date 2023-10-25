@@ -41,6 +41,11 @@ class ApplicationTest extends NsTest {
         assertThrows(IllegalArgumentException.class, () -> Application.checkUserNum("664"));
     }
 
+    @Test
+    public void 예외_테스트5() {
+        assertThrows(IllegalArgumentException.class, () -> Application.checkUserNum("015"));
+    }
+
 
 
     @Override
