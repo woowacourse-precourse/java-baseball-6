@@ -17,41 +17,20 @@ public class ResultView {
         int balls = gameResult.getBall();
         int strikes = gameResult.getStrike();
 
-        if(balls == 0 && strikes == 0){
+        if(balls == 0 && strikes == 0) {
             System.out.println("낫싱");
-        } else {
-            System.out.printf("%d볼 %d스트라이크\n", balls, strikes);
         }
 
-//        private static final Map<String, String> RESULT_MAP = createResultMap();
-//
-//        public void printResult(int ball, int strike) {
-//            String key = ball + "-" + strike;
-//            String result = RESULT_MAP.getOrDefault(key, "낫싱");
-//            System.out.println(result);
-//        }
-//
-//        private static Map<String, String> createResultMap() {
-//            Map<String, String> resultMap = new HashMap<>();
-//
-//            // 볼만 있는 경우
-//            for (int i=1; i<=9; i++) {
-//                resultMap.put(i + "-0", i + "볼");
-//            }
-//
-//            // 스트라이크만 있는 경우
-//            for (int i=1; i<=3; i++) {
-//                resultMap.put("0-" + i ,i + "스트라이크");
-//            }
-//
-//            // 볼과 스트라이크가 모두 있는 경우
-//            for (int b=1; b<=9; b++) {
-//                for (int s=1; s<=3; s++) {
-//                    resultMap.put(b+"-"+s ,b+"볼 "+s+"스트라이크");
-//                }
-//            }
-//
-//            return resultMap;
-//        }
+        if(balls != 0 && strikes == 0) {
+            System.out.println(balls + "볼");
+        }
+
+        if(balls == 0 & strikes != 0) {
+            System.out.println(strikes + "스트라이크");
+        }
+
+        if(balls != 0 && strikes != 0) {
+            System.out.println(balls + "볼 " + strikes + "스트라이크");
+        }
     }
 }
