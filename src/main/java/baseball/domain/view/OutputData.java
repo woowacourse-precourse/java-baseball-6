@@ -21,6 +21,18 @@ public class OutputData {
         output = "";
     }
 
+    private static void checkBallCount(String ballCount, int count) {
+        if (OUT.equals(ballCount)) {
+            output += printOutCount(count);
+        }
+        if (BALL.equals(ballCount)) {
+            output += printBallCount(ballCount, count);
+        }
+        if (STRIKE.equals(ballCount)) {
+            output += printStrikeCount(ballCount, count);
+        }
+    }
+
     private static String printOutCount(int count) {
         if (3 == count) {
             return "낫싱";
