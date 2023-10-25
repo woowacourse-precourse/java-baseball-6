@@ -1,6 +1,6 @@
 package baseball.view;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.BaseballGameResult;
 import java.io.ByteArrayOutputStream;
@@ -34,7 +34,7 @@ class OutputViewTest {
         new OutputView(gameResult).printGameResult();
         String output = "3볼 \n";
 
-        assertEquals(output, outputMessage.toString());
+        assertThat(outputMessage.toString()).hasToString(output);
     }
 
     @Test
@@ -46,7 +46,7 @@ class OutputViewTest {
         new OutputView(gameResult).printGameResult();
         String output = "3스트라이크\n";
 
-        assertEquals(output, outputMessage.toString());
+        assertThat(outputMessage.toString()).hasToString(output);
     }
 
     @Test
@@ -58,7 +58,7 @@ class OutputViewTest {
         new OutputView(gameResult).printGameResult();
         String output = "1볼 1스트라이크\n";
 
-        assertEquals(output, outputMessage.toString());
+        assertThat(outputMessage.toString()).hasToString(output);
     }
 
     @Test
@@ -70,6 +70,6 @@ class OutputViewTest {
         new OutputView(gameResult).printGameResult();
         String output = "낫싱\n";
 
-        assertEquals(output, outputMessage.toString());
+        assertThat(outputMessage.toString()).hasToString(output);
     }
 }

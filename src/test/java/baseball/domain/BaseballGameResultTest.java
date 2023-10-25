@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -12,8 +12,8 @@ class BaseballGameResultTest {
         List<Integer> computerNumbs = List.of(3, 5, 2);
         List<Integer> userNumbs = List.of(2, 5, 1);
         BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, userNumbs);
-        assertEquals(gameResult.ballCount, 1);
-        assertEquals(gameResult.strikeCount, 1);
+        assertThat(gameResult.ballCount).isEqualTo(1);
+        assertThat(gameResult.strikeCount).isEqualTo(1);
     }
 
     @Test
@@ -21,8 +21,8 @@ class BaseballGameResultTest {
         List<Integer> computerNumbs = List.of(3, 5, 2);
         List<Integer> userNumbs = List.of(2, 4, 1);
         BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, userNumbs);
-        assertEquals(gameResult.ballCount, 1);
-        assertEquals(gameResult.strikeCount, 0);
+        assertThat(gameResult.ballCount).isEqualTo(1);
+        assertThat(gameResult.strikeCount).isZero();
     }
 
     @Test
@@ -30,8 +30,8 @@ class BaseballGameResultTest {
         List<Integer> computerNumbs = List.of(3, 5, 2);
         List<Integer> userNumbs = List.of(2, 3, 1);
         BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, userNumbs);
-        assertEquals(gameResult.ballCount, 2);
-        assertEquals(gameResult.strikeCount, 0);
+        assertThat(gameResult.ballCount).isEqualTo(2);
+        assertThat(gameResult.strikeCount).isZero();
     }
 
     @Test
@@ -39,8 +39,8 @@ class BaseballGameResultTest {
         List<Integer> computerNumbs = List.of(3, 5, 2);
         List<Integer> userNumbs = List.of(3, 5, 2);
         BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, userNumbs);
-        assertEquals(gameResult.ballCount, 0);
-        assertEquals(gameResult.strikeCount, 3);
+        assertThat(gameResult.ballCount).isZero();
+        assertThat(gameResult.strikeCount).isEqualTo(3);
     }
 
     @Test
@@ -48,7 +48,7 @@ class BaseballGameResultTest {
         List<Integer> computerNumbs = List.of(3, 5, 2);
         List<Integer> userNumbs = List.of(5, 2, 5);
         BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, userNumbs);
-        assertEquals(gameResult.ballCount, 3);
-        assertEquals(gameResult.strikeCount, 0);
+        assertThat(gameResult.ballCount).isEqualTo(3);
+        assertThat(gameResult.strikeCount).isZero();
     }
 }
