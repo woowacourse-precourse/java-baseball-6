@@ -23,9 +23,7 @@ public class GameController {
 
             view.displayRestartOrExit();
             String choice = view.getUserInput();
-            if ("2".equals(choice)) {
-                break;
-            }
+            if ("2".equals(choice)) { break; }
             model = new GameModel();
         }
     }
