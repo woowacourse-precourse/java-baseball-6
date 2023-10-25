@@ -7,7 +7,6 @@ public class BaseballConsole {
     public static void startBaseballShell() {
         while (true) {
             startNewGame();
-
         }
     }
 
@@ -15,9 +14,8 @@ public class BaseballConsole {
         System.out.println("숫자 야구 게임을 시작합니다.");
         BaseballGame game = new BaseballGame();
         while (true) {
-            String answer = getInput("숫자를 입력해주세요 : ", "\\d\\d\\d");
+            String answer = getInput("숫자를 입력해주세요 : ", "[1-9]{3}");
             game.setUserNumbers(answer);
-
         }
     }
 
@@ -29,6 +27,5 @@ public class BaseballConsole {
         }
         return userInput;
     }
-
 
 }

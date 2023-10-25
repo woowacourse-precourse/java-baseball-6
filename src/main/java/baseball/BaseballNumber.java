@@ -27,7 +27,11 @@ public class BaseballNumber {
         user = Arrays.stream(string.split(""))
                 .mapToInt(Integer::valueOf)
                 .boxed()
+                .distinct()
                 .toList();
+        if (user.size() != 3) {
+            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
+        }
     }
 
 }
