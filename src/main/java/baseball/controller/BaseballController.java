@@ -5,10 +5,10 @@ import baseball.service.BaseballService;
 
 public class BaseballController {
 
-    BaseballService baseballService;
+    private final BaseballService baseballService;
 
     public BaseballController( BaseballService service) {
-      this.baseballService =service;
+      this.baseballService = service;
     }
 
     public Referee startBaseBall(int[] numbers){

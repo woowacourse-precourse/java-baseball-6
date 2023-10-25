@@ -6,8 +6,11 @@ import baseball.setting.ReadyGame;
 
 public class GameMachine {
 
+
     BaseballViewResolver baseballViewResolver = new BaseballViewResolver();
     private int gameResult;
+    private static final int END_NUMBER = 2;
+    private static final int RE_GAME_NUMBER = 1;
 
     public void play() {
         while (true) {
@@ -16,7 +19,7 @@ public class GameMachine {
             baseballViewResolver.startView();
             BaseballController controller = readyGame.injection();
             engin(controller);
-            if (gameResult == 2) {
+            if (gameResult == END_NUMBER) {
                 baseballViewResolver.endGame();
                 break;
             }
@@ -24,15 +27,12 @@ public class GameMachine {
     }
 
     private void engin(BaseballController controller) {
-        while (true) {
-           gameResult = baseballViewResolver.contactViewAndResultController(
+        do {
+            gameResult = baseballViewResolver.contactViewAndResultController(
                 controller.startBaseBall(
                     baseballViewResolver.contactViewAndPlayControl()
                 ));
 
-            if (gameResult == 2 || gameResult == 1) {
-                break;
-            }
-        }
+        } while (gameResult != END_NUMBER && gameResult != RE_GAME_NUMBER);
     }
 }

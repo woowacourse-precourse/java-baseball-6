@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 public class BaseballConverter {
 
     public int[] convertNumberToArray(int number) {
-
         return Stream.of(String
                 .valueOf(number)
                 .split(""))
@@ -15,14 +14,13 @@ public class BaseballConverter {
     }
 
     public StringBuilder convertRefereeToScoreTextView(Referee referee){
-        if(referee.getStrikeScore() ==0){
+        if(referee.getStrikeScore() == 0){
             return new StringBuilder().append(referee.getBallScore())
-                .append("볼 ");
+                .append("볼");
         }
 
-        if(referee.getBallScore()==0){
-            return new StringBuilder()
-                .append(referee.getStrikeScore())
+        if(referee.getBallScore()== 0){
+            return new StringBuilder().append(referee.getStrikeScore())
                 .append("스트라이크");
         }
 

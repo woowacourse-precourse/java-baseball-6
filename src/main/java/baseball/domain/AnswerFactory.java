@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class AnswerFactory {
     public static final int ANSWER_SIZE =3;
-    public static final int NUMBER_MAX_SIZE =10;
-    public static final int START_RANG = 1;
-    public static final int END_RANG = 9;
+    private static final int NUMBER_MAX_SIZE =10;
+    private static final int START_RANG = 1;
+    private static final int END_RANG = 9;
 
     public Answer createAnswerArray(){
         boolean[] numberVisit = new boolean[NUMBER_MAX_SIZE];
