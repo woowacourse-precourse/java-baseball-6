@@ -13,7 +13,6 @@ public class BaseballFunction {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
         return computer;
     }
 
