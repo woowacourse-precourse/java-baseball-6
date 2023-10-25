@@ -21,7 +21,7 @@ public class Application {
             int strike = 0;
             int ball = 0;
 
-            while (strike < 3) { // 내부 while문 시작
+            while (strike < NUMBER_LENGTH) { // 내부 while문 시작
 
                 ArrayList<Integer> userNumArray = user.inputUserGuess(NUMBER_LENGTH);
 
@@ -60,7 +60,7 @@ public class Application {
                 System.out.println(output);
             } // 내부 while문 끝
             // 3개의 숫자를 모두 맞히면 종료, 다시 시작하거나 완전히 종료
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", NUMBER_LENGTH));
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             exit = Integer.parseInt(Console.readLine());
         } // 외부 while문 끝

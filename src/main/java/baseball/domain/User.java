@@ -25,7 +25,7 @@ public class User {
             addUniqueDigit(digit, userNumArray);
         }
 
-        validateInputLength(userNumArray);
+        validateInputLength(userNumArray, NUMBER_LENGTH);
 
         return userNumArray;
     }
