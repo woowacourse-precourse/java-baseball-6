@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 public class UserBalls {
     private final List<Ball> userBalls;
 
-    public UserBalls(String input) {
-        validateIsThreeDigits(input);
-        validateNoRepeat(input);
-        this.userBalls = input.chars()
+    public UserBalls(String stringInput) {
+        validateIsThreeDigits(stringInput);
+        validateNoRepeat(stringInput);
+        this.userBalls = stringInput.chars()
                 .mapToObj(val -> new Ball((char) val))
                 .collect(Collectors.toList());
     }
