@@ -9,7 +9,6 @@ import baseball.view.GameView;
 
 public class BaseBall {
     private final GameView gameView;
-
     private final InputEndChoice inputEndChoice;
     private GameNumber gameNumber;
     private Choice gameChoice;
