@@ -2,12 +2,12 @@ package baseball;
 
 public class CompareSystem {
     private final GameResult result;
-    private final Computer computer;
-    private final Player player;
+    private final ComputerNumbers computerNumbers;
+    private final PlayerNumbers playerNumbers;
 
-    public CompareSystem(Computer computer, Player player) {
-        this.computer = computer;
-        this.player = player;
+    public CompareSystem(ComputerNumbers computerNumbers, PlayerNumbers playerNumbers) {
+        this.computerNumbers = computerNumbers;
+        this.playerNumbers = playerNumbers;
         this.result = new GameResult();
     }
 
@@ -35,10 +35,10 @@ public class CompareSystem {
     }
 
     private boolean isSamePositionAndSameNumber(int index) {
-        return computer.get(index) == player.get(index);
+        return computerNumbers.get(index) == playerNumbers.get(index);
     }
 
     private boolean isNumberComputerContains(int index) {
-        return computer.contains(player.get(index));
+        return computerNumbers.contains(playerNumbers.get(index));
     }
 }
