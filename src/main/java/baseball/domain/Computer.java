@@ -33,4 +33,9 @@ public class Computer implements Player {
         }
         return randomNumbers;
     }
+
+    public void announceResult(BallCounter ballCounter) {
+        output.print(ballCounter.toString());
+    }
+
 }

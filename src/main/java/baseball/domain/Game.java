@@ -63,7 +63,7 @@ public class Game {
 
     private BallCounter checkResult() {
         BallCounter ballCounter = new BallCounter(computer.getNumbers(), guessNumber());
-        output.print(ballCounter.toString());
+        computer.announceResult(ballCounter);
         return ballCounter;
     }
 

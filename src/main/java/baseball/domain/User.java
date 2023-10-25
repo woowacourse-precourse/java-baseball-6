@@ -5,7 +5,6 @@ import baseball.ui.Input;
 public class User implements Player {
 
     private final Input input;
-//    private List<Integer> numbers;
     private String numbers;
 
     public String getNumbers() {
@@ -21,17 +20,11 @@ public class User implements Player {
         this.numbers = generateInputNumber(NUMBER_BALLS);
     }
 
-    public int countNumberBalls() {
-        return numbers.length();
-    }
-
     private String generateInputNumber(int NUMBER_BALLS) {
-        return this.input.scan();
+        return input.scan();
     }
 
     public Command selectCommand() {
-        String inputCommand = input.scan();
-
-        return Command.findCommand(inputCommand);
+        return Command.findCommand(input.scan());
     }
 }
