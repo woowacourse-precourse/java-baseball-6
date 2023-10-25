@@ -10,40 +10,65 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> numbers = randomComputerNumber();
+        boolean playAgain = true; // 게임 새로 시작할지 안 할지 결정하는 변수
 
-        System.out.println("randomComputerNumber() = " + numbers);
+        while (playAgain) {
+            List<Integer> randomNumbers = randomComputerNumber();
 
-        int cnt_strike = 0;
-        int cnt_ball = 0;
+            System.out.println("randomComputerNumber() = " + randomNumbers);
 
-        while (cnt_strike != 3) {
-            cnt_strike = 0;
-            cnt_ball = 0;
+            int cnt_strike = 0;
+            int cnt_ball;
 
-            System.out.print("숫자를 입력해주세요 : ");
+            while (cnt_strike != 3) {
+                //스트라이크 & 볼 수 초기화
+                cnt_strike = 0;
+                cnt_ball = 0;
 
-            int input = Integer.parseInt(Console.readLine());
+                System.out.print("숫자를 입력해주세요 : ");
 
-            int[] inputArray = inputArray(input);
+                try {
+                    int input = Integer.parseInt(Console.readLine());
 
-            // 스트라이크, 볼 판정
-            for (int i = 0; i < numbers.size(); i++) {
-                if (numbers.contains(inputArray[i])) {
-                    cnt_ball++;
-                    if (numbers.get(i) == inputArray[i]) {
-                        cnt_strike++;
-                        cnt_ball--;
+                    if (100 > input || input > 999) {
+                        throw new IllegalArgumentException("1~9로 이루어진 세 자리 숫자를 입력해주세요.");
                     }
+
+                    int[] inputArray = inputArray(input);
+
+                    // 스트라이크, 볼 판정
+                    for (int i = 0; i < randomNumbers.size(); i++) {
+                        if (randomNumbers.contains(inputArray[i])) {
+                            cnt_ball++;
+                            if (randomNumbers.get(i) == inputArray[i]) {
+                                cnt_strike++;
+                                cnt_ball--;
+                            }
+                        }
+                    }
+
+                    //결과 출력
+                    result(cnt_strike, cnt_ball);
+
+                } catch (NumberFormatException e) { // 문자를 입력한 경우의 예외 처리
+                    throw new IllegalArgumentException("1~9로 이루어진 세 자리 숫자를 입력해주세요.");
                 }
             }
 
-            //결과 출력
-            result(cnt_strike, cnt_ball);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            int restart = Integer.parseInt(Console.readLine());
+
+            if (restart != 1 && restart != 2) {
+                throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+            } else if (restart != 1) {
+                playAgain = false;
+            }
         }
     }
 
-    private static List<Integer> randomComputerNumber() { // 랜덤 숫자를 뽑는 메서드
+    // 랜덤 숫자 뽑기
+    private static List<Integer> randomComputerNumber() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) { // 3자리 숫자를 뽑기 위함
