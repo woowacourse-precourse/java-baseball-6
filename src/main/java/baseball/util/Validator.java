@@ -3,7 +3,7 @@ package baseball.util;
 import baseball.constant.NumberConstant;
 import baseball.constant.ValidateException;
 
-public class Validation {
+public class Validator {
 
     private static final String NUMBER_REGEX = "^[1-9]+$";
     private static final String RESTART_NUMBER_REGEX = "^[1-2]+$";

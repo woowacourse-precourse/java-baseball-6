@@ -4,7 +4,7 @@ import baseball.constant.NumberConstant;
 import baseball.dto.GameStateDto;
 import baseball.service.BaseballService;
 import baseball.service.ComputerNumberGenerator;
-import baseball.util.Validation;
+import baseball.util.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -14,7 +14,7 @@ public class GameController {
     private static String computerNumber;
     private final InputView inputView;
     private final OutputView outputView;
-    private final Validation validation = new Validation();
+    private final Validator validator = new Validator();
 
 
     public GameController(InputView inputView, OutputView outputView) {
@@ -66,7 +66,7 @@ public class GameController {
 
     private void checkRestart(GameStateDto gamestate) {
         String restartNumber = inputView.readRestart();
-        validation.validateRestart(restartNumber);
+        validator.validateRestart(restartNumber);
         if (restartNumber.equals(RESTART)) {
             gamestate.activateRestart();
         }
@@ -103,12 +103,12 @@ public class GameController {
 
     private String getComputerNumber() {
         ComputerNumberGenerator generator = ComputerNumberGenerator.getInstance();
-        return validation.validateNumber(generator.generate());
+        return validator.validateNumber(generator.generate());
     }
 
     private String getUserNumber() {
         String inputUserNumber = inputView.readUserNumber();
-        return validation.validateNumber(inputUserNumber);
+        return validator.validateNumber(inputUserNumber);
     }
 
 
