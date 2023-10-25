@@ -17,66 +17,70 @@ public class Application {
     public static void main(String[] args) {
 
         startPrint();
-
-        List<Integer> computerNumbers = generateRandomNumbers();
-        markNumberUsed(computerNumbers);
-
         while (true) {
-            List<Integer> userNumbers;
-            int strikeCnt = 0;
-            int ballCnt = 0;
+            List<Integer> computerNumbers = generateRandomNumbers();
+            markNumberUsed(computerNumbers);
 
-            try {
-                userNumbers = inputNumberOfUser();
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-                break;
-            }
+            while (true) {
+                List<Integer> userNumbers;
+                int strikeCnt = 0;
+                int ballCnt = 0;
 
-            for (int index = 0; index < 3; index++) {
-                int userNumber = userNumbers.get((userNumbers.size() - 1) - index);
-                int computerNumber = computerNumbers.get(index);
-
-                if (isStrike(userNumber, computerNumber)) {
-                    strikeCnt++;
-                    continue;
+                try {
+                    userNumbers = inputNumberOfUser();
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                    break;
                 }
-                if (isBall(userNumber, computerNumber))
-                    ballCnt++;
-            }
 
-            if(isFinish(strikeCnt, ballCnt)){
-              break;
-            }
+                for (int index = 0; index < 3; index++) {
+                    int userNumber = userNumbers.get((userNumbers.size() - 1) - index);
+                    int computerNumber = computerNumbers.get(index);
 
+                    if (isStrike(userNumber, computerNumber)) {
+                        strikeCnt++;
+                        continue;
+                    }
+                    if (isBall(userNumber, computerNumber))
+                        ballCnt++;
+                }
+
+                if (isFinish(strikeCnt, ballCnt)) {
+                    break;
+                }
+
+            }
+            if (!restart())
+                break;
         }
         System.out.println("게임을 종료합니다.");
 
     }
-    private static boolean restart(){
+
+    private static boolean restart() {
         String restartGameInput = Console.readLine();
 
-        if(restartGameInput.equals("2"))
+        if (restartGameInput.equals("2"))
             return false;
-        if(restartGameInput.equals("1"))
+        if (restartGameInput.equals("1"))
             return true;
         throw new IllegalArgumentException("범위 밖의 입력입니다. 1과 2중 입력해 주세요");
     }
 
     private static boolean isFinish(int strikeCnt, int ballCnt) {
-        if(strikeCnt==3){
+        if (strikeCnt == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
         StringBuilder sb = new StringBuilder();
-        if(strikeCnt+ballCnt==0){
+        if (strikeCnt + ballCnt == 0) {
             System.out.println("낫싱");
             return false;
         }
-        if(ballCnt!=0)
-            sb.append(ballCnt+"볼 ");
-        if(strikeCnt!=0) {
-            sb.append(strikeCnt+"스트라이크 ");
+        if (ballCnt != 0)
+            sb.append(ballCnt + "볼 ");
+        if (strikeCnt != 0) {
+            sb.append(strikeCnt + "스트라이크 ");
         }
 
         System.out.println(sb.toString());
