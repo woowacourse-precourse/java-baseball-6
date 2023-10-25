@@ -21,7 +21,9 @@ public class OutputView {
     }
 
     public void printGameSuccessResult(int[] gameResult) {
-        printStrikeHint(gameResult[0]);
+        final int strikeIndex = GameHint.STRIKE.getResultIndex();
+
+        printStrikeHint(gameResult[strikeIndex]);
         printGameSuccess();
         printForInputRestartOrExit();
     }
