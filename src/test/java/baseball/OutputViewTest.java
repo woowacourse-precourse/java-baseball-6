@@ -18,14 +18,14 @@ public class OutputViewTest {
     private OutputStream captor;
 
     @BeforeEach
-    protected final void init(){
+    protected final void init() {
         standardOut = System.out;
         captor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(captor));
     }
 
     @AfterEach
-    protected final void printOutput(){
+    protected final void printOutput() {
         System.setOut(standardOut);
         System.out.println(output());
     }
@@ -41,10 +41,10 @@ public class OutputViewTest {
     }
 
     @Test
-    void 스트라이크_볼_기준_힌트_출력_테스트(){
+    void 스트라이크_볼_기준_힌트_출력_테스트() {
         int[][] strikeAndBallCounts = {{0, 0}, {0, 1}, {2, 0}, {1, 1}};
         List<String> hintResult = Arrays.asList("낫싱", "1볼", "2스트라이크", "1볼 1스트라이크");
-        for (int index = 0; index < hintResult.size(); index++){
+        for (int index = 0; index < hintResult.size(); index++) {
             OutputView.showGameResult(strikeAndBallCounts[index]);
             assertThat(output()).contains(hintResult.get(index));
         }

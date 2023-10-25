@@ -12,7 +12,7 @@ public class RandomGenerator {
     public List<Integer> createRandomNumber() {
         while (randomNumber.size() < Constants.NUMBER_SIZE) {
             int singleDigitNumber = Randoms.pickNumberInRange(Constants.MIN_RANGE_NUM,
-                Constants.MAX_RANGE_NUM);
+                    Constants.MAX_RANGE_NUM);
             if (!randomNumber.contains(singleDigitNumber)) {
                 randomNumber.add(singleDigitNumber);
             }

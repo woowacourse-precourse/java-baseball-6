@@ -36,7 +36,7 @@ public class BasketballGameController {
 
             StrikeAndBallCounter strikeAndBallCounter = new StrikeAndBallCounter();
             int[] strikeAndBallCount = strikeAndBallCounter.getStrikeAndBallCount(computerNumber,
-                userInputNumber);
+                    userInputNumber);
             OutputView.showGameResult(strikeAndBallCount);
             if (strikeAndBallCount[Constants.STRIKE_INDEX] == Constants.NUMBER_SIZE) {
                 break;

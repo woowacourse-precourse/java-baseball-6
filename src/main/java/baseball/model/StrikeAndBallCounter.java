@@ -6,8 +6,7 @@ import java.util.List;
 
 public class StrikeAndBallCounter {
 
-    public int[] getStrikeAndBallCount(List<Integer> computerNumber,
-        String userInputNumber) {
+    public int[] getStrikeAndBallCount(List<Integer> computerNumber, String userInputNumber) {
 
         int[] strikeAndBallCount = new int[2];
         List<Integer> userNumber = setStringToListInteger(userInputNumber);

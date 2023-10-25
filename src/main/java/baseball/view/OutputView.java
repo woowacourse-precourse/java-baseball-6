@@ -21,7 +21,8 @@ public class OutputView {
             System.out.println(strikeCount + Constants.STRIKE);
         } else if (strikeCount > 0 && ballCount > 0) {
             System.out.println(
-                ballCount + Constants.BALL + Constants.BLANK + strikeCount + Constants.STRIKE);
+                    ballCount + Constants.BALL + Constants.BLANK + strikeCount + Constants.STRIKE
+            );
         }
     }
 

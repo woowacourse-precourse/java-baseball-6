@@ -24,17 +24,12 @@ public class StrikeAndBallCounterTest {
     void 스트라이크_볼_개수_세기() {
         List<Integer> computer = Arrays.asList(7, 8, 4);
         List<String> user = Arrays.asList("123", "456", "789", "749");
-        List<int[]> strikeAndBallCount = Arrays.asList(
-            new int[]{0, 0},
-            new int[]{0, 1},
-            new int[]{2, 0},
-            new int[]{1, 1}
-        );
+        int[][] strikeAndBallCount = {{0, 0}, {0, 1}, {2, 0}, {1, 1}};
 
         for (int index = 0; index < user.size(); index++) {
             assertThat(
-                strikeAndBallCounter.getStrikeAndBallCount(computer, user.get(index)))
-                .isEqualTo(strikeAndBallCount.get(index));
+                    strikeAndBallCounter.getStrikeAndBallCount(computer, user.get(index)))
+                    .isEqualTo(strikeAndBallCount[index]);
         }
     }
 }

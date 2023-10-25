@@ -22,7 +22,7 @@ public class ValidatorTest {
 
         for (int index = 0; index < input.size(); index++) {
             assertThat(validator.ensureRange(input.get(index), Constants.MIN_RANGE_NUM,
-                Constants.MAX_RANGE_NUM)).isEqualTo(result.get(index));
+                    Constants.MAX_RANGE_NUM)).isEqualTo(result.get(index));
         }
     }
 
@@ -35,7 +35,7 @@ public class ValidatorTest {
 
         for (int index = 0; index < input.size(); index++) {
             assertThat(validator.ensureRange(input.get(index), Constants.RESTART,
-                Constants.QUIT)).isEqualTo(result.get(index));
+                    Constants.QUIT)).isEqualTo(result.get(index));
         }
     }
 
@@ -46,8 +46,8 @@ public class ValidatorTest {
         List<Boolean> result = Arrays.asList(true, false);
 
         for (int index = 0; index < input.size(); index++) {
-            assertThat(validator.existsDuplicateNumber(input.get(index))).isEqualTo(
-                result.get(index));
+            assertThat(validator.existsDuplicateNumber(input.get(index)))
+                    .isEqualTo(result.get(index));
         }
     }
 
@@ -58,7 +58,7 @@ public class ValidatorTest {
 
         for (String user : input) {
             assertThatIllegalArgumentException().isThrownBy(
-                () -> validator.validateUserInputNumber(user));
+                    () -> validator.validateUserInputNumber(user));
         }
     }
 
@@ -69,7 +69,7 @@ public class ValidatorTest {
 
         for (String user : input) {
             assertThatIllegalArgumentException().isThrownBy(
-                () -> validator.validateRestartOrQuit(user));
+                    () -> validator.validateRestartOrQuit(user));
         }
     }
 
