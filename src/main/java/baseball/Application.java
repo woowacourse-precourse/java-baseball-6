@@ -7,6 +7,8 @@ public class Application {
         boolean newGame = false;
         do {
             game.play();
+
+            newGame = InputUI.restartGame();
         } while (newGame);
     }
 }
