@@ -4,6 +4,7 @@ import dto.GuessResultDto;
 import global.Constants;
 import model.Computer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -40,8 +41,26 @@ public class ComputerService {
     }
 
     private void validateGuessingNum(String guessingNum) {
+        validateFormat(guessingNum);
+        validateDuplicate(guessingNum);
+    }
+
+    private void validateFormat(String guessingNum) {
         if (!Pattern.matches(Constants.GUESSING_NUM_REGEXP,guessingNum)) {
             throw new IllegalArgumentException("1~9까지의 세자리 숫자로만 입력할 수 있습니다.");
+        }
+    }
+
+    public void validateDuplicate(String guessingNum) {
+        List<Integer> checkList = new ArrayList<Integer>();
+        for (int i=0; i<Constants.RANDOM_NUM_LENGTH; i++) {
+            int num = guessingNum.charAt(i)-'0';
+            if (!checkList.contains(num)) {
+                checkList.add(num);
+            }
+            else {
+                throw new IllegalArgumentException("입력되는 세자리 숫자에는 중복이 있을 수 없습니다.");
+            }
         }
     }
 
