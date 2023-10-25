@@ -17,14 +17,14 @@ public class UserInputNumber {
     }
 
     private List<Integer> createUserNumber(String userInput) throws IllegalArgumentException {
-        List<Integer> userNumber = StringToInt(userInput);
+        List<Integer> userNumber = stringToInt(userInput);
         if(userInputException.Validation(userNumber)) {
             return userNumber;
         }
         throw new IllegalArgumentException();
     }
 
-    private List<Integer> StringToInt(String userInput) {
+    private List<Integer> stringToInt(String userInput) {
         this.userNumber = userInput.chars().mapToObj(Character::getNumericValue).collect(Collectors.toList());
         return userNumber;
    }

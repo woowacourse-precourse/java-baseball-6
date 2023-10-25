@@ -5,7 +5,7 @@ import baseball.domain.GameResult;
 import baseball.exception.PlayInputException;
 
 public class BaseBallService {
-    private static final String reStart = "1";
+    private static final String RESTART_NUMBER = "1";
     private Game game;
     private PlayInputException playInputException;
     public BaseBallService() {
@@ -24,7 +24,7 @@ public class BaseBallService {
         if(!playInputException.isValid(userInput)){
             throw new IllegalArgumentException();
         }
-        return userInput.equals(reStart);
+        return userInput.equals(RESTART_NUMBER);
     }
 
 }
