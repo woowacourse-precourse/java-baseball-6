@@ -8,12 +8,12 @@ public class Restart {
         if (!isValidMenu(menu)) {
             throw new IllegalArgumentException();
         }
-        if (menu == "1") return true;
+        if (menu.equals("1")) return true;
         return false;
     }
 
     public static boolean isValidMenu(String menu) {
-        if (menu == "1" || menu == "2") return true;
+        if (menu.equals("1") || menu.equals("2")) return true;
         return false;
     }
 }
