@@ -1,6 +1,5 @@
 package baseball.computer;
 
-import baseball.computer.GameManager;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -31,7 +30,7 @@ public class BaseballGame {
 
     private void playGame() {
         List<Integer> Numberlist = numberManager.createNumber();
-        numberManager.countCalculate(Numberlist);
+        numberManager.printCount(Numberlist);
     }
 
     private boolean askRestartGame() {
