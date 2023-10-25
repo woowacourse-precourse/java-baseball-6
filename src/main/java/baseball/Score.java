@@ -15,7 +15,6 @@ public class Score {
                 strike += 1;
             }
         }
-
         return strike;
     }
 
@@ -27,7 +26,6 @@ public class Score {
                 ball += 1;
             }
         }
-
         return ball;
     }
 
