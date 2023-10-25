@@ -11,20 +11,22 @@ public class GuessResult {
 
     private final EnumMap<BallStatus, Integer> statuses;
 
-    private GuessResult() {
-        this.statuses = new EnumMap<>(BallStatus.class);
+    private GuessResult(EnumMap<BallStatus, Integer> statuses) {
+        this.statuses = statuses;
     }
 
     public static GuessResult empty() {
-        return new GuessResult();
+        return new GuessResult(new EnumMap<>(BallStatus.class));
     }
 
     public boolean correct() {
         return count(BallStatus.STRIKE) == MAXIMUM_BALL_COUNT;
     }
 
-    public void add(BallStatus ballStatus) {
-        statuses.merge(ballStatus, INITIAL_BALL_COUNT, Integer::sum);
+    public GuessResult add(BallStatus ballStatus) {
+        EnumMap<BallStatus, Integer> newStatuses = new EnumMap<>(statuses);
+        newStatuses.merge(ballStatus, INITIAL_BALL_COUNT, Integer::sum);
+        return new GuessResult(newStatuses);
     }
 
     public int count(BallStatus ballStatus) {

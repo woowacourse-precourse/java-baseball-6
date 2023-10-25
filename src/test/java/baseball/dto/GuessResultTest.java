@@ -32,17 +32,28 @@ class GuessResultTest {
         assertThat(guessResult.count(BallStatus.BALL)).isZero();
     }
 
-    @DisplayName("add시 주어진 BallStatus에 대한 count 값이 1 증가한다")
+    @DisplayName("add시 주어진 BallStatus에 대한 count 값이 1 증가된 인스턴스를 반환한다")
     @Test
     void add() {
         GuessResult guessResult = GuessResult.empty();
 
-        guessResult.add(BallStatus.STRIKE);
-        guessResult.add(BallStatus.STRIKE);
-        guessResult.add(BallStatus.BALL);
+        guessResult = guessResult.add(BallStatus.STRIKE);
+        guessResult = guessResult.add(BallStatus.STRIKE);
+        guessResult = guessResult.add(BallStatus.BALL);
 
         assertThat(guessResult.count(BallStatus.STRIKE)).isEqualTo(2);
         assertThat(guessResult.count(BallStatus.BALL)).isEqualTo(1);
+    }
+
+    @DisplayName("add시 새로운 값을 반환하며 기존 값에는 영향을 주지 않는다")
+    @Test
+    void immutablyAdd() {
+        GuessResult guessResult = GuessResult.empty();
+        GuessResult newGuessResult = guessResult.add(BallStatus.STRIKE);
+
+        assertThat(newGuessResult).isNotSameAs(guessResult);
+        assertThat(guessResult.count(BallStatus.STRIKE)).isZero();
+        assertThat(newGuessResult.count(BallStatus.STRIKE)).isOne();
     }
 
     @DisplayName("STRIKE가 3개 존재하는 경우 true가 반환된다")

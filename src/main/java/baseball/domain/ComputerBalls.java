@@ -26,7 +26,7 @@ public class ComputerBalls extends AbstractBalls {
 
         for (int otherBallIndex = 0; otherBallIndex < VALID_BALL_COUNT; otherBallIndex++) {
             BallStatus ballStatus = compare(otherBallIndex, otherBalls.ballAt(otherBallIndex));
-            guessResult.add(ballStatus);
+            guessResult = guessResult.add(ballStatus);
         }
 
         return guessResult;

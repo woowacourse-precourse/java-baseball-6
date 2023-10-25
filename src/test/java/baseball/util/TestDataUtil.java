@@ -9,10 +9,10 @@ public class TestDataUtil {
         GuessResult guessResult = GuessResult.empty();
 
         for (int i = 0; i < strikeCount; i++) {
-            guessResult.add(BallStatus.STRIKE);
+            guessResult = guessResult.add(BallStatus.STRIKE);
         }
         for (int i = 0; i < ballCount; i++) {
-            guessResult.add(BallStatus.BALL);
+            guessResult = guessResult.add(BallStatus.BALL);
         }
 
         return guessResult;
