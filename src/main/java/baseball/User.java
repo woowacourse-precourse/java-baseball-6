@@ -12,13 +12,8 @@ public class User {
     public void setNumber(){ // 사용자가 숫자를 입력하는 함수
         System.out.print("숫자를 입력해주세요 : ");
         userNumber = Console.readLine();
-
-        try{
-            if(userNumber.length() != 3){
-                throw new IllegalArgumentException();
-            }
-        }catch (IllegalArgumentException e){
-            isExit = 2;
+        if(userNumber.length() != 3){
+            throw new IllegalArgumentException();
         }
         userNumberList.clear();
         for(int i = 0; i < userNumber.length(); i++){
@@ -31,14 +26,8 @@ public class User {
     public void isAgain(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         isExit = Integer.parseInt(Console.readLine());
-        try{
-            if(isExit != 1 && isExit != 2){
-                throw new IllegalArgumentException("잘못된 입력입니다.");
-            }
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-            isExit = 2;
+        if(isExit != 1 && isExit != 2){
+            throw new IllegalArgumentException("잘못된 입력입니다.");
         }
-
     }
 }
