@@ -29,17 +29,17 @@ public class BaseBallGame {
             // 정답 확인용 임시 코드
             System.out.println(Arrays.toString(computer.getRandomNumber().toArray()));
 
-            guessNumber(computer);
+            guessNumber();
 
             System.out.println(OutputMessage.END_OR_NOT);
 
         } while (!askWhetherToEnd());
     }
 
-    private void guessNumber(Computer computer) {
+    private void guessNumber() {
         while (true) {
             System.out.print(OutputMessage.ENTER_NUMBER);
-            User user = new User();
+            user.setUserNumberFromConsole();
             Score score = new Score(0, 0);
             Score finalScore = score.returnScore(computer, user);
             finalScore.printOutScore();

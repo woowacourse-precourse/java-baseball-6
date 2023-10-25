@@ -24,20 +24,14 @@ public class User {
         return inputNumber;
     }
 
-    public void setInputNumber(List<Integer> inputNumber) {
-        this.inputNumber = setUserNumberFromConsole();
-    }
-
-    private List<Integer> setUserNumberFromConsole() {
+    public void setUserNumberFromConsole() {
         String st = Console.readLine();
         throwException(st);
         String[] arr = st.split("");
-
-        List<Integer> input = new ArrayList<>();
+        inputNumber = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            input.add(Integer.parseInt(arr[i]));
+            inputNumber.add(Integer.parseInt(arr[i]));
         }
-        return input;
     }
 
     private void throwException(String st) {
