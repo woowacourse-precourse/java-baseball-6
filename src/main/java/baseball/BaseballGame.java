@@ -8,6 +8,7 @@ import java.util.List;
 public class BaseballGame {
 
     private boolean on = true;
+    private int strike = 0;
 
     public void rePlay() {
         RandomNumber randomNumbers = new RandomNumber();
@@ -25,10 +26,23 @@ public class BaseballGame {
         } while (on == false);
     }
 
+    public void ending() {
+        System.out.println(
+                strike + "스트라이크\n"
+                        + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+                        + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String userDecide = readLine();
+        if (userDecide.equals("1")) {
+            rePlay();
+        } else if (userDecide.equals("2")) {
+            on = false;
+        }
+    }
+
     public void play(List<Integer> target, String input) {
         List<Integer> reTarget = new ArrayList<>(target);
 
-        int strike = 0;
         int ball = 0;
         String message = "";
 
@@ -46,43 +60,32 @@ public class BaseballGame {
         }
 
         if (strike == 3) {
-            System.out.println(
-                    strike + "스트라이크\n"
-                            + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
-                            + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-            String userDecide = readLine();
-            if (userDecide.equals("1")) {
-                rePlay();
-            } else if (userDecide.equals("2")) {
-                on = false;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (target.get(i).equals(userNum.get(j))) {
-                    if (i != j) {
-                        ball++;
+            ending();
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (target.get(i).equals(userNum.get(j))) {
+                        if (i != j) {
+                            ball++;
+                        }
                     }
                 }
             }
-        }
-        if (strike == 0 && ball == 0) {
-            message = "낫싱";
-        } else {
-            if (strike == 0) {
-                message = ball + "볼";
-            } else if (ball == 0) {
-                message = strike + "스트라이크";
+            if (strike == 0 && ball == 0) {
+                message = "낫싱";
             } else {
-                message = ball + "볼 " + strike + "스트라이크";
+                if (strike == 0) {
+                    message = ball + "볼";
+                } else if (ball == 0) {
+                    message = strike + "스트라이크";
+                } else {
+                    message = ball + "볼 " + strike + "스트라이크";
+                }
             }
+
+            System.out.println(message);
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = readLine();
+            play(reTarget, userInput);
         }
-
-        System.out.println(message);
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = readLine();
-        play(reTarget, userInput);
     }
-
 }
