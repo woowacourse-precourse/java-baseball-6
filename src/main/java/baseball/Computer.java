@@ -60,4 +60,19 @@ public class Computer {
         }
         return false;
     }
+
+    // 최종 결과
+    public void result() {
+        if (isNothing) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (ballCnt != 0) {
+            System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
+            return;
+        } else {
+            System.out.println(strikeCnt + "스트라이크");
+        }
+    }
 }
