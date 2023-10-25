@@ -14,27 +14,6 @@ public class Referee {
         return printJudge(ballCount, strikeCount);
     }
 
-    private static boolean printJudge(int ballCount, int strikeCount) {
-        if (ballCount > 0) {
-            System.out.print(ballCount + BALL.getMessage() + " ");
-        }
-        if (ballCount > 0 && strikeCount == 0) {
-            System.out.println();
-        }
-        if (strikeCount > 0) {
-            System.out.println(strikeCount + STRIKE.getMessage());
-        }
-        if (ballCount == 0 && strikeCount == 0) {
-            System.out.println(NOTHING.getMessage());
-        }
-        if (strikeCount == 3) {
-            System.out.println(END_GAME.getMessage());
-            return true;
-        }
-
-        return false;
-    }
-
     private static int judgeBall(List<Integer> computer, List<Integer> number) {
         int count = 0;
         for (int i = 0; i < number.size(); i++) {
@@ -55,5 +34,26 @@ public class Referee {
             }
         }
         return count;
+    }
+
+    private static boolean printJudge(int ballCount, int strikeCount) {
+        if (ballCount > 0) {
+            System.out.print(ballCount + BALL.getMessage() + " ");
+        }
+        if (ballCount > 0 && strikeCount == 0) {
+            System.out.println();
+        }
+        if (strikeCount > 0) {
+            System.out.println(strikeCount + STRIKE.getMessage());
+        }
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println(NOTHING.getMessage());
+        }
+        if (strikeCount == 3) {
+            System.out.println(END_GAME.getMessage());
+            return true;
+        }
+
+        return false;
     }
 }
