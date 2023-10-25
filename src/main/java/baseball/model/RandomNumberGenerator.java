@@ -7,11 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberGenerator implements ComputerNumberGenerator {
-
-    public RandomNumberGenerator() {
-        generateComputerNumber();
-    }
-
     public List<Integer> generateComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
