@@ -1,7 +1,21 @@
 package baseball;
 
+import baseball.controller.GameMechanism;
+import baseball.domain.RetryNum;
+import baseball.view.InputArea;
+import baseball.view.OutputArea;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        OutputArea.GameStartText();
+        do{
+            GameMechanism gameMechanism = new GameMechanism();
+            gameMechanism.start();
+        }while (ReStarting());
+    }
+
+    public static boolean ReStarting(){
+        RetryNum retryNum = new RetryNum(InputArea.inputReStartNum());
+        return retryNum.getRetryNum().equals("1");
     }
 }
