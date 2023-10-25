@@ -16,6 +16,8 @@ https://github.com/woowacourse-precourse/java-baseball-6#%EF%B8%8F-%EA%B3%BC%EC%
 ## FUNCTION
 * 랜덤 값 추출 -> camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 활용
 * 사용자 입력값 -> camp.nextstep.edu.missionutils.Console의 readLine()을 활용
-* 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
+* 사용자가 잘못된 값을 입력할 경우
+try,catch 구문을 통해 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료. 다른 예외 발생시 throw 구문을 통해 예외처리
 * for, while 등 반복문 사용
 * if, else 등 조건문 사용
+* 주요 변수 정리 : Strike = 스트라이크, Ball = 볼, user = 사용자의 입력값 (3개의 숫자), computer = 컴퓨터가 생성한 3개의 난수, Det = 사용자가 게임 종료 후 입력한 값
