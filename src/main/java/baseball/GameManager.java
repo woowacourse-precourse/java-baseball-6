@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.GameStatus.START;
 import static baseball.Message.BALL_MESSAGE;
 import static baseball.Message.CORRECT_MESSAGE;
 import static baseball.Message.INPUT_MESSAGE;
@@ -33,7 +34,7 @@ public class GameManager {
         System.out.println(RESTART_MESSAGE);
         String input = Console.readLine();
         validator.validateOption(input);
-        return input.equals("1");
+        return input.equals(START);
     }
 
     public void printResult(Result result) {

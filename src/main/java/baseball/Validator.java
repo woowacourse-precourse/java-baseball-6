@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.GameStatus.END;
+import static baseball.GameStatus.START;
 import static baseball.Message.DUPLICATE_INPUT_MESSAGE;
 import static baseball.Message.INVALID_INPUT_MESSAGE;
 import static baseball.Message.LENGTH_ERROR_MESSAGE;
@@ -17,7 +19,7 @@ public class Validator {
     }
 
     public void validateOption(String input) {
-        if (!input.equals("1") && !input.equals("2")) {
+        if (!input.equals(START) && !input.equals(END)) {
             throw new IllegalArgumentException(RESTART_ERROR_MESSAGE);
         }
     }
