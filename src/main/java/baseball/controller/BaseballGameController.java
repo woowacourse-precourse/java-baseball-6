@@ -26,7 +26,7 @@ public class BaseballGameController {
         while (true) {
             final PlayResult playResult = play(computer);
 
-            if (playResult.isAllStrike()) {
+            if (playResult.isClear()) {
                 break;
             }
         }

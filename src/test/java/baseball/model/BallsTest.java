@@ -44,8 +44,8 @@ public class BallsTest {
     void doesNotExistsSameNumber_Then_Nothing() {
         Balls player = new Balls(List.of(7, 8, 9));
         Balls computer = new Balls(List.of(4, 2, 5));
-        PlayResult playResult = player.compareAll(computer);
-        assertThat(playResult.isNothing()).isTrue();
+        CompareResults compareResults = player.compareAll(computer);
+        assertThat(compareResults.isNothing()).isTrue();
     }
 
     @ParameterizedTest
@@ -56,8 +56,8 @@ public class BallsTest {
             final long numberOfStrikes
     ) {
         Balls player = new Balls(List.of(1, 2, 3));
-        PlayResult playResult = player.compareAll(computerNumbers);
-        assertThat(playResult.getStrikes()).isEqualTo(numberOfStrikes);
+        CompareResults compareResults = player.compareAll(computerNumbers);
+        assertThat(compareResults.getStrikes()).isEqualTo(numberOfStrikes);
     }
 
     @ParameterizedTest
@@ -68,8 +68,8 @@ public class BallsTest {
             final long numberOfStrikes
     ) {
         Balls player = new Balls(List.of(3, 1, 2));
-        PlayResult playResult = player.compareAll(computerNumbers);
-        assertThat(playResult.getBalls()).isEqualTo(numberOfStrikes);
+        CompareResults compareResults = player.compareAll(computerNumbers);
+        assertThat(compareResults.getBalls()).isEqualTo(numberOfStrikes);
     }
 
     private static Stream<Arguments> generateComputerNumbers() {
@@ -84,7 +84,7 @@ public class BallsTest {
     @DisplayName("비교 결과가 모두 스트라이크인지 판별할 수 있다.")
     void isAllSameNumber_Then_AllStrike() {
         Balls player = new Balls(List.of(3, 1, 2));
-        PlayResult playResult = player.compareAll(new Balls(List.of(3, 1, 2)));
-        assertThat(playResult.isAllStrike()).isTrue();
+        CompareResults compareResults = player.compareAll(new Balls(List.of(3, 1, 2)));
+        assertThat(compareResults.isAllStrike()).isTrue();
     }
 }

@@ -11,6 +11,6 @@ public class Computer {
     }
 
     public PlayResult compute(final Balls playerBalls) {
-        return balls.compareAll(playerBalls);
+        return PlayResult.from(balls.compareAll(playerBalls));
     }
 }

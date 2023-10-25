@@ -1,56 +1,26 @@
 package baseball.model;
 
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+public record PlayResult(
+        long numberOfStrike,
+        long numberOfBalls,
+        boolean isNothing,
+        boolean isClear
+) {
 
-import java.util.EnumMap;
-import java.util.List;
-
-public class PlayResult {
-
-    private static final int RESULT_SIZE = 3;
-
-    private final EnumMap<CompareResult, Long> countByResult;
-
-    public PlayResult(final List<CompareResult> compareResults) {
-        this.countByResult = mapResults(compareResults);
-    }
-
-    private EnumMap<CompareResult, Long> mapResults(
-            final List<CompareResult> compareResults
-    ) {
-        return compareResults.stream().collect(groupingBy(
-                result -> result,
-                () -> new EnumMap<>(CompareResult.class),
-                counting()
-        ));
-    }
-
-    public boolean isNothing() {
-        return getCountOf(CompareResult.NOTHING) == RESULT_SIZE;
-    }
-
-    public boolean isAllStrike() {
-        return getCountOf(CompareResult.STRIKE) == RESULT_SIZE;
-    }
-
-    public long getStrikes() {
-        return getCountOf(CompareResult.STRIKE);
-    }
-
-    public long getBalls() {
-        return getCountOf(CompareResult.BALL);
+    public static PlayResult from(final CompareResults compareResults) {
+        return new PlayResult(
+                compareResults.getStrikes(),
+                compareResults.getBalls(),
+                compareResults.isNothing(),
+                compareResults.isAllStrike()
+        );
     }
 
     public boolean hasStrike() {
-        return getCountOf(CompareResult.STRIKE) > 0;
+        return numberOfStrike > 0;
     }
 
     public boolean hasBall() {
-        return getCountOf(CompareResult.BALL) > 0;
-    }
-
-    private long getCountOf(final CompareResult compareResult) {
-        return countByResult.getOrDefault(compareResult, 0L);
+        return numberOfBalls > 0;
     }
 }

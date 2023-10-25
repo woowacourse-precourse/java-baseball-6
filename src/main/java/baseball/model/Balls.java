@@ -42,8 +42,8 @@ public class Balls {
                 .toList();
     }
 
-    public PlayResult compareAll(final Balls other) {
-        return new PlayResult(mapResults(other));
+    public CompareResults compareAll(final Balls other) {
+        return new CompareResults(mapResults(other));
     }
 
     private List<CompareResult> mapResults(final Balls other) {

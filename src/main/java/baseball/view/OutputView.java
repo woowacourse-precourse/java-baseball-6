@@ -37,14 +37,14 @@ public class OutputView {
     }
 
     private static String formatBall(final PlayResult result) {
-        return formatCountOf(Format.BALL, result.getBalls());
+        return formatCountOf(Format.BALL, result.numberOfBalls());
     }
 
     private static String formatStrike(final PlayResult result) {
         final StringJoiner messages = new StringJoiner(STRIKE_DELIMITER);
-        messages.add(formatCountOf(Format.STRIKE, result.getStrikes()));
+        messages.add(formatCountOf(Format.STRIKE, result.numberOfStrike()));
 
-        if (result.isAllStrike()) {
+        if (result.isClear()) {
             messages.add(ConsoleMessage.RESULT_ALL_STRIKE.message);
         }
         return messages.toString();
