@@ -17,6 +17,9 @@ import java.util.List;
 
 public class BaseballGameService {
     public static final int ANSWER_LENGTH = 3;
+    public static final String BALL_ANSWER_STRING = "볼";
+    public static final String STRIKE_ANSWER_STRING = "스트라이크";
+    public static final String NOTHING_ANSWER_STRING = "낫싱";
 
     public void playBaseballGame() {
         // 1. 게임 시작 => 게임 시작 시 사용자에게 문구 출력
@@ -30,6 +33,9 @@ public class BaseballGameService {
 
         // 4. 입력 결과 분석 => 사용자의 입력 값과 컴퓨터의 값을 비교하여 스트라이크, 볼, 낫싱 판단
         BaseballGameResultDTO gameResultDTO = calResult(input.toCharArray(), computerAnswers);
+
+        // 5. 입력에 대한 힌트 출력 => 볼과 스트라이크 개수 혹은 낫싱을 출력
+        printUserInputResult(gameResultDTO);
     }
 
     private List<Integer> createComputerValue() {
@@ -102,5 +108,18 @@ public class BaseballGameService {
         }
 
         return baseballGameResultStatus;
+    }
+
+    private void printUserInputResult(BaseballGameResultDTO gameResultDTO) {
+        int strike = gameResultDTO.getStrike();
+        int ball = gameResultDTO.getBall();
+        BaseballGameResultStatus resultStatus = gameResultDTO.getGameStatus();
+
+        switch (resultStatus) {
+            case BALL_AND_STRIKE -> System.out.println(ball + BALL_ANSWER_STRING + " " + strike + STRIKE_ANSWER_STRING);
+            case BALL -> System.out.println(ball + BALL_ANSWER_STRING);
+            case STRIKE -> System.out.println(strike + STRIKE_ANSWER_STRING);
+            case NOTHING -> System.out.println(NOTHING_ANSWER_STRING);
+        }
     }
 }
