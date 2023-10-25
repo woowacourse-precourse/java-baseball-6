@@ -58,10 +58,9 @@
 - [x] List<Integer> getNumber() : 컴퓨터 수 반환
 
 ### UserNumber
-사용자 수의 유효성을 검사하고 저장하는 클래스
+사용자 수를 저장하는 클래스
 
 - [x] UserNumber(String) : 입력받은 값 유효성 검사 후 저장
-- [x] void validate(String) : 유효성 검사
 - [x] List<Integer> getNumber() : 사용자 수 반환
 
 ### InputView
