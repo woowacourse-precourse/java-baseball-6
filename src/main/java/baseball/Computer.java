@@ -1,14 +1,15 @@
 package baseball;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
-
+    private int ball;
+    private int strike;
     private ArrayList<Integer> answer;
     OutputManager outputManager = new OutputManager();
     InputManager inputManager = new InputManager();
+
     void makeAnswer() {
         int randomNumber;
 
@@ -19,7 +20,6 @@ public class Computer {
                 answer.add(randomNumber);
         }
     }
-
 
     int JudgeHowManyStrike(ArrayList<Integer> userInput) {
         int strike;
@@ -48,13 +48,20 @@ public class Computer {
         return (ball);
     }
 
+    boolean isGameTerminated() {
+        return (ball == 0 && strike == 3);
+    }
+    boolean terminateBaseballGame() {
+        outputManager.printRetryOrEndMessage();
+        if (inputManager.takeUserEndOrRetryInput() == 2)
+            return (true);
+        return (false);
+    }
+
     boolean playBaseball() {
         ArrayList<Integer> userInput;
-        int ball;
-        int strike;
-        boolean is_end;
+        boolean endCode;
 
-        is_end = false;
         outputManager.printStartMessage();
         while (true) {
             outputManager.printRequestInputMessage();
@@ -62,16 +69,12 @@ public class Computer {
             strike =  JudgeHowManyStrike(userInput);
             ball = JudgeHowManyBall(userInput, strike);
             outputManager.printStrikeOrBallMessage(ball, strike);
-            if (ball == 0 && strike == 3) {
-                outputManager.printRetryOrEndMessage();
-                if (inputManager.takeUserEndOrRetryInput() == 2)
-                    is_end = true;
-                else
-                    is_end = false;
-                break ;
+            if (isGameTerminated()) {
+                endCode = terminateBaseballGame();
+                break;
             }
         }
-        return (is_end);
+        return (endCode);
     }
 
     void startBaseballGame() {
