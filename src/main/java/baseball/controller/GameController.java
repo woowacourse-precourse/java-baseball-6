@@ -14,6 +14,7 @@ public class GameController {
         this.gameIO = gameIO;
         this.gameLogic = gameLogic;
     }
+
     /**
      * 게임 시작 문구 출력
      */
@@ -31,15 +32,13 @@ public class GameController {
             Computer computer = new Computer();
             List<Integer> computerNumbers = computer.createRandomNumber();
 
-            Map compareResult;
+            Map<String, Integer> compareResult;
             do {
                 String playerGuess = gameIO.readPlayerGuess();
-
                 List<Integer> playerGuessNumbers = gameLogic.validateAndReturnBaseBallNumber(playerGuess);
 
                 compareResult = gameLogic.compareNumbers(playerGuessNumbers, computerNumbers);
                 gameIO.printBallStrike(compareResult);
-
             } while (!isPlayerGameComplete(compareResult));
 
             continueRequested = gameIO.askPlayerToContinue();
