@@ -16,4 +16,9 @@ public class OutputInformationView {
     public void checkAnswerGuide() {
         System.out.print(checkAnswer);
     }
+
+    // "게임 종료." 문장을 출력하는 메서드.
+    public void gameOverGuide() {
+        System.out.println(gameOver);
+    }
 }
