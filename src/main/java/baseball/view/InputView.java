@@ -29,4 +29,13 @@ public class InputView {
             throw new IllegalArgumentException("잘못된 입력값입니다.");
         }
     }
+
+    public static int inputGameRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String input = Console.readLine();
+        validationInputFormat(input);
+
+        return Integer.parseInt(input);
+    }
 }
