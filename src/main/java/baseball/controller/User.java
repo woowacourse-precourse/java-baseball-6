@@ -20,6 +20,8 @@ public class User {
         userNumberDto = new UserNumberDto();
     }
     public UserNumberDto readUserNumberInput(){
+        clearUserNumbersList(); //사용자 입력 리스트 초기화
+
         userInput = readLine();
         judgeValidInput(userInput); //입력값 적합성 판단
 
@@ -30,5 +32,9 @@ public class User {
         userNumberDto.setUserNumber(userNumbers); //model DTO에 담아 다른 클래스로 넘겨주기
 
         return userNumberDto;
+    }
+
+    private void clearUserNumbersList(){
+        userNumbers.clear();
     }
 }
