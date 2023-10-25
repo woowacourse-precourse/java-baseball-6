@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class GameTest {
 
@@ -15,23 +17,9 @@ class GameTest {
         game = new Game();
     }
 
-    @Test
-    void 게임종료_옵션_검증_0_실패() {
-        // given
-        int option = 0;
-
-        // when
-        // then
-        assertThatThrownBy(() -> game.isEnd(option))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage(ErrorCode.INVALID_OPTION_NUMBER.getMessage());
-    }
-
-    @Test
-    void 게임종료_옵션_검증_3_실패() {
-        // given
-        int option = 3;
-
+    @ParameterizedTest
+    @ValueSource(ints = {0, 3})
+    void 게임종료_옵션_검증_없는_옵션(int option) {
         // when
         // then
         assertThatThrownBy(() -> game.isEnd(option))
