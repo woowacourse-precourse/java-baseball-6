@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,36 +26,25 @@ public class Application {
     }
 
     static class User{
+        private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
+
         List<Integer> userDigit = new ArrayList<>();
         int userNumber=0;
 
-//        public void inputValidationCheck(int input){
-//            if (!(input >= 111 && input <= 999 && input % 10 != 0 && (input / 10) % 10 != 0 && (input / 100) % 10 != 0)) {
-//                throw new IllegalArgumentException("Please");
-//            }
-//        }
-
         public void stringValidation(String input) {
             if(!(Pattern.compile("[1-9]{3,3}").matcher(input).matches())) {
-                throw new IllegalArgumentException("EXCEPTION_MESSAGE");
+                throw new IllegalArgumentException("IllegalArgument for userNumber pattern");
             }
             if(input.length() != 3) {
-                throw new IllegalArgumentException("EXCEPTION_MESSAGE");
+                throw new IllegalArgumentException("IllegalArgument for userNumber length");
             }
         }
 
         public void setUserNumber(){
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(INPUT_NUMBER);
             String input = Console.readLine();
-            try{
-                stringValidation(input);
-            }catch (IllegalArgumentException e){
-                throw new IllegalArgumentException("EXCEPTION_MESSAGE");
-            }
-
-
+            stringValidation(input);
             this.userNumber = Integer.parseInt(input);
-
             changeToList();
         }
 
@@ -71,40 +59,38 @@ public class Application {
     }
 
     static class Game{
+        private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+        private static final String STRIKE_FINISH = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        private static final String RESTART_CHOICE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        private static final String QUIT_VALUE = "2";
+        private static final String RESTART_VALUE = "1";
+
         Computer computer = new Computer();
         User user = new User();
-
         boolean quit = false;
-
         int both=0;
         int strike=0;
         int ball=0;
         String quitResponse="";
 
         public void play(){
-            System.out.println("숫자 야구 게임을 시작합니다.");
+            System.out.println(START_MESSAGE);
 
             computer.setRandomNumber();
-            //System.out.println(computer.computerDigit); //컴퓨터 랜덤넘버
-            // 유저입력넘버
-
-            //initializeRandomNumber(); //PC의 랜덤넘버 생성
 
             while(!quit) {
-                user.userDigit = new ArrayList<>();
-                user.setUserNumber();//유저입력받기
-
                 initCount();
+                user.setUserNumber(); //유저입력받기
 
                 System.out.println(ans(computer.computerDigit,user.userDigit));
 
                 if(this.strike == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    System.out.println(STRIKE_FINISH);
+                    System.out.println(RESTART_CHOICE);
                     setQuitResponse();
-                    if(this.quitResponse.equals("2")){
+                    if(this.quitResponse.equals(QUIT_VALUE)){
                         quit = true;
-                    }else if(this.quitResponse.equals("1")){
+                    }else if(this.quitResponse.equals(RESTART_VALUE)){
                         computer.setRandomNumber();
                     }
                 }
@@ -118,10 +104,10 @@ public class Application {
         }
 
         private void validateQuitInput(String quitResponse) {
-            List<String> inputList = new ArrayList<>(Arrays.asList(new String[]{"1", "2"}));
+            List<String> inputList = new ArrayList<>(Arrays.asList(new String[]{RESTART_VALUE, QUIT_VALUE}));
             boolean inputValidation = inputList.contains(quitResponse);
             if(!inputValidation) {
-                throw new IllegalArgumentException("ExceptionMessage");
+                throw new IllegalArgumentException("IllegalArgument for QuitInput");
             }
         }
 
@@ -166,15 +152,12 @@ public class Application {
             this.ball=0;
             this.quitResponse="";
             quit = false;
+            user.userDigit = new ArrayList<>();
         }
     }
 
     public static void main(String[] args) {
         Game game = new Game();
-        try{
-            game.play();
-        }catch (IllegalArgumentException e){
-            throw new IllegalArgumentException("EXCEPTION_MESSAGE");
-        }
+        game.play();
     }
 }
