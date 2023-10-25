@@ -41,6 +41,6 @@ public class GameController {
             int playerInput = inputView.requestBaseballNumberInput();
             result = numberBaseballGame.makeResult(playerInput);
             outputView.responseResult(result);
-        } while (result.getStrike() == RuleValue.BASEBALL_NUMBER_SIZE);
+        } while (result.getStrike() != RuleValue.BASEBALL_NUMBER_SIZE);
     }
 }
