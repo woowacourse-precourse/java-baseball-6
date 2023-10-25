@@ -12,7 +12,7 @@ public class ResultMsgSelector {
         StringBuilder resultMsg = new StringBuilder();
 
         if (ballCount > 0) {
-            resultMsg.append(ballCount).append(BALL_MSG);
+            resultMsg.append(ballCount).append(BALL_MSG).append(" ");
         }
 
         if (strikeCount > 0) {
