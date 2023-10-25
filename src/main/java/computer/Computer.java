@@ -12,8 +12,12 @@ public class Computer {
     String randomString = new String();
     Computer computer;
     Player player;
+    Hint hint = new Hint();
 
-    // 3자리 난수 생성
+    /**
+     * 3자리의 난수 생성
+     * @return
+     */
     public String getRandomNumbers() {
         randomString = "";
         while (randomString.length() < ANSWER_SIZE) {
@@ -47,7 +51,10 @@ public class Computer {
         }
     }
 
-    // User의 입력값 받아오기
+    /**
+     * User의 input 입력받아 종료 조건과 비교해 진행
+     * @return
+     */
     public void getInput(){
         player = new Player();
         String playerInput;
@@ -56,38 +63,24 @@ public class Computer {
         }while (!chkResult(playerInput));
     }
 
-    // strike 갯수 카운트
-    private int cntStrike(String inputNum) {
-        int strike = 0;
-        for (int i = 0; i < INPUT_LENGTH; i++) {
-            if (randomString.charAt(i) == inputNum.charAt(i)) {
-                strike++;
-            }
-        }
-        return strike;
-    }
-
-    // ball의 갯수 카운트
-    private int cntBall(String inputNum) {
-        int ball = 0;
-        for (int i = 0; i < INPUT_LENGTH; i++) {
-            char tmp = inputNum.charAt(i);
-            if (randomString.contains(String.valueOf(tmp)) && randomString.charAt(i) != tmp) {
-                ball++;
-            }
-        }
-        return ball;
-    }
-
+    /**
+     * ball, strike 갯수 count해서 결과문으로 출력 및 성공 여부 판단
+     * @param inputNum
+     * @return 성공 여부
+     */
     private boolean chkResult(String inputNum) {
-        int ball = cntBall(inputNum);
-        int strike = cntStrike(inputNum);
-        printResult(ball, strike);
+        int ball = hint.cntBall(randomString, inputNum);
+        int strike = hint.cntStrike(randomString, inputNum);
+        hint.printHintMessage(ball, strike);
 
         return (strike == SUCCESS_STRIKE);
     }
 
-    // restart or finish
+    /**
+     * 사용자의 입력에 따른 재시작(1) or 종료(2) 판단
+     * @param
+     * @return 재시작(true), 종료(false)
+     */
     private boolean chkRestartOrFinish(){
         String playerOption = Input.readOption();
         if (playerOption.equals(String.valueOf(OPTION_RESTART))) {
@@ -99,24 +92,56 @@ public class Computer {
         }
     }
 
-    // 결과 출력
-    private void printResult(int ball, int strike) {
 
-        if (ball == NOTHING) {
-            if (strike == NOTHING) {
-                System.out.println(NOTHING_MESSAGE);
-            } else if (strike == SUCCESS_STRIKE) {
-                System.out.println(strike + STRIKE_MESSAGE);
-                System.out.println(SUCCESS_MESSAGE);
-            } else {
-                System.out.println(strike + STRIKE_MESSAGE);
-            }
-        } else {
-            if (strike == NOTHING) {
-                System.out.println(ball + BALL_MESSAGE);
-            } else {
-                System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
-            }
-        }
-    }
+//    /**
+//     * strike 갯수 Count
+//     * @param inputNum
+//     * @return strike 갯수
+//     */
+//    private int cntStrike(String inputNum) {
+//        int strike = 0;
+//        for (int i = 0; i < INPUT_LENGTH; i++) {
+//            if (randomString.charAt(i) == inputNum.charAt(i)) {
+//                strike++;
+//            }
+//        }
+//        return strike;
+//    }
+//
+//    /**
+//     * ball 갯수 Count
+//     * @param inputNum
+//     * @return ball 갯수
+//     */
+//    private int cntBall(String inputNum) {
+//        int ball = 0;
+//        for (int i = 0; i < INPUT_LENGTH; i++) {
+//            char tmp = inputNum.charAt(i);
+//            if (randomString.contains(String.valueOf(tmp)) && randomString.charAt(i) != tmp) {
+//                ball++;
+//            }
+//        }
+//        return ball;
+//    }
+
+    // 결과 출력
+//    private void printHintMessage(int ball, int strike) {
+//
+//        if (ball == NOTHING) {
+//            if (strike == NOTHING) {
+//                System.out.println(NOTHING_MESSAGE);
+//            } else if (strike == SUCCESS_STRIKE) {
+//                System.out.println(strike + STRIKE_MESSAGE);
+//                System.out.println(SUCCESS_MESSAGE);
+//            } else {
+//                System.out.println(strike + STRIKE_MESSAGE);
+//            }
+//        } else {
+//            if (strike == NOTHING) {
+//                System.out.println(ball + BALL_MESSAGE);
+//            } else {
+//                System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
+//            }
+//        }
+//    }
 }
