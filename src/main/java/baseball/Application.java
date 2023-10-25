@@ -26,6 +26,7 @@ public class Application {
         List<Integer> computer = generateRandomNumbers();
 
         while (true) {
+            playGame(computer);
 
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int choice = Integer.parseInt(Console.readLine());
@@ -37,6 +38,24 @@ public class Application {
                 computer = generateRandomNumbers();
             } else {
                 System.out.print("올바른 수를 입력하세요.");
+            }
+        }
+    }
+
+    public static void playGame(List<Integer> computer) {
+
+        while (true) {
+            List<Integer> playerNumbers = getPlayerInput();
+            int[] result = checkGuess(computer, playerNumbers);
+
+            if (result[1] == 3) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            } else if (result[0] == 0 && result[1] == 0) {
+                System.out.println("낫싱");
+            } else {
+                System.out.println( result[0] + "볼 " + result[1] + "스트라이크" );
             }
         }
     }
@@ -66,6 +85,24 @@ public class Application {
         }
 
         return playerNumbers;
+    }
+
+    public static int[] checkGuess(List<Integer> computer, List<Integer> playerNumbers) {
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int playerDigit = playerNumbers.get(i);
+            int computerDigit = computer.get(i);
+
+            if (playerDigit == computerDigit) {
+                strikes++;
+            } else if (computer.contains(playerDigit)) {
+                balls++;
+            }
+        }
+
+        return new int[]{balls, strikes};
     }
 
 }
