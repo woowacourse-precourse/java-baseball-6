@@ -1,19 +1,23 @@
 package baseball;
 
 import baseball.controller.GameController;
-import baseball.global.converter.NumbersConverter;
-import baseball.global.view.input.InputView;
-import baseball.global.view.output.OutputView;
+import baseball.domain.computer.Computer;
+import baseball.domain.game.Game;
+import baseball.domain.player.Player;
+import baseball.domain.player.PlayerNumbers;
+import baseball.service.GameService;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        OutputView outputView = new OutputView();
-        InputView inputView = new InputView();
-        NumbersConverter numbersConverter = new NumbersConverter();
 
-        GameController gameController = new GameController(inputView, outputView, numbersConverter);
+        PlayerNumbers playerNumbers = new PlayerNumbers();
+        Player player = new Player(playerNumbers);
+        Computer computer = new Computer();
+        Game game = new Game(computer, player);
+        GameService gameService = new GameService(player, computer, game);
 
+        GameController gameController = new GameController(gameService);
         gameController.run();
 
 

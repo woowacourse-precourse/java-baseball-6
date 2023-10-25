@@ -18,10 +18,8 @@ public class Game {
     }
 
     public String getPlayerResult() {
-//        playResult.getCnt();
         playResult.clearResult();
         PlayResult result = compareComputerNumbersAndPlayerNumbers();
-//        playResult.getCnt();
         return result.returnResult();
     }
 
