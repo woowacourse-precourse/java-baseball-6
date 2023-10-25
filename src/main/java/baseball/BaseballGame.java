@@ -18,7 +18,7 @@ class BaseballGame {
 
         boolean gameIsOver = false;
         while (!gameIsOver) {
-            userNumbersInput();
+            inputUserNumbers();
 
             int strikeNum = countStrikes();
             int ballNum = countBalls();
@@ -39,7 +39,7 @@ class BaseballGame {
         }
     }
 
-    public void userNumbersInput() {
+    public void inputUserNumbers() {
         userNumbers = new int[NUMBER_LENGTH];
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
