@@ -3,8 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-
 public class Application {
     private static final int NUMBER_LENGTH = 3;
 
@@ -13,12 +11,12 @@ public class Application {
         boolean ongoing = true;
         while (ongoing) {
             baseBallGame();
-            if(gameExit())
+            if (gameExit())
                 ongoing = false;
         }
     }
 
-    public static boolean gameExit() {
+    private static boolean gameExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int code = 0;
         while (code != 1 && code != 2) {
@@ -27,13 +25,13 @@ public class Application {
         return code == 2;
     }
 
-    public static void baseBallGame() {
-        ArrayList<Integer> systemNumber = generateRandomNumber();
+    private static void baseBallGame() {
+        int[] systemNumber = generateRandomNumber();
         while (!guess(systemNumber)) ;
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public static boolean guess(ArrayList<Integer> systemNumber) {
+    private static boolean guess(int[] systemNumber) {
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         if (input.length() != NUMBER_LENGTH) {
@@ -45,9 +43,9 @@ public class Application {
 
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             int number = input.charAt(i) - '0';
-            if (systemNumber.get(i) == number)
+            if (systemNumber[number] == i + 1)
                 countOfStrike++;
-            else if (systemNumber.contains(number))
+            else if (systemNumber[number] > 0)
                 countOfBall++;
         }
 
@@ -68,13 +66,14 @@ public class Application {
         return countOfStrike == 3;
     }
 
-    public static ArrayList<Integer> generateRandomNumber() {
-        ArrayList<Integer> randomNumber = new ArrayList<>();
-        while (randomNumber.size() < NUMBER_LENGTH) {
-            int randomInteger = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumber.contains(randomInteger))
-                randomNumber.add(randomInteger);
+    private static int[] generateRandomNumber() {
+        int[] index = new int[10];
+        int i = 1;
+        while (i < NUMBER_LENGTH + 1) {
+            int n = Randoms.pickNumberInRange(1, 9);
+            if (index[n] == 0)
+                index[n] = i++;
         }
-        return randomNumber;
+        return index;
     }
 }
