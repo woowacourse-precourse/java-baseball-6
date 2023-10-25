@@ -36,4 +36,37 @@ public class Application {
         }
         return numbers;
     }
+
+    // checkNumbers 메서드 추가
+    private static String checkNumbers(List<Integer> computer, List<Integer> user) {
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                strikes++;
+                continue;
+            }
+            if (computer.contains(user.get(i))) {
+                balls++;
+            }
+        }
+
+        if (strikes == 0 && balls == 0) {
+            return "낫싱";
+        }
+        if (strikes == 3) {
+            return "3스트라이크";
+        }
+
+        StringBuilder result = new StringBuilder();
+        if (balls > 0) {
+            result.append(balls).append("볼 ");
+        }
+        if (strikes > 0) {
+            result.append(strikes).append("스트라이크");
+        }
+
+        return result.toString().trim();
+    }
 }
