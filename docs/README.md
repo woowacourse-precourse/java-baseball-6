@@ -3,15 +3,27 @@
 ### 주요 기능
 
 입력,출력  
-숫자 야구 게임 기능 구현
+숫자 야구 게임 주요 로직  
+난수 생성
 
-###    
+###        
 
-₩₩₩  
+```  
+유저는 클라스 Game의 start() 메소드를 통해서만 게임을 플레이할 수 있다.
+
 Class Game:
-checkUserGuessingNumberInput
-userGuessingNumberInput
-₩₩₩
+    start <- 게임의 시작점, 에러 발생 혹은 사용자가 종료할 때까지 play()를 한다
+    play <- 
+    generateRandomNumber <- 유효한 난수을 생성하고 반환한다
+    checkUserGuessingNumberInput <- 게임 도중의 유저입력의 유효성을 검사한다
+    checkUserReplayInput <- 게임이 끝난 후 유저입력의 유효성을 검사한다
+    checkEndGame <- 
+    userGuessingNumberInput <- 게임 도중의 유저의 유효한 입력만 반환한다
+    userReplayInput <- 게임 이후 유저의 유효한 입력만 반환한다
+    calculateStrike <- 스트라이크를 계산하고 반환한다
+    calculateBall <- 볼을 계산하고 반환나다
+    printResult <- 게임 도중 유저 입력에 대한 결괏값을 출력한다
+```
 
 # 기능 요구 사항
 
