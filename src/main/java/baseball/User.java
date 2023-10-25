@@ -15,7 +15,7 @@ public class User {
         for(String num : inputValue.split("")){
             user.add(Integer.parseInt(num));
         }
-        if(inputValue.length() >3 && inputValue.length() <3){
+        if(inputValue.length() !=3){
             throw new IllegalArgumentException("유효한 숫자 범위 밖의 입력");
         }
         return user;
