@@ -18,29 +18,22 @@
 
 - 라이브러리가 제공하는 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
 
-## **✅ 입력 값으로부터 점수를 계산하는 클래스 (Computer - Score)**
+## **✅ 입력 값으로부터 점수를 계산하는 클래스 (ScoreCalulator)**
 
 1. Strike 검사
-    1. 입력
-    2. 3의 컨버터로 List input 로 변환
-    3. 2에 의해 생성된 정답도 List answer로 변환
-    4. .filter().count() 로 동일한 인덱스에 대해 값이 일치하는 갯수를 구해서 리턴한다.
+    1. 플레이어의 숫자 3개와 컴퓨터가 생성한 난수 3개를 비교해서 .filter().count() 로 동일한 인덱스에 대해 값이 일치하는 갯수를 구해서 리턴한다.
 2. Ball 검사
-    1. 입력
-    2. 3의 컨버터로 List input 로 변환
-    3. 2에 의해 생성된 정답도 List answer로 변환
-    4. .filter().count()로 (동일한 인덱스에 대해 값이 일치하지 않으면서) && ( 값을 포함하고 있는 ) 갯수를 구해서 리턴한다.
+    1. 플레이어의 숫자 3개와 컴퓨터가 생성한 난수 3개를 비교해서 .filter().count()로 (동일한 인덱스에 대해 값이 일치하지 않으면서) && ( 값을 포함하고 있는 ) 갯수를 구해서 리턴한다.
 
-## **✅ 입력 받은 String을 List로 바꾸는 컨버터 (StringToIntegerListConverter)**
+## **✅ 입력 받은 String을 GuessNumber List로 변환하는 컨버터 (StringToGuessNumberListConverter)**
 
 1. 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-2. 라이브러리를 살펴보면 String으로 리턴하는데, 점수를 계산하기 용이하게 하기 위해 이 컨버터 클래스를 만들어 List 형태로 바꾸어 주도록 하자.
+2. 라이브러리를 살펴보면 String으로 리턴하는데, 점수를 계산하기 용이하게 하기 위해 컨버터 클래스를 만들어 String을 GuessNumber List 형태로 바꾸어 주도록 하자.
 
 ```
 public static String readLine() {
     return getInstance().nextLine();
 }
-
 ```
 
 ---
@@ -48,6 +41,20 @@ public static String readLine() {
 # **🚩 구현 방식 정리**
 
 - MVC 패턴에 입각해서 구현해보자.
+
+## **📗 MVC 패턴에 입각하여 구현 시 지켜야 할 사항**
+
+### **☑️ Model은 Controller와 View에 의존해서는 안된다.**
+
+→ 즉, Model내부에서 Controller와 View와 관련된 코드가 있어서는 안된다.
+
+### **☑️ View는 Model에만 의존해야 하고, Controller에는 의존해서는 안된다.**
+
+### **☑️ View가 Model로 부터 데이터를 받을 때 “사용자마다 다르게 보여주어야 하는 데이터”에 대해서만 받아야 한다.**
+
+### **☑️ Controller는 Model과 View에 의존할 수 있다.**
+
+### **☑️ View가 Model로부터 데이터를 받을 때, 반드시 Controller에서 받아야 한다.**
 
 ## **📦 Model**
 
@@ -171,17 +178,3 @@ _4-2-2-5. ‘4-2-2’로 이동합니다._
 ## 5. 프로그램 종료
 
 ---
-
-# **🚩 MVC 패턴에 입각하여 구현 시 지켜야 할 사항**
-
-### **☑️ Model은 Controller와 View에 의존해서는 안된다.**
-
-→ 즉, Model내부에서 Controller와 View와 관련된 코드가 있어서는 안된다.
-
-### **☑️ View는 Model에만 의존해야 하고, Controller에는 의존해서는 안된다.**
-
-### **☑️ View가 Model로 부터 데이터를 받을 때 “사용자마다 다르게 보여주어야 하는 데이터”에 대해서만 받아야 한다.**
-
-### **☑️ Controller는 Model과 View에 의존할 수 있다.**
-
-### **☑️ View가 Model로부터 데이터를 받을 때, 반드시 Controller에서 받아야 한다.**
