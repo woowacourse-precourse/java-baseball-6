@@ -11,6 +11,7 @@ import java.util.List;
 import static baseball.Computer.Computer.checkNum;
 import static baseball.Computer.Computer.endRound;
 import static baseball.Game.Game.*;
+import static baseball.View.OutputView.printBall;
 
 public class Application {
 
@@ -35,7 +36,5 @@ public class Application {
                 OutputView.printStart();
             }
         }
-        //OutputView.printEnd();
-        //Console.close();
     }
 }
