@@ -22,11 +22,7 @@ public final class GameInput {
         if (!input.equals(RESTART_MENU) && !input.equals(FINISH_MENU)) {
             throw new IllegalArgumentException(INVALID_MENU_CHOICE.message);
         }
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_MENU_CHOICE.message);
-        }
+        return Integer.parseInt(input);
     }
 
     public static void validateNum(String input) {

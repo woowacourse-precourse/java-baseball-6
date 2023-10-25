@@ -70,12 +70,7 @@ public class Game {
         while (true) {
             printRestart();
             String s = readLine();
-            try {
-                menu = validateMenu(s);
-                return menu;
-            } catch (IllegalArgumentException e) {
-                errorMessage(e);
-            }
+            return validateMenu(s);
         }
     }
 

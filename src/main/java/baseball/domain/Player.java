@@ -26,12 +26,8 @@ public class Player {
         while (status == 1) {
             inputCommand();
 
-            try {
-                inputNum();
-                status = 2;
-            } catch (IllegalArgumentException e) {   // 입력값에 관한 에러 한번에 잡기
-                errorMessage(e);
-            }
+            inputNum();
+            status = 2;
         }
 
         return num;
