@@ -48,6 +48,9 @@ public class GameController {
     // 사용자 입력 처리
     // 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
     public static void validateUserInput(String value) {
+        if (!InputManager.isAllDigits(userInput)) {
+            throw new IllegalArgumentException(SIZE + "자리의 수를 입력해주세요.");
+        }
         if (!InputManager.isNumberInRange(userInput, MIN_NUMBER, MAX_NUMBER)) {
             throw new IllegalArgumentException(MIN_NUMBER + '~' + MAX_NUMBER + "에 해당하는 수만 입력해주세요.");
         }
