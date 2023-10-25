@@ -19,7 +19,7 @@ public class GameManager {
     public void runGame(){
         System.out.println(START_MASSAGE);
         while (gameSwitch == 1){
-            System.out.println(PLEASE_INPUT_NUMBER_MASSAGE);
+            System.out.print(PLEASE_INPUT_NUMBER_MASSAGE);
             String userInputNumber = Console.readLine();
 
             appConfig.gameInputValidator.validateInput(userInputNumber);
