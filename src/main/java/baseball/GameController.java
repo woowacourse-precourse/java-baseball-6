@@ -24,12 +24,16 @@ public class GameController {
             List<Integer> userInput = gameInput.receiveInput();
             inputValidator.validateInput(userInput);
             int result = gameComputing.compute(computerInput, userInput);
-            if (result == GAME_OVER) {
+            if (isGameOver(result)) {
                 isGameContinued  = gameView.askContinueGame();
                 if (isGameContinued) {
                     computerInput = gameComputing.generateComputerInput();
                 }
             }
         }
+    }
+
+    private boolean isGameOver(int result) {
+        return result == GAME_OVER;
     }
 }
