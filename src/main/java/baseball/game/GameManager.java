@@ -9,10 +9,10 @@ import java.util.Objects;
 public class GameManager {
     private PlayerDecision playerDecision;
 
-    public void runGame() {
+    public void manage() {
         do {
             Game game = new Game();
-            game.start();
+            game.run();
 
             setPlayerDecision(resolvePlayerDecisionFromInput());
         } while (isPlayerDecisionRestart());

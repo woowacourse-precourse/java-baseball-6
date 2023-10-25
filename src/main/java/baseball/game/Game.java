@@ -20,7 +20,7 @@ public class Game {
         this.playerMount = new BaseBallMount(baseBalls);
     }
 
-    public void start() {
+    public void run() {
         System.out.println(GAME_START_MESSAGE);
 
         initializeComputerMount();
