@@ -10,8 +10,8 @@ public class OutputView {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public void resultMessage() {
-
+    public void resultMessage(String message) {
+        System.out.println(message);
     }
 
     public void completeMessage() {

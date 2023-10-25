@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.domain.BaseballResult;
+
 public class BaseballView {
     private final InputView inputView;
     private final OutputView outputView;
@@ -16,6 +18,10 @@ public class BaseballView {
     public String inputUserNumbersMessage() {
         outputView.inputUserNumbersMessage();
         return inputView.inputUserNumbers();
+    }
+
+    public void resultMessage(BaseballResult gameResult) {
+        outputView.resultMessage(gameResult.getResultMessage());
     }
 
     public String inputUserCommandMessage() {
