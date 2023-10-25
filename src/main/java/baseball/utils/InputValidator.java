@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import static baseball.domain.controller.Game.EXIT_SIGNAL;
+import static baseball.domain.controller.Game.RESTART_SIGNAL;
+
 public class InputValidator {
     private static final List<String> STANDARD_NUMBER = List.of("1", "2", "3", "4", "5", "6", "7", "8", "9");
     private static final int MAX_SIZE = 3;
@@ -42,4 +45,9 @@ public class InputValidator {
         }
     }
 
+    public static void checkRestartInput(String restartOrExit) {
+        if (!RESTART_SIGNAL.equals(restartOrExit) && !EXIT_SIGNAL.equals(restartOrExit)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
