@@ -30,6 +30,7 @@ public class Game {
     }
 
     public void run() {
+        initPlayer();
         while (true) {
             output.print(Message.START);
             play();
@@ -40,7 +41,7 @@ public class Game {
     }
 
     private void play() {
-        initPlayer();
+        computer.generatePlayerNumber(NUMBER_BALLS);
         while (true) {
             if (isAnswer()) {
                 break;
@@ -52,15 +53,14 @@ public class Game {
     private void initPlayer() {
         user = new User(input);
         computer = new Computer(output);
-        computer.generatePlayerNumber(NUMBER_BALLS);
     }
 
     private boolean isAnswer() {
-        BallCounter ballCounter = checkResult();
+        BallCounter ballCounter = countBall();
         return ballCounter.isAllStrike(NUMBER_BALLS);
     }
 
-    private BallCounter checkResult() {
+    private BallCounter countBall() {
         BallCounter ballCounter = new BallCounter(computer.getNumbers(), guessNumber());
         computer.announceResult(ballCounter);
         return ballCounter;
@@ -73,11 +73,11 @@ public class Game {
     }
 
     private boolean isRestart() {
-        Command command = chooseRestartGame();
+        Command command = decideRestart();
         return command.isRestart();
     }
 
-    private Command chooseRestartGame() {
+    private Command decideRestart() {
         output.print(Message.RESTART);
         return user.selectCommand();
     }
