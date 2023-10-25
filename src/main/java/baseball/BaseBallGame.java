@@ -7,9 +7,6 @@ public class BaseBallGame {
 
     private static BaseBallGame baseBallGame;
 
-
-    public final String ONE_OR_TWO = "[12]";
-
     public static BaseBallGame getInstance() {
         if (baseBallGame == null) {
             baseBallGame = new BaseBallGame();
@@ -39,8 +36,9 @@ public class BaseBallGame {
             Score score = new Score(0, 0);
             Score finalScore = score.returnScore(computer, user);
             finalScore.printOutScore();
-            if (finalScore.isSuccess())
+            if (finalScore.isSuccess()) {
                 break;
+            }
         }
     }
 
@@ -51,7 +49,7 @@ public class BaseBallGame {
     }
 
     private static void throwException2(String st) {
-        if (!st.matches(baseBallGame.ONE_OR_TWO)) {
+        if (!st.matches("[12]")) {
             throw new IllegalArgumentException();
         }
     }
