@@ -32,7 +32,6 @@ public class Application {
         for (int i = 0; i < result.size(); i++) {
             strikeCount += countUp(userInput.get(i), result.get(i));
         }
-
         return strikeCount;
     }
 
@@ -96,7 +95,6 @@ public class Application {
                 && isOneOrTwo(userInputStartOrEnd)) {
             return userInputStartOrEnd.charAt(0) - '0';
         }
-
         throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
@@ -106,7 +104,6 @@ public class Application {
         if ((userInputNumber == RESTART) || (userInputNumber == END)) {
             return true;
         }
-
         throw new IllegalArgumentException("입력이 1 또는 2가 아닌 잘못된 입력입니다.");
     }
 
@@ -114,17 +111,21 @@ public class Application {
         if (userInput.length() == inputLength) {
             return true;
         }
-
         throw new IllegalArgumentException("입력 길이가 " + inputLength + "이 아닌 잘못된 입력입니다.");
     }
 
-    public static boolean isDigitNumber(String userInput) {
+    public static int countDigitInString(String userInput) {
         int digitCount = 0;
         for (int i = 0; i < userInput.length(); i++) {
             if (Character.isDigit(userInput.charAt(i))) {
                 digitCount++;
             }
         }
+        return digitCount;
+    }
+
+    public static boolean isDigitNumber(String userInput) {
+        int digitCount = countDigitInString(userInput);
         if ((digitCount == userInput.length())) {
             return true;
         }
