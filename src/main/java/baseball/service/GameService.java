@@ -24,9 +24,6 @@ public class GameService {
     private int[] getUserNumber() {
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        if (input.length() != size) {
-            throw new IllegalArgumentException();
-        }
         return parser.parseUserInput(input, size);
     }
 

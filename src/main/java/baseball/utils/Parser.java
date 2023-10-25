@@ -2,10 +2,14 @@ package baseball.utils;
 
 public class Parser {
     public int[] parseUserInput(String input, int size) throws IllegalArgumentException {
+        checkSize(input, size);
+        return getParseInt(input, size);
+    }
+
+    private void checkSize(String input, int size) throws IllegalArgumentException {
         if (input.length() != size) {
             throw new IllegalArgumentException();
         }
-        return getParseInt(input, size);
     }
 
     private int[] getParseInt(String input, int size) {
