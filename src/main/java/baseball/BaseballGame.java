@@ -7,13 +7,12 @@ import utils.Utils;
 
 public class BaseballGame {
     Utils utils = new Utils();
-    GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
     BaseballGameService baseballGameService = new BaseballGameService();
 
     public boolean gameStart() {
         boolean run = true;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Balls computerBalls = new Balls(generateRandomNumber.generateRandomNumber());
+        Balls computerBalls = baseballGameService.createComputerBalls();
         while (run) {
             System.out.print("숫자를 입력해주세요. : ");
             String input = Console.readLine();

@@ -5,7 +5,15 @@ import static baseball.Application.NUMBER_LENGTH;
 import balls.Balls;
 import java.util.stream.IntStream;
 
+
 public class BaseballGameService {
+    GenerateRandomNumber generateRandomNumber = new GenerateRandomNumber();
+
+    public Balls createComputerBalls() {
+        Balls computerBalls = new Balls(generateRandomNumber.generateRandomNumber());
+        return computerBalls;
+    }
+
     public boolean baseballGameServiceStart(Balls computerBalls, Balls userBalls) {
         int ball = countBall(computerBalls, userBalls);
         int strike = countStrike(computerBalls, userBalls);
