@@ -23,35 +23,48 @@ public class Game {
         return gameLogic.generateHintFromResult(strike, ball);
     }
 
-    private void playBaseBallGame() {
-        gameUI.displayStartGame();
-
-        while (true) {
-            try {
-                gameUI.displayUserInput();
-                user.inputUserNumber();
-
-                String hint = inferHint();
-                gameUI.displayHint(inferHint());
-
-                if (gameLogic.isAnswer(hint)) {
-                    gameUI.displayCorrectAnswerMessage();
-
-                    user.inputUserStatus();
-                    if (gameLogic.isQuitGame(user.getUserStatus())) {
-                        break;
-                    }
-
-                    computer.resetComputerNumber();
-                }
-            } catch (IllegalArgumentException e) {
-                gameUI.displayExceptionMessage(e);
-                throw e;
-            }
+    public void startGame() {
+        try {
+            playBaseballGame();
+        } catch (IllegalArgumentException e) {
+            gameUI.displayExceptionMessage(e);
+            throw e;
         }
     }
 
-    public void startGame() {
-        playBaseBallGame();
+    private String playSingleRound() {
+        gameUI.displayUserInput();
+        user.inputUserNumber();
+
+        String hint = inferHint();
+        gameUI.displayHint(hint);
+
+        return hint;
+    }
+
+    private void playGameUntilCorrect() {
+        String hint;
+
+        do {
+            hint = playSingleRound();
+        } while (!gameLogic.isAnswer(hint));
+
+        gameUI.displayCorrectAnswerMessage();
+    }
+
+    private void playBaseballGame() {
+        gameUI.displayStartGame();
+
+        while (true) {
+            playGameUntilCorrect();
+
+            user.inputUserStatus();
+
+            if (gameLogic.isQuitGame(user.getUserStatus())) {
+                break;
+            }
+
+            computer.resetComputerNumber();
+        }
     }
 }
