@@ -18,10 +18,20 @@ public class UserInput {
         return restart.equals("1");
     }
 
+    private static boolean hasDuplicateCharacter(final String input) {
+        for (int i = 0; i < input.length(); ++i) {
+            char currentChar = input.charAt(i);
+            for (int j = i + 1; j < input.length(); ++j) {
+                if (currentChar == input.charAt(j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     private static void isValidInput(final String input) {
-        if (input.length() != 3 || !input.matches("\\d+") || input.charAt(0) == input.charAt(1)
-                || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
+        if (input.length() != 3 || !input.matches("\\d+") || hasDuplicateCharacter(input)) {
             throw new IllegalArgumentException();
         }
     }

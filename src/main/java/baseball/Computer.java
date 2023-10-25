@@ -7,7 +7,7 @@ public class Computer {
     private String numbers;
 
     public Computer() {
-        numbers = getRandomNumber();
+        this.numbers = getRandomNumber();
     }
 
     private String getRandomNumber() {
@@ -15,8 +15,8 @@ public class Computer {
 
         while (str.length() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            String n = "";
-            n += (char) (randomNumber + '0');
+            StringBuilder n = new StringBuilder();
+            n.append(randomNumber);
             if (!str.toString().contains(n)) {
                 str.append(n);
             }
@@ -25,7 +25,7 @@ public class Computer {
     }
 
     public void resetNumber() {
-        numbers = getRandomNumber();
+        this.numbers = getRandomNumber();
     }
 
     public int[] getResult(String userInput) {
@@ -33,9 +33,9 @@ public class Computer {
 
         for (int i = 0; i < 3; ++i) {
             char n = userInput.charAt(i);
-            if (numbers.charAt(i) == n) {
+            if (this.numbers.charAt(i) == n) {
                 ++score[0];
-            } else if (numbers.contains(String.valueOf(n))) {
+            } else if (this.numbers.contains(String.valueOf(n))) {
                 ++score[1];
             }
         }

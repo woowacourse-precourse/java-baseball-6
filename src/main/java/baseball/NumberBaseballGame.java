@@ -32,7 +32,7 @@ public class NumberBaseballGame {
         if (score[0] == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             if (UserInput.getUserRestart()) {
-                computer.resetNumber();
+                this.computer.resetNumber();
                 return false;
             } else {
                 System.out.println("게임 종료");
@@ -45,7 +45,7 @@ public class NumberBaseballGame {
     public void gameLoop() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            int[] score = computer.getResult(UserInput.getUserNumber());
+            int[] score = this.computer.getResult(UserInput.getUserNumber());
             printGameResult(score);
             if (gameOver(score)) {
                 break;
