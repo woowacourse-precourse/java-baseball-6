@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public interface NumberManager {
+public interface GameManager {
     List<Integer> createNumber();
 
     void countCalculate(List<Integer> randomNumber);

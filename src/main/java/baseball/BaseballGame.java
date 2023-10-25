@@ -8,9 +8,9 @@ import static baseball.enum_class.NumberInfo.*;
 import static baseball.enum_class.Message.*;
 
 public class BaseballGame {
-    private final NumberManager numberManager;
+    private final GameManager numberManager;
 
-    public BaseballGame(NumberManager numberManager) {
+    public BaseballGame(GameManager numberManager) {
         this.numberManager = numberManager;
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 import static baseball.enum_class.NumberInfo.*;
 import static baseball.enum_class.Message.*;
 
-public class RandomRuleManager implements NumberManager {
+public class RandomRuleManager implements GameManager {
     private final UserNumberManager userNumberManager;
 
     RandomRuleManager(UserNumberManager userNumberManager){
