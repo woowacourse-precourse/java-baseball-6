@@ -9,26 +9,26 @@ public class CheckInput {
     private static final String BLANK = "";
     private static final String RESTART = "1";
     private static final String END = "2";
-    
 
-    public static void CheckNumber(String userInput) {
-        String afterRegexInput = userInput.replaceAll(NUMBER_REGEX, BLANK);
+
+    public static void checkNumber(String userNumber) {
+        String afterRegexInput = userNumber.replaceAll(NUMBER_REGEX, BLANK);
         if (afterRegexInput.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void CheckLength(String userInput) {
-        if (userInput.length() != NUMBER_LENGTH) {
+    public static void checkLength(String userNumber) {
+        if (userNumber.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void CheckDuplicate(String userInput) {
+    public static void checkDuplicate(String userNumber) {
 
         Set<Character> inputSet = new HashSet<>();
 
-        for (char c : userInput.toCharArray()) {
+        for (char c : userNumber.toCharArray()) {
             inputSet.add(c);
         }
         if (inputSet.size() != NUMBER_LENGTH) {
@@ -36,17 +36,17 @@ public class CheckInput {
         }
     }
 
-    public static void CheckNumberRules(String userInput) {
-        CheckNumber(userInput);
-        CheckLength(userInput);
-        CheckDuplicate(userInput);
+    public static void checkNumberRules(String userNumber) {
+        checkNumber(userNumber);
+        checkLength(userNumber);
+        checkDuplicate(userNumber);
     }
 
-    public static String CheckRestart(String userInput) {
-        if (!userInput.equals(RESTART) && !userInput.equals(END)) {
+    public static String checkRestart(String userNumber) {
+        if (!userNumber.equals(RESTART) && !userNumber.equals(END)) {
             throw new IllegalArgumentException();
         }
 
-        return userInput;
+        return userNumber;
     }
 }

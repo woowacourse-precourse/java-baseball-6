@@ -1,56 +1,66 @@
 package baseball.controller;
 
+import baseball.model.ComputerNumber;
 import baseball.model.GameSettings;
+import baseball.model.UserNumber;
 import baseball.view.Input;
 import baseball.view.Output;
-import java.util.List;
 
-public class BaseBallGame {
+public class BaseBall {
 
+    private static final int NUMBER_LENGTH = 3;
+    public static String restart = "1";
+    public static ComputerNumber computerNumber;
 
-    public void GameStart() {
-        Output.StartMessage();
+    public void gameStart() {
+
         do {
-            GameSettings.computer = GameSettings.GenerateNumbers();
-            System.out.println(GameSettings.computer);
-            ComparingNumbers(GameSettings.computer);
-            Output.CompleteMessage();
-            GameSettings.restart = CheckInput.CheckRestart(Input.GetRestartInput());
-        } while (GameSettings.restart.equals("1"));
+            Output.startMessage();
+            computerNumber = new ComputerNumber();
+            compareNumbers();
+            Output.completeMessage();
+            restart = CheckInput.checkRestart(Input.getRestartInput());
+        } while (restart.equals("1"));
+
     }
 
-    public static void ComparingNumbers(List<Integer> computer) {
+    public static void compareNumbers() {
         do {
-            GameSettings.Init();
-            Output.RequestInputMessage();
-            String userInput = Input.GetUserInput();
-            CheckInput.CheckNumberRules(userInput);
-            ChangeInputToInt(userInput);
-            CountStrike(GameSettings.user);
-            CountBall(GameSettings.user);
-            Output.HintMessage();
+            GameSettings.initialize();
+            UserNumber userNumber = Output.requestInputMessage();
+            countStrikesAndBalls(computerNumber, userNumber);
+            Output.hintMessage();
         } while (GameSettings.strike != 3);
     }
 
-    public static void ChangeInputToInt(String userInput) {
-        for (char c : userInput.toCharArray()) {
-            GameSettings.user.add(c - '0');
-        }
+    public static void countStrikesAndBalls(ComputerNumber computerNumber, UserNumber userNumber) {
+        countStrike(computerNumber, userNumber);
+        countBall(computerNumber, userNumber);
     }
 
-    public static void CountStrike(List<Integer> user) {
-        for (int i = 0; i < user.size(); i++) {
-            if (GameSettings.computer.contains(user.get(i)) && GameSettings.computer.indexOf(user.get(i)) == i) {
+    public static void countStrike(ComputerNumber computerNumber, UserNumber userNumber) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (doesContain(computerNumber, userNumber, i) && isSamePosition(computerNumber, userNumber, i)) {
                 GameSettings.strike++;
             }
         }
     }
 
-    public static void CountBall(List<Integer> user) {
-        for (int i = 0; i < user.size(); i++) {
-            if (GameSettings.computer.contains(user.get(i)) && GameSettings.computer.indexOf(user.get(i)) != i) {
+    public static void countBall(ComputerNumber computerNumber, UserNumber userNumber) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (doesContain(computerNumber, userNumber, i) && !isSamePosition(computerNumber, userNumber, i)) {
                 GameSettings.ball++;
             }
+
         }
     }
+
+    public static boolean doesContain(ComputerNumber computerNumber, UserNumber userNumber, int position) {
+        return computerNumber.contains(userNumber.get(position));
+    }
+
+    public static boolean isSamePosition(ComputerNumber computerNumber, UserNumber userNumber, int position) {
+        return computerNumber.indexOf(userNumber.get(position)) == position;
+    }
+
 }
