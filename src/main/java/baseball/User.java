@@ -27,4 +27,18 @@ public class User {
                 && answerArray[1] != answerArray[2]
                 && answerArray[0] != answerArray[2];
     }
+
+    public boolean restartGame() {
+        String answer = Console.readLine();
+
+        String answerRegex = "^(1|2)$";
+        Pattern pattern = Pattern.compile(answerRegex);
+        Matcher matcher = pattern.matcher(answer);
+
+        if (matcher.matches()) {
+            return answer.equals("1");
+        } else {
+            throw new IllegalArgumentException("잘못된 값 : " + answer);
+        }
+    }
 }

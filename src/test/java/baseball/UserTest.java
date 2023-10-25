@@ -80,4 +80,37 @@ public class UserTest {
         assertThatThrownBy(() -> user.answer())
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void restart() {
+        String input = "1";
+        InputStream is = new ByteArrayInputStream(input.getBytes());
+        System.setIn(is);
+
+        User user = new User();
+        boolean restart = user.restartGame();
+        assertThat(restart).isTrue();
+    }
+
+    @Test
+    void end() {
+        String input = "2";
+        InputStream is = new ByteArrayInputStream(input.getBytes());
+        System.setIn(is);
+
+        User user = new User();
+        boolean restart = user.restartGame();
+        assertThat(restart).isFalse();
+    }
+
+    @Test
+    void wrongRestartInput() {
+        String input = "3";
+        InputStream is = new ByteArrayInputStream(input.getBytes());
+        System.setIn(is);
+
+        User user = new User();
+        assertThatThrownBy(() -> user.restartGame())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
