@@ -4,6 +4,9 @@ import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 public class Application {
+
+    private static final int NUMBER_SIZE = 3;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
