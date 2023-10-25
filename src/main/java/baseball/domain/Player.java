@@ -1,8 +1,10 @@
 package baseball.domain;
 
 import static baseball.utils.Constants.NUMBER_SIZE;
+import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_DUPLICATE;
+import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_INVALID_SIZE;
+import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_ZERO_CONTAIN;
 
-import baseball.utils.ErrorMessages;
 import baseball.utils.IntegerConvertor;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -10,7 +12,6 @@ import java.util.List;
 
 public class Player {
     private final List<Integer> numbers;
-
 
     public Player(String input) {
         validate(input);
@@ -25,21 +26,21 @@ public class Player {
 
     private void validateSize(String input) {
         if (input.length() != NUMBER_SIZE) {
-            throw new IllegalArgumentException(ErrorMessages.PLAYER_NUMBERS_INVALID_SIZE);
+            throw new IllegalArgumentException(PLAYER_NUMBERS_INVALID_SIZE);
         }
     }
 
     private void validateDuplicate(String input) {
         HashSet<String> set = new HashSet<>(List.of(input.split("")));
         if (set.size() != input.length()) {
-            throw new IllegalArgumentException(ErrorMessages.PLAYER_NUMBERS_DUPLICATE);
+            throw new IllegalArgumentException(PLAYER_NUMBERS_DUPLICATE);
         }
     }
 
     private void validateZeroContain(String input) {
         String replace = input.replace("0", "");
         if (replace.length() != input.length()) {
-            throw new IllegalArgumentException(ErrorMessages.PLAYER_NUMBERS_ZERO_CONTAIN);
+            throw new IllegalArgumentException(PLAYER_NUMBERS_ZERO_CONTAIN);
         }
     }
 
@@ -50,9 +51,6 @@ public class Player {
     }
 
     public int getNumber(int idx) {
-        if (idx >= NUMBER_SIZE) {
-            throw new IllegalArgumentException(ErrorMessages.INDEX_OUT_OF_RANGE);
-        }
         return this.numbers.get(idx);
     }
 }

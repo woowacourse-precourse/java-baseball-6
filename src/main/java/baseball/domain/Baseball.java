@@ -3,6 +3,7 @@ package baseball.domain;
 import static baseball.utils.Constants.NUMBER_SIZE;
 
 import baseball.utils.ErrorMessages;
+import java.util.Objects;
 
 public record Baseball(
         int ball,
@@ -32,7 +33,7 @@ public record Baseball(
     }
 
     public Boolean isStrike() {
-        return ball == 0 && strike > 0 && strike < NUMBER_SIZE;
+        return ball == 0 && strike > 0;
     }
 
     public Boolean isNothing() {
@@ -51,4 +52,8 @@ public record Baseball(
         return ball == baseball.ball && strike == baseball.strike;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(ball, strike);
+    }
 }

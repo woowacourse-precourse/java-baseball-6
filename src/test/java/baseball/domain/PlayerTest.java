@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import static baseball.utils.ErrorMessages.INDEX_OUT_OF_RANGE;
 import static baseball.utils.ErrorMessages.NOT_INTEGER;
 import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_DUPLICATE;
 import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_INVALID_SIZE;
@@ -80,20 +79,7 @@ public class PlayerTest {
 
         @Nested
         @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class 인덱스가_Player의_숫자리스트_길이보다_크거나_같은_값이_주어진다면 {
-            @ParameterizedTest
-            @ValueSource(ints = {3, 5})
-            void IllegalArgumentException_예외를_던진다(int idx) {
-                Player player = new Player("123");
-                Assertions.assertThatThrownBy(() -> player.getNumber(idx))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(INDEX_OUT_OF_RANGE);
-            }
-        }
-
-        @Nested
-        @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class 인덱스가_Player의_숫자리스트_길이보다_작은_값이_주어진다면 {
+        class 인덱스가_주어진다면 {
             private static Stream<Arguments> providePlayerNumberAndIdx() {
                 return Stream.of(
                         Arguments.of("123", 0, 1),

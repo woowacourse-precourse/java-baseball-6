@@ -118,10 +118,10 @@ public class BaseballTest {
 
         @Nested
         @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class ball_개수가_0이고_strike_개수가_숫자길이와_일치하면 {
+        class strike_개수가_0이면 {
             @Test
             void false를_반환한다() {
-                Baseball baseball = new Baseball(0, 3);
+                Baseball baseball = new Baseball(0, 0);
                 assertEquals(baseball.isStrike(), false);
             }
         }

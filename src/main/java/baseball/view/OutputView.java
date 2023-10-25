@@ -16,8 +16,7 @@ public class OutputView {
     }
 
     public static void printBaseballResult(BaseballResultDto dto) {
-        String message = MessageFormat.format(dto.messageFormat(),
-                dto.ballCnt(), dto.strikeCnt());
+        String message = MessageFormat.format(dto.messageFormat(), dto.ballCnt(), dto.strikeCnt());
         System.out.println(message);
     }
 
