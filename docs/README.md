@@ -46,6 +46,7 @@
     - 에러처리 (Error)
         - [ ] 사용자가 잘못된 값을 입력할 경우`IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
             - [ ] 잘못된 입력시 `IllegalArgumentException` 예외 발생후 종료기능
+              - [ ] IllegalArgumentException 예외를 던지는 함수 생성
 
 ### **추가 기능 (향후 구현 예정)**
 
@@ -66,7 +67,15 @@
 ## 게임 방법
 
 ## 테스트
-
+- 단위테스트
+  - ConfirmTest : Confirm 기능 테스트
+    - testAccordNumber
+    - testCheckPositionMatch
+    - testReferee
+  - MakeUserNumberTest : InputNumber 관련 기능 테스트
+    - makeUserNumber
+  - RandomNumberMakerTest : NumberMaker 기능 테스트
+    - makerTest
 ## 기타 정보
 
 - JDK 17
