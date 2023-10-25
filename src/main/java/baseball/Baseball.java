@@ -44,14 +44,9 @@ public class Baseball {
             System.out.println("숫자 야구 게임을 시작합니다.");
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = readLine();
-            if (userInput.length() != 3) {
-                throw new IllegalArgumentException("잘못된 값을 입력했습니다. 애플리케이션을 종료합니다.");
-            }
-            for (char c : userInput.toCharArray()) {
-                if (!Character.isDigit(c) || c == '0') {
-                    throw new IllegalArgumentException("잘못된 값을 입력했습니다. 애플리케이션을 종료합니다.");
-                }
-            }
+            UserInputUtil.validateLength(userInput);
+            UserInputUtil.validateNaturalNumber(userInput);
+
 
             Score score = new Score();
             List<Integer> userNumber = UserInputUtil.convertStringToIntegerList(userInput);
