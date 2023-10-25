@@ -9,7 +9,7 @@ public class BaseballGameModel {
 
     private final List<Integer> computerNumbers = new ArrayList<>();
 
-    void generateRandomNumbers(){
+    public void generateRandomNumbers(){
         while (computerNumbers.size() < 3) {
             int randomNumber = pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
@@ -18,11 +18,11 @@ public class BaseballGameModel {
         }
     }
 
-    List<Integer> getComputerNumbers(){
+    public List<Integer> getComputerNumbers(){
         return computerNumbers;
     }
 
-    void clearComputerNumbers() {
+    public void clearComputerNumbers() {
         computerNumbers.clear();
     }
 }
