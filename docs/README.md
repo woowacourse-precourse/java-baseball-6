@@ -1,6 +1,7 @@
 📝 시나리오 및 구현할 기능 목록
 ===
-> 시나리오를 설명하고 구현할 기능을 설명하는 페이지입니다. 
+> 시나리오를 설명하고 구현할 기능을 설명하는 페이지입니다.
+
 ## 시나리오
 
 1. 사용자는 게임을 시작한다.
@@ -43,17 +44,50 @@
 
 ## 클래스 구현
 
-- `Game` 클래스
-    - 게임의 상태와 진행을 관리한다.
-    - `start()` 메서드: 게임을 시작한다.
-    - `printResult(int[] result)` 메서드: 숫자 입력 결과를 출력한다.
-- `Player` 클래스
-    - 플레이어의 입력을 처리한다.
-    - `inputNumbers()` 메서드: 서로 다른 3개의 숫자를 입력받아 리스트로 반환한다.
-- `Computer` 클래스
-    - 컴퓨터의 랜덤한 숫자를 생성하고 유효성을 체크한다.
-    - `generateNumbers()` 메서드: 1에서 9까지 서로 다른 임의의 숫자 3개를 생성하여 리스트로 반환한다.
-- `Score` 클래스
-    - 플레이어의 입력과 컴퓨터의 숫자를 비교하여 볼과 스트라이크를 계산한다.
-    - `calculateScore(List<Integer> playerNumbers, List<Integer> computerNumbers)` 메서드: 볼과 스트라이크 개수를
-      계산하여 배열로 반환한다.
+**`Game` 클래스**
+
+- 필드:
+    - `computer`: Computer 객체를 저장하는 필드입니다.
+    - `player`: Player 객체를 저장하는 필드입니다.
+    - `score`: Score 객체를 저장하는 필드입니다.
+- 메소드:
+    - `start()`: 숫자 야구 게임을 시작하는 메소드입니다.
+    - `printResult(int[] result)`: 볼과 스트라이크 결과에 따라 결과를 출력하는 메소드입니다.
+    - `isGameOver(int[] result)`: 게임이 종료되었는지를 확인하는 메소드입니다.
+    - `askRestart()`: 게임 재시작 여부를 확인하는 메소드입니다.
+
+**`Computer` 클래스**
+
+- 필드:
+    - `MAX_NUMBER`: 생성할 수 있는 숫자의 최대값을 나타내는 상수입니다.
+    - `MIN_NUMBER`: 생성할 수 있는 숫자의 최소값을 나타내는 상수입니다.
+    - `NUMBER_LENGTH`: 생성할 숫자의 길이를 나타내는 상수입니다.
+- 메소드:
+    - `generateNumbers()`: 컴퓨터의 랜덤 숫자를 생성하는 메소드입니다.
+
+**`Player` 클래스**
+
+- 필드: 없음
+- 메소드:
+    - `inputNumbers()`: 사용자로부터 입력을 받아 정수 리스트로 반환하는 메소드입니다.
+    - `parseInput(String input)`: 사용자의 입력 문자열을 파싱하여 각 숫자를 Integer로 변환하고, 이 숫자들을 리스트로 반환하는 메소드입니다.
+
+**`utils/Score` 클래스**
+
+- 필드: 없음
+- 메소드:
+    - `calculateScore(List<Integer> playerNumbers, List<Integer> computerNumbers)`: 플레이어의 숫자와 컴퓨터의
+      숫자를 비교하여 볼과 스트라이크의 개수를 계산하는 메소드입니다.
+
+**`Exception/NumberValidator` 클래스**
+
+- 필드:
+    - `MAX_NUMBER`: 숫자의 최대값을 나타내는 상수입니다.
+    - `MIN_NUMBER`: 숫자의 최소값을 나타내는 상수입니다.
+    - `NUMBER_LENGTH`: 숫자 리스트의 길이를 나타내는 상수입니다.
+    - `RESTART_NUMBER`: 게임을 재시작하기 위한 숫자를 나타내는 상수입니다.
+    - `FINISH_NUMBER`: 게임을 종료하기 위한 숫자를 나타내는 상수입니다.
+- 메소드:
+    - `validateLength(List<Integer> numbers)`: 숫자 리스트의 길이를 검사하는 메소드입니다.
+    - `validateRange(List<Integer> numbers)`: 숫자 리스트의 범위를 검사하는 메소드입니다.
+    - `checkResetNumber(int number)`: 입력받은 숫자가 RESTART_NUMBER 또는 FINISH_NUMBER인지 확인하는 메소드입니다.
