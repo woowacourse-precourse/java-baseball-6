@@ -13,6 +13,33 @@ import java.util.List;
 */
 
 public class Application {
+    static boolean checkAnswer(List<Integer> computer,String answer){
+        String[] answer_splited=answer.split("");
+        List<Integer> answer_int = new ArrayList<>();
+        int strike = 0,ball=0;
+        for (String c :answer_splited){
+            answer_int.add(Integer.parseInt(c));
+        }
+        //정답 판정법? 일단 값과 위치가 같아야...
+        for (int i=0;i<answer_int.size();i++){
+            int cur_answer=answer_int.get(i);
+            for(int j=0;j<computer.size();j++){
+                if(cur_answer==computer.get(j)){
+                    if(i==j) strike+=1;
+                    if(i!=j) ball+=1;
+                }
+            }
+        }
+        if (ball > 0) System.out.print(ball+"볼 ");
+        if(strike>0) System.out.print(strike+"스트라이크");
+        if (strike == 0 && ball == 0) System.out.print("낫싱");
+        System.out.println();//개행 문자 출력
+        if(strike==3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        };
+        return false;
+    }
     static void isThreeDigitNumbers(String input) {
         if(input.length()!=3) throw new IllegalArgumentException("범위 오류");
         char first=input.charAt(0);
@@ -41,15 +68,25 @@ public class Application {
                 }
             }
             System.out.println("숫자 야구 게임을 시작합니다.");
-            System.out.println("숫자를 입력해주세요 : ");
-            String input=Console.readLine();
-            //입력에서 잘못된 값 유형시 에러
-            try {
-                //에러 판단 함수
-                isThreeDigitNumbers(input);
-            }catch (IllegalArgumentException e){
-                System.out.println(e);
-                isnoterror=false;
+            //정답이라면 반복문 탈출
+            //정답이 아니라면 반복
+            boolean isnotAnswer=true;
+            while (isnotAnswer) {
+                System.out.println("숫자를 입력해주세요 : ");
+                String input = Console.readLine();
+                //입력에서 잘못된 값 유형시 에러
+                try {
+                    //에러 판단 함수
+                    isThreeDigitNumbers(input);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e);
+                    isnoterror =false;
+                    isnotAnswer=false;
+                }
+                if(checkAnswer(computer,input)) isnotAnswer=false;
+                if(isnotAnswer==false){
+
+                }
             }
         }
     }
