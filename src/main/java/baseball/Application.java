@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -15,9 +14,7 @@ public class Application {
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = readLine();
-                List<Integer> number = convertIntegerList(input);
-                validateThreeNums(number);
-                validateUnduplicated(number);
+                List<Integer> number = NumberConverter.from(input);
 
                 boolean isAnswer = game.play(number);
                 if (isAnswer) break;
@@ -35,28 +32,6 @@ public class Application {
         }
     }
 
-    private static List<Integer> convertIntegerList(String number) {
-        try {
-            return Arrays.stream(number.split(""))
-                    .map(Integer::parseInt)
-                    .filter(n -> n != 0)
-                    .toList();
-        }
-        catch (NumberFormatException e) {
-            throw new IllegalArgumentException("문자가 아닌 숫자를 입력해주세요");
-        }
-    }
 
-    private static void validateThreeNums(List<Integer> number) {
-        if (number.size() != 3) {
-            throw new IllegalArgumentException("1부터 9까지 3개의 숫자를 입력해주세요");
-        }
-    }
-
-    private static void validateUnduplicated(List<Integer> numbers) {
-        if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException("서로 다른 숫자들을 입력해주세요");
-        }
-    }
 
 }
