@@ -52,7 +52,10 @@ public class BaseballGame {
         if(!isInteger(userInput)){
             throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
         }
-        if (userInput.length() != 3) {
+        if (isNegative(userInput)) {
+            throw new IllegalArgumentException("입력이 음수입니다.");
+        }
+        if (!isThreeDigits(userInput)) {
             throw new IllegalArgumentException("사용자 입력이 3자리수가 아닙니다.");
         }
         if (isDuplicatedNum(userInput)) {
@@ -63,19 +66,6 @@ public class BaseballGame {
         }
     }
 
-    private boolean isDuplicatedNum(String userInput){
-        Set<Character> userInputSet = new HashSet<>();
-
-        for(char userInputChar : userInput.toCharArray()){
-            userInputSet.add(userInputChar);
-        }
-
-        if(userInputSet.size() == userInput.length()){
-            return false;
-        }
-        return true;
-    }
-
     private boolean isInteger(String userInput) {
         try {
             Integer.parseInt(userInput);
@@ -83,5 +73,35 @@ public class BaseballGame {
         } catch (NumberFormatException ex) {
             return false;
         }
+    }
+
+    private static boolean isNegative(String userInput){
+        int userInputInt = Integer.parseInt(userInput);
+        if (userInputInt < 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isThreeDigits(String userInput){
+        int userInputInt = Integer.parseInt(userInput);
+        int userInputLength = (int) ( Math.log10(userInputInt)+1 );
+        if (userInputLength == NUMBER_LENGTH) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isDuplicatedNum(String userInput) {
+        Set<Character> userInputSet = new HashSet<>();
+
+        for (char userInputChar : userInput.toCharArray()) {
+            userInputSet.add(userInputChar);
+        }
+
+        if (userInputSet.size() == userInput.length()) {
+            return false;
+        }
+        return true;
     }
 }
