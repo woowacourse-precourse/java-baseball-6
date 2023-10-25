@@ -12,11 +12,13 @@ import java.util.Set;
 
 public class Application {
 
+    static boolean[] isNumberUsedComputer;
     public static void main(String[] args) {
 
         startPrint();
 
         List<Integer> computerNumbers = generateRandomNumbers();
+        markNumberUsed(computerNumbers);
 
         while (true) {
 
@@ -27,10 +29,20 @@ public class Application {
                 break;
             }
 
+            isStrike();
+
+            isBall();
+
 
         }
         System.out.println("게임을 종료합니다.");
 
+    }
+
+    private static void isBall() {
+    }
+
+    private static void isStrike() {
     }
 
     private static List<Integer> inputNumberOfUser() {
@@ -61,6 +73,7 @@ public class Application {
     private static void startPrint() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+
     private static boolean areDistinctNumbers(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         return uniqueNumbers.size() == numbers.size();
@@ -77,6 +90,12 @@ public class Application {
             }
         }
         return computerNumbers;
+    }
+
+    private static void markNumberUsed(List<Integer> computerNumber){
+        isNumberUsedComputer = new boolean[10];
+        for(int index=0;index<3;index++)
+            isNumberUsedComputer[computerNumber.get(index)]=true;
     }
 
 
