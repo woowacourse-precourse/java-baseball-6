@@ -8,6 +8,7 @@ public class User {
 
     private List<Integer> numbers;
     private boolean gameRestart;
+    private final UserInputValidator userInputValidator = new UserInputValidator();
 
     public List<Integer> getNumbers() {
         return numbers;
@@ -21,7 +22,6 @@ public class User {
         List<Integer> userNumbers = new ArrayList<>();
 
         String userInput = Console.readLine();
-        UserInputValidator userInputValidator = new UserInputValidator();
 
         userInputValidator.validateInputNumbers(userInput);
 
@@ -30,5 +30,9 @@ public class User {
         }
 
         numbers = userNumbers;
+    }
+
+    public void decideGameRestart() {
+        String userInput = Console.readLine();
     }
 }

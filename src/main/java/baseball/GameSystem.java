@@ -3,6 +3,11 @@ package baseball;
 import java.util.List;
 
 public class GameSystem {
+
+    private static final int THREE_STRIKES = 3;
+    private final InputMsgView inputMsgView = new InputMsgView();
+    private final User user = new User();
+
     public void playGame() {
         do {
             startGame();
@@ -10,7 +15,6 @@ public class GameSystem {
     }
 
     private void startGame() {
-        InputMsgView inputMsgView = new InputMsgView();
         inputMsgView.printStartMsg();
 
         Computer computer = new Computer();
@@ -19,7 +23,6 @@ public class GameSystem {
 
         inputMsgView.printInputNumberMsg();
 
-        User user = new User();
         user.generateNumbers();
         List<Integer> userNumbers = user.getNumbers();
 
@@ -28,12 +31,17 @@ public class GameSystem {
 
         ResultMsgView resultMsgView = new ResultMsgView();
         resultMsgView.printGameResultMsg(ballStrikeCounter.getBallCount(), ballStrikeCounter.getStrikeCount());
+
+        if (ballStrikeCounter.getStrikeCount() == THREE_STRIKES) {
+            return;
+        }
     }
 
     private boolean restartGame() {
-        InputMsgView inputMsgView = new InputMsgView();
         inputMsgView.printRestartMsg();
 
-        return false;
+        user.decideGameRestart();
+
+        return user.isGameRestart();
     }
 }
