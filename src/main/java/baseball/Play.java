@@ -28,13 +28,15 @@ public class Play {
 
   private static void matchInGame(Referee referee, Player player) {
     int gameStatus;
-    do {
+    while (true) {
       referee.inputGameNumbersMessage();
       if (!player.userInputNumbers(IN_GAME)) {
         throw new IllegalArgumentException("입력 형식이 올바르지 않습니다.");
       }
       gameStatus = referee.determine(player);
+      if (gameStatus != 1) {
+        break;
+      }
     }
-    while (gameStatus == 1);
   }
 }
