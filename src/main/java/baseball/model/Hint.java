@@ -17,11 +17,13 @@ public class Hint {
 
     public String generateHintMessage() {
         if (strike != 0 && ball != 0) {
-            return ball + "볼 " + strike + "스트라이크";
-        } else if (strike != 0) {
-            return strike + "스트라이크";
-        } else if (ball != 0) {
-            return ball + "볼";
+            return String.format("%d볼 %d스트라이크", ball, strike);
+        }
+        if (strike != 0) {
+            return String.format("%d스트라이크", strike);
+        }
+        if (ball != 0) {
+            return String.format("%d볼", ball);
         }
         return "낫싱";
     }
