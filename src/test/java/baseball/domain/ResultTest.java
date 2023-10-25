@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import static baseball.domain.Result.ALL_STRIKE;
 import static baseball.domain.Result.BALL;
 import static baseball.domain.Result.BALL_STRIKE;
 import static baseball.domain.Result.NOTHING;
@@ -34,7 +33,6 @@ public class ResultTest {
         return Stream.of(
                 Arguments.of(1, 1, BALL_STRIKE),
                 Arguments.of(3, 0, BALL),
-                Arguments.of(0, 3, ALL_STRIKE),
                 Arguments.of(0, 2, STRIKE),
                 Arguments.of(0, 0, NOTHING)
         );

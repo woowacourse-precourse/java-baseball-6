@@ -8,7 +8,6 @@ import java.util.function.Function;
 public enum Result {
     BALL_STRIKE("{0}볼 {1}스트라이크", Judgment::isBallAndStrike),
     BALL("{0}볼", Judgment::isBall),
-    ALL_STRIKE("{1}스트라이크", Judgment::isAllStrike),
     STRIKE("{1}스트라이크", Judgment::isStrike),
     NOTHING("낫싱", Judgment::isNothing),
     ;
