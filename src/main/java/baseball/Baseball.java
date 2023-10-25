@@ -13,9 +13,7 @@ public class Baseball {
     public void startGame() {
         while(true) {
             startRound();
-            boolean selection = selectQuit();
-
-            if(selection) {
+            if(selectQuit()) {
                 break;
             }
         }
@@ -38,7 +36,6 @@ public class Baseball {
 
     private void startRound() {
         List<Integer> computerNumber = RandomUtil.generateRandomNumber(3);
-        computerNumber.forEach(v-> System.out.println(v));
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true) {
