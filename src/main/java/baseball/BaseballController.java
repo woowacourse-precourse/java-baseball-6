@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballController {
 
@@ -23,32 +22,11 @@ public class BaseballController {
             String randomNum = baseballView.inputRandomNum();
 
             baseballException.isLengthValid(randomNum);
-
             baseballException.isDuplicationExist(randomNum);
-
             baseballException.isCharinString(randomNum);
 
-            // 플레이어가 입력한 수에 문자가 있는 경우 예외처리
-            if (baseballService.isCharacterExist(randomNum)){
-                throw new IllegalArgumentException();
-            }
-
-            strike = 0;
-            int ball = 0;
-
-            // 컴퓨터가 임의로 뽑은 수 3개와 플레이어가 입력한 숫자 3개 비교
-            for (int i=0; i<3; i++) {
-                int index = 0;
-                String number = Character.toString(computer.charAt(i));
-                if (randomNum.contains(number)){
-                    index = randomNum.indexOf(number);
-                    if (i==index) {
-                        strike+=1;
-                    } else {
-                        ball+=1;
-                    }
-                }
-            }
+            strike = baseballService.getStrike(computer, randomNum);
+            int ball = baseballService.getBall(computer, randomNum);
 
             // 스트라이크, 볼, 낫싱 개수 세기
             if (strike==0 && ball==0) {

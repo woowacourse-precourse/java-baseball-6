@@ -40,5 +40,36 @@ public class BaseballService {
         }
     }
 
+    public int countStrikeOrBall(String computer, String randomNum, BaseballEnum baseballEnum){
+        // 컴퓨터가 임의로 뽑은 수 3개와 플레이어가 입력한 숫자 3개 비교
+        int count=0;
+        for (int i=0; i<3; i++) {
+            String number = Character.toString(computer.charAt(i));
+
+            if (randomNum.contains(number)) {
+                int index = randomNum.indexOf(number);
+                count+=addStrikeOrBall(i, index, baseballEnum);
+            }
+        }
+        return count;
+    }
+
+    public int addStrikeOrBall(int i, int index, BaseballEnum baseballEnum) {
+        if (baseballEnum==BaseballEnum.STRIKE) {
+            if (i==index) return 1;
+        } else if (baseballEnum==BaseballEnum.BALL) {
+            if (i!=index) return 1;
+        }
+        return 0;
+    }
+
+    public int getStrike(String computer, String randomNum){
+        return countStrikeOrBall(computer, randomNum, BaseballEnum.STRIKE);
+    }
+
+    public int getBall(String computer, String randomNum){
+        return countStrikeOrBall(computer, randomNum, BaseballEnum.BALL);
+    }
+
 
 }
