@@ -16,13 +16,13 @@ class GameAnswerTest {
     private static final Integer LAST_NUMBER = 9;
 
     @BeforeEach
-    public void init() {
+    void init() {
         gameAnswer = new GameAnswer();
     }
-    
+
     @Test
     @DisplayName("컴퓨터는 중복없는 숫자 3개를 생성한다.")
-    public void makeAnswer_Test() {
+    void makeAnswer_Test() {
         // when
         gameAnswer.makeAnswer();
         List<Integer> answer = gameAnswer.getAnswer();
