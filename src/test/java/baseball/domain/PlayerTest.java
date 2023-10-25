@@ -1,11 +1,10 @@
-package baseball;
+package baseball.domain;
 
 import static baseball.utils.ErrorMessages.NOT_INTEGER;
 import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_DUPLICATE;
 import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_INVALID_SIZE;
 import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_ZERO_CONTAIN;
 
-import baseball.domain.Player;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;

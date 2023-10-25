@@ -1,9 +1,8 @@
-package baseball;
+package baseball.domain;
 
 import static baseball.utils.ErrorMessages.NOT_INVALID_RETRY_INPUT;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.domain.Command;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import static baseball.domain.Result.ALL_STRIKE;
 import static baseball.domain.Result.BALL;
@@ -7,9 +7,7 @@ import static baseball.domain.Result.NOTHING;
 import static baseball.domain.Result.STRIKE;
 import static baseball.utils.ErrorMessages.NOT_MATCH_BASEBALL_RESULT;
 
-import baseball.JudgmentTestConfig.TestJudgment;
-import baseball.domain.Judgment;
-import baseball.domain.Result;
+import baseball.config.JudgmentTestConfig.TestJudgment;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

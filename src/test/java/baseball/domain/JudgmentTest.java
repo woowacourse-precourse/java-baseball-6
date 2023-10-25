@@ -1,8 +1,8 @@
-package baseball;
+package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import baseball.JudgmentTestConfig.TestJudgment;
+import baseball.config.JudgmentTestConfig.TestJudgment;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

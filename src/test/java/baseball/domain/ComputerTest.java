@@ -1,10 +1,8 @@
-package baseball;
+package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import baseball.ComputerTestConfig.TestComputer;
-import baseball.domain.Computer;
-import baseball.domain.Player;
+import baseball.config.ComputerTestConfig.TestComputer;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;

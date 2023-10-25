@@ -1,4 +1,4 @@
-package baseball;
+package baseball.config;
 
 import baseball.domain.Computer;
 import baseball.utils.NumberGenerator;
