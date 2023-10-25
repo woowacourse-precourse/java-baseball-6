@@ -78,14 +78,14 @@ public class UserInputTest {
     @Test
     void 유저_재시작_입력_정상() {
         String userInputString = "1";
-        assertThat(userInputValidator.validateRestartOrExitInput(userInputString))
+        assertThat(userInputValidator.validateRestartInput(userInputString))
                 .isEqualTo(1);
     }
 
     @Test
     void 유저_재시작_입력_범위초과_오류() {
         String userInputString = "3";
-        assertThatThrownBy(() -> userInputValidator.validateRestartOrExitInput(userInputString))
+        assertThatThrownBy(() -> userInputValidator.validateRestartInput(userInputString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1 또는 2를 입력해주세요.");
     }
@@ -93,7 +93,7 @@ public class UserInputTest {
     @Test
     void 유저_게임종료_입력_정상() {
         String userInputString = "2";
-        assertThat(userInputValidator.validateRestartOrExitInput(userInputString))
+        assertThat(userInputValidator.validateRestartInput(userInputString))
                 .isEqualTo(2);
     }
 }
