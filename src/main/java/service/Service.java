@@ -23,7 +23,6 @@ public class Service {
             randomNumber = Randoms.pickNumberInRange(1, 9);
             numList.add(randomNumber);
         }
-        System.out.println(numList);
         return numList;
     }
 
