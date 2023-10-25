@@ -2,6 +2,8 @@ package baseball.view;
 
 public class SystemMessage {
 
+    public void startGreeting() {System.out.println("숫자 야구 게임을 시작합니다.");}
+
     public void printScoreMessage(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
