@@ -15,7 +15,6 @@ public class Modules {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-        return;
     }
 
     public List<String> dropDuplicateFromArray2List(String[] val_array) {
@@ -33,7 +32,6 @@ public class Modules {
                 random_list.add(random_num);
             }
         }
-
         return random_list;
     }
 }
