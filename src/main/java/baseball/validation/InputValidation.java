@@ -73,7 +73,7 @@ public class InputValidation {
      * @param input 유저의 입력값
      */
     public void validateOneOrTwo(int input) {
-        if (input != RESTART_NUM && input != EXIT_NUM) {
+        if (input < RESTART_NUM || input > EXIT_NUM) {
             throw new IllegalArgumentException(INPUT_RESTART_EXIT_EXCEPTION_MSG);
         }
     }
