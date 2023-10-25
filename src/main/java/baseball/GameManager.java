@@ -80,6 +80,8 @@ public class GameManager {
     private void setUpBeforeRestartGame() {
         user.lose();
         computer.generateRandomNumbers();
+        // 디버깅 용
+        printComputerGeneratedNumbers();
     }
 
     public void runGame() {
