@@ -18,6 +18,7 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
+        System.out.println(computer); // 추가
         return computer;
     }
 }
