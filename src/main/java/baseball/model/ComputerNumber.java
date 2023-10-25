@@ -14,6 +14,7 @@ public class ComputerNumber {
         }
     }
 
+    // 테스트용 생성자
     public ComputerNumber(String strComputer) {
         for (int i = 0; i < strComputer.length(); i++) {
             char c = strComputer.charAt(i);
