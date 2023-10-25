@@ -22,6 +22,7 @@ public class GameController {
 
         List<Integer> userGuess = guessUser();
         Result result = computer.getStrikesAndBalls(userGuess);
+        outputView.printResult(result);
     }
 
     private List<Integer> guessUser() {
