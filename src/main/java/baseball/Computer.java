@@ -8,8 +8,16 @@ public class Computer {
 
     private List<Integer> randomNumber;
 
-    public Computer() {
-        this.randomNumber = setRandomNumber();
+    private static Computer computer;
+
+    private Computer() {
+    }
+
+    public static Computer getInstance() {
+        if (computer == null) {
+            computer = new Computer();
+        }
+        return computer;
     }
 
     public List<Integer> getRandomNumber() {

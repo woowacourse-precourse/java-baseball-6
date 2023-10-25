@@ -5,7 +5,14 @@ import java.util.Arrays;
 
 public class BaseBallGame {
 
+    Computer computer = Computer.getInstance();
+    User user = User.getInstance();
+    Score score = Score.getInstance();
+
     private static BaseBallGame baseBallGame;
+
+    private BaseBallGame() {
+    }
 
     public static BaseBallGame getInstance() {
         if (baseBallGame == null) {

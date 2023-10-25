@@ -9,12 +9,24 @@ public class User {
     private List<Integer> inputNumber;
     private final String USER_NUM_REG_EX = "([1-9])(?!\\1)([1-9])(?!\\1|\\2)([1-9])";
 
-    public User() {
-        this.inputNumber = setUserNumberFromConsole();
+    private static User user;
+
+    private User() {
+    }
+
+    public static User getInstance() {
+        if (user == null) {
+            user = new User();
+        }
+        return user;
     }
 
     public List<Integer> getInputNumber() {
         return inputNumber;
+    }
+
+    public void setInputNumber(List<Integer> inputNumber) {
+        this.inputNumber = setUserNumberFromConsole();
     }
 
     private List<Integer> setUserNumberFromConsole() {

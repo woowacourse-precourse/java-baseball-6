@@ -5,6 +5,18 @@ public class Score {
     public int numOfBall = 0;
     public int numOfStrike = 0;
 
+    private static Score score;
+
+    private Score() {
+    }
+
+    public static Score getInstance() {
+        if (score == null) {
+            score = new Score();
+        }
+        return score;
+    }
+
     public Score(int numOfBall, int numOfStrike) {
         this.numOfBall = numOfBall;
         this.numOfStrike = numOfStrike;
