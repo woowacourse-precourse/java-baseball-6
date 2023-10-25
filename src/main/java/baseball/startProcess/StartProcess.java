@@ -15,6 +15,11 @@ public class StartProcess {
         inputComputerNumber(gameRole);
     }
 
+    public void resetGame(GameRole gameRole) {
+        computer = new ArrayList<>();
+        inputComputerNumber(gameRole);
+    }
+
     private void initVariable() {
         computer = new ArrayList<>();
     }
