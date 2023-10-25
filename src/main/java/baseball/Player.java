@@ -33,4 +33,8 @@ public class Player {
 
         return new Player(userInputNumbers);
     }
+
+    public List<Integer> getPlayerNumbers() {
+        return numbers;
+    }
 }
