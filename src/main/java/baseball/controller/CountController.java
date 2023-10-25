@@ -5,6 +5,10 @@ import baseball.model.InputNumber;
 import static baseball.controller.GameController.ANSWER_NUMBER;
 
 public class CountController {
+    private static final String BALL_MESSAGE = "볼 ";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String NOTHING_MESSAGE = "낫싱";
+
 
     public int getStrikeCount(InputNumber inputNumber) {
         int strikeCount = 0;
@@ -40,15 +44,15 @@ public class CountController {
         int strikeCount = getStrikeCount(inputNumber);
 
         if (ballCount != 0) {
-            output.append(getBallCount(inputNumber) + "볼 ");
+            output.append(getBallCount(inputNumber) + BALL_MESSAGE);
         }
 
         if (strikeCount != 0) {
-            output.append(getStrikeCount(inputNumber) + "스트라이크");
+            output.append(getStrikeCount(inputNumber) + STRIKE_MESSAGE);
         }
 
         if (output.isEmpty()) {
-            output.append("낫싱");
+            output.append(NOTHING_MESSAGE);
         }
         return output.toString();
     }

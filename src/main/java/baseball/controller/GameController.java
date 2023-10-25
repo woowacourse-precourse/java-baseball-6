@@ -7,6 +7,7 @@ import baseball.view.OutputView;
 
 public class GameController {
     static final int NUMBER_OF_DIGITS = 3;
+    private static final String QUIT_NUMBER = "2";
     static final AnswerNumber ANSWER_NUMBER = new AnswerNumber();
     private CountController countController = new CountController();
     private OutputView outputView = new OutputView();
@@ -47,7 +48,7 @@ public class GameController {
     }
 
     public boolean isQuit(InputNumber inputNumber) {
-        if (inputNumber.getQuitNumber().equals("2")) {
+        if (inputNumber.getQuitNumber().equals(QUIT_NUMBER)) {
             return true;
         }
         return false;
