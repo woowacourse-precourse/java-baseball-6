@@ -43,6 +43,8 @@
 - Confirm 기능을 Confirm클래스 내부에 작성
   - accordNumber 메소드 추가 (일치 숫자 갯수 반환(볼))
   - checkPositionMatch 메소드 추가 (자리 일치 갯수 반환)
+  - referee 메소드 추가 (결과 문자열 반환)
+- Confirm 클래스 완성
 - 비슷한 Confirm기능을 담당한 클래스들 삭제 
   
     
