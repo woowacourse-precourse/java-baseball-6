@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  **********************************************************************************************************************/
 public class ArrayConverterUtil {
 
-    public static List<Integer> converIntArrayToList(int[] numbers){
+    public static List<Integer> converIntArrayToList(int[] numbers) {
         return Arrays.stream(numbers).boxed().collect(Collectors.toList());
     }
 }

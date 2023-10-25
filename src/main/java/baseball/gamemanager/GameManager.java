@@ -62,18 +62,6 @@ public class GameManager {
         randomNumber = randomNumberGenerator.generateNumber();
     }
 
-    private boolean isAllowedRandomNumber(int[] randomNumber) {
-        try {
-            duplicateNumberValidator.validate(randomNumber);
-            numberContainZeroValidator.validate(randomNumber);
-            numberRangeValidator.validate(randomNumber);
-
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
     public void requestUserInput() {
         userInputNumber = userNumberInputReader.readInput();
 

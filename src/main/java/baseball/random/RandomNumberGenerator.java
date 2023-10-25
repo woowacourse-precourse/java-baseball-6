@@ -4,11 +4,9 @@ import baseball.property.BaseballGameProperty;
 import baseball.util.ArrayConverterUtil;
 import baseball.validation.NumberRangeValidator;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * @author 민경수
@@ -28,7 +26,7 @@ public class RandomNumberGenerator extends NumberRangeValidator implements Numbe
     public int[] generateNumber() {
         randomNumbers = generateRandomNumbers();
 
-        while(!isAllowedNumber(randomNumbers)) {
+        while (!isAllowedNumber(randomNumbers)) {
             randomNumbers = generateRandomNumbers();
         }
 
