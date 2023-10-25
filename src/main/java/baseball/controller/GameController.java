@@ -1,7 +1,7 @@
 package baseball.controller;
 
-import baseball.entity.Computer;
-import baseball.entity.GameLogic;
+import baseball.model.Computer;
+import baseball.model.GameLogic;
 import baseball.view.GameIO;
 import java.util.List;
 import java.util.Map;

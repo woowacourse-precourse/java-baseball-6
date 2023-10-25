@@ -2,7 +2,7 @@ package baseball;
 
 
 import baseball.controller.GameController;
-import baseball.entity.GameLogic;
+import baseball.model.GameLogic;
 import baseball.view.GameIO;
 
 public class Application {

@@ -1,4 +1,4 @@
-package baseball.entity;
+package baseball.model;
 
 import org.junit.jupiter.api.Test;
 
