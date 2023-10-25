@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.BaseballGameConstant.GAME_BALL_STRING;
 import static baseball.BaseballGameConstant.GAME_ENDED_MESSAGE;
+import static baseball.BaseballGameConstant.GAME_INPUT_USER_NUMBER_MESSAGE;
 import static baseball.BaseballGameConstant.GAME_NOTHING_STRING;
 import static baseball.BaseballGameConstant.GAME_RESTART_MESSAGE;
 import static baseball.BaseballGameConstant.GAME_START_MESSAGE;
@@ -28,7 +29,11 @@ public class BaseballGame {
             answer = getRandomNumbers();
 
             while (!isGameEnded) {
-                attempt = getUserNumbers();
+                System.out.print(GAME_INPUT_USER_NUMBER_MESSAGE);
+                String userInputNumber = Console.readLine();
+
+                attempt = convertStringToIntegerList(userInputNumber);
+                verifyInput(attempt);
 
                 ArrayList<Byte> ballAndStrike = countBallAndStrike(attempt);
                 printHint(ballAndStrike);
@@ -54,15 +59,30 @@ public class BaseballGame {
         return numbers;
     }
 
-    private List<Integer> getUserNumbers() {
+    private List<Integer> convertStringToIntegerList(String stringNumber) {
         List<Integer> numbers = new ArrayList<>();
 
-        String userInputNumber = Console.readLine();
-        for (int i = 0; i < userInputNumber.length(); i++) {
-            numbers.add(Character.getNumericValue(userInputNumber.charAt(i)));
+        for (char num : stringNumber.toCharArray()) {
+            numbers.add(Character.getNumericValue(num));
         }
 
         return numbers;
+    }
+
+    private void verifyInput(List<Integer> numbers) {
+        if (numbers.size() > NUMBER_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+
+        if (numbers.size() != numbers.stream().distinct().toList().size()) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int num : numbers) {
+            if (num <= 0 || num > 9) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     private void printHint(List<Byte> hint) {
