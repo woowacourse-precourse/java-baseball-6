@@ -27,9 +27,9 @@ public class Computer {
     }
 
     // 사용자 입력에 따라 힌트를 반환
-    public Hint giveHint(String playerGuess) {
-         int ballCnt = utils.checkBallCnt(this.answerNumber, playerGuess);
-         int strikeCnt = utils.checkStrikeCnt(this.answerNumber, playerGuess);
+    public Hint giveHint(String playerInput) {
+         int ballCnt = utils.checkBallCnt(this.answerNumber, playerInput);
+         int strikeCnt = utils.checkStrikeCnt(this.answerNumber, playerInput);
 
          return new Hint(ballCnt, strikeCnt);
     }
