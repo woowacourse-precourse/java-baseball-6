@@ -15,7 +15,7 @@ public class Guess {
     private final String guess;
 
     public Guess() {
-        String input = Console.readLine();
+        String input = generatePrompt();
         validateNumberInput(input);
 
         guess = input;
@@ -23,6 +23,10 @@ public class Guess {
 
     public String getGuess() {
         return guess;
+    }
+
+    private String generatePrompt() {
+        return Console.readLine();
     }
 
     private void validateNumberInput(String input) {

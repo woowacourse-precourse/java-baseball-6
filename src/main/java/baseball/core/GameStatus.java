@@ -10,14 +10,18 @@ public class GameStatus {
     private final String gameStatus;
 
     public GameStatus() {
-        String gameStatusInput = Console.readLine();
-        validateGameStatusInput(gameStatusInput);
+        String input = generatePrompt();
+        validateGameStatusInput(input);
 
-        gameStatus = gameStatusInput;
+        gameStatus = input;
     }
 
     public String getGameStatus() {
         return gameStatus;
+    }
+
+    private String generatePrompt() {
+        return Console.readLine();
     }
 
     private void validateGameStatusInput(String gameStatusInput) {
