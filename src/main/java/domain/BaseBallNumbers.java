@@ -51,8 +51,21 @@ public class BaseBallNumbers {
                 containsNumber(randomBaseBall));
     }
 
+    // containsNumber: 랜덤 넘버 안에 내가 원하는 공이 포함되어 있는지 확인
     private boolean containsNumber(BaseBall randomBaseBall) {
         return playerBaseBallNumbers.stream()
                 .anyMatch(baseBall -> baseBall.equals(randomBaseBall));
+    }
+
+    public int calculateStrikeCount(List<BaseBall> randomNumbers) {
+        return (int) IntStream.range(0, BASEBALL_LENGTH)
+                .filter(index -> isStrike(index, randomNumbers))
+                .count();
+    }
+
+    private boolean isStrike(int targetIndex, List<BaseBall> randomNumbers) {
+        BaseBall randomBaseBall = randomNumbers.get(targetIndex);
+        BaseBall playerBaseBall = playerBaseBallNumbers.get(targetIndex);
+        return randomBaseBall.equals(playerBaseBall);
     }
 }

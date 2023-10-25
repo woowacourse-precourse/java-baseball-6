@@ -25,7 +25,9 @@ public class BaseBallGameController {
         while (strikeCnt != THREE_STRIKE) {
             BaseBallNumbers baseBallNumbers = new BaseBallNumbers(inputView.getRequirePlayerBaseballNumbers());
             ballCnt = baseBallNumbers.calculateBallCount(randomNumbers.getRandomNumbers());
+            strikeCnt = baseBallNumbers.calculateStrikeCount(randomNumbers.getRandomNumbers());
             System.out.println("ballCnt = " + ballCnt);
+            System.out.println("strikeCnt = " + strikeCnt);
         }
     }
 
