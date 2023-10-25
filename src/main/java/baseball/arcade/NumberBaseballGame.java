@@ -32,6 +32,8 @@ public class NumberBaseballGame {
                 askForGameRestart();
             }
         } while (!isGameEnd);
+
+        Console.close();
     }
 
     private void playGame() {
