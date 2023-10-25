@@ -1,6 +1,6 @@
 package baseball.model.ball;
 
-import baseball.model.SwingResult;
+import baseball.model.Hint;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,12 +24,12 @@ public class Balls {
             .orElse(BallStatus.NOTHING);
     }
 
-    public SwingResult match(Balls givenBalls) {
-        SwingResult swingResult = new SwingResult();
+    public Hint match(Balls givenBalls) {
+        Hint hint = new Hint();
         for (Ball item : givenBalls.balls) {
-            swingResult.report(this.match(item));
+            hint.report(this.match(item));
         }
-        return swingResult;
+        return hint;
     }
 
     @Override

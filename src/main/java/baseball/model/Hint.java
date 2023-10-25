@@ -2,7 +2,7 @@ package baseball.model;
 
 import baseball.model.ball.BallStatus;
 
-public class SwingResult {
+public class Hint {
 
     int strikeCount = 0;
     int ballCount = 0;
@@ -31,7 +31,7 @@ public class SwingResult {
         return strikeCount == 3;
     }
 
-    public String getResultMessage() {
+    public String getHintMessage() {
         if (strikeCount == 0 && ballCount == 0) {
             return "낫싱";
         }

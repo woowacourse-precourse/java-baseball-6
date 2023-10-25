@@ -1,12 +1,12 @@
 package baseball.controller;
 
-import baseball.model.SwingResult;
+import baseball.model.Hint;
 import baseball.view.OutputView;
 
 public class OutputController {
 
-    public void displayHint(SwingResult result) {
-        OutputView.showHint(result.getResultMessage());
+    public void displayHint(Hint hint) {
+        OutputView.showHint(hint.getHintMessage());
     }
 
     public void showIntroMessage() {
