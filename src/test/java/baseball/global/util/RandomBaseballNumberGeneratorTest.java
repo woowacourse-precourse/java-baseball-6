@@ -1,9 +1,12 @@
 package baseball.global.util;
 
+import baseball.domain.BaseballNumber;
+import baseball.domain.RandomBaseballNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,9 +17,19 @@ class RandomBaseballNumberGeneratorTest {
     @ParameterizedTest
     @ValueSource(ints = {2,3,4})
     void generateRandomBaseballNumberTest(int size){
-        List<Integer> randomBaseballNumbers = RandomBaseballNumberGenerator.generateRandomBaseballNumbers(size);
-        assertTrue(randomBaseballNumbers.stream()
+        BaseballNumber randomBaseballNumbers = RandomBaseballNumberGenerator.generateRandomBaseballNumber(size);
+        List<Integer> unWrappedBaseballNumber = unWrapBaseballNumber(randomBaseballNumbers);
+        assertTrue(unWrappedBaseballNumber.stream()
                 .distinct()
-                .count() == randomBaseballNumbers.size());
+                .count() == unWrappedBaseballNumber.size());
+    }
+
+    private List<Integer> unWrapBaseballNumber(BaseballNumber baseballNumber){
+        int size = baseballNumber.getSize();
+        List<Integer> unWrappedBaseballNumber = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            unWrappedBaseballNumber.add(baseballNumber.getSize());
+        }
+        return unWrappedBaseballNumber;
     }
 }
