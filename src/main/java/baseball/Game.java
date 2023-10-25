@@ -41,6 +41,7 @@ public class Game {
         String flag = readLine();
         if (flag.equals(IS_CONTINUE_FLAG)) {
             startGame();
+            return;
         }
         endGame();
     }
