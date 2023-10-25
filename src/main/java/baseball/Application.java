@@ -12,7 +12,8 @@ public class Application {
     static List<Integer> randomNum;
 
     public static void main(String[] args) {
-        startGame();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        randomNumber();
         String userNum = "";
         int[] user = new int[10];
         while (true) {
@@ -24,7 +25,7 @@ public class Application {
 
             int strikeCount = strike(userNum, user, randomNum);
             int ballCount = ball(user, randomNum);
-            
+
             printCount(strikeCount, ballCount);
             if (strikeCount == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -33,16 +34,11 @@ public class Application {
                 if (Integer.parseInt(userNum) == 2) {
                     return;
                 }
-                startGame();
+                randomNumber();
             }
 
         }
 
-    }
-
-    private static void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        randomNumber();
     }
 
     private static void randomNumber() {
