@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static baseball.constant.GameMessage.INPUT_ERROR_MESSAGE;
+import static baseball.constant.GameMessage.INPUT_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Player {
 
     // 사용자로부터 서로 다른 3개의 수를 입력받음
     public void inputNumbers() throws IllegalArgumentException {
+        System.out.println(INPUT_MESSAGE);
         String input = Console.readLine();
 
         // 1. 입력된 문자열이 정확히 3자리인지 확인

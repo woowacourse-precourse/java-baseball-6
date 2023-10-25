@@ -17,8 +17,6 @@ public class BaseballGame {
     public BaseballGame() {
         this.computer = new Computer();
         this.player = new Player();
-        this.ballCount = 0;
-        this.strikeCount = 0;
     }
 
     public void start() {
@@ -39,6 +37,9 @@ public class BaseballGame {
 
     // 플레이어가 입력한 수와 컴퓨터가 선택한 수를 비교하여 스트라이크 / 볼 판정
     public void compareNumbers() {
+        ballCount = 0;
+        strikeCount = 0;
+
         for (int i = 0; i < NUMBER_SIZE; i++) {
             int computerNumber = computer.getNumberOf(i);
             int playerNumber = player.getNumberOf(i);
