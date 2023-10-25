@@ -52,7 +52,8 @@ public class GameController {
 
             if ("2".equals(userInput)) {
                 break;
-            } else if (!"1".equals(userInput)) {
+            }
+            if (!"1".equals(userInput)) {
                 break;
             }
         }
