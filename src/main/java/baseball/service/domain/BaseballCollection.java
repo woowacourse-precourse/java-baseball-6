@@ -33,12 +33,10 @@ public class BaseballCollection {
         return new BaseballCollection(playerInput);
     }
 
-    // 기능: 사용자의 공을 입력 받고 생성한다
     private List<Integer> createPlayerBalls(String numbers) {
         return createValidBaseballs(numbers);
     }
 
-    // 기능: 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택
     private List<Integer> createComputerBalls(NumberGenerator numberGenerator) {
         String numbers = createUniqueNumbers(numberGenerator);
         return createValidBaseballs(numbers);
@@ -106,7 +104,6 @@ public class BaseballCollection {
                 .count();
     }
 
-    // 기능: 같은 수가 다른 자리에 있는 볼의 개수 세기
     public int calculateBallCount(BaseballCollection playerBalls) {
         return (int) IntStream.range(0, DEFAULT_CAPACITY)
                 .filter(index -> isBall(this.baseball.get(index), playerBalls.baseball.get(index)))

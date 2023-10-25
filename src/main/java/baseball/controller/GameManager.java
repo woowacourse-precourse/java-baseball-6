@@ -18,7 +18,6 @@ public class GameManager {
         this.input = input;
     }
 
-    // 기능: 게임을 최초로 시작한다
     public void initialGameStart() {
         Output.printInitialGameStartMessage();
         boolean gameTotallyEnd = false;
@@ -28,7 +27,6 @@ public class GameManager {
         }
     }
 
-    // 기능: 게임 순서에 맞게 게임을 진행한다
     private void progressGame() {
         BaseballCollection computerBalls = BaseballCollection.ofComputerBaseball(new RandomNumberGenerator());
         boolean gameEnd = false;
@@ -47,11 +45,10 @@ public class GameManager {
         return gameResult;
     }
 
-    // 기능: 게임 종료 후, 게임 재시작 여부
     private boolean isNoMoreGame() {
         Output.printRestartGameMessage();
         String restartCommand = input.readLine();
         validator.validateRestartCommandInput(restartCommand);
-        return restartCommand.equals("2");
+        return restartCommand.equals("2");  // TODO: 여기서 "2"로 직접 확인하는게 거슬림. 1은 재시작, 2는 종료를 관리하는 객체가 있으면 좋지않을까..
     }
 }

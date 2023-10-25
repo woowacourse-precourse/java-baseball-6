@@ -40,7 +40,6 @@ public class GameResult {
         return false;
     }
 
-    // 기능: 힌트가 3스트라이크면 게임 종료
     public boolean isGameEnd() {
         return hint.equals("3스트라이크");
     }
@@ -49,5 +48,3 @@ public class GameResult {
         return hint;
     }
 }
-
-
