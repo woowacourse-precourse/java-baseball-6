@@ -45,7 +45,7 @@ public class BaseballGame {
     }
 
     public boolean isGameContinue() {
-        if(computer.getIsThreeStrike()) {
+        if (computer.getIsThreeStrike()) {
             OutputView.endMessage();
             return false;
         }
