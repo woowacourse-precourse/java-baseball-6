@@ -9,7 +9,7 @@ public class Printer {
     }
 
     public void printEnd() {
-        System.out.println(Message.END.getMessage());
+        System.out.print(Message.END.getMessage());
     }
 
     // 숫자 입력
@@ -22,7 +22,7 @@ public class Printer {
 
     // 결과 출력
     public void printResult(Store store) {
-        if (store.result.isEmpty()) System.out.println(Message.NOTHING.getMessage());
+        if (store.result.isEmpty()) System.out.print(Message.NOTHING.getMessage());
         else {
             for (String key : store.result.keySet().stream().sorted().toList()) System.out.print(store.result.get(key) + key + " ");
         }
