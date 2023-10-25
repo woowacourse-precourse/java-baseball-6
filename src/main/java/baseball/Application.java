@@ -15,16 +15,16 @@ public class Application {
         rootGame :
         while (true) {
 
-            List<Integer> answerNumberList = getAnswerNumberList();
+            List<Integer> answerNumberList = makeAnswerNumberList();
 
             currentGame :
             while (true) {
                 System.out.print("숫자를 입력해 주세요 : ");
                 String inputNumberStr = Console.readLine();
 
-                List<Integer> inputNumberList = assertValidNumber(inputNumberStr);
+                List<Integer> inputNumberList = verifyValidNumber(inputNumberStr);
 
-                StrikeBallCount strikeBallCount = getStrikeBallCount(inputNumberList, answerNumberList);
+                StrikeBallCount strikeBallCount = countStrikeAndBall(inputNumberList, answerNumberList);
 
                 if (checkAnswer(strikeBallCount.strike(), strikeBallCount.ball())) {
                     while (true) {
@@ -38,11 +38,8 @@ public class Application {
                         System.out.println("1혹은 2를 입력해 주세요.");
                     }
                 }
-
             }
-
         }
-
     }
 
 
@@ -52,7 +49,7 @@ public class Application {
      *
      * @return 서로 다른 3자리 숫자를 가진 리스트
      */
-    private static List<Integer> getAnswerNumberList() {
+    private static List<Integer> makeAnswerNumberList() {
         List<Integer> answerNumberList = new ArrayList<>();
         while (answerNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -75,7 +72,7 @@ public class Application {
      * @param inputNumberStr 사용자 입력 값
      * @return 사용자 입력 값으로 만든 서로 다른 3자리 숫자를 가진 리스트
      */
-    private static List<Integer> assertValidNumber(String inputNumberStr) {
+    private static List<Integer> verifyValidNumber(String inputNumberStr) {
 
         // 1) 3자리가 맞는지 확인
         if (inputNumberStr.length() != 3) {
@@ -115,7 +112,7 @@ public class Application {
      * @param answerNumberList 정답 숫자 리스트
      * @return StrikeBallCount(strike, ball) strike, ball 갯수
      */
-    private static StrikeBallCount getStrikeBallCount(List<Integer> inputNumberList, List<Integer> answerNumberList) {
+    private static StrikeBallCount countStrikeAndBall(List<Integer> inputNumberList, List<Integer> answerNumberList) {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i< inputNumberList.size(); i++) {
