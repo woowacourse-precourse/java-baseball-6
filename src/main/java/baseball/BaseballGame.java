@@ -61,31 +61,32 @@ public class BaseballGame {
 
         if (strike == 3) {
             ending();
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if (target.get(i).equals(userNum.get(j))) {
-                        if (i != j) {
-                            ball++;
-                        }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (target.get(i).equals(userNum.get(j))) {
+                    if (i != j) {
+                        ball++;
                     }
                 }
             }
-            if (strike == 0 && ball == 0) {
-                message = "낫싱";
-            } else {
-                if (strike == 0) {
-                    message = ball + "볼";
-                } else if (ball == 0) {
-                    message = strike + "스트라이크";
-                } else {
-                    message = ball + "볼 " + strike + "스트라이크";
-                }
-            }
-
-            System.out.println(message);
-            System.out.print("숫자를 입력해주세요 : ");
-            String userInput = readLine();
-            play(reTarget, userInput);
         }
+        if (strike == 0 && ball == 0) {
+            message = "낫싱";
+        } else {
+            if (strike == 0) {
+                message = ball + "볼";
+            } else if (ball == 0) {
+                message = strike + "스트라이크";
+            } else {
+                message = ball + "볼 " + strike + "스트라이크";
+            }
+        }
+        strike = 0;
+        System.out.println(message);
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = readLine();
+        play(reTarget, userInput);
     }
+
 }
