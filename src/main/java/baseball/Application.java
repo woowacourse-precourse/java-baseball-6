@@ -24,6 +24,7 @@ public class Application {
                 compareAnswer(randomAnswer, userGuessSet); // 정답 확인 로직 실행...
                 printResult(); // 분석 결과 출력...
             }
+            // [게임 종료]
             gameContinue();
         }
     }
@@ -48,7 +49,7 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
-    public static void compareAnswer(List<Integer> randomAnswer, Set<Integer> userGuessSet) {
+    private static void compareAnswer(List<Integer> randomAnswer, Set<Integer> userGuessSet) {
         ball = 0; strike = 0;
         ArrayList<Integer> userGuessArr = new ArrayList<>(userGuessSet);
         for(int i = 0; i < userGuessArr.size(); i++){
@@ -63,7 +64,7 @@ public class Application {
         }
     }
 
-    public static void printResult() {
+    private static void printResult() {
         if(ball!=0){
             System.out.print(ball+"볼 ");
         }
@@ -80,11 +81,11 @@ public class Application {
         }
     }
 
-    public static boolean formatCheck(Set<Integer> set){
+    private static boolean formatCheck(Set<Integer> set){
         return set.size()==3 ? true : turnOff();
     }
 
-    public static Set<Integer> readUserGuess() {
+    private static Set<Integer> readUserGuess() {
         System.out.print("숫자를 입력해주세요 : ");
         String userGuessStr = Console.readLine();
         // 형식 확인
@@ -105,7 +106,7 @@ public class Application {
         return userGuessSet;
     }
 
-    public static List<Integer> generateRandomAnswer() {
+    private static List<Integer> generateRandomAnswer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
