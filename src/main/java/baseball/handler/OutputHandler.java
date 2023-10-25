@@ -12,4 +12,8 @@ public class OutputHandler {
     System.out.println(Constants.GAME_END_MESSAGE);
     System.out.println(Constants.GAME_RESTART_OR_END_MESSAGE);
   }
+
+  public static void printNumberInputMessage() {
+    System.out.print(Constants.NUMBER_INPUT_MESSAGE);
+  }
 }
