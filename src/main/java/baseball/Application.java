@@ -8,11 +8,11 @@ import java.util.List;
 public class Application {
     public static class NumberBaseballGame {
         List<Integer> computerNumbers = new ArrayList<>();
-
         public NumberBaseballGame() {
             generateComputerNumbers();
         }
 
+        // player가 맞춰야 할 숫자 생성
         private void generateComputerNumbers() {
             while (computerNumbers.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -22,15 +22,6 @@ public class Application {
                     computerNumbers.add(randomNumber);
                 }
             }
-        }
-
-        private boolean contains(int[] array, int number) {
-            for (int value : array) {
-                if (value == number) {
-                    return true;
-                }
-            }
-            return false;
         }
 
         public void playGame() {
@@ -48,7 +39,6 @@ public class Application {
 
 
                 int[] countCorrects = calculateResult(computerNumbers, playerNum);
-                //System.out.println(Arrays.toString(countCorrects));
 
                 if (countCorrects[1] == 3) {
                     System.out.println("축하합니다! 정답을 맞췄습니다.");
@@ -80,9 +70,9 @@ public class Application {
             return true;
         }
 
+        // 볼,스트라이크, 낫싱 등 결과값을 계산하고 출력
         public int[] calculateResult(List<Integer> computerNumbers, List<Integer> playerNumbers) {
             int correct = 0;
-            System.out.println(computerNumbers);
             for(int i = 0; i < playerNumbers.size(); i++){
                 if(computerNumbers.contains(playerNumbers.get(i))){
                     correct += 1;
