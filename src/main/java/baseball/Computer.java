@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final String NOTHING = "낫싱";
-    private final String BALL = "볼";
-    private final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
     private final List<Integer> computerNumber = new ArrayList<>();
 
     public Computer() {
