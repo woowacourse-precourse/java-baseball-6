@@ -1,7 +1,9 @@
 package baseball.controller;
 
+import baseball.model.UserAnswer;
 import baseball.utils.GameAnswerManager;
 
+import static baseball.view.GameInputView.inputUserAnswers;
 import static baseball.view.GameOutputView.printGameStartMessage;
 
 public class GameController {
@@ -15,5 +17,6 @@ public class GameController {
     public void start() {
         printGameStartMessage();
         gameAnswerManager.setAnswer();
+        UserAnswer userAnswer = new UserAnswer(inputUserAnswers());
     }
 }
