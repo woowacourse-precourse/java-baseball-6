@@ -1,8 +1,8 @@
 package baseball.number;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RandomNumbers {
@@ -12,10 +12,10 @@ public class RandomNumbers {
 
     private static List<BaseBallNumber> randomNumbers;
 
-    public RandomNumbers(){
+    public RandomNumbers() {
         this.randomNumbers = extractRandomNumbers();
-
     }
+
     private List<BaseBallNumber> extractRandomNumbers() {
         List<BaseBallNumber> randomNumbers = new ArrayList<>();
 
@@ -28,6 +28,7 @@ public class RandomNumbers {
         return randomNumbers;
     }
 
-
-
+    public List<BaseBallNumber> randomNumbers() {
+        return Collections.unmodifiableList(randomNumbers);
+    }
 }
