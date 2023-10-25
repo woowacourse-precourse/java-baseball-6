@@ -14,6 +14,17 @@ public class Referee {
         return instance;
     }
 
+    public void initialization() {
+        strike = INIT_VALUE;
+        ball = INIT_VALUE;
+    }
+
+    public void playGame(Player user, Player computer) {
+        initialization();
+        calculateStrikeCount(user.getNumbers(), computer.getNumbers());
+        calculateBallCount(user.getNumbers(), computer.getNumbers());
+    }
+
     public void calculateStrikeCount(List<Integer> user, List<Integer> computer) {
         for (int i = 0; i < NUMBERS_SIZE; i++) {
             if (user.get(i) == computer.get(i)) {
