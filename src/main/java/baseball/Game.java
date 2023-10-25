@@ -20,7 +20,7 @@ public class Game {
         Computer computer = new Computer();
         Player player = new Player();
 
-        List<Integer> answer = computer.makeAnswer();
+        List<Integer> answer = computer.Computer();
         List<Integer> user = player.input();
         while(true){
             BallCount ballCount = computer.calBallCount(answer, user);
