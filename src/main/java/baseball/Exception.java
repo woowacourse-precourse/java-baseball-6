@@ -15,13 +15,22 @@ public class Exception {
      * 모든 예외처리 과정을 거치는 메소드.
      * 예외가 발생하지 않았다면 문자열을 int list로 반환해줌
      */
-    public List<Integer> isValid(String number) {
+    public List<Integer> isNumberValid(String number) {
         inRange(number);
         numberList = convertStringToIntList(number);
         checkDuplicate(numberList);
         checkCount(numberList);
 
         return numberList;
+    }
+
+    /**
+     * 종료 입력 예외처리 메소드
+     */
+    public void isEndValid(String number) {
+        if (!number.matches("[12]")) {
+            throw new IllegalArgumentException("[ERROR] 1(재시작) 또는 2(종료)를 입력해 주세요.");
+        }
     }
 
     /*
