@@ -81,7 +81,7 @@ class Game {
         for (int i = 0; i < Game.NUMBER_COUNT; i++) {
             number[i] = Integer.parseInt(str.charAt(i) + "");
         }
-    }
+    }  
 
     private int getRandomNumber() {
         return pickNumberInRange(Game.START_RANGE, Game.END_RANGE);
