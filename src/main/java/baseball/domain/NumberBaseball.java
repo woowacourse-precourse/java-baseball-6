@@ -33,12 +33,7 @@ public class NumberBaseball {
     }
 
     public static NumberBaseball createRandomBaseball() { //정적 팩터리 메서드
-        List<Integer> computerList = new ArrayList<>();
-
-        while (computerList.size() < NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(GameConstants.MIN_DIGIT, GameConstants.MAX_DIGIT);
-            IntegerListUtil.addIfNotContained(computerList, randomNumber);
-        }
+        List<Integer> computerList = IntegerListUtil.generateRandomList();
         return createBaseball(computerList);
     }
 
