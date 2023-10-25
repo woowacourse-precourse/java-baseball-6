@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Game {
 
-    // Change of plan in docs/README.md
     private static final int NUMBER_SIZE = 3;
 
     private List<Integer> target;
@@ -39,7 +38,6 @@ public class Game {
         return compareUserInput(userInput);
     }
 
-    // Change of plan in docs/README.md
     private int[] parseUserInput(String input) throws IllegalArgumentException {
         if (input == null || input.length() != 3) {
             throw new IllegalArgumentException("User didn't give 3 digits");
@@ -55,7 +53,6 @@ public class Game {
         return userInput;
     }
 
-    // Change of plan in docs/README.md
     private int[] compareUserInput(int[] userInput) {
         int[] result = new int[]{0, 0};
         for (int i = 0; i < NUMBER_SIZE; i++) {

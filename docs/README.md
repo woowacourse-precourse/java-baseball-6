@@ -15,24 +15,24 @@
 #### run()
     public void run() throws IllegalArgumentException
 - Initialize the game if not initialized.
-- Repeat these steps until the run returns or IllegalArgumentException is thrown.
+- Repeat these steps until this method returns or IllegalArgumentException is thrown.
   - Call promptForRound
   - Call playRound method on the game.
-  - Print out result in the format specified in 우테코 미션.
+  - Call showRoundResult
   - Call isWin method on the game.
-    - If the result is true, call promptForNewGame.
-        - TODO: 보통 우테코 미션에서, depth를 제한하는 것 같은데, 이번 미션엔 그런 말이 없네.. 제한 하지 않는 걸까?
+    - If the result is true, print out the result and call promptForNewGame.
         - If the result is 1, call setNewGame method on the game.
         - If the result is 2, return.
+#### showRoundResult()
+    private void showRoundResult(int[] result)
+- Print out the result of a round as the mission specified.
 #### promptForRound()
     private String promptForRound() throws IllegalArgumentException
-- Prompt user(print out querying String)
+- Prompt user to give user input for game. i.e. integer consists of 3 distinct digits without 0.
 - Call readLine() of camp.nextstep.edu.missionutils.Console to get user input.
-- Check user input and throw IllegalArgumentException if it is not valid.
-  - valid: String consists of three distinct digits. For example, "123" is valid and "1", "A23", "112" are not.
 #### promptForNewGame()
     private boolean promptForNewGame() throws IllegalArgumentException
-- Prompt user(print out querying String)
+- Prompt user to give "1" or "2" to decide whether continue game or not.
 - Call readLine() of camp.nextstep.edu.missionutils.Console to get user input.
 - Check user input and throw IllegalArgumentException if it is not valid.
   - valid: "1" or "2"
@@ -40,15 +40,18 @@
 ### Game
 
 #### Rules
-- target: an integer in range of 100 to 999 (including), three digits should be distinct.
+- target: an integer of 3 distinct non-zero digits.
 - strike: counts of positions at which the target and user input is the same.
 - ball: counts of digits in user input which are also in the target but at different position.
 #### Rounds
 - round: a single round consists of getting input value, comparing it with the target, and returning strike and ball count.
 
+#### NUMBER_SIZE
+    private static final int NUMBER_SIZE = 3;
+
 #### target
     private List<Integer> target
-- Elements of the target should be distinct.
+- Elements of the target should be distinct and non-zero. the
 
 #### Game()
     public Game()
@@ -63,9 +66,20 @@
 #### playRound()
     public int[] playRound(String input) throws IllegalArgumentException
 - The input parameter is String type to encapsulate the target and its related logic.
-- If the input doesn't adhere to the Rules, throw IllegalArgumentException.
-- Compare the target and the input according to Rules.
 - Return array is two elemented array. The first is the number of strikes and the second is the number of balls.
+#### parseUserInput()
+    private int[] parseUserInput(String input) throws IllegalArgumentException
+- If the input doesn't adhere to the definition of the target in the Rules, throw IllegalArgumentException.
+- Parse user input to array of int according to the definition of the target in the Rules.
+- Return is array of int with size of NUMBER_SIZE.
+#### compareUserInput()
+    private int[] compareUserInput(int[] userInput)
+- Compare the target and the input according to Rules.
+- Return is array of int with size of two.
+  - The first int is the number of strikes and the second is of balls.
 #### isWin()
-    public boolean isWin(int[] result) throws IllegalArgumentException
+    public boolean isWin(int[] result)
 - Determine whether the result is considered as win in the Rules.
+#### getNumberSize()
+    public int getNumberSize()
+- Return NUMBER_SIZE.

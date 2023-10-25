@@ -25,7 +25,6 @@ public class UserSession {
         }
     }
 
-    // Change of plan from docs/README.md
     private void showRoundResult(int[] result) {
         if (result[0] == 0 && result[1] == 0) {
             System.out.println("낫싱");
@@ -51,7 +50,6 @@ public class UserSession {
         }
     }
 
-    // Change of plan in docs/README.md
     private String promptForRound() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
