@@ -36,6 +36,10 @@ public class Game {
         }
     }
 
+    public String getHint() {
+        return this.ball + "볼 " + this.strike + "스트라이크";
+    }
+
     public void setUserInput(String userInput) {
         this.userInput = userInput;
         this.ball = 0;
