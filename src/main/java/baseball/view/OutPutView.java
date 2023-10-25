@@ -11,43 +11,47 @@ public class OutPutView {
     private static final String STRIKE = "스트라이크";
 
     public static void displayGameStartMessage() {
-        displayMessage(GAME_START_MESSAGE);
+        printlnMessage(GAME_START_MESSAGE);
     }
 
     public static void displayInputNumberMessage() {
-        displayMessage(INPUT_NUMBER_MESSAGE);
+        printMessage(INPUT_NUMBER_MESSAGE);
     }
 
     public static void displayRestartOrExitMessage() {
-        displayMessage(RESTART_OR_END_MESSAGE);
+        printlnMessage(RESTART_OR_END_MESSAGE);
     }
 
     public static void displayGameSetMessage() {
-        displayMessage(GAME_SET_MESSAGE);
+        printlnMessage(GAME_SET_MESSAGE);
     }
 
     public static void displayNothingMatch(int strike, int ball) {
         if (strike == 0 && ball == 0) {
-            displayMessage(NOTHING_MATCH);
+            printlnMessage(NOTHING_MATCH);
         }
     }
 
     public static void displayBall(int strike, int ball) {
         if (strike == 0 && ball != 0) {
-            displayMessage(ball + ONLY_BALL);
+            printlnMessage(ball + ONLY_BALL);
         }
         if (strike != 0 && ball != 0) {
-            displayMessage(ball + BALL);
+            printMessage(ball + BALL);
         }
     }
 
     public static void displayStrike(int strike) {
         if (strike != 0) {
-            displayMessage(strike + STRIKE);
+            printlnMessage(strike + STRIKE);
         }
     }
 
-    private static void displayMessage(String message) {
+    private static void printMessage(String message) {
+        System.out.print(message);
+    }
+
+    private static void printlnMessage(String message) {
         System.out.println(message);
     }
 }
