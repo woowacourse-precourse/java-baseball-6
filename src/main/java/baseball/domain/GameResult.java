@@ -43,6 +43,10 @@ public class GameResult {
             return NOTHING;
         }
 
+        return makeResultMessage();
+    }
+
+    private String makeResultMessage() {
         StringBuilder builder = new StringBuilder();
         if (ballCount != 0) {
             builder.append(ballCount).append(BALL);
