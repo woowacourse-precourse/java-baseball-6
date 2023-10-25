@@ -1,7 +1,6 @@
 package mytest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -82,12 +81,22 @@ public class ModelTest {
         assertEquals("수를 중복되지 않게 입력해주세요.", exception.getMessage());
     }
 
-    @DisplayName("재시작 및 종료의 입력이 유효한지 확인")
+    @DisplayName("재시작 및 종료의 입력이 숫자인지 확인")
     @Test
-    void testIsRestartInputValid() {
-        assertTrue(InputManager.isRestartInputValid(RESTART));
-        assertTrue(InputManager.isRestartInputValid(EXIT));
-        assertFalse(InputManager.isRestartInputValid(3));
+    void testIsRestartInputDigit() {
+        Throwable exception = assertThrows(RuntimeException.class, () ->
+                InputManager.isRestartInputDigit("one")
+        );
+        assertEquals("숫자 " + RESTART + " 혹은 " + EXIT + "를 입력해주세요.", exception.getMessage());
+    }
+
+    @DisplayName("재시작 및 종료의 입력이 유효한 숫자인지 확인")
+    @Test
+    void testIsRestartInputValidNumber() {
+        Throwable exception = assertThrows(RuntimeException.class, () ->
+                InputManager.isRestartInputValidNumber("3")
+        );
+        assertEquals(RESTART + " 혹은 " + EXIT + "를 입력해주세요.", exception.getMessage());
     }
 
     // Game

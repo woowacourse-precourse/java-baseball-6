@@ -3,8 +3,8 @@ package baseball.util;
 import java.util.HashSet;
 
 public class InputManager {
-    static final int RESTART = 1;
-    static final int EXIT = 2;
+    static final String RESTART = "1";
+    static final String EXIT = "2";
 
     // 입력받은 값이 모두 숫자로 이루어져 있는지
     public static void isAllDigits(String userInput, int size) {
@@ -43,8 +43,19 @@ public class InputManager {
         }
     }
 
+    // 게임 종료 시 재시작 여부를 묻는 과정에서 수가 아닌 값이 입력되었는지
+    public static void isRestartInputDigit(String userInput) {
+        try {
+            Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자 " + RESTART + " 혹은 " + EXIT + "를 입력해주세요.");
+        }
+    }
+
     // 게임 종료 시 재시작 여부를 묻는 과정에서 RESTART, EXIT 외의 수가 입력되었는지
-    public static boolean isRestartInputValid(int userInput) {
-        return userInput == RESTART || userInput == EXIT;
+    public static void isRestartInputValidNumber(String userInput) {
+        if (!userInput.equals(RESTART) && !userInput.equals(EXIT)) {
+            throw new IllegalArgumentException(RESTART + " 혹은 " + EXIT + "를 입력해주세요.");
+        }
     }
 }

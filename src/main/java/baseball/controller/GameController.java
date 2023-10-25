@@ -12,8 +12,7 @@ public class GameController {
     static final int SIZE = 3;
     static final int MIN_NUMBER = 1;
     static final int MAX_NUMBER = 9;
-    static final int RESTART = 1;
-    static final int EXIT = 2;
+    static final String RESTART = "1";
     static String userInput;
     static int ball;
     static int strike;
@@ -68,11 +67,10 @@ public class GameController {
     // 사용자 입력에 따라 게임 재시작 or 완전히 종료
     public static void askForRestartOrExit() {
         SystemMessagePrinter.printRestartOrExit();
-        int userInput = Integer.parseInt(Console.readLine());
-        if (!InputManager.isRestartInputValid(userInput)) {
-            throw new IllegalArgumentException(RESTART + " 혹은 " + EXIT + "를 입력해주세요.");
-        }
-        if (userInput == RESTART) {
+        userInput = Console.readLine();
+        InputManager.isRestartInputDigit(userInput);
+        InputManager.isRestartInputValidNumber(userInput);
+        if (userInput.equals(RESTART)) {
             gameProcess();
         }
     }
