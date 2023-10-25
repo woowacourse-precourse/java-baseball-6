@@ -14,21 +14,27 @@ public class BaseballGameController {
 		view.displayMessage("숫자 야구 게임을 시작합니다.\n");
 
 		while (true) {
+			int choice = -1;
 			model.createNumber();
-			// 테스트 System.out.print(model.answerNumberList);
+			// 테스트용도: System.out.print(model.answerNumberList);
 			while (true) {
 				int[] guessNumberList = view.getGuessFromUser();
+				
+				if (guessNumberList == null) {
+					break;
+				}
+				
 				String result = model.compareNumber(guessNumberList);
 				view.displayMessage(result);
 				System.out.println();
 
 				if (result.equals("3스트라이크")) {
 					view.displayMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+					choice = view.getNewGameChoice();
 					break;
 				}
 			}
 
-			int choice = view.getNewGameChoice();
 			if (choice != 1) {
 				view.displayMessage("게임을 종료합니다.");
 				break;
