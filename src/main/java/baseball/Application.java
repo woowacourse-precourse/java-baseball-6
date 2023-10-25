@@ -20,19 +20,20 @@ public class Application {
 
             if (userChoice.equals(START)) {
                 continueGame = true;
-            }
-            if(userChoice.equals(END)) {
+            } else if (userChoice.equals(END)) {
                 continueGame = false;
+            } else {
+                throw new IllegalArgumentException("Invalid input " + userChoice);
             }
         }
     }
 
     private static String playGame() {
         List<Integer> computer = generateComputer();
-
+        System.out.println(computer.toString());
         while (true) {
             String inputNumber = getUserInput("숫자를 입력해주세요 : ");
-            checkException(inputNumber);
+            checkInputNumber(inputNumber);
 
             int[] strikeAndBall = calculateStrikeBall(computer,inputNumber);
             String result = printStrikeBall(strikeAndBall[0],strikeAndBall[1]);
@@ -54,7 +55,6 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-
         return computer;
     }
     private static int[] calculateStrikeBall(List<Integer> computer, String inputNumber) {
@@ -70,7 +70,6 @@ public class Application {
                 ball++;
             }
         }
-
         return new int[]{strike, ball};
     }
     private static String printStrikeBall(int strike, int ball) {
@@ -84,7 +83,7 @@ public class Application {
             return ball + "볼 " + strike + "스트라이크";
         }
     }
-    private static void checkException(String inputNumber) {
+    private static void checkInputNumber(String inputNumber) {
         String numberRegex = "^[1-9]+$";
 
         if (!inputNumber.matches(numberRegex)) {
