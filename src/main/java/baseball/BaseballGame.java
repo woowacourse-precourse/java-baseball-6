@@ -11,10 +11,10 @@ public class BaseballGame {
     private int strike = 0;
     private int ball = 0;
 
-    private void toFalse() {
+    private void onToFalse() {
         on = false;
     }
-    
+
 
     private void resetStrike() {
         this.strike = 0;
@@ -35,7 +35,7 @@ public class BaseballGame {
     public void reStart() {
         resetStrike();
         resetBall();
-        toFalse();
+        onToFalse();
         List<Integer> cpuNewInput = new RandomNumber().getRandomNumbers();
         System.out.println("컴퓨터 숫자:" + cpuNewInput);
         System.out.print("숫자를 입력해주세요 : ");
@@ -103,7 +103,7 @@ public class BaseballGame {
         if (userDecide.equals("1")) {
             reStart();
         } else if (userDecide.equals("2")) {
-            toFalse();
+            onToFalse();
         }
     }
 
