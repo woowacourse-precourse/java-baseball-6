@@ -1,6 +1,5 @@
 package mytest;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -81,13 +80,6 @@ public class ModelTest {
         assertTrue(InputManager.isRestartInputValid(RESTART));
         assertTrue(InputManager.isRestartInputValid(EXIT));
         assertFalse(InputManager.isRestartInputValid(3));
-    }
-
-    @DisplayName("문자열을 정수 배열로 변환")
-    @Test
-    void testStringToIntArray() {
-        assertArrayEquals(new int[]{1, 2, 3}, InputManager.stringToIntArray("123"));
-        assertArrayEquals(new int[]{}, InputManager.stringToIntArray(""));
     }
 
     // Game

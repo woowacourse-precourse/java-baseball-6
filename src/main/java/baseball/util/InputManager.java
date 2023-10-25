@@ -48,13 +48,4 @@ public class InputManager {
     public static boolean isRestartInputValid(int userInput) {
         return userInput == RESTART || userInput == EXIT;
     }
-
-    public static int[] stringToIntArray(String str) {
-        int[] result = new int[str.length()];
-        for (int i = 0; i < str.length(); i++) {
-            char digit = str.charAt(i);
-            result[i] = digit - '0';
-        }
-        return result;
-    }
 }
