@@ -32,6 +32,7 @@ public class Ball {
 
         char[] arr = String.valueOf(num).toCharArray();
         if (arr.length != 3) throw new IllegalArgumentException();
+        if (arr[0] == arr[1] || arr[0] == arr[2] || arr[1] == arr[2]) throw new IllegalArgumentException();
 
         for (int i = 0; i < 3; i++) {
             int temp = arr[i] - 48;
