@@ -11,12 +11,12 @@ public class Application {
         // TODO: 프로그램 구현
         OutputView.startMessage();
         while (START) {
-            Compare compare = new Compare(RandomNumberGenerater.RandomNumberGenerater());
+            NumberComparison numberComparison = new NumberComparison(RandomNumberGenerator.RandomNumberGenerator());
             do {
                 User user = new User(InputView.userInputMessage());
-                List<Integer> result = compare.compareList(user.getUserInputList());
+                List<Integer> result = numberComparison.compareList(user.getUserInputList());
                 OutputView.showUserInputResult(result);
-                WRONG = compare.success(result);
+                WRONG = numberComparison.success(result);
             } while (WRONG);
             OutputView.gameOverMessage();
             START = RestartPrompt.stringToBoolean(InputView.askRestartMessage());
