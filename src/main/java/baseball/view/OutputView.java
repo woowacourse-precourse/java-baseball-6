@@ -1,8 +1,10 @@
 package baseball.view;
 
-import static baseball.logic.BaseballGame.*;
 
 public class OutputView {
+    public static String NOTHING = "낫싱";
+    public static String BALL = "볼";
+    public static String STRIKE = "스트라이크";
     public static void printGameIntroduction() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }

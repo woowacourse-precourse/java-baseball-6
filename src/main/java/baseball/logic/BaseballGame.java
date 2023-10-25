@@ -14,9 +14,6 @@ public class BaseballGame {
     private Player player;
     public static String RESTART = "1";
     public static String EXIT = "2";
-    public static String NOTHING = "낫싱";
-    public static String BALL = "볼";
-    public static String STRIKE = "스트라이크";
     public static int GAME_OVER_STRIKE = 3;
     public static int NUMBERS_LENGTH = 3;
     public static int NUMBERS_RANGE_START = 1;
@@ -62,25 +59,34 @@ public class BaseballGame {
                 computerNumbers.add(randomNumber);
             }
         }
+        System.out.println(String.valueOf(computerNumbers));
         return computerNumbers;
     }
 
-    private void giveScore(List<Integer> guessNumbers) {
+    private void giveScore(List<Integer> playerNumbers) {
         resetCount();
-        for (int i = 0; i < 3; i++) {
-            // 스트라이크 검사
-            int guessNumber = guessNumbers.get(i);
-            if (guessNumber == computerNumbers.get(i)) {
-                strikeCount++;
-            }
-            // 볼 검사
-            if (guessNumber == computerNumbers.get((i + 1) % 3)) {
-                ballCount++;
-            }
-            if (guessNumber == computerNumbers.get((i + 2) % 3)) {
-                ballCount++;
+        int total = howMany(playerNumbers);
+        strikeCount = countStrike(playerNumbers);
+        ballCount = total - strikeCount;
+    }
+    public int howMany(List<Integer> playerNumbers) {
+        int result = 0;
+        for (int i = 0; i < playerNumbers.size(); i++) {
+            if (computerNumbers.contains(playerNumbers.get(i))) {
+                result += 1;
             }
         }
+        return result;
+    }
+
+    public int countStrike(List<Integer> playerNumbers){
+        int strike = 0;
+        for(int i = 0; i < playerNumbers.size(); i++){
+            if(computerNumbers.get(i) == playerNumbers.get(i)){
+                strike += 1;
+            }
+        }
+        return strike;
     }
 
     private void resetCount() {
