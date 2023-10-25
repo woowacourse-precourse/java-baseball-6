@@ -1,35 +1,38 @@
 package baseball.view;
 
 import baseball.domain.BallStatus;
+import baseball.domain.Board;
 
 public class OutputView {
 
-    private static final int MIN_COUNT = 0;
+    private static final int ZERO_COUNT = 0;
     private static final int MAX_COUNT = 3;
-    private static StringBuilder stringBuilder;
 
     private OutputView() {
     }
 
-    public static void printHint(int[] board) {
-        createStringBuilder();
-        if (board[BallStatus.BALL.getValue()] > MIN_COUNT) {
-            stringBuilder.append(board[BallStatus.BALL.getValue()]).append("볼").append(" ");
-        }
-        if (board[BallStatus.STRIKE.getValue()] > MIN_COUNT) {
-            stringBuilder.append(board[BallStatus.STRIKE.getValue()]).append("스트라이크");
-        }
-        if (board[BallStatus.NOTHING.getValue()] == MAX_COUNT) {
-            stringBuilder.append("낫싱");
-        }
-        System.out.println(stringBuilder);
+    public static void printHint(Board board) {
+        String hint = makeHint(board);
+        System.out.println(hint);
     }
 
     public static void printEnd() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private static void createStringBuilder() {
-        stringBuilder = new StringBuilder();
+    private static String makeHint(Board board) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (board.getScore(BallStatus.BALL) > ZERO_COUNT) {
+            stringBuilder.append(board.getScore(BallStatus.BALL)).append("볼 ");
+        }
+        if (board.getScore(BallStatus.STRIKE) > ZERO_COUNT) {
+            stringBuilder.append(board.getScore(BallStatus.STRIKE)).append("스트라이크");
+        }
+        if (board.getScore(BallStatus.NOTHING) == MAX_COUNT) {
+            stringBuilder.append("낫싱");
+        }
+
+        return stringBuilder.toString();
     }
 }

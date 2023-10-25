@@ -8,24 +8,24 @@ import static baseball.view.OutputView.printHint;
 import baseball.domain.BallNumber;
 import baseball.domain.BallStatus;
 import baseball.domain.Balls;
+import baseball.domain.Board;
 import baseball.domain.EndOption;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import utils.ValidationUtils;
 
 public class BaseballGame {
 
-    private static final int BOARD_SIZE = 3;
     private static final int BALL_SIZE = 3;
 
-    private int[] board;
+    private Board board;
 
     public void start() {
         do {
             Balls computer = createComputerBalls();
+            board = new Board();
             play(computer);
         } while (!isEnd());
     }
@@ -37,9 +37,9 @@ public class BaseballGame {
 
     private void play(Balls computer) {
         do {
-            initBoard();
+            board.reset();
             process(computer);
-        } while (!isMatch());
+        } while (!board.isMatch(BALL_SIZE));
         printEnd();
     }
 
@@ -48,27 +48,18 @@ public class BaseballGame {
         return option == EndOption.END.getValue();
     }
 
-    private void initBoard() {
-        board = new int[BOARD_SIZE];
-    }
-
-    private boolean isMatch() {
-        return board[BallStatus.STRIKE.getValue()] == BALL_SIZE;
-    }
-
     private void process(Balls computer) {
         List<BallNumber> ballNumbers = getBallNumbers();
         for (int i = 0; i < BALL_SIZE; i++) {
-            int result = computer.compare(ballNumbers.get(i), i);
-            board[result]++;
+            BallStatus result = computer.compare(ballNumbers.get(i), i);
+            board.scoring(result);
         }
         printHint(board);
-        System.out.println(Arrays.toString(board));
     }
 
     private List<Integer> createRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
+        while (numbers.size() < BALL_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);

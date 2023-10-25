@@ -22,14 +22,14 @@ public class Balls {
             .collect(Collectors.toList());
     }
 
-    public int compare(BallNumber ball, int i) {
+    public BallStatus compare(BallNumber ball, int i) {
         if (balls.get(i).equals(ball)) {
-            return STRIKE.getValue();
+            return STRIKE;
         }
         if (balls.contains(ball)) {
-            return BALL.getValue();
+            return BALL;
         }
-        return NOTHING.getValue();
+        return NOTHING;
     }
 
     private void validateNumbers(List<Integer> numbers) {
