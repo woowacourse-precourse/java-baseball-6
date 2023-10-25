@@ -19,8 +19,11 @@ public class PlayerNumberInputView {
         }
     }
 
-    public void receiveNumber() {
+    public void guideInformation() {
         System.out.print(Message.INPUT_PLAYER_NUMBER.message);
-        System.out.println(numberInputValidator.validNumber());
+    }
+
+    public String receiveNumber() {
+        return numberInputValidator.validNumber();
     }
 }

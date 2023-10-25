@@ -15,6 +15,7 @@ public class Computer {
                 continue;
             }
             computerBall.add(randomNumber);
+            System.out.println(computerBall);
         }
         return computerBall;
     }
