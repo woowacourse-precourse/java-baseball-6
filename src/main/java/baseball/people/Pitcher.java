@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pitcher {
-
+    private static final String DEMAND_INPUT = "숫자를 입력해주세요 : ";
+    private static final String ASK_TO_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ";
+    private static final String RESTART = "1";
+    private static final String QUIT = "2";
     Pitcher() {
     }
 
@@ -24,7 +27,7 @@ public class Pitcher {
      * @return 크기가 3인 정수 리스트
      */
     public List<Integer> pitch() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(DEMAND_INPUT);
         String input = Console.readLine();
 
         if (!isValidInput(input)) {
@@ -45,14 +48,14 @@ public class Pitcher {
      * @return boolean 값
      */
     public boolean restart() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
+        System.out.print(ASK_TO_RESTART);
         String input = Console.readLine();
 
-        if (input.equals("1")) {
+        if (input.equals(RESTART)) {
             return true;
         }
 
-        if (input.equals("2")) {
+        if (input.equals(QUIT)) {
             Console.close();
             return false;
         }
