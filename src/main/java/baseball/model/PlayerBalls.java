@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.dto.PlayResult;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -27,5 +29,9 @@ public class PlayerBalls {
         for (int i = 0; i < numbers.size(); i++) {
             balls.add(new Ball(numbers.get(i), i + 1));
         }
+    }
+
+    public PlayResult attackComputer(Computer computer) {
+        return computer.compareBalls(balls);
     }
 }
