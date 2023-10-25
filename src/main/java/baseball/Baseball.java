@@ -10,7 +10,28 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Baseball {
 
     public void startGame() {
-        startRound();
+        while(true) {
+            startRound();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restartOrQuit = readLine();
+            boolean isQuit = checkQuit(restartOrQuit);
+
+            if(isQuit) {
+                break;
+            }
+        }
+    }
+
+    private static boolean checkQuit(String restartOrQuit) {
+        if(restartOrQuit.equals("2")) {
+            return true;
+        }
+
+        if (restartOrQuit.equals("1")) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("잘못된 값을 입력했습니다. 애플리케이션을 종료합니다.");
     }
 
     private void startRound() {
