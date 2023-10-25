@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    private static final int MAX_NUMBER_SIZE = 3;
+    private static final int PLAY_AGAIN = 1;
+    private static final int EXIT = 2;
 
     public List<Integer> getThreeDigitNumberForUser() {
         List<Integer> userThreeDigitNumber = new ArrayList<>();
@@ -20,20 +23,20 @@ public class User {
         return userThreeDigitNumber;
     }
 
-    public int getNumberForPlayAgain(){
+    public int getNumberForPlayAgain() {
         int number = Integer.parseInt(Console.readLine());
         validateNumberForPlayAgain(number);
         return number;
     }
 
-    private void validateUserNumber(char[] numberArray){
-        if(numberArray.length != 3){
+    private void validateUserNumber(char[] numberArray) {
+        if (numberArray.length != MAX_NUMBER_SIZE) {
             throw new IllegalArgumentException("입력이 잘못되었습니다.");
         }
     }
 
     private void validateNumberForPlayAgain(int number) {
-        if(!(number == 1 || number ==2)){
+        if (!(number == PLAY_AGAIN || number == EXIT)) {
             throw new IllegalArgumentException("입력이 잘못되었습니다.");
         }
     }

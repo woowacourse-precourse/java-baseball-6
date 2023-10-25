@@ -6,6 +6,9 @@ import baseball.domain.User;
 import java.util.List;
 
 public class Game {
+    private static final int STRIKE_COUNT_FOR_WIN = 3;
+    private static final int PLAY_AGAIN = 1;
+
     Computer computer = new Computer();
     User user = new User();
     GameElements gameElements = new GameElements();
@@ -24,7 +27,7 @@ public class Game {
     private void gamingUtilWin(List<Integer> answerNumberList) {
         List<Integer> userNumberList;
 
-        while (gameElements.getStrike() < 3) {
+        while (gameElements.getStrike() < STRIKE_COUNT_FOR_WIN) {
             gameElements.resetElements();
             userNumberList = user.getThreeDigitNumberForUser();
             compareNumbers(answerNumberList, userNumberList);
@@ -83,7 +86,7 @@ public class Game {
     private void askToPlayAgain() {
         View.printPlayAgain();
 
-        if (user.getNumberForPlayAgain() == 1) {
+        if (user.getNumberForPlayAgain() == PLAY_AGAIN) {
             gameElements.resetElements();
             startGame();
         }
