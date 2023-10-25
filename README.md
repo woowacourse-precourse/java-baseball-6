@@ -142,3 +142,14 @@ while (computer.size() < 3) {
 - 미션은 [java-baseball-6](https://github.com/woowacourse-precourse/java-baseball-6) 저장소를 Fork & Clone해 시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+## 구현할 기능 목록
+1. 게임 시작시에 랜덤 숫자 생성
+    - 중복되지 않도록, 범위는 1~9까지
+2. 게임에 답인지 오답인지 판별하는 기능
+   - strike와 ball의 수를 반환하는 기능 
+3. 게임을 계속 진행하거나 끝낼지 정하는 기능
+   - gameResult는 3 스트라이크일 경우 게임이 종료
+4. gameResult가 종료되었다면 게임 재시작에 대한 명령을 시작
+5. 사용자가 잘못된 값을 입력한 경우 예외 발생시키는 기능
