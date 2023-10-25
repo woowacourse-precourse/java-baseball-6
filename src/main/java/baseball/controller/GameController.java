@@ -1,45 +1,47 @@
 package baseball.controller;
 
-import baseball.model.BaseballGameComputer;
-import baseball.model.BaseballGamePlayer;
-import baseball.model.GameResult;
-import baseball.model.rule.BaseBallGameRule;
+import baseball.model.BaseBallGamePlayer;
+import baseball.model.BaseballGameRule;
+import baseball.model.Computer;
+import baseball.model.Hint;
+import baseball.model.ball.Balls;
 import java.util.List;
 
-public class GameController extends BaseBallGameRule {
+public class GameController extends BaseballGameRule {
     private final OutputController outputController;
     private final InputController inputController;
-    private final BaseballGameComputer gameComputer;
+    private final Computer gameComputer;
+    private final BaseBallGamePlayer baseBallGamePlayer;
 
     private GameController() {
         this.outputController = new OutputController();
         this.inputController = new InputController();
-        this.gameComputer = new BaseballGameComputer();
+        this.gameComputer = new Computer();
+        this.baseBallGamePlayer = new BaseBallGamePlayer();
     }
-
     public static GameController StartBaseballGame() {
         return new GameController();
     }
-
     public void startGame() {
         Integer gameProcess = PLAY_BASEBALL_GAME;
         while (gameProcess.equals(PLAY_BASEBALL_GAME)) {
             outputController.showIntroMessage();
-            gameComputer.readyForGame();
-            playSingleGame();
+            Balls answer = gameComputer.initBallsForGame(gameComputer.pickNumbers());
+            playSingleGame(answer);
             outputController.showGameRestartInputMessage();
-            gameProcess = inputController.getPlayerRestart();
+            gameProcess = inputController.getPlayerRestartNumber();
         }
     }
 
-    public void playSingleGame() {
-        boolean allBallsNotHit = true;
-        while (allBallsNotHit) {
+    public void playSingleGame(Balls answer) {
+        boolean allBallsHit = false;
+        while (!allBallsHit) {
             outputController.showGameInputMessage();
-            List<Integer> input = inputController.getPlayerGuessNumber();
-            GameResult gameResult = BaseballGamePlayer.swingBat(gameComputer, input);
+            List<Integer> numberPicked = inputController.getPlayerGuessNumber();
+            baseBallGamePlayer.generateBalls(numberPicked);
+            Hint gameResult = baseBallGamePlayer.guessBalls(answer);
             outputController.displayHint(gameResult);
-            allBallsNotHit =  gameResult.isAllStrikes();
+            allBallsHit = gameResult.isAllStrike();
         }
         outputController.showGameClearMessage();
     }

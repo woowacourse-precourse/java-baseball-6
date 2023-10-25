@@ -1,32 +1,27 @@
 package baseball.controller;
 
-import baseball.model.GameResult;
+import baseball.model.Hint;
 import baseball.view.OutputView;
 
 public class OutputController {
-    private final OutputView outputView;
 
-    public OutputController() {
-        this.outputView = new OutputView();
-    }
-
-    public void displayHint(GameResult result) {
-        outputView.showHint(result.getGameResultMessage());
+    public void displayHint(Hint hint) {
+        OutputView.showHint(hint.getHintMessage());
     }
 
     public void showIntroMessage() {
-        outputView.showIntroMessage();
+        OutputView.showIntroMessage();
     }
 
     public void showGameRestartInputMessage() {
-        outputView.showGameRestartInputMessage();
+        OutputView.showGameRestartInputMessage();
     }
 
     public void showGameInputMessage() {
-        outputView.showGameInputMessage();
+        OutputView.showGameInputMessage();
     }
 
     public void showGameClearMessage() {
-        outputView.showGameClearMessage();
+        OutputView.showGameClearMessage();
     }
 }

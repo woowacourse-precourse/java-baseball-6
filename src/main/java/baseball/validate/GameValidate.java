@@ -1,27 +1,37 @@
 package baseball.validate;
 
-import baseball.model.rule.BaseBallGameRule;
+import baseball.model.BaseballGameRule;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class GameValidate extends BaseBallGameRule {
-    public void checkGameRestartInput(Integer playerNumber) {
-        if (playerNumber.equals(BASEBALL_GAME_RESTART)) {
+public class GameValidate extends BaseballGameRule {
+    public static void gameGuessNumbersCheck(List<Integer> givenNumbers) {
+        if (isCorrectSize(givenNumbers) && isCorrectSize(givenNumbers) && isNumberInRange(
+            givenNumbers)) {
             return;
         }
-        if (playerNumber.equals(BASEBALL_GAME_FINISH)) {
-            return;
-        }
-        throw new RuntimeException();
+        throw new IllegalArgumentException("Wrong Guess Input Violate Rules");
     }
 
-    public void checkPlayerGuessNumbers(List<Integer> playerNumbers) {
-        if (playerNumbers.size() != BASEBALL_MAX_AMOUNT) {
-            throw new IllegalArgumentException("[ERROR] : Wrong Size ");
-        }
-        for (Integer number : playerNumbers) {
-            if (number < BASEBALL_MIN_VALUE || number > BASEBALL_MAX_VALUE) {
-                throw new RuntimeException("[ERROR] : Wrong Number Range ");
+    public static boolean isCorrectSize(List<Integer> numbers) {
+        return numbers.size()==BASEBALL_MAX_AMOUNT;
+    }
+    public static boolean isNumberInRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (!isInRange(number)) {
+                return false;
             }
         }
+        return true;
+    }
+    public static boolean isInRange(int givenNumber) {
+        return BASEBALL_MIN_VALUE <= givenNumber && givenNumber <= BASEBALL_MAX_VALUE;
+    }
+    public static void gameRestartNumberCheck(Integer givenNumber) {
+        if (givenNumber.equals(BASEBALL_GAME_RESTART)  || givenNumber.equals(BASEBALL_GAME_FINISH)) {
+            return;
+        }
+        throw new IllegalArgumentException("Wrong Restart Input");
     }
 }
