@@ -14,32 +14,42 @@ class Game {
 
 
     private static void checkUserGuessingNumberInput(String guessingNumber) {
-
-        boolean isValid = true;
-
-        if (guessingNumber.length() != 3) {
-            isValid = false;
-        }
-        for (int i = 0; i < guessingNumber.length(); i++) {
-            if (guessingNumber.charAt(i) < '1' || guessingNumber.charAt(i) > '9') {
-                isValid = false;
-                break;
+        try {
+            Exception e = new Exception();
+            if (guessingNumber.length() != 3) {
+                throw e;
             }
-        }
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (guessingNumber.charAt(i) == guessingNumber.charAt(j)) {
-                    isValid = false;
-                    break;
+            for (int i = 0; i < guessingNumber.length(); i++) {
+                if (guessingNumber.charAt(i) < '1' || guessingNumber.charAt(i) > '9') {
+                    throw e;
                 }
             }
+            if (guessingNumber.charAt(0) == guessingNumber.charAt(1)) {
+                throw e;
+            }
+            if (guessingNumber.charAt(0) == guessingNumber.charAt(2)) {
+                throw e;
+            }
+            if (guessingNumber.charAt(1) == guessingNumber.charAt(2)) {
+                throw e;
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
         }
-        if (!isValid) {
-            throw new IllegalArgumentException("올바른 수를 입력해 주세요");
+
+    }
+
+    private static void checkUserOneOrTwoInput(String OneOrTwo) {
+        try {
+            Exception e = new Exception();
+            if (OneOrTwo.equals("1") || OneOrTwo.equals("2")) {
+                return;
+            }
+            throw e;
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
         }
+
     }
 
     private static String userGuessingNumberInput() {
@@ -48,19 +58,11 @@ class Game {
         return guessingNumber;
     }
 
-    private static void checkUserReplayInput(String replayNumber) {
 
-        if (replayNumber.equals("1") || replayNumber.equals("2")) {
-            return;
-        }
-
-        throw new IllegalArgumentException("올바른 수를 입력해 주세요");
-    }
-
-    private static String userReplayInput() {
-        String replayNumber = Console.readLine();
-        checkUserReplayInput(replayNumber);
-        return replayNumber;
+    private static String userOneOrTwoInput() {
+        String OneOrTwo = Console.readLine();
+        checkUserOneOrTwoInput(OneOrTwo);
+        return OneOrTwo;
 
     }
 
@@ -121,10 +123,10 @@ class Game {
         System.out.println();
     }
 
-    private static boolean checkEndGame() {
+    private static boolean endGame() {
         System.out.println(MESSAGE_GAME_END);
         System.out.println(MESSAGE_GAME_END_ASK);
-        return userReplayInput().equals("1");
+        return userOneOrTwoInput().equals("1");
     }
 
 
@@ -146,11 +148,11 @@ class Game {
 
         }
 
-        return checkEndGame();
+        return endGame();
     }
 
 
-    public void start() {
+    static void start() {
         while (play()) {
         }
     }
@@ -158,9 +160,7 @@ class Game {
 }
 
 public class Application {
-
     public static void main(String[] args) {
-        Game game = new Game();
-        game.start();
+        Game.start();
     }
 }

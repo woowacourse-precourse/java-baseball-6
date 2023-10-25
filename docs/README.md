@@ -2,28 +2,46 @@
 
 ### 주요 기능
 
-입력,출력  
-숫자 야구 게임 주요 로직  
-난수 생성
+입력,출력 기능  
+숫자 야구 게임 기능    
+유효 난수 생성 기능
 
-###        
+### 주요 클래스, 메소드
 
 ```  
-유저는 클라스 Game의 start() 메소드를 통해서만 게임을 플레이할 수 있다.
 
 Class Game:
-    start <- 게임의 시작점, 에러 발생 혹은 사용자가 종료할 때까지 play()를 한다
-    play <- 
-    generateRandomNumber <- 유효한 난수을 생성하고 반환한다
-    checkUserGuessingNumberInput <- 게임 도중의 유저입력의 유효성을 검사한다
-    checkUserReplayInput <- 게임이 끝난 후 유저입력의 유효성을 검사한다
-    checkEndGame <- 
-    userGuessingNumberInput <- 게임 도중의 유저의 유효한 입력만 반환한다
-    userReplayInput <- 게임 이후 유저의 유효한 입력만 반환한다
-    calculateStrike <- 스트라이크를 계산하고 반환한다
-    calculateBall <- 볼을 계산하고 반환나다
-    printResult <- 게임 도중 유저 입력에 대한 결괏값을 출력한다
+    start <- 게임의 시작점, start() 메소드를 통해서만 게임을 플레이할 수 있다.
+    play <- 숫자 야구의 주요 로직이 들어가 있다. 
+    generateRandomNumber <- 게임에 유효한 난수을 생성하고 반환한다.
+    checkUserGuessingNumberInput <- 게임 도중의 유저입력(서로 다른 세자리 수)의 유효성을 검사한다.
+    checkuserOneOrTwoInput <- 게임이 끝난 후의 유저입력(1,2)의 유효성을 검사한다.
+    userGuessingNumberInput <- 게임 도중의 유저의 유효한 입력만 반환한다.
+    userOneOrTwoInput <- 게임 이후 유저의 유효한 입력만 반환한다.
+    calculateStrike <- 스트라이크 횟수를 계산하고 반환한다.
+    calculateBall <- 볼 횟수을 계산하고 반환한다.
+    printResult <- 볼,스트라이크에 따른 문구를 출력한다.
+    endGame <- 종료 메세지를 출력한다. 사용자 입력을 받고 검사하고 게임이 끝났는지 반환한다.
+    
 ```
+
+### 주요 로직
+
+```
+
+start는 메소드는 play메소드가 false를 반활할 떄까지 play 메소드를 호출한다. play 메소드는 사용자가 게임 종료를 했을 때 false를 반환한다.
+play 메소드는 시작되면 게임 시작 문구를 출력한다. generateRandomNumber 메소드를 통해 유효 난수를 생성한다. 그 후 
+사용자가 정답을 맞출 때까지 userGuessingNumberInput 메소드를 통해 입력을 받고 calculateStrike, calculateBall 메소드를
+통해 스트라이크, 볼을 계산한 뒤 printResult 메소드로 결과를 출력한다. 만약 스트라이크가 3이라면 반복문을 빠져나온다. 마지막으로
+endGame 메소드를 통해 사용자가 게임을 더 할 것인지 끝낼 것인지 묻는다. 게임을 더 한다면 endGame이 true를 반환하여 play 메소드가
+한 번 더 실행 되고, false라면 start메소드의 반복문에서 빠져나와 프로그램이 자동으로 종료된다.
+
+난수 생성: 
+
+ 
+
+
+``` 
 
 # 기능 요구 사항
 
