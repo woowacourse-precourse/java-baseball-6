@@ -5,17 +5,17 @@ import java.util.Set;
 
 public class InputValidator {
 
-    public static final String RESTART_OR_EXIT_ERROR_MESSAGE = "재시작/종료를 위해서는 1 또는 2를 입력해주세요!";
-    public static final String NOT_INT_ERROR_MESSAGE = "숫자가 아닙니다.";
-    public static final String CONTAINS_ZERO_ERROR_MESSAGE = "자릿 수 값에 0이 존재합니다.";
-    public static final String NOT_THREE_DIGIT_ERROR_MESSAGE = "자릿 수가 3자리 초과거나, 미만입니다.";
-    public static final int ZERO = 0;
-    public static final String DUPLICATE_NUMBER_ERROR_MESSAGE = "중복되는 숫자가 존재합니다.";
+    private static final String RESTART_OR_EXIT_ERROR_MESSAGE = "재시작/종료를 위해서는 1 또는 2를 입력해주세요!";
+    private static final String NOT_INT_ERROR_MESSAGE = "숫자가 아닙니다.";
+    private static final String CONTAINS_ZERO_ERROR_MESSAGE = "자릿 수 값에 0이 존재합니다.";
+    private static final String NOT_THREE_DIGIT_ERROR_MESSAGE = "자릿 수가 3자리 초과거나, 미만입니다.";
+    private static final int ZERO = 0;
+    private static final String DUPLICATE_NUMBER_ERROR_MESSAGE = "중복되는 숫자가 존재합니다.";
     public static final String RESTART = "1";
     public static final String EXIT = "2";
     public static final int CORRECT_SIZE = 3;
 
-    public void valid(String value) {
+    public void validTryNumber(String value) {
         isNotInteger(value);
         isZero(value);
         isNot3Digit(value);

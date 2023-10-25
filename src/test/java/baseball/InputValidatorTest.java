@@ -14,7 +14,8 @@ class InputValidatorTest {
         InputValidator validator = new InputValidator();
 
         // when // then
-        Assertions.assertThatThrownBy(() -> validator.valid(given)).isExactlyInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validTryNumber(given))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -25,7 +26,8 @@ class InputValidatorTest {
         InputValidator validator = new InputValidator();
 
         // when // then
-        Assertions.assertThatThrownBy(() -> validator.valid(given)).isExactlyInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validTryNumber(given))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -36,7 +38,8 @@ class InputValidatorTest {
         InputValidator validator = new InputValidator();
 
         // when // then
-        Assertions.assertThatThrownBy(() -> validator.valid(given)).isExactlyInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validTryNumber(given))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -47,7 +50,8 @@ class InputValidatorTest {
         InputValidator validator = new InputValidator();
 
         // when // then
-        Assertions.assertThatThrownBy(() -> validator.valid(given)).isExactlyInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validTryNumber(given))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
