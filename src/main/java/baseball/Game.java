@@ -1,5 +1,7 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,37 @@ public class Game {
 
     public static List<Integer> getComputerAnswer() {
         return computerAnswer;
+    }
+
+
+    private static List<Integer> parsingInput() {
+        List<Integer> parsedInput = new ArrayList<>();
+        String input = readLine();
+        System.out.println(input);
+
+        if (input.isEmpty() || !isValidInput(input)) {
+            throw new IllegalArgumentException();
+        } else {
+            for (int i = 0; i < input.length(); i++) {
+                char digitChar = input.charAt(i);
+                int digit = Integer.parseInt(String.valueOf(digitChar));
+                parsedInput.add(digit);
+            }
+            return parsedInput;
+        }
+    }
+
+    private static boolean isValidInput(String input) {
+        // 자릿수, 숫자만 허용
+        return isValidDigit(COMPUTER_DIGIT, input.length()) && isNumber(input) ? true : false;
+    }
+
+    private static boolean isValidDigit(int computerDigit, int inputLength) {
+        return computerDigit == inputLength ? true : false;
+    }
+
+    private static boolean isNumber(String input) {
+        return input.matches("\\d+");
     }
 
 
