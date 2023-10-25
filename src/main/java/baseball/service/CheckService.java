@@ -1,39 +1,48 @@
 package baseball.service;
 
-import baseball.domain.GameResult;
+import static baseball.CONSTANT.BALL;
+import static baseball.CONSTANT.GAME_SIZE;
+import static baseball.CONSTANT.NONE;
+import static baseball.CONSTANT.STRIKE;
 
-import java.util.ArrayList;
+import baseball.dto.GameResultDTO;
 import java.util.List;
 
 public class CheckService {
 
-    public static GameResult matchNumber(List<Integer> userNum, List<Integer> computerNum){
-        GameResult gameResult = new GameResult();
-        int strike = 0;
-        int ball = 0;
+    public static GameResultDTO matchNumber(List<Integer> userNums, List<Integer> computerNums) {
+        int strikeCnt = 0;
+        int ballCnt = 0;
 
-        // bit 연산?
-        for(int i=0; i<userNum.size(); i++){
-            for(int j=0; j<computerNum.size(); j++){
-                if(userNum.get(i) == computerNum.get(j)) {   // 리팩토링 필요.
-                    if(i == j)
-                        strike++;
-                    else if(i != j)
-                        ball++;
-                    break;
-                }
+        for (int userIdx = 0; userIdx < GAME_SIZE; userIdx++) {
+            Integer result = checkCurNumber(userNums.get(userIdx), userIdx, computerNums);
+            if (result == STRIKE) {
+                strikeCnt++;
+            }
+            if (result == BALL) {
+                ballCnt++;
             }
         }
 
-        gameResult.setBall(ball);
-        gameResult.setStrike(strike);
+        GameResultDTO gameResult = new GameResultDTO(strikeCnt, ballCnt, false);
 
-        if(strike == 3)
+        if (strikeCnt == GAME_SIZE) {
             gameResult.setSuccess(true);
-        else if(strike != 3)
-            gameResult.setSuccess(false);
+        }
 
         return gameResult;
+    }
+
+    private static Integer checkCurNumber(Integer userNum, Integer userIdx, List<Integer> computerNums) {
+        for (int comIdx = 0; comIdx < GAME_SIZE; comIdx++) {
+            if (userNum == computerNums.get(comIdx)) {   // 리팩토링 필요.
+                if (userIdx == comIdx) {
+                    return STRIKE;
+                }
+                return BALL;
+            }
+        }
+        return NONE;
     }
 
 }
