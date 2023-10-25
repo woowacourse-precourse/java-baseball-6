@@ -13,19 +13,15 @@ public class ComputerBallGenerator {
     public static int[] generateComputerBall() {
 
         int[] computerBall = new int[NUMBER_POSITIONS];
-        int index = 1;
+        int index = 0;
 
         // 범위와 갯수를 지정하여 int 배열에 몇번째 위치에 있는지 파악하기
-        while (index != 4) {
+        while (index != SELECTION_COUNT) {
             int num = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
             if (computerBall[num] == 0) {
-                computerBall[num] = index++;
+                computerBall[num] = 1 + index++;
             }
         }
-
-//        for (int num : Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, SELECTION_COUNT)) {
-//            computerBall[num] += index++;
-//        }
 
         return computerBall;
 
