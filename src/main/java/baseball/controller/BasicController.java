@@ -22,7 +22,6 @@ public class BasicController {
                 computerNumber.add(randomNumber);
             }
         }
-        System.out.println("computerNumber = " + computerNumber);
     }
 
     public Boolean checkNumber(String userInput){
