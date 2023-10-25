@@ -1,41 +1,35 @@
 package baseball.player;
 
-import baseball.util.Number;
-import baseball.util.Result;
+import baseball.number.Number;
+import baseball.number.Numbers;
+import baseball.result.Result;
+import baseball.util.NumberValidator;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class User extends Player {
-
-    public User() {
-        super();
-    }
 
     @Override
     public void createNumbers() {
         String[] input = inputNumbers();
 
+        List<Number> numbers = new ArrayList<>();
         for (String obj : input) {
-            Number number = convertToNumber(obj);
+            Number number = NumberValidator.convertToNumber(obj);
 
-            number.checkValidate();
-            numbers.checkDuplicate(number);
+            NumberValidator.checkValidate(number);
+            checkDuplicate(numbers, number);
 
-            numbers.addNumber(number);
+            numbers.add(number);
         }
 
-        if (!numbers.validateSize()) {
-            throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
-        }
+        this.numbers = new Numbers(numbers);
     }
 
-    private Number convertToNumber(String obj) {
-        try {
-            int parsedNumber = Integer.parseInt(obj);
-            Number number = new Number(parsedNumber);
-
-            return number;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
+    private void checkDuplicate(List<Number> numbers, Number number) {
+        if (numbers.contains(number)) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
 

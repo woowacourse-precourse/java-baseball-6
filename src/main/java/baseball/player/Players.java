@@ -1,6 +1,6 @@
 package baseball.player;
 
-import baseball.util.Result;
+import baseball.result.Result;
 
 public class Players {
     private User user;

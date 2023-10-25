@@ -2,8 +2,8 @@
 //
 //import static org.assertj.core.api.Assertions.assertThat;
 //
-//import baseball.util.Number;
-//import baseball.util.Result;
+//import baseball.number.Number;
+//import baseball.result.Result;
 //import java.io.ByteArrayOutputStream;
 //import java.io.PrintStream;
 //import java.lang.reflect.Field;

@@ -1,5 +1,10 @@
 package baseball.util;
 
+import baseball.number.Number;
+import baseball.number.Numbers;
+import baseball.result.Result;
+import baseball.result.Status;
+
 public class NumbersComparator {
     public Result compareWith(Numbers target, Numbers other) {
         Status ball = calculateBall(target, other);
@@ -40,6 +45,9 @@ public class NumbersComparator {
     }
 
     private int isStrike(Integer thisDigit, Integer otherDigit) {
-        return (thisDigit == otherDigit) ? 1 : 0;
+        if (thisDigit == otherDigit) {
+            return 1;
+        }
+        return 0;
     }
 }
