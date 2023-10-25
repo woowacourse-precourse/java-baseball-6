@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import baseball.validation.IntegerValidator;
 import org.junit.jupiter.api.Test;
 
 public class IntegerUtilTest {
@@ -24,20 +25,20 @@ public class IntegerUtilTest {
 
     @Test
     void validateInteger_Integer() {
-        IntegerUtil.validateInteger("123");
+        IntegerValidator.validateInteger("123");
     }
 
     @Test
     void validateInteger_String() {
         assertThrows(IllegalArgumentException.class, () -> {
-            IntegerUtil.validateInteger("abc");
+            IntegerValidator.validateInteger("abc");
         });
     }
 
     @Test
     void validateInteger_emptyString() {
         assertThrows(IllegalArgumentException.class, () -> {
-            IntegerUtil.validateInteger("");
+            IntegerValidator.validateInteger("");
         });
     }
 
