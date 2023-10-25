@@ -39,6 +39,11 @@ public class Application {
         if (s.length() != 3 ) {
         	throw new IllegalArgumentException();
         }
+        for(int i=0; i<3; i++)
+        {
+        	if(s.charAt(i)-'0'>9||s.charAt(i)-'0'<0)
+            	throw new IllegalArgumentException();    		
+        }
     }
     
     
