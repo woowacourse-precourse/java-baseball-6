@@ -20,14 +20,12 @@ public class Game {
     private static final String NONE_MESSAGE = "낫싱";
 
     private static List<Integer> computerAnswer;
-    private static List<Integer> userAnswer;
 
     public Game() {
     }
 
     public static void setComputerAnswer(List<Integer> computerAnswer) {
         Game.computerAnswer = computerAnswer;
-        System.out.println(getComputerAnswer());
     }
 
     public static List<Integer> getComputerAnswer() {
@@ -44,6 +42,7 @@ public class Game {
     public static void run() {
         boolean restart;
         setComputerAnswer(createRandomNum(COMPUTER_DIGIT));
+
         do {
             System.out.print(CONTINUE_MESSAGE);
             List<Integer> answer = parsingInput();
@@ -54,7 +53,7 @@ public class Game {
     private static boolean checkRestart() {
         System.out.println(CHECK_RESTART_MESSAGE);
         String input = readLine();
-        System.out.println("input:" + input);
+
         if (input.equals(RESTART_GAME)) {
             return true;
         } else if (input.equals(EXIT_GAME)) {
@@ -69,9 +68,10 @@ public class Game {
         String resultMessage = "";
         int strike = 0;
         int ball = 0;
+
         for (int i = 0; i < COMPUTER_DIGIT; i++) {
             if (getComputerAnswer().contains(answer.get(i))) {
-                if (answer.get(i) == computerAnswer.get(i)) {
+                if (getComputerAnswer().get(i).equals(answer.get(i))) {
                     strike++;
                 } else {
                     ball++;
@@ -84,7 +84,7 @@ public class Game {
         }
         if (strike != 0) {
             resultMessage += strike + "스트라이크 ";
-            if (strike == 3) {
+            if (strike == COMPUTER_DIGIT) {
                 System.out.println(resultMessage);
                 System.out.println(FINISH_MESSAGE);
                 return false;
@@ -117,11 +117,11 @@ public class Game {
 
     private static boolean isValidInput(String input) {
         // 자릿수, 숫자만 허용
-        return isValidDigit(COMPUTER_DIGIT, input.length()) && isNumber(input) ? true : false;
+        return isValidDigit(COMPUTER_DIGIT, input.length()) && isNumber(input);
     }
 
     private static boolean isValidDigit(int computerDigit, int inputLength) {
-        return computerDigit == inputLength ? true : false;
+        return computerDigit == inputLength;
     }
 
     private static boolean isNumber(String input) {
