@@ -4,6 +4,8 @@ import static baseball.constant.NumberConstants.COUNT_ZERO;
 import static baseball.output.GameOutput.printNewLine;
 import static baseball.output.GameOutput.printlnNothing;
 
+import java.util.stream.IntStream;
+
 public class GameLogic {
 
     public GameResult initializeResult() {
@@ -18,25 +20,16 @@ public class GameLogic {
     }
 
     private int countStrikes(String userNumberString, String computerNumberString) {
-        int count = 0;
-        for (int i = 0; i < userNumberString.length(); i++) {
-            if (userNumberString.charAt(i) == computerNumberString.charAt(i)) {
-                count++;
-            }
-        }
-
-        return count;
+        return (int) IntStream.range(0, userNumberString.length())
+                .filter(i -> userNumberString.charAt(i) == computerNumberString.charAt(i))
+                .count();
     }
 
     private int countAllBalls(String userNumberString, String computerNumberString) {
-        int count = 0;
-        for (char c : userNumberString.toCharArray()) {
-            if (computerNumberString.contains(Character.toString(c))) {
-                count++;
-            }
-        }
-
-        return count;
+        return (int) userNumberString.chars()
+                .mapToObj(c -> (char) c)
+                .filter(c -> computerNumberString.contains(Character.toString(c)))
+                .count();
     }
 
     public void displayResult(GameResult gameResult) {
@@ -45,15 +38,21 @@ public class GameLogic {
             return;
         }
 
+        displayBallCount(gameResult);
+        displayStrikeCount(gameResult);
+        printNewLine();
+    }
+
+    private void displayBallCount(GameResult gameResult) {
         if (gameResult.hasBalls()) {
             gameResult.callBallCount();
         }
+    }
 
+    private void displayStrikeCount(GameResult gameResult) {
         if (gameResult.hasStrikes()) {
             gameResult.callStrikeCount();
         }
-
-        printNewLine();
     }
 
 }

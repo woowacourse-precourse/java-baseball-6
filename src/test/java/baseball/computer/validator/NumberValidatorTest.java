@@ -1,11 +1,15 @@
 package baseball.computer.validator;
 
 import static baseball.constant.MessageConstants.DUPLICATE_NUMBER;
+import static baseball.constant.MessageConstants.LENGTH_MUST_BE_ONE;
 import static baseball.constant.MessageConstants.LENGTH_MUST_BE_THREE;
 import static baseball.constant.MessageConstants.NATURAL_NUMBER;
 import static baseball.constant.MessageConstants.NOT_NUMBER;
+import static baseball.constant.MessageConstants.NUMBER_MUST_BE_ONE_OR_TWO;
 import static baseball.validator.NumberValidator.validateAllDigits;
 import static baseball.validator.NumberValidator.validateDuplicateNumber;
+import static baseball.validator.NumberValidator.validateOneLength;
+import static baseball.validator.NumberValidator.validateOneOrTwo;
 import static baseball.validator.NumberValidator.validateThreeLength;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -17,9 +21,9 @@ import org.junit.jupiter.api.Test;
 
 class NumberValidatorTest {
 
-    @DisplayName("양의 정수인 5를 넣으면 예외가 발생하지 않는다.")
+    @DisplayName("validateNaturalNumber()로 양의 정수인 5를 넣으면 예외가 발생하지 않는다.")
     @Test
-    void validateNaturalNumber() {
+    void validate_natural_number() {
         // given
         int invalidNumber = 5;
 
@@ -29,9 +33,9 @@ class NumberValidatorTest {
                 .doesNotThrowAnyException();
     }
 
-    @DisplayName("양의 정수의 경계선인 0을 넣으면 예외가 발생한다.")
+    @DisplayName("validateNaturalNumber()로 양의 정수의 경계선인 0을 넣으면 예외가 발생한다.")
     @Test
-    void validateNaturalNumberWithZero() {
+    void validate_natural_number_with_zero() {
         // given
         int invalidNumber = 0;
 
@@ -42,9 +46,9 @@ class NumberValidatorTest {
                 .hasMessage(NATURAL_NUMBER);
     }
 
-    @DisplayName("양의 정수의 경계선인 10을 넣으면 예외가 발생한다.")
+    @DisplayName("validateNaturalNumber()로 양의 정수의 경계선인 10을 넣으면 예외가 발생한다.")
     @Test
-    void validateNaturalNumberWithTen() {
+    void validate_natural_number_with_ten() {
         // given
         int invalidNumber = 10;
 
@@ -55,9 +59,9 @@ class NumberValidatorTest {
                 .hasMessage(NATURAL_NUMBER);
     }
 
-    @DisplayName("경계인 3이라면 False를 반환한다.")
+    @DisplayName("isBelowThreeLength()로 경계인 3이라면 False를 반환한다.")
     @Test
-    void isBelowRequiredLength() {
+    void is_below_required_length() {
         // given
         int invalidNumber = 3;
 
@@ -66,9 +70,9 @@ class NumberValidatorTest {
         assertThat(NumberValidator.isBelowThreeLength(invalidNumber)).isFalse();
     }
 
-    @DisplayName("경계인 3보다 작다면 True를 반환한다.")
+    @DisplayName("isBelowThreeLength()로 경계인 3보다 작다면 True를 반환한다.")
     @Test
-    void isBelowRequiredLengthWithTwo() {
+    void is_below_required_length_with_two() {
         // given
         int invalidNumber = 2;
 
@@ -77,9 +81,9 @@ class NumberValidatorTest {
         assertThat(NumberValidator.isBelowThreeLength(invalidNumber)).isTrue();
     }
 
-    @DisplayName("중복된 숫자가 있다면 예외가 발생한다.")
+    @DisplayName("validateDuplicateNumber()로 중복된 숫자가 있다면 예외가 발생한다.")
     @Test
-    void validateDuplicateNumberWithDuplicateNumber() {
+    void validate_duplicate_number_with_duplicate_number() {
         // given
         int duplicateNumber = 122;
 
@@ -90,9 +94,9 @@ class NumberValidatorTest {
                 .hasMessage(duplicateNumber + DUPLICATE_NUMBER);
     }
 
-    @DisplayName("중복된 숫자가 없다면 예외가 발생하지 않는다.")
+    @DisplayName("validateDuplicateNumber()로 중복된 숫자가 없다면 예외가 발생하지 않는다.")
     @Test
-    void validateDuplicateNumberWithValidNumber() {
+    void validate_duplicate_number_with_valid_number() {
         // given
         int validNumber = 123;
 
@@ -102,9 +106,9 @@ class NumberValidatorTest {
                 .doesNotThrowAnyException();
     }
 
-    @DisplayName("3자리 문자 중 숫자 외의 값을 넣으면 예외가 발생한다.")
+    @DisplayName("validateAllDigits()로 3자리 문자 중 숫자 외의 값을 넣으면 예외가 발생한다.")
     @Test
-    void validateAllDigitsWithString() {
+    void validate_all_digits_with_string() {
         // given
         String invalidInput = "12a";
 
@@ -115,9 +119,9 @@ class NumberValidatorTest {
                 .hasMessage(invalidInput + NOT_NUMBER);
     }
 
-    @DisplayName("3자리 문자 중 숫자만을 넣었으므로 예외가 발생하지 않는다.")
+    @DisplayName("validateAllDigits()로 3자리 문자 중 숫자만을 넣었으므로 예외가 발생하지 않는다.")
     @Test
-    void validateAllDigitsWithOnlyDigit() {
+    void validate_all_digits_with_only_digit() {
         // given
         String validInput = "489";
 
@@ -127,9 +131,9 @@ class NumberValidatorTest {
                 .doesNotThrowAnyException();
     }
 
-    @DisplayName("입력 받는 문자가 3글자이기 때문에 예외가 발생하지 않는다.")
+    @DisplayName("validateThreeLength()로 입력 받는 문자가 3글자이기 때문에 예외가 발생하지 않는다.")
     @Test
-    void validateRequiredLengthWithThree() {
+    void validate_three_length_with_three() {
         // given
         String validInput = "123";
 
@@ -139,9 +143,9 @@ class NumberValidatorTest {
                 .doesNotThrowAnyException();
     }
 
-    @DisplayName("입력 받는 문자가 3글자가 아니라면 예외를 발생한다.")
+    @DisplayName("validateThreeLength()로 입력 받는 문자가 3글자가 아니라면 예외를 발생한다.")
     @Test
-    void validateRequiredLengthWithNotThree() {
+    void validate_three_length_with_not_three() {
         // given
         String invalidInput = "1234";
 
@@ -150,6 +154,59 @@ class NumberValidatorTest {
         assertThatThrownBy(() -> validateThreeLength(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(invalidInput + LENGTH_MUST_BE_THREE);
+    }
+
+    @Test
+    @DisplayName("validateOneLength()로 길이가 1인 문자열은 예외가 발생하지 않는다.")
+    void validate_one_length_should_not_throw_exception_for_valid_one_length_strings() {
+        // given
+        String validInput = "1";
+
+        // when
+        // then
+        assertThatCode(() -> validateOneLength(validInput))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("validateOneLength()로  길이가 1이 아닌 문자열은 예외를 발생한다.")
+    void validate_one_length_should_throw_exception_for_invalid_length_strings() {
+        // given
+        String invalidInput = "12";
+
+        // when
+        // then
+        assertThatThrownBy(() -> validateOneLength(invalidInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(invalidInput + LENGTH_MUST_BE_ONE);
+    }
+
+    @Test
+    @DisplayName("validateOneOrTwo()로 '1' 또는 '2' 문자열은 예외가 발생하지 않는다.")
+    void validate_one_or_two_should_not_throw_exception_for_valid_inputs() {
+        // given
+        String validInput1 = "1";
+        String validInput2 = "2";
+
+        // when
+        // then
+        assertThatCode(() -> validateOneOrTwo(validInput1))
+                .doesNotThrowAnyException();
+        assertThatCode(() -> validateOneOrTwo(validInput2))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("validateOneOrTwo로 '1' 또는 '2' 이외의 문자열은 예외를 발생한다.")
+    void validate_one_or_two_should_throw_exception_for_invalid_inputs() {
+        // given
+        String invalidInput = "12";
+
+        // when
+        // then
+        assertThatThrownBy(() -> validateOneOrTwo(invalidInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(invalidInput + NUMBER_MUST_BE_ONE_OR_TWO);
     }
 
 }
