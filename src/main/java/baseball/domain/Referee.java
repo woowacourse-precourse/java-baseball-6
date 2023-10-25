@@ -39,7 +39,7 @@ public class Referee {
             }
         }
     }
-    
+
     private void increaseStrike() {
         this.strike++;
     }
