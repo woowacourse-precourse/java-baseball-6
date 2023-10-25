@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GameFunction {
@@ -49,8 +48,8 @@ public class GameFunction {
                     throw new IllegalArgumentException("잘못된 값 입력");
                 }
                 getUserNumber(num);
-                System.out.println("computer num : " + Arrays.toString(compNum));
-                System.out.println("user num : " + Arrays.toString(userNum));
+//                System.out.println("computer num : " + Arrays.toString(compNum));
+//                System.out.println("user num : " + Arrays.toString(userNum));
                 for (int i = 0; i < userNum.length; i++) {
                     for (int j = 0; j < compNum.length; j++) {
                         if (userNum[i] == compNum[j]) {
