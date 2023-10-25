@@ -7,17 +7,16 @@ import java.util.List;
 public class BaseballGame {
     private List<Integer> computerNumberList;
     private List<Integer> userNumberList;
-    private Computer computer;
     private CompareNumber compareNumber;
     private int[] compareResult;
 
     public BaseballGame() {
-        computer = new Computer();
         compareNumber = new CompareNumber();
     }
 
     public void start() {
         showStart();
+        Computer computer = new Computer();
         boolean playAgain = true;
         while (playAgain) {
             computerNumberList = computer.generateComputerNumber();
