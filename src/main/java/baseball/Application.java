@@ -76,23 +76,37 @@ public class Application {
 
 
     public static int main(String[] args) {
-        // random number setting
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+        String flag;
+        do {
+            // random number setting
+            List<Integer> computer = new ArrayList<>();
+            while (computer.size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!computer.contains(randomNumber)) {
+                    computer.add(randomNumber);
+                }
             }
-        }
-        System.out.print("computer: ");
-        System.out.println(computer);
+//            System.out.print("computer: ");
+//            System.out.println(computer);
 
-        List<Integer> user = userInput();
-        System.out.print("user input: ");
-        System.out.println(user);
 
-        int result;
-        result = baseball(computer, user);
+
+            int result = 0;
+            while (result != 1){
+                List<Integer> user = userInput();
+//                System.out.print("user input: ");
+//                System.out.println(user);
+
+                result = baseball(computer, user);
+//                System.out.printf("result: %d\n", result);
+            }
+
+            // baseball game done
+            System.out.println("3개의 숫자를 모드 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            flag = Console.readLine();
+
+        } while(flag.equals("1"));
 
         return 0;
     }
