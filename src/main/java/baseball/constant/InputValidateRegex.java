@@ -2,7 +2,7 @@ package baseball.constant;
 
 public enum InputValidateRegex {
     GAME_NUMBER_REGEX("^(?!.*(.).*\\1)\\d{3}$"),
-    RETRY_INPUT_REGEX("^[12]+$");
+    GAME_DECISION_REGEX("^[12]+$");
 
     private final String regex;
 

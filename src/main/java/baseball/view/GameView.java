@@ -1,27 +1,27 @@
 package baseball.view;
 
-import baseball.model.GameResult;
 import baseball.constant.GameMessage;
+import baseball.model.GameResult;
 
 public class GameView {
 
-    public static void printGameStartMessage() {
+    public void printGameStartMessage() {
         System.out.println(GameMessage.GAME_START);
     }
 
-    public static void printRetryInputMessage() {
-        System.out.println(GameMessage.RETRY_INPUT);
+    public void printInputGameDecisionMessage() {
+        System.out.println(GameMessage.INPUT_GAMEDECISION);
     }
 
-    public static void printNumberInputMessage() {
+    public void printNumberInputMessage() {
         System.out.print(GameMessage.NUMBER_INPUT);
     }
 
-    public static void printGameEndMessage() {
+    public void printGameEndMessage() {
         System.out.println(GameMessage.GAME_END);
     }
 
-    public static void printResultMessage(GameResult result) {
+    public void printResultMessage(GameResult result) {
         System.out.println(result.toString());
     }
 }

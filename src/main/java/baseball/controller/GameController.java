@@ -1,7 +1,7 @@
 package baseball.controller;
 
+import baseball.dto.GameDecision;
 import baseball.dto.GameNumber;
-import baseball.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
@@ -13,9 +13,7 @@ public class GameController {
         return GameNumber.makeGameNumberByInput(Console.readLine());
     }
 
-    public Boolean getIsRetry() {
-        String input = Console.readLine();
-        InputValidator.validateRetryInput(input);
-        return input.equals(RETRY_COMMAND);
+    public GameDecision getGameDecision() {
+        return GameDecision.makeGameDecisionByInput(Console.readLine());
     }
 }

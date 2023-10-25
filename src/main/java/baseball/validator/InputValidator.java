@@ -2,7 +2,7 @@ package baseball.validator;
 
 import baseball.constant.InputValidateRegex;
 import baseball.exception.InvalidAnswerInputException;
-import baseball.exception.InvalidRetryInputException;
+import baseball.exception.InvalidGameDecisionException;
 
 public class InputValidator {
 
@@ -12,9 +12,9 @@ public class InputValidator {
         }
     }
 
-    public static void validateRetryInput(String retryInput) {
-        if (!retryInput.matches(InputValidateRegex.RETRY_INPUT_REGEX.toString())) {
-            throw new InvalidRetryInputException();
+    public static void validateGameDecision(String inputGameDecision) {
+        if (!inputGameDecision.matches(InputValidateRegex.GAME_DECISION_REGEX.toString())) {
+            throw new InvalidGameDecisionException();
         }
     }
 }

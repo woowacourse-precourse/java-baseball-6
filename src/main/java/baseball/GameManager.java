@@ -8,30 +8,32 @@ import baseball.view.GameView;
 public class GameManager {
 
     private GameController controller;
+    private GameView view;
     private Computer computer;
 
     public GameManager() {
         this.controller = new GameController();
+        this.view = new GameView();
     }
 
     public void start() {
-        GameView.printGameStartMessage();
+        view.printGameStartMessage();
         do {
             setGame();
             playGame();
-            GameView.printRetryInputMessage();
-        } while (controller.getIsRetry());
+            view.printInputGameDecisionMessage();
+        } while (controller.getGameDecision().isRetry());
     }
 
     private void playGame() {
         Boolean isGameEnd = false;
         while (!isGameEnd) {
-            GameView.printNumberInputMessage();
+            view.printNumberInputMessage();
             GameResult result = computer.calculateGameResult(controller.getInputGameNumber());
-            GameView.printResultMessage(result);
+            view.printResultMessage(result);
             isGameEnd = result.isAnswer();
         }
-        GameView.printGameEndMessage();
+        view.printGameEndMessage();
     }
 
     private void setGame() {

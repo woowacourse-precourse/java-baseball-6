@@ -2,9 +2,9 @@ package baseball.exception;
 
 import baseball.constant.ErrorMessage;
 
-public class InvalidRetryInputException extends IllegalArgumentException {
+public class InvalidGameDecisionException extends IllegalArgumentException {
 
-    public InvalidRetryInputException() {
+    public InvalidGameDecisionException() {
         super(ErrorMessage.RETRY_INPUT_ERROR.toString());
     }
 }
