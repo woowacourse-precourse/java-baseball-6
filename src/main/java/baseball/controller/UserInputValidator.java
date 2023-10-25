@@ -23,7 +23,7 @@ public class UserInputValidator {
         return userInputString.replaceAll(" ", "");
     }
 
-    public List<Integer> userInputNumbersValidate(String userInputString) {
+    public List<Integer> validateUserInputNumbers(String userInputString) {
         if (!isThreeNumbers(userInputString)) {
             throw new IllegalArgumentException(WRONG_ANSWER_LENGTH_MESSAGE);
         } else if (!isNumericCastable(userInputString)) {
