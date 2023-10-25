@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private final List<Integer> numbers = new ArrayList<>();
+    public final List<Integer> numbers = new ArrayList<>();
     private int optionNum = 0;
 
     public void getNum() {
