@@ -2,14 +2,16 @@ package baseball.model;
 
 import java.util.List;
 
-public class Player {
+public class Player implements Playable {
     private BaseballNumber baseballNumber;
 
-    public List<Integer> getBaseballNumber() {
-        return baseballNumber.getBaseballNumberList();
-    }
-
+    @Override
     public void updateBaseballNumber(BaseballNumber baseballNumber) {
         this.baseballNumber = baseballNumber;
+    }
+
+    @Override
+    public List<Integer> getBaseballNumber() {
+        return baseballNumber.getBaseballNumberList();
     }
 }
