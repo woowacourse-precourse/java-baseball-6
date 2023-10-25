@@ -3,13 +3,15 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
+    private final BaseballDisplay baseballDisplay = new BaseballDisplay();
+
     public void startBaseball() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        baseballDisplay.startGame();
         do {
             BaseballNumber answerNumberList = createComputerBaseballNumber();
             playBaseball(answerNumberList);
         } while (wantToContinueGame());
-        System.out.println("게임 종료");
+        baseballDisplay.gameOver();
     }
 
     private BaseballNumber createComputerBaseballNumber() {
@@ -20,16 +22,16 @@ public class BaseballGame {
         while (true) {
             BaseballNumber userNumber = inputUserBaseballNumber();
             BaseballCount baseballCount = createBaseballCount(computerNumber, userNumber);
-            System.out.println(baseballCount.getResultBriefing());
+            baseballDisplay.displayMessage(baseballCount.getResultBriefing());
             if (baseballCount.isAllStrike()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                baseballDisplay.allStrikeAndRoundOver();
                 break;
             }
         }
     }
 
     private BaseballNumber inputUserBaseballNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        baseballDisplay.baseballNumberInputRequest();
         String inputString = Console.readLine();
         return BaseballNumber.createNumberByString(inputString);
     }
@@ -66,7 +68,7 @@ public class BaseballGame {
     }
 
     private boolean wantToContinueGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        baseballDisplay.continueGameInputRequest();
         String inputString = Console.readLine();
         validateContinueGameInput(inputString);
         return inputString.equals("1");
