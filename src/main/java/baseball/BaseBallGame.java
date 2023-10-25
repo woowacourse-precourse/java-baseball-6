@@ -7,8 +7,6 @@ public class BaseBallGame {
 
     private static BaseBallGame baseBallGame;
 
-    public int numOfBall = 0;
-    public int numOfStrike = 0;
 
     public final String ONE_OR_TWO = "[12]";
 
@@ -17,11 +15,6 @@ public class BaseBallGame {
             baseBallGame = new BaseBallGame();
         }
         return baseBallGame;
-    }
-
-    public void initializeNum() {
-        numOfBall = 0;
-        numOfStrike = 0;
     }
 
     public void run() {
@@ -39,51 +32,16 @@ public class BaseBallGame {
         } while (!askWhetherToEnd());
     }
 
-
     private void guessNumber(Computer computer) {
-        do {
+        while (true) {
             System.out.print(OutputMessage.ENTER_NUMBER);
             User user = new User();
-            compareAnswerToInput(computer, user);
-        } while (!getResult());
-    }
-
-
-    private void compareAnswerToInput(Computer computer, User user) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (computer.getRandomNumber().get(i).equals(user.getInputNumber().get(j))) {
-                    if (i == j) {
-                        numOfStrike++;
-                        break;
-                    } else {
-                        numOfBall++;
-                        break;
-                    }
-                }
-            }
+            Score score = new Score(0, 0);
+            Score finalScore = score.returnScore(computer, user);
+            finalScore.printOutScore();
+            if (finalScore.isSuccess())
+                break;
         }
-    }
-
-    private boolean getResult() {
-        if (numOfBall == 0 && numOfStrike == 0) {
-            System.out.print("낫싱");
-        } else {
-            if (!(numOfBall == 0)) {
-                System.out.printf("%d볼 ", numOfBall);
-            }
-            if (!(numOfStrike == 0)) {
-                System.out.printf("%d스트라이크", numOfStrike);
-            }
-        }
-
-        if (numOfStrike == 3) {
-            initializeNum();
-            return true;
-        }
-
-        initializeNum();
-        return false;
     }
 
     private static boolean askWhetherToEnd() {
