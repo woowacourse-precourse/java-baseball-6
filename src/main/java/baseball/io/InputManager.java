@@ -1,6 +1,5 @@
 package baseball.io;
 
-import baseball.config.GameMessages;
 import baseball.utils.InputUtils;
 import baseball.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
