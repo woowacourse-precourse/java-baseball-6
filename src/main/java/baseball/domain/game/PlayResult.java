@@ -1,7 +1,5 @@
 package baseball.domain.game;
 
-import baseball.global.message.BallMessage;
-
 import static baseball.global.message.BallMessage.*;
 
 public class PlayResult {
@@ -40,7 +38,4 @@ public class PlayResult {
         }
     }
 
-    public void getCnt() {
-        System.out.println("ballCnt : "+this.ballCnt + "strikeCnt : " + this.strikeCnt);
-    }
 }

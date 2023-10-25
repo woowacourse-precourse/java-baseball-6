@@ -4,11 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static baseball.global.exception.ExceptionMessage.*;
+
 public record PlayerNumbersDto(String playerNumbers) {
 
     public PlayerNumbersDto {
-        Objects.requireNonNull(playerNumbers, "input cannot be null");
-        if (playerNumbers.equals("")) throw new IllegalArgumentException("숫자 3자리로 입력하세요");
+        Objects.requireNonNull(playerNumbers, INPUT_CANNOT_BE_NULL.getMessage());
+        if (playerNumbers.equals("")) throw new IllegalArgumentException(INPUT_MUST_BE_THREE_DIGIT_NUMBERS.getMessage());
         validateInputNumbers(playerNumbers);
     }
 
@@ -24,7 +26,7 @@ public record PlayerNumbersDto(String playerNumbers) {
 
     private void validateInputNumbersSize(List<String> inputNumbers) {
         if(inputNumbers.size() != 3) {
-            throw new IllegalArgumentException("숫자는 서로 다른 세자리 수 입력");
+            throw new IllegalArgumentException(INPUT_MUST_BE_THREE_DIFFERENT_NUMBERS.getMessage());
         }
     }
 

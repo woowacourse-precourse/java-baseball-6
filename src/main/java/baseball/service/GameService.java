@@ -1,8 +1,6 @@
 package baseball.service;
 
-import baseball.domain.computer.Computer;
 import baseball.domain.game.Game;
-import baseball.domain.player.Player;
 import baseball.domain.player.dto.PlayerNumbersDto;
 import baseball.domain.player.dto.RetryNumberDto;
 import baseball.global.message.RetryMessage;

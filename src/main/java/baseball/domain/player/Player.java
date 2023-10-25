@@ -2,6 +2,8 @@ package baseball.domain.player;
 
 import java.util.List;
 
+import static baseball.global.exception.ExceptionMessage.INPUT_MUST_BE_THREE_DIFFERENT_NUMBERS;
+
 public class Player {
     private PlayerNumbers playerNumbers;
 
@@ -23,7 +25,7 @@ public class Player {
                 int firstNum = playerNumbers.get(i);
                 int secondNum = playerNumbers.get(j);
 
-                if(firstNum == secondNum) throw new IllegalArgumentException("서로 다른 세자리 숫자");
+                if(firstNum == secondNum) throw new IllegalArgumentException(INPUT_MUST_BE_THREE_DIFFERENT_NUMBERS.getMessage());
 
             }
         }

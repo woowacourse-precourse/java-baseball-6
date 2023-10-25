@@ -7,6 +7,7 @@ import baseball.global.view.output.OutputView;
 import baseball.service.GameService;
 
 import static baseball.global.message.BallMessage.STRIKE;
+import static baseball.global.utils.NumberDefinition.DIGIT_CNT;
 
 public class GameController {
 
@@ -42,7 +43,7 @@ public class GameController {
             OutputView.printInputThreeNumber();
             playResult = gameService.getResult(PlayerNumbersDto.of(InputView.input()));
             OutputView.printPlayerResult(playResult);
-        } while (!playResult.equals(STRIKE.apply(3)));
+        } while (!playResult.equals(STRIKE.apply(DIGIT_CNT.getNumber())));
     }
 
     public void end() {
