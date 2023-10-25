@@ -7,7 +7,7 @@ import java.util.List;
 
 public class NumbersConverter {
 
-    public List<Integer> convertNumbers(String playerNumbers) {
+    public static List<Integer> convertNumbers(String playerNumbers) {
         List<String> inputNumbers = List.of(playerNumbers.split(""));
 
         List<Integer> numbers = new ArrayList<>();

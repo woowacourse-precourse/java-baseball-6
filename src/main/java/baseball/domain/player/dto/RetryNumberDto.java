@@ -8,8 +8,8 @@ public record RetryNumberDto(String number) {
         CustomObjects.requireNonNull(number, "input cannot be null");
     }
 
-    public static String of(String number) {
-        return new RetryNumberDto(number).number;
+    public static RetryNumberDto of(String number) {
+        return new RetryNumberDto(number);
     }
 
     private void validateNumberIsOneOrTwo() {
