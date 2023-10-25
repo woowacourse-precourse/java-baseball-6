@@ -19,6 +19,8 @@ public class Game {
             System.out.print("숫자를 입력해주세요 : ");
 
             String userInput = getUserInput();
+
+            int[] validInput = InputValidator.validateAndParseUserInput(userInput);
         } while (!correctAnswer);
 
         generateRandomNumbers();
