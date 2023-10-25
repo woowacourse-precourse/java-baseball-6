@@ -17,7 +17,7 @@ public class ProgramManager {
     }
 
     public void startGame() {
-        answer = Answer.from();
+        answer = Answer.createNewAnswer();
         Writer.writeStartMent();
         proceedGame();
     }

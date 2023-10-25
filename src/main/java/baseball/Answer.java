@@ -25,7 +25,7 @@ public final class Answer {
         }
     }
 
-    public static Answer from() {
+    public static Answer createNewAnswer() {
         return new Answer();
     }
 
