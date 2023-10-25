@@ -36,12 +36,12 @@ public class Baseball {
 
     private void startRound() {
         List<Integer> computerNumber = RandomUtil.generateRandomNumber(3);
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true) {
             int strike = 0;
             int ball = 0;
 
-            System.out.println("숫자 야구 게임을 시작합니다.");
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = readLine();
             UserInputUtil.validateLength(userInput);
