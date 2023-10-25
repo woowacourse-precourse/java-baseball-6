@@ -2,6 +2,7 @@ package baseball.games.numberbaseball.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.games.numberbaseball.enums.PlayerOption;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,5 +18,16 @@ class NumberGeneratorTest {
         //then
         assertThat(numbers.size()).isEqualTo(3);
         assertThat(numbers).containsExactly(1, 2, 4);
+    }
+
+    @Test
+    @DisplayName("플레이어가 다시 게임을 하길 선택한 경우 PlayerOption.RESTART를 반환")
+    void playerWantRestart() {
+        //given
+        NumberGenerator generator = new NumberGenerator();
+        //when
+        String input = "1";
+        //then
+        assertThat(generator.createValidatedOption(input)).isEqualTo(PlayerOption.RESTART);
     }
 }
