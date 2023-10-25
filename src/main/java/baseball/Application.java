@@ -7,28 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
-    public void computerSet() {
-        List<Integer> computer = new ArrayList<>();
-
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        RandomNum randomNumber = new RandomNum();
+        randomNumber.ComputerSet();
 
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-            if (computer.size() == 3) {
-                System.out.println(computer);
-            }
-        }
-    }
+        /*System.out.println(randomNumber.ComputerSet()+"컴퓨터입력값");*/
 
-    public void game() {
+
         while (true) {
+
             int[] insertNum;
-            int j;/*
-            System.out.println(computer.size() + "랜덤 컴퓨터 길이");*/
+            int j;
+
+           /*System.out.println(computer.size() + "랜덤 컴퓨터 길이");*/
             int ball = 0;
             int strike = 0;
 
@@ -41,8 +34,8 @@ public class Application {
             for (int z = 0; z < 3; z++) {
                 insertNum[z] = insertStringNum.charAt(z) - '0';
             }
-            /*
-            System.out.println(insertNum[0] + " 첫 입력값");
+
+            /*System.out.println(insertNum[0] + " 첫 입력값");
             System.out.println(insertNum[1] + " 두번째 입력값");
             System.out.println(insertNum[2] + " 세번째 입력값");
             System.out.println(insertNum.length + " 입력값 길이");*/
@@ -52,10 +45,10 @@ public class Application {
             }
 
 
-            if (insertNum[0] == insertNum[1] || insertNum[0] == insertNum[2]) {
-                    /*    System.out.println(insertNum[0] + "첫번째 입력받은 값 입니다");
-                        System.out.println(insertNum[1] + "두번째 입력받은 값 입니다.");
-                        System.out.println(insertNum[2] + " 세번째 입력값");*/
+            if (insertNum[0] == insertNum[1] || insertNum[0] == insertNum[2] || insertNum[1] == insertNum[2]) {
+              /*  System.out.println(insertNum[0] + "첫번째 입력받은 값 입니다");
+                System.out.println(insertNum[1] + "두번째 입력받은 값 입니다.");
+                System.out.println(insertNum[2] + " 세번째 입력값");*/
                 throw new IllegalArgumentException();
             }
 
@@ -64,9 +57,9 @@ public class Application {
             // 실질적인 게임 로직 스타트
             for (int i = 0; i < 3; i++) {
                 for (int k = 0; k < insertNum.length; k++) {
-                    if (computer.get(i) == insertNum[k] && i == k) {
+                    if (randomNumber.ComputerSet().get(i) == insertNum[k] && i == k) {
                         strike++;
-                    } else if (computer.get(i) == insertNum[k] && i != k) {
+                    } else if (randomNumber.computer.get(i) == insertNum[k] && i != k) {
                         ball++;
                     }
                 }
@@ -78,6 +71,7 @@ public class Application {
 
                 int statusCode = Integer.parseInt(Console.readLine());
                 if (statusCode == 1) {
+                    randomNumber.resetComputer();
                     continue;
                 } else if (statusCode == 2) {
                     break;
@@ -97,11 +91,8 @@ public class Application {
 
     }
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
-
-    }
 }
+
 
 
