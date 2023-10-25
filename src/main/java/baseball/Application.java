@@ -1,7 +1,13 @@
 package baseball;
 
+import baseball.game.BaseBallGame;
+
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-    }
+
+	public static void main(String[] args) {
+		BaseBallGame game = BaseBallGame.newGame();
+		do {
+			game.play();
+		} while (game.askReplay());
+	}
 }
