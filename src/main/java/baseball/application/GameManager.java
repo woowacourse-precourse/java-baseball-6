@@ -13,12 +13,16 @@ public class GameManager {
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = generator.generateNumber();
-        String userRequest = userInput.inputNumber();
-
-        judge(computer, userRequest);
+        play(computer);
     }
 
-    public void judge(List<Integer> computer, String userRequest) {
+    private void play(List<Integer> computer) {
+        String userRequest = userInput.inputNumber();
+        int strikeCount = judge(computer, userRequest);
+        restart(strikeCount, computer);
+    }
+
+    public int judge(List<Integer> computer, String userRequest) {
         int strike = 0;
         int ball = 0;
 
@@ -33,6 +37,24 @@ public class GameManager {
             }
         }
 
-        boolean result = userOutput.outputMessage(strike, ball);
+        userOutput.printBallCount(strike, ball);
+        return strike;
+    }
+
+    private void restart(int strike, List<Integer> computer) {
+        if (strike != 3) {
+            play(computer);
+        } else {
+            userOutput.endingMessage();
+            String restartNumber = userInput.inputRestartNumber();
+            if (restartNumber.equals("1")) {
+                run();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        GameManager gameManager = new GameManager();
+        gameManager.run();
     }
 }
