@@ -19,7 +19,7 @@
 - [ ] 입력받은 플레이어 숫자와 랜덤으로 생성된 컴퓨터의 숫자를 비교하여 결과값을 도출하는 Referee를 생성합니다.
     - [x] Nothing을 판단하는 `isNothing` 메서드를 생성합니다.
     - [x] Strike를 판단하는 `countStrike` 메서드를 생성합니다.
-    - [ ] Ball을 판단하는 `countBall` 메서드를 생성합니다.
+    - [x] Ball을 판단하는 `countBall` 메서드를 생성합니다.
     - [ ] 전체적인 결과값을 도출하는 `judgeValue` 메서드를 생성합니다.
 
 <br>
