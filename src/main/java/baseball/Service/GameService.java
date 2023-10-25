@@ -11,7 +11,7 @@ public class GameService {
 
     private final TargetNumber targetNumber;
     private final Score score;
-    private static final int SIZE = 3;
+    private static final int NUMBER_SIZE = 3;
 
     public GameService() {
         targetNumber = new TargetNumber();
@@ -35,15 +35,15 @@ public class GameService {
     }
 
     private void countStrike(List<Integer> userNumber, List<Integer> targetNumber) {
-        for(int index = 0; index < SIZE; index++) {
+        for(int index = 0; index < NUMBER_SIZE; index++) {
             if(userNumber.get(index) == targetNumber.get(index))
                 score.incStrikeCount();
         }
     }
 
     private void countBall(List<Integer> userNumber, List<Integer> targetNumber) {
-        for(int i = 0; i < SIZE; i++) {
-            for(int j = 0; j< SIZE; j++) {
+        for(int i = 0; i < NUMBER_SIZE; i++) {
+            for(int j = 0; j< NUMBER_SIZE; j++) {
                 if(userNumber.get(i) == targetNumber.get(j) && !(i == j))
                     score.incBallCount();
             }
