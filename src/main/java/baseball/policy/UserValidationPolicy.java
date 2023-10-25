@@ -4,7 +4,7 @@ public class UserValidationPolicy implements ValidationPolicy {
 
     public void isCorrectLength(String input) {
         if (!(input.length() == 3)) {
-            throw new IllegalArgumentException("입력 숫자는 " + 3 + "자리여야 합니다.");
+            throw new IllegalArgumentException("입력은 " + 3 + "자리여야 합니다.");
         }
     }
 

@@ -31,9 +31,9 @@ public class BaseballUser implements User {
 
     private void validationUserInput(String userInput) {
         userValidationPolicy.isNullOrEmpty(userInput);
-        userValidationPolicy.hasNoDuplicateNumber(userInput);
         userValidationPolicy.isCorrectLength(userInput);
         userValidationPolicy.isNumericString(userInput);
         userValidationPolicy.hasNoZero(userInput);
+        userValidationPolicy.hasNoDuplicateNumber(userInput);
     }
 }
