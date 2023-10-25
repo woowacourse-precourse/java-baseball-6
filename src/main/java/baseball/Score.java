@@ -3,13 +3,16 @@ package baseball;
 import java.util.List;
 
 public class Score {
+    private final static int NOTHING = 0;
+    private final static int LENGTH_OF_TABLE = 10;
+
     int ball;
     int strike;
 
     Score(List<Integer> computer, List<Integer> player) {
-        ball = 0;
-        strike = 0;
-        int[] scoreTable = new int[10];
+        ball = NOTHING;
+        strike = NOTHING;
+        int[] scoreTable = new int[LENGTH_OF_TABLE];
 
         for (int digit : computer) {
             scoreTable[digit] = computer.indexOf(digit);
@@ -27,13 +30,13 @@ public class Score {
     }
 
     public String printScore() {
-        if (strike == 0 && ball == 0) {
+        if (strike == NOTHING && ball == NOTHING) {
             return "낫싱";
         }
-        if (ball == 0) {
+        if (ball == NOTHING) {
             return strike + "스트라이크";
         }
-        if (strike == 0) {
+        if (strike == NOTHING) {
             return ball + "볼";
         }
         return ball + "볼 " + strike + "스트라이크";

@@ -8,17 +8,21 @@ import java.util.List;
 import java.util.Set;
 
 public class Computer {
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+    private static final int LENGTH_OF_NUMBER = 3;
+
     List<Integer> number = new ArrayList<>();
 
-    public static int getRandomDigit() {
-        return Randoms.pickNumberInRange(1, 9);
+    private static int getRandomDigit() {
+        return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 
     public void setRandomNumber() {
         Set<Integer> digits = new HashSet<>();
-        while (digits.size() < 3) {
+        while (digits.size() < LENGTH_OF_NUMBER) {
             digits.add(getRandomDigit());
         }
-        this.number = List.copyOf(digits);
+        number = List.copyOf(digits);
     }
 }
