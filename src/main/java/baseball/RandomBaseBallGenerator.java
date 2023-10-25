@@ -6,14 +6,13 @@ public class RandomBaseBallGenerator implements BaseBallGenerator {
 
 	private static final int MIN_NUMBER_RANGE = 1;
 	private static final int MAX_NUMBER_RANGE = 9;
-	private static final int CHECK_DIGIT_RANGE = 10;
+	private static final int DIGIT_RADIX = 10;
 
 	// StringBuilder sb가 정수 n을 포함하는지 판단한다.
 	private boolean baseballContains(StringBuilder sb, int n) {
-		// 점수 디버깅
-//		System.out.println(Character.forDigit(n, 10));
+//		System.out.println(Character.forDigit(n, 10)); // 난수 확인용
 		for (int i = 0; i < sb.length(); i++) {
-			if (sb.charAt(i) == Character.forDigit(n, CHECK_DIGIT_RANGE)) {
+			if (sb.charAt(i) == Character.forDigit(n, DIGIT_RADIX)) {
 				return true;
 			}
 		}
