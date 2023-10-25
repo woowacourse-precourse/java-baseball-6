@@ -3,9 +3,7 @@ package model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 public class NumberGenerator {
     private static final int MAX_SIZE = 3;
