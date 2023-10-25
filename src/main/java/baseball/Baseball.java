@@ -7,7 +7,7 @@ import static baseball.util.CountResult.ball;
 import static baseball.util.CountResult.strike;
 
 import baseball.control.ComputerControl;
-import baseball.control.UserControl;
+import baseball.control.InputControl;
 import baseball.util.Converter;
 import baseball.util.CountResult;
 import baseball.util.Validation;
@@ -19,7 +19,7 @@ import java.util.List;
 public class Baseball {
     private static final Validation validation = new Validation();
     private static final ComputerControl computerControl = new ComputerControl();
-    private static final UserControl userControl = new UserControl();
+    private static final InputControl INPUT_CONTROL = new InputControl();
     private static final CountResult countResult = new CountResult();
     private static final ResultView resultView = new ResultView();
     private static final UserView userView = new UserView();
@@ -33,7 +33,7 @@ public class Baseball {
         startGame();
         while (!isRestart) {
             userView.requestInput();
-            String inputNum = userControl.getNumber();
+            String inputNum = INPUT_CONTROL.getNumber();
             validation.validateUserInput(inputNum);
 
             // countingResult에서의 셈이 수월하도록 IntegerList로 변환 후 진행
@@ -51,7 +51,7 @@ public class Baseball {
 
     public static void restartOrExit() {
         UserView.requestReply();
-        String reply = userControl.getRestartCode();
+        String reply = INPUT_CONTROL.getRestartCode();
         validation.validateReply(reply);
 
         if (reply.equals(RESTART)) {

@@ -2,7 +2,7 @@ package baseball.control;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class UserControl {
+public class InputControl {
     public static String getNumber() {
         return Console.readLine();
     }
