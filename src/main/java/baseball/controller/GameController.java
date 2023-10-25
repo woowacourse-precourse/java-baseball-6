@@ -54,7 +54,7 @@ public class GameController {
 
         IntegerValidator.validateInteger(regameNum);
         int parsedRegameNum = Integer.parseInt(regameNum);
-        Restart restart = RestartController.validateValue(parsedRegameNum);
+        Restart restart = Restart.validateValue(parsedRegameNum);
 
         if (restart == Restart.RESTART_GAME) {
             return false;
