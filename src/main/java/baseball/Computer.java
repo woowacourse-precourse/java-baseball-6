@@ -9,9 +9,9 @@ public class Computer {
     private List<Integer> nums = new ArrayList<>();
     private GameResult currentResult;
 
-    public void pickRandomNumber() {
+    public void pickRandomNumber(int count) {
         nums.clear();
-        while (nums.size() < 3) {
+        while (nums.size() < count) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!nums.contains(randomNumber)) {
                 nums.add(randomNumber);

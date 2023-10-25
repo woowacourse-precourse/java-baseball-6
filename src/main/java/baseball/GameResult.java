@@ -22,7 +22,7 @@ public class GameResult {
 
     private void calculateStrikeCount() {
         strike = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < computer.size(); i++) {
             if (computer.get(i) == player.get(i)) {
                 strike += 1;
             }
@@ -31,7 +31,7 @@ public class GameResult {
 
     private void calculateBallCount() {
         ball = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < computer.size(); i++) {
             if (computer.get(i) != player.get(i) && computer.contains(player.get(i))) {
                 ball += 1;
             }
@@ -53,7 +53,7 @@ public class GameResult {
     }
 
     public boolean isGameOver() {
-        if (strike == 3) {
+        if (strike == computer.size()) {
             return true;
         }
         return false;

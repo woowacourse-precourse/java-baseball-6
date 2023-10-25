@@ -11,20 +11,20 @@ public class BaseballGame {
         view = new GameView();
     }
 
-    public void play() {
+    public void play(int count) {
         view.showStartMessage();
-        computer.pickRandomNumber();
+        computer.pickRandomNumber(count);
         GameResult currentResult;
         do {
             List<Integer> playerNumbers = view.readNumbers();
             currentResult = computer.getResult(playerNumbers);
             view.showCurrentResult(currentResult.toString());
-        } while(!currentResult.isGameOver() || restart());
+        } while(!currentResult.isGameOver() || restart(count));
     }
 
-    private boolean restart() {
+    private boolean restart(int count) {
         if (view.askRestart()) {
-            computer.pickRandomNumber();
+            computer.pickRandomNumber(count);
             return true;
         }
         return false;
