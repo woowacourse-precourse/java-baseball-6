@@ -32,6 +32,9 @@ public class Computer {
         if (strike == 3) {
             isThreeStrike = true;
         }
+        else {
+            isThreeStrike = false;
+        }
 
         return strike;
     }
