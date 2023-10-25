@@ -5,8 +5,6 @@ public interface Game {
 
     String playTurn(String input);
 
-    String gameResultToString();
-
     void validateGameInput(String input) throws IllegalArgumentException;
 
     boolean isFinished();

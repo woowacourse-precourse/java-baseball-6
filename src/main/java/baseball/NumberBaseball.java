@@ -5,10 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class NumberBaseball implements Game {
-    private enum BaseballResultType {
-        STRIKE, BALL, OUT
-    }
-    private HashMap<BaseballResultType, Integer> baseballResult;
+    private final int ballCount = 3;
+    private final BaseballResult  baseballResult = new BaseballResult(ballCount);
 
     private final int ANSWER_LENGTH = 3;
     private String[] answer;
@@ -27,16 +25,16 @@ public class NumberBaseball implements Game {
     public String playTurn(String input) {
         validateGameInput(input);
 
-        initializeTurnResult();
-        String[] userInput = input.split("");
+        baseballResult.initializeBaseballResult();
 
-        for (int i = 0; i < ANSWER_LENGTH; i++) {
+        String[] userInput = input.split("");
+        for (int i = 0; i < ballCount; i++) {
             if (userInput[i].equals(answer[i])) {
-                baseballResult.put(BaseballResultType.STRIKE, baseballResult.get(BaseballResultType.STRIKE) + 1);
+                baseballResult.strike();
             } else if (answerSet.contains(userInput[i])) {
-                baseballResult.put(BaseballResultType.BALL, baseballResult.get(BaseballResultType.BALL) + 1);
+                baseballResult.ball();
             } else {
-                baseballResult.put(BaseballResultType.OUT, baseballResult.get(BaseballResultType.OUT) + 1);
+                baseballResult.out();
             }
         }
 
@@ -45,25 +43,8 @@ public class NumberBaseball implements Game {
     }
 
     @Override
-    public String gameResultToString() {
-        if (baseballResult.get(BaseballResultType.OUT) == ANSWER_LENGTH) {
-            return "낫싱";
-        }
-
-        ArrayList<String> result = new ArrayList<>();
-        if (baseballResult.get(BaseballResultType.BALL) > 0) {
-            result.add(String.format("%d볼", baseballResult.get(BaseballResultType.BALL)));
-        }
-        if (baseballResult.get(BaseballResultType.STRIKE) > 0) {
-            result.add(String.format("%d스트라이크", baseballResult.get(BaseballResultType.STRIKE)));
-        }
-
-        return String.join(" ", result);
-    }
-
-    @Override
     public void validateGameInput(String input) throws IllegalArgumentException {
-        if (input == null || input.length() != ANSWER_LENGTH) {
+        if (input == null || input.length() != ballCount) {
             throw new IllegalArgumentException("Invalid game input length");
         }
 
@@ -96,26 +77,16 @@ public class NumberBaseball implements Game {
     }
 
     private void initializeAnswer() {
-        answer =  new String[ANSWER_LENGTH];
+        answer =  new String[ballCount];
         answerSet = new HashSet<>();
 
-        while (answerSet.size() != ANSWER_LENGTH) {
+        while (answerSet.size() != ballCount) {
             String randNumberString = String.valueOf(Randoms.pickNumberInRange(1, 9));
             if (answerSet.contains(randNumberString))
                 continue;
 
             answerSet.add(randNumberString);
             answer[answerSet.size() - 1] = randNumberString;
-        }
-    }
-
-    private void initializeTurnResult() {
-        if (baseballResult == null) {
-            baseballResult = new HashMap<>();
-        }
-
-        for (BaseballResultType type : BaseballResultType.values()) {
-            baseballResult.put(type, 0);
         }
     }
 }
