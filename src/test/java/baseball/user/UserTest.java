@@ -1,8 +1,7 @@
-package baseball;
+package baseball.user;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.user.User;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.util.List;

@@ -1,6 +1,6 @@
-package baseball;
+package baseball.computer;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.computer.Computer;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

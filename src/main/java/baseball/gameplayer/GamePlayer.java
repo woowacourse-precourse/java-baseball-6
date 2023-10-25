@@ -1,8 +1,9 @@
-package baseball;
+package baseball.gameplayer;
 
+import baseball.computer.Computer;
+import baseball.user.User;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.net.Inet4Address;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,6 +77,13 @@ public class GamePlayer {
             oneGame();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             select = Integer.parseInt(Console.readLine());
+            validateInput(select);
+
+        }
+    }
+    private void validateInput(Integer select) throws IllegalArgumentException{
+        if(select!=1 && select!=2){
+            throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
 

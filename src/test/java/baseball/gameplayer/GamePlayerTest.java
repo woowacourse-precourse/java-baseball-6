@@ -1,12 +1,11 @@
-package baseball;
+package baseball.gameplayer;
 
+import baseball.gameplayer.GamePlayer;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GamePlayerTest {
     GamePlayer gamePlayer = new GamePlayer();
@@ -19,12 +18,12 @@ class GamePlayerTest {
     }
 
     @Test
-    public void oneTurnTest(){
-        List<Integer> computerSelect = new ArrayList<>(Arrays.asList(1,2,4));
+    public void oneTurnTest() {
+        List<Integer> computerSelect = new ArrayList<>(Arrays.asList(1, 2, 4));
 
         ByteArrayInputStream testIn = new ByteArrayInputStream("124".getBytes());
         System.setIn(testIn);
-        Map<String,Integer> oneTurnResult = gamePlayer.oneTurn(computerSelect);
+        Map<String, Integer> oneTurnResult = gamePlayer.oneTurn(computerSelect);
 
         Assertions.assertThat(oneTurnResult.get("strike")).isEqualTo(3);
     }
