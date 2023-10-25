@@ -1,4 +1,4 @@
-package baseball;
+package baseball.logic;
 
 import baseball.logic.BaseballGame;
 

@@ -20,13 +20,13 @@ public class Player {
     }
     public void guess() {
         System.out.print("숫자를 입력해주세요 : ");
-        String answer = Console.readLine();
-        if(answer.length() <= 0 || answer.length() > 3 || isDuplicate(answer)){
+        String guess = Console.readLine();
+        if(guess.length() <= 0 || guess.length() > 3 || isThereDuplicateNumber(guess)){
             throwIllegalArgumentException();
         }
         guessNumbers.clear();
         for (int i = 0; i < 3; i++) {
-            guessNumbers.add(answer.charAt(i) - '0');
+            guessNumbers.add(guess.charAt(i) - '0');
         }
     }
 
@@ -40,13 +40,13 @@ public class Player {
         return null;
     }
 
-    public boolean isDuplicate(String answer) {
+    // 사용자의 입력에 중복 숫자가 있는지 검사한다
+    public boolean isThereDuplicateNumber(String guess) {
         String temp = "";
 
-        for (char c: answer.toCharArray()) {
-            // 포함되지 않는다면
-            if (!temp.contains(String.valueOf(c))) {
-                temp += String.valueOf(c);
+        for (char guessNumber: guess.toCharArray()) {
+            if (!temp.contains(String.valueOf(guessNumber))) {
+                temp += String.valueOf(guessNumber);
             } else {
                 return true;
             }
