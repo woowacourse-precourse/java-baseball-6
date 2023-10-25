@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Objects;
 import util.validator.BallNumberValidator;
 
 public class BallNumber {
@@ -14,6 +15,23 @@ public class BallNumber {
 
     public int getBallNumber() {
         return ballNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BallNumber number = (BallNumber) o;
+        return ballNumber == number.ballNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ballNumber);
     }
 
 }

@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Objects;
 import util.validator.BallIndexValidator;
 
 public class BallIndex {
@@ -12,8 +13,23 @@ public class BallIndex {
         this.ballIndex = ballIndex;
     }
 
-    public int getBallIndex() {
-        return ballIndex;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BallIndex index = (BallIndex) o;
+        return ballIndex == index.ballIndex;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(ballIndex);
+    }
 }
+
+

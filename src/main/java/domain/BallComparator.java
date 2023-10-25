@@ -1,9 +1,7 @@
 package domain;
 
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 public class BallComparator {
@@ -19,15 +17,11 @@ public class BallComparator {
         return new GameResult(strike, ball);
     }
 
+
     private int countStrike(List<Ball> userBalls, List<Ball> computerBalls) {
-        int strike = 0;
-        for (int i = BEGIN_INDEX; i <= END_INDEX; i++) {
-            BallNumber userBall = userBalls.get(i).getBallNumber();
-            BallNumber computerBall = computerBalls.get(i).getBallNumber();
-            if (userBall.getBallNumber() == computerBall.getBallNumber()) {
-                strike += 1;
-            }
-        }
+        int strike = (int) IntStream.rangeClosed(BEGIN_INDEX, END_INDEX)
+                .filter(i -> userBalls.get(i).equals(computerBalls.get(i)))
+                .count();
 
         return strike;
     }
@@ -36,16 +30,10 @@ public class BallComparator {
         if (strike == MAX_STRIKE) {
             return 0;
         }
-        Set<Integer> ballsSet = new HashSet<>();
-        for (Ball userBall : userBalls) {
-            BallNumber ballNumber = userBall.getBallNumber();
-            ballsSet.add(ballNumber.getBallNumber());
-        }
-        int ball = (int) IntStream.rangeClosed(BEGIN_INDEX, END_INDEX)
-                .mapToObj(computerBalls::get)
-                .map(Ball::getBallNumber)
-                .map(BallNumber::getBallNumber)
-                .filter(ballsSet::contains)
+        int ball = (int) userBalls.stream()
+                .filter(userBall -> computerBalls.stream()
+                        .anyMatch(computerBall -> computerBall.getBallNumber()
+                                .equals(userBall.getBallNumber())))
                 .count();
 
         return ball - strike;
