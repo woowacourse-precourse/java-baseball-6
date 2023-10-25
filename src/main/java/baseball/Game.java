@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Game {
@@ -47,6 +49,7 @@ public class Game {
         if (num == RESTART) {
             gameRestart();
         } else if (num == END) {
+            Console.close();
             return;
         } else {
             Exception.inputRestartStatusValidation();
