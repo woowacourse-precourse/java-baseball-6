@@ -11,7 +11,4 @@ public enum MatchResult {
         return this == BALL;
     }
 
-    public boolean isNothing() {
-        return this == NOTHING;
-    }
 }
