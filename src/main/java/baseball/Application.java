@@ -13,7 +13,7 @@ public class Application {
 
     public List<Integer> numbers;
 
-    public void initializeNumber() {
+    private void initializeNumber() {
         numbers = new ArrayList<>();
         while (numbers.size() != 3) {
             Integer number = Randoms.pickNumberInRange(1, 9);
