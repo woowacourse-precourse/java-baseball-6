@@ -8,20 +8,20 @@ public class Application {
     private int[] computer = new int[3];
     private int[] user = new int[3];
     private int[] item = new int[2];
-    public void Application(){
-        com3Digit(this);
-        System.out.println(this.computer[0] + this.computer[1] + this.computer[2]);
+    public Application(){
+        this.com3Digit();
     }
     public static void start(){
         //create an instance for one game
         Application app = new Application();
 //        while(item[0]<3){
+//
 //        }
     }
-    public void com3Digit(Application app){
-        for(int i=0; i<app.computer.length; i++){
+    public void com3Digit(){
+        for(int i=0; i<this.computer.length; i++){
             //save the random value range of 1-9
-            app.computer[i] = Randoms.pickNumberInRange(1, 9);
+            this.computer[i] = Randoms.pickNumberInRange(1, 9);
         }
     }
     public static void main(String[] args) {
