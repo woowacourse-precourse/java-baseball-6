@@ -14,11 +14,16 @@ public record Compare(Computer computer, Player player, Result result) {
     }
 
     public Result ResultgetBallCountJudgement() {
-        Result result = Result.initialBallCount();
-        for (int position = DEFAULT_VALUE; position < BALL_LENGTH; position++) {
-            result.updateBallCount(getBallCount(position));
+        return getBallCountJudgementFromPosition(Result.initialBallCount(), DEFAULT_VALUE);
+    }
+
+    private Result getBallCountJudgementFromPosition(Result result, int position) {
+        if (position == BALL_LENGTH) {
+            return result;
         }
-        return result;
+
+        result.updateBallCount(getBallCount(position));
+        return getBallCountJudgementFromPosition(result, position + 1);
     }
 
     private BallCount getBallCount(int position) {
