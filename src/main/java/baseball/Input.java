@@ -17,6 +17,14 @@ public class Input {
         return inputList;
      }
     //1또는 2 입력받기
-
+    public boolean choiceRetryOrEnd(String input){
+        check.checkingRetryOrEnd(input);
+        if(input.equals("2")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 }
