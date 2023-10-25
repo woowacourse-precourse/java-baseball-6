@@ -9,9 +9,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputNumbersTest {
 
-    @DisplayName("1-9로 이루어진 3자리 수를 입력받기. 중복값은 검사하지 않는다.")
+    @DisplayName("1-9로 이루어진 중복없는 3자리 수를 입력받기.")
     @ParameterizedTest
-    @ValueSource(strings = {"123", "258", "654", "999"})
+    @ValueSource(strings = {"123", "258", "654", "987"})
     public void get_input_three_numbers(String threeNumbers) throws Exception {
         //given, when
         InputNumbers inputNumbers = new InputNumbers(threeNumbers);

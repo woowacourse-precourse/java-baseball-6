@@ -94,7 +94,7 @@ public class BallsTest {
 
     @DisplayName("Balls끼리 비교 : 1볼 1스트라이크")
     @ParameterizedTest
-    @CsvSource({"345,374", "123,325", "912,993"})
+    @CsvSource({"345,374", "123,325", "912,923"})
     public void compareBallWithBalls_1STRIKE_1BALL(String nums1, String nums2) throws Exception {
         //given
         Balls balls1 = new Balls(InputNumbers.of(nums1));
@@ -109,7 +109,7 @@ public class BallsTest {
 
     @DisplayName("Balls끼리 비교 : 2볼 1스트라이크")
     @ParameterizedTest
-    @CsvSource({"123,132", "312,321", "965,996"})
+    @CsvSource({"123,132", "312,321", "965,956"})
     public void compareBallWithBalls_1STRIKE_2BALL(String nums1, String nums2) throws Exception {
         //given
         Balls balls1 = new Balls(InputNumbers.of(nums1));

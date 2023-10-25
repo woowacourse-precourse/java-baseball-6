@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class InputUtils {
     public static final int INPUT_NUMBERS_SIZE = 3;
-    public static final Pattern INPUT_NUMBERS_IN_SIZE_PATTERN = Pattern.compile("^[1-9]{" + INPUT_NUMBERS_SIZE + "}$");
+    public static final Pattern INPUT_NUMBERS_REGEX = Pattern.compile("^(?!.*(.).*\\1)[1-9]{3}$");
 
     public static List<Integer> inputNumbersToIntegerList(InputNumbers inputNumbers) {
         String value = inputNumbers.value();
