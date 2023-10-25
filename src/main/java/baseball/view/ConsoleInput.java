@@ -3,6 +3,9 @@ package baseball.view;
 
 import baseball.exception.InvalidInputException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class ConsoleInput {
@@ -10,13 +13,13 @@ public class ConsoleInput {
     static final String DIGITS_PATTERN = "^[0-9]+$";
     static final String ONE_OR_TWO_PATTERN  = "^[1-2]+$";
 
-    public static int readDigitNumber(int len) throws InvalidInputException {
+    public static List<Integer> readDigitNumber(int len) throws InvalidInputException {
         String input = readLine();
 
         if (validInput(input, len)) {
             throw new InvalidInputException("잘못된 입력입니다.");
         }
-        return convertStringToInt(input);
+        return convertStringToIntList(input);
     }
 
     private static boolean validInput(String input, int length) {
@@ -30,7 +33,13 @@ public class ConsoleInput {
         return input.charAt(0) == input.charAt(1) || input.charAt(1) == input.charAt(2) || input.charAt(0) == input.charAt(2);
     }
 
-    private static int convertStringToInt(String input) {
-        return Integer.parseInt(input);
+    private static List<Integer> convertStringToIntList(String input) {
+        List<Integer> list = new ArrayList<>(input.length());
+
+        for (char c : input.toCharArray()) {
+            list.add(c - '0');
+        }
+        return list;
     }
+
 }
