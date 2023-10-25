@@ -54,7 +54,7 @@ public class Application {
     public static Object[] ruleChecker(int[] playerNumber, int[] targetNumber) {
         int ball = 0;
         int strike = 0;
-        int code = 8005;
+        boolean newGame = false;
         String gameResult;
 
         for (int i=0;i<3;i++) {
@@ -71,11 +71,11 @@ public class Application {
 
         gameResult = resultIntoString(ball, strike);
         if (strike == 3 && ball == 0) {
-            code = 8000;
+            newGame = true;
         }
-        return new Object[] { gameResult, code};
+        return new Object[] { gameResult, newGame};
     }
-    public static int game (int[] target) {
+    public static boolean game (int[] target) {
         System.out.print("숫자를 입력해주세요 : ");
         String player = Console.readLine();
         try {
@@ -94,27 +94,28 @@ public class Application {
 
         }
         System.out.printf("%s \n", player);
+
         int[] playerNumber = makeNumberArray(player);
 
         // checking time according to baseball game rules
         Object[] playerResult = ruleChecker(playerNumber, target);
 
         String gameResult = (String) playerResult[0];
-        int gameCode = (int) playerResult[1];
+        boolean newGame = (boolean) playerResult[1];
 
         System.out.println(gameResult);
 
-        return gameCode;
+        return newGame;
     }
     public static void main(String[] args){
             System.out.println("숫자 야구 게임을 시작합니다");
 
         int[] target = targetGenerator();
-        int initCode ;
-        while (true) {
-            initCode = game(target);
 
-            if (initCode == 8000) {
+        while (true) {
+            boolean startNewGame = game(target);
+
+            if (startNewGame) {
                 System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String playerCode = Console.readLine();
@@ -129,7 +130,7 @@ public class Application {
                 }
                 int restartCode = Integer.parseInt(playerCode);
                 if (restartCode == 1) {
-                    target = targetGenerator(); // second target initialization
+                    target = targetGenerator();
                 }
                 else {
                     return;
