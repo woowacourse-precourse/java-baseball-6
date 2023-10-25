@@ -22,4 +22,15 @@ public class Computer {
             }
         }
     }
+
+    public int getNumberOf(int index) {
+        return numbers.get(index);
+    }
+
+    public boolean contains(int num) {
+        if (numbers.contains(num)) {
+            return true;
+        }
+        return false;
+    }
 }

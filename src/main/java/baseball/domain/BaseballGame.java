@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static baseball.constant.Baseball.NUMBER_SIZE;
 import static baseball.constant.GameMessage.INPUT_ERROR_MESSAGE;
 import static baseball.constant.GameMessage.RESTART_CHECK_MESSAGE;
 import static baseball.constant.GameMessage.START_MESSAGE;
@@ -27,10 +28,28 @@ public class BaseballGame {
     }
 
     public void play() {
-
+        computer.init();
+        player.inputNumbers();
+        compareNumbers();
     }
 
-    // 게임 재시작 여부를 확인
+    // 플레이어가 입력한 수와 컴퓨터가 선택한 수를 비교하여 스트라이크 / 볼 판정
+    public void compareNumbers() {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
+            int computerNumber = computer.getNumberOf(i);
+            int playerNumber = player.getNumberOf(i);
+
+            if (computerNumber == playerNumber) {
+                // 같은 숫자가 같은 위치에 있으면 스트라이크
+                strikeCount++;
+            } else if (computer.contains(playerNumber)) {
+                // 같은 숫자가 다른 위치에 있으면 볼
+                ballCount++;
+            }
+        }
+    }
+
+    // 게임 종료 OR 재시작 확인
     public boolean checkRestart() {
         System.out.println(RESTART_CHECK_MESSAGE);
         String input = Console.readLine();
