@@ -1,7 +1,6 @@
-package baseball;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+import baseball.Answer;
 import org.junit.jupiter.api.Test;
 
 class AnswerTest {
@@ -9,7 +8,7 @@ class AnswerTest {
     private Answer answer = new Answer();
 
     @Test
-    void testGenerateAnswer() {
+    void assertGenerateAnswerTest() {
         int[] generatedAnswer = answer.generateAnswer();
 
         assertNotNull(generatedAnswer);
@@ -20,7 +19,7 @@ class AnswerTest {
     }
 
     @Test
-    void testGenerateAnswerWithRightInput() {
+    void assertGenerateAnswerWithRightInputTest() {
         int[] input = {1, 2, 3};
         int[] generatedAnswer = answer.generateAnswer(123);
         assertNotNull(generatedAnswer);
@@ -29,9 +28,20 @@ class AnswerTest {
     }
 
     @Test
-    void testCheckValidity() {
+    void assertGenerateAnswerWithWrongInputTest() {
+        assertThrows(IllegalArgumentException.class, () -> answer.generateAnswer(1234));
+        assertThrows(IllegalArgumentException.class, () -> answer.generateAnswer(9999999));
+        assertThrows(IllegalArgumentException.class, () -> answer.generateAnswer(0));
+        assertThrows(IllegalArgumentException.class, () -> answer.generateAnswer(200));
+        assertThrows(IllegalArgumentException.class, () -> answer.generateAnswer(1234));
+    }
+
+
+    @Test
+    void assertCheckValidityTest() {
         int validNumber = 456;
         assertTrue(answer.check(validNumber));
     }
+
 
 }

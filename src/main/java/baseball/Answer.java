@@ -5,42 +5,46 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Answer {
 
-    private static List<Integer> answers;
-    private static int[] temp_answers;
+    private static List<Integer> answers = new ArrayList<>();
+    private static int[] temp_answer = new int[3];
 
-    public Answer() {
+    public int[] generateAnswer() {
+
         answers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        for (int i = 0; i < 3; i++) {
+            temp_answer[i] = answers.get(i);
+        }
+
+        return temp_answer;
     }
 
-    public Answer(int answer) {
+    public int[] generateAnswer(int answer) {
         if (!check(answer)) {
             throw new IllegalArgumentException();
         }
-        answers.clear();
-        for (int i = 0; i < 3; i++) {
-            answers.add(temp_answers[i]);
-        }
 
+        return temp_answer;
     }
 
-    public Answer(String answer) {
-        new Answer(Integer.parseInt(answer));
-    }
 
-    // 숫자 야구에 적합한 숫자인지 확인, 숫자가 세자리 수이고 각 자리수가 다른지 확인
+    // 숫자 야구에 적합한 숫자인지 확인, 숫자가 세자리 수이고 각 자리수가 0이 아니며 다른지 확인
     public boolean check(int num) {
 
         if (num < 123 || 987 < num) {
             return false;
         }
 
-        temp_answers = new int[3];
         for (int i = 0; i < 3; i++) {
-            temp_answers[2 - i] = num % 10;
+            temp_answer[2 - i] = num % 10;
             num /= 10;
         }
-        return (temp_answers[0] != temp_answers[1] && temp_answers[0] != temp_answers[2]
-                && temp_answers[1] != temp_answers[2]);
+
+        if (temp_answer[1] == 0 || temp_answer[2] == 0) {
+            return false;
+        }
+
+        return (temp_answer[0] != temp_answer[1] && temp_answer[0] != temp_answer[2]
+                && temp_answer[1] != temp_answer[2]);
     }
 
 }
