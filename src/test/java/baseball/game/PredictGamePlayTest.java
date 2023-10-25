@@ -15,7 +15,7 @@ class PredictGamePlayTest {
     public void testPredictBall() throws Exception {
         // given
         Computer.number = "123";
-        String test1 = "991";
+        String test1 = "981";
         String test2 = "912";
         String test3 = "312";
 
@@ -36,7 +36,7 @@ class PredictGamePlayTest {
     public void testPredictStrike() throws Exception {
         // given
         Computer.number = "123";
-        String test1 = "199";
+        String test1 = "189";
         String test2 = "129";
         String test3 = "123";
 
@@ -57,7 +57,7 @@ class PredictGamePlayTest {
     public void testPredictNothing() throws Exception {
         // given
         Computer.number = "123";
-        String test1 = "999";
+        String test1 = "789";
 
         // when
         PredictGamePlay predictGamePlay = new PredictGamePlay();
@@ -87,7 +87,7 @@ class PredictGamePlayTest {
     public void testExceptionInput4Digit() throws Exception {
         // given
         Computer.number = "123";
-        String test1 = "9999";
+        String test1 = "6789";
 
         String msg = "잘못된 입력입니다, 예측 가능한 수는 세자리(1~9) 숫자입니다.";
 
