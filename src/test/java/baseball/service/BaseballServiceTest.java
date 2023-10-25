@@ -3,6 +3,7 @@ package baseball.service;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ class BaseballServiceTest {
         List<Integer> user = new ArrayList<>();
         BaseballService service = new BaseballService();
 
-        for(int i = 1; i < 4; i++) {
+        for (int i = 1; i < 4; i++) {
             computer.add(i);
         }
 
@@ -33,21 +34,22 @@ class BaseballServiceTest {
         List<Integer> user = new ArrayList<>();
         BaseballService service = new BaseballService();
 
-        for(int i = 1; i < 4; i++) {
+        for (int i = 1; i < 4; i++) {
             computer.add(i);
         }
-        for(int i = 3; i < 6; i++) {
+        for (int i = 3; i < 6; i++) {
             user.add(i);
         }
         int ball = service.countBall(computer, user);
         System.out.println("ball = " + ball);
     }
+
     @Test
     void printBaseball() {
         BaseballService service = new BaseballService();
-        service.printBaseball(0, 0 );
-        service.printBaseball(0, 1 );
-        service.printBaseball(1, 0 );
-        service.printBaseball(1, 1 );
+        service.printBaseball(0, 0);
+        service.printBaseball(0, 1);
+        service.printBaseball(1, 0);
+        service.printBaseball(1, 1);
     }
 }
