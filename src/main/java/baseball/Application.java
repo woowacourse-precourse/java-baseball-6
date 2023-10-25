@@ -7,6 +7,7 @@ import baseball.model.computer.Score;
 import baseball.model.player.GameStateNumber;
 import baseball.model.player.GuessNumbers;
 import baseball.model.player.Player;
+import baseball.view.CommonView;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -16,6 +17,7 @@ public class Application {
         BaseballGameController baseballGameController = new BaseballGameController(
                 new Computer(new GameAnswer(), new Score()),
                 new Player(new GuessNumbers(), new GameStateNumber()),
+                new CommonView(),
                 new InputView(),
                 new OutputView()
         );

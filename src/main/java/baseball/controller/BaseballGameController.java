@@ -2,27 +2,29 @@ package baseball.controller;
 
 import baseball.model.computer.Computer;
 import baseball.model.player.Player;
+import baseball.view.CommonView;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
 
-    private static final String START_MSG = "숫자 야구 게임을 시작합니다.";
-
     private final Computer computer;
     private final Player player;
+    private final CommonView commonView;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public BaseballGameController(Computer computer, Player player, InputView inputView, OutputView outputView) {
+    public BaseballGameController(Computer computer, Player player, CommonView commonView, InputView inputView,
+                                  OutputView outputView) {
         this.computer = computer;
         this.player = player;
+        this.commonView = commonView;
         this.inputView = inputView;
         this.outputView = outputView;
     }
 
     public void start() {
-        printStartMessage();
+        commonView.printStartMessage();
         while (player.continueGame()) {
             computer.makeAnswer();
             playOneRound();
@@ -39,9 +41,5 @@ public class BaseballGameController {
             outputView.printResult(computer.getScore());
         }
         inputView.printRestartOrExitInputMessage();
-    }
-
-    public void printStartMessage() {
-        System.out.println(START_MSG);
     }
 }
