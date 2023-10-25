@@ -27,4 +27,8 @@ public class startProcess {
             }
         }
     }
+
+    public List<Integer> getComputerNumber() {
+        return computer;
+    }
 }
