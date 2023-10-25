@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.controller.CalculateNumbers;
 import baseball.controller.CheckNumbers;
+import baseball.controller.ConvertString;
 import baseball.controller.GenerateNumbers;
 import baseball.controller.InputCommand;
 import baseball.model.ComputerNumberStorage;
@@ -14,6 +15,7 @@ public class Application {
 
         boolean gameContinue = true;
         PrintText.gameStart();
+
         while (gameContinue) {
             // 숫자야구 진행
             playGame();
@@ -39,7 +41,7 @@ public class Application {
 
         // 컴퓨터 랜덤 숫자 생성 및 저장
         List<Integer> comNumberList = GenerateNumbers.makeRandomNumbers();
-        ComputerNumberStorage com_memory = new ComputerNumberStorage(comNumberList);
+        ComputerNumberStorage comMemory = new ComputerNumberStorage(comNumberList);
 
         // 유저가 숫자야구 정답을 맞출 때까지 계속 반복함
         boolean userCorrect = false;
@@ -54,10 +56,12 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
-            List<Integer> userNumberList = UserNumberStorage.strToList(userNumber);
+            // userNumber이라는 string을 List에 넣어서 반환
+            List<Integer> userNumberList = ConvertString.strToList(userNumber);
+            UserNumberStorage userMemory = new UserNumberStorage(userNumberList);
 
             // 낫띵, 볼, 스트라이크가 몇개인지 체크 후 반환
-            List<Integer> result = CalculateNumbers.checkBall(com_memory.getNumbers(), userNumberList);
+            List<Integer> result = CalculateNumbers.checkBall(comMemory.getNumbers(), userNumberList);
             PrintText.calculateResult(result.get(0), result.get(1), result.get(2));
 
             // 만약 3스트라이크이면, 성공 문구를 출력 후 while문을 종료
