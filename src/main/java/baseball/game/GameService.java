@@ -28,9 +28,9 @@ public class GameService {
         endPtr = 1;
         while (endPtr == 1) {
             List<Integer> list = ball.updateTarget();
-            list.forEach(n -> {
+            /*list.forEach(n -> {
                 System.out.printf(n + " ");
-            });
+            });*/
             println("숫자 야구 게임을 시작합니다.");
             Result result = new Result(0, 0);
             while (!result.chkResult(result)) {
