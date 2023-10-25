@@ -26,6 +26,7 @@ public class Control {
 
         System.out.println("게임 종료");
     }
+
     private void startGame(){
         initComputerNumbers();
 
