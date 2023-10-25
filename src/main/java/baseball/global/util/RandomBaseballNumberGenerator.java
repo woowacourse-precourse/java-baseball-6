@@ -14,12 +14,9 @@ public class RandomBaseballNumberGenerator {
     // 게임 조건의 자릿수에 따른 난수 생성 기능
     public static List<Integer> generateRandomBaseballNumbers(int size){
         Set<Integer> randomBaseballNumbers = new HashSet<>();
-        do {
-            int randomBaseballNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
-            randomBaseballNumbers.add(randomBaseballNumber);
-        } while (randomBaseballNumbers.size() < size);
+        while (randomBaseballNumbers.size() < size){
+            randomBaseballNumbers.add(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE));
+        }
         return List.copyOf(randomBaseballNumbers);
     }
-
-
 }
