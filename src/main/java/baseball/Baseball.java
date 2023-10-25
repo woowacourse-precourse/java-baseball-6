@@ -13,8 +13,8 @@ public class Baseball {
         while(true) {
             startRound();
         }
-
     }
+
 
     private void startRound() {
         List<Integer> computerNumber = RandomUtil.generateRandomNumber(3);
