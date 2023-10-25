@@ -3,6 +3,9 @@ package baseball.rule;
 import baseball.domain.computer.Computer;
 import baseball.domain.number.GameNumber;
 import baseball.domain.result.Result;
+import baseball.generator.NumberGenerator;
+import baseball.generator.TestNumberGenerator;
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -17,8 +20,8 @@ class BaseballGameRuleTest {
     @ParameterizedTest
     void check(List<Integer> userNumbers, List<Integer> computerNumbers, Integer strike, Integer ball) {
         Rule rule = new BaseballGameRule();
-
-        Result result = rule.check(new GameNumber(userNumbers), new Computer(computerNumbers));
+        
+        Result result = rule.check(new GameNumber(userNumbers), createComputer(computerNumbers));
 
         Assertions.assertThat(result.strike()).isEqualTo(strike);
         Assertions.assertThat(result.ball()).isEqualTo(ball);
@@ -31,5 +34,10 @@ class BaseballGameRuleTest {
                 Arguments.of(Arrays.asList(3, 4, 5), Arrays.asList(2, 3, 5), 1, 1),
                 Arguments.of(Arrays.asList(9, 4, 7), Arrays.asList(4, 5, 6), 0, 1)
         );
+    }
+
+    private Computer createComputer(List<Integer> numbers) {
+        NumberGenerator generator = new TestNumberGenerator(new ArrayDeque<>(numbers));
+        return new Computer(generator);
     }
 }

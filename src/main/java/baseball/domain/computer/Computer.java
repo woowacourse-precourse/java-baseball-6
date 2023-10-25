@@ -7,16 +7,12 @@ import java.util.List;
 
 public class Computer {
 
-    private NumberGenerator numberGenerator;
+    private final NumberGenerator numberGenerator;
     private List<Integer> gameNumbers;
 
     public Computer(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
         this.gameNumbers = generateNumbers();
-    }
-
-    public Computer(List<Integer> gameNumbers) {
-        this.gameNumbers = gameNumbers;
     }
 
     public void changeNumbers() {

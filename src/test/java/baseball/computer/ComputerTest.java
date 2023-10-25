@@ -3,9 +3,9 @@ package baseball.computer;
 import baseball.domain.computer.Computer;
 import baseball.domain.number.validation.DuplicateDigitValidator;
 import baseball.generator.NumberGenerator;
+import baseball.generator.TestNumberGenerator;
 import java.util.ArrayDeque;
 import java.util.List;
-import java.util.Queue;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,13 +35,5 @@ class ComputerTest {
     private Computer createComputer(List<Integer> numbers) {
         NumberGenerator generator = new TestNumberGenerator(new ArrayDeque<>(numbers));
         return new Computer(generator);
-    }
-
-    private record TestNumberGenerator(Queue<Integer> numbers) implements NumberGenerator {
-
-        @Override
-        public Integer generate(Integer minNumber, Integer maxNumber) {
-            return numbers.poll();
-        }
     }
 }
