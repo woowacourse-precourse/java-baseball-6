@@ -45,8 +45,8 @@ public class Balls {
         return balls.get(index);
     }
 
-    public BallStatus compare(BallNumber ball, int i) {
-        if (balls.get(i).equals(ball)) {
+    public BallStatus compare(BallNumber ball, int position) {
+        if (balls.get(position).equals(ball)) {
             return STRIKE;
         }
         if (balls.contains(ball)) {
