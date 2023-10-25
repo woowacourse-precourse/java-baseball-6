@@ -31,12 +31,12 @@ public class GameController {
     }
 
     public void play() {
-        while (startGame()) {
+        while (start()) {
 
         }
     }
 
-    private boolean startGame() {
+    private boolean start() {
         startView.displayStartMessage();
 
         NumberBaseball computerBaseball = NumberBaseball.createRandomBaseball();
@@ -52,13 +52,6 @@ public class GameController {
         String regameNum = InputUtil.inputString();
         RestartOption restartOption = RestartOption.create(regameNum);
 
-        if (restartOption == RestartOption.RESTART_GAME) {
-            return true;
-        }
-        if (restartOption == RestartOption.EXIT_GAME) {
-            return false;
-        }
-
-        return false;
+        return restartOption == RestartOption.RESTART_GAME;
     }
 }

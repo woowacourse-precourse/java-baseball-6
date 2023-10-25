@@ -28,6 +28,7 @@ public class GameServiceImpl implements GameService {
             List<String> countList = hintService.counts(hint);
             List<String> nameList = hintService.names(hint);
             hintView.displayHintMessage(countList, nameList);
+
             if (hint.isCorrect()) {
                 endView.displayEndMessage();
                 return;
