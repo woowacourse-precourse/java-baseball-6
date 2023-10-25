@@ -1,5 +1,8 @@
 package baseball.view;
 
+import static baseball.util.Constants.DEFAULT_VALUE;
+import static baseball.util.Constants.VALUE_ONE;
+
 import baseball.model.Result;
 import baseball.util.ConsoleMessage;
 import baseball.util.ResultHandler.BallAndStrikeHandler;
@@ -30,14 +33,47 @@ public class OutputView {
     }
 
     private ResultFormatter getFormatter(Result result) {
-        ResultHandler nothingHandler = NothingHandler.createWithChain();
-        ResultHandler ballHandler = BallHandler.createBallHandler();
-        ResultHandler strikeHandler = StrikeHandler.createStrikeHandler();
-        ResultHandler ballAndStrikeHandler = BallAndStrikeHandler.createBallAndStrikeHandler();
+        ResultHandler startingHandler = createHandlerChain();
+        return startingHandler.handleResult(result.getBall(), result.getStrike());
+    }
 
-        nothingHandler.setNextHandler(ballHandler);
-        ballHandler.setNextHandler(strikeHandler);
-        strikeHandler.setNextHandler(ballAndStrikeHandler);
-        return nothingHandler.handleResult(result.getBall(), result.getStrike());
+    private ResultHandler createHandlerChain() {
+        ResultHandler nothingHandler = createNothingHandler();
+        ResultHandler ballHandler = createBallHandler();
+        ResultHandler strikeHandler = createStrikeHandler();
+        ResultHandler ballAndStrikeHandler = createBallAndStrikeHandler();
+
+        setupHandlerChain(nothingHandler, ballHandler, strikeHandler, ballAndStrikeHandler);
+
+        return nothingHandler;
+    }
+
+    private ResultHandler createNothingHandler() {
+        return NothingHandler.createWithChain();
+    }
+
+    private ResultHandler createBallHandler() {
+        return BallHandler.createBallHandler();
+    }
+
+    private ResultHandler createStrikeHandler() {
+        return StrikeHandler.createStrikeHandler();
+    }
+
+    private ResultHandler createBallAndStrikeHandler() {
+        return BallAndStrikeHandler.createBallAndStrikeHandler();
+    }
+
+    private void setupHandlerChain(ResultHandler... handlers) {
+        setupHandlerChainRecursive(DEFAULT_VALUE, handlers);
+    }
+
+    private void setupHandlerChainRecursive(int index, ResultHandler... handlers) {
+        if (index >= handlers.length - VALUE_ONE) {
+            return;
+        }
+
+        handlers[index].setNextHandler(handlers[index + VALUE_ONE]);
+        setupHandlerChainRecursive(index + VALUE_ONE, handlers);
     }
 }
