@@ -40,15 +40,15 @@ public class Player {
     }
 
     public static void validateInput(String str){
+        if(str.isEmpty()){
+            throw new IllegalArgumentException("numbers cannot be empty.");
+        }
         if(str.length()!=3){
             throw new IllegalArgumentException("there must be only 3 numbers.");
         }
     }
 
     public static void validateNumber(List<Integer> numbers){
-        if (numbers.isEmpty()) {
-            throw new IllegalArgumentException("numbers cannot be empty.");
-        }
         if(numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("numbers must not be same.");
         }
