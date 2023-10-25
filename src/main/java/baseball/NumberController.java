@@ -31,32 +31,41 @@ public class NumberController {
     }
 
     public Map<String, Integer> compareNumberList(List<Integer> numList1, List<Integer> numList2) {
-      Map<String, Integer> result = new HashMap<>();
-      result.put("strike", 0);
-      result.put("ball", 0);
+        Map<String, Integer> result = new HashMap<>();
+        result.put("strike", 0);
+        result.put("ball", 0);
 
-      int strike = 0;
-      int ball = 0;
+        int strike = countStrike(numList1, numList2);
+        int ball = countBall(numList1, numList2);
 
-      for(int i=0; i<3; i++) {
-        for(int j=0; j<3; j++) {
-          if(numList1.get(i)==numList2.get(j) && i==j) {
-            strike++;
-          }
-          else if (numList1.get(i)==numList2.get(j)) {
-            ball++;
-          }
+        if (strike == 0 && ball == 0) {
+            return result;
         }
-      }
-
-      if(strike==0 && ball==0) {
+        result.replace("strike", strike);
+        result.replace("ball", ball);
         return result;
-      }
-
-      result.replace("strike", strike);
-      result.replace("ball", ball);
-
-      return result;
     }
 
+    public int countStrike(List<Integer> numList1, List<Integer> numList2) {
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (numList1.get(i) == numList2.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    public int countBall(List<Integer> numList1, List<Integer> numList2) {
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (numList1.get(i) != numList2.get(i) && numList2.contains(numList1.get(i))) {
+                ball++;
+            }
+        }
+        return ball;
+    }
 }
+
