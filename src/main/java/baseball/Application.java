@@ -24,7 +24,6 @@ final class computer {
         this.data = comdata;
         this.hash = comhash;
     }
-    
 }
 
 public class Application {
@@ -49,13 +48,22 @@ public class Application {
         if (s.length != 3) 
             throw new IllegalArgumentException(inputError);
 
-        for(int i = 0; i < s.length; i++){
-            if (user.contains(s[i]-48)) 
-                throw new IllegalArgumentException(inputError);
-            user.add(s[i]-48);
+        for(char c :s){
+            if(user.contains(c-48)) throw new IllegalArgumentException(inputError);
+            user.add(c-48);
         }
 
         return user;
+    }
+
+    public static boolean selcetContinue(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료.\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int user = Integer.parseInt(Console.readLine());
+
+        if (user != 1 && user != 2) throw new IllegalArgumentException(inputError);
+
+        return user == 1;
     }
     
     public static boolean game(){
@@ -77,13 +85,7 @@ public class Application {
             if(s==3) break;
         }
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료.\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        int user = Integer.parseInt(Console.readLine());
-
-        if (user != 1 && user != 2) throw new IllegalArgumentException(inputError);
-
-        return user == 1;
+        return selcetContinue();        
     }
 
     public static void main(String[] args) {
