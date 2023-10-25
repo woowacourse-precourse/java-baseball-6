@@ -17,14 +17,25 @@ public class Computer {
 
 	private List<Integer> createRandomNumbers() {
 		List<Integer> numbers = new ArrayList<>();
-		while (numbers.size() < BallsRule.BALLS_SIZE.getValue()) {
-			int randomNumber = Randoms.pickNumberInRange(
-					BallsRule.MIN_NUMBER.getValue(), BallsRule.MAX_NUMBER.getValue());
-			if (!numbers.contains(randomNumber)) {
+		while (needsMoreNumber(numbers)) {
+			int randomNumber = createRandomNumber();
+			if (canAddRandomNumber(numbers, randomNumber)) {
 				numbers.add(randomNumber);
 			}
 		}
 		return List.copyOf(numbers);
+	}
+
+	private boolean needsMoreNumber(final List<Integer> numbers) {
+		return numbers.size() < BallsRule.BALLS_SIZE.getValue();
+	}
+
+	private int createRandomNumber() {
+		return Randoms.pickNumberInRange(BallsRule.MIN_NUMBER.getValue(), BallsRule.MAX_NUMBER.getValue());
+	}
+
+	private boolean canAddRandomNumber(final List<Integer> numbers, final int randomNumber) {
+		return !numbers.contains(randomNumber);
 	}
 
 	public Balls getBalls() {
