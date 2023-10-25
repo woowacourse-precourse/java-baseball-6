@@ -15,7 +15,7 @@ public final class Validator {
 
     public static void validateInput(String input) {
         for (char c : input.toCharArray()) {
-            if(!Character.isDigit(c) || c == '0') {
+            if (!Character.isDigit(c) || c == '0') {
                 throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 프로그램을 종료합니다.");
             }
         }
@@ -23,13 +23,13 @@ public final class Validator {
 
     public static void validateInputSize(String input) {
         int inputSize = input.length();
-        if(inputSize != 3) {
+        if (inputSize != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해야합니다. 프로그램을 종료합니다.");
         }
     }
 
     public static void validateRestartInput(String input) {
-        if(input.equals("1") || input.equals("2")) {
+        if (input.equals("1") || input.equals("2")) {
             return;
         }
         throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 프로그램을 종료합니다.");

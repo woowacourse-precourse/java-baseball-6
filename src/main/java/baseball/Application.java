@@ -8,7 +8,7 @@ public class Application {
         boolean gameFlag = true;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(gameFlag) {
+        while (gameFlag) {
             BaseBallGameService game = new BaseBallGameService();
 
             game.start();

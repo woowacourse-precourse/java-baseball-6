@@ -1,18 +1,16 @@
 package baseball;
 
-import baseball.model.Computer;
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import baseball.model.Computer;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.HashSet;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
