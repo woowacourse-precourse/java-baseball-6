@@ -35,8 +35,21 @@ public class GameService {
     }
 
     private void computeScore() {
+        for (int i = 0; i < size; i++) {
+            compute(game.getGameNumbers(), user.getUserNumbers(), i);
+        }
     }
 
+    private void compute(int[] gameNumber, int[] userNumber, int index) {
+        boolean isSame = false;
+        for (int i = 0; i < gameNumber.length; i++) {
+            if (gameNumber[i] == userNumber[i]) {
+                isSame = true;
+                break;
+            }
+        }
+
+    }
 
     private int[] getUserNumber() {
         System.out.println("숫자를 입력해주세요 : ");
