@@ -49,13 +49,13 @@ public class GameServiceImpl implements GameService {
     @Override
     public void inputMenuValidate(String input) {
         if ( !inputValidator.validate(input, MENU_NUMBER_DIGITS, MENU_MIN_NUMBER, MENU_MAX_NUMBER) )
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("유효한 메뉴 번호가 아닙니다. 애플리케이션을 종료합니다.");
     }
 
     @Override
     public void playerNumbersValidate(String input) {
         if ( !inputValidator.validate(input, GAME_NUMBER_DIGITS, GAME_MIN_NUMBER, GAME_MAX_NUMBER, true) )
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("유효한 예상 숫자가 아닙니다. 애플리케이션을 종료합니다.");
     }
 
     @Override
