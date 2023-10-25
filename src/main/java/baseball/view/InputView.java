@@ -9,18 +9,13 @@ public class InputView {
 
     public String getUserGameNumber() {
         String input = Console.readLine();
-        validator.validateNumeric(input);
-        validator.validateUnderOne(input);
-        validator.validateNumberLengthThree(input);
-        validator.validateNumberDuplication(input);
+        validator.validateGetUserGameNumber(input);
         return input;
     }
 
     public String getUserGameContinue() {
         String input = Console.readLine();
-        validator.validateNumeric(input);
-        validator.validateNumberOneOrTwo(input);
-        validator.validateNumberLengthOne(input);
+        validator.validateGetUserGameContinue(input);
         return input;
     }
 }

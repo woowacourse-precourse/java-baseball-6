@@ -50,4 +50,17 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateGetUserGameNumber(String input) {
+        validateNumeric(input);
+        validateUnderOne(input);
+        validateNumberLengthThree(input);
+        validateNumberDuplication(input);
+    }
+
+    public void validateGetUserGameContinue(String input) {
+        validateNumeric(input);
+        validateNumberOneOrTwo(input);
+        validateNumberLengthOne(input);
+    }
 }
