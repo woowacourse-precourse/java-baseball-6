@@ -29,20 +29,33 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
 
-            if (userInput.length() != 3) {
-                throw new IllegalArgumentException("입력한 숫자는 3자리가 아닙니다.");
+            try {
+
+                if (!isNumeric(userInput)) {
+                    throw new IllegalArgumentException("숫자가 아닙니다.");
+                }
+
+                if (userInput.length() != 3) {
+                    throw new IllegalArgumentException("입력한 숫자는 3자리가 아닙니다.");
+                }
+
+
+
+                List<Integer> userNumbers = parseInput(userInput); // 사용자 입력을 정수로 변환
+                int[] result = calculateResult(computer, userNumbers); // calculateResult 의 결과를 result 에 저장
+
+                if (result[0] == 3) {
+                    System.out.println("3스트라이크");
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                } else {
+                    displayResult(result);
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage()); // 예외 메시지 출력
+                throw e;
             }
 
-            List<Integer> userNumbers = parseInput(userInput);
-            int[] result = calculateResult(computer, userNumbers);
-
-            if (result[0] == 3) {
-                System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            } else {
-                displayResult(result);
-            }
         }
     }
 
@@ -90,5 +103,14 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int choice = Integer.parseInt(Console.readLine());
         return choice == 1;
+    }
+
+    private static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
