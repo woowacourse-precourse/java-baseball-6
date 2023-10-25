@@ -19,11 +19,9 @@ class NumberFactoryTest {
     @DisplayName("생성된 숫자의 자릿수가 파라미터에 따라 올바르게 나오는지 테스트")
     void createNumberDigitSizeTest() {
         int digitSize = 3;
+        String number = NumberFactory.createNumber(digitSize);
 
-        int number = NumberFactory.createNumber(digitSize);
-        int numberLength = String.valueOf(number).length();
-
-        assertThat(numberLength).isEqualTo(digitSize);
+        assertThat(number.length()).isEqualTo(digitSize);
     }
 
     @Test
@@ -31,15 +29,13 @@ class NumberFactoryTest {
     @RepeatedTest(100)
     void createNumberDuplicationTest() {
         int digitSize = Randoms.pickNumberInRange(1,9);
-        int number = NumberFactory.createNumber(digitSize);
+        String number = NumberFactory.createNumber(digitSize);
 
-        String num = String.valueOf(number);
         Set<Character> set = new HashSet<>();
-
-        for (char c : num.toCharArray()) {
+        for (char c : number.toCharArray()) {
             set.add(c);
         }
 
-        assertThat(set.size()).isEqualTo(num.length());
+        assertThat(set.size()).isEqualTo(number.length());
     }
 }

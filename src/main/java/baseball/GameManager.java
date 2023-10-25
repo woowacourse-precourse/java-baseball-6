@@ -6,7 +6,7 @@ import static baseball.MessageConst.*;
 public class GameManager {
     private final InputManager inputManager = InputManager.getInstance();
     private int digitSize = 3;
-    private int answerNumber;
+    private String answerNumber;
     private boolean quitFlag = false;
 
     public void launch() {
@@ -32,11 +32,9 @@ public class GameManager {
     private BallCount calculateBallCount(String inputNumber) {
         int strike = 0, ball = 0;
 
-        String answer = String.valueOf(answerNumber);
-
         for (int i = 0; i < digitSize; i++) {
-            if(answer.contains(String.valueOf(inputNumber.charAt(i)))) {
-                if(answer.charAt(i) == inputNumber.charAt(i)) strike++;
+            if(answerNumber.contains(String.valueOf(inputNumber.charAt(i)))) {
+                if(answerNumber.charAt(i) == inputNumber.charAt(i)) strike++;
                 else ball++;
             }
         }

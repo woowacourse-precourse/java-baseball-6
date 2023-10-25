@@ -6,7 +6,7 @@ import java.util.*;
 
 public abstract class NumberFactory {
 
-    public static int createNumber(int digitSize) {
+    public static String createNumber(int digitSize) {
         Set<Integer> numberSet = new LinkedHashSet<>();
 
         while (numberSet.size() < digitSize) {
@@ -14,7 +14,8 @@ public abstract class NumberFactory {
             numberSet.add(randomNumber);
         }
 
-        return combineNumber(numberSet);
+        int createdNumber = combineNumber(numberSet);
+        return String.valueOf(createdNumber);
     }
 
     private static int combineNumber(Set<Integer> numberSet) {
