@@ -8,6 +8,7 @@ public class InputDevice {
 
     private static final String INPUT_NUMBER_MENT = "숫자를 입력해주세요 : ";
     private static final String NO_SPACE = "";
+    public static final String INPUT_RESTART_OR_EXIT_MENT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private final ConsoleService consoleService;
     private final InputValidator inputValidator;
 
@@ -24,6 +25,7 @@ public class InputDevice {
     }
 
     public int restartOrExit() {
+        System.out.println(INPUT_RESTART_OR_EXIT_MENT);
         String inputValue = consoleService.readLine();
         inputValidator.validRestartOrExit(inputValue);
         return Integer.parseInt(inputValue);
