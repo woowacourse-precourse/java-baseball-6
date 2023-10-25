@@ -49,6 +49,10 @@ public class Game {
 
             // input 3글자에 같은 숫자가 있는지 확인 (ex. 111, 112, ...)
             for (int i = 0; i < 3; i++) {
+                // 입력값이 숫자인지 확인
+                if(input.charAt(i) < '1' || input.charAt(i) > '9')
+                    throw new IllegalArgumentException();
+
                 for (int j = 0; j < 3; j++) {
                     if (i == j)
                         continue;
