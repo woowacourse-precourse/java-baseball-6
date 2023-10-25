@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Iterator;
-import java.util.Random;
-import org.assertj.core.internal.bytebuddy.utility.RandomString;
 
 public class Referee {
     private static List<Integer> computer = new ArrayList<>();
@@ -84,7 +82,7 @@ public class Referee {
             System.out.println(score[1] + "볼");
         } else if (score[0] == 3) {
             System.out.println(score[0] + "스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
         }
     }
 
