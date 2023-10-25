@@ -1,9 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class InputReader {
 
@@ -19,9 +17,7 @@ public class InputReader {
     public List<Integer> readGuessedNumber() {
         String guessedNumberString = Console.readLine();
         guessedNumberValidator.validate(guessedNumberString);
-        List<Integer> guessedNumber = Arrays.stream(guessedNumberString.split(""))
-                .map(Integer::valueOf)
-                .collect(Collectors.toList());
+        List<Integer> guessedNumber = TypeConverter.stringToIntegerList(guessedNumberString);
         return guessedNumber;
     }
 

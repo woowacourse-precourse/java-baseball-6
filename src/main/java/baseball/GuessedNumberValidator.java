@@ -6,10 +6,8 @@ import static baseball.NumberBaseballGameConfig.ERROR_LENGTH;
 import static baseball.NumberBaseballGameConfig.ERROR_TYPE;
 import static baseball.TypeChecker.canConvertToInteger;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GuessedNumberValidator implements InputValidator {
 
@@ -22,9 +20,7 @@ public class GuessedNumberValidator implements InputValidator {
 
     //중복 체크
     private void checkDuplicate(String input) {
-        List<Integer> guessedNumber = Arrays.stream(input.split(""))
-                .map(Integer::valueOf)
-                .collect(Collectors.toList());
+        List<Integer> guessedNumber = TypeConverter.stringToIntegerList(input);
         if (new HashSet<>(guessedNumber).size() != BASEBALL_NUMBER_LENGTH) {
             throw new IllegalArgumentException(ERROR_DUPLICATE);
         }
