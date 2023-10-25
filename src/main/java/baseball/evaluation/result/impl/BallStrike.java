@@ -19,7 +19,7 @@ public class BallStrike implements EvalResult {
             System.out.println("낫싱");
         } else {
             if (ball != 0) {
-                System.out.printf("%d 볼", ball);
+                System.out.printf("%d볼", ball);
                 if (strike == 0) {
                     System.out.print("\n");
                 } else {
@@ -27,11 +27,11 @@ public class BallStrike implements EvalResult {
                 }
             }
             if (strike != 0) {
-                System.out.printf("%d 스트라이크%n", strike);
+                System.out.printf("%d스트라이크%n", strike);
             }
         }
         if (isSuccess) {
-            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임종료%n", strike);
+            System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", strike);
         }
     }
 
