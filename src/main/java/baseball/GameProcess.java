@@ -19,7 +19,7 @@ public class GameProcess {
         int start_or_exit;
         Implementation implementation1 = new Implementation();
         Computer computer1 = new Computer();
-        List<Integer> computerNumbers = computer1.generateRandomNumbers(); 
+        List<Integer> computerNumbers = computer1.generateRandomNumbers();
         while (true) {
             try {
                 System.out.print("숫자를 입력해주세요 : ");
@@ -51,7 +51,6 @@ public class GameProcess {
 
                 if (input.get(0) == input.get(1) || input.get(1) == input.get(2) || input.get(0) == input.get(2)) {
                     throw new IllegalAccessException("입력된 숫자는 서로 다른 3자리 수가 아닙니다.");
-                    //break;
                 }
                 int strike = implementation.countStrike(computerNumbers, input);
                 int ball = implementation.countBall(computerNumbers, input);
