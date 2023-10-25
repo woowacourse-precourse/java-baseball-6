@@ -1,5 +1,11 @@
 ## 구현해야할 기능
 
+### BaseballGame class 구현
+
+baseball game을 순서대로 로직에 맞게 동작시켜줄 class를 구현한다
+
+* play() : baseball game을 로직에 맞게 동작시켜준다
+
 ### User class 구현
 
 야구게임 유저인 user를 구현한다
