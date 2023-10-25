@@ -1,13 +1,10 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class BaseballGameTest {
     BaseballGame baseballGame = new BaseballGame();
@@ -47,5 +44,4 @@ class BaseballGameTest {
         results = baseballGame.calcResult(Arrays.asList(4, 5, 6), Arrays.asList(1, 2, 3));
         assertThat(results).isEqualTo(Arrays.asList(0, 0, 3));
     }
-
 }
