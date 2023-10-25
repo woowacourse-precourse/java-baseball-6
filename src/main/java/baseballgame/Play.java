@@ -50,11 +50,27 @@ public class Play {
         int ballWithStrike = 볼 갯수 세기;
         결과 출력;
 
+        //스트라이크개수 3개면 반복 종료
         if(strike == SUCCESS_STRIKE){
             return true;
         }else{
             return false;
         }
     }
+
+    //string을 int배열로 변환
+    private int[] changeInputStringToIntArray(String inputString){
+        int[] intArray = new int[NORMAL_INPUT_LENGTH];
+        입력받은 문자열의 크기 확인 로직;
+        for(int i = 0; i < inputString.length(); i++){
+            // 숫자 아닌 입력 예외던지기
+            if(inputString.charAt(i) < '0' || inputString.charAt(i) > '9'){
+                throw new IllegalArgumentException(wrongTypeInputError);
+            }
+            intArray[i] = Integer.parseInt(inputString.substring(i, i + 1));
+        }
+        return intArray;
+    }
+
 
 }

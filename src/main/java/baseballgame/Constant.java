@@ -14,6 +14,12 @@ public class Constant {
     //게임 결과 확인
     public static int SUCCESS_STRIKE = 3;
 
+    //게임 진행
+    public static int NORMAL_INPUT_LENGTH = 3;
+
+
+    //예외
+    public static String wrongTypeInputError = "잘못된 타입의 입력입니다.";
 
 
 }
