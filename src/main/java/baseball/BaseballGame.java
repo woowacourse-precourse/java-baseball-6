@@ -12,6 +12,10 @@ public class BaseballGame {
     private static int ball;
     private static int strike;
 
+    private BaseballGame(){
+
+    }
+
     private static void setNumOfComputer() {
         numOfComputer = new ArrayList<>();
         while (numOfComputer.size() < 3) {
