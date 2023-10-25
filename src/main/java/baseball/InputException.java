@@ -14,7 +14,7 @@ public class InputException {
         boolean check = false;
         if (input.length() != 3){
             check = true;
-//            throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다.");
         }
     }
 
