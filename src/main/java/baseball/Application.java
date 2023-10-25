@@ -9,8 +9,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+	// TODO: 프로그램 구현
 	private static final int NUMBER_LENGTH = 3;
-
+	
 	public static void main(String[] args) {
 		GameStart();
 	}
