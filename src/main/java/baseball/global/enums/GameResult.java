@@ -2,8 +2,8 @@ package baseball.global.enums;
 
 public enum GameResult {
 
-    STRIKE("스트라이크"),
-    BALL("볼"),
+    STRIKE("%d스트라이크"),
+    BALL("%d볼"),
     NOTHING("낫싱"),
     PERFECT("3스트라이크");
 

@@ -2,8 +2,6 @@ package baseball.app;
 
 
 import static baseball.global.enums.GameResult.PERFECT;
-import static baseball.global.enums.GuideMessage.FINISH_GUIDE;
-import static baseball.global.enums.GuideMessage.RESTART_MENU;
 import static baseball.global.enums.GuideMessage.START_MENU;
 import static baseball.global.util.GameInput.validateMenu;
 import static baseball.global.util.GameOutput.errorMessage;
@@ -12,9 +10,9 @@ import static baseball.global.util.GameOutput.printRestart;
 import static baseball.global.util.GameOutput.printResult;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.domain.Round;
-import baseball.domain.Player;
 import baseball.domain.Computer;
+import baseball.domain.Player;
+import baseball.domain.Round;
 import java.util.List;
 
 public class Game {
@@ -47,8 +45,9 @@ public class Game {
             }
         }
 
+        printFinish();
         if (finishMenu() == 2) {
-            //TODO 종료 메서드 호출
+            return;
         }
 
         restart();
@@ -60,7 +59,6 @@ public class Game {
         if (result.equals(PERFECT.name)) {
             isFinished = true;
             printResult(result);
-            printFinish();
             return;
         }
         isFinished = false;

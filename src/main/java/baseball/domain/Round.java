@@ -37,16 +37,16 @@ public class Round {
         }
 
         if (ball == 0) {
-            return strike + STRIKE.name;
+            return String.format(STRIKE.name, strike);
         }
         if (strike == 0) {
-            return ball + BALL.name;
+            return String.format(BALL.name, ball);
         }
         if (strike == 3) {
             return PERFECT.name;
         }
 
-        return ball + BALL.name + " " + strike + STRIKE.name;
+        return String.format(BALL.name, ball) + " " + String.format(STRIKE.name, strike);
     }
 
     private void updateStrike() {
