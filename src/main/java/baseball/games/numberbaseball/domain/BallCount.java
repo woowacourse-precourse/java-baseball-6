@@ -8,4 +8,8 @@ public class BallCount {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }
+
+    public boolean isThreeStrike() {
+        return strikeCount == 3;
+    }
 }
