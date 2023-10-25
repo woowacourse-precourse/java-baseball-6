@@ -11,6 +11,8 @@ public class GameController {
     private static Judge judge;
     private static Computer computer;
     private static ArrayList<Integer> answer;
+
+    private static String input;
     private static int strike = 0;
 
 
@@ -20,8 +22,7 @@ public class GameController {
         computer = new Computer();
         startView();
         inputView();
-        String input = Console.readLine();
-        checkInput(user, input);
+        readInputandValidate();
         computer.generateNum();
         answer = computer.getAnswer();
         while (true) {
@@ -32,9 +33,13 @@ public class GameController {
                 strike = 0;
             }
             inputView();
-            input = Console.readLine();
-            checkInput(user, input);
+            readInputandValidate();
         }
+    }
+
+    public void readInputandValidate() {
+        input = Console.readLine();
+        checkInput(user, input);
     }
 
     public String gameQuestion() {

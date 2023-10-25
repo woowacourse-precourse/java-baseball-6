@@ -19,9 +19,9 @@ class JudgeTest {
     @Order(1)
     void judgeStrike() {
         //given
-        Integer[] ans = {6, 3, 7};
+        Integer[] ans = {1, 2, 2};
         ArrayList<Integer> list = new ArrayList<>(Arrays.asList(ans));
-        String input = "333";
+        String input = "123";
         judge.setAnswer(list);
         judge.setInput(input);
 
@@ -42,6 +42,6 @@ class JudgeTest {
         int ball = judge.judgeBall();
 
         //then
-        assertThat(ball).isEqualTo(1);
+        assertThat(ball).isEqualTo(0);
     }
 }
