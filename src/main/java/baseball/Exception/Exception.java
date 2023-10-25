@@ -3,10 +3,10 @@ package baseball.Exception;
 public class Exception {
     public static void checkException(char[] guess) {
         checkLength(guess.length);
-        checkDub(guess);
+        checkDubAndZero(guess);
     }
 
-    private static void checkDub(char[] guess) {
+    private static void checkDubAndZero(char[] guess) {
         StringBuilder sb = new StringBuilder();
         for (char c : guess) {
             if ('0' == c) {
