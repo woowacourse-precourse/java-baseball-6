@@ -1,19 +1,19 @@
 package baseball;
 
-public class ProgramManager {
+public class GameManager {
 
-    private static ProgramManager programManager;
+    private static GameManager gameManager;
     private static final String RESTART_INPUT = "1";
     private Answer answer;
 
-    private ProgramManager() {
+    private GameManager() {
     }
 
-    public static ProgramManager createGameManager() {
-        if (programManager == null) {
-            return new ProgramManager();
+    public static GameManager createGameManager() {
+        if (gameManager == null) {
+            return new GameManager();
         }
-        return programManager;
+        return gameManager;
     }
 
     public void startGame() {
