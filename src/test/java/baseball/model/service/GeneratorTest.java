@@ -13,13 +13,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class ComputerNumbersGeneratorTest {
+class GeneratorTest {
     private List<Integer> randomNumbers;
 
     @BeforeEach
     void setUp() {
-        ComputerNumbersGenerator computerNumbersGenerator = new ComputerNumbersGeneratorImp();
-        randomNumbers = computerNumbersGenerator.generateComputerNumbers();
+        Generator generator = new GeneratorImp();
+        randomNumbers = generator.generateComputerNumbers();
     }
 
     @Test

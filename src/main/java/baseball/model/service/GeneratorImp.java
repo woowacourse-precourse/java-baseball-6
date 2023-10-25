@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ComputerNumbersGeneratorImp implements ComputerNumbersGenerator {
+public class GeneratorImp implements Generator {
     @Override
     public List<Integer> generateComputerNumbers() {
         return Stream.generate(() -> getRandomUniqueNumber(new ArrayList<>()))

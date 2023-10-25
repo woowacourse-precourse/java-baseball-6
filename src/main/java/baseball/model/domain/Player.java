@@ -1,19 +1,19 @@
 package baseball.model.domain;
 
-import baseball.model.service.PlayerNumbersValidator;
+import baseball.model.service.Validator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Player {
     private final List<Integer> playerNumbers;
 
-    private Player(String inputNumbers, PlayerNumbersValidator playerNumbersValidator) {
-        playerNumbersValidator.validatePlayerNumbers(inputNumbers);
+    private Player(String inputNumbers, Validator validator) {
+        validator.validatePlayerNumbers(inputNumbers);
         this.playerNumbers = parse(inputNumbers);
     }
 
-    public static Player of(String inputNumbers, PlayerNumbersValidator playerNumbersValidator) {
-        return new Player(inputNumbers, playerNumbersValidator);
+    public static Player of(String inputNumbers, Validator validator) {
+        return new Player(inputNumbers, validator);
     }
 
     public List<Integer> getPlayerNumbers() {

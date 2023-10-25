@@ -5,13 +5,11 @@ import static baseball.model.constants.Rule.RESTART_OPTION;
 import baseball.model.domain.Computer;
 import baseball.model.domain.Player;
 import baseball.model.domain.Restart;
-import baseball.model.service.ComputerNumbersGenerator;
-import baseball.model.service.ComputerNumbersGeneratorImp;
-import baseball.model.service.PlayerNumbersValidator;
-import baseball.model.service.PlayerNumbersValidatorImp;
-import baseball.model.service.RestartOptionValidator;
-import baseball.model.service.RestartOptionValidatorImp;
-import baseball.utils.NumbersComparator;
+import baseball.model.service.Generator;
+import baseball.model.service.GeneratorImp;
+import baseball.model.service.Validator;
+import baseball.model.service.ValidatorImp;
+import baseball.utils.Comparator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -21,27 +19,23 @@ public class BaseballGame {
     private Player player;
     private Restart restart;
 
-    private final ComputerNumbersGenerator computerNumbersGenerator;
-    private final PlayerNumbersValidator playerNumbersValidator;
-    private final NumbersComparator numberComparator;
-    private final RestartOptionValidator restartOptionValidator;
+    private final Generator generator;
+    private final Validator validator;
+    private final Comparator comparator;
 
-    private BaseballGame(ComputerNumbersGenerator computerNumbersGenerator,
-                         PlayerNumbersValidator playerNumbersValidator,
-                         NumbersComparator numbersComparator,
-                         RestartOptionValidator restartOptionValidator) {
-        this.computerNumbersGenerator = computerNumbersGenerator;
-        this.playerNumbersValidator = playerNumbersValidator;
-        this.numberComparator = numbersComparator;
-        this.restartOptionValidator = restartOptionValidator;
+    private BaseballGame(Generator generator,
+                         Validator validator,
+                         Comparator comparator) {
+        this.generator = generator;
+        this.validator = validator;
+        this.comparator = comparator;
     }
 
     public static BaseballGame create() {
         return new BaseballGame(
-                new ComputerNumbersGeneratorImp(),
-                new PlayerNumbersValidatorImp(),
-                new NumbersComparator(),
-                new RestartOptionValidatorImp()
+                new GeneratorImp(),
+                new ValidatorImp(),
+                new Comparator()
         );
     }
 
@@ -63,17 +57,17 @@ public class BaseballGame {
     }
 
     private void initializeGame() {
-        computer = Computer.from(computerNumbersGenerator);
+        computer = Computer.from(generator);
         player = null;
         restart = null;
     }
 
     private void getNumbersFromPlayer() {
-        player = Player.of(InputView.setGameInput(), playerNumbersValidator);
+        player = Player.of(InputView.setGameInput(), validator);
     }
 
     private List<Integer> getCompareResult() {
-        return numberComparator.getCompareNumberResult(computer.getComputerNumbers(), player.getPlayerNumbers());
+        return comparator.getCompareNumberResult(computer.getComputerNumbers(), player.getPlayerNumbers());
     }
 
     private void printHint(List<Integer> count) {
@@ -109,11 +103,11 @@ public class BaseballGame {
     }
 
     private boolean isWin() {
-        return numberComparator.isCorrect();
+        return comparator.isCorrect();
     }
 
     private void getRestartOptionFromPlayer() {
-        restart = Restart.of(InputView.setRestartInput(), restartOptionValidator);
+        restart = Restart.of(InputView.setRestartInput(), validator);
     }
 
     private boolean isFinish() {

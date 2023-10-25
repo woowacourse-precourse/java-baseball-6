@@ -10,13 +10,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class NumbersComparatorTest {
-    private NumbersComparator numbersComparator;
+class ComparatorTest {
+    private Comparator comparator;
     private List<Integer> computerNumbers;
 
     @BeforeEach
     void setUp() {
-        numbersComparator = new NumbersComparator();
+        comparator = new Comparator();
         computerNumbers = Arrays.asList(1, 2, 3);
     }
 
@@ -48,18 +48,18 @@ class NumbersComparatorTest {
     @DisplayName("3스트라이크일 때 true를 리턴하여 게임을 종료합니다.")
     void 게임_종료_리턴() {
         assertResult(Arrays.asList(1, 2, 3), Arrays.asList(0, 3));
-        assertTrue(numbersComparator.isCorrect());
+        assertTrue(comparator.isCorrect());
     }
 
     @Test
     @DisplayName("3스트라이크가 아닐 때 false를 리턴하여 게임을 재개합니다.")
     void 게임_재개_리턴() {
         assertResult(Arrays.asList(4, 5, 6), Arrays.asList(0, 0));
-        assertFalse(numbersComparator.isCorrect());
+        assertFalse(comparator.isCorrect());
     }
 
     private void assertResult(List<Integer> playerNumbers, List<Integer> expected) {
-        List<Integer> result = numbersComparator.getCompareNumberResult(computerNumbers, playerNumbers);
+        List<Integer> result = comparator.getCompareNumberResult(computerNumbers, playerNumbers);
         assertEquals(expected, result);
     }
 }

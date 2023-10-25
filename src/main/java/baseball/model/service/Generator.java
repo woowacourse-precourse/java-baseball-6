@@ -2,6 +2,6 @@ package baseball.model.service;
 
 import java.util.List;
 
-public interface ComputerNumbersGenerator {
+public interface Generator {
     List<Integer> generateComputerNumbers();
 }

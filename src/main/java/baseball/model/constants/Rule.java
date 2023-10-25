@@ -7,10 +7,8 @@ public enum Rule {
 
     GAME_WIN(3),
 
-    RESTART_OPTION_MIN_VALUE(1),
-    RESTART_OPTION_MAX_VALUE(2),
-    RESTART_OPTION_SIZE(1),
-    RESTART_OPTION(1);
+    RESTART_OPTION(1),
+    QUIT_OPTION(2);
 
     private final int value;
 

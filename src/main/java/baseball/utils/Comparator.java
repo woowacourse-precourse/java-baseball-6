@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class NumbersComparator {
+public class Comparator {
     private final List<Integer> result = new ArrayList<>();
     private int strike;
     private int ball;
