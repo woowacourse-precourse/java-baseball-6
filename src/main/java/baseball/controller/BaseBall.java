@@ -24,8 +24,6 @@ public class BaseBall {
         gameNumber = new GameNumber();
         gameChoice = InputEndChoice.Choice.RESTART;
         gameNumber.createRandomNumbers();
-//        List<Integer> numbers = gameNumber.getGameNumbers();
-//        System.out.println("랜덤넘버" + numbers);
     }
 
     public void startBaseBall() {
@@ -46,7 +44,7 @@ public class BaseBall {
     public void choiceEnd() {
         gameView.endBaseBall();
         String input = gameView.getEndInput();
-        InputEndChoice.Choice choice = inputEndChoice.InputEndChoice(input);
+        InputEndChoice.Choice choice = inputEndChoice.checkInputChoice(input);
         if (choice == Choice.RESTART) {
             setNewGame();
         } else {
