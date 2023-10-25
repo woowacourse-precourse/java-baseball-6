@@ -6,6 +6,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import Constant.ExceptionHandling;
 import Constant.Ment;
 
+
 public class GameInterface {
     //수정
     public static void PrintResult(int strike, int ball, boolean judge) {
@@ -13,7 +14,15 @@ public class GameInterface {
             System.out.println(Ment.Nothing);
             return;
         }
-        System.out.println(ball + Ment.Ball + strike + Ment.Strike);
+        if (strike == 0) {
+            System.out.println(ball + Ment.Ball);
+        } else if (ball == 0) {
+            System.out.println(strike + Ment.Strike);
+        } else if (strike > 0) {
+            if (ball > 0) {
+                System.out.println(ball + Ment.Ball + strike + Ment.Strike);
+            }
+        }
     }
 
     public static void PrintGameStart() {

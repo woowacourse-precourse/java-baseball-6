@@ -2,7 +2,7 @@ package Constant;
 
 import java.util.ArrayList;
 
-public abstract class ExceptionHandling {
+public class ExceptionHandling {
     public static void ExceptionLength(ArrayList<Integer> Numbers) {
         if (Numbers.size() != 3) {
             throw new IllegalArgumentException("세자리 수가 아님");
