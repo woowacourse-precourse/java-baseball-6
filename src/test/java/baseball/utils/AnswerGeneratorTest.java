@@ -1,8 +1,8 @@
 package baseball.utils;
 
 import baseball.constants.Constants;
-import org.junit.jupiter.api.*;
-
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class AnswerGeneratorTest {

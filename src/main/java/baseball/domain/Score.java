@@ -19,7 +19,8 @@ public class Score {
         this.strikeCount++;
     }
 
-    public String printScore() {
+    @Override
+    public String toString() {
         StringBuilder result = new StringBuilder();
 
         if (ballCount != 0) {

@@ -1,7 +1,8 @@
 package baseball;
 
 import baseball.constants.Messages;
-import baseball.utils.*;
+import baseball.utils.AnswerGenerator;
+import baseball.utils.UserInputReceiver;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class BaseballGame {
             generatedAnswers = AnswerGenerator.generateAnswers();
             UserInputReceiver.getUserGuessInput(generatedAnswers);
         } while(UserInputReceiver.getUserRestartInput());
+
         Console.close();
     }
 }
