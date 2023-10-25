@@ -1,6 +1,6 @@
 package baseball.dto;
 
-public class GameStateDto {
+public class PlayerGameStateDto {
 
     private int strike;
     private int ball;
@@ -11,7 +11,7 @@ public class GameStateDto {
         return endGame;
     }
 
-    public GameStateDto() {
+    public PlayerGameStateDto() {
         this.strike = 0;
         this.ball = 0;
         this.restart = false;

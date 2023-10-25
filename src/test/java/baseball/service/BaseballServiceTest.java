@@ -1,8 +1,6 @@
 package baseball.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import baseball.dto.GameStateDto;
+import baseball.dto.PlayerGameStateDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +19,7 @@ class BaseballServiceTest {
         BaseballService baseballService = new BaseballService(userNumber, computerNumber);
 
         //when
-        GameStateDto gameState = baseballService.calculate();
+        PlayerGameStateDto gameState = baseballService.calculate();
 
         //then
         Assertions.assertThat(gameState.getStrike()).isEqualTo(0);

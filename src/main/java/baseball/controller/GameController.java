@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.constant.NumberConstant;
-import baseball.dto.GameStateDto;
+import baseball.dto.PlayerGameStateDto;
 import baseball.service.BaseballService;
 import baseball.service.ComputerNumberGenerator;
 import baseball.util.Validator;
@@ -33,7 +33,7 @@ public class GameController {
     }
 
     private void logicStart() {
-        GameStateDto gamestate;
+        PlayerGameStateDto gamestate;
         do {
             outputView.printInputInitMessage();
             String userNumber = getUserNumber();
@@ -43,7 +43,7 @@ public class GameController {
         } while (isGameReStart(gamestate));
     }
 
-    private boolean isGameReStart(GameStateDto gameState) {
+    private boolean isGameReStart(PlayerGameStateDto gameState) {
         if (gameState.isEndGame()) {
             checkRestart(gameState);
             checkComputerNumberChange(gameState);
@@ -52,7 +52,7 @@ public class GameController {
         return true;
     }
 
-    private void checkComputerNumberChange(GameStateDto gameState) {
+    private void checkComputerNumberChange(PlayerGameStateDto gameState) {
         if (gameState.isRestart()) {
             computerNumber = changeComputerNumber();
         }
@@ -64,7 +64,7 @@ public class GameController {
         return computerNumber;
     }
 
-    private void checkRestart(GameStateDto gamestate) {
+    private void checkRestart(PlayerGameStateDto gamestate) {
         String restartNumber = inputView.readRestart();
         validator.validateRestart(restartNumber);
         if (restartNumber.equals(RESTART)) {
@@ -73,7 +73,7 @@ public class GameController {
     }
 
 
-    private void outputResult(GameStateDto gamestate) {
+    private void outputResult(PlayerGameStateDto gamestate) {
         int strike = gamestate.getStrike();
         int ball = gamestate.getBall();
         if (strike == NumberConstant.THREE_STRIKE.getNumber()) {
@@ -89,7 +89,7 @@ public class GameController {
         }
     }
 
-    private void threeStrikeProcess(GameStateDto gamestate, int strike) {
+    private void threeStrikeProcess(PlayerGameStateDto gamestate, int strike) {
         threeThrikeOutput(strike);
         gamestate.activateEndGame();
     }

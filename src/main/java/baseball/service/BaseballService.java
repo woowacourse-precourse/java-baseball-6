@@ -1,7 +1,7 @@
 package baseball.service;
 
 import baseball.constant.NumberConstant;
-import baseball.dto.GameStateDto;
+import baseball.dto.PlayerGameStateDto;
 
 public class BaseballService {
 
@@ -14,24 +14,24 @@ public class BaseballService {
         this.computerNumber = computerNumber;
     }
 
-    public GameStateDto calculate() {
-        GameStateDto gameStateDto = new GameStateDto();
-        calculateStrike(gameStateDto);
-        calculateBall(gameStateDto);
-        return gameStateDto;
+    public PlayerGameStateDto calculate() {
+        PlayerGameStateDto playerGameStateDto = new PlayerGameStateDto();
+        calculateStrike(playerGameStateDto);
+        calculateBall(playerGameStateDto);
+        return playerGameStateDto;
     }
 
     private void calculateBall(
-        GameStateDto gameStateDto) {
+        PlayerGameStateDto playerGameStateDto) {
         for (int index = 0; index < NumberConstant.INPUT_LENGTH.getNumber(); index++) {
-            findDifferentIndexSameNumber(gameStateDto, index);
+            findDifferentIndexSameNumber(playerGameStateDto, index);
         }
     }
 
-    private void findDifferentIndexSameNumber(GameStateDto gameStateDto, int index1) {
+    private void findDifferentIndexSameNumber(PlayerGameStateDto playerGameStateDto, int index1) {
         for (int index2 = 0; index2 < NumberConstant.INPUT_LENGTH.getNumber(); index2++) {
             if (isDifferentIndex(index1, index2) && isSameNumber(index1, index2)) {
-                addBall(gameStateDto);
+                addBall(playerGameStateDto);
             }
         }
     }
@@ -49,19 +49,19 @@ public class BaseballService {
         return index1 != index2;
     }
 
-    private void addBall(GameStateDto gameStateDto) {
-        gameStateDto.addBall();
+    private void addBall(PlayerGameStateDto playerGameStateDto) {
+        playerGameStateDto.addBall();
     }
 
-    private void calculateStrike(GameStateDto gameStateDto) {
+    private void calculateStrike(PlayerGameStateDto playerGameStateDto) {
         for (int index = 0; index < NumberConstant.INPUT_LENGTH.getNumber(); index++) {
             if (isSameNumber(index)) {
-                addStrike(gameStateDto);
+                addStrike(playerGameStateDto);
             }
         }
     }
 
-    private void addStrike(GameStateDto gameStateDto) {
-        gameStateDto.addStrike();
+    private void addStrike(PlayerGameStateDto playerGameStateDto) {
+        playerGameStateDto.addStrike();
     }
 }
