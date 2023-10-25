@@ -26,11 +26,8 @@ public class GameController {
 
 
             if (gameResult) {
-                computerNumbers = computerService.generateComputerNumbers();
-                System.out.println("gameResult = " + gameResult);
                 retryNumber = userService.readRetryNumber();
-
-                System.out.println("retryNumber = " + retryNumber);
+                if (retryNumber == Number.RESTART) computerNumbers = computerService.generateComputerNumbers();
             }
         }
     }
