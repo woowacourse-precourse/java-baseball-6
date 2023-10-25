@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.domain.GameScoreSet;
 import baseball.domain.PlayBaseball;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -12,25 +13,14 @@ public class PlayBaseballService {
         this.playBaseball = new PlayBaseball();
     }
 
-    public String getGameResult(){
-        String result = "";
-        if(playBaseball.getGameLaunch().getBallNum() > 0){
-            result += playBaseball.getGameLaunch().getBallNum()+" ";
-        }
-        if(playBaseball.getGameLaunch().getStrikeNum() > 0){
-            result += playBaseball.getGameLaunch().getStrikeNum();
-        }
-        return result;
+    public boolean checkMenu(String inputMenu){
+        return inputMenu.equals(GAME_END_MENU);
     }
 
-    public boolean checkMenuIsSecondMenu(String num){
-        return num.equals(SECOND_MENU);
+    public GameScoreSet showPlayBaseballGame(String inputNum){
+        playBaseball.inputUserNum(inputNum);
+        return playBaseball.getGameScoreSet();
     }
-
-    public int getUserNum(){
-        return userNum;
-    }
-
 
 
 }
