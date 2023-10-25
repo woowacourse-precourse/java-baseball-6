@@ -46,8 +46,8 @@ public class Application {
     }
 
     // 볼, 스트라이크 갯수 확인
-    public static int checkBall(List computer,int num){
-        int idx[] = new int[3];
+    public static int checkBall(List<Integer> computer,int num){
+        int[] idx = new int[3];
         idx[0] = num/100;
         idx[1] = (num%100)/10;
         idx[2] = num%10;
@@ -88,7 +88,7 @@ public class Application {
     }
 
     // 새로운 숫자 만들기
-    public static List getBall(){
+    public static List<Integer> getBall(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
