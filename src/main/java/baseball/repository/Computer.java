@@ -10,7 +10,7 @@ public class Computer {
     private Computer() {
     }
 
-    public static Computer getInstance() {
+    public static Computer getInstance(){
         if (computer == null) {
             computer = new Computer();
         }
