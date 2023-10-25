@@ -37,7 +37,7 @@ public class Computer {
 
     private void validateCount(List<Integer> numbers) {
         if (numbers.size() != nums.size()) {
-            throw new IllegalArgumentException("3개의 숫자만 입력해야 합니다.");
+            throw new IllegalArgumentException("숫자의 개수가 다르지 않아야 합니다.");
         }
     }
 
