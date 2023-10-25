@@ -8,7 +8,7 @@ import java.util.List;
 public class BaseballNumbers implements Rule {
     static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
-    static List<BaseballNumber> selectByRandom() {
+    public static List<BaseballNumber> selectByRandom() {
         List<BaseballNumber> numbers = new ArrayList<>();
         while (numbers.size() < DIGIT_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
@@ -24,7 +24,7 @@ public class BaseballNumbers implements Rule {
         }
     }
 
-    static List<BaseballNumber> selectByInput() {
+    public static List<BaseballNumber> selectByInput() {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
         validateInput(input);

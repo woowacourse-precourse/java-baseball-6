@@ -1,5 +1,8 @@
-package baseball;
+package baseball.player;
 
+import baseball.BaseballNumber;
+import baseball.BaseballNumbers;
+import baseball.Rule;
 import java.util.List;
 
 public class Computer implements Rule {
