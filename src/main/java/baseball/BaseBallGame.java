@@ -16,10 +16,10 @@ public class BaseBallGame {
     }
 
     public void start() {
-        view.println(ViewType.START.getType());
+        view.println(ViewType.START.getStatement());
         while (true) {
             round();
-            view.println(ViewType.RESTART.getType());
+            view.println(ViewType.RESTART.getStatement());
             String isRestart = view.getInput(ViewType.RESTART.getPattern());
             if (isRestart.equals("2")) {
                 break;
@@ -31,11 +31,11 @@ public class BaseBallGame {
 
     private void round() {
         while (true) {
-            view.print(ViewType.ROUND.getType());
+            view.print(ViewType.ROUND.getStatement());
             boolean correctBall = process.isCorrectBall(view.getInput(ViewType.ROUND.getPattern()));
             view.println(process.getCurrentHint().toString());
             if (correctBall) {
-                view.println(ViewType.END.getType());
+                view.println(ViewType.END.getStatement());
                 break;
             }
         }

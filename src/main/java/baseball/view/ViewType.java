@@ -6,20 +6,20 @@ public enum ViewType {
     END("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"),
     RESTART("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n", "^[1-2]{1}$");
 
-    final private String type;
+    final private String statement;
     private String pattern;
 
-    ViewType(String type) {
-        this.type = type;
+    ViewType(String statement) {
+        this.statement = statement;
     }
 
-    ViewType(String type, String pattern) {
-        this.type = type;
+    ViewType(String statement, String pattern) {
+        this.statement = statement;
         this.pattern = pattern;
     }
 
-    public String getType() {
-        return type;
+    public String getStatement() {
+        return statement;
     }
 
     public String getPattern() {
