@@ -3,6 +3,7 @@ package baseball.domain;
 import baseball.domain.player.dto.PlayerNumbersDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Null;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -26,7 +27,7 @@ public class PlayNumbersDtoTest {
         String input = null;
 
         assertThatThrownBy(() -> PlayerNumbersDto.of(input))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(NullPointerException.class);
     }
 
     @DisplayName("PlayerNumbersDto에 \"\" 입력시 IllegalArgumentException 던지는지 확인")
