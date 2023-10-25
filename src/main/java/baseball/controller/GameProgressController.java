@@ -18,11 +18,11 @@ public class GameProgressController {
             outputView.printGameStart();
             computerController.createAndSaveAnswer(gameNumber);
             progressUserGuessing();
-            progressState = userRestartOrExit(inputView.getUserRestartOrExitNumber());
+            progressState = getRestartOrExit(inputView.getUserRestartOrExitNumber());
         }
     }
 
-    private boolean userRestartOrExit(String userInputString) {
+    private boolean getRestartOrExit(String userInputString) {
         int userInputRestartOrExitNumber = userInputValidator.validateRestartOrExitInput(userInputString);
         if (userInputRestartOrExitNumber == 1) {
             return true;
