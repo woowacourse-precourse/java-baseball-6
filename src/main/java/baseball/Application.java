@@ -19,6 +19,9 @@ public class Application {
         int userInput = Integer.parseInt(readLine());
         Exception.validateOneOrTwo(userInput);
         
-        return userInput == 1;
+        if (userInput == 2) {
+            return true;
+        }
+        return false;
     }
 }
