@@ -17,6 +17,7 @@ public class BaseballGame {
         System.out.println("게임 종료");
     }
 
+
     private void playGame() {
         int[] computerNumbers = generateComputerNumbers();
         int attempts = 0;
@@ -38,6 +39,7 @@ public class BaseballGame {
         }
     }
 
+
     private int[] generateComputerNumbers() {
         Set<Integer> numbers = new LinkedHashSet<>();
 
@@ -48,13 +50,14 @@ public class BaseballGame {
 
         int[] result = new int[3];
         int i = 0;
+
         for (int number : numbers) {
             result[i] = number;
             i++;
         }
-
         return result;
     }
+
 
     private int[] getUserNumbers() {
         int[] userNumbers = new int[3];
@@ -66,15 +69,19 @@ public class BaseballGame {
                 return userNumbers;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                System.exit(0);
+                throw e; // 예외를 다시 던져서 상위 호출자로 전달
+                // System.exit(0);
+
             }
         }
     }
+
 
     private String readUserInput() {
         System.out.print("세 자리 숫자를 입력하세요: ");
         return Console.readLine();
     }
+
 
     private int[] parseUserInput(String userInput) {
         if (userInput.length() != 3) {
@@ -92,6 +99,7 @@ public class BaseballGame {
         return userNumbers;
     }
 
+
     private int[] calculateResult(int[] computerNumbers, int[] userNumbers) {
         int strikes = 0;
         int balls = 0;
@@ -107,6 +115,7 @@ public class BaseballGame {
         return new int[]{strikes, balls};
     }
 
+
     private boolean containsNumber(int number, int[] numbers) {
         for (int num : numbers) {
             if (num == number) {
@@ -115,6 +124,7 @@ public class BaseballGame {
         }
         return false;
     }
+
 
     private static void printResult(int[] result) {
         if (result[1] > 0) {
@@ -128,6 +138,7 @@ public class BaseballGame {
         }
         System.out.println();
     }
+
 
     private static boolean askToPlayAgain() {
         System.out.print("게임을 다시 하시겠습니까? (1:새로 시작, 2:종료): ");
