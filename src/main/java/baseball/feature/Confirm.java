@@ -4,14 +4,19 @@ import java.util.*;
 
 public class Confirm {
 
-    int accordCount;
-    int positionMatchCount;
-    List<Integer> userNumbers;
-    List<Integer> computerNumbers;
+    private int accordCount;
+    private int positionMatchCount;
+    private List<Integer> userNumbers;
+    private List<Integer> computerNumbers;
 
     public Confirm(List<Integer> UserNumbers, List<Integer> ComputerNumbers) {
         userNumbers = UserNumbers;
         computerNumbers = ComputerNumbers;
+    }
+
+    // 3개의 숫자를 모두 맞히지 못했을 시 재입력 메소드
+    public void takeNumbers(List<Integer> UserNumbers) {
+        userNumbers = UserNumbers;
     }
 
     // 스트라이크 ⊂ 볼
@@ -35,7 +40,7 @@ public class Confirm {
     public int checkPositionMatch() {
         int count = 0;
         for (int i = 0; i < computerNumbers.size(); i++) {
-            if (computerNumbers.get(i) == userNumbers.get(i)) {
+            if (computerNumbers.get(i).equals(userNumbers.get(i))) {
                 count++;
             }
 
@@ -47,7 +52,9 @@ public class Confirm {
     }
 
     // 볼, 스트라이크, 낫싱 판별
+    // 두 리스트를 비교,판별이후 accordCount, positionMatchCount 초기화
     public String referee() {
+
         return null;
     }
 
