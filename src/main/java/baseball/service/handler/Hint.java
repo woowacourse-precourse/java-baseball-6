@@ -53,13 +53,15 @@ public class Hint {
 
         // ballCount와 strikeCount에 따라 result에 append
         if (ballCount != 0) {
-            result.append(ballCount).append(BALL_WORD);
+            result.append(ballCount);
+            result.append(BALL_WORD);
         }
         if (strikeCount != 0 && ballCount != 0) {
             result.append(" ");
         }
         if (strikeCount != 0) {
-            result.append(strikeCount).append(STRIKE_WORD);
+            result.append(strikeCount);
+            result.append(STRIKE_WORD);
         }
         if (result.isEmpty()) {
             result.append(NOT_THING_WORD);
