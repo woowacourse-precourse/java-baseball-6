@@ -17,7 +17,7 @@ public class GameNumber {
     }
 
     private boolean validateGameNumber(String gameNumber) {
-        if (validateGameNumberLength(gameNumber) && validateGameNumberIsDigit(gameNumber)
+        if (validateGameNumberLength(gameNumber) && validateGameNumberIsNaturalNumber(gameNumber)
                 && validateDuplicatedGameNumber(gameNumber)) {
             return true;
         }
@@ -32,9 +32,11 @@ public class GameNumber {
         return true;
     }
 
-    private boolean validateGameNumberIsDigit(String gameNumber) {
+    private boolean validateGameNumberIsNaturalNumber(String gameNumber) {
         try {
-            Integer.parseInt(gameNumber);
+            if (Integer.parseInt(gameNumber) < START_NUMBER) {
+                return false;
+            }
         } catch (NumberFormatException e) {
             return false;
         }
