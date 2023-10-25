@@ -1,8 +1,10 @@
 package baseball.controller;
 
+import static baseball.common.exception.BaseBallExceptionMessage.INVALID_COMMAND;
 import static baseball.config.BaseBallGameConfig.BASEBALL_GAME_EXIT;
 import static baseball.config.BaseBallGameConfig.BASEBALL_GAME_RESTART;
 
+import baseball.common.exception.BaseBallGameException;
 import baseball.model.BaseBallNumber;
 import baseball.view.ConsoleInput;
 import baseball.view.ConsoleOutput;
@@ -35,7 +37,7 @@ public class BaseBallApp {
     private boolean isRestart() {
         String command = ConsoleInput.askRestart();
 
-        if(!isExitCommand(command) && !isRestartCommand(command)) throw new IllegalArgumentException();
+        if(!isExitCommand(command) && !isRestartCommand(command)) throw new BaseBallGameException(INVALID_COMMAND);
         if(isExitCommand(command)) {
             ConsoleOutput.close();
             Console.close();

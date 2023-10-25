@@ -1,9 +1,12 @@
 package baseball.model;
 
+import static baseball.common.exception.BaseBallExceptionMessage.INVALID_LENGTH;
+import static baseball.common.exception.BaseBallExceptionMessage.OUT_OF_RANGE;
 import static baseball.config.BaseBallGameConfig.BASEBALL_MAX_NUMBER;
 import static baseball.config.BaseBallGameConfig.BASEBALL_MIN_NUMBER;
 import static baseball.config.BaseBallGameConfig.BASEBALL_NUMBER_SIZE;
 
+import baseball.common.exception.BaseBallGameException;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,16 +62,15 @@ public class BaseBallNumber {
         return numbers.length;
     }
 
-    // todo : 숫자야구게임을 위한 커스텀 예외 생성
     private void validateSize(int[] numbers) {
         if(numbers.length != BASEBALL_NUMBER_SIZE.getValue())
-            throw new IllegalArgumentException();
+            throw new BaseBallGameException(INVALID_LENGTH);
     }
 
     private void validateWithinRange(int[] numbers) {
         for(int number : numbers) {
             if(number < BASEBALL_MIN_NUMBER.getValue() || number > BASEBALL_MAX_NUMBER.getValue())
-                throw new IllegalArgumentException();
+                throw new BaseBallGameException(OUT_OF_RANGE);
         }
     }
 
