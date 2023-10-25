@@ -9,10 +9,9 @@ import java.util.List;
 
 public class Application {
     private Application(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public List<Integer> randomPick(){
+    public static List<Integer> randomPick(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,7 +22,7 @@ public class Application {
         return computer;
     }
 
-    public String getUserInput() {
+    public static String getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         /// 4-1. "345" -> 345 -> 3, 4, 5 -> {3, 4, 5}
         String inputStr = Console.readLine(); // "345"
@@ -79,7 +78,7 @@ public class Application {
         return true;
     }
 
-    public List<Integer> Str2IntList(String inputStr){
+    public static List<Integer> Str2IntList(String inputStr){
 
         int str2Number = Integer.parseInt(inputStr);
 
@@ -93,7 +92,7 @@ public class Application {
 
         return nums;
     }
-    public int[] checkIsBallOrStrike(List<Integer> user, List<Integer> computer){
+    public static int[] checkIsBallOrStrike(List<Integer> user, List<Integer> computer){
         int[] Count = new int[] {0, 0, 0};
 
         for (int index = 0; index < user.size();index++) {
@@ -109,7 +108,7 @@ public class Application {
         return Count;
     }
 
-    public void printMent(int [] countArray) {
+    public static void printMent(int [] countArray) {
         // 5-1. 함수에 필요한 변수 선언
         int strikeCount = countArray[0];
         int ballCount = countArray[1];
@@ -156,7 +155,7 @@ public class Application {
 
         switch (cmd) {
             case "1":    // 새로 시작
-                Application.main(new String[]{});
+                startGame();
                 break;
             case "2":    // 종료
                 wannaExit = true;
@@ -172,38 +171,42 @@ public class Application {
         return wannaExit;
     }
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        Application program = new Application();
-
-        // ReGame 분기점 (재시작 시)
+    public static void startGame(){
         // 1. 컴퓨터가 1 ~ 9 중 3개의 임의의 수 차출
         // 2. 배열에 3개의 숫자를 넣는다
-        List<Integer> PC = program.randomPick();
+        List<Integer> PC = randomPick();
 
         boolean tryAgain = true;
         // 반복문
         while(tryAgain) {
             // 3. 사용자가 세 개의 수 입력
-            String userInput = program.getUserInput();
+            String userInput = getUserInput();
             // 4. 사용자 입력 문자열 -> 정수형 배열 변환 (목적: 3,4,5 가 {4,5,6}에 있는가?)
             // 4-1. 예외 처리
             if (!checkIsValidate(userInput)){ // 사용자 입력이 유효하지 않으면
                 return;         // 종료
             }
             // 4-2. 입력 받은 배열 정수형 리스트로 변환
-            List<Integer> user = program.Str2IntList(userInput);
+            List<Integer> user = Str2IntList(userInput);
 
             // 5. 컴퓨터 수열과 사용자 입력 수열 비교해서 낫씽, 볼, 스트라이크 확인
-            int [] countArray = program.checkIsBallOrStrike(user,PC);
+            int [] countArray = checkIsBallOrStrike(user,PC);
             int strikeCount = countArray[0];
             // 6. 결과 출력
-            program.printMent(countArray);
+            printMent(countArray);
             // 7. 탈출문 : 3스트라이크 아닐 시 반복
             if (strikeCount == 3)  {
                 tryAgain = false;
             }
         }
+    }
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        //Application program = new Application();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        // ReGame 분기점 (재시작 시)
+        startGame();
         //8. 재시작 or 종료
         if(askWannaRegame())
             return;
