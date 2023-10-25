@@ -9,6 +9,7 @@ import static baseball.view.OutputView.printStart;
 
 import baseball.domain.Board;
 import baseball.domain.Game;
+import baseball.exception.InvalidArgumentException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,7 +54,7 @@ public class BaseballGame {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NOT_NUMBER_STRING.getMessage());
+            throw new InvalidArgumentException(NOT_NUMBER_STRING);
         }
     }
 }

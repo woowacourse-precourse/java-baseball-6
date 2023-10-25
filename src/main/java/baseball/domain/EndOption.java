@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static baseball.domain.ErrorCode.INVALID_OPTION_NUMBER;
 
+import baseball.exception.InvalidArgumentException;
 import java.util.Arrays;
 
 public enum EndOption {
@@ -34,8 +35,6 @@ public enum EndOption {
         return Arrays.stream(values())
             .filter(option -> option.getValue() == value)
             .findFirst()
-            .orElseThrow(() -> {
-                throw new IllegalArgumentException(INVALID_OPTION_NUMBER.getMessage());
-            });
+            .orElseThrow(() -> new InvalidArgumentException(INVALID_OPTION_NUMBER));
     }
 }

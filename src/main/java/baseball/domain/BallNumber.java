@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import static baseball.domain.ErrorCode.NOT_SINGLE_NUMBER;
+
+import baseball.exception.InvalidArgumentException;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Objects;
 
@@ -42,7 +45,7 @@ public class BallNumber {
 
     private void validateNumber(int number) {
         if (!isSingleNumber(number)) {
-            throw new IllegalArgumentException(ErrorCode.NOT_SINGLE_NUMBER.getMessage());
+            throw new InvalidArgumentException(NOT_SINGLE_NUMBER);
         }
     }
 

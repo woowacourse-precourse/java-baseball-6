@@ -4,7 +4,10 @@ import static baseball.domain.BallNumber.createRandomBallNumber;
 import static baseball.domain.BallStatus.BALL;
 import static baseball.domain.BallStatus.NOTHING;
 import static baseball.domain.BallStatus.STRIKE;
+import static baseball.domain.ErrorCode.INVALID_BALL_SIZE;
+import static baseball.domain.ErrorCode.NOT_OTHER_NUMBERS;
 
+import baseball.exception.InvalidArgumentException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -54,10 +57,10 @@ public class Balls {
 
     private void validateNumbers(List<Integer> numbers) {
         if (!isValidateSize(numbers)) {
-            throw new IllegalArgumentException(ErrorCode.INVALID_BALL_SIZE.getMessage());
+            throw new InvalidArgumentException(INVALID_BALL_SIZE);
         }
         if (!isOtherNumbers(numbers)) {
-            throw new IllegalArgumentException(ErrorCode.NOT_OTHER_NUMBERS.getMessage());
+            throw new InvalidArgumentException(NOT_OTHER_NUMBERS);
         }
     }
 
