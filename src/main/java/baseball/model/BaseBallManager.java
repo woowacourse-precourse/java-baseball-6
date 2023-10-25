@@ -22,8 +22,8 @@ public class BaseBallManager {
         this.computerBallGroup = new BallNumberGroup(generateUniqueRandomNumbers());
         computerBallInfo = new HashMap<>();
         List<BallNumber> computerBall = computerBallGroup.getBallNumberGroup();
-        for (int ballIdx = 0; ballIdx < BALL_NUMBER_SIZE; ballIdx++) {
-            computerBallInfo.put(computerBall.get(ballIdx).getNumber(), ballIdx);
+        for (int bIdx = 0; bIdx < BALL_NUMBER_SIZE; bIdx++) {
+            computerBallInfo.put(computerBall.get(bIdx).getNumber(), bIdx);
         }
     }
 
