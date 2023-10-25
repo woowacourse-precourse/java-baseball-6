@@ -69,13 +69,6 @@ public class Game {
         return strike;
     }
 
-    private boolean samePosition(int ithInput, int ithAnswer) {
-        if (ithInput == ithAnswer) {
-            return true;
-        }
-        return false;
-    }
-
     private int getBall(int[] inputNumber) {
         answerNumber = answer.getAnswerNumber();
         int ball = 0;
