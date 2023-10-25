@@ -2,6 +2,7 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseballGameConsole baseballGameConsole = new BaseballGameConsole(new Game(new RandomAnswerFactory(), new ResultFactory()), new InputConsole(), new OutputConsole());
+        baseballGameConsole.start();
     }
 }
