@@ -21,6 +21,9 @@ public class Application {
             // 게임 시작
             startGame();
 
+            // 게임 진행
+            playGame();
+
             // 게임이 끝났을 때 재시작 여부 결정
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String userString = Console.readLine();
@@ -36,24 +39,33 @@ public class Application {
         // 컴퓨터 랜덤값 input
         computer = new ArrayList<>();
         inputComputer();
+    }
 
+    private static void playGame() {
         while (true) {
-            // strike, ball 초기화
-            strike = 0;
-            ball = 0;
-
             // 사용자 입력값 input
             System.out.print("숫자를 입력해주세요 : ");
             String userString = Console.readLine();
             user = new ArrayList<>();
+            if (!isCorrectInput(userString)) {        // 자릿수 및 1-9 숫자 체크 : **예외 발생
+                throw new IllegalArgumentException();
+            }
             inputUser(userString);
+
             // 값 비교
-            compareValue();
+            strike = 0;
+            ball = 0;
+            for (int i=0; i<digitNumber; i++) {
+                int userValue = user.get(i);
+                int computerValue = computer.get(i);
+                compareValue(userValue, computerValue);
+            }
+
             // 힌트값 출력
             printHint();
 
             // 정답을 맞췄을 경우, 게임 종료 안내문구 출력 && 사용자 입력 중지
-            if (isAnswer()) {
+            if (strike == digitNumber) {
                 System.out.println(digitNumber + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
@@ -70,9 +82,6 @@ public class Application {
     }
 
     private static void inputUser(String target) {
-        if (!isCorrectInput(target)) {               // 자릿수 및 1-9 숫자 체크 : **예외 발생
-            throw new IllegalArgumentException();
-        }
         for (String str : target.split("")) {
             int num = Integer.parseInt(str);
             if (user.contains(num)) {                // 숫자 중복 체크 : **예외 발생
@@ -92,16 +101,12 @@ public class Application {
         return true;
     }
 
-    private static void compareValue() {
-        for (int i=0; i<digitNumber; i++) {
-            int userValue = user.get(i);
-            int computerValue = computer.get(i);
-            // strike,ball Count
-            if (userValue == computerValue) {
-                strike++;
-            } else if (computer.contains(userValue)) {
-                ball++;
-            }
+    private static void compareValue(int userValue, int computerValue) {
+        // strike,ball Count
+        if (userValue == computerValue) {
+            strike++;
+        } else if (computer.contains(userValue)) {
+            ball++;
         }
     }
 
@@ -115,10 +120,6 @@ public class Application {
         } else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-    }
-
-    private static boolean isAnswer() {
-        return strike == digitNumber;
     }
 
     private static boolean restartGame(String target) {
