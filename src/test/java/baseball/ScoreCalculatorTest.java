@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
+
 class ScoreCalculatorTest {
 
     @Test
@@ -18,10 +20,10 @@ class ScoreCalculatorTest {
 
         ScoreCalculator scoreCalculator = new ScoreCalculator();
 
-        Assertions.assertThat(scoreCalculator.computeStrike(randomNumbers, strike0)).isEqualTo(0);
-        Assertions.assertThat(scoreCalculator.computeStrike(randomNumbers, strike1)).isEqualTo(1);
-        Assertions.assertThat(scoreCalculator.computeStrike(randomNumbers, strike2)).isEqualTo(2);
-        Assertions.assertThat(scoreCalculator.computeStrike(randomNumbers, strike3)).isEqualTo(3);
+        assertThat(scoreCalculator.computeStrike(randomNumbers, strike0)).isEqualTo(0);
+        assertThat(scoreCalculator.computeStrike(randomNumbers, strike1)).isEqualTo(1);
+        assertThat(scoreCalculator.computeStrike(randomNumbers, strike2)).isEqualTo(2);
+        assertThat(scoreCalculator.computeStrike(randomNumbers, strike3)).isEqualTo(3);
     }
 
     @Test
@@ -34,10 +36,10 @@ class ScoreCalculatorTest {
 
         ScoreCalculator scoreCalculator = new ScoreCalculator();
 
-        Assertions.assertThat(scoreCalculator.computeBall(randomNumbers, ball0, 0)).isEqualTo(0);
-        Assertions.assertThat(scoreCalculator.computeBall(randomNumbers, ball1, 0)).isEqualTo(1);
-        Assertions.assertThat(scoreCalculator.computeBall(randomNumbers, ball2, 0)).isEqualTo(2);
-        Assertions.assertThat(scoreCalculator.computeBall(randomNumbers, ball3, 0)).isEqualTo(3);
+        assertThat(scoreCalculator.computeBall(randomNumbers, ball0, 0)).isEqualTo(0);
+        assertThat(scoreCalculator.computeBall(randomNumbers, ball1, 0)).isEqualTo(1);
+        assertThat(scoreCalculator.computeBall(randomNumbers, ball2, 0)).isEqualTo(2);
+        assertThat(scoreCalculator.computeBall(randomNumbers, ball3, 0)).isEqualTo(3);
     }
 
 }

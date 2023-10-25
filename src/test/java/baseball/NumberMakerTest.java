@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.*;
+
 class NumberMakerTest {
 
     @Test
@@ -15,7 +17,7 @@ class NumberMakerTest {
         NumberMaker numberMaker = new NumberMaker();
         List<Integer> randomNumbers = numberMaker.makeRandomNumbers();
 
-        Assertions.assertThat(randomNumbers.size()).isEqualTo(3);
+        assertThat(randomNumbers.size()).isEqualTo(3);
     }
 
     @Test
@@ -25,6 +27,6 @@ class NumberMakerTest {
 
         // 중복을 제거하는 set에 넣은 후에도 크기가 동일한지 확인합니다.
         Set setNumbers = new HashSet<>(randomNumbers);
-        Assertions.assertThat(setNumbers.size()).isEqualTo(3);
+        assertThat(setNumbers.size()).isEqualTo(3);
     }
 }

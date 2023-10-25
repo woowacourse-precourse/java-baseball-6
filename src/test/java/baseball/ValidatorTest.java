@@ -4,6 +4,8 @@ import baseball.validation.Validator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.*;
+
 class ValidatorTest {
 
     @Test
@@ -12,7 +14,7 @@ class ValidatorTest {
 
         boolean result = validator.validateGuessNumber("1234");
 
-        Assertions.assertThat(result).isTrue();
+        assertThat(result).isTrue();
     }
 
     @Test
@@ -21,7 +23,7 @@ class ValidatorTest {
 
         boolean result = validator.validateGuessNumber("가123");
 
-        Assertions.assertThat(result).isFalse();
+        assertThat(result).isFalse();
     }
 
     @Test
@@ -31,8 +33,8 @@ class ValidatorTest {
         boolean threeLength = validator.validateGuessNumber("123");
         boolean fiveLength = validator.validateGuessNumber("12345");
 
-        Assertions.assertThat(threeLength).isTrue();
-        Assertions.assertThat(fiveLength).isFalse();
+        assertThat(threeLength).isTrue();
+        assertThat(fiveLength).isFalse();
     }
 
     @Test
@@ -42,8 +44,8 @@ class ValidatorTest {
         boolean repeat = validator.validateGuessNumber("122");
         boolean notRepeat = validator.validateGuessNumber("123");
 
-        Assertions.assertThat(repeat).isFalse();
-        Assertions.assertThat(notRepeat).isTrue();
+        assertThat(repeat).isFalse();
+        assertThat(notRepeat).isTrue();
     }
 
 }
