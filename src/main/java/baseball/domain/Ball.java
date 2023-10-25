@@ -10,7 +10,7 @@ public class Ball {
     private final int number;
     private final int position;
 
-    public Ball(int position, int number) {
+    private Ball(int position, int number) {
         validateRange(number);
         this.number = number;
         this.position = position;

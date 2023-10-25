@@ -1,15 +1,11 @@
-package baseball.controller;
-
-import baseball.domain.Balls;
-import baseball.domain.GameResult;
-import baseball.domain.GameStatus;
+package baseball.domain;
 
 public class BaseballGame {
 
     private final Balls answerBall;
     private GameStatus gameStatus;
 
-    public BaseballGame(Balls answerBalls, GameStatus gameStatus) {
+    private BaseballGame(Balls answerBalls, GameStatus gameStatus) {
         this.answerBall = answerBalls;
         this.gameStatus = gameStatus;
     }

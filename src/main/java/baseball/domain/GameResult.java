@@ -6,7 +6,7 @@ public class GameResult {
 
     private final List<TryResult> tryResults;
 
-    public GameResult(List<TryResult> tryResults) {
+    private GameResult(List<TryResult> tryResults) {
         this.tryResults = tryResults;
     }
 

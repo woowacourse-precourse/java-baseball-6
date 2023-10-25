@@ -36,7 +36,7 @@ public class InputView {
             .mapToObj(index -> {
                 int position = index + 1;
                 int ballNumber = rawBallList.get(index);
-                return new Ball(position, ballNumber);
+                return Ball.from(position, ballNumber);
             }).collect(collectingAndThen(toList(), Balls::from));
     }
 

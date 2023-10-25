@@ -5,6 +5,7 @@ import static java.util.stream.Collectors.toList;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Balls {
 
@@ -12,7 +13,7 @@ public class Balls {
     private static final String DUPLICATES_EXCEPTION_MESSAGE = "[ERROR] 중복되지 않는 3자리의 숫자를 입력해주세요.";
     private final List<Ball> balls;
 
-    public Balls(List<Ball> ballList) {
+    private Balls(List<Ball> ballList) {
         valdateDuplicates(ballList);
         this.balls = ballList;
     }
@@ -21,7 +22,7 @@ public class Balls {
         balls = Arrays.asList(ballValues);
     }
 
-    public void valdateDuplicates(List<Ball> ballList) {
+    private void valdateDuplicates(List<Ball> ballList) {
         if (hasDuplicatesInList(ballList)) {
             throw new IllegalArgumentException(DUPLICATES_EXCEPTION_MESSAGE);
         }
@@ -43,12 +44,20 @@ public class Balls {
     private TryResult getTryResult(Ball answerBall) {
         return balls.stream()   // balls = playerBalls
             .map(playerBall -> playerBall.getTryResult(answerBall))
-            .filter(tryResult -> tryResult != TryResult.NOTHING)
+            .filter(isNotNothing())
             .findFirst()
             .orElse(TryResult.NOTHING);
     }
 
+    private static Predicate<TryResult> isNotNothing() {
+        return tryResult -> tryResult != TryResult.NOTHING;
+    }
+
     public static Balls from(List<Ball> balls) {
         return new Balls(balls);
+    }
+
+    public List<Ball> getBalls() {
+        return balls;
     }
 }
