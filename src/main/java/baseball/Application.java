@@ -53,23 +53,25 @@ public class Application {
     }
 
     static void checkInputValue(String input) {
-        if (!checkMaxLength(input)){
+        if (!checkMaxLength(input)) {
             throw new IllegalArgumentException();
         } else if (!checkInteger(input)) {
+            throw new IllegalArgumentException();
+        } else if (checkContainZero(input)) {
             throw new IllegalArgumentException();
         } else if (checkContinue(input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    static boolean checkMaxLength(String input){
-        if (input.length() != MAX_COUNT){
+    static boolean checkMaxLength(String input) {
+        if (input.length() != MAX_COUNT) {
             return false;
         }
         return true;
-
     }
-    static boolean checkInteger(String input){
+
+    static boolean checkInteger(String input) {
         try {
             Integer.parseInt(input);
             return true;
@@ -78,11 +80,21 @@ public class Application {
         }
     }
 
-    static boolean checkContinue(String input){
+    static boolean checkContainZero(String input) {
         String[] inputArr = input.split("");
-        if (Integer.parseInt(inputArr[0]) - Integer.parseInt(inputArr[1]) == 0 ){
+        for (String num : inputArr) {
+            if ("0".equals(num)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static boolean checkContinue(String input) {
+        String[] inputArr = input.split("");
+        if (Integer.parseInt(inputArr[0]) - Integer.parseInt(inputArr[1]) == 0) {
             return true;
-        } else if (Integer.parseInt(inputArr[0]) - Integer.parseInt(inputArr[2]) == 0 ) {
+        } else if (Integer.parseInt(inputArr[0]) - Integer.parseInt(inputArr[2]) == 0) {
             return true;
         }
         return false;
@@ -134,7 +146,7 @@ public class Application {
     private static String outText(int strike, int ball) {
 
         if (strike == 0 && ball == 0) {
-            return  "낫싱";
+            return "낫싱";
         } else if (ball > 0 && strike == 0) {
             return ball + "볼";
         } else if (strike > 0 && ball == 0) {
