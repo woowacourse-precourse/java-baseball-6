@@ -1,12 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.*;
 
 public class InputLineConverter {
 
     private final IllegalCheck illegalcheck = new IllegalCheck();
+
     public Optional<ArrayList<Integer>> stringToIntegerList() {
         ArrayList<Integer> ConvertedList = null;
 
@@ -22,11 +22,11 @@ public class InputLineConverter {
         return Optional.ofNullable(ConvertedList);
     }
 
-    public Optional<Integer> commandNumber(){
+    public Optional<Integer> commandNumber() {
         Integer convertedInteger = null;
 
         String inputLine = Console.readLine();
-        if(illegalcheck.commandAvailable(inputLine)){
+        if (illegalcheck.commandAvailable(inputLine)) {
             convertedInteger = Integer.parseInt(inputLine);
         }
 
