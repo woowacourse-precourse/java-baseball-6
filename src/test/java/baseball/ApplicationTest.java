@@ -21,12 +21,52 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_수_많음() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 예외_테스트_수_적음() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 메뉴_비정상_입력() {
+        assertThatThrownBy(() -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("123", "0");
+                    },
+                    1, 2, 3
+            );
+        }, "1보다 작음")
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("123", "3");
+                    },
+                    1, 2, 3
+            );
+        }, "2보다 큼")
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
     @Override
     public void runMain() {
