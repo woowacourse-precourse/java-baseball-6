@@ -18,13 +18,7 @@ public class BaseballUser implements User {
 
     public void setNumbers(String userInput) {
 
-        // TODO: validation 로직 추가
-        if (!validationPolicy.hasNoDuplicateNumber(userInput)
-                || !validationPolicy.isCorrectLength(userInput, 3)
-                || !validationPolicy.isNumericString(userInput)
-        ) {
-            throw new IllegalArgumentException();
-        }
+        validationUserInput(userInput);
 
         this.numbers = Stream.
                 of(String.valueOf(userInput).split(""))
@@ -34,5 +28,12 @@ public class BaseballUser implements User {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    private void validationUserInput(String userInput) {
+        validationPolicy.hasNoDuplicateNumber(userInput) ;
+        validationPolicy.isCorrectLength(userInput, 3);
+        validationPolicy.isNumericString(userInput);
+        validationPolicy.hasNoZero(userInput);
     }
 }

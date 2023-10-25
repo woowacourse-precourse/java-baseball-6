@@ -1,38 +1,35 @@
 package baseball.policy;
 
 public class ValidationPolicy {
-    public boolean isCorrectLength(String input, int length){
-        return input.length() == length;
+    public void isCorrectLength(String input, int length){
+        if (!(input.length() == length)) {
+            throw new IllegalArgumentException("입력 숫자는 "+length+"자리여야 합니다.");
+        }
     }
 
-    public boolean isNumericString(String input) {
-        if (input == null || input.isEmpty()) {
-            return false;
-        }
-
+    public void isNumericString(String input) {
         for (char c : input.toCharArray()) {
             if (!Character.isDigit(c)) {
-                return false;
+                throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
             }
         }
-
-        return true;
     }
 
-    public boolean hasNoDuplicateNumber(String input) {
-        if (input == null || input.isEmpty()) {
-            return true;
-        }
+    public void hasNoDuplicateNumber(String input) {
 
         for (int i = 0; i < input.length(); i++) {
             char digit = input.charAt(i);
             for (int j = i + 1; j < input.length(); j++) {
                 if (digit == input.charAt(j)) {
-                    return false;
+                    throw new IllegalArgumentException("각 자리의 수가 중복되지 않는 3자리 수를 입력해주세요.");
                 }
             }
         }
+    }
 
-        return true;
+    public void hasNoZero(String input) {
+        if (input.contains("0")) {
+            throw new IllegalArgumentException("1부터 9까지의 숫자만 사용해 입력해주세요.");
+        }
     }
 }
