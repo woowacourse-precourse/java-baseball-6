@@ -10,6 +10,7 @@ public class User {
     public String getUserNumber(){
         return userNumber;
     }
+
     public void setUserNumber(String userInput) {
         this.userNumber = userInput;
     }
@@ -21,9 +22,6 @@ public class User {
         if (isInvalidDigit || userInput.length() > 3 || isDuplicationDigit(userInput)) {
             throw new IllegalArgumentException();
         }
-
-
-
     }
 
     public boolean isDuplicationDigit(String userInput) {

@@ -19,6 +19,7 @@ public class Game {
     public int getBallCount() {
         return ballCount;
     }
+
     public int getStrikeCount() {
         return strikeCount;
     }
@@ -44,7 +45,6 @@ public class Game {
     }
 
     public void controlGameMenu(String menuNumber) {
-
         String regex = "[1-2]{1}";
         boolean isInvalidDigit = !menuNumber.matches(regex);
 
