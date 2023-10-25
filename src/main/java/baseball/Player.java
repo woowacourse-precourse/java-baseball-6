@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human {
+public class Player {
     private List<Integer> values;
     private final ExceptionHandler exceptionHandler;
 
-    public Human() {
+    public Player() {
         this.values = new ArrayList<>();
         this.exceptionHandler = new ExceptionHandler();
     }

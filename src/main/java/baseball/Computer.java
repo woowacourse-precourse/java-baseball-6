@@ -22,13 +22,13 @@ public class Computer {
         }
     }
 
-    public ResultDTO compare(List<Integer> human) {
+    public ResultDTO compare(List<Integer> playerValues) {
         int[] sb = {0, 0}; // [strike 수, ball 수]
-        human.forEach(v -> {
+        playerValues.forEach(v -> {
             // 정답에 v가 존재
             if (values.contains(v)) {
                 // 같은 자리에 존재
-                if (values.get(human.indexOf(v)) == v) {
+                if (values.get(playerValues.indexOf(v)) == v) {
                     sb[0]++;
                 } else {
                     sb[1]++;
