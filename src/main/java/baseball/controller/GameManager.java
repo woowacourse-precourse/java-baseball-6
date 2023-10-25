@@ -11,19 +11,16 @@ public class GameManager {
 	private final BaseballManager baseballManager = new BaseballManager();
 
 	public void initGame() {
-		try {
-			playGameUntilEnd();
-		} catch (IllegalArgumentException e) {
-			outputView.printInputErrorMessage();
-			throw e;
-		}
+		playGameUntilExit();
 	}
 
-	private void playGameUntilEnd() {
+	private void playGameUntilExit() {
 		int gameRestartFlag;
 		do {
 			outputView.printGameStartMessage();
+			baseballManager.initComputerNumber();
 			playGameUntilOver();
+			outputView.printGameEndMessage();
 			gameRestartFlag = inputView.gameRestartFlag();
 		} while (gameRestartFlag == Constant.GAME_RESTART_FLAG);
 	}
@@ -33,6 +30,7 @@ public class GameManager {
 		do {
 			int userInput = inputView.userInputNumber();
 			userScore = baseballManager.userScore(userInput);
+			outputView.printScore(userScore);
 		} while (!userScore.isGameOver());
 	}
 }
