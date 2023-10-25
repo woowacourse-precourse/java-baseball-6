@@ -7,6 +7,7 @@ import java.util.List;
 public class UserGenerate {
     /**
      * 사용자가 3개의 숫자 입력한 것 받기
+     *
      * @return 3개의 숫자 리스트
      */
     public List<Integer> getAttempt() {
