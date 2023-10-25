@@ -36,15 +36,19 @@ public class GameFunction {
         }
     }
 
-    public static void gametry() throws IOException {
+    public static void gametry() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         getComputerNumber();
         while(true) {
                 strike = 0;
                 ball = 0;
                 System.out.print("숫자를 입력해주세요 : ");
-                String num = br.readLine();
-                if (num.length() != 3) {
+            String num = null;
+            try {
+                num = br.readLine();
+            } catch (IOException e) {
+                throw new IllegalArgumentException("잘못된 값 입력");            }
+            if (num.length() != 3) {
                     throw new IllegalArgumentException("잘못된 값 입력");
                 }
                 getUserNumber(num);
@@ -73,7 +77,12 @@ public class GameFunction {
                 if (strike == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    String quitcheck = br.readLine();
+                    String quitcheck = null;
+                    try {
+                        quitcheck = br.readLine();
+                    } catch (IOException e) {
+                        throw new IllegalArgumentException("잘못된 값 입력");
+                    }
                     if (quitcheck.equals("1")) {
                         getComputerNumber();
 //                        continue;
