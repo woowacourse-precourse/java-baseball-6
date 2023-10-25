@@ -30,7 +30,7 @@ public class App {
         return input.restartOrEndOption();
     }
 
-    public void main() {
+    public void app() {
         boolean option;
         start();
         do {
