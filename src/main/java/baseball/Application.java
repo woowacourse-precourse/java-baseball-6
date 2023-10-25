@@ -58,22 +58,25 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
 
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException("세 자리의 숫자를 입력해주세요.");
+        }
         if (userInput.replaceAll("\\s", "").length() < 3) {
             throw new IllegalArgumentException("공백을 제외한 세 자리 수를 입력해주세요.");
         }
+
         List<Integer> userNumbers = userInputToInteger(userInput);
-        if (userNumbers.size() < 3 || userNumbers.size() > 3) {
-            throw new IllegalArgumentException("세 자리의 숫자를 입력해주세요.");
-        }
         for (int userNumber : userNumbers) {
             if(userNumber < 1 || userNumber > 9) {
                 throw new IllegalArgumentException("1부터 9까지의 숫자를 입력해주세요.");
             }
         }
+
         Set<Integer> deleteDuplicate = new HashSet<>(userNumbers);
         if (deleteDuplicate.size() != userNumbers.size()) {
             throw new IllegalArgumentException("중복 되지 않은 수를 입력해주세요.");
         }
+
         return userNumbers;
     }
 
