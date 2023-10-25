@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.convertor;
 
 import baseball.domain.game.GameStatus;
 import baseball.domain.game.Player;
@@ -6,10 +6,10 @@ import baseball.view.InputView;
 import java.util.Arrays;
 import java.util.List;
 
-public class InputController {
+public class InputConvertor {
     private final InputView inputView;
 
-    public InputController(InputView inputView) {
+    public InputConvertor(InputView inputView) {
         this.inputView = inputView;
     }
 
