@@ -39,7 +39,6 @@ public class GameManager {
             playRound();
             return true;
         } catch (IllegalArgumentException e) {
-            outputManager.printMessage(GameMessages.INPUT_ERR_MSG);
             return false;
         }
     }
@@ -48,7 +47,6 @@ public class GameManager {
         try {
             return askForReplay();
         } catch (IllegalArgumentException e) {
-            outputManager.printMessage(GameMessages.INPUT_ERR_MSG);
             return false;
         }
     }
