@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Guess {
-    final int GUESS_SIZE = 3;
-    List<Integer> computerGuess = new ArrayList<>();
-    List<Integer> userGuess = new ArrayList<>();
+    private final int GUESS_SIZE = 3;
+    private List<Integer> computerGuess = new ArrayList<>();
+    private List<Integer> userGuess = new ArrayList<>();
 
     public void setComputerGuessByRandom() {
         computerGuess.clear();
