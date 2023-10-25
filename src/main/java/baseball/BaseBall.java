@@ -6,7 +6,6 @@ public class BaseBall {
     public void run() {
         Notification.notifyGameStart();
         ComputerNumber computerNumber = new ComputerNumber();
-        computerNumber.createComputerNumber();
 
         while (true) {
             String inputNumber = Console.readLine();

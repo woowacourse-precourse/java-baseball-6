@@ -10,9 +10,10 @@ public class ComputerNumber {
 
     public ComputerNumber() {
         this.number = new ArrayList<>();
+        createComputerNumber(number);
     }
 
-    public void createComputerNumber() {
+    private void createComputerNumber(List<Integer> number) {
         while (number.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!number.contains(randomNumber)) {
