@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     private static String firstMent = "숫자 야구 게임을 시작합니다.";
     public static void main(String[] args) {
@@ -14,6 +16,7 @@ public class Application {
             gameManager.gameStart();
         }
         catch (IllegalArgumentException e) {
+            Console.close();
             e.printStackTrace();
         }
 

@@ -51,7 +51,10 @@ public class GameManager {
             int flag = input.charAt(0) - '0';
 
             //종료 Case
-            if(flag == 2) return;
+            if(flag == 2) {
+                Console.close();
+                return;
+            }
 
         }
 

@@ -63,6 +63,7 @@ public class PlayGame {
 
             else if(strikeCount == 3) { //정답 Case
                 System.out.println(answer);
+                Console.close();
                 return true;
             }
 
