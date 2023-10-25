@@ -17,16 +17,12 @@ public class UniqueRandomNumberGenerator {
     public static List<Integer> generateUniqueRandomNumbers(final int startOfRange,
                                                             final int endOfRange,
                                                             final int digitCount) {
-        List<Integer> availableNumbers = new ArrayList<>();
-        for (int i = startOfRange; i <= endOfRange; i++) {
-            availableNumbers.add(i);
-        }
-
         List<Integer> uniqueRandomNumbers = new ArrayList<>();
-        for (int i = 0; i < digitCount; i++) {
-            int randomIndex = Randoms.pickNumberInRange(0, availableNumbers.size() - 1);
-            uniqueRandomNumbers.add(availableNumbers.get(randomIndex));
-            availableNumbers.remove(randomIndex);
+        while (uniqueRandomNumbers.size() < digitCount) {
+            int randomNumber = Randoms.pickNumberInRange(startOfRange, endOfRange);
+            if (!uniqueRandomNumbers.contains(randomNumber)) {
+                uniqueRandomNumbers.add(randomNumber);
+            }
         }
 
         return uniqueRandomNumbers;
