@@ -13,6 +13,7 @@ public class Application {
                 break;
             } else {
                 throw new IllegalArgumentException("입력한 숫자는 1 또는 2 이어야 합니다");
+
             }
 
         }
