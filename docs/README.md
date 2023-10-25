@@ -3,12 +3,9 @@
 
 ### 🏄‍ Flow
 
-
-[![FlowChart](https://mermaid.ink/img/pako:eNpVUctKw0AU_ZXLrFpofiALoWmtG93osuliaCa2kBfpBJGkINqC0AqKFB-0oWgFxSxqfSDoFyW3_-A0o2BnNZznnbkhaboGIyoxLfeg2aI-h-1d3QFxynWNdphGLavseQ1QlI1oi9oMOlyoIqgVsnicnc0Av96Wl4_L3hxPnzE-BzyZYO-lCDKltjKCVsDjBG-fcj7uZ9OHoqS1nK6E6WKevn7D8maEk09QYFVbcQOHd6WukvfjdJQN3iOo1tPFEOOeyEpwMMb4AvAqyT6OfgMa0lSVpj-NmHkNv-tn98MINv-_EyTaWGu9nuWtGikRm_k2bRviw8KVRCe8xWymE1VcDWbSwOI60Z2ukNKAu3uHTpOo3A9YiQSeQTmrtum-T22imtTqCJQZbe76O3IJ-S66P0Gnp9Y?type=png)](https://mermaid.live/edit#pako:eNpVUctKw0AU_ZXLrFpofiALoWmtG93osuliaCa2kBfpBJGkINqC0AqKFB-0oWgFxSxqfSDoFyW3_-A0o2BnNZznnbkhaboGIyoxLfeg2aI-h-1d3QFxynWNdphGLavseQ1QlI1oi9oMOlyoIqgVsnicnc0Av96Wl4_L3hxPnzE-BzyZYO-lCDKltjKCVsDjBG-fcj7uZ9OHoqS1nK6E6WKevn7D8maEk09QYFVbcQOHd6WukvfjdJQN3iOo1tPFEOOeyEpwMMb4AvAqyT6OfgMa0lSVpj-NmHkNv-tn98MINv-_EyTaWGu9nuWtGikRm_k2bRviw8KVRCe8xWymE1VcDWbSwOI60Z2ukNKAu3uHTpOo3A9YiQSeQTmrtum-T22imtTqCJQZbe76O3IJ-S66P0Gnp9Y)
+[![Flow](https://mermaid.ink/img/pako:eNpVkL1qwzAQx1_l0ORC8gIeArGdTu2SjnEGYSmNQZaNKlFKFCiFTOnQDqEftCb0Yyh4bek7-foOVexksKbjfr_THf8FSXLGiU9mIr9M5lRpOBnHEtwbToZFIdKE6jSXU-j3B1YZaSHwAnrBAyqE40etG-wwhB7eVPj8heUdYLmqt597HDY4muB2U6-_AR-q-uca_p42-Po7bZWoWYCPH06wEHaazZSFkYdlhesXLO-7X-y3jFr74LhLoQPeVvX7rYVjr63cFOmRjKuMpswlsNjJMdFznvGY-K5kfEaN0DGJ5dKp1Oj87EomxNfK8B4xBaOaRyk9VzQ7NDlLda5O21CbbJf_ILuNVA?type=png)](https://mermaid.live/edit#pako:eNpVkL1qwzAQx1_l0ORC8gIeArGdTu2SjnEGYSmNQZaNKlFKFCiFTOnQDqEftCb0Yyh4bek7-foOVexksKbjfr_THf8FSXLGiU9mIr9M5lRpOBnHEtwbToZFIdKE6jSXU-j3B1YZaSHwAnrBAyqE40etG-wwhB7eVPj8heUdYLmqt597HDY4muB2U6-_AR-q-uca_p42-Po7bZWoWYCPH06wEHaazZSFkYdlhesXLO-7X-y3jFr74LhLoQPeVvX7rYVjr63cFOmRjKuMpswlsNjJMdFznvGY-K5kfEaN0DGJ5dKp1Oj87EomxNfK8B4xBaOaRyk9VzQ7NDlLda5O21CbbJf_ILuNVA)
 
 ## ⭐ 요구 사항
-
----
 
 **1️⃣ 기능 요구 사항**
 
@@ -51,7 +48,7 @@
 - [x]  [프리 코스 과제 가이드](https://www.notion.so/Github-Actions-6beab55a4d6644bd81c199ef406ab2cc?pvs=21) 참고 
 
 
-## 공부 내용
+## 고민 / 공부 내용
 ### 🧑🏻‍💻[Notion 정리 ](https://generated-silene-2be.notion.site/41513f42b7c1489aa62bf80f3ccf95d7?pvs=4) 
 - [x] Java17
 - [x] Java Random
