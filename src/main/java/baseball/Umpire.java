@@ -1,86 +1,115 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Umpire {
     private int all;
     private int strike;
     private String judgment;
+    private boolean coin;
 
     public Umpire(){
-        setAll(0);
-        setStrike(0);
-        setJudgment("");
+        newGame();
     }
 
     //strike + ball 개수
-    void countAll(List<Integer> computerNum, List<Integer> playerNum){
-        int all = 0;
+    public void countAll(List<Integer> computerNum, List<Integer> playerNum){
+        int cnt_all = 0;
         for(int i=0;i<playerNum.size();i++){
-            if(computerNum.contains(playerNum.get(i))){
-                all++;
+            for(int j=0;j< computerNum.size();j++){
+                if(computerNum.get(j) == playerNum.get(i)){
+                    cnt_all++;
+                }
             }
         }
-        setAll(all);
+        setAll(cnt_all);
     }
 
     //strike 개수
-    void countStrike(List<Integer> computerNum,List<Integer> playerNum){
-        int strike = 0;
+    public void countStrike(List<Integer> computerNum,List<Integer> playerNum){
+        int cnt_strike = 0;
         for(int i=0;i< playerNum.size();i++){
             if(computerNum.get(i) == playerNum.get(i)){
-                strike++;
+                cnt_strike++;
             }
         }
-        setStrike(strike);
+        setStrike(cnt_strike);
     }
 
     //멘트 반환
-    String Judge(int all, int strike){
-        //하나도 못 맞힌 경우
-        if(all == 0){
+    public String Judge(){
+    //하나도 못 맞힌 경우
+        if(getAll() == 0){
             return "낫싱";
         }
 
         //하나 이상 맞힌 경우
-        String judgment = "";
+        String cnt_judgment = "";
 
-        if(strike < all){
-            judgment = judgment + (all - strike) + "볼";
+        if(getStrike() < getAll()){
+            cnt_judgment = cnt_judgment + (getAll() - getStrike()) + "볼";
 
-            if(strike!=0){
-                judgment = judgment + " " + strike + "스트라이크";
+            if(getStrike()!=0){
+                cnt_judgment = cnt_judgment + " " + getStrike() + "스트라이크";
             }
         } else{
-            judgment = strike + "스트라이크";
+            cnt_judgment = getStrike() + "스트라이크";
         }
-        return judgment;
+        return cnt_judgment;
     }
 
-    void setAll(int n){
+    public void onceAgain(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String input = Console.readLine();
+        char answer = input.charAt(0);
+
+        if(answer == '1'){
+            newGame();
+        } else{
+            setCoin(false);
+        }
+    }
+
+    //게임판 초기화
+    public void newGame(){
+        setAll(0);
+        setStrike(0);
+        setJudgment("");
+        setCoin(true);
+    }
+
+    public void setAll(int n){
         this.all = n;
     }
 
-    void setStrike(int n){
+    public void setStrike(int n){
         this.strike = n;
     }
 
-    void setJudgment(String s){
+    public void setJudgment(String s){
         this.judgment = s;
     }
 
-    int getAll(){
+    public void setCoin(boolean b) {
+        this.coin = b;
+    }
+
+    public int getAll(){
         return this.all;
     }
 
-    int getStrike(){
+    public int getStrike(){
         return this.strike;
     }
 
-    String getJudgment(){
+    public String getJudgment(){
         return this.judgment;
     }
 
-
-
+    public boolean getCoin() {
+        return this.coin;
+    }
 }

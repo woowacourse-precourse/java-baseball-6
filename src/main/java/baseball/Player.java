@@ -8,11 +8,7 @@ import java.util.List;
 public class Player {
     private List<Integer> playerNum;
 
-    List<Integer> getPlayerNum(){
-        return this.playerNum;
-    }
-
-    void inputPlayerNum(){
+    public void inputPlayerNum(){
         System.out.print("숫자를 입력해주세요 : ");
 
         String input = Console.readLine();
@@ -23,6 +19,14 @@ public class Player {
             playerNumber.add(Integer.parseInt(num));
         }
 
-        this.playerNum = playerNumber;
+        setPlayerNum(playerNumber);
+    }
+
+    public void setPlayerNum(List <Integer> l){
+        this.playerNum = l;
+    }
+
+    public List<Integer> getPlayerNum(){
+        return this.playerNum;
     }
 }
