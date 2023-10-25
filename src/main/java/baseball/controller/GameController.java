@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.Service.GameService;
-import baseball.model.Score;
-import baseball.model.UserNumber;
+import baseball.domain.Score;
+import baseball.domain.UserNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -13,8 +13,8 @@ public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
     private Score score;
-    private final String RETRY = "1";
-    private final String END = "2";
+    private static final String RETRY = "1";
+    private static final String END = "2";
 
 
     public GameController () {
@@ -25,13 +25,13 @@ public class GameController {
     }//의존 연결 및 시작 메시지 출력
 
     public void start() {
-        play();
-        retry();
+        do {
+            play();
+        } while (retry());
     }
 
     private void play() {
         gameService.setGame();
-
         do{
             inputView.printNumberRequestMessage();
             UserNumber userNumber = new UserNumber(Console.readLine());
@@ -41,19 +41,18 @@ public class GameController {
         outputView.printGameEndingMessage();
     }
 
-    private void retry() {
+    private boolean retry() {
         inputView.printRetryMessage();
-        askRetry();
+        return askRetry();
     }
 
-    private void askRetry() throws IllegalArgumentException{
+    private boolean askRetry() {
         String userRetryInput = Console.readLine();
         if(userRetryInput.equals(RETRY)) {
-            start();
-            return;
+            return true;
         }
         if(userRetryInput.equals(END))
-            return;
+            return false;
         throw new IllegalArgumentException();
     }
 }
