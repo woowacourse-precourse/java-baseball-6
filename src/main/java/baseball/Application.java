@@ -43,9 +43,11 @@ public class Application {
         for (int i = 0; i < stringPlayerNumber.length(); i++) {
             arrayPlayerNumber[i] = stringPlayerNumber.charAt(i) - '0';
         }
+
         if (arrayPlayerNumber.length != SIZE_REQUIRE_NUMBER) {
             throw new IllegalArgumentException("3자리의 정수가 입력 되지 않았습니다.");
         }
+
         if (!checkDuplicateInput(arrayPlayerNumber)) {
             throw new IllegalArgumentException("중복된 수를 입력 하였습니다.");
         }
@@ -60,6 +62,7 @@ public class Application {
         for (int j : playerArray) {
             list.add(j);
         }
+
         set = new HashSet<Integer>(list);
 
         return set.size() == list.size();
@@ -74,6 +77,7 @@ public class Application {
                 numberOfStrikes++;
                 continue;
             }
+
             if (listAnswerNumber.contains(arrayPlayerNumber[i])) {
                 numberOfBalls++;
             }
@@ -82,23 +86,24 @@ public class Application {
         if ((numberOfBalls == 0) && (numberOfStrikes == 0)) {
             System.out.println();
             System.out.println("낫싱");
+
             return MAINTAIN_GAME;
         }
 
-        if(numberOfBalls != 0) {
+        if (numberOfBalls != 0) {
             System.out.printf("%d볼 ", numberOfBalls);
         }
 
-        if(numberOfStrikes != 0) {
+        if (numberOfStrikes != 0) {
             System.out.printf("%d스트라이크", numberOfStrikes);
         }
+
         System.out.println();
 
         return numberOfStrikes;
     }
 
     public static int judgeGameResult(int countStrike) {
-        int result = 0;
         int userInputNumber = 0;
 
         if (countStrike == 3) {
@@ -112,6 +117,7 @@ public class Application {
                 System.out.println("게임 종료");
                 return EXIT_GAME;
             }
+
             throw new IllegalArgumentException("1 또는 2를 선택하지 않았습니다.");
         }
 
