@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.HashSet;
 import java.util.ArrayList;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -15,8 +16,7 @@ public class Application {
         for (int i = 0; i < answerIntegerArray.length; i++) {
             if (inputIntegerArray[i] == answerIntegerArray[i]) {
                 continue;
-            }
-            else {
+            } else {
                 for (int j = 0; j < answerIntegerArray.length; j++) {
                     if ((inputIntegerArray[i] == answerIntegerArray[j]) && (i != j)) {
                         ballHashSet.add(inputIntegerArray[i]);
@@ -31,7 +31,7 @@ public class Application {
         return sum;
     }
 
-    public static int strikeCount(int[] inputIntegerArray,int[] answerIntegerArray) {
+    public static int strikeCount(int[] inputIntegerArray, int[] answerIntegerArray) {
         int sum = 0;
 
         for (int i = 0; i < answerIntegerArray.length; i++) {
@@ -46,7 +46,7 @@ public class Application {
     public static int[] inputParsingToIntArray(String input) {
         int[] intArray = new int[input.length()];
 
-        for(int i = 0; i < input.length(); i++){
+        for (int i = 0; i < input.length(); i++) {
             intArray[i] = Integer.parseInt(String.valueOf(input.charAt(i)));
         }
 
@@ -64,8 +64,7 @@ public class Application {
 
         try {
             intArray = inputParsingToIntArray(input);
-        }
-        catch (NumberFormatException event) {
+        } catch (NumberFormatException event) {
             result = false;
         }
 
@@ -90,7 +89,7 @@ public class Application {
         }
 
         for (int i = 0; i < answer.length; i++) {
-            int tempIndex = Randoms.pickNumberInRange(0,answerArrayList.size()-1);
+            int tempIndex = Randoms.pickNumberInRange(0, answerArrayList.size() - 1);
             int tempValue = answerArrayList.get(tempIndex);
 
             answer[i] = tempValue;
@@ -118,7 +117,7 @@ public class Application {
         return answer;
     }
 
-    public static int[] compareLogic(int[] inputIntegerArray,int[] answerIntegerArray) {
+    public static int[] compareLogic(int[] inputIntegerArray, int[] answerIntegerArray) {
         int[] result = new int[3];
 
         result[0] = ballCount(inputIntegerArray, answerIntegerArray);
@@ -138,18 +137,14 @@ public class Application {
         if (resultArray[2] == 0) {
             if ((resultArray[0] == 0) && (resultArray[1] == 0)) {
                 System.out.println("낫싱");
-            }
-            else if ((resultArray[0] > 0) && (resultArray[1] == 0)) {
+            } else if ((resultArray[0] > 0) && (resultArray[1] == 0)) {
                 System.out.printf("%d볼\n", resultArray[0]);
-            }
-            else if ((resultArray[0] == 0) && (resultArray[1] > 0)) {
+            } else if ((resultArray[0] == 0) && (resultArray[1] > 0)) {
                 System.out.printf("%d스트라이크\n", resultArray[1]);
-            }
-            else if ((resultArray[0] > 0) && (resultArray[1] > 0)) {
+            } else if ((resultArray[0] > 0) && (resultArray[1] > 0)) {
                 System.out.printf("%d볼 %d스트라이크\n", resultArray[0], resultArray[1]);
             }
-        }
-        else {
+        } else {
             System.out.printf("%d스트라이크\n", resultArray[1]);
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
@@ -167,12 +162,10 @@ public class Application {
             }
 
             resultArray[2] = 0;
-        }
-        else {
+        } else {
             if (tempInput.equals("2")) {
 
-            }
-            else {
+            } else {
                 throw new IllegalArgumentException();
             }
         }
@@ -195,7 +188,7 @@ public class Application {
 
             int[] inputArray = inputParsingToIntArray(input);
 
-            result = compareLogic(inputArray,answer);
+            result = compareLogic(inputArray, answer);
 
             messagePrintingLogic(result);
 
