@@ -15,7 +15,6 @@
   - strike : number일치, digits 일치
 - Play : 게임 진행, 다시 시작, 종료
 - Generater : 컴퓨터의 랜덤balls값을 생성
-- Config : 사용자의 입/출력 값 제한사항 check/Exception 메세지 처리
 ### view
 - 입력
 - 출력
