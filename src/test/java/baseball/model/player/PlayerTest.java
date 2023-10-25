@@ -12,12 +12,12 @@ import org.junit.jupiter.api.Test;
 
 class PlayerTest {
 
+    private static final Integer RESTART = 1;
+    private static final Integer EXIT = 2;
+
     private Player player;
     private GuessNumbers guessNumbers;
     private GameStateNumber gameStateNumber;
-
-    private static final Integer RESTART = 1;
-    private static final Integer EXIT = 2;
 
     @BeforeEach
     void init() {
