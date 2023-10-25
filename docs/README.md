@@ -19,13 +19,13 @@
 
 ## Controller(View와 Model를 연결하는 역할)
 
-- [ ] OutputView로 시작 문구 출력하기
-- [ ] InputView을 통해 3자리 숫자 입력받기
-- [ ] Model의 입력 숫자 체크 로직 처리하기
-- [ ] Model의 힌트 관련 로직 처리하기
-- [ ] OutputView를 이용하여 볼/스트라이크 힌트 출력하기
-- [ ] Model의 게임 종료 판단 로직 처리하기
-- [ ] Model의 게임 재시작 또는 종료 로직 처리하기
+- [x] OutputView로 시작 문구 출력하기
+- [x] InputView을 통해 3자리 숫자 입력받기
+- [x] Model의 입력 숫자 체크 로직 처리하기
+- [x] Model의 힌트 관련 로직 처리하기
+- [x] OutputView를 이용하여 볼/스트라이크 힌트 출력하기
+- [x] Model의 게임 종료 판단 로직 처리하기
+- [x] Model의 게임 재시작 또는 종료 로직 처리하기
 
 ## Model
 
