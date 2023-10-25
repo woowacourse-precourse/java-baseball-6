@@ -30,9 +30,8 @@ class BaseballGame{
     }
 }
 
-class GameProcess{
-
-    private static void isSutable(String s) throws IllegalArgumentException{
+class GameRulesForInput{
+    public static void isSutable(String s) throws IllegalArgumentException{
         try{
             // 모두 0부터 9까지의 숫자로 이루어져있는지
             int number=Integer.parseInt(s);
@@ -52,6 +51,9 @@ class GameProcess{
             throw new IllegalArgumentException();
         }
     }
+}
+
+class GameProcess{
 
     public static void startGame(){
         // 문제 출제
@@ -71,7 +73,7 @@ class GameProcess{
 
             // 입력값에 대한 예외 처리 필요
             try {
-                isSutable(answer); // 입력값 검증
+                GameRulesForInput.isSutable(answer); // 입력값 검증
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException();
             }
