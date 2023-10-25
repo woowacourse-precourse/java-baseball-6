@@ -6,15 +6,14 @@ class Player {
     private Console console;
 
     public Player() {
-
     }
 
     public int inputGuess() {
         int guess = 0;
         boolean validInput = false;
         while (!validInput) {
-            System.out.println("3자리 숫자를 입력하세요: ");
-            String input = Console.readLine();
+            System.out.printf("3자리 숫자를 입력하세요: ");
+            String input = console.readLine();
             if (input.length() != 3 || !input.matches("\\d{3}")) {
                 System.out.println("올바른 3자리 숫자를 입력하세요.");
             } else {
@@ -31,7 +30,7 @@ class Player {
 
     public boolean playAgain() {
         System.out.printf("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
-        String choice = Console.readLine();
+        String choice = console.readLine();
         return "1".equals(choice);
     }
 }
