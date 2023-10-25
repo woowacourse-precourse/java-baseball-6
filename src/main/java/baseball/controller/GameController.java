@@ -26,12 +26,24 @@ public class GameController {
 
             currentGameStatus = playGameRound(numbers);
         } while (currentGameStatus != GameStatus.END);
+        handleGame();
     }
 
     private GameStatus playGameRound(List<Integer> numbers) {
         GameResponse response = gameService.playGame(numbers);
         OutputView.printGameResult(response);
         return response.getGameStatus();
+    }
+
+    private void handleGame() {
+        OutputView.printGameEnd();
+        OutputView.printGameRestart();
+        GameStatus option = GameStatus.fromInt(InputView.inputRestart());
+
+        if (option == GameStatus.END) {
+            return;
+        }
+        playGame();
     }
 
     public void initializeGame() {
