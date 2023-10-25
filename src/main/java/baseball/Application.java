@@ -6,7 +6,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int restart = 1;
         while (restart == 1) {
-            BaseBallGame baseBallGame = new BaseBallGame();
+            BaseballGame baseBallGame = new BaseballGame();
             User user = new User();
             baseBallGame.gameStart();
             baseBallGame.printRestartQuestion();

@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseBallGame {
+public class BaseballGame {
 	private static List<Integer> randomNumber;
 	private int ball, strike;
 
-	BaseBallGame() {
+	BaseballGame() {
 		makeRandomNumber();
 	}
 
