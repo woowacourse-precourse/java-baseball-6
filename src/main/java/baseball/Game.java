@@ -2,18 +2,26 @@ package baseball;
 
 import baseball.player.Opponent;
 import baseball.player.User;
-import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
+import java.util.List;
 
 public class Game {
 
     private Opponent opponent;
     private User user;
     private Score score;
+    InputValidator inputValidator;
+    StringPrinter stringPrinter;
+    InputReader inputReader;
 
     public Game(Opponent opponent, User user, Score score) {
         this.opponent = opponent;
         this.user = user;
         this.score = score;
+        inputValidator = InputValidator.getInstance();
+        stringPrinter = StringPrinter.getInstance();
+        inputReader = InputReader.getInstance();
     }
 
     public void newGame() throws IllegalArgumentException{
@@ -24,45 +32,72 @@ public class Game {
             play();
 
             // below process start upon user's win
-            System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int endInput = Integer.parseInt(Console.readLine());
+            stringPrinter.printEndOfGame();
+            int endInput = inputReader.getInput();
 
             // end loop on input number 2
             if (endInput == 2) {
                 break;
             }
             // wrong input exception
-            if (endInput != 1 && endInput != 2) {
-                throw new IllegalArgumentException();
-            }
+            inputValidator.validateEndInput(endInput);
         }
     }
 
     private void play() {
         while (true) {
-
-            user.setNumberList();
-            opponent.setNumberList();
+            setUserNumberList();
+            setOpponentNumberList();
             score.setScore(user, opponent);
 
             int ballCounter = score.getBallCounter();
             int strikeCounter = score.getStrikeCounter();
 
-            if (ballCounter > 0){
-                System.out.print(ballCounter + "볼 ");
-            }
-            if (strikeCounter > 0) {
-                System.out.print(strikeCounter + "스트라이크 ");
-            }
+            stringPrinter.printGuessResult(ballCounter, strikeCounter);
 
-            // end loop at win condition
-            if (score.isOver()) {
+            if (isOver()) {
                 break;
-            }
-            if (ballCounter == 0 && strikeCounter == 0) {
-                System.out.print("낫싱");
             }
         }
     }
+
+    // set opponent's numberList
+    private void setOpponentNumberList(){
+        List<Integer> numberList = opponent.getNumberList();
+        while (numberList.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            // avoid duplicates
+            if (!numberList.contains(randomNumber)) {
+                numberList.add(randomNumber);
+            }
+        }
+        opponent.setNumberList(numberList);
+    }
+
+    // set user's numberList
+    private void setUserNumberList(){
+        List<Integer> numberList = user.getNumberList();
+        stringPrinter.printPlayerInput();
+        int inputNumber = inputReader.getInput();
+
+        // validate 3-digit
+        inputValidator.validateThreeDigit(inputNumber);
+
+        numberList.clear();
+        while (inputNumber > 0) {
+            int extractedNumber = inputNumber % 10; // extract number from 1's up to 100's
+            numberList.add(extractedNumber);
+            inputNumber /= 10; // remove last digit
+        }
+
+        // reverse arrange list for correct order (above logic adds 1s digit first)
+        Collections.reverse(numberList);
+        user.setNumberList(numberList);
+    }
+
+    private boolean isOver(){
+        int strikeCounter = score.getStrikeCounter();
+        return strikeCounter == 3;
+    }
+
 }

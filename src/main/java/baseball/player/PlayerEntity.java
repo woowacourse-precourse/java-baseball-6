@@ -17,6 +17,6 @@ public abstract class PlayerEntity {
     }
 
     // list setter
-    public abstract void setNumberList();
+    public abstract void setNumberList(List<Integer> numberList);
 
 }
