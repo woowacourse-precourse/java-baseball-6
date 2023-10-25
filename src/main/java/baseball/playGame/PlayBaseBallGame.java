@@ -49,7 +49,7 @@ public class PlayBaseBallGame {
     }
 
     // 입력 따른 결과 출력
-    private void printResult(Defender defender, Attacker attacker){
+    private void printResult  (Defender defender, Attacker attacker){
 
         int strikeCount =0;
         int ballCount = 0;
