@@ -4,6 +4,7 @@ public class GameResult {
     private static final String NOTHING = "낫싱";
     private static final String STRIKE = "%d스트라이크";
     private static final String BALL = "%d볼 ";
+    private static final String GAME_END_RESULT = "3스트라이크";
     private final String hint;
 
     public GameResult(int ballCount, int strikeCount) {
@@ -41,7 +42,7 @@ public class GameResult {
     }
 
     public boolean isGameEnd() {
-        return hint.equals("3스트라이크");
+        return hint.equals(GAME_END_RESULT);
     }
 
     public String getHint() {
