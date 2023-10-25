@@ -21,4 +21,10 @@ class PlayerValidatorTest {
         List<Integer> numbers = Arrays.asList(1, 2, 3);
         assertDoesNotThrow(() -> PlayerValidator.validate(numbers));
     }
+
+    @Test
+    void 중복된_수가_있으면_예외_발생() {
+        List<Integer> numbers = Arrays.asList(2, 6, 6); // 2가 중복됩니다.
+        assertThrows(IllegalArgumentException.class, () -> PlayerValidator.validate(numbers));
+    }
 }
