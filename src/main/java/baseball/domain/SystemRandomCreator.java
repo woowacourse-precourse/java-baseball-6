@@ -7,9 +7,14 @@ import java.util.List;
 
 public class SystemRandomCreator implements RandomCreator {
 
+    private static final SystemRandomCreator instance = new SystemRandomCreator();
     public static final int NUMBER_SIZE = 3;
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 9;
+
+    public static SystemRandomCreator getInstance() {
+        return instance;
+    }
 
     @Override
     public int createRandomNumber() {

@@ -22,7 +22,7 @@ public class GameService {
 
     public GameService() {
         this.referee = Referee.getInstance();
-        this.randomCreator = new SystemRandomCreator();
+        this.randomCreator = SystemRandomCreator.getInstance();
     }
 
     public void initializeGame() {
