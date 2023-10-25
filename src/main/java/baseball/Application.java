@@ -53,7 +53,7 @@ public class Application {
 
         if (!isValidInput(input)) {
             System.out.println("올바른 입력이 아닙니다. 3자리 서로 다른 숫자를 입력하세요.");
-            return getUserInput();
+            throw new IllegalArgumentException("잘못된 입력: " + input);
         }
 
         int[] userGuess = new int[3];
