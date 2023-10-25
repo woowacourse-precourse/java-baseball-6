@@ -37,5 +37,6 @@ public class Computer {
             OutputView.printBall(BallCount.ballCount);
             OutputView.printStrike(BallCount.strikeCount);
         }
+        System.out.println();
     }
 }
