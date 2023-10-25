@@ -1,7 +1,6 @@
 package baseball.view;
 
 public class OutputView {
-
     private static final int COUNT_ZERO = 0;
 
     public static void printStartGame() {

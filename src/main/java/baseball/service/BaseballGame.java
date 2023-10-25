@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
-
-
     private static final int COUNT_ZERO = 0;
     private static final int COMPUTER_NUMBER_COUNT = 3;
     private static final int COMPUTER_NUMBER_MIN = 1;

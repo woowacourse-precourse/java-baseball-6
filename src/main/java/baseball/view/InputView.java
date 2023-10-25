@@ -7,7 +7,6 @@ import baseball.validator.Validator;
 import java.util.List;
 
 public class InputView {
-
     private static final int LENGTH_THREE = 3;
     private static final int LENGTH_ONE = 1;
 
@@ -18,7 +17,7 @@ public class InputView {
 
         List<Integer> playerNumbers = Utils.parseIntegerList(inputNumbers);
         Validator.validateOverlap(playerNumbers);
-        
+
         return playerNumbers;
     }
 
