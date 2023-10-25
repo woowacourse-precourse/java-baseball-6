@@ -7,9 +7,9 @@ import java.util.List;
  */
 public class Baseball {
 
-    private static String TEXT_BALL = "볼";
-    private static String TEXT_STRIKE = "스트라이크";
-    private static String TEXT_NOTHING = "낫싱";
+    private static final String TEXT_BALL = "볼";
+    private static final String TEXT_STRIKE = "스트라이크";
+    private static final String TEXT_NOTHING = "낫싱";
 
     /**
      * 컴퓨터가 제시한 숫자
