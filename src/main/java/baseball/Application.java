@@ -21,9 +21,12 @@ public class Application {
     private static void loopGame(List<Integer> randomNumber) {
         while (true) {
             List<Integer> userNumber = Input.inputUserNumber(NUMBER_SIZE);
+
             int strike = View.strike(randomNumber, userNumber);
             int ball = View.ball(randomNumber, userNumber);
+
             View.printScore(strike, ball);
+
             if(strike == NUMBER_SIZE){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return;

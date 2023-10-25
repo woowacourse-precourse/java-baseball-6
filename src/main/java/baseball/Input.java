@@ -26,10 +26,9 @@ public class Input {
 		if (userInput.replaceAll("\\s", "").length() < numberSize) {
 			throw new IllegalArgumentException("공백을 제외한 세 자리 수를 입력해주세요.");
 		}
-
 		List<Integer> userNumbers = userInputToInteger(userInput);
 		for (int userNumber : userNumbers) {
-			if(userNumber < NUMBER_RANGE_MIN || userNumber > NUMBER_RANGE_MAX) {
+			if (userNumber < NUMBER_RANGE_MIN || userNumber > NUMBER_RANGE_MAX) {
 				throw new IllegalArgumentException("1부터 9까지의 숫자를 입력해주세요.");
 			}
 		}
@@ -59,7 +58,7 @@ public class Input {
 		List<Integer> randomNumbers = new ArrayList<>();
 		while (randomNumbers.size() < numberSize) {
 			int random = Randoms.pickNumberInRange(NUMBER_RANGE_MIN, NUMBER_RANGE_MAX);
-			if(!randomNumbers.contains(random)) {
+			if (!randomNumbers.contains(random)) {
 				randomNumbers.add(random);
 			}
 		}
