@@ -38,9 +38,9 @@ public class Game {
     }
 
     private void checkInput() {
-        CheckInputNumber checkInputNumber = new CheckInputNumber();
-        strike = checkInputNumber.checkStrike(randomNumber, userNumber);
-        ball = checkInputNumber.checkBall(randomNumber, userNumber);
+        InputNumberChecker inputNumberChecker = new InputNumberChecker();
+        strike = inputNumberChecker.checkStrike(randomNumber, userNumber);
+        ball = inputNumberChecker.checkBall(randomNumber, userNumber);
     }
 
     private void printResult() {

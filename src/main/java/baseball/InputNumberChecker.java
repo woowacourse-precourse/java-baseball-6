@@ -1,6 +1,6 @@
 package baseball;
 
-public class CheckInputNumber {
+public class InputNumberChecker {
     private static final int NUMBER_LENGTH = 3;
     int strike = 0;
     int ball = 0;
