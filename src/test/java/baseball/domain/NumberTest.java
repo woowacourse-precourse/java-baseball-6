@@ -2,8 +2,6 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class NumberTest {
 
     @Test
-    void isContainNumber() {
+    void 동일한_위치의_수는_1개() {
         // given
         List<Integer> list1 = new ArrayList<>(List.of(1, 2, 3));
         List<Integer> list2 = new ArrayList<>(List.of(5, 1, 3));
@@ -21,47 +19,26 @@ class NumberTest {
         Number number2 = new Number(list2);
 
         // when
-        boolean firstIndex = number1.isContainNumber(number2, 0);
-        boolean secondIndex = number1.isContainNumber(number2, 1);
-        boolean thirdIndex = number1.isContainNumber(number2, 2);
+        int samePositionCount = number1.getSamePositionCount(number2);
 
         // then
-        assertFalse(firstIndex);
-        assertTrue(secondIndex);
-        assertTrue(thirdIndex);
+        assertThat(samePositionCount).isEqualTo(1);
     }
 
     @Test
-    void isSamePosition() {
+    void 동일한_위치를_제외한_다른_번호와_동일한_수는_1개() {
         // given
         List<Integer> list1 = new ArrayList<>(List.of(1, 2, 3));
-        List<Integer> list2 = new ArrayList<>(List.of(3, 2, 1));
+        List<Integer> list2 = new ArrayList<>(List.of(5, 1, 3));
 
         Number number1 = new Number(list1);
         Number number2 = new Number(list2);
 
         // when
-        boolean firstIndex = number1.isSamePosition(number2, 0);
-        boolean secondIndex = number1.isSamePosition(number2, 1);
-        boolean thirdIndex = number1.isSamePosition(number2, 2);
+        int containNumberCount = number1.getContainNumberCount(number2);
 
         // then
-        assertFalse(firstIndex);
-        assertTrue(secondIndex);
-        assertFalse(thirdIndex);
-    }
-
-    @Test
-    void size() {
-        // given
-        List<Integer> list1 = new ArrayList<>(List.of(1, 2, 3));
-        Number number1 = new Number(list1);
-
-        // when
-        int size = number1.size();
-
-        // then
-        assertThat(size).isEqualTo(3);
+        assertThat(containNumberCount).isEqualTo(1);
     }
 
     @Test
