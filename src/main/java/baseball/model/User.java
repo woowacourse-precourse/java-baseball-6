@@ -66,7 +66,8 @@ public class User {
     private boolean validateNumberDuplicate(String input) {
         List<Integer> inputList = input.chars()
                 .map(Character::getNumericValue)
-                .boxed().toList();
+                .boxed()
+                .toList();
 
         Set<Integer> uniqueNumbers = new HashSet<>(inputList);
 
