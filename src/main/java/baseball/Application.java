@@ -81,7 +81,7 @@ class Player {
             char characterDigit = userInput.charAt(i);
             int numericValue = Character.getNumericValue(characterDigit);
 
-            if (numericValue < 0 || numericValue > 9) {
+            if (numericValue <= 0 || numericValue > 9) {
                 throw new IllegalArgumentException();
             }
             if (playerNum.contains(numericValue)) {
