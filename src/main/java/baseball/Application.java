@@ -19,7 +19,7 @@ public class Application {
         int pick_num_len = 3;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Games games = new Games(pick_num_min, pick_num_max, pick_num_len);
+        Games games = new Games(pick_num_len, pick_num_min, pick_num_max);
         while (true) {
             games.baseball_game();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");

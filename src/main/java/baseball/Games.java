@@ -9,15 +9,15 @@ import java.util.List;
 public class Games {
     int pick_num_min, pick_num_max, pick_num_len;
 
-    Games(int pick_num_min, int pick_num_max, int pick_num_len) {
+    Games(int pick_num_len, int pick_num_min, int pick_num_max) {
+        this.pick_num_len = pick_num_len;
         this.pick_num_min = pick_num_min;
         this.pick_num_max = pick_num_max;
-        this.pick_num_len = pick_num_len;
     }
     public void baseball_game() {
         Modules modules = new Modules();
 
-        List<Integer> random_list = modules.makeRandomList(pick_num_min, pick_num_max, pick_num_len);
+        List<Integer> random_list = modules.makeRandomList(pick_num_len, pick_num_min, pick_num_max);
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String expected_num_str = Console.readLine();
@@ -29,26 +29,11 @@ public class Games {
                 throw new IllegalArgumentException();
             }
 
-            int[] cnt_lst = {0, 0}; // ball, strike
-            for (var i=0; i<3; i++) {
-                if (Integer.parseInt(expected_num_split[i]) == random_list.get(i)) { // strike
-                    cnt_lst[1] += 1;
-                } else if (random_list.contains(Integer.parseInt(expected_num_split[i]))) { // ball
-                    cnt_lst[0] += 1;
-                }
-            }
-            String result_str = "";
-            if (cnt_lst[0] != 0) {
-                result_str += cnt_lst[0] + "볼 ";
-            }
-            if (cnt_lst[1] != 0) {
-                result_str += cnt_lst[1] + "스트라이크";
-            } else if (cnt_lst[0] == 0) {
-                result_str = "낫싱";
-            }
-            System.out.println(result_str.trim());
+            Results results = new Results(random_list, expected_num_split);
+            String result_str = results.resultBallStrike();
+            System.out.println(result_str);
 
-            if (cnt_lst[1] == 3) {
+            if (results.cnt_lst[1] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
