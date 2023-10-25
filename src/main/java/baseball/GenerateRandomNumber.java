@@ -1,6 +1,5 @@
-package baseball.model;
+package baseball;
 
-import baseball.ConstantVO;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
