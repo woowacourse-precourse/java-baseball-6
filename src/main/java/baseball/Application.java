@@ -1,7 +1,7 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static String go = "1";
@@ -23,9 +23,9 @@ public class Application {
     private static String inputComputerNumber() {
         String randomValues = new String();
         while (randomValues.length() < 3) {
-            String randomvalue = String.valueOf(Randoms.pickNumberInRange(0, 9));
-            if (!randomValues.contains(randomvalue)) {
-                randomValues += randomvalue;
+            String randomValue = String.valueOf(Randoms.pickNumberInRange(0, 9));
+            if (!randomValues.contains(randomValue)) {
+                randomValues += randomValue;
             }
         }
         System.out.println(randomValues);
@@ -62,6 +62,7 @@ public class Application {
             System.out.println("낫싱");
         } else if (ball == 0) {
             if (strike == 3) {
+                System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                         "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String input = Console.readLine();
@@ -80,4 +81,3 @@ public class Application {
         }
     }
 }
-
