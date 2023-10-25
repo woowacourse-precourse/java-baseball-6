@@ -1,7 +1,10 @@
 package baseball;
 
+import baseball.factory.ComponentFactory;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        final ComponentFactory componentFactory = new ComponentFactory();
+        componentFactory.baseballController().run();
     }
 }
