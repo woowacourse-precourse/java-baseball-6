@@ -22,7 +22,7 @@ public class OutputView {
 
     public static void printResult(GameResult gameResult) {
         int ballCount = gameResult.getBallCount();
-        int strikeCount = gameResult.getStrikeCountCount();
+        int strikeCount = gameResult.getStrikeCount();
 
         ArrayList<String> result = new ArrayList<>();
         if (ballCount == 0 && strikeCount == 0) {
