@@ -32,7 +32,11 @@ public class GameRulesForInput{
             GameRulesForInput.validateUserInput(userInput);
             for (char c : userInput.toCharArray()) {
                 //만약 숫자가 아니라면 예외 처리됨.
-                userNumbers.add(Character.getNumericValue(c));
+                int number=Character.getNumericValue(c);
+                if(number<1 || 9<number){
+                    throw new IllegalArgumentException();
+                }
+                userNumbers.add(number);
             }
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
