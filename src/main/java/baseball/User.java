@@ -9,7 +9,7 @@ public class User {
     List<Integer> userNumberList = new ArrayList<>();
     int isExit = 3;
 
-    void setNumber(){ // 사용자가 숫자를 입력하는 함수
+    public void setNumber(){ // 사용자가 숫자를 입력하는 함수
         System.out.print("숫자를 입력해주세요 : ");
         userNumber = Console.readLine();
 
@@ -29,7 +29,7 @@ public class User {
         }
     }
 
-    void isAgain(){
+    public void isAgain(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         isExit = Integer.parseInt(Console.readLine());
         try{

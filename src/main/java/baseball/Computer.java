@@ -22,11 +22,11 @@ public class Computer {
         }
     }
 
-    void startGame(){ // 게임 시작 안내 멘트 출력
+    public void startGame(){ // 게임 시작 안내 멘트 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    void isCorrect(User user){ // strike와 ball개수 세기
+    public void isCorrect(User user){ // strike와 ball개수 세기
         for(int i : computer){
             for(int j : user.userNumberList){
                 if(j==i && computerIdx == userIdx){
@@ -43,7 +43,7 @@ public class Computer {
         }
     }
 
-    void printResult(){
+    public void printResult(){
         if(strike == 0 && ball ==0){
             System.out.println("낫싱");
         }else if(strike!=0 && ball==0 && strike!=3){
@@ -62,7 +62,4 @@ public class Computer {
         computerIdx = 0;
         userIdx = 0;
     }
-
-
-
 }
