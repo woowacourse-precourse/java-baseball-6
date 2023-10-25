@@ -21,6 +21,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(restart == 1) {
             // generate random number
+            computer.clear();
             while (computer.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
                 if (!computer.contains(randomNumber)) {
@@ -32,6 +33,7 @@ public class Application {
 //            System.out.println(answer); // ***** for test
 
             // take user's trial until 3 strike
+            strike = 0;
             while(strike != 3) {
                 strike = 0;
                 ball = 0;
@@ -68,7 +70,12 @@ public class Application {
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            restart = Integer.parseInt(Console.readLine());
+            try {
+                restart = isGameRestart();
+            }catch (IllegalArgumentException e){
+                e.printStackTrace();
+                exit(0);
+            }
 
         }
     }
@@ -86,5 +93,17 @@ public class Application {
         }
 
         return trial;
+    }
+
+    public static int isGameRestart() throws IllegalArgumentException{
+        int restart;
+        restart = Integer.parseInt(Console.readLine());
+
+//        System.out.println("==test : "+ trial.charAt(0) + "== "+ trial.contains(String.valueOf(trial.charAt(0))));
+        if(restart != 1 && restart != 2){
+            throw new IllegalArgumentException();
+        }
+
+        return restart;
     }
 }
