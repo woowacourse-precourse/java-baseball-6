@@ -9,8 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final ScoreProcessor scoreProcessor = new ScoreProcessor();
+    private final ScoreProcessor scoreProcessor;
     private Numbers numbers;
+    
+    public Computer(ScoreProcessor scoreProcessor) {
+        this.scoreProcessor = scoreProcessor;
+    }
 
     public void generateRandomNumbers() {
         List<Integer> randomGeneratedNumberList = new ArrayList<>();
