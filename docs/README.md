@@ -26,3 +26,5 @@
 - [X] 각 결과를 반환한다.
 
 - [X] 게임 종료 process
+
+- [개발 노트 notion](https://vintage-citron-8b4.notion.site/1week-4ec40f31d132463c905439b36383f598?pvs=4)
