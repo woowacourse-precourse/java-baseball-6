@@ -33,26 +33,4 @@ public class Computer {
     public void resetNums() {
         arr = setRandomNums();
     }
-
-    // set 을 사용하지 않으니 타임오버 예외가 발생하였다.
-//    public int[] setRandomNum() {
-//        int count = 0;
-//        while (count < SIZE) {
-//            int r = Randoms.pickNumberInRange(1, 9);
-//            boolean check = false;
-//
-//            for (int i = 0; i < SIZE; i++) {
-//                if (arr[i] == r) {
-//                    check = true;
-//                    break;
-//                }
-//            }
-//
-//            if (!check) {
-//                arr[count] = r;
-//                count += 1;
-//            }
-//        }
-//        return arr;
-//    }
 }

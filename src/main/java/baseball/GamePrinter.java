@@ -6,12 +6,12 @@ public class GamePrinter {
         System.out.printf("%d볼 %d스트라이크", ballCount, strikeCount);
     }
 
-    public static void printBallCount(int ballCount) {
-        System.out.printf("%d볼", ballCount);
-    }
-
     public static void printStrikeCount(int strikeCount) {
         System.out.printf("%d스트라이크", strikeCount);
+    }
+
+    public static void printBallCount(int ballCount) {
+        System.out.printf("%d볼", ballCount);
     }
 
     public static void printNothing() {
