@@ -25,7 +25,7 @@ public class Number
         return computer;
     }
 
-    public static List<Integer> recieve()
+    public static List<Integer> receive()
     {
         System.out.print("Insert number with three digits: ");
         String input = Console.readLine();

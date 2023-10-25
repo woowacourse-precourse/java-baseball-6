@@ -21,7 +21,7 @@ public class BaseballGame
         while(strikeNum < 3)
         {
             /* Receive user's input */
-            List<Integer> user = Number.recieve();
+            List<Integer> user = Number.receive();
 
             /* Check strikes and balls */
             strikeNum = Number.check(computer, user);
