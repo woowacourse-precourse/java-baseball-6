@@ -58,4 +58,11 @@ public class BaseBallGame extends Game {
         }
     }
 
+    private List<Integer> inputNumber(){
+        System.out.println("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        validateUserNumber(input);
+        return input.chars().boxed().map(Character::getNumericValue).toList();
+    }
+
 }
