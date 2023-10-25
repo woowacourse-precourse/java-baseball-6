@@ -27,7 +27,7 @@ public class Game {
         this.answer = RandomUtil.randomNumber();
 
         Result result = new Result();
-        while (!GameController.isWin(result)) {
+        while (!GameController.isWin(result, INPUT_LENGTH)) {
             String input = GameController.getInGameInput();
             result = GameController.recordResult(input, answer);
             GameController.printResult(result);

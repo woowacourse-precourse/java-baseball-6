@@ -17,7 +17,7 @@ public class GameController {
     // 받은 입력의 결과 기록
     public static Result recordResult(String input, List<Character> answer) {
         Result result = new Result();
-        for (int i = 0; i < Game.INPUT_LENGTH; ++i) {
+        for (int i = 0; i < answer.size(); ++i) {
             char target = input.charAt(i);
             if (answer.contains(target)) {
                 if (answer.get(i) == target) {
@@ -47,8 +47,8 @@ public class GameController {
         }
     }
 
-    public static boolean isWin(Result result) {
-        if (result.getStrike() == Game.INPUT_LENGTH) {
+    public static boolean isWin(Result result, int inputLenth) {
+        if (result.getStrike() == inputLenth) {
             return true;
         } else {
             return false;
