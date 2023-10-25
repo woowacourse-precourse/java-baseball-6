@@ -14,11 +14,11 @@ public class Game {
     private boolean win=false;
     private boolean normal=true;
     private boolean restart=true;
+    //c
     public void gameStart() throws IllegalArgumentException{
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(normal&&restart){
             makeRandomNumber();
-            System.out.println(computer);
             while(!win){
                 System.out.print("숫자를 입력해주세요 : ");
                 String answer=readLine();
