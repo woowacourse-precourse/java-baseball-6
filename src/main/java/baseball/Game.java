@@ -63,12 +63,12 @@ public class Game {
         decideEndOrNot();
     }
 
-    private void pickAnswerNumbers() {
-        computerNumbers.pickAnswerNumbers();
-    }
-
     private void alertStart() {
         System.out.println(ALERT_START);
+    }
+
+    private void pickAnswerNumbers() {
+        computerNumbers.pickAnswerNumbers();
     }
 
     private void alertInput() {
