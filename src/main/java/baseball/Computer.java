@@ -20,7 +20,6 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
     }
 
     void startGame(){ // 게임 시작 안내 멘트 출력
