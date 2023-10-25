@@ -38,7 +38,6 @@ public class GameController {
         }
     }
 
-
     private boolean isRestartGame() {
         String input = Input.restartGame();
 
