@@ -22,7 +22,8 @@ UserService userService
 
 - 메소드  
 inputNumbers() throws IllegalArgumentException   
-세개의 숫자 입력 받기
+세개의 숫자 입력 받기  
+숫자의 개수,중복된 숫자,숫자 외 입력시 예외처리
 
 
 ### 게임을 진행하는 역할(class GamePlayer)

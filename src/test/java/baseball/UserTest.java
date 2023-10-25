@@ -39,4 +39,11 @@ class UserTest {
                 hasMessageContaining("잘못된 입력입니다");
     }
 
+    @Test
+    public void characterInputNumbersTest(){
+        Assertions.assertThatThrownBy(()->{userInput("1s2");}).
+                isInstanceOf(IllegalArgumentException.class).
+                hasMessageContaining("잘못된 입력입니다");
+    }
+
 }
