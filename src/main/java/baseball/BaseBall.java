@@ -26,20 +26,26 @@ public class BaseBall {
     }
 
     public void run() throws IllegalArgumentException {
-        while (true) {
-            if (this.ended) {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String inputExitStatus = Console.readLine();
-                if (!inputExitStatus.equals("1") && !inputExitStatus.equals("2")) {
-                    throw new IllegalArgumentException();
-                }
-                if (inputExitStatus.equals("2")) {
-                    break;
-                }
-                this.reset();
-            }
+        while (!this.ended) {
             System.out.print("숫자를 입력해주세요 : ");
             this.evaluate(Console.readLine());
+        }
+        this.manageGameEnd();
+    }
+
+    public void restart() {
+        this.reset();
+        this.run();
+    }
+
+    private void manageGameEnd() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputExitStatus = Console.readLine();
+        if (!inputExitStatus.equals("1") && !inputExitStatus.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+        if (inputExitStatus.equals("1")) {
+            this.restart();
         }
     }
 
@@ -86,7 +92,6 @@ public class BaseBall {
         if (!NumericModule.isNumeric(inputString)) {
             throw new IllegalArgumentException();
         }
-
     }
 
     private void validateInputNumber(List<Integer> input) throws IllegalArgumentException {
