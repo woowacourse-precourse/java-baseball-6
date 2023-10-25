@@ -21,13 +21,29 @@ public class MainController {
     public void printReplay() {
         outputConsole.printReplayMsg();
     }
-    public void printResult(int[] score) {
+    public static void printResult(int[] score) {
         outputConsole.printResultMsg(score[0], score[1]);
     }
 
     public boolean getReplaymanual() {
         outputConsole.printReplayMsg();
         return InputConsole.userReplayInputSetting() == 1;
+    }
+
+    public void userNumSetting(String str) {
+        InputConsole.userNumSetting(str);
+    }
+
+    public static int[] userNumGetting() {
+        return InputConsole.userNumGetting();
+    }
+
+    public static int userReplayInputSetting() {
+        return InputConsole.userReplayInputSetting();
+    }
+
+    public static int[] computerNumSetting() {
+        return InputConsole.computerNumSetting();
     }
 
 }
