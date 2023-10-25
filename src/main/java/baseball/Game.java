@@ -46,7 +46,7 @@ public class Game {
 
     }
 
-    private void calculateScore(int num) {
+    public void calculateScore(int num) {
 
         playerAnswer[0] = num / 100;
         playerAnswer[1] = (num / 10) % 10;
@@ -160,5 +160,28 @@ public class Game {
         computerAnswer = answer.generateAnswer();
     }
 
+    // 테스트를 위한 get, set 매소드
+    public static int getStrike() {
+        return strike;
+    }
 
+    public static int getBall() {
+        return ball;
+    }
+
+    public static void setStrike(int strike) {
+        Game.strike = strike;
+    }
+
+    public static void setBall(int ball) {
+        Game.ball = ball;
+    }
+
+    public static void setPlayerAnswer(int[] playerAnswer) {
+        Game.playerAnswer = playerAnswer;
+    }
+
+    public static int[] getComputerAnswer() {
+        return computerAnswer;
+    }
 }
