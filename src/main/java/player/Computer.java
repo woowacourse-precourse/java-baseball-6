@@ -4,8 +4,10 @@ import model.NumberGenerator;
 
 public class Computer {
     private NumberGenerator computer;
+    private boolean isThreeStrike;
     public Computer() {
         computer = new NumberGenerator();
+        isThreeStrike = false;
     }
 
     public int ballCount(String generatedNumber, String inputNumber) {
@@ -15,6 +17,7 @@ public class Computer {
                 ball++;
             }
         }
+
         return ball;
     }
 
@@ -33,6 +36,14 @@ public class Computer {
         int ball = ballCount(computer.getGeneratedNumber(), inputNumber);
         int strike = strikeCount(computer.getGeneratedNumber(), inputNumber);
 
+        if(strike == 3) {
+            isThreeStrike = true;
+        }
         return new int[] {ball - strike, strike};
     }
+
+    public boolean getIsThreeStrike() {
+        return isThreeStrike;
+    }
+
 }
