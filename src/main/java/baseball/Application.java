@@ -1,12 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,32 +12,20 @@ public class Application {
         printStartMessage();
 
         boolean isContinued = true;
+        Game game = new Game();
+
         while (isContinued) {
+            game.init();
 
-            List<Integer> numbers = getThreeRandomNumbers();
-
-            int numberOfStrike = 0;
-            int numberOfBall = 0;
-
-            while (!(numberOfStrike == 3 && numberOfBall == 0)) {
-
-                numberOfStrike = 0;
-                numberOfBall = 0;
-
+            while (!(game.getNumberOfStrike() == 3 && game.getNumberOfBall() == 0)) {
+                game.reset();
                 List<Integer> prediction = receiveUserInput();
-
-                Map<String, Integer> result = countStrikeOrBall(numbers, prediction);
-
-                numberOfStrike = result.get("strike");
-                numberOfBall = result.get("ball");
-
-                printResultMessage(numberOfStrike, numberOfBall);
-
+                game.countStrikeOrBall(prediction);
+                printResultMessage(game.getNumberOfStrike(), game.getNumberOfBall());
             }
 
             isContinued = isContinued();
         }
-
     }
 
     private static boolean isContinued() throws IllegalArgumentException {
@@ -96,28 +81,6 @@ public class Application {
         System.out.printf("%d볼 %d스트라이크%n", numberOfBall, numberOfStrike);
     }
 
-    private static Map<String, Integer> countStrikeOrBall(List<Integer> numbers, List<Integer> prediction) {
-        Map<String, Integer> result = new HashMap<>();
-
-        int numberOfStrike = 0;
-        int numberOfBall = 0;
-
-        for (int i = 0; i < prediction.size(); i++) {
-            if (prediction.get(i).equals(numbers.get(i))) {
-                numberOfStrike++;
-                continue;
-            }
-            if (numbers.contains(prediction.get(i))) {
-                numberOfBall++;
-            }
-        }
-
-        result.put("strike", numberOfStrike);
-        result.put("ball", numberOfBall);
-
-        return result;
-    }
-
     private static List<Integer> validateUserInput(String response) throws IllegalArgumentException {
         List<Integer> prediction = new ArrayList<>();
 
@@ -133,19 +96,6 @@ public class Application {
         }
 
         return prediction;
-    }
-
-    private static List<Integer> getThreeRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        int k = 3;
-        while (k > 0) {
-            int number = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(number)) {
-                numbers.add(number);
-                k--;
-            }
-        }
-        return numbers;
     }
 
     private static void printStartMessage() {
