@@ -13,6 +13,7 @@ public class RandomNumber {
     }
 
     public List<Integer> getRandomNumbers() {
+        System.out.println(randomNumbers.toString());
         return new ArrayList<>(randomNumbers);
     }
 

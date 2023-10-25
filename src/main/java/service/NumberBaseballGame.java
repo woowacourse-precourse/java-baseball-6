@@ -18,13 +18,14 @@ public class NumberBaseballGame {
         inputModule = new InputModule();
         randomNumber = new RandomNumber();
         flag = false;
+        numberChecker = new NumberChecker();
 
         outputModule.printStartGame();              // "숫자 야구 게임을 시작합니다.
     }
 
     public void startGame(){
         randomNumber.generateNumbers();
-        numberChecker = new NumberChecker(randomNumber.getRandomNumbers());
+        numberChecker.setRandomNumbers(randomNumber.getRandomNumbers());
         int ball = 0;
         int strike = 0;
         while(!flag){
@@ -69,6 +70,7 @@ public class NumberBaseballGame {
         if(inputModule.getInputInt() == 1){
             randomNumber.clear();
             flag = false;
+            numberChecker.clear();
             startGame();
         }
     }

@@ -4,11 +4,7 @@ import java.util.List;
 
 public class NumberChecker {
 
-    private final List<Integer> randomNumbers;
-
-    public NumberChecker(List<Integer> randomNumbers) {
-        this.randomNumbers = randomNumbers;
-    }
+    private List<Integer> randomNumbers;
 
     public int getBall(List<Integer> inputList){
         int ball = 0;
@@ -38,5 +34,13 @@ public class NumberChecker {
             return 1;
         }
         return 0;
+    }
+
+    public void setRandomNumbers(List<Integer> randomNumbers){
+        System.out.println(randomNumbers.toString());
+        this.randomNumbers = randomNumbers;
+    }
+    public void clear(){
+        randomNumbers.clear();
     }
 }
