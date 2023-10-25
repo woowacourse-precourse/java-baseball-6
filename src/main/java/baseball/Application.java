@@ -14,6 +14,7 @@ public class Application {
             int strike = 0;
             int ball = 0;
 
+
             //컴퓨터가 랜덤하게 숫자를 고른다.
             int[] comNumber = new int[3];
             for (int i = 0; i < 3; i++) {
@@ -21,13 +22,11 @@ public class Application {
             }
             System.out.println();
 
-            for (int i = 0; i < 3; i++) {
-                System.out.print(comNumber[i]); 
-            }
 
             //사용자로부터 수를 입력받는다.
             while (strike != 3) {
-                strike = 0;
+
+                strike = 0; // 새로운 수를 위해 0으로 초기화
                 ball = 0;
 
                 System.out.print("숫자를 입력해주세요 : ");
@@ -50,7 +49,7 @@ public class Application {
 
                     for (int i = 0; i < 3; i++) {
                         for (int j = i+1; j < 3; j++) {
-                            if (userNumber[i] == userNumber[j]) {
+                            if (userNumber[i] == userNumber[j]) { // 같은 숫자가 있을 경우 게임 종료
                                 throw new IllegalArgumentException();
                             }
                         }
@@ -60,8 +59,6 @@ public class Application {
                     isGameStart = false;
                     break;
                 }
-
-                
 
                 
                 //스트라이크, 볼, 낫싱 판별
@@ -98,22 +95,19 @@ public class Application {
                         String replay = Console.readLine();
                         int replayNum = Integer.parseInt(replay);
                         
-                        if (replayNum != 1 && replayNum != 2) {
+                        if (replayNum != 1 && replayNum != 2) { //1,2가 아닌 다른 수 입력하면 게임 종료
                             throw new IllegalArgumentException();
                         }
                         
                         if (replayNum == 1) isGameStart = true;
                         else if (replayNum == 2) isGameStart = false;
-                        
+
                     } catch(IllegalArgumentException e) {
                             isGameStart = false;
                             break;
                     }
-
                 }
             }
-
-            
         }
     }
 }
