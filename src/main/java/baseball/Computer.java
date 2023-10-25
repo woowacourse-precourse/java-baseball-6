@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public class Computer {
 
+    private final static int COMPUTER_NUMBER_SIZE = 3;
+    private final static int RANDOM_START_NUMBER = 1;
+    private final static int RANDOM_END_NUMBER = 9;
     private final ArrayList<Integer> computerNumber = new ArrayList<>();
 
     public Computer() {
@@ -17,12 +20,18 @@ public class Computer {
     }
 
     private void makeRandomComputerNumber() {
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
+        while (computerNumber.size() < COMPUTER_NUMBER_SIZE) {
+            int randomNumber = generateUniqueNumber();
+            computerNumber.add(randomNumber);
         }
+    }
+
+    private int generateUniqueNumber() {
+        int randomNumber;
+        do {
+            randomNumber = Randoms.pickNumberInRange(RANDOM_START_NUMBER, RANDOM_END_NUMBER);
+        } while (computerNumber.contains(randomNumber));
+        return randomNumber;
     }
 
     public void resetComputerNumber() {
