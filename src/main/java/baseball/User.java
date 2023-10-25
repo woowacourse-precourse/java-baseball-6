@@ -9,11 +9,7 @@ public class User {
 
     List<Integer> userNumber;
 
-    public User() {
-        setUserNumber();
-    }
-
-    private void setUserNumber() {
+    public void setUserNumber() {
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         int number = Integer.parseInt(input);
