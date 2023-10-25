@@ -3,7 +3,9 @@ package baseball.utils;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UserInputUtil {
 
@@ -27,5 +29,20 @@ public class UserInputUtil {
                 throw new IllegalArgumentException("잘못된 값을 입력했습니다. 애플리케이션을 종료합니다.");
             }
         }
+    }
+
+    public static void validateAllDifferentCharacters(String input) {
+        Set<Character> set = new HashSet<>();
+
+        for (char c : input.toCharArray()) {
+            if (isContains(set, c)) {
+                throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+            }
+            set.add(c);
+        }
+    }
+
+    private static boolean isContains(Set<Character> set, char c) {
+        return set.contains(c);
     }
 }

@@ -46,7 +46,7 @@ public class Baseball {
             String userInput = readLine();
             UserInputUtil.validateLength(userInput);
             UserInputUtil.validateNaturalNumber(userInput);
-
+            UserInputUtil.validateAllDifferentCharacters(userInput);
 
             Score score = new Score();
             List<Integer> userNumber = UserInputUtil.convertStringToIntegerList(userInput);
