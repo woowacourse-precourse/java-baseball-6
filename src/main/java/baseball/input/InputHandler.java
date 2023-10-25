@@ -1,5 +1,6 @@
-package baseball;
+package baseball.input;
 
+import baseball.constants.Number;
 import java.util.ArrayList;
 import java.util.List;
 

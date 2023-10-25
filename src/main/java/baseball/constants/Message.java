@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constants;
 
 
 public final class Message {

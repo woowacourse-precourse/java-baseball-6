@@ -1,5 +1,7 @@
-package baseball;
+package baseball.game;
 
+import baseball.constants.Message;
+import baseball.input.InputHandler;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 

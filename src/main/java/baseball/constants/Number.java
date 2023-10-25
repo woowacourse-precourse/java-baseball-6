@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constants;
 
 public final class Number {
     public static final int MAX_INPUT = 9;
