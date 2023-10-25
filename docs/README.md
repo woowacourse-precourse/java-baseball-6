@@ -40,7 +40,6 @@
 
 - model
     - **ComputerNumber**(컴퓨터 숫자 생성)
-    - **UserNumber**(사용자의 입력에 대한 검증)
     - **NumberComparator**(컴퓨터 숫자와 유저 입력을 비교후 **GameController**로 전달)
 
 - controller
