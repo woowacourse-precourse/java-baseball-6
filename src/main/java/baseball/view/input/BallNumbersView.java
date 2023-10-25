@@ -3,8 +3,7 @@ package baseball.view.input;
 import io.Renderable;
 
 public final class BallNumbersView implements Renderable {
-    public static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    public static final String INPUT_BALL_NUMBER_MESSAGE = "\n숫자를 입력해주세요 : ";
+    public static final String INPUT_BALL_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 
     private final boolean isGameStart;
 
@@ -15,7 +14,7 @@ public final class BallNumbersView implements Renderable {
     @Override
     public String render() {
         if (isGameStart) {
-            return GAME_START_MESSAGE + INPUT_BALL_NUMBER_MESSAGE;
+            return new GameStartView().render() + INPUT_BALL_NUMBER_MESSAGE;
         }
         return INPUT_BALL_NUMBER_MESSAGE;
     }

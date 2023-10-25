@@ -22,11 +22,12 @@ public final class HintView implements Renderable {
     @Override
     public String render() {
         if (result.hasNothing()) {
-            return NOTHING.getValue();
+            return NOTHING.getValue() + LINE_BREAK;
         }
         return String.join(DELIMITER,
                 renderHint(BALL, result.ballCount()),
-                renderHint(STRIKE, result.strikeCount())).trim() + LINE_BREAK;
+                renderHint(STRIKE, result.strikeCount())
+        ).trim() + LINE_BREAK;
     }
 
     private String renderHint(
