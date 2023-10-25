@@ -15,7 +15,12 @@ public class PlayerNumber {
         this.playerNumber = playerNumber;
     }
 
-    public static void isStringLengthCorrect(String word) throws IllegalAccessError {
+    public String getPlayerNumber() {
+
+        return playerNumber;
+    }
+
+    public static void isStringLengthCorrect(String word) throws IllegalArgumentException {
         if (word.length() != 3) {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.(입력값 3자리수)");
         }
@@ -33,7 +38,7 @@ public class PlayerNumber {
         }
     }
 
-    public static void isDifferentPlayerNumber(String word) {
+    public static void isDifferentPlayerNumber(String word) throws IllegalArgumentException {
         Set<Character> set = new HashSet<>();
 
         for (int i = 0; i < word.length(); i++) {
@@ -44,11 +49,4 @@ public class PlayerNumber {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.(중복된 숫자)");
         }
     }
-
-
-    public String getPlayerNumber() {
-
-        return playerNumber;
-    }
-
 }

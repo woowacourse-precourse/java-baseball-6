@@ -16,7 +16,7 @@ public class GenerateNumber {
     }
 
     public void setGameNumber() {
-        LinkedHashSet<String> computerNumberCheck = new LinkedHashSet<>();
+        LinkedHashSet<String> computerNumberCheck = new LinkedHashSet<String>();
         while (computerNumberCheck.size() < 3) {
             computerNumberCheck.add(getRandomNumber());
         }
