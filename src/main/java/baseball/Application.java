@@ -41,7 +41,7 @@ public class Application {
     }
 
     private static boolean playGame(List<Integer> computerNumbers) {
-        do {
+        while (true) {
             List<Integer> playerNumbers = readNumbers();
             int strikes = 0;
             int balls = 0;
@@ -59,16 +59,16 @@ public class Application {
             if (strikes == 3) {
                 return true;
             }
-        } while (true);
+        }
     }
 
     private static List<Integer> readNumbers() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
-        NumValidator.isInDigit(input);
-        NumValidator.isNumeric(input);
-        NumValidator.isDuplicate(input);
-        NumValidator.isInRange(input);
+        NumValidator.validateLength(input);
+        NumValidator.ValidateIsNumeric(input);
+        NumValidator.ValidateDuplication(input);
+        NumValidator.validateIsInRange(input);
 
         List<Integer> numbers = new ArrayList<>();
         for (char digit : input.toCharArray()) {
