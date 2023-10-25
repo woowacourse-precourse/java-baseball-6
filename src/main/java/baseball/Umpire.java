@@ -57,7 +57,7 @@ public class Umpire {
         System.out.println(getBaseballResult(strikeCount, ballCount));
     }
 
-    public boolean isGameSet(int strikeCount) {
+    public boolean isGameSet() {
         return strikeCount == WINNING_STRIKE_COUNT;
     }
 }
