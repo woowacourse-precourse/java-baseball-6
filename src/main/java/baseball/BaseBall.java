@@ -6,16 +6,14 @@ public class BaseBall {
 
 	public BaseBall(final String number) {
 		// 입력값의 길이가 3이 아닌 경우 예외 발생
-		if (number.length() != NUMBER_LENGTH) {
+		if (number.length() != NUMBER_LENGTH)
 			throw new IllegalArgumentException("올바르지 않는 숫자의 길이입니다. " + NUMBER_LENGTH);
-		}
 
 		// 입력값의 각 자리 숫자가 1에서 9 사이의 값이 아닌 경우 예외 발생
 		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			char digit = number.charAt(i);
-			if (digit < '1' || digit > '9') {
+			if (digit < '1' || digit > '9')
 				throw new IllegalArgumentException("올바르지 않는 숫자입니다. 숫자: " + number);
-			}
 		}
 		this.number = number;
 	}
@@ -51,9 +49,8 @@ public class BaseBall {
 		int strikes = 0;
 		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			// 같은 수가 같은 자리에 있으면 스트라이크
-			if (this.number.charAt(i) == inputBaseBall.number.charAt(i)) {
+			if (this.number.charAt(i) == inputBaseBall.number.charAt(i))
 				strikes += 1;
-			}
 		}
 		return strikes;
 	}
