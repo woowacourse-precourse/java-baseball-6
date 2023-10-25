@@ -1,6 +1,7 @@
-package baseball.Util;
+package baseball.util;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListUtility {
     public ListUtility() {
@@ -15,4 +16,12 @@ public class ListUtility {
         }
         return splittedDigits;
     }
+
+    public static int parseRandomNumbersToInt(List<Integer> list) {
+        return list.stream()
+                .reduce((acc, cur) -> acc * 10 + cur)
+                .get(); // TODO : make non-optional return
+    }
+
+
 }

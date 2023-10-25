@@ -11,12 +11,6 @@ public class RandomNumberGenerator {
     public RandomNumberGenerator() {
     }
 
-    public static int parseRandomNumbersToInt(List<Integer> list) {
-        return list.stream()
-                .reduce((acc, cur) -> acc * 10 + cur)
-                .get(); // TODO : make non-optional return
-    }
-
     public static int makeRandomNumberInRange() {
         return Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
     }
@@ -28,7 +22,7 @@ public class RandomNumberGenerator {
             if (!randNumbers.contains(randNum)) {
                 randNumbers.add(randNum);
             }
-        } while (randNumbers.size() < BaseBallNumber.LENGTH);
+        } while (randNumbers.size() < BallNumber.LENGTH);
         return randNumbers;
     }
 }
