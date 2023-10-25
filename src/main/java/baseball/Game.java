@@ -25,6 +25,6 @@ public class Game {
     }
 
     private void play() {
-        // 게임 진행        
+        Number inputValues = User.getInputNums();
     }
 }
