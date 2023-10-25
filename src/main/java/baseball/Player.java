@@ -18,4 +18,8 @@ public class Player {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public void setNumbers(String input) {
+        this.numbers = convertStringToIntList(input);
+    }
 }
