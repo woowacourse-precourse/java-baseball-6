@@ -52,9 +52,9 @@ public class Application {
 
             int[] cnt_lst = {0, 0}; // ball, strike
             for (var i=0; i<3; i++) {
-                if (Integer.parseInt(expected_num_lst.get(i)) == random_list.get(i)) { // strike
+                if (Integer.parseInt(expected_num_split[i]) == random_list.get(i)) { // strike
                     cnt_lst[1] += 1;
-                } else if (random_list.contains(Integer.parseInt(expected_num_lst.get(i)))) { // ball
+                } else if (random_list.contains(Integer.parseInt(expected_num_split[i])))) { // ball
                     cnt_lst[0] += 1;
                 }
             }
