@@ -1,7 +1,15 @@
 package baseball;
 
+import baseball.controller.BaseballGame;
+import baseball.model.GameRestart;
+import baseball.view.OutputView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        OutputView.printGameStartMessage();
+        do {
+            BaseballGame baseballGame = new BaseballGame();
+            baseballGame.start();
+        } while (GameRestart.restart());
     }
 }
