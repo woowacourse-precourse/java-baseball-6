@@ -1,11 +1,12 @@
 package baseball.controller;
 
 import baseball.domain.GameResult;
+import service.BaseBallService;
 import baseball.view.UserInputView;
 import baseball.view.UserOutputView;
-import service.BaseBallService;
+
 public class BaseBallController {
-    private static final int endCount = 3;
+    private static final int END_COUNT = 3;
     private UserInputView userInputView;
     private UserOutputView userOutputView;
     private BaseBallService baseBallService;
@@ -28,6 +29,6 @@ public class BaseBallController {
                 String input = userInputView.startMessage();
                 result = baseBallService.compareNumber(input);
                 new UserOutputView(result).printDescription();
-            } while (result.strikeCount != endCount);
+            } while (result.strikeCount != END_COUNT);
     }
 }
