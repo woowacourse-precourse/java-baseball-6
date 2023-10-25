@@ -3,7 +3,7 @@
 https://drive.google.com/file/d/1RY8nTepAhw1vHQE2sLiKxA1TvLNYWZ12/view?usp=sharing
 
 
-![순서도](https://velog.velcdn.com/images/rednada1486_/post/7e780a0f-6078-45a8-a85e-4c3675b2d533/image.png)
+![순서도](https://velog.velcdn.com/images/rednada1486_/post/daebb9f2-3878-43c2-818b-8f6ca07f6c57/image.png)
 
 <br><br><br><br>
 
@@ -11,27 +11,27 @@ https://drive.google.com/file/d/1RY8nTepAhw1vHQE2sLiKxA1TvLNYWZ12/view?usp=shari
 
 <br>
 
-1. 멤버변수 설정
+1. 게임에 필요한 변수 설정
 ```
 - boolean playing : while문 반복 여부 설정 변수 
 - int strike, ball, out : 스트라이크, 볼, 아웃 개수 카운팅하는 변수
-- List<Integer> computer : 숫자야구 정답을 가지고 있는 함수
-- List<Integer> user : 사용자가 입력한 답을 가지고 있는 함수
+- List<Integer> computerNumbers : 숫자야구 정답을 가지고 있는 함수
+- List<Integer> userNumbers : 사용자가 입력한 답을 가지고 있는 함수
 ```
 
 <br>
 
 2. 숫자 야구 게임의 정답을 생성
 ```
-- 메서드명 : createAnswer
+- 메서드명 : createRandomNumbers
 - 입력 : 없음
-- 출력 자료형 : 없음
+- 출력 자료형 : List<Integer>
 - 출력예시 : {1, 2, 3} 
 - 주의 사항 : 
     - 멤버변수 List<Integer> computer에 담을 예정
     - 1 ~ 9 까지 숫자만 뽑을 수 있음.
-    - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
     - 중복된 숫자가 없어야 함.
+    - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
 ```
 
 <br>
@@ -55,48 +55,52 @@ https://drive.google.com/file/d/1RY8nTepAhw1vHQE2sLiKxA1TvLNYWZ12/view?usp=shari
         - 그 외에는 false 반환  
 ```
 
-<br>
 
-4. 종료 후 재시작 여부 물어보는 함수
-
-```
-- 메서드명 : qWhetherTerminate
-- 입력 자료형 : String
-- 입력 : 1 or 2 
-- 출력 : true, false
-- 주의사항 : 
-    - 입력값이 올바르지 않으면 프로그램 종료 (Exceptin 발생) 
-    - 1 입력 시 : true 반환
-    - 2 입력 시 : false 반환
-```
 
 
 <br>
 
-5. 유저가 입력한 답 중 숫자 하나에 대해서 ball, strike, out 판별
+4. 유저가 입력한 답과 정답을 비교하여 ball, strike, out 개수 계산
 ```
-- 메서드명 : wheterBallStrikeOut
-- 입력 자료형 : Integer
-- 입력 예시 : 1
+- 메서드명 : calculateResult
+- 입력 자료형 : 없음
 - 출력 자료형 : void
 - 주의사항 : 
-    - ball -> member 변수 ball + 1
-    - strike -> member 변수 strike + 1
-    - out -> member 변수 out + 1
-    - 반복문 이용해서 자리 비교 O(n)
+    - Game의 멤버변수 ball, strike, out에 결과를 기록
+    - 반복문 이용해서 개수 계산 O(n)
+    - ball ->  ball + 1
+    - strike -> strike + 1
+    - out ->  out + 1
 ```
 
 <br>
 
-6. 결과 출력 기능
+5. 결과 출력 기능
 ```
-- 메서드명 : printResult
+- 메서드명 : printResult 
 - 입력 : 없음
-- 출력자료형 : void(콘솔에 출력)
-- 출력 예시 : "1볼 1스트라이크"
+- 출력자료형 : void
 - 주의사항 : 
-    - String result = "" 에 추가한다.
-    - out = 3 -> "낫싱"
-    - b > 0 -> ball + "볼"
-    - s > 0 -> strile + "스트라이크" 
+    - getResult 메서드에서 정답을 생성
+        - String result = "" 에 추가한다.
+        - out = 3 -> "낫싱"
+        - b > 0 -> ball + "볼"
+        - s > 0 -> strile + "스트라이크" 
+    - getResult 메서드에서 생성된 결과를 printResult에서 출력
+```
+
+<br>
+
+6. 종료문구 출력 후 계속 할지 말지 질문
+
+```
+- 메서드명 : printWinMessage
+- 입력 자료형 : String
+- 입력 예시 : "1" or "2"
+- 출력 : void
+- 주의사항 : 
+    - 입력값이 올바르지 않으면 프로그램 종료 (Exceptin 발생) 
+    - 1 입력 시 : playing = true
+    - 2 입력 시 : playing = false
+    - 그 외 : IllegalArgumentException 에러 발생
 ```

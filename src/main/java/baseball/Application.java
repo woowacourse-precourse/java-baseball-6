@@ -1,153 +1,148 @@
 package baseball;
 
-
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Application {
-    public static boolean playing = true;
+class Game {
+    private static final int NUMBER_COUNT = 3;
 
-    public static int strike = 0;
-    public static int ball = 0;
-    public static int out = 0;
+    private List<Integer> computerNumbers;
+    private List<Integer> userNumbers;
+    private int strike;
+    private int ball;
+    private int out;
 
-    public static List<Integer> computer = null;
-    public static List<Integer> user = null;
-
-    public static void init(){
-        playing = true;
+    Game() {
+        computerNumbers = createRandomNumbers();
+        userNumbers = new ArrayList<>();
         strike = 0;
         ball = 0;
         out = 0;
-        computer = null;
-        user = null;
     }
 
-    public static void createAnswer(){
-        computer = new ArrayList<>();
-        while (computer.size() < 3) {
+    private List<Integer> createRandomNumbers() {
+        List<Integer> randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
             }
         }
+        return randomNumbers;
     }
 
-    public static boolean validateUserInput(String input){
-        user = new ArrayList<>();
-
-        if(input.length() != 3){
+    boolean validateUserInput(String input){
+        userNumbers.clear();
+        if(input.length() != NUMBER_COUNT){
             return false;
         }
-
         for(int i=0; i<input.length(); i++){
             char testChar = input.charAt(i);
-
             if(!Character.isDigit(testChar)){
                 return false;
             }
-
             int tempInt = Character.getNumericValue(testChar);
-            if(tempInt == 0){
+            if(tempInt == 0 || userNumbers.contains(tempInt)){
                 return false;
             }
-            if(user.contains(tempInt)){
-                return false;
-            }
-            user.add(tempInt);
+            userNumbers.add(tempInt);
         }
-
-        return user.size() == 3;
+        return true;
     }
 
-    public static void whetherBallStrikeOut(){
-        ball = 0;
-        strike = 0;
-        out = 0;
+    void calculateResult(){
+        this.ball = 0;
+        this.strike = 0;
+        this.out = 0;
 
-        for(int i=0; i<user.size(); i++){
-            int userCurNum = user.get(i);
-            int computerCurNum = computer.get(i);
-
+        for(int i=0; i<userNumbers.size(); i++){
+            int userCurNum = userNumbers.get(i);
+            int computerCurNum = computerNumbers.get(i);
             if(userCurNum == computerCurNum){
-                strike +=1;
-                continue;
+                strike += 1;
+            } else if(computerNumbers.contains(userCurNum)){
+                ball += 1;
+            } else {
+                out += 1;
             }
-
-            if(computer.contains(userCurNum)){
-                ball +=1;
-                continue;
-            }
-
-            out += 1;
         }
     }
 
-    public static boolean qWhetherTerminate(String input){
-        if("1".equals(input)){
-            return true;
-        } else if("2".equals(input)){
-            return false;
-        }
-
-        throw new IllegalArgumentException();
+    boolean isUserWin() {
+        return strike == NUMBER_COUNT;
     }
 
-    public static void printResult(){
-        String result = "";
-
-        if(out == 3){
-            result += "낫싱";
+    String getResult() {
+        StringBuilder result = new StringBuilder();
+        if(out == NUMBER_COUNT){
+            result.append("낫싱");
         }
-
         if(ball > 0){
-            result += ball + "볼";
+            result.append(ball).append("볼");
         }
-
         if(strike > 0){
-            // ball이 하나라도 있으면 공백을 추가해줘야함
             if(!result.isEmpty()){
-                result += " ";
+                result.append(" ");
             }
-            result += strike + "스트라이크";
+            result.append(strike).append("스트라이크");
         }
-
-        System.out.println(result);
+        return result.toString();
     }
+}
 
+public class Application {
+
+    private static boolean playing;
 
     public static void main(String[] args){
-        init(); // 멤버 변수 정리
+        startGame();
+    }
 
+    private static void startGame() {
         System.out.println("숫자 야구게임을 시작합니다.");
-        createAnswer();
-
+        playing = true;
         while (playing){
-            System.out.print("숫자를 입력해주세요 : ");
-            String userInput = Console.readLine();
+            playGame();
+        }
+    }
 
-            if(!validateUserInput(userInput)){
-                throw new IllegalArgumentException();
-            }
-            whetherBallStrikeOut();
-
-            printResult();
-
-            if(strike==3){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-                String input = Console.readLine();
-
-                if(!qWhetherTerminate(input)){
-                    playing = false;
-                } else{
-                    createAnswer();
-                }
+    private static void playGame() {
+        Game game = new Game();
+        while (true) {
+            readUserInput(game);
+            game.calculateResult();
+            printResult(game);
+            if (game.isUserWin()) {
+                printWinMessage();
+                break;
             }
         }
+    }
+
+    private static void readUserInput(Game game) {
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        if(!game.validateUserInput(userInput)){
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
+
+    private static void printResult(Game game) {
+        System.out.println(game.getResult());
+    }
+
+    private static void printWinMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+
+        if(!"1".equals(userInput) && !"2".equals(userInput)){
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+
+        playing = "1".equals(userInput);
     }
 }
