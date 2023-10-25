@@ -21,7 +21,6 @@ public class ComputerNumberGenerator extends NumberGenerator {
                 list.add(number);
             }
         }
-        System.out.println("ComputerGenerator " + list);
         return list;
     }
 

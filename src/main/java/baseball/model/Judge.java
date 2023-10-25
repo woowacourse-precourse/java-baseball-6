@@ -15,7 +15,7 @@ public class Judge {
         int strike = countStrike(answer, playerNumbers);
         int ball = calculateBall(duplicate, strike);
 
-        return new Result(strike, ball);
+        return new Result(ball, strike);
     }
 
     private int countDuplicateIntegers(List<Integer> answer, List<Integer> playerNumbers) {
@@ -31,7 +31,7 @@ public class Judge {
     private int countStrike(List<Integer> answer, List<Integer> playerNumbers) {
         int strike = 0;
         for (int i = 0; i < playerNumbers.size(); i++) {
-            if (answer.get(i) == playerNumbers.get(i)) {
+            if (answer.get(i).equals(playerNumbers.get(i))) {
                 strike++;
             }
         }
