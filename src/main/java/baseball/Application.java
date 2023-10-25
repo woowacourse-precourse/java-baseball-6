@@ -51,12 +51,24 @@ public class Application {
         inputList.clear();
         int i=0;
         while(inputList.size()<3){
-            int number = Integer.valueOf(input.split("")[i]);
+            int number = IsNumber(input.split("")[i]);
+            if(number == 0){
+                throw new IllegalArgumentException();
+            }
             if(inputList.contains(number)){
                 throw new IllegalArgumentException();
             }
             inputList.add(number);
             i++;
+        }
+    }
+
+    public static int IsNumber(String input){
+        try{
+            int number = Integer.valueOf(input);
+            return number;
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException();
         }
     }
 
@@ -93,7 +105,11 @@ public class Application {
     public static int endGame(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Integer.valueOf(readLine());
+        int number = IsNumber(readLine());
+        if(number!=1 && number!=2){
+            throw new IllegalArgumentException();
+        }
+        return number;
     }
 
 }
