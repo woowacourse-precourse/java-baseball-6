@@ -1,7 +1,6 @@
 package baseball.model;
 
 import baseball.util.constants.BaseballGameConstants;
-import java.util.Arrays;
 
 public class BaseBallGame {
 
@@ -13,7 +12,7 @@ public class BaseBallGame {
         this.currentBallCount = new BallCount(0, 0);
     }
 
-    public static BaseBallGame startGame() {
+    public static BaseBallGame start() {
         return new BaseBallGame(new Computer());
     }
 
@@ -21,33 +20,11 @@ public class BaseBallGame {
         return this.currentBallCount;
     }
 
-    public boolean isGameWin() {
+    public boolean isWin() {
         return currentBallCount.strike() == BaseballGameConstants.NUM_LENGTH;
     }
 
-    public void inputAnswer(int[] input) {
-        if (input == null || input.length != BaseballGameConstants.NUM_LENGTH) {
-            throw new IllegalArgumentException();
-        }
-        currentBallCount = compareNumbers(input, computer.getNumbers());
-    }
-
-    private BallCount compareNumbers(int[] input, int[] answer) {
-        int strike = 0;
-        int ball = 0;
-
-        for (int i = 0; i < input.length; i++) {
-            if (input[i] == answer[i]) {
-                strike++;
-            } else if (containValue(answer, input[i])) {
-                ball++;
-            }
-        }
-
-        return new BallCount(strike, ball);
-    }
-
-    private boolean containValue(int[] array, int value) {
-        return Arrays.stream(array).anyMatch(x -> x == value);
+    public void inputAndCalculateBallCount(Numbers input) {
+        currentBallCount = computer.getNumbers().compare(input);
     }
 }
