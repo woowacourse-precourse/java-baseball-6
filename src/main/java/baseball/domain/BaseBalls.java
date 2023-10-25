@@ -9,12 +9,7 @@ public class BaseBalls {
         this.computerNumber = new ComputerNumber(generatedBall);
     }
 
-    public GameResult compare(List<CompareNumber> userBalls) {
-        GameResult gameResult = new GameResult();
-        userBalls.forEach(v -> {
-            BallScore ballScore = computerNumber.getScore(v);
-            gameResult.saveResult(ballScore);
-        });
-        return gameResult;
+    public GameResult compare(UserNumber userBalls) {
+        return userBalls.getScore(computerNumber);
     }
 }
