@@ -1,7 +1,10 @@
 package baseball.domain.view;
 
+import baseball.domain.dto.ResultDto;
 import baseball.domain.model.BallCount;
+import baseball.domain.model.Score;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -19,4 +22,11 @@ class OutputDataTest {
                         () -> new EnumMap<>(BallCount.class)));
     }
 
+    @Test
+    void 결과_출력() {
+        result.put(BallCount.OUT, 3);
+        result.put(BallCount.BALL, 0);
+        result.put(BallCount.STRIKE, 0);
+        OutputData.gameResultPrint(new ResultDto(new Score(result)));
+    }
 }
