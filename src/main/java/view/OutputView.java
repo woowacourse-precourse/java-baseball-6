@@ -1,30 +1,34 @@
 package view;
 
 import java.util.List;
+
+import model.BallStrikeNothing;
 import view.InputView;
 
 public class OutputView {
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
-    private static final String NOTHING = "낫싱";
+    static final String STRIKE = "스트라이크";
+    static final String BALL = "볼";
+    static final String NOTHING = "낫싱";
+    public static final String CORRECT_3NUMBER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String CHOOES_RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     InputView inputView = new InputView();
+    BallStrikeNothing ballStrikeNothing;
 
-    public void printResult(List<Integer> result) {
-        System.out.println(OutputFormat(result)); // format 출력
-        System.out.println(CHOOES_RESTART_OR_EXIT);
-        inputView.ProgramReStartOrExit();
+    public void printResult() {
+        System.out.println(OutputFormat()); // format 출력
+
     }
-    public String OutputFormat(List<Integer> result) {
-        StringBuilder sb = new StringBuilder(524);
-        if (result.get(0) > 0) { // 볼
-            sb.append(result.get(0) + BALL);
+    public String OutputFormat() {
+        StringBuilder sb = new StringBuilder(32);
+        if (ballStrikeNothing.ball > 0) {
+            sb.append(ballStrikeNothing.ball + BALL + " ");
         }
-        if (result.get(1) > 0) { //스트라이크
-            sb.append(result.get(1) + STRIKE);
+        if (ballStrikeNothing.strike > 0) {
+            sb.append(ballStrikeNothing.strike + STRIKE);
+            sb.append(CORRECT_3NUMBER);
         }
-        if (result.get(2) == 3) { //낫싱
+        if (ballStrikeNothing.ball == 3) {
             sb.append(NOTHING);
         }
         return sb.toString();
