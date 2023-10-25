@@ -1,11 +1,15 @@
 package baseball.computer.validator;
 
 import static baseball.constant.MessageConstants.DUPLICATE_NUMBER;
+import static baseball.constant.MessageConstants.LENGTH_MUST_BE_ONE;
 import static baseball.constant.MessageConstants.LENGTH_MUST_BE_THREE;
 import static baseball.constant.MessageConstants.NATURAL_NUMBER;
 import static baseball.constant.MessageConstants.NOT_NUMBER;
+import static baseball.constant.MessageConstants.NUMBER_MUST_BE_ONE_OR_TWO;
 import static baseball.validator.NumberValidator.validateAllDigits;
 import static baseball.validator.NumberValidator.validateDuplicateNumber;
+import static baseball.validator.NumberValidator.validateOneLength;
+import static baseball.validator.NumberValidator.validateOneOrTwo;
 import static baseball.validator.NumberValidator.validateThreeLength;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -150,6 +154,59 @@ class NumberValidatorTest {
         assertThatThrownBy(() -> validateThreeLength(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(invalidInput + LENGTH_MUST_BE_THREE);
+    }
+
+    @Test
+    @DisplayName("validateOneLength()로 길이가 1인 문자열은 예외가 발생하지 않는다.")
+    void validate_one_length_should_not_throw_exception_for_valid_one_length_strings() {
+        // given
+        String validInput = "1";
+
+        // when
+        // then
+        assertThatCode(() -> validateOneLength(validInput))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("validateOneLength()로  길이가 1이 아닌 문자열은 예외를 발생한다.")
+    void validate_one_length_should_throw_exception_for_invalid_length_strings() {
+        // given
+        String invalidInput = "12";
+
+        // when
+        // then
+        assertThatThrownBy(() -> validateOneLength(invalidInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(invalidInput + LENGTH_MUST_BE_ONE);
+    }
+
+    @Test
+    @DisplayName("validateOneOrTwo()로 '1' 또는 '2' 문자열은 예외가 발생하지 않는다.")
+    void validate_one_or_two_should_not_throw_exception_for_valid_inputs() {
+        // given
+        String validInput1 = "1";
+        String validInput2 = "2";
+
+        // when
+        // then
+        assertThatCode(() -> validateOneOrTwo(validInput1))
+                .doesNotThrowAnyException();
+        assertThatCode(() -> validateOneOrTwo(validInput2))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("validateOneOrTwo로 '1' 또는 '2' 이외의 문자열은 예외를 발생한다.")
+    void validate_one_or_two_should_throw_exception_for_invalid_inputs() {
+        // given
+        String invalidInput = "12";
+
+        // when
+        // then
+        assertThatThrownBy(() -> validateOneOrTwo(invalidInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(invalidInput + NUMBER_MUST_BE_ONE_OR_TWO);
     }
 
 }
