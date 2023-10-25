@@ -1,8 +1,8 @@
 package baseball.game;
 
+import baseball.io.ConsoleInputReader;
 import baseball.io.GameMessageOutput;
 import baseball.user.UserNumber;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.Objects;
 
 public class Game {
@@ -31,17 +31,17 @@ public class Game {
     public static boolean restart() {
         GameMessageOutput.printGameRestartMessage();
 
-        String answer = Console.readLine().strip();
+        String userAnswer = ConsoleInputReader.read();
 
-        if (answer.length() != 1 || !Character.isDigit(answer.charAt(0))) {
+        if (userAnswer.length() != 1 || !Character.isDigit(userAnswer.charAt(0))) {
             throw new IllegalArgumentException("1 또는 2를 입력하세요.");
         }
 
-        if (Objects.equals(answer.charAt(0), GameConst.GAME_RESTART)) {
+        if (Objects.equals(userAnswer.charAt(0), GameConst.GAME_RESTART)) {
             return true;
         }
 
-        if (Objects.equals(answer.charAt(0), GameConst.GAME_END)) {
+        if (Objects.equals(userAnswer.charAt(0), GameConst.GAME_END)) {
             return false;
         }
 
