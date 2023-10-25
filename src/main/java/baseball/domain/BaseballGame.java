@@ -10,8 +10,8 @@ public class BaseballGame {
         this.gameStatus = gameStatus;
     }
 
-    public boolean isPlaying() {
-        return gameStatus.isPlaying();
+    public static BaseballGame init(Balls answerBalls) {
+        return new BaseballGame(answerBalls, GameStatus.PLAYING);
     }
 
     public GameResult getTryResultList(Balls playerBalls) {
@@ -19,12 +19,26 @@ public class BaseballGame {
     }
 
     public void checkGameWin(GameResult gameResult) {
-        if (gameResult.isThreeStrike()) {
+        if (gameResult.isAllStrike()) {
             gameStatus = GameStatus.WIN;
         }
     }
 
-    public static BaseballGame from(Balls answerBalls) {
-        return new BaseballGame(answerBalls, GameStatus.PLAYING);
+    public void retry(Retry retry) {
+        if (retry.isQuit()) {
+            gameStatus = GameStatus.END;
+        }
+    }
+
+    public boolean isEnd() {
+        return gameStatus.isEnd();
+    }
+
+    public boolean isWin() {
+        return gameStatus.isWin();
+    }
+
+    public boolean isPlaying() {
+        return gameStatus.isPlaying();
     }
 }

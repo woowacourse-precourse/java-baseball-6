@@ -1,9 +1,17 @@
 package baseball.domain;
 
 public enum GameStatus {
-    WIN, PLAYING;
+    PLAYING, WIN, END;
 
     public boolean isPlaying() {
         return this == PLAYING;
+    }
+
+    public boolean isEnd() {
+        return this == END;
+    }
+
+    public boolean isWin() {
+        return this == WIN;
     }
 }

@@ -11,10 +11,7 @@ import baseball.domain.RandomNumberGenerator;
 import baseball.domain.Retry;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class GameController {
 
@@ -27,16 +24,25 @@ public class GameController {
     }
 
     private void run() {
-        Retry retry = Retry.DEFAULT;
-        while (!retry.isEnd()) {
-            Balls answerBalls = generateAnswerBalls();
-            BaseballGame baseballGame = BaseballGame.from(answerBalls);
-            play(baseballGame);
-            retry = inputView.scanRetry();
-        }
+        BaseballGame baseballGame;
+        do {
+            baseballGame = initGame();
+            playGame(baseballGame);
+            Retry retry = inputView.scanRetry();
+            retryGame(baseballGame, retry);
+        } while (!baseballGame.isEnd());
     }
 
-    private void play(BaseballGame baseballGame) {
+    private void retryGame(BaseballGame baseballGame, Retry retry) {
+        baseballGame.retry(retry);
+    }
+
+    private BaseballGame initGame() {
+        Balls answerBalls = generateAnswerBalls();
+        return BaseballGame.init(answerBalls);
+    }
+
+    private void playGame(BaseballGame baseballGame) {
         while (baseballGame.isPlaying()) {
             Balls playerBalls = inputView.scanBalls();
             GameResult gameResult = baseballGame.getTryResultList(playerBalls);
@@ -48,8 +54,8 @@ public class GameController {
 
     private Balls generateAnswerBalls() {
         NumberGenerator numberGenerator = RandomNumberGenerator.init();
-        BallsGenerator randomBallsGenerator = RandomBallsGenerator.init();
-        List<Ball> answerBalls = randomBallsGenerator.generateBalls(numberGenerator);
+        BallsGenerator randomBallsGenerator = RandomBallsGenerator.init(numberGenerator);
+        List<Ball> answerBalls = randomBallsGenerator.generateBalls();
         return Balls.from(answerBalls);
     }
 }

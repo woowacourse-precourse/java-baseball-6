@@ -43,7 +43,6 @@ public class InputView {
     public Retry scanRetry() {
         System.out.println(RETRY_INPUT_MESSAGE);
         String rawRetry = Console.readLine();
-        Retry retry = Retry.from(rawRetry);
-        return retry;
+        return Retry.from(rawRetry);
     }
 }

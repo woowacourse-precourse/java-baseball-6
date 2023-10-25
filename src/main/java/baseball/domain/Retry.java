@@ -4,7 +4,7 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public enum Retry {
-    RETRY("1"), END("2"), DEFAULT("0");
+    RETRY("1"), QUIT("2"), DEFAULT("0");
 
     private static final String RETRY_FORMAT_EXCEPTION_MESSAGE = "[ERROR] 1 또는 2로 입력해야합니다.";
     private final String retrySymbol;
@@ -24,7 +24,7 @@ public enum Retry {
             .orElseThrow(() -> new IllegalArgumentException(RETRY_FORMAT_EXCEPTION_MESSAGE));
     }
 
-    public boolean isEnd() {
-        return this == END;
+    public boolean isQuit() {
+        return this == QUIT;
     }
 }

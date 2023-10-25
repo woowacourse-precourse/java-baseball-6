@@ -18,17 +18,17 @@ public class GameResult {
         return tryResults;
     }
 
-    public boolean isNothing() {
-        return !tryResults.contains(TryResult.STRIKE) && !tryResults.contains(TryResult.BALL);
-    }
-
-    public boolean isThreeStrike() {
+    public boolean isAllStrike() {
         return tryResults.stream()
             .allMatch(tryResult -> tryResult == TryResult.STRIKE);
     }
 
     public boolean hasResult(TryResult tryResult) {
         return tryResults.contains(tryResult);
+    }
+
+    public boolean isNothing() {
+        return !tryResults.contains(TryResult.STRIKE) && !tryResults.contains(TryResult.BALL);
     }
 
     public int getCount(TryResult inpuTryResult) {

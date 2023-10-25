@@ -8,20 +8,25 @@ public class RandomBallsGenerator implements BallsGenerator {
 
     private static final int FIRST_POSITION_NUMBER = 1;
     private static final int END_POSITION_NUMBER = 4;
+    private final NumberGenerator numberGenerator;
 
-    public static BallsGenerator init() {
-        return new RandomBallsGenerator();
+    public RandomBallsGenerator(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+    }
+
+    public static BallsGenerator init(NumberGenerator numberGenerator) {
+        return new RandomBallsGenerator(numberGenerator);
     }
     @Override
-    public Ball generateBall(int position, NumberGenerator numberGenerator) {
+    public Ball generateBall(int position) {
         int randomNumber = numberGenerator.generate();
         return Ball.from(position, randomNumber);
     }
 
     @Override
-    public List<Ball> generateBalls(NumberGenerator numberGenerator) {
+    public List<Ball> generateBalls() {
         return IntStream.range(FIRST_POSITION_NUMBER, END_POSITION_NUMBER)
-            .mapToObj(position -> generateBall(position, numberGenerator))
+            .mapToObj(this::generateBall)
             .collect(Collectors.toList());
     }
 }

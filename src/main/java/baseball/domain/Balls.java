@@ -18,10 +18,6 @@ public class Balls {
         this.balls = ballList;
     }
 
-    public Balls(Ball... ballValues) {
-        balls = Arrays.asList(ballValues);
-    }
-
     private void valdateDuplicates(List<Ball> ballList) {
         if (hasDuplicatesInList(ballList)) {
             throw new IllegalArgumentException(DUPLICATES_EXCEPTION_MESSAGE);
@@ -53,11 +49,11 @@ public class Balls {
         return tryResult -> tryResult != TryResult.NOTHING;
     }
 
-    public static Balls from(List<Ball> balls) {
-        return new Balls(balls);
-    }
-
     public List<Ball> getBalls() {
         return balls;
+    }
+
+    public static Balls from(List<Ball> balls) {
+        return new Balls(balls);
     }
 }

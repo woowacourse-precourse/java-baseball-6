@@ -2,7 +2,9 @@ package baseball.util;
 
 import baseball.domain.Retry;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputConvertor {
 
@@ -10,11 +12,8 @@ public class InputConvertor {
 
     public static List<Integer> convertBalls(String rawBalls) {
         String[] rawBallStrings = rawBalls.split(BLANK);
-        List<Integer> ballList = new ArrayList<>();
-        for (String ballString : rawBallStrings) {
-            int ball = Integer.parseInt(ballString);
-            ballList.add(ball);
-        }
-        return ballList;
+        return Arrays.stream(rawBallStrings)
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
     }
 }
