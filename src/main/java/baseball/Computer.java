@@ -16,7 +16,7 @@ public class Computer {
         }
         strike = computerNum.isSamePositionNum(userNum);
         ball = computerNum.isContainsNum(userNum) - strike;
-        Print.baseball(strike, ball);
+        Printer.baseball(strike, ball);
         return (strike == 3);
     }
 }

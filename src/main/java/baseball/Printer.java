@@ -1,15 +1,15 @@
 package baseball;
 
-public class Print {
+public class Printer {
     static public void baseball(int strike, int ball) {
         if (strike == 0 && ball == 0) {
-            Print.nothing();
+            Printer.nothing();
         } else if (ball >= 1 && strike >= 1) {
-            Print.all(strike, ball);
+            Printer.all(strike, ball);
         } else if (ball >= 1) {
-            Print.ball(ball);
+            Printer.ball(ball);
         } else if (strike >= 1) {
-            Print.strike(strike);
+            Printer.strike(strike);
         }
     }
 
