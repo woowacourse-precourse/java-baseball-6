@@ -1,22 +1,22 @@
 package baseball;
 
 public class Player {
-    private Count guess;
+    private Note guess;
 
 
-    public Player(Count guess) {
+    public Player(Note guess) {
         this.guess = guess;
     }
 
     public Player(){
-        this.guess = Count.provideCount("123");
+        this.guess = Note.writeDown("123");
     }
 
-    public void enterGuess(Count guess) {
+    public void enterGuess(Note guess) {
         this.guess = guess;
     }
 
-    public Count getGuess() {
+    public Note getGuess() {
         return guess;
     }
 }

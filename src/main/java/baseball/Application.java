@@ -1,10 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.logging.Logger;
 
 public class Application {
-
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         do {
@@ -28,7 +26,7 @@ public class Application {
     private static void inGame(Player player, Computer computer) {
         while (true) {
             String guess = getGuessNumber();
-            player.enterGuess(Count.provideCount(guess));
+            player.enterGuess(Note.writeDown(guess));
             String gameResult = computer.judgeGameResult(player.getGuess());
             System.out.println(gameResult);
             if (gameOver(gameResult)) {

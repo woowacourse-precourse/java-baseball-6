@@ -52,16 +52,16 @@ public class ComputerTest {
     }
     @Test
     void Count가_볼_스트라이크_낫싱_인지확인1(){
-        Computer computer = new Computer(Count.provideCount("143"));
-        Count count = Count.provideCount("135");
+        Computer computer = new Computer(Note.writeDown("143"));
+        Note count = Note.writeDown("135");
         Assertions.assertEquals(computer.judgeGameResult(count), "1볼 1스트라이크" );
 
 
 
     }
     void Count가_볼_스트라이크_낫싱_인지확인2(){
-        Computer computer = new Computer(Count.provideCount("243"));
-        Count count = Count.provideCount("241");
+        Computer computer = new Computer(Note.writeDown("243"));
+        Note count = Note.writeDown("241");
         Assertions.assertEquals(computer.judgeGameResult(count), "2스트라이크" );
 
 
@@ -70,19 +70,19 @@ public class ComputerTest {
 
     @Test
     void 볼_확인(){
-        Count count1 = Count.provideCount("123");
-        Count count2 = Count.provideCount("451");
+        Note count1 = Note.writeDown("123");
+        Note count2 = Note.writeDown("451");
         Assertions.assertEquals(isBall(count1.toString(),count2.toString()), "1볼");
     }
 
     @Test
     void 스트라이크_확인(){
-        Count count1= Count.provideCount("123");
-        Count count2 = Count.provideCount("123");
+        Note count1= Note.writeDown("123");
+        Note count2 = Note.writeDown("123");
         Assertions.assertEquals(isStrike(count1.toString(), count2.toString()), "3스트라이크");
 
-        Count count3= Count.provideCount("527");
-        Count count4 = Count.provideCount("517");
+        Note count3= Note.writeDown("527");
+        Note count4 = Note.writeDown("517");
         Assertions.assertEquals(isStrike(count3.toString(), count4.toString()), "2스트라이크");
 
     }

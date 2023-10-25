@@ -5,14 +5,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Computer {
-    private final Count answer;
+    private final Note answer;
 
-    public Computer(Count answer) {
+    public Computer(Note answer) {
         this.answer = answer;
     }
 
     public Computer() {
-        this.answer = Count.provideCount(generateRandomCount());
+        this.answer = Note.writeDown(generateRandomCount());
     }
 
     private String generateRandomCount() {
@@ -35,7 +35,7 @@ public class Computer {
         return sb.toString();
     }
 
-    public String judgeGameResult(Count guess) {
+    public String judgeGameResult(Note guess) {
         String guessNumber = guess.toString();
         String answerNumber = answer.toString();
         StringBuilder gameResult = new StringBuilder();
