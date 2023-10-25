@@ -12,6 +12,7 @@ public class BaseballGame {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String INVALID_INPUT_ERROR_MESSAGE = "1~9까지의 서로 다른 3자리의 숫자만 입력 가능합니다.";
     private static int strike;
     private static int ball;
 
@@ -25,8 +26,9 @@ public class BaseballGame {
             List<Integer> inputNum = convertStringToList(inputString);
             countBallAndStrike(inputNum, answer);
             printResult();
-            if (isAnswer())
+            if (isAnswer()) {
                 break;
+            }
         }
     }
 
@@ -56,13 +58,14 @@ public class BaseballGame {
     }
 
     public static void validateInputNum(String inputString) {
-        if (inputString.length() != DIGIT_LENGTH || inputString.contains("0"))
-            throw new IllegalArgumentException();
+        if (inputString.length() != DIGIT_LENGTH || inputString.contains("0")) {
+            throw new IllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
+        }
 
         for (int i = 0; i < DIGIT_LENGTH; i++) {
             char c = inputString.charAt(i);
             if (!Character.isDigit(c) || inputString.substring(i + 1).contains(String.valueOf(c))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
             }
         }
     }
