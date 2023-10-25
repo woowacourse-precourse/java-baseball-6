@@ -34,12 +34,16 @@ public class GameController {
     private void proceedGame() {
         Boolean isCorrectAnswer = false;
         while (!isCorrectAnswer) {
-            outputView.printMessage(MessageConstants.NUMBER_REQUEST_MESSAGE);
-            Hint hint = computerController.provideHint(getPlayerNumber());
+            Hint hint = guessNumberAndGetHint();
             outputView.printContents(hint.generateHintMessage());
             isCorrectAnswer = computerController.checkCorrectAnswer(hint);
         }
         outputView.printlnMessage(MessageConstants.CORRECT_ANSWER_MESSAGE);
+    }
+
+    private Hint guessNumberAndGetHint() {
+        outputView.printMessage(MessageConstants.NUMBER_REQUEST_MESSAGE);
+        return computerController.provideHint(getPlayerNumber());
     }
 
     private Numbers getPlayerNumber() {
