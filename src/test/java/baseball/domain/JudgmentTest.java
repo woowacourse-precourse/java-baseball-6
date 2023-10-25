@@ -2,12 +2,19 @@ package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import baseball.config.ComputerTestConfig;
 import baseball.config.JudgmentTestConfig.TestComputer;
-import org.junit.jupiter.api.BeforeAll;
+import java.util.List;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 @DisplayName("Judgment 클래스")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -15,9 +22,35 @@ public class JudgmentTest {
 
     private static Player player;
 
-    @BeforeAll
-    static void setUp() {
+    @BeforeEach
+    void setUp() {
         player = new Player("123");
+    }
+
+    private static Stream<Arguments> providePlayerAndComputerNumbers() {
+        return Stream.of(
+                Arguments.of("132", List.of(1, 2, 3), 2, 1),
+                Arguments.of("123", List.of(1, 2, 3), 0, 3),
+                Arguments.of("312", List.of(1, 2, 3), 3, 0)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("providePlayerAndComputerNumbers")
+    void Player와_Computer의_숫자를_비교해_ball_strike_개수를_계산한다(
+            String playerNumbers, List<Integer> computerNumbers, int ball, int strike
+    ) {
+        Computer testComputer = new TestComputer(ball, strike);
+        Player testPlayer = new Player(playerNumbers);
+        Judgment testJudgment = new Judgment();
+        testJudgment.judge(testComputer, testPlayer);
+
+        Player player = new Player(playerNumbers);
+        Computer computer = new ComputerTestConfig.TestComputer(computerNumbers);
+        Judgment judgment = new Judgment();
+        judgment.judge(computer, player);
+
+        Assertions.assertEquals(judgment, testJudgment);
     }
 
     @Test
