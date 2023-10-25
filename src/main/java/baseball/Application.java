@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
 
     private static List<Integer> computer = new ArrayList<>();
+    
     public static void RandomNumberGenerator() {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -19,6 +20,7 @@ public class Application {
     public static boolean UserInputValidCheck(String s) {
         if(s.length() != 3) return false;
         if(s.charAt(0) == s.charAt(1) || s.charAt(1) == s.charAt(2) || s.charAt(2) == s.charAt(0)) return false;
+        
         for(int i = 0; i < 3; i++) {
             int Digit = s.charAt(i) - '0';
             if(Digit == 0) return false;
@@ -31,6 +33,7 @@ public class Application {
 
         RandomNumberGenerator();
         System.out.println("숫자 야구 게임을 시작합니다.");
+        
         while(true) {
             System.out.print("숫자를 입력하세요 : ");
             String UserInput = Console.readLine();
@@ -41,9 +44,11 @@ public class Application {
             int Strike = 0;
             int BallCount = 0;
             int[] UserDigits = new int[3];
+            
             for(int i = 0; i < 3; i++) {
                 UserDigits[i] = UserInput.charAt(i) - '0';
             }
+            
             for(int i = 0; i < 3; i++) {
                 for(int j = 0; j < 3; j++) {
                     if (i == j && computer.get(i) == UserDigits[j]) {
@@ -54,6 +59,7 @@ public class Application {
                     }
                 }
             }
+            
             if(Strike == 3) {
                 System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다!" + " " + "게임 종료"
                         + "\n" + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
