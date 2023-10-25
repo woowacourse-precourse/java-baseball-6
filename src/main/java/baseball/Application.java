@@ -30,9 +30,9 @@ public class Application {
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String exp_num_str = Console.readLine();
+            String expected_num_str = Console.readLine();
 
-            String[] expected_num_split = exp_num_str.split("");
+            String[] expected_num_split = expected_num_str.split("");
             List<String> expected_num_lst = Arrays.asList(expected_num_split);
             Set<String> set_expected_num = new HashSet<>(expected_num_lst);
             List<String> set_lst_expected_num = new ArrayList<>(set_expected_num);
@@ -40,7 +40,7 @@ public class Application {
                 throw new IllegalArgumentException();
             }
             try{
-                Integer.parseInt(exp_num_str);
+                Integer.parseInt(expected_num_str);
             } catch (Exception e) {
                 throw new IllegalArgumentException();
             }
