@@ -8,10 +8,16 @@ public class UserInputValidator {
     private static final String NOT_DIFFERENT_NUMBERS_MSG = "서로 다른 숫자를 입력해주세요.";
     private static final String WRONG_NUMBER_RANGE_MSG = "1 ~ 9까지의 숫자를 입력해주세요.";
     private static final String WRONG_NUMBER_LENGTH_MSG = "3 자리의 숫자를 입력해주세요.";
+    private static final String WRONG_RESTART_NUMBER_LENGTH_MSG = "1 자리의 숫자를 입력해주세요.";
+    private static final String WRONG_RESTART_NUMBER_RANGE_MSG = "1 또는 2를 입력해주세요.";
     private static final int NUMBER_LENGTH = 3;
+    private static final int RESTART_NUMBER_LENGTH = 1;
     private static final char MIN_NUMBER = '1';
     private static final char MAX_NUMBER = '9';
-    private static String userInputNumbers = "";
+    private String userInputNumbers = "";
+    private String userInputRestartNumber = "";
+    private static final char RESTART_NUMBER = '1';
+    private static final char DO_NOT_RESTART_NUMBER = '2';
 
     public void validateInputNumbers(String userInput) {
         userInputNumbers = userInput;
@@ -43,6 +49,27 @@ public class UserInputValidator {
             } else {
                 throw new IllegalArgumentException(NOT_DIFFERENT_NUMBERS_MSG);
             }
+        }
+    }
+
+    public void validateInputRestartNumber(String userInput) {
+        userInputRestartNumber = userInput;
+
+        checkRestartNumberLength();
+        checkRestartNumberRange();
+    }
+
+    private void checkRestartNumberRange() {
+        for (char number : userInputNumbers.toCharArray()) {
+            if (number !=  RESTART_NUMBER || number != DO_NOT_RESTART_NUMBER) {
+                throw new IllegalArgumentException(WRONG_RESTART_NUMBER_RANGE_MSG);
+            }
+        }
+    }
+
+    private void checkRestartNumberLength() {
+        if (userInputRestartNumber.length() != RESTART_NUMBER_LENGTH) {
+            throw new IllegalArgumentException(WRONG_RESTART_NUMBER_LENGTH_MSG);
         }
     }
 }

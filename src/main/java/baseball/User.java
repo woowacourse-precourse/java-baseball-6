@@ -6,6 +6,9 @@ import java.util.List;
 
 public class User {
 
+    private static final char RESTART_NUMBER = '1';
+    private static final boolean RESTART = true;
+    private static final boolean DO_NOT_RESTART = false;
     private List<Integer> numbers;
     private boolean gameRestart;
     private final UserInputValidator userInputValidator = new UserInputValidator();
@@ -34,5 +37,12 @@ public class User {
 
     public void decideGameRestart() {
         String userInput = Console.readLine();
+        userInputValidator.validateInputRestartNumber(userInput);
+
+        if (userInput.equals(RESTART_NUMBER)) {
+            gameRestart = RESTART;
+        } else {
+            gameRestart = DO_NOT_RESTART;
+        }
     }
 }
