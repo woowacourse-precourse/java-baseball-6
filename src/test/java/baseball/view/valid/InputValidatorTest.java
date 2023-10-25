@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class InputValidatorTest {
     @ParameterizedTest
     @DisplayName("숫자가 아닌 값은 입력할 수 없습니다")
-    @ValueSource(strings = {"suchan", "*&1", "12suchan"})
+    @ValueSource(strings = {"suchan", "*&1", "12suchan", " "})
     void inputErrorWithNotNumber(String given) {
         // given
         InputValidator validator = new InputValidator();
