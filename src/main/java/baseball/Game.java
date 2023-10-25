@@ -18,16 +18,13 @@ public class Game {
             //랜덤숫자 생성
             if (randomCreate) {
                 randomNumber = random.createNumber();
-                System.out.println(randomNumber);
                 randomCreate = false;
             }
             //사용자 숫자 입력
             output.inputPrint();
             List<Integer> userNumber = user.inputNumber();
-            System.out.println(userNumber);
             //숫자비교
             Map<String, Integer> result = compare.compareNumber(randomNumber, userNumber);
-            System.out.println(result.toString());
             //종료여부파악
             if (!output.resultPrint(result)) {
                 if (!user.inputRestart()) {
