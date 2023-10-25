@@ -1,7 +1,10 @@
 package baseball;
 
+import baseball.controller.GameSet;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameSet baseball = new GameSet();
+        baseball.gameStart();
     }
 }
