@@ -74,11 +74,12 @@ public class Application {
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             Scanner sc = new Scanner(System.in);
-            int reGame = sc.nextInt();
-            if (reGame == 1) {
+            String reGame = readLine();
+            int reGameInt = Integer.parseInt(reGame);
+            if (reGameInt == 1) {
                 strikeCount = 0;
                 ballCount = 0;
-            } else if (reGame == 2) {
+            } else if (reGameInt == 2) {
                 System.out.println("숫자 야구 게임을 종료합니다.");
                 return;
             } else {
