@@ -17,7 +17,7 @@ public class InputNum {
     public List<Integer> convertInputToNumbers(String inputNum) {
         this.inputNumbers = new ArrayList<>();
         if (!isValidInput(inputNum)) {
-            throw new IllegalArgumentException("Invalid input.");
+            throw new IllegalArgumentException();
         }
         for (char digit : inputNum.toCharArray()) {
             inputNumbers.add(Character.getNumericValue(digit));
@@ -30,8 +30,8 @@ public class InputNum {
         for (char digit : inputNum.toCharArray()) {
             inputSet.add(digit);
         }
-        if (inputSet.size() < 3) {
-            throw new IllegalArgumentException("Input should have exactly 3 unique digits.");
+        if (inputSet.size() < INPUT_LENGTH) {
+            throw new IllegalArgumentException();
         }
         return inputNum.length() == INPUT_LENGTH && inputNum.matches(INPUT_CONTENT_REGEX);
     }

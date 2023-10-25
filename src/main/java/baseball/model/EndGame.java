@@ -16,7 +16,7 @@ public class EndGame {
 
     private void validateUserChoice(String choice) {
         if (!choice.equals(RESTART) && !choice.equals(END)) {
-            throw new IllegalArgumentException("Invalid choice. Use '1' to restart or '2' to end the game.");
+            throw new IllegalArgumentException();
         }
     }
 }

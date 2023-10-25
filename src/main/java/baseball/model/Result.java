@@ -23,8 +23,8 @@ public class Result {
 
     public int calculateBalls() {
         int ballCount = 0;
-        for (Integer inputNumber : inputNumbers) {
-            if (computerNumbers.contains(inputNumber) && !inputNumber.equals(computerNumbers.get(inputNumbers.indexOf(inputNumber)))) {
+        for (int i = 0; i < inputNumbers.size(); i++) {
+            if (computerNumbers.contains(inputNumbers.get(i)) && !inputNumbers.get(i).equals(computerNumbers.get(i))) {
                 ballCount++;
             }
         }
