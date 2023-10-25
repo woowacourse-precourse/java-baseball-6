@@ -18,9 +18,7 @@ public class Player {
         return userInputList;
     }
 
-    /*
-     * player list 초기화
-     *  */
+    /* player list 초기화 */
     public void init() {
         userInputList.clear();
     }
