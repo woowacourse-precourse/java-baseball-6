@@ -22,7 +22,6 @@ public class BaseballGameClass implements Game{
     @Override
     public void gameInit() {
         RandomAnswerGeneratedInInit = RandomNumberGenerator();
-        System.out.println("RandomAnswerGeneratedInInit = " + RandomAnswerGeneratedInInit);
     }
 
 
