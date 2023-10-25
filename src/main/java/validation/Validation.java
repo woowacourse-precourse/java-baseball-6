@@ -7,12 +7,27 @@ import java.util.Set;
 
 public class Validation {
     public void validatePlayerInput(String playerInput) {
+        validateNull(playerInput, ErrorMessage.INVALID_PLAYER_INPUT_LENGTH.getMessage());
+        validateBlank(playerInput, ErrorMessage.INVALID_PLAYER_INPUT_LENGTH.getMessage());
+
         validateLength(playerInput, Constant.BASEBALL_GAME_NUMBER_LENGTH.getValue(),
                 ErrorMessage.INVALID_PLAYER_INPUT_LENGTH.getMessage());
 
         Set<Integer> setPlayerInptNmbr = new HashSet<>();
         for (int idx = 0; idx < Constant.BASEBALL_GAME_NUMBER_LENGTH.getValue(); idx++) {
             validateDuplicationAndZero(playerInput.charAt(idx), setPlayerInptNmbr);
+        }
+    }
+
+    private void validateNull(String info, String errMsg) {
+        if (info == null) {
+            throw new IllegalArgumentException(errMsg);
+        }
+    }
+
+    private void validateBlank(String info, String errMsg) {
+        if (info.isBlank()) {
+            throw new IllegalArgumentException(errMsg);
         }
     }
 
