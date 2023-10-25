@@ -19,6 +19,7 @@ public class InputValidate {
             throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
     }
+
     /**
      * 입력값의 길이를 검증
      *
@@ -54,11 +55,12 @@ public class InputValidate {
 
     /**
      * 중복된 숫자가 있는지 검증
+     *
      * @param inputNumbers
      */
     public static void validateDuplicateNumbers(List<Integer> inputNumbers) {
         TreeSet<Integer> treeSet = new TreeSet<>(inputNumbers);
-        if(treeSet.size() != NUMBER_THREE) {
+        if (treeSet.size() != NUMBER_THREE) {
             throw new IllegalArgumentException("중복된 숫자를 입력하였습니다.");
         }
     }
