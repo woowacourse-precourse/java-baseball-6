@@ -15,5 +15,4 @@ public class InputValidator {
             throw new IllegalArgumentException("입력은 1부터 9까지의 중복되지 않는 숫자여야 합니다.");
         }
     }
-
 }
