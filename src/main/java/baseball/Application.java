@@ -80,12 +80,25 @@ public class Application {
 
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다");
         Application game = new Application();
-        List<Integer> randomNumber = game.comRandomNumber();
-        System.out.print("숫자를 입력해주세요 : ");
-        String inputNum = Console.readLine();
+        String restartOrEnd = "1";
+        //System.out.println(randomNumber);
+        while (restartOrEnd.equals("1")) {  // 1이면 재시작 2이면 종료
+            List<Integer> randomNumber = game.comRandomNumber(); //랜덤 숫자 생성
+            int result = 0;
+            while (!(result == 3)) { // 스트라이크가 3개 아닐때
+                System.out.print("숫자를 입력해주세요 : ");
+                String inputNum = Console.readLine();
+                //System.out.println(inputNum);
+                game.validateInput(inputNum); // 입력 값 검증
+                result = game.compareNumbers(inputNum, randomNumber); // 숫자 비교 및 결과
+            }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            restartOrEnd = Console.readLine();
+            if (!restartOrEnd.equals("1") && !restartOrEnd.equals("2")) {
+                throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+            }
+        }
 
     }
 }
