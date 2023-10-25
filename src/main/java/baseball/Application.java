@@ -3,44 +3,32 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import  camp.nextstep.edu.missionutils.Randoms;
-import  camp.nextstep.edu.missionutils.Console;
-
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 
 public class Application {
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작 합니다.");
 
         rootGame :
         while (true) {
 
-            // 1. 컴퓨터가 임의의 서로 다른 3자리의 수 생성
             List<Integer> answerNumberList = getAnswerNumberList();
 
             currentGame :
             while (true) {
-                System.out.print("숫자를 입력해주세요 : ");
-
-                // 2. 유저로 부터 3자리의 서로 다른 숫자 입력 받음
+                System.out.print("숫자를 입력해 주세요 : ");
                 String inputNumberStr = Console.readLine();
 
-                // 3. 입력 값 검증, 잘못된 값일 시 IllegalArgumentException 발생
                 List<Integer> inputNumberList = assertValidNumber(inputNumberStr);
 
-                // 4. 정답과 비교 후 결과 출력, 반복
-                // 4-1) 스트라이크, 볼 수 세기
                 StrikeBallCount strikeBallCount = getStrikeBallCount(inputNumberList, answerNumberList);
 
-                // 4-2) 정답(3 스트라이크)인지 체크
                 if (checkAnswer(strikeBallCount.strike(), strikeBallCount.ball())) {
-
-                    // 5. 정답일 시, 입력값(1 or 2) 에 따라 따라 재시작 혹은 종료
                     while (true) {
                         String inputRestart = Console.readLine();
-
-                        // 5-1) 입력값(1 or 2) 검증
                         if (Objects.equals(inputRestart, "1")) {
                             break currentGame;
                         }
@@ -59,7 +47,10 @@ public class Application {
 
 
     /**
-     * 1. 컴퓨터가 임의의 서로 다른 3자리의 수 생성 /
+     * 임의의 수 3자리를 랜덤으로 생성 해서 반환
+     * 각 자리의 숫자는 1부터 9까지 이고, 중복된 숫자는 존재 하지 않음
+     *
+     * @return 서로 다른 3자리 숫자를 가진 리스트
      */
     private static List<Integer> getAnswerNumberList() {
         List<Integer> answerNumberList = new ArrayList<>();
@@ -74,19 +65,24 @@ public class Application {
 
 
     /**
-     * 3. 입력 값 검증, 잘못된 값일 시 IllegalArgumentException 발생
-     * 3-1) 3자리가 맞는지 확인
-     * 3-2) 숫자가 맞는지 확인
-     * 3-3) 그 3자리 숫자가 서로 다른지 확인
+     * 입력 값이 3자리의 서로 다른 숫자가 맞는지 검증
+     * 1) 3자리가 맞는지 확인
+     * 2) 숫자가 맞는지 확인
+     * 3) 숫자에 0이 포함 되어 있는지 확인
+     * 4) 중복된 숫자가 있는지 확인
+     *
+     * @throws IllegalArgumentException 위 4개의 조건 중 하나 라도 통과 하지 못했을 시
+     * @param inputNumberStr 사용자 입력 값
+     * @return 사용자 입력 값으로 만든 서로 다른 3자리 숫자를 가진 리스트
      */
-    static List<Integer> assertValidNumber(String inputNumberStr) {
+    private static List<Integer> assertValidNumber(String inputNumberStr) {
 
-        // 3-1) 3자리가 맞는지 확인
+        // 1) 3자리가 맞는지 확인
         if (inputNumberStr.length() != 3) {
             throw new IllegalArgumentException("입력값 오류! 3자리 숫자를 입력해 주세요.");
         }
 
-        // 3-2) 숫자가 맞는지 확인
+        // 2) 숫자가 맞는지 확인
         try {
             Integer.parseInt(inputNumberStr);
         } catch (NumberFormatException numberFormatException) {
@@ -95,13 +91,14 @@ public class Application {
 
         List<Integer> returnIntList = new ArrayList<>();
         for (int i = 0; i < inputNumberStr.length() ; i++) {
-            
-            // 3-3) 숫자에 0이 포함 되어 있는지 확인
+
+            // 3) 숫자에 0이 포함 되어 있는지 확인
             if (inputNumberStr.charAt(i) == '0') {
                 throw new IllegalArgumentException("입력값 오류! 숫자에 0을 포함 시킬 수 없습니다.");
             }
 
             int digitInt = inputNumberStr.charAt(i) - 48;
+            // 4) 중복된 숫자가 있는지 확인
             if (returnIntList.contains(digitInt)) {
                 throw new IllegalArgumentException("입력값 오류! 서로 다른 3자리 숫자를 입력해 주세요.");
             }
@@ -110,8 +107,13 @@ public class Application {
         return returnIntList;
     }
 
+
     /**
-     * 4-1) 스트라이크, 볼 수 세기
+     * 정답 숫자 리스트와 사용자 입력 값 숫자 리스트를 비교 하여 strike, ball 갯수 연산
+     *
+     * @param inputNumberList 입력값 숫자 리스트
+     * @param answerNumberList 정답 숫자 리스트
+     * @return StrikeBallCount(strike, ball) strike, ball 갯수
      */
     private static StrikeBallCount getStrikeBallCount(List<Integer> inputNumberList, List<Integer> answerNumberList) {
         int strike = 0;
@@ -127,12 +129,25 @@ public class Application {
         }
         return new StrikeBallCount(strike, ball);
     }
-    private record StrikeBallCount(int strike, int ball) { }
+    private record StrikeBallCount(int strike, int ball) {} // 4.1.3 Empty blocks: may be concise
+
 
     /**
-     * 4-2) 정답(3 스트라이크)인지 체크
+     * strike, ball 갯수에 따라서 결과값 출력
+     * 정답 여부 확인
+     *
+     * @param strike
+     * @param ball
+     * @return 정답 여부 (3스트라이크 여부)
      */
     private static boolean checkAnswer(int strike, int ball) {
+        if (strike == 3) {
+            System.out.println(strike + "스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return true;
+        }
+
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
             return false;
@@ -141,13 +156,6 @@ public class Application {
         if (strike == 0) {
             System.out.println(ball + "볼");
             return false;
-        }
-
-        if (strike == 3) {
-            System.out.println(strike + "스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            return true;
         }
 
         if (ball == 0) {

@@ -1,26 +1,22 @@
-1. 컴퓨터가 임의의 서로 다른 3자리의 수 생성
+## 기능 설명서
+### 메서드(기능) 목록
+
+1. `List<Integer> getAnswerNumberList()` 
+   - 임의의 수 3자리를 랜덤으로 생성 하여 반환
 
 
-2. 유저로 부터 3자리의 서로 다른 숫자 입력 받음
+2. `List<Integer> assertValidNumber(String inputNumberStr)`
+   - 입력 값이 3자리의 서로 다른 숫자가 맞는지 검증
+     - 3자리가 맞는지 확인
+     - 숫자가 맞는지 확인
+     - 숫자에 0이 포함 되어 있는지 확인
+     - 중복된 숫자가 있는지 확인
 
 
-3. 입력 값 검증, 아니면 IllegalArgumentException 발생 
-
-   3-1) 3자리가 맞는지 확인
-
-   3-2) 숫자가 맞는지 확인
-
-   3-3) 그 3자리 숫자가 서로 다른지 확인
+3. `StrikeBallCount getStrikeBallCount(List<Integer> inputNumberList, List<Integer> answerNumberList)`
+   - 정답 숫자 리스트와 사용자 입력 값 숫자 리스트를 비교 하여 strike, ball 갯수 연산하여 반환
 
 
-4. 정답과 비교 후 결과 출력, 반복
-
-   4-1) 스트라이크, 볼 수 세기
-
-   4-2) 정답(3 스트라이크)인지 체크
-
-
-
-5. 정답일 시, 입력값(1 or 2) 에 따라 따라 재시작 혹은 종료
-
-   5-1) 입력값(1 or 2) 검증
+5. `boolean checkAnswer(int strike, int ball)`
+   - strike, ball 갯수에 따라서 결과값 출력
+   - 정답 여부 반환
