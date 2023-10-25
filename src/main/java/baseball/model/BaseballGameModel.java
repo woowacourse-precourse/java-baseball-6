@@ -21,4 +21,8 @@ public class BaseballGameModel {
     List<Integer> getComputerNumbers(){
         return computerNumbers;
     }
+
+    void clearComputerNumbers() {
+        computerNumbers.clear();
+    }
 }

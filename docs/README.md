@@ -7,6 +7,7 @@
 ### 1.1.2 주요 메소드
 - **'generateRandomNumbers(): void'**: 1부터 9까지의 서로 다른 3개의 임의의 숫자를 생성하여 'computerNumbers' 배열에 저장합니다.
 - **'getComputerNumbers(): List<Integer>'**: 현재 컴퓨터가 선택한 숫자 배열을 반환합니다.
+- **'clearComputerNumbers: void'**: 현재 컴퓨터가 선택한 숫자 배열을 초기화합니다.
 
 # 2. View
 ### 2.1 클래스: 'BaseballGameView'
