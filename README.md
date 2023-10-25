@@ -165,6 +165,7 @@ List<Integer> computer=new ArrayList<>();
     - **GameDispatcherFactor.create(String cmd)**: GameDispatcher
         - 입력 파라미터에 매칭되는 GameDispatcher의 구현체를 생성한다.
     - **GameDispatcher.dispatch(UserReqeust request)**: UserResponse
+        - 콘솔입력을 통해 요청 받은 로직을 처리
 - 상대방(컴퓨터)의 수 생성 → GamePlay (interface) : StartGamePlay
     - **Gameplay.play(List<String> args)** : String
 - 입력값과 상대방의 수 비교 → GamePlay (interface) : PredictGamePlay
