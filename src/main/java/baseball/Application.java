@@ -22,55 +22,57 @@ public class Application {
         }
         return computer;
     }
+
     public String getUserInput() {
-        System.out.print("숫자를 입력해주세요: ");
+        System.out.print("숫자를 입력해주세요 : ");
         /// 4-1. "345" -> 345 -> 3, 4, 5 -> {3, 4, 5}
         String inputStr = Console.readLine(); // "345"
         return inputStr;
     }
+
     public static boolean checkIsValidate(String inputStr){
         int str2Number = 0; // 345
 
-        try { // 예외를 처리하길 원하는 실행코드
+        try {   // 예외를 처리하길 원하는 실행코드
             if (inputStr.length() != 3) // 성공
-                throw new IllegalArgumentException("IllegalArgumentException 3자리 수");
+                throw new IllegalArgumentException("IllegalArgumentException 3자리 수 X");
         } catch (IllegalArgumentException e1) {
-            System.out.println("IllegalArgumentException 3자리 수");
+            //System.out.println("IllegalArgumentException 3자리 수 X");
             return false;
         } ;
         try {
             str2Number = Integer.parseInt(inputStr);
-        } catch (NumberFormatException eN) {    //숫자 아닌게 섞였을 때 (현재 공백 '12 ', '12a' 실패
+        } catch (NumberFormatException eN) {    //숫자 아닌게 섞였을 때 ex) 현재 공백 '12 ', '12a' 실패
             try {
                 throw new IllegalArgumentException("IllegalArgumentException 숫자 아닌 문자");
             } catch (IllegalArgumentException e2) {
-                System.out.println("IllegalArgumentException 숫자 아닌 문자");
+                //System.out.println("IllegalArgumentException 숫자 아닌 문자");
                 return false;
             }
         }
 
-        int num1 = str2Number / 100; // 3, 백의 자리
-        int num2 = (str2Number % 100) / 10; // 4, 10의 자리
-        int num3 = (str2Number % 100) % 10; // 5, 1의 자리
+        int num1 = str2Number / 100;    // 3, 백의 자리
+        int num2 = (str2Number % 100) / 10;    // 4, 10의 자리
+        int num3 = (str2Number % 100) % 10;    // 5, 1의 자리
         List<Integer> nums = new ArrayList<>();
-        nums.add(num1); // {3}
-        nums.add(num2); // {3, 4, 5?
-        nums.add(num3); // {3, 4, 5}
+        nums.add(num1);    // {3}
+        nums.add(num2);    // {3, 4, 5?
+        nums.add(num3);    // {3, 4, 5}
 
         try{
-            if (nums.size() != nums.stream().distinct().count()) // 중복 숫자가 있을 때
+            if (nums.size() != nums.stream().distinct().count())    // 중복 숫자가 있을 때
                 throw new IllegalArgumentException("IllegalArgumentException 중복 숫자");
         }catch (IllegalArgumentException e2){
-            System.out.println("IllegalArgumentException 중복 숫자");
+            //System.out.println("IllegalArgumentException 중복 숫자");
             return false;
         }
         try{
-            if (nums.contains(0)) // 1~9가 아닐 때, 즉 0있으면 //성공 ex) 012, 120
+            if (nums.contains(0)) // 1~9가 아닐 때, 즉 0 있으면 ex) 012, 120
             {
                 throw new IllegalArgumentException("IllegalArgumentException 1 ~ 9 이내 숫자로");
             }
         }catch (IllegalArgumentException e3){
-            System.out.println("IllegalArgumentException 1 ~ 9 이내 숫자로");
+            //System.out.println("IllegalArgumentException 1 ~ 9 이내 숫자로");
             return false;
         }
 
@@ -81,34 +83,34 @@ public class Application {
 
         int str2Number = Integer.parseInt(inputStr);
 
-        int num1 = str2Number / 100; // 3, 백의 자리
-        int num2 = (str2Number % 100) / 10; // 4, 10의 자리
-        int num3 = (str2Number % 100) % 10; // 5, 1의 자리
+        int num1 = str2Number / 100;    // 3, 백의 자리
+        int num2 = (str2Number % 100) / 10;    // 4, 10의 자리
+        int num3 = (str2Number % 100) % 10;    // 5, 1의 자리
         List<Integer> nums = new ArrayList<>();
-        nums.add(num1); // {3}
-        nums.add(num2); // {3, 4, 5?
-        nums.add(num3); // {3, 4, 5}
+        nums.add(num1);    // {3}
+        nums.add(num2);    // {3, 4, 5?
+        nums.add(num3);    // {3, 4, 5}
 
         return nums;
     }
-
     public int[] checkIsBallOrStrike(List<Integer> user, List<Integer> computer){
         int[] Count = new int[] {0, 0, 0};
 
         for (int index = 0; index < user.size();index++) {
-            if (computer.contains(user.get(index))) { // 사용자 입력숫자가 컴퓨터 랜덤 리스트에 존재하면 스트라이크인지 볼인지 확인
-                if (index == computer.indexOf(user.get(index))) { // 사용자 입력숫자 자리와 컴퓨터 랜덤 리스트에서의 같으면
-                    Count[0] += 1; // 스트라이크
+            if (computer.contains(user.get(index))) {    // 사용자 입력숫자가 컴퓨터 랜덤 리스트에 존재하면 스트라이크인지 볼인지 확인
+                if (index == computer.indexOf(user.get(index))) {    // 사용자 입력숫자 자리와 컴퓨터 랜덤 리스트에서의 같으면
+                    Count[0] += 1;    // 스트라이크
                 } else {
-                    Count[1] += 1; // 볼 , 4,5
+                    Count[1] += 1;    // 볼
                 }
-            } else            // 존재하지 않으면 nothing +1
-                Count[2] += 1; //3
+            } else    // 존재하지 않으면 nothing +1
+                Count[2] += 1;
         }
         return Count;
     }
+
     public void printMent(int [] countArray) {
-        /// 5-1. 함수에 필요한 변수 선언
+        // 5-1. 함수에 필요한 변수 선언
         int strikeCount = countArray[0];
         int ballCount = countArray[1];
         int nothingCount = countArray[2];
@@ -132,7 +134,7 @@ public class Application {
             System.out.println(strikeMent);
         //낫씽
         else if (nothingCount == 3)
-            System.out.println("낫씽");
+            System.out.println("낫싱");
     }
     /*public static void exceptionHandling(String wrongInput){
         // 잘못된 값 입력할 경우 IllegalArgumentException을 발생 후 애플리케이션 종료
@@ -153,17 +155,17 @@ public class Application {
         boolean wannaExit = false;
 
         switch (cmd) {
-            case "1": // 새로 시작
+            case "1":    // 새로 시작
                 Application.main(new String[]{});
                 break;
-            case "2": // 종료
+            case "2":    // 종료
                 wannaExit = true;
                 break;
-            default: // 예외 처리
+            default:    // 예외 처리
                 try{
                     throw new IllegalArgumentException("IllegalArgumentException");
                 } catch (IllegalArgumentException e){
-                    System.out.println("IllegalArgumentException 예외 발생. 종료합니다.");
+                    //System.out.println("IllegalArgumentException 예외 발생. 종료합니다.");
                     wannaExit = true;
                 }
         }
@@ -174,14 +176,12 @@ public class Application {
         // TODO: 프로그램 구현
         Application program = new Application();
 
-        /// newGame 분기점 (재시작 시)
+        // ReGame 분기점 (재시작 시)
         // 1. 컴퓨터가 1 ~ 9 중 3개의 임의의 수 차출
         // 2. 배열에 3개의 숫자를 넣는다
         List<Integer> PC = program.randomPick();
 
         boolean tryAgain = true;
-        boolean TryingToExit = false;
-
         // 반복문
         while(tryAgain) {
             // 3. 사용자가 세 개의 수 입력
@@ -204,10 +204,8 @@ public class Application {
                 tryAgain = false;
             }
         }
-
         //8. 재시작 or 종료
-        TryingToExit = askWannaRegame();
-        if(TryingToExit)
+        if(askWannaRegame())
             return;
     }
 }
