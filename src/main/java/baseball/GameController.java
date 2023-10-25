@@ -12,29 +12,30 @@ public class GameController {
         this.player = player;
     }
 
-    public void startGame() {
-        boolean isGameEnd = false;
-        do {
-            // New Game
-            computer.generateRandomNumbers();
-
-            // Game
-            while (true) {
-                player.getUserInput();
-                Score playerScore = computer.guess(player.getNumbers());
-                System.out.println(playerScore.getScoreResult());
-                if (playerScore.isThreeStrikes()) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    Integer restartOrEnd = player.getRestartOrEnd();
-                    if (restartOrEnd == TERMINATE_INPUT) {
-                        isGameEnd = true;
-                    }
-                    break;
+    private boolean playGameRound() {
+        computer.generateRandomNumbers();
+        while (true) {
+            player.getUserInput();
+            Score playerScore = computer.guess(player.getNumbers());
+            System.out.println(playerScore.getScoreResult());
+            if (playerScore.isThreeStrikes()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                Integer restartOrEnd = player.getRestartOrEnd();
+                if (restartOrEnd == TERMINATE_INPUT) {
+                    return true;
                 }
+                break;
             }
+        }
+        return false;
+    }
 
-            // Restart Game?
-        } while (!isGameEnd);
+    public void startGame() {
+        while (true) {
+            if (playGameRound()) {
+                break;
+            }
+        }
     }
 }
