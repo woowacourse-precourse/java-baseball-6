@@ -12,12 +12,12 @@ public record GameResult(
             return;
         }
 
-        if (strikeCount > 0) {
-            System.out.print(strikeCount + "스트라이크 ");
+        if (ballCount > 0) {
+            System.out.print(ballCount + "볼 ");
         }
 
-        if (ballCount > 0) {
-            System.out.print(ballCount + "볼");
+        if (strikeCount > 0) {
+            System.out.print(strikeCount + "스트라이크");
         }
 
         if (strikeCount == 0 && ballCount == 0) {
