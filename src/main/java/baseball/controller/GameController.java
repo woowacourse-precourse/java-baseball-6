@@ -11,6 +11,9 @@ import static baseball.controller.GameStatus.*;
 
 public class GameController {
 
+    private static final int GAME_RESTART_OPTION = 1;
+    private static final int GAME_EXIT_OPTION = 2;
+
     private static GameStatus gameStatus = PLAYING;
 
     private final GameService gameService;
@@ -35,6 +38,24 @@ public class GameController {
         if (playResult.isThreeStrike()) {
             OutputView.printGameEnd();
             gameStatus = END;
+            checkGameRestart();
+        }
+    }
+
+    private void checkGameRestart() {
+        int gameRestart = InputView.inputGameRestart();
+
+        validationGameRestart(gameRestart);
+
+        if (gameRestart == GAME_RESTART_OPTION) {
+            gameService.resetGame();
+            gameStatus = PLAYING;
+        }
+    }
+
+    private void validationGameRestart(int gameRestart) {
+        if (gameRestart != GAME_RESTART_OPTION && gameRestart != GAME_EXIT_OPTION) {
+            throw new IllegalArgumentException("잘못된 입력값입니다.");
         }
     }
 }

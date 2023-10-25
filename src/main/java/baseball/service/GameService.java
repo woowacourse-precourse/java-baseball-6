@@ -19,4 +19,8 @@ public class GameService {
 
         return playerBalls.attackComputer(computer);
     }
+
+    public void resetGame() {
+        computer.changeBalls();
+    }
 }
