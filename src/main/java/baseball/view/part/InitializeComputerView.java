@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public record InitializeComputerView(EventListener eventListener) implements DefaultView {
+
     @Override
     public ScenarioResultType execute() {
         eventListener.listen(InitializeComputerEvent::new);
@@ -19,6 +20,7 @@ public record InitializeComputerView(EventListener eventListener) implements Def
     }
 
     public record InitializeComputerEvent(EventContext eventContext) implements Event {
+        
         private static final int MIN_NUMBER = 1;
         private static final int MAX_NUMBER = 9;
         private static final int SIZE = 3;

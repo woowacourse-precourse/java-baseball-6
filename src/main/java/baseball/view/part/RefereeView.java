@@ -10,6 +10,7 @@ import java.util.Objects;
 import java.util.stream.IntStream;
 
 public record RefereeView(EventListener eventListener, OutputView outputView) implements DefaultView {
+
     @Override
     public ScenarioResultType execute() {
         final var score = eventListener.listenWithResult(RefereeEvent::new);
@@ -23,6 +24,7 @@ public record RefereeView(EventListener eventListener, OutputView outputView) im
 
 
     public record RefereeEvent(EventContext eventContext) implements ReturnEvent<Score> {
+        
         private static final int SIZE = 3;
 
         @Override

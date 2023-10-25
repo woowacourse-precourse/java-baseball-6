@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @DisplayName("[도메인] 사용자 테스트에서")
 class UserTest {
+    
     @Nested
     @DisplayName(" 생성할 때")
     class CreateUserValidationCase {

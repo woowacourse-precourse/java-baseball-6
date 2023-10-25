@@ -9,6 +9,7 @@ import baseball.view.core.DefaultView;
 import baseball.view.core.InputView;
 
 public record InitializeUserView(InputView inputView, EventListener eventListener) implements DefaultView {
+    
     @Override
     public ScenarioResultType execute() {
         eventListener.listenWithParameter(InitializeUserEvent::new)

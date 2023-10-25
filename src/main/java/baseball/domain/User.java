@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public record User(List<Integer> numbers) {
+    
     private static final Integer USER_NUMBER_MAX_SIZE = 3;
 
     public User {

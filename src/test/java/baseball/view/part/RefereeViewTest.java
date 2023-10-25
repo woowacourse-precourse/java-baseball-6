@@ -20,7 +20,6 @@ import org.mockito.Mockito;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class RefereeViewTest {
 
-
     @Nested
     @DisplayName(" 이벤트 테스트에서")
     class EventTest {

@@ -5,6 +5,7 @@ import baseball.view.core.DefaultView;
 import baseball.view.core.InputView;
 
 public record RetryGameView(InputView inputView) implements DefaultView {
+    
     @Override
     public ScenarioResultType execute() {
         return switch (inputView.readRetryCommand()) {
