@@ -18,7 +18,7 @@ public class BaseballGameController {
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-//        while (true) {
+        while (true) {
             System.out.print(INPUT_MESSAGE);
             pc = new Computer();
             pc.setNumber();
@@ -26,14 +26,24 @@ public class BaseballGameController {
             user = new User();
             user.setNumber(Console.readLine());
 
-            /*
-                 4. 숫자 판별
-                    a. 같은 자리, 같은 숫자 -> 스트라이크
-                    b. 다른 자리, 같은 숫자 -> 볼
-                    c. 다른 자리, 다른 숫자 -> 낫싱
-            */
             hint = new Hint();
             hint.gamePlay(pc.getNumber(), user.getNumber());
-//        }
+            if(hint.getGameOver()) break;
+            hint.printHint();
+            /*
+                   Todo
+                    5. 힌트 출력
+                    (ex) N스트라이크 M볼, 낫싱...)
+
+                    -> 3번 ~ 5번 반복
+
+                    6. 3개의 숫자를 다 맞출 경우, 종료문구 출력
+
+                    7. 재시작 / 종료 문구 출력
+                    a. 재시작: 1번부터 다시 시작
+                    b. 종료: 시스템 종료
+
+             */
+        }
     }
 }
