@@ -48,9 +48,10 @@ public class Application {
     	do{
     		strike=0;
     		ball=0;
-			s=Console.readLine();
 
     		System.out.print("숫자를 입력해 주세요 : ");   
+			s=Console.readLine();
+
     		try {
     			runException(s);
     		}
