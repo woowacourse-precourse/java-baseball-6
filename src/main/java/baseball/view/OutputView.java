@@ -12,7 +12,7 @@ public class OutputView {
         System.out.println(GAME_STOP_MESSAGE);
     }
 
-    public void printRoundResult(String result) {
+    public void printTurnResult(String result) {
         System.out.println(result);
     }
 }

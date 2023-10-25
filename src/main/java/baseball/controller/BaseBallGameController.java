@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.enums.GameEndOption;
 import baseball.model.Computer;
 import baseball.model.Game;
-import baseball.model.Round;
+import baseball.model.Turn;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -27,15 +27,15 @@ public class BaseballGameController {
     }
 
     public void play() {
-        Round round;
+        Turn turn;
         String computerNumber = new Computer().getRandomNumber();
         do {
             String playerNumber = inputView.getSuggestedNumber();
             InputValidator.validatePlayerNumber(playerNumber);
-            round = Round.fromPlayerAndComputerNumbers(playerNumber, computerNumber);
-            String result = round.generateResultMessage();
-            outputView.printRoundResult(result);
-        } while (!round.isEnd());
+            turn = Turn.fromPlayerAndComputerNumbers(playerNumber, computerNumber);
+            String result = turn.generateResultMessage();
+            outputView.printTurnResult(result);
+        } while (!turn.isEnd());
     }
 
     public void stop() {

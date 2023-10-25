@@ -2,7 +2,7 @@ package baseball.model;
 
 import java.util.stream.IntStream;
 
-public class Round {
+public class Turn {
     private static final String BALL_STRING = "볼";
     private static final String STRIKE_STRING = "스트라이크";
     private static final String NOTHING_STRING = "낫싱";
@@ -11,12 +11,12 @@ public class Round {
     private final int ballCount;
     private final int strikeCount;
 
-    private Round(int ballCount, int strikeCount) {
+    private Turn(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }
 
-    public static Round fromPlayerAndComputerNumbers(String playerNumber, String computerNumber) {
+    public static Turn fromPlayerAndComputerNumbers(String playerNumber, String computerNumber) {
         int ballCount = (int) IntStream.range(0, playerNumber.length())
                 .filter(i -> playerNumber.charAt(i) != computerNumber.charAt(i))
                 .filter(i -> computerNumber.contains(String.valueOf(playerNumber.charAt(i))))
@@ -25,7 +25,7 @@ public class Round {
                 .filter(i -> playerNumber.charAt(i) == computerNumber.charAt(i))
                 .count();
 
-        return new Round(ballCount, strikeCount);
+        return new Turn(ballCount, strikeCount);
     }
 
     public String generateResultMessage() {
