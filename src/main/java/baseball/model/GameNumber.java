@@ -34,10 +34,6 @@ public class GameNumber {
         return true;
     }
 
-    public List<Integer> getGameNumbers() {
-        return gameNumbers;
-    }
-
     public int getNumber(int index) {
         return gameNumbers.get(index);
     }
