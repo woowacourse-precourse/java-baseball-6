@@ -27,6 +27,7 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 String num = Console.readLine();
 
+                //userNum 리스트화
                 List<Integer> userNum = new ArrayList<>();
                 try {
                     userNum = checkUserNum(num);
@@ -41,7 +42,8 @@ public class Application {
                 //결과 출력
                 printResult(result);
 
-                if(result[1] == 3) game = false;//현재 게임만 종료
+                //스트라이크면 현재 게임 종료
+                if(result[1] == 3) game = false;
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
