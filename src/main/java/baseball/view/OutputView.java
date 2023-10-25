@@ -14,7 +14,7 @@ public class OutputView {
     public static void detailMessage(int strike, int ball){
         isZeroStrikeAndBall(strike, ball);
         isZeroStrike(strike, ball);
-        isZeroball(strike, ball);
+        isZeroBall(strike, ball);
         isNotZeroStrikeAndBall(strike,ball);
     }
 
@@ -30,7 +30,7 @@ public class OutputView {
         }
     }
 
-    public static void isZeroball(int strike, int ball) {
+    public static void isZeroBall(int strike, int ball) {
         if(strike != 0 && ball == 0){
             System.out.println(strike+STRIKE_MESSAGE);
         }
