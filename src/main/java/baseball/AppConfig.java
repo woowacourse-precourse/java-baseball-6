@@ -7,8 +7,19 @@ import baseball.validation.GameInputValidator;
 import baseball.validation.PlayOrStopInputValidator;
 
 public class AppConfig {
-    GameInputValidator gameInputValidator = new GameInputValidator();
-    PlayOrStopInputValidator playOrStopInputValidator = new PlayOrStopInputValidator();
-    RandomNumberGenerator randomNumberGenerator =new RandomNumberGenerator();
-    BallStrikeCalculator ballStrikeCalculator = new BallStrikeCalculator();
+    public GameInputValidator gameInputValidator() {
+        return new GameInputValidator();
+    }
+
+    public PlayOrStopInputValidator playOrStopInputValidator() {
+        return new PlayOrStopInputValidator();
+    }
+
+    public RandomNumberGenerator randomNumberGenerator() {
+        return new RandomNumberGenerator();
+    }
+
+    public BallStrikeCalculator ballStrikeCalculator() {
+        return new BallStrikeCalculator();
+    }
 }
