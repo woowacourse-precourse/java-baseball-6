@@ -43,13 +43,13 @@ public class GameController {
     }
 
     private Numbers getPlayerNumber() {
-        String numberString = inputView.readInputNumbers();
+        String numberString = inputView.readInput();
         NumberValidator.validateNumber(numberString);
         return Numbers.from(Parser.parseNumbers(numberString));
     }
 
     private boolean requestRestartOrExit() {
-        String response = inputView.readRestartOrOver();
+        String response = inputView.readInput();
         RestartOrExitValidator.validateRestartOrExit(response);
         return Parser.parseRestartOrExit(response).equals(RESTART_ANSWER);
     }
