@@ -21,7 +21,7 @@ public final class Computer extends GameNumbers {
     private int countBalls(Player player) {
         int ball = 0;
         for (int i = 0; i < GAME_NUMBERS_COUNT; i++) {
-            if (!isStrike(player, i) && isBall(player, i)) {
+            if (isBall(player, i)) {
                 ball++;
             }
         }
@@ -47,6 +47,6 @@ public final class Computer extends GameNumbers {
 
     private boolean isBall(Player player, int index) {
         GameNumber playerNumber = player.getGameNumberAt(index);
-        return gameNumbers.contains(playerNumber);
+        return gameNumbers.contains(playerNumber) && !isStrike(player, index);
     }
 }
