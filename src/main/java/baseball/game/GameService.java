@@ -42,6 +42,7 @@ public class GameService {
             println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             endPtr = read();
+            if(endPtr != 1 && endPtr != 2) throw new IllegalArgumentException("잘못된 입력입니다!");
         }
     }
 
