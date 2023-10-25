@@ -7,8 +7,12 @@ public record Hint(int strike, int ball) {
         return strike == 0 && ball == 0;
     }
 
+    public boolean isSuccess() {
+        return strike == Answer.ANSWER_LENGTH;
+    }
+
     private String getBallMessage() {
-        return ball > 0 ? String.format(PrintConst.BALL.getMessage(), ball) : PrintConst.EMPTY_STRING.getMessage();
+        return ball > 0 ? String.format(PrintConst.BALL.getMessage(), ball) + PrintConst.SPACE.getMessage() : PrintConst.EMPTY_STRING.getMessage();
     }
 
     private String getStrikeMessage() {
