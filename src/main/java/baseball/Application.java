@@ -1,12 +1,12 @@
 package baseball;
 
+import baseball.model.Generator;
+import baseball.model.Validation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import java.util.Arrays;
 import java.util.HashSet;
-
-import static baseball.model.Generator.generateComputerNumber;
 
 public class Application {
 
@@ -15,7 +15,7 @@ public class Application {
     public static void main(String[] args) {
 
         OutputView.startGame();
-        int computerNumber = generateComputerNumber();
+        int computerNumber = Generator.generateComputerNumber();
         System.out.println("computerNumber = " + computerNumber);
 
         while (true) {
@@ -25,7 +25,7 @@ public class Application {
 
                 int optionNumber = Validation.getOptionNumber(optionString);
                 if (optionNumber == 1) {
-                    computerNumber = generateComputerNumber();
+                    computerNumber = Generator.generateComputerNumber();
                     is3Strike = false;
                     System.out.println("computerNumber = " + computerNumber);
                 } else {
@@ -34,27 +34,10 @@ public class Application {
                 }
             }
             // 게임에서 아직 3스트라이크를 달성하지 못한 경우
-            // userInput이 0인 경우 프로그램을 종료하도록 수정해야 한다.
-            int userNumber = getUserInput();
+            int userNumber = Generator.generateUserNumber();
             printHint(computerNumber,userNumber);
         }
-
     }
-
-    private static int getUserInput() {
-        int validateNumber = 0;
-
-        String userInputString = InputView.userInput();
-
-        try {
-            validateNumber = Validation.isValidateNumber(userInputString);
-        } catch (IllegalArgumentException e) {
-            String message = e.getMessage();
-            System.out.println(message);
-        }
-        return validateNumber;
-    }
-
 
     /**
      * 스트라이크의 개수와 볼의 개수가 같으면 스트라이크의 개수를 출력하고, 볼은 0으로 처리해야 한다.

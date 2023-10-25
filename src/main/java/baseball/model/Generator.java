@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.view.InputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,5 +20,18 @@ public class Generator {
             }
         }
         return parseInt(sb.toString());
+    }
+
+    public static int generateUserNumber() {
+        int validateNumber = 0;
+        String userInputString = InputView.userInput();
+
+        try {
+            validateNumber = Validation.isValidateNumber(userInputString);
+        } catch (IllegalArgumentException e) {
+            String message = e.getMessage();
+            System.out.println(message);
+        }
+        return validateNumber;
     }
 }
