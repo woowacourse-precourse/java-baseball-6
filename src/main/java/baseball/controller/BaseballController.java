@@ -2,10 +2,10 @@ package baseball.controller;
 
 import baseball.model.ComputerModel;
 import baseball.model.UserModel;
+import baseball.model.Util;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 public class BaseballController {
@@ -53,11 +53,7 @@ public class BaseballController {
 
     private int countBall(int[] computerNumbers, int[] userNumbers){
         return (int) Stream.iterate(0, i -> i < 3, i -> i + 1)
-                .filter(i -> computerNumbers[i] != userNumbers[i] &&
-                        Arrays.stream(computerNumbers)
-                                .boxed()
-                                .toList()
-                                .contains(Integer.parseInt(userNumbers[i]+"")))
+                .filter(i -> computerNumbers[i] != userNumbers[i] && Util.isNumberInArray(userNumbers[i], computerNumbers))
                 .count();
     }
 
