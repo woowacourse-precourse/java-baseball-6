@@ -41,16 +41,17 @@ public class GameController {
             BaseballService baseballService = new BaseballService(userNumber, computerNumber);
             playerGameState = baseballService.calculateStrikeBall();
             outputResult(playerGameState);
-        } while (isGameRestart(playerGameState));
+        } while (isRetry(playerGameState) || isRestartGame(playerGameState));
     }
 
-    private boolean isGameRestart(PlayerGameStateDto playerGameState) {
-        if (playerGameState.isEndGame()) {
-            inputRestart(playerGameState);
-            checkComputerNumberChange(playerGameState);
-            return playerGameState.isRestart();
-        }
-        return true;
+    private boolean isRetry(PlayerGameStateDto playerGameState) {
+        return !playerGameState.isEndGame();
+    }
+
+    private Boolean isRestartGame(PlayerGameStateDto playerGameState) {
+        inputRestart(playerGameState);
+        checkComputerNumberChange(playerGameState);
+        return playerGameState.isRestart();
     }
 
     private void checkComputerNumberChange(PlayerGameStateDto playerGameState) {
