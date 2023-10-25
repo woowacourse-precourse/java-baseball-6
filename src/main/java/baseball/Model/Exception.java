@@ -10,13 +10,9 @@ public class Exception {
     }
 
     public static boolean checkIsDuplicated(String userInput) {
-        Set<Character> set = new HashSet<>();
-        for (int i = 0; i < userInput.length(); i++) {
-            if (!set.add(userInput.charAt(i))) {
-                return true;
-            }
-        }
-        return false;
+        return userInput.chars()
+                .distinct()
+                .count() != userInput.length();
     }
 
     public static boolean checkInputLength(String userInput) {
