@@ -2,10 +2,10 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Computer {
+public class Round {
     private String randomNumber;
 
-    public Computer() {
+    public Round() {
         generateRandomNumber();
     }
 

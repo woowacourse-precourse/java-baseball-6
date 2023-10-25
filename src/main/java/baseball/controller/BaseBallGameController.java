@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.enums.GameEndOption;
-import baseball.model.Computer;
 import baseball.model.Game;
+import baseball.model.Round;
 import baseball.model.Turn;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -28,7 +28,7 @@ public class BaseballGameController {
 
     public void play() {
         Turn turn;
-        String computerNumber = new Computer().getRandomNumber();
+        String computerNumber = new Round().getRandomNumber();
         do {
             String playerNumber = inputView.getSuggestedNumber();
             InputValidator.validatePlayerNumber(playerNumber);
