@@ -1,7 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,19 +40,16 @@ public class Game {
             throw new IllegalArgumentException("Input must be a number");
         }
 
-        List<Integer> query = Arrays.asList(
-                queryInt / 100,
-                (queryInt / 10) % 10,
-                queryInt % 10);
+        int[] digits = {queryInt / 100, (queryInt / 10) % 10, queryInt % 10};
+        List<Integer> query = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            if (query.get(i) < 1 || query.get(i) > 9) {
+            if (digits[i] < 1 || digits[i] > 9) {
                 throw new IllegalArgumentException("Digits must be ranged 1 to 9");
             }
-            for (int j = i + 1; j < 3; j++) {
-                if (query.get(i).equals(query.get(j))) {
-                    throw new IllegalArgumentException("Digits must be unique");
-                }
+            if (query.contains(digits[i])) {
+                throw new IllegalArgumentException("Digits must be unique");
             }
+            query.add(digits[i]);
         }
         return query;
     }
