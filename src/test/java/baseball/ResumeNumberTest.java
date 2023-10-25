@@ -1,11 +1,11 @@
 package baseball;
 
+import static baseball.ExceptionMessage.RESUME_VALUE_EXCEPTION;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import baseball.model.number.ResumeNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static baseball.ExceptionMessage.*;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResumeNumberTest {
 

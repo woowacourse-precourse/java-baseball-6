@@ -1,17 +1,17 @@
 package baseball.controller;
 
-import baseball.model.rule.GameRule;
+import static baseball.Constant.PLAY_NUMBER_DIGIT;
+
+import baseball.model.Referee;
 import baseball.model.number.PlayNumber;
 import baseball.model.number.RandomNumber;
-import baseball.model.Referee;
 import baseball.model.number.ResumeNumber;
+import baseball.model.rule.GameRule;
+import baseball.view.input.InputView;
 import baseball.view.output.AskView;
 import baseball.view.output.EndView;
-import baseball.view.input.InputView;
 import baseball.view.output.ResultView;
 import baseball.view.output.StartView;
-
-import static baseball.Constant.PLAY_NUMBER_DIGIT;
 
 public class GameController {
 

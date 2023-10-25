@@ -1,10 +1,10 @@
 package baseball.model.number;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import static baseball.Constant.END_NUMBER;
 import static baseball.Constant.PLAY_NUMBER_DIGIT;
 import static baseball.Constant.START_NUMBER;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumber {
 

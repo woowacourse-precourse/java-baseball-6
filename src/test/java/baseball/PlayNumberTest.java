@@ -1,13 +1,13 @@
 package baseball;
 
-import baseball.model.number.PlayNumber;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import static baseball.ExceptionMessage.PLAY_NUMBER_DUPLICATE_EXCEPTION;
 import static baseball.ExceptionMessage.PLAY_NUMBER_LENGTH_EXCEPTION;
 import static baseball.ExceptionMessage.PLAY_NUMBER_VALUE_EXCEPTION;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import baseball.model.number.PlayNumber;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class PlayNumberTest {
 
