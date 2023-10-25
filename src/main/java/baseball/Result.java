@@ -7,8 +7,13 @@ import java.util.List;
 //결과를 출력하는 클래스
 public class Result {
 
-    private boolean onGoingGame;
-    private boolean gameContinue;
+    private boolean continueGuess;
+    private boolean gameOver;
+
+    public Result(){
+        this.gameOver = false;
+        this.continueGuess = true;
+    }
 
     void printResult(User user){
         int strike = user.getStrike();
@@ -21,11 +26,11 @@ public class Result {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             input = Console.readLine();
             if (input.charAt(0) == '2') {
-                onGoingGame = false;
-                gameContinue = false;
+                continueGuess = false;
+                gameOver = true;
             }
             else if(input.charAt(0) == '1'){
-                onGoingGame = false;
+                continueGuess = false;
             }
             else {
                 throw new IllegalArgumentException("잘못된 게임 종료 입력입니다. 게임을 종료합니다.");
@@ -45,20 +50,18 @@ public class Result {
         }
     }
 
-    public Result(){
-        this.gameContinue = true;
-        this.onGoingGame = true;
+    public boolean continueGuess() {
+        return continueGuess;
     }
 
-    public boolean isOnGoingGame() {
-        return onGoingGame;
+    public boolean isGameOver() {
+        this.continueGuess = true;
+
+        return gameOver;
     }
 
-    public boolean isGameContinue() {
-        return gameContinue;
+    public void readUserInput() {
+        this.continueGuess = true;
     }
 
-    public void setOnGoingGame(boolean onGoingGame) {
-        this.onGoingGame = onGoingGame;
-    }
 }
