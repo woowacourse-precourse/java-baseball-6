@@ -8,6 +8,15 @@ public class Umpire {
     private static final int MAX_NUMBER_SIZE = 3;
     private static final int WINNING_STRIKE_COUNT = 3;
 
+    private final int strikeCount;
+    private final int ballCount;
+
+    public Umpire(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        this.strikeCount = getStrikeCount(computerNumbers, playerNumbers);
+        this.ballCount = getBallCount(computerNumbers, playerNumbers);
+        printStrikeAndBallCount(strikeCount, ballCount);
+    }
+
     public int getStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
         int strike = INIT_NUMBER;
         for (int i = INIT_NUMBER; i < MAX_NUMBER_SIZE; i++) {
@@ -42,6 +51,10 @@ public class Umpire {
         }
 
         return "낫싱";
+    }
+
+    private void printStrikeAndBallCount(int strikeCount, int ballCount) {
+        System.out.println(getBaseballResult(strikeCount, ballCount));
     }
 
     public boolean isGameSet(int strikeCount) {
