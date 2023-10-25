@@ -1,6 +1,6 @@
 package baseball.global.constant;
 
-public enum Output {
+public enum OutputType {
 
 	GAME_INITIALIZE("숫자 야구 게임을 시작합니다."),
 	INPUT_NUMBER("숫자를 입력해주세요 : "),
@@ -15,7 +15,7 @@ public enum Output {
 
 	private final String comment;
 
-	Output(final String comment) {
+	OutputType(final String comment) {
 		this.comment = comment;
 	}
 
