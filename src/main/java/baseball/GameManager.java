@@ -8,6 +8,7 @@ import static baseball.Constant.RESTART_MESSAGE;
 import static baseball.Constant.START_MESSAGE;
 import static baseball.Constant.STRIKE_MESSAGE;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class GameManager {
@@ -23,14 +24,14 @@ public class GameManager {
 
     public List<Integer> askGuess(Player player) {
         System.out.println(INPUT_MESSAGE);
-        String[] input = camp.nextstep.edu.missionutils.Console.readLine().split("");
+        String[] input = Console.readLine().split("");
         validator.validateGuess(input);
         return player.makeGuess(input);
     }
 
     public boolean askRestart() {
         System.out.println(RESTART_MESSAGE);
-        String input = camp.nextstep.edu.missionutils.Console.readLine();
+        String input = Console.readLine();
         validator.validateOption(input);
         return input.equals("1");
     }
