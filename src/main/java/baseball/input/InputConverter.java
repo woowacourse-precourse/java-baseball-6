@@ -3,13 +3,7 @@ package baseball.input;
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
-public class InputHandler {
-    public String readInput(){
-        return readLine();
-    }
-
+public class InputConverter {
     public List<Integer> convertInputToNumbers(String userInput) {
         List<Integer> userNumbers = new ArrayList<>();
         for(char c : userInput.toCharArray())

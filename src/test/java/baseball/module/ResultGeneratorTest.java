@@ -1,4 +1,4 @@
-package baseball.moduleTest;
+package baseball.module;
 
 import baseball.dto.GameResult;
 import baseball.generator.ResultGenerator;

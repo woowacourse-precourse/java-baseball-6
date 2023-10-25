@@ -1,4 +1,4 @@
-package baseball.moduleTest;
+package baseball.module;
 
 import baseball.generator.ComputerNumberGenerator;
 import org.junit.jupiter.api.Assertions;
@@ -18,13 +18,13 @@ class ComputerNumberGeneratorTest {
     public void computerTest(){
         List<Integer> threeDigitNum= gameSession.makeUniqueNumbers();
 
-        Assertions.assertEquals(3, threeDigitNum.size()); //세 자리 수인지
+        Assertions.assertEquals(3, threeDigitNum.size());
 
-        for (Integer num: threeDigitNum){ //각 숫자가 0~9인지
+        for (Integer num: threeDigitNum){
             Assertions.assertTrue(num>=0 && num<=9);
         }
 
-        Set<Integer> uniqueNumbers = new HashSet<>(threeDigitNum); //각 숫자가 중복이 없는지
+        Set<Integer> uniqueNumbers = new HashSet<>(threeDigitNum);
         Assertions.assertEquals(3,uniqueNumbers.size());
     }
 }
