@@ -18,16 +18,16 @@ public class GameProgressController {
             outputView.printGameStart();
             computerController.createAndSaveAnswer(gameNumber);
             progressUserGuessing();
-            progressState = getRestartOrExit(inputView.askRestartOrExitNumber());
+            progressState = getRestartState(inputView.askRestartOrExitNumber());
         }
     }
 
-    private boolean getRestartOrExit(String userInputString) {
-        int userInputRestartOrExitNumber = userInputValidator.validateRestartOrExitInput(userInputString);
-        if (userInputRestartOrExitNumber == 1) {
+    private boolean getRestartState(String userInputString) {
+        int userInputNumber = userInputValidator.validateRestartOrExitInput(userInputString);
+        if (userInputNumber == 1) {
             return true;
         }
-        if (userInputRestartOrExitNumber == 2) {
+        if (userInputNumber == 2) {
             return false;
         }
         throw new IllegalArgumentException();
