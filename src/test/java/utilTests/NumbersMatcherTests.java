@@ -1,4 +1,4 @@
-package baseball.utilTests;
+package utilTests;
 
 import baseball.container.ApplicationContainer;
 import baseball.util.matcher.NumbersMatcher;
