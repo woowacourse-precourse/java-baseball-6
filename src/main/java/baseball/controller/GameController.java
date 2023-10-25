@@ -25,26 +25,22 @@ public class GameController {
 
         outputView.printGameStart();
         List<Integer> randomNumbers = randomNumberGenerator.generateRandomNumbers();
-
+        System.out.println(randomNumbers);
         while (playOption) {
-            System.out.println(randomNumbers);
             outputView.printForInputThreeDigitNumbers();
-
             int[] playersNumbers = inputView.inputThreeDigitNumber();
-
             int[] gameResult = gameService.getGameResult(randomNumbers, playersNumbers);
-
             if (!gameService.isThreeStrike(gameResult)) {
                 outputView.printGameFailResult(gameResult);
                 continue;
             }
-
             outputView.printGameSuccessResult(gameResult);
             if (inputView.inputRestartOrExit() == 1) {
                 randomNumbers = randomNumberGenerator.generateRandomNumbers();
-            } else {
-                playOption = false;
+                continue;
             }
+
+            playOption = false;
         }
     }
 }
