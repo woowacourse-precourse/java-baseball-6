@@ -7,18 +7,18 @@ import java.util.List;
 
 public class Number {
 
-    List<Integer> gameNum = new ArrayList<>();
+    private List<Integer> numbers = new ArrayList<>();
 
     public Number() {
-        while (gameNum.size() < 3) {
+        while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!gameNum.contains(randomNumber)) {
-                gameNum.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
     }
 
-    public List<Integer> getGameNum() {
-        return gameNum;
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
