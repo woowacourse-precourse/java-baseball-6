@@ -9,9 +9,12 @@ import java.util.List;
 
 public class Referee {
     public static boolean judge(List<Integer> computer, List<Integer> number) {
-        int ballCount = Referee.countBall(computer, number);
-        int strikeCount = Referee.countStrike(computer, number);
+        int ballCount = judgeBall(computer, number);
+        int strikeCount = judgeStrike(computer, number);
+        return printJudge(ballCount, strikeCount);
+    }
 
+    private static boolean printJudge(int ballCount, int strikeCount) {
         if (ballCount > 0) {
             System.out.print(ballCount + BALL.getMessage() + " ");
         }
@@ -32,7 +35,7 @@ public class Referee {
         return false;
     }
 
-    private static int countBall(List<Integer> computer, List<Integer> number) {
+    private static int judgeBall(List<Integer> computer, List<Integer> number) {
         int count = 0;
         for (int i = 0; i < number.size(); i++) {
             for (int j = 0; j < computer.size(); j++) {
@@ -44,7 +47,7 @@ public class Referee {
         return count;
     }
 
-    private static int countStrike(List<Integer> computer, List<Integer> number) {
+    private static int judgeStrike(List<Integer> computer, List<Integer> number) {
         int count = 0;
         for (int i = 0; i < number.size(); i++) {
             if (number.get(i).equals(computer.get(i))) {
