@@ -8,6 +8,8 @@ import java.util.List;
 
 public class BaseballGameClass implements Game {
     private List<Integer> RandomAnswerGeneratedInInit;
+    private final ExceptionHandler exceptionHandler = new ExceptionHandler();
+
 
     public List<Integer> RandomNumberGenerator() {
         List<Integer> randomNumberGenerated = new ArrayList<>();
@@ -28,7 +30,6 @@ public class BaseballGameClass implements Game {
 
     @Override
     public void gamePlay() {
-        ExceptionHandler exceptionHandler = new ExceptionHandler();
 
         while (true) {
             System.out.printf("숫자를 입력해주세요: ");
@@ -53,6 +54,7 @@ public class BaseballGameClass implements Game {
     public Integer gameExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputNumber = Console.readLine();
+        exceptionHandler.UnexpectedInputwhenExited(inputNumber);
         if (inputNumber.charAt(0) == '2') {
             return 2;
         }

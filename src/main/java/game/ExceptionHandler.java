@@ -23,4 +23,13 @@ public class ExceptionHandler {
             throw new IllegalArgumentException();
         }
     }
+
+    public void UnexpectedInputwhenExited(String inputNumber) {
+        if (inputNumber.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        if (inputNumber.charAt(0) != '1' && inputNumber.charAt(0) != '2') {
+            throw new IllegalArgumentException();
+        }
+    }
 }
