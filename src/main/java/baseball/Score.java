@@ -30,7 +30,10 @@ public class Score {
             sb.append(ballCount).append("볼");
         }
         if (strikeCount > 0) {
-            sb.append(strikeCount).append("스트라이크 ");
+            if (ballCount > 0) {
+                sb.append(" ");
+            }
+            sb.append(strikeCount).append("스트라이크");
         }
         return sb.toString();
     }
