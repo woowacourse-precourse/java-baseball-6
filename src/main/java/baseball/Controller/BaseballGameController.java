@@ -18,11 +18,12 @@ public class BaseballGameController {
             String[] userInputNums = baseballGameView.inputThreeNums(); // 사용자에게 숫자를 입력받는다
             String result = baseballGameModel.calculateResult(userInputNums,
                     baseballGameModel.getAnswerNums()); // 사용자가 입력한 숫자와 정답 숫자를 비교
-            if (result == "3스트라이크") {
+            if (result.equals("3스트라이크")) {
                 baseballGameView.showResult(result);
                 String decide = baseballGameView.replayOrExit();
                 if (decide.equals("1")) { // 1을 입력받을 시 게임 재시작
-                    
+                    baseballGameModel = new BaseballGameModel(); // 새로운 정답 숫자 생성
+                    continue;
                 } else if (decide.equals("2")) {
                     break;
                 }

@@ -14,7 +14,7 @@ public class ExceptionHandler {
     }
 
     public static void validateNumber(String inputNum) {
-        if (inputNum != "1" || inputNum != "2") {
+        if (!(inputNum.equals("1")) && !(inputNum.equals("2"))) {
             throw new IllegalArgumentException("1또는 2를 입력해야 합니다.");
         }
     }

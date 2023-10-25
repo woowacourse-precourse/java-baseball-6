@@ -10,7 +10,8 @@ public class Application {
         BaseballGameModel baseballGameModel = new BaseballGameModel();
         BaseballGameView baseballGameView = new BaseballGameView();
         BaseballGameController baseballGameController = new BaseballGameController(baseballGameModel, baseballGameView);
-        
+
         baseballGameController.play();
+
     }
 }
