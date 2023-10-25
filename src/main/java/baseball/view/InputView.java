@@ -11,7 +11,6 @@ public class InputView {
     private static final String NUMBER_SEPARATE_DELIMITER = "";
     private static final String YES = "1";
     private static final String NO = "2";
-
     private static final String RETRY_OR_END_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String GET_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 
