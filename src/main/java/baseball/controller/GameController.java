@@ -1,5 +1,13 @@
 package baseball.controller;
 
+import static baseball.view.PrintMessage.ASK_KEEP_GOING_GAME;
+import static baseball.view.PrintMessage.BALL;
+import static baseball.view.PrintMessage.GAME_END;
+import static baseball.view.PrintMessage.GAME_START;
+import static baseball.view.PrintMessage.NOTHING;
+import static baseball.view.PrintMessage.REQUEST_INPUT_NUMBER;
+import static baseball.view.PrintMessage.STRIKE;
+
 import baseball.model.BaseballNumber;
 import baseball.model.Computer;
 import baseball.model.Player;
@@ -7,16 +15,12 @@ import baseball.service.ComputerService;
 import baseball.util.ConvertObjectType;
 import baseball.util.ValidatorPlayerInput;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
-import static baseball.view.PrintMessage.*;
-
 public class GameController {
+    private final ComputerService computerService;
     private Computer computer;
     private Player player;
-
-    private ComputerService computerService;
 
     public GameController(ComputerService computerService) {
         this.computerService = computerService;
@@ -24,10 +28,7 @@ public class GameController {
 
     public void startGame() {
         System.out.println(GAME_START.getMessage());
-        this.player = new Player();
-        this.computer = new Computer();
-        BaseballNumber computerWithRandomNumber = computerService.createComputerWithRandomNumber();
-        computer.updateBaseballNumber(computerWithRandomNumber);
+        initializeGame();
         doGame();
     }
 
@@ -38,10 +39,16 @@ public class GameController {
         System.out.println(GAME_END.getMessage());
 
         if (wantsToKeepPlaying()) {
-            BaseballNumber computerWithRandomNumber = computerService.createComputerWithRandomNumber();
-            computer.updateBaseballNumber(computerWithRandomNumber);
+            initializeGame();
             doGame();
         }
+    }
+
+    private void initializeGame() {
+        this.player = new Player();
+        this.computer = new Computer();
+        BaseballNumber computerWithRandomNumber = computerService.createComputerWithRandomNumber();
+        computer.updateBaseballNumber(computerWithRandomNumber);
     }
 
     public void setPlayerBaseballNumber() {
@@ -93,5 +100,4 @@ public class GameController {
         System.out.println(NOTHING.getMessage());
         return false;
     }
-
 }
