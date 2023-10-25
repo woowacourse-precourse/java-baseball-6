@@ -51,7 +51,7 @@ public class NewGame {
         }else if(ball == 0){
             return strikeCount + "스트라이크";
         }
-        return ball + "볼" + strikeCount + "스트라이크";
+        return ball + "볼 " + strikeCount + "스트라이크";
     }
 
     public int countBall(List<Integer> computer, List<Integer> user){
