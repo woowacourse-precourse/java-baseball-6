@@ -2,9 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class GameProcess {
     private static List<Integer> input;
@@ -25,7 +23,7 @@ public class GameProcess {
         while (true) {
             try {
                 System.out.print("숫자를 입력해주세요 : ");
-                num = scanner.next();
+                num = Console.readLine();
 
                 if (num.length() != 3) {
                     throw new IllegalAccessException("입력된 숫자는 3자리가 아닙니다.");
@@ -37,7 +35,15 @@ public class GameProcess {
                     char digitChar = num.charAt(i); // 문자열 num에서 인덱스 i에 있는 문자를 가져와 digitChar 변수에 저장
                     String digitStr = String.valueOf(digitChar); // 문자 digitChar를 문자열로 반환하여 digitStr 변수에 저장
                     int digit = Integer.parseInt(digitStr); // 문자열 digitStr을 정수로 변환하여 digit 변수에 저장
+                    if (!(1<=digit && digit <= 9)) {
+                        throw new IllegalAccessException("입력된 숫자는 1부터 9사이의 정수가 아닙니다");
+                    }
                     input.add(digit); // 변환된 숫자 digit를 리스트 input에 추가
+                }
+
+                Set<Integer> inputset = new HashSet<>(input);
+                if (inputset.size() != input.size()) {
+                    throw new IllegalAccessException("입력된 숫자에는 중복된 숫자가 포함되어 있습니다.");
                 }
 
                 if (input.get(0) == input.get(1) || input.get(1) == input.get(2) || input.get(0) == input.get(2)) {
