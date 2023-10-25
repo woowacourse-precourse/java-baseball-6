@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 public class InputDevice {
 
-    public static final String INPUT_NUMBER_MENT = "숫자를 입력해주세요 : ";
-    public static final String NO_SPACE = "";
+    private static final String INPUT_NUMBER_MENT = "숫자를 입력해주세요 : ";
+    private static final String NO_SPACE = "";
     private final ConsoleService consoleService;
     private final InputValidator inputValidator;
 
@@ -19,7 +19,7 @@ public class InputDevice {
     public List<Integer> inputTryNumber() {
         System.out.println(INPUT_NUMBER_MENT);
         String inputValue = consoleService.readLine();
-        inputValidator.valid(inputValue);
+        inputValidator.validTryNumber(inputValue);
         return Arrays.stream(inputValue.split(NO_SPACE)).map(Integer::parseInt).collect(Collectors.toList());
     }
 
