@@ -5,12 +5,12 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.List;
 
 public class BaseballGame {
-  private static final int INPUT_SIZE = 3;
-  private static int ball=0, strike=0;
+  private static int ball = 0, strike = 0;
+
   public static void play() {
     List<Integer> computer = Computer.createAnswer();//서로 다른 3자리 수 생성
 
-    while (strike != INPUT_SIZE) {
+    while (strike != Constants.INPUT_SIZE) {
       ball = 0;
       strike = 0;
 
@@ -35,7 +35,7 @@ public class BaseballGame {
   }
 
   private static void isStrikeOrBall(String num, List<Integer> computer) {
-    for (int pos = 0; pos < INPUT_SIZE; pos++) {
+    for (int pos = 0; pos < Constants.INPUT_SIZE; pos++) {
       int m = Character.getNumericValue(num.charAt(pos));
       int index = computer.indexOf(m);
 
@@ -48,7 +48,7 @@ public class BaseballGame {
     }
   }
 
-  private static boolean isRestart(int restart){
+  private static boolean isRestart(int restart) {
     if (restart != 1 && restart != 2) {
       throw new IllegalArgumentException("1또는 2를 입력하세요");
     }
