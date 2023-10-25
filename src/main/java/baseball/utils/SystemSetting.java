@@ -1,8 +1,5 @@
 package baseball.utils;
 
-import static baseball.utils.SystemOutPut.printEndMsg;
-import static baseball.utils.SystemOutPut.printRestartMsg;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +20,6 @@ public class SystemSetting {
         if (count[0] != 3) {
             return true;
         }
-        printEndMsg();
-        printRestartMsg();
         return false;
     }
 

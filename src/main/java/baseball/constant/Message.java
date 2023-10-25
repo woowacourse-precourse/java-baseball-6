@@ -10,4 +10,8 @@ public final class Message {
     public static final String INPUT_STRING_EXCEPTION_MSG = "잘못된 값을 입력하셨습니다.(문자 입력)";
     public static final String INPUT_END_EXCEPTION_MSG = "잘못된 값을 입력하셨습니다.(1 또는 2 입력)";
 
+    public static final String BALL = "볼";
+    public static final String STRIKE = "스트라이크";
+    public static final String NOTHING = "낫싱";
+
 }

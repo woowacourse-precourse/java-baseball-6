@@ -1,6 +1,9 @@
 package baseball;
 
 
+import static baseball.utils.SystemOutPut.printScoreMsg;
+
+import baseball.utils.NumberCompare;
 import baseball.utils.SystemOutPut;
 import baseball.utils.SystemSetting;
 import baseball.validation.InputValidation;
@@ -9,35 +12,34 @@ import java.util.List;
 public class BaseballGame {
     private InputValidation validation = new InputValidation();
     private SystemSetting setting = new SystemSetting();
+    private NumberCompare comapre = new NumberCompare();
     public List<Integer> computer;
 
 
-    public void reStart(boolean threeStrike) {
+    public boolean reStart(boolean threeStrike) {
         if (!threeStrike && validation.endInput().equals("1")) {
             computer = setting.getRandamNumber();
-            System.out.println(computer.toString());
+            return true;
         }
+        if (!threeStrike) {
+            return false;
+        }
+        return true;
     }
 
+
     public void startGame() {
-        SystemOutPut.printStartMsg();
-        setting.getRandamNumber();
-        computer = setting.getRandamNumber();
         int[] count = new int[2];
+        SystemOutPut.printStartMsg();
+        computer = setting.getRandamNumber();
         boolean threeStrike = true;
         while (threeStrike) {
-
             SystemOutPut.printInputMsg();
             List<Integer> user = validation.startInput();
-            
-            //랜덤값 입력값이랑 비교
-
-            // 스트라이크, 볼 결과 출력 해주기
-
+            comapre.compareNumber(computer, user, count);
+            printScoreMsg(count);
             threeStrike = setting.checkStrikeCount(count);
-            reStart(threeStrike);
+            threeStrike = reStart(threeStrike);
         }
-
-
     }
 }
