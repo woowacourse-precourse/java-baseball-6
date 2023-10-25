@@ -7,8 +7,10 @@ import java.util.Set;
 
 enum BallCount{
     STRIKE,
-    BALL,
-    NOTHING
+    BALL;
+    public int value(){
+        return ordinal();
+    }
 }
 
 public class GameUtils {
@@ -55,26 +57,26 @@ public class GameUtils {
 
         return flag;
     }
-    public static void printGameTurnResult(List<Integer> gameTurnResult) {
+    public static void GameTurnResult(List<Integer> gameTurnResult) {
         if (GameUtils.isNothing(gameTurnResult)){
             JudgeBallCountView.judgeNothing();
         }
-        if (isCount(gameTurnResult, 1)){
-            JudgeBallCountView.judgeBall(gameTurnResult.get(1));
+        if (isCount(gameTurnResult, BallCount.BALL.value())){
+            JudgeBallCountView.judgeBall(gameTurnResult.get(BallCount.BALL.value()));
         }
-        if (isCount(gameTurnResult, 0)){
-           JudgeBallCountView.judgeStrike(gameTurnResult.get(0));
+        if (isCount(gameTurnResult, BallCount.STRIKE.value())){
+           JudgeBallCountView.judgeStrike(gameTurnResult.get(BallCount.STRIKE.value()));
         }
     }
 
     public static boolean isGameOver(List<Integer> gameTurnResult) {
-        return gameTurnResult.get(0) == MAX_STRIKE;
+        return gameTurnResult.get(BallCount.STRIKE.value()) == MAX_STRIKE;
     }
     public static boolean isNothing(List<Integer> gameTurnResult) {
-        return gameTurnResult.get(0) == 0 && gameTurnResult.get(1) == 0;
+        return gameTurnResult.get(BallCount.BALL.value()) == 0 &&
+                gameTurnResult.get(BallCount.STRIKE.value()) == 0;
     }
     public static boolean isCount(List<Integer> gameTurnResult, int index){
         return gameTurnResult.get(index) != 0;
     }
-
 }
