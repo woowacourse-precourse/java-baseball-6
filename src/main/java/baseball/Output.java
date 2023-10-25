@@ -1,4 +1,4 @@
-package baseball2;
+package baseball;
 
 public class Output {
 
@@ -13,25 +13,28 @@ public class Output {
     }
 
     private void gameResultPrint(int ballResult, int strikeResult) {
-        String gameResultForPrint = "";
+        String gameResultForPrint = makeResultMessage(ballResult, strikeResult);
+        System.out.println(gameResultForPrint);
+        if (strikeResult == WIN_THE_GAME) {
+            successThreeNumbers();
+        }
+    }
 
+    private String makeResultMessage(int ballResult, int strikeResult) {
+        String resultMessage = "";
         if (ballResult == 0 && strikeResult == 0) {
-            gameResultForPrint += "낫싱";
+            resultMessage += "낫싱";
         }
         if (ballResult > 0) {
-            gameResultForPrint += ballResult + "볼";
+            resultMessage += ballResult + "볼";
         }
         if (ballResult > 0 && strikeResult > 0) {
-            gameResultForPrint += " ";
+            resultMessage += " ";
         }
         if (strikeResult > 0) {
-            gameResultForPrint += strikeResult + "스트라이크";
+            resultMessage += strikeResult + "스트라이크";
         }
-        System.out.println(gameResultForPrint);
-
-        if (strikeResult == WIN_THE_GAME) {
-            System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
-        }
+        return resultMessage;
     }
 
     public void startMessage() {
@@ -48,5 +51,9 @@ public class Output {
 
     public void endingMessage() {
         System.out.println("게임 종료");
+    }
+
+    private void successThreeNumbers() {
+        System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
     }
 }

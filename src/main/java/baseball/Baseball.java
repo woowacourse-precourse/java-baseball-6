@@ -1,4 +1,4 @@
-package baseball2;
+package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -23,37 +23,37 @@ public class Baseball {
         return answer;
     }
 
-    public String countBallAndStrike(List<Integer> newAnswer, String userInput) {
-        int ball = countBall(newAnswer, userInput);
-        int strike = countStrike(newAnswer, userInput);
+    public String countBallAndStrike(List<Integer> computerAnswer, String userInput) {
+        int ball = countBall(computerAnswer, userInput);
+        int strike = countStrike(computerAnswer, userInput);
         return "" + ball + strike;
     }
 
-    private int countBall(List<Integer> newAnswer, String userInput) {
+    private int countBall(List<Integer> computerAnswer, String userInput) {
         int ballCount = 0;
         for (int i = 0; i < ANSWER_SIZE; i++) {
             char userNumChar = userInput.charAt(i);
             int userNumInt = Character.getNumericValue(userNumChar);
-            if (!(newAnswer.get(i).equals(userNumInt)) && newAnswer.contains(userNumInt)) {
+            if (!(computerAnswer.get(i).equals(userNumInt)) && computerAnswer.contains(userNumInt)) {
                 ballCount++;
             }
         }
         return ballCount;
     }
 
-    private int countStrike(List<Integer> newAnswer, String userInput) {
+    private int countStrike(List<Integer> computerAnswer, String userInput) {
         int strikeCount = 0;
         for (int i = 0; i < ANSWER_SIZE; i++) {
             char userNumChar = userInput.charAt(i);
             int userNumInt = Character.getNumericValue(userNumChar);
-            if (newAnswer.get(i).equals(userNumInt)) {
+            if (computerAnswer.get(i).equals(userNumInt)) {
                 strikeCount++;
             }
         }
         return strikeCount;
     }
 
-    public boolean checkSuccess(String gameResult) {
+    public boolean ifSuccess(String gameResult) {
         if (gameResult.equals(GAME_SUCCESS)) {
             return true;
         }

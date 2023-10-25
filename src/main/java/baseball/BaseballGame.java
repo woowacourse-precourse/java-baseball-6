@@ -4,39 +4,47 @@ import java.util.List;
 
 public class BaseballGame {
 
-    private static final String CORRECT_ANSWER = "03";
+    private static final String REGAME = "1";
 
-    private Computer computer = new Computer();
-    private User user = new User();
-    private AnswerChecker answerChecker = new AnswerChecker();
+    Output output = new Output();
+    Input input = new Input();
+    ExceptionChecker exceptionChecker = new ExceptionChecker();
+    Baseball baseball = new Baseball();
 
-    private List<Integer> computerAnswer;
-    private List<Integer> myAnswer;
-    private String gameResult;
-    private boolean playing = true;
+    List<Integer> computerAnswer;
+    String userInput;
+    boolean playing = true;
 
     public void gameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        computerAnswer = computer.makeAnswer();
+        computerAnswer = baseball.makeNewAnswer();
+        output.startMessage();
         while (playing) {
-            System.out.print("숫자를 입력해주세요 : ");
-            myAnswer = user.guessAnswer();
-            gameResult = answerChecker.checkAnswer(computerAnswer, myAnswer);
-            answerChecker.printResult(gameResult);
-            ifSuccess(gameResult, user, computer);
+            output.inputYourNumberMessage();
+            userInput = input.inputOnConsole();
+            exceptionChecker.checkAnswerInputException(userInput);
+            String gameResult = baseball.countBallAndStrike(computerAnswer, userInput);
+            output.printResult(gameResult);
+            boolean success = baseball.ifSuccess(gameResult);
+            if (success) {
+                runAfterSuccess();
+            }
         }
     }
 
-    public void ifSuccess(String gameResult, User user, Computer computer) {
-        if (gameResult == CORRECT_ANSWER) {
-            playing = user.restartOrQuit();
-            makeNewAnswerIfRestart(playing, computer);
-        }
+    private void runAfterSuccess() {
+        output.endingMessage();
+        output.retryOrQuitMessage();
+        userInput = input.inputOnConsole();
+        exceptionChecker.checkRegameOrQuitInputException(userInput);
+        playing = regameOrQuit(userInput);
     }
 
-    private void makeNewAnswerIfRestart(boolean playing, Computer computer) {
-        if (playing == true) {
-            computerAnswer = computer.makeAnswer();
+    private boolean regameOrQuit(String userInput) {
+        if (userInput.equals(REGAME)) {
+            computerAnswer = baseball.makeNewAnswer();
+            return true;
         }
+        output.endingMessage();
+        return false;
     }
 }
