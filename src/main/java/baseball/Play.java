@@ -1,32 +1,84 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Play {
 
+    List<Integer> computer;
 
-    public void game() {
+    public void game(String input) {
 
-        System.out.println("숫자 야구 게임을 시작합니다");
-        Computer computer = new Computer();
-        List<Integer> another = computer.anotherNumber();
+        computer = new Computer().anotherNumber();
         int value = 0;
         while (value != 3) {
 
-            Input input = new Input();
-            List<Integer> player = input.numbers();
+            List<Integer> player = numbers(input);
             if (player.size() == 0) {
                 return;
             }
 
-            value = compare(player, another);
+            value = compare(player, computer);
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
+        System.out.println("게임 종료");
 
-        int newgame = new Input().newGameCheck();
+        int newgame = new Input(input).newGameCheck();
         if (newgame == 1) {
             System.out.println(1);
-            game();
+            new Application();
+        }
+    }
+
+    public List<Integer> numbers(String input) {
+
+        List<Integer> inputNumber = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
+        for (int i = 0; i < input.length(); i++) {
+            char num = input.charAt(i);
+            if (num < '0' || num > '9') {
+                break;
+            }
+            int value = Integer.parseInt(String.valueOf(num));
+            if (inputNumber.contains(value)) {
+                break;
+            }
+            inputNumber.add(value);
+        }
+        if (!inputCheck(inputNumber)) {
+            inputNumber.clear();
+        }
+        return inputNumber;
+    }
+
+    private boolean inputCheck(List<Integer> numbers) {
+        try {
+            if (numbers.size() == 3) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public int newGameCheck() {
+        try {
+            String input = Console.readLine();
+            if (input.length() != 1) {
+                throw new IllegalArgumentException();
+            }
+            int newgame = Integer.parseInt(input);
+            if (newgame == 1) {
+                return 1;
+            } else if (newgame == 2) {
+                return 2;
+            } else {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            return 2;
         }
     }
 
