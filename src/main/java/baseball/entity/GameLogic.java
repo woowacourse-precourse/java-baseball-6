@@ -34,12 +34,10 @@ public class GameLogic {
         compareResult.put("balls", 0);
 
         for (int i = 0; i < playerNumbers.size(); i++) {
-            for (int j = 0; j < computerNumbers.size(); j++) {
-                if (Objects.equals(playerNumbers.get(i), computerNumbers.get(j)) && i == j) {
-                    compareResult.put("strike", compareResult.get("strike") + 1);
-                } else if (Objects.equals(playerNumbers.get(i), computerNumbers.get(j)) && i != j) {
-                    compareResult.put("balls", compareResult.get("balls") + 1);
-                }
+            if (Objects.equals(playerNumbers.get(i), computerNumbers.get(i))) {
+                compareResult.put("strike", compareResult.get("strike") + 1);
+            } else if (computerNumbers.contains(playerNumbers.get(i))) {
+                compareResult.put("balls", compareResult.get("balls") + 1);
             }
         }
 
