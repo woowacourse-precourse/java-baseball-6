@@ -12,7 +12,7 @@ public class Game {
     private static final int END_RANGE = 9;
     private static final int RESTART_GAME = 1;
     private static final int END_GAME = 2;
-    private final int COUNT = 3;
+    private static final int COUNT = 3;
 
     static class Score{
         int strike, ball;
