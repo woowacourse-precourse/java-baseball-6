@@ -1,6 +1,7 @@
 package baseball.util;
 
 import baseball.constant.ErrorMessage;
+import baseball.constant.GameConstant;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,16 +40,21 @@ public class InputUtil {
     }
 
     private boolean isValidString(String input) {
-        if (!input.matches("^(?!.*(.).*\\1)[1-9]{3}$")) {
+        String numberRegex = "^(?!.*(.).*\\1)[" +
+                GameConstant.NUMBER_START_INCLUSIVE.getConstant() + "-" +
+                GameConstant.NUMBER_END_INCLUSIVE.getConstant() + "]{" +
+                GameConstant.NUMBER_COUNT.getConstant() + "}$";
+        if (!input.matches(numberRegex)) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_FORMAT_ERROR.getError());
         }
-        return input.matches("^(?!.*(.).*\\1)[1-9]{3}$");
+        return input.matches(numberRegex);
     }
 
     private boolean isValidReplayCommand(String replayCommand) {
-        if (!replayCommand.matches("^[12]$")) {
+        String replayRegex = "^[" + GameConstant.REPLAY.getConstant() + GameConstant.QUIT.getConstant() + "]$";
+        if (!replayCommand.matches(replayRegex)) {
             throw new IllegalArgumentException(ErrorMessage.REPLAY_COMMAND_ERROR.getError());
         }
-        return replayCommand.matches("^[12]$");
+        return replayCommand.matches(replayRegex);
     }
 }

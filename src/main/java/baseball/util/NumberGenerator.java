@@ -17,8 +17,8 @@ public class NumberGenerator {
 
         while (generatedNumber.size() < 3) {
             int number = Randoms.pickNumberInRange(
-                    GameConstant.GAME_START_INCLUSIVE.getConstant(),
-                    GameConstant.GAME_END_INCLUSIVE.getConstant());
+                    GameConstant.NUMBER_START_INCLUSIVE.getConstant(),
+                    GameConstant.NUMBER_END_INCLUSIVE.getConstant());
             addNumber(number);
         }
         return generatedNumber;
