@@ -16,18 +16,18 @@ public class PlayerValidator {
         validateNumberSize(numbers);
         validateNotDuplicated(numbers);
         validateNumberRange(numbers);
-
+        validateNotNull(numbers);
     }
 
     private static void validateNumberSize(List<Integer> numbers) {
-        if (numbers.size() != 3) {
+        if (numbers.size() != Referee.NUMBERS_SIZE) {
             throw new IllegalArgumentException(NUMBER_SIZE_EX_MESSAGE);
         }
     }
 
     private static void validateNotDuplicated(List<Integer> numbers) {
         Set<Integer> checkDuplicateNumbers = new HashSet<>(numbers);
-        if (checkDuplicateNumbers.size() != 3) {
+        if (checkDuplicateNumbers.size() != Referee.NUMBERS_SIZE) {
             throw new IllegalArgumentException(NUMBER_NOT_DUPLICATED_EX_MESSAGE);
         }
     }
