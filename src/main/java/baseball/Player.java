@@ -6,6 +6,10 @@ import java.util.List;
 
 public class Player {
 
+    public static final int NUMBER_SIZE = 3;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 9;
+
     private final List<Integer> numbers;
 
     private Player(List<Integer> numbers) {
@@ -18,20 +22,28 @@ public class Player {
 
         String[] userInput = Console.readLine().split("");
         for (String input : userInput) {
-            int number = Integer.parseInt(input);
+            int userInputNumber = Integer.parseInt(input);
+            validateInput(userInputNumber, userInputNumbers);
 
-            if (userInputNumbers.contains(number) || number < 1 || number > 9) {
-                throw new IllegalArgumentException();
-            }
-
-            userInputNumbers.add(number);
+            userInputNumbers.add(Integer.parseInt(input));
         }
 
-        if (userInputNumbers.size() != 3) {
+        if (userInputNumbers.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
 
         return new Player(userInputNumbers);
+    }
+
+    private static void validateInput(int userInputNumber, List<Integer> userInputNumbers) {
+
+        if (userInputNumbers.contains(userInputNumber)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (userInputNumber < MIN_NUMBER || userInputNumber > MAX_NUMBER) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public List<Integer> getPlayerNumbers() {

@@ -16,13 +16,13 @@ public class Game {
     }
 
     public String play(List<Integer> playerNumbers) {
-        int strikeCounts = 0;
         int ballCounts = 0;
+        int strikeCounts = 0;
+        List<Integer> randomNumbers = randomNumberGenerator.getNumbers();
 
         for (int i = 0; i < playerNumbers.size(); i++) {
-            List<Integer> randomNumbers = randomNumberGenerator.getNumbers();
-            int randomNumber = randomNumbers.get(i);
             int playerNumber = playerNumbers.get(i);
+            int randomNumber = randomNumbers.get(i);
 
             if (playerNumber == randomNumber) {
                 strikeCounts++;
@@ -34,7 +34,11 @@ public class Game {
             }
         }
 
-        if (strikeCounts == 0 && ballCounts == 0) {
+        return generateResultMessage(ballCounts, strikeCounts);
+    }
+
+    private String generateResultMessage(int ballCounts, int strikeCounts) {
+        if (ballCounts == 0 && strikeCounts == 0) {
             return "낫싱";
         }
 
