@@ -11,6 +11,8 @@ public class Application {
             StopOrRestart();
         } catch(PlayerNumbersException e) {
             System.out.println("!!서로 다른 세자리 수를 공백 없이 입력해주세요.!!");
+        } catch(StopOrRestartException se) {
+            System.out.println("!!1,2 중 하나의 숫자를 입력해주세요.!!");
         }
 
     }
@@ -48,14 +50,15 @@ public class Application {
         }
     }
 
-    public static void StopOrRestart() throws PlayerNumbersException {
+    public static void StopOrRestart() throws PlayerNumbersException, StopOrRestartException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String menuNumber = Console.readLine();
         if(menuNumber.trim().equals("2")) {
             System.exit(0);
         } else if (menuNumber.trim().equals("1")) {
             Game();
-
+        } else {
+            throw new StopOrRestartException("잘못된 메뉴 형식을 입력하셨습니다.");
         }
     }
     public static ArrayList<Integer> ComputerNumbers() {
@@ -97,4 +100,8 @@ public class Application {
 
 class PlayerNumbersException extends Exception {
     PlayerNumbersException(String msg) { super(msg); }
+}
+
+class StopOrRestartException extends Exception {
+    StopOrRestartException(String msg) { super(msg); }
 }
