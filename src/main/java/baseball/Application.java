@@ -2,7 +2,6 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         Computer computer = new Computer();
         Player player = new Player();
         Umpire umpire = new Umpire();
@@ -11,8 +10,6 @@ public class Application {
 
         while(umpire.getCoin()){
             computer.selectComputerNum();
-
-            System.out.println(computer.getComputerNum());
 
             while(umpire.getStrike() != 3){
                 player.inputPlayerNum();
