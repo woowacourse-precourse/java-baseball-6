@@ -19,11 +19,19 @@ public class Application {
     // 예외 처리 (마지막에 1,2 이외를 누르면, 세자리 수 아니고 1234 입력 등)
 }
 
-class Number {
+class Computer {
     private static final int START_OF_RANGE = 1;
     private static final int END_OF_RANGE = 9;
+    static int[] answer = new int[Game.NUMBERS];
     static int getRandomNumber() {
         return Randoms.pickNumberInRange(START_OF_RANGE, END_OF_RANGE);
+    }
+    static void generateAnswer() {
+        for(int i = 0; i<Game.NUMBERS; i++) {
+            answer[i] = getRandomNumber();
+            for(int j=0; j<i; j++)
+                while(answer[i]==answer[j]) answer[i] = getRandomNumber();
+        }
     }
 
 }
@@ -53,30 +61,22 @@ class Result {
     }
 }
 
+class User {
+    static int[] answer = new int[Game.NUMBERS];
+    static void getUserNumbers() {
+        String strNum = Console.readLine();
+        if(strNum.length()> Game.NUMBERS) throw new IllegalArgumentException("Invalid input");
+        for(int i = 0; i < Game.NUMBERS; i++) answer[i]=strNum.charAt(i) - '0';
+    }
+}
+
 class Game {
     public static final int NUMBERS = 3;
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.\n";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
-    static int[] answer = new int[NUMBERS];
-    static int[] userAnswer = new int[NUMBERS];
-
-    static void generateAnswer() {
-        for(int i = 0; i<NUMBERS; i++) {
-            answer[i] = Number.getRandomNumber();
-            for(int j=0; j<i; j++)
-                while(answer[i]==answer[j]) answer[i] = Number.getRandomNumber();
-        }
-
-    }
-    static void getUserNumbers() {
-        String strNum = Console.readLine();
-        if(strNum.length()>NUMBERS) throw new IllegalArgumentException("Invalid input");
-        for(int i = 0; i < NUMBERS; i++) userAnswer[i]=strNum.charAt(i) - '0';
-    }
-
     static String getResult() {
-        return Result.getResult(answer, userAnswer);
+        return Result.getResult(Computer.answer, User.answer);
     }
     static void restart() {
         //System.out.print("restart");
@@ -86,13 +86,12 @@ class Game {
     }
     public static void start() {
         System.out.print(START_MESSAGE);
-        generateAnswer();
-        System.out.print(Arrays.toString(answer));
-        while (true) {
+        Computer.generateAnswer();
+        System.out.print(Arrays.toString(Computer.answer));
+        while (!Objects.equals(getResult(), Result.END_MESSAGE)) {
             System.out.print(INPUT_MESSAGE);
-            getUserNumbers();
+            User.getUserNumbers();
             System.out.print(getResult());
-            if(Objects.equals(getResult(), Result.END_MESSAGE)) break;
         }
         restart();
     }
