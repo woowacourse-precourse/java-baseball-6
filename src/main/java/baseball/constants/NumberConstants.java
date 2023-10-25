@@ -1,8 +1,9 @@
 package baseball.constants;
 
 public class NumberConstants {
-    private final int RESTART = 1;
-    private final int QUIT = 2;
+    public static final int RESTART = 1;
+    public static final int QUIT = 2;
+    public static final int MAX_STRIKE = 3;
 
     public boolean wantRestart(int number) {
         return number == RESTART;
