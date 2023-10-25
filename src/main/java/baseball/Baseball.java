@@ -10,11 +10,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Baseball {
 
     public void startGame() {
-        while(true) {
-            startRound();
-        }
+        startRound();
     }
-
 
     private void startRound() {
         List<Integer> computerNumber = RandomUtil.generateRandomNumber(3);
@@ -57,11 +54,11 @@ public class Baseball {
         }
     }
 
-    private String compareNumber(List<Integer> computerNumber, int userInputValue, int index) {
+    public String compareNumber(List<Integer> computerNumber, int userInputValue, int index) {
         for(int i = 0; i < 3; i++) {
-            if(computerNumber.contains(userInputValue) && i == index) {
+            if(computerNumber.get(i).equals(userInputValue) && i == index) {
                 return "스트라이크";
-            } else if(computerNumber.contains(userInputValue) && i != index) {
+            } else if(computerNumber.get(i).equals(userInputValue) && i != index) {
                 return "볼";
             }
         }

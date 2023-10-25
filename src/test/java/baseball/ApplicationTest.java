@@ -4,6 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,5 +49,31 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(result).isGreaterThanOrEqualTo(num1).isLessThanOrEqualTo(num2);
+    }
+
+    @Test
+    public void compareNumber볼테스트() throws Exception {
+        //given
+        List<Integer> computerNumber = Arrays.asList(1, 2, 3);
+        Baseball baseball = new Baseball();
+
+        //when
+        String result = baseball.compareNumber(computerNumber, 1, 2);
+
+        //then
+        assertThat("볼").isEqualTo(result);
+    }
+
+    @Test
+    public void compareNumber스트라이크테스트() throws Exception {
+        //given
+        List<Integer> computerNumber = Arrays.asList(1, 2, 3);
+        Baseball baseball = new Baseball();
+
+        //when
+        String result = baseball.compareNumber(computerNumber, 1, 0);
+
+        //then
+        assertThat("스트라이크").isEqualTo(result);
     }
 }
