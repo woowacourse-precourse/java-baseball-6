@@ -6,7 +6,7 @@
 
 - [x] 코드 컨벤션
 
-<img with="200" height = "300" src="image/우테코프리코스_코딩컨벤션적용.png">
+<img src="image/우테코프리코스_코딩컨벤션적용.png">
 
 2. 기능 요구사항 분석
 - [x] 입출력 요구사항 바탕 매커니즘 분석하기
@@ -57,16 +57,16 @@
 
 [테스트코드 결과 이미지]
 
-<img width="400"  src="image/테스트코드결과이미지.png">
+<img  src="image/테스트코드결과이미지.png">
 
 
 ## 시스템 매커니즘 및 객체들의 역(구현 후)
 
-<img width="400" height = "600" src="image/숫자야구게임_메커니즘20231025.png">
+<img src="image/숫자야구게임_메커니즘20231025.png">
 
 </br>
 
-<img width="400" height = "600" src="image/객체들의역할과기능.png">
+<img src="image/객체들의역할과기능.png">
 
 
 ## 기능 요구사항 되돌아보기
