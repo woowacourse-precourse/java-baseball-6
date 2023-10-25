@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
 
-    List<Integer> answer = new ArrayList<>();
+    private List<Integer> answer = new ArrayList<>();
 
     public Computer() {
         answer.clear();
