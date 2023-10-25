@@ -7,9 +7,10 @@ import java.io.OutputStreamWriter;
 public class ConsoleOutput {
     private static final BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
 
+    private ConsoleOutput() {
+    }
+
     public static void gameStart() {
-//        output.write(ConsoleMessage.GAME_START.getMessage());
-//        output.flush();
         try {
             output.write(ConsoleMessage.GAME_START.getMessage());
             output.flush();
