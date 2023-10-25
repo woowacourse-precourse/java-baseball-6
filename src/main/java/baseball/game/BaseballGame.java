@@ -34,7 +34,10 @@ public class BaseballGame {
 
     /**
      * 사용자가 시도하면서 맞췄는지 확인
+<<<<<<< HEAD
      *
+=======
+>>>>>>> 167c4994e425b41996ea1dc8dc2d647dbb520d94
      * @param target 컴퓨터가 만든 랜덤 3개의 숫자
      */
     private boolean isCorrectAttempt(List<Integer> target) {

@@ -14,6 +14,7 @@ public class GameRule {
      */
     public boolean gameLogic(List<Integer> attempt, List<Integer> target) {
         BallAndStrikeCalculator ballAndStrikeCalculator = new BallAndStrikeCalculator();
+
         int[] results = ballAndStrikeCalculator.calculate(attempt, target);
         int ball = results[0];
         int strike = results[1];

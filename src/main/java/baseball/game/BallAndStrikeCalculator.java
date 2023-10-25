@@ -5,9 +5,14 @@ import java.util.List;
 public class BallAndStrikeCalculator {
     /**
      * ball과 strike 계산
+<<<<<<< HEAD
      *
      * @param attempt 사용자가 시도한 숫자 3개
      * @param target  컴퓨터가 생성한 숫자 3개
+=======
+     * @param attempt 사용자가 시도한 숫자 3개
+     * @param target 컴퓨터가 생성한 숫자 3개
+>>>>>>> 167c4994e425b41996ea1dc8dc2d647dbb520d94
      * @return
      */
     public int[] calculate(List<Integer> attempt, List<Integer> target) {
