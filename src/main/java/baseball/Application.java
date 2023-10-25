@@ -1,10 +1,9 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
+import camp.nextstep.edu.missionutils.Randoms;
+import org.assertj.core.util.VisibleForTesting;
+
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -51,19 +50,16 @@ class GamePlay {
         scanner.close();
     }
 
-    public static List<Integer> generateRandomNumber() {
-        ThreadLocalRandom random = ThreadLocalRandom.current();
-        List<Integer> randomNumber2 = new ArrayList<>();
-
-        while (randomNumber2.size() < 3) {
-            int number;
-            do {
-                number = random.nextInt(9) + 1;
-            } while (randomNumber2.contains(number));
-            randomNumber2.add(number);
+    protected static List<Integer> generateRandomNumber() {
+        List<Integer> randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < 3) {
+            int randomNumber =
+                    Randoms.pickNumberInRange(1,9);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
         }
-
-        return randomNumber2;
+        return randomNumbers;
     }
 
     public static boolean containsNumber(List<Integer> list, int num) {
