@@ -38,7 +38,7 @@ public class Game {
             Utils.validateInputValue(result, NUM_LENGTH);
         } catch (IllegalArgumentException e) {
             System.out.println("입력이 잘못되었습니다.");
-            exit(2);
+            changeStatus();
         }
         return result;
     }
@@ -48,7 +48,7 @@ public class Game {
         int playerInput = Integer.parseInt(Console.readLine());
         utils.validateRestartInput(playerInput);
         if (playerInput == 2) {
-            this.status = false;
+            changeStatus();
         }
     }
 
