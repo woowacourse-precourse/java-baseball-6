@@ -7,7 +7,7 @@ public class GameSystem {
     private static final String RESTART_NUMBER = "1";
     private static final String END_NUMBER = "2";
     
-    private Number number;
+    private NumberService numberService;
     private CalculateService calculateService;
     private String computerNumber;
     private String userInput;
@@ -42,20 +42,20 @@ public class GameSystem {
     
     // 숫자 야구 게임 초기 설정 메서드
     private void setUpGame() {
-        number = new Number();
+        numberService = new NumberService();
         calculateService = new CalculateService();
         updateComputerNumber();
     }
     
     // 컴퓨터의 숫자를 업데이트하는 메서드
     private void updateComputerNumber() {
-        computerNumber = number.getComputersNumber();
+        computerNumber = numberService.getComputerNumber();
     }
     
     // 사용자의 숫자를 업데이트하는 메서드
     private void updateUserNumber() {
         userInput = getUserInput();
-        userNumber = number.getUserNumber(userInput);
+        userNumber = numberService.getUserNumber(userInput);
     }
     
     // 사용자의 입력을 받는 메서드

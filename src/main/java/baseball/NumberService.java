@@ -6,17 +6,17 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class Number {
-    private static final int NUMBERS_LENGTH = 3;
+public class NumberService {
+    private static final int NUMBER_LENGTH = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     
-    private String computersNumber;
+    private String computerNumber;
     private String userNumber;
     
-    public String getComputersNumber() {
-        setComputersNumber();
-        return computersNumber;
+    public String getComputerNumber() {
+        setComputerNumber();
+        return computerNumber;
     }
     
     public String getUserNumber(String userInput) {
@@ -25,14 +25,12 @@ public class Number {
     }
     
     // 컴퓨터의 숫자를 설정하는 메서드
-    private void setComputersNumber() {
+    private void setComputerNumber() {
         Set<Integer> digits = new LinkedHashSet<>();
-        
-        while (digits.size() < NUMBERS_LENGTH) {
+        while (digits.size() < NUMBER_LENGTH) {
             digits.add(getRandomNumber());
         }
-        
-        computersNumber = convertIntegerSetToString(digits);
+        computerNumber = convertIntegerSetToString(digits);
     }
     
     // 사용자의 숫자를 설정하는 메서드
@@ -40,7 +38,6 @@ public class Number {
         if (!isValidNumber(userInput)) {
             throw new IllegalArgumentException();
         }
-        
         userNumber = userInput;
     }
     
@@ -52,19 +49,17 @@ public class Number {
     // Integer 타입의 Set을 String 타입의 문자열로 변환하는 메서드
     private String convertIntegerSetToString(Set<Integer> digits) {
         StringBuilder result = new StringBuilder();
-        
-        for (Integer digit : digits) {
+        for (int digit : digits) {
             result.append(digit);
         }
-        
         return String.valueOf(result);
     }
     
     // 유효한 숫자인지 판별하는 메서드
     private boolean isValidNumber(String inputNumber) {
-        return isRightLength(inputNumber, NUMBERS_LENGTH) &&
-                areAllDigitsInSpecificRange(inputNumber, MIN_NUMBER, MAX_NUMBER) &&
-                hasNoDuplicateDigits(inputNumber);
+        return isRightLength(inputNumber, NUMBER_LENGTH) &&
+               areAllDigitsInSpecificRange(inputNumber, MIN_NUMBER, MAX_NUMBER) &&
+               hasNoDuplicateDigits(inputNumber);
     }
     
     // 특정 길이가 맞는지 판별하는 메서드
@@ -80,7 +75,6 @@ public class Number {
                 return false;
             }
         }
-        
         return true;
     }
     
@@ -90,7 +84,6 @@ public class Number {
         for (char digit : inputNumber.toCharArray()) {
             uniqueDigits.add(digit);
         }
-        
         return inputNumber.length() == uniqueDigits.size();
     }
 }
