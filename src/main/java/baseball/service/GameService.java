@@ -1,5 +1,6 @@
 package baseball.service;
 
+import static baseball.util.ConvertInputToArr.inputToArr;
 import static baseball.util.ThreeOutCount.getThreeOutCount;
 
 import baseball.config.WithinRange;
@@ -50,11 +51,7 @@ public class GameService {
         int strikeCount = 0;
         int ballCount = 0;
 
-        int[] intArr = new int[answerList.size()];
-
-        for (int i = 0; i < answerList.size(); i++) {
-            intArr[i] = Integer.parseInt(input.substring(i, i + 1));
-        }
+        int[] intArr = inputToArr(input);
 
         for (int i = 0; i < getThreeOutCount(); i++) {
             if (answerList.get(i) == (intArr[i])) {
