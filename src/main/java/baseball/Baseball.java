@@ -1,6 +1,7 @@
 package baseball;
 
-import static message.ConsoleMessage.*;
+import static message.ErrorMessage.*;
+import static message.SystemMessage.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -50,18 +51,18 @@ public class Baseball {
         }
 
         if (ballNum != 0) {
-            System.out.print(ballNum+BALL+" ");
+            System.out.print(ballNum + BALL + " ");
         }
         if (strikeNum != 0) {
-            System.out.print(strikeNum+STRIKE);
+            System.out.print(strikeNum + STRIKE);
         }
         System.out.print("\n");
     }
 
     // 볼과 스트라이크 갯수를 세는 함수
     private BallStrike countResult(String input) {
-        int ballNum=0;
-        int strikeNum=0;
+        int ballNum = 0;
+        int strikeNum = 0;
 
         for (int i = 0; i < NUM_LENGTH; i++) {
             if (input.charAt(i) == computerNum.charAt(i)) {
@@ -86,7 +87,7 @@ public class Baseball {
             playGame();
         }else if (!input.equals("2")) {
             // 잘못된 입력은 에러처리
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(OUT_OF_RANGE);
         }
     }
 
@@ -95,13 +96,13 @@ public class Baseball {
 
         // 세 자리가 맞는지 확인
         if (input.length() != NUM_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(UNMATCH_LENGTH);
         }
 
         // 1~9자리 숫자로 이루어졌는지 확인
         for (int i = 0; i < NUM_LENGTH; i++) {
             if (input.charAt(i) < '1' || input.charAt(i) > '9') {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(NOT_ALLOWED_STRING);
             }
         }
 
@@ -109,7 +110,7 @@ public class Baseball {
         for (int i = 0; i < NUM_LENGTH; i++) {
             for (int j = i+1; j < NUM_LENGTH; j++) {
                 if (input.charAt(i) == input.charAt(j)) {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException(DUPLICATED);
                 }
             }
         }

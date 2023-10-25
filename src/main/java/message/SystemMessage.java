@@ -1,7 +1,7 @@
 package message;
 
 // 콘솔 출력에 사용되는 메세지
-public final class ConsoleMessage {
+public final class SystemMessage {
     public static final String START_GAME = "숫자 야구 게임을 시작합니다.";
     public static final String NOTHING = "낫싱";
     public static final String BALL = "볼";
