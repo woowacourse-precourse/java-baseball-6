@@ -6,9 +6,12 @@ import baseball.model.UserNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.regex.Pattern;
+
 public class Play {
     private static boolean playFlag = true;
     private static final int STRIKE_THREE = 3;
+    private static final String USER_NUMBER_PATTERN = "^[1-9]{3}$";
     private final Score score;
     private final UserNumber userNumber;
 
@@ -60,5 +63,9 @@ public class Play {
             OutputView.strikeAndBall(strike, ball);
             return;
         }
+    }
+
+    private boolean checkNumberPattern(String input) {
+        return Pattern.matches(USER_NUMBER_PATTERN, input);
     }
 }
