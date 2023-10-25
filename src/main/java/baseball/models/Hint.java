@@ -10,6 +10,10 @@ public class Hint {
         this.strikeCnt = strikeCnt;
     }
 
+    public int getStrikeCnt() {
+        return strikeCnt;
+    }
+
     @Override
     public String toString() {
         if (ballCnt > 0 && strikeCnt > 0) {
