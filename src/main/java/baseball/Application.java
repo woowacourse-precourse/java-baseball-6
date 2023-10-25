@@ -3,6 +3,16 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    enum GameStatus {
+        RE_GAME("1"), END_GAME("2"), WIN_GAME("3스트라이크");
+        private final String value;
+        GameStatus(String value){
+            this.value = value;
+        }
+        public String getValue(){
+            return this.value;
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         do {
@@ -16,7 +26,15 @@ public class Application {
     private static boolean endGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        return input.equals("2");
+        if (input.equals(GameStatus.END_GAME.getValue())) {
+            return true;
+        }
+
+        if (input.equals(GameStatus.RE_GAME.getValue())) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("1 또는 2의 값을 입력하세요");
     }
 
     private static void startGame() {
