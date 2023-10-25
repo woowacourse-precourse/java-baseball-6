@@ -13,6 +13,7 @@ public class Inning {
     public Score doInning(Computer computer) {
         this.computer = computer;
         this.player = new Player();
+        this.score = new Score();
 
         calculateScore();
 
