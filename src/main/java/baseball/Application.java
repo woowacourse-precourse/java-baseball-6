@@ -84,6 +84,16 @@ public class Application {
         }
     }
 
+    public static int inputStartOrEnd(String userInputStartOrEnd) {
+        if (isRightLength(userInputStartOrEnd, 1)
+                && isDigitNumber(userInputStartOrEnd)
+                && isOneOrTwo(userInputStartOrEnd)) {
+            return userInputStartOrEnd.charAt(0) - '0';
+        } else {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
+
     public static boolean isOneOrTwo(String userInputStartOrEnd) {
         int userInputNumber = userInputStartOrEnd.charAt(0) - '0';
 
