@@ -19,7 +19,6 @@ public class InputUtil {
             isValidInput = isValidString(inputString);
             makeStringToList(inputString);
         }
-
         return playerNumber;
     }
 
