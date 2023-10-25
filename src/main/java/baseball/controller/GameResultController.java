@@ -27,7 +27,7 @@ public class GameResultController {
         int ballCount = 0;
 
         for(int i=0; i<userNumber.size(); i++) {
-            if(computerNumber.contains(userNumber.get(i))) {
+            if(computerNumber.contains(userNumber.get(i)) && !userNumber.get(i).equals(computerNumber.get(i))) {
                 ballCount++;
             }
         }
