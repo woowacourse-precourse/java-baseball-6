@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Count {
-    //private final Count count =new Count();
 
     private int strike = 0;
     private int ball = 0;
     private List<Integer> BallandStrikeCount = new ArrayList<>();
-    
+
     public void setStrike(int strike) {
         this.strike = strike;
     }
