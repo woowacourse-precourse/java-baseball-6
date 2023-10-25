@@ -18,9 +18,8 @@ public class GameLogic {
         List<Integer> playerGuessNumbers = new ArrayList<>();
         char[] charArr = playerGuess.toCharArray();
         for (char c: charArr) {
-            validateIsNumber(c);
+            validateIsNaturalNumber(c);
             int number = Character.getNumericValue(c);
-            validateIsNotZero(number);
             validateNotDuplicated(number,playerGuessNumbers);
             playerGuessNumbers.add(number);
         }
@@ -34,16 +33,11 @@ public class GameLogic {
         }
     }
 
-    public void validateIsNumber(char c) throws IllegalArgumentException {
-        if (!Character.isDigit(c)) {
-            throw new IllegalArgumentException("유효하지 않은 입력 : 1부터 9까지의 자연수만 입력해야 합니다.");
+    public void validateIsNaturalNumber(char c) throws IllegalArgumentException {
+        if ((int) c >= 49 && (int) c <= 57) {
+            return;
         }
-    }
-
-    public void validateIsNotZero(int number) throws IllegalArgumentException {
-        if (number == 0) {
-            throw new IllegalArgumentException("유효하지 않은 입력 : 0은 입력이 불가합니다. 1부터 9까지의 자연수만 입력해야 합니다.");
-        }
+        throw new IllegalArgumentException("유효하지 않은 입력 : 1부터 9까지의 자연수만 입력해야 합니다.");
     }
 
     public void validateNotDuplicated(int number, List<Integer> playerGuessNumbers) {
