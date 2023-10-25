@@ -17,7 +17,7 @@ public class View {
     public String restart_num() {
         String userInput = Console.readLine();
         if(!check_rst(userInput)){
-            throw new IllegalArgumentException("Input 값이 잘못되었습니다.");
+            throw new IllegalArgumentException("RESTART 값이 잘못되었습니다.");
         }
         return userInput;
     }
@@ -95,6 +95,6 @@ public class View {
     }
 
     public void restart_msg() {
-        System.out.print(MESSAGE.INPUT_RESTART.getMessage());
+        System.out.println(MESSAGE.INPUT_RESTART.getMessage());
     }
 }
