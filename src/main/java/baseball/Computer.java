@@ -17,14 +17,14 @@ public class Computer {
         }
     }
 
-    public void makeRandomNumber() {
+    private void makeRandomNumber() {
         int candidateNum = Randoms.pickNumberInRange(Constants.gameNumberRangeMin, Constants.gameNumberRangeMax);
         if (!number.contains(candidateNum)) {
             number.add(candidateNum);
         }
     }
 
-    public void initResultValue() {
+    private void initResultValue() {
         result = new HashMap<String, Integer>() {{
             put(Constants.ballState, 0);
             put(Constants.strikeState, 0);
@@ -52,19 +52,19 @@ public class Computer {
         return makeSubResultState(Constants.ballState) + " " + makeSubResultState(Constants.strikeState);
     }
 
-    public String makeSubResultState(String state) {
+    private String makeSubResultState(String state) {
         return result.get(state) + state;
     }
 
-    public Boolean checkNoStrike() {
+    private Boolean checkNoStrike() {
         return result.get(Constants.strikeState) == 0;
     }
 
-    public Boolean checkNoBall() {
+    private Boolean checkNoBall() {
         return result.get(Constants.ballState) == 0;
     }
 
-    public void checkValueResult(int predictedValue, int readValue) {
+    private void checkValueResult(int predictedValue, int readValue) {
         if (predictedValue == readValue) {
             result.put(Constants.strikeState, result.get(Constants.strikeState) + 1);
         } else if (number.contains(predictedValue)) {
