@@ -52,7 +52,7 @@ public class GameController {
             throw new IllegalArgumentException(SIZE + "자리의 수를 입력해주세요.");
         }
         if (!InputManager.isNumberInRange(userInput, MIN_NUMBER, MAX_NUMBER)) {
-            throw new IllegalArgumentException(MIN_NUMBER + '~' + MAX_NUMBER + "에 해당하는 수만 입력해주세요.");
+            throw new IllegalArgumentException(MIN_NUMBER + "~" + MAX_NUMBER + "에 해당하는 수만 입력해주세요.");
         }
         if (!InputManager.isSizeValid(userInput, SIZE)) {
             throw new IllegalArgumentException(SIZE + "자리의 수를 입력해주세요.");
