@@ -17,7 +17,7 @@ public class RoundResult {
         }
     }
 
-    public boolean isNothing() {
+    private boolean isNothing() {
         return results.isEmpty();
     }
 

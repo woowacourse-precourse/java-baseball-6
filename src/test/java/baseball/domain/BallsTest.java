@@ -38,7 +38,6 @@ public class BallsTest {
         RoundResult result = playerBalls.compareWith(answer);
         assertEquals("3스트라이크", result.toString());
 
-        assertFalse(result.isNothing());
         assertTrue(result.isGameEnd());
     }
 
@@ -48,7 +47,6 @@ public class BallsTest {
         RoundResult result = playerBalls.compareWith(answer);
         assertEquals("1볼 1스트라이크", result.toString());
 
-        assertFalse(result.isNothing());
         assertFalse(result.isGameEnd());
     }
 
@@ -58,7 +56,6 @@ public class BallsTest {
         RoundResult result = playerBalls.compareWith(answer);
         assertEquals("낫싱", result.toString());
 
-        assertTrue(result.isNothing());
         assertFalse(result.isGameEnd());
     }
 
