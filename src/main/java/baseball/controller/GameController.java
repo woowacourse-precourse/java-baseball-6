@@ -9,9 +9,13 @@ import java.util.List;
 
 public class GameController {
 
+    private static final GameController instance = new GameController();
     private final GameService gameService = GameService.getInstance();
     private GameStatus currentGameStatus = GameStatus.CONTINUE;
 
+    public static GameController getInstance() {
+        return instance;
+    }
 
     public void run() {
         OutputView.printGameStart();
