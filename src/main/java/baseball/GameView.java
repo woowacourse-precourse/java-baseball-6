@@ -17,4 +17,16 @@ public class GameView {
         return Console.readLine();
     }
 
+    public boolean inputRestartOption() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String option = Console.readLine();
+        if (option.equals("1")) {
+            return true;
+        } else if (option.equals("2")) {
+            return false;
+        }
+        return false;
+    }
+
+
 }
