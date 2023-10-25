@@ -22,9 +22,7 @@ public class GameController {
     }
 
     public void gameStart() {
-        getRandomNumber();
         outputView.showStart();
-
         gameProceed();
     }
 
@@ -32,6 +30,8 @@ public class GameController {
         String inputString;
         List<Integer> input = new ArrayList<>();
         GameResult result;
+
+        getRandomNumber();
 
         while(true) {
             inputString = inputView.getBaseballNumber();
