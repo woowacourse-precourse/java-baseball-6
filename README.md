@@ -1,5 +1,38 @@
 # 미션 - 숫자 야구
 
+### ✅ 요구 사항 체크 리스트
+
+#### 1️⃣ 기능 요구 사항
+
+- [x] 제시한 설명에 맞게 기능들을 구현한다
+- [x] 기능 목록은 `docs/REDME.md` 에 정리한다
+- [x] 입력 요구사항
+    - [x] 서로 다른 3자리의 수
+    - [x] 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수
+- [x] 출력 요구사항
+    - [x] 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
+
+#### 2️⃣ 프로그래밍 요구 사항
+
+- [x] JDK 17 버전을 사용한다
+- [x] 프로그램 시작점은 Application의 main() 이다
+- [x] build.gradle 파일을 변경하지 않고, 외부 라이브러리 사용하지 않는다.
+- [x] Java 코드 컨벤션 가이드를 준수한다
+- [x] 프로그램 종료시 System.exit() 호출하지 않는다
+- [x] ApplicationTest 의 모든 테스트를 성공한다
+- [x] 파일, 패키지의 이름을 수정하거나 이동하지 않는다
+- [x] 명시한 라이브러리 사용한다
+    - [x] Random값 추출: `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`
+    - [x] 사용자 입력: `camp.nextstep.edu.missionutils.Console`의 `readLine()`
+
+#### 3️⃣ 과제 진행 요구 사항
+
+- [x] 미션은 java-baseball-6 저장소를 fork & clone해 시작한다.
+- [x] 기능을 구현하기 전 docs/README.md에 구현할 기능 목록을 정리해 추가한다.
+- [x] 과제 진행 및 제출 방법은 프리코스 과제 제출 문서를 참고한다.
+
+---
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
@@ -43,7 +76,8 @@ BUILD SUCCESSFUL in 0s
         - 123을 제시한 경우 : 1스트라이크
         - 456을 제시한 경우 : 1볼 1스트라이크
         - 789를 제시한 경우 : 낫싱
-- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한
+- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한
+  숫자에 대한
   결과를 출력한다.
 - 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
@@ -126,13 +160,13 @@ BUILD SUCCESSFUL in 0s
 #### 사용 예시
 
 ```java
-List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
+List<Integer> computer=new ArrayList<>();
+        while(computer.size()< 3){
+        int randomNumber=Randoms.pickNumberInRange(1,9);
+        if(!computer.contains(randomNumber)){
         computer.add(randomNumber);
-    }
-}
+        }
+        }
 ```
 
 ---
