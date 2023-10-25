@@ -1,10 +1,10 @@
 package baseball;
-
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
+        System.out.print("숫자 야구 게임을 시작합니다.\n");
         BaseballGame rightAnswer = new BaseballGame();
         BaseballGame.startBaseballGame(rightAnswer);
     }
@@ -13,7 +13,6 @@ public class Application {
 class BaseballGame{
     int[] randomNumberArr = new int[3];
     BaseballGame() {
-
         int pickRandomNumber;
         int idx = 0;
 
@@ -52,7 +51,6 @@ class BaseballGame{
     }
 
     static void startBaseballGame(BaseballGame correctAnswer){
-        //System.out.println(correctAnswer.randomNumberArr[0] +"a"+ correctAnswer.randomNumberArr[1]+"a"+correctAnswer.randomNumberArr[2] );
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = readLine();
 
@@ -65,19 +63,17 @@ class BaseballGame{
         ball = calculateBall(inputNumber, correctAnswer);
 
         printResult(strike, ball);
-
         if (strike != 3) {
             BaseballGame.startBaseballGame(correctAnswer);
             return;
         }
-
-        if (BaseballGame.continueBaseballGame()) {
+        if (BaseballGame.continueOrStop()) {
             correctAnswer = new BaseballGame();
             BaseballGame.startBaseballGame(correctAnswer);
         }
     }
 
-    static boolean continueBaseballGame() {
+    static boolean continueOrStop() {
         int inputNum;
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -109,6 +105,11 @@ class BaseballGame{
             return false;
         }
 
+        for (char ch: inputNumber.toCharArray()) {
+            if(checkDuplicationChar(inputNumber.toCharArray(), ch) == false){
+                return false;
+            }
+        }
         return true;
     }
 
@@ -130,7 +131,8 @@ class BaseballGame{
         for (char ch: inputNumber.toCharArray()) {
             number=Character.getNumericValue(ch);
 
-            if((number != correctAnswer.randomNumberArr[idx]) && checkDuplicationInt(correctAnswer.randomNumberArr, number)==false){
+            if((number != correctAnswer.randomNumberArr[idx]) &&
+                    !checkDuplicationInt(correctAnswer.randomNumberArr, number)){
                 ball+=1;
             }
             idx+=1;
@@ -150,4 +152,3 @@ class BaseballGame{
         }
     }
 }
-
