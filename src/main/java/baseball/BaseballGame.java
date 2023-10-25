@@ -4,31 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
-    private int ball;
-    private int strike;
-    private List<Integer> computerNumbers;
-    private List<Integer> playerNumbers;
     private final Player player;
     private final Computer computer;
+    private int ball;
+    private int strike;
+    private String restart;
+    private List<Integer> computerNumbers;
+    private List<Integer> playerNumbers;
+
 
     public BaseballGame() {
-        ball = 0;
-        strike = 0;
-        computerNumbers = new ArrayList<>();
-        playerNumbers = new ArrayList<>();
         this.player = new Player();
         this.computer = new Computer();
+        this.ball = 0;
+        this.strike = 0;
+        this.restart = "";
+        this.computerNumbers = new ArrayList<>();
+        this.playerNumbers = new ArrayList<>();
     }
 
-    public void play() {
+    public void start() {
         printStart();
         computerNumbers = getComputerNumber();
+        play();
+    }
+
+    private void play() {
         while(strike != 3) {
             initBallCounts();
             playerNumbers = getPlayerNumbers();
             compareNumbers();
             printResult();
-            askRestart();
+            restart = askRestart();
         }
     }
 
