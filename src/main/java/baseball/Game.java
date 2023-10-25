@@ -36,7 +36,7 @@ public class Game {
             checkBallAndStrike(answerNumberList, answerNumberList.get(oneDigit), userNumberList.get(oneDigit));
         }
 
-        checkResult(gameElements);
+        checkResult();
     }
 
     private void checkBallAndStrike(List<Integer> answerNumberList, int answerNumber, int userNumber) {
@@ -49,14 +49,33 @@ public class Game {
         }
     }
 
-    private void checkResult(GameElements gameElements) {
+    private void checkResult() {
+        judgeNothing(gameElements);
+        judgeOnlyBall(gameElements);
+        judgeOnlyStrike(gameElements);
+        judgeBallAndStrike(gameElements);
+    }
+
+    private void judgeNothing(GameElements gameElements) {
         if (gameElements.getStrike() == 0 && gameElements.getBall() == 0) {
             View.printNothingMessage();
-        } else if (gameElements.getStrike() == 0) {
+        }
+    }
+
+    private void judgeOnlyBall(GameElements gameElements) {
+        if (gameElements.getStrike() == 0 && gameElements.getBall() != 0) {
             View.printBallMessage(gameElements.getBall());
-        } else if (gameElements.getBall() == 0) {
+        }
+    }
+
+    private void judgeOnlyStrike(GameElements gameElements) {
+        if (gameElements.getBall() == 0 && gameElements.getStrike() != 0) {
             View.printStrikeMessage(gameElements.getStrike());
-        } else {
+        }
+    }
+
+    private void judgeBallAndStrike(GameElements gameElements) {
+        if (gameElements.getStrike() != 0 && gameElements.getBall() != 0) {
             View.printBallAndStrikeMessage(gameElements.getBall(), gameElements.getStrike());
         }
     }
