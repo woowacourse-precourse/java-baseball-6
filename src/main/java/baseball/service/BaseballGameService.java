@@ -3,6 +3,7 @@ package baseball.service;
 import baseball.domain.BaseballGame;
 import baseball.domain.Computer;
 import baseball.domain.User;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
@@ -20,11 +21,12 @@ public class BaseballGameService {
 
     public void playGame(BaseballGame baseballGame){
         User user = baseballGame.getUser();
+
         List<Integer> targetNumbers = baseballGame.getTargetNumber();
 
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
-            String input = User.input();
+            String input = Console.readLine();
 
             if(input.isEmpty() || input.length() > 3){
                 throw new IllegalArgumentException();
@@ -41,7 +43,8 @@ public class BaseballGameService {
                 if(endInput.equals("2")){
                     break;
                 }
-                targetNumbers = baseballGame.getTargetNumber();
+                targetNumbers.clear();
+                targetNumbers = Computer.generateRandomThreeValue();
             }
 
             user.getNumbers().clear();
@@ -87,11 +90,11 @@ public class BaseballGameService {
             return ;
         }
 
-        if(strike > 0){
-            System.out.print(strike + "스트라이크 ");
-        }
         if(ball > 0){
-            System.out.print(ball + "볼");
+            System.out.print(ball + "볼 ");
+        }
+        if(strike > 0){
+            System.out.print(strike + "스트라이크");
         }
         System.out.println();
     }
