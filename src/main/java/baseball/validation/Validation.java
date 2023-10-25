@@ -26,7 +26,7 @@ public class Validation {
         }
         for (char chr : target) {
             isDigit(chr);
-            isValidRange(chr);
+            hasZero(chr);
         }
     }
 
@@ -36,7 +36,7 @@ public class Validation {
         }
     }
 
-    private void isValidRange(char target) {
+    private void hasZero(char target) {
         if (target - '0' == 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE.getMessage());
         }

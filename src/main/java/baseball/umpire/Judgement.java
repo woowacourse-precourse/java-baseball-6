@@ -1,11 +1,11 @@
-package baseball.domain;
+package baseball.umpire;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Judgement {
 
-    public static Result judgement(List<Integer> opponent, List<Integer> player) {
+    public static Result countSB(List<Integer> opponent, List<Integer> player) {
 
         int strike = countStrike(opponent, player);
         int ball = countBall(opponent, player);

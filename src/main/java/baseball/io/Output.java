@@ -4,7 +4,7 @@ import static baseball.io.IOMessage.BALL;
 import static baseball.io.IOMessage.NOTHING;
 import static baseball.io.IOMessage.STRIKE;
 
-import baseball.domain.Result;
+import baseball.umpire.Result;
 
 public class Output {
 
@@ -35,7 +35,7 @@ public class Output {
     }
 
     public static void printTryNumber() {
-        System.out.println(IOMessage.TRY_NUMBER.getMessage());
+        System.out.print(IOMessage.TRY_NUMBER.getMessage());
     }
 
     public static void printGameAgain() {

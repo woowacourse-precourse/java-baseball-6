@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
-
     private static final Validation validation = new Validation();
-
 
     public static List<Integer> playerInput(int dataType) {
         char[] player = readLine().toCharArray();

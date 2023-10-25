@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.umpire;
 
 public class Result {
     private final int strike;
