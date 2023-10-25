@@ -1,5 +1,9 @@
 package baseball.model;
 
+import static baseball.validation.InputValidation.isIncludeZero;
+import static baseball.validation.InputValidation.isThreeDigits;
+import static baseball.validation.InputValidation.isUniqueNumbers;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,23 +25,6 @@ public class Guess {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Input must be Integer type");
         }
-    }
-
-    // isThreeDigits : 숫자가 3자리 양수인지 여부를 반환한다.
-    private Boolean isThreeDigits(Integer number) {
-        return number < 1000 && number > 99;
-    }
-
-    // isIncludeZero : 입력에 0이 하나라도 있는지 여부를 반환한다.
-    private Boolean isIncludeZero(Integer number1, Integer number2, Integer number3) {
-        return number1.equals(0) || number2.equals(0) || number3.equals(0);
-    }
-
-    // isUniqueNumbers : 숫자 3개가 서로 다른 숫자인지 검증한다. 서로 다른 숫자라면 True, 같은 숫자가 하나라도 있다면 False를 반환한다.
-    private Boolean isUniqueNumbers(Integer uniqueNumber1, Integer uniqueNumber2, Integer uniqueNumber3) {
-        return !uniqueNumber1.equals(uniqueNumber2)
-                && !uniqueNumber2.equals(uniqueNumber3)
-                && !uniqueNumber3.equals(uniqueNumber1);
     }
 
     // parseNumber : 입력받은 정수를 3개의 (1<=x<=9)범위의 정수로 파싱한다.
