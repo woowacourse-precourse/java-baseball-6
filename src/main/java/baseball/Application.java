@@ -1,12 +1,12 @@
 package baseball;
 
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
 import static baseball.model.Generator.generateComputerNumber;
-import static camp.nextstep.edu.missionutils.Console.*;
 
 public class Application {
 
@@ -14,9 +14,7 @@ public class Application {
 
     public static void main(String[] args) {
 
-        MessageGenerator messageGenerator = new MessageGenerator();
-
-        messageGenerator.startGame();
+        OutputView.startGame();
         int computerNumber = generateComputerNumber();
         System.out.println("computerNumber = " + computerNumber);
 
