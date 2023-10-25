@@ -12,20 +12,22 @@ import java.util.List;
 public class Controller {
 
     public void run() {
-        int strike = 0;
-        int gameFlag;
-
         System.out.println(ConsoleMessage.START_GAME.getMessage());
 
+        reGame();
+    }
+
+    private void reGame() {
+        int gameFlag;
         do {
-            playGame(strike);
+            playGame();
             gameFlag = Input.inputGameFlag();
         } while (gameFlag == 1);
     }
 
-    private void playGame(int strike) {
+    private void playGame() {
         ComputerNumber computerNumber = new ComputerNumber(new RandomNumberGenerator());
-
+        int strike = 0;
         while (strike != 3) {
             List<Integer> userNumber = Input.inputUserNumber();
 
