@@ -30,4 +30,16 @@ public class ComputerNumber {
             throw new IllegalArgumentException(ComputerInputError.COMPUTER_NUMBER_WRONG_INPUT_DUPLICATE_MESSAGE);
         }
     }
+
+    /**
+     * 랜덤으로 생성한 문자열에 1~9 사이의 수가 아닌 값이 포함된 경우 예외 발생
+     *
+     * @param computerNumbers : 랜덤으로 생성한 컴퓨터가 가진 수
+     */
+    private void validatePlayerInputRange(List<Integer> computerNumbers) {
+        if (computerNumbers.stream()
+                .anyMatch(number -> Constant.START_RANGE > number || number > Constant.END_RANGE)) {
+            throw new IllegalArgumentException(ComputerInputError.COMPUTER_NUMBER_WRONG_INPUT_RANGE_MESSAGE);
+        }
+    }
 }
