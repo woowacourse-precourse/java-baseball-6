@@ -27,7 +27,7 @@ public class Validator {
         }
     }
 
-    private static void throwIllegalArgumentException(String message, Throwable e) {
+    private static void throwIllegalArgumentException(String message, Exception e) {
         throw new IllegalArgumentException(message, e);
     }
 
