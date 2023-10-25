@@ -47,6 +47,7 @@ public class BaseballGameService {
             playGame(computer, userList);
             baseballService.printBaseball(ballCount.getStrikes(), ballCount.getBalls());
         }
+        System.out.println("게임 종료");
 
     }
 
