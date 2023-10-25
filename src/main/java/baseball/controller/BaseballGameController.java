@@ -59,6 +59,9 @@ public class BaseballGameController {
             }
 
             int parseResult = Character.getNumericValue(c);
+            if (parseResult == 0) {
+                throw new IllegalArgumentException("입력값은 1부터 9까지의 숫자여야 합니다.");
+            }
             if (!integerHashSet.add(parseResult)) {
                 throw new IllegalArgumentException("입력값이 서로 다른 숫자여야 합니다.");
             }
