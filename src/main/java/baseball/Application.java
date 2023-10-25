@@ -27,9 +27,7 @@ public class Application {
                 numberOfStrike = 0;
                 numberOfBall = 0;
 
-                System.out.print("숫자를 입력해주세요 : ");
-                String response = Console.readLine();
-                List<Integer> prediction = validateUserInput(response);
+                List<Integer> prediction = receiveUserInput();
 
                 Map<String, Integer> result = countStrikeOrBall(numbers, prediction);
 
@@ -52,6 +50,17 @@ public class Application {
             }
         }
 
+    }
+
+    private static List<Integer> receiveUserInput() {
+        printInputMessage();
+        String userInput = Console.readLine();
+        List<Integer> prediction = validateUserInput(userInput);
+        return prediction;
+    }
+
+    private static void printInputMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     private static void printResultMessage(int numberOfStrike, int numberOfBall) {
