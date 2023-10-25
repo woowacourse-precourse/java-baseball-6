@@ -22,13 +22,14 @@ public class User {
 
     private void validateNumberDigits(List<Integer> userNumbers) {
         if (userNumbers.size() != 3) {
-            throw new IllegalArgumentException("number should be 3 digits");
+            throw new IllegalArgumentException("the number must be 3 digits");
         }
     }
 
-    private void validateNumberUnique(List<Integer> userNumber) {
-        if (userNumber.size() != userNumber.stream().distinct().count()) {
-            throw new IllegalArgumentException("each digits cannot be same with others");
+    private void validateNumberUnique(List<Integer> userNumbers) {
+        long uniqueNumbers = userNumbers.stream().distinct().count();
+        if (userNumbers.size() != uniqueNumbers) {
+            throw new IllegalArgumentException("number of each digit cannot be the same as the others");
         }
     }
 
