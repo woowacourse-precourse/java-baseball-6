@@ -20,10 +20,10 @@ public class Game {
         }
     }
 
-    public void listCompare(List<Integer> computerNum, List<Integer> userNum) {
+    public void listCompare(List<Integer> computerNum, String userNum) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                numCompare(computerNum.get(i), userNum.get(j), i, j);
+                numCompare(computerNum.get(i), userNum.charAt(j), i, j);
             }
         }
     }
