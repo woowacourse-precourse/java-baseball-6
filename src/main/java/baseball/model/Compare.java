@@ -14,18 +14,11 @@ public record Compare(Computer computer, Player player, Result result) {
     }
 
     public Result ResultgetBallCountJudgement() {
-        return getBallCountJudgementRecursive(Result.initialBallCount(), DEFAULT_VALUE);
-    }
-
-    private Result getBallCountJudgementRecursive(Result currentResult, int position) {
-        if (position >= BALL_LENGTH) {
-            return currentResult;
+        Result result = Result.initialBallCount();
+        for (int position = DEFAULT_VALUE; position < BALL_LENGTH; position++) {
+            result.updateBallCount(getBallCount(position));
         }
-
-        BallCount ballCount = getBallCount(position);
-        currentResult.updateBallCount(ballCount);
-
-        return getBallCountJudgementRecursive(currentResult, position + 1);
+        return result;
     }
 
     private BallCount getBallCount(int position) {
@@ -35,6 +28,7 @@ public record Compare(Computer computer, Player player, Result result) {
     private boolean isInSamePosition(int position) {
         return computer.getNumberByPosition(position) == player.getNumberByPosition(position);
     }
+
 
     private boolean hasCommonNumber(int position) {
         return computer.hasCommonNumber(player.getNumberByPosition(position));
