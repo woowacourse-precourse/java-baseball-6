@@ -23,13 +23,14 @@ public class OutputView {
     private static String getResultMessage(int strikeCount, int ballCount) {
         if (hasBothStrikeAndBall(strikeCount, ballCount)) {
             return ballCount + BALL + " " + strikeCount + STRIKE;
-        } else if (hasStrikeOnly(strikeCount)) {
-            return strikeCount + STRIKE;
-        } else if (hasBallOnly(ballCount)) {
-            return ballCount + BALL;
-        } else {
-            return NOTHING;
         }
+        if (hasStrikeOnly(strikeCount)) {
+            return strikeCount + STRIKE;
+        }
+        if (hasBallOnly(ballCount)) {
+            return ballCount + BALL;
+        }
+        return NOTHING;
     }
 
     private static boolean hasBothStrikeAndBall(int strikeCount, int ballCount) {

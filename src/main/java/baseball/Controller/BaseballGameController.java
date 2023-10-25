@@ -31,12 +31,10 @@ public class BaseballGameController {
         String userInput = InputView.confirmRestart();
         if (userInput.equals(GameConstant.RESTART)) {
             return false;
-        } else if (userInput.equals(GameConstant.QUIT)) {
+        }
+        if (userInput.equals(GameConstant.QUIT)) {
             return true;
         }
         throw new IllegalArgumentException();
     }
-
-
-
 }

@@ -13,5 +13,5 @@ public class ComputerNumberPicker {
                 .mapToInt(Integer::intValue)
                 .toArray();
         this.computer = computer;
-    };
+    }
 }
