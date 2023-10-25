@@ -1,12 +1,8 @@
 package baseball.game;
 
-import baseball.Exception.NumberDuplicateException;
-import baseball.Exception.QueryMustPossibleIntegerException;
-import baseball.Exception.SizeNotMatchException;
 import baseball.game.vo.BallCount;
 import baseball.view.GameView;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +13,18 @@ public class Game {
     private int status;
 
     public Game(NumberGengerator numberGengerator, GameView gameView) {
-        this.status = 0;
+        this.status = 1;
         this.gameView = gameView;
         this.numberGengerator = numberGengerator;
     }
 
     public void initGame() {
         this.answer = numberGengerator.numberGenerate();
+        this.status = 0;
     }
 
     public void run() {
         gameView.startBoot();
-        initGame();
 
         while (isPlay()) {
             gameView.inputMessage();
@@ -57,13 +53,14 @@ public class Game {
 
     private void gameSet() {
         gameView.gameSetView();
-        String inputStatus = Console.readLine();
-        validateRestart(inputStatus);
+        String inputStatusString = Console.readLine();
+        int inputState = stateStringToInt(inputStatusString);
+        this.status = inputState;
     }
 
-    private void validateRestart(String inputStatus) {
-        Validation.checkRestartString(inputStatus);
-        this.status = inputStatus.charAt(0) - '0';
+    private int stateStringToInt(String inputStatusString) {
+        Validation.checkRestartString(inputStatusString);
+        return inputStatusString.charAt(0) - '0';
     }
 
     private BallCount determineQuery(List<Integer> answer, List<Integer> query) {
@@ -76,9 +73,7 @@ public class Game {
                 ballCount.putStrike();
                 continue;
             }
-            if (!isNothing(answer, query.get(i))) {
-                ballCount.putBall();
-            }
+            ballCount.putBall();
         }
         return ballCount;
     }
@@ -93,32 +88,29 @@ public class Game {
 
     private List<Integer> playerQuery() {
         String query = Console.readLine();
-        if (query.length() != 3) {
-            throw new SizeNotMatchException();
-        }
-        if (!Validation.allPossibleDigit(query)) {
-            throw new QueryMustPossibleIntegerException();
-        }
+        Validation.querySizeCheck(query);
+        Validation.allPossibleDigit(query);
         return queryToList(query);
     }
 
     public List<Integer> queryToList(String query) {
-        List<Integer> generateNumber = new ArrayList<>();
+        List<Integer> queryList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int queryElement = query.charAt(i) - '0';
-            findDuplicatedNumber(generateNumber, queryElement);
+            findDuplicatedNumber(queryList, queryElement);
         }
-        return generateNumber;
+        return queryList;
     }
 
     private void findDuplicatedNumber(List<Integer> generateNumber, int queryElement) {
-        if (generateNumber.contains(queryElement)) {
-            throw new NumberDuplicateException();
-        }
+        Validation.duplicateCheck(generateNumber, queryElement);
         generateNumber.add(queryElement);
     }
 
     private boolean isPlay() {
+        if (this.status == 1) {
+            initGame();
+        }
         return this.status != 2;
     }
 }
