@@ -31,7 +31,19 @@ public class Application {
         while (!SUCCESS) {
             setPlayerNum(); //플레이어의 숫자 세팅
 
-            //플레이어와 컴퓨터의 숫자 비교 로직
+            int ball = 0; //"볼" 개수
+            int strike = 0; //"스트라이크" 개수
+            for (int i = 0; i < 3; i++) {
+                if (player.contains(computer.get(i))) { //같은 숫자가 있고
+                    if (player.get(i) == computer.get(i)) { //같은 위치에 있다면
+                        strike++;
+                    } else { //다른 위치에 있다면
+                        ball++;
+                    }
+                }
+            }
+
+            printResult(ball, strike); //결과 출력
 
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료"); //숫자 3개 다 맞혔다면 게임 종료
