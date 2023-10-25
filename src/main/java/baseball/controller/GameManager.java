@@ -10,9 +10,9 @@ import baseball.view.Input;
 import baseball.view.Output;
 
 public class GameManager {
-    private final RestartCommandValidator validator;
     private final Referee judgment;
     private final Input input;
+    private final RestartCommandValidator validator;
 
     public GameManager(RestartCommandValidator validator, Referee judgment, Input input) {
         this.validator = validator;
@@ -51,6 +51,6 @@ public class GameManager {
         ConsoleMessage.RESTART_GAME.printMessage();
         String restartCommand = input.readLine();
         validator.validateRestartCommandInput(restartCommand);
-        return restartCommand.equals("2");  // TODO: 여기서 "2"로 직접 확인하는게 거슬림. 1은 재시작, 2는 종료를 관리하는 객체가 있으면 좋지않을까..
+        return restartCommand.equals("2");
     }
 }
