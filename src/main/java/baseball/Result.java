@@ -9,6 +9,7 @@ public class Result {
         this.balls = balls;
     }
 
+
     public int getStrikes() {
         return strikes;
     }
