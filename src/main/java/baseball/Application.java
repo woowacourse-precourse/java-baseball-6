@@ -71,7 +71,6 @@ public class Application {
             this.user[i] = Integer.parseInt(s);
             i++;
         }
-
     }
     public void compDigit(){
         int strike = 0, ball = 0;
