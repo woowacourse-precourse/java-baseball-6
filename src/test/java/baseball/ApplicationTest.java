@@ -30,6 +30,7 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
+        System.out.println("runMain Start!");
         Application.main(new String[]{});
     }
 }
