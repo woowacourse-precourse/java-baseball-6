@@ -11,13 +11,10 @@ import static baseball.model.UserAnswer.*;
 
 public class GameAnswerManager {
 
-    private final Map<Integer, Integer> answerMap;  // key: number, value: order
-
-    public GameAnswerManager() {
-        this.answerMap = new HashMap<>();
-    }
+    private final Map<Integer, Integer> answerMap = new HashMap<>();  // key: number, value: order
 
     public void setAnswer() {
+        answerMap.clear();
         while (answerMap.size() < ANSWER_DIGITS) {
             int randNum = Randoms.pickNumberInRange(MIN_NUM_RANGE, MAX_NUM_RANGE);
             answerMap.put(randNum, answerMap.size());

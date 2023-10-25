@@ -4,6 +4,7 @@ import baseball.model.UserAnswer;
 import baseball.model.dto.AnswerComparisonResult;
 import baseball.utils.GameAnswerManager;
 
+import static baseball.view.GameInputView.getShouldProgramExit;
 import static baseball.view.GameInputView.inputUserAnswers;
 import static baseball.view.GameOutputView.printAnswerComparisonResult;
 import static baseball.view.GameOutputView.printGameStartMessage;
@@ -18,6 +19,15 @@ public class GameController {
 
     public void start() {
         printGameStartMessage();
+
+        boolean shouldProgramExit = false;
+        while (!shouldProgramExit) {
+            playGame();
+            shouldProgramExit = getShouldProgramExit();
+        }
+    }
+
+    private void playGame() {
         gameAnswerManager.setAnswer();
 
         boolean isGameEnded = false;
