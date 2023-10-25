@@ -51,4 +51,4 @@ chore: src 또는 test 파일 외 파일 수정
 refactor: 기능에 대한 수정 없는 코드 변경 (구조 변경 등)
 docs: 문서 수정
 comment: 주석 추가 및 수정
-```성
+```
