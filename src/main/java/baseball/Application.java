@@ -1,11 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
@@ -25,7 +24,7 @@ public class Application {
 
             while (!isFinished) {
                 System.out.print("숫자를 입력해주세요 : ");
-                String input1 = readLine();
+                String input1 = Console.readLine();
 
                 // 입력 검증
                 if (!isPlayerInputValid(input1)) {
@@ -44,7 +43,7 @@ public class Application {
 
             // 재시작 확인
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String input2 = readLine();
+            String input2 = Console.readLine();
             if (!input2.matches("[12]{1}")) {
                 throw new IllegalArgumentException("1 또는 2를 입력해 주세요");
             }
