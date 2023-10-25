@@ -2,10 +2,6 @@ package baseball.domain;
 
 import exception.OutOfBaseBallNumbersSize;
 import java.util.List;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -17,23 +13,24 @@ public final class AnswerNumbers {
 
     private final List<Integer> values;
 
-    private AnswerNumbers(Set<Integer> numbers) {
-        validateNumbersSize(numbers);
-        this.values = numbers.stream()
+    private AnswerNumbers(List<Integer> numbers) {
+        final List<Integer> answerNumbers = numbers.stream()
                 .peek(this::validateNumberRange)
+                .distinct()
                 .toList();
+        validateNumbersSize(numbers);
+        this.values = answerNumbers;
     }
 
-    public static AnswerNumbers of(Set<Integer> numbers) {
+    public static AnswerNumbers of(List<Integer> numbers) {
         return new AnswerNumbers(numbers);
     }
 
     public static AnswerNumbers of(String[] numbers) {
-        Set<Integer> numbersStream = Stream.of(numbers)
+        List<Integer> numbersStream = Stream.of(numbers)
                 .mapToInt(Integer::parseInt)
-                .distinct()
                 .boxed()
-                .collect(Collectors.toSet());
+                .toList();
         return new AnswerNumbers(numbersStream);
     }
 
@@ -41,7 +38,7 @@ public final class AnswerNumbers {
         return values.size();
     }
 
-    public void validateNumbersSize(Set<Integer> numbers) {
+    public void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != MAX_BASE_BALL_SIZE) {
             throw new OutOfBaseBallNumbersSize(String.format("max size of baseball numbers is %d", MAX_BASE_BALL_SIZE));
         }
@@ -54,21 +51,21 @@ public final class AnswerNumbers {
     }
 
     private boolean isInBaseBallNumberRange(int number) {
-        return IntStream.range(MIN_BASE_BALL_NUMBER, MAX_BASE_BALL_NUMBER)
+        return IntStream.range(MIN_BASE_BALL_NUMBER, MAX_BASE_BALL_NUMBER + 1)
                 .boxed()
                 .toList()
                 .contains(number);
     }
 
-    public int count(Predicate<Integer> predicate) {
+    public int countBallOf(AnswerNumbers numbers) {
         return (int) values.stream()
-                .filter(predicate)
+                .filter(numbers::isBall)
                 .count();
     }
 
-    public int countWithIndex(BiPredicate<Integer, Integer> biPredicate) {
+    public int countStrikeOf(AnswerNumbers numbers) {
         return (int) IntStream.range(0, values.size())
-                .filter(index -> biPredicate.test(values.get(index), index))
+                .filter(index -> numbers.isStrike(values.get(index), index))
                 .count();
     }
 

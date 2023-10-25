@@ -15,8 +15,12 @@ public class BaseballSingleGame implements BaseBallGame {
     }
 
     @Override
-    public GameState play(Player player, MatchPlayer matchPlayer) {
+    public void onCreateGame(Player player) {
         player.showStartGameMessage();
+    }
+
+    @Override
+    public GameState play(Player player, MatchPlayer matchPlayer) {
         startGame(player, matchPlayer);
         player.printEndGameMessage();
         return GameState.of(player.checkRestart());

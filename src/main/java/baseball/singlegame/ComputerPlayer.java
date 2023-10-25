@@ -15,19 +15,11 @@ public class ComputerPlayer implements MatchPlayer {
 
     @Override
     public BaseBallHint requestHintOf(AnswerNumbers baseBallNumber) {
-        final int ball = countBall(baseBallNumber);
-        final int strike = countStrike(baseBallNumber);
+        final int ball = answer.countBallOf(baseBallNumber);
+        final int strike = answer.countStrikeOf(baseBallNumber);
         return new BaseBallHint(
                 ball - strike,
                 strike
         );
-    }
-
-    private int countBall(AnswerNumbers answerNumbers) {
-        return answer.count(answerNumbers::isBall);
-    }
-
-    private int countStrike(AnswerNumbers answerNumbers) {
-        return answer.countWithIndex(answerNumbers::isStrike);
     }
 }

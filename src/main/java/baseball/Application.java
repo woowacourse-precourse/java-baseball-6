@@ -2,11 +2,11 @@ package baseball;
 
 import baseball.domain.AnswerNumbersGenerator;
 import baseball.domain.BaseBallGame;
-import baseball.singlegame.BaseballSingleGame;
-import baseball.singlegame.ComputerPlayer;
 import baseball.domain.GameState;
 import baseball.domain.MatchPlayer;
 import baseball.domain.Player;
+import baseball.singlegame.BaseballSingleGame;
+import baseball.singlegame.ComputerPlayer;
 import baseball.singlegame.RandomAnswerNumbersGenerator;
 import baseball.view.SinglePlayerConsole;
 
@@ -36,10 +36,10 @@ public class Application {
             Player player,
             MatchPlayer matchPlayer
     ) {
-        final GameState gameState = game.play(player, matchPlayer);
-        if (gameState == GameState.RESTART) {
-            startBaseBallSingleGame(
-                    new BaseballSingleGame(),
+        game.onCreateGame(player);
+        GameState gameState = game.play(player, matchPlayer);
+        while (gameState == GameState.RESTART) {
+            gameState = game.play(
                     initializePlayer(),
                     initializeMatchPlayer()
             );
