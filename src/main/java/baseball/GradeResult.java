@@ -1,10 +1,10 @@
 package baseball;
 
 public class GradeResult {
-    private int ball;
-    private int strike;
+    private final int ball;
+    private final int strike;
 
-    private final int ANSWER_STRIKE_NUM = 3;
+    private static final int ANSWER_STRIKE_NUM = 3;
 
     public GradeResult(int ball, int strike) {
         this.ball = ball;
@@ -12,10 +12,7 @@ public class GradeResult {
     }
 
     public boolean isAnswer() {
-        if (strike == ANSWER_STRIKE_NUM) {
-            return true;
-        }
-        return false;
+        return strike == ANSWER_STRIKE_NUM;
     }
 
     @Override
