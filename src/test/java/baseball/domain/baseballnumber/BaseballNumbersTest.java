@@ -15,10 +15,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayName("[BaseballNumbersTest]")
 class BaseballNumbersTest {
 
-    private static final String ERROR_MESSAGE_WRONG_SIZE = "세 개의 숫자를 입력해 주세요.";
-    private static final String ERROR_MESSAGE_INVALID_RANGE = "1에서 9 사이의 수만 입력할 수 있습니다.";
-    private static final String ERROR_MESSAGE_DUPLICATED = "중복 없이 입력해 주세요.";
-
     @Test
     @DisplayName("정수 리스트로 생성 가능하다.")
     void construct() {
@@ -53,6 +49,8 @@ class BaseballNumbersTest {
     @MethodSource("invalidSizeNumbersData")
     @DisplayName("입력된 값이 3개가 아니라면 IllegalArgumentException을 발생한다.")
     void throwIllegalArgumentExceptionWhenInvalidSizeInput(List<Integer> numbers) {
+        final String ERROR_MESSAGE_WRONG_SIZE = "세 개의 숫자를 입력해 주세요.";
+
         // when, then
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
             () -> new BaseballNumbers(numbers));
@@ -68,6 +66,7 @@ class BaseballNumbersTest {
     @DisplayName("중복값이 있다면 IllegalArgumentException을 발생한다.")
     void throwIllegalArgumentExceptionWhenDuplicatedInput() {
         // given
+        final String ERROR_MESSAGE_DUPLICATED = "중복 없이 입력해 주세요.";
         List<Integer> input = Arrays.asList(1, 1, 2);
 
         // when, then
@@ -80,6 +79,7 @@ class BaseballNumbersTest {
     @DisplayName("입력값 중이 1-9 사이 값이 아닌게 있다면 IllegalArgumentException을 발생한다.")
     void throwIllegalArgumentExceptionWhenInvalidRangeInput() {
         // given
+        final String ERROR_MESSAGE_INVALID_RANGE = "1에서 9 사이의 수만 입력할 수 있습니다.";
         List<Integer> input = Arrays.asList(0, 10, 2);
 
         // when, then
@@ -92,6 +92,7 @@ class BaseballNumbersTest {
     @DisplayName("중복을 제거 하여도 크기가 3인 경우 IllegalArgumentException을 발생한다.")
     void throwIllegalArgumentExceptionWhenSizeIsThreeAfterDeleteDuplicatedValue() {
         // given
+        final String ERROR_MESSAGE_WRONG_SIZE = "세 개의 숫자를 입력해 주세요.";
         List<Integer> input = Arrays.asList(1, 1, 2, 3);
 
         // when, then

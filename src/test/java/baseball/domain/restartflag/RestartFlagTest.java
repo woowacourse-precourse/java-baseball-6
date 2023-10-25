@@ -11,8 +11,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 @DisplayName("[RestartFlagTest]")
 class RestartFlagTest {
 
-    private static final String ERROR_MESSAGE_WRONG_INPUT = "1 혹은 2만 입력해 주세요.";
-
     @Test
     @DisplayName("1이 입력되었을 때 isRestart()가 true를 반환한다.")
     void isRestartReturnTrueWhenInputValueIsOne() {
@@ -30,6 +28,8 @@ class RestartFlagTest {
     @ValueSource(ints = {0, 3})
     @DisplayName("1,2 외에 다른 값이 입력되었을 때 IllegalArgumentException을 발생한다.")
     void throwsIllegalArgumentExceptionWhenInvalidInput(final int input) {
+        final String ERROR_MESSAGE_WRONG_INPUT = "1 혹은 2만 입력해 주세요.";
+
         // when, then
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
             () -> new RestartFlag(input));

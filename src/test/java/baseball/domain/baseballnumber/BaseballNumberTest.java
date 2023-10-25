@@ -12,8 +12,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 @DisplayName("[BaseballNumberTest]")
 class BaseballNumberTest {
 
-    private static final String ERROR_MESSAGE_INVALID_RANGE = "1에서 9 사이의 수만 입력할 수 있습니다.";
-
     @Test
     @DisplayName("정수로 생성 가능하다.")
     void construct() {
@@ -31,6 +29,8 @@ class BaseballNumberTest {
     @ValueSource(ints = {-1, 0, 10})
     @DisplayName("1과 9 사이에 있지 않는 수를 입력하였을 때 IllegalArgumentException발생한다.")
     void throwIllegalArgumentExceptionWhenConstructedByInvalidInputs(final int input) {
+        final String ERROR_MESSAGE_INVALID_RANGE = "1에서 9 사이의 수만 입력할 수 있습니다.";
+
         // when, then
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
             () -> new BaseballNumber(input));

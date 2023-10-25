@@ -13,8 +13,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 @DisplayName("[StringConverterTest]")
 class InputStringConverterTest {
 
-    private static final String ERROR_MESSAGE_NOT_INT = "입력값이 정수가 아닙니다.";
-
     @Test
     @DisplayName("문자열 입력 시 정수 하나로 변환하여 반환")
     void returnOneIntValueWhenInputString() {
@@ -50,6 +48,7 @@ class InputStringConverterTest {
     @DisplayName("toInt 메소드에 정수가 아닌 값이 들어왔을 경우 IllegalArgumentException발생")
     void toIntThrowsIllegalArgumentExceptionWhenInputIsNotIntValue(final String input) {
         // given
+        final String ERROR_MESSAGE_NOT_INT = "입력값이 정수가 아닙니다.";
         InputStringConverter stringConverter = new InputStringConverter();
 
         // when, then
@@ -63,6 +62,7 @@ class InputStringConverterTest {
     @DisplayName("toIntList 메소드에 정수가 아닌 값이 들어왔을 경우 IllegalArgumentException발생")
     void toIntListThrowsIllegalArgumentExceptionWhenInputIsNotIntValue(final String input) {
         // given
+        final String ERROR_MESSAGE_NOT_INT = "입력값이 정수가 아닙니다.";
         InputStringConverter stringConverter = new InputStringConverter();
 
         // when, then
