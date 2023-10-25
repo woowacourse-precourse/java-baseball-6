@@ -2,9 +2,9 @@ package baseball.policy;
 
 public class ValidationPolicy {
 
-    public void isCorrectLength(String input, int length){
+    public void isCorrectLength(String input, int length) {
         if (!(input.length() == length)) {
-            throw new IllegalArgumentException("입력 숫자는 "+length+"자리여야 합니다.");
+            throw new IllegalArgumentException("입력 숫자는 " + length + "자리여야 합니다.");
         }
     }
 

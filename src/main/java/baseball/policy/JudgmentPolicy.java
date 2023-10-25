@@ -25,7 +25,7 @@ public class JudgmentPolicy {
 
     private Judgment makeJudgment(List<Integer> computerNumbers, Integer userNumber, int userNumberIndex) {
         Judgment judgment;
-        if(computerNumbers.get(userNumberIndex) == userNumber) {
+        if (computerNumbers.get(userNumberIndex) == userNumber) {
             judgment = Judgment.strike;
         } else if (computerNumbers.contains(userNumber)) {
             judgment = Judgment.ball;

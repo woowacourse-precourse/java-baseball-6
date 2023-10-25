@@ -22,8 +22,6 @@ public class BaseballComputer implements Computer {
             }
         }
 
-//        System.out.println(createdNumbers);
-
         this.numbers = createdNumbers;
     }
 
