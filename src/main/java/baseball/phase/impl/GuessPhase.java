@@ -10,7 +10,8 @@ import java.util.List;
 public class GuessPhase implements Phase {
     private BaseballGame baseballGame;
 
-    public GuessPhase() {
+    public GuessPhase(BaseballGame game) {
+        this.baseballGame = game;
     }
 
     @Override
@@ -45,11 +46,6 @@ public class GuessPhase implements Phase {
             return PhaseID.MENU;
         }
         return PhaseID.GUESS;
-    }
-
-    @Override
-    public void setGame(BaseballGame game) {
-        this.baseballGame = game;
     }
 
     private List<Integer> extractGuess(String input) {

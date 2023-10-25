@@ -7,7 +7,8 @@ import baseball.phase.PhaseID;
 public class MenuPhase implements Phase {
     private BaseballGame baseballGame;
 
-    public MenuPhase() {
+    public MenuPhase(BaseballGame game) {
+        this.baseballGame = game;
     }
 
 
@@ -22,7 +23,7 @@ public class MenuPhase implements Phase {
             throw new IllegalArgumentException();
         }
         char ch = input.charAt(0);
-        if ('1' <= ch && ch <= '2') {
+        if ('1' > ch || ch > '2') {
             throw new IllegalArgumentException();
         }
     }
@@ -36,10 +37,5 @@ public class MenuPhase implements Phase {
         } else {
             return PhaseID.FINISH;
         }
-    }
-
-    @Override
-    public void setGame(BaseballGame game) {
-        this.baseballGame = game;
     }
 }

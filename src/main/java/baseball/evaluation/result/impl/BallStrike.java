@@ -19,7 +19,12 @@ public class BallStrike implements EvalResult {
             System.out.println("낫싱");
         } else {
             if (ball != 0) {
-                System.out.printf("%d 볼 ", ball);
+                System.out.printf("%d 볼", ball);
+                if (strike == 0) {
+                    System.out.print("\n");
+                } else {
+                    System.out.print(" ");
+                }
             }
             if (strike != 0) {
                 System.out.printf("%d 스트라이크%n", strike);

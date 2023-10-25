@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         BaseballGame game = new BaseballGameImpl(3);
+        game.init();
         while (!game.isOver()) {
             game.display();
             String userInput = Console.readLine();
