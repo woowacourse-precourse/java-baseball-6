@@ -9,10 +9,6 @@ public class Computer {
 
     private List<Integer> computerNums;
 
-    public Computer() {
-        createRandomNums(3);
-    }
-
     public Computer(int size) {
         createRandomNums(size);
     }

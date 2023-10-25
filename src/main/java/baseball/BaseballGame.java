@@ -15,10 +15,11 @@ public class BaseballGame {
 
     private Computer computer;
     private Player player;
-    private int restart = 1;
+    private int restart;
     private ResultPrinter resultPrinter;
 
     public BaseballGame() {
+        restart = 1;
         resultPrinter = new ResultPrinter();
     }
 
