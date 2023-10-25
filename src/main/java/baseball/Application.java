@@ -2,32 +2,26 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
-    static List<Integer> computerNumbers;
-    static List<Integer> playerNumbers;
-
     public static void main(String[] args) {
-
         Application application = new Application();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         computerStart:
         while (true) {
-            computerNumbers = new ArrayList<>();
+            int[] computerNumbers = new int[3];
             boolean isGameTermination = false;
 
-            application.setComputerNumber();
+            application.setComputerNumber(computerNumbers);
             do {
-                playerNumbers = new ArrayList<>();
+                int[] playerNumbers = new int[3];
 
-                application.inputPlayerNumber();
+                application.inputPlayerNumber(playerNumbers);
 
-                int strikeCount = application.calculateStrikeCount();
-                int ballCount = application.calculateBallCount();
+                int strikeCount = application.calculateStrikeCount(computerNumbers, playerNumbers);
+                int ballCount = application.calculateBallCount(computerNumbers, playerNumbers);
 
                 application.printResult(strikeCount, ballCount);
                 isGameTermination = application.checkGameTermination(strikeCount);
@@ -45,32 +39,48 @@ public class Application {
         }
     }
 
-    public void setComputerNumber() {
-        while (computerNumbers.size() < 3) {
+    public void setComputerNumber(int[] computerNumbers) {
+        int countAdded = 0;
+
+        do {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
+            if (!isContain(computerNumbers, randomNumber, countAdded)) {
+                computerNumbers[countAdded++] = randomNumber;
             }
-        }
+        } while (countAdded < 3);
+
     }
 
-    public void inputPlayerNumber() {
+    public boolean isContain(int[] computerNumbers, int randomNumber, int countAdded) {
+        if (countAdded == 0) {
+            return false;
+        }
+
+        for (int i = 0; i < countAdded; i++) {
+            if (randomNumber == computerNumbers[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void inputPlayerNumber(int[] playerNumbers) {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
         checkPlayerNumberValidity(input);
 
-        for (int i = 0; i < 3; i++) {
-            playerNumbers.add(input.charAt(i) - '0');
-        }
+        playerNumbers[0] = input.charAt(0) - '0';
+        playerNumbers[1] = input.charAt(1) - '0';
+        playerNumbers[2] = input.charAt(2) - '0';
     }
 
-    public int calculateStrikeCount() {
+    public int calculateStrikeCount(int[] computerNumbers, int[] playerNumbers) {
         int strikeCount = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (computerNumbers.get(i) == playerNumbers.get(i)) {
+            if (computerNumbers[i] == playerNumbers[i]) {
                 strikeCount++;
             }
         }
@@ -78,7 +88,7 @@ public class Application {
         return strikeCount;
     }
 
-    public int calculateBallCount() {
+    public int calculateBallCount(int[] computerNumbers, int[] playerNumbers) {
         int ballCount = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -87,7 +97,7 @@ public class Application {
                     continue;
                 }
 
-                if (computerNumbers.get(i) == playerNumbers.get(k)) {
+                if (computerNumbers[i] == playerNumbers[k]) {
                     ballCount++;
                 }
             }
