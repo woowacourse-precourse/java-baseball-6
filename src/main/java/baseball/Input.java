@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Input {
+    Scanner sc = new Scanner(System.in);
+    String input = sc.next();
+
     public List<Integer> numbers() {
-        Scanner sc = new Scanner(System.in);
-        String input = sc.next();
         List<Integer> inputNumber = new ArrayList<>();
 
         for (int i = 0; i < input.length(); i++) {
@@ -31,5 +32,24 @@ public class Input {
             return false;
         }
         return true;
+    }
+
+    public int newGameCheck() {
+        try {
+            if (input.length() != 1) {
+                throw new IllegalArgumentException();
+            } else {
+                int newgame = Integer.parseInt(input);
+                if (newgame == 1) {
+                    return 1;
+                } else if (newgame == 2) {
+                    return 2;
+                } else {
+                    throw new IllegalArgumentException();
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            return 2;
+        }
     }
 }
