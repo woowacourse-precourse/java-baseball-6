@@ -11,13 +11,10 @@ public class Application {
             int[] computerNumber = computer.getComputerNumber();
             for (int j = 0; j < 1; ++j) {
                 User user = new User();
-                int input = user.usrInput();
-                if (input == -1) {
-                    break;
-                }
+                user.usrInput();
                 int[] userNumber = user.getUserNumber();
-                Game game = new Game();
 
+                Game game = new Game();
                 int result = game.divideResult(computerNumber, userNumber);
                 if (result == 2) {
                     break;
@@ -77,36 +74,29 @@ class User {
 
     private int checkNumber(String number) {
         int inputNum = Integer.parseInt(number);
+        if (inputNum / 100 > 9) {
+            throw new IllegalArgumentException("error");
+        }
         return inputNum;
     }
 
-    private int ciphers(int inputNum) {
+    private void ciphers(int inputNum) {
         int k = 100;
         for (int i = 0; i <= 2; i++) {
             int num = inputNum / k;
-            try {
-                if (!Arr.checkOverlap(userNumber, num) || num == 0) {
-                    throw new IllegalArgumentException("error");
-                }
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                return -1;
+            if (!Arr.checkOverlap(userNumber, num) || num == 0) {
+                throw new IllegalArgumentException("error");
             }
             userNumber[i] = num;
             inputNum -= (num * k);
             k /= 10;
         }
-        return 1;
     }
 
-    public int usrInput() {
+    public void usrInput() {
         System.out.print("숫자를 입력해주세요 : ");
         int inputNum = inputNumber();
-        int k = ciphers(inputNum);
-        if (k == -1) {
-            return -1;
-        }
-        return 1;
+        ciphers(inputNum);
     }
 
     public int[] getUserNumber() {
@@ -140,6 +130,8 @@ class Game {
                 return 2;
             } else if (k == 1) {
                 return 1;
+            } else {
+                throw new IllegalArgumentException("error");
             }
         } else {
             this.printResult(ball, strike);
@@ -150,7 +142,7 @@ class Game {
     public int exitOrStart() {
         System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String input = Console.readLine();
         int k = Integer.parseInt(input);
