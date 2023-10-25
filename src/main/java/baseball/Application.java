@@ -8,7 +8,6 @@ import baseball.service.Checker;
 
 public class Application {
     public static void main(String[] args) {
-
         // init
         Input input = new Input();
         Printer printer = new Printer();
@@ -24,6 +23,7 @@ public class Application {
                 String inputNumbers = input.getInputNumbers();
                 Result result = checker.check(inputNumbers, baseballNumbers);
                 printer.printResult(result);
+
                 if (result.getMessage().equals("3스트라이크")) {
                     printer.printStrikeMessage();
                     break;

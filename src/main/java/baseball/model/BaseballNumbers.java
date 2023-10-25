@@ -1,7 +1,6 @@
 package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,6 @@ public class BaseballNumbers {
 
     public boolean containNumber(int number) {
         return this.numbers.contains(number);
-
     }
 
     public boolean checkStrikeNumber(int index, int number) {

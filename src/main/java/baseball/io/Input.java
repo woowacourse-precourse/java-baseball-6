@@ -3,7 +3,6 @@ package baseball.io;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
-
     public String getInputNumbers() {
         String inputNumbers = Console.readLine();
         if (inputNumbers.length() != 3 || inputNumbers.contains("0")) {
