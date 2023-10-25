@@ -10,6 +10,9 @@ public class NumberMatcher {
     /**
      * 숫자 매칭
      * @param computer
+     * @param startInclusive
+     * @param endInclusive
+     * @param count
      * @return
      */
     public static String numberMatcherResult(
@@ -28,6 +31,9 @@ public class NumberMatcher {
 
     /**
      * 사용자가 입력한 숫자를 List로 반환
+     * @param startInclusive
+     * @param endInclusive
+     * @param count
      * @return
      */
     public static List<Integer> getUserInputAsList(
@@ -41,6 +47,9 @@ public class NumberMatcher {
 
     /**
      * 유효한 사용자 입력을 int 반환
+     * @param startInclusive
+     * @param endInclusive
+     * @param count
      * @return
      */
     public static int readValidUserInput(
@@ -97,6 +106,7 @@ public class NumberMatcher {
      * 같은 수가 같은 자리에 있는 스트라이크 개수 반환
      * @param userInput
      * @param computer
+     * @param numberLength
      * @return
      */
     public static int countStrikes(List<Integer> userInput, List<Integer> computer, int numberLength) {
@@ -114,6 +124,7 @@ public class NumberMatcher {
      * 같은 수가 다른 자리에 있는 볼 개수 반환
      * @param userInput
      * @param computer
+     * @param numberLength
      * @return
      */
     public static int countBalls(List<Integer> userInput, List<Integer> computer, int numberLength) {
@@ -142,6 +153,9 @@ public class NumberMatcher {
     /**
      * 숫자가 범위 내에 있는 유효한 숫자인지 체크
      * @param number
+     * @param startInclusive
+     * @param endInclusive
+     * @param count
      * @return
      */
     public static boolean isValidNumber(
@@ -180,7 +194,7 @@ public class NumberMatcher {
     }
 
     /**
-     * 입력한 숫자 값이 1~9 사이에 있는지 체크
+     * number 값이 min과 max 사이에 있는지 체크
      * @param number
      * @return
      */
