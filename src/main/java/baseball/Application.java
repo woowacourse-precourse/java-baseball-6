@@ -20,7 +20,7 @@ public class Application {
 
             while (!gameEndFlag) {
                 ArrayList<Integer> playerNumbers = userInput();
-                playGame(computer, new HashSet<>(playerNumbers));
+                playGame(computer, playerNumbers);
 
                 if (isGameEnd(playerNumbers, computer)) {
                     gameEndFlag = true;
@@ -30,7 +30,7 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String choice = Console.readLine();
             if (choice.equals("1")) {
-                System.out.println("숫자 야구 게임을 시작합니다.");
+                System.out.println("숫자 야구 게임을 다시 시작합니다.");
                 continue;
             } else if (choice.equals("2")) {
                 break;
@@ -88,26 +88,22 @@ public class Application {
         return playerInputArray;
     }
 
-    private static void playGame(ArrayList<Integer> computerNumbers, Set<Integer> playerNumbers) {
+    private static void playGame(ArrayList<Integer> computerNumbers, ArrayList<Integer> playerNumbers) {
         int strikes = 0;
         int balls = 0;
 
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            if (computerNumbers.get(i).equals(playerNumbers.toArray()[i])) {
+            if (computerNumbers.get(i).equals(playerNumbers.get(i))) {
                 strikes++;
             } else if (playerNumbers.contains(computerNumbers.get(i))) {
                 balls++;
             }
         }
 
-        if (balls == 0 && strikes == 0) {
+        if (strikes == 0 && balls == 0) {
             System.out.println("낫싱");
-        } else if (balls != 0 && strikes != 0) {
-            System.out.println(balls + "볼 " + strikes + "스트라이크");
-        } else if (balls != 0) {
-            System.out.println(balls + "볼");
         } else {
-            System.out.println(strikes + "스트라이크");
+            System.out.println(balls + "볼 " + strikes + "스트라이크");
         }
     }
 
