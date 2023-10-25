@@ -28,6 +28,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 입력시_중복_검사_예외처리_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("441"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void 입력시_문자열이_모두_숫자로만_이루어져있는지_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("13p"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
