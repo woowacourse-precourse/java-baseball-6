@@ -43,7 +43,7 @@ public class GameRunner {
     }
 
     public boolean askToRestart() {
-        OutputHandler.printGameRestart();
+        OutputHandler.printRestartOrExit();
         String input = Console.readLine();
         if (input.equals("1")) {
             return true;
