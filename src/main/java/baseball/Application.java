@@ -7,7 +7,6 @@ public class Application {
         BaseballGame b = new BaseballGame();
 
         b.startGame();
-
         while(true) {
             List<Integer> randomNum = b.getRandomNum();
             while (true) {
