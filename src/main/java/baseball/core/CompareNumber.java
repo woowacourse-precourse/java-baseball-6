@@ -6,10 +6,12 @@ import java.util.List;
 
 public class CompareNumber {
 
+    public static final String LIST_SIZE_NOT_MATHCHING = "[Err] 유저 입력값과 컴퓨터 생성의 수의 개수가 다릅니다.";
+
     public static GameScore compareNumberList(List<Integer> user,List<Integer> computer){
 
         if (userListAndComputerListSizeCompare(user,computer)){
-            throw new IllegalArgumentException("[Err] 유저 입력값과 컴퓨터 생성의 수의 개수가 다릅니다.");
+            throw new IllegalArgumentException(LIST_SIZE_NOT_MATHCHING);
         }
 
         int loop_cnt = user.size();
