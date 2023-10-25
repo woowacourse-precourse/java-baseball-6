@@ -7,7 +7,7 @@ public class Application {
 
     static final int CNT_SIZE = 3;
     static final int OUT_CNT = 3;
-    static List<Integer> mixNum(List<Integer> computer) {       //컴퓨터로부터 랜덤숫자
+    static List<Integer> mixNum(List<Integer> computer) {       //컴퓨터가 랜덤으로 숫자를 뽑음
         while (computer.size() < CNT_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -47,8 +47,8 @@ public class Application {
             input.add(second);
             input.add(third);
 
-            for (int i = 0; i < 3; i++) {                           //컴퓨터가 뽑은 숫자와 플레이어가 입력한 숫자 비교
-                if (!computer.contains(input.get(i))) continue;     //플레이어가 입력한 숫자가 컴퓨터가 뽑은 숫자 리스트에 포함 되어 있지 않을 때
+            for (int i = 0; i < 3; i++) {                           //컴퓨터가 정한 숫자와 플레이어가 입력한 숫자 비교
+                if (!computer.contains(input.get(i))) continue;     //플레이어가 입력한 숫자가 컴퓨터가 정한 숫자 리스트에 포함 되어 있지 않을 때
                 if (computer.get(i) == input.get(i))                //같은 자리에 숫자가 있을 때
                     strike++;
                 else ball++;                                        //포함만 되어 잇을 때
