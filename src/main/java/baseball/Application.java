@@ -31,7 +31,7 @@ public class Application {
 
             if (playAgainInput.equals("2")) {
                 System.out.println("게임을 종료합니다.");
-                return;
+                return; //1 선택시 루프 반복
             }
         }
     }
