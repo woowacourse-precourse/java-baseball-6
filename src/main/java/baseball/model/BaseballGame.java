@@ -65,4 +65,36 @@ public class BaseballGame {
 
         return ballAndStrike;
     }
+
+    public static String getResultMessage(List<Integer> ballAndStrike) {
+        if (isNothing(ballAndStrike)) {
+            return NOTHING;
+        } else if (isJustBall(ballAndStrike)) {
+            return ballAndStrike.get(0).toString() + BALL;
+        } else if (isJustStrike(ballAndStrike)) {
+            return ballAndStrike.get(1).toString() + STRIKE;
+        }
+        return ballAndStrike.get(0) + BALL + " " + ballAndStrike.get(1) + STRIKE;
+    }
+
+    private static boolean isNothing(List<Integer> ballAndStrike) {
+        if (ballAndStrike.get(0) == 0 && ballAndStrike.get(1) == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isJustBall(List<Integer> ballAndStrike) {
+        if (ballAndStrike.get(1) == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isJustStrike(List<Integer> ballAndStrike) {
+        if (ballAndStrike.get(0) == 0) {
+            return true;
+        }
+        return false;
+    }
 }
