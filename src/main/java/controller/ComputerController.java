@@ -23,9 +23,7 @@ public class ComputerController {
         gameView.guessNumber();
     }
 
-    public void guessNumber(String numStr) {
-        // TODO: validate
-
-        // TODO: checkAnswer
+    public void guessNumber(String guessingNum) {
+        computerService.guessNumber(guessingNum);
     }
 }
