@@ -14,4 +14,13 @@ public enum GameStatus {
     public int getStatus() {
         return status;
     }
+
+    public static GameStatus fromInt(int input) {
+        for (GameStatus status : GameStatus.values()) {
+            if (status.getStatus() == input) {
+                return status;
+            }
+        }
+        return null;
+    }
 }
