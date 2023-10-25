@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import baseball.util.Constant;
 
 public class NumberGenerator {
-	public static String generateNumber() {
+	public static int generateNumber() {
 		List<Integer> computerNumber = new ArrayList<>();
 
 		while (computerNumber.size() < Constant.NUMBER_LENGTH) {
@@ -17,11 +17,11 @@ public class NumberGenerator {
 			}
 		}
 
-		StringBuilder sb = new StringBuilder();
+		int generatedNumber = 0;
 		for (int number : computerNumber) {
-			sb.append(number);
+			generatedNumber = generatedNumber * 10 + number;
 		}
 
-		return sb.toString();
+		return generatedNumber;
 	}
 }
