@@ -57,6 +57,7 @@ public class Game {
                 if (choice == 1) {
                     computer = new Computer();
                 } else if (choice == 2) {
+                    System.out.println("게임 종료");
                     break;
                 }
             }
