@@ -35,7 +35,7 @@ public class Application {
                 attempts++;
             }
 
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.n");
             String restartInput = getUserInput();
             if (restartInput.equals("2")) {
                 break;
