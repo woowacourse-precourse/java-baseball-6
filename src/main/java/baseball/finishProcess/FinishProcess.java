@@ -8,6 +8,10 @@ public class FinishProcess {
     private int finishAnswer;
     private boolean isContinue;
 
+    public boolean isContinueGame() {
+        return isContinue;
+    }
+
     public FinishProcess() throws IllegalArgumentException {
         try {
             initVariables();
@@ -29,7 +33,6 @@ public class FinishProcess {
     }
 
     private void inputFinishAnswer() throws IllegalArgumentException {
-
         try {
             finishAnswer = Integer.parseInt(readLine());
         }
@@ -42,9 +45,5 @@ public class FinishProcess {
         if (finishAnswer == FinishNotice.restartCode) isContinue = true;
         else if (finishAnswer == FinishNotice.exitCode) isContinue = false;
         else throw new IllegalArgumentException();
-    }
-
-    public boolean isContinueGame() {
-        return isContinue;
     }
 }
