@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import baseball.response.GameResponse;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,5 +38,14 @@ class RefereeTest {
     void 스트라이크가_세_개면_게임이_종료() {
         referee.calculateStrikeCount(user, computer);
         assertEquals(GameStatus.END, referee.isGameEnd());
+    }
+
+    @Test
+    void 게임_응답을_올바르게_생성() {
+        referee.playGame(user, computer);
+        GameResponse response = referee.toResponse();
+        assertEquals(GameStatus.END, response.getGameStatus());
+        assertEquals(3, response.getStrike());
+        assertEquals(0, response.getBall());
     }
 }
