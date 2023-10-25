@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
     private static final int NUMBERS_COUNT = 3;
+
     public static void main(String[] args) {
         boolean continuePlaying = true;
 
@@ -25,6 +25,7 @@ public class Application {
             continuePlaying = askNewGame();
         }
     }
+
     private static List<Integer> createRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
 
