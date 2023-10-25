@@ -10,7 +10,7 @@ public class User implements Player {
 
     private List<Integer> baseballNumbers;
 
-    private int numberLength;
+    private final int numberLength;
     private static final String SPLIT = "";
 
 
