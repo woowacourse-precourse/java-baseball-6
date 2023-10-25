@@ -8,7 +8,7 @@ public class Application {
         do{
             Bot bot = new Bot();
             bot.generateRandomNumber(bot.botNumbers);
-            System.out.println(java.util.Arrays.toString(bot.botNumbers));
+            //System.out.println(java.util.Arrays.toString(bot.botNumbers));
             do{
                 bot.getAnswer(bot.userNumbers);
             } while(bot.checkAnswer(bot.botNumbers, bot.userNumbers));
