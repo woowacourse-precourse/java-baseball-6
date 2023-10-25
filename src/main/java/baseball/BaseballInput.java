@@ -16,12 +16,20 @@ public class BaseballInput {
         return userInput;
     }
 
-    public static void decideIllegalArgumentException(int num){
+    public static void decideBoundIllegalArgumentException(int num){
         if (num < 123 || num > 987 ) {
             IllegalArgumentException e = new IllegalArgumentException("IllegalArgumentException");
             throw e;
         }
     }
+
+    public static void decideContainsIllegalArgumentException(boolean isit){
+        if (isit) {
+            IllegalArgumentException e = new IllegalArgumentException("IllegalArgumentException");
+            throw e;
+        }
+    }
+
 
     public static void setUserInput() {
         userInput = new ArrayList<>();
@@ -31,16 +39,13 @@ public class BaseballInput {
             int inputStrToInt = Integer.parseInt(inputString);
 
             //세 자리수 입력 판단
-            decideIllegalArgumentException(inputStrToInt);
+            decideBoundIllegalArgumentException(inputStrToInt);
 
             // 서로 다른 수인지 판단
             for(int i=2; i>=0; i--) {
                 int newAdder = inputStrToInt / (int)Math.pow(10,i) ;
                 inputStrToInt %= (int)Math.pow(10,i) ;
-                if (userInput.contains(newAdder)) {
-                    IllegalArgumentException e = new IllegalArgumentException("IllegalArgumentException");
-                    throw e;
-                }
+                decideContainsIllegalArgumentException(userInput.contains(newAdder));
                 userInput.add(newAdder);
             }
 
