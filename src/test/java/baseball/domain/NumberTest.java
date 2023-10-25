@@ -72,4 +72,13 @@ class NumberTest {
         // then
         assertThatThrownBy(() -> new Number(list1)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 생성된_번호_중복_예외_테스트() {
+        // given
+        List<Integer> list1 = new ArrayList<>(List.of(1, 3, 3));
+
+        // then
+        assertThatThrownBy(() -> new Number(list1)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
