@@ -1,22 +1,25 @@
 package baseball;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.Map;
 
 public class AnswerBalls {
     public static final int ANSWER_LENGTH = 3;
     private static final int INPUT_MINIMUM = 1;
     private static final int INPUT_MAXIMUM = 9;
-
     private final List<Ball> answerBalls;
 
     public AnswerBalls(List<Ball> answerBalls){
         this.answerBalls = answerBalls;
     }
-    // 중복 없는 세자리 랜덤값 만들기
+
     public static AnswerBalls makeAnswerBalls() {
         List<Ball> answerBalls = new ArrayList<>();
         Set<Integer> availableNumbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -58,6 +61,4 @@ public class AnswerBalls {
             throw new IllegalArgumentException("임의의 수 3개는 중복될 수 없습니다.");
         }
     }
-
-
 }
