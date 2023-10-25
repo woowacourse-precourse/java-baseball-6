@@ -15,15 +15,15 @@ public class Score {
         this.ball -= strikeCnt;
     }
 
+    public boolean isAnswer() {
+        return this.strike == GAME_ANSWER_VALUE;
+    }
+
     public int getBall() {
         return ball;
     }
 
     public int getStrike() {
         return strike;
-    }
-
-    public boolean isAnswer() {
-        return this.strike == GAME_ANSWER_VALUE;
     }
 }
