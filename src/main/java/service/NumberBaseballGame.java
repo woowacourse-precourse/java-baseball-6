@@ -73,6 +73,9 @@ public class NumberBaseballGame {
             numberChecker.clear();
             startGame();
         }
+        else {
+            inputModule.close();
+        }
     }
 
 }

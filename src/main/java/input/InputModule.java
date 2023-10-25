@@ -42,4 +42,8 @@ public class InputModule {
         restartInputValidator.validator(input);
         this.inputInt = Integer.parseInt(input);
     }
+
+    public void close(){
+        Console.close();
+    }
 }
