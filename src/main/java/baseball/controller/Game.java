@@ -11,12 +11,12 @@ public class Game {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final Numbers computerNumbers;
+    private final Numbers answerNumbers;
 
     public Game(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        computerNumbers = Numbers.createRandomNumbers();
+        answerNumbers = Numbers.createRandomNumbers();
     }
 
     public void playOnce() {
@@ -28,7 +28,7 @@ public class Game {
     public void getGameResult() {
         do {
             Numbers playerNumbers = Numbers.fromInputNumbers(inputView.createPlayerNumber());
-            Referee referee = new Referee(computerNumbers);
+            Referee referee = new Referee(answerNumbers);
 
             int strike = referee.countStrike(playerNumbers);
             int ball = referee.countBall(playerNumbers);
