@@ -15,6 +15,7 @@ public class GameController {
     private Score score;
     private static final String RETRY = "1";
     private static final String END = "2";
+    private static final int CORRECT_ANSWER = 3;
 
 
     public GameController () {
@@ -35,7 +36,7 @@ public class GameController {
         do{
             inputView.printNumberRequestMessage();
             answerHint();
-        } while(!(score.getStrikeCount()==3));
+        } while(!(score.getStrikeCount()==CORRECT_ANSWER));
         outputView.printGameEndingMessage();
     }
 
