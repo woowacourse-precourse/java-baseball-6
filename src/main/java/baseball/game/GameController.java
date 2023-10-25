@@ -16,11 +16,12 @@ public class GameController {
     private final ResultGenerator resultGenerator;
     private List<Integer> computerNumbers;
 
-    public GameController(Builder builder){
-        this.resultGenerator = builder.resultGenerator;
-        this.computerNumberGenerator = builder.computerNumberGenerator;
-        this.inputProcessor = builder.inputProcessor;
-        this.outputView = builder.outputView;
+    public GameController(InputProcessor inputProcessor, ComputerNumberGenerator computerNumberGenerator,
+                          OutputView outputView, ResultGenerator resultGenerator){
+        this.inputProcessor = inputProcessor;
+        this.computerNumberGenerator = computerNumberGenerator;
+        this.outputView = outputView;
+        this.resultGenerator = resultGenerator;
     }
 
     public void initializeGameSession(){
@@ -53,36 +54,5 @@ public class GameController {
         outputView.printRestartMessage();
         int restartChoice = inputProcessor.obtainValidUserChoice();
         return restartChoice == GameConstant.RESTART_CHOICE.getValue();
-    }
-
-    public static class Builder{
-        private InputProcessor inputProcessor;
-        private ComputerNumberGenerator computerNumberGenerator;
-        private OutputView outputView;
-        private ResultGenerator resultGenerator;
-
-        public Builder withGuessInputProcessor(InputProcessor processor) {
-            this.inputProcessor = processor;
-            return this;
-        }
-
-        public Builder withComputerNumberGenerator(ComputerNumberGenerator computerNumberGenerator) {
-            this.computerNumberGenerator = computerNumberGenerator;
-            return this;
-        }
-
-        public Builder withOutputView(OutputView outputView){
-            this.outputView = outputView;
-            return this;
-        }
-
-        public Builder withResultGenerator(ResultGenerator resultGenerator){
-            this.resultGenerator = resultGenerator;
-            return this;
-        }
-
-        public GameController build() {
-            return new GameController(this);
-        }
     }
 }

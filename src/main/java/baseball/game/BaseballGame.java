@@ -14,12 +14,11 @@ public class BaseballGame {
         InputConverter inputConverter = new InputConverter();
         InputValidator inputValidator = new InputValidator();
 
-        gameController  = new GameController.Builder()
-                .withGuessInputProcessor(new InputProcessor(inputConverter, inputValidator))
-                .withComputerNumberGenerator(new ComputerNumberGenerator())
-                .withOutputView(new OutputView())
-                .withResultGenerator(new ResultGenerator())
-                .build();
+        gameController  = new GameController(
+                new InputProcessor(inputConverter, inputValidator),
+                new ComputerNumberGenerator(),
+                new OutputView(),
+                new ResultGenerator());
     }
 
     public void runGame(){
