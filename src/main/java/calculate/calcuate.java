@@ -1,5 +1,6 @@
 package calculate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -8,17 +9,25 @@ public class calcuate {
     public static int[] calculateResult(List<Integer> computerNumbers, int[] userNumbers) {
         int strikes = 0;
         int balls = 0;
+        List<Integer> usedByComputer = new ArrayList<>();
+        List<Integer> usedByUser = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
             if (userNumbers[i] == computerNumbers.get(i)) {
                 strikes++;
-            } else if (computerNumbers.contains(userNumbers[i])) {
-                balls++;
+            } else {
+                usedByComputer.add(computerNumbers.get(i));
+                usedByUser.add(userNumbers[i]);
             }
         }
 
-        // 중복된 숫자를 고려해 중복 숫자의 볼 개수를 조정
-        balls -= strikes;
+        for (int number : usedByUser) {
+            if (usedByComputer.contains(number)) {
+                balls++;
+                usedByComputer.remove(Integer.valueOf(number));
+            }
+        }
+
 
         return new int[]{balls, strikes};
     }
