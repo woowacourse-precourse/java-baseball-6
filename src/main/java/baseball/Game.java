@@ -31,7 +31,6 @@ public class Game {
 
         while (isPlaying()){
             computer.setComputerObject();
-            computer.printComputerNumber();
 
             while ( !(isThreeStrike()) ){
                 System.out.print(Print.GET_INPUT);

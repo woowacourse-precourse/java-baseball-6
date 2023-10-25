@@ -11,20 +11,14 @@ public class User {
         user.clear();
     }
 
-    public void selectUserNumber(){ // TODO: 리팩토링(너무 많은 로직이 들어있음)
+    public void selectUserNumber(){
         String[] input = Console.readLine().split("");
+        Validate.isLessThenFourLetter(input);
 
-        if(input.length >= 4){
-            throw new IllegalArgumentException("입력 값은 3개 이하여야 합니다.");
-        }
-
-        for(int i=0; i<input.length; i++){
-            int num = Integer.parseInt(input[i]);
+        for (String inputNum : input) {
+            int num = Integer.parseInt(inputNum);
             Validate.isNumberValidate(num);
-
-            if(user.contains(num)){
-                throw new IllegalArgumentException("입력 값은 서로 다른 값이여야 합니다.");
-            }
+            Validate.isNumberDuplicate(user, num);
             user.add(num);
         }
     }
