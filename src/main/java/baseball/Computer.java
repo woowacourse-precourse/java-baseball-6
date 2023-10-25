@@ -1,11 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer extends Number{
+public class Computer extends Number {
     private List<Integer> computerNum;
 
     public List<Integer> getComputerNum() {

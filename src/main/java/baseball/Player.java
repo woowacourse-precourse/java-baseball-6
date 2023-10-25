@@ -1,11 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Console;
+public class Player extends Number {
 
-public class Player extends Number{
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private List<Integer> userNum;
 
     public List<Integer> getUserNum() {
@@ -13,7 +14,7 @@ public class Player extends Number{
     }
 
     public void createUserNum() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
         List<Integer> inputNum = convertStringToList(input);
         validate(inputNum);
