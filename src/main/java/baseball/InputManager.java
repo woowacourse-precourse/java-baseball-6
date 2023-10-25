@@ -12,7 +12,7 @@ public class InputManager {
         userInput = Console.readLine();
         validateChecker.isUserInputValidate(userInput);
         userInputNum = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int userInputIndex = 0; userInputIndex < 3; userInputIndex++) {
             userInputNum.add(Character.getNumericValue(userInput.charAt(i)));
         }
         return (userInputNum);

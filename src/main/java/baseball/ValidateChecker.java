@@ -27,7 +27,7 @@ class ValidateCheckerUtils {
         int countNum;
 
         countNum = 0;
-        for (int i = 0; i < input.length(); i++) {
+        for (int userInputIndex = 0; userInputIndex < input.length(); userInputIndex++) {
             if (input.charAt(i) == target)
                 countNum++;
         }
@@ -41,14 +41,14 @@ class ValidateCheckerUtils {
     }
 
     boolean isRangeValidate(String userInput, char start, char end) {
-        for (int i = 0; i < userInput.length(); i++) {
-            if (userInput.charAt(i) < start || userInput.charAt(i) > end)
+        for (int userInputIndex = 0; userInputIndex < userInput.length(); userInputIndex++) {
+            if (userInput.charAt(userInputIndex) < start || userInput.charAt(userInputIndex) > end)
                 return (false);}
         return (true);
     }
 
     void checkDuplicateValidate(String userInput) {
-        for (int i = 0; i < userInput.length(); i++) {
+        for (int userInputIndex = 0; userInputIndex < userInput.length(); userInputIndex++) {
             if (count(userInput, userInput.charAt(i)) > 1)
                 exception.generateInvalidAnswerDuplicateException();
         }
