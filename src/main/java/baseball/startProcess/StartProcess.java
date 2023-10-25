@@ -12,7 +12,7 @@ public class StartProcess {
     public StartProcess(GameRole gameRole) {
         initVariable();
         printStartPhrase();
-        combineComputerNumber(gameRole);
+        inputComputerNumber(gameRole);
     }
 
     private void initVariable() {
@@ -23,7 +23,7 @@ public class StartProcess {
         System.out.println(StartNotice.startPhrase);
     }
 
-    private void combineComputerNumber(GameRole gameRole) {
+    private void inputComputerNumber(GameRole gameRole) {
         while (computer.size() < gameRole.GAME_NUMBER_CNT) {
             int randomNumber = Randoms.pickNumberInRange(gameRole.GAME_NUMBER_RANGE_OVER, gameRole.GAME_NUMBER_RANGE_UNDER);
             if (!computer.contains(randomNumber)) {
