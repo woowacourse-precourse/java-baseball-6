@@ -11,8 +11,8 @@ public class NumberValidator {
 
 	public void validateForZero(String stringNumber) {
 		if ((stringNumber.charAt(0) == '0')
-			|| (stringNumber.charAt(1) == '0')
-			|| (stringNumber.charAt(2) == '0')) {
+				|| (stringNumber.charAt(1) == '0')
+				|| (stringNumber.charAt(2) == '0')) {
 			throw new IllegalArgumentException();
 		}
 	}
