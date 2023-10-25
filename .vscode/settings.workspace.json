@@ -1,0 +1,5 @@
+{
+    "java.checkstyle.configuration": "${workspaceFolder}/google_guide_checks.xml",
+    "java.checkstyle.version": "10.12.4",
+    "java.import.gradle.java.home": "${env:JAVA_HOME}"
+}
