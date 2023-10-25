@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import static baseball.util.Constants.DEFAULT_VALUE;
-
 import baseball.model.Compare;
 import baseball.model.Computer;
 import baseball.model.GameCommand;
@@ -11,7 +9,6 @@ import baseball.model.Result;
 import baseball.util.GameStatusHelper;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.stream.IntStream;
 
 public class GameController {
     private final InputView inputView;
@@ -34,35 +31,34 @@ public class GameController {
 
     private void playUntilExit() {
         outputView.printGameStart();
-
-        IntStream.generate(() -> DEFAULT_VALUE)
-                .takeWhile(i -> !GameStatus.isApplicationExit(gameStatus))
-                .forEach(i -> {
-                    playSingleGame();
-                    handleRetry();
-                });
+        if (!GameStatus.isApplicationExit(gameStatus)) {
+            playSingleGame();
+            handleRetry();
+            playUntilExit();
+        }
     }
 
     private void playSingleGame() {
         Computer computer = Computer.createByNumber();
-
-        IntStream.generate(() -> DEFAULT_VALUE)
-                .takeWhile(i -> !GameStatus.isGameOver(gameStatus))
-                .forEach(i -> {
-                    Player player = getPlayerFromInput();
-                    Result result = getResultFromComparison(computer, player);
-                    outputView.printGameResult(result);
-                    updateGameStatus(result);
-                });
-
+        playRound(computer);
         outputView.printThreeStrike();
+    }
+
+    private void playRound(Computer computer) {
+        if (!GameStatus.isGameOver(gameStatus)) {
+            Player player = getPlayerFromInput();
+            Result result = compareComputerAndPlayer(computer, player);
+            outputView.printGameResult(result);
+            updateGameStatus(result);
+            playRound(computer);
+        }
     }
 
     private Player getPlayerFromInput() {
         return Player.createByNumber(inputView.readPlayerNumber());
     }
 
-    private Result getResultFromComparison(Computer computer, Player player) {
+    private Result compareComputerAndPlayer(Computer computer, Player player) {
         Compare compare = Compare.judge(computer, player);
         return compare.ResultgetBallCountJudgement();
     }
