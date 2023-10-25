@@ -1,7 +1,7 @@
 package baseball.domain;
 
-import baseball.ui.ConsoleInput;
-import baseball.ui.ConsoleOutput;
+import baseball.ui.IInput;
+import baseball.ui.IOutput;
 import baseball.ui.Message;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,16 @@ import java.util.Objects;
 public class Game {
 
     private final int NUMBER_BALLS;
-    private final ConsoleInput consoleInput;
-    private final ConsoleOutput consoleOutput;
+    private final IInput input;
+    private final IOutput output;
     private List<Command> commands = new ArrayList<>();
     private Computer computer;
     private User user;
 
-    public Game(final int NUMBER_BALLS, final ConsoleInput consoleInput, final ConsoleOutput consoleOutput) {
+    public Game(final int NUMBER_BALLS, final IInput input, final IOutput output) {
         this.NUMBER_BALLS = NUMBER_BALLS;
-        this.consoleInput = consoleInput;
-        this.consoleOutput = consoleOutput;
+        this.input = input;
+        this.output = output;
 
         initGameCommand();
     }
@@ -31,7 +31,7 @@ public class Game {
 
     public void run() {
         while (true) {
-            consoleOutput.print(Message.START);
+            output.print(Message.START);
             play();
             if (!isRestart()) {
                 break;
@@ -46,12 +46,12 @@ public class Game {
                 break;
             }
         }
-        consoleOutput.print(Message.END);
+        output.print(Message.END);
     }
 
     private void initPlayer() {
-        user = new User(consoleInput, NUMBER_BALLS);
-        computer = new Computer(consoleOutput, NUMBER_BALLS);
+        user = new User(input, NUMBER_BALLS);
+        computer = new Computer(output, NUMBER_BALLS);
         computer.generatePlayerNumber(NUMBER_BALLS);
     }
 
@@ -61,7 +61,7 @@ public class Game {
     }
 
     private void guessNumberComputer() {
-        consoleOutput.print(Message.REQUEST_INPUT);
+        output.print(Message.REQUEST_INPUT);
         user.generatePlayerNumber(NUMBER_BALLS);
     }
 
@@ -71,7 +71,7 @@ public class Game {
     }
 
     private Command chooseRestartGame() {
-        consoleOutput.print(Message.RESTART);
+        output.print(Message.RESTART);
         return user.selectCommand();
     }
 }

@@ -1,18 +1,18 @@
 package baseball.domain;
 
-import static baseball.utils.Utility.convertStringToIntegerList;
+import static baseball.utils.Utility.convertStringToBall;
 
-import baseball.ui.ConsoleInput;
+import baseball.ui.IInput;
 import java.util.List;
 
 public class User implements IPlayer {
 
-    private final ConsoleInput consoleInput;
+    private final IInput input;
     private final int NUMBER_BALLS;
     private List<Integer> numbers;
 
-    public User(ConsoleInput consoleInput, final int NUMBER_BALLS) {
-        this.consoleInput = consoleInput;
+    public User(IInput input, final int NUMBER_BALLS) {
+        this.input = input;
         this.NUMBER_BALLS = NUMBER_BALLS;
     }
 
@@ -34,13 +34,13 @@ public class User implements IPlayer {
     }
 
     private List<Integer> generateInputNumber(int NUMBER_BALLS) {
-        String input = consoleInput.scanGameNumber(NUMBER_BALLS);
+        String input = this.input.scan();
 
-        return convertStringToIntegerList(input);
+        return convertStringToBall(input, NUMBER_BALLS);
     }
 
     public Command selectCommand() {
-        String inputCommand = consoleInput.scan();
+        String inputCommand = input.scan();
 
         return Command.findCommand(inputCommand);
     }

@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.ui.ConsoleOutput;
+import baseball.ui.IOutput;
 import baseball.utils.Utility;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -8,13 +8,13 @@ import java.util.List;
 
 public class Computer implements IPlayer {
 
-    private final ConsoleOutput consoleOutput;
+    private final IOutput output;
     private final int NUMBER_BALLS;
     private List<Integer> numbers;
     private Response response;
 
-    public Computer(ConsoleOutput consoleOutput, final int NUMBER_BALLS) {
-        this.consoleOutput = consoleOutput;
+    public Computer(IOutput output, final int NUMBER_BALLS) {
+        this.output = output;
         this.NUMBER_BALLS = NUMBER_BALLS;
     }
 
@@ -62,7 +62,7 @@ public class Computer implements IPlayer {
     }
 
     private void announceResult() {
-        consoleOutput.print(Utility.convertResponseToResult(response));
+        output.print(Utility.convertResponseToResult(response));
     }
 
 }

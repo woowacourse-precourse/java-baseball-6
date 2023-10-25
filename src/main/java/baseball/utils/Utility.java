@@ -30,12 +30,20 @@ public class Utility {
         }
     }
 
-    public static List<Integer> convertStringToIntegerList(String input) {
+    public static List<Integer> convertStringToBall(String input, int length) {
+        validateInput(input, length);
+
         return input.chars()
             .filter(Character::isDigit)
             .map(Character::getNumericValue)
             .boxed()
             .collect(Collectors.toList());
+    }
+
+    private static void validateInput(String input, int length) {
+        Utility.checkIfIsPositiveDigitInteger(input);
+        Utility.checkIfIsDifferent(input);
+        Utility.checkIfIsValidLength(length, input);
     }
 
     public static String convertResponseToResult(Response response) {
