@@ -46,7 +46,7 @@ public class GameManager {
         strikeCount = NOTHING;
         ballCount = NOTHING;
         for (int i = 0; i < playerNumbers.length(); i++) {
-            int playerNumber = playerNumbers.charAt(i) - '0';
+            int playerNumber = Character.getNumericValue(playerNumbers.charAt(i));
             int computerNumber = computerNumbers.get(i);
             checkStrikeAndBall(playerNumber, computerNumber, computerNumbers);
         }
