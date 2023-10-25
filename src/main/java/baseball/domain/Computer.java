@@ -12,6 +12,10 @@ public class Computer {
 
     private RandomNumber number;
     private int status;  // 라운드 진행 상태 (1: 진행중, 2: 종료)
+    private Player player;
+    private List<Integer> goal;
+    private List<Integer> round;
+    private Baseball baseball;
 
     public Computer() {
         status = 1;  // 객체 생성과 동시에 라운드는 진행상태(1)가 된다
@@ -23,21 +27,20 @@ public class Computer {
     }
 
     public void play() {
-        Player player = new Player();
-        Baseball baseball = new Baseball();
-        List<Integer> goal = number.make();
+        player = new Player();  // 컴퓨터와 대결할 플레이어는 단 1명
+        goal = number.make();
 
-        while (status == 1) {
-            List<Integer> round = player.start();
+        while (true) {
+            baseball = new Baseball();
+            round = player.start();
             baseball.compare(goal, round);
             String result = baseball.getResult();
 
             if (result.equals(GameResult.PERFECT.name)) {
                 System.out.print(GameResult.PERFECT.name + "\n" + GuideMessage.FINISH_GUIDE.message);
-                status = 2;
                 break;
             }
-//            System.out.println(result);
+            System.out.println(result);
         }
 
         if (finishMenu() == 2) {

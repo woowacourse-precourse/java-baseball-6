@@ -18,6 +18,7 @@ public class Player {
     }
 
     public List<Integer> start() {
+        status = 1;
 
         while (status == 1) {
             System.out.print(GuideMessage.INPUT_COMMAND.message);
@@ -29,7 +30,7 @@ public class Player {
                 System.out.println(e.getMessage());
             }
         }
-        
+
         return num;
     }
 
