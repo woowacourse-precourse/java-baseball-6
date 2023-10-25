@@ -55,7 +55,7 @@ public class GameService {
         return parseToIntArray(input, inputNum);
     }
 
-    // 입력받은
+    // 입력받은 문자열을 int형 배열로 변환한다.
     public int[] parseToIntArray(String input, int[] inputNum) {
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
