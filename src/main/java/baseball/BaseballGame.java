@@ -133,7 +133,10 @@ public class BaseballGame {
         if (!isInteger(userInput)) {
             throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
         }
-        if (userInput.length() != 3) {
+        if (isNegative(userInput)) {
+            throw new IllegalArgumentException("입력이 음수입니다.");
+        }
+        if (!isThreeDigits(userInput)) {
             throw new IllegalArgumentException("사용자 입력이 3자리수가 아닙니다.");
         }
         if (isDuplicatedNum(userInput)) {
@@ -143,8 +146,8 @@ public class BaseballGame {
             throw new IllegalArgumentException("사용자 입력에 0이 포함됐습니다.");
         }
     }
-
-    private static void checkEndOptionForm(String endOption) {
+  
+      private static void checkEndOptionForm(String endOption) {
         if (!isInteger(endOption)) {
             throw new IllegalArgumentException("입력이 숫자가 아닙니다.");
         }
@@ -153,13 +156,30 @@ public class BaseballGame {
         }
     }
 
-    private static boolean isInteger(String userInput) {
+    private boolean isInteger(String userInput) {
         try {
             Integer.parseInt(userInput);
             return true;
         } catch (NumberFormatException ex) {
             return false;
         }
+    }
+
+    private static boolean isNegative(String userInput){
+        int userInputInt = Integer.parseInt(userInput);
+        if (userInputInt < 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isThreeDigits(String userInput){
+        int userInputInt = Integer.parseInt(userInput);
+        int userInputLength = (int) ( Math.log10(userInputInt)+1 );
+        if (userInputLength == NUMBER_LENGTH) {
+            return true;
+        }
+        return false;
     }
 
     private static boolean isDuplicatedNum(String userInput) {
