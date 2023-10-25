@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Init {
     Init(){}
-    List<Integer> getComputerNumber(){
+    public List<Integer> getComputerNumber(){
         List<Integer> computerNumber= new ArrayList<>();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

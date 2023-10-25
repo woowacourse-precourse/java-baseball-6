@@ -8,18 +8,18 @@ public class Input {
         this.userInput=userInput;
     }
 
-    boolean isValidLength(){
+    public boolean isValidLength(){
         return userInput.length()==3;
     }
 
-    boolean isValidNumber() {
+    public boolean isValidNumber() {
         for (int i=0; i<userInput.length(); i++){
             if(userInput.charAt(i)<'1' || userInput.charAt(i)>'9') return false;
         }
         return true;
     }
 
-    boolean hasDuplication(){
+    public boolean hasDuplication(){
         List<Integer>numberCount = new ArrayList<>();
         for (int i=0; i<=9; i++){
             numberCount.add(0);
@@ -37,12 +37,12 @@ public class Input {
         return false;
     }
 
-    boolean error(){
+    public boolean error(){
         if(!isValidLength() || !isValidNumber()) return true;
         return hasDuplication();
     }
 
-   void checkException()throws IllegalArgumentException{
+    public void checkException()throws IllegalArgumentException{
         if(error()) throw new IllegalArgumentException();
     }
 
