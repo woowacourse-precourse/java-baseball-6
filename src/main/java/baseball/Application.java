@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static int Gamestart(){ //게임이 시작되면 컴퓨터가 랜덤으로 세 가지의 수를 리스트에 저장
+    private static int Gamestart(){ //게임이 시작되면 컴퓨터가 랜덤으로 세 가지의 수를 리스트에 저장
         System.out.println("숫자야구 게임을 시작합니다.");
         ArrayList<Integer> Correct = new ArrayList<>();
         while (Correct.size() < 3) {
@@ -21,7 +21,7 @@ public class Application {
     private static int Check(ArrayList<Integer> Correct){
         System.out.println("숫자를 입력해주세요");
         int UserInput = UserInput(); //입력예외처리를 위한 함수
-        List<Integer> UserList = Numbersplit(UserInput);
+        List<Integer> UserList = Numbersplit(UserInput); //입력값이 제대로 되었으면 LIST에 3자리의 숫자를 나눠서 넣는 함수
         int Strike = 0;
         int Ball = 0;
         for(int i = 0;i<3;i++){
@@ -35,10 +35,12 @@ public class Application {
             }
         }
         //점수에 따른 출력
-        if (Strike==3) return restart();
+        if (Strike==3) {
+            System.out.println(Strike+"스트라이크");
+            return restart();}
         if (Strike ==0 &&Ball!=0) System.out.println(Ball+"볼");
         if (Strike!=0&& Ball == 0) System.out.println(Strike+"스트라이크");
-        if (Strike!=0&& Ball !=0) System.out.println(Ball+"볼"+Strike+"스트라이크");
+        if (Strike!=0&& Ball !=0) System.out.println(Ball+"볼"+" "+Strike+"스트라이크");
         if (Strike==0 && Ball==0) System.out.println("낫싱");
         return Check(Correct);
     }
@@ -56,13 +58,13 @@ public class Application {
     private static int UserInput(){
         String UserInputString = Console.readLine();
         try {
-            if(UserInputString.length() !=3) {
+            if(UserInputString.length() !=3) { //숫자가 3자리가 아닌경우
                 throw new IllegalArgumentException("유효하지 않은 수 입니다..");
             }
             return Integer.parseInt(UserInputString);
         }
 
-        catch (NumberFormatException ex) {
+        catch (NumberFormatException ex) { //숫자가 아닌경우
             throw new IllegalArgumentException("유효하지 않은 수입니다.",ex);
         }
     }
@@ -70,9 +72,10 @@ public class Application {
     private static int restart(){
         System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료\n");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int UserInput = UserInput();
-        if (UserInput==1) return Gamestart();
-        if (UserInput==2) return(0);
+        String UserRestart = Console.readLine();
+        int UserRestartInput = Integer.parseInt(UserRestart);
+        if (UserRestartInput==1) return Gamestart();
+        if (UserRestartInput==2) return(0);
         return 0;
     }
 
