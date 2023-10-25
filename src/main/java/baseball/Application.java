@@ -21,17 +21,25 @@ public class Application {
         markNumberUsed(computerNumbers);
 
         while (true) {
+            List<Integer> userNumbers;
+            int strikeCnt=0;
+            int ballCnt=0;
 
             try{
-                List<Integer> userNumbers = inputNumberOfUser();
+                userNumbers  = inputNumberOfUser();
             }catch(IllegalArgumentException e){
                 e.printStackTrace();
                 break;
             }
 
-            isStrike();
+            for(int index=0;index<3;index++){
+                int userNumber = userNumbers.get(index);
+                int computerNumber = computerNumbers.get(index);
 
-            isBall();
+                if(isStrike(userNumber,computerNumber){
+                    strikeCnt++;
+                }
+            }
 
 
         }
@@ -42,7 +50,8 @@ public class Application {
     private static void isBall() {
     }
 
-    private static void isStrike() {
+    private static boolean isStrike(int userNumber, int computerNumber ) {
+        return userNumber == computerNumber;
     }
 
     private static List<Integer> inputNumberOfUser() {
