@@ -24,6 +24,7 @@ public class GameController {
         if(service.hasNewGame(InputView.setRetryNumber())){
             GameController game = new GameController();
             game.start();
+
         }
     }
 }
