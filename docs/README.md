@@ -37,10 +37,6 @@ https://mangkyu.tistory.com/132
 https://story.baemin.com/6193/
 --배민다움 경쟁자와 함께 성장하라고요?
 
-라이브러리 camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다. Random 값 추출은
-camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다. 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의
-readLine()을 활용한다.
-
 https://velog.io/@im_chaedong/Intellij-%EC%97%90%EC%84%9C-java.lang-%EA%B0%99%EC%9D%80-%EA%B8%B0%EB%B3%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B3%B4%EB%8A%94-%EB%B0%A9%EB%B2%95
 --라이브러리 확인방법
 
@@ -120,8 +116,16 @@ https://discord.com/channels/1149138870433230900/1166223698525691904/11662236985
 https://discord.com/channels/1149138870433230900/1164393577242165320/1164393577242165320
 --코드리뷰
 
+https://velog.io/@pgmjun/Github-%ED%98%91%EC%97%85-%EC%9D%B4%EA%B2%83%EB%A7%8C%EC%9D%80-%EC%95%8C%EC%9E%90-Code-Review
+--협업, 이것만은 알자
+
 https://velog.io/@soyeon207/%EB%98%91%EB%98%91%ED%95%98%EA%B2%8C-PR%EC%9D%84-%ED%86%B5%ED%95%B4-%EC%BD%94%EB%93%9C%EB%A6%AC%EB%B7%B0-%ED%95%98%EA%B8%B0
 --PR을 통한 코드리뷰
+
+https://github.com/woowacourse/woowacourse-docs/tree/code-review/codereview
+--PR을 통한 코드리뷰 by woowacourse
+
+--P룰이나 RCA룰로 코드리뷰 하면 좋을듯
 
 https://discord.com/channels/1149138870433230900/1165275661678690426/1165275661678690426
 --디자인 패턴
