@@ -15,9 +15,7 @@ public class Game {
 
     public static void CreateBall(String userInputs){
 
-        CheckNumber(userInputs);
-        CheckDuplicate(userInputs);
-        CheckLength(userInputs);
+        CheckInputNumber(userInputs);
         userNumbers = userInputs.chars()
                 .map(Character::getNumericValue)
                 .toArray();
@@ -40,5 +38,10 @@ public class Game {
         else if(userRetryNum==2){
             retryEnd=false;
         }
+    }
+
+    public static void GameReset(){
+        gameContinue = true;
+        retryEnd = true;
     }
 }
