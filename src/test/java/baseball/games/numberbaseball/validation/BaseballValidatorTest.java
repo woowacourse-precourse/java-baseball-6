@@ -31,4 +31,12 @@ class BaseballValidatorTest {
             validator.validateNumbersInput("12");
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("1과 2가 아닌 옵션 입력에 대한 IllegalArgumentException")
+    void validateOutRangeOptionInput() {
+        assertThatThrownBy(() -> {
+            validator.validateOptionInput("4");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
