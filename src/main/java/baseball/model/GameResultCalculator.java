@@ -23,7 +23,7 @@ public class GameResultCalculator {
     public boolean isThreeStrike() {
         return strikeCount == 3;
     }
-정
+
     public String toString() {
         if (ballCount != 0 && strikeCount != 0) {
             return ballCount + BALL_RESULT + BLANK + strikeCount + STRIKE_RESULT;
