@@ -13,6 +13,11 @@ public class ResultDto {
         this.isThreeStrike = isThreeStrike;
     }
 
+    public ResultDto(Score score) {
+        this.result = getResult(score);
+        this.isThreeStrike = checkIsThreeStrike(score);
+    }
+
     private Map<String, Integer> getResult(Score score) {
         return score.getResult();
     }
