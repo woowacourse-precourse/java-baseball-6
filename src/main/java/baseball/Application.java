@@ -42,6 +42,14 @@ public class Application {
                     System.out.println("낫싱");
                 }
             }
+            
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int playAgain = Integer.parseInt(Console.readLine());
+            if (playAgain == 1) {
+                isPlayingGame = true;
+            } else if (playAgain == 2) {
+                isPlayingGame = false;
+            }
 
         }
     }
