@@ -102,10 +102,10 @@ public class Application {
         return input;
     }
 
-    public boolean checkSameNumber(Integer[] userNumber){
+    static boolean checkSameNumber(String[] userNumber){
         for(int i = 0; i<userNumber.length-1; i++){
             for(int j = i+1; j<userNumber.length; j++){
-                if(userNumber[i] == userNumber[j])
+                if(userNumber[i].equals(userNumber[j]))
                     return true;
             }
         }
