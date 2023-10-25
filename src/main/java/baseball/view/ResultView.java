@@ -1,7 +1,7 @@
 package baseball.view;
 
 public class ResultView {
-    public static void printOutput(int strikeCount, int ballCount) {
+    public static void printOutput(int ballCount, int strikeCount) {
         if (ballCount > 0) {
             System.out.print(ballCount + "볼 ");
         }
