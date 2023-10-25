@@ -21,8 +21,15 @@ class RefereeTest {
     }
 
     @Test
-    void 스트라이크_개수를_올바르게_계산(){
+    void 스트라이크_개수를_올바르게_계산() {
         referee.calculateStrikeCount(user, computer);
         assertEquals(3, referee.getStrike());
+    }
+
+    @Test
+    void 볼_개수를_올바르게_계산() {
+        computer = new Player(Arrays.asList(2, 3, 1));
+        referee.calculateBallCount(user, computer);
+        assertEquals(3, referee.getBall());
     }
 }
