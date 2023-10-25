@@ -1,4 +1,4 @@
-package baseball.evaluator;
+package baseball.evaluation.result;
 
 public interface EvalResult {
     void printResult();

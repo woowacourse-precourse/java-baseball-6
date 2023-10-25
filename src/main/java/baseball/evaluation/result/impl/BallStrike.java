@@ -1,4 +1,6 @@
-package baseball.evaluator;
+package baseball.evaluation.result.impl;
+
+import baseball.evaluation.result.EvalResult;
 
 public class BallStrike implements EvalResult {
     private int ball;
