@@ -6,6 +6,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Utils {
+    public static void isStringOneOrTwo(String input) {
+        if (input.equals("1") || input.equals("2")) {
+            return;
+        }
+        throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
+    }
+
 
     public static void validateStringThreeDifferentDigits(String input) {
         validateStringLength(input, 3);
