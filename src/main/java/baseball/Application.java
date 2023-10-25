@@ -1,9 +1,8 @@
 package baseball;
-import java.util.ArrayList;
-import java.util.Scanner;
 
-import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,12 +17,26 @@ public class Application {
             }
         }
         while(true) {
-
-        //사용자가 값을 입력
+        	//사용자가 값을 입력
         	System.out.println("숫자를 입력해주세요 :");
         	int Strike = 0 ; int Ball = 0 ;
         	String Input = Console.readLine() ;
         	String[] arr = Input.split("") ;
+        	try {
+        		for(int i = 0; i<=2; i++) {
+        		int num = Integer.parseInt(arr[i]) ;
+        		}
+        	} catch (NumberFormatException e) {
+        	    // catch exception
+        	    throw new IllegalArgumentException();
+        	}
+        	if (arr.length>3) {
+        	    throw new IllegalArgumentException();
+        	}
+        	else if (arr[0]==arr[1] | arr[1]==arr[2] | arr[0]==arr[2]) {
+        		throw new IllegalArgumentException();
+        	}
+        	
         	ArrayList<Integer> user = new ArrayList<Integer>();
         	for(int i = 0; i<=2; i++) {
         		int a = Integer.parseInt(arr[i]) ;
@@ -55,9 +68,7 @@ public class Application {
         		else {
         			System.out.printf("%d볼 %d스트라이크\n",Ball,Strike);
         		}
-        		
         	}
-        	
         	
             if(Strike==3) {
             	System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료") ;
@@ -75,6 +86,9 @@ public class Application {
                             computer.add(randomNumber);
                         }
                 	}
+            	}
+            	else {
+            		throw new IllegalArgumentException();
             	}
             }
         }

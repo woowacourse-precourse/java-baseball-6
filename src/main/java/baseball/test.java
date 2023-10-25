@@ -23,6 +23,15 @@ public class test {
         	int Strike = 0 ; int Ball = 0 ;
         	String Input = Console.readLine() ;
         	String[] arr = Input.split("") ;
+        	try {
+        		for(int i = 0; i<=2; i++) {
+        		int num = Integer.parseInt(arr[i]) ;
+        		}
+        	} catch (NumberFormatException e) {
+        	    // catch exception
+        	    throw new IllegalArgumentException("서로 다른 3개의 숫자를 입력해 주세요.");
+        	}
+        	
         	ArrayList<Integer> user = new ArrayList<Integer>();
         	for(int i = 0; i<=2; i++) {
         		int a = Integer.parseInt(arr[i]) ;
