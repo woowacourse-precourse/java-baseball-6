@@ -32,7 +32,7 @@
 | 메서드                        | 기능                                                             |
 |----------------------------|----------------------------------------------------------------|
 | `showInputRequiredMessage` | 입력이 필요하다고 메시지를 출력한다.                                           |
-| `showInputRequiredMessage` | 게임의 결과를 출력하고 알맞은 게임 인스턴스가 아니면 `IllegalArgumentException`을 던진다. |
+| `showResultOf`             | 알맞은 게임 인스턴스가 아니면 `IllegalArgumentException`을 던지고 게임의 결과를 출력한다. |
 | `showToBeContinueMessage`  | 게임을 계속할 지 묻는 메시지를 출력한다.                                        |
 | `showQuitGameMessage`      | 게임 종료 메시지를 출력한다.                                               |
 
@@ -45,7 +45,7 @@
 | `play`               | 매 번 게임 인스턴스를 생성해 숫자를 맞출 때까지 해당 게임을 지속하고 숫자를 맞췄다면 다음 게임을 할 지를 확인한다. |
 | `loopMatchingNumber` | player의 입력을 받아 숫자를 맞출 때까지 현재 게임을 반복한다.                             |
 | `checkResume`        | 다음 게임을 할 지에 대한 입력을 받아 입력을 검증하고 게임을 지속하거나 종료한다.                     |
-| `finishGame`         | 게임 종료 메시지를 출력하고 `playGame` boolean 변수를 false로 변경한다.                |
+| `quitGame`           | 게임 종료 메시지를 출력하고 `playGame` boolean 변수를 false로 변경한다.                |
 
 ## messages.properties
 

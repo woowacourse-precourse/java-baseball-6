@@ -23,8 +23,7 @@ public class Application {
 
     public static void main(String[] args) {
         Application.run(NumberBaseballGame.class, NumberBaseballGameView.class,
-                NumberBaseballGameController.class,
-                "src/main/resources/messages/messages.properties");
+                NumberBaseballGameController.class, "src/main/resources/messages/messages.properties");
     }
 
     public static void run(Class<? extends Game> gameClass, Class<? extends GameView> viewClass,

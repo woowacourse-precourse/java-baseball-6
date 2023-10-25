@@ -47,13 +47,14 @@ public class NumberBaseballGameController implements GameController {
         String input = Console.readLine();
 
         if (input.equals(quitGame)) {
-            finishGame();
+            quitGame();
         } else if (!input.equals(continueGame)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void finishGame() {
+    @Override
+    public void quitGame() {
         gameView.showQuitGameMessage();
         playGame = false;
     }
