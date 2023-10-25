@@ -18,5 +18,9 @@ public class GameController {
         gameService.play();
     }
 
+    private void requestGameRetry() {
+        gameService.getUserRetryRequest();
+    }
+
 
 }
