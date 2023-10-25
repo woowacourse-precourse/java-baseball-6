@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.game.BaseballGame;
 import baseball.game.Game;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -12,7 +11,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        Game game = new BaseballGame();
+        Game game = new Game();
         Application application = new Application(game);
         application.loop();
     }
