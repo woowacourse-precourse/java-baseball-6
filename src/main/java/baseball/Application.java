@@ -83,10 +83,10 @@ public class Application {
             }
             else {
                 if (ball > 0) {
-                    System.out.print(ball+"볼 ");
+                    System.out.printf("%d볼 ", ball);
                 }
                 if (strike > 0) {
-                    System.out.print(strike+"스트라이크");
+                    System.out.printf("%d스트라이크", strike);
                 }
                 if (ball == 0 && strike == 0) {
                     System.out.print("낫싱");
