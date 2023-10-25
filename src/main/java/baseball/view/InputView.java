@@ -9,7 +9,6 @@ import javax.xml.validation.Validator;
 public class InputView {
 
     public static String readPlayerNumbers() {
-        OutputView.printStartMessage();
         OutputView.printInputNumberMessage();
 
         String input = Console.readLine();
