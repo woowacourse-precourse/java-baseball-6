@@ -25,4 +25,22 @@ public class BaseBallGame extends Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    private boolean compareNumber(List<Integer> computer, List<Integer> user){
+        int strikeNumber = 0;
+        int ballNumber = 0;
+
+        for(int i = 0; i < computer.size(); i++){
+            if(computer.get(i).equals(user.get(i))){
+                strikeNumber++;
+            }
+            if(computer.contains(user.get(i))){
+                ballNumber++;
+            }
+        }
+        ballNumber -= strikeNumber;
+        printStatus(ballNumber, strikeNumber);
+
+        return strikeNumber != 3;
+    }
+
 }
