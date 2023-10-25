@@ -6,7 +6,7 @@ public class BaseballResultState {
     public int ball;
     public int strike;
 
-    BaseballResultState(int ball, int strike) {
+    public BaseballResultState(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
     }

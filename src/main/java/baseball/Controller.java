@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 
 public class Controller {
@@ -10,10 +9,6 @@ public class Controller {
 
     public static void intro() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    public static void end() {
-        System.out.println(BaseballGame.ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static ArrayList<Integer> queryNumber() throws IllegalArgumentException {
@@ -56,5 +51,9 @@ public class Controller {
 
     public static void showResult(BaseballResultState result) {
         System.out.println(result);
+    }
+
+    public static void end() {
+        System.out.println(BaseballGame.ANSWER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
