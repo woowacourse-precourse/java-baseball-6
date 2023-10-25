@@ -32,10 +32,7 @@ public class Application {
 
                 if (userSelect.equals("1")) {
                     flag = 'N';
-                    // 2. 컴퓨터가 숫자 세 개 선택하기 (1 부터 9, 중복 없이)
                     question = computerNumbers();
-                    // 선택값 확인
-                    System.out.println(question.toString());
                     continue;
                 }
 
