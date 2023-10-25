@@ -8,12 +8,14 @@ import java.util.List;
 public class Game {
     public void start() {
 
+        User user = new User();
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         String computerNumber = shuffleNumber();
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String userNumber = Console.readLine();
+            String userNumber = user.input();
 
             checkNumber(userNumber);
 
@@ -35,7 +37,7 @@ public class Game {
             if (strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-                if (!checkReStart()) {
+                if (!checkReStart(user.input())) {
                     break;
                 }
 
@@ -98,8 +100,7 @@ public class Game {
         return computerNumber == userNumber;
     }
 
-    private boolean checkReStart() {
-        String reStartValue = Console.readLine();
+    private boolean checkReStart(String reStartValue) {
 
         if (!reStartValue.equals("1") && !reStartValue.equals("2")) {
             throw new IllegalArgumentException("1 혹은 2의 값만 입력해주세요");
