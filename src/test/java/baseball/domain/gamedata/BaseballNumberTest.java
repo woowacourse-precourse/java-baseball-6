@@ -16,11 +16,17 @@ class BaseballNumberTest {
     public void whenCallOfWithInvalidInput_thenFail() throws  Exception {
         //given
         String invalidContentTypeInput = "1a3";
-        String invalidSizeInput = "1234";
+        String invalidSizeInput1 = "1234";
+        String invalidSizeInput2 = "12";
+        String invalidSizeInput3 = "1";
+        String invalidSizeInput4 = "";
         String invalidDuplicationInput = "112";
         //when then
         assertThrows(IllegalArgumentException.class, () -> BaseballNumber.of(invalidContentTypeInput));
-        assertThrows(IllegalArgumentException.class, () -> BaseballNumber.of(invalidSizeInput));
+        assertThrows(IllegalArgumentException.class, () -> BaseballNumber.of(invalidSizeInput1));
+        assertThrows(IllegalArgumentException.class, () -> BaseballNumber.of(invalidSizeInput2));
+        assertThrows(IllegalArgumentException.class, () -> BaseballNumber.of(invalidSizeInput3));
+        assertThrows(IllegalArgumentException.class, () -> BaseballNumber.of(invalidSizeInput4));
         assertThrows(IllegalArgumentException.class, () -> BaseballNumber.of(invalidDuplicationInput));
     }
 
