@@ -4,7 +4,7 @@ import baseball.domain.balls.Balls;
 import baseball.domain.restart.RestartStatus;
 import baseball.domain.results.Results;
 import baseball.dto.BallsDifferenceDto;
-import baseball.utility.RandomBallsGenerator;
+import baseball.domain.balls.RandomBallsGenerator;
 import baseball.utility.ConvertorUtils;
 import baseball.view.ConsoleView;
 import baseball.view.View;
@@ -36,7 +36,8 @@ public class BaseballGame implements Game {
     }
 
     private void generateAnswer() {
-        answerBalls = RandomBallsGenerator.generate();
+        RandomBallsGenerator randomBallsGenerator = new RandomBallsGenerator();
+        answerBalls = randomBallsGenerator.generate();
     }
 
     private void tryAnswer() {
