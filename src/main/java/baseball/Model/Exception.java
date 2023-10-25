@@ -20,9 +20,6 @@ public class Exception {
     }
 
     public static boolean checkIsZero(String userInput) {
-        if (userInput.contains("0")) {
-            return true;
-        }
-        return false;
+        return userInput.contains("0");
     }
 }
