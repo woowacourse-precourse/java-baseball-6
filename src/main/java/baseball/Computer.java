@@ -25,44 +25,62 @@ public class Computer {
     }
 
     public boolean isCorrect(List<Integer> answer) {
-        int strike = 0;
-        int ball = 0;
+        Integer containCount = countElement(answer);
+        Integer strikeCount = countStrike(answer);
+        Integer ballCount = containCount - strikeCount;
 
-        // TODO : Refactoring
-        for (int i = 0; i < answer.size(); i++) {
-            for (int j = 0; j < numbers.size(); j++) {
-                if (answer.get(i).intValue() == numbers.get(j).intValue()) {
-                    if (i == j) {
-                        strike += 1;
-                        continue;
-                    }
-
-                    ball += 1;
-                }
-            }
-        }
-
-        if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
-            return false;
-        }
-
-        if (ball > 0) {
-            System.out.print(ball + "볼 ");
-        }
-
-        if (strike > 0) {
-            System.out.print(strike + "스트라이크");
-        }
-
-        System.out.println();
-
-        if (strike == 3) {
+        if (strikeCount == 3) {
+            System.out.println(strikeCount + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
 
+        printResult(strikeCount, ballCount);
+
         return false;
     }
 
+    private Integer countElement(List<Integer> answer) {
+        int count = 0;
+
+        for (int i = 0; i < answer.size(); i++) {
+            if (numbers.contains(answer.get(i))) {
+                count += 1;
+            }
+        }
+
+        return count;
+    }
+
+    private Integer countStrike(List<Integer> answer) {
+        int count = 0;
+
+        for (int i = 0; i < answer.size(); i++) {
+            if (numbers.get(i).equals(answer.get(i))) {
+                count += 1;
+            }
+        }
+
+        return count;
+    }
+
+    private void printResult(Integer strike, Integer ball) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (strike == 0 && ball == 0) {
+            stringBuilder.append("낫싱");
+            System.out.println(stringBuilder);
+            return;
+        }
+
+        if (ball > 0) {
+            stringBuilder.append(ball).append("볼 ");
+        }
+
+        if (strike > 0) {
+            stringBuilder.append(strike).append("스트라이크");
+        }
+
+        System.out.println(stringBuilder);
+    }
 }
