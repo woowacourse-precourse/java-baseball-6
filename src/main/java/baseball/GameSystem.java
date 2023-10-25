@@ -7,24 +7,26 @@ public class GameSystem {
     private static final String RESTART_INPUT = "1";
     private static final String END_INPUT = "2";
     
-    private NumberService numberService;
-    private CalculateService calculateService;
+    private final NumberService numberService;
+    private final CalculateService calculateService;
     private String computerNumber;
     private String userInput;
     private String userNumber;
     private int strikeCount;
     private int ballCount;
     private String resultMessage;
-    private boolean end = false;
+    private boolean isGameEnded = false;
     
     public GameSystem() {
-        setUpGame();
+        numberService = new NumberService();
+        calculateService = new CalculateService();
     }
     
     public void startGame() {
         System.out.println(MessageType.START.getMessage());
+        updateComputerNumber();
         
-        while (!end) {
+        while (!isGameEnded) {
             System.out.print(MessageType.INSERT_NUMBER.getMessage());
             updateUserNumber();
             
@@ -38,13 +40,6 @@ public class GameSystem {
                 readyRestartOrEnd();
             }
         }
-    }
-    
-    // 숫자 야구 게임 초기 설정 메서드
-    private void setUpGame() {
-        numberService = new NumberService();
-        calculateService = new CalculateService();
-        updateComputerNumber();
     }
     
     // 컴퓨터의 숫자를 업데이트하는 메서드
@@ -78,14 +73,6 @@ public class GameSystem {
     private boolean isAllStrike() {
         return strikeCount == MAX_STRIKE_COUNT;
     }
-
-    // 재시작, 종료 여부의 사용자 입력을 검증하는 메서드
-    private String verifyUserInput(String userInput) {
-        if (!userInput.equals(RESTART_INPUT) && !userInput.equals(END_INPUT)) {
-            throw new IllegalArgumentException();
-        }
-        return userInput;
-    }
     
     // 사용자의 입력에 따른 재시작 혹은 종료를 위한 준비 메서드
     private void readyRestartOrEnd() {
@@ -93,7 +80,15 @@ public class GameSystem {
         if (userInput.equals(RESTART_INPUT)) {
             updateComputerNumber();
         } else if (userInput.equals(END_INPUT)) {
-            end = true;
+            isGameEnded = true;
         }
+    }
+    
+    // 재시작, 종료 여부의 사용자 입력을 검증하는 메서드
+    private String verifyUserInput(String userInput) {
+        if (!userInput.equals(RESTART_INPUT) && !userInput.equals(END_INPUT)) {
+            throw new IllegalArgumentException();
+        }
+        return userInput;
     }
 }
