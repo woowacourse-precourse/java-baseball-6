@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.vo.GuessResultVO;
+import baseball.domain.GuessResult;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import static baseball.constant.GameConstant.NUMBER_LENGTH;
 
 public class BaseballService {
 
-    public GuessResultVO countStrikeAndBall(List<Integer> guess, List<Integer> answer) {
+    public GuessResult countStrikeAndBall(List<Integer> guess, List<Integer> answer) {
         int strikeCount = 0;
         int ballCount = 0;
 
@@ -20,7 +20,7 @@ public class BaseballService {
             }
         }
 
-        return new GuessResultVO(strikeCount, ballCount);
+        return new GuessResult(strikeCount, ballCount);
     }
 
 }

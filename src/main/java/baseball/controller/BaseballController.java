@@ -1,9 +1,9 @@
 package baseball.controller;
 
 import baseball.service.BaseballService;
-import baseball.util.BaseballUtil;
-import baseball.view.UserInterface;
-import baseball.vo.GuessResultVO;
+import baseball.util.NumberGenerator;
+import baseball.view.UserCommunication;
+import baseball.domain.GuessResult;
 
 import java.util.List;
 
@@ -15,23 +15,23 @@ public class BaseballController {
     public void run() {
         do {
             play();
-        } while (!UserInterface.shouldExit());
+        } while (!UserCommunication.shouldExit());
     }
 
     private void play() {
         boolean isCorrect = false;
-        List<Integer> answer = BaseballUtil.generateRandomNumber();
+        List<Integer> answer = NumberGenerator.generateRandomNumber();
 
         do {
-            String userInput = UserInterface.askForNumber();
-            List<Integer> guess = BaseballUtil.stringToIntegerList(userInput);
-            GuessResultVO guessResult = service.countStrikeAndBall(guess, answer);
+            String userInput = UserCommunication.askForNumber();
+            List<Integer> guess = NumberGenerator.stringToIntegerList(userInput);
+            GuessResult guessResult = service.countStrikeAndBall(guess, answer);
 
             if (guessResult.isCorrectAnswer()) {
-                UserInterface.printWinningMessage();
+                UserCommunication.printWinningMessage();
                 isCorrect = true;
             } else {
-                UserInterface.printGameStatus(guessResult);
+                UserCommunication.printGameStatus(guessResult);
             }
 
         } while (!isCorrect);
