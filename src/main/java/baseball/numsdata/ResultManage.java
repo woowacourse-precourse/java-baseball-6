@@ -9,6 +9,8 @@ public class ResultManage {
 
     public void gameSetResult(List<Integer> userInput, List<Integer> randomNum) {
         int[] checkScore = new int[MAX_SIZE];
+        ball = 0;
+        strike = 0;
 
         for(int computerNum = 0; computerNum < 3; computerNum++){
             for(int userNum = 0; userNum < 3; userNum++){
