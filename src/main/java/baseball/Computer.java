@@ -1,6 +1,7 @@
 package baseball;
 
 
+import java.util.Set;
 
 public class Computer {
     private final NumberGenerator numGenerator;
@@ -9,11 +10,14 @@ public class Computer {
         this.numGenerator = new NumberGenerator();
     }
 
-    public NumberGenerator getNumGenerator() {
-        return numGenerator;
+    public void pickRandomNum() {
+        numGenerator.generateRandomNum();
     }
 
-    public int pickRandomNum() {
-
+    public Set<Integer> getNumGenerator() {
+        return numGenerator.getNumbers();
+    }
+    public void reset() {
+        numGenerator.reset();
     }
 }

@@ -9,9 +9,10 @@ public class InputValueValidator {
     }
 
     private static void validateNumber(String userNumber) {
-        if (userNumber.length() != NUM_MAX_SIZE) {
+        if (userNumber.length() != VALID_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
+
         for (char userNum : userNumber.toCharArray()) {
             if (userNum < MIN_DIGIT || userNum > MAX_DIGIT) {
                 throw new IllegalArgumentException();

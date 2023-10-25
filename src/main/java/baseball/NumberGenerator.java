@@ -4,14 +4,23 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
 import java.util.Set;
+import static baseball.BaseballConstants.*;
 
 public class NumberGenerator {
-    private final int NUM_MAX_SIZE = 3;
-    private final int PICK_MIN_NUM = 1;
-    private final int PICK_MAX_NUM = 9;
+
     private final Set<Integer> numbers = new HashSet<>();
 
-    public void generateRandomNum() {
+    public Set<Integer> generateRandomNum() {
+        addRandomNumbers();
+        return getNumbers();
+    }
+
+
+    public void reset() {
+        numbers.clear();
+    }
+
+    private void addRandomNumbers() {
         while (canGenerate()){
             int number = createRandomNum();
             numbers.add(number);
@@ -22,11 +31,11 @@ public class NumberGenerator {
     }
 
     private boolean cannotGenerate() {
-        return numbers.size() == NUM_MAX_SIZE;
+        return numbers.size() >= NUM_MAX_SIZE;
     }
 
     public Set<Integer> getNumbers() {
-        return numbers;
+        return new HashSet<>(numbers);
     }
     private int createRandomNum() {
         return Randoms.pickNumberInRange(PICK_MIN_NUM, PICK_MAX_NUM);
