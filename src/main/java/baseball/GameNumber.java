@@ -44,7 +44,6 @@ public class GameNumber {
         int ball = 0;
         boolean isCorrectAnswer;
 
-        // TODO: for문 리팩토링 구조 고민해보기
         for (int idx = 0; idx < NUMBER_LENGTH; idx++) {
             if (isStrike(guessed, idx)) {
                 strike++;
