@@ -18,9 +18,13 @@ public class Controller {
     public void readyGame(){
         playballGame.readyGame();
         }
+
+
+    //게임 실행
     public void gamePlay(){
         playballGame.gamePlay();
     }
+    //게임 다시 시작하기
     public  void gameReplay()throws IllegalArgumentException{
         GameMessage.restartMessage();
         int userSelect = Integer.parseInt(Console.readLine());
