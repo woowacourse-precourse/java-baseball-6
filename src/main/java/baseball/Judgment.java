@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class Judgement {
+public class Judgment {
     public int[] countMatchingNumbers(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int strike = 0;
         int ball = 0;
