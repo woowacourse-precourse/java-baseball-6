@@ -1,7 +1,5 @@
 package baseball.view;
-
 import baseball.domain.GameResult;
-
 public class UserOutputView {
     private static final String startGameMessage = "숫자 야구 게임을 시작합니다";
     private static final String strikeMessage = "스트라이크";
@@ -10,7 +8,6 @@ public class UserOutputView {
     private static final String gameFinishMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final int nothingCount = 0;
     private GameResult gameResult;
-
     public UserOutputView(GameResult gameResult) {
         this.gameResult = gameResult;
     }
@@ -20,7 +17,6 @@ public class UserOutputView {
         ballAndStrike();
         nothing();
     }
-
     public static void startGame() {
         System.out.println(startGameMessage);
     }
@@ -47,5 +43,4 @@ public class UserOutputView {
             System.out.println(nothingMessage);
         }
     }
-
 }

@@ -6,7 +6,6 @@ public class Game {
     private final List<Integer> computerNumber;
     private List<Integer> userNumber;
     private GameResult gameResult;
-
     public Game() {
         this.computerNumber = new ComputerNumber().getComputerNumber();
     }

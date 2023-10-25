@@ -8,11 +8,9 @@ public class BaseBallService {
     public BaseBallService() {
         this.playInputException = new PlayInputException();
     }
-
     private Game game;
     private PlayInputException playInputException;
     private static final String reStart = "1";
-
     public void reStartGame(){
         this.game = new Game();
     }
