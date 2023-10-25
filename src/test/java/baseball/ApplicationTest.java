@@ -114,8 +114,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("입력 1인지 2인지 테스트")
-    void 입력_1인지_2인지_테스트() {
+    @DisplayName("입력 1또는 2인지 테스트")
+    void 입력_1또는_2인지_테스트() {
         String one = "1";
         String two = "2";
         String three = "3";
@@ -127,8 +127,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("길이 3인지 테스트")
-    void 길이_3인지_테스트() {
+    @DisplayName("길이 맞는지 테스트")
+    void 길이_맞는지_테스트() {
         String threeNumber = "123";
         String notThreeNumber = "1234";
 
