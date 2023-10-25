@@ -5,24 +5,25 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
     public String getPlayerInput() {
-        System.out.print(UIMessage.INPUT_MESSAGE.getMessage());
         String input = Console.readLine();
-        InputValidator.validatePlayNumber(input);
 
+        System.out.print(UIMessage.INPUT_MESSAGE.getMessage());
+        InputValidator.validatePlayNumber(input);
         return input;
     }
 
     public int gameContinue() {
-        System.out.println(UIMessage.RESTART_OR_END.getMessage());
         String input = Console.readLine();
-        InputValidator.validateGameContinue(input);
 
+        System.out.println(UIMessage.RESTART_OR_END.getMessage());
+        InputValidator.validateGameContinue(input);
         return Integer.parseInt(input);
     }
 
     public void showIntro() {
         System.out.println(UIMessage.GAME_INTRO.getMessage());
     }
+
     public void showResult(int strike, int ball) {
         String resultMessage = getResultMessage(strike, ball);
         System.out.println(resultMessage);
