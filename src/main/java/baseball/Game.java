@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Game {
 
@@ -53,7 +55,10 @@ public class Game {
     private List<Integer> inputUserGuess() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
+
         isTripleDigit(input);
+        hasNoOverlap(input);
+
         return toArrayList(input);
     }
 
@@ -63,6 +68,18 @@ public class Game {
         }
     }
 
+    private void hasNoOverlap(String input) throws IllegalArgumentException {
+        Set<Character> uniqueSet = new HashSet<>();
+
+        for (char c : input.toCharArray()) {
+            uniqueSet.add(c);
+        }
+
+        if (uniqueSet.size() == 3) {
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 
     private List<Integer> toArrayList(String input) {
         List<Integer> userGuessNumber = new ArrayList<>();
