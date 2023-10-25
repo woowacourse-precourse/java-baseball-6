@@ -42,12 +42,12 @@ public class GameController {
 
     public static void getUserInput() {
         userInput = Console.readLine();
-        validateUserInput(userInput);
+        validateUserInput();
     }
 
     // 사용자 입력 처리
     // 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-    public static void validateUserInput(String value) {
+    public static void validateUserInput() {
         InputManager.isAllDigits(userInput, SIZE);
         InputManager.isNumberInRange(userInput, MIN_NUMBER, MAX_NUMBER);
         InputManager.isSizeValid(userInput, SIZE);
