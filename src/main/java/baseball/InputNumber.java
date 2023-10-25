@@ -17,7 +17,7 @@ public class InputNumber {
             }
             return Integer.valueOf(input_num);
         } catch (IllegalArgumentException e){
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 
@@ -39,7 +39,7 @@ public class InputNumber {
             }
             return inputArr;
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
 
     }

@@ -15,7 +15,7 @@ public class ReturnCount {
         } else if (realBall == 0){
             return strike+"스트라이크";
         } else {
-            return strike+"스트라이크 " + realBall+"볼";
+            return realBall+"볼 " + strike+"스트라이크";
         }
     }
 }
