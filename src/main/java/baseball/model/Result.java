@@ -1,8 +1,8 @@
 package baseball.model;
 
 import static baseball.util.Constants.BALL_LENGTH;
-import static baseball.util.Constants.COUNT_PLUS;
 import static baseball.util.Constants.DEFAULT_VALUE;
+import static baseball.util.Constants.VALUE_ONE;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +24,7 @@ public record Result(Map<BallCount, Integer> result) {
 
     public void updateBallCount(BallCount ballCount) {
 
-        result.put(ballCount, result.getOrDefault(ballCount, DEFAULT_VALUE) + COUNT_PLUS);
+        result.put(ballCount, result.getOrDefault(ballCount, DEFAULT_VALUE) + VALUE_ONE);
     }
 
     public boolean isThreeStrike() {
