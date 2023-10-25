@@ -31,6 +31,7 @@ public class BaseballGame {
         computer.init();
         player.inputNumbers();
         compareNumbers();
+        printHint();
     }
 
     // 플레이어가 입력한 수와 컴퓨터가 선택한 수를 비교하여 스트라이크 / 볼 판정
@@ -47,6 +48,23 @@ public class BaseballGame {
                 ballCount++;
             }
         }
+    }
+
+    // 스트라이크 / 볼 결과를 바탕으로 힌트를 출력
+    public void printHint() {
+        String result = "";
+
+        if (ballCount != 0) {
+            result += ballCount + "볼";
+        }
+        if (strikeCount != 0) {
+            result += strikeCount + "스트라이크";
+        }
+        if (result.isEmpty()) {
+            result = "낫싱";
+        }
+
+        System.out.println(result);
     }
 
     // 게임 종료 OR 재시작 확인
