@@ -2,6 +2,8 @@ package baseball;
 
 public class OutputManager {
 
+    OutputManagerUtils outputManagerUtils = new OutputManagerUtils();
+
     void printStartMessage() {
         System.out.println(GeneralMessage.START_MESSAGE.getMessage());
     }
@@ -11,16 +13,16 @@ public class OutputManager {
     }
 
     void printStrikeOrBallMessage(int ballNum, int strikeNum) {
-        if (ballNum == 0 && strikeNum == 0) {
+        if (outputManagerUtils.isNothing(ballNum, strikeNum)) {
             System.out.println(GeneralMessage.NOTHING_MESSAGE.getMessage());
             return ;
-        } else if (ballNum == 0 && strikeNum == 3) {
+        } else if (outputManagerUtils.isTerminated(ballNum, strikeNum)) {
             System.out.println(GeneralMessage.THREE_STRIKE_MESSAGE.getMessage());
             return ;
-        } else if (strikeNum == 0) {
+        } else if (outputManagerUtils.isBall(strikeNum)) {
             System.out.println(ballNum+"볼");
             return ;
-        } else if (ballNum == 0) {
+        } else if (outputManagerUtils.isStrike(ballNum)) {
             System.out.println(strikeNum+"스트라이크");
             return ;
         }
@@ -29,5 +31,24 @@ public class OutputManager {
 
     void printRetryOrEndMessage() {
         System.out.println(GeneralMessage.REQUEST_RETRY_INPUT_MESSAGE.getMessage());
+    }
+}
+
+class OutputManagerUtils {
+
+    boolean isNothing(int ballNum, int strikeNum) {
+        return (ballNum == 0 && strikeNum == 0);
+    }
+
+    boolean isStrike(int ballNum) {
+        return (ballNum == 0);
+    }
+
+    boolean isTerminated(int ballNum, int strikeNum) {
+        return (ballNum == 0 && strikeNum == 3);
+    }
+
+    boolean isBall(int strikeNum) {
+        return (strikeNum == 0);
     }
 }
