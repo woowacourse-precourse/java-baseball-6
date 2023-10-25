@@ -65,8 +65,8 @@ public class Application {
                 userInputNumber /= 10;
             }
             if ((userArray[0] == userArray[1])
-                    || (userArray[1] == userArray[2])
-                    || (userArray[2] == userArray[0])) {
+                  || (userArray[1] == userArray[2])
+                  || (userArray[2] == userArray[0])) {
                 throw new IllegalArgumentException("# 에러 메세지: 중복된 숫자가 있는지 확인해주세요.");
             }
 
