@@ -1,8 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.Stack;
 
 public class Game {
     private Computer computer;
@@ -40,11 +43,13 @@ public class Game {
         }
 
         StringBuilder sb = new StringBuilder();
-        if (ball > 0)
+        if (ball > 0) {
             sb.append(ball).append("볼").append(" ");
+        }
 
-        if (strike > 0)
+        if (strike > 0) {
             sb.append(strike).append("스트라이크");
+        }
 
         System.out.println(sb);
     }
@@ -67,8 +72,9 @@ public class Game {
             throw new IllegalArgumentException(WRONG_INPUT);
         }
 
-        if (value != 1 && value != 2)
+        if (value != 1 && value != 2) {
             throw new IllegalArgumentException(WRONG_INPUT);
+        }
         return value;
     }
 
@@ -101,8 +107,9 @@ public class Game {
             userNumbers.add(value);
         }
 
-        if (validateSet.size() < 3)
+        if (validateSet.size() < 3) {
             throw new IllegalArgumentException(WRONG_INPUT);
+        }
         return userNumbers;
     }
 
@@ -114,8 +121,9 @@ public class Game {
             throw new IllegalArgumentException(WRONG_INPUT);
         }
 
-        if (value / 100 <= 0 || value / 100 >= 10)
+        if (value / 100 <= 0 || value / 100 >= 10) {
             throw new IllegalArgumentException(WRONG_INPUT);
+        }
         return value;
     }
 
@@ -133,7 +141,9 @@ public class Game {
                 printGameEnd();
                 if (getGameContinueInput()) {
                     computer.generateRandomNumber();
-                } else break;
+                } else {
+                    break;
+                }
             }
         }
     }

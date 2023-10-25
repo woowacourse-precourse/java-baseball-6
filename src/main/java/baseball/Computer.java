@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +23,6 @@ public class Computer {
         if (computerNumbers.size() > 0)
             computerNumbers.clear();
 
-
         while (computerNumbers.size() < LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             if (!computerNumbers.contains(randomNumber))
@@ -41,7 +39,8 @@ public class Computer {
             for (int j = 0; j < computerNumbers.size(); j++) {
                 int computerNumber = computerNumbers.get(j);
 
-                if (userNumber == computerNumber && i != j) count++;
+                if (userNumber == computerNumber && i != j)
+                    count++;
             }
         }
 
@@ -55,7 +54,8 @@ public class Computer {
             int userNumber = userNumbers.get(i);
             int computerNumber = computerNumbers.get(i);
 
-            if (userNumber == computerNumber) count++;
+            if (userNumber == computerNumber)
+                count++;
         }
 
         return count;
