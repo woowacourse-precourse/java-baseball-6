@@ -12,15 +12,12 @@ public class UnitOfGame {
     }
 
     public void play() {
-        NumbersGenerator numbersGenerator;
-        List<Integer> userNumbers;
-        int ball;
         int strike;
 
         do {
-            numbersGenerator = new UserNumbersGenerator();
-            userNumbers = numbersGenerator.generate();
-            ball = CalculateScore.countBall(computerNumbers, userNumbers);
+            NumbersGenerator numbersGenerator = new UserNumbersGenerator();
+            List<Integer> userNumbers = numbersGenerator.generate();
+            int ball = CalculateScore.countBall(computerNumbers, userNumbers);
             strike = CalculateScore.countStrike(computerNumbers, userNumbers);
             UnitOfGameResult.printResult(ball, strike);
         } while (strike != 3);

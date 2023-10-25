@@ -17,9 +17,16 @@ public class SetOfGame {
         do {
             UnitOfGame unitOfGame = new UnitOfGame(new ComputerNumbersGenerator());
             unitOfGame.play();
+            userInput = promptUserInput();
+        } while (Objects.equals(userInput, "1"));
+    }
+
+    private String promptUserInput() {
+        String userInput;
+        do {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             userInput = readLine();
-        } while (Objects.equals(userInput, "1"));
-
+        } while (!Objects.equals(userInput, "1") && !Objects.equals(userInput, "2"));
+        return userInput;
     }
 }
