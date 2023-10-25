@@ -15,11 +15,14 @@ public class Play {
 
     public Play() {
         // 컴퓨터의 숫자 생성
-        while (result.size() < ANSWER_SIZE) {
+        while (result.size() < RESULT_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
             if (!result.contains(randomNumber)) {
                 result.add(randomNumber);
             }
+        }
+        for (Integer integer : result) {
+            System.out.println(integer);
         }
     }
 
@@ -88,7 +91,7 @@ public class Play {
         } else if (inputString.equals(TERMINATE_INPUT_STRING)) {
             return false;
         } else {
-            throw new IllegalArgumentException(wrontInputError);
+            throw new IllegalArgumentException(wrongInputError);
         }
     }
 
@@ -125,15 +128,18 @@ public class Play {
         printSuccess(strike);
     }
 
+    private void printNothing(){
+        System.out.println(NOTHING_STRING);
+    }
     private void printBall(int ball) {
         if (ball != 0) {
-            System.out.println(ball + BALL_STRING);
+            System.out.print(ball + BALL_STRING);
         }
     }
 
     private void printStrike(int strike) {
         if (strike != 0) {
-            System.out.println(strike + STRIKE_STRING);
+            System.out.print(strike + STRIKE_STRING);
         }
     }
 
