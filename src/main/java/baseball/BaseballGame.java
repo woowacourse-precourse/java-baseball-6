@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class BaseballGame {
-
     int ball = 0;
     int strike = 0;
     int out = 0;
@@ -24,7 +23,7 @@ public class BaseballGame {
         return computer;
     }
 
-    public List<Integer> StringToIntList(String input) {
+    public List<Integer> stringToIntList(String input) {
         int inputNumber = Integer.parseInt(input);
         List<Integer> inputNumberList = new ArrayList<Integer>();
 

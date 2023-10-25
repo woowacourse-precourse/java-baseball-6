@@ -1,21 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameView {
-
-
-    public static void startGame() {
-        // TODO: 프로그램 구현
-
-        Game();
-    }
-
-
 
     public static boolean Game() {
         boolean result = true;
@@ -27,9 +15,7 @@ public class GameView {
         while(result){
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            List<Integer> inputNumber = baseballGame.StringToIntList(input);
-
-
+            List<Integer> inputNumber = baseballGame.stringToIntList(input);
 
             System.out.println(input);
 

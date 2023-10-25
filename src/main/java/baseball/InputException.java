@@ -5,7 +5,6 @@ import java.util.List;
 public class InputException {
 
     public void checkInput(String input){
-        BaseballGame baseballGame = new BaseballGame();
         checkSize(input);
         checkZero(input);
     }
@@ -19,9 +18,8 @@ public class InputException {
     }
 
     public void checkZero(String input){
-
         BaseballGame baseballGame = new BaseballGame();
-        List<Integer> inputNumber = baseballGame.StringToIntList(input);
+        List<Integer> inputNumber = baseballGame.stringToIntList(input);
 
 
         for(int i = 0; i < inputNumber.size(); i++){
