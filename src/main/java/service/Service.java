@@ -16,15 +16,14 @@ public class Service {
     }
 
     public static List<Integer> setNumber() {
-
-
         List<Integer> numList = new ArrayList<>();
         int randomNumber;
 
         while(numList.size() < 3){
-            randomNumber = Randoms.pickNumberInRange(0, 9);
+            randomNumber = Randoms.pickNumberInRange(1, 9);
             numList.add(randomNumber);
         }
+        System.out.println(numList);
         return numList;
     }
 
@@ -70,7 +69,6 @@ public class Service {
         return answer_list;
     }
 
-
     public static List<Integer> strToInt(String userInput) {
         validateInputNumber(userInput);
 
@@ -84,7 +82,6 @@ public class Service {
 
         return intArr;
     }
-
     public static String output(int[] answerList) {
 
         if (answerList[0] == 0 && answerList[1] == 0) {
@@ -99,7 +96,6 @@ public class Service {
         return Integer.toString(answerList[0]) + "볼";
 
     }
-
     public static boolean continueOrExit() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -114,14 +110,9 @@ public class Service {
                 throw new IllegalArgumentException("1 또는 2만을 입력해야합니다.");
             }
         } catch (NumberFormatException e) {
-            System.out.println("숫자만 입력해주세요.");
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
-        return true;
     }
-
-
-
-
     public static void validateInputNumber(String userInput) {
         try {
             int userInputToInt = Integer.parseInt(userInput);
@@ -134,7 +125,7 @@ public class Service {
                 throw new IllegalArgumentException("서로 다른 세 자리 수를 입력하세요.");
             }
         } catch (NumberFormatException e) {
-            System.out.println("숫자만 입력해주세요.");
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
     }
 }
