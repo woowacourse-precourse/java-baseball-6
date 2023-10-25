@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.Computer;
 import baseball.service.GameService;
 import baseball.utils.GameMessage;
+import baseball.validation.GameExitValidation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -59,7 +60,9 @@ public class BaseballGame {
 
     private void exitGame() {
         System.out.println(GameMessage.DECIDE_CONTINUE_OR_EXIT.getMessage());
-        if (InputView.Input().equals(exitNumber)) {
+        String exitAnswer = InputView.Input();
+        GameExitValidation.validateExitAnswer(exitAnswer);
+        if (exitAnswer.equals(exitNumber)) {
             endOrNot = false;
         }
     }
