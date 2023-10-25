@@ -77,4 +77,17 @@ class InputViewTest {
         assertThat(throwable1).isInstanceOf(IllegalArgumentException.class).hasMessage(IS_NOT_ONE_OR_TWO_MESSAGE);
         assertThat(throwable2).isInstanceOf(IllegalArgumentException.class).hasMessage(IS_NOT_NUMERIC_MESSAGE);
     }
+
+    @Test
+    void 게임_끝난_경우_재시작_종료_입력_값_유효할_경우_테스트(){
+        //given
+        final String case1 = "1";
+        final String case2 = "2";
+
+        //when, then
+        Assertions.assertDoesNotThrow(() ->
+                retryInputErrorException.checkUserInputValidate(case1));
+        Assertions.assertDoesNotThrow(() ->
+                retryInputErrorException.checkUserInputValidate(case2));
+    }
 }
