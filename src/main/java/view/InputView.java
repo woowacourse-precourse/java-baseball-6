@@ -8,7 +8,7 @@ import java.util.List;
 public class InputView {
     private static final String GAME_START_MESSAGE ="숫자 야구 게임을 시작합니다.";
     private static final String INPUT_NUMBER= "숫자를 입력해주세요: ";
-    private static final String CHOOES_RESTART_OR_EXIT= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String CHOOES_RESTART_OR_EXIT= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static final String CORRECT_3NUMBER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static final String NUMBER_REGULAR_EXPRESSION = "^[1-9]{3}$";
     static final String EXIT_REGULAR_EXPRESSION = "^[1-2]{1}$";

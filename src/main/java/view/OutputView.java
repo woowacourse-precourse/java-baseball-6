@@ -33,4 +33,14 @@ public class OutputView {
         }
         return sb.toString();
     }
+
+    public String PrintReStart() {
+        String inputCode = "";
+        if (ballStrikeNothing.strike == inputView.NUMBER_LENGTH) {
+            System.out.println(inputView.CHOOES_RESTART_OR_EXIT);
+            inputCode = inputView.ProgramReStartOrExit();
+            System.out.println(inputCode);
+        }
+        return inputCode;
+    }
 }
