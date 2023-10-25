@@ -1,12 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.regex.Pattern;
 
 public class Game {
     private boolean playing;
     private int strikeCnt;
     private int ballCnt;
+
+    static int FINISH_THE_GAME = 2;
 
     private void init(){
         strikeCnt = 0;
@@ -30,8 +31,9 @@ public class Game {
 
         while (isPlaying()){
             computer.setComputerObject();
+            computer.printComputerNumber();
 
-            while (!isThreeStrike()){
+            while ( !(isThreeStrike()) ){
                 System.out.print(Print.GET_INPUT);
                 user.setUserObject();
 
@@ -65,19 +67,15 @@ public class Game {
         return Print.NOTHING;
     }
 
-    public boolean isOneOrTwo(String str) {
-        return Pattern.matches("[1|2]", str);
-    }
+    public boolean isFinishTheGame(String input) { return Integer.parseInt(input) == FINISH_THE_GAME; }
 
     public void askReplay(){
-        System.out.println(Print.REPLAY_GAME);
+        System.out.println(Print.ASK_REPLAY_GAME);
         String input = Console.readLine();
-        if(!isOneOrTwo(input)){
-            throw new IllegalArgumentException("게임을 시작하려면 1혹은 2를 입력해야 합니다.");
-        }
+        Validate.isOneOrTwo(input);
         init();
 
-        if(Integer.parseInt(input) == 2){
+        if(isFinishTheGame(input)){
             playing = false;
         }
     }
