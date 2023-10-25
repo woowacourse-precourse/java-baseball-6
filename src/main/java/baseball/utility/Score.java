@@ -1,4 +1,4 @@
-package baseball;
+package baseball.utility;
 
 public class Score {
     private Integer strike;
@@ -17,14 +17,6 @@ public class Score {
         this.strike = strike;
     }
 
-    public Integer getBall() {
-        return ball;
-    }
-
-    public void setBall(Integer ball) {
-        this.ball = ball;
-    }
-
     public void plusStrike() {
         this.strike += 1;
     }
@@ -34,6 +26,7 @@ public class Score {
     }
 
     public String explainScore() {
+
         if (ball == 0 && strike == 0) {
             return "낫싱";
         }
