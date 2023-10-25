@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args){
 
         boolean status=true;
 
@@ -23,13 +23,15 @@ public class Application {
                 if(!computer.contains(randomNumber))
                     computer.add(randomNumber);
             }
-            System.out.println(computer.toString());
 
             boolean inputNum = true;
             // 숫자 입력받기
             while (inputNum) {
                 System.out.print(InfoMessage.INPUT_NUMBER.getMessage());
                 String str = Console.readLine();
+                if (str.length() != 3) {
+                    throw new IllegalArgumentException();
+                }
                 int strike = 0;
                 int ball = 0;
                 for (int i = 0; i < 3; i++) {
@@ -41,8 +43,10 @@ public class Application {
                     }
                 }
                 String ans ="";
-                if (strike == 3) break;
-
+                if (strike == 3){
+                    ans="3스트라이크";
+                    inputNum=false;
+                }
                 if(ball > 0){
                     ans+= ball+"볼 ";
                 }
