@@ -1,6 +1,8 @@
 # 미션 - 숫자 야구
 
-## 도메인 기능 명세성
+## 도메인 기능 명세사항
+
+![img.png](img.png)
 
 - [x] NumberGenerator : 숫자를 생성하는 인터페이스
     - [x] List<Integer> generate(int size)를 구현해야함
