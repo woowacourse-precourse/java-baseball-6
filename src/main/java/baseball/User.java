@@ -7,6 +7,7 @@ import java.util.List;
 
 public class User {
     private final List<Integer> numbers = new ArrayList<>();
+    private int optionNum = 0;
 
     public void getNum() {
         String getNumber;
@@ -33,5 +34,26 @@ public class User {
     public boolean notNum(String getNum) {
         int numbers = Integer.parseInt(getNum);
         return (numbers / 1000 != 0);
+    }
+
+    public void getOptionNum() {
+        String getOption;
+        try {
+            InputStreamReader ir = new InputStreamReader(System.in);
+            BufferedReader br = new BufferedReader(ir);
+            getOption = br.readLine();
+            optionNum = Integer.parseInt(getOption);
+        } catch (Exception e) {
+        }
+    }
+
+    public boolean option(int optionNum) {
+        if (optionNum == 1) {
+            return true;
+        } else if (optionNum == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("입력한 값이 1 또는 2가 아닙니다.");
+        }
     }
 }
