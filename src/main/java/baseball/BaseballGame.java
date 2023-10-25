@@ -32,7 +32,7 @@ public class BaseballGame {
 
     private void run() {
         do {
-            Board board = game.play(getBallNumbers());
+            Board board = game.run(getBallNumbers());
             printHint(board);
         } while (!game.isMatch());
         printEnd();

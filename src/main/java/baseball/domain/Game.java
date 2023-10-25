@@ -20,14 +20,19 @@ public class Game {
         return EndOption.isEnd(option);
     }
 
-    public Board play(List<Integer> numbers) {
+    public Board run(List<Integer> numbers) {
         Balls balls = new Balls(numbers);
         board.reset();
-        for (int i = 0; i < BALL_SIZE; i++) {
-            BallStatus result = computer.compare(balls.get(i), i);
-            board.scoring(result);
-        }
+        play(balls);
         return board;
+    }
+
+    private void play(Balls balls) {
+        for (int i = 0; i < BALL_SIZE; i++) {
+            BallNumber ballNumber = balls.get(i);
+            BallStatus result = computer.compare(ballNumber, i);
+            board.addScore(result);
+        }
     }
 
     public boolean isMatch() {
