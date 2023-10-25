@@ -22,6 +22,10 @@ public class Number {
     this.numbers = createComputerNumbers();
   }
 
+  public void changePlayerNumbers(int[] playerNumbers) {
+    this.numbers = playerNumbers;
+  }
+
   private int[] createComputerNumbers() {
     Set<Integer> generatedNumbers = new LinkedHashSet<>(NUMBER_OF_DIGITS);
 
