@@ -10,6 +10,7 @@ public class RandomNumbers {
     private final List<Integer> numbers = new ArrayList<>();
 
     public List<Integer> generate() {
+        numbers.clear();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
