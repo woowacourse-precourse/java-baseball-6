@@ -1,10 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User extends ReadLine {
+public class User extends Scanner {
 
     private static User user;
     private List<Integer> inputNumber;
@@ -24,8 +23,7 @@ public class User extends ReadLine {
     }
 
     public void setUserNumberFromConsole() {
-        String st = Console.readLine();
-        guessNumberException(st);
+        String st = readLineGuessNumber();
         String[] arr = st.split("");
         inputNumber = new ArrayList<>();
         for (int i = 0; i < 3; i++) {

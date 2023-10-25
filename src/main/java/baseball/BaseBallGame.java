@@ -1,9 +1,8 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
-public class BaseBallGame {
+public class BaseBallGame extends Scanner {
 
     private static BaseBallGame baseBallGame;
 
@@ -46,9 +45,7 @@ public class BaseBallGame {
     }
 
     public boolean isEnd() {
-        String chooseNumber = Console.readLine();
-        endNumberException(chooseNumber);
-        return chooseNumber.equals("2");
+        return readLineChooseNumber();
     }
 
 }
