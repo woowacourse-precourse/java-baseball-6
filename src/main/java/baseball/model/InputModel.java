@@ -4,12 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Model {
+public class InputModel {
     public static String inputThreeNumber() {
         return Console.readLine();
     }
 
     public static void isInputThreeNumber(String str) {
+
         if (str.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자를 입력해주세요");
         }
@@ -28,7 +29,8 @@ public class Model {
             int digit = Character.getNumericValue(c);
             list.add(digit);
         }
-        if (list.get(0) == list.get(1) || list.get(1) == list.get(2) || list.get(2) == list.get(0)) {
+
+        if (list.get(0).equals(list.get(1)) || list.get(1).equals(list.get(2)) || list.get(2).equals(list.get(0))) {
             throw new IllegalArgumentException("3개의 숫자는 달라야 합니다");
         }
         return list;

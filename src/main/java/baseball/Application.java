@@ -1,9 +1,9 @@
 package baseball;
 
-import baseball.model.Model;
+import baseball.model.InputModel;
+import baseball.model.OutputModel;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,16 +23,18 @@ public class Application {
 class Game {
     public static void gameMiddle() {
         List<Integer> list;
-        List<Integer> answer = RandomNumber.getUniqueNumbers();
+        OutputModel.setAnswer();
+        System.out.println(OutputModel.getAnswer()); // 제출할 때는 지우기!!!!
         do {
             View.gameNumberInputPrint();
-            String str = Model.inputThreeNumber();
-            Model.isInputThreeNumber(str);
-            list = Model.stringToIntegerList(str);
-            List<Integer> result = BaseballCalculate.baseballCalculate(answer, list);
+            String str = InputModel.inputThreeNumber();
+            System.out.println(str); // 제출할 때는 지우기!!!
+            InputModel.isInputThreeNumber(str);
+            list = InputModel.stringToIntegerList(str);
+            List<Integer> result = BaseballCalculate.baseballCalculate(OutputModel.getAnswer(), list);
             String baseballHint = BaseballCalculate.makeBaseballHint(result);
             View.baseballHintPrint(baseballHint);
-        } while (answer.equals(list) == false);
+        } while (!OutputModel.getAnswer().equals(list));
         View.gameEndPrint();
     }
 
@@ -44,22 +46,6 @@ class Game {
         }
         return false;
         // 나머지 예외처리 ex. 숫자 범위, 숫자가 아닐 때
-    }
-}
-
-class RandomNumber {
-    private static List<Integer> baseballNumber;
-
-    static List<Integer> getUniqueNumbers() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        baseballNumber = computer;
-        return baseballNumber;
     }
 }
 
