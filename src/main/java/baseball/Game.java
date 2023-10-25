@@ -35,8 +35,15 @@ public class Game {
     private Baseballs getUserNumbers() {
         Output.printUserNumbersMessage();
         String line = Input.readLine();
-        List<Integer> numbers = Utils.stringToIntList(line);
+        List<Integer> numbers = stringToIntList(line);
         return new Baseballs(numbers);
+    }
+
+    private List<Integer> stringToIntList(final String str) {
+        return str.chars()
+            .map(Character::getNumericValue)
+            .boxed()
+            .toList();
     }
 
     private GameCommand getGameCommand() {
