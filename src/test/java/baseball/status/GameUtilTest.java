@@ -1,5 +1,8 @@
 package baseball.status;
 
+import static baseball.status.GameSetting.COUNT_NUM;
+import static baseball.status.GameSetting.MAX_NUM;
+import static baseball.status.GameSetting.MIN_NUM;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
@@ -56,5 +59,25 @@ class GameUtilTest {
 
         assertThat(result).containsExactly(1, 1);
         assertThat(result2).containsExactly(2, 1);
+    }
+
+    @Test
+    @DisplayName("설정된 컴퓨터 수 유효성 확인")
+    void setComputerNumTest() {
+        GameUtil gameUtil = new GameUtil();
+        List<Integer> computerNum = gameUtil.setComputerNum();
+
+        assertThat(computerNum).hasSize(COUNT_NUM.getValue());
+
+        for (int num : computerNum) {
+            assertThat(num >= MIN_NUM.getValue()).isTrue();
+            assertThat(num <= MAX_NUM.getValue()).isTrue();
+        }
+
+        for (int i = 0; i < computerNum.size(); i++) {
+            for (int j = i + 1; j < computerNum.size(); j++) {
+                assertThat(computerNum.get(i)).isNotEqualTo(computerNum.get(j));
+            }
+        }
     }
 }
