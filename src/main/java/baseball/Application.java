@@ -1,103 +1,120 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Application {
-    public static void main(String[] args) throws IllegalAccessException {
-        // TODO: 프로그램 구현
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
-        int strike = 0;
-        int ball = 0;
-        String restart = "";
-
-        //컴퓨터와 플레이어의 수 리스트 생성
+    //컴퓨터의 3자리수 생성
+    public static ArrayList<Integer> createComputerNumber() {
         ArrayList<Integer> computer = new ArrayList<>();
-        ArrayList<Integer> player = new ArrayList<>();
-
-        // 컴퓨터의 수 3개 생성
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
+        return computer;
+    }
 
-        while (true){
-            player.clear();
-            ball = 0;
-            strike =0;
-
-            // 수 입력받기 3개 숫자 예외처리하자
-            System.out.print("숫자를 입력해주세요 : ");
-            try {
-                String com = Console.readLine();
-                for (int i = 0; i < 3; i++) {
-                    player.add(Integer.parseInt(com.split("")[i]));
-                }
-            } catch (NullPointerException e){
+    // 플레이어의 수 입력
+    public static ArrayList<Integer> createPlayerNumber() {
+        ArrayList<Integer> player = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
+        try {
+            String inputNum = Console.readLine();
+            String[] inputNums = inputNum.split("");
+            if (inputNums[0].equals(inputNums[1])
+                    || inputNums[1].equals(inputNums[2])
+                    || inputNums[0].equals(inputNums[2])) {
                 throw new IllegalArgumentException();
-            } catch (Exception e){
+            } else if (inputNum.length() != 3) {
+                throw new IllegalArgumentException();
+            } else if (inputNum.contains("0")) {
                 throw new IllegalArgumentException();
             }
-
-            //스트라이크, 볼 판별하기
-            for (int i = 0; i < computer.size(); i++) {
-                if (computer.get(i).equals(player.get(i))){
-                    strike++;
-                    ball--;
-                }
+            for (int i = 0; i < 3; i++) {
+                player.add(Integer.parseInt(inputNum.split("")[i]));
             }
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException();
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        return player;
+    }
 
-            for (int i = 0; i < computer.size(); i++){
-                for (int j = 0; j < player.size(); j++){
-                    if (computer.get(i).equals(player.get(j))){
-                        ball++;
-                    }
-                }
+    //스트라이크,볼,낫싱 판별하기
+    public static boolean isStrikeBall(ArrayList<Integer> computer, ArrayList<Integer> player) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i).equals(player.get(i))) {
+                strike++;
+                ball--;
             }
-
-            if(ball <= 0){
-                ball = 0;
-            }
-
-            if (strike == 0 && ball == 0) {
-                System.out.println("낫싱");
-                continue;
-            }
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-            if(strike == 3){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                try {
-                    restart = Console.readLine();
-                } catch (NullPointerException e){
-                    throw new IllegalArgumentException();
-                } catch (Exception e){
-                    throw new IllegalArgumentException();
-                }
-
-                if(restart.equals("2")){
-                    break;
-                }
-
-                computer.clear();
-                while (computer.size() < 3) {
-                    int randomNumber = Randoms.pickNumberInRange(1, 9);
-                    if (!computer.contains(randomNumber)) {
-                        computer.add(randomNumber);
-                    }
-                }
-            }
-
         }
 
+        for (int i = 0; i < computer.size(); i++) {
+            for (int j = 0; j < player.size(); j++) {
+                if (computer.get(i).equals(player.get(j))) {
+                    ball++;
+                }
+            }
+        }
+
+        if (ball > 0 && strike > 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        } else if (ball <= 0 && strike <= 0) {
+            System.out.println("낫싱");
+        } else if (ball <= 0) {
+            System.out.println(strike + "스트라이크");
+        } else if (strike <= 0) {
+            System.out.println(ball + "볼");
+        }
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
+    //재시작 여부 묻기
+    public static boolean isRestart() {
+        String restart = "";
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        try {
+            restart = Console.readLine();
+            if (!(restart.equals("1") || restart.equals("2"))) {
+                throw new IllegalArgumentException();
+            }
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException();
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (restart.equals("1")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) throws IllegalAccessException {
+        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        ArrayList<Integer> computer = createComputerNumber();
+        while (true) {
+            ArrayList<Integer> player = createPlayerNumber();
+            if (isStrikeBall(computer, player)) {
+                if (isRestart()) {
+                    computer = createComputerNumber();
+                    continue;
+                }
+                break;
+            }
+        }
     }
 }
