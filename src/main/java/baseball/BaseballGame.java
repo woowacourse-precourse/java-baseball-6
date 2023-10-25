@@ -19,15 +19,14 @@ public class BaseballGame {
     }
 
     private void playBaseball(BaseballNumber computerNumber) {
-        while (true) {
+        BaseballCount baseballCount;
+        do {
             BaseballNumber userNumber = inputUserBaseballNumber();
-            BaseballCount baseballCount = createBaseballCount(computerNumber, userNumber);
+            baseballCount = createBaseballCount(computerNumber, userNumber);
             baseballDisplay.displayMessage(baseballCount.getResultBriefing());
-            if (baseballCount.isAllStrike()) {
-                baseballDisplay.allStrikeAndRoundOver();
-                break;
-            }
-        }
+        } while (!baseballCount.isAllStrike());
+
+        baseballDisplay.allStrikeAndRoundOver();
     }
 
     private BaseballNumber inputUserBaseballNumber() {
