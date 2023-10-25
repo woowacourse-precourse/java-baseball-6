@@ -17,7 +17,7 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
         answer = createRandomNumber();
         playerInputNum = inputNum(); // 검증까지 끝
-
+        printResult(answer, playerInputNum);
     }
 
     // 랜덤 세자리 수 정답 생성
@@ -74,7 +74,7 @@ public class Game {
     }
 
     public void ValidateInputNum(String input) {
-        if (!isValidNumber(input) || !isThreeDigit(input) || isNotDuplicate(input)) {
+        if (!isValidNumber(input) || !isThreeDigit(input) || !isNotDuplicate(input)) {
             throw new IllegalArgumentException();
         }
     }
