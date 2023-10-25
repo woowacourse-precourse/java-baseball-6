@@ -3,8 +3,8 @@ package baseball.controller;
 import baseball.domain.balls.Balls;
 import baseball.domain.restart.RestartStatus;
 import baseball.domain.results.Results;
+import baseball.dto.BallsDifferenceDto;
 import baseball.utility.BallsUtils;
-import baseball.utility.ResultsUtils;
 import baseball.view.ConsoleView;
 import baseball.view.View;
 
@@ -49,7 +49,8 @@ public class BaseballGame implements Game {
     }
 
     private void determineResults() {
-        results = ResultsUtils.determineResults(balls, answerBalls);
+        BallsDifferenceDto ballsDifferenceDto = balls.getDifference(answerBalls);
+        results = new Results(ballsDifferenceDto);
     }
 
     private boolean isAnswer() {

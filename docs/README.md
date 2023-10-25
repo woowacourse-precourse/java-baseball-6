@@ -28,6 +28,7 @@
         - [x] `Ball`들의 위치 중복 검증
     - [x] 어떠한 `Ball`에 대해 같은 값을 가진 `Ball`을 포함하는지 확인
     - [x] 어떠한 `Ball`에 대해 같은 `Ball`을 포함하는지 확인
+    - [x] 다른 `Balls`에 대한 차이를 담는 `BallsDifferenceDto`를 반환
 
 ## 📒 BallsUtils
 
@@ -38,6 +39,10 @@
         - [x] 중복값 제외
     - [x] `List<Integer>`를 `Balls`로 변환
     - [x] `String`를 `Balls`로 변환
+
+## 📒 BallsDifferenceDto
+
+- [x] 2개의 `Balls`에 대한 차이를 담는 DTO
 
 ---
 
@@ -50,12 +55,10 @@
 ## 📒 ResultsUtils
 
 - [x] `ResultStatus` 관련 utility class
-    - [x] 하나의 `Ball`와 하나의 `Balls`에 대한 `ResultStatus`를 판별하여 반환
     - [x] 결과를 `String`으로 반환
         - [x] `Strike`, `Ball`, `Out` 값을 받아 개수와 함께 `String`으로 반환
             - [x] `n볼`로 가공
             - [x] `n스트라이크`로 가공
-    - [x] 하나의 `Balls`와 하나의 `Balls`에 대한 `Results`를 판별하여 반환
 
 ## 📙 Results
 

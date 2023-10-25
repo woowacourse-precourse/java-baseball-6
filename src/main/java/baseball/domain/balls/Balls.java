@@ -59,8 +59,4 @@ public class Balls {
         return new BallsDifferenceDto(sameBallCount, sameValueBallCount, differentBallCount);
     }
 
-    public List<Ball> getBalls() {
-        return balls;
-    }
-
 }

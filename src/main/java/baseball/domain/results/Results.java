@@ -1,19 +1,18 @@
 package baseball.domain.results;
 
+import baseball.dto.BallsDifferenceDto;
 import baseball.utility.ResultsUtils;
 
 public class Results {
 
-    private final int BALL_COUNT = 3;
-
     private int strikeCount = 0;
     private int ballCount = 0;
+    private int outCount = 0;
 
-    public Results() {}
-
-    public Results(int strikeCount, int ballCount) {
-        this.strikeCount = strikeCount;
-        this.ballCount = ballCount;
+    public Results(BallsDifferenceDto ballsDifferenceDto) {
+        strikeCount = ballsDifferenceDto.getSameBallCount();
+        ballCount = ballsDifferenceDto.getSameValueBallCount();
+        outCount = ballsDifferenceDto.getDifferentBallCount();
     }
 
     @Override
@@ -21,17 +20,10 @@ public class Results {
         return ResultsUtils.getStringValueOfResults(strikeCount, ballCount);
     }
 
-    public void addResultStatus(ResultStatus resultStatus) {
-        if (resultStatus == ResultStatus.STRIKE) {
-            strikeCount++;
-        }
-        if (resultStatus == ResultStatus.BALL) {
-            ballCount++;
-        }
-    }
-
     public boolean isAnswer() {
-        return strikeCount == BALL_COUNT;
+        boolean noBall = ballCount == 0;
+        boolean noOut = outCount == 0;
+        return noBall && noOut;
     }
 
 }

@@ -1,44 +1,10 @@
 package baseball.utility;
 
-import baseball.domain.balls.Ball;
-import baseball.domain.balls.Balls;
 import baseball.domain.results.ResultStatus;
-import baseball.domain.results.Results;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class ResultsUtils {
-
-    public static Results determineResults(Balls balls, Balls anotherBalls) {
-        Results results = new Results();
-
-        for (Ball ball : balls.getBalls()) {
-            ResultStatus resultStatus = determineResultStatus(anotherBalls, ball);
-            results.addResultStatus(resultStatus);
-        }
-
-        return results;
-    }
-
-    public static ResultStatus determineResultStatus(Balls balls, Ball ball) {
-        if (balls.hasSameBall(ball)) {
-            return ResultStatus.STRIKE;
-        }
-
-        if (balls.hasSameValueBall(ball)) {
-            return ResultStatus.BALL;
-        }
-
-        return ResultStatus.OUT;
-    }
-
-    public static String getStringValueOfResultStatusWithCount(ResultStatus resultStatus, int count) {
-        if (count == 0) {
-            return "";
-        }
-        String description = resultStatus.getDescription();
-        return count + description;
-    }
 
     public static String getStringValueOfResults(int strikeCount, int ballCount) {
 
@@ -59,6 +25,14 @@ public final class ResultsUtils {
         }
 
         return resultString;
+    }
+
+    public static String getStringValueOfResultStatusWithCount(ResultStatus resultStatus, int count) {
+        if (count == 0) {
+            return "";
+        }
+        String description = resultStatus.getDescription();
+        return count + description;
     }
 
 }
