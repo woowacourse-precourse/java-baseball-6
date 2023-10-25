@@ -28,7 +28,7 @@ public class InputConverter {
 
     public static ExitCode convertToExitCode(String line) {
         validateNumbers(line);
-        return new ExitCode(Integer.getInteger(line));
+        return new ExitCode(Integer.parseInt(line));
     }
 
 }
