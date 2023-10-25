@@ -19,7 +19,7 @@ public class PlayerNumber {
         return playerNumberList;
     }
     
-    //String으로 입력받은 숫자를 List<Integer>로 변환
+    //String으로 입력받은 숫자를 List<Integer>로 변환, 유효성 검증
     public void setPlayerNumber(String playerInput) {
         if (!PlayerValidator.isValidInput(playerInput)) {
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다. 3자리 숫자만 입력되어야 합니다.");

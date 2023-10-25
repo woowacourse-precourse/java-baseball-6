@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Set;
 
 public class PlayerValidator {
+
+    //입력값이 3자리 숫자인지 검증
     public static boolean isValidInput(String playerInput) {
-        // 입력값이 3자리 숫자인지 확인
         return playerInput.matches("^[0-9]{3}$");
     }
-
+    
+    //1~9사이 자연수 이외 숫자, 공백, 문자 검증
     public static void isNumberExistInRange(List<Integer> playerNumberList)throws IllegalArgumentException{
         for(Integer number : playerNumberList){
             if(number<=0 || number > 9){
@@ -18,6 +20,7 @@ public class PlayerValidator {
         }
     }
 
+    //중복 숫자 검증
     public static void isNumberDuplicated(List<Integer> playerNumberList) throws IllegalArgumentException{
         Set<Integer> uniqueNumbers = new HashSet<>();
         for(Integer number : playerNumberList){

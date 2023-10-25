@@ -10,7 +10,6 @@ import java.util.List;
  * 컴퓨터 난수 생성 로직
  * */
 public class ComputerNumber {
-    // 컴퓨터 난수 3개를 저장하는 리스트
     private List<Integer> computerNumberList;
 
     public ComputerNumber(){
