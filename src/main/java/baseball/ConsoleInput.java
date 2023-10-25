@@ -5,7 +5,7 @@ import game.GameInputInterface;
 
 public class ConsoleInput implements GameInputInterface {
     @Override
-    public String getInput(){
+    public String getInput() {
         return Console.readLine();
     }
 

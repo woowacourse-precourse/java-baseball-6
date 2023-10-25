@@ -7,7 +7,6 @@ public class GameExecutor {
         this.game = game;
     }
 
-
     public void run() {
         game.sayHello();
         while (true) {

@@ -25,23 +25,6 @@ public class BaseballNumber {
         return new BaseballHint(getStrikes(other), getBalls(other));
     }
 
-    public int[] getNumbers() {
-        return Arrays.copyOf(numbers, 3);
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other == null) {
-            return false;
-        }
-        if (!(other instanceof BaseballNumber)) {
-            return false;
-        }
-        BaseballNumber otherNumber = (BaseballNumber) other;
-
-        return Arrays.equals(numbers, otherNumber.getNumbers());
-    }
-
     private void checkNumbers() {
         assert (numbers.length == 3);
         Set<Integer> set = new HashSet<>();
@@ -69,5 +52,22 @@ public class BaseballNumber {
         return (int) IntStream.range(0, 3)
                 .filter(i -> numbers[i] == otherNumbers[i])
                 .count();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+        if (!(other instanceof BaseballNumber)) {
+            return false;
+        }
+        BaseballNumber otherNumber = (BaseballNumber) other;
+
+        return Arrays.equals(numbers, otherNumber.getNumbers());
+    }
+
+    public int[] getNumbers() {
+        return Arrays.copyOf(numbers, 3);
     }
 }
