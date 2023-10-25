@@ -1,12 +1,16 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import baseball.start.ComputerNumbers;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.HashSet;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -31,5 +35,97 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 랜덤숫자_생성() {
+        //given
+
+        //when
+        ComputerNumbers computerNumbers = new ComputerNumbers();
+        computerNumbers.pickAnswerNumbers();
+        List<Integer> randomNumbers = computerNumbers.getComputerNumbers();
+
+        //then
+        assertThat(randomNumbers.size())
+                .as("랜덤 숫자 크기 검사")
+                .isEqualTo(3);
+
+        assertThat(randomNumbers.size())
+                .as("랜덤 숫자 중복 검사")
+                .isEqualTo(new HashSet<>(randomNumbers).size());
+
+        for (Integer number : randomNumbers) {
+            assertThat(number)
+                    .as("랜덤 숫자 범위 검사")
+                    .isBetween(1, 9);
+        }
+    }
+
+    @Test
+    void 볼() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("512", "135", "1", "895", "589", "2");
+                    assertThat(output()).contains("2볼", "3스트라이크", "3볼", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
+
+    @Test
+    void 스트라이크() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("167", "135", "1", "389", "589", "2");
+                    assertThat(output())
+                            .contains("1스트라이크", "3스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
+
+    @Test
+    void 입려숫자_예외_문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("가나다"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력숫자_예외_같은숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력숫자_예외_0포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 게임종료_선택_예외_다른숫자() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThrows(IllegalArgumentException.class, () -> run("135", "3"));
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 게임종료_선택_예외_문자() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThrows(IllegalArgumentException.class, () -> run("135", "w"));
+                },
+                1, 3, 5
+        );
     }
 }
