@@ -11,25 +11,18 @@ public class Application {
         NumberBaseball.start();
     }
 
-    public void start() {
+    private void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean play = true;
-        while (play) {
+        boolean isGameRunning = true;
+        while (isGameRunning) {
             List<Integer> computer = generateRandomNumber();
-            int strike = 0;
-            while (strike < 3) {
-                List<Integer> player = getPlayerNumber();
-                int[] result = calculateResult(computer, player);
-                printResult(result);
-                strike = result[0];
-            }
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            play = getRestartOrExit();
+            play(computer);
+            isGameRunning = getRestartOrExit();
         }
         Console.close();
     }
 
-    public List<Integer> generateRandomNumber() {
+    private List<Integer> generateRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -40,13 +33,24 @@ public class Application {
         return computer;
     }
 
-    public List<Integer> getPlayerNumber() {
+    private void play(List<Integer> computer) {
+        int strike = 0;
+        while (strike < 3) {
+            List<Integer> player = getPlayerNumber();
+            int[] result = calculateResult(computer, player);
+            printResult(result);
+            strike = result[0];
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private List<Integer> getPlayerNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         return validatePlayerNumber(input);
     }
 
-    public List<Integer> validatePlayerNumber(String input) {
+    private List<Integer> validatePlayerNumber(String input) {
         isThreeDigits(input);
         isInRangeOneToNine(input);
         return hasUniqueNumber(input);
@@ -76,7 +80,7 @@ public class Application {
         return player;
     }
 
-    public int[] calculateResult(List<Integer> computer, List<Integer> player) {
+    private int[] calculateResult(List<Integer> computer, List<Integer> player) {
         int[] result = new int[2]; //[strike, ball]
         for (int i = 0; i < player.size(); i++) {
             if (player.get(i).equals(computer.get(i))) {
@@ -88,7 +92,7 @@ public class Application {
         return result;
     }
 
-    public void printResult(int[] result) {
+    private void printResult(int[] result) {
         int strike = result[0];
         int ball = result[1];
         if (strike == 0 && ball == 0) {
@@ -103,7 +107,7 @@ public class Application {
         System.out.println();
     }
 
-    public boolean getRestartOrExit() {
+    private boolean getRestartOrExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if (!input.equals("1") && !input.equals("2")) {
