@@ -30,7 +30,7 @@ public class BaseballGameController {
         String computerNumber = new Round().getRandomNumber();
         Turn turn;
         do {
-            String playerNumber = inputView.getSuggestedNumber();
+            String playerNumber = inputView.getPlayerNumber();
             InputValidator.validatePlayerNumber(playerNumber);
             turn = Turn.fromPlayerAndComputerNumbers(playerNumber, computerNumber);
             String result = turn.generateResultMessage();
