@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder.BindingResolver.StreamWriting;
 
 /**
  * 숫자야구.
@@ -23,22 +22,26 @@ public class Application {
      * a
      */
     public static void main(String[] args) {
+        // randomNumber 메소드를 사용해 랜덤한 3개의 숫자 생성
         List<Integer> computer = randomNumber();
         System.out.println(computer);
-        boolean bool = true;
+        boolean continueLoop = true;
 
-        while (bool) {
+        while (continueLoop) {
             List<Integer> user;
-            System.out.print("숫자를 입력해주세요 : ");
             String input = readLine();
+            // user에게 받은 input을 검사하고 List로 바꾸는 메소드 userNumber
             user = userNumer(input);
+            // 랜덤한 3개의 숫자와 user의 input을 인자로 받아 비교하는 메소드 compareNumber
             Map<String, Integer> judgment = compareNumber(computer, user);
+            // 유저가 입력한 input의 정답 여부를 판별하는 메소드 checkAnswer
             if(checkAnswer(judgment)){
+                // 유저가 정답을 맞췄을 경우 corretAnswer메소드를 이용해 다음 게임의 여부 확인
                 if(!correctAnswer(computer)){
                     computer = randomNumber();
                 }
                 else{
-                    bool = false;
+                    continueLoop = false;
                 }
             }
         }
@@ -147,7 +150,7 @@ public class Application {
 
         //3개의 숫자를 모두 맞췄을 경우
         if (strikes == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다 !");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다 ! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             isThreeStrikes = true;
         }
