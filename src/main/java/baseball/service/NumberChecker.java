@@ -1,6 +1,14 @@
 package baseball.service;
 
+import baseball.model.CompareResult;
+
 public class NumberChecker {
+
+    public static CompareResult compare(String computerNumber, String playerNumber) {
+        Integer ball = countBall(computerNumber, playerNumber);
+        Integer strike = countStrike(computerNumber, playerNumber);
+        return new CompareResult(ball, strike);
+    }
 
     private static Integer countBall(String computerNumber, String playerNumber) {
         Integer ball = 0;
