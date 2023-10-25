@@ -14,7 +14,8 @@ public class Output {
             System.out.print("낫싱");
         }
         for (Map.Entry<String, Integer> entry : result.entrySet()) {
-            if (!isNothing(result)) {
+            int score = entry.getValue();
+            if (score != NO_SCORE) {
                 System.out.print(entry.getValue() + entry.getKey() + " ");
             }
         }
