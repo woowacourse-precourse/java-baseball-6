@@ -47,9 +47,7 @@ public class Hint {
      * @param playerNumber   : 사용자가 입력한 수
      * @param computerNumber : 컴퓨터의 랜덤 수
      */
-    public void showHint(String playerNumber, String computerNumber) {
-        //playerNumber와 computerNumber비교
-        compareAnswer(playerNumber, computerNumber);
+    public void showHint() {
 
         StringBuilder result = new StringBuilder(); //출력할 결과
 
@@ -80,7 +78,7 @@ public class Hint {
      * @param playerNumber   : 플레이어가 입력한 수
      * @param computerNumber : 컴퓨터가 랜덤으로 얻은 수
      */
-    private void compareAnswer(String playerNumber, String computerNumber) {
+    public void compareAnswer(String playerNumber, String computerNumber) {
         int length = playerNumber.length();
         //입력한 수의 자리수 만큼 반복
         for (int i = 0; i < length; i++) {

@@ -90,8 +90,11 @@ public class Game {
         Player player = new Player();
         player.setPlayerNumber(NUMBER_OF_DIGITS);   //플레이어 입력받기
 
+        //스트라이크, 볼 게산
+        hint.compareAnswer(player.getPlayerNumber(), computerNumber);
+
         //show hint
-        hint.showHint(player.getPlayerNumber(), computerNumber);
+        hint.showHint();
     }
 
 
