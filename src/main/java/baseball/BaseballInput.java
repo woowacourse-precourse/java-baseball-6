@@ -8,6 +8,10 @@ public class BaseballInput {
     private static List<Integer> userInput;
     private static int restartNum;
 
+    private BaseballInput(){
+
+    }
+
     public static List<Integer> getUserInput() {
         return userInput;
     }
