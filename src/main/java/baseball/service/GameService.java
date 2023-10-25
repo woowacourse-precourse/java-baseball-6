@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.Game;
+import baseball.Message.Constant.RequestMessage;
 import baseball.User;
 import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
@@ -61,7 +62,7 @@ public class GameService {
     }
 
     private int[] getUserNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.println(RequestMessage.REQUEST_INPUT_DATA);
         String input = Console.readLine();
         return parser.parseUserInput(input, size);
     }

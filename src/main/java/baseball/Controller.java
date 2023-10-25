@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.Message.Constant.RequestMessage;
 import baseball.service.GameService;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -28,11 +29,12 @@ public class Controller {
     }
 
     private void endGame() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
     }
 
 
     private void Retry() throws IllegalArgumentException {
+        System.out.println(RequestMessage.REQUEST_RETRY_MESSAGE);
         if (getInputNum() == RESTART_GAME) {
             run();
         }
