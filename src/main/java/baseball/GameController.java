@@ -6,10 +6,10 @@ public class GameController {
     private static final int TERMINATE_INPUT = 2;
 
 
-    public GameController() {
+    public GameController(Computer computer, Player player) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        this.computer = new Computer();
-        this.player = new Player();
+        this.computer = computer;
+        this.player = player;
     }
 
     public void startGame() {
