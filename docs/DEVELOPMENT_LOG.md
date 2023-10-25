@@ -30,3 +30,4 @@
 - gradePrediction이 strikeCount 만을 반환하고 있으니, Score 클래스를 만들자
 - BaseballGame 클래스를 BaseballGame, Player, Computer 로 나누어 클래스를 작게 유지하자
 - 의미를 가지거나 변경될 수 있는 상수를 BaseballConstant 에 저장하자
+- 테스트 코드를 작성하자
