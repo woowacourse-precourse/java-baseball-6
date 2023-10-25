@@ -13,7 +13,7 @@ class GameStatusTest {
 
     @DisplayName("chooseStatus()에서 Restart Number인 '1'을 넣으면 GameStatus 타입인 RESTART가 반환된다.")
     @Test
-    void choose_status_with_restart() {
+    void validate_choose_status_with_restart() {
         // given
         String validNumberString = "1";
 
@@ -25,7 +25,7 @@ class GameStatusTest {
 
     @DisplayName("chooseStatus()에서 Exit Number인 '2'를 넣으면 GameStatus 타입인 EXIT가 반환된다.")
     @Test
-    void choose_status_with_exit() {
+    void validate_choose_status_with_exit() {
         // given
         String validNumberString = "2";
 
@@ -37,7 +37,7 @@ class GameStatusTest {
 
     @DisplayName("chooseStatus()에서 Restart Number도 Exit Number도 아닌 '5'를 넣으면 IllegalArgumentException 예외가 발생한다.")
     @Test
-    void choose_status_with_invalid() {
+    void validate_choose_status_with_invalid() {
         // given
         String invalidNumberString = "5";
 

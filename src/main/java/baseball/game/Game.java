@@ -1,7 +1,7 @@
 package baseball.game;
 
-import static baseball.output.GameOutput.printlnEndMessage;
-import static baseball.output.GameOutput.printlnStartMessage;
+import static baseball.game.GameOutput.printlnEndMessage;
+import static baseball.game.GameOutput.printlnStartMessage;
 
 import baseball.computer.RandomComputerNumberGenerator;
 import baseball.user.UserInput;

@@ -2,9 +2,9 @@ package baseball.game;
 
 import static baseball.constant.NumberConstants.COUNT_ZERO;
 import static baseball.constant.NumberConstants.GAME_END_CONDITION;
-import static baseball.output.GameOutput.printCorrectBallCount;
-import static baseball.output.GameOutput.printCorrectStrikeCount;
-import static baseball.output.GameOutput.printStrikeThree;
+import static baseball.game.GameOutput.printCorrectBallCount;
+import static baseball.game.GameOutput.printCorrectStrikeCount;
+import static baseball.game.GameOutput.printStrikeThree;
 
 public record GameResult(int strikeCount, int ballCount) {
 
