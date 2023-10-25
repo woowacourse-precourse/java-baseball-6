@@ -33,4 +33,8 @@ public class Game {
     private String inputNumber() {
         return Console.readLine();
     }
+
+    public void endGame() {
+        System.out.println("게임 종료");
+    }
 }

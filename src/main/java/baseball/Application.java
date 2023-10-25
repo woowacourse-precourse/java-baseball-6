@@ -9,5 +9,6 @@ public class Application {
         do {
             game.startGame();
         } while (game.checkRestart());
+        game.endGame();
     }
 }
