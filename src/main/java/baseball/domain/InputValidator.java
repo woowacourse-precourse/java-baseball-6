@@ -5,15 +5,28 @@ import static baseball.constant.GameConstants.*;
 import baseball.constant.GameStatus;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 public class InputValidator {
     private InputValidator() {
     }
 
     public static void numberInput(String inputString) throws IllegalArgumentException {
-        if (!Pattern.matches(INPUT_REGEX, inputString) || !hasUniqueNumber(inputString)) {
-            throw new IllegalArgumentException(ERROR_INVALID_INPUT + inputString);
+        try {
+            Integer.parseInt(inputString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_INVALID_INPUT);
+        }
+
+        if (inputString.length() != MAX_NUMBER_LENGTH) {
+            throw new IllegalArgumentException(ERROR_INVALID_INPUT);
+        }
+
+        if (!hasUniqueNumber(inputString)) {
+            throw new IllegalArgumentException(ERROR_INVALID_INPUT);
+        }
+
+        if (!hasValidNumber(inputString)) {
+            throw new IllegalArgumentException(ERROR_INVALID_INPUT + "#");
         }
     }
 
@@ -22,6 +35,11 @@ public class InputValidator {
                 GameStatus.STOP.status)) {
             throw new IllegalArgumentException(ERROR_INVALID_CONTINUE_INPUT);
         }
+    }
+
+    private static boolean hasValidNumber(String inputString) {
+        return inputString.chars()
+                .allMatch(ch -> ch >= '0' + MIN_NUMBER && ch <= '0' + MAX_NUMBER);
     }
 
     private static boolean hasUniqueNumber(String inputString) {
