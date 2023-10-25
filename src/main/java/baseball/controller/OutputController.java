@@ -10,14 +10,18 @@ public class OutputController {
     public final static String BALL = "볼";
     public final static String NOTHING = "낫싱";
     public final static String ANSWER ="3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
+    //줄띄움있는 멘트 출력
     public void printNoticeln(String ment) {
         System.out.println(ment);
     }
 
+    //줄띄움 없는 멘트 출력
     public void printNotice(String ment) {
         System.out.print(ment);
     }
 
+    //결과 출력
     public void printResult(int strike,int ball) {
         if (strike == 0 && ball == 0) {
             System.out.println(NOTHING);

@@ -7,6 +7,7 @@ import java.util.List;
 public class Game {
     private String answer;
 
+    //랜덤 정답 초기화
     public void initAnswer() {
         List<Integer> integers = new ArrayList<>();
         while (integers.size() < 3) {
@@ -21,6 +22,7 @@ public class Game {
         }
     }
 
+    //스트라이크 카운트
     public int countStrike(String inputString) {
         int count = 0;
         for (int i = 0; i < 3; i++) {
@@ -31,6 +33,7 @@ public class Game {
         return count;
     }
 
+    //볼 카운트
     public int countBall(String inputString) {
         int count = 0;
         for (int i = 0; i < 3; i++) {
@@ -41,6 +44,7 @@ public class Game {
         return count;
     }
 
+    //정답 판별
     public boolean isAnswer(String inputString) {
         if (countStrike(inputString) == 3) {
             return true;

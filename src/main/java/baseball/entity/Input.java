@@ -13,6 +13,7 @@ public class Input {
         return inputString;
     }
 
+    //유효성 검사
     public void validate() {
         if (isInGame) {
             inGameValidate();
@@ -21,18 +22,21 @@ public class Input {
         reGameValidate();
     }
 
+    //재시작 커맨드 유효성 검사
     private void reGameValidate() {
         checkIsNum();
         checkLength(1);
         isOneOrTwo();
     }
 
+    //인게임 유효성검사
     private void inGameValidate() {
         checkIsNum();
         checkLength(3);
         checkAllDiffer();
     }
 
+    //아래는 상세 유효성 검사 메소드
     private void checkLength(int length) {
         if (inputString.length() != length) {
             throw new IllegalArgumentException(String.format("입력 길이 초과입니다. 입력길이 : [%s],  예상 길이: [%s]",inputString.length(),length));
