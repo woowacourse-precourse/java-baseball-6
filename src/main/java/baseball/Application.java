@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.Judge;
 import baseball.domain.JudgeNumber;
 import baseball.domain.NumberGenerator;
 
@@ -13,10 +14,15 @@ public class Application {
 //        List<Integer> numbers = generator.createRandomNumber();
 //        System.out.println(numbers);
 
-        JudgeNumber judgeNumber = new JudgeNumber();
+//        JudgeNumber judgeNumber = new JudgeNumber();
 //        int count = judgeNumber.count(Arrays.asList(1,2,4), Arrays.asList(1,2,3));
 //        System.out.println(count);
-        final boolean place = judgeNumber.isNumber(Arrays.asList(7,8,9), 0, 7);
-        System.out.println(place);
+//        final boolean place = judgeNumber.isNumber(Arrays.asList(7,8,9), 0, 7);
+//        System.out.println(place);
+
+        Judge judge = new Judge();
+
+        String result = judge.compare(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3));
+        System.out.println(result);
     }
 }
