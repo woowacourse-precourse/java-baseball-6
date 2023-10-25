@@ -1,7 +1,9 @@
 package baseball.message;
 
 import baseball.Constant;
-
+/**
+ * 프로그램에서 사용되는 메시지가 모두 모여있는 클래스다.
+ */
 public class MessageString {
 
     private MessageString() {

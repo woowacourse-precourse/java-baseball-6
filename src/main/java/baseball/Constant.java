@@ -1,5 +1,8 @@
 package baseball;
 
+/**
+ * 이 프로그램에서 사용하는 상수가 담긴 클래스입니다.
+ */
 public class Constant {
 
     private Constant() {
