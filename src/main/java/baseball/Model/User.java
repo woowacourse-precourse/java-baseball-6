@@ -5,13 +5,10 @@ import java.util.List;
 
 public class User {
 
-    private List<Integer> input = new ArrayList<>();
+    private List<Integer> input;
 
-    public User(int[] numbers) {
-        input.clear();
-        for(int i=0; i<numbers.length; i++){
-            input.add(numbers[i]);
-        }
+    public User(List<Integer> numbers) {
+        input = numbers;
     }
 
     public List<Integer> getInput() {

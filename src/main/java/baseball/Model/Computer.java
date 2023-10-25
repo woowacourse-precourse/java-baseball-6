@@ -7,16 +7,10 @@ import java.util.List;
 
 public class Computer {
 
-    private List<Integer> answer = new ArrayList<>();
+    private List<Integer> answer;
 
-    public Computer() {
-        answer.clear();
-        while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
-        }
+    public Computer(List<Integer> list) {
+        answer = list;
     }
 
     public List<Integer> getAnswer() {

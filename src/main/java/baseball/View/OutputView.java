@@ -7,7 +7,7 @@ public class OutputView {
     private String ballResult = "%d볼";
     private String strikeResult = "%d스트라이크";
     private String ballAndStrikeResult = "%d볼 %d스트라이크";
-    private String successMessage = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료.";
+    private String successMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료.";
     private String endMessage = "숫자 야구 게임을 종료합니다.";
 
 
@@ -33,8 +33,8 @@ public class OutputView {
         }
     }
 
-    public void successMessage(int length) {
-        System.out.printf(successMessage, length);
+    public void successMessage() {
+        System.out.printf(successMessage);
         System.out.println();
     }
 
