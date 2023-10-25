@@ -66,7 +66,7 @@ public class Player {
     public String answerRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String answer = Console.readLine();
-        if(!answer.equals("1") || !answer.equals("2")) {
+        if(!answer.equals("1") && !answer.equals("2")) {
             throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
         }
         return answer;
