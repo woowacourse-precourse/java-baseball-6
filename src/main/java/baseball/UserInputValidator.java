@@ -50,4 +50,11 @@ public class UserInputValidator {
         int number = Character.getNumericValue(c);
         return NUMBER_LOWER_BOUND.getValue() <= number && number <= NUMBER_UPPER_BOUND.getValue();
     }
+
+    public Integer isInputRestartOrEnd(String userInput) {
+        if (userInput.equals("1") || userInput.equals("2")) {
+            return Integer.parseInt(userInput);
+        }
+        throw new IllegalArgumentException();
+    }
 }

@@ -17,5 +17,14 @@ public class Player {
         List<Integer> userInputNumbers = userInput.chars().mapToObj(Character::getNumericValue).toList();
         numbers = new Numbers(userInputNumbers);
     }
+
+    public Numbers getNumbers() {
+        return numbers;
+    }
+
+    public Integer getRestartOrEnd() {
+        String restartOrEnd = Console.readLine();
+        return userInputValidator.isInputRestartOrEnd(restartOrEnd);
+    }
 }
 
