@@ -5,7 +5,6 @@ import java.util.List;
 
 public class BaseballGame {
     private final Player player;
-    private final Computer computer;
     private int ball;
     private int strike;
     private String restart;
@@ -15,7 +14,6 @@ public class BaseballGame {
 
     public BaseballGame() {
         this.player = new Player();
-        this.computer = new Computer();
         this.ball = 0;
         this.strike = 0;
         this.restart = "";
@@ -25,18 +23,21 @@ public class BaseballGame {
 
     public void start() {
         printStart();
-        computerNumbers = getComputerNumber();
-        play();
+        do {
+            play();
+        } while(restart.equals("1"));
     }
 
     private void play() {
+        initBallCounts();
+        computerNumbers = getComputerNumber();
         while(strike != 3) {
             initBallCounts();
             playerNumbers = getPlayerNumbers();
             compareNumbers();
             printResult();
-            restart = askRestart();
         }
+        restart = askRestart();
     }
 
     private String askRestart() {
@@ -65,9 +66,9 @@ public class BaseballGame {
     private void compareNumbers() {
         for(int i = 0; i < 3; i++) {
             if (playerNumbers.get(i) == computerNumbers.get(i)) {
-                strike++;
+                this.strike++;
             } else if (computerNumbers.contains(playerNumbers.get(i))) {
-                ball++;
+                this.ball++;
             }
         }
     }
@@ -78,6 +79,7 @@ public class BaseballGame {
     }
 
     private List<Integer> getComputerNumber() {
+        Computer computer = new Computer();
         List<Integer> computerNumbers = computer.selectNumbers();
         return computerNumbers;
     }
