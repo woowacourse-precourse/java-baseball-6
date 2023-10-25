@@ -1,9 +1,9 @@
 package baseball;
 
+import static message.ConsoleMessage.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
-import static message.ConsoleMessage.*;
 
 public class Baseball {
     private String computerNum;
