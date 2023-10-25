@@ -102,19 +102,3 @@ rc/
 | | | |-- validator/
 | | | | |-- NumValidator.java // 숫자 입력 유효성 검사
 | | | | |-- RestartNumValidator.java // 게임 재시작 유효성 검사
-|-- test/
-| |-- java/
-| | |-- baseball/
-| | | |-- controller/
-| | | | |-- BaseballGameControllerTest.java // 컨트롤러 테스트 클래스
-| | | |
-| | | |-- model/
-| | | | |-- BaseballGameTest.java // 게임 로직 테스트 클래스
-| | | |
-| | | |-- view/
-| | | | |-- InputViewTest.java // 사용자 입력 처리 및 출력 테스트 클래스
-| | | | |-- OutputViewTest.java // 결과 출력 테스트 클래스
-| | | |
-| | | |-- validator/
-| | | | |-- NumValidatorTest.java // 유효성 검사 테스트 클래스
-| | | | |-- RestartNumValidatorTest.java // 재시작 유효성 검사 테스트 클래스
