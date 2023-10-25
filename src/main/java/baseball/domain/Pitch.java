@@ -5,11 +5,11 @@ import java.util.List;
 
 public record Pitch(List<Integer> numbers) {
     public Pitch {
-        validateDuplicateCount(numbers);
+        validateUniqueNumberCount(numbers);
         validateRange(numbers);
     }
 
-    private void validateDuplicateCount(List<Integer> numbers) {
+    private void validateUniqueNumberCount(List<Integer> numbers) {
         int distinctCount = (int) numbers.stream()
                 .distinct()
                 .count();
