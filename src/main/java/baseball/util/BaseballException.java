@@ -1,4 +1,7 @@
-package baseball;
+package baseball.util;
+
+import baseball.util.VerifyCharInString;
+import baseball.util.VerifyDuplication;
 
 public class BaseballException {
 

@@ -1,4 +1,9 @@
-package baseball;
+package baseball.controller;
+
+import baseball.domain.Baseball;
+import baseball.service.BaseballService;
+import baseball.util.BaseballException;
+import baseball.view.BaseballView;
 
 public class BaseballController {
 

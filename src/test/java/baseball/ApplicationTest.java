@@ -28,6 +28,11 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 중복_검사_함수() {
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

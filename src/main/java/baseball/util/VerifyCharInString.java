@@ -1,4 +1,4 @@
-package baseball;
+package baseball.util;
 
 public class VerifyCharInString {
     // 문자열이 모두 숫자로만 이루어져있는지 검사하는 함수

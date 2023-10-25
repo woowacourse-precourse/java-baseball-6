@@ -1,16 +1,23 @@
-package baseball;
+package baseball.service;
 
+import baseball.domain.BaseballEnum;
+import baseball.util.BaseballException;
+import baseball.util.VerifyDuplication;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballService {
 
     private BaseballException baseballException = new BaseballException();
+    private VerifyDuplication verifyDuplication = new VerifyDuplication();
 
     public String getComputerNum() {
         // 컴퓨터가 1~9까지의 서로 다른 임의의 수 3개 선택
         String computer = "";
         for (int i=0;i<3;i++) {
             computer+= Integer.toString(Randoms.pickNumberInRange(1, 9));
+        }
+        if (verifyDuplication.isDuplicationExist(computer)){
+            getComputerNum();
         }
         return computer;
     }
