@@ -40,9 +40,6 @@ public class MainController {
         Integer choiceData = interactionController.readChoiceData();
         if (choiceData == 1) {
             startBaseballGame();
-        } else {
-            // TODO System.exit 제거 예정입니다.
-            System.exit(0);
         }
     }
 }
