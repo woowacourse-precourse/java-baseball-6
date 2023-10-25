@@ -3,7 +3,6 @@ package baseball;
 import java.util.List;
 
 public class RuleManager {
-    private final static int LENGTH = 3;
     private int strikeCnt;
     private int ballCnt;
 
@@ -17,12 +16,12 @@ public class RuleManager {
         int ball = 0;
         List<Integer> computerNum = computer.getNumber();
         List<Integer> userNum = user.getNumber();
-        for (int i = 0; i < LENGTH; i++) {
+        for (int i = 0; i < NumberManager.NUMBER_LENGTH; i++) {
             if (computerNum.get(i) == userNum.get(i))
                 strike++;
-            if (computerNum.get(i) == userNum.get((i + 1) % LENGTH))
+            if (computerNum.get(i) == userNum.get((i + 1) % NumberManager.NUMBER_LENGTH))
                 ball++;
-            if (computerNum.get(i) == userNum.get((i + 2) % LENGTH))
+            if (computerNum.get(i) == userNum.get((i + 2) % NumberManager.NUMBER_LENGTH))
                 ball++;
         }
         strikeCnt = strike;

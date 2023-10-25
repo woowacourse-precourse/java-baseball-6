@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberManager {
-    private final static int NUMBER_LENGTH = 3;
+    public final static int NUMBER_LENGTH = 3;
 
     public List<Integer> createRandomNumber() {
         List<Integer> number = new ArrayList<>();
