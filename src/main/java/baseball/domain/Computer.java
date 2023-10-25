@@ -11,13 +11,15 @@ public class Computer {
         System.out.println(numbers);
     }
 
-    public Boolean compareStrike(Player player, int idx) {
-        int playerNumber = player.getNumber(idx);
-        return numbers.get(idx).equals(playerNumber);
+    public int compareSameIndexNumber(Player player) {
+        return (int) numbers.stream()
+                .filter(number -> player.isEquals(number, numbers.indexOf(number)))
+                .count();
     }
 
-    public Boolean compareBall(Player player, int idx) {
-        int playerNumber = player.getNumber(idx);
-        return numbers.contains(playerNumber) && !numbers.get(idx).equals(playerNumber);
+    public int compareContainNumber(Player player) {
+        return (int) numbers.stream()
+                .filter(player::isContain)
+                .count();
     }
 }

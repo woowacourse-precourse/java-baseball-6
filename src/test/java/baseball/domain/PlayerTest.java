@@ -4,17 +4,13 @@ import static baseball.utils.ErrorMessages.NOT_INTEGER;
 import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_DUPLICATE;
 import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_INVALID_SIZE;
 import static baseball.utils.ErrorMessages.PLAYER_NUMBERS_ZERO_CONTAIN;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Player 클래스")
@@ -69,30 +65,6 @@ public class PlayerTest {
                 Assertions.assertThatThrownBy(() -> new Player(input))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(NOT_INTEGER);
-            }
-        }
-    }
-
-    @Nested
-    @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-    class getNumber_메소드는 {
-
-        @Nested
-        @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class 인덱스가_주어진다면 {
-            private static Stream<Arguments> providePlayerNumberAndIdx() {
-                return Stream.of(
-                        Arguments.of("123", 0, 1),
-                        Arguments.of("895", 1, 9),
-                        Arguments.of("473", 2, 3)
-                );
-            }
-
-            @ParameterizedTest
-            @MethodSource("providePlayerNumberAndIdx")
-            void 해당_인덱스의_숫자값을_반환한다(String numbers, int idx, int expect) {
-                Player player = new Player(numbers);
-                assertEquals(player.getNumber(idx), expect);
             }
         }
     }

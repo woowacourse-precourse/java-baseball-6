@@ -15,77 +15,26 @@ public class ComputerTest {
 
     @Nested
     @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-    class compareStrike_메소드는 extends ComputerTestConfig {
+    class compareSameIndexNumber_메소드는 extends ComputerTestConfig {
+        @Test
+        void 같은_인덱스의_Player_숫자값과_일치하는_개수를_반환한다() {
+            Player player = new Player("123");
+            Computer computer = new TestComputer(List.of(1, 2, 6));
 
-        @Nested
-        @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class 같은_인덱스의_Player_숫자값과_일치하면 {
-            @Test
-            void true를_반환한다() {
-                Player player = new Player("123");
-                Computer computer = new TestComputer(List.of(1, 2, 6));
-
-                assertEquals(computer.compareStrike(player, 0), true);
-                assertEquals(computer.compareStrike(player, 1), true);
-            }
-        }
-
-        @Nested
-        @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class 같은_인덱스의_Player_숫자값과_일치하지_않으면 {
-            @Test
-            void false를_반환한다() {
-                Player player = new Player("123");
-                Computer computer = new TestComputer(List.of(3, 2, 6));
-
-                assertEquals(computer.compareStrike(player, 0), false);
-                assertEquals(computer.compareStrike(player, 2), false);
-            }
+            assertEquals(computer.compareSameIndexNumber(player), 2);
         }
     }
 
     @Nested
     @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-    class compareBall_메소드는 extends ComputerTestConfig {
+    class compareContainNumber_메소드는 extends ComputerTestConfig {
 
-        @Nested
-        @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class 같은_인덱스의_Player_숫자값과_일치하면 {
-            @Test
-            void false를_반환한다() {
-                Player player = new Player("123");
-                Computer computer = new TestComputer(List.of(1, 2, 6));
+        @Test
+        void 포함하고_있는_Player_숫자_개수를_반환한다() {
+            Player player = new Player("123");
+            Computer computer = new TestComputer(List.of(3, 2, 4));
 
-                assertEquals(computer.compareBall(player, 0), false);
-                assertEquals(computer.compareBall(player, 1), false);
-            }
-        }
-
-        @Nested
-        @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class 다른_인덱스의_Player_숫자값과_일치하면 {
-            @Test
-            void true를_반환한다() {
-                Player player = new Player("123");
-                Computer computer = new TestComputer(List.of(3, 5, 1));
-
-                assertEquals(computer.compareBall(player, 0), true);
-                assertEquals(computer.compareBall(player, 2), true);
-            }
-        }
-
-        @Nested
-        @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class 해당_인덱스의_Player_숫자값을_포함하지_않으면 {
-            @Test
-            void false를_반환한다() {
-                Player player = new Player("123");
-                Computer computer = new TestComputer(List.of(4, 5, 6));
-
-                assertEquals(computer.compareBall(player, 0), false);
-                assertEquals(computer.compareBall(player, 1), false);
-                assertEquals(computer.compareBall(player, 2), false);
-            }
+            assertEquals(computer.compareContainNumber(player), 2);
         }
     }
 }

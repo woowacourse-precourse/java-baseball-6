@@ -50,7 +50,11 @@ public class Player {
                 .toList();
     }
 
-    public int getNumber(int idx) {
-        return this.numbers.get(idx);
+    public Boolean isEquals(int number, int index) {
+        return numbers.indexOf(number) == index;
+    }
+
+    public Boolean isContain(int number) {
+        return numbers.contains(number);
     }
 }
