@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group 'woowacourse-projects'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.woowacourse-projects:mission-utils:1.1.0'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
