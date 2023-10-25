@@ -32,7 +32,7 @@ public class Application {
 
 
                     System.out.print("숫자를 입력해주세요 : ");
-                String num = Console.readLine();
+                    String num = Console.readLine();
                     String num1 = num.substring(0,1);
                     String num2 = num.substring(1,2);
                     String num3 = num.substring(2,3);
@@ -58,8 +58,8 @@ public class Application {
 
                     }
                     if(str==3){
-                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                        System.out.println("3스트라이크");
+                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
                     }
                     else if(ball>0&&str>0){
