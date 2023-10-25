@@ -37,15 +37,19 @@ public class BaseballGames implements Game {
         GameMessages numberInputComment = GameMessages.NUMBER_INPUT_COMMENT;
         while (true) {
             ioAdapter.printMessage(numberInputComment);
-            UserCode userCode = codes.makeNewUserCode(inputConvertService);
-            validateJudgeService.validateLegalUserCode(userCode);
-            GameResult gameResult = validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
+            GameResult gameResult = compareCodes(baseballCode, codes);
             Message resultMessage = messageGenerateService.makeMessage(gameResult);
-            resultMessage.printGameResultMessage();
+            ioAdapter.printResult(resultMessage);
             if (resultMessage.isResultMessageSameStrikeMessage(strikeComment.getMessage())) {
                 ioAdapter.printMessage(gameEndComment);
                 break;
             }
         }
+    }
+
+    private GameResult compareCodes(BaseballCode baseballCode, UserCode codes) {
+        UserCode userCode = codes.makeNewUserCode(inputConvertService);
+        validateJudgeService.validateLegalUserCode(userCode);
+        return validateJudgeService.validateAndCompareCodes(baseballCode, userCode);
     }
 }

@@ -16,11 +16,10 @@ public class InputConvertServiceImpl implements InputConvertService {
     @Override
     public List<Integer> convertIntegerList() {
         String inputStream = ioAdapter.inputStream();
-        List<Integer> convertList = Arrays
+        return Arrays
                 .stream(inputStream.split(""))
                 .map(Integer::parseInt)
                 .toList();
-        return convertList;
     }
 
     @Override

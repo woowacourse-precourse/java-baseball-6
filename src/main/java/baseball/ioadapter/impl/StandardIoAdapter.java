@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.ioadapter.IoAdapter;
 import baseball.message.GameMessages;
+import baseball.vo.Message;
 
 public class StandardIoAdapter implements IoAdapter {
     @Override
@@ -18,5 +19,10 @@ public class StandardIoAdapter implements IoAdapter {
         } else {
             System.out.println(gameMessages.getMessage());
         }
+    }
+
+    @Override
+    public void printResult(Message message) {
+        message.printGameResultMessage();
     }
 }
