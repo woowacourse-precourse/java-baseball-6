@@ -62,15 +62,17 @@ public class Baseball {
 
     private void printHint(int ball, int strike) {
         if(strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
 
         if(ball > 0) {
-            System.out.println(ball + "볼 ");
+            System.out.print(ball + "볼 ");
         }
 
         if(strike > 0) {
-            System.out.println(strike + "스트라이크");
+            System.out.print(strike + "스트라이크");
         }
+
+        System.out.println();
     }
 }
