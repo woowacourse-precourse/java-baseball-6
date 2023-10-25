@@ -21,6 +21,11 @@ public class AnswerEvaluatorImpl implements Evaluator {
         int guessSize = guess.size();
         int strikes = 0;
         int balls = 0;
+
+        // 덜 입력했을 때
+        if (guessSize != answer.size()) {
+            throw new IllegalArgumentException();
+        }
         for (int guessPos = 0; guessPos < guessSize; guessPos++) {
             int ansPos = this.answer.indexOf(guess.get(guessPos));
             if (guessPos == ansPos) {
