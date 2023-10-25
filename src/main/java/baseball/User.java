@@ -7,7 +7,7 @@ public class User {
 
     List<Integer> number = new ArrayList<>();
 
-    User(String input) {
+    public User(String input) {
         for (String splitInput : input.split("")) {
             number.add(Integer.parseInt(splitInput));
         }
