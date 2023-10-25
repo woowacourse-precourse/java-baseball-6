@@ -37,7 +37,7 @@ direction LR
 
 class Application
 Application ..> Game : uses
-Application: +main() void $
+Application: +main()$ void
 
 class Game
 <<Interface>> Game
@@ -51,10 +51,10 @@ AbstractTurnBasedGame: #onGameStarted() void
 AbstractTurnBasedGame: #onGameEnded() void
 AbstractTurnBasedGame: #onRoundStarted() void
 AbstractTurnBasedGame: #onRoundEnded() void
-AbstractTurnBasedGame: #hasNextRound() boolean *
+AbstractTurnBasedGame: #hasNextRound()* boolean
 AbstractTurnBasedGame: #onTurnStarted() void
 AbstractTurnBasedGame: #onTurnEnded() void
-AbstractTurnBasedGame: #hasNextTurn() boolean *
+AbstractTurnBasedGame: #hasNextTurn()* boolean
 ```
 
 - 턴제 게임의 진행방식을 충실히 구현한 추상 클래스 AbstractTurnBasedGame을 정의한다.
@@ -107,8 +107,8 @@ SecretNumberResolver: resolve() SecretNumber
 
 class SecretNumber
 <<immutable>> SecretNumber
-SecretNumber: +int SIZE $
-SecretNumber: -List~SecretNumberValidator~ validators $
+SecretNumber: +int SIZE$
+SecretNumber: -List~SecretNumberValidator~ validators$
 SecretNumber: -List~Digit~ digits
 SecretNumber: +get(int) Digit
 
@@ -142,10 +142,10 @@ class SecretNumber
 SecretNumber ..|> List~Digit~ : implements
 SecretNumber o-- SecretNumberValidator : is validated by
 SecretNumber o-- Digit : is consists of
-SecretNumber: +int SIZE $
-SecretNumber: -List~SecretNumberValidator~ validators $
+SecretNumber: +int SIZE$
+SecretNumber: -List~SecretNumberValidator~ validators$
 SecretNumber: -List~Digit~ digits
-SecretNumber: +SecretNumber(-List~Digit~) SecretNumber
+SecretNumber: +SecretNumber(List~Digit~) SecretNumber
 SecretNumber: +get(int) Digit
 SecretNumber: -validate() void
 
@@ -160,8 +160,8 @@ SecretNumberValidator: validate(SecretNumber) void
 
 class Digit
 Digit --|> Number : extends
-Digit: +int MIN_VALUE $
-Digit: +int MAX_VALUE $
+Digit: +int MIN_VALUE$
+Digit: +int MAX_VALUE$
 
 class Number
 <<native>> Number
