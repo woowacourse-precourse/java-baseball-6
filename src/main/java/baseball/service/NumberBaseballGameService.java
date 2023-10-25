@@ -4,6 +4,8 @@ import baseball.domain.BaseballNumberMaker;
 import baseball.domain.dto.GameResult;
 import baseball.domain.gamedata.BaseballNumber;
 import baseball.domain.gamedata.GameData;
+import baseball.exception.BusinessException;
+import baseball.exception.ExceptionCode;
 
 public class NumberBaseballGameService implements GameService {
 
@@ -25,9 +27,9 @@ public class NumberBaseballGameService implements GameService {
         this.target = baseballNumberMaker.make();
     }
 
-    private static void validateType(final GameData data) {
+    private void validateType(final GameData data) {
         if (!(data instanceof BaseballNumber)) {
-            throw new IllegalArgumentException();
+            throw new BusinessException(ExceptionCode.NOT_GAMEDATA_TYPE, this.getClass());
         }
     }
 }
