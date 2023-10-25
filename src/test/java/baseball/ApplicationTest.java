@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.test.Assertions;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -20,11 +21,35 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
+
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복숫자_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("222"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 게임_재시작_잘못된입력_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertSimpleTest(() ->
+                            assertThatThrownBy(() -> runException("135", "3"))
+                                    .isInstanceOf(IllegalArgumentException.class)
+                    );
+                },
+                1, 3, 5
         );
     }
 
