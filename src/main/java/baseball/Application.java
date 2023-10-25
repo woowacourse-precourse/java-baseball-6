@@ -53,7 +53,7 @@ public class Application {
             }
 
             boolean gameEnd = false;
-            //스트라이크랑 볼 갯수 저장
+            //스트라이크, 볼, 낫싱
             while (!gameEnd) {
                 int strikes = 0;
                 int balls = 0;
@@ -119,7 +119,7 @@ public class Application {
         }
     }
 
-    // 배열 안에 특정 값이 있는지 확인
+    // 볼 갯수 확인하기, arr는 랜덤생성된 세자리 숫자이고 targetValue는 유저 입력값
     public static boolean contains(int[] arr, int targetValue) {
         for (int num : arr) {
             if (num == targetValue) {
