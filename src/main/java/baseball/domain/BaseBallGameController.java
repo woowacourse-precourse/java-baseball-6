@@ -37,7 +37,7 @@ public class BaseBallGameController {
         initialize();
 
         // 난수 생성 및 컴퓨터에 값 세팅
-        computer.setComputer(randomNumberGenerator.generateRandomNumber());
+        computer.createComputerBall(randomNumberGenerator.generateRandomNumber());
 
         do {
             // 사용자 입력 받고 잘못된값은 예외처리, 올바른 값은 사용자값 세팅
@@ -45,7 +45,7 @@ public class BaseBallGameController {
                 return false;
             }
             // 사용자값 컴퓨터값과 비교하여 판정 및 결과 출력
-        } while (referee.compareNumberByPlayerAndComputer(player.getPlayer(), computer.getComputer()));
+        } while (referee.compareNumberByPlayerAndComputer(player.getPlayerBall(), computer.getComputerBall()));
 
         return true;
     }
@@ -69,19 +69,12 @@ public class BaseBallGameController {
         // 사용자 값 입력받기
         String playerInput = Console.readLine();
 
-        // 사용자 값 검증 (예외발생시 예외처리 후 프로그램 종료 시키기)
-//        try {
-//            validator.validAnswerNumber(playerInput);
-//        } catch (IllegalArgumentException e) {
-//            System.out.println(e.getMessage());
-//            return false;
-//        }
         playerInputValidator.validAnswerNumber(playerInput);
         // String -> List
         List<Integer> playerInputList = changePlayerInputToList(playerInput);
 
         // Set Player
-        player.setPlayer(playerInputList);
+        player.createPlayerBall(playerInputList);
         return true;
     }
 
@@ -91,15 +84,6 @@ public class BaseBallGameController {
 
         // 사용자 값 입력받기
         String playerInput = Console.readLine();
-
-        // 사용자 값 검증 (예외발생시 예외처리 후 프로그램 종료 시키기)
-//        try {
-//            validator.validRestartNumber(playerInput);
-//        } catch (IllegalArgumentException e) {
-//            System.out.println(e.getMessage());
-//
-//            return false; // -1이면 프로그램 종료
-//        }
 
         playerInputValidator.validRestartNumber(playerInput);
         return playerInput.equals("1");

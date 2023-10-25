@@ -3,13 +3,13 @@ package baseball.domain;
 import java.util.List;
 
 public class Player {
-    List<Integer> player;
+    List<Integer> playerBall;
 
-    public List<Integer> getPlayer() {
-        return player;
+    public List<Integer> getPlayerBall() {
+        return playerBall;
     }
 
-    public void setPlayer(List<Integer> player) {
-        this.player = player;
+    public void createPlayerBall(List<Integer> playerBall) {
+        this.playerBall = playerBall;
     }
 }
