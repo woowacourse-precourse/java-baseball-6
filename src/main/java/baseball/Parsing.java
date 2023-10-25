@@ -10,11 +10,13 @@ public class Parsing {
 
         List<Character> numbers = new ArrayList<>();
 
+        validator.validateNumberInput(userInput);
+
         for (int i = 0; i < userInput.length(); i++) {
             Character number = userInput.charAt(i);
 
             validator.validateDuplicatedNumber(numbers, number);
-            
+
             numbers.add(number);
         }
 
