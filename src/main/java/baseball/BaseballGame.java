@@ -8,12 +8,16 @@ public class BaseballGame {
     private int strike;
     private List<Integer> computerNumbers;
     private List<Integer> playerNumbers;
+    private final Player player;
+    private final Computer computer;
 
     public BaseballGame() {
         ball = 0;
         strike = 0;
         computerNumbers = new ArrayList<>();
         playerNumbers = new ArrayList<>();
+        this.player = new Player();
+        this.computer = new Computer();
     }
 
     public void play() {
@@ -24,7 +28,12 @@ public class BaseballGame {
             playerNumbers = getPlayerNumbers();
             compareNumbers();
             printResult();
+            askRestart();
         }
+    }
+
+    private String askRestart() {
+        return player.answerRestart();
     }
 
     private void initBallCounts() {
@@ -57,13 +66,11 @@ public class BaseballGame {
     }
 
     private List<Integer> getPlayerNumbers() {
-        Player player = new Player();
         List<Integer> playerNumbers = player.getNumbers();
         return playerNumbers;
     }
 
     private List<Integer> getComputerNumber() {
-        Computer computer = new Computer();
         List<Integer> computerNumbers = computer.selectNumbers();
         return computerNumbers;
     }
