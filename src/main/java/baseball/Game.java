@@ -63,7 +63,13 @@ public class Game {
         String[] inputs = input.split("");
 
         if (inputs.length != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("3자리를 입력하지 않았습니다.");
+        }
+        if(Objects.equals(inputs[0], inputs[1]) || Objects.equals(inputs[0], inputs[2])){
+            throw new IllegalArgumentException("중복된 숫자를 입력하였습니다.");
+        }
+        if(Objects.equals(inputs[1],inputs[2])){
+            throw new IllegalArgumentException("중복된 숫자를 입력하였습니다.");
         }
 
         int[] numbers = new int[3];
@@ -78,6 +84,9 @@ public class Game {
     public boolean keepGo(){
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         String input = Console.readLine();
+        if(!Objects.equals(input, "1") && !Objects.equals(input, "2")){
+            throw new IllegalArgumentException("1 혹은 2를 입력하지 않았습니다.");
+        }
         if (Objects.equals(input, "2")){
             System.out.println("게임 종료");
             return false;
