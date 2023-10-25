@@ -8,6 +8,8 @@ import java.util.Set;
 
 public class BaseballService {
 
+    private BaseballException baseballException = new BaseballException();
+
     public String getComputerNum() {
         // 컴퓨터가 1~9까지의 서로 다른 임의의 수 3개 선택
         String computer = "";
@@ -69,6 +71,12 @@ public class BaseballService {
 
     public int getBall(String computer, String randomNum){
         return countStrikeOrBall(computer, randomNum, BaseballEnum.BALL);
+    }
+
+    public void verifyRandomInput(String randomNum) {
+        baseballException.isLengthValid(randomNum);
+        baseballException.isDuplicationExist(randomNum);
+        baseballException.isCharinString(randomNum);
     }
 
 

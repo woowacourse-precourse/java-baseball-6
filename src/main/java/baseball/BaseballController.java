@@ -13,23 +13,15 @@ public class BaseballController {
         int strike = 0;
 
         baseballView.printBaseballStart();
-
         String computer = baseballService.getComputerNum();
 
         // 3스트라이크가 될 때까지 반복
         while (strike<3) {
-
             strike = 0;
-
             String randomNum = baseballView.inputRandomNum();
-
-            baseballException.isLengthValid(randomNum);
-            baseballException.isDuplicationExist(randomNum);
-            baseballException.isCharinString(randomNum);
-
+            baseballService.verifyRandomInput(randomNum);
             strike = baseballService.getStrike(computer, randomNum);
             int ball = baseballService.getBall(computer, randomNum);
-
             baseballView.printStrikeOrBall(strike, ball);
         }
 
