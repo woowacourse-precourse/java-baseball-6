@@ -9,10 +9,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
         Game rightAnswer = new Game();
         Game.start(rightAnswer);
-
     }
 }
 
@@ -20,27 +18,22 @@ class Game {
     static private String INSERT_BLOCK = "숫자를 입력해주세요 : ";
     static private String GAME_START_COMMENT = "숫자 야구 게임을 시작합니다.";
     int[] answer = new int[3];
+    boolean firstTime = true;
 
     Game() {
         System.out.println(GAME_START_COMMENT);
-
-
         int numberCount = 0;
         while (numberCount < 3) {
             int randomNumber = pickNumberInRange(1, 9);
-
             if (Game.checkNum(randomNumber, answer)) {
                 answer[numberCount] = randomNumber;
                 numberCount++;
             }
-
-
         }
-/*        for (int j = 0; j < 3; j++) {
+    /*    for (int j = 0; j < 3; j++) {
             System.out.print(answer[j]);
             System.out.println();
         }*/
-
     }
 
     Game(String input) {
@@ -49,24 +42,19 @@ class Game {
         }
     }
 
-
     static void start(Game rightAnswer) {
         Game answer = Game.insert();
         Game.checkAnswer(answer, rightAnswer);
-
     }
 
     static Game insert() {
-
         System.out.print(INSERT_BLOCK);
         String input = readLine();
         Game.checkIsValidInput(input);
         return new Game(input);
     }
 
-
     static void checkAnswer(Game answer, Game rightAnswer) {
-
         int ballCount = 0;
         int strikeCount = 0;
         String nothing = "낫싱";
@@ -81,7 +69,6 @@ class Game {
                     if (i != j) {
                         ballCount++;
                     }
-
                 }
             }
         }
@@ -94,26 +81,23 @@ class Game {
         } else if (strikeCount > 0 && ballCount == 0 && strikeCount != 3) {
             System.out.println(strikeCount + "스트라이크");
             Game.start(rightAnswer);
-
         } else if (strikeCount == 3) {
             System.out.println(strikeCount + "스트라이크");
             int newGameAnswer = Game.newGameSelection();
             if (newGameAnswer == 1) {
-
                 rightAnswer = new Game();
                 Game.start(rightAnswer);
             }
         } else if (strikeCount == 0 && ballCount == 0) {
             System.out.println(nothing);
-
             Game.start(rightAnswer);
         }
-
     }
 
     static int newGameSelection() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.print("게임을 다시 하시겠습니까?");
         String selection = readLine();
         return Game.getNewGameSelection(selection);
     }
@@ -122,11 +106,13 @@ class Game {
         int value;
         try {
             value = Integer.parseInt(str);
-
         } catch (NumberFormatException e) {
+            System.out.println(e.getClass().getName());
+            System.out.println(e.getMessage());
             throw new IllegalArgumentException();
         }
         if (value != 1 && value != 2) {
+            System.out.println("입력값이 1또는 2가 아닙니다.");
             throw new IllegalArgumentException();
         }
         return value;
@@ -137,17 +123,11 @@ class Game {
             if (b[i] == a) {
                 return false;
             }
-
         }
         return true;
     }
 
     static void checkIsValidInput(String str) {
-//        System.out.println(checkRightInput(str));
-//        System.out.println(checkInputLength(str));
-//        System.out.println(checkNoZero(str));
-//        System.out.println(checkSameNumber(str));
-
         if (!checkInputLength(str)) {
             System.out.println("올바르지 않은 길이의 입력값입니다.");
             throw new IllegalArgumentException();
@@ -180,9 +160,9 @@ class Game {
     }
 
     static boolean checkNoZero(String a) {
-        int [] checkList = Array.makeStringToArray(a);
-        for (int i :checkList) {
-            if(i==0){
+        int[] checkList = Array.makeStringToArray(a);
+        for (int i : checkList) {
+            if (i == 0) {
                 return false;
             }
         }
@@ -196,10 +176,10 @@ class Game {
         for (int i = 1; i < checkList.length + 1; i++) {
             for (int j = 0; j < inputValue.length; j++) {
                 if (inputValue[j] == i) {
-                    checkList[i-1] = true;
+                    checkList[i - 1] = true;
                 }
-                if (!checkList[i-1]) {
-                    checkList[i-1] = false;
+                if (!checkList[i - 1]) {
+                    checkList[i - 1] = false;
                 }
             }
         }
