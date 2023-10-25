@@ -1,12 +1,15 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import static baseball.constants.Constant.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+    public static final int NUMBER_SIZE = 3;
+    public static final int RANDOM_MIN = 1;
+    public static final int RANDOM_MAX = 9;
+
     private List<Integer> computerNumber;
 
     public void setComputerNumber() {
