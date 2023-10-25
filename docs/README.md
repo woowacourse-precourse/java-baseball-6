@@ -15,7 +15,7 @@
     - player, computer 각각 인스턴스를 생성한다.
 - 게임 진행 시 필요한 기능은 *BaseBallService.class* 에서 처리한다.
   - 3Strike인가?
-  - 이외의 경우 
+  - 3Strike 이외의 경우(1B 2S, 3B 등) 
   - 사용자 입력 값에 대한 결과 출력
   - 게임 재시작 또는 종료 안내
 - 상수 문자열 처리를 위한 *Constant.class* 를 생성한다.
