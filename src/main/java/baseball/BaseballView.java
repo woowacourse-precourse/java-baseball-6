@@ -40,4 +40,8 @@ public class BaseballView {
         return Console.readLine();
     }
 
+    public void printGameEnd(){
+        System.out.println("게임 종료");
+    }
+
 }

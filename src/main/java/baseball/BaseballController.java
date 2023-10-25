@@ -19,6 +19,8 @@ public class BaseballController {
         // 3스트라이크가 될 때까지 반복
         while (strike<3) {
 
+            strike = 0;
+
             String randomNum = baseballView.inputRandomNum();
 
             baseballException.isLengthValid(randomNum);
@@ -36,13 +38,12 @@ public class BaseballController {
             baseballView.printGameOver();
             String restart = baseballView.inputRestart();
 
-            // 플레이어가 입력한 수가 1 또는 2가 아닌 경우
             baseballException.isValidRestart(restart);
 
             if ("1".equals(restart)) {
                 startBaseball();
             } else if("2".equals(restart)) {
-                System.out.println("게임 종료");
+                baseballView.printGameEnd();
             }
         }
     }
