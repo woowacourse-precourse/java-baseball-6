@@ -1,14 +1,26 @@
+# 회고
+
+"왜?" 에 대해 애기해보고자 한다.
+
+예로, 단순 '객체지향'이라는 단어를 맹목적으로 좇기보다는 문제 발생 -> 문제 고민 -> 문제 해결을 통해 왜 '객체지향'의 방법론이 필요한 것인가? 를 직접 느끼고자 했다.
+따라서, 지금까지 겪었던 정형화된 프로세스(객체지향, MVC 패턴 등)를 다시 밟기 보다는 바닥에서 뒹굴어보고 더 나은 방법에 대해 고민해본 것을 충분히 작성해보고자 한다.
+
+그럼 이 생각을 할 수도 있을 것 같다. "왜 그렇게 하는데?".
+바로 쪽팔려서다. "나 개발 좀 알어"라고 당당하게 말하고 다녔는데, 겉햝기 식으로 알고 있었단게 스스로 느끼는 순간이 있었다.
+그래서 다시 처음부터 돌아가기로 했다.
+
+가장 시간을 많이 투자한 부분은 '설계'다.
+다만, 처음부터 고도화된 설계를 하기 보다는 구현 후 이를 개선하는 작업을 지향했다.
+이에, 구현된 프로젝트를 분리하고 재설계하는 과정을 통해서 앞서 얘기한 "왜 이런 것이 등장했을까?"것에 대해 몸으로 배울 수 있었고 이해가 더 쉬웠다.
+
+---
+
 # 구현할 기능 목록
 
 - [x] 사용자에게 3자리 숫자 입력받기
-
 - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-
-- 숫자를 입력해주세요 : `입력값`
-
 - 1 ~ 9까지 서로 다른 수로 이루어진 3자리 수를 입력받음
-
-- 예외 
+- 유효성 검증
 
   - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
@@ -17,35 +29,23 @@
     - 3자리가 아닌 경우
 
     - 숫자를 입력하지 않은 경우
-
 - [x] 컴퓨터가 3자리 랜덤 숫자 만들기
-
-  Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
-
+- Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
 - [x] 사용자와 컴퓨터 숫자 비교하기
-
-  1. 결과 반환하기
-     1. 1볼 1스트라이크
-     2. 1볼
-     3. 2볼
-     4. 낫싱
-     5. ...
-
+- 결과 반환하기
+  1. 1볼 1스트라이크
+  2. 1볼
+  3. 낫싱
 - [x] 결과 출력하기
-
-  3개의 숫자를 모두 맞히셨습니다! 게임 종료
-
+- "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
 - [x] 게임을 새로할 건지 확인하기
+- 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
+- ""게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+- 해당 입력값 유효성 검증
 
-  게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
+---
 
-  게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
-
-  
-
- 
-
-# 고민한것
+# 고민한 목록
 
 1. 매개변수 인라인화
 
@@ -54,8 +54,6 @@
 기존 user, computer Number 를 확인 시, 매개변수로 전달 -> 전달 -> 전달 하는 로직이기에 오류가 날 수 있는 환경이 다분히 마련되어있다.
 
 따라서 이를 개선하기 위해 user, computer Number 를 정적 변수로 변경 후, 이를 `get` 하는 메서드를 만들어 해당 변수에 접근하는 식으로 개선했다
-
-
 
 그렇다면 아래 코드로 작성되어 있는 부분은 어떻게 개선해볼까?
 
@@ -66,8 +64,6 @@
 고로, 이를 어떻게 개선해볼까? 하는 생각에 '객체'를 떠올려보았다.(이는 user, computer Number 를 다루는 부분에도 적용됨)
 
 '컴퓨터', '유저' 그리고 이들의 답들을 비교해주는 '게임' 객체가 서로 소통을 하는 구조를 만들어야 아래 코드와 같이 특정 메서드에서 특정 값에 접근하는 구조를 만들어 줄 수 있다고 판단했기 때문이다.
-
-
 
 ```java
 private static String inferHint() {
@@ -234,7 +230,6 @@ public class Game {
     private final Computer computer;
     private final GameUI gameUI;
     private final GameLogic gameLogic;
-    private static final int EXITCOMMAND = 2;
 
     public Game(GameUI gameUI, GameLogic gameLogic, Computer computer, User user) {
         this.computer = computer;
@@ -244,9 +239,77 @@ public class Game {
     }
 ```
 
+8. 유효성 검증과 일급 컬렉션
 
+```java
+user.inputUserNumber();
+gameLogic.validateUserInput(user.getUserNumber());
+```
 
+위 코드를 읽어보면 유저가 입력을 마치고 해당 유저의 값을 get 메서드를 통해 불러와 이를 검증한다.
+위와 같은 구조는 항상 유저의 입력값을 받는 곳 마다 검증 절차가 필요하다. 
+이 같은 코드가 좋은 코드일까? 답은 아니다. 
+그러면, 어떻게 개선해볼 수 있을까? 올바른 숫자 3가지를 입력받고, 중복된 숫자가 없으며, 1 ~ 9 사이의 숫자만 갖고 있어야하는 자료구조를 만들어 보면 되지 않을까?
 
+이를 **일급 컬렉션**이라고 부른다.
+
+```java
+public class UserNumber {
+
+    private static final int VALID_LENGTH = 3;
+    private final String userNumber;
+
+    public UserNumber(String userNumber) {
+        validateLength(userNumber);
+        validateNoDuplicate(userNumber);
+        validateNumberRange(userNumber);
+        this.userNumber = userNumber;
+    }
+
+    public String getUserNumber() {
+        return userNumber;
+    }
+
+    private void validateLength(String userInput) {
+        if (userInput.length() != VALID_LENGTH) {
+            throw new IllegalArgumentException("올바른 숫자 3가지를 입력해주세요.");
+        }
+    }
+
+    private void validateNoDuplicate(String userInput) {
+        Set<Character> uniqueChars = new HashSet<>();
+        for (char ch : userInput.toCharArray()) {
+            uniqueChars.add(ch);
+        }
+        if (uniqueChars.size() != VALID_LENGTH) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
+    }
+
+    private void validateNumberRange(String userInput) {
+        for (char ch : userInput.toCharArray()) {
+            if (ch < '1' || ch > '9') {
+                throw new IllegalArgumentException("1부터 9사이의 숫자만 입력해주세요");
+            }
+        }
+    }
+}
+
+```
+
+8-1. 일급 컬렉션
+
+일급 컬렉션의 이점
+
+1. 비즈니스에 종속적인 자료구조	
+
+   비즈니스 로직 중 필요성에 의해 등장한 자료구조이므로 해당 비즈니스 로직에 종속적이다.
+
+2. 불변성
+
+   자료의 불변성이란 프로그래밍에서 상당히 중요한 요소다. 해당 자료가 어디서 어떻게 변하게될 지 모른다면 관리차원에서 상당히 까다로울 것이다.
+
+   즉, 해당 데이터가 어디에서든지 변하지 않는 데이터다라는 것은 프로그래머에게 확신을 주기 때문에 더 이해하기 쉬워진다.
 
 ---
 
@@ -290,13 +353,7 @@ scanner.nextLine();
 
   결과적으로 해당 값이 -48 을 하면 찾는 정수 0 이 된다
 
-2. stream() 이란?
-
-
-
-3. 문자열과 `ArrayList<Integer>` 이 일치하는지 확인하는 법
-
-자바 List, ArrayList 차이
+3. 자바 List, ArrayList 차이
 
 1. List
 
@@ -318,90 +375,8 @@ scanner.nextLine();
 
    - 기본적으로 크기가 변동되는 배열이기 때문에, 초기 크기를 넘어서 요소가 추가되면 내부 배열의 크기를 자동으로 증가시킨다.
 
-
-4. `static`
+3. `static`
 
 `static` 은 정적 멤버 혹은 메소드를 의미한다.
 
-
-
----
-
-# 궁금한점
-
-1. 유효성 검증을 어떤 식으로 처리하는지 궁금합니다
-
-
-
-
-
-
-
-아래 첫 번째 코드는 유효성 검증을 다루는 코드입니다.
-
-`Validator` 를 기반으로 길이, 중복, 범위에 대한 검증 클래스를 구현했습니다.
-
-```java
-public interface Validator {
-    void validate(String userInput);
-}
-
-public class LengthValidator implements Validator {
-
-    private static final int VALID_LENGTH = 3;
-
-    @Override
-    public void validate(String userInput) {
-        if (userInput.length() != VALID_LENGTH) {
-            throw new IllegalArgumentException("올바른 숫자 3가지를 입력해주세요.");
-        }
-    }
-}
-
-public class NoDuplicateValidator implements Validator {
-  
-    @Override
-    public void validate(String userInput) {
-        HashSet<Character> uniqueChars = new HashSet<>();
-        for (char ch : userInput.toCharArray()) {
-            uniqueChars.add(ch);
-        }
-
-        if (uniqueChars.size() != userInput.length()) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-        }
-    }
-}
-
-public class RangeValidator implements Validator {
-  
-    @Override
-    public void validate(String userInput) {
-        for (char ch : userInput.toCharArray()) {
-            if (ch < '1' || ch > '9') {
-                throw new IllegalArgumentException("1부터 9사이의 숫자만 입력해주세요");
-            }
-        }
-    }
-}
-
-```
-
-
-
-이후 위에서 작성한 `Validator` 를 `GameLogic` 에 주입시켜, 유저의 입력값을 순회하며 검증하는 절차를 작성했습니다
-
-```java
-public class GameLogic {
-    private final List<Validator> validators;
-
-    public GameLogic(List<Validator> validators) {
-        this.validators = validators;
-    }
-
-    void validateUserInput(String userInput) {
-        for (Validator validator : validators) {
-            validator.validate(userInput);
-        }
-    }
-```
+런타임때  JVM이 해당 클래스 내의 `static` 으로 선언된 프로퍼티 혹은 메서드를 확인하고, 이를 `heap` 영역이 아닌 별도의 `method`(혹은 `static`이라고 부르는 )영역에 할당한다.
