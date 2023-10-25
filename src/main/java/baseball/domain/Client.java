@@ -1,59 +1,40 @@
 package baseball.domain;
 
-import baseball.global.constant.Common;
-import baseball.global.utils.ConsoleUtil;
-import baseball.global.utils.validator.ClientInputValidator;
-import baseball.global.utils.validator.InputValidator;
-import java.util.ArrayList;
+import baseball.global.constant.CommonNumberType;
+import baseball.global.utils.generator.NumberGenerator;
 import java.util.List;
 
 public class Client {
 
-	List<Integer> numbers;
-	private int ball;
-	private int strike;
+	private final ClientNumbers numbers;
+	private int ballCount;
+	private int strikeCount;
 
-	public Client() {
-		String input = getInput();
-		initializeNumbers(input);
+	public Client(NumberGenerator numberGenerator) {
+		numbers = new ClientNumbers(numberGenerator.generate());
 	}
 
-	private void initializeNumbers(String input) {
-		numbers = new ArrayList<>();
-		for (int i = 0; i < input.length(); i++) {
-			numbers.add(Character.getNumericValue(input.charAt(i)));
-		}
+	public int getStrikeCount() {
+		return strikeCount;
 	}
 
-	private String getInput() {
-		String input = ConsoleUtil.input();
-
-		InputValidator inputValidator = new ClientInputValidator();
-		inputValidator.validate(input);
-		return input;
-	}
-
-	public int getStrike() {
-		return strike;
-	}
-
-	public int getBall() {
-		return ball;
+	public int getBallCount() {
+		return ballCount;
 	}
 
 	public void increaseBallCount() {
-		this.ball++;
+		this.ballCount++;
 	}
 
 	public void increaseStrikeCount() {
-		this.strike++;
+		this.strikeCount++;
 	}
 
 	public List<Integer> getNumbers() {
-		return numbers;
+		return numbers.getNumbers();
 	}
 
 	public boolean gameEnd() {
-		return strike == Common.MAXIMUM_COUNT.getNumber();
+		return strikeCount == CommonNumberType.MAXIMUM_COUNT.getValue();
 	}
 }

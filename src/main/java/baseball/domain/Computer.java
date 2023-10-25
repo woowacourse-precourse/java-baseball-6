@@ -1,43 +1,17 @@
 package baseball.domain;
 
-import baseball.global.constant.Common;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
+import baseball.global.utils.generator.NumberGenerator;
 import java.util.List;
 
 public class Computer {
 
-	private List<Integer> numbers;
+	private final RandomNumbers numbers;
 
-	public Computer() {
-		initialize();
-	}
-
-	private void initialize() {
-		numbers = new ArrayList<>();
-		while (numbers.size() < Common.LENGTH_OF_NUMBERS.getNumber()) {
-			addRandomNumber(getRandomNumber());
-		}
-	}
-
-	private void addRandomNumber(int number) {
-		if (isNotDuplicateNumber(number)) {
-			numbers.add(number);
-		}
-	}
-
-	private boolean isNotDuplicateNumber(int number) {
-		return !numbers.contains(number);
-	}
-
-	private int getRandomNumber() {
-		return Randoms.pickNumberInRange(
-			Common.MIN_RANGE_OF_DIGITS.getNumber(),
-			Common.MAX_RANGE_OF_DIGITS.getNumber()
-		);
+	public Computer(NumberGenerator numberGenerator) {
+		numbers = new RandomNumbers(numberGenerator.generate());
 	}
 
 	public List<Integer> getNumbers() {
-		return numbers;
+		return numbers.getNumbers();
 	}
 }
