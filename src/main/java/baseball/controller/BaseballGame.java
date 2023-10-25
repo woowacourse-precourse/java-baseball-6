@@ -1,10 +1,8 @@
 package baseball.controller;
 
-import static baseball.view.InputView.inputPlayerNumbers;
-
-import baseball.model.numberstrategy.RandomNumberSelectionStrategy;
 import baseball.model.GameResult;
 import baseball.model.Numbers;
+import baseball.model.numberstrategy.RandomNumberSelectionStrategy;
 import baseball.model.numberstrategy.UserInputNumberSelectionStrategy;
 import baseball.view.HintView;
 import baseball.view.InputView;
@@ -28,7 +26,7 @@ public class BaseballGame {
         GameResult result;
         do {
             UserInputNumberSelectionStrategy playerStrategy = new UserInputNumberSelectionStrategy(
-                    inputPlayerNumbers());
+                    InputView.inputPlayerNumbers());
             Numbers playerNumbers = Numbers.createNumbersFrom(playerStrategy);
             result = computerNumbers.calculateResult(playerNumbers);
             new HintView(result).printHint();
