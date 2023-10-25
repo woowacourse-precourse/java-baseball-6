@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.controller.GameController;
 import baseball.constant.Status;
 import baseball.constant.SystemMessage;
 import baseball.util.NumberGenerator;
