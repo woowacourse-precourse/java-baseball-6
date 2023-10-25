@@ -72,5 +72,12 @@ public class Play {
         return intArray;
     }
 
+    //입력받은 숫자의 길이 3자리 확인
+    private void verifyInputStringLength(String inputString, int correctLength){
+        if(inputString.length() != correctLength){
+            throw new IllegalArgumentException(wrongLengthInputError);
+        }
+    }
+
 
 }
