@@ -27,9 +27,8 @@ public class Application {
 
                 int strikeCount = application.calculateStrikeCount();
                 int ballCount = application.calculateBallCount();
-                boolean isNothing = application.checkNothing(strikeCount, ballCount);
 
-                application.printResult(isNothing, strikeCount, ballCount);
+                application.printResult(strikeCount, ballCount);
                 isGameTermination = application.checkGameTermination(strikeCount);
                 if (isGameTermination) {
                     int choice = application.executeRestartOrTerminate();
@@ -96,26 +95,14 @@ public class Application {
         return ballCount;
     }
 
-    public boolean checkNothing(int strikeCount, int ballCount) {
-        if (strikeCount == 0 && ballCount == 0) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public void printResult(boolean isNothing, int strikeCount, int ballCount) {
-        if (!isNothing) {
-            if (ballCount > 0) {
-                System.out.print(ballCount + "볼 ");
-            }
-
-            if (strikeCount > 0) {
-                System.out.print(strikeCount + "스트라이크");
-            }
-
-            System.out.println();
-        } else if (isNothing) {
+    public void printResult(int strikeCount, int ballCount) {
+        if (ballCount != 0 && strikeCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        } else if (ballCount != 0 && strikeCount == 0) {
+            System.out.println(ballCount + "볼");
+        } else if (ballCount == 0 && strikeCount != 0) {
+            System.out.println(strikeCount + "스트라이크");
+        } else if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
         }
     }
