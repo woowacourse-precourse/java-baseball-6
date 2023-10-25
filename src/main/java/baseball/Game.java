@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-
+    private final Referee referee = new Referee();
     private List<Integer> computer = new ArrayList<>();
 
     public Game() {
@@ -19,6 +19,6 @@ public class Game {
     }
 
     public boolean play(List<Integer> number) {
-        return Referee.judge(computer, number);
+        return referee.judge(computer, number);
     }
 }
