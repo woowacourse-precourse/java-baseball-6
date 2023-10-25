@@ -10,9 +10,8 @@ public class Controller {
     public void startGame() {
         Model baseballModel = new Model();
         View baseballView = new View();
-        initGame(baseballModel, baseballView);
 
-        isPlaying = true;
+        initGame(baseballModel, baseballView);
 
         do {
             savePlayerInput(baseballModel, baseballView);
@@ -20,24 +19,30 @@ public class Controller {
         } while (isPlaying);
     }
 
-    public void initGame(Model baseballModel, View baseballView) {
+    private void initGame(Model baseballModel, View baseballView) {
         baseballModel.initComputerAnswer();
+        isPlaying = true;
         baseballView.outputGameStart();
+
     }
 
-    public void savePlayerInput(Model baseballModel, View baseballView) {
+    private void savePlayerInput(Model baseballModel, View baseballView) {
         String answerPlayer = baseballView.inputPlayerAnswer();
         baseballModel.validateCheckInputAnswer(answerPlayer);
     }
 
-    public void calculatePlayerScore(Model baseballModel, View baseballView) {
+    private void calculatePlayerScore(Model baseballModel, View baseballView) {
+
         int[] score = baseballModel.countStrikeBallHits();
         baseballView.outputGameScore(score[STRIKE], score[BALL]);
+
+        // 유저의 점수에 따라 정답 여부 결정후, 재시작 입력 받기
         if (score[STRIKE] == 3) {
             String playerInput = baseballView.inputPlayerRestart();
             baseballModel.validateCheckInputRestart(playerInput);
             isPlaying = baseballModel.restartGame(playerInput);
         }
+
     }
 
 

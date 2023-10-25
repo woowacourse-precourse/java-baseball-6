@@ -7,7 +7,7 @@ import java.util.List;
 public class Model {
     private String answerComputer;
     private String answerPlayer;
-    final int INPUT_LENGTH_MAX = 3;
+    final int INPUT_ANSWER_LENGTH_MAX = 3;
     final int BALL_MIN = 1;
     final int BALL_MAX = 9;
     final int INPUT_RESTART_LENGTH_MAX = 1;
@@ -33,21 +33,25 @@ public class Model {
     public int[] countStrikeBallHits() {
         int[] score = new int[]{0, 0};
 
-        char sourceChar, answerChar;
         for (int i = 0; i < answerPlayer.length(); i++) {
-            sourceChar = answerPlayer.charAt(i);
-            answerChar = answerComputer.charAt(i);
-            if (sourceChar == answerChar) {
+            if (isStrike(answerPlayer.charAt(i), answerComputer.charAt(i))) {
                 score[STRIKE]++;
                 continue;
             }
-            if (answerComputer.contains(String.valueOf(sourceChar))) {
+            if (isBall(answerComputer, answerPlayer.charAt(i))) {
                 score[BALL]++;
             }
         }
         return score;
     }
 
+    public boolean isStrike(char answer, char player) {
+        return answer == player;
+    }
+
+    public boolean isBall(String answer, char player) {
+        return answer.contains(String.valueOf(player));
+    }
 
     public boolean restartGame(String playerInput) {
         if (playerInput.equals("1")) {
@@ -61,10 +65,11 @@ public class Model {
     }
 
     public void validateCheckInputAnswer(String inputPlayer) {
-        exceptLengthInvalid(inputPlayer, INPUT_LENGTH_MAX);
+        exceptLengthInvalid(inputPlayer, INPUT_ANSWER_LENGTH_MAX);
         exceptNotInteger(inputPlayer);
         exceptInvalidRange(inputPlayer, BALL_MIN, BALL_MAX);
         exceptInputSameNumber(inputPlayer);
+
         this.answerPlayer = inputPlayer;
 
     }
@@ -102,12 +107,19 @@ public class Model {
 
     public void exceptInputSameNumber(String source) {
         for (int i = 0; i < source.length(); i++) {
-            for (int j = i + 1; j < source.length(); j++) {
-                if (source.charAt(i) == source.charAt(j)) {
-                    throw new IllegalArgumentException("입력값은 서로 다른 숫자로 이루어져야 합니다.");
-                }
+            if (isFirstInString(source, i)) {
+                throw new IllegalArgumentException("입력값은 서로 다른 숫자로 이루어져야 합니다.");
             }
         }
+    }
+
+    public boolean isFirstInString(String source, int firstIndex) {
+        for (int j = firstIndex + 1; j < source.length(); j++) {
+            if (source.charAt(firstIndex) == source.charAt(j)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
