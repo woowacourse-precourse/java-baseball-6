@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class InputView {
     private static final String DIVISION = "";
@@ -19,10 +18,10 @@ public class InputView {
 
     public RestartStatus readReplayNumber() {
         String number = Console.readLine();
-        validator.validateRestartNumber(number);
+        validator.validateIsDigit(number);
         return Arrays.stream(RestartStatus.values())
                 .filter(status -> status.toString().equals(number))
-                .findFirst()
-                .get();
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.IS_NOT_RESTART_NUMBER.toString()));
     }
 }
