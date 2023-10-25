@@ -16,7 +16,7 @@ public class Model {
     final int STRIKE = 0;
     final int BALL = 1;
 
-    public String initComputerAnswer() {
+    public static String initComputerAnswer() {
         //model
         List<Integer> computer = new ArrayList<>();
         StringBuilder answerBuilder = new StringBuilder();
@@ -50,7 +50,6 @@ public class Model {
     }
 
     public void validateCheckInputAnswer(String inputPlayer) {
-        //model
         exceptLengthInvalid(inputPlayer, INPUT_LENGTH_MAX);
         exceptNotInteger(inputPlayer);
         exceptInvalidRange(inputPlayer, BALL_MIN, BALL_MAX);
@@ -59,14 +58,12 @@ public class Model {
     }
 
     public void validateCheckInputRestart(String inputPlayer) {
-        //model
         exceptLengthInvalid(inputPlayer, INPUT_RESTART_LENGTH_MAX);
         exceptNotInteger(inputPlayer);
         exceptInvalidRange(inputPlayer, INPUT_RESTART_MIN, INPUT_RESTART_MAX);
 
     }
 
-    //model
     public void exceptLengthInvalid(String source, int exclusive) {
         if (source.length() != exclusive) {
             throw new IllegalArgumentException("입력값의 길이는 " + Integer.toString(exclusive) + " 과(와) 같아야 합니다.");
