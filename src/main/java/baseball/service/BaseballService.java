@@ -17,19 +17,19 @@ public class BaseballService {
         return score;
     }
 
-    private static List<Integer> convertToList(String number) {
+    private List<Integer> convertToList(String number) {
         return number.chars()
             .mapToObj(Character::getNumericValue)
             .toList();
     }
 
-    private static int calculateBallCnt(List<Integer> computerNumbers, List<Integer> numbers) {
+    private int calculateBallCnt(List<Integer> computerNumbers, List<Integer> numbers) {
         return (int) numbers.stream()
             .filter(computerNumbers::contains)
             .count();
     }
 
-    private static int calculateStrikeCnt(List<Integer> computerNumbers, List<Integer> numbers) {
+    private int calculateStrikeCnt(List<Integer> computerNumbers, List<Integer> numbers) {
         int strikeCnt = 0;
         for (int idx = 0; idx < numbers.size(); idx++) {
             int target = numbers.get(idx);
