@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class FinishProcess {
     private int finishAnswer;
-    private boolean isExit;
+    private boolean isContinue;
 
     public FinishProcess() {
         initVariables();
@@ -15,7 +15,7 @@ public class FinishProcess {
 
     private void initVariables() {
         finishAnswer = 0;
-        isExit = false;
+        isContinue = true;
     }
 
     private void printFinishPhrase() {
@@ -34,13 +34,12 @@ public class FinishProcess {
     }
 
     private void checkFinishAnswer() {
-        if (finishAnswer == FinishNotice.restartCode) isExit = false;
-        else if (finishAnswer == FinishNotice.exitCode) isExit = true;
+        if (finishAnswer == FinishNotice.restartCode) isContinue = true;
+        else if (finishAnswer == FinishNotice.exitCode) isContinue = false;
         else throw new IllegalArgumentException();
     }
 
-    public boolean isExitGame() {
-        if (isExit) return true;
-        else return false;
+    public boolean isContinueGame() {
+        return isContinue;
     }
 }
