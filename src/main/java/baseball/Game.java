@@ -13,6 +13,7 @@ public class Game {
     }
 
     public void gameInit() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             List<Integer> computer = computerSetting.computerNumberSetting();
 
