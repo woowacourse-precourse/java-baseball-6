@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
+import baseball.dto.UserRequestDto;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -25,10 +26,10 @@ class PlayTest {
     void nothing() {
         //given
         Computer computer = Computer.createComputer(List.of(1, 2, 3));
-        User user = new User(List.of(5, 6, 7));
+        UserRequestDto userRequestDto = new UserRequestDto(List.of(5, 6, 7));
 
         //when
-        play.playBaseBallGame(computer, user);
+        User user = play.playBaseBallGame(computer, userRequestDto);
 
         //then
         Assertions.assertThat(user.getStrike()).isEqualTo(0);
@@ -40,10 +41,10 @@ class PlayTest {
     void ball() {
         //given
         Computer computer = Computer.createComputer(List.of(1, 2, 3));
-        User user = new User(List.of(3, 6, 7));
+        UserRequestDto userRequestDto = new UserRequestDto(List.of(3, 6, 7));
 
         //when
-        play.playBaseBallGame(computer, user);
+        User user = play.playBaseBallGame(computer, userRequestDto);
 
         //then
         Assertions.assertThat(user.getStrike()).isEqualTo(0);
@@ -55,10 +56,10 @@ class PlayTest {
     void strike() {
         //given
         Computer computer = Computer.createComputer(List.of(1, 2, 3));
-        User user = new User(List.of(1, 2, 3));
+        UserRequestDto userRequestDto = new UserRequestDto(List.of(1, 2, 3));
 
         //when
-        play.playBaseBallGame(computer, user);
+        User user = play.playBaseBallGame(computer, userRequestDto);
 
         //then
         Assertions.assertThat(user.getStrike()).isEqualTo(3);
@@ -70,10 +71,10 @@ class PlayTest {
     void ballAndStrike() {
         //given
         Computer computer = Computer.createComputer(List.of(1, 2, 3));
-        User user = new User(List.of(1, 3, 7));
+        UserRequestDto userRequestDto = new UserRequestDto(List.of(1, 3, 7));
 
         //when
-        play.playBaseBallGame(computer, user);
+        User user = play.playBaseBallGame(computer, userRequestDto);
 
         //then
         Assertions.assertThat(user.getStrike()).isEqualTo(1);

@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.domain.User;
+import baseball.dto.UserRequestDto;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +15,12 @@ public class MakeUserAnswer {
         this.userValidation = userValidation;
     }
 
-    public User input() {
+    public UserRequestDto input() {
         String userInputString = readInput();
         int validatedInput = validateInput(userInputString);
         List<Integer> userValue = createUserValue(validatedInput);
 
-        return User.createUser(userValue);
+        return UserRequestDto.createUserRequestDto(userValue);
     }
 
     private String readInput() {

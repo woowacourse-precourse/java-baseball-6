@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import baseball.Application;
 import baseball.domain.User;
+import baseball.dto.UserRequestDto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -25,9 +26,12 @@ class PrintResultTest extends NsTest {
     @Test
     void nothing() {
         //given
-        User user = User.createUser(List.of(1, 2, 3));
-        user.setBall(0);
-        user.setStrike(0);
+        UserRequestDto userRequestDto = UserRequestDto.createUserRequestDto(List.of(1, 2, 3));
+        userRequestDto.setBall(0);
+        userRequestDto.setStrike(0);
+
+        //when
+        User user = User.createUser(userRequestDto);
 
         //then
         assertSimpleTest(() -> {
@@ -40,9 +44,12 @@ class PrintResultTest extends NsTest {
     @Test
     void ball() {
         //given
-        User user = User.createUser(List.of(1, 2, 3));
-        user.setBall(2);
-        user.setStrike(0);
+        UserRequestDto userRequestDto = UserRequestDto.createUserRequestDto(List.of(1, 2, 3));
+        userRequestDto.setBall(2);
+        userRequestDto.setStrike(0);
+
+        //when
+        User user = User.createUser(userRequestDto);
 
         //then
         assertSimpleTest(() -> {
@@ -55,9 +62,12 @@ class PrintResultTest extends NsTest {
     @Test
     void strike() {
         //given
-        User user = User.createUser(List.of(1, 2, 3));
-        user.setBall(0);
-        user.setStrike(2);
+        UserRequestDto userRequestDto = UserRequestDto.createUserRequestDto(List.of(1, 2, 3));
+        userRequestDto.setBall(0);
+        userRequestDto.setStrike(2);
+
+        //when
+        User user = User.createUser(userRequestDto);
 
         //then
         assertSimpleTest(() -> {
@@ -70,9 +80,12 @@ class PrintResultTest extends NsTest {
     @Test
     void ballAndStrike() {
         //given
-        User user = User.createUser(List.of(1, 2, 3));
-        user.setBall(1);
-        user.setStrike(1);
+        UserRequestDto userRequestDto = UserRequestDto.createUserRequestDto(List.of(1, 2, 3));
+        userRequestDto.setBall(1);
+        userRequestDto.setStrike(1);
+
+        //when
+        User user = User.createUser(userRequestDto);
 
         //then
         assertSimpleTest(() -> {
@@ -85,9 +98,12 @@ class PrintResultTest extends NsTest {
     @Test
     void strike3() {
         //given
-        User user = User.createUser(List.of(1, 2, 3));
-        user.setBall(0);
-        user.setStrike(3);
+        UserRequestDto userRequestDto = UserRequestDto.createUserRequestDto(List.of(1, 2, 3));
+        userRequestDto.setBall(0);
+        userRequestDto.setStrike(3);
+
+        //when
+        User user = User.createUser(userRequestDto);
 
         //then
         assertSimpleTest(() -> {

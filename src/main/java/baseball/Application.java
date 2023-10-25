@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
+import baseball.dto.UserRequestDto;
 import baseball.service.MakeComputerRandom;
 import baseball.service.MakeUserAnswer;
 import baseball.service.Play;
@@ -61,8 +62,8 @@ public class Application {
 
     private int getResult(Computer computer) {
         printResult.printInput();
-        User user = makeUserAnswer.input();
-        play.playBaseBallGame(computer, user);
+        UserRequestDto userRequestDto = makeUserAnswer.input();
+        User user = play.playBaseBallGame(computer, userRequestDto);
         boolean isEndOfGame = printResult.result(user);
         if (isEndOfGame) {
             return restart.restartOrExit();
