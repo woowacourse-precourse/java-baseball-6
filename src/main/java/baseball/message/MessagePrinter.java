@@ -2,12 +2,13 @@ package baseball.message;
 
 import baseball.counter.StrikeBallCount;
 
-import static baseball.message.Messages.BALL;
-import static baseball.message.Messages.RESULT_3_STRIKE;
-import static baseball.message.Messages.RESULT_NOTHING;
-import static baseball.message.Messages.STRIKE;
+import static baseball.message.Messages.*;
 
-public class MessageGenerator {
+public class MessagePrinter {
+    public static void printGameResultMessage(StrikeBallCount countStrikeAndBall) {
+        System.out.println(generateGameResultMessage(countStrikeAndBall));
+    }
+
     public static String generateGameResultMessage(StrikeBallCount countStrikeAndBall) {
         int strike = countStrikeAndBall.strike();
         int ball = countStrikeAndBall.ball();
@@ -34,5 +35,17 @@ public class MessageGenerator {
         }
 
         return message.toString();
+    }
+
+    public static void printGameStartMessage() {
+        System.out.println(GAME_START);
+    }
+
+    public static void printInputNumbersMessage() {
+        System.out.print(INPUT_NUMBERS);
+    }
+
+    public static void printChooseRestartMessage() {
+        System.out.print(CHOOSE_RESTART);
     }
 }
