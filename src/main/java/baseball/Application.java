@@ -7,6 +7,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+
 public class Application {
     public static List<Integer> generateNumbers() {
         List<Integer> computer = new ArrayList<>();
@@ -25,11 +26,23 @@ public class Application {
         while (gameStatus != 2) {
             List<Integer> computer = generateNumbers();
             System.out.println("숫자 야구 게임을 시작합니다.");
+            //System.out.println(computer);
+
 
             while (true) {
                 System.out.println("숫자를 입력해주세요 : ");
                 String userInput = readLine();
+
+                if (userInput.length() >3 || userInput.charAt(0)=='0'){
+                    throw new IllegalArgumentException();
+                }
                 int strike = 0, ball = 0;
+
+                /*
+                computer : 156
+                나 : 155
+                -> 1볼 2 스트라이크 처리
+                 */
 
                 for (int i=0; i<3; i++) {
                     for (int j=0; j<3; j++) {
@@ -40,22 +53,32 @@ public class Application {
                         }
                     }
                 }
+
+                //아무꼬또 못 맞추면
+                if (ball==0 && strike==0){
+                    System.out.println("낫싱");
+                    continue;
+                }
+
+                //위치만 다르면 -> ball
                 if (ball != 0) {
                     System.out.printf("%s 볼 ", ball);
                 }
 
+                //위치, 숫자 둘 다 맞으면 -> strike
                 if (strike != 0) {
                     System.out.printf("%s 스트라이크", strike);
                 }
-                System.out.println();
+
                 if (strike == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String tmp = readLine();
-                gameStatus = tmp.charAt(0)-'0';
+                System.out.println();
             }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String tmp = readLine();
+        gameStatus = tmp.charAt(0)-'0';
         }
     }
 }
