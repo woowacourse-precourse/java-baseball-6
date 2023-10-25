@@ -10,6 +10,7 @@ public class Computer {
 
     private static Computer instance = new Computer();
     private static List<Integer> randomNumber = new ArrayList<Integer>();
+    private static Boolean isGaming = false;
 
     private Computer() { }
 
@@ -21,6 +22,15 @@ public class Computer {
     }
 
     public List<Integer> getRandomNumber() { return randomNumber; }
+    public Boolean getIsGaming() { return isGaming; }
+
+    public void startGaming() {
+        this.isGaming = true;
+    }
+    public void endGaming() {
+        this.isGaming = false;
+        randomNumber.clear();
+    }
 
     public void setRandomNumber() {
         randomNumber.clear();

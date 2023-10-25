@@ -21,7 +21,20 @@ public class ComputerController {
     public void startGame() {
         computerService.startGame();
         gameView.startGame();
-        gameView.guessNumber();
+        while (computerService.isComputerGaming()) {
+            gameView.guessNumber();
+        }
+    }
+
+    public void restartGame() {
+        computerService.startGame();
+        while (computerService.isComputerGaming()) {
+            gameView.guessNumber();
+        }
+    }
+
+    public void endGame() {
+        computerService.endGame();
     }
 
     public void guessNumber(String guessingNum) {

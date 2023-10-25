@@ -22,7 +22,16 @@ public class ComputerService {
     }
 
     public void startGame() {
+        computer.startGaming();
         computer.setRandomNumber();
+    }
+
+    public void endGame() {
+        computer.endGaming();
+    }
+
+    public Boolean isComputerGaming() {
+        return computer.getIsGaming();
     }
 
     public GuessResultDto guessNumber(String guessingNum) {
