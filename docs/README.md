@@ -2,11 +2,11 @@
 
 ## 🌏 목차
 
-- ### [GameManager.java](#-gamemanager.java)
-- ### [Computer.java](#-computer.java)
-- ### [Global.Strike.java](#-global.strike.java)
-- ### [Global.Ball.java](#-global.ball.java)
-- ### [NumberArray.java](#-numberarray.java)
+- ### [GameManager.java](#-gamemanagerjava)
+- ### [Computer.java](#-computerjava)
+- ### [Global.Strike.java](#-globalstrikejava)
+- ### [Global.Ball.java](#-globalballjava)
+- ### [NumberArray.java](#-numberarrayjava)
 
 ---
 
