@@ -27,22 +27,45 @@ public class Application {
 
         while (true) {
 
-            try {
-                System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int choice = Integer.parseInt(Console.readLine());
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int choice = Integer.parseInt(Console.readLine());
 
-                if (choice == 2) {
-                    System.out.println("게임을 종료합니다. 감사합니다!");
-                    break;
-                } else if (choice == 1) {
-                    computer = generateRandomNumbers();
-                } else {
-                    throw new IllegalArgumentException("올바른 수를 입력하세요.");
-                }
-            } catch (IllegalArgumentException e) {
-                System.out.println("올바른 선택을 입력하세요.");
+            if (choice == 2) {
+                System.out.println("게임을 종료합니다. 감사합니다!");
+                break;
+            } else if (choice == 1) {
+                computer = generateRandomNumbers();
+            } else {
+                System.out.print("올바른 수를 입력하세요.");
             }
         }
+    }
+
+    public static List<Integer> getPlayerInput() {
+        List<Integer> playerNumbers = new ArrayList<>();
+
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+
+            try {
+                // 사용자 입력 파싱
+                for (int i = 0; i < 3; i++) {
+                    char digitChar = input.charAt(i);
+                    int digit = Character.getNumericValue(digitChar);
+                    if (digit < 1 || digit > 9) {
+                        throw new IllegalArgumentException("1부터 9까지의 수를 입력하세요.");
+                    }
+                    playerNumbers.add(digit);
+                }
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                playerNumbers.clear();
+            }
+        }
+
+        return playerNumbers;
     }
 
 }
