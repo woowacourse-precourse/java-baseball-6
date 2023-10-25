@@ -24,4 +24,8 @@ public class Score {
         return strike == 0 && ball == 0;
     }
 
+    public boolean isCleared() {
+        return strike == 3;
+    }
+
 }
