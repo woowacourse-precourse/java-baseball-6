@@ -5,18 +5,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public final class Answer {
-    private List<Integer> numbers;
+    private List<Integer> numberList;
 
     public Answer() {
-        this.numbers = generateNumbersForBaseball();
+        this.numberList = generateNumbersForBaseball();
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public List<Integer> getNumberList() {
+        return numberList;
     }
 
     public void resetAnswer() {
-        this.numbers = generateNumbersForBaseball();
+        this.numberList = generateNumbersForBaseball();
     }
 
     private List<Integer> generateNumbersForBaseball() {
