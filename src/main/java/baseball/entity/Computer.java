@@ -7,10 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Computer {
-    private List<Integer> number;
+    private static List<Integer> number;
     public Computer(){
-
-        number = new ArrayList<>();
         setNumber();
     }
 
@@ -19,7 +17,11 @@ public class Computer {
     }
 
     public void setNumber(){
-         number = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        Set<Integer> tmp = new HashSet<>();
+        while(tmp.size() < 3) {
+            tmp.add(Randoms.pickNumberInRange(1, 9));
+        }
+        number =  new ArrayList<>(tmp);
     }
 
 }
