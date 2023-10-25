@@ -1,20 +1,21 @@
 package baseball;
 
 public class ResultMapper {
-    public static String getResult(int equalsNumber, int equalsPosition) {
-        if (equalsNumber == 3 && equalsPosition == 3) {
+    public static String getResult(int strike, int ball) {
+
+        if (strike == 3 && ball == 3) {
             return "3스트라이크";
         }
 
-        if (equalsNumber > 0 && equalsPosition > 0) {
-            return String.format("%d스트라이크 %d볼", equalsNumber, equalsPosition);
+        if (strike > 0 && ball > 0) {
+            return String.format("%d볼 %d스트라이크", ball, strike);
         }
 
-        if (equalsNumber > 0) {
-            return String.format("%d스트라이크", equalsNumber);
+        if (strike > 0) {
+            return String.format("%d스트라이크", strike);
         }
-        if (equalsPosition > 0) {
-            return String.format("%d볼", equalsPosition);
+        if (ball > 0) {
+            return String.format("%d볼", ball);
         }
         return "낫싱";
     }
