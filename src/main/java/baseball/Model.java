@@ -27,7 +27,6 @@ public class Model {
                 answerBuilder.append(Integer.toString(randomNumber));
             }
         }
-        System.out.println(computer);
         return answerBuilder.toString();
     }
 
