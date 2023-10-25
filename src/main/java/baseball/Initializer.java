@@ -20,19 +20,22 @@ public class Initializer {
         return this.comNum;
     }
     public List<Integer> setUser(){
+        userNum.clear();
+
+        System.out.print("숫자를 입력해주세요 : ");
 
         String userInStr =Console.readLine();
         int inputSize = userInStr.length();
-        System.out.println(userInStr.charAt(0));
-        if(inputSize>3){
+
+        if(inputSize>3 || inputSize==1 || inputSize==2 ){
             //TODO: 예외처리
-            throw new ArrayIndexOutOfBoundsException("잘못된 입력입니다.");
+            throw new IllegalArgumentException("[프로그램 종료] 잘못된 입력입니다.");
         }
 
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < inputSize; ++i) {
             this.userNum.add(
                     Integer.valueOf(userInStr.charAt(i)-'0')
-            );            ;
+            );
         }
 
         return this.userNum;
