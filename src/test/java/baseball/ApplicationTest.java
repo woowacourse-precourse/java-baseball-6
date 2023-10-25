@@ -52,11 +52,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 재시작_테스트() {
-
-    }
-
 
     @Override
     public void runMain() {
