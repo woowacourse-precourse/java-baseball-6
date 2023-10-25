@@ -23,8 +23,8 @@ public class GameService {
         cleanGame();
     }
     public static void startNewGame(){
+        List<Integer> computer = Computer.generateRandomNumber();
         do {
-            List<Integer> computer = Computer.generateRandomNumber();
             playGame(computer);
         } while(!Hint.isThreeBall);
         PlayGameView.printCorrectAnswer();
