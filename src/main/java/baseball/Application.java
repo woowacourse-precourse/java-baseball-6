@@ -32,12 +32,6 @@ public class Application {
                 user.add(digit);
             }
 
-            System.out.print("user: ");
-            for(int i =0; i < 3; i++) {
-                System.out.print(user.get(i));
-            }
-
-            System.out.println();
             String strike = game.playGame(computer,user);
 
             System.out.println(strike);
