@@ -10,7 +10,15 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomNumbers = makeRandomNumber();
-        List<Integer> userNumbers = getUserNumber();
+        while (true) {
+            List<Integer> userNumbers = getUserNumber();
+            int result = getResultGame(randomNumbers, userNumbers);
+
+            if (result == 3) {
+                break;
+            }
+        }
+
     }
 
     private static List<Integer> makeRandomNumber() {
@@ -45,5 +53,41 @@ public class Application {
             throw new IllegalArgumentException();
         }
         return numbers;
+    }
+
+    private static int getResultGame(List<Integer> randomNumbers, List<Integer> userNumbers) {
+        int ballCount = 0;
+        int strikeCount = 0;
+        String resultMessage = "";
+
+        for (int i = 0; i < 3; i++) {
+            int ballNumber = randomNumbers.get(i);
+
+            if (userNumbers.contains(ballNumber) && ballNumber != userNumbers.get(i)) {
+                ballCount++;
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            int strikeNumber = randomNumbers.get(i);
+
+            if (strikeNumber == userNumbers.get(i)) {
+                strikeCount++;
+            }
+        }
+        if (ballCount != 0) {
+            resultMessage += ballCount + "볼";
+        }
+        if (strikeCount != 0) {
+            resultMessage += strikeCount + "스트라이크";
+        }
+        if (strikeCount == 0 && ballCount == 0) {
+            resultMessage += "낫싱";
+        }
+        System.out.println(resultMessage);
+        if (strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        return strikeCount;
     }
 }
