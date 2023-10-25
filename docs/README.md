@@ -7,11 +7,13 @@
 
 ### model
 - Ball
+  - int digits : 볼의 자리수 (0-3으로 제한됨)
+  - int number : 볼의 번호 (0-9로 제한됨)
 ### controller
 - Count : 사용자의 입력 비교 
 - Strike : 정답 개수 확인
 - Play : 게임 진행, 다시 시작, 종료
-- Validate : 사용자의 입/출력 값 제한사항 확인
+- Config : 사용자의 입/출력 값 제한사항 check/Error 메세지 처리
 ### view
 - 입력
 - 출력
