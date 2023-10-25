@@ -11,6 +11,7 @@ public final class BallsUtils {
 
     public static Balls generateRandomBalls(int minValue, int maxValue, int ballCount) {
         List<Integer> randomIntegers = Stream.generate(() -> Randoms.pickNumberInRange(minValue, maxValue))
+                .distinct()
                 .limit(ballCount)
                 .toList();
         return convertIntegersToBalls(randomIntegers);
