@@ -11,12 +11,12 @@ public class BallBucket {
 
 	public BallBucket() {
 		balls = new ArrayList<>();
-		for (int i = 1; i < 10; i++) {
+		for (int i = 0; i < 10; i++) {
 			balls.add(new Ball(i));
 		}
 	}
 
 	public Ball getBall() {
-		return balls.get(Randoms.pickNumberInRange(0, balls.size()-1));
+		return balls.remove(Randoms.pickNumberInRange(1, balls.size()-1));
 	}
 }
