@@ -11,33 +11,30 @@ import static game.Error.*;
 
 
 /**
- *  runApp() ->전체 게임 프로그램 실행
- *  Game() -> 생성자를 통해 값들 초기화
- *
- *
+ *  playGame() ->전체 게임 프로그램 실행
+ *  Game() -> 생성자를 통해 값들 초기화 컴퓨터 값 할당
+ *  checkResult() -> 게임 결과 체크
+ *  restart() -> 게임을 재시작 여부 확인
+ *  getBall(), getStrike() -> 볼, 스트라이크 개수계산
  */
 public class Game {
-    static List<Integer> computer = new ArrayList<>();
-    public Game() {
-        while(computer.size()<SIZE){
+    List<Integer> computer;
+    public Game(){
+        computer = new ArrayList<>();
+        while(computer.size() < SIZE){
             int randomNumber = Randoms.pickNumberInRange(START_NUM, END_NUM);
             if(!computer.contains(randomNumber)){
                 computer.add(randomNumber);
             }
         }
     }
-/*
-    public static void run(){
-        Game game;
-        do{
-            game = new Game();
-            game.runApp();
-
-        }while(game.gameRestart());
-    }
-*/
-
+    //게임 실행 메소드
     public static void runApp(){
+        Game game = new Game();
+        game.playGame();
+
+    }
+    private void playGame(){
         String inputString;
         System.out.println(START);
         while(true){
@@ -47,93 +44,92 @@ public class Game {
                 break;
             }
         }
-        if(gameRestart()==true){
-            computer.clear();
+        if(restart()==true){
             Game game = new Game();
-            game.runApp();
+            game.playGame();
         }
     }
-    private static boolean gameRestart(){
-        System.out.println(RESTART_MSG);
-        String inputRestart = Console.readLine();
-        if(inputRestart.equals(RESTART)) {
-            return true;
-        }else if(inputRestart.equals(STOP)){
-            return false;
-        }else{
-            throw new IllegalArgumentException(InputError);
-        }
-    }
-    private static boolean checkResult(String inputString){
-        int[] inputNumberArr = changeStringToInteger(inputString);
-        int strike = getStrike(inputNumberArr);
-        int ball = getBall(inputNumberArr);
-        printResult(ball,strike);
-
-        if(strike==SIZE){
+    //결과 체크 관련 메소드
+    private boolean checkResult(String inputNumberString){
+        int[] inputNumberArray = changeStringToArray(inputNumberString);
+        int strike = getStrike(inputNumberArray);
+        int ballWithStrike = getBall(inputNumberArray);
+        printResult(strike, ballWithStrike);
+        if(strike == SIZE){
             return true;
         }else{
             return false;
         }
-
     }
-    private static int[] changeStringToInteger(String inputString){
-        int[] inputInt = new int[SIZE];
-        checkLength(inputString);
-        for(int i=0;i<inputInt.length-1;i++){
-            //예외 처리
-            if(inputString.charAt(i)<'0' || inputString.charAt(i)>'9'){
+    private int[] changeStringToArray(String inputString){ //
+        int[] intArray = new int[SIZE];
+        checkStringLength(inputString);
+        for(int i = 0; i<inputString.length(); i++){
+            if(inputString.charAt(i) < '0' || inputString.charAt(i) > '9'){
                 throw new IllegalArgumentException(InputTypeError);
             }
-            inputInt[i] = Integer.parseInt(inputString.substring(i,i+1));
+            intArray[i] = Integer.parseInt(inputString.substring(i, i+1));
         }
-        return inputInt;
+        return intArray;
     }
-    private static void checkLength(String inputString){
-        if(inputString.length()!=SIZE) {
+    private void checkStringLength(String inputString){
+        if(inputString.length() != SIZE){
             throw new IllegalArgumentException(InputLengthError);
         }
     }
-    private static int getStrike(int[] inputNumberArr){
-        int resultStrike=0;
-        for(int i=0;i<computer.size();i++){
-            if(inputNumberArr[i]==computer.get(i)){
-                resultStrike++;
+    //볼, 스트라이크 개수 메소드
+    private int getStrike(int[] inputNumber){
+        int strike = 0;
+        for (int i = 0; i<computer.size(); i++) {
+            if(inputNumber[i] == computer.get(i)){
+                strike++;
             }
         }
-        return resultStrike;
+        return strike;
     }
-    private static int getBall(int[] inputNumberArr){
+    private int getBall(int[] inputNumber){
         int ball = 0;
-        for (int i : inputNumberArr) {
+        for (int i : inputNumber) {
             if(computer.contains(i)){
                 ball++;
             }
         }
         return ball;
     }
-    private static void printResult(int balls, int strikes){
-        int ball = balls-strikes;
-        if(balls==NOTHING_NUM)
+    //결과 출력 관련 메소드
+    private void printResult(int strike, int ballWithStrike){
+        int ball = ballWithStrike - strike;
+        if(ballWithStrike == NOTHING_NUM) {
             System.out.println(NOTHING);
-        else{
-            printBallStrike(ball,strikes);
-            System.out.println();
+        }else {
+            printBallStrike(ball, strike);
         }
-        successStrike(strikes);
+        printSuccess(strike);
+
     }
-    private static void printBallStrike(int ball, int strike){
-        if(ball!=0){
-            System.out.println(ball+BALL);
+    private void printBallStrike(int ball, int strike){
+        if(ball != 0){
+            System.out.print(ball + BALL);
         }
-        if(strike!=0){
-            System.out.println(strike+STRIKE);
+        if (strike != 0) {
+            System.out.print(strike + STRIKE);
         }
-        successStrike(strike);
     }
-    private static void successStrike(int strike){
+    private void printSuccess(int strike){
         if(strike == SIZE){
             System.out.println(SUCCESS_STRING);
+        }
+    }
+    //재시작 여부 메소드
+    private boolean restart(){
+        System.out.println(RESTART_MSG);
+        String inputString = Console.readLine();
+        if(inputString.equals(RESTART)){
+            return true;
+        }else if(inputString.equals(STOP)){
+            return false;
+        }else{
+            throw new IllegalArgumentException(InputError);
         }
     }
 }

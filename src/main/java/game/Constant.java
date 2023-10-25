@@ -1,5 +1,6 @@
 package game;
 
+
 public class Constant {
     //게임 입력 관련 상수
     public static String START = "숫자 야구 게임을 시작합니다.";
