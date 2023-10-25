@@ -28,7 +28,18 @@ public class BaseballGameController {
     }
 
     private boolean choiceStartNewGame(){
-        String endUserInput = view.endUserInput();
-        return endUserInput.equals("1");
+        try {
+            String endUserInput = view.endUserInput();
+            if(endUserInput.equals("1")){
+                return true;
+            }else if(endUserInput.equals("2")){
+                return false;
+            }else {
+                throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
+            }
+        }catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }
