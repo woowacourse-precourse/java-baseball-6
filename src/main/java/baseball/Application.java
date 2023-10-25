@@ -38,7 +38,7 @@ public class Application {
         user.setContinued(validateReGame(newReGame));
     }
 
-    private static boolean validateReGame(String newReGame) throws IllegalArgumentException {
+    public static boolean validateReGame(String newReGame) throws IllegalArgumentException {
         if (newReGame.equals("1")) {
             return true;
         }
