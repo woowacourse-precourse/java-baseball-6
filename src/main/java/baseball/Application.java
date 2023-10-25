@@ -1,67 +1,120 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Application {
 
+    static String START = "숫자 야구 게임을 시작합니다.";
+    static String ASK_INPUT = "숫자를 입력해주세요 : ";
+    static String CLEAR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static String RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    static String ERROR = "잘못된 입력입니다.";
+
     public static void main(String[] args) {
 
-        System.out.println( PrintMessage.START.getMessage() );
+        System.out.println( START );
 
         while( true ) {
-            // 컴퓨터의 랜덤 입력값을 map에 담는다.
-            Computer computer = new Computer();
-            Map<Integer, Integer> computerMap = computer.makeComputerRandomNum();
+            // 컴퓨터의 랜덤 입력값
+            Map<Integer, Integer> computerMap = new HashMap<>();
+
+            int randomValue = 100;
+            while ( computerMap.size() < 3 ) {
+
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!computerMap.containsKey(randomNumber)) {
+
+                    computerMap.put(randomNumber,randomValue);
+                    randomValue /= 10;
+                }
+            }
 
             try{
                 boolean onGame = true;
                 while ( onGame ) {
 
-                    System.out.print( PrintMessage.ASK_INPUT.getMessage() );
-                    int userInput =  Integer.parseInt( Console.readLine() );
+                    System.out.print( ASK_INPUT );
+                    int userInput = Integer.parseInt( Console.readLine() );
 
-                    if ( ValidInput.isValidInput( userInput ) ){ // 입력된 숫자의 유효성 체크
 
-                        // 사용자의 입력값을 map에 담는다.
-                        Player player = new Player();
-                        Map<Integer, Integer> playerMap = player.makePlayerMap( userInput );
+                    if ( isValidInput( userInput ) ){ // 겹치지 않는 3자리 숫자인지 확인
+                        int strike = 0;
+                        int ball = 0;
 
-                        // 사용자의 입력값 확인
-                        CheckInputNum checkInput = new CheckInputNum();
-                        checkInput.checkPlayerNum( computerMap, playerMap );
+                        Map<Integer, Integer> map = splitNum( userInput ); // 사용자 입력값을 자릿수에 따라 Map 에 (숫자, 자릿수)형태로 담는다. ( ex. 123 -> {(1, 100), (2, 10), (3, 1)} )
 
-                        // 사용자 입력값에 따른 결과 도출
-                        String gameResult =  PrintMessage.resultGame( checkInput );
-                        System.out.println( gameResult );
+                        for ( Integer computerKey : computerMap.keySet() ) {
 
-                        if ( checkInput.getStrike() == 3 ) {
+                            if ( map.containsKey(computerKey) ) { // 동일한 숫자(key)가 있는지 확인
+
+                                if ( map.get( computerKey ).equals( computerMap.get(computerKey) )) { // 동일한 숫자의 자릿수(value) 확인
+
+                                    strike++;
+
+                                } else {
+
+                                    ball++;
+                                }
+                            }
+                        }
+
+                        String result = (strike > 0 ? strike + "스트라이크 " : "") + (ball > 0 ? ball + "볼 " : "") + (strike == 0 && ball == 0 ? "낫싱" : "");
+                        System.out.println( result );
+
+                        if ( strike == 3 ) {
                             // 3스트라이크 경우 게임 종료
-                            System.out.println( PrintMessage.CLEAR.getMessage() );
+                            System.out.println( CLEAR );
                             onGame = false;
                         }
                     } else {
-
-                        throw new IllegalArgumentException( PrintMessage.ERROR.getMessage() );
+                        // 겹치는 숫자가 있거나 1~9 이외의 입력값인 경우
+                        throw new IllegalArgumentException( ERROR );
                     }
-                }
-                // 게입 종료 후, 재시작 여부 체크
-                System.out.println( PrintMessage.RESTART.getMessage() );
-                int restartInput =  Integer.parseInt( Console.readLine() );
 
-                if ( restartInput == 2 ) {
+                }
+                // 3스트라이크로 게입 종료 후, 재시작 여부
+                System.out.println( RESTART );
+                int restartInput = Integer.parseInt( Console.readLine() );
+
+               if ( restartInput == 2 ) {
 
                     return;
+                } else if (restartInput != 1){
 
-                } else if( restartInput != 1 ) {
-
-                    throw new IllegalArgumentException( PrintMessage.ERROR.getMessage() );
+                    throw new IllegalArgumentException( ERROR );
                 }
             } catch ( Exception e ) {
 
-                break;
+                return;
             }
         }
+    }
+
+    public static Map<Integer, Integer> splitNum(  Integer  number ) {
+        Map<Integer, Integer> resultMap = new HashMap<>();
+
+        int first  = number / 100;
+        int second = (number / 10) % 10;
+        int third = number % 10;
+
+        resultMap.put( first, 100 );
+        resultMap.put( second, 10 );
+        resultMap.put( third, 1 );
+
+        return resultMap;
+    }
+
+    public static boolean isValidInput(int number) {
+        if ( number >= 123 && number <= 987 ) {
+            int a = number / 100;
+            int b = (number / 10) % 10;
+            int c = number % 10;
+
+            return a != b && b != c && a != c;
+        }
+        return false;
     }
 }
