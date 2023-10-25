@@ -1,6 +1,7 @@
 package baseball.service;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -53,4 +54,14 @@ public class ValidationService {
         return inputNumber.length() != SIZE_NUMBER;
     }
 
+    public boolean inputRestartValidation(String inputNumber) {
+        // 숫자 1인지 확인
+        if (inputNumber.equals("1")) {
+            return true;
+        } else if (inputNumber.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException(INPUT_NUMBER_VALIDATION_MESSAGE);
+        }
+    }
 }

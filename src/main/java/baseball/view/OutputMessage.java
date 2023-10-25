@@ -15,4 +15,7 @@ public class OutputMessage {
     public void printGameReallyEndMessage() {
         System.out.println(GAME_REALLY_END_MESSAGE);
     }
+
+
+
 }

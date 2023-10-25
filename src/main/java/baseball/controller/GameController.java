@@ -1,13 +1,14 @@
 package baseball.controller;
 
-
 import baseball.service.GameService;
 import baseball.view.OutputMessage;
 
 public class GameController {
 
-    OutputMessage outputMessage = new OutputMessage();
     GameService gameService = new GameService();
+
+    OutputMessage outputMessage = new OutputMessage();
+
     public void startGame() {
         outputMessage.printGameStartMessage();
         gameService.setComputerNumbers();
@@ -18,10 +19,16 @@ public class GameController {
 
             if (gameService.sameNumbers()) {
                 outputMessage.printGameEndMessage();
-                gameStatus = false;
-            }
+                gameStatus = gameService.restart();
 
+                if (gameStatus) {
+                    gameService.setComputerNumbers();
+                }
+            }
         }
+
+        outputMessage.printGameReallyEndMessage();
     }
+
 
 }

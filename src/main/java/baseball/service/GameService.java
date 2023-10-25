@@ -51,4 +51,18 @@ public class GameService {
     }
 
 
+    // 사용자에게 추가 게임 진행 여부 입력 받고 게임 종료 시 false 반환
+    public boolean restart() {
+        String inputNumber = forInputMessage.InputRestart();
+        try {
+            return validationService.inputRestartValidation(inputNumber);
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+            return false;
+
+        }
+
+    }
+
+
 }
