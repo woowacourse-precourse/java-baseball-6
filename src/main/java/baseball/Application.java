@@ -74,7 +74,7 @@ public class Application {
         return userNumbers;
     }
 
-    private static List<Integer> userInputToInteger(String userInput) {  /// 1 3
+    private static List<Integer> userInputToInteger(String userInput) {
         List<Integer> userNumbers = new ArrayList<>();
         for (String inputStr : userInput.split("")) {
             try {
