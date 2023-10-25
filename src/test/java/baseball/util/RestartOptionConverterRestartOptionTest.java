@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("UserInputValidator 클래스의 재시작 선택 유효성 검사 테스트")
-public class UserInputValidatorRestartOptionTest {
+public class RestartOptionConverterRestartOptionTest {
 
     static Stream<Arguments> validParametersForValidateAndCheckIsRestart() {
         return Stream.of(
@@ -24,7 +24,7 @@ public class UserInputValidatorRestartOptionTest {
     @MethodSource("validParametersForValidateAndCheckIsRestart")
     @DisplayName("재시작 선택지 유효성 검사 - 유효한 입력")
     void testValidateRestartOptionByValidInput(String validInput, boolean expected, String testMessage) {
-        boolean result = UserInputValidator.validateAndCheckIsRestart(validInput);
+        boolean result = RestartOptionConverter.convert(validInput);
         assertEquals(expected, result);
     }
 
@@ -32,7 +32,7 @@ public class UserInputValidatorRestartOptionTest {
     @ValueSource(strings = {"3", "abc"})
     @DisplayName("재시작 선택지 유효성 검사 - 유효하지 않은 입력")
     public void testValidateRestartOptionByInvalidInput(String invalidInput) {
-        assertThrows(IllegalArgumentException.class, () -> UserInputValidator.validateAndCheckIsRestart(invalidInput));
+        assertThrows(IllegalArgumentException.class, () -> RestartOptionConverter.convert(invalidInput));
     }
 
 
