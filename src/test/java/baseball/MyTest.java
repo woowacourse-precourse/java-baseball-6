@@ -48,14 +48,26 @@ public class MyTest{
         Assertions.assertThat(result3).isEqualTo(false);
     }
 
+//    @Test
+//    void answerCompare(){
+//        List<Integer> answer = new ArrayList<>(Arrays.asList(3, 6, 9));
+//        Set<Integer> user = new LinkedHashSet<>();
+//        user.add(9);
+//        user.add(6);
+//        user.add(3);
+//
+//        Assertions.assertThat(compareAnswer(answer, user)).isEqualTo(2);
+//    }
+
     @Test
-    void answerCompare(){
+    void resultPrint(){
         List<Integer> answer = new ArrayList<>(Arrays.asList(3, 6, 9));
         Set<Integer> user = new LinkedHashSet<>();
+        user.add(3);
         user.add(9);
         user.add(6);
-        user.add(3);
 
-        Assertions.assertThat(compareAnswer(answer, user)).isEqualTo(2);
+        compareAnswer(answer, user);
+        printResult();
     }
 }

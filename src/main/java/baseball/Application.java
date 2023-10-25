@@ -7,6 +7,7 @@ import java.util.*;
 
 public class Application {
     public static boolean computerPower, gamePower;
+    private static int ball, strike;
     public static void main(String[] args) {
 
         // [대기 화면]
@@ -18,26 +19,22 @@ public class Application {
             // [게임 시작]
             gamePower = true;
             while(gamePower){
-                // 사용자 입력값 대기...
-                Set<Integer> userGuessSet = readUserGuess();
-                boolean checkResult = formatCheck(userGuessSet);
-                if(!checkResult) {
-                    turnOff();
-                    continue;
-                }
-                compareAnswer(randomAnswer, userGuessSet);
+                Set<Integer> userGuessSet = readUserGuess(); // 사용자 입력값 대기...
+                formatCheck(userGuessSet);  // 올바른 형식의 입력값 확인...
+                compareAnswer(randomAnswer, userGuessSet); // 정답 확인 로직 실행...
+                printResult(); // 분석 결과 출력...
             }
         }
     }
 
-    private static void turnOff() {
+    private static boolean turnOff() {
         computerPower = false;
         gamePower = false;
         throw new IllegalArgumentException("잘못된 형식의 입력입니다. 프로그램을 종료합니다.");
     }
 
-    public static int compareAnswer(List<Integer> randomAnswer, Set<Integer> userGuessSet) {
-        int ball = 0, strike = 0;
+    public static void compareAnswer(List<Integer> randomAnswer, Set<Integer> userGuessSet) {
+        ball = 0; strike = 0;
         ArrayList<Integer> userGuessArr = new ArrayList<>(userGuessSet);
         for(int i = 0; i < userGuessArr.size(); i++){
             int match = randomAnswer.indexOf(userGuessArr.get(i));
@@ -49,16 +46,24 @@ public class Application {
             }
             ball++;
         }
-        return ball;
-//        printResult(ball, strike);
     }
 
-    private static void printResult(int ball, int strike) {
-
+    public static void printResult() {
+        if(ball!=0){
+            System.out.print(ball+"볼 ");
+        }
+        if(strike!=0){
+            System.out.print(strike+"스트라이크 ");
+        }
+        System.out.println();
+        if(strike==3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            gamePower=false;
+        }
     }
 
     public static boolean formatCheck(Set<Integer> set){
-        return set.size()==3 ? true : false;
+        return set.size()==3 ? true : turnOff();
     }
 
     public static Set<Integer> readUserGuess() {
