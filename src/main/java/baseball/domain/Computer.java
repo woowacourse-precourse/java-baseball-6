@@ -17,7 +17,7 @@ public class Computer {
                 answerNumberList.add(randomNumber);
             }
         }
-        System.out.println(answerNumberList.toString());
+
         return answerNumberList;
     }
 }
