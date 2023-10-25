@@ -17,6 +17,11 @@ public class Result {
     return Strike == Constant.SIZE;
   }
 
+  public void reset() {
+    Strike = 0;
+    Ball = 0;
+  }
+
   public void calculateResult(List<Integer> ComputerNum, List<Integer> playerNum) {
     Set<Integer> computerNumSet = new HashSet<>(ComputerNum);
 

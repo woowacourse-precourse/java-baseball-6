@@ -10,7 +10,10 @@ public class Player {
   private List<Integer> PlayerNum = new ArrayList<>();
 
   public Player() {
-    setPlayerNum();
+  }
+
+  public void reset(){
+    PlayerNum.clear();
   }
 
   public List<Integer> getPlayerNum() {
