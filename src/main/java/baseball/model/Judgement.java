@@ -18,7 +18,7 @@ public abstract class Judgement {
     @Override
     public String toString() {
         if (isExist()) {
-            return String.format("%d,%s", count, text);
+            return String.format("%d%s", count, text);
         }
         return "";
     }
