@@ -54,7 +54,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String menuNumber = Console.readLine();
         if(menuNumber.trim().equals("2")) {
-            System.exit(0);
+            return;
         } else if (menuNumber.trim().equals("1")) {
             Game();
         } else {
