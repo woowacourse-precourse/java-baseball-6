@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.Controller.GameController;
 import baseball.Service.CompareNumberService;
 import baseball.Service.RandomGenerator;
 import baseball.View.Input;
