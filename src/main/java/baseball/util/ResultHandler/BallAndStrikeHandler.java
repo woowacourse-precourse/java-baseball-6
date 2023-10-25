@@ -5,6 +5,10 @@ import baseball.util.resultFomat.ResultFormatter;
 
 public class BallAndStrikeHandler implements ResultHandler {
 
+    public static ResultHandler createBallAndStrikeHandler() {
+        return new BallAndStrikeHandler();
+    }
+
     @Override
     public void setNextHandler(ResultHandler nextHandler) {
     }

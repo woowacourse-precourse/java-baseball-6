@@ -29,12 +29,11 @@ public class OutputView {
         System.out.printf(exception.getMessage());
     }
 
-
     private ResultFormatter getFormatter(Result result) {
-        ResultHandler nothingHandler = new NothingHandler();
-        ResultHandler ballHandler = new BallHandler();
-        ResultHandler strikeHandler = new StrikeHandler();
-        ResultHandler ballAndStrikeHandler = new BallAndStrikeHandler();
+        ResultHandler nothingHandler = NothingHandler.createWithChain();
+        ResultHandler ballHandler = BallHandler.createBallHandler();
+        ResultHandler strikeHandler = StrikeHandler.createStrikeHandler();
+        ResultHandler ballAndStrikeHandler = BallAndStrikeHandler.createBallAndStrikeHandler();
 
         nothingHandler.setNextHandler(ballHandler);
         ballHandler.setNextHandler(strikeHandler);
