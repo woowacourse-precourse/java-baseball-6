@@ -24,7 +24,7 @@ public class PlayerService {
     }
 
     private List<Integer> convertStringToBaseballs(String playerGuess) {
-        if (playerGuess == null || playerGuess.isBlank()) {
+        if (playerGuess == null || playerGuess.trim().isEmpty()) {
             throw new IllegalArgumentException("입력값은 공백이 들어갈 수 없습니다.");
         }
 
