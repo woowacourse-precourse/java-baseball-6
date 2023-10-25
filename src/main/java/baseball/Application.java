@@ -13,7 +13,6 @@ public class Application {
         do{
             this.com3Digit();
         }while(this.checkComDup()!=0);
-        System.out.println(this.computer[0]+""+this.computer[1]+""+this.computer[2]);
     }
     public static void start(){
         //create an instance for one game
@@ -63,9 +62,7 @@ public class Application {
     public void user3Digit(){
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        if (input.length() != 3) {
-            throw new IllegalArgumentException();
-        }
+        if (input.length() != 3) throw new IllegalArgumentException();
         int i = 0;
         for (String s : input.split("")) {
             if (!(Character.isDigit(s.charAt(0)))) {
@@ -74,6 +71,7 @@ public class Application {
             this.user[i] = Integer.parseInt(s);
             i++;
         }
+
     }
     public void compDigit(){
         int strike = 0, ball = 0;
@@ -89,12 +87,14 @@ public class Application {
         this.item[1] = ball;
     }
     public static void main(String[] args) {
-        while(mode==1) {
+        while(true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             start();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             mode = Integer.parseInt(Console.readLine());
-            if(mode!=1 && mode !=2) throw new IllegalArgumentException();
+            if(mode==1) continue;
+            else if(mode==2) break;
+            else throw new IllegalArgumentException();
         }
     }
 }
