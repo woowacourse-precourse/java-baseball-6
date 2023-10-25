@@ -7,13 +7,13 @@ import baseball.exception.InvalidGameDecisionException;
 public class InputValidator {
 
     public static void validateInputNumber(String inputNumber) {
-        if (!inputNumber.matches(InputValidateRegex.GAME_NUMBER_REGEX.toString())) {
+        if (!inputNumber.matches(InputValidateRegex.GAME_NUMBER_REGEX.getRegex())) {
             throw new InvalidNumberInputException();
         }
     }
 
     public static void validateInputGameDecision(String inputGameDecision) {
-        if (!inputGameDecision.matches(InputValidateRegex.GAME_DECISION_REGEX.toString())) {
+        if (!inputGameDecision.matches(InputValidateRegex.GAME_DECISION_REGEX.getRegex())) {
             throw new InvalidGameDecisionException();
         }
     }

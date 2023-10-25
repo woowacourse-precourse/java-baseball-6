@@ -12,8 +12,7 @@ public enum GameMessage {
         this.message = message;
     }
 
-    @Override
-    public String toString() {
+    public String getMessage() {
         return this.message;
     }
 }

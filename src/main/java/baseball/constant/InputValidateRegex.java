@@ -10,8 +10,7 @@ public enum InputValidateRegex {
         this.regex = regex;
     }
 
-    @Override
-    public String toString() {
+    public String getRegex() {
         return this.regex;
     }
 }
