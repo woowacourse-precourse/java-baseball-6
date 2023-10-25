@@ -1,6 +1,5 @@
 package baseball;
 
-//import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Application {
@@ -19,6 +18,7 @@ public class Application {
                 result = score.score(computer, input.playerNumber());
                 System.out.println(result);
             }
+
             again = restart.restart();
         }
 
