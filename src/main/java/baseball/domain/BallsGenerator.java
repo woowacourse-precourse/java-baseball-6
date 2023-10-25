@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface BallsGenerator {
 
-    List<Ball> generate(NumberGenerator numberGenerator);
+    Ball generateBall(int position, NumberGenerator numberGenerator);
 
-    List<Ball> generate(Ball... balls);
+    List<Ball> generateBalls(NumberGenerator numberGenerator);
 }

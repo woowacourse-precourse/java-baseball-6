@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public enum Retry {
@@ -12,9 +13,13 @@ public enum Retry {
         this.retrySymbol = retrySymbol;
     }
 
+    private static Predicate<Retry> matchesRetrySymbol(String rawRetry) {
+        return retry -> retry.retrySymbol.equals(rawRetry);
+    }
+
     public static Retry from(String rawRetry) {
         return Stream.of(values())
-            .filter(retry -> retry.retrySymbol.equals(rawRetry))
+            .filter(matchesRetrySymbol(rawRetry))
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException(RETRY_FORMAT_EXCEPTION_MESSAGE));
     }

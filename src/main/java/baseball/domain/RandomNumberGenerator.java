@@ -10,8 +10,12 @@ public class RandomNumberGenerator implements NumberGenerator {
     private static final int END_NUMBER = 9;
     private final List<Integer> pickedNumbers;
 
-    public RandomNumberGenerator() {
+    private RandomNumberGenerator() {
         this.pickedNumbers = new ArrayList<>();
+    }
+
+    public static NumberGenerator init() {
+        return new RandomNumberGenerator();
     }
 
     @Override

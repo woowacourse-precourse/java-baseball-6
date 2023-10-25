@@ -32,7 +32,7 @@ public class OutputView {
 
     private String getMessageOf(TryResult tryResult, GameResult gameResult) {
         if (gameResult.hasResult(tryResult)) {
-            return gameResult.getCount(tryResult) + tryResult.getResultName();
+            return gameResult.getCount(tryResult) + tryResult.getMessage();
         }
         return BLANK;
     }
@@ -46,7 +46,7 @@ public class OutputView {
 
     private String getNothingMessage(GameResult gameResult) {
         if (gameResult.isNothing()) {
-            return TryResult.NOTHING.getResultName();
+            return TryResult.NOTHING.getMessage();
         }
         return BLANK;
     }

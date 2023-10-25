@@ -9,7 +9,7 @@ public enum TryResult {
         this.resultName = resultName;
     }
 
-    public String getResultName() {
+    public String getMessage() {
         return resultName;
     }
 }
