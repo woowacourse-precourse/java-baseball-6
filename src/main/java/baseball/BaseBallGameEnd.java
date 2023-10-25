@@ -23,9 +23,9 @@ public class BaseBallGameEnd {
     public boolean orderCheck() {
         switch (this.playerOrder) {
             case "1":
-                return true;
-            case "2":
                 return false;
+            case "2":
+                return true;
             default:
                 throw new IllegalArgumentException();
 
