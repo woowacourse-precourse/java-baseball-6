@@ -11,7 +11,6 @@ public class ResultView {
 
     public static void givingResult(int ball, int strike) {
         StringBuilder answer = new StringBuilder("");
-        answer.setLength(0);
 
         if (ball == 0 && strike == 0) {
             answer.append(NOTHING);
