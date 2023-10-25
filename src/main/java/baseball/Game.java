@@ -70,6 +70,7 @@ public class Game {
         user.setNumbers(numbersManager.setUserNumbers(numbers, inputNumber));
     }
 
+    // game ending condition
     private boolean isOver(){
         int strikeCounter = score.getStrikeCounter();
         return strikeCounter == 3;

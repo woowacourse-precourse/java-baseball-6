@@ -1,4 +1,5 @@
 package baseball.player;
+
 import java.util.List;
 
 public class User extends BasePlayer {

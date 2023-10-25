@@ -1,7 +1,7 @@
 package baseball;
+
 import baseball.player.Opponent;
 import baseball.player.User;
-
 import java.util.List;
 
 public class Score {

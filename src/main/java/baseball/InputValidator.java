@@ -3,9 +3,7 @@ package baseball;
 public class InputValidator {
     private static InputValidator instance;
 
-    private InputValidator() {
-
-    }
+    private InputValidator() {}
 
     public static InputValidator getInstance() {
         if (instance == null) {

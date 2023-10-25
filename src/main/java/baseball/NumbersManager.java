@@ -1,15 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.Collections;
 import java.util.List;
 
 public class NumbersManager {
 
     private static NumbersManager instance;
-    private NumbersManager() {
-    }
+    private NumbersManager() {}
 
     public static NumbersManager getInstance() {
         if (instance == null) {

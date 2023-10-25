@@ -3,9 +3,7 @@ package baseball;
 public class StringPrinter {
     private static StringPrinter instance;
 
-    private StringPrinter() {
-
-    }
+    private StringPrinter() {}
 
     public static StringPrinter getInstance() {
         if (instance == null) {
