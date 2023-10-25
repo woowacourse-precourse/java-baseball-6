@@ -1,0 +1,34 @@
+# 구현할 기능 Todo
+- [x] 입출력 시뮬레이션
+  - PrintMessage 클래스를 통해 출력문 사용
+- [x] 랜덤으로 값 입력받기(camp.nextstep.edu.missionutils 패키지활용)
+  - initRandomNumber() 메서드를 통해 랜덤한 3개의 값을 answerNumberList에 초기화
+- [x] 입력받은 값 ArrayList화
+  - getNumberInputList() 메서드로 받은 입력값을 ArrayList로 반환
+- [x] 입력받은 값이 볼인지 스트라이크인지 판단하는 checkGameScore()메서드 구현
+  - ArrayList 두개를 받아와 값을 비교 후 처리
+- [x] startGame()메서드 세부 로직 처리
+- [x] 예외값 처리 Illegalcheck 클래스 추가
+  - [x] 야구숫자
+    - [x] 같은값(111)
+    - [x] 0
+    - [x] 3자리 초과
+    - [x] 3자리 미만
+    - [x] 문자
+  - [x] while문 endGameCommand의 1,2가 아닌 다른 값
+    - 1, 2가 아닌 다른 수
+    - 문자를 넣었을 때 IllegalException이 아닌 NumberformatException이 발생했을 것, 때문에 CommandCheck로직 변경 필요
+- [x] 예외관련 테스트코드 추가
+  - [x] 야구숫자 테스트
+  - [x] CommandLine 테스트
+
+---
+# 리팩토링
+- [x] 역할분산
+  - [x] 입력값을 따로 관리하는 클래스 생성
+    - 입력값 숫자야구번호와 게임관리하는 command를 InputLineConverter를 통해 관리.
+    - Baseball에서는 입력을 받지 않기에 IllegalCheck를 InputLineConverter 클래스에 역할부여
+- [x] initRandomNumber() 세부로직 리팩토링
+  - 가독성을 위해 Stream형태로 변경
+- [x] checkGameScore() 메서드
+  - 불명확한 변수명 변경 및 불필요한 매개변수 제거

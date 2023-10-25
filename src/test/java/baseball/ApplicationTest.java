@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +25,56 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 예외_테스트_길이3미만() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_동일한숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_0을포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("d12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_commandNumberException() {
+        final IllegalCheck illegalcheck = new IllegalCheck();
+
+        assertThatThrownBy(() -> illegalcheck.commandAvailable("3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력값은 1 or 2 입니다.");
+    }
+
+    @Test
+    void 예외_테스트_commandNumberException_문자() {
+        final IllegalCheck illegalcheck = new IllegalCheck();
+
+        assertThatThrownBy(() -> illegalcheck.commandAvailable("c"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력값은 1 or 2 입니다.");
     }
 
     @Override
