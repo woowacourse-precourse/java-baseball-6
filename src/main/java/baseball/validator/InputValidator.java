@@ -1,15 +1,17 @@
 package baseball.validator;
 
+import baseball.view.UIMessage;
+
 public class InputValidator {
     public static void validatePlayNumber(String input) {
-        if (!isInteger(input) || !isThreeDigit(input)) {
-            throw new IllegalArgumentException("잘못된 입력값입니다.");
+        if (!isInteger(input) || !isThreeDigit(input) || hasDuplicatedNumber(input)) {
+            throw new IllegalArgumentException(UIMessage.END_MESSAGE.getMessage());
         }
     }
 
     public static void validateGameContinue(String input) {
         if (!isInteger(input) || !isOneOrTwo(input)) {
-            throw new IllegalArgumentException("잘못된 입력값입니다.");
+            throw new IllegalArgumentException(UIMessage.END_MESSAGE.getMessage());
         }
     }
 
@@ -18,7 +20,7 @@ public class InputValidator {
             int number = Integer.parseInt(input);
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println("잘못된 입력값입니다.");
+            System.out.println(UIMessage.END_MESSAGE.getMessage());
         }
         return false;
     }
@@ -31,5 +33,16 @@ public class InputValidator {
     private static boolean isOneOrTwo(String input) {
         int number = Integer.parseInt(input);
         return number == 1 || number == 2;
+    }
+
+    private static boolean hasDuplicatedNumber(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            for (int j = i + 1; j < input.length(); j++) {
+                if (input.charAt(i) == input.charAt(j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
