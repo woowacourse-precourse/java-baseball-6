@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
-    private Player player;
-    private Computer computer;
+    private final Player player;
+    private final Computer computer;
     private State state;
 
     public Game(Computer c, Player p) {
