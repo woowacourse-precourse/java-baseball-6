@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class GameStatusTest {
 
-    public Stream<Arguments> isPlaying() {
+    public static Stream<Arguments> isPlaying() {
         return Stream.of(
             Arguments.of(GameStatus.PLAYING, true),
             Arguments.of(GameStatus.WIN, false),
