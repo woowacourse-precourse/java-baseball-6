@@ -1,6 +1,9 @@
 package controller;
 
+import domain.BaseBallNumbers;
 import domain.RandomNumbers;
+import view.inputView;
+import view.outputView;
 
 public class BaseBallGameController {
     private static final String CONTINUE = "1";
@@ -8,6 +11,7 @@ public class BaseBallGameController {
     private static final Integer THREE_STRIKE = 3;
 
     public static void start() {
+        outputView.printGameStartMessage();
         playBaseBallGame();
         checkContinue();
     }
@@ -17,6 +21,10 @@ public class BaseBallGameController {
         int strikeCnt = 0;
         int ballCnt = 0;
         RandomNumbers randomNumbers = new RandomNumbers();
+
+        while (strikeCnt != THREE_STRIKE) {
+            BaseBallNumbers baseBallNumbers = new BaseBallNumbers(inputView.getRequirePlayerBaseballNumbers());
+        }
     }
 
     // checkContinue: 게임을 계속할 것인지 확인
