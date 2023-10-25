@@ -1,4 +1,8 @@
-package baseball;
+package baseball.controller;
+
+import baseball.view.GameInput;
+import baseball.view.GameView;
+import baseball.validation.InputValidator;
 
 import java.util.List;
 
