@@ -23,4 +23,3 @@ public class Application {
         Output.printGameEnd();
     }
 }
-
