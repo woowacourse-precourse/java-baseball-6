@@ -24,10 +24,10 @@ public class GameNumber {
     }
 
     public static boolean isValid(String input) {
-        return hasThreeDigits(input) && hasProperRange(input) && hasDistinctDigits(input);
+        return hasProperLength(input) && hasProperRange(input) && hasDistinctDigits(input);
     }
 
-    private static boolean hasThreeDigits(String input) {
+    private static boolean hasProperLength(String input) {
         return input.length() == NUMBER_LENGTH;
     }
 
