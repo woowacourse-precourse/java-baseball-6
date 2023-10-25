@@ -1,7 +1,5 @@
 package baseball.game;
 
-import baseball.Ball;
-import baseball.CompareResult;
 import baseball.computer.Computer;
 import baseball.util.StringUtils;
 import baseball.view.GameView;

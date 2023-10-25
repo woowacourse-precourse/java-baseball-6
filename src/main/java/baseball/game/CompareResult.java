@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 public class CompareResult {
     private static final String STRIKE_MESSAGE = "스트라이크";
