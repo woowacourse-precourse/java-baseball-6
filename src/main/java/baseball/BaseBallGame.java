@@ -34,4 +34,31 @@ public class BaseBallGame {
             quit = isGameEnd();
         }
     }
+
+    private void gameResultCalculation() {
+        checkStrike();
+        checkBall();
+    }
+
+    private void checkStrike() {
+        strikeCount = 0;
+
+        for (int i = 0; i < INPUT_LENGTH; i++) {
+            if (user.userBaseBallNumber[i] == computer.computerBaseBallNumber[i]) {
+                strikeCount++;
+            }
+        }
+    }
+
+    private void checkBall() {
+        ballCount = 0;
+
+        for (int i = 0; i < INPUT_LENGTH; i++) {
+            for (int j = 0; j < INPUT_LENGTH; j++) {
+                if (user.userBaseBallNumber[i] == computer.computerBaseBallNumber[j] && i != j) {
+                    ballCount++;
+                }
+            }
+        }
+    }
 }
