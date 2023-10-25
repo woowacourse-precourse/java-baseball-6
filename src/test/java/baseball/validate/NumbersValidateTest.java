@@ -24,7 +24,7 @@ public class NumbersValidateTest {
     @DisplayName("3 자리의 숫자 인지 확인한다. 숫자가 1개인 경우")
     public void numbersSizeTestError() {
         computersRandomNumbers = List.of(1);
-        assertThat(GameValidate.isCorrectSize(computersRandomNumbers)).isFalse();
+        assertThatThrownBy(()->GameValidate.isCorrectSize(computersRandomNumbers)).isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     @DisplayName("3 자리의 숫자 인지 확인한다. 숫자가 아닌 경우")
