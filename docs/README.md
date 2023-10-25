@@ -73,3 +73,8 @@
   - validate 클래스의 구체화
   - ErrorLog 클래스 만들기
   - 그 외 필요한 부분은 유동적 추가
+
+---
+
+해당 과제를 풀면서 고민한 과정들을 회고록으로 작성했습니다. <br>
+↪ [우아한 프리코스 6기 - 1주차 숫자 야구 회고록](https://velog.io/@yeseul/%EC%9A%B0%EC%95%84%ED%95%9C-%ED%85%8C%ED%81%AC%EC%BD%94%EC%8A%A4-6%EA%B8%B0-1%EC%A3%BC%EC%B0%A8-%EC%88%AB%EC%9E%90-%EC%95%BC%EA%B5%AC)
