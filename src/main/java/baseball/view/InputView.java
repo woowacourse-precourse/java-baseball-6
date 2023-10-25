@@ -12,4 +12,9 @@ public class InputView {
         Validator.validateBaseballInput(input);
         return Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
+
+    public Integer readRestartOption() {
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
 }

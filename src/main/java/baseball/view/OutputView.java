@@ -35,4 +35,8 @@ public class OutputView {
     public void printSuccessGuess() {
         System.out.println(Message.GAME_END);
     }
+
+    public void printRestart() {
+        System.out.println(Message.RESTART);
+    }
 }
