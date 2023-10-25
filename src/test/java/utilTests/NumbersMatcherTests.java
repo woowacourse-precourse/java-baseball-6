@@ -3,8 +3,8 @@ package utilTests;
 import baseball.container.ApplicationContainer;
 import baseball.util.matcher.NumbersMatcher;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -16,82 +16,83 @@ public class NumbersMatcherTests {
     private final ApplicationContainer container = new ApplicationContainer();
     private final NumbersMatcher numbersMatcher = container.getNumbersMatcher();
 
-    @Nested
-    @DisplayName("matches()")
-    class 숫자_대조 {
-        List<Integer> targetNumbers = new ArrayList<>();
-        String inputNumbers;
+    private List<Integer> targetNumbers;
+    private String inputNumbers;
 
-        @Test
-        @DisplayName("볼: 0, 스트라이크: 1")
-        void test1() {
-            // given
-            int[] numbers = {2, 5, 7};
+    @BeforeEach
+    void beforeEach() {
+        targetNumbers = new ArrayList<>();
+    }
 
-            for (int number : numbers)
-                targetNumbers.add(number);
+    @Test
+    @DisplayName("볼: 0, 스트라이크: 1")
+    void test1() {
+        // given
+        int[] numbers = {2, 5, 7};
 
-            inputNumbers = "358";
+        for (int number : numbers)
+            targetNumbers.add(number);
 
-            // when
-            String result = numbersMatcher.matches(targetNumbers, inputNumbers);
+        inputNumbers = "358";
 
-            // then
-            assertThat(result).isEqualTo("1스트라이크");
-        }
+        // when
+        String result = numbersMatcher.matches(targetNumbers, inputNumbers);
 
-        @Test
-        @DisplayName("볼: 3, 스트라이크: 0")
-        void test2() {
-            // given
-            int[] numbers = {3, 5, 8};
+        // then
+        assertThat(result).isEqualTo("1스트라이크");
+    }
 
-            for (int number : numbers)
-                targetNumbers.add(number);
+    @Test
+    @DisplayName("볼: 3, 스트라이크: 0")
+    void test2() {
+        // given
+        int[] numbers = {3, 5, 8};
 
-            inputNumbers = "835";
+        for (int number : numbers)
+            targetNumbers.add(number);
 
-            // when
-            String result = numbersMatcher.matches(targetNumbers, inputNumbers);
+        inputNumbers = "835";
 
-            // then
-            assertThat(result).isEqualTo("3볼");
-        }
+        // when
+        String result = numbersMatcher.matches(targetNumbers, inputNumbers);
 
-        @Test
-        @DisplayName("볼: 1, 스트라이크: 1")
-        void test3() {
-            // given
-            int[] numbers = {1, 2, 3};
+        // then
+        assertThat(result).isEqualTo("3볼");
+    }
 
-            for (int number : numbers)
-                targetNumbers.add(number);
+    @Test
+    @DisplayName("볼: 1, 스트라이크: 1")
+    void test3() {
+        // given
+        int[] numbers = {1, 2, 3};
 
-            inputNumbers = "329";
+        for (int number : numbers)
+            targetNumbers.add(number);
 
-            // when
-            String result = numbersMatcher.matches(targetNumbers, inputNumbers);
+        inputNumbers = "329";
 
-            // then
-            assertThat(result).isEqualTo("1볼 1스트라이크");
-        }
+        // when
+        String result = numbersMatcher.matches(targetNumbers, inputNumbers);
 
-        @Test
-        @DisplayName("볼: 0, 스트라이크: 3")
-        void test4() {
-            // given
-            int[] numbers = {5, 6, 9};
+        // then
+        assertThat(result).isEqualTo("1볼 1스트라이크");
+    }
 
-            for (int number : numbers)
-                targetNumbers.add(number);
+    @Test
+    @DisplayName("볼: 0, 스트라이크: 3")
+    void test4() {
+        // given
+        int[] numbers = {5, 6, 9};
 
-            inputNumbers = "569";
+        for (int number : numbers)
+            targetNumbers.add(number);
 
-            // when
-            String result = numbersMatcher.matches(targetNumbers, inputNumbers);
+        inputNumbers = "569";
 
-            // then
-            assertThat(result).isEqualTo("3스트라이크");
-        }
+        // when
+        String result = numbersMatcher.matches(targetNumbers, inputNumbers);
+
+        // then
+        assertThat(result).isEqualTo("3스트라이크");
     }
 }
