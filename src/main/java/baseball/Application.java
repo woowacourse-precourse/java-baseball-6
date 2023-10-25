@@ -29,8 +29,10 @@ public class Application {
         		}
         	} catch (NumberFormatException e) {
         	    throw new IllegalArgumentException();
+        	} catch (ArrayIndexOutOfBoundsException e) {
+        		throw new IllegalArgumentException();
         	}
-        	if (arr.length>3) {
+        	if (arr.length!=3) {
         	    throw new IllegalArgumentException();
         	}
         	else if (arr[0]==arr[1] | arr[1]==arr[2] | arr[0]==arr[2]) {
