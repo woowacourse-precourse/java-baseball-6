@@ -5,10 +5,33 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Baseball {
-    ArrayList<Integer> computerNumbers;
-    ArrayList<Integer> userNumbers;
-    int ball;
-    int strike;
+    private ArrayList<Integer> computerNumbers;
+    private ArrayList<Integer> userNumbers;
+    private int ball;
+    private int strike;
+
+    public boolean playBaseballGame() {
+        resetComputerNumber();
+        do {
+            inputUserNumbers();
+            playGame();
+            printResult();
+        } while (strike < 3);
+
+        boolean result = isGameExit();
+        return result;
+    }
+
+    private void inputUserNumbers() {
+        System.out.println("숫자를 입력해주세요. : ");
+        String inputNumber = Console.readLine();
+        try{
+            resetUserNumber(inputNumber);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
 
     private void resetComputerNumber() {
         computerNumbers = new ArrayList<Integer>();
@@ -53,11 +76,13 @@ public class Baseball {
             checkBall(i);
         }
     }
+
     private void checkStrike(int idx) {
         if(computerNumbers.get(idx) == userNumbers.get(idx)) {
             strike++;
         }
     }
+
     private void checkBall(int idx) {
         int userNum = userNumbers.get(idx);
         int computerNum = computerNumbers.get(idx);
@@ -85,16 +110,6 @@ public class Baseball {
         System.out.println();
     }
 
-    private void inputUserNumbers() {
-        System.out.println("숫자를 입력해주세요. : ");
-        String inputNumber = Console.readLine();
-        try{
-            resetUserNumber(inputNumber);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            throw e;
-        }
-    }
     private boolean isGameExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String exitGame = Console.readLine();
@@ -106,17 +121,5 @@ public class Baseball {
             return false;
         }
         return true;
-    }
-
-    public boolean playBaseballGame() {
-        resetComputerNumber();
-        do {
-            inputUserNumbers();
-            playGame();
-            printResult();
-        } while(strike < 3);
-
-        boolean result = isGameExit();
-        return result;
     }
 }
