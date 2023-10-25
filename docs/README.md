@@ -22,7 +22,6 @@
 
 # Computer
 - [x] 랜덤 숫자를 내주는 부분 ✅ 2023-10-24
-== 입력 검증하는 부분 메서드로 빼야함, Compititor에서도 쓸듯
 
 ---
 # TestCoverage
@@ -36,6 +35,6 @@
 - [x] GameCompititor
   - [x] generateRandomNumber
 
-
-
-
+  # To-Do
+- MVC 패턴 적용해보기
+- 게임 판정부분 조금 더 세분화 해보기
