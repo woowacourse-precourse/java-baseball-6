@@ -14,8 +14,8 @@ public class Validation {
         validateNumberRange(UserAnswer);
     }
 
-    public static void validateNumberLength(String str) {
-        if (str.length() != NUM_LENGTH) {
+    public static void validateNumberLength(String input) {
+        if (input.length() != NUM_LENGTH) {
             throw new IllegalArgumentException(EXCEPTION_NUM_LENGTH);
         }
     }
