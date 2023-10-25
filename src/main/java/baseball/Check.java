@@ -18,7 +18,6 @@ public class Check {
 		return comNum;
 	}
 	
-
 	public void checkCondition(String str) {
 		isRightLength(str);
 		isRightDigit(str);

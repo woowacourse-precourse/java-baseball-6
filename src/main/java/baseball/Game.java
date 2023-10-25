@@ -42,7 +42,7 @@ public class Game {
 	private void printBall(int str, int b) {
 		if (b != 0) {
 			if (str > 0) //볼 + 스트라이크
-				System.out.print(b + "볼 ");
+				System.out.print(b + Constants.BALL_STR + " ");
 			else { //3볼
 				System.out.println(b + Constants.BALL_STR);
 			}
