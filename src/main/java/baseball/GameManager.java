@@ -83,6 +83,5 @@ public class GameManager {
         System.out.println(inputResult);
         return inputResult;
     }
-
 }
 
