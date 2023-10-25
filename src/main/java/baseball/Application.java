@@ -4,6 +4,7 @@ import java.util.List;
 ;
 
 public class Application {
+
     static Game game = new Game();
 
     static Computer computer;

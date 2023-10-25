@@ -14,9 +14,7 @@ public class Game {
 
     public static void startGame(List<Integer> computerSelectNumbers) {
         startMessage();
-        String input = player.insertNumbers();
-        int len = input.length();
-        Exception.checkInputSize(len);
+        String input = player.inputNumber();
         compare(computerSelectNumbers, input);
     }
 
@@ -34,7 +32,7 @@ public class Game {
         HashSet<Integer> checkRepetition = new HashSet<>();
 
         for(int i=0; i<computer.size(); i++) {
-            int num = stringToInt(input, i);
+            int num = player.inputStrParseInt(input,i);
             Exception.numberRangeValidation(num);
             checkRepetition.add(num);
 
@@ -79,8 +77,7 @@ public class Game {
 
     public static void restartOrNot() {
         restartMessage();
-        String input = player.insertNumbers();
-        int num = stringToInt(input,0);
+        int num = player.inputRestartStatus();
         if (num == RESTART) {
             gameRestart();
         } else if (num == END) {
@@ -96,11 +93,6 @@ public class Game {
     }
 
 
-    public static int stringToInt(String str, int i) {
-        char strToChar = str.charAt(i);
-        int num = Character.getNumericValue(strToChar);
-        return num;
-    }
 
 
 }
