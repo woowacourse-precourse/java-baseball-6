@@ -6,7 +6,9 @@ import java.util.List;
 
 public class GameController {
     private final List<Integer> answer = new ArrayList<>();
+
     private int strike = 0;
+
     private int ball = 0;
 
     public GameController() {
@@ -24,9 +26,9 @@ public class GameController {
     }
 
     protected void isStrikeOrBall(List<Integer> userInput) {
-
         if (userInput.equals(answer)) {
             this.strike = this.answer.size();
+
             return;
         }
 
@@ -44,6 +46,7 @@ public class GameController {
             GamePhrases.strikePhrase(strike);
             GamePhrases.answerPhrase();
             GamePhrases.endPhrase();
+
             return false;
         } else if ((strike + ball) == 0) {
             GamePhrases.outPhrase();
@@ -57,6 +60,7 @@ public class GameController {
             GamePhrases.ballPhrase(ball);
             clearStrikeAndBall();
         }
+
         return true;
     }
 }

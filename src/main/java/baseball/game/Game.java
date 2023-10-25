@@ -3,11 +3,12 @@ package baseball.game;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-
     private final GamePlayer gamePlayer = new GamePlayer();
 
     public void run() {
+
         boolean restart = true;
+
         GamePhrases.startPhrase();
         do {
             BaseBallGameRunner();
@@ -22,9 +23,10 @@ public class Game {
     }
 
     private void BaseBallGameRunner() {
-        GameController gameController = new GameController();
+
         boolean isCorrect;
 
+        GameController gameController = new GameController();
         do {
             GamePhrases.inputPhrase();
             gameController.isStrikeOrBall(gamePlayer.userAnswerInput());

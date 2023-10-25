@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GamePlayer {
-
     private final ExceptionHandler exceptionHandler = new ExceptionHandler();
 
     protected List<Integer> userAnswerInput() {
 
         String[] userInputToStringArray;
+
         List<Integer> userInputToArrayListInteger = new ArrayList<>();
 
         try {
-            userInputToStringArray = exceptionHandler.exceptionHandler(Console.readLine()).split("");
+            userInputToStringArray = exceptionHandler
+                    .exceptionHandler(Console.readLine())
+                    .split("");
         } catch (Exception exception) {
             throw new IllegalArgumentException();
         }
@@ -28,12 +30,16 @@ public class GamePlayer {
     }
 
     protected String userRestartInput() {
+
         String userRestartInput;
+
         try {
-            userRestartInput = exceptionHandler.userElseInputAfterEndPhraseException(Console.readLine());
+            userRestartInput = exceptionHandler
+                    .userElseInputAfterEndPhraseException(Console.readLine());
         } catch (IllegalArgumentException illegalArgumentException) {
             throw new IllegalArgumentException();
         }
+
         return userRestartInput;
     }
 }
