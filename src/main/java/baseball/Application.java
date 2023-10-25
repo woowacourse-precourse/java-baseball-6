@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.*;
 public class Application {
     private String answer = null; // 사용자 진행 여부
     List<Integer> computer = new ArrayList<Integer>();
-    public Application() { // 생성자를 통해서 객체 생성시 랜덤 난수 생성
+    public Application() {
         while(computer.size()<3){ // computer 리스트의 크기가 3이 만족할 때까지
             int randomNumber = Randoms.pickNumberInRange(1,9); // 난수 뽑기
             if(!computer.contains(randomNumber)){ // 리스트안에 중복 된 요소가 아닌 경우
@@ -20,8 +20,8 @@ public class Application {
         int ball = 0; // 해당 메서드를 실행할 때마다 ball 변수를 초기화
         int strike = 0; // 해당 메서드를 실행할 때마다 strike 변수를 초기화
 
-        for (int i = 0; i < computer.size(); i++) { // computer[i]에서부터
-            for (int j = 0; j < list.size(); j++) { // list[1,2,3] 순으로 비교
+        for (int i = 0; i < computer.size(); i++) {
+            for (int j = 0; j < list.size(); j++) {
                 if (computer.get(i) == Integer.parseInt(list.get(j)) && i == j) // 난수 리스트 와 사용자가 입력한 리스트 안에 동일한 숫자가 존재하고 인덱스 위치까지 같다면
                     strike++; // strike count 1 증가
                 if (computer.get(i) == Integer.parseInt(list.get(j)) && i != j) // 난수 리스트 와 사용자가 입력한 리스트 안에 동일한 숫자가 존재하고 인덱스 위치는 다르다면
@@ -53,27 +53,30 @@ public class Application {
         while(true) {
             System.out.print("숫자를 입력해주세요:");
             String number = Console.readLine(); // 사용자가 입력한 수
-
-            List<String> numberArray = Arrays.asList(number.split("")); // 사용자가 입력한 수 분리하여 담아놓기 위한 배열
-            Boolean over = umpire(numberArray); // split한 배열을 판정하기 위해 umpire() 호출.
-            if(over == true) // umpire()에서 정답을 맞추고 반환 값이 true이면 while문 탈출.
-                break;
+            if(number.length() == 3 && Integer.parseInt(number) > 0 ) { // 입력가능한 수는 3자리, 양수 값만 입력이 가능하다
+                List<String> numberArray = Arrays.asList(number.split("")); // 사용자가 입력한 수 분리하여 담아놓기 위한 배열
+                Boolean over = umpire(numberArray);
+                if(over == true)
+                    break;
+            }else {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
     public static void main(String[] args) {
-        Application application = new Application(); // 객체 생성과 동시에 난수 생성.
-        application.input(); // 사용자에서 수를 입력받는 input() 호출.
+        Application application = new Application();
+        application.input();
 
         while(true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String answer = Console.readLine(); // 진행 여부 입력받기
+            String answer = Console.readLine();
 
             if(answer.equals("1")) {
-                application = new Application(); // 다시 시작 시 객체 다시 생성
+                application = new Application();
                 application.input();
             } else if (answer.equals("2")) {
-                return; // 게임 종료
+                return;
             }
         }
     }
