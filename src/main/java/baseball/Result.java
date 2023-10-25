@@ -1,8 +1,10 @@
 package baseball;
 
 public class Result {
-  private int Strike =0;
-  private int Ball =0;
+
+  private int Strike = 0;
+  private int Ball = 0;
+
   public Result() {
   }
 

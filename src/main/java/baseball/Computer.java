@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+
   private final static int NUMBER = 3;
   private final static int MIN_NUMBER = 1;
   private final static int MAX_NUMBER = 9;

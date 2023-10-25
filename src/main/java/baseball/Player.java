@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+
   private final static int NUMBER = 3;
 
   private List<Integer> PlayerNum = new ArrayList<>();

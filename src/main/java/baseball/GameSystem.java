@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class GameSystem {
+
   private final static int NUMBER = 3;
 
   public GameSystem() {
