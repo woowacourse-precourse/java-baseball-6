@@ -44,6 +44,9 @@ public class Application {
                                     "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                                     "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                             int data = Integer.parseInt(Console.readLine());
+                            if(data != 1 && data !=2){
+                                throw  new IllegalArgumentException("1과 2의 숫자중에 입력바랍니다.");
+                            }
                             if (data == 2) {
                                 game = false;
                             } else {
