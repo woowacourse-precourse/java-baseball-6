@@ -14,17 +14,12 @@ public class GameProcess {
     Computer computer1 = new Computer();
     public static void process() {
 
-        //Scanner scanner = new Scanner(System.in);
         input = new ArrayList<>();
         String num;
         int start_or_exit;
-       // System.out.println("1"); // computer 배열 3개가 어디서 생겨나는 지 확인하기 위한 코드
         Implementation implementation1 = new Implementation();
-        //System.out.println("2");
-        Computer computer1 = new Computer(); //
-        //System.out.println("3");
-        List<Integer> computerNumbers = computer1.generateRandomNumbers(); // 4
-        //System.out.println("4");
+        Computer computer1 = new Computer();
+        List<Integer> computerNumbers = computer1.generateRandomNumbers(); 
         while (true) {
             try {
                 System.out.print("숫자를 입력해주세요 : ");
