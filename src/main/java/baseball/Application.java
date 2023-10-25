@@ -1,8 +1,8 @@
 package baseball;
 
+import baseball.gameUser.Computer;
+import baseball.gameUser.User;
 import camp.nextstep.edu.missionutils.Console;
-import gameUser.Computer;
-import gameUser.User;
 import java.util.List;
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package gameUser;
+package baseball.gameUser;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
