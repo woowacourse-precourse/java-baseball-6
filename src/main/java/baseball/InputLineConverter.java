@@ -6,7 +6,7 @@ import java.util.*;
 
 public class InputLineConverter {
 
-    private final Illegalcheck illegalcheck = new Illegalcheck();
+    private final IllegalCheck illegalcheck = new IllegalCheck();
     public Optional<ArrayList<Integer>> stringToIntegerList() {
         ArrayList<Integer> ConvertedList = null;
 

@@ -1,6 +1,6 @@
 package baseball;
 
-public class Illegalcheck {
+public class IllegalCheck {
 
     public boolean commandAvailable(String commandLine){
         if(commandLine.equals("1") || commandLine.equals("2")){

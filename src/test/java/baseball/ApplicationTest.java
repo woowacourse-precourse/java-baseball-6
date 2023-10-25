@@ -62,9 +62,18 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트_commandNumberException() {
-        final Illegalcheck illegalcheck = new Illegalcheck();
+        final IllegalCheck illegalcheck = new IllegalCheck();
 
-        assertThatThrownBy(() -> illegalcheck.commandCheck(3))
+        assertThatThrownBy(() -> illegalcheck.commandAvailable("3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력값은 1 or 2 입니다.");
+    }
+
+    @Test
+    void 예외_테스트_commandNumberException_문자() {
+        final IllegalCheck illegalcheck = new IllegalCheck();
+
+        assertThatThrownBy(() -> illegalcheck.commandAvailable("c"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력값은 1 or 2 입니다.");
     }
