@@ -45,7 +45,6 @@ class UserTest {
 
         // then
         assertEquals(NUMBER_BALLS, user.countNumberBalls());
-
     }
 
     @Test

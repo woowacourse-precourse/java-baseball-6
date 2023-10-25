@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import baseball.ui.ConsoleInput;
 import baseball.ui.ConsoleOutput;
+import baseball.ui.Input;
+import baseball.ui.Output;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -20,8 +22,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class ComputerTest {
 
-    private static ConsoleInput CONSOLE_INPUT;
-    private static ConsoleOutput CONSOLE_OUTPUT;
+    private static Input input;
+    private static Output output;
     private static User user;
     private static Computer computer;
     private static InputStream originalSystemIn;

@@ -1,18 +1,18 @@
 package baseball.domain;
 
-import baseball.ui.IOutput;
+import baseball.ui.Output;
 import baseball.utils.Utility;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer implements IPlayer {
+public class Computer implements Player {
 
-    private final IOutput output;
+    private final Output output;
     private List<Integer> numbers;
     private Response response;
 
-    public Computer(IOutput output) {
+    public Computer(Output output) {
         this.output = output;
     }
 

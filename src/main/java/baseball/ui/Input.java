@@ -1,6 +1,6 @@
 package baseball.ui;
 
-public interface IInput {
+public interface Input {
 
     String scan();
 }

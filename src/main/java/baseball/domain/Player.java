@@ -1,6 +1,6 @@
 package baseball.domain;
 
-public interface IPlayer {
+public interface Player {
 
     void generatePlayerNumber(final int NUMBER_BALLS);
 }

@@ -1,6 +1,6 @@
 package baseball.ui;
 
-public class ConsoleOutput implements IOutput {
+public class ConsoleOutput implements Output {
 
     @Override
     public void print(Message message) {

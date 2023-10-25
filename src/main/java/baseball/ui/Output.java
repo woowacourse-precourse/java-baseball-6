@@ -1,6 +1,6 @@
 package baseball.ui;
 
-public interface IOutput {
+public interface Output {
 
     void print(Message message);
 

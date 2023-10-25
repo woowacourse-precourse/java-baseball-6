@@ -2,15 +2,15 @@ package baseball.domain;
 
 import static baseball.utils.Utility.convertStringToBall;
 
-import baseball.ui.IInput;
+import baseball.ui.Input;
 import java.util.List;
 
-public class User implements IPlayer {
+public class User implements Player {
 
-    private final IInput input;
+    private final Input input;
     private List<Integer> numbers;
 
-    public User(IInput input) {
+    public User(Input input) {
         this.input = input;
     }
 
