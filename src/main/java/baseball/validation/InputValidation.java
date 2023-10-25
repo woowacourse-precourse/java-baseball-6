@@ -1,6 +1,7 @@
 package baseball.validation;
 
 import static baseball.constant.Message.INPUT_DIGIT_EXCEPTION_MSG;
+import static baseball.constant.Message.INPUT_END_EXCEPTION_MSG;
 import static baseball.constant.Message.INPUT_NATURAL_NUMBER_EXCEPTION_MSG;
 import static baseball.constant.Message.INPUT_STRING_EXCEPTION_MSG;
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
 public class InputValidation {
+
 
     private void checkInputLength(String input) {
         if (input.length() != 3) {
@@ -44,10 +46,18 @@ public class InputValidation {
         return checkSetLength(set);
     }
 
-
     public ArrayList<Integer> startInput() {
         String input = readLine();
         checkInputLength(input);
         return new ArrayList<>(checkInputNumber(input));
     }
+
+    public String endInput() {
+        String input = readLine();
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException(INPUT_END_EXCEPTION_MSG);
+        }
+        return input;
+    }
+
 }
