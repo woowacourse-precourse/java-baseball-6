@@ -10,11 +10,16 @@ public class BaseballGame {
     private boolean on = true;
     private int strike = 0;
     private int ball = 0;
+    private String message = "";
+
 
     private void onToFalse() {
         on = false;
     }
 
+    private void resetMessage() {
+        this.message = "";
+    }
 
     private void resetStrike() {
         this.strike = 0;
@@ -43,6 +48,7 @@ public class BaseballGame {
     public void reStart() {
         resetStrike();
         resetBall();
+        resetMessage();
         onToFalse();
         List<Integer> cpuNewInput = new RandomNumber().getRandomNumbers();
         System.out.println("컴퓨터 숫자:" + cpuNewInput);
@@ -59,9 +65,9 @@ public class BaseballGame {
 
 
     public void play(List<Integer> target, String input) {
-        List<Integer> reTarget = new ArrayList<>(target);
+        resetMessage();
 
-        String message = "";
+        List<Integer> reTarget = new ArrayList<>(target);
 
         List<Integer> userNum = stringToIntegerList(input);
 
