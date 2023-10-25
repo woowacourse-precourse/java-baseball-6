@@ -1,11 +1,11 @@
-package controller;
+package view;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputGameNumber {
+public class UserGameNumberInput {
 
     /**
      * 사용자가 게임 숫자를 입력하는 기능
