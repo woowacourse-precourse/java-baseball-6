@@ -13,7 +13,7 @@ public class JudgeNumber {
         return result;
     }
 
-    public boolean isNumber() {
-        return false;
+    public boolean isNumber(List<Integer> computer, int placeNumberIdx, int number) {
+        return computer.get(placeNumberIdx) == number;
     }
 }
