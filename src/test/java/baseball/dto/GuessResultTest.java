@@ -56,7 +56,7 @@ class GuessResultTest {
         assertThat(newGuessResult.count(BallStatus.STRIKE)).isOne();
     }
 
-    @DisplayName("STRIKE가 3개 존재하는 경우 true가 반환된다")
+    @DisplayName("STRIKE가 3개 존재하는 경우에만 true가 반환된다")
     @ParameterizedTest
     @MethodSource("correctArgumentsProvider")
     void correct(GuessResult guessResult, boolean expected) {
@@ -69,7 +69,8 @@ class GuessResultTest {
                 Arguments.of(createGuessResult(1, 0), false),
                 Arguments.of(createGuessResult(1, 1), false),
                 Arguments.of(createGuessResult(2, 1), false),
-                Arguments.of(createGuessResult(3, 0), true)
+                Arguments.of(createGuessResult(3, 0), true),
+                Arguments.of(createGuessResult(4, 0), false)
         );
     }
 }
