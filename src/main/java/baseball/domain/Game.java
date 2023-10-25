@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -49,14 +51,12 @@ public class Game {
 
     public Result play() {
         List<Integer> answer = this.computer.getNumber().getNumbers();
-//        answer.stream().forEach(System.out::print);
         System.out.print("숫자를 입력해주세요: ");
         List<Integer> input = Arrays.stream(this.player.enterInput().split(""))
                 .mapToInt(Integer::parseInt)
                 .distinct()
                 .boxed()
                 .collect(Collectors.toList());
-//        input.stream().forEach(System.out::print);
 
         if (input.size() != 3) {
             throw new IllegalArgumentException();
@@ -79,8 +79,7 @@ public class Game {
 
     public void choiceContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+        int choice = Integer.parseInt(Console.readLine());
         if (choice == 1) setStatus(GameStatus.RESTART);
         else setStatus(GameStatus.END);
     }
