@@ -2,8 +2,8 @@ package baseball.controller;
 
 import static baseball.domain.Score.THREE_STRIKE;
 
-import baseball.domain.BaseBallGame;
 import baseball.domain.Score;
+import baseball.service.BaseBallGameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -11,12 +11,12 @@ import java.util.List;
 public class BaseBallGameController {
 
     private final InputView inputView;
-    private final BaseBallGame baseBallGame;
+    private final BaseBallGameService baseBallGameService;
     private final OutputView outputView;
 
-    public BaseBallGameController(InputView inputView, BaseBallGame baseBallGame, OutputView outputView) {
+    public BaseBallGameController(InputView inputView, BaseBallGameService baseBallGameService, OutputView outputView) {
         this.inputView = inputView;
-        this.baseBallGame = baseBallGame;
+        this.baseBallGameService = baseBallGameService;
         this.outputView = outputView;
     }
 
@@ -24,7 +24,7 @@ public class BaseBallGameController {
         Score gameResult;
         do {
             List<Integer> tryNumbers = inputView.inputTryNumber();
-            gameResult = baseBallGame.createGameResult(tryNumbers, answerNumbers);
+            gameResult = baseBallGameService.createGameResult(tryNumbers, answerNumbers);
             outputView.printGameResult(gameResult.getName());
         } while (notThreeStrike(gameResult));
         return gameResult;

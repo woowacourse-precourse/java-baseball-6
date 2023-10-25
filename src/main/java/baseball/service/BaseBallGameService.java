@@ -1,12 +1,16 @@
-package baseball.domain;
+package baseball.service;
 
+import baseball.domain.Ball;
+import baseball.domain.GameReferee;
+import baseball.domain.RandomNumberGenerator;
+import baseball.domain.Score;
 import java.util.List;
 
-public class BaseBallGame {
+public class BaseBallGameService {
 
     private final RandomNumberGenerator randomNumberGenerator;
 
-    public BaseBallGame(RandomNumberGenerator randomNumberGenerator) {
+    public BaseBallGameService(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
     }
 

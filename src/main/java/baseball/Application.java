@@ -3,9 +3,9 @@ package baseball;
 import static baseball.domain.Score.THREE_STRIKE;
 
 import baseball.controller.BaseBallGameController;
-import baseball.domain.BaseBallGame;
 import baseball.domain.RandomNumberGenerator;
 import baseball.domain.Score;
+import baseball.service.BaseBallGameService;
 import baseball.service.DefaultConsoleService;
 import baseball.service.DefaultRandomService;
 import baseball.view.InputView;
@@ -19,7 +19,8 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        BaseBallGame baseBallGame = new BaseBallGame(new RandomNumberGenerator(new DefaultRandomService()));
+        BaseBallGameService baseBallGameService = new BaseBallGameService(
+                new RandomNumberGenerator(new DefaultRandomService()));
         InputView inputView = new InputView(new DefaultConsoleService(), new InputValidator());
         OutputView outputView = new OutputView();
         Score gameResult;
@@ -27,9 +28,9 @@ public class Application {
         outputView.printGameStart();
 
         do {
-            List<Integer> answerNumbers = baseBallGame.createAnswerNumbers();
+            List<Integer> answerNumbers = baseBallGameService.createAnswerNumbers();
 
-            BaseBallGameController controller = new BaseBallGameController(inputView, baseBallGame, outputView);
+            BaseBallGameController controller = new BaseBallGameController(inputView, baseBallGameService, outputView);
             gameResult = controller.competeWith(answerNumbers);
 
             outputView.printGameFinish();
