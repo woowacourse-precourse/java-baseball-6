@@ -9,6 +9,9 @@ import java.util.HashSet;
 
 public class BaseballGame {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String RESTART_CHOICE = "1";
+    private static final int REQUIRED_STRIKES_FOR_WIN = 3;
+
     private User user;
     private Computer computer;
 
@@ -39,11 +42,11 @@ public class BaseballGame {
         int ball = countBall(number, answer);
         Output.print(ball, strike);
 
-        return strike == 3;
+        return strike == REQUIRED_STRIKES_FOR_WIN;
     }
 
     private boolean isUserWantsToRestart() {
-        return "1".equals(Input.restart());
+        return RESTART_CHOICE.equals(Input.restart());
     }
 
 
