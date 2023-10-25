@@ -20,11 +20,11 @@ class GameControllerTest {
     void setup() {
         gameService = new GameService(new TestRandomCreator());
         gameController = new GameController(gameService);
+        gameController.initializeGame();
     }
 
     @Test
     void 스트라이크_세_개일_때_게임_종료_상태를_반환한다() {
-        gameController.initializeGame();
         GameStatus gameStatus = gameController.playGameRound(Arrays.asList(1, 2, 3));
 
         assertEquals(GameStatus.END, gameStatus);
@@ -32,9 +32,14 @@ class GameControllerTest {
 
     @Test
     void 스트라이크_세_개가_아닐_때_게임_지속_상태를_반환한다() {
-        gameController.initializeGame();
         GameStatus gameStatus = gameController.playGameRound(Arrays.asList(1, 2, 7));
 
         assertEquals(GameStatus.CONTINUE, gameStatus);
+    }
+
+    @Test
+    void 사용자가_잘못된_입력을_했을_때_예외_발생() {
+        assertThrows(IllegalArgumentException.class,
+            () -> gameController.playGameRound(Arrays.asList(0, 2, 7)));
     }
 }
