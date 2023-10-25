@@ -6,26 +6,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    static boolean restart = true;
+    static boolean restart;
+    static boolean userPlayAgain;
+    static final int INPUT_MIN = 1;
+    static final int INPUT_MAX = 9;
+    static final int INPUT_SIZE = 3;
+    static final String RESTART_GAME = "1";
+    static final String EXIT_GAME = "2";
 
     public void start(){
+        restart = true;
+
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(restart){
-            play();
+        try{
+            while(restart){
+                play();
+                askRestart();
+            }
+        } catch(IllegalArgumentException e){
+            throw new IllegalArgumentException();
         }
     }
 
     private void play(){
-        List<Integer> computer = getComputerPlay();
+        List<Integer> computer = new ArrayList<>();
+        List<Integer> user = new ArrayList<>();
 
-        List<Integer> user = getUserPlay();
+        computer = getComputerPlay();
 
-        checkPlay(computer, user);
-    }
+        userPlayAgain = true;
+
+        while(userPlayAgain){
+            try{
+                user = getUserPlay();
+                checkPlay(computer, user);
+
+            } catch(IllegalArgumentException e){
+                throw new IllegalArgumentException();
+            }
+        }
+}
 
     private List<Integer> getComputerPlay(){
-        //서로 다른 숫자 입력할 수 잇게끔 해야함 -> 리드미 참조!!
         List<Integer> computerPlay = new ArrayList<>();
 
         while (computerPlay.size() < 3) {
@@ -38,17 +61,24 @@ public class Game {
         return computerPlay;
     }
 
-    private List<Integer> getUserPlay(){
+    private List<Integer> getUserPlay() throws IllegalArgumentException{
         List<Integer> userPlay = new ArrayList<>();
 
         System.out.print("숫자를 입력해주세요 : ");
 
         String[] input = Console.readLine().split("");
 
-        int inputSize = input.length;
+        if(input.length != INPUT_SIZE){
+            throw new IllegalArgumentException();
+        }
 
-        for(int i = 0; i < inputSize; i++){
+        for(int i = 0; i < INPUT_SIZE; i++) {
             int value = Integer.parseInt(input[i]);
+
+            if(value < INPUT_MIN || value > INPUT_MAX || userPlay.contains(value)){
+                throw new IllegalArgumentException("Input error");
+            }
+
             userPlay.add(value);
         }
 
@@ -59,47 +89,43 @@ public class Game {
         int ballCount = 0;
         int strikeCount = 0;
 
-        for(int computerNumber : computerPlay){
-            boolean sameNumber = false;
-            if(userPlay.contains(userPlay)){
-                sameNumber = true;
-            }
+        for(int i = 0; i < INPUT_SIZE; i++){
+            int userNum = userPlay.get(i);
 
-            while(sameNumber){
-
+            if(computerPlay.contains(userNum) && (computerPlay.indexOf(userNum) == i)){
+                strikeCount++;
+            } else if(computerPlay.contains(userNum)){
+                ballCount++;
             }
-//            for(int j = 0; j < 3; j++){
-//                if(userPlay[i].equals(computerPlay[j]) && i == j){
-//                    strikeCount++;
-//                    break;
-//                } else if(userPlay[i].equals(computerPlay[j]) && i != j){
-//                    ballCount++;
-//                }
-//            }
         }
 
         if(ballCount != 0 && strikeCount != 0){
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-        } else if(ballCount != 0 && strikeCount == 0){
+        } else if(ballCount != 0){
             System.out.println(ballCount + "볼");
-        } else if(ballCount == 0 && strikeCount != 0){
+        } else if(strikeCount != 0){
             System.out.println(strikeCount + "스트라이크");
-            isRestart(strikeCount);
+
+            if(strikeCount == 3){
+                userPlayAgain = false;
+            }
         } else{
             System.out.println("낫싱");
         }
     }
 
-    private void isRestart(int strikeCount){
-        if(strikeCount == 3){
-            String choose;
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    private void askRestart() throws IllegalArgumentException{
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            choose = Console.readLine();
-            if(choose.equals("2")) {
-                restart = false;
-            }
+        String choose;
+        choose = Console.readLine();
+        if(choose.equals(EXIT_GAME) ){
+            restart = false;
+        } else if(choose.equals(RESTART_GAME)) {
+            restart = true;
+        } else{
+            throw new IllegalArgumentException("Input error");
         }
     }
 }
