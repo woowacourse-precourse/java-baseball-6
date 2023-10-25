@@ -11,6 +11,7 @@ public class OutputView {
     public static final String NOTHING_MESSAGE = "낫싱\n";
     public static final String BALL_MESSAGE = "%d볼\n";
     public static final String STRIKE_MESSAGE = "%d스트라이크\n";
+    public static final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
 
 
     public static void printGameStart() {
@@ -44,6 +45,12 @@ public class OutputView {
     private static void printStrike(GameResponse response) {
         if (!response.hasNoStrike() && response.hasNoBall()) {
             System.out.printf(STRIKE_MESSAGE, response.getStrike());
+        }
+    }
+
+    private static void printBallStrike(GameResponse response) {
+        if (!response.hasNoStrike() && !response.hasNoBall()) {
+            System.out.printf(BALL_STRIKE_MESSAGE, response.getBall(), response.getStrike());
         }
     }
 }
