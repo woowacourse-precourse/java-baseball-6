@@ -1,5 +1,7 @@
 package domain;
 
+import exception.InvalidBaseBallNumberException;
+
 import java.util.Objects;
 
 public class BaseBall {
@@ -8,7 +10,14 @@ public class BaseBall {
     public final int baseballNumber;
 
     public BaseBall(int baseballNumber) {
+        validateNumber(baseballNumber);
         this.baseballNumber = baseballNumber;
+    }
+
+    private void validateNumber(int baseballNumber) {
+        if (MINIMUN > baseballNumber || MAXIMIN < baseballNumber) {
+            throw new InvalidBaseBallNumberException();
+        }
     }
 
     @Override

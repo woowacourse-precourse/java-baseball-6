@@ -18,15 +18,11 @@ public class RandomNumbers {
     // drawRandomNumbers: 랜덤 넘버를 세 개 지정
     private List<BaseBall> drawRandomNumbers() {
         randomNumbers = new ArrayList<>();
-//        while (randomNumbers.size() != RANDOM_COUNT) {
-//            BaseBall randomNumber = new BaseBall(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
-//            if (!randomNumbers.contains(randomNumber)) {
-//                randomNumbers.add(randomNumber);
-//            }
-//        }
-        for (int i = 1; i <= 3; i++) {
-            BaseBall randomNumber = new BaseBall(i);
-            randomNumbers.add(randomNumber);
+        while (randomNumbers.size() != RANDOM_COUNT) {
+            BaseBall randomNumber = new BaseBall(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
         }
         return randomNumbers;
     }

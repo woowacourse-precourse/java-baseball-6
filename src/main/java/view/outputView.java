@@ -42,4 +42,7 @@ public class outputView {
     public static void printThreeStrikeMessage() {
         System.out.println(THREE_STRIKE_MESSAGE);
     }
+
+    public static void printGameEndMessage() {
+    }
 }
