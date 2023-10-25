@@ -46,14 +46,16 @@ public class Application {
     private static List<Integer> getUserInput() {
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        if (input.length() != 3 || !input.matches("[1-9]+")) {
+        int number = Integer.parseInt(input);
+        if (number < 100 || number > 999) {
             throw new IllegalArgumentException("서로 다른 3자리 숫자를 입력하세요.");
         }
 
         List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            numbers.add(input.charAt(i) - '0');
-        }
+        numbers.add(number/100);
+        numbers.add(number/10%10);
+        numbers.add(number%10);
+
         return numbers;
     }
 
@@ -86,5 +88,9 @@ public class Application {
             }
         }
         return balls;
+    }
+
+    private static void hi() {
+        System.out.println("hello");
     }
 }
