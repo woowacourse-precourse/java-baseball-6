@@ -54,7 +54,7 @@ public class Game {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
 
-        if (input.length() > 3) {
+        if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
         return toArrayList(input);
@@ -99,6 +99,13 @@ public class Game {
     private boolean inputRegame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
+        isValidRegameInput(input);
         return input.equals("1");
+    }
+
+    private void isValidRegameInput(String input) throws IllegalArgumentException {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException();
+        }
     }
 }
