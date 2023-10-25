@@ -17,14 +17,9 @@ public class InputView {
     }
 
     public static RestartAnswerRequest requestContinueAnswer() {
-        try {
-            System.out.println(CONTINUE_MESSAGE);
-            final String arg = inputAndCheckNullOrBlank();
-            return new RestartAnswerRequest(arg);
-        } catch (InputException e) {
-            System.out.println(e.getMessage());
-            return requestContinueAnswer();
-        }
+        System.out.println(CONTINUE_MESSAGE);
+        final String arg = inputAndCheckNullOrBlank();
+        return new RestartAnswerRequest(arg);
     }
 
     private static String inputAndCheckNullOrBlank() {

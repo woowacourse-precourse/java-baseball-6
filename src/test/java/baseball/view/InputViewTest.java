@@ -58,19 +58,18 @@ class InputViewTest {
     }
 
     @Test
-    @DisplayName("재시작 여부에서 잘못된 값 입력 시 정상 입력이 될 때까지 입력을 받는다.")
+    @DisplayName("재시작 여부에서 잘못된 값 입력 시 예외가 발생한다")
     public void 재시작_여부_잘못_입력() throws Exception {
 
         // given
         setReadLine(" ");
-        setReadLine("1");
 
         // when
-        RestartAnswerRequest expect = new RestartAnswerRequest("1");
-        RestartAnswerRequest actual = InputView.requestContinueAnswer();
 
         // then
-        assertThat(actual).usingRecursiveComparison().isEqualTo(expect);
+        assertThrows(InputException.class, () -> {
+            InputView.requestContinueAnswer();
+        });
     }
 
     public void setReadLine(String readLine) {
