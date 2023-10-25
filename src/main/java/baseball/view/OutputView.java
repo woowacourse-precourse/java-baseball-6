@@ -19,7 +19,7 @@ public class OutputView {
         if (board[BallStatus.STRIKE.getValue()] > MIN_COUNT) {
             stringBuilder.append(board[BallStatus.STRIKE.getValue()]).append("스트라이크");
         }
-        if (board[BallStatus.NOTHING.getValue()] > MAX_COUNT) {
+        if (board[BallStatus.NOTHING.getValue()] == MAX_COUNT) {
             stringBuilder.append("낫싱");
         }
         System.out.println(stringBuilder);

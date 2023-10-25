@@ -11,6 +11,7 @@ import baseball.domain.Balls;
 import baseball.domain.EndOption;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import utils.ValidationUtils;
@@ -56,6 +57,7 @@ public class BaseballGame {
             board[result]++;
         }
         printHint(board);
+        System.out.println(Arrays.toString(board));
     }
 
     private List<Integer> createRandomNumbers() {
@@ -88,6 +90,9 @@ public class BaseballGame {
         List<Integer> numbers = new ArrayList<>();
         for (char c : inputNumbers.toCharArray()) {
             numbers.add(c - '0');
+        }
+        if (numbers.size() != 3) {
+            throw new IllegalArgumentException("잘못된 입력입니다. 3자리의 숫자를 입력해 주세요.");
         }
         return numbers;
     }
