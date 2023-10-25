@@ -15,7 +15,6 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = readLine();
                 List<Integer> number = NumberConverter.from(input);
-
                 boolean isAnswer = game.play(number);
                 if (isAnswer) break;
             }
@@ -31,7 +30,4 @@ public class Application {
             }
         }
     }
-
-
-
 }
