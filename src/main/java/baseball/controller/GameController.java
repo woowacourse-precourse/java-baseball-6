@@ -15,18 +15,41 @@ public class GameController {
         this.outputView = outputView;
     }
 
-
     public void startGame() {
         outputView.printStart();
         Computer computer = new Computer();
 
-        List<Integer> userGuess = guessUser();
-        Result result = computer.getStrikesAndBalls(userGuess);
-        outputView.printResult(result);
+        while (true) {
+            List<Integer> userGuess = guessUser();
+            Result result = computer.getStrikesAndBalls(userGuess);
+            outputView.printResult(result);
+
+            if (isGameWin(result)) {
+                outputView.printSuccessGuess();
+                break;
+            }
+        }
+
+        if (askForRestart()) {
+            restartGame();
+        }
     }
 
     private List<Integer> guessUser() {
         outputView.printUserGuess();
         return inputView.readUserGuess();
+    }
+
+    private boolean isGameWin(Result result) {
+        return result.getStrikes() == 3;
+    }
+
+    private boolean askForRestart() {
+//        TODO
+        return true;
+    }
+
+    private void restartGame() {
+        startGame();
     }
 }
