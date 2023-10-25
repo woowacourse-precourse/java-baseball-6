@@ -25,13 +25,17 @@ public class InputUtil {
     }
 
     public static Integer getRestartInfo() {
-        String restartInfo = Console.readLine();
+        try {
+            String restartInfo = Console.readLine();
 
-        // 재시작 정보 검증
-        validation.validateRestartInfo(restartInfo);
+            // 재시작 정보 검증
+            validation.validateRestartInfo(restartInfo);
 
-        // 재시작 정보 정수값으로 변환하여 반환
-        return Integer.parseInt(restartInfo);
+            // 재시작 정보 정수값으로 변환하여 반환
+            return Integer.parseInt(restartInfo);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RESTART_INFO_LENGTH.getMessage());
+        }
     }
 
     private static List<Integer> strToList(String playerInput) {
