@@ -18,4 +18,9 @@ public class InputView {
             .boxed()
             .collect(Collectors.toList());
     }
+
+    public static int inputRestart() {
+        return Integer.parseInt(Console.readLine());
+    }
+
 }
