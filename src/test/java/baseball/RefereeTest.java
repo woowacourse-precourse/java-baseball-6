@@ -13,9 +13,9 @@ class RefereeTest {
         List<Integer> computer = List.of(1, 2, 3);
         List<Integer> number = List.of(2, 4, 5);
 
-        int result = Referee.countBall(computer, number);
+        boolean result = Referee.judge(computer, number);
 
-        assertThat(result).isEqualTo(1);
+        assertThat(result).isEqualTo(true);
     }
 
     @Test
@@ -23,8 +23,8 @@ class RefereeTest {
         List<Integer> computer = List.of(1, 2, 3);
         List<Integer> number = List.of(1, 4, 3);
 
-        int result = Referee.countStrike(computer, number);
+        boolean result = Referee.judge(computer, number);
 
-        assertThat(result).isEqualTo(2);
+        assertThat(result).isEqualTo(true);
     }
 }
