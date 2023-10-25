@@ -3,6 +3,25 @@ package baseball;
 public class ValidateChecker {
 
     Exception exception = new Exception();
+    ValidateCheckerUtils validateCheckerUtils = new ValidateCheckerUtils();
+
+    void isUserInputValidate(String userInput) {
+        validateCheckerUtils.checkLengthValidate(userInput, 3);
+        if (!validateCheckerUtils.isRangeValidate(userInput, '1', '9'))
+            exception.generateInvalidAnswerRangeException();
+        validateCheckerUtils.checkDuplicateValidate(userInput);
+    }
+
+    void isRetryInputValidate(String retryInput) {
+        if (retryInput.length() != 1)
+            exception.generateInvalidRetryInputLengthException();
+        if (!validateCheckerUtils.isRangeValidate(retryInput, '1', '2'))
+            exception.generateInvalidRetryInputRangeException();
+    }
+}
+
+class ValidateCheckerUtils {
+    Exception exception = new Exception();
 
     int count(String input, char target) {
         int countNum;
@@ -33,18 +52,5 @@ public class ValidateChecker {
             if (count(userInput, userInput.charAt(i)) > 1)
                 exception.generateInvalidAnswerDuplicateException();
         }
-    }
-
-    void isUserInputValidate(String userInput) {
-        checkLengthValidate(userInput, 3);
-        if (!isRangeValidate(userInput, '1', '9'))
-                exception.generateInvalidAnswerRangeException();
-        checkDuplicateValidate(userInput);
-    }
-
-    void isRetryInputValidate(String retryInput) {
-        checkLengthValidate(retryInput, 1);
-        if (!isRangeValidate(retryInput, '1', '2'))
-            exception.generateInvalidAnswerRangeException();
     }
 }
