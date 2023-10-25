@@ -33,7 +33,8 @@
 
 ## 📋 랜덤 번호 선택
 ### 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 
-- Random값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
+- ~~Random값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.~~
+- `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`함수를 활용한다.
 
 
 ## 📋 번호 입력 받기
