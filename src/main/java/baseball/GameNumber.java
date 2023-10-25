@@ -7,6 +7,10 @@ public class GameNumber {
         this.value = value;
     }
 
+    public char getCharAt(int index) {
+        return value.charAt(index);
+    }
+
     public static GameNumber from(String input) {
         validate(input);
         return new GameNumber(input);
@@ -54,10 +58,11 @@ public class GameNumber {
     }
 
     private boolean isStrike(GameNumber guessed, int index) {
-        return this.value.charAt(index) == guessed.value.charAt(index);
+        return this.getCharAt(index) == guessed.getCharAt(index);
     }
 
     private boolean isBall(GameNumber guessed, int index) {
-        return this.value.contains(String.valueOf(guessed.value.charAt(index)));
+        String keyword = String.valueOf(guessed.getCharAt(index));
+        return this.value.contains(keyword);
     }
 }
