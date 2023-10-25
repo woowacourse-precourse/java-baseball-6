@@ -20,8 +20,26 @@ public class Application {
         while (user.isContinued()) {
             game.init();
             resolve(game, user);
-            user.decide();
+            askReGame(user);
         }
+    }
+
+    private static void askReGame(User user) {
+        printReGameMessage();
+        String newReGame = Console.readLine();
+        user.setContinued(validateReGame(newReGame));
+    }
+
+    private static boolean validateReGame(String newReGame) throws IllegalArgumentException {
+        if (newReGame.equals("1")) {
+            return true;
+        }
+
+        if (newReGame.equals("2")) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
     public static void resolve(Game game, User user) {
