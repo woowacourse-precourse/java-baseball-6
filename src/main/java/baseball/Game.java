@@ -43,7 +43,7 @@ public class Game {
 			restart = Integer.parseInt(Console.readLine());
 
 			if (restart!=1 && restart!=2) {
-				System.out.println("잘못된 입력값입니다. 1이나 2를 입력해주세요.");
+				throw new IllegalArgumentException("잘못된 입력값입니다. 1이나 2를 입력해주세요.");
 			} else {
 				break;
 			}
