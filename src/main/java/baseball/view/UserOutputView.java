@@ -11,18 +11,22 @@ public class UserOutputView {
     public UserOutputView(GameResult gameResult) {
         this.gameResult = gameResult;
     }
+
+    public static void startGame() {
+        System.out.println(startGameMessage);
+    }
+
+    public static void finishGame() {
+        System.out.println(gameFinishMessage);
+    }
+
     public void printDescription(){
         strike();
         ball();
         ballAndStrike();
         nothing();
     }
-    public static void startGame() {
-        System.out.println(startGameMessage);
-    }
-    public static void finishGame() {
-        System.out.println(gameFinishMessage);
-    }
+
     private void strike(){
         if(gameResult.ballCount == nothingCount && gameResult.strikeCount != nothingCount){
             System.out.println(gameResult.strikeCount + strikeMessage);
