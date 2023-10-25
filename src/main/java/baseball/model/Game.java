@@ -9,8 +9,8 @@ public class Game {
         this.status = GameStatus.IN_PROGRESS;
     }
 
-    public GameStatus getStatus() {
-        return status;
+    public boolean isEnd() {
+        return this.status == GameStatus.END;
     }
 
     public void endGame() {

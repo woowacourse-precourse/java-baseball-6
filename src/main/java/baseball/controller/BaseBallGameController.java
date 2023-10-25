@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.enums.GameEndOption;
-import baseball.enums.GameStatus;
 import baseball.model.Computer;
 import baseball.model.Game;
 import baseball.model.Round;
@@ -17,6 +16,13 @@ public class BaseballGameController {
         this.game = new Game();
         this.inputView = new InputView();
         this.outputView = new OutputView();
+    }
+
+    public void start() {
+        while (!isEnd()) {
+            play();
+            stop();
+        }
     }
 
     public void play() {
@@ -42,6 +48,6 @@ public class BaseballGameController {
     }
 
     public boolean isEnd() {
-        return game.getStatus() == GameStatus.END;
+        return game.isEnd();
     }
 }
