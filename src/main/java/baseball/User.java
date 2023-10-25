@@ -15,12 +15,6 @@ public class User {
         continued = "1";
     }
 
-    public void predict() {
-        Application.printInputMessage();
-        String userInput = Console.readLine();
-        setPrediction(Application.validateUserInput(userInput));
-    }
-
     public List<Integer> getPrediction() {
         return prediction;
     }

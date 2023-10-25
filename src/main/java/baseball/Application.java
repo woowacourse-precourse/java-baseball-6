@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +27,16 @@ public class Application {
     public static void resolve(Game game, User user) {
         while (!isCorrect(game)) {
             game.reset();
-            user.predict();
+            user.setPrediction(getPrediction());
             game.countStrikeOrBall(user.getPrediction());
             printResultMessage(game.getNumberOfStrike(), game.getNumberOfBall());
         }
+    }
+
+    private static List<Integer> getPrediction() throws IllegalArgumentException {
+        printInputMessage();
+        String userInput = Console.readLine();
+        return validateUserInput(userInput);
     }
 
     public static boolean isCorrect(Game game) {
