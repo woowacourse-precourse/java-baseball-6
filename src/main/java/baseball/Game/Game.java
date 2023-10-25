@@ -37,9 +37,12 @@ public class Game {
     }
 
     public static void proceedUnit(){
+        UNIT_STATUS = true;
         while(UNIT_STATUS){
-            System.out.println(PROCEED_UNIT_GUIDE);
+            System.out.print(PROCEED_UNIT_GUIDE);
             batter.makeChoice();
+            List<Integer> unitResult = compareChoices(batter.getChoice(),pitcher.getChoice());
+            giveHint(unitResult);
         }
     }
 
@@ -48,6 +51,39 @@ public class Game {
         if(!batter.decideToPlayMore()) {
             GAME_STATUS = false;
         }
+    }
+
+    public static List<Integer> compareChoices(List<Integer> batterChoice, List<Integer> pitcherChoice){
+        Integer balls = 0;
+        Integer strikes = 0;
+
+        for(int i = 0; i < 3; i++){
+            Integer batting = batterChoice.get(i);
+            if (pitcherChoice.contains(batting)){
+                if (batting.equals(pitcherChoice.get(i))){
+                    strikes++;
+                    continue;
+                }
+                balls++;
+            }
+        }
+
+        List<Integer> result = List.of(balls,strikes);
+        return result;
+    }
+
+    public static void giveHint(List<Integer> result){
+        Integer balls = result.get(0);
+        Integer strikes = result.get(1);
+        //unit 종료조건
+        if (strikes==3) UNIT_STATUS = false;
+
+        String statement = "";
+        if (balls != 0) statement += balls+"볼 ";
+        if (strikes != 0) statement += strikes+"스트라이크 ";
+        if (strikes == 0 && balls == 0) statement = "낫싱";
+
+        System.out.println(statement);
     }
 
 }
