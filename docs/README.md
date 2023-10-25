@@ -1,0 +1,19 @@
+# 구현
+- ballCount 메소드
+  - ball의 수를 계산한다. return : int
+- strikeCount 메소드
+  - strike의 수를 계산한다. return : int
+- inputValidator 메소드
+  - 입력된 값이 유효한지 검사한다. return : boolean
+- answerInitializer 메소드
+  - 프로그램 실행시, 사전에 제공된 Randoms를 이용하여 정답숫자를 초기화한다. return : int[]
+- compareLogic 메소드
+  - 입력값과 정답숫자를 비교한다. ballCount와 strikeCount를 사용하고, 결과값과 함께 게임 종료 여부를 0/1을 활용하여 반환한다. return : int[] 
+- inputLogic 메소드
+  - 사전에 제공된 Console을 이용하여 사용자가 숫자를 입력할 수 있게한다. return : string
+- inputParsingToIntArray 메소드
+  - inputLogic 메소드로 입력된 값이 inputValidator 메소드의 유효성검사를 통과하면 compareLogic 메소드의 argument로 사용될 수 있도록 전처리한다. return : int[]
+- messagePrintingLogic 메소드
+  - compareLogic 메소드로 반환된 결과값 배열을 통해 조건에 맞는 메세지를 출력한다. return : void
+- restartLogic 메소드
+  - 게임이 종료되면 게임을 재시작할지 결정한다. answerInitializer 메소드를 사용하여 정답숫자를 초기화한다. 
