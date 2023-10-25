@@ -89,6 +89,9 @@ public class Game {
                 flag=false;
                 chk=false;
             }
+            if(!ret.equals("1") && !ret.equals("2") ){
+                throw new IllegalArgumentException();
+            }
     }
 
     private void inputCount(String rl,List<Integer> li){
