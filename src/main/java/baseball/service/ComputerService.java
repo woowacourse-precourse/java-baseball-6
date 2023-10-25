@@ -1,66 +1,74 @@
 package baseball.service;
 
-import baseball.domain.Computer;
+import baseball.constant.Number;
+import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class ComputerService {
 
     private String computerNumber;
-    private final UserService userService; // UserService를 멤버 변수로 변경
+    private final OutputView outputView = new OutputView();
 
-    public ComputerService(UserService userService) {
-        this.userService = userService; // UserService를 생성자에서 주입받음
+    private class ScoreResult {
+        public final int balls;
+        public final int strikes;
+
+        public ScoreResult(int balls, int strikes) {
+            this.balls = balls;
+            this.strikes = strikes;
+        }
     }
 
-    public void gameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    public void printStart() {
+        outputView.startGameMessage();
     }
 
-    public void gameInitialize() {
-        Computer computer = new Computer();
-        computerNumber = computer.getNumber();
-    }
+    public List<Integer> generateComputerNumbers() {
+        List<Integer> computerNumbers = new ArrayList<>();
 
-    public boolean gameOn(String userNumber) {
-        boolean gameEnd = gameScoreCalculate(userNumber);
-        return gameEnd;
-    }
-
-    public boolean gameEnd(int userNumber) {
-        return userNumber != 1;
-    }
-
-    private boolean gameScoreCalculate(String userNumber) {
-        int strikes = 0;
-        int balls = 0;
-
-        char[] computerDigits = computerNumber.toCharArray();
-        char[] userDigits = userNumber.toCharArray();
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (userDigits[i] == computerDigits[j]) {
-                    if (i == j) {
-                        strikes++;
-                    } else {
-                        balls++;
-                    }
-                }
+        while (computerNumbers.size() < Number.NUMBER_LENGTH) {
+            int randomNum = Randoms.pickNumberInRange(Number.NUMBER_RANGE_START, Number.NUMBER_RANGE_END);
+            if (!computerNumbers.contains(randomNum)) {
+                computerNumbers.add(randomNum);
             }
         }
 
-        StringBuilder result = new StringBuilder();
-
-        if (strikes == 0 && balls == 0) result.append("낫싱");
-        if (balls > 0) result.append(balls).append("볼");
-        if (strikes > 0) {
-            if (balls > 0) result.append(" ");
-            result.append(strikes).append("스트라이크");
-        }
-
-        System.out.println(result.toString());
-
-        return strikes == 3;
+        return computerNumbers;
     }
 
+    public boolean printResult(List<Integer> computerNumbers, List<Integer> userNumbers){
+        ScoreResult scoreResult = calculateStrikeAndBalls(computerNumbers, userNumbers);
+
+        outputView.resultMessage(scoreResult.balls, scoreResult.strikes);
+
+        if (scoreResult.strikes==Number.NUMBER_LENGTH) {
+            outputView.winMessage();
+            return true;
+        }
+        return false;
+    }
+
+    private ScoreResult calculateStrikeAndBalls(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int strikes = 0;
+        int balls = 0;
+
+        for (int i = 0; i < Number.NUMBER_LENGTH; i++) {
+            int computerNumber = computerNumbers.get(i);
+            int userNumber = userNumbers.get(i);
+
+            if (userNumber == computerNumber) {
+                strikes++;
+                continue;
+            }
+
+            if (computerNumbers.contains(userNumber)) {
+                balls++;
+            }
+        }
+
+        return new ScoreResult(balls, strikes);
+    }
 }

@@ -1,20 +1,41 @@
 package baseball.service;
 
-import baseball.domain.User;
+import baseball.constant.Number;
+import baseball.utils.Validation;
 import baseball.view.InputView;
+import baseball.view.OutputView;
+
+import java.util.List;
 
 public class UserService {
-    final static User user = new User();
     final static InputView inputView = new InputView();
+    final static OutputView outputView = new OutputView();
+    final static Validation validation = new Validation();
 
-    public static String readUserNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-        user.validateNumber(inputView.getUserNumber());
-        return user.getNumber();
+    public List<Integer> readUserNumber() {
+        outputView.userInputMessage();
+        String userNumbers = inputView.getUserNumber();
+        List<Integer> listNumbers = validateUserNumber(userNumbers);
+        return listNumbers;
     }
 
-    public static String readTypeNumber() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return inputView.getTypeNumber();
+    private List<Integer> validateUserNumber(String userNumber) {
+        validation.checkNumberLength(userNumber, Number.NUMBER_LENGTH);
+        List<Integer> numberList = validation.isAllDigits(userNumber);
+        validation.hasDuplicate(numberList);
+        return numberList;
+    }
+
+    public Integer readRetryNumber() {
+        outputView.retryMessage();
+        String retryNumber = inputView.getRetryNumber();
+        Integer retryIntegerNumber = validateRetryNumber(retryNumber);
+        return retryIntegerNumber;
+    }
+
+    private Integer validateRetryNumber(String retryNumber) {
+        validation.checkNumberLength(retryNumber, 1);
+        Integer retryInteger = validation.isDigit(retryNumber.charAt(0));
+        return retryInteger;
     }
 }

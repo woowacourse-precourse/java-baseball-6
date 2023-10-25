@@ -9,7 +9,7 @@ public class OutputView {
     }
 
     public void userInputMessage(){
-        System.out.println(USER_INPUT);
+        System.out.print(USER_INPUT);
     }
 
     public void resultMessage(int ball, int strike){
@@ -35,6 +35,6 @@ public class OutputView {
     }
 
     public void retryMessage(){
-        System.out.println(RETRY_GAME);
+        System.out.println(RETRY);
     }
 }
