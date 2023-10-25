@@ -14,6 +14,7 @@ public class GameIO {
     public void printStartGameMessage() {
         System.out.println(START_GAME_MESSAGE);
     }
+
     public String readPlayerGuess() {
         System.out.print(NUMBER_INPUT_REQUEST_MESSAGE);
         return Console.readLine();
@@ -23,7 +24,7 @@ public class GameIO {
         int strike = compareResult.get("strike");
         int balls = compareResult.get("balls");
 
-        if (strike == 3) {
+        if (strike == 3 && balls == 0) {
             System.out.println(THREE_STRIKE);
             return;
         }
@@ -66,11 +67,11 @@ public class GameIO {
 
         private final String decision;
         private final boolean shouldContinue;
+
         PlayerResponse(String decision, boolean shouldContinue) {
             this.decision = decision;
             this.shouldContinue = shouldContinue;
         }
-
     }
 
 }
