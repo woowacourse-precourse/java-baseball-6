@@ -1,7 +1,5 @@
 package baseball.game;
 
-import static baseball.game.GameUI.displayCorrectAnswerMessage;
-
 import baseball.Computer;
 import baseball.user.User;
 import baseball.user.UserStatus;
@@ -38,7 +36,7 @@ public class Game {
                 gameUI.displayHint(inferHint());
 
                 if (gameLogic.isAnswer(hint)) {
-                    displayCorrectAnswerMessage();
+                    gameUI.displayCorrectAnswerMessage();
 
                     user.inputUserStatus();
                     if (user.getUserStatus().equals(UserStatus.EXIT_COMMAND)) {
