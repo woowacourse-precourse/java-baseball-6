@@ -28,13 +28,13 @@ public class Comparator {
         return compareResult;
     }
 
-    public void checkBall(BaseballNumber playerNumber, int index) {
+    private void checkBall(BaseballNumber playerNumber, int index) {
         if (computerNumbers.containsWithDifferentIndex(playerNumber, index)) {
             compareResult.addBall();
         }
     }
 
-    public void checkStrike(BaseballNumber playerNumber,int index) {
+    private void checkStrike(BaseballNumber playerNumber,int index) {
         if (computerNumbers.containsWithSameIndex(playerNumber, index)) {
             compareResult.addStrike();
         }
