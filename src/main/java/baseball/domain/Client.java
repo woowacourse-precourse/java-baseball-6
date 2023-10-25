@@ -1,7 +1,7 @@
 package baseball.domain;
 
-import baseball.domain.service.ClientService;
 import baseball.global.constant.CommonNumberType;
+import baseball.global.utils.generator.NumberGenerator;
 import java.util.List;
 
 public class Client {
@@ -10,8 +10,8 @@ public class Client {
 	private int ballCount;
 	private int strikeCount;
 
-	public Client() {
-		numbers = new ClientNumbers(new ClientService().getCommonInput());
+	public Client(NumberGenerator numberGenerator) {
+		numbers = new ClientNumbers(numberGenerator.generate());
 	}
 
 	public int getStrikeCount() {
