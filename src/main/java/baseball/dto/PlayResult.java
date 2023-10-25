@@ -6,10 +6,6 @@ public record PlayResult(
 ) {
 
     public boolean isNothing() {
-        if (strikeCount == 0 && ballCount == 0) {
-            return true;
-        }
-
-        return false;
+        return strikeCount == 0 && ballCount == 0;
     }
 }
