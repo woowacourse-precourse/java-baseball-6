@@ -3,6 +3,7 @@ package baseball.model;
 import baseball.model.ball.BallStatus;
 
 public class SwingResult {
+
     int strikeCount = 0;
     int ballCount = 0;
 

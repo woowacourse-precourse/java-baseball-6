@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+
     Balls balls;
+
     public List<Integer> pickNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
@@ -17,6 +19,7 @@ public class Computer {
         }
         return numbers;
     }
+
     public Balls initBallsForGame(List<Integer> numbers) {
         balls = new Balls(numbers);
         return balls;

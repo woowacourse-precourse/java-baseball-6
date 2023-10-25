@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
+
     public static List<Integer> getPlayerGuessNumbers() {
         String givenInput = Console.readLine();
         NumbersValidate.isAllNumbers(givenInput);

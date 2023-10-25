@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Balls {
+
     private List<Ball> balls = new ArrayList<>();
 
     public Balls(List<Integer> givenNumbers) {
@@ -17,10 +18,10 @@ public class Balls {
 
     public BallStatus match(Ball targetBall) {
         return this.balls.stream()
-                .map(ball -> ball.match(targetBall))
-                .filter(ballStatus -> ballStatus != BallStatus.NOTHING)
-                .findFirst()
-                .orElse(BallStatus.NOTHING);
+            .map(ball -> ball.match(targetBall))
+            .filter(ballStatus -> ballStatus != BallStatus.NOTHING)
+            .findFirst()
+            .orElse(BallStatus.NOTHING);
     }
 
     public SwingResult match(Balls givenBalls) {
@@ -30,6 +31,7 @@ public class Balls {
         }
         return swingResult;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
