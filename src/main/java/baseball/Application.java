@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Application {
     static Scanner sc = new Scanner(System.in);
     static int num, first, second, third, myFirst, mySecond, myThird,ball,strike;
+    static String s;
     public static void main(String[] args) {
         System.out.print("숫자 야구 게임을 시작합니다.");
         while(true) {
@@ -17,7 +18,14 @@ public class Application {
                 ball = 0;
                 strike = 0;
                 System.out.print("숫자를 입력해주세요 : ");
-                num = sc.nextInt();
+                s = Console.readLine();
+                try{
+                    num = Integer.parseInt(s);
+                }
+                catch (NumberFormatException ex){
+                    ex.printStackTrace();
+                }
+
                 first = num / 100;
                 second = (num / 10) % 10;
                 third = num % 10;
@@ -65,7 +73,13 @@ public class Application {
                 }
             }
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            num=sc.nextInt();
+            s = Console.readLine();
+            try{
+                num = Integer.parseInt(s);
+            }
+            catch (NumberFormatException ex){
+                ex.printStackTrace();
+            }
             if(num==2){
                 System.exit(0);
             }
