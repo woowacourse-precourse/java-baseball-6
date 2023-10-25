@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.error.ErrorException;
 import baseball.error.GameInputErrorException;
 import baseball.util.BaseballRandomNumberGenerator;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -19,6 +20,7 @@ class GameControllerTest {
 
         //when,then
         System.out.println(checkNumberString);
-        errorException.checkUserInputValidate(checkNumberString);
+        Assertions.assertDoesNotThrow(() ->
+                errorException.checkUserInputValidate(checkNumberString));
     }
 }
