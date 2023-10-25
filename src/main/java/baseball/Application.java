@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.core.GameHost;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameHost gameHost = GameHost.createGameHost();
+        gameHost.gameStart();
     }
 }
