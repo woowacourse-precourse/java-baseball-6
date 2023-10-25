@@ -9,7 +9,7 @@ public class RandNum {
 
     List<Integer> numArr = new ArrayList<>();
 
-    public void makeRandNum() {
+    public List makeRandNum() {
 
         while (numArr.size() < 3) {
             int randNum = Randoms.pickNumberInRange(1, 9);
@@ -18,6 +18,8 @@ public class RandNum {
             }
         }
         System.out.println(numArr); //출력 확인
+
+        return numArr;
     }
 
 }
