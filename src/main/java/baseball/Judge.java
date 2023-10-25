@@ -20,6 +20,6 @@ public class Judge {
         } else if(ball == 0){
             return strike + STRIKE;
         }
-        return ball + BALL + strike + STRIKE;
+        return ball + BALL + " " + strike + STRIKE;
     }
 }
