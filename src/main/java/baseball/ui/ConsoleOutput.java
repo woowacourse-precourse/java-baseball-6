@@ -1,5 +1,7 @@
 package baseball.ui;
 
+import baseball.model.BallCounter;
+
 public class ConsoleOutput implements Output {
 
     @Override
@@ -8,7 +10,7 @@ public class ConsoleOutput implements Output {
     }
 
     @Override
-    public void print(String message) {
+    public void print(BallCounter message) {
         System.out.println(message);
     }
 }

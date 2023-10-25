@@ -38,6 +38,6 @@ public class Computer implements Player {
     }
 
     public void announceResult(BallCounter ballCounter) {
-        output.print(ballCounter.toString());
+        output.print(ballCounter);
     }
 }
