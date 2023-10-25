@@ -10,30 +10,19 @@ public class User {
     private static final String RESTART_NUMBER = "1";
     private static final boolean RESTART = true;
     private static final boolean DO_NOT_RESTART = false;
-    private List<Integer> numbers;
     private boolean gameRestart;
     private final UserInputValidator userInputValidator = new UserInputValidator();
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
-    public boolean isGameRestart() {
-        return gameRestart;
-    }
-
-    public void generateNumbers() {
-        List<Integer> userNumbers = new ArrayList<>();
-
+    public List<Integer> generateNumbers() {
         String userInput = Console.readLine();
-
         userInputValidator.validateInputNumbers(userInput);
 
+        List<Integer> numbers = new ArrayList<>();
         for (char input : userInput.toCharArray()) {
-            userNumbers.add(Character.getNumericValue(input));
+            numbers.add(Character.getNumericValue(input));
         }
 
-        numbers = userNumbers;
+        return numbers;
     }
 
     public void decideGameRestart() {
@@ -45,5 +34,9 @@ public class User {
         } else {
             gameRestart = DO_NOT_RESTART;
         }
+    }
+
+    public boolean isGameRestart() {
+        return gameRestart;
     }
 }
