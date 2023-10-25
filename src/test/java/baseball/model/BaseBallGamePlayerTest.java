@@ -30,5 +30,8 @@ public class BaseBallGamePlayerTest {
         List<Integer> givenNUmber = Arrays.asList(1, 2, 3, 4);
         assertThatThrownBy(()->baseBallGamePlayer.generateBalls(givenNUmber)).isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    public void playerGuessAllTest(){
 
+    }
 }

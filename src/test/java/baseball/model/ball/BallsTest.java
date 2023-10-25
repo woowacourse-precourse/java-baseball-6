@@ -2,10 +2,7 @@ package baseball.model.ball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.model.ball.Ball;
-import baseball.model.ball.BallStatus;
-import baseball.model.ball.Balls;
-import baseball.model.SwingResult;
+import baseball.model.Hint;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,39 +18,39 @@ public class BallsTest {
     @DisplayName("복수 공 ,북수 공 비교 테스트 : 나싱")
     public void BALLS_NOTHING_TEST(){
         Balls targetBalls = new Balls(Arrays.asList(4,5,6));
-        SwingResult swingResult = balls.match(targetBalls);
-        assertThat(swingResult.getStrikeCount()).isEqualTo(0);
-        assertThat(swingResult.getBallCount()).isEqualTo(0);
+        Hint hint = balls.match(targetBalls);
+        assertThat(hint.getStrikeCount()).isEqualTo(0);
+        assertThat(hint.getBallCount()).isEqualTo(0);
     }
     @Test
     @DisplayName("복수 공 ,북수 공 비교 테스트 : 2볼 1 스트라이크")
     public void BALLS_2BALL_1STRIKE_TEST(){
         Balls targetBalls = new Balls(Arrays.asList(1,3,2));
-        SwingResult swingResult = balls.match(targetBalls);
-        assertThat(swingResult.getStrikeCount()).isEqualTo(1);
-        assertThat(swingResult.getBallCount()).isEqualTo(2);
+        Hint hint = balls.match(targetBalls);
+        assertThat(hint.getStrikeCount()).isEqualTo(1);
+        assertThat(hint.getBallCount()).isEqualTo(2);
 
         targetBalls = new Balls(Arrays.asList(3,2,1));
-        swingResult = balls.match(targetBalls);
-        assertThat(swingResult.getStrikeCount()).isEqualTo(1);
-        assertThat(swingResult.getBallCount()).isEqualTo(2);
+        hint = balls.match(targetBalls);
+        assertThat(hint.getStrikeCount()).isEqualTo(1);
+        assertThat(hint.getBallCount()).isEqualTo(2);
     }
     @Test
     @DisplayName("복수 공 ,북수 공 비교 테스트 : 1볼 1 스트라이크")
     public void BALLS_1BALL_1STRIKE_TEST(){
         Balls targetBalls = new Balls(Arrays.asList(2,7,3));
-        SwingResult swingResult = balls.match(targetBalls);
-        assertThat(swingResult.getStrikeCount()).isEqualTo(1);
-        assertThat(swingResult.getBallCount()).isEqualTo(1);
+        Hint hint = balls.match(targetBalls);
+        assertThat(hint.getStrikeCount()).isEqualTo(1);
+        assertThat(hint.getBallCount()).isEqualTo(1);
     }
     @Test
     @DisplayName("복수 공 ,북수 공 비교 테스트 : 3 스트라이크")
     public void BALLS_3STRIKE_TEST(){
         Balls targetBalls = new Balls(Arrays.asList(1,2,3));
-        SwingResult swingResult = balls.match(targetBalls);
-        assertThat(swingResult.getStrikeCount()).isEqualTo(3);
-        assertThat(swingResult.getBallCount()).isEqualTo(0);
-        assertThat(swingResult.isAllStrike()).isTrue();
+        Hint hint = balls.match(targetBalls);
+        assertThat(hint.getStrikeCount()).isEqualTo(3);
+        assertThat(hint.getBallCount()).isEqualTo(0);
+        assertThat(hint.isAllStrike()).isTrue();
     }
 
 
