@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
-    OutPutView outPutView = new OutPutView();
+    OutputView outPutView = new OutputView();
     GameException gameException = new GameException();
     InputView inputView = new InputView(gameException);
     StrikeBallCount strikeBallCount = new StrikeBallCount();

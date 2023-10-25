@@ -4,7 +4,7 @@ public class GameController {
     GameService gameService = new GameService();
     GameException gameException = new GameException();
     InputView inputView = new InputView(gameException);
-    OutPutView outPutView = new OutPutView();
+    OutputView outPutView = new OutputView();
 
     public void play() {
         settingComputerRandomNumbers();
