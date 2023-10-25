@@ -16,7 +16,6 @@ public class Controller {
 
     public static void gameMiddle() {
         ComputerModel.setAnswer();
-        System.out.println(ComputerModel.getAnswer()); // 제출할 때는 지우기!!!!
         do {
             View.gameNumberInputPrint();
             InputModel.inputThreeNumber();
