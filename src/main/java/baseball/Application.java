@@ -165,17 +165,21 @@ public class Application {
         outputBaseball(strike, ball);
     }
 
+    public static boolean isEndGame(List<Integer> userInputList, List<Integer> result) {
+        int strike = Application.getStrikeCount(userInputList, result);
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
+
     public static void startOneGame(List<Integer> result) {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
-
             List<Integer> userInputList = Application.inputBaseball(userInput);
-
             outputOneGameBaseball(userInputList, result);
-
-            int strike = Application.getStrikeCount(userInputList, result);
-            if (strike == 3) {
+            if (isEndGame(userInputList, result)) {
                 break;
             }
         }
