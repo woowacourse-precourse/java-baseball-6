@@ -1,6 +1,7 @@
 package baseball;
 
 public class Score {
+    public static final int WINNING_STRIKES = 3;
     private final int strikeCount;
     private final int ballCount;
 
@@ -18,7 +19,7 @@ public class Score {
     }
 
     public boolean isThreeStrikes() {
-        return strikeCount == 3;
+        return strikeCount == WINNING_STRIKES;
     }
 
     public String getScoreResult() {
