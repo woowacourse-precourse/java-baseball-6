@@ -11,19 +11,24 @@ public class GameView {
     }
 
     public boolean askContinueGame() {
-        boolean isContinued;
+        printEnd();
+        String input = Console.readLine();
+        validateInput(input);
+        return isContinued(input);
+    }
+
+    private void printEnd() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        if (input.equals(GAME_CONTINUED)) {
-            isContinued = true;
-        }
-        else if (input.equals(GAME_STOPPED)){
-            isContinued = false;
-        }
-        else {
+    }
+
+    private void validateInput(String input) {
+        if (!input.equals(GAME_CONTINUED) && !input.equals(GAME_STOPPED)) {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
         }
-        return isContinued;
+    }
+
+    private boolean isContinued(String input) {
+        return input.equals(GAME_CONTINUED);
     }
 }
