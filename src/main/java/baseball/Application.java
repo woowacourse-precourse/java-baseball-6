@@ -17,13 +17,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedReader br;
     static boolean isEnd;
     static final String NOT_VALID_NUMBER = "3자리의 숫자만 입력 가능합니다.";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
+        br = new BufferedReader(new InputStreamReader(System.in));
+        isEnd = false;
         println(GAME_START_MESSAGE);
-        baseballGame();
+
+        try {
+            baseballGame();
+        }catch (IOException ioException){
+            ioException.printStackTrace();
+        }
     }
 
     private static void baseballGame() throws IOException {
@@ -39,6 +46,7 @@ public class Application {
         }
 
         if(isRetry()){
+            isEnd = false;
             baseballGame();
         }
 
@@ -79,7 +87,7 @@ public class Application {
         int ballCnt = strikeBallCnt.getBallCnt();
 
         if (ballCnt > 0){
-            println(ballCnt + BALL + " ");
+            print(ballCnt + BALL + " ");
         }
         if (strikeCnt > 0){
             println(strikeCnt + STRIKE);
