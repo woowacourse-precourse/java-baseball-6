@@ -5,13 +5,12 @@ import java.util.List;
 
 public class NumberConverter {
     public static List<Integer> from(String strNumber) {
-        List<Integer> number = convertIntegerList(strNumber);
-        validateThreeNums(number);
-        validateUnduplicated(number);
+        List<Integer> number = convert(strNumber);
+        validate(number);
         return number;
     }
 
-    private static List<Integer> convertIntegerList(String number) {
+    private static List<Integer> convert(String number) {
         try {
             return Arrays.stream(number.split(""))
                     .map(Integer::parseInt)
@@ -21,6 +20,11 @@ public class NumberConverter {
         catch (NumberFormatException e) {
             throw new IllegalArgumentException("문자가 아닌 숫자를 입력해주세요");
         }
+    }
+
+    private static void validate(List<Integer> number) {
+        validateThreeNums(number);
+        validateUnduplicated(number);
     }
 
     private static void validateThreeNums(List<Integer> number) {
