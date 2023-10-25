@@ -1,13 +1,6 @@
 package baseball.service.domain;
 
-import static baseball.service.domain.BaseballConstants.BASEBALL_END_NUMBER;
-import static baseball.service.domain.BaseballConstants.BASEBALL_START_NUMBER;
-import static baseball.service.domain.BaseballConstants.DEFAULT_CAPACITY;
-import static baseball.utils.ExceptionMessage.NOT_NUMERIC;
-import static baseball.utils.ExceptionMessage.NOT_UNIQUE;
-import static baseball.utils.ExceptionMessage.OUT_OF_LENGTH;
-import static baseball.utils.ExceptionMessage.OUT_OF_RANGE;
-
+import baseball.utils.ExceptionMessage;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -67,21 +60,22 @@ public class BaseballCollection {
     }
 
     private void validateLength(List<Integer> baseballs) {
-        if (baseballs.size() != DEFAULT_CAPACITY) {
-            throw new IllegalArgumentException(OUT_OF_LENGTH.getError(DEFAULT_CAPACITY, baseballs.size()));
+        if (baseballs.size() != BaseballConstants.DEFAULT_CAPACITY) {
+            throw new IllegalArgumentException(
+                    ExceptionMessage.OUT_OF_LENGTH.getError(BaseballConstants.DEFAULT_CAPACITY, baseballs.size()));
         }
     }
 
     private void validateUniqueNumbers(List<Integer> baseballs, String number) {
         if (baseballs.size() != number.length()) {
-            throw new IllegalArgumentException(NOT_UNIQUE.getError(baseballs));
+            throw new IllegalArgumentException(ExceptionMessage.NOT_UNIQUE.getError(baseballs));
         }
     }
 
     private void validateRange(List<Integer> baseballs) {
         for (Integer baseball : baseballs) {
-            if (!isInRange(BASEBALL_START_NUMBER, BASEBALL_END_NUMBER, baseball)) {
-                throw new IllegalArgumentException(OUT_OF_RANGE.getError(baseball));
+            if (!isInRange(BaseballConstants.BASEBALL_START_NUMBER, BaseballConstants.BASEBALL_END_NUMBER, baseball)) {
+                throw new IllegalArgumentException(ExceptionMessage.OUT_OF_RANGE.getError(baseball));
             }
         }
     }
@@ -90,7 +84,7 @@ public class BaseballCollection {
         try {
             return Integer.parseInt(target);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NOT_NUMERIC.getError(target), e);
+            throw new IllegalArgumentException(ExceptionMessage.NOT_NUMERIC.getError(target), e);
         }
     }
 
@@ -99,13 +93,13 @@ public class BaseballCollection {
     }
 
     public int calculateStrikeCount(BaseballCollection playerBalls) {
-        return (int) IntStream.range(0, DEFAULT_CAPACITY)
+        return (int) IntStream.range(0, BaseballConstants.DEFAULT_CAPACITY)
                 .filter(index -> isStrike(this.baseball.get(index), playerBalls.baseball.get(index)))
                 .count();
     }
 
     public int calculateBallCount(BaseballCollection playerBalls) {
-        return (int) IntStream.range(0, DEFAULT_CAPACITY)
+        return (int) IntStream.range(0, BaseballConstants.DEFAULT_CAPACITY)
                 .filter(index -> isBall(this.baseball.get(index), playerBalls.baseball.get(index)))
                 .count();
     }
