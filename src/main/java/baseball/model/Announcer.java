@@ -22,10 +22,10 @@ public class Announcer {
     }
 
     public void announceGameOver() {
-        print(END_GAME_COMMENT);
+        println(END_GAME_COMMENT);
     }
 
     public void announceToSpeakRestart() {
-        print(RESTART_GAME_COMMENT);
+        println(RESTART_GAME_COMMENT);
     }
 }
