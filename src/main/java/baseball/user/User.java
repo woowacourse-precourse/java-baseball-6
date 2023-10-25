@@ -6,26 +6,18 @@ import java.util.List;
 import static baseball.constants.BaseballConstants.*;
 
 public class User {
-    private final String input;
 
-    public User(String input) {
-        validateInputLength(input);
-        this.input = input;
-    }
+    private List<Integer> numbers;
 
-    /**
-     * 사용자가 입력한 수를 예외처리와 동시에 List형태로 변환
-     * @return 1~9까지의 숫자 3개가 담긴 리스트
-     */
-    public List<Integer> getNumbers() {
-        List<Integer> numbers = new ArrayList<>();
+    private List<Integer> convertInputToList(String input) {
+        List<Integer> convertedNumbers = new ArrayList<>();
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             char c = input.charAt(i);
             validateNumberRange(c);
-            validateDuplicate(numbers, Character.getNumericValue(c));
-            numbers.add(Character.getNumericValue(c));
+            validateDuplicate(convertedNumbers, Character.getNumericValue(c));
+            convertedNumbers.add(Character.getNumericValue(c));
         }
-        return numbers;
+        return convertedNumbers;
     }
 
 
@@ -61,5 +53,15 @@ public class User {
         if (numbers.contains(n)){
             throw new IllegalArgumentException();
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers(String input) {
+        List<Integer> convertedNumbers = convertInputToList(input);
+        validateInputLength(input);
+        this.numbers = convertedNumbers;
     }
 }
