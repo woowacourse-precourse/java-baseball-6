@@ -26,20 +26,20 @@ public class Application {
                 human.clear();
                 System.out.print("숫자를 입력해주세요 : ");
                 int num=sc.nextInt();
-                if (num < 100 || num > 999) {
-                    System.out.println("3자리 숫자를 입력해야 합니다. 다시 시도하세요.");
-                    continue; // 다시 입력 요청
-                }
-
 
                 int firstDigit = num / 100;
                 int secondDigit = (num / 10) % 10;
                 int thirdDigit = num % 10;
 
+                if (num < 100 || num > 999) {
+                    throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
+                }else if (firstDigit == secondDigit || secondDigit == thirdDigit || firstDigit == thirdDigit) {
+                    throw new IllegalArgumentException("중복된 숫자를 입력하셨습니다.");
+                }
+
                 human.add(firstDigit);
                 human.add(secondDigit);
                 human.add(thirdDigit);
-
 
 
                 for (int i = 0; i < 3; i++) {
