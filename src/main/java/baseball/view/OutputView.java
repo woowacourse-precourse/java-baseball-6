@@ -53,4 +53,11 @@ public class OutputView {
             System.out.printf(BALL_STRIKE_MESSAGE, response.getBall(), response.getStrike());
         }
     }
+
+    public static void printGameResult(GameResponse response) {
+        printNothing(response);
+        printStrike(response);
+        printBall(response);
+        printBallStrike(response);
+    }
 }
