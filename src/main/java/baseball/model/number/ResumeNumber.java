@@ -2,6 +2,7 @@ package baseball.model.number;
 
 import static baseball.Constant.END_WANT;
 import static baseball.Constant.PLAY_WANT;
+import static baseball.ExceptionMessage.RESUME_VALUE_EXCEPTION;
 
 public class ResumeNumber {
 
@@ -29,13 +30,13 @@ public class ResumeNumber {
 
     private void validateAnswerLength(final String answer) {
         if (answer.length() != RESUME_ANSWER_LENGTH) {
-            throw new IllegalArgumentException("재시작/종료 입력값이 잘못되었습니다.");
+            throw new IllegalArgumentException(RESUME_VALUE_EXCEPTION.toString());
         }
     }
 
     private void validateAnswerValue(final String answer) {
         if ((!answer.equals(PLAY_WANT.toString())) && (!answer.equals(END_WANT.toString()))) {
-            throw new IllegalArgumentException("재시작/종료 입력값이 잘못되었습니다.");
+            throw new IllegalArgumentException(RESUME_VALUE_EXCEPTION.toString());
         }
     }
 
