@@ -3,9 +3,7 @@ package baseball.user;
 import baseball.dto.GameRequest;
 import baseball.dto.GameResponse;
 import baseball.game.GameDispatcher;
-import baseball.game.GameDispatcherImpl;
-import baseball.game.PredictGamePlay;
-import baseball.game.StartGamePlay;
+import baseball.game.GameDispatcherFactory;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +14,11 @@ public class ConsoleUser implements User {
 
         // input to console
         List<String> args = new ArrayList<>();
-        GameDispatcher dispatcher;
+        GameDispatcher dispatcher = GameDispatcherFactory.create(cmd);
+
         for (int i = 0; i < nargs; ++i) {
             System.out.print("숫자를 입력해주세요 : ");
             args.add(Console.readLine());
-        }
-
-        if (cmd == "start") {
-            dispatcher = new GameDispatcherImpl(new StartGamePlay());
-        } else if (cmd == "predict") {
-            dispatcher = new GameDispatcherImpl(new PredictGamePlay());
-        } else {
-            throw new IllegalArgumentException();
         }
 
         GameResponse response = dispatcher.dispatch(new GameRequest(cmd, args));
