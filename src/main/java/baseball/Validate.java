@@ -23,8 +23,8 @@ public class Validate {
         }
     }
 
-    public static void isNumberDuplicate(List<Integer> user, int num) {
-        if (user.contains(num)) {
+    public static void isNumberDuplicate(List<Integer> list, int num) {
+        if (list.contains(num)) {
             throw new IllegalArgumentException(ErrorMsg.INPUT_VALUE_MUST_BE_DIFFERENT_VALUES);
         }
     }
