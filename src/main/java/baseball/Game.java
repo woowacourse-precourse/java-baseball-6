@@ -5,12 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Scanner;
 
 public class Game {
     private static final int MAX_LENGTH = 3;
     private static ArrayList<Integer> computerNumber;
-    private boolean exit = false;
+    private boolean endGame = false;
 
     public void startGame() {
         final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
@@ -23,9 +22,8 @@ public class Game {
         final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
 
         computerNumber = setRandomNumber();
-//        System.out.println(computerNumber);
 
-        while (!exit) {
+        while (!endGame) {
             System.out.print(INPUT_NUMBER_MESSAGE);
             String input = Console.readLine();
             int number = Integer.parseInt(input);
@@ -43,7 +41,7 @@ public class Game {
         String input = Console.readLine();
         int option = Integer.parseInt(input);
         if (option == 1) {
-            exit = false;
+            endGame = false;
             playGame();
         }
     }
@@ -73,7 +71,9 @@ public class Game {
     }
 
     private static void checkIllegalNumber(ArrayList<Integer> arrayList) {
-        if (arrayList.size() != MAX_LENGTH || arrayList.contains(0) || isDuplicated(arrayList)) {
+        if (arrayList.size() != MAX_LENGTH ||
+                arrayList.contains(0) ||
+                isDuplicated(arrayList)) {
             throw new IllegalArgumentException();
         }
     }
@@ -119,7 +119,7 @@ public class Game {
 
         if (strikeCounter == MAX_LENGTH) {
             System.out.println(END_MESSAGE);
-            exit = true;
+            endGame = true;
         }
     }
 }
