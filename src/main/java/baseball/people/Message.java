@@ -18,10 +18,19 @@ public enum Message {
         this.message = message;
     }
 
+    /**
+     * 각각의 객체에 지정된 문자열을 반환하는 메서드
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * 볼 개수와 스트라이크 개수에 각각 문자열을 추가해서 반환한다. 단, 0개이면 문자열에 추가하지 않는다.
+     *
+     * @param ball   볼 개수
+     * @param strike 스트라이크 개수
+     */
     public static String getBallStrikeMessage(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             return NOTHING.message;
