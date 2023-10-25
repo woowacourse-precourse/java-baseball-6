@@ -2,11 +2,18 @@ package baseball;
 
 public class ProgramManager {
 
-    private final String RESTART_INPUT = "1";
+    private static ProgramManager programManager;
+    private static final String RESTART_INPUT = "1";
     private Answer answer;
 
+    private ProgramManager() {
+    }
 
-    public ProgramManager() {
+    public static ProgramManager createGameManager() {
+        if (programManager == null) {
+            return new ProgramManager();
+        }
+        return programManager;
     }
 
     public void startGame() {
@@ -15,7 +22,7 @@ public class ProgramManager {
         proceedGame();
     }
 
-    public void proceedGame() {
+    private void proceedGame() {
         while (true) {
 
             Writer.writeInputMent();
@@ -39,7 +46,7 @@ public class ProgramManager {
         nextGame(endInput);
     }
 
-    public void nextGame(String endInput) {
+    private void nextGame(String endInput) {
         if (endInput.equals(RESTART_INPUT)) {
             startGame();
         }
