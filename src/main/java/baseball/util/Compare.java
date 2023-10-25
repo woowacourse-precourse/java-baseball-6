@@ -45,6 +45,12 @@ public class Compare {
         ball = ball - strike;
     }
 
+
+    //3스트라이크인지 확인
+    public static boolean isNotThreeStrike() {
+        return strike != 3;
+    }
+
     //스트라이크, 볼 초기화
     public static void dataInit() {
         strike = 0;
