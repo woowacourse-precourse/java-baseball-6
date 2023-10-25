@@ -11,19 +11,20 @@ import static main.java.baseball.UserValid.Validator.*;
 public class Game {
     private static int[] userNumbers;
     private static boolean gameContinue = true;
+    private static boolean retryEnd = true;
     public static void Run(){
         Computer.InitGame();
         OutputView.printStart();
-        while(gameContinue){
+        while(retryEnd){
             CreateBall();
             checkNum(userNumbers);
             endRound();
-            checkEnd();
-            BallCount.ResetCount();
+            checkGameEnd();
+            if(!gameContinue){
+                int userRetry = InputView.readRetryNumber();
+                checkRetry(userRetry);
+            }
         }
-        OutputView.printEnd();
-        OutputView.printRetry();
-        InputView.readRetryNumber();
     }
 
     public static void CreateBall(){
@@ -37,10 +38,22 @@ public class Game {
                 .toArray();
     }
 
-    public static void checkEnd(){
+    public static void checkGameEnd(){
         if (BallCount.strikeCount == 3){
             gameContinue = false;
-            BallCount.ResetCount();
+            OutputView.printEnd();
+            OutputView.printRetry();
+        }
+        BallCount.ResetCount();
+    }
+
+    private static void checkRetry(int userRetryNum){
+        if(userRetryNum==1){
+            Computer.InitGame();
+            OutputView.printStart();
+        }
+        else if(userRetryNum == 2){
+            retryEnd=false;
         }
     }
 }
