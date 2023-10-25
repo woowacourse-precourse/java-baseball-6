@@ -22,16 +22,7 @@ public class Application {
         randomNums = cmp.makeRandomNumbers();
 
         while (playing) {
-            // int 배열을 만들어서 서로 다른 랜덤한 숫자 만들기
-//            List<Integer> randomNums = new ArrayList<>();
-//            while (randomNums.size() < 3) {
-//                int num = Randoms.pickNumberInRange(1, 9);
-//                if (!randomNums.contains(num)) {
-//                    randomNums.add(num);
-//                }
-//            }
 
-//            System.out.println(randomNums);
             // TODO 2 : 사용자가 숫자를 입력한다
             // 숫자는 문자열 형태로 입력된다.
             // 입력된 숫자가 3자리가 아니거나 & 중복된 숫자들이 있으면 에러 처리
