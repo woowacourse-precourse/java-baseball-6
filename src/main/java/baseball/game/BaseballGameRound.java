@@ -1,6 +1,5 @@
 package baseball.game;
 
-import baseball.common.Constants;
 import baseball.game.status.BaseballGameRoundStatus;
 import baseball.player.ComputerPlayer;
 import baseball.player.UserPlayer;
@@ -31,10 +30,13 @@ public class BaseballGameRound {
             outputView.printUserNumberInput();
             userPlayer.updateUserNumbers(inputView.nextIntArray());
             strikeBall = computerPlayer.compareTo(userPlayer.getUserNumbers());
-
             outputView.printStrikeBallResult(strikeBall);
 
-            if(strikeBall.isStrikeSuccess()) outputView.printThreeStrikeSuccess();
-        } while (strikeBall.getStrike() < Constants.strikeTarget);
+            if(strikeBall.isStrikeSuccess()) {
+                outputView.printThreeStrikeSuccess();
+                baseballGameRoundStatus = BaseballGameRoundStatus.EXIT;
+            }
+        } while (baseballGameRoundStatus.equals(BaseballGameRoundStatus.CONTINUE));
     }
 }
+

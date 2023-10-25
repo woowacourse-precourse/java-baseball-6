@@ -34,21 +34,4 @@ public class StrikeBall {
     public boolean isStrikeSuccess() {
         return this.strike == Constants.strikeTarget;
     }
-
-    public String makeStrikeBallMessage() {
-        StringBuilder sb = new StringBuilder();
-
-        if(isNoting()) {
-            sb.append("낫싱");
-        }
-
-        if(hasBallCount()) {
-            sb.append(ball).append("볼 ");
-        }
-
-        if(hasStrikeCount()) {
-            sb.append(strike).append("스트라이크 ");
-        }
-        return sb.toString();
-    }
 }
