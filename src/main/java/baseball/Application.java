@@ -6,8 +6,7 @@ import static baseball.others.Output.printGameStart;
 import static baseball.others.Output.printInputNumber;
 import static baseball.others.Output.printRestart;
 import static baseball.others.Player.playerGenerateNum;
-import static baseball.others.Player.playerInputGuessingNumber;
-import static baseball.others.Player.playerInputRestartNumber;
+import static baseball.others.Player.playerInputNumber;
 import static baseball.others.ProgramController.compareDigits;
 import static baseball.others.ProgramController.ifRestart;
 import static baseball.others.ProgramController.resultJudgment;
@@ -27,17 +26,18 @@ public class Application {
             List<Integer> computerNum = computerGenerateNum();
             while (!guess) {
                 printInputNumber();
-                String guessingNumber = playerInputGuessingNumber();
+                String guessingNumber = playerInputNumber();
                 digitsExceptionTesting(guessingNumber);
                 List<Integer> playerNum = playerGenerateNum(guessingNumber);
                 compareDigits(computerNum, playerNum);
                 guess = resultJudgment();
             }
             printRestart();
-            String restartNumber = playerInputRestartNumber();
+            String restartNumber = playerInputNumber();
             ifGameContinue = ifRestart(restartNumber);
         } while (ifGameContinue);
         Console.close();
+        System.out.println("프로그램을 종료합니다.");
     }
 
     private static void resetSetting() {
