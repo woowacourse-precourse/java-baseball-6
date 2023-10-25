@@ -9,3 +9,6 @@
     2. 해당 입력이 1에서 9까지 서로 다른 수로 이루어진 세자리 수인지 검증 -> IllegalArgumentException
 3. Judgement Manager
     1. 사용자 입력에 대한 정답 판별 기능
+    2. 결과 출력 및 게임 종료 조건 확인 기능
+4. Game
+   1. 숫자 야구 게임에 대한 데이터 저장
