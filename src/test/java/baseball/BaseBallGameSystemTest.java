@@ -151,7 +151,7 @@ public class BaseBallGameSystemTest extends NsTest {
             }
 
             @Test
-            @DisplayName("숫자가 아닌 입력을 하면 예외가 발생한다.")
+            @DisplayName("빈 문자열을 엽력하면 예외가 발생한다.")
             void inputEmpty() {
                 assertRandomNumberInRangeTest(() ->
                                 assertThatThrownBy(() -> runException(FIRST_SUCCESS_STRING, EMPTY_STRING))
