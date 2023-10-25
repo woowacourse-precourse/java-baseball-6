@@ -40,4 +40,26 @@ public class Computer {
         }
         this.computer=computer;
     }
+
+    //정답과 매개변수들 비교
+    public String checkBaseball(List<Integer> userAnswer){
+        int Ball=0;
+        int Strike=0;
+        for(int i: userAnswer){
+            if(computer.contains(i)&&userAnswer.indexOf(i)==computer.indexOf(i)){
+                Strike++;
+            } else if (computer.contains(i)&&userAnswer.indexOf(i)!=computer.indexOf(i)) {
+                Ball++;
+            }
+        }
+        if(Strike>0&&Ball>0){
+            return Ball+"볼 "+ Strike+"스트라이크";
+        }else if(Strike >0&&Ball==0){
+            return Strike+"스트라이크";
+        } else if (Strike==0&&Ball>0) {
+            return Ball+"볼";
+        } else{
+            return "낫싱";
+        }
+    }
 }
