@@ -19,8 +19,8 @@ public class GameController {
     public void run() {
         boolean retry;
         do {
-            start();
             init();
+            start();
             play();
             end();
             retry = gameService.askRetry(RetryNumberDto.of(InputView.input()));
