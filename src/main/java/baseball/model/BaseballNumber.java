@@ -1,7 +1,6 @@
 package baseball.model;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class BaseballNumber {
     private List<Integer> baseballNumber;

@@ -10,7 +10,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.view.OutputMessage.*;
+import static baseball.view.PrintMessage.*;
 
 public class GameController {
     private Computer computer;
