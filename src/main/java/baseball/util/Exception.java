@@ -2,6 +2,13 @@ package baseball.util;
 
 public class Exception {
 
+    //입력값 검증하여 IllegalArgumentException 예외처리
+    public static void validate(String input){
+        notThreeNum(input); //1. 3자리 숫자가 아닐 때
+        notNum(input); //2. 숫자가 아닐 때
+        duplicateNum(input); //3. 중복된 숫자가 있을 때
+    }
+
     //1. 3자리가 아닐 때
     public static void notThreeNum(String input){
 
