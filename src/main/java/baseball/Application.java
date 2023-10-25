@@ -122,11 +122,35 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
 
         String input = readLine();
+        inputNumbersValidate(input);
         List<Integer> inputNumbers = new ArrayList<>();
         for (int index=0; index<3; index++){
              inputNumbers.add(Integer.parseInt(input.substring(index, index+1)));
         }
         return inputNumbers;
+    }
+
+    private static void inputNumbersValidate(String input) {
+        if (input.length()!= 3) {
+            throw new IllegalArgumentException("숫자를 3개 입력해주세요");
+        }
+        for (int index=0; index<3; index++){
+            if (!Character.isDigit(input.charAt(index))) {
+                throw new IllegalArgumentException("숫자를 입력해주세요");
+            }
+        }
+        for (int index=0; index<3; index++){
+            if (Integer.parseInt(input.substring(index, index+1)) > 9) {
+                throw new IllegalArgumentException("9 이하 숫자를 입력해주세요");
+            }
+        }
+        for (int index=0; index<3; index++){
+            if (Integer.parseInt(input.substring(index, index+1)) < 1) {
+                throw new IllegalArgumentException("1 이상 숫자를 입력해주세요");
+            }
+        }
+
+
     }
 
     private static List<Integer> getRandomNumbers() {
