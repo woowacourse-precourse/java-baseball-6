@@ -11,9 +11,10 @@ import java.util.regex.Pattern;
 public class Application {
     static List<Integer> computer;  // 컴퓨터 랜덤값
     static List<Integer> user;      // 사용자 입력값
-    static int strike;              // strike 수
-    static int ball;                // ball 수
+    static int strikeCount;         // strike 수
+    static int ballCount;           // ball 수
     static int digitNumber;         // 대상값 자릿수
+
     public static void main(String[] args) {
         digitNumber = 3;  // 대상값 자릿수 설정(3자리)
 
@@ -53,8 +54,8 @@ public class Application {
             inputUser(userString);
 
             // 값 비교
-            strike = 0;
-            ball = 0;
+            strikeCount = 0;
+            ballCount = 0;
             for (int i=0; i<digitNumber; i++) {
                 int userValue = user.get(i);
                 int computerValue = computer.get(i);
@@ -65,7 +66,7 @@ public class Application {
             printHint();
 
             // 정답을 맞췄을 경우, 게임 종료 안내문구 출력 && 사용자 입력 중지
-            if (strike == digitNumber) {
+            if (strikeCount == digitNumber) {
                 System.out.println(digitNumber + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
@@ -104,21 +105,21 @@ public class Application {
     private static void compareValue(int userValue, int computerValue) {
         // strike,ball Count
         if (userValue == computerValue) {
-            strike++;
+            strikeCount++;
         } else if (computer.contains(userValue)) {
-            ball++;
+            ballCount++;
         }
     }
 
     private static void printHint() {
-        if (strike == 0 && ball == 0) {
+        if (strikeCount == 0 && ballCount == 0) {
             System.out.println("낫싱");
-        } else if (strike == 0) {
-            System.out.println(ball + "볼");
-        } else if (ball == 0) {
-            System.out.println(strike + "스트라이크");
+        } else if (strikeCount == 0) {
+            System.out.println(ballCount + "볼");
+        } else if (ballCount == 0) {
+            System.out.println(strikeCount + "스트라이크");
         } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
     }
 
