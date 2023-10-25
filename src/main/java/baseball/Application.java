@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.model.Computer;
+import baseball.model.Player;
+import baseball.service.BaseballGame;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        new BaseballGame(new Computer(), new Player()).playGame();
     }
 }
