@@ -50,7 +50,7 @@
 ### 게임의 전체적인 관리자 객체를 구현 -> BaseballExecutor
 
 - [x] 새로운 Baseball 게임을 생성한다.
-- [ ] isGameRestart 메서드를 통해 플레이어가 Restart하길 원한다면 다시 게임을 생성한다.
+- [x] isGameRestart 메서드를 통해 플레이어가 Restart하길 원한다면 다시 게임을 생성한다.
 
 ### 관리자에 생성되는 내부의 게임 객체 구현 -> Baseball
 
