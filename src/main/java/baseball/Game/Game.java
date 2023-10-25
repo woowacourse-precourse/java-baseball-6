@@ -40,7 +40,7 @@ public class Game {
     public static void checkGameEnd(){
         if (BallCount.strikeCount == 3){
             gameContinue = false;
-            OutputView.printEnd();
+            OutputView.printCurrentEnd();
             OutputView.printRetry();
         }
         BallCount.ResetCount();

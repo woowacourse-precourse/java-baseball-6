@@ -6,17 +6,23 @@ public class OutputView {
     public static String ballMessage = "볼";
     public static String strikeMessage = "스트라이크";
     public static String nashingMesaage = "낫싱";
-    public static String endMessage = "3개의 숫자를 모두 맞추셨습니다! 게임 종료";
+    public static String CurrentendMessage = "3개의 숫자를 모두 맞추셨습니다! 게임 종료";
+
+    public static String endMessage = "게임 종료";
+
     public static String RetryMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
 
     public static void printStart(){
         System.out.println(startMessage);
     }
 
+    public static void printCurrentEnd(){
+        System.out.println(CurrentendMessage);
+    }
+
     public static void printEnd(){
         System.out.println(endMessage);
     }
-
     public static void printInput(){
         System.out.print(inputMessage);
     }
