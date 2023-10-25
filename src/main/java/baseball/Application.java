@@ -15,15 +15,7 @@ public class Application {
         int continued = 1;
         while (continued == 1) {
 
-            List<Integer> numbers = new ArrayList<>();
-            int k = 3;
-            while (k > 0) {
-                int number = Randoms.pickNumberInRange(1, 9);
-                if (!numbers.contains(number)) {
-                    numbers.add(number);
-                    k--;
-                }
-            }
+            List<Integer> numbers = getThreeRandomNumbers();
 
             int numberOfStrike = 0;
             int numberOfBall = 0;
@@ -91,6 +83,19 @@ public class Application {
             }
         }
 
+    }
+
+    private static List<Integer> getThreeRandomNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        int k = 3;
+        while (k > 0) {
+            int number = Randoms.pickNumberInRange(1, 9);
+            if (!numbers.contains(number)) {
+                numbers.add(number);
+                k--;
+            }
+        }
+        return numbers;
     }
 
     private static void printStartMessage() {
