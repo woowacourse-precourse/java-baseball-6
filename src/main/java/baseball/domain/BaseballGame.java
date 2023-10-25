@@ -22,6 +22,7 @@ public class BaseballGame implements Game {
 
         Boolean exit = false;
         while(!exit) {
+            System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
             user.setNumbers(userInput);
 
