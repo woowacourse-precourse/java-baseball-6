@@ -1,6 +1,8 @@
 package baseball.domain;
 
 import baseball.util.ExceptionUtil;
+import baseball.util.IntegerUtil;
+import baseball.validation.IntegerValidator;
 
 public enum RestartOption {
     RESTART_GAME(1),
@@ -17,7 +19,10 @@ public enum RestartOption {
         return value;
     }
 
-    public static RestartOption create(int value) {
+    public static RestartOption create(String stringValue) {
+        IntegerValidator.validateInteger(stringValue);
+        int value = Integer.parseInt(stringValue);
+
         RestartOption restartOption = findRestartOption(value);
         validateOtherChoice(restartOption);
         return restartOption;

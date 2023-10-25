@@ -31,35 +31,32 @@ public class GameController {
     }
 
     public void play() {
-        while (true) {
-            startGame();
-            if (restartGame()) {
-                return;
-            }
+        while (startGame()) {
+
         }
     }
 
-    private void startGame() {
+    private boolean startGame() {
         startView.displayStartMessage();
 
         NumberBaseball computerBaseball = NumberBaseball.createRandomBaseball();
         //System.out.println(computerBaseball.getValues());
         gameService.playOneGame(inputView, hintView, endView, restartView, hintService, computerBaseball);
+
+        return isRestart();
     }
 
-    private boolean restartGame(){
+    private boolean isRestart(){
         restartView.displayRestartChoiceMessage();
-        String regameNum = InputUtil.inputString();
 
-        IntegerValidator.validateInteger(regameNum);
-        int parsedRegameNum = Integer.parseInt(regameNum);
-        RestartOption restartOption = RestartOption.create(parsedRegameNum);
+        String regameNum = InputUtil.inputString();
+        RestartOption restartOption = RestartOption.create(regameNum);
 
         if (restartOption == RestartOption.RESTART_GAME) {
-            return false;
+            return true;
         }
         if (restartOption == RestartOption.EXIT_GAME) {
-            return true;
+            return false;
         }
 
         return false;
