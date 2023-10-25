@@ -3,18 +3,15 @@ package baseball.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * 랜덤 세 자리 수를 생성하기 위한 라이브러리 호출 pickNumberInRange(시작 범위, 끝 범위) : 한 자리 수 랜덤 추출 메서드
  */
-public class RandomNumber {
+public class Computer {
 
     private List<Integer> num;
 
-    public RandomNumber() {
+    public Computer() {
         num = new ArrayList<>();
     }
 

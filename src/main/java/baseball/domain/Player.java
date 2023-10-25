@@ -5,7 +5,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.global.enums.GuideMessage;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Player {

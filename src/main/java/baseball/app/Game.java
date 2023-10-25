@@ -8,34 +8,35 @@ import static baseball.global.enums.GuideMessage.START_MENU;
 import static baseball.global.util.GameInput.validateMenu;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.domain.Baseball;
+import baseball.domain.Round;
 import baseball.domain.Player;
-import baseball.domain.RandomNumber;
+import baseball.domain.Computer;
 import java.util.List;
 
-public class Computer {
+public class Game {
 
-    private RandomNumber number;
+    private Computer computer;
     private Player player;
-    private List<Integer> goal;
-    private List<Integer> round;
-    private Baseball baseball;
+    private List<Integer> computerNum;
+    private List<Integer> playerNum;
+    private Round round;
     private boolean isFinished;
+    private int menu;
 
     public void init() {
-        number = new RandomNumber();
+        computer = new Computer();
         System.out.println(START_MENU.message);
         isFinished = true;
     }
 
     public void play() {
         player = new Player();  // 컴퓨터와 대결할 플레이어는 단 1명
-        goal = number.make();
+        computerNum = computer.make();
 
         while (true) {
-            baseball = new Baseball();
-            round = player.start();
-            baseball.compare(goal, round);
+            round = new Round();
+            playerNum = player.start();
+            round.compare(computerNum, playerNum);
             showResult();
             if (isFinished) {
                 break;
@@ -50,21 +51,19 @@ public class Computer {
     }
 
     private void showResult() {
-        String result = baseball.getResult();
+        String result = round.getResult();
 
         if (result.equals(PERFECT.name)) {
             isFinished = true;
-            System.out.print(PERFECT.name + "\n" + FINISH_GUIDE.message);
+            System.out.println(PERFECT.name + "\n" + FINISH_GUIDE.message);
             return;
         }
         isFinished = false;
         System.out.println(result);
     }
 
-    
-    private int finishMenu() {
-        int menu = 0;
 
+    private int finishMenu() {
         while (true) {
             System.out.println(RESTART_MENU.message);
             String s = readLine();
@@ -77,11 +76,8 @@ public class Computer {
         }
     }
 
-
     private void restart() {
         init();
         play();
     }
-
-
 }

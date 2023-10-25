@@ -1,12 +1,12 @@
 package baseball;
 
-import baseball.app.Computer;
+import baseball.app.Game;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Computer computer = new Computer();
-        computer.init();
-        computer.play();
+        Game game = new Game();
+        game.init();
+        game.play();
     }
 }
