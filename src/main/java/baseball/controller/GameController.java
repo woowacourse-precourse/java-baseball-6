@@ -44,7 +44,7 @@ public class GameController {
 
             view.printGameResult(calculator.toString());
 
-        } while (!calculator.isThreeStrike(randomNumber, inputNumber));
+        } while (!calculator.isThreeStrike());
 
     }
 
