@@ -9,7 +9,6 @@ public class GameManager {
 
     private GameController controller;
     private GameView view;
-    private Computer computer;
 
     public GameManager() {
         this.controller = new GameController();
@@ -19,24 +18,19 @@ public class GameManager {
     public void start() {
         view.printGameStartMessage();
         do {
-            setGame();
             playGame();
+            view.printGameEndMessage();
             view.printInputGameDecisionMessage();
         } while (controller.getGameDecision().isRetry());
     }
 
     private void playGame() {
-        Boolean isGameEnd = false;
-        while (!isGameEnd) {
+        Computer computer = new Computer();
+        GameResult result;
+        do {
             view.printInputNumberMessage();
-            GameResult result = computer.calculateGameResult(controller.getInputGameNumber());
+            result = computer.calculateGameResult(controller.getInputGameNumber());
             view.printResultMessage(result);
-            isGameEnd = result.isAnswer();
-        }
-        view.printGameEndMessage();
-    }
-
-    private void setGame() {
-        this.computer = new Computer();
+        } while (!result.isAnswer());
     }
 }
