@@ -2,6 +2,7 @@ package baseball.utils;
 
 import baseball.model.Hint;
 import baseball.model.Numbers;
+import java.util.stream.IntStream;
 
 public class HintGenerator {
     public static Hint generate(Numbers computer, Numbers player) {
@@ -9,25 +10,16 @@ public class HintGenerator {
     }
 
     private static Integer countStrike(Numbers computer, Numbers player) {
-        Integer strike = 0;
-        for (int index = 0; index < 3; index++) {
-            if (computer.equalsAt(player.valueAt(index), index)) {
-                strike++;
-            }
-        }
-        return strike;
+        return (int) IntStream.range(0, 3)
+                .filter(index -> computer.equalsAt(player.valueAt(index), index))
+                .count();
     }
 
     private static Integer countBall(Numbers computer, Numbers player) {
-        Integer ball = 0;
-        for (int index = 0; index < 3; index++) {
-            if (computer.equalsAt(player.valueAt(index), index)) {
-                continue;
-            }
-            if (computer.contains(player.valueAt(index))) {
-                ball++;
-            }
-        }
-        return ball;
+        return (int) IntStream.range(0, 3)
+                .filter(index ->
+                        !computer.equalsAt(player.valueAt(index), index)
+                                && computer.contains(player.valueAt(index)))
+                .count();
     }
 }
