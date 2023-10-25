@@ -5,6 +5,8 @@ public class CompareResult {
     private static final String BALL_MESSAGE = "볼";
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String BLANK = " ";
+
+    private static final int END_STRIKE_COUNT = 3;
     private final int strikeCount;
     private final int ballCount;
 
@@ -45,11 +47,6 @@ public class CompareResult {
     }
 
     public boolean isAnswer() {
-        boolean isAnswer = false;
-        if (strikeCount == 3) {
-            isAnswer = true;
-        }
-
-        return isAnswer;
+        return strikeCount == END_STRIKE_COUNT;
     }
 }
