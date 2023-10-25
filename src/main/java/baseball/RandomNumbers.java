@@ -9,9 +9,9 @@ public class RandomNumbers {
     private final static int MAX_LENGTH = 3;
     private final static int START_INCLUSIVE = 1;
     private final static int END_INCLUSIVE = 9;
-    private final List<Integer> nums;
+    private List<Integer> nums;
 
-    RandomNumbers() {
+    public void generateRandomNums() {
         nums = new ArrayList<>();
 
         while (true) {
