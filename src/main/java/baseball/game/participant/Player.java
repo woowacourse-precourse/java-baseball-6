@@ -10,6 +10,9 @@ public class Player {
         this.proposal = proposal;
     }
 
+    /**
+     * 사용자가 입력한 답을 바탕으로 새로운 Player 객체를 생성한다.
+     */
     public static Player create(String input) {
         List<Integer> proposal = List.of(
                 input.charAt(0)-'0',

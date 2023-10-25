@@ -4,12 +4,30 @@ import java.util.List;
 
 public class Validator {
 
+    /**
+     * 사용자가 입력한 답에 대해 유효성 검사를 진행한다.
+     *
+     * 1. 길이가 3인가
+     * 2. 각 자리가 '1'에서부터 '9'사이의 문자인가
+     * 3. 각 자리가 서로 다른 문자인가
+     *
+     * 하나라도 통과하지 못하면 IllegalArgumentException 예외가 발생한다.
+     * @param input 사용자가 입력한 답
+     */
     public static void validateProposal(String input) {
         validateLength(input);
         validateRange(input);
         validateDifferentNumber(input);
     }
 
+    /**
+     * 재시작/종료 선택을 위한 입력값에 대해 유효성 검사를 진행한다.
+     *
+     * - 입력값이 "1" 또는 "2"인가
+     *
+     * 통과하지 못하면 IllegalArgumentException 예외가 발생한다.
+     * @param input 재시작/종료 선택 입력값
+     */
     public static void validateNewOrQuit(String input) {
         validateOneOrTwo(input);
     }

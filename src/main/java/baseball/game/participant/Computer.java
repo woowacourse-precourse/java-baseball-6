@@ -13,6 +13,9 @@ public class Computer {
         this.answer = answer;
     }
 
+    /**
+     * 임의의 새로운 정답을 만들어 Computer 객체를 생성한다.
+     */
     public static Computer create() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {

@@ -9,7 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseballGame {
 
     /**
-     * 숫자 야구 게임의 흐름 전체를 제어
+     * 숫자 야구 게임의 흐름 전체를 제어한다.
      */
     public static void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -22,6 +22,10 @@ public class BaseballGame {
         cleanUpResource();
     }
 
+    /**
+     * 하나의 새로운 게임을 진행한다.
+     * (컴퓨터가 정답을 생성하고, 사용자가 그 정답을 맞힐 때까지)
+     */
     private static void newGame() {
         Computer computer = Computer.create();
         String hint;
@@ -39,7 +43,10 @@ public class BaseballGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    //TODO: private 메서드에 static을 붙이는 게 적절한지 확인
+    /**
+     * 새로운 게임을 시작할지 여부를 결정한다
+     * @return 사용자가 입력한 값이 "1"이면 true, "2"면 false
+     */
     private static Boolean restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String newOrQuit = Console.readLine();
@@ -49,6 +56,9 @@ public class BaseballGame {
         else return false;
     }
 
+    /**
+     * Scanner의 인스턴스를 사용하는 동안 가지고 있던 자원을 반납한다.
+     */
     private static void cleanUpResource() {
         Console.close();
     }
