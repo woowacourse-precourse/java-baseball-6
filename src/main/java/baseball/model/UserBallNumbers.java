@@ -10,18 +10,20 @@ import java.util.stream.Collectors;
 public class UserBallNumbers {
     private final List<Integer> userBallNumbers;
 
-    private UserBallNumbers(List<Integer> inputNumbers) {
-        if (!this.validate(inputNumbers)) {
+    private UserBallNumbers(String input) {
+        List<Integer> inputNumbers = hundredsIntToList(input);
+
+        if (!this.validate(hundredsIntToList(input))) {
             throw new IllegalArgumentException("유효한 값이 아닙니다.");
         }
         this.userBallNumbers = inputNumbers;
     }
 
     public static UserBallNumbers of(String input) {
-        return new UserBallNumbers(hundredsIntToList(input));
+        return new UserBallNumbers(input);
     }
 
-    private static List<Integer> hundredsIntToList(String number) {
+    private List<Integer> hundredsIntToList(String number) {
         return Arrays.stream(number.split("")).map(Integer::valueOf).collect(Collectors.toList());
     }
 
