@@ -3,22 +3,22 @@ package baseball.model;
 public class Game {
     private int ballCount;
     private int strikeCount;
-    private String resultMessage;
-
     private boolean enableGameOn;
+    private boolean enableRestartGame;
+
 
     public Game() {
         this.enableGameOn = true;
+        this.enableRestartGame = false;
     }
 
     public boolean isSuccess() {
         return strikeCount == 3;
     }
 
-    public String getResultMessage() {
-        return resultMessage;
+    public int getBallCount() {
+        return ballCount;
     }
-
     public int getStrikeCount() {
         return strikeCount;
     }
@@ -27,19 +27,35 @@ public class Game {
         this.strikeCount = strikeCount;
     }
 
-    public void addMessage(String message) {
-        this.resultMessage += message;
+    public void addstrikeCount() {
+        this.strikeCount++;
+    }
+
+    public void addBallCount() {
+        this.ballCount++;
     }
 
     public boolean isGameOn() {
         return enableGameOn;
     }
 
-    public void enableGameOver(String menuNumber) {
-        // TODO 입력 유효성 처리
-
-        // TODO if. 사용자가 2번 선택 시, 종료
-        this.enableGameOn = false;
+    public boolean isGameRestart() {
+        return enableRestartGame;
     }
 
+    public void controlGameMenu(String menuNumber) {
+
+        String regex = "[1-2]{1}";
+        boolean isInvalidDigit = !menuNumber.matches(regex);
+
+        if (isInvalidDigit){
+            throw new IllegalArgumentException();
+        }
+
+        if(menuNumber.equals("2")) {
+            this.enableGameOn = false;
+        } else {
+            this.enableRestartGame = true;
+        }
+    }
 }

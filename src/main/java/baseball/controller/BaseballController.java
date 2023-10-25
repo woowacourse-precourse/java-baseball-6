@@ -23,9 +23,9 @@ public class BaseballController {
     }
 
     public void start() {
-        do {
-            baseballView.printGameStartMessage();
+        baseballView.printGameStartMessage();
 
+        do {
             User user = new User();
             user.setUserNumber(baseballView.getUserInput());
             user.validateUserInput(user.getUserNumber());
@@ -33,16 +33,18 @@ public class BaseballController {
             NumberComparison numberComparison = new NumberComparison();
             game = numberComparison.compareNumber(computer.getRandomNumber(), user.getUserNumber());
 
-            // TODO 볼, 스트라이트 개수 고려 메세지 출력
-            baseballView.printResultGameMessage(game.getResultMessage());
+            baseballView.printResultGameMessage(game.getBallCount(), game.getStrikeCount());
 
             if (game.isSuccess()) {
                 baseballView.printWhetherRestartOrExitMessage();
-                game.enableGameOver(baseballView.getGameMenu());
+                game.controlGameMenu(baseballView.getGameMenu());
+            }
+
+            if (game.isGameRestart()) {
+                game = new Game();
+                computer = new Computer();
             }
 
         } while(game.isGameOn());
-
-        Console.close();
     }
 }
