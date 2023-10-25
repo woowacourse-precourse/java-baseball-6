@@ -25,7 +25,7 @@ public class Application {
 
                 int numberOfBall = calculatingBallValue(computer,userNumber);
 
-                System.out.println(ouputGameResult(numberOfStrike,numberOfBall));
+                System.out.println(outputGameResult(numberOfStrike,numberOfBall));
 
                 if (numberOfStrike == 3) {
                     break;
@@ -78,7 +78,7 @@ public class Application {
         return numberOfBall - calculatingStrikeValue(computer,user);
     }
 
-    static String ouputGameResult(int numberOfStrike, int numberOfBall){
+    static String outputGameResult(int numberOfStrike, int numberOfBall){
         if (numberOfStrike == 0 && numberOfBall != 0) {
             return numberOfBall + "볼";
         } else if (numberOfStrike == 0 && numberOfBall == 0) {
