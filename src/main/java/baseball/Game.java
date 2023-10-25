@@ -25,4 +25,8 @@ public class Game {
     public boolean play(List<Integer> number) {
         return referee.judge(computer, number);
     }
+
+    public List<Integer> getComputer() {
+        return computer;
+    }
 }
