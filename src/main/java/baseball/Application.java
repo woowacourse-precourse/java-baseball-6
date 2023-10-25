@@ -15,6 +15,4 @@ public class Application {
         output.printStartingMessage();
         play.playBaseball(input, output, strike, ball);
     }
-
-
 }

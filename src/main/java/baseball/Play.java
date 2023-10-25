@@ -49,7 +49,6 @@ public class Play {
         }
         if (inputNumber == 2) {
             System.out.println("게임 종료");
-            return;
         }
     }
 }
