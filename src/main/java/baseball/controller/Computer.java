@@ -16,6 +16,7 @@ public class Computer {
     }
 
     public ComputerNumberDto getRandomComputerNumber(){
+        clearComputerRandomNumbersList();
         setTargetNumber();
         setComputerNumberDto();
         return computerNumberDto;
@@ -32,5 +33,9 @@ public class Computer {
 
     private void setComputerNumberDto(){
         computerNumberDto.setComputerNumber(computerRandomNumbers);
+    }
+
+    private void clearComputerRandomNumbersList(){
+        computerRandomNumbers.clear();
     }
 }
