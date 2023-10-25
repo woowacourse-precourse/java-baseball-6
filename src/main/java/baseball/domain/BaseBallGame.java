@@ -15,6 +15,7 @@ public class BaseBallGame {
     public static final int STRIKE_INDEX = 0;
     public static final int BALL_INDEX = 1;
     public static final int OUT_INDEX = 2;
+    public static final int ZERO_COUNT = 0;
 
     public BaseBallGame(Player player) {
         this.player = player;
@@ -78,7 +79,7 @@ public class BaseBallGame {
 
 //    볼 스코어에 대한 메세지 만들기
     private String getBallMessage(List<Integer> resultList){
-        if(resultList.get(BALL_INDEX)==0){
+        if(resultList.get(BALL_INDEX)==ZERO_COUNT){
             return "";
         }
         return resultList.get(BALL_INDEX)+BALL_MESSAGE+" ";
@@ -86,11 +87,10 @@ public class BaseBallGame {
 
 //    스트라이크 스코어에 대한 메세지 만들기
 private String getStrikeMessage(List<Integer> resultList){
-    if(resultList.get(STRIKE_INDEX)==0){
+    if(resultList.get(STRIKE_INDEX)==ZERO_COUNT){
         return "";
     }
     return resultList.get(STRIKE_INDEX)+STRIKE_MESSAGE;
-
 }
 
 

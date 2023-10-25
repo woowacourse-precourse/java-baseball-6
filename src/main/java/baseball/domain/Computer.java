@@ -12,7 +12,7 @@ public class Computer {
 
     private final List<Integer> numbers;
 
-
+    public static final int NUMBERS_LENGTH = 3;
     private Computer(List<Integer> numbers){
         this.numbers = numbers;
     }
@@ -20,7 +20,7 @@ public class Computer {
 //    랜덤한 숫자 3개 생성
     public static Computer create(){
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
+        while (numbers.size() < NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
@@ -33,11 +33,11 @@ public class Computer {
     public List<Integer> compareNumbers(List<Integer> playerNumbers){
         Integer[] resultArr = {0,0,0};
         for (int i = 0; i <playerNumbers.size() ; i++) {
-            if(!this.numbers.contains(playerNumbers.get(i))){
+            if(!numbers.contains(playerNumbers.get(i))){
                 resultArr[OUT_INDEX]++;
                 continue;
-            }
-            if(this.numbers.get(i) == playerNumbers.get(i)){
+            } 
+            if(numbers.get(i) == playerNumbers.get(i)){
                 resultArr[STRIKE_INDEX]++;
                 continue;
             }
