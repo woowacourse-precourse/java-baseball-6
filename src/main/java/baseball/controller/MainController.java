@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.ComputerNumberGenerator;
 import baseball.ProgramCommand;
 import baseball.domain.GameResult;
 import baseball.domain.Judgement;
@@ -24,9 +25,14 @@ public class MainController {
     }
 
     private void playNewGame() {
-        referee.initComputerNumbers();
+        setComputerNumbers();
         play();
         askNewGame();
+    }
+
+    private void setComputerNumbers() {
+        List<Integer> numbers = ComputerNumberGenerator.generate();
+        referee.newComputerWith(numbers);
     }
 
     private void play() {

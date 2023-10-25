@@ -1,14 +1,12 @@
 package baseball.domain;
 
-import baseball.ComputerNumberGenerator;
 import java.util.List;
 
 public class Referee {
 
     private Computer computer;
 
-    public void initComputerNumbers() {
-        List<Integer> numbers = ComputerNumberGenerator.generate();
+    public void newComputerWith(List<Integer> numbers) {
         computer = new Computer(numbers);
     }
 
