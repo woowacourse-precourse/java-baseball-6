@@ -19,24 +19,30 @@ public class Game {
         return computer;
     }
 
-    String checkAnswer(List<Integer> inputNumbers, List<Integer> answer) {
-        int strike = 0, ball = 0;
+    public static List<Integer> checkAnswer(List<Integer> inputNumbers, List<Integer> answer) {
+        Integer strike = 0, ball = 0;
         for (int i = 0; i < 3; i++) {
-            if (Objects.equals(inputNumbers.get(i), answer.get(i))) {
+            if(Objects.equals(inputNumbers.get(i), answer.get(i))) {
                 strike += 1;
             } else if (answer.contains(inputNumbers.get(i))) {
                 ball += 1;
             }
         }
-
-        if (strike == 0 && ball == 0) {
-            return "낫싱";
-        } else if (strike == 0) {
-            return ball + "볼";
+        List<Integer> ballCount = new ArrayList<>();
+        ballCount.add(strike);
+        ballCount.add(ball);
+        return ballCount;
+    }
+    public static void printAnswer(List<Integer> ballCount) {
+        Integer strike = ballCount.get(0), ball = ballCount.get(1);
+        if(strike == 0 && ball == 0) {
+            System.out.println(Constant.BallCount.getBallCount(Constant.BallCount.NOTHING));
+        } else if (strike == 0){
+            System.out.println(ball + Constant.BallCount.getBallCount(Constant.BallCount.BALL));
         } else if (ball == 0) {
-            return strike + "스트라이크";
+            System.out.println(strike + Constant.BallCount.getBallCount(Constant.BallCount.STRIKE));
         } else {
-            return ball + "볼" + " " + strike + "스트라이크";
+            System.out.println(ball + Constant.BallCount.getBallCount(Constant.BallCount.BALL) + " " + strike + Constant.BallCount.getBallCount(Constant.BallCount.STRIKE));
         }
     }
 }
