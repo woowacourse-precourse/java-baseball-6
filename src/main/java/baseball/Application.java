@@ -1,10 +1,12 @@
 package baseball;
 
+import baseball.controller.GameManager;
+import baseball.util.Constants;
+
 public class Application {
     public static void main(String[] args) {
-        Game game = new Game();
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        game.gameStart();
-        System.out.println("게임 종료");
+        GameManager gameManager = new GameManager();
+        System.out.println(Constants.GAME_START_MESSAGE);
+        gameManager.gameStart();
     }
 }
