@@ -28,4 +28,16 @@ public class GameController {
 		return true;
 	}
 
+	public void repeatGame(Game computerData) {
+		Game playerData;
+		do {
+			playerData = computerController.getPlayerNumbers();
+
+			playerData = computerController.compareNumber(computerData, playerData);
+
+			String outputMessage = computerController.strikeAndBallMessage(playerData);
+			outputView.printStrikeAndBallMessage(outputMessage);
+		} while (isWantRestartGame(playerData));
+	}
+
 }
