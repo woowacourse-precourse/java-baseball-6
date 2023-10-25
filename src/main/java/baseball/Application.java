@@ -28,7 +28,6 @@ public class Application {
     	    int randomNumber = Randoms.pickNumberInRange(1, 9);
     	    if (!computer.contains(randomNumber)) {
     	        computer.add(randomNumber);
-    	        //System.out.print(randomNumber);
     	    }
     	}
     	player_turn();
@@ -41,9 +40,17 @@ public class Application {
         }
         for(int i=0; i<3; i++)
         {
-        	if(s.charAt(i)-'0'>9||s.charAt(i)-'0'<0)
-            	throw new IllegalArgumentException();    		
+        	if(s.charAt(i)-'0'>9||s.charAt(i)-'0'<1)
+            	throw new IllegalArgumentException();    	
+        	for(int j=i-1; j>=0; j--)
+        	{
+        		if(player[j]==s.charAt(i)-'0')
+                	throw new IllegalArgumentException();    	
+
+        	}
+        	player[i]=s.charAt(i)-'0';
         }
+        
     }
     
     
@@ -60,7 +67,6 @@ public class Application {
             input = Integer.parseInt(s);
 
             for (int i = 2; i >= 0; i--) {
-                System.out.println(computer.get(i));
                 if (computer.contains(input % 10)) {
                     if (computer.get(i) == input % 10) {
                         strike++;
