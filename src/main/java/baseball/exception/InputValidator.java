@@ -2,7 +2,7 @@ package baseball.exception;
 
 import static java.util.Objects.isNull;
 
-public class InputValidator {
+public record InputValidator() {
 
     public void validateAnswer(String sentence) {
         if (isNull(sentence)) {

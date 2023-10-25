@@ -3,24 +3,21 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
-    private List<Integer> inputAnswer;
+public record Player() {
+    private static final List<Integer> inputAnswer = new ArrayList<>();
 
-    public void insertInputAnswer(String stringInputAnswer) {
-        this.inputAnswer = convertStringInputToIntegerList(stringInputAnswer);
+    public void insertInputAnswer(final String stringInputAnswer) {
+        inputAnswer.clear();
+        convertStringInputToIntegerList(stringInputAnswer);
     }
 
     public List<Integer> getInputAnswer() {
         return inputAnswer;
     }
 
-    private List<Integer> convertStringInputToIntegerList(String stringInput) {
-        List<Integer> integerList = new ArrayList<>();
-
+    private void convertStringInputToIntegerList(String stringInput) {
         for (char c : stringInput.toCharArray()) {
-            integerList.add(Character.getNumericValue(c));
+            inputAnswer.add(Character.getNumericValue(c));
         }
-
-        return integerList;
     }
 }

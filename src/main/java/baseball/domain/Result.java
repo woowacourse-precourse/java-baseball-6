@@ -2,9 +2,9 @@ package baseball.domain;
 
 import java.util.List;
 
-public class Result {
-    private int ball;
-    private int strike;
+public record Result() {
+    private static int ball;
+    private static int strike;
 
     public String compareInputAnswerToRandomNumbers(List<Integer> inputAnswer, List<Integer> randomNumbers) {
         resetGameScore();
@@ -16,6 +16,7 @@ public class Result {
                 ball++;
             }
         }
+
         return getOutputMessage();
     }
 
@@ -27,6 +28,7 @@ public class Result {
         } else if (strike > 0) {
             return strike + "스트라이크";
         }
+
         return "낫싱";
     }
 

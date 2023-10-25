@@ -9,7 +9,7 @@ import baseball.service.BaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class Configuration {
+public record Configuration() {
     public static BaseballController baseballController() {
         return new BaseballController(
                 new InputView(),

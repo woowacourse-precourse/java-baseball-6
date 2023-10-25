@@ -5,16 +5,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
-    private static final int LENGTH_RANDOMNUMBERS = 3;
-    private List<Integer> randomNumbers;
+public record Computer() {
+    private static final int LENGTH_RANDOM_NUMBERS = 3;
+
+    private static final List<Integer> randomNumbers = new ArrayList<>();
 
     public void initializeRandomNumbers() {
-        randomNumbers = new ArrayList<>();
+        randomNumbers.clear();
 
-        while (randomNumbers.size() < LENGTH_RANDOMNUMBERS) {
+        while (randomNumbers.size() < LENGTH_RANDOM_NUMBERS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-
             addDistinctRandomNumberToRandomNumbers(randomNumber);
         }
     }
