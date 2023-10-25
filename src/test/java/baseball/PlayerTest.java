@@ -9,13 +9,13 @@ public class PlayerTest {
 
     @Test
     void Counter_리턴(){
-        Assertions.assertEquals("456", player.getGuess().toString()
+        Assertions.assertEquals("456", player.getGuessNumber().toString()
         );
     }
     @Test
     void String_추측값_입력받기(){
-        player.enterGuess(Note.writeDown("123"));
-        Assertions.assertEquals("123", player.getGuess().toString());
+        player.writeGuessNumber(Note.writeDown("123"));
+        Assertions.assertEquals("123", player.getGuessNumber().toString());
     }
 
 }

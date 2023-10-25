@@ -26,8 +26,8 @@ public class Application {
     private static void inGame(Player player, Computer computer) {
         while (true) {
             String guess = getGuessNumber();
-            player.enterGuess(Note.writeDown(guess));
-            String gameResult = computer.judgeGameResult(player.getGuess());
+            player.writeGuessNumber(Note.writeDown(guess));
+            String gameResult = computer.judgeGameResult(player.getGuessNumber());
             System.out.println(gameResult);
             if (gameOver(gameResult)) {
                 break;

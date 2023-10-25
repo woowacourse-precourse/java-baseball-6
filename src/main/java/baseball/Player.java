@@ -1,23 +1,23 @@
 package baseball;
 
 public class Player {
-    private Note guess;
+    private Note guessNumber;
 
 
-    public Player(Note guess) {
-        this.guess = guess;
+    public Player(Note guessNumber) {
+        this.guessNumber = guessNumber;
     }
 
     public Player(){
-        this.guess = Note.writeDown("123");
+        this.guessNumber = Note.writeDown("123");
     }
 
-    public void enterGuess(Note guess) {
-        this.guess = guess;
+    public void writeGuessNumber(Note guess) {
+        this.guessNumber = guess;
     }
 
-    public Note getGuess() {
-        return guess;
+    public Note getGuessNumber() {
+        return guessNumber;
     }
 }
 
