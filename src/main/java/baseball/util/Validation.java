@@ -60,11 +60,7 @@ public class Validation implements Validate {
 
     public boolean validationReplayInput(String input) {
         if (validateInputType(input) && validateInputLength(input, EXPECTED_RETRY_LENGTH)) {
-            if (input.equals(GAME_REPLAY)) {
-                return true;
-            }
-
-            if (input.equals(GAME_EXIT)) {
+            if (input.equals(GAME_REPLAY) || (input.equals(GAME_EXIT))) {
                 return true;
             }
         }
