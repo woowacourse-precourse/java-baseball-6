@@ -4,12 +4,13 @@ import baseball.util.InputUtil;
 import baseball.util.OutputUtil;
 import baseball.util.RandomNumberUtil;
 import baseball.util.StrikeBallUtil;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     static boolean restartFlag = true;
 
     public static void start() {
+
+        restartFlag = true;
         while (restartFlag) {
 
             final char[] answerNumbers = RandomNumberUtil.getThreeRandomNumbers();
@@ -30,7 +31,6 @@ public class Game {
                 }
             }
         }
-        Console.close();
     }
 
     private static boolean isThreeStrike(int strike) {
