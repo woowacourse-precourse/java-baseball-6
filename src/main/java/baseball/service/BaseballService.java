@@ -6,6 +6,7 @@ import baseball.util.InputCalculator;
 import baseball.util.RestartCalculator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseballService {
@@ -56,6 +57,8 @@ public class BaseballService {
 
         }
 
+        Console.close();
+        
         return false;
     }
 
