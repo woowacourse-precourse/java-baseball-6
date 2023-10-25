@@ -42,6 +42,9 @@ public class BaseballUtil {
         if (numbers.contains(0)) {
             return false;
         }
+        if (numbers.stream().anyMatch(number -> number < 1 || number > 9)) {
+            return false;
+        }
         if (numbers.stream().distinct().count() != NUMBER_LENGTH) {
             return false;
         }
