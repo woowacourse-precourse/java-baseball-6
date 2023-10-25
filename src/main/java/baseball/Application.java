@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    static BufferedReader br;
 
     public static void main(String[] args) {
 
@@ -29,6 +28,7 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
 
         int number = Integer.parseInt(Console.readLine());
+
         List<Integer> userNumber = new ArrayList<>();
 
         for (int i = 0; i < 3; i ++){
