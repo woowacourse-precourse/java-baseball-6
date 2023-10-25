@@ -10,6 +10,7 @@ public class InputView {
     public static List<Integer> inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+
         return convertInputToNumberList(input);
     }
 
@@ -23,9 +24,7 @@ public class InputView {
     }
 
     private static void validationInputFormat(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (Exception e) {
+        if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("잘못된 입력값입니다.");
         }
     }
