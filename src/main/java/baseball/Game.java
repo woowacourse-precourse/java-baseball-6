@@ -36,6 +36,12 @@ public class Game {
         }
     }
 
+    public void setUserInput(String userInput) {
+        this.userInput = userInput;
+        this.ball = 0;
+        this.strike = 0;
+    }
+
     private void addBallCount() {
         this.ball++;
     }
