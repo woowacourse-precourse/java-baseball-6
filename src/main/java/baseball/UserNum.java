@@ -15,8 +15,7 @@ public class UserNum {
         String userNum = Console.readLine();
 
         while (!isValidInput(userNum)) {
-            System.out.print("올바른 입력이 아닙니다. 3자리 숫자를 다시 입력하세요: ");
-            userNum = Console.readLine();
+            throw new IllegalArgumentException("Invalid argument: " + userNum);
         }
 
         userNumList.addAll(Arrays.asList(userNum.split("")));
