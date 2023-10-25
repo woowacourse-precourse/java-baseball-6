@@ -15,7 +15,7 @@ public record BaseballService(Computer computer,
         player.insertInputAnswer(inputAnswer);
     }
 
-    public String palyGame() {
+    public String playGame() {
         return result.compareInputAnswerToRandomNumbers(player.getInputAnswer(), computer.getRandomNumbers());
     }
 

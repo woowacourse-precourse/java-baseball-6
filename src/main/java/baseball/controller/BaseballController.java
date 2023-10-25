@@ -17,7 +17,7 @@ public record BaseballController(InputView inputView,
         while (!baseballService.isGameOver()) {
             String playersAnswer = inputView.readPlayersAnswer();
             baseballService.inputAnswer(playersAnswer);
-            String outputMessage = baseballService.palyGame();
+            String outputMessage = baseballService.playGame();
             outputView.notifyGameResult(outputMessage);
         }
     }
