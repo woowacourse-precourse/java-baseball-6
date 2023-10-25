@@ -24,36 +24,28 @@ public class Player {
         }
     }
 
-    private int inputUserNum() throws IllegalArgumentException{
-        while (true){
-            try{
-                return Integer.parseInt(Console.readLine());
-            }catch(NumberFormatException e){
-                System.out.println("숫자만 입력해주세요.");
-            }
+    private int inputUserNum() throws IllegalArgumentException {
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
     }
+
 
     private void initPlayerNumbers(){
-        int userNum = inputUserNum();
-        playerNumbers = new ArrayList<>(BaseballUtil.splitNumberToList(userNum));
+        playerNumbers = new ArrayList<>(BaseballUtil.splitNumberToList(inputUserNum()));
     }
 
-    private ArrayList<Integer> inputPlayerNumbers(int digits){
-        while(true){
-            GameMessage.printAskNumber();
-            initPlayerNumbers();
 
-            if(playerNumbers.size()!=digits){
-                throw new IllegalArgumentException(digits + "개의 숫자를 입력해주세요.");
-            }
+    private ArrayList<Integer> inputPlayerNumbers(int digits) throws IllegalArgumentException{
+        GameMessage.printAskNumber();
+        initPlayerNumbers();
 
-            if(playerNumbers.contains(0)){
-                throw new IllegalArgumentException("1~9의 숫자만 입력이 가능합니다.");
-            }
-            //System.out.println(playerNumbers);
-            break;
+        if(playerNumbers.size() != digits || playerNumbers.contains(0)){
+            throw new IllegalArgumentException("서로 다른 3자리의 수(1~9)를 입력하세요.");
         }
+
         return playerNumbers;
     }
 }
