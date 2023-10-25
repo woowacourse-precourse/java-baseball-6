@@ -1,0 +1,100 @@
+## 기능 명세서
+
+* 게임을 시작한다.
+    * 출력
+        * 숫자 야구 게임을 시작합니다.
+* 컴퓨터 숫자를 생성한다.
+    * 1-9의 중복되지 않는 세자리 숫자를 생성한다.
+* 사용자의 입력을 받는다.
+    * 출력
+        * 숫자를 입력해주세요 :
+        * 줄바꿈을 하지 않는다.
+    * 1-9의 숫자이어야 한다.
+    * 입력은 3자리이어야 한다.
+    * 모두 숫자이어야 한다.
+    * 숫자는 중복되면 안된다.
+    * 널값을 받으면 안된다.
+* 컴퓨터 숫자와 사용자 입력을 비교한다.
+    * 스트라이크가 3개
+        * 출력
+            * 3개의 숫자를 모두 맞히셨습니다! 게임 종료
+    * 이 외
+        * 볼과 스트라이크 개수를 출력한다.
+        * 출력
+            * 1볼 1스트라이크
+            * 2스트라이크
+            * 1볼
+            * 낫싱
+        * 사용자의 입력을 받는다로 돌아간다.
+* 게임을 종료할지, 재개할지 입력을 받는다.
+    * 출력
+        * 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
+    * 입력은 1글자이어야한다.
+    * 숫자이어야한다.
+    * 1혹은 2이어야 한다.
+    * null이면 안된다.
+
+
+### 구현할 목록
+
+
+
+
+* User클래스
+    * 기능
+        * 랜덤 수 입력하기
+        * 다시 시작할지 입력 넣기
+    * 메서드
+        * String InputUserNumber()
+
+* Game클래스
+    * 기능
+        * 게임 시작하기
+        * 1.인사하기
+        * 2.컴퓨터 랜덤 수 생성하기
+        * 3.사용자에게 입력 요구하기
+            * 예외 확인
+        * 4.볼 스트라이크 개수 확인하기
+            * != 3스트라이크
+                * 게임 머신에게 출력할 것 넘기기 
+                * 3.으로 돌아가기
+            * 3스트라이크
+                * 사용자에게 다시 게임할지 입력 요구 게임머신에게 출력 넘기기
+                * 입력 받기
+                    * 예외처리
+
+    * 메소드
+        * public void startGame()
+          * 게임을 진행시키고, 다시 시작할지만 체크한다.
+        * private void runGameLogic()
+          * 실제 게임을 진행한다.
+        * public void giveTextToMachine(String text)
+            * game에게 텍스트를 받아서 gameMarchine으로 넘긴다.
+        * public String getTextFromMachine()
+            * 입력을 gameMarchine에게 요구하여 받아온다.
+        * private List\<Integer> generateGameNumber()
+            * 컴퓨터가 랜덤 숫자 3개를 골라서 리턴하는 메소드
+        * private static int[] compareComputerWithUser(List<Integer> computerNumList, List<Integer> userNumList)
+            * 사용자 입력 숫자를 컴퓨터 숫자와 비교하여 볼,스트라이크 개수를 리턴한다.
+
+        * private Boolean checkResult(List\<Integer>)
+            * 스트라이크 개수를 확인하여 결과를 반환하는 함수
+ 
+        * printResult
+            * 결과를 사용자에게 출력하는 함수
+        * askForRegame
+            * 게임을 다시 할지 확인하는 함수
+
+* GameMarchine클래스
+    * 기능
+        * 게임 받기
+        * 게임 시작하기
+        * 입력 받아서 넘기기
+        * 출력 받아서 띄우기
+    * 메소드
+        * runGame(game)
+            * 게임을 시작하고
+        * printText(String text)
+            * text를 출력한다.
+        * public static String getTextFromUser()
+          * 유저로부터 text를 받는다.
