@@ -15,7 +15,7 @@ public class Game {
 
     public void startGame() {
         runGame();
-        askToPlayAgain();
+        askForPlayAgain();
     }
 
     private void runGame() {
@@ -83,7 +83,7 @@ public class Game {
         }
     }
 
-    private void askToPlayAgain() {
+    private void askForPlayAgain() {
         View.printPlayAgain();
 
         if (user.getNumberForPlayAgain() == PLAY_AGAIN) {
