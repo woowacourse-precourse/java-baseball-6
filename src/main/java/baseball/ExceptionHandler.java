@@ -43,7 +43,7 @@ public class ExceptionHandler {
 
         if(input.length() != 1) throw new IllegalArgumentException();
 
-        if((input.charAt(0) - '0') != 1 || (input.charAt(0) - '0') != 2) throw new IllegalArgumentException();
+        if((input.charAt(0) - '0') != 1 && (input.charAt(0) - '0') != 2) throw new IllegalArgumentException();
 
 
 
