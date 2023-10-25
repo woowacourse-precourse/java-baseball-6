@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.List;
 
@@ -26,13 +27,13 @@ public class Game {
 
             System.out.println( result.getMessage() );
         } while( !result.isAllStrike() );
-    }
+}
 
 
     public boolean restartGame() {
         String input = "";
 
-        while( input == "1" || input == "2") {
+        while( !(Objects.equals(input, "1") || Objects.equals(input, "2")) ) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             input = readLine();
@@ -45,11 +46,11 @@ public class Game {
         Balls user = null;
 
         while (user == null) {
-            String userInput = readLine();
-
-            validateUserInput(userInput);
-
             try {
+                String userInput = readLine();
+
+                validateUserInput(userInput);
+
                 user = new Balls(userInput);
             } catch (NumberFormatException e) { System.out.println("3개의 1~9 사이의 중복되지 않는 수만 입력할 수 있습니다."); }
             catch (Exception e) { e.printStackTrace(); }
