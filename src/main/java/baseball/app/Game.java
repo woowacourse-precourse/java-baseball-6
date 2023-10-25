@@ -6,6 +6,10 @@ import static baseball.global.enums.GuideMessage.FINISH_GUIDE;
 import static baseball.global.enums.GuideMessage.RESTART_MENU;
 import static baseball.global.enums.GuideMessage.START_MENU;
 import static baseball.global.util.GameInput.validateMenu;
+import static baseball.global.util.GameOutput.errorMessage;
+import static baseball.global.util.GameOutput.printFinish;
+import static baseball.global.util.GameOutput.printRestart;
+import static baseball.global.util.GameOutput.printResult;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.domain.Round;
@@ -55,23 +59,24 @@ public class Game {
 
         if (result.equals(PERFECT.name)) {
             isFinished = true;
-            System.out.println(PERFECT.name + "\n" + FINISH_GUIDE.message);
+            printResult(result);
+            printFinish();
             return;
         }
         isFinished = false;
-        System.out.println(result);
+        printResult(result);
     }
 
 
     private int finishMenu() {
         while (true) {
-            System.out.println(RESTART_MENU.message);
+            printRestart();
             String s = readLine();
             try {
                 menu = validateMenu(s);
                 return menu;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                errorMessage(e);
             }
         }
     }

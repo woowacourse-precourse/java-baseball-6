@@ -1,7 +1,10 @@
 package baseball.domain;
 
+import static baseball.global.enums.ErrorMessage.DIFFERENT_THREE_DIGITS;
 import static baseball.global.enums.GuideMessage.INPUT_COMMAND;
 import static baseball.global.util.GameInput.validateNum;
+import static baseball.global.util.GameOutput.errorMessage;
+import static baseball.global.util.GameOutput.inputCommand;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.global.enums.GuideMessage;
@@ -22,13 +25,13 @@ public class Player {
         status = 1;
 
         while (status == 1) {
-            System.out.print(INPUT_COMMAND.message);
+            inputCommand();
 
             try {
                 inputNum();
                 status = 2;
             } catch (IllegalArgumentException e) {   // 입력값에 관한 에러 한번에 잡기
-                System.out.println(e.getMessage());
+                errorMessage(e);
             }
         }
 
@@ -41,12 +44,12 @@ public class Player {
         validateNum(s);
 
         for (int i = 0; i < 3; i++) {
-            int order = Integer.parseInt(String.valueOf(s.charAt(i)));
-            if (num.contains(order)) {
-                throw new IllegalArgumentException("서로 다른 세 자리 수를 입력하세요.");
+            int digit = Integer.parseInt(String.valueOf(s.charAt(i)));
+            if (num.contains(digit)) {
+                throw new IllegalArgumentException(DIFFERENT_THREE_DIGITS.message);
             }
 
-            num.add(order);
+            num.add(digit);
         }
 
     }
