@@ -18,7 +18,7 @@ public class Constant {
         }
     }
 
-    public enum UserResponseMessage{
+    public enum UserResponseMessage {
         GAME_START_MESSAGE("숫자 야구 게임을 시작합니다."),
         BALL_MESSAGE("볼 "),
         STRIKE_MESSAGE("스트라이크"),

@@ -18,7 +18,8 @@ public class NumberFactory {
         List<Integer> computerNumbers = new ArrayList<>();
 
         while (computerNumbers.size() < numberOfDigits) {
-            int randomNumber = Randoms.pickNumberInRange(minimumNumberOfRange, maximumNumberOfRange);
+            int randomNumber = Randoms.pickNumberInRange(minimumNumberOfRange,
+                maximumNumberOfRange);
 
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);

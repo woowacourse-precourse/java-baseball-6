@@ -22,6 +22,7 @@ public class NumberGameConfiguration {
     }
 
     public static class Builder {
+
         private NumberGameConfiguration configuration;
 
         public Builder() {
