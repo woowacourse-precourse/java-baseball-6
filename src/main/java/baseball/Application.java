@@ -5,18 +5,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
 
-    final String MESSAGE_GAME_START = "숫자 야구 게임을 시작합니다.";
-    final String MESSAGE_GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    final String MESSAGE_GAME_END_ASK = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    final String MESSAGE_WRONG_NUMBER = "올바른 수를 입력해 주세요";
+    private final String MESSAGE_GAME_START = "숫자 야구 게임을 시작합니다.";
+    private final String MESSAGE_GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private final String MESSAGE_GAME_END_ASK = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final String MESSAGE_WRONG_NUMBER = "올바른 수를 입력해 주세요";
 
     Game() {
         System.out.println();
     }
 
     private static boolean isNumberValid(String x) {
-        if(x <)
-        int[] check = new int[10];
+        if (x <) {
+            int[] check = new int[10];
+        }
         for (int i = 0; i < 3; i++) {
             int k = check[x.charAt(i) - '0'];
             if (k > 0) {
@@ -26,18 +27,38 @@ public class Game {
         return true;
     }
 
-    private static int genearteRandomNumber() {
-        while(true) {
-            Game.getRandomNumber();
+    private static String getRandomNumber() {
+        String b = "";
+        StringBuffer sb = new StringBuffer();
+        boolean[] vis = new boolean[10];
+        while (true) {
+            int rand = Randoms.pickNumberInRange(1, 9);
+            if (vis[rand]) {
+                continue;
+            }
+            sb.append(rand);
+            if (sb.length() == 3) {
+                break;
+            }
+            vis[rand] = true;
         }
-        }
-        return 1;
+        b = sb.toString();
+        return b;
+
     }
 
-    static void start() {
-        while (true) {
+    private static void checkUserInput() {
 
-            play(getRandomNumber());
+    }
+
+    private static String getUserInput() {
+
+        checkUserInput();
+
+    }
+
+    public void start() {
+        while (play(getRandomNumber(), getUserInput())) {
         }
     }
 
@@ -48,25 +69,10 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Game play = new Game();
-        Game.start();
-        int a = Game.getRandomNumber();
+        Game game = new Game();
+        game.start();
         while (true) {
-            String b = "";
-            StringBuffer sb = new StringBuffer();
-            boolean[] vis = new boolean[10];
-            while (true) {
-                int rand = Randoms.pickNumberInRange(1, 9);
-                if (vis[rand]) {
-                    continue;
-                }
-                sb.append(rand);
-                if (sb.length() == 3) {
-                    break;
-                }
-                vis[rand] = true;
-            }
-            b = sb.toString();
+
             while (true) {
 
                 String a = Console.readLine();
