@@ -12,6 +12,7 @@ public class GameController {
     GameOutputPrinter gameOutputPrinter = new GameOutputPrinter();
     GameInputReader gameInputReader = new GameInputReader();
     InputNumberChecker inputNumberChecker = new InputNumberChecker();
+    OutputHintChecker outputHintChecker = new OutputHintChecker();
 
     public void play() {
         initializeGame();
@@ -44,7 +45,8 @@ public class GameController {
     }
 
     private void printHint() {
-        gameOutputPrinter.printHint(strike, ball);
+        String hint = OutputHintChecker.getHint(strike, ball);
+        System.out.println(hint);
     }
 
     private void handleGameEnd() {
@@ -53,7 +55,6 @@ public class GameController {
         if (userAnswer.equals("1")) {
             RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
             randomNumber = randomNumberCreater.getRandomNumber();
-            System.out.println(randomNumber);
             gameRunning = true;
         } else {
             gameRunning = false;
@@ -67,5 +68,4 @@ public class GameController {
     private void isValidUserAnswerInput(String input) {
         InputValidator.isValidUserAnswerInput(input);
     }
-
 }
