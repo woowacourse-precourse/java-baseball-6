@@ -1,4 +1,4 @@
-package baseball;
+package baseball.configuration;
 
 import baseball.controller.GameManager;
 import baseball.service.Referee;
@@ -6,7 +6,7 @@ import baseball.utils.RestartCommandValidator;
 import baseball.view.ConsoleInput;
 import baseball.view.Input;
 
-public class ApplicationConfig {
+public class ApplicationConfiguration {
 
     public GameManager gameController() {
         return new GameManager(restartCommandValidator(), referee(), consoleInput());
