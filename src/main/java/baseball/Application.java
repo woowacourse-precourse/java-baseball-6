@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.game.BaseBallGame;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
@@ -9,5 +10,6 @@ public class Application {
 		do {
 			game.play();
 		} while (game.askReplay());
+		Console.close();
 	}
 }
