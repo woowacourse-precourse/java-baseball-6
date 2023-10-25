@@ -1,9 +1,9 @@
 package baseball.domain;
 
-public class Player {
+class Player {
     private final Writer writer;
 
-    public Player() {
+    Player() {
         this.writer = new Writer();
     }
 }
