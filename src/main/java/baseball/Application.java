@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Application {
@@ -7,6 +9,18 @@ public class Application {
         // TODO: 프로그램 구현
         User player = new User();
         Computer computer = new Computer();
+
+        /*
+        1: 게임 시작
+        2: 종료
+         */
+        String insertCoin = "1";
+
+        while (insertCoin == "1") {
+            startNewGame(player, computer);
+            insertCoin = Console.readLine();
+        }
+        System.out.println("게임을 종료합니다.");
     }
 
     public static void startNewGame(User player, Computer comp) {
