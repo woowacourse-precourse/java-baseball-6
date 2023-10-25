@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.controller.GameMaster;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameMaster gm = new GameMaster();
+        gm.gameStart();
     }
 }
