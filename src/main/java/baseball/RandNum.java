@@ -17,8 +17,7 @@ public class RandNum {
                 numArr.add(randNum);
             }
         }
-        System.out.println(numArr); //출력 확인
-
+        System.out.println(numArr);
         return numArr;
     }
 

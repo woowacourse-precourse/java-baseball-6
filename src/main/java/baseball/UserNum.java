@@ -11,6 +11,8 @@ public class UserNum {
 
     public List inputNum() {
 
+        System.out.print("숫자를 입력해주세요 : ");
+
         StringTokenizer st = new StringTokenizer(Console.readLine());
         String userNum = st.nextToken(); //String 형태로 받기
         validateUserNum(userNum);
