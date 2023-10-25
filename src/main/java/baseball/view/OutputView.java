@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.GameMessage;
+
 import java.util.Map;
 
 public class OutputView {
@@ -9,32 +11,35 @@ public class OutputView {
     private static final String[] RESULT_KEYS = {"볼", "스트라이크", "낫싱"};
 
     public static void printStartGameMessage() {
-        System.out.println(START_GAME_MESSAGE);
+        System.out.println(GameMessage.START_GAME_MESSAGE);
     }
 
     public static void printGameResultMessage(Map<String, Integer> result) {
         StringBuilder resultSb = new StringBuilder();
 
-        if (result.containsKey(RESULT_KEYS[2]) && result.get(RESULT_KEYS[2]) == 3) {
-            resultSb.append("낫싱");
-            System.out.println(resultSb);
+        if (result.containsKey(GameMessage.NOTHING.getMessage())
+                && result.get(GameMessage.NOTHING.getMessage())
+                == GameMessage.NOTHING_COUNT.getNumber()) {
+            printNothing();
             return;
         }
 
-        for (int kIdx = 0; kIdx < 2; kIdx++) {
-            String key = RESULT_KEYS[kIdx];
-            if (result.containsKey(key)) {
-                resultSb.append(result.get(key)).append(key).append(" ");
-            }
+        if (result.containsKey(GameMessage.BALL.getMessage())) {
+            printBall(result);
         }
+
+        if (result.containsKey(GameMessage.STRIKE.getMessage())) {
+            printStrike(result);
+        }
+
         System.out.println(resultSb);
     }
 
     public static void printThreeStrikeMessage() {
-        System.out.println(THREE_STRIKE_MESSAGE);
+        System.out.println(GameMessage.THREE_STRIKE_MESSAGE.getMessage());
     }
 
     public static void printStartNewGameMessage() {
-        System.out.println(NEW_GAME_START_MESSAGE);
+        System.out.println(GameMessage.NEW_GAME_START_MESSAGE.getMessage());
     }
 }

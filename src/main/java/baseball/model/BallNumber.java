@@ -1,5 +1,8 @@
 package baseball.model;
 
+import baseball.ExceptionMessage;
+import baseball.GameMessage;
+
 public class BallNumber {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
@@ -14,9 +17,9 @@ public class BallNumber {
         return number;
     }
 
-    private void validateBallNumberRange(int number) {
-        if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new IllegalArgumentException("공 번호는 1부터 9까지만 입력할 수 있습니다.");
+    private void validateBallNumberRange(Integer number) {
+        if (number < GameMessage.MIN_NUMBER.getNumber() || number > GameMessage.MAX_NUMBER.getNumber()) {
+            throw new IllegalArgumentException(ExceptionMessage.ILLEGAL_BASEBALL_NUMBER_RANGE_MESSAGE.getMessage());
         }
     }
 }

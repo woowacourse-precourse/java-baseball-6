@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.GameMessage;
+
 import java.util.Map;
 
 public class BaseBallGame {
@@ -20,18 +22,18 @@ public class BaseBallGame {
     }
 
     public void setRunning(String gameInput) {
-        if (gameInput.equals("2")) {
+        if (gameInput.equals(GameMessage.QUIT.getMessage())) {
             BaseBallGame.isRunning = false;
-        } else if (gameInput.equals("1")) {
+        } else if (gameInput.equals(GameMessage.NEW_GAME.getMessage())) {
             BaseBallGame.isRunning = true;
         }
     }
 
     private boolean isStrike(Map<String, Integer> gameResult) {
         boolean isStrike = false;
-        if (gameResult.containsKey("스트라이크")) {
-            int strikeCount = gameResult.get("스트라이크");
-            if (strikeCount == 3) {
+        if (gameResult.containsKey(GameMessage.STRIKE.getMessage())) {
+            Integer strikeCount = gameResult.get(GameMessage.STRIKE.getMessage());
+            if (strikeCount == GameMessage.STRIKE_COUNT.getNumber()) {
                 isStrike = true;
             }
         }

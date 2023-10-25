@@ -1,16 +1,14 @@
 package baseball.view;
 
+import baseball.ExceptionMessage;
+import baseball.GameMessage;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
-    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String ILLEGAL_USER_INPUT_MESSAGE = "야구공은 숫자만 입력할 수 있습니다.";
-    private static final String ILLEGAL_GAME_INPUT_MESSAGE = "공 번호는 1 또는 2만 입력할 수 있습니다.";
-    private static final String NEW_GAME = "1";
-    private static final String QUIT = "2";
 
     public static String inputPlayerBaseBallNumbers() {
-        System.out.print(INPUT_NUMBER_MESSAGE);
+        System.out.print(GameMessage.INPUT_NUMBER_MESSAGE.getMessage());
         String playerInput = readLine();
         validatePlayerBaseBallNumber(playerInput);
         return playerInput;
@@ -26,13 +24,13 @@ public class InputView {
         try {
             Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
-            System.out.println(ILLEGAL_USER_INPUT_MESSAGE);
+            System.out.println(ExceptionMessage.ILLEGAL_USER_INPUT_MESSAGE.getMessage());
         }
     }
 
     private static void validateGamePlayNumber(String playNumber) {
-        if (!playNumber.equals(NEW_GAME) && !playNumber.equals(QUIT)) {
-            System.out.println(ILLEGAL_GAME_INPUT_MESSAGE);
+        if (!playNumber.equals(GameMessage.NEW_GAME.getMessage()) && !playNumber.equals(GameMessage.QUIT.getMessage())) {
+            System.out.println(ExceptionMessage.ILLEGAL_GAME_INPUT_MESSAGE.getMessage());
         }
     }
 }
