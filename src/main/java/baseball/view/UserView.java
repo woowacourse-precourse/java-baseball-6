@@ -44,6 +44,6 @@ public class UserView {
     }
 
     public void printResumeInputPrompt(){
-        System.out.print(GAME_PAUSE_OR_RESUME_PROMPT_MESSAGE);
+        System.out.println(GAME_PAUSE_OR_RESUME_PROMPT_MESSAGE);
     }
 }
