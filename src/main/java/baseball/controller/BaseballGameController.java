@@ -47,7 +47,7 @@ public class BaseballGameController {
     }
 
     private boolean isWantStopGame() {
-        outputView.areYouWantMoreGame(inputView.moreGameValue(), inputView.stopGameValue());
+        outputView.areYouWantStopGame(inputView.moreGameValue(), inputView.stopGameValue());
         return inputView.isWantStopGame();
     }
 }

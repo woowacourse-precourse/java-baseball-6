@@ -11,5 +11,5 @@ public interface OutputView {
 
     void goodGame(final int targetSize);
 
-    void areYouWantMoreGame(final String moreValue, final String stopValue);
+    void areYouWantStopGame(final String moreValue, final String stopValue);
 }

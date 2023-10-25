@@ -52,7 +52,7 @@ public class ConsoleOutputView implements OutputView {
     }
 
     @Override
-    public void areYouWantMoreGame(final String moreValue, final String stopValue) {
+    public void areYouWantStopGame(final String moreValue, final String stopValue) {
         System.out.printf(MORE_GAME, moreValue, stopValue);
     }
 }
