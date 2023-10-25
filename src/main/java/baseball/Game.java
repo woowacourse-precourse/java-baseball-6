@@ -7,7 +7,9 @@ import static baseball.status.GameMsg.SUCCESS_MESSAGE;
 import static baseball.status.GameSetting.OVER;
 import static baseball.status.GameSetting.REPLAY;
 
-import baseball.status.GameUtil;
+import baseball.game.GameInput;
+import baseball.game.GameOutput;
+import baseball.game.GameUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +18,10 @@ class Game {
     private final GameOutput gameOutput;
     private final GameUtil gameUtil;
 
-    Game() {
-        gameInput = new GameInput();
-        gameOutput = new GameOutput();
-        gameUtil = new GameUtil();
+    Game(GameInput gameInput, GameOutput gameOutput, GameUtil gameUtil) {
+        this.gameInput = gameInput;
+        this.gameOutput = gameOutput;
+        this.gameUtil = gameUtil;
     }
 
     public void play() {
@@ -42,8 +44,8 @@ class Game {
      * 게임 재시작, 종료 여부
      */
     public void handleGameChoice() {
-        System.out.println(SUCCESS_MESSAGE.getMsg());
-        System.out.println(REPLAY_OR_OVER_MESSAGE.getMsg());
+        gameOutput.printMessage(SUCCESS_MESSAGE.getMsg());
+        gameOutput.printMessage(REPLAY_OR_OVER_MESSAGE.getMsg());
         String input = gameInput.setInput();
         String choice = gameInput.getReplayOrOverInput(input);
         replayOrOver(choice);
@@ -58,7 +60,7 @@ class Game {
         if (choice.equals(REPLAY.getStringValue())) {
             play();
         } else if (choice.equals(OVER.getStringValue())) {
-            System.out.println(GAME_OVER.getMsg());
+            gameOutput.printMessage(GAME_OVER.getMsg());
             gameInput.close();
         }
     }

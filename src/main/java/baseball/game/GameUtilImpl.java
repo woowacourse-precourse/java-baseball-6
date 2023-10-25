@@ -1,4 +1,4 @@
-package baseball.status;
+package baseball.game;
 
 import static baseball.status.GameSetting.COUNT_NUM;
 import static baseball.status.GameSetting.MAX_NUM;
@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameUtil {
+public class GameUtilImpl implements GameUtil {
 
     /**
      * 컴퓨터 수 설정

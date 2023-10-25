@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import static baseball.status.GameMsg.BALL;
 import static baseball.status.GameMsg.BALL_AND_STRIKE;
@@ -15,7 +15,6 @@ public class GameOutput {
      * 볼, 스트라이크, 낫싱 출력 메시지 생성
      *
      * @param result [볼, 스트라이크]
-     * @return 출력 메시지
      */
     public void output(int[] result) {
         int ball = result[0];

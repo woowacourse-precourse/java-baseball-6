@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import static baseball.status.ErrorCode.INVALID_DISTINCT_INPUT;
 import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT;
