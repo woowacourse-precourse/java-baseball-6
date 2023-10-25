@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.invalid.InvalidContinueMessageFormatException;
 import baseball.number.BaseBallNumbers;
 import baseball.number.RandomNumbers;
 import baseball.view.InputView;
