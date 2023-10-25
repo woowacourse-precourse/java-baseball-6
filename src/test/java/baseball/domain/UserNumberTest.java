@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class UserNumberTest {
+
     @Test
     void 입력_값_정상_작동_테스트() {
         String input = "124";

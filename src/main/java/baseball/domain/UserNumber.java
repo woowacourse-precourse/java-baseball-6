@@ -1,13 +1,13 @@
 package baseball.domain;
 
 import baseball.constant.Constant;
-import baseball.constant.errorMessage.UserNumberError;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserNumber {
+
     private final List<Integer> userNumber;
 
     public UserNumber(String input) {
@@ -28,25 +28,25 @@ public class UserNumber {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(UserNumberError.USER_NUMBER_WRONG_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 
     private void validateUserInputLength(List<Integer> userNum) {
-        if (userNum.size() != Constant.NUMBER_LENGTH_LIMIT) {
-            throw new IllegalArgumentException(UserNumberError.USER_NUMBER_WRONG_LENGTH_ERROR_MESSAGE);
+        if (userNum.size() != Constant.ZERO_NUMBER && userNum.size() != Constant.NUMBER_LENGTH_LIMIT) {
+            throw new IllegalArgumentException();
         }
     }
 
     private void validateUserInputRange(List<Integer> userNum) {
         if (userNum.stream().anyMatch(num -> Constant.START_NUMBER > num || num > Constant.END_NUMBER)) {
-            throw new IllegalArgumentException(UserNumberError.USER_NUMBER_WRONG_RANGE_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 
     private void validateUserInputDuplicate(List<Integer> userNum) {
         if (userNum.stream().distinct().count() != Constant.NUMBER_LENGTH_LIMIT) {
-            throw new IllegalArgumentException(UserNumberError.USER_NUMBER_DUPLICATE_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 

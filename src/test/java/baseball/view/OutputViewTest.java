@@ -72,5 +72,4 @@ class OutputViewTest {
 
         assertEquals(output, outputMessage.toString());
     }
-
 }

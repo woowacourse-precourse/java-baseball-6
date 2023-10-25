@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ComputerNumber {
+
     private List<Integer> createRandomNumber() {
         List<Integer> randomNumbers = pickRandomNumber();
         if (validateRandomNumberDuplicate(randomNumbers) && validateRandomNumberRange(randomNumbers)) {

@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ComputerNumberTest {
+
     @Test
     void 컴퓨터_랜덤_숫자_길이_확인() {
         List<Integer> computerNumber = new ComputerNumber().getComputerNumber();
