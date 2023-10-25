@@ -18,15 +18,15 @@ public class Application {
         Game game = new Game();
         User user = new User();
 
-        play(game, user);
+        while (user.isContinued()) {
+            play(game, user);
+        }
     }
 
     public static void play(Game game, User user) {
-        while (user.isContinued()) {
-            game.init();
-            resolve(game, user);
-            askReGame(user);
-        }
+        game.init();
+        resolve(game, user);
+        askReGame(user);
     }
 
     private static void askReGame(User user) {
