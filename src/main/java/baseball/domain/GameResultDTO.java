@@ -1,12 +1,34 @@
 package baseball.domain;
 
-public class GameResultDTO {
-    int ballCount;
-    int strikeCount;
+import java.util.List;
 
-    public GameResultDTO(int ballCount, int strikeCount) {
-        this.ballCount = ballCount;
-        this.strikeCount = strikeCount;
+public class GameResultDTO {
+    private int ballCount;
+    private int strikeCount;
+
+
+    public GameResultDTO(GameNumber computerNumber, GameNumber playerNumber) {
+        List<Integer> computerNum = playerNumber.getNumber();
+        List<Integer> playerNums = computerNumber.getNumber();
+        int idx = 0;
+        for (int num : playerNums) {
+            if (isInComputerNumber(computerNum, num)) {
+                isSameIndex(computerNum.indexOf(num), idx);
+            }
+            idx++;
+        }
+    }
+
+    private boolean isInComputerNumber(List<Integer> computerNumber, int num) {
+        return computerNumber.contains(num);
+    }
+
+    private void isSameIndex(int computerNumberIdx, int playerNumberIdx) {
+        if (computerNumberIdx == playerNumberIdx) {
+            strikeCount++;
+        } else {
+            ballCount++;
+        }
     }
 
     public StringBuilder getResult(StringBuilder messageBuilder) {
@@ -28,4 +50,5 @@ public class GameResultDTO {
     public boolean getIsGameFinished() {
         return strikeCount == 3;
     }
+
 }
