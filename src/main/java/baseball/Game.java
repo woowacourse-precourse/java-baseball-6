@@ -5,14 +5,13 @@ import baseball.util.OutputUtil;
 import static baseball.Constant.*;
 import static baseball.Constant.IS_CONTINUE_FLAG;
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static java.lang.Boolean.FALSE;
 
-public class Ground {
+public class Game {
     Computer computer = new Computer();
     User user = new User();
     Referee referee = new Referee();
 
-    public Ground() {
+    public Game() {
     }
 
     public void endGame() {
