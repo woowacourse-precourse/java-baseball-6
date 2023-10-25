@@ -9,6 +9,7 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class BaseballGameController {
+
     private static final int CLEAR_NUMBER = 3;
 
     public BaseballGameController() {
@@ -23,21 +24,21 @@ public class BaseballGameController {
         String input;
         do {
             List<Integer> computerNumber = new ComputerNumber().getComputerNumber();
-            gameCycleProcess(computerNumber);
+            compareUserToComputer(computerNumber);
             OutputView.printClearMessage();
-            System.out.println(InputView.INPUT_GAME_RESTART_MESSAGE);
             input = InputView.inputGameRestartMessage();
         } while (validateGameReplay(input));
     }
 
-    private void gameCycleProcess(List<Integer> computerNumber) {
+    private boolean validateGameReplay(String input) {
+        return input.equals(Constant.GAME_RESTART_NUMBER);
+    }
+
+    private void compareUserToComputer(List<Integer> computerNumber) {
         BaseballGameResult gameResult;
-        List<Integer> userNumber;
         do {
-            System.out.println(computerNumber);
-            System.out.print(InputView.INPUT_GAME_NUMBER_MESSAGE);
             String input = InputView.inputGameNumberMessage();
-            userNumber = new UserNumber(input).getUserNumber();
+            List<Integer> userNumber = new UserNumber(input).getUserNumber();
             gameResult = new BaseballGameResult(computerNumber, userNumber);
             new OutputView(gameResult).printGameResult();
         } while (!validateGameClear(gameResult.strikeCount));
@@ -46,9 +47,4 @@ public class BaseballGameController {
     private boolean validateGameClear(int strikeCount) {
         return strikeCount == CLEAR_NUMBER;
     }
-
-    private boolean validateGameReplay(String input) {
-        return input.equals(Constant.GAME_RESTART_NUMBER);
-    }
-
 }

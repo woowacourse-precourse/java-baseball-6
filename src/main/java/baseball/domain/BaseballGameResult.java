@@ -8,7 +8,6 @@ public class BaseballGameResult {
     public final int ballCount;
     public final int strikeCount;
 
-
     public BaseballGameResult(List<Integer> computerNumbs, List<Integer> userNumbs) {
         this.ballCount = ballCountProcess(computerNumbs, userNumbs);
         this.strikeCount = strikeCountProcess(computerNumbs, userNumbs);
