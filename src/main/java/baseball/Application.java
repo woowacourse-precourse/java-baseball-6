@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.global.GameMessage.GAME_START_MESSAGE;
+import static baseball.global.common.GameMessage.GAME_START_MESSAGE;
 
 import baseball.domain.BaseballHandler;
 import baseball.domain.Computer;

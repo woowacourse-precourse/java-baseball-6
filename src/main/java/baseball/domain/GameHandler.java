@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static baseball.global.GameMessage.RESTART_GAME_OR_EXIT_MESSAGE;
+import static baseball.global.common.GameMessage.RESTART_GAME_OR_EXIT_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 

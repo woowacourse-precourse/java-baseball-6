@@ -1,8 +1,8 @@
 package baseball;
 
-import static baseball.global.BaseballConstant.GUESS_NUMBER_SIZE;
-import static baseball.global.BaseballConstant.MAX_RANGE;
-import static baseball.global.BaseballConstant.MIN_RANGE;
+import static baseball.global.common.BaseballConstant.GUESS_NUMBER_SIZE;
+import static baseball.global.common.BaseballConstant.MAX_RANGE;
+import static baseball.global.common.BaseballConstant.MIN_RANGE;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

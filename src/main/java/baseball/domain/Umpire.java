@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static baseball.global.BaseballConstant.GUESS_NUMBER_SIZE;
+import static baseball.global.common.BaseballConstant.GUESS_NUMBER_SIZE;
 
 import java.util.stream.IntStream;
 

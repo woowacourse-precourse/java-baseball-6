@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import static baseball.global.GameMessage.INPUT_NUMBER_MESSAGE;
+import static baseball.global.common.GameMessage.INPUT_NUMBER_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;

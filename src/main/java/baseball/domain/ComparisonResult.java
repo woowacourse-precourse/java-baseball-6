@@ -1,9 +1,9 @@
 package baseball.domain;
 
-import static baseball.global.GameMessage.BALL_COUNT_MESSAGE;
-import static baseball.global.GameMessage.GAME_ENDED_MESSAGE;
-import static baseball.global.GameMessage.NOTHING_COUNT_MESSAGE;
-import static baseball.global.GameMessage.STRIKE_COUNT_MESSAGE;
+import static baseball.global.common.GameMessage.BALL_COUNT_MESSAGE;
+import static baseball.global.common.GameMessage.GAME_ENDED_MESSAGE;
+import static baseball.global.common.GameMessage.NOTHING_COUNT_MESSAGE;
+import static baseball.global.common.GameMessage.STRIKE_COUNT_MESSAGE;
 
 public class ComparisonResult {
 

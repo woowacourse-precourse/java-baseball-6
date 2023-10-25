@@ -1,4 +1,4 @@
-package baseball.global;
+package baseball.global.common;
 
 public enum GameMessage {
 
