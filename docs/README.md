@@ -39,6 +39,8 @@
 ## 리팩토링 목록
 
 - [ ] 유효성 검사 클래스를 좀 더 쪼개서 조합해본다
+- [x] OutView 팩토리 메소드 분리
+- [x] Chain of Responcibility Pattern을 사용한 if 분기 처리
 
 ## 시나리오
 

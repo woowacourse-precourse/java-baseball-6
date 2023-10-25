@@ -1,19 +1,25 @@
 package baseball.view;
 
-import static baseball.util.Constants.RESULT_SPACE;
-
-import baseball.model.BallCount;
 import baseball.model.Result;
 import baseball.util.ConsoleMessage;
 import baseball.util.ExceptionMessage;
+import baseball.util.ResultHandler.BallAndStrikeHandler;
+import baseball.util.ResultHandler.BallHandler;
+import baseball.util.ResultHandler.NothingHandler;
+import baseball.util.ResultHandler.ResultHandler;
+import baseball.util.ResultHandler.StrikeHandler;
+import baseball.util.resultFomat.ResultFormatter;
 
 public class OutputView {
+
     public void printGameStart() {
         System.out.println(ConsoleMessage.START_GAME);
     }
 
     public void printGameResult(Result result) {
-        System.out.println(getFormattedResult(result));
+
+        ResultFormatter formatter = getFormatter(result);
+        System.out.println(formatter.format());
     }
 
     public void printThreeStrike() {
@@ -24,33 +30,17 @@ public class OutputView {
         System.out.printf(ExceptionMessage.BASE.getMessage(), exception.getMessage());
     }
 
-    public String getFormattedResult(Result result) {
-        return getDisplay(result.getStrike(), result.getBall());
-    }
 
-    private static String getDisplay(int strike, int ball) {
-        if (isNothing(strike, ball)) {
-            return BallCount.NOTHING.getBaseballjudgment();
-        }
-        return formatBallCount(strike, ball);
-    }
+    private ResultFormatter getFormatter(Result result) {
+        ResultHandler nothingHandler = new NothingHandler();
+        ResultHandler ballHandler = new BallHandler();
+        ResultHandler strikeHandler = new StrikeHandler();
+        ResultHandler ballAndStrikeHandler = new BallAndStrikeHandler();
 
-    private static String formatBallCount(int strike, int ball) {
+        nothingHandler.setNextHandler(ballHandler);
+        ballHandler.setNextHandler(strikeHandler);
+        strikeHandler.setNextHandler(ballAndStrikeHandler);
 
-        StringBuilder gameResult = new StringBuilder();
-        if (ball > 0) {
-            gameResult.append(ball).append(BallCount.BALL.getBaseballjudgment());
-        }
-        if (ball > 0 && strike > 0) {
-            gameResult.append(RESULT_SPACE);
-        }
-        if (strike > 0) {
-            gameResult.append(strike).append(BallCount.STRIKE.getBaseballjudgment());
-        }
-        return gameResult.toString();
-    }
-
-    private static boolean isNothing(int strike, int ball) {
-        return strike == 0 && ball == 0;
+        return nothingHandler.handleResult(result.getBall(), result.getStrike());
     }
 }
