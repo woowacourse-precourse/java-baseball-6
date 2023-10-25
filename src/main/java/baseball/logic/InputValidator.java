@@ -38,7 +38,9 @@ public class InputValidator {
     }
 
     private void validateDuplicate(List<Integer> numberList) {
-        boolean isDuplicate = numberList.stream().distinct().count() != NUMBER_LENGTH;
+        boolean isDuplicate = numberList.stream()
+                .distinct()
+                .count() != NUMBER_LENGTH;
         if (isDuplicate) {
             throw new IllegalArgumentException(INVALID_DUPLICATE_EXCEPTION_MSG);
         }
