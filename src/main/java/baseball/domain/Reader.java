@@ -1,12 +1,12 @@
 package baseball.domain;
 
+import static baseball.domain.MessageConstants.ERROR_MESSAGE;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 
 class Reader {
-    private static final String ERROR_MESSAGE = "잘못된 입력입니다";
-
     List<Integer> readThreeNumbers() {
         try {
             String[] input = Console.readLine().split("");
