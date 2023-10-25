@@ -8,12 +8,14 @@ import java.util.List;
 public class User {
     private final List<Integer> numArr;
 
-    public static User of(int nums){
+    public static User of(String nums) {
         return new User(nums);
     }
 
 
-    private User(int nums) {
+    private User(String userInput) {
+        Validator.validIsInteger(userInput);
+        int nums = Integer.parseInt(userInput);
         Validator.validDigit(nums);
         List<Integer> numArr = new ArrayList<>();
 
@@ -24,7 +26,8 @@ public class User {
 
         this.numArr = numArr;
     }
-    public int getDigitNum(int digit){
+
+    public int getDigitNum(int digit) {
         return numArr.get(digit);
     }
 }

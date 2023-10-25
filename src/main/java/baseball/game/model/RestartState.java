@@ -13,10 +13,11 @@ public class RestartState {
         return isRestart;
     }
 
-    public static RestartState of(String str){
-        int num = Integer.parseInt(str);
+    public static RestartState of(String userInput) {
+        Validator.validIsInteger(userInput);
+        int num = Integer.parseInt(userInput);
         Validator.validRestartNum(num);
-        if(num == 1){
+        if (num == 1) {
             return new RestartState(true);
         }
         return new RestartState(false);

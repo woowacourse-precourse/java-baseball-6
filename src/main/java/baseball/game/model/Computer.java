@@ -19,18 +19,17 @@ public class Computer {
         this.numArr = numArr;
     }
 
-    public static Computer of(){
+    public static Computer of() {
         return new Computer();
     }
 
-    public Result compareToUser(User user){
-        Result result = new Result(0,0);
-        for(int i = 0; i < 3; i++){
-            if(numArr.get(i) == user.getDigitNum(i)){
-                result.setStrike(result.getStrike()+1);
-            }
-            else if(numArr.contains(user.getDigitNum(i))){
-                result.setBall(result.getBall()+1);
+    public Result compareToUser(User user) {
+        Result result = new Result(0, 0);
+        for (int i = 0; i < 3; i++) {
+            if (numArr.get(i) == user.getDigitNum(i)) {
+                result.setStrike(result.getStrike() + 1);
+            } else if (numArr.contains(user.getDigitNum(i))) {
+                result.setBall(result.getBall() + 1);
             }
         }
         return result;
