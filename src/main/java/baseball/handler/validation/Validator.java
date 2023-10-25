@@ -1,5 +1,6 @@
 package baseball.handler.validation;
 
+import baseball.config.GameProperty;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.io.FileInputStream;
 import java.util.HashSet;
@@ -10,20 +11,6 @@ import org.assertj.core.internal.Numbers;
 
 public class Validator {
 
-    private final static Properties properties = new Properties();
-
-    private final static int ANSWERLENGTH = Integer.parseInt((String)properties.get("ANSWER.LENGTH"));
-    private final static int ST_RANGE = Integer.parseInt((String) properties.get("NUM.RANGE.ST"));
-    private final static int ED_RANGE = Integer.parseInt((String) properties.get("NUM.RANGE.ED"));
-
-    static {
-        try {
-            FileInputStream propertyFile = new FileInputStream("rule.properties");
-            properties.load(propertyFile);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     private Validator(){
     }
@@ -40,13 +27,13 @@ public class Validator {
         }
     }
     private static void lengthValidate(List<Integer> userAnswer){
-        if(userAnswer.size() != ANSWERLENGTH ){
+        if(userAnswer.size() != GameProperty.getAnswerlength()){
             throw new IllegalArgumentException();
         }
     }
     private static void typeValidate(List<Integer> userAnswer){
         for (int num: userAnswer ) {
-            if(num < ST_RANGE || num > ED_RANGE){
+            if(num < GameProperty.getStRange() || num > GameProperty.getEdRange()){
                 throw new IllegalArgumentException();
             }
         }
