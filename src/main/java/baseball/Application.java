@@ -60,7 +60,7 @@ public class Application {
                 }
             } catch ( Exception e ) {
 
-                return;
+                break;
             }
         }
     }
