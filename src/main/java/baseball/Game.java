@@ -28,8 +28,12 @@ public class Game {
 
       int strikeCount = countStrikes(guessNumbers);
       int ballCount = countBalls(guessNumbers);
-
-      calculateResult(strikeCount, ballCount);
+      int checkEnd = calculateResult(strikeCount, ballCount);
+      if (checkEnd == 1) {
+        restartGame();
+      } else if (checkEnd == 2) {
+        break;
+      }
     }
   }
 
@@ -48,7 +52,7 @@ public class Game {
     List<Integer> guessNumberList = new ArrayList<>();
     for (int i = 0; i < guessNumber.length(); i++) {
       char digitChar = guessNumber.charAt(i);
-      if (Character.isDigit(digitChar)){
+      if (Character.isDigit(digitChar)) {
         int digit = Character.getNumericValue(digitChar);
         guessNumberList.add(digit);
       } else {
@@ -70,7 +74,7 @@ public class Game {
 
   private int countBalls(List<Integer> guessNumbers) {
     int ballCount = 0;
-    for (int i = 0; i < guessNumbers.size(); i++){
+    for (int i = 0; i < guessNumbers.size(); i++) {
       int guess = guessNumbers.get(i);
       if (computerNumbers.contains(guess) && !computerNumbers.get(i).equals(guess)) {
         ballCount++;
@@ -79,22 +83,44 @@ public class Game {
     return ballCount;
   }
 
-  private void calculateResult(int strikeCount, int ballCount) {
+  private int calculateResult(int strikeCount, int ballCount) {
     if (strikeCount == 3) {
       System.out.println("3스트라이크");
       System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-      // restart function 추가
+      System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+      return restartOption();
     } else if (strikeCount == 0 && ballCount == 0) {
       System.out.println("낫싱");
+      return 0;
     } else if (strikeCount != 0 && ballCount != 0) {
       String result = String.format("%d볼 %d스트라이크", ballCount, strikeCount);
       System.out.println(result);
+      return 0;
     } else if (strikeCount != 0) {
       String result = String.format("%d스트라이크", strikeCount);
       System.out.println(result);
-    } else if (ballCount != 0) {
+      return 0;
+    } else {
       String result = String.format("%d볼", ballCount);
       System.out.println(result);
+      return 0;
     }
+  }
+
+  private int restartOption() {
+    String restart = Console.readLine();
+    while (true) {
+      if (!restart.equals("1") && !restart.equals("2")) {
+        System.out.println("잘못된 값을 입력했습니다. 다시 입력해주십시오.");
+        restart = Console.readLine();
+      } else {
+        break;
+      }
+    }
+    return Character.getNumericValue(restart.charAt(0));
+  }
+
+  private void restartGame() {
+    computerNumbers = generateRandomNumbers(3, 1, 9);
   }
 }
