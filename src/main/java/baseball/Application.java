@@ -33,7 +33,7 @@ public class Application {
                 int number = validCheck.isValidNumber();
 
                 List<Integer> numberList = new ArrayList<>();
-                ncgit umberList.add(number/100);
+                numberList.add(number/100);
                 numberList.add((number%100)/10);
                 numberList.add(number%10);
 
