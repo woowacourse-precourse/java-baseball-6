@@ -12,6 +12,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class GameManager {
+    private static final Integer MIN_COUNT = 0;
+    private static final Integer MAX_COUNT = 3;
+    private static final Integer COUNT_INIT_NUMBER = 0;
+    private static final Integer LOOP_START_NUMBER = 0;
+    private static final Integer NUMBER_SIZE = 3;
 
     private final GameReceiver gameReceiver;
     private final GamePrinter gamePrinter;
@@ -34,39 +39,81 @@ public class GameManager {
     }
 
     private void playBall(GameNumber gameNumber) {
-        // 반복문
-        // 입력 요청
-        // checkUserNumber();
-        // true -> 게임 끝
-        // false -> 계속 진행
-    }
+        boolean isContinue = true;
 
-    private boolean checkUserNumber(GameNumber gameNumber, GameNumber userNumber) {
-        // userNumber 유효성 체크
-        calculateBallCount(gameNumber, userNumber);
-        return true;
+        while (isContinue) {
+            gamePrinter.requestInputGameNumber();
+            GameNumber userNumber;
+            try {
+                userNumber = new GameNumber(gameReceiver.receive());
+            } catch (IOException e) {
+                throw new IllegalArgumentException(e);
+            }
+            isContinue = calculateBallCount(gameNumber, userNumber);
+        }
     }
 
     private boolean calculateBallCount(GameNumber gameNumber, GameNumber userNumber) {
+        boolean isContinue = true;
         Integer strikeCount;
         Integer ballCount;
-        // 로직
-        // GamePrinter로 출력
-        return true;
+
+        strikeCount = calculateStrike(gameNumber.getValue(), userNumber.getValue());
+        ballCount = calculateBall(gameNumber.getValue(), userNumber.getValue());
+
+        if (strikeCount == MIN_COUNT && ballCount == MIN_COUNT) {
+            gamePrinter.printNothing();
+        } else if (strikeCount > MIN_COUNT && strikeCount < MAX_COUNT && ballCount == MIN_COUNT) {
+            gamePrinter.printStrikeCount(strikeCount.toString());
+        } else if (ballCount > MIN_COUNT && strikeCount == MIN_COUNT) {
+            gamePrinter.printBallCount(ballCount.toString());
+        } else if (strikeCount == MAX_COUNT) {
+            gamePrinter.printStrikeCount(strikeCount.toString());
+            isContinue = false;
+        } else {
+            gamePrinter.printBallAndStrikeCount(strikeCount.toString(), ballCount.toString());
+        }
+        return isContinue;
+    }
+
+    private Integer calculateStrike(String gameNumber, String userNumber) {
+        Integer strikeCount = COUNT_INIT_NUMBER;
+        for (int index = LOOP_START_NUMBER; index < NUMBER_SIZE; index++) {
+            if (gameNumber.charAt(index) == userNumber.charAt(index)) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
+    private Integer calculateBall(String gameNumber, String userNumber) {
+        Integer ballCount = COUNT_INIT_NUMBER;
+        for (int gameNumberIndex = LOOP_START_NUMBER; gameNumberIndex < NUMBER_SIZE; gameNumberIndex++) {
+            for (int userNumberIndex = LOOP_START_NUMBER; userNumberIndex < NUMBER_SIZE; userNumberIndex++) {
+                if (gameNumberIndex == userNumberIndex) {
+                    continue;
+                }
+
+                if (gameNumber.charAt(gameNumberIndex) == userNumber.charAt(userNumberIndex)) {
+                    ballCount++;
+                }
+            }
+        }
+
+        return ballCount;
     }
 
     private boolean askRestartGame() {
         gamePrinter.requestInputRestartNumber();
 
-        String inputRestartNumber;
+        RestartNumber inputRestartNumber;
         try {
-            inputRestartNumber = gameReceiver.receive();
+            inputRestartNumber = new RestartNumber(gameReceiver.receive());
         } catch (IOException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e);
         }
 
-        RestartNumber restartNumber = new RestartNumber(inputRestartNumber);
-        
-        return restartNumber.getValue();
+        return inputRestartNumber.getValue();
     }
 }

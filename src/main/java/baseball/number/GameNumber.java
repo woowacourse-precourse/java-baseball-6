@@ -7,7 +7,7 @@ public class GameNumber {
     private static final Integer NUMBER_SIZE = 3;
     private static final Integer START_NUMBER = 1;
     private static final Integer END_NUMBER = 9;
-    private String value;
+    private final String value;
 
     public GameNumber(String gameNumber) {
         if (!validateGameNumber(gameNumber)) {
@@ -61,5 +61,8 @@ public class GameNumber {
         return true;
     }
 
+    public String getValue() {
+        return value;
+    }
 
 }
