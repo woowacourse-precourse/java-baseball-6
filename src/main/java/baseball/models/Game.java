@@ -52,4 +52,12 @@ public class Game {
         }
     }
 
+    public void changeStatus() {
+        if (this.status) {
+            this.status = false;
+        } else if (!this.status) {
+            this.status = true;
+        }
+    }
+
 }
