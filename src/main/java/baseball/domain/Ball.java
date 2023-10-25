@@ -4,16 +4,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-class Ball {
+record Ball(List<Integer> balls) {
     private static final Integer MIN_NUM = 1;
     private static final Integer MAX_NUM = 9;
-    private final List<Integer> balls;
 
-    Ball(List<Integer> balls) {
+    Ball {
         validateDuplicate(balls);
         validateSize(balls);
         validateRange(balls);
-        this.balls = balls;
     }
 
     private void validateSize(List<Integer> balls) {
