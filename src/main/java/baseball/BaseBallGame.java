@@ -25,7 +25,7 @@ public class BaseBallGame {
         do {
             System.out.print(OutputMessage.START_GAME);
 
-            Computer computer = new Computer();
+            computer.setRandomNumber();
             // 정답 확인용 임시 코드
             System.out.println(Arrays.toString(computer.getRandomNumber().toArray()));
 

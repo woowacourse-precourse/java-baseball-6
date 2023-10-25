@@ -24,7 +24,7 @@ public class Computer {
         return randomNumber;
     }
 
-    private List<Integer> setRandomNumber() {
+    public void setRandomNumber() {
         randomNumber = new ArrayList<>();
         while (randomNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -32,6 +32,5 @@ public class Computer {
                 this.randomNumber.add(randomNumber);
             }
         }
-        return randomNumber;
     }
 }
