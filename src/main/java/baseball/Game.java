@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class Game {
     static ArrayList<Integer> computerList;
     static ArrayList<Integer> playerList;
-
+    public Input myInput;
 
     public Game() {
-
+        myInput = new Input();
     }
-    public static void run(){
+    public void run(){
         //야구 게임 시작 메시지 출력
         Output.printStartMessage();
         while (true){
@@ -31,7 +31,7 @@ public class Game {
         return;
 
     }
-    public static void gameStart(){
+    public void gameStart(){
         //컴퓨터 숫자 생성
         computerList = Computer.generateRandomNumber();
 
@@ -39,10 +39,13 @@ public class Game {
             //숫자입력 메시지 출력
             Output.printInputNumberMessage();
             //입력받아 처리하기
-            String[] input = Console.readLine().split("");
+            //String[] input = Console.readLine().split("");
+            //예외 처리 추가
+            String str = Console.readLine();
+            int[] input = myInput.varlidateInput(str);
             playerList = new ArrayList<>();
             for(int i=0; i<input.length; i++){
-                playerList.add(Integer.parseInt(input[i]));
+                playerList.add(input[i]);
             }
             //입력에 대한 결과 출력
             int strike = strikeNumber(playerList);
