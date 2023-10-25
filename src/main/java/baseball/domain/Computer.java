@@ -15,6 +15,11 @@ public class Computer {
         num = new ArrayList<>();
     }
 
+    /**
+     * 랜덤으로 서로 다른 세 자리 수를 추출하는 메서드
+     *
+     * @return
+     */
     public List<Integer> make() {
 
         while (num.size() < 3) {

@@ -22,6 +22,11 @@ public class Player {
         status = 1;
     }
 
+    /**
+     * 매 라운드가 진행될 때마다 플레이어는 해당 메서드를 호출해 세 자리 수를 입력한다
+     *
+     * @return
+     */
     public List<Integer> start() {
         status = 1;
         while (status == 1) {
@@ -33,6 +38,9 @@ public class Player {
         return num;
     }
 
+    /**
+     * 입력한 수에 대한 validation을 판단하기 위한 메서드
+     */
     private void inputNum() {
         num.clear();  // 예외상황을 대비하여 리스트 초기화
         String s = readLine();

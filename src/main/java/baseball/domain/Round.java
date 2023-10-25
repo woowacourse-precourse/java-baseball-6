@@ -20,6 +20,12 @@ public class Round {
         ball = 0;
     }
 
+    /**
+     * 플레이어의 수와 컴퓨터가 생성한 수를 비교하는 메서드
+     *
+     * @param computerNum
+     * @param playerNum
+     */
     public void compare(List<Integer> computerNum, List<Integer> playerNum) {
 
         for (int i = 0; i < 3; i++) {
@@ -31,6 +37,11 @@ public class Round {
         }
     }
 
+    /**
+     * 비교한 결과에 따라 출력값을 반환하는 메서드
+     *
+     * @return
+     */
     public String getResult() {
         if (ball == 0 && strike == 0) {
             return NOTHING.name;
@@ -49,10 +60,16 @@ public class Round {
         return String.format(BALL.name, ball) + " " + String.format(STRIKE.name, strike);
     }
 
+    /**
+     * 두 수의 비교에서 같은 위치에 같은 수가 존재하는 경우, strike 1 증가
+     */
     private void updateStrike() {
         strike++;
     }
 
+    /**
+     * 두 수의 비교에서 다른 위치에 같은 수가 존재하는 경우, ball 1 증가
+     */
     private void updateBall() {
         ball++;
     }

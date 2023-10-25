@@ -73,7 +73,7 @@
 - [x]  프로그램 실행의 시작점이 Application의 `main()`인가
 - [x]  `build.gradle` 파일 변경 X
 - [x]  외부 라이브러리 사용 X
-- [ ]  [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java)가이드를 준수하며 프로그래밍
+- [x]  [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java)가이드를 준수하며 프로그래밍
 - [x]  프로그램 종료 시`System.exit()`를 호출 X
     - [ ]  🚨 비정상 종료 호출 시 예외처리 - IllegalArgumentException 로 던지기
 - [x]  모든 테스트를 성공해야 제출 인정
