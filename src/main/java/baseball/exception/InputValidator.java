@@ -25,12 +25,7 @@ public class InputValidator {
     }
 
     public boolean isValidRange(List<Integer> numbers, int min, int max) {
-        for(Integer number : numbers) {
-            if(number < min || number > max) {
-                return false;
-            }
-        }
-
-        return true;
+        return numbers.stream()
+                .allMatch(number -> number >= min && number <= max);
     }
 }
