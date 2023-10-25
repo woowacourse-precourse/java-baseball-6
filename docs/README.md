@@ -1,94 +1,123 @@
 # 기능 구현 목록 - 숫자 야구
 
+## 📘 용어 정의
+
+- `게임` : 숫자 야구 게임을 시작해서 완전히 종료하기까지의 과정
+- `라운드` : 컴퓨터가 랜덤한 숫자를 생성해서 사용자가 맞추기까지의 과정(사용자가 재시작 원하면 여러 번 반복 가능)
+- `턴` : 사용자에게 숫자를 입력 받아 해당 라운드의 컴퓨터가 생성한 숫자와 비교 후 결과(볼, 스트라이크 개수)를 반환하기까지의 과정
+
 ## 🗂️ Model
-
-### Player
-
-- attributes
-    - `suggestedNumber` : 플레이어가 제시한 숫자
-- methods
-    - `updateSuggestedNumber()` : 플레이어가 제시한 숫자 저장
-    - `getSuggestedNumber()` : 저장된 숫자 반환
-
-### Computer
-
-- attributes
-    - `secretNumber` : 컴퓨터가 생성한 랜덤 숫자
-- methods
-    - `generateSecretNumber()` : 랜덤으로 생성한 숫자 저장
-    - `getSecretNumber()` : 저장된 숫자 반환
 
 ### Game
 
+✅ 게임의 전체 상태(진행 중/종료)를 관리할 수 있다.
+
 - attributes
-    - `status` : 현재 게임 상태 (대기, 진행 중)
-- methods
-    - `startGame()` : 게임 상태 진행 중으로 업데이트
-    - `endGame()` : 게임 상태 대기로 업데이트
-    - `restartGame()` : 게임 상태 진행 중으로 업데이트
-    - `getStatus()` : 게임 상태 반환
+    - `status` : 현재 게임 상태 (초기값은 `진행 중`)
+- features
+    - `start()` : 게임 상태 `진행 중`으로 초기화
+    - `end()` : 게임 상태 `종료`로 업데이트
+    - `isEnd()` : 개암 상태 `종료`안자 여부 반환
 
 ### Round
+
+✅ 사용자가 게임을 시작/재시작해서 새로운 라운드가 시작를 때마다, 사용자가 맞출 숫자를 랜덤으로 생성할 수 있다.
+
+- attributes
+    - `randomNumber` : 생성한 랜덤 숫자
+- features
+    - `generateRandomNumber()` : 랜덤으로 숫자 생성
+    - `getRandomNumber()` : 생성해 둔 숫자 반환
+
+### Turn
+
+✅ 사용자가 입력한 숫자 해당 라운드의 숫자와 비교 후, 볼과 스트라이크의 개수를 계산할 수 있다.
+
+✅ 해당 턴의 결과가 3스트라이크인지 아닌지를 판단할 수 있다.
 
 - attributes
     - `balls` : 볼 개수
     - `strikes` : 스트라이크 개수
-- methods
+- features
     - `calculateBallsAndStrikes()` : 두 숫자를 비교해 볼과 스트라이크 계산
 
 ## 👩🏻‍💻 View
 
 ### InputView
 
-- methods
-    - `getSuggestedNumber()` : “숫자를 입력해주세요 : “ 입력
-    - `getGameContinueChoice()` : “게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.” 입력
+✅ 턴마다 사용자의 숫자를 입력받을 수 있다.
+
+✅ 라운드 종료 후 게임의 지속 여부를 입력받을 수 있다.
+
+- features
+    - `getPlayerNumber()` : “숫자를 입력해주세요 : “ 입력
+    - `getGameContinuationInput()` : “게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.” 입력
 
 ### OutputView
 
-- methods
+✅ 게임 시작 메시지를 출력할 수 있다.
+
+✅ 라운드 종료 메시지를 출력할 수 있다.
+
+✅ 각 턴의 결과를 출력할 수 있다.
+
+- features
     - `printGameStart()` : “숫자 야구 게임을 시작합니다.” 출력
-    - `printGameEnd()` : “3개의 숫자를 모두 맞히셨습니다! 게임 종료” 출력
-    - `printStrikeAndBallHint()` : “[1..3]스트라이크 / [1..3]볼 / [1..3]볼 [1..3] 스트라이크” 출력
+    - `printRoundEnd()` : “3개의 숫자를 모두 맞히셨습니다! 게임 종료” 출력
+    - `printTurnResult()` : “[1..3]스트라이크 / [1..3]볼 / [1..3]볼 [1..3] 스트라이크” 출력
 
 ## 📡 Controller
 
 ### BaseballGameController
 
+✅ 숫자 야구 게임을 시작해서 종료하기까지 컨트롤할 수 있다.
+
 - attributes
-    - `player` : 플레이어 숫자 관리
-    - `computer` : 컴퓨터 숫자 관리
-    - `gameStatus` : 게임 상태 관리
-    - `round` : 각 라운드의 결과(볼과 스트라이크 수) 관리
-- methods (view → model → view)
-    - `startGame()` : 게임 시작
-        - (v)printGameStart → (m)startGame, (m)generateSecretNumber, (m)getSecretNumber
-    - `startRound()` : 라운드 진행
-        - (v)getSuggestedNumber → (m)updateSuggestedNumber, (m)getSuggestedNumber, (m)calculateBallsAndStrikes → (v)
-          printStrikeAndBallHint
-    - `restartOrEndGame()` : 게임 재시작하거나 종료
-        - (v)getGameContineuChoice → (m)restartGame, (m)generateSecretNumber, (m)getSecretNumber
-        - or (v)getGameContineuChoice → (m)endGame, (m)
+    - `game` : 숫자 야구 게임 상태 관리 모델
+    - `inputView` : 입력용 뷰
+    - `outputView` : 출력용 뷰
+- features (view → model → view)
+    - `startGame()` : 게임 시작해 게임 종료될 때까지 라운드를 여러 번 반복 진행
+        - (v)`printGameStart` → (m)`isGameEnd()`
+    - `startRound()` : 라운드 시작해 사용자가 정답 마칠 때까지 여러 턴 반복 진행
+        - (m)`getRandomNumber`
+        - (v)`getPlayerNumber` → (m)`generateResult`→ (v)`printTurnResult`
+    - `endRound()` : 라운드 종료 후 게임 재시작/종료 결정
+        - (v)`printRoundEnd`, (v)`getGameContinuationInput` → (m)`end`
 
-### ExceptionHandler
+### InputValidator
 
-- methods
-    - `validateSuggestedNumber()` :  플레이어가 제시한 숫자 유효성 검사
-    - `validateGameStatus()` : 플레이어가 제시한 게임 지속 여부 유효성 검사
+✅ 사용자가 입력한 값을 검증할 수 있다.
+
+- features
+    - `validatePlayerNumber()` :  플레이어가 제시한 숫자 유효성 검사
 
 ## 🔑 Enums
 
 ### ErrorCode
 
-- 숫자의 길이가 3이 아닙니다.
-- 중복된 숫자가 있습니다.
-- 1~9 사이의 숫자가 아닙니다.
-- 지속 여부를 표시하는 1~2 사이의 숫자가 아닙니다.
+✅ 예외 메시지를 한데 모아 관리한다.
+
+- `WRONG_LENGTH` : "숫자의 길이가 3이 아닙니다."
+- `DUPLICATE_NUMBER` : "중복된 숫자가 있습니다."
+- `OUT_OF_RANGE` : "1~9 사이의 숫자가 아닙니다."
+- `INVALID_CONTINUATION_INPUT` : "재시작/종료를 구분하는 1 또는 2의 숫자가 아닙니다."
 
 ### GameStatus
 
-- 진행 중
-- 대기
+✅ 사용자가 게임을 완전히 종료하고 싶은 시점 전까지 게임 상태를 진행 중으로 처리할 수 있게 한다.
+
+- `IN_PROGRESS` : 진행 중
+- `END` : 종료
+
+### GameContinuationOption
+
+✅ 사용자가 게임을 완전히 종료하고 싶은지, 재시작하고 싶은지 구분할 수 있게 한다.
+
+- `RESTART` : 재시작
+- `END` : 완전히 종료
+
+# 부록
 
 ## A. Requirement list
 
