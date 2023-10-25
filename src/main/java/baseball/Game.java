@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Game {
     int ball, strike;
-    public List<Integer> makeRandomNumber(){
+    private List<Integer> makeRandomNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,7 +17,7 @@ public class Game {
         }
         return computer;
     }
-    public void playBall(List<Integer> computer, List<Integer> user){
+    private void playBall(List<Integer> computer, List<Integer> user){
         for(int i=0;i<3;i++){
             if(computer.get(i) == user.get(i)){
                 strike++;
@@ -31,7 +31,7 @@ public class Game {
         }
     }
 
-    public void printResult(){
+    private void printResult(){
         if(ball == 0 && strike == 0){
             System.out.print("낫싱");
         }
@@ -47,17 +47,17 @@ public class Game {
         System.out.println();
     }
 
-    public boolean checkStriked(){
+    private boolean checkStriked(){
         return strike == 3;
     }
 
-    public boolean gameOver(){
+    private boolean gameOver(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int check = Integer.parseInt(Console.readLine());
         return check == 2;
     }
 
-    public boolean checkUserInput(String input){
+    private boolean checkUserInput(String input){
         return input.length() == 3;
     }
     public void start() {
