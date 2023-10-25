@@ -1,22 +1,28 @@
 package baseball.view;
 
 
+import static baseball.util.ConsoleMessages.GAME_OVER;
+import static baseball.util.ConsoleMessages.GAME_START;
+import static baseball.util.ConsoleMessages.INPUT_NUMBER;
+import static baseball.util.ConsoleMessages.RESTART_OR_TERMINATE;
+import static baseball.util.GameResultMessageGenerator.makeResultString;
+import static baseball.view.ConsoleValidator.validateInput3DigitNumber;
+import static baseball.view.ConsoleValidator.validateInputIsNumber;
+import static baseball.view.ConsoleValidator.validateInputNotBlank;
+import static baseball.view.ConsoleValidator.validateInputNotDuplicate;
+import static baseball.view.ConsoleValidator.validateInputNotNull;
+import static baseball.view.ConsoleValidator.validateRestartOrTerminate;
+
 import baseball.game.BaseBallGameResult;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static baseball.util.GameResultMessageGenerator.*;
-import static baseball.util.ConsoleMessages.*;
-
 public class Console {
 
     private static final IllegalArgumentException ILLEGAL_ARGUMENT_EXCEPTION = new IllegalArgumentException();
-    private static final String NUMBER_REGEX = "[1-9]+";
-    private static final List<String> RESTART_OR_TERMINATE_OPTION = List.of("1", "2");
 
     public static List<Integer> input3DigitRandomNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -64,53 +70,6 @@ public class Console {
         validateRestartOrTerminate(inputString);
 
         return inputString;
-    }
-
-    private static void validateInputNotNull(String inputString) {
-        if (inputString == null) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void validateInputNotBlank(String inputString) {
-        if (inputString.isBlank()) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void validateInputIsNumber(String inputString) {
-
-        if (!inputString.matches(NUMBER_REGEX)) {
-            throw ILLEGAL_ARGUMENT_EXCEPTION;
-        }
-    }
-
-    private static void validateInput3DigitNumber(String inputString) {
-
-        if (inputString.length() != 3) {
-            throw ILLEGAL_ARGUMENT_EXCEPTION;
-        }
-    }
-
-    private static void validateInputNotDuplicate(String inputString) {
-        int[] appearance = new int[10];
-
-        for (char inputChar : inputString.toCharArray()) {
-            appearance[inputChar - '0']++;
-        }
-
-        for (int appeared : appearance) {
-            if (appeared >= 2) {
-                throw ILLEGAL_ARGUMENT_EXCEPTION;
-            }
-        }
-
-    }
-
-    private static void validateRestartOrTerminate(String inputString) {
-        if (!RESTART_OR_TERMINATE_OPTION.contains(inputString)) {
-            throw ILLEGAL_ARGUMENT_EXCEPTION;
-        }
     }
 
 
