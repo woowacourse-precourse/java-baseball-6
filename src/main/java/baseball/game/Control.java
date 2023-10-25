@@ -7,9 +7,9 @@ import baseball.view.GameMessage;
 import java.util.ArrayList;
 
 public class Control {
-    public static final int DIGITS = 3;
-    public static final int START_NUM = 1;
-    public static final int LAST_NUM = 9;
+    private static final int DIGITS = 3;
+    private static final int START_NUM = 1;
+    private static final int LAST_NUM = 9;
     private ArrayList<Integer> computerNumbers;
     private ArrayList<Integer> playerNumbers;
     private Setting setting;
@@ -26,29 +26,24 @@ public class Control {
 
         System.out.println("게임 종료");
     }
-    public void startGame(){
+    private void startGame(){
         initComputerNumbers();
 
         do {
-            getPlayerNumbers();
-            loadCorrectStatus();
+            loadPlayerNumbers();
+            assessMatchStatus();
         }while(setting.isNotAllStrike());
     }
-
-    public boolean isEndDecision(){
+    private boolean isEndDecision(){
         return player.inputEndDecision() == 1;
     }
-
-    public void initComputerNumbers(){
+    private void initComputerNumbers(){
         computerNumbers = Computer.createComputerNumbers(DIGITS,START_NUM,LAST_NUM);
-        //System.out.println(computerNumbers);
     }
-
-    public void getPlayerNumbers(){
+    private void loadPlayerNumbers(){
         playerNumbers = player.getPlayerNumbers(DIGITS);
     }
-
-    public void loadCorrectStatus(){
-        setting.getCorrectStatus(computerNumbers, playerNumbers);
+    private void assessMatchStatus(){
+        setting.loadCorrectStatus(computerNumbers, playerNumbers);
     }
 }

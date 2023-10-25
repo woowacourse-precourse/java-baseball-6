@@ -12,18 +12,16 @@ public class Player {
     public ArrayList<Integer> getPlayerNumbers(int digit){
         return inputPlayerNumbers(digit);
     }
+    public int inputEndDecision() throws IllegalArgumentException{
+        GameMessage.printRestartOrExit();
 
-    public int inputEndDecision(){
-        while(true){
-            GameMessage.printRestartOrExit();
-
-            int restartNum = inputUserNum();
-            if(restartNum==1 || restartNum==2){
-                return restartNum;
-            }
+        int restartNum = inputUserNum();
+        if(restartNum==1 || restartNum==2){
+            return restartNum;
+        }else{
+            throw new IllegalArgumentException("숫자 1~2만 입력해주세요.");
         }
     }
-
     private int inputUserNum() throws IllegalArgumentException {
         try {
             return Integer.parseInt(Console.readLine());
@@ -31,13 +29,9 @@ public class Player {
             throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
     }
-
-
     private void initPlayerNumbers(){
         playerNumbers = new ArrayList<>(BaseballUtil.splitNumberToList(inputUserNum()));
     }
-
-
     private ArrayList<Integer> inputPlayerNumbers(int digits) throws IllegalArgumentException{
         GameMessage.printAskNumber();
         initPlayerNumbers();

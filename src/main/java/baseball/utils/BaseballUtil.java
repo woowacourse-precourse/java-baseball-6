@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class BaseballUtil {
-
     public static ArrayList<Integer> splitNumberToList(int playerNum){
         ArrayList<Integer> playerNumbers = new ArrayList<>();
 
@@ -15,11 +14,8 @@ public class BaseballUtil {
             playerNum /=10;
         }
         Collections.reverse(playerNumbers);
-        //System.out.println("++++" + playerNumbers);
         return playerNumbers;
     }
-
-    //Strike
     public static int equalBetweenStrike(ArrayList<Integer> computerNumbers, ArrayList<Integer> playerNumbers){
         int strikeCnt = 0;
         for(int num_i=0; num_i<playerNumbers.size(); num_i++){
@@ -29,8 +25,6 @@ public class BaseballUtil {
         }
         return strikeCnt;
     }
-
-    //ball
     public static int equalBetweenBall(ArrayList<Integer> computerNumbers, ArrayList<Integer> playerNumbers){
         int ballCnt = 0;
 
@@ -41,7 +35,6 @@ public class BaseballUtil {
                 }
             }
         }
-
         return ballCnt;
     }
 }
