@@ -34,7 +34,7 @@ public class Game {
     public int countBall(String inputString) {
         int count = 0;
         for (int i = 0; i < 3; i++) {
-            if (inputString.charAt(i) != this.answer.charAt(i) && this.answer.contains(String.valueOf(inputString.charAt(i)))) { //리팩토링 필요한 지점
+            if (inputString.charAt(i) != this.answer.charAt(i) && this.answer.contains(String.valueOf(inputString.charAt(i)))) {
                 count += 1;
             }
         }
@@ -48,9 +48,5 @@ public class Game {
         return false;
     }
 
-    public void printAnswer() {
-        System.out.println(this.answer);
-
-    }
 
 }
