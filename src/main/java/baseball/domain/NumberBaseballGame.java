@@ -2,21 +2,22 @@ package baseball.domain;
 
 import baseball.domain.dto.Result;
 import baseball.global.constant.RuleValue;
-import baseball.global.util.RandomBaseballNumberGenerator;
-
-import java.util.List;
+import baseball.global.util.ListUtil;
 
 public class NumberBaseballGame {
-
+    private final Referee referee;
     private BaseballNumber computerNumber;
-    private final Referee referee = new Referee();
+
+    public NumberBaseballGame() {
+        this.referee = new Referee();
+    }
 
     public void initGameSetting(){
-        computerNumber = new BaseballNumber(RandomBaseballNumberGenerator.generateRandomBaseballNumbers(RuleValue.BASEBALL_NUMBER_SIZE));
+        computerNumber = RandomBaseballNumberGenerator.generateRandomBaseballNumber(RuleValue.BASEBALL_NUMBER_SIZE);
     }
-    public Result makeResult(List<Integer> playerInput){
-        BaseballNumber playerNumber = new BaseballNumber(playerInput);
+    public Result makeResult(int playerInput){
+        BaseballNumber playerNumber =
+                new BaseballNumber(ListUtil.converseIntegerToIntList(playerInput));
         return referee.alertResult(computerNumber, playerNumber);
     }
-
 }
