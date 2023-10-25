@@ -10,6 +10,10 @@ public class Baseball {
     private int ball;
     private int strike;
 
+    Baseball() {
+        computerNumbers = new ArrayList<Integer>();
+        userNumbers = new ArrayList<Integer>();
+    }
     public boolean playBaseballGame() {
         resetComputerNumber();
         do {
@@ -34,7 +38,7 @@ public class Baseball {
     }
 
     private void resetComputerNumber() {
-        computerNumbers = new ArrayList<Integer>();
+        computerNumbers.clear();
         while(computerNumbers.size() < 3) {
             addComputerNumber();
         }
@@ -50,7 +54,7 @@ public class Baseball {
         if(inputNumber.length() != 3) {
             throw new IllegalArgumentException("문자 없이 숫자를 3개만 입력해주세요");
         }
-        userNumbers = new ArrayList<Integer>();
+        userNumbers.clear();
         String[] inputNumberArray = inputNumber.split("");
         for(String str : inputNumberArray) {
             addUserNumber(str);
