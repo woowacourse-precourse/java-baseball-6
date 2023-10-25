@@ -56,7 +56,7 @@ public class Application {
         List<Integer> player = new ArrayList<>();
         String input = sc.next();
         try {
-            if(!checkNumeric(input) || input.length() != 3 || repeatStringCheck(input)) throw new IllegalArgumentException();
+            if(!checkNumeric(input) || input.length() != 3) throw new IllegalArgumentException();
         }catch (IllegalArgumentException e){
             System.exit(0);
         }
