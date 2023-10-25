@@ -3,7 +3,17 @@ package validator;
 import java.util.HashSet;
 import java.util.Set;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class NumberInputValidator {
+    public void validNumber() {
+        String balls = Console.readLine();
+        vaildNumberUnderThreeDigits(balls);
+        vaildNumberOverThreeDigits(balls);
+        vaildNumberRange(balls);
+        validContainSameNumber(balls);
+    }
+
     void vaildNumberOverThreeDigits(String balls) {
         if (balls.length() > 3) {
             throw new IllegalArgumentException("공의 개수가 3개 보다 많아요.");
