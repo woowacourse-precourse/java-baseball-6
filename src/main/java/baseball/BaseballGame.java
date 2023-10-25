@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +12,8 @@ public class BaseballGame {
     final int BALL_MIN = 1;
     final int BALL_MAX = 9;
 
+    final int STRIKE = 0;
+    final int BALL = 1;
     final int INPUT_RESTART_LENGTH_MAX = 1;
     final int INPUT_RESTART_MIN = 1;
     final int INPUT_RESTART_MAX = 2;
@@ -21,85 +22,52 @@ public class BaseballGame {
     public void startGame() {
 
         initGame();
-
-        String messageScore;
-
+        View.outputGameStart();
+        Integer[] score;
         do {
-
-            inputAnswerPlayer();
+            answerPlayer = View.inputPlayerAnswer();
+            validateCheckInputAnswer(answerPlayer);
 
             //answer player
-            messageScore = countStrikeBallHits(answerPlayer, answerComputer);
-
-            System.out.println(messageScore);
+            score = countStrikeBallHits(answerPlayer, answerComputer);
+            View.outputGameScore(score[STRIKE], score[BALL]);
 
             //answer player
             if (answerPlayer.equals(answerComputer)) {
-                System.out.println("3개의 숫자 를 모두 맞히셨습니다! 게임 종료");
-                isPlaying = restartGame();
+                String playerInput = View.inputPlayerRestart();
+                validateCheckInputRestart(playerInput);
+                restartGame(playerInput);
             }
         } while (isPlaying);
     }
 
-    private void inputAnswerPlayer() {
-        //view
-        System.out.print("숫자를 입력해주세요 : ");
-        String inputPlayer = Console.readLine();
-        //model
-        exceptLengthInvalid(inputPlayer, INPUT_LENGTH_MAX);
-        exceptNotInteger(inputPlayer);
-        exceptInvalidRange(inputPlayer, BALL_MIN, BALL_MAX);
-        exceptInputSameNumber(inputPlayer);
-        //answer player
-        this.answerPlayer = inputPlayer;
 
-    }
+    public Integer[] countStrikeBallHits(String source, String answer) {
+        Integer[] score = new Integer[]{0, 0};
 
-    public String countStrikeBallHits(String source, String answer) {
-        //model
-        int ballCnt = 0;
-        int strikeCnt = 0;
-        String messageScore = "";
-        String messageBall = "";
-        String messageStrike = "";
-
+        char sourceChar, answerChar;
         for (int i = 0; i < source.length(); i++) {
-            char sourceChar = source.charAt(i);
-            if (sourceChar == answer.charAt(i)) {
-                strikeCnt++;
-            } else if (answer.contains(String.valueOf(sourceChar))) {
-                ballCnt++;
+            sourceChar = source.charAt(i);
+            answerChar = answer.charAt(i);
+            if (sourceChar == answerChar) {
+                score[STRIKE]++; // Increment strikes
+                continue;
+            }
+            if (answer.contains(String.valueOf(sourceChar))) {
+                score[BALL]++; // Increment balls
             }
         }
 
-        if (ballCnt > 0) {
-            messageBall = String.valueOf(ballCnt) + "볼 ";
-        }
-        if (strikeCnt > 0) {
-            messageStrike = String.valueOf(strikeCnt) + "스트라이크";
-        }
-
-        if (ballCnt + strikeCnt > 0) {
-            messageScore = messageBall + messageStrike;
-        } else if (ballCnt + strikeCnt == 0) {
-            messageScore = "낫싱";
-        }
-
-        return messageScore;
+        return score;
     }
-
 
     public void initGame() {
         //controller
         answerComputer = "";
-        //answer player
         answerPlayer = "";
         //model
         initAnswer();
-        //view
-        System.out.println("숫자 야구 게임을 시작합니다.");
         isPlaying = true;
-        System.out.println("생성된 숫자는 " + answerComputer);
     }
 
     public void initAnswer() {
@@ -113,28 +81,18 @@ public class BaseballGame {
                 answerBuilder.append(Integer.toString(randomNumber));
             }
         }
-
         this.answerComputer = answerBuilder.toString();
     }
 
-    public boolean restartGame() {
-        //view
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String playerInput = Console.readLine();
-        //model
-        exceptLengthInvalid(playerInput, INPUT_RESTART_LENGTH_MAX);
-        exceptNotInteger(playerInput);
-        exceptInvalidRange(playerInput, INPUT_RESTART_MIN, INPUT_RESTART_MAX);
-
+    public void restartGame(String playerInput) {
         if (playerInput.equals("1")) {
             initAnswer();
-            return true;
+            isPlaying = true;
         }
         if (playerInput.equals("2")) {
-            return false;
+            isPlaying = false;
         }
 
-        return false;
     }
 
     //utils
@@ -144,6 +102,26 @@ public class BaseballGame {
             list.add(Character.getNumericValue(source.charAt(i)));
         }
         return list;
+    }
+
+
+    private void validateCheckInputAnswer(String inputPlayer) {
+        //model
+        exceptLengthInvalid(inputPlayer, INPUT_LENGTH_MAX);
+        exceptNotInteger(inputPlayer);
+        exceptInvalidRange(inputPlayer, BALL_MIN, BALL_MAX);
+        exceptInputSameNumber(inputPlayer);
+        //answer player
+        this.answerPlayer = inputPlayer;
+
+    }
+
+    private void validateCheckInputRestart(String inputPlayer) {
+        //model
+        exceptLengthInvalid(inputPlayer, INPUT_RESTART_LENGTH_MAX);
+        exceptNotInteger(inputPlayer);
+        exceptInvalidRange(inputPlayer, INPUT_RESTART_MIN, INPUT_RESTART_MAX);
+
     }
 
     //model
