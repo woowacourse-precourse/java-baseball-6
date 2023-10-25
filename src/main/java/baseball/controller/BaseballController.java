@@ -28,6 +28,7 @@ public class BaseballController {
             }
 
             String hint = service.compareToComputer(user);
+            ConsoleOutput.displayHint(hint);
         }
     }
 }

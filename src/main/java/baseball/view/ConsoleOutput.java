@@ -16,4 +16,13 @@ public class ConsoleOutput {
     public static void requestInput(){
         System.out.print("숫자를 입력해주세요 : ");
     }
+
+    /**
+     * 힌트 문구
+     */
+    public static void displayHint(String hint){
+        System.out.print(hint);
+    }
+
+
 }
