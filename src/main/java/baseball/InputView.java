@@ -11,7 +11,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static String gameRestart() {
+    public static String userInputGameRestart() {
         System.out.println(GAME_RESTART_MESSAGE);
         return Console.readLine();
     }

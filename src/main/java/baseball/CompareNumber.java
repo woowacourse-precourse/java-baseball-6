@@ -29,28 +29,32 @@ public class CompareNumber {
         return false;
     }
 
-    public void strikeCount(String userNumber, String computerNumber){
-        if(userNumber == computerNumber){
+    public void strikeCount(String userNumber, String computerNumber) {
+        if (computerNumber.equals(userNumber)) {
             strike++;
         }
-
     }
 
-    public void ballCount(String userNumber, List<String> computerNumber, int index){
-        if(computerNumber.contains(userNumber) && computerNumber.get(index)!=userNumber){
+    public void ballCount(String userNumber, List<String> computerNumber, int index) {
+        if (computerNumber.contains(userNumber) && !computerNumber.get(index).equals(userNumber)) {
             ball++;
         }
     }
 
-    public void printStrikeBall(){
-        if(ball != 0) {
+
+
+    public void printStrikeBall() {
+        if (strike == 0 && ball == 0) {
+            System.out.println(NOTHING_MESSAGE);
+        }
+        else if (strike == 0) {
             System.out.println(ball + BALL_MESSAGE);
         }
-        if(strike != 0) {
+        else if (ball == 0) {
             System.out.println(strike + STRIKE_MESSAGE);
         }
-        if( ball ==0 && strike == 0) {
-            System.out.println(NOTHING_MESSAGE);
+        else {
+            System.out.println(ball + BALL_MESSAGE + strike + STRIKE_MESSAGE);
         }
     }
 

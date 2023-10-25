@@ -23,7 +23,7 @@ public class UserNumber {
     // 자연수인지 확인
     private void isDigitNum(String number) throws IllegalArgumentException {
         for(int i = 0; i < number.length(); i++) {
-            if(!Character.isDigit(Character.getNumericValue(number.charAt(i)))) {
+            if(number.charAt(i) < '1' || number.charAt(i) > '9') {
                 throw new IllegalArgumentException("3자리 자연수를 입력해주세요");
             }
         }

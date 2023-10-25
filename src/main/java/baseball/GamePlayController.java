@@ -1,7 +1,6 @@
 package baseball;
 
-import static baseball.InputView.gameRestart;
-import static baseball.InputView.userInputNumber;
+import static baseball.InputView.*;
 import static baseball.OutputView.printGameEnd;
 import static baseball.OutputView.printGameStart;
 
@@ -9,7 +8,7 @@ public class GamePlayController {
     private ComputerNumber computerNumber = new ComputerNumber();
     private UserNumber userNumber = new UserNumber();
     private CompareNumber compareNumber = new CompareNumber();
-    boolean gameStatus = true;
+    private boolean gameStatus = true;
 
     public void gameStart(){
         printGameStart();
@@ -18,18 +17,29 @@ public class GamePlayController {
             userNumber.UserNumber(userInputNumber());
             if(compareNumber.CompareNumber(userNumber.getUserNumber(),computerNumber.getComputerNumber())){
                 printGameEnd();
-                this.gameStatus = false;
-
-                if(gameRestart().equals("1")){
-                    gameStart();
-                }
-                if(gameRestart().equals("2")){
-                    break;
-                }
+                selectGameRestart();
             }
-
         }
+    }
+    public void selectGameRestart() throws IllegalArgumentException{
+        String restartNum = userInputGameRestart();
+        if (restartNum.equals("1")){
+            restartGame();
+        }
+        else if (restartNum.equals("2")){
+            gameEnd();
+        }
+        else {
+            throw new IllegalArgumentException("1 또는 2를 입력하세요");
+        }
+    }
+    public void restartGame(){
+        computerNumber.generateNumber();
+        gameStatus = true;
+    }
 
+    public void gameEnd(){
+        gameStatus = false;
     }
 
 
