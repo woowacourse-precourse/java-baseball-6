@@ -1,89 +1,49 @@
 package baseball.controller;
 
-import baseball.domain.computer.Computer;
-import baseball.domain.game.Game;
 import baseball.domain.player.dto.PlayerNumbersDto;
-import baseball.domain.player.Player;
-import baseball.domain.player.PlayerNumbers;
 import baseball.domain.player.dto.RetryNumberDto;
-import baseball.global.converter.NumbersConverter;
-import baseball.global.message.RetryMessage;
 import baseball.global.view.input.InputView;
 import baseball.global.view.output.OutputView;
+import baseball.service.GameService;
 
 import static baseball.global.message.BallMessage.STRIKE;
-import static baseball.global.message.RetryMessage.ONE;
 
 public class GameController {
 
-    private final InputView inputView;
-    private final OutputView outputView;
-    private final NumbersConverter numbersConverter;
-    private PlayerNumbers playerNumbers;
-    private Player player;
-    private Game game;
+    private final GameService gameService;
 
-
-    public GameController(InputView inputView, OutputView outputView, NumbersConverter numbersConverter) {
-        this.inputView = inputView;
-        this.outputView = outputView;
-        this.numbersConverter = numbersConverter;
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
     }
-
-
 
     public void run() {
         boolean retry;
         do {
-            init();
+            gameService.createComputerNumber();
             start();
             play();
             end();
-            retry = askRetry();
+            retry = gameService.askRetry(RetryNumberDto.of(InputView.input()));
         } while (retry);
     }
 
-    public void init() {
-        player = createPlayer();
-        Computer computer = new Computer();
-        game = new Game(computer, player);
-    }
 
     public void start() {
-        outputView.printStartMessage();
+        OutputView.printStartMessage();
     }
 
     public void play() {
         String playResult;
         do {
-            inputPlayerNumbers();
-            playResult = game.getPlayerResult();
-            outputView.printPlayerResult(playResult);
-
-        } while (!playResult.equals("3"+STRIKE.getMessage()));
+            OutputView.printInputThreeNumber();
+            playResult = gameService.getResult(PlayerNumbersDto.of(InputView.input()));
+            OutputView.printPlayerResult(playResult);
+        } while (!playResult.equals(STRIKE.apply(3)));
     }
 
     public void end() {
-        outputView.printThreeStrike();
-        outputView.printRetryMessage();
+        OutputView.printThreeStrike();
+        OutputView.printRetryMessage();
     }
 
-    public boolean askRetry() {
-        String input = RetryNumberDto.of(inputView.input());
-        return RetryMessage.compareInput(input);
-    }
-
-    public void inputPlayerNumbers() {
-        outputView.printInputThreeNumber();
-        PlayerNumbersDto playerNumbersDto = PlayerNumbersDto.of(inputView.input());
-        player.inputNumbers(playerNumbersDto.playerNumbers());
-    }
-
-
-    public Player createPlayer() {
-        playerNumbers = new PlayerNumbers(numbersConverter);
-        player = new Player(playerNumbers);
-
-        return player;
-    }
 }
