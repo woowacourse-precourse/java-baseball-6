@@ -49,7 +49,7 @@
 ### NumberValidator
 UserNumber에서 입력받은 값의 유효성을 검사하는 클래스
 
-- [x] String validateString() : UserNumber에서 입력받은 값의 유효성을 검사
+- [x] String validateString(String) : UserNumber에서 입력받은 값의 유효성을 검사
 
 ### ComputerNumber
 컴퓨터 수를 저장하는 클래스
