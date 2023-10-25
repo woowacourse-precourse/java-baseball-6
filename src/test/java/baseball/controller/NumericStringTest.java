@@ -2,6 +2,7 @@ package baseball.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import baseball.application.NumericString;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

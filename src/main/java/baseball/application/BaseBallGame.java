@@ -2,7 +2,6 @@ package baseball.application;
 
 import baseball.manager.GameManager;
 import baseball.domain.BaseBallNumberList;
-import baseball.controller.NumericString;
 import java.util.stream.Stream;
 
 public class BaseBallGame implements GameUseCase {

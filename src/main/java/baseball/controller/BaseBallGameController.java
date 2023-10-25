@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.application.BaseBallResult;
 import baseball.application.GameUseCase;
+import baseball.application.NumericString;
 import baseball.domain.Hint;
 import baseball.controller.dto.BaseBallGameDto;
 
