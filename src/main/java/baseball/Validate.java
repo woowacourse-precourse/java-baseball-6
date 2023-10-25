@@ -7,25 +7,25 @@ public class Validate {
 
     public static void isNumberValidate(int number){
         if ( number > 9 || number < 1) {
-            throw new IllegalArgumentException("입력 값은 1~9의 정수입니다.");
+            throw new IllegalArgumentException(ErrorMsg.VALUE_MUST_BE_INTEGER_1_TO_9);
         }
     }
 
     public static void isOneOrTwo(String str) {
         if (!Pattern.matches("[1|2]", str)) {
-            throw new IllegalArgumentException("게임을 시작하려면 1혹은 2를 입력해야 합니다.");
+            throw new IllegalArgumentException(ErrorMsg.VALUE_MUST_BE_1_OR_2);
         }
     }
 
     public static void isLessThenFourLetter(String[] input){
         if(input.length >= 4){
-            throw new IllegalArgumentException("입력 값은 3개 이하여야 합니다.");
+            throw new IllegalArgumentException(ErrorMsg.INPUT_MUST_BE_NO_MORE_THEN_3);
         }
     }
 
     public static void isNumberDuplicate(List<Integer> user, int num) {
         if (user.contains(num)) {
-            throw new IllegalArgumentException("입력 값은 서로 다른 값이여야 합니다.");
+            throw new IllegalArgumentException(ErrorMsg.INPUT_VALUE_MUST_BE_DIFFERENT_VALUES);
         }
     }
 }

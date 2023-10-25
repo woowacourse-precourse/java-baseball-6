@@ -36,7 +36,6 @@ public class Game {
                 System.out.print(Print.GET_INPUT);
                 user.setUserObject();
 
-                // 입력한 숫자에 대한 결과 출력
                 gameLogic(computer, user);
                 System.out.println(getGameResult());
             }
