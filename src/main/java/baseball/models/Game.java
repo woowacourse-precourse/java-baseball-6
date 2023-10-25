@@ -22,11 +22,8 @@ public class Game {
     }
 
     // 게임 종료하는 메소드
-    public void exit(int playerInput) {
-        if (playerInput == 2) {
-            this.status = false;
-            System.out.println("숫자 야구 게임을 종료합니다.");
-        }
+    public void exit() {
+        System.out.println("숫자 야구 게임을 종료합니다.");
     }
 
     // 사용자에게 숫자 입력을 요청하는 메소드
@@ -52,6 +49,7 @@ public class Game {
         }
     }
 
+    // status를 변경
     public void changeStatus() {
         if (this.status) {
             this.status = false;
