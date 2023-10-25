@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public final class Answer {
+    public static final int ANSWER_LENGTH = 3;
+
     private List<Integer> numberList;
 
     public Answer() {
