@@ -14,12 +14,12 @@ public class Game {
         computerNumbers = generateRandomNumber();
     }
 
-    public boolean isCorrectGuess(List<Integer> userNumbers) {
+    public boolean isCorrect(List<Integer> userNumbers) {
         int strikes = countStrikes(userNumbers);
         int balls = countBalls(userNumbers);
 
-        String result = generateGameResult(strikes, balls);
-        outputView.printGameResult(result);
+        String result = generateResult(strikes, balls);
+        outputView.printResult(result);
 
         return strikes == 3;
     }
@@ -55,7 +55,7 @@ public class Game {
         return balls;
     }
 
-    private String generateGameResult(int strikes, int balls) {
+    private String generateResult(int strikes, int balls) {
         if (strikes == 0 && balls == 0) {
             return "낫싱";
         } else {

@@ -11,40 +11,40 @@ public class GameController {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
 
-    public void runGame() {
-        outputView.printGameStartMessage();
+    public void run() {
+        outputView.printStartMessage();
 
         boolean gameInProgress = true;
         while (gameInProgress) {
             Game game = new Game();
 
-            gameInProgress = playGame(game);
+            gameInProgress = play(game);
 
             if (!gameInProgress) {
                 gameInProgress = !promptForRestartOrExit();
-                outputView.printGameEndMessage();
                 outputView.printEndMessage();
+                outputView.printEnd();
             }
         }
         outputView.closeConsole();
     }
 
-    private boolean playGame(Game game) {
+    private boolean play(Game game) {
         boolean gameInProgress = true;
         while (gameInProgress) {
-            String userInput = inputView.getUserInput();
-            List<Integer> userNumbers = parseUserInput(userInput);
+            String userInput = inputView.getInput();
+            List<Integer> userNumbers = parseInput(userInput);
 
-            if (game.isCorrectGuess(userNumbers)) {
+            if (game.isCorrect(userNumbers)) {
                 gameInProgress = false;
             }
         }
         return gameInProgress;
     }
 
-    private List<Integer> parseUserInput(String userInput) {
+    private List<Integer> parseInput(String userInput) {
         List<Integer> userNumbers = parseInputNumbers(userInput);
-        validateUserInput(userNumbers);
+        validateInput(userNumbers);
         return userNumbers;
     }
 
@@ -57,7 +57,7 @@ public class GameController {
         return userNumbers;
     }
 
-    private void validateUserInput(List<Integer> userNumbers) {
+    private void validateInput(List<Integer> userNumbers) {
         if (userNumbers.size() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
         }
