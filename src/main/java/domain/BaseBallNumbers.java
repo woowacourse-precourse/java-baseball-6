@@ -1,9 +1,12 @@
 package domain;
 
 import exception.InvalidBaseBallLengthException;
+import exception.InvalidDuplicatedBaseBallException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BaseBallNumbers {
@@ -28,6 +31,13 @@ public class BaseBallNumbers {
     private void validateNumberLength(String playerBaseballNumbers) {
         if (playerBaseballNumbers.length() != BASEBALL_LENGTH) {
             throw new InvalidBaseBallLengthException();
+        }
+        Map<Character, Long> ballDuplicatedMap = playerBaseballNumbers.chars()
+                .mapToObj(ch -> (char) ch)
+                .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+        if (ballDuplicatedMap.values().stream()
+                .anyMatch(count -> count >= 2)) {
+            throw new InvalidDuplicatedBaseBallException();
         }
     }
 
