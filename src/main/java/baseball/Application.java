@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.game.Game;
+import baseball.domain.Game;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {

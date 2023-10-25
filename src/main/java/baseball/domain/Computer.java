@@ -1,6 +1,6 @@
-package baseball.game;
+package baseball.domain;
 
-import static baseball.game.constant.BaseballConstant.NUMBER_OF_TARGET;
+import static baseball.constant.BaseballConstant.NUMBER_OF_TARGET;
 
 import baseball.model.Score;
 import camp.nextstep.edu.missionutils.Randoms;
