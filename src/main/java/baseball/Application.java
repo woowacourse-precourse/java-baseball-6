@@ -55,7 +55,7 @@ public class Application {
 
         try {
             if (user.size() != 3) {
-                throw new IllegalArgumentException("세 자리수가 아님");
+                throw new IllegalArgumentException("세 자리수가 아닙니다.");
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
