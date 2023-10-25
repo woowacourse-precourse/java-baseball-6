@@ -10,6 +10,8 @@ public class InProcess {
     private int number;
     private List<Integer> my;
     private List<Integer> computer;
+    private int ball;
+    private int strike;
     private boolean isCorrect;
 
     public InProcess(GameRole gameRole, List<Integer> computer) {
@@ -18,6 +20,7 @@ public class InProcess {
         printInputNumberPhrase();
         inputNumber();
         checkInputNumber(gameRole);
+
 
         judgeInputNumber(gameRole, computer);
     }
@@ -31,6 +34,8 @@ public class InProcess {
         my = new ArrayList<>();
         this.computer = computer;
         isCorrect = false;
+        ball = 0;
+        strike = 0;
     }
 
     private void printInputNumberPhrase() {
@@ -86,15 +91,12 @@ public class InProcess {
     }
 
     private void judgeInputNumber(GameRole gameRole, List<Integer> computer) {
-        int ball = 0;
-        int strike = 0;
-
-        compareInputNumber(gameRole, computer, ball, strike);
-        printCollectNumber(ball, strike);
-        checkAllStrike(gameRole, strike);
+        compareInputNumber(gameRole, computer);
+        printCollectNumber();
+        checkAllStrike(gameRole);
     }
 
-    public void checkAllStrike(GameRole gameRole, int strike) {
+    public void checkAllStrike(GameRole gameRole) {
         if (strike == gameRole.GAME_NUMBER_CNT) {
             isCorrect = true;
             printFinishPhrase(gameRole);
@@ -105,22 +107,22 @@ public class InProcess {
         System.out.println(gameRole.GAME_NUMBER_CNT+InNotice.finishPhrase);
     }
 
-    private void printCollectNumber(int ball, int strike) {
+    private void printCollectNumber() {
         if (ball == 0 && strike == 0) printNothing();
-        else if (ball == 0 && strike > 0) printStrike(strike);
-        else if (ball > 0 && strike == 0) printBall(ball);
-        else printBallAndStrike(ball, strike);
+        else if (ball == 0 && strike > 0) printStrike();
+        else if (ball > 0 && strike == 0) printBall();
+        else printBallAndStrike();
     }
 
-    private void printBallAndStrike(int ball, int strike) {
+    private void printBallAndStrike() {
         System.out.println(ball+""+InNotice.ball+" "+strike+""+InNotice.strike);
     }
 
-    private void printBall(int ball) {
+    private void printBall() {
         System.out.println(ball+""+InNotice.ball);
     }
 
-    private void printStrike(int strike) {
+    private void printStrike() {
         System.out.println(strike+""+InNotice.strike);
     }
 
@@ -128,7 +130,7 @@ public class InProcess {
         System.out.println(InNotice.nothing);
     }
 
-    private void compareInputNumber(GameRole gameRole, List<Integer> computer, int ball, int strike) {
+    private void compareInputNumber(GameRole gameRole, List<Integer> computer) {
         for (int i = 0; i < gameRole.GAME_NUMBER_CNT; i++) {
             if (my.get(i) == computer.get(i)) {
                 strike++;
