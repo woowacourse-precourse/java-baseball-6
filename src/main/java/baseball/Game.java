@@ -13,7 +13,6 @@ public class Game {
 
     void startGame(){
         arr.getRandomAnswer();
-        //System.out.printf("%d%d%d\n", arr.answer[0], arr.answer[1], arr.answer[2]);
         playGame();
     }
 
