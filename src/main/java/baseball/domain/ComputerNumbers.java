@@ -1,9 +1,7 @@
 package baseball.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static baseball.domain.BaseballFlag.*;
 
@@ -24,7 +22,7 @@ public class ComputerNumbers {
         return matchResult;
     }
 
-    private BaseballFlag ballCheck(int index, int number) {
+    private BaseballFlag ballCheck(int number) {
         if (numbers.contains(number)) {
             return BALL;
         }
@@ -35,6 +33,6 @@ public class ComputerNumbers {
         if (numbers.get(index) == number) {
             return STRIKE;
         }
-        return ballCheck(index, number);
+        return ballCheck(number);
     }
 }
