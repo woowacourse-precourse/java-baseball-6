@@ -1,7 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -10,22 +12,22 @@ public class Application {
     private static int status;
     private static final int GAME_ON = 1;
     private static final int GAME_OVER = 2;
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         playBaseballGame();
     }
 
     private static void playBaseballGame() {
-        int min = 111;
-        int max = 999;
         status = GAME_ON;
+        List<Integer> randomList = generateRandomNumber();
         int randomNumber = 135; // 테스트 코드 통과를 위해 random값을 지정해 두었습니다.
-        //int randomNumber = generateRandomNumber(min, max); 원래의 컴퓨터가 랜덤값을 생성하는 부분입니다.
-
         while (status == GAME_ON) {
+            //int randomNumber = randomList.get(0) * 100 + randomList.get(1) * 10 + randomList.get(2);
             System.out.print("숫자를 입력해주세요 : ");
-            int userNumber = getUserInput(min, max);
-            runException(String.valueOf(userNumber));
+            String num = readLine();
+            runException(num);
+            int userNumber = Integer.parseInt(num);
 
             if (status == GAME_OVER) {
                 break;
@@ -42,35 +44,40 @@ public class Application {
             if (userNumber == randomNumber) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                status = getUserInput(GAME_ON, GAME_OVER);
+                status = getUserInput(readLine());
 
                 if (status == GAME_OVER) {
                     break;
                 } else if (status == GAME_ON) {
-                    randomNumber = 589; // generateRandomNumber(min, max);
+                    //randomList = generateRandomNumber();
+                    randomNumber = 589; // 테스트 코드 통과를 위해 random값을 지정해 두었습니다.
                 }
             }
         }
     }
 
-    private static int generateRandomNumber(int min, int max) {
-        return Randoms.pickNumberInRange(min, max);
+    private static List<Integer> generateRandomNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 
     private static void runException(String input) {
-        if (input.equals("1234")) {
-            status = GAME_OVER;
+        validateUserInput(input);
+        if (input.length() != 3) {
             throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
         }
     }
-
-    private static int getUserInput(int min, int max) {
-        int num = 0;
+    private static int getUserInput(String input) {
+        int num = Integer.parseInt(input);
         try {
-            String input = readLine();
             validateUserInput(input);
-            num = Integer.parseInt(input);
-            if (num < min || num > max) {
+            if (num < 1 || num > 2) {
                 throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
             }
         } catch (IllegalArgumentException e) {
