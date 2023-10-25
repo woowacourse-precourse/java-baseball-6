@@ -20,7 +20,6 @@ public class Computer implements Player {
             int randomNumber = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
             if (!inputNumbers.contains(randomNumber)) {
                 inputNumbers.add(randomNumber);
-                System.out.println(randomNumber);
             }
         }
         this.baseballNumbers = inputNumbers;
