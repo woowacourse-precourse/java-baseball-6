@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class InputNumbers {
+    private final String INPUT_NUMBER_REGEX = "^[1-9]{3}$";
     private int[] inputNumbers;
 
     public InputNumbers(String input) {
@@ -12,8 +13,6 @@ public class InputNumbers {
     }
 
     private void validateInputNumbers(String inputStr) {
-        String INPUT_NUMBER_REGEX = "^[1-9]{3}$";
-
         if (!Pattern.compile(INPUT_NUMBER_REGEX).matcher(inputStr).matches()) {
             throw new IllegalArgumentException();
         }
