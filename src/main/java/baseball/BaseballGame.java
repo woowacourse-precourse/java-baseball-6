@@ -50,9 +50,9 @@ public class BaseballGame {
             int humanBall = human.getBall(i);
 
             if (computerBall == humanBall) {
-                strikeCount ++;
+                strikeCount++;
             } else if (computer.getBalls().contains(humanBall)) {
-                ballCount ++;
+                ballCount++;
             }
         }
     }

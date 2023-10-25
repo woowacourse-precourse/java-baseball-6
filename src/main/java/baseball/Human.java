@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +55,7 @@ public class Human {
     }
 
     private void validateBallsValue(String input) {
-        for (Character ballChar: input.toCharArray()) {
+        for (Character ballChar : input.toCharArray()) {
             int ball = Character.getNumericValue(ballChar);
 
             if (ball < 1 || ball > 9 || balls.contains(ball)) {
@@ -69,7 +68,7 @@ public class Human {
 
     private void validateDecision(String input) {
         int decision;
-        try{
+        try {
             decision = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
