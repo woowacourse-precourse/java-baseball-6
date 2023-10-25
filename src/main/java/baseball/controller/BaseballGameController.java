@@ -8,7 +8,7 @@ import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class BaseballGame {
+public class BaseballGameController {
 
     public void play() {
         OutputView.printGameStartMessage();
