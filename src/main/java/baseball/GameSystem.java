@@ -7,6 +7,7 @@ public class GameSystem {
     private static final int THREE_STRIKES = 3;
     private final InputMsgView inputMsgView = new InputMsgView();
     private final User user = new User();
+    private BallStrikeCounter ballStrikeCounter;
 
     public void playGame() {
         do {
@@ -21,20 +22,19 @@ public class GameSystem {
         computer.generateNumbers();
         List<Integer> computerNumbers = computer.getNumbers();
 
+        do {
         inputMsgView.printInputNumberMsg();
 
         user.generateNumbers();
         List<Integer> userNumbers = user.getNumbers();
 
-        BallStrikeCounter ballStrikeCounter = new BallStrikeCounter(computerNumbers, userNumbers);
+        ballStrikeCounter = new BallStrikeCounter(computerNumbers, userNumbers);
         ballStrikeCounter.countBallAndStrikes();
 
         ResultMsgView resultMsgView = new ResultMsgView();
         resultMsgView.printGameResultMsg(ballStrikeCounter.getBallCount(), ballStrikeCounter.getStrikeCount());
 
-        if (ballStrikeCounter.getStrikeCount() == THREE_STRIKES) {
-            return;
-        }
+        } while (ballStrikeCounter.getStrikeCount() != THREE_STRIKES);
     }
 
     private boolean restartGame() {
