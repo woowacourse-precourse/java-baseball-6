@@ -16,7 +16,6 @@ public class InputReader {
 
     // get & return player input using readLine()
     public int getInput(){
-        int inputNumber = Integer.parseInt(Console.readLine());
-        return inputNumber;
+        return Integer.parseInt(Console.readLine());
     }
 }
