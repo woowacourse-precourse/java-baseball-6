@@ -1,10 +1,10 @@
 package game;
 
-import domain.Ball;
-import domain.BallComparator;
-import domain.Balls;
-import domain.GameResult;
-import domain.NumbersGenerator;
+import domain.ball.Ball;
+import domain.comparator.BallComparator;
+import domain.ball.Balls;
+import domain.result.GameResult;
+import domain.generator.NumbersGenerator;
 import io.ConsoleView;
 import io.View;
 import java.util.List;

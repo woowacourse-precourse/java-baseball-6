@@ -1,6 +1,6 @@
 package io;
 import camp.nextstep.edu.missionutils.Console;
-import domain.GameResult;
+import domain.result.GameResult;
 
 public class ConsoleView implements View {
 

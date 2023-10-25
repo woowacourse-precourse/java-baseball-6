@@ -1,6 +1,9 @@
-package domain;
+package domain.comparator;
 
 
+import domain.result.GameResult;
+import domain.ball.Ball;
+import domain.ball.Balls;
 import java.util.List;
 import java.util.stream.IntStream;
 

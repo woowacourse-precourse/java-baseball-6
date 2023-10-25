@@ -1,4 +1,4 @@
-package domain;
+package domain.ball;
 
 import java.util.Objects;
 import util.validator.BallIndexValidator;

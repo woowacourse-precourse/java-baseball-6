@@ -1,6 +1,6 @@
 package io;
 
-import domain.GameResult;
+import domain.result.GameResult;
 
 public interface OutPut {
 

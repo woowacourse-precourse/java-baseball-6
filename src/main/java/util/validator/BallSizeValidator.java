@@ -1,6 +1,6 @@
 package util.validator;
 
-import domain.Ball;
+import domain.ball.Ball;
 import java.util.List;
 
 public class BallSizeValidator {

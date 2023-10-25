@@ -1,6 +1,6 @@
 package util.convertor;
 
-import domain.Ball;
+import domain.ball.Ball;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

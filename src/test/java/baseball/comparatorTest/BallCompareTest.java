@@ -1,9 +1,9 @@
-package baseball;
+package baseball.comparatorTest;
 
-import domain.Ball;
-import domain.BallComparator;
-import domain.Balls;
-import domain.GameResult;
+import domain.ball.Ball;
+import domain.comparator.BallComparator;
+import domain.ball.Balls;
+import domain.result.GameResult;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;

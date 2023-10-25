@@ -1,7 +1,7 @@
 package util.validator;
 
-import domain.Ball;
-import domain.BallNumber;
+import domain.ball.Ball;
+import domain.ball.BallNumber;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;

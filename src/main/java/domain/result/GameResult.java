@@ -1,4 +1,4 @@
-package domain;
+package domain.result;
 
 public record GameResult(int strike, int ball) {
 

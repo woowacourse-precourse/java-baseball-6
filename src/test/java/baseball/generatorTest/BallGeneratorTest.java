@@ -1,8 +1,8 @@
-package baseball;
+package baseball.generatorTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import domain.Ball;
+import domain.ball.Ball;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;

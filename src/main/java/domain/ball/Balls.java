@@ -1,4 +1,4 @@
-package domain;
+package domain.ball;
 
 import java.util.List;
 import util.validator.BallDuplicateValidator;
