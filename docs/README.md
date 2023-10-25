@@ -39,7 +39,6 @@
 
 - [x] HintCalculator(List <Integer>, List <Integer>) : user, computer 비교 후 ball, strike count 저장
 - [x] boolean isThreeStrike() : 3스트라이크인지 반환
-- [x] List<Integer> getStrikeAndBallCount() : 스트라이크, 볼 개수 담은 리스트 반환
 - [x] String getHintString() : 힌트 메시지 생성 후 반환
 
 ### RandomListMaker
