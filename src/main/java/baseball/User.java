@@ -2,14 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class UserPlayer {
+public class User {
     private String input;
-    private int[] numList;
 
     // 이름 반환 메서드
     public String getNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-
         input = Console.readLine();
         return input;
     }

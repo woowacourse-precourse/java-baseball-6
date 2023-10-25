@@ -12,7 +12,8 @@ public class Game {
     public void continueGame() {
         while (continueGameNumber == 1) {
             // 컴퓨터 수 생성
-            List<Integer> computerNumber = Computer.createComputerNumber().getComputerNumber();
+            Computer computer = Computer.createComputerNumber();
+            List<Integer> computerNumber = computer.getComputerNumber();
             computerNumberLength = computerNumber.size();
             afterCreateComputerNumberContinueGame(computerNumber);
         }
@@ -22,7 +23,7 @@ public class Game {
     private void afterCreateComputerNumberContinueGame(List<Integer> computerNumber) {
         while (computerNumberLength != 0) {
             // 사용자 생성
-            UserPlayer userPlayer = new UserPlayer();
+            User userPlayer = new User();
             String input = userPlayer.getNumber();
             int[] numList = userPlayer.saveUserInput(input);
 

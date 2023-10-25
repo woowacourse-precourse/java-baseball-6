@@ -11,7 +11,7 @@ public class Computer {
         this.computer = computer;
     }
 
-    // 컴퓨터 3자리 수 생성하는 함수
+    // 컴퓨터 3자리 수 만드는 함수
     public static Computer createComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
