@@ -15,7 +15,7 @@ class BallTests {
 
     @Test
     @DisplayName("Ball 정상적인 case로 생성")
-    void ballCreateTest() throws Exception {
+    void ballCreateTest() {
         ball = new Ball(1, 0);
         assertThat(ball.getDigits()).isLessThan(3);
         assertThat(ball.getDigits()).isGreaterThan(-1);

@@ -7,22 +7,22 @@ import java.util.Set;
 
 public class View {
 
-    public String user_balls() throws Exception {
+    public String user_balls() {
         String userInput = Console.readLine();
         if(!check_userBalls(userInput)){
-            throw new Exception("Input 값이 잘못되었습니다.");
+            throw new IllegalArgumentException("Input 값이 잘못되었습니다.");
         }
         return userInput;
     }
-    public String restart_num() throws Exception {
+    public String restart_num() {
         String userInput = Console.readLine();
         if(!check_rst(userInput)){
-            throw new Exception("Input 값이 잘못되었습니다.");
+            throw new IllegalArgumentException("Input 값이 잘못되었습니다.");
         }
         return userInput;
     }
 
-    private boolean check_rst(String userInput) throws Exception {
+    private boolean check_rst(String userInput) {
         return checkLenRst(userInput)&&checkAllInteger(userInput);
     }
 
@@ -30,7 +30,7 @@ public class View {
         return userInput.length()==1;
     }
 
-    private boolean check_userBalls(String userInput) throws Exception {
+    private boolean check_userBalls(String userInput) {
         return checkLenBall(userInput)&&checkAllInteger(userInput)&&checkOverlapping(userInput);
     }
 
@@ -38,11 +38,11 @@ public class View {
         return userInput.length()==3;
     }
 
-    private boolean checkAllInteger(String userInput) throws Exception {
+    private boolean checkAllInteger(String userInput) {
         try{
             Integer.parseInt(userInput);
         }catch (Exception e){
-            throw new Exception("INPUT에 숫자 외의 값이 있습니다");
+            throw new IllegalArgumentException("INPUT에 숫자 외의 값이 있습니다");
         }
         return true;
     }

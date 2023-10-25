@@ -8,12 +8,12 @@ import java.util.List;
 
 public class RandomGenerator {
     public List<Ball> computer;
-    public RandomGenerator() throws Exception {
+    public RandomGenerator() {
         make_balls();
     }
 
 
-    private void make_balls() throws Exception {
+    private void make_balls() {
         computer = new ArrayList<>();
         int i=0;
         while (computer.size() < 3) {

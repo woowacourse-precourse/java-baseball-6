@@ -68,7 +68,7 @@ class CountControllerTests {
     //TODO : add @ParameterizedTest
     @Test
     @DisplayName("1strike 2ball 테스트")
-    void count_ballAndStrike() throws Exception {
+    void count_ballAndStrike() {
         List<Ball> user = new ArrayList<>();
         user.add(new Ball(3,0));
         user.add(new Ball(2,1));
@@ -85,7 +85,7 @@ class CountControllerTests {
     }
     @Test
     @DisplayName("ballList 길이 Exception 테스트")
-    void validate_test() throws Exception {
+    void validate_test(){
         List<Ball> user = new ArrayList<>();
         user.add(new Ball(3,0));
         user.add(new Ball(2,1));
@@ -97,7 +97,7 @@ class CountControllerTests {
         com.add(new Ball(3,2));
         com.add(new Ball(4,2));
 
-        Assertions.assertThrows(Exception.class, ()->{
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
             countController.count_ball(com, user);
         });
     }

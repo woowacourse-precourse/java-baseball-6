@@ -11,7 +11,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class RandomGeneratorTests {
 
     private RandomGenerator randomGenerator;
-    RandomGeneratorTests() throws Exception {
+    RandomGeneratorTests() {
         randomGenerator = new RandomGenerator();
     }
 

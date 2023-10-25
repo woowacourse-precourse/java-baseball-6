@@ -8,15 +8,15 @@ public class Ball {
     private final int number;
     private final int digits;
 
-    public Ball(int number, int digits) throws Exception {
+    public Ball(int number, int digits){
         this.number = number;
         this.digits = digits;
         if(!ball_validator(number, digits)){
-            throw new Exception("정상적이지 않은 ball 생성");
+            throw new IllegalArgumentException("정상적이지 않은 ball 생성");
         }
     }
 
-    public static List<Ball> of(String userInput) throws Exception {
+    public static List<Ball> of(String userInput) {
         List<Ball> balls = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int num = Integer.parseInt(userInput.substring(i, i+1));
