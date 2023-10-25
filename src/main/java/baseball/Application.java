@@ -14,11 +14,16 @@ public class Application {
         // 게임 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        // 포함 여부 배열
+        HashMap<Integer, Boolean> exist = new HashMap<>();
+
         // 정답 생성
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < NUMBER_OF_DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) computer.add(randomNumber);
+            if (exist.getOrDefault(randomNumber,false)) continue;
+            exist.put(randomNumber, true);
+            computer.add(randomNumber);
         }
 
         // 정답 입력
@@ -29,8 +34,17 @@ public class Application {
         // 정답 비교
         HashMap<String,Integer> result = new HashMap<>();
         for (int i = 0; i < NUMBER_OF_DIGITS; i++) {
-            String key = computer.get(i) == Integer.parseInt(String.valueOf(input.charAt(i))) ? "스트라이크" : "볼";
+            int num = computer.get(i);
+            int inputNum = Integer.parseInt(String.valueOf(input.charAt(i)));
+            if (!exist.getOrDefault(inputNum, false)) continue;
+            String key = num == inputNum ? "스트라이크" : "볼";
             result.put(key, result.getOrDefault(key, 0) + 1);
+        }
+
+        // 결과 출력
+        if (result.isEmpty()) System.out.println("낫싱");
+        else {
+            for (String key : result.keySet()) System.out.print(result.get(key) + key + " ");
         }
     }
 }
