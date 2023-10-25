@@ -5,7 +5,9 @@ public class Output {
     private static final String STRIKE_MESSAGE = "%d스트라이크\n";
     private static final String BALL_AND_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
     private static final String NOTHING_MESSAGE = "낫싱\n";
-    private static final String ANSWER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+    private static final String ANSWER_MESSAGE = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+    private static final int REQUIRED_NUMBERS_TO_MATCH = 3;
+
 
     public static void print(int ball, int strike) {
         if (ball == 0 && strike == 0) {
@@ -36,6 +38,6 @@ public class Output {
     }
 
     public static void printAnswerMessage() {
-        System.out.printf(ANSWER_MESSAGE);
+        System.out.printf(ANSWER_MESSAGE, REQUIRED_NUMBERS_TO_MATCH);
     }
 }

@@ -9,6 +9,12 @@ public class Input {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    private static final int VALID_NUMBER_LENGTH = 3;
+    private static final char ZERO = '0';
+    private static final String RESTART_CHOICE_ONE = "1";
+    private static final String RESTART_CHOICE_TWO = "2";
+
+
     public static String get() {
         System.out.print(INPUT_MESSAGE);
         String number = Console.readLine();
@@ -29,7 +35,7 @@ public class Input {
     }
 
     static boolean isValidNumber(String number) {
-        if (number.length() != 3) {
+        if (number.length() != VALID_NUMBER_LENGTH) {
             return false;
         }
         if (!isDigits(number)) {
@@ -55,7 +61,7 @@ public class Input {
 
     public static boolean containZero(String number) {
         for (char c: number.toCharArray()) {
-            if (c == '0') {
+            if (c == ZERO) {
                 return true;
             }
         }
@@ -74,9 +80,6 @@ public class Input {
     }
 
     public static boolean isValidRestartNumber(String number) {
-        if (number.equals("1") || number.equals("2")) {
-            return true;
-        }
-        return false;
+        return RESTART_CHOICE_ONE.equals(number) || RESTART_CHOICE_TWO.equals(number);
     }
 }

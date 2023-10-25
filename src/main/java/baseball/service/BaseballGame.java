@@ -11,6 +11,8 @@ public class BaseballGame {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String RESTART_CHOICE = "1";
     private static final int REQUIRED_STRIKES_FOR_WIN = 3;
+    private static final int NUMBER_LENGTH = 3;
+
 
     private User user;
     private Computer computer;
@@ -56,7 +58,7 @@ public class BaseballGame {
             set.add(c);
         }
         int ballCount = 0;
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < NUMBER_LENGTH; index++) {
             if (number.charAt(index) != answer.charAt(index) && set.contains(number.charAt(index))) {
                 ballCount++;
             }
@@ -66,11 +68,11 @@ public class BaseballGame {
 
     public static int countStrike(String number, String answer) {
         if (number.equals(answer)) {
-            return 3;
+            return REQUIRED_STRIKES_FOR_WIN;
         }
 
         int strikeCount = 0;
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < NUMBER_LENGTH; index++) {
             if (number.charAt(index) == answer.charAt(index)) {
                 strikeCount++;
             }
