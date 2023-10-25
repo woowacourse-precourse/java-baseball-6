@@ -142,12 +142,12 @@ public class Game {
         }
 
         if (num == 1) {
-            init();
+            isGameInProgress = true;
             return;
         }
 
         if (num == 2) {
-            System.exit(0);
+            return;
         }
 
     }
