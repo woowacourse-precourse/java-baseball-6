@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class StrikeCounter {
+public class StrikeCounter implements Counter {
     public int judge(List<Integer> computer, List<Integer> number) {
         return (int) number.stream()
                 .filter(n -> isStrike(computer, number, n))
