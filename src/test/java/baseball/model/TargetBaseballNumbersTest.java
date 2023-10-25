@@ -82,8 +82,8 @@ class TargetBaseballNumbersTest {
 
             TargetBaseballNumbers targetBaseballNumbers = TargetBaseballNumbers.randomInstance();
             GameResult gameResult = targetBaseballNumbers.calculateGameResult(playerInputNumbers);
-            assertThat(gameResult.correctCount()).isEqualTo(strikeCount);
-            assertThat(gameResult.similarCount()).isEqualTo(ballCount);
+            assertThat(gameResult.correctAnswerCount()).isEqualTo(strikeCount);
+            assertThat(gameResult.similarAnswerCount()).isEqualTo(ballCount);
         }
     }
 
