@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Game {
-
-    private final int LIST_LEN = 3;
-
     private List<Integer> computer = new ArrayList<>();
     private int strike;
     private int ball;
@@ -18,7 +15,7 @@ public class Game {
     }
 
     public boolean is3Strike() {
-        return strike == 3;
+        return strike == Number.STRIKE_CNT;
     }
 
     /**
@@ -26,8 +23,8 @@ public class Game {
      */
     public void setRandomNumbers() {
         computer.clear();
-        while (computer.size() < LIST_LEN) { //3자리의 자연수
-            int randomNumber = Randoms.pickNumberInRange(1, 9); //1부터 9까지의 숫자로 구성
+        while (computer.size() < Number.NUMBER_LEN) { //3자리의 자연수
+            int randomNumber = Randoms.pickNumberInRange(Number.MIN_INPUT, Number.MAX_INPUT); //1부터 9까지의 숫자로 구성
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber); //중복 불가
             }
@@ -40,7 +37,7 @@ public class Game {
     public void count(List<Integer> user) {
         strike = 0;
         ball = 0;
-        for (int i = 0; i < LIST_LEN; i++) {
+        for (int i = 0; i < Number.NUMBER_LEN; i++) {
             if (Objects.equals(computer.get(i), user.get(i))) {
                 strike++;
             } else {

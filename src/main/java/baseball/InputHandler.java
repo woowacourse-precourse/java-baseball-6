@@ -12,7 +12,7 @@ public class InputHandler {
         List<Integer> user = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
             int x = input.charAt(i) - '0';
-            if (1 <= x && x <= 9) {
+            if (Number.MIN_INPUT <= x && x <= Number.MAX_INPUT) {
                 //중복된 수를 입력
                 if (user.contains(x)) {
                     throw new IllegalArgumentException("중복된 수를 입력하셨습니다. 1에서 9까지 서로 다른 수를 입력해 주세요.");
@@ -26,7 +26,7 @@ public class InputHandler {
         }
 
         //숫자를 3개 입력하지 않은 경우
-        if (user.size() != 3) {
+        if (user.size() != Number.NUMBER_LEN) {
             throw new IllegalArgumentException("숫자를 3개 입력해 주세요.");
         }
         return user;
@@ -37,13 +37,13 @@ public class InputHandler {
      */
     public static boolean checkRestartInput(String input) {
         //문자를 두 개 이상 입력
-        if (input.length() != 1) {
+        if (input.length() != Number.EXIT_LEN) {
             throw new IllegalArgumentException("1이나 2 하나만 공백없이 입력해야 합니다.");
         }
 
-        if (input.charAt(0) - '0' == 1) { //재시작
+        if (input.charAt(0) - '0' == Number.RESTART_INPUT) { //재시작
             return true;
-        } else if (input.charAt(0) - '0' == 2) { //종료
+        } else if (input.charAt(0) - '0' == Number.END_INPUT) { //종료
             return false;
         } else { //입력이 1이나 2가 아닌 경우
             throw new IllegalArgumentException("1이나 2를 입력해야 합니다.");
