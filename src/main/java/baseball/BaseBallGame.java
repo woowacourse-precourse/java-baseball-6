@@ -40,7 +40,7 @@ public class BaseBallGame {
         do {
             System.out.print(OutputMessage.ENTER_NUMBER);
             user.setUserNumberFromConsole();
-            score.returnScore(computer, user);
+            score.calculateScore(computer, user);
             score.printOutScore();
         } while (!score.isSuccess());
     }

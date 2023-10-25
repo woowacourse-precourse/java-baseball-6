@@ -17,7 +17,7 @@ public class Score {
         return score;
     }
 
-    public void returnScore(Computer computer, User user) {
+    public void calculateScore(Computer computer, User user) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (computer.getRandomNumber().get(i).equals(user.getInputNumber().get(j))) {
