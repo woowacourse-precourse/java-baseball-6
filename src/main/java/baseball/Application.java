@@ -32,7 +32,7 @@ class User {
     static int[] answer = new int[Game.NUMBERS];
     static void getUserNumbers() {
         String strNum = Console.readLine();
-        if(strNum.length()> Game.NUMBERS) {
+        if(strNum.length() != Game.NUMBERS) {
             throw new IllegalArgumentException("Invalid input");
         }
         for(int i = 0; i < Game.NUMBERS; i++) {
