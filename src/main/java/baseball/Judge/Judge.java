@@ -7,7 +7,7 @@ public class Judge {
     private String input;
 
 
-    int judgeStrike() {
+    public int judgeStrike() {
         char[] charArray = input.toCharArray();
         int cnt = 0;
         for (int i = 0; i < input.length(); i++) {
@@ -23,7 +23,7 @@ public class Judge {
         return cnt;
     }
 
-    int judgeBall() {
+    public int judgeBall() {
         char[] charArray = input.toCharArray();
         int cnt = 0;
         for (int i = 0; i < charArray.length; i++) {
