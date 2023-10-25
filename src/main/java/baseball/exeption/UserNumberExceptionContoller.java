@@ -5,7 +5,7 @@ import java.util.Set;
 
 import static baseball.enum_class.NumberInfo.*;
 
-public class ExceptionContoller implements GlobalExceptionController{
+public class UserNumberExceptionContoller implements GlobalExceptionController{
 
     public void notIntegerException(String Number) {
         for (int i = 0; i < COUNT.getNumberInfo(); i++) {
