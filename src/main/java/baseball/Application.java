@@ -30,7 +30,7 @@ public class Application {
                 strike = 0;
                 ball = 0;
 
-                System.out.println("숫자를 입력해주세요 : ");
+                System.out.print("숫자를 입력해주세요 : ");
                 
                 int[] userNumber = new int[3]; 
                 int k = 0;
@@ -38,19 +38,30 @@ public class Application {
 
                 try {
                     input = Console.readLine(); //사용자 넘버 입력받기
-                    if (input.length() > 3) {
-                        throw new IllegalArgumentException();
+                    
+                    if (input.length() != 3) { // 3자리 입력이 아닐 경우 게임 종료
+                        throw new IllegalArgumentException(); 
                     }
+
+                    for (String s : input.split("")) {
+                        userNumber[k] = Integer.parseInt(s);
+                        k++;
+                    }
+
+                    for (int i = 0; i < 3; i++) {
+                        for (int j = i+1; j < 3; j++) {
+                            if (userNumber[i] == userNumber[j]) {
+                                throw new IllegalArgumentException();
+                            }
+                        }
+                    }
+
                 } catch(IllegalArgumentException e) {
-                    System.out.println("3자리의 수를 입력해주세요.");
                     isGameStart = false;
                     break;
                 }
 
-                for (String s : input.split("")) {
-                    userNumber[k] = Integer.parseInt(s);
-                    k++;
-                }
+                
 
                 
                 //스트라이크, 볼, 낫싱 판별
@@ -83,11 +94,21 @@ public class Application {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-                    String replay = Console.readLine();
-                    int replayNum = Integer.parseInt(replay); 
-
-                    if (replayNum == 1) isGameStart = true;
-                    else if (replayNum == 2) isGameStart = false;
+                    try {
+                        String replay = Console.readLine();
+                        int replayNum = Integer.parseInt(replay);
+                        
+                        if (replayNum != 1 && replayNum != 2) {
+                            throw new IllegalArgumentException();
+                        }
+                        
+                        if (replayNum == 1) isGameStart = true;
+                        else if (replayNum == 2) isGameStart = false;
+                        
+                    } catch(IllegalArgumentException e) {
+                            isGameStart = false;
+                            break;
+                    }
 
                 }
             }
