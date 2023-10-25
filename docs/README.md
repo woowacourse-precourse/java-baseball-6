@@ -3,12 +3,14 @@
 ### 랜덤 값(상대방의 수) 생성
 
 - 1~9 서로 다른 수로 이루어진 임의의 수 3개를 생성한다.
+  - 랜덤값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()활용
 
 ### 야구 게임 기능 구현
 
 - 사용자가 서로 다른 수로 이루어진 임의의 수 3개를 이어서 입력한다.
-    - 자리수가 맞지 않으면 IllegalArgumentException 발생 후 애플리케이션 종료
-    - 중복숫자를 입력했을 경우 IllegalArgumentException 발생 후 애플리케이션 종료
+  - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()활용
+  - 자리수가 맞지 않으면 IllegalArgumentException 발생 후 애플리케이션 종료
+  - 중복숫자를 입력했을 경우 IllegalArgumentException 발생 후 애플리케이션 종료
 - 볼, 스트라이크, 낫싱을 출력하기 위해 사용자의 임의의 수와 컴퓨터의 임의의 수를 비교한다.
 
   **힌트**
