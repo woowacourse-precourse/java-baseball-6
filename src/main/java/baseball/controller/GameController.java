@@ -28,7 +28,7 @@ public class GameController {
             validator.validateUserInput(userInput);
 
             List<Integer> userGuess = validator.splitNumbersByDigits(Integer.parseInt(userInput));
-            List<Integer> result = game.calculateResult(userGuess, computer);
+            List<Integer> result = game.evaluateUserInput(userGuess, computer);
 
             isThreeStrike = game.returnResult(result);
 

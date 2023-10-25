@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class Game {
     private static final int SIZE = 3;
@@ -24,25 +25,16 @@ public class Game {
         return new ArrayList<>(computer);
     }
 
-    public List<Integer> calculateResult(List<Integer> userInput, List<Integer> computer) {
-        int ball = 0;
-        int strike = 0;
+    public List<Integer> evaluateUserInput(List<Integer> userInput, List<Integer> computerNumbers) {
+        int strikes = (int) IntStream.range(0, SIZE)
+                .filter(i -> Objects.equals(userInput.get(i), computerNumbers.get(i)))
+                .count();
 
-        for (int i = 0; i < 3; i++) {
-            if (computer.contains(userInput.get(i))) {
-                if (Objects.equals(userInput.get(i), computer.get(i))) {
-                    strike++;
-                } else {
-                    ball++;
-                }
-            }
-        }
-        List<Integer> result = new ArrayList<>();
+        int balls = (int) userInput.stream()
+                .filter(num -> computerNumbers.contains(num))
+                .count() - strikes;
 
-        result.add(ball);
-        result.add(strike);
-
-        return result;
+        return List.of(balls, strikes);
     }
 
     public boolean returnResult(List<Integer> result) {
