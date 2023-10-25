@@ -21,5 +21,6 @@ public class Output {
         } else {
             System.out.print("낫싱");
         }
+        System.out.print("\n");
     }
 }
