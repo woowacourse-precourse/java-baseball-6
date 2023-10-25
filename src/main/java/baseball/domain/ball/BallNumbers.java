@@ -15,8 +15,7 @@ public abstract class BallNumbers {
     }
 
     private static void validateDuplicateNumbers(final Triple<BallNumber> numbers) {
-        final int size = numbers.toSet().size();
-        if (size != BALL_COUNT) {
+        if (numbers.getUniqueCount() != BALL_COUNT) {
             throw new DuplicateBallNumbersException();
         }
     }

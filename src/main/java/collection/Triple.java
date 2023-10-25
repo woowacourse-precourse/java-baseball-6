@@ -54,6 +54,10 @@ public record Triple<T>(
         };
     }
 
+    public int getUniqueCount() {
+        return toSet().size();
+    }
+
     public Set<T> toSet() {
         return new LinkedHashSet<>(List.of(first, second, third));
     }
