@@ -16,16 +16,12 @@ public class OutputView {
     }
 
     public static void printBaseballResult(BaseballResultDto dto) {
-        String message = MessageFormat.format(dto.getMessageFormat(),
-                dto.getBallCnt(), dto.getStrikeCnt());
+        String message = MessageFormat.format(dto.messageFormat(),
+                dto.ballCnt(), dto.strikeCnt());
         System.out.println(message);
     }
 
     public static void printDone() {
         System.out.println(OUTPUT_DONE);
-    }
-
-    public static void printErrorMessage(String message) {
-        System.out.println(message);
     }
 }
