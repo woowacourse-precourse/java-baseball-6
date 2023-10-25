@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Computer {
 
+    private List<Integer> computerNumbers;
+
     private final int MAX_NUMBER = 9;
     private final int MIN_NUMBER = 1;
 
@@ -15,7 +17,7 @@ public class Computer {
     private Integer strike = 0;
     private Boolean complete = false;
 
-    public List<Integer> generateNumber() {
+    public void generateNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,7 +25,7 @@ public class Computer {
                 randomNumbers.add(randomNumber);
             }
         }
-        return randomNumbers;
+        computerNumbers = randomNumbers;
     }
 
     public String getResult(List<Integer> randomNumbers, List<Integer> numbers) {
@@ -67,5 +69,9 @@ public class Computer {
 
     public void isComplete(Boolean complete) {
         this.complete = complete;
+    }
+
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
     }
 }

@@ -8,10 +8,11 @@ import java.util.Set;
 
 public class Player {
 
+    private List<Integer> playerNumbers;
     private final String GAME_INPUT_REGEX = "[1-9]+";
     private final String GAME_INIT_REGEX = "[1-2]+";
 
-    public List<Integer> enterNumbers() throws IllegalArgumentException {
+    public void enterNumbers() throws IllegalArgumentException {
         List<Integer> numbers = new ArrayList<>();
         String input = Console.readLine();
 
@@ -22,7 +23,7 @@ public class Player {
         for (char c : input.toCharArray()) {
             numbers.add(Character.getNumericValue(c));
         }
-        return numbers;
+        playerNumbers = numbers;
     }
 
     public Integer enterMenuNumber() throws IllegalArgumentException {
@@ -57,5 +58,9 @@ public class Player {
         }
 
         return true;
+    }
+
+    public List<Integer> getPlayerNumbers() {
+        return playerNumbers;
     }
 }

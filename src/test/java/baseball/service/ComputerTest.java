@@ -16,7 +16,8 @@ class ComputerTest {
         List<Integer> randomNumbers = new ArrayList<>();
         Computer computer = new Computer();
         //when
-        randomNumbers = computer.generateNumber();
+        computer.generateNumber();
+        randomNumbers = computer.getComputerNumbers();
         //then
         Assertions.assertEquals(3, randomNumbers.size());
     }

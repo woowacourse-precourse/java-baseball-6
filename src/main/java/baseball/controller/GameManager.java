@@ -2,15 +2,10 @@ package baseball.controller;
 
 import baseball.service.Computer;
 import baseball.service.Player;
-import java.util.List;
 
 public class GameManager {
     private Computer computer;
     private Player player;
-
-    private List<Integer> computerRandomNumbers;
-    private List<Integer> playerNumbers;
-
     private Boolean restart = true;
 
     public GameManager(Computer computer, Player player) {
@@ -21,11 +16,11 @@ public class GameManager {
     public void runGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (this.restart) {
-            computerRandomNumbers = computer.generateNumber();
+            computer.generateNumber();
             while (!computer.getComplete()) {
                 System.out.print("숫자를 입력해주세요 : ");
-                playerNumbers = player.enterNumbers();
-                System.out.println(computer.getResult(computerRandomNumbers, playerNumbers));
+                player.enterNumbers();
+                System.out.println(computer.getResult(computer.getComputerNumbers(), player.getPlayerNumbers()));
             }
 
             this.getMenu();
