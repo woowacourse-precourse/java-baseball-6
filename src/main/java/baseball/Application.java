@@ -11,7 +11,6 @@ public class Application {
         boolean gameOn = true;
         while (gameOn) {
             List<Integer> randomNumber = getRandomNumber();
-            System.out.println(randomNumber);
             loopGame(randomNumber);
             gameOn = restartOrNot();
         }
@@ -41,7 +40,7 @@ public class Application {
         if (strike != 0) {
             result += strike + "스트라이크";
         }
-        System.out.println(result);;
+        System.out.println(result);
     }
 
     private static List<Integer> getRandomNumber() {
@@ -58,6 +57,10 @@ public class Application {
     private static List<Integer> inputUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
+
+        if (userInput.replaceAll("\\s", "").length() < 3) {
+            throw new IllegalArgumentException("공백을 제외한 세 자리 수를 입력해주세요.");
+        }
         List<Integer> userNumbers = userInputToInteger(userInput);
         if (userNumbers.size() < 3 || userNumbers.size() > 3) {
             throw new IllegalArgumentException("세 자리의 숫자를 입력해주세요.");
