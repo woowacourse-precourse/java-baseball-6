@@ -14,13 +14,7 @@ public class AnswerEvaluatorImpl implements Evaluator {
     public AnswerEvaluatorImpl(int numSize) {
         this.boardSize = numSize;
         this.answer = new ArrayList<>();
-        while (numSize != 0) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!this.answer.contains(randomNumber)) {
-                this.answer.add(randomNumber);
-                numSize -= 1;
-            }
-        }
+        resetAnswer();
     }
 
     @Override
@@ -37,5 +31,18 @@ public class AnswerEvaluatorImpl implements Evaluator {
             }
         }
         return new BallStrike(balls, strikes);
+    }
+
+    @Override
+    public void resetAnswer() {
+        int insertedNumber = 0;
+        this.answer.clear();
+        while (insertedNumber < this.boardSize) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!this.answer.contains(randomNumber)) {
+                this.answer.add(randomNumber);
+                insertedNumber += 1;
+            }
+        }
     }
 }

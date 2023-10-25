@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface Evaluator {
     EvalResult evaluate(List<Integer> guess);
+
+    void resetAnswer();
 }
