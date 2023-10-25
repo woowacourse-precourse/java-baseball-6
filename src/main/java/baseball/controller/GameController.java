@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.convertor.InputConvertor;
 import baseball.domain.dto.GameResult;
 import baseball.domain.game.Computer;
 import baseball.domain.game.ComputerNumberGenerator;
@@ -9,13 +10,13 @@ import baseball.view.OutputView;
 
 public class GameController {
     private final OutputView outputView;
-    private final InputController inputController;
+    private final InputConvertor inputConvertor;
     private final ComputerNumberGenerator randomComputerNumberGenerator;
 
-    public GameController(OutputView outputView, InputController inputController,
+    public GameController(OutputView outputView, InputConvertor inputConvertor,
                           ComputerNumberGenerator randomComputerNumberGenerator) {
         this.outputView = outputView;
-        this.inputController = inputController;
+        this.inputConvertor = inputConvertor;
         this.randomComputerNumberGenerator = randomComputerNumberGenerator;
     }
 
@@ -23,9 +24,9 @@ public class GameController {
         do {
             Computer computer = generateRandomComputerNumbers();
             playGame(computer);
-        } while (inputController.convertToGameStatus() == GameStatus.RESTART);
+        } while (inputConvertor.convertToGameStatus() == GameStatus.RESTART);
     }
-
+    
     private Computer generateRandomComputerNumbers() {
         outputView.printGameStartMessage();
         return randomComputerNumberGenerator.create();
@@ -33,7 +34,7 @@ public class GameController {
 
     private void playGame(Computer computer) {
         while (true) {
-            Player player = inputController.convertToPlayer();
+            Player player = inputConvertor.convertToPlayer();
             GameResult gameResult = computer.evaluateWith(player);
             outputView.printGameResult(gameResult);
 
