@@ -36,7 +36,7 @@ public final class Round {
 
     private void countBall(int i, ComputerNumbers computerNumbers, UserNumbers userNumbers) {
         int userNumber = userNumbers.get(i);
-        if (computerNumbers.get(i) == userNumbers.get(i) && computerNumbers.contains(userNumber)) {
+        if (computerNumbers.get(i) != userNumbers.get(i) && computerNumbers.contains(userNumber)) {
             ballCount++;
         }
     }
