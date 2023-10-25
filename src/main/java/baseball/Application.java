@@ -1,8 +1,10 @@
 package baseball;
 
+import baseball.core.GameRunner;
+
 public class Application {
     public static void main(String[] args) {
-        BaseballGame game = new BaseballGame();
+        GameRunner game = new GameRunner();
         game.start();
     }
 }

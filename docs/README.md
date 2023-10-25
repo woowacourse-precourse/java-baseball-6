@@ -31,7 +31,7 @@
 
 1. Application
     - 프로그램의 시작점
-2. BaseBallGame
+2. GameRunner
     - 게임 초기화
     - 게임 진행
     - 게임 재시작 또는 프로그램 종료
@@ -39,10 +39,9 @@
     - 3개의 숫자를 생성
 4. UserInput
     - 사용자 입력
-    - 유효성 검사
 5. BaseballNumber
     - 3개의 숫자를 저장하고 관리
-6. Judgement
+6. Judge
     - 사용자 입력과 컴퓨터 숫자 비교
     - 볼, 스트라이크 판정
     - 결과 메시지 반환
@@ -50,3 +49,5 @@
     - 메시지를 출력
 8. Constants
     - 공통 상수를 관리
+9. InputValidator
+    - 유효성 검사

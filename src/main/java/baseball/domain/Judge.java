@@ -1,8 +1,8 @@
-package baseball;
+package baseball.domain;
 
 import java.util.List;
 
-public class Judgement {
+public class Judge {
     private int balls;
     private int strikes;
 

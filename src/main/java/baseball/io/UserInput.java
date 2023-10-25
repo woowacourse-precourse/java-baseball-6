@@ -1,5 +1,6 @@
-package baseball;
+package baseball.io;
 
+import baseball.domain.Constants;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +13,9 @@ public class UserInput {
     public static List<Integer> inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
-        UserInputValidator.validateLength(inputString);
+        InputValidator.validateLength(inputString);
         List<Integer> numbers = convertStringToNumbers(inputString);
-        UserInputValidator.validateDuplicate(numbers);
+        InputValidator.validateDuplicate(numbers);
         return numbers;
     }
 
@@ -29,7 +30,7 @@ public class UserInput {
 
     private static int convertCharToInt(final char ch) {
         int digit = Character.getNumericValue(ch);
-        UserInputValidator.validateNonzeroDigit(digit);
+        InputValidator.validateNonzeroDigit(digit);
         return digit;
     }
 }

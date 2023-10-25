@@ -1,26 +1,27 @@
-package baseball;
+package baseball.io;
 
+import baseball.domain.Constants;
 import java.util.List;
 import java.util.Set;
 
-public class UserInputValidator {
+public class InputValidator {
 
-    private UserInputValidator() {
+    private InputValidator() {
     }
 
-    static void validateLength(final String string) {
+    public static void validateLength(final String string) {
         if (string.length() != Constants.MAX_DIGITS) {
             throw new IllegalArgumentException();
         }
     }
 
-    static void validateNonzeroDigit(final int digit) {
+    public static void validateNonzeroDigit(final int digit) {
         if (digit < 1 || digit > 9) {
             throw new IllegalArgumentException();
         }
     }
 
-    static void validateDuplicate(List<Integer> numbers) {
+    public static void validateDuplicate(List<Integer> numbers) {
         Set<Integer> set = Set.copyOf(numbers);
         if (set.size() != numbers.size()) {
             throw new IllegalArgumentException();

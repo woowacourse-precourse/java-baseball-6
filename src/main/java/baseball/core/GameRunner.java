@@ -1,19 +1,24 @@
-package baseball;
+package baseball.core;
 
+import baseball.domain.BaseballNumber;
+import baseball.domain.Computer;
+import baseball.domain.Judge;
+import baseball.io.OutputHandler;
+import baseball.io.UserInput;
 import camp.nextstep.edu.missionutils.Console;
 
-public class BaseballGame {
-    private final Judgement judgement;
+public class GameRunner {
+    private final Judge judge;
 
-    public BaseballGame() {
-        judgement = new Judgement();
+    public GameRunner() {
+        judge = new Judge();
     }
 
     public void start() {
         OutputHandler.printGameStart();
         do {
             playGame();
-        } while (wantsToRestart());
+        } while (askToRestart());
     }
 
     private void playGame() {
@@ -24,7 +29,7 @@ public class BaseballGame {
     }
 
     public boolean isEndOfGame() {
-        if (judgement.is3Strikes()) {
+        if (judge.is3Strikes()) {
             OutputHandler.printGameEnd();
             return true;
         }
@@ -33,11 +38,11 @@ public class BaseballGame {
 
     private void tryGuess(final BaseballNumber targetNumber) {
         BaseballNumber userGuess = new BaseballNumber(UserInput.inputNumbers());
-        judgement.callBallOrStrike(targetNumber, userGuess);
-        OutputHandler.printMessage(judgement.toString());
+        judge.callBallOrStrike(targetNumber, userGuess);
+        OutputHandler.printMessage(judge.toString());
     }
 
-    public boolean wantsToRestart() {
+    public boolean askToRestart() {
         OutputHandler.printGameRestart();
         String input = Console.readLine();
         if (input.equals("1")) {
