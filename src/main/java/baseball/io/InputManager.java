@@ -30,7 +30,7 @@ public class InputManager {
     private String prompt(Predicate<String> validator) {
         String input = Console.readLine();
         if (!validator.test(input)) {
-            throw new IllegalArgumentException(GameMessages.INPUT_ERR_MSG);
+            throw new IllegalArgumentException();
         }
         return input;
     }
