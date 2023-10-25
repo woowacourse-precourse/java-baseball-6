@@ -11,7 +11,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Batter implements BaseballPlayer {
     private static List<Integer> choice;
     private static final List<Character> validCharacter = Arrays.asList('1','2','3','4','5','6','7','8','9');
-    
+
+    private static final String INVALID_INPUT = "올바른 입력이 아닙니다.";
+
     @Override
     public void makeChoice(){
         String input = readLine();
@@ -38,6 +40,17 @@ public class Batter implements BaseballPlayer {
             checkedCharacters.add(c);
         }
         return true;
+    }
+
+    public void decideToPlayMoreOrNot(){
+        String input = readLine();
+        if(input.equals("1")){
+            return;
+        }
+        if(input.equals("2")){
+            return;
+        }
+        throw new IllegalArgumentException(INVALID_INPUT);
     }
 
     public List<Integer> getChoice(){
