@@ -41,6 +41,11 @@ public class Application {
             if (length != 3) {
                 throw new IllegalArgumentException();
             }
+            for (int i=0;i<3;i++){
+                if (tempNumber.charAt(i) == '0'){
+                    throw new IllegalArgumentException();
+                }
+            }
             int nowNumber = Integer.valueOf(tempNumber);
             int[] result = strikeAndBall(settingNumber, nowNumber);
             strike = result[0];
