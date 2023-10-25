@@ -5,19 +5,25 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class RandomNumbers {
+    private final int START_RANGE = 1;
+    private final int END_RANGE = 9;
     private List<Integer> randomNumbers;
 
     public RandomNumbers() {
-        randomNumbers = Randoms.shuffle(setRandomNumbers());
+        setRandomNumbers();
     }
 
-    private List<Integer> setRandomNumbers() {
-        Set<Integer> numbers = new HashSet<>();
-        while(numbers.size() < 3) {
-            numbers.add(Randoms.pickNumberInRange(1, 9));
+    private void setRandomNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
+            int num = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+
+            if (!numbers.contains(num)) {
+                numbers.add(num);
+            }
         }
 
-        return new ArrayList<>(numbers);
+        this.randomNumbers = numbers;
     }
 
     public List<Integer> getRandomNumbers() {
