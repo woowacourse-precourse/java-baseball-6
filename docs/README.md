@@ -2,7 +2,7 @@
 
 ## 1. 사용할 객체
 
-→ Game, Player, Computer, Result 4개의 객체로 구성
+→ Game, Player, Computer, Result, Validate 5개의 객체로 구성
 
 ### Game
 
