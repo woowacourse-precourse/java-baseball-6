@@ -1,6 +1,5 @@
 package utils;
 
-import baseball.domain.EndOption;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,9 +21,5 @@ public class ValidationUtils {
     public static boolean isOtherNumbers(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         return uniqueNumbers.size() == numbers.size();
-    }
-
-    public static boolean isEndOptionNumber(int number) {
-        return EndOption.isContain(number);
     }
 }
