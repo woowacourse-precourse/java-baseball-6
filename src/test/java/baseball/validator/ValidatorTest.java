@@ -3,7 +3,7 @@ package baseball.validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ValidatorTest {
 
@@ -35,7 +35,7 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
         // 세자릿수면 에러가 발생하지 않음
-        Validator.validateCiphers(세자릿수, 원하는_자릿수);
+        assertThatNoException().isThrownBy(() -> Validator.validateCiphers(세자릿수, 원하는_자릿수));
 
         assertThatThrownBy(() -> Validator.validateCiphers(네자릿수, 원하는_자릿수))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -57,7 +57,8 @@ class ValidatorTest {
         assertThatThrownBy(() -> Validator.validateInRange(ZERO, 원하는_범위_시작, 원하는_범위_끝))
                 .isInstanceOf(IllegalArgumentException.class);
         // 1을 입력하면 에러가 발생하지 않음
-        Validator.validateInRange(ONE, 원하는_범위_시작, 원하는_범위_끝);
+        assertThatNoException().isThrownBy(() -> Validator.validateInRange(ONE, 원하는_범위_시작, 원하는_범위_끝));
+
         assertThatThrownBy(() -> Validator.validateInRange(TEN, 원하는_범위_시작, 원하는_범위_끝))
                 .isInstanceOf(IllegalArgumentException.class);
     }
