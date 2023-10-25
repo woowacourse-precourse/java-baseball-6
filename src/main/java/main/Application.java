@@ -1,12 +1,12 @@
 package main;
 
-import view.Output;
+import controller.ResultController;
 
 public class Application {
-    private static final Output output = new Output();
+    private static final ResultController resultController= new ResultController();
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        output.game();
+        resultController.game();
     }
 }
