@@ -2,19 +2,11 @@ package baseball;
 
 public class CheckRestartNum {
     static boolean isError(String restartString) {
-        if (isNull(restartString)) {
+        if (Util.isNull(restartString)) {
             return (true);
         }
-        return (!isCorrectLength(restartString) ||
+        return (!Util.isCorrectLength(restartString, 1) ||
                 !isCorrectValue(restartString));
-    }
-
-    static boolean isNull(String restartString) {
-        return (restartString == null);
-    }
-
-    static boolean isCorrectLength(String restartString) {
-        return (restartString.length() == 1);
     }
 
     static boolean isCorrectValue(String restartString) {

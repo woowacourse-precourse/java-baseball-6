@@ -2,20 +2,12 @@ package baseball;
 
 public class CheckBaseballNum {
     static boolean isError(String baseballNum) {
-        if (isNull(baseballNum)) {
+        if (Util.isNull(baseballNum)) {
             return (true);
         }
-        return (!isCorrectLength(baseballNum) ||
+        return (!Util.isCorrectLength(baseballNum, 3) ||
                 isDuplicated(baseballNum) ||
                 !isCorrectRange(baseballNum));
-    }
-
-    static boolean isNull(String baseballNum) {
-        return (baseballNum == null);
-    }
-
-    static boolean isCorrectLength(String baseballNum) {
-        return (baseballNum.length() == 3);
     }
 
     static boolean isCorrectRange(String baseballNum) {

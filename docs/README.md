@@ -29,9 +29,9 @@
 
 BaseballNum class의 유효성을 검사해주는 class이다
 
-boolean isError() : 문제가 발생하면 true 문제가 없으면 false를 반환해준다
-boolean isCorrectRange() : 값이 1 ~ 9 사이로 맞게 들어왔는지를 검사해준다
-boolean isDuplicated() : 중복된 값이 있는지 검사해준다
+boolean isError(string) : 문제가 발생하면 true 문제가 없으면 false를 반환해준다
+boolean isCorrectRange(string) : 값이 1 ~ 9 사이로 맞게 들어왔는지를 검사해준다
+boolean isDuplicated(string) : 중복된 값이 있는지 검사해준다
 boolean isDigit(char num) : 값이 1 ~ 9 사이인지 검사해준다
 
 ### RestartNum class 구현
@@ -46,13 +46,25 @@ boolean isDigit(char num) : 값이 1 ~ 9 사이인지 검사해준다
 RestartNum class의 유효성을 검사해주는 class이다
 
 * boolean isError(String) : 문제가 발생하면 true 문제가 없으면 false를 반환해준다
+* boolean isCorrectValue(string) : string의 값이 맞는 값(1 or 2)인지 판단해준다
 
 ### Printer class 구현
 
 야구게임에서 스트라이크 볼 낫싱을 판정해 print해주는 class이다
 
 * baseball(int strike int ball) : strike, ball 개수를 바탕으로 그에맞는 메소드를 호출해준다
+* boolean isNothing(int strike, int ball) : ball과 strike가 하나도 없는지 확인한다
+* boolean isAll(int strike, int ball) : ball과 strike가 하나 이상씩 존재하는지 확인한다
+* boolean isBall(int ball) : ball이 하나 이상 존재하는지 확인한다
+* boolean isStrike(int strike) : strike가 하나 이상 존재하는지 확인한다
 * nothing() : 낫싱을 출력해준다
-* all(int strike int ball) : 볼과 스트라이크를 출력해준다
-* ball(int ball) : 볼을 출력해준다
-* strike(int strike) : 스트라이크를 출력해준다
+* all(int strike int ball) : ball과 strike를 출력해준다
+* ball(int ball) : ball을 출력해준다
+* strike(int strike) : strike를 출력해준다
+
+### Util Class 구현
+
+여러 class에서 공통으로 사용하는 메소드를 구현해둔 class이다
+
+* boolean isCorrectLength(String, int) : String의 길이가 맞는길이(int)인지 판단해준다
+* boolean isNull(String) : String이 null인지 판단해준다

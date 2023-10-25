@@ -7,7 +7,7 @@ import java.util.List;
 public class BaseballNum {
     private final List<Integer> number = new ArrayList<>();
 
-    public BaseballNum(String inputNum) {
+    public BaseballNum(String inputNum) throws IllegalArgumentException {
         if (CheckBaseballNum.isError(inputNum)) {
             throw new IllegalArgumentException("BaseballNum 입력값 오류.");
         }
