@@ -1,13 +1,14 @@
 package baseball.domain.results;
 
 import baseball.dto.BallsDifferenceDto;
-import baseball.utility.ResultsUtils;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Results {
 
-    private int strikeCount = 0;
-    private int ballCount = 0;
-    private int outCount = 0;
+    private final int strikeCount;
+    private final int ballCount;
+    private final int outCount;
 
     public Results(BallsDifferenceDto ballsDifferenceDto) {
         strikeCount = ballsDifferenceDto.getSameBallCount();
@@ -15,15 +16,34 @@ public class Results {
         outCount = ballsDifferenceDto.getDifferentBallCount();
     }
 
-    @Override
-    public String toString() {
-        return ResultsUtils.getStringValueOfResults(strikeCount, ballCount);
-    }
-
     public boolean isAnswer() {
         boolean noBall = ballCount == 0;
         boolean noOut = outCount == 0;
         return noBall && noOut;
+    }
+
+    @Override
+    public String toString() {
+        return getStringValueOfResults();
+    }
+
+    private String getStringValueOfResults() {
+
+        String ballString = ResultStatus.BALL
+                .getDescriptionWithCount(ballCount);
+
+        String strikeString = ResultStatus.STRIKE
+                .getDescriptionWithCount(strikeCount);
+
+        String resultString = Stream.of(ballString, strikeString)
+                .filter(string -> !string.equals(""))
+                .collect(Collectors.joining(" "));
+
+        if (resultString.equals("")) {
+            return "낫싱";
+        }
+
+        return resultString;
     }
 
 }

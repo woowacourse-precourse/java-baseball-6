@@ -11,7 +11,15 @@ public enum ResultStatus {
         this.description = description;
     }
 
-    public String getDescription() {
+    public String getDescriptionWithCount(int count) {
+        if (count == 0) {
+            return "";
+        }
+        String description = getDescription();
+        return count + description;
+    }
+
+    private String getDescription() {
         return description;
     }
 }
