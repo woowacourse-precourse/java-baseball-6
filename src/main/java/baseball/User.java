@@ -13,15 +13,28 @@ public class User {
     //   2. [x] 중복된 숫자가 있는지 확인한다.
     //   3. [x] 이때 3글자가 아니거나, 중복일 경우, 글자 혹은 소수 같은 예외가 발생할 경우 에러를 발생한다.
     //   4. [x] 종료 여부 선택 : 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수만 입력가능하다.
+    String number;
     public List<Integer> inputNumber(){
-        String userNumber = Console.readLine();
-        List<Integer> userList = new ArrayList<>();
-        for (int i = 0; i < userNumber.length(); i++) {
-            userList.add(Integer.parseInt(userNumber.substring(i,i+1)));
-        }
-        checkNumber(userList);
+        String number = Console.readLine();
+        return makeListNumber(number);
+    }
+    public void setNumber(String number){
+        String userNumber = this.number;
 
-        return userList;
+    }
+    public List<Integer> makeListNumber(String userNumber){
+        List<Integer> userList = new ArrayList<>();
+        try{
+            for (int i = 0; i < userNumber.length(); i++) {
+                userList.add(Integer.parseInt(userNumber.substring(i,i+1)));
+            }
+            checkNumber(userList);
+
+            return userList;
+        }catch (NumberFormatException ex){
+            throw new IllegalArgumentException("숫자만 입력하세요");
+        }
+
     }
     public void checkNumber(List<Integer> userList){
         if(userList.size()!=3){
@@ -29,12 +42,11 @@ public class User {
         }
         for (int i = 0; i < userList.size()-1; i++) {
             int checkedNum=userList.get(i);
-            System.out.println(checkedNum);
             if(Collections.frequency(userList,checkedNum)!=1){
                 throw new IllegalArgumentException("중복된 숫자를 입력하지 마세요.");
             }
             if(!(1<=checkedNum && checkedNum <=9)){
-                throw new IllegalArgumentException("숫자를 입력해야합니다.");
+                throw new IllegalArgumentException("1~9 사이의 숫자를 입력해야합니다.");
             }
 
         }
