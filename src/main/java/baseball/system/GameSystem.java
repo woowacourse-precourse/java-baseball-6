@@ -1,11 +1,10 @@
 package baseball.system;
 
 import baseball.numsdata.ComputerNumberManage;
+import baseball.numsdata.ResultManage;
 import baseball.numsdata.UserNumberManage;
 import baseball.viewer.Output;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
 
 public class GameSystem {
     public void start() {
@@ -21,49 +20,20 @@ public class GameSystem {
                 randomNumber = new ComputerNumberManage();
             }
 
-
             show.guide();
             String input = Console.readLine();
             UserNumberManage user = new UserNumberManage(input);
             user.checkNumber();
 
-            int [] checkScore = new int[3];
-            List<Integer> userTemp = user.getUserNumbers();
-            List<Integer> randomNumTemp = randomNumber.getComputerNumbers();
-
-            for(int computerNum = 0; computerNum < 3; computerNum++){
-                for(int userNum = 0; userNum < 3; userNum++){
-                    if(checkScore[userNum] == 2 ) continue;
-                    if(randomNumTemp.get(computerNum).equals(userTemp.get(userNum)) && computerNum == userNum) {
-                        checkScore[computerNum] = 2;
-                        break;
-                    }
-                    else if(randomNumTemp.get(computerNum).equals(userTemp.get(userNum))){
-                        checkScore[computerNum] = 1;
-                        break;
-                    }
-                }
-            }
+            ResultManage result = new ResultManage();
+            result.gameSetResult(user.getUserNumbers(), randomNumber.getComputerNumbers());
 
             // delete
 //            System.out.println(randomNumTemp);
 //            System.out.println(userTemp);
+            show.result(result.getBall(), result.getStrike());
 
-
-            int ball = 0;
-            int strike = 0;
-
-            for(int i = 0; i < 3; i++){
-                if(checkScore[i] == 1){
-                    ball++;
-                }
-                else if(checkScore[i] == 2){
-                    strike++;
-                }
-            }
-            show.result(ball, strike);
-
-            if(strike == 3){
+            if(result.getStrike() == 3){
                 show.decide();
                 String decision = Console.readLine();
                 if(decision.equals("1")){
@@ -72,8 +42,9 @@ public class GameSystem {
                 else if(decision.equals("2")){
                     endGame = true;
                 }
-
-
+                else{
+                    throw new IllegalArgumentException();
+                }
             }
             else{
                 state = 1;
