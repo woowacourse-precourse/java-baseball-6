@@ -10,7 +10,7 @@ import static camp.nextstep.edu.missionutils.Console.*;
 
 public class ConsoleInput {
 
-    static final String DIGITS_PATTERN = "^[0-9]+$";
+    static final String DIGITS_PATTERN = "^[1-9]+$";
     static final String ONE_OR_TWO_PATTERN  = "^[1-2]+$";
 
     public static List<Integer> readDigitNumber(int len) throws InvalidInputException {
