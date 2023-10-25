@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.rmi.server.ExportException;
 import java.util.*;
 
 public class Application {
@@ -15,6 +14,7 @@ public class Application {
                 System.out.println("숫자야구 게임을 시작 합니다.");
                 List<String> computer = ComputerInput();
                 UserInput(computer);
+                System.out.println("computer = " + computer);           //난수 확인값
         }
 
         // 랜덤숫자3자리 생성 메소드  =============================================================
@@ -26,7 +26,7 @@ public class Application {
                                 computer.add(randomNumber);
                         }
                 }
-//                System.out.println("computer = " + computer);   //난수 확인값
+                System.out.println("computer = " + computer);           //난수 확인값
                 return computer;
         }
 
@@ -37,12 +37,11 @@ public class Application {
                 System.out.println("중복이 되지 않는 세 자리의 숫자를 입력해 주세요.");
                 String userInput = Console.readLine();
                 Collections.addAll(user, userInput.split(""));
-                System.out.println("user = " + user);                   // 입력 확인값
-                for (int i=0;i< user.size();i++) {                               // 입력받은 값의 유효성 체크
-                        String str = user.get(i++);
+                System.out.println("user = " + user);           // 입력 확인값
+                for (int i = 0; i < user.size(); i++) {         // 입력받은 값의 유효성 체크
+                        String str = user.get(i);
+                        System.out.println("str = " + str);
                         if (!user.contains(str)) {
-                                user.add(str);
-                        }else {
                                 try{
                                         System.out.println("중복된 숫자가 있습니다.");
                                         throw new IllegalArgumentException();
@@ -50,7 +49,7 @@ public class Application {
                                         return;
                                 }
                         }
-                        if (ParseInt(str, 0) == 0 || user.size() != 3) {
+                        if (toParseInt(str, 0) == 0 || user.size() != 3) {
                                 try {
                                         System.out.println("올바른 세자리 숫자를 입력이 되지 않았습니다.");
                                         throw new IllegalArgumentException();
@@ -88,7 +87,7 @@ public class Application {
                                 return;
                         } else {
                                 try {
-                                        throw new IllegalArgumentException();
+                                        throw new IllegalArgumentException();   //1,2 외의 값 입력시 예외처리 후 종료
                                 } catch (Exception e) {
                                         System.out.println("e = " + e);
                                         return;
@@ -97,18 +96,20 @@ public class Application {
                 } else if (strikeCount + ballCount == 0) {
                         System.out.println("낫싱!");
                         UserInput(computer);
-                } else if (strikeCount==0 && ballCount>0) {
-                System.out.println(ballCount + "볼");
-                } else if (ballCount ==0 && strikeCount>0){
+                } else if (strikeCount == 0 && ballCount > 0) {
+                        System.out.println(ballCount + "볼");
+                        UserInput(computer);
+                } else if (ballCount == 0 && strikeCount > 0) {
                         System.out.println(strikeCount + "스트라이크");
-                }else {
+                        UserInput(computer);
+                } else {
                         System.out.println(ballCount + "볼, " + strikeCount + "스트라이크");        // 출력
                         UserInput(computer);
                 }
 
         }
 
-        public static int ParseInt(String value, int defVal) {
+        public static int toParseInt(String value, int defVal) {
                 try {
                         return Integer.parseInt(value);         //입력 숫자 예외처리
                 } catch (Exception e) {
