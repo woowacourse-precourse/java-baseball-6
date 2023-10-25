@@ -15,7 +15,7 @@ public class GameInformation {
     }
 
     //random 3자리 수 초기화
-    public void makeRandomNumber() {
+    public String makeRandomNumber() {
         answerNumber = "";
         while (answerNumber.length() < numberCount) {
             String newDigit = Integer.toString(Randoms.pickNumberInRange(1, 9));
@@ -23,6 +23,7 @@ public class GameInformation {
                 answerNumber += newDigit;
             }
         }
+        return answerNumber;
     }
 
     public void compareAndSetStrikeBallCount(String inputNumber) {

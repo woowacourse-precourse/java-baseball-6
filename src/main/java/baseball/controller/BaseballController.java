@@ -10,13 +10,12 @@ public class BaseballController {
     private GameInformation gameInformation = new GameInformation(3);
     private NumberValidator numberValidator = new NumberValidator();
 
-    private String answerNumber;
     private String inputNumber;
 
     public void startNumberBaseballGame() {
         gameInformation.makeRandomNumber();
 
-        while (gameInformation.compareInputWithAnswer(inputNumber)==false) {
+        while (gameInformation.compareInputWithAnswer(inputNumber) == false) {
             Output.printInputNumberMessage();
             inputNumber = Input.getNumber();
 
