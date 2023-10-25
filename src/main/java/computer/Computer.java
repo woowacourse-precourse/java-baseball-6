@@ -23,7 +23,7 @@ public class Computer {
                 computer.getRandomNumbers();
                 computer.getPlayerInput();
                 if (computer.chkOptionString()) {
-:wq                    // true: Restart
+                    // true: Restart
                     // false: Finish
                     computer = new Computer();
                 } else {
