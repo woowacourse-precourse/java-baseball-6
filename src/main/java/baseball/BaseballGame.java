@@ -1,6 +1,5 @@
 package baseball;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -25,12 +24,8 @@ public class BaseballGame{
         return numbers;
     }
 
-    public boolean isCorrectAnswer(String userInput){
+    public boolean isCorrectAnswer(List<Integer> user){
         // 힌트 출력
-        List<Integer> user = new ArrayList<>();
-        for(int i=0;i<3;i++){
-            user.add(Integer.parseInt(Character.toString(userInput.charAt(i))));
-        }
         int strike=0;
         int ball=0;
         for(int i=0;i<3;i++){

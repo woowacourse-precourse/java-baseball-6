@@ -3,9 +3,13 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameProcess{
+    private static final String START_MESSAGE="숫자 야구 게임을 시작합니다.";
+    private static final String END_MESSAGE="3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String RESTART_MESSAGE="게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String INPUT_MESSAGE="숫자를 입력해주세요 : ";
     public static void startGame(){
         // 문제 출제
-        System.out.println("숫자 야구 게임을 시작합니다");
+        System.out.println(START_MESSAGE);
 
         BaseballGame game = new BaseballGame();
         playGame(game);
@@ -14,19 +18,12 @@ public class GameProcess{
     private static void playGame(BaseballGame game){
         // 문제 풀기-반복처리
         do {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(INPUT_MESSAGE);
             String userInput = readLine();
 
-            // 입력값에 대한 예외 처리 필요
-            try {
-                GameRulesForInput.validateUserInput(userInput); // 입력값 검증
-            } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException();
-            }
-
             // 정답시
-            if(game.isCorrectAnswer(userInput)){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if(game.isCorrectAnswer(GameRulesForInput.parseUserInput(userInput))){
+                System.out.println(END_MESSAGE);
                 askForRestart();
                 break;
             }
@@ -34,7 +31,7 @@ public class GameProcess{
     }
 
     private static void askForRestart() throws IllegalArgumentException{
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTART_MESSAGE);
         try{
             int willRestart=Integer.parseInt(readLine());
             if(willRestart==1){

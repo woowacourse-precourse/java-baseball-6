@@ -1,12 +1,11 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.Objects;
-
+import java.util.List;
 public class GameRulesForInput{
-    public static void validateUserInput(String s) throws IllegalArgumentException{
+    private static void validateUserInput(String s) throws IllegalArgumentException{
         try{
-            // 모두 0부터 9까지의 숫자로 이루어져있는지
-            int number=Integer.parseInt(s);
             // 3자리의 숫자인지
             if(s.length()!=3){
                 throw new IllegalArgumentException();
@@ -19,8 +18,26 @@ public class GameRulesForInput{
                     }
                 }
             }
+
         }catch(NumberFormatException e){
             throw new IllegalArgumentException();
         }
+    }
+
+    public static List<Integer> parseUserInput(String userInput){
+        List<Integer> userNumbers= new ArrayList<>();
+
+        // 입력값에 대한 예외 처리 필요
+        try {
+            GameRulesForInput.validateUserInput(userInput);
+            for (char c : userInput.toCharArray()) {
+                //만약 숫자가 아니라면 예외 처리됨.
+                userNumbers.add(Character.getNumericValue(c));
+            }
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+
+        return userNumbers;
     }
 }
