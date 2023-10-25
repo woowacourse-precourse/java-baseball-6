@@ -32,7 +32,7 @@ public class CheckController {
 
     public void reportResult(int strike, int ball){
         if (strike > 0 && ball > 0) {
-            System.out.println(strike + "스트라이크 " + ball + "볼");
+            System.out.println( ball + "볼 " + strike + "스트라이크 ");
         }  else if (ball>0) {
             System.out.println(ball +"볼");
         } else if (strike == 3) {
@@ -47,7 +47,6 @@ public class CheckController {
 
     public boolean gameRestart(int check) {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int restartChoice = Integer.parseInt(Console.readLine());
 
         if (check == 2) {
             return false;

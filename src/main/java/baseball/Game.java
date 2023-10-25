@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Game {
 
     int ball = 0;
@@ -16,29 +18,33 @@ public class Game {
     public void gameStart() {
         String randomNum = randomNumber.makeRandomNum();
         System.out.println(randomNum);
-        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (gameState) {
+            //System.out.println(randomNum);
             System.out.println("숫자를 입력해주세요 : ");
-            String inputNum = Console.readLine();
+            String inputNum = readLine();
             validatorCheck.inputOnlyNumber(inputNum);
             validatorCheck.inputRangeNumber(inputNum);
 
             strike = checkController.countStrike(inputNum, randomNum);
-            System.out.println(strike);
+            //System.out.println(strike);
             ball = checkController.countBall(inputNum, randomNum);
-            System.out.println(ball);
+            //System.out.println(ball);
             checkController.reportResult(strike, ball);
 
             if(strike==3){
-                int restartChoice = Integer.parseInt(Console.readLine());
-                checkController.gameRestart(restartChoice);
-            }
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int check = Integer.parseInt(Console.readLine());
 
-            if(strike == 3 && gameState == true){
-                randomNum = randomNumber.makeRandomNum();
-            }
+                if (check == 2) {
+                    gameState = false;
+                } else if (check == 1) {
+                    randomNum = randomNumber.makeRandomNum();
+                } else {
+                    throw new IllegalArgumentException("1 또는 2 숫자만 입력해주세요.");
+                }
 
+            }
         }
     }
 

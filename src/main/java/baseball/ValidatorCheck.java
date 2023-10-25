@@ -21,14 +21,4 @@ public class ValidatorCheck {
         //}
     //}
 
-//    public boolean gameRestartCheck(int check) {
-//        if (check == 2) {
-//            return false;
-//        } else if (check ==1) {
-//            return true;
-//        } else {
-//            throw new IllegalArgumentException("입력한 숫자는 1또는 2여야합니다.");
-//        }
-//    }
-
 }
