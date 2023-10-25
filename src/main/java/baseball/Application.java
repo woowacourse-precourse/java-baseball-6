@@ -53,6 +53,15 @@ public class Application {
         System.out.println("게임을 종료합니다.");
 
     }
+    private static boolean restart(){
+        String restartGameInput = Console.readLine();
+
+        if(restartGameInput.equals("2"))
+            return false;
+        if(restartGameInput.equals("1"))
+            return true;
+        throw new IllegalArgumentException("범위 밖의 입력입니다. 1과 2중 입력해 주세요");
+    }
 
     private static boolean isFinish(int strikeCnt, int ballCnt) {
         if(strikeCnt==3){
