@@ -1,42 +1,43 @@
 package model;
 
-import java.util.ArrayList;
+import model.BallStrikeNothing;
+
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class CompareNumber {
+    private BallStrikeNothing ballStrikeNothing;
 
-    private int nothing = 0;
-    private int strike = 0;
-    private int ball = 0;
-    List<Integer> result = new ArrayList<>(3);
-    public List<Integer> CompareComputerAndUser(List<Integer> user, List<Integer> computer) {
-        result.add(0, 0); // Reset ball
-        result.add(1, 0); // Reset strike
-        result.add(2, 0); // Reset nothing
+    List<Integer> user;
+    List<Integer> computer;
 
-        for (int i = 0; i < user.size(); i++) {
-            if (user.get(i) == computer.get(i)) {
-                strike++;
-            }
-            if (user.contains(i)) {
-                // ball, strike 구분 함수 호출
-            }
-            else {
-                result.set(2, nothing++);
-            }
-        }
-
-        return result;
+    public CompareNumber(List<Integer> user, List<Integer> computer) {
+        this.user = user;
+        this.computer = computer;
     }
 
-    public void BallOrStrike(int number, List<Integer> user, List<Integer> computer) {
-        int computerIndex = computer.indexOf(number);
-        int userIndex = user.indexOf(number);
+    public void CompareComputerAndUser() {
 
-        if (computerIndex == userIndex) {
-            result.set(0, strike++);
-        } else {
-            result.set(1, ball++);
-        }
+        ballStrikeNothing.strike = StrikeCount();
+        ballStrikeNothing.ball = BallCount();
+        ballStrikeNothing.nothing = NothingCount();
+
+        List<Integer> result = List.of(ballStrikeNothing.ball, ballStrikeNothing.strike, ballStrikeNothing.nothing);
+    }
+
+    public int StrikeCount() {
+        return (int) IntStream.range(0, user.size())
+                .filter(i -> computer.get(i).equals(user.get(i)))
+                .count();
+    }
+
+    public int BallCount() {
+        return (int) IntStream.range(0, user.size())
+                .filter(i -> computer.contains(user.get(i)))
+                .count() - ballStrikeNothing.strike;
+    }
+
+    public int NothingCount() {
+        return 3 - ballStrikeNothing.strike - ballStrikeNothing.ball;
     }
 }
