@@ -1,12 +1,14 @@
 package baseball.controller;
 
 import baseball.service.BaseballGameService;
+import baseball.utils.DtoManager;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
     InputView inputView = new InputView();
-    BaseballGameService game = new BaseballGameService();
+    DtoManager dtoManager = new DtoManager();
+    BaseballGameService game = new BaseballGameService(dtoManager);
 
     public BaseballGameController() {
         OutputView.startGameMessage();
@@ -23,17 +25,17 @@ public class BaseballGameController {
     }
 
     private void playGame() {
-        while (!game.getIsCorrectAnswer()) {
+        while (!dtoManager.getIsCorrectAnswer()) {
             OutputView.numberInputMessage();
             game.playGame(getUserInput());
-            OutputView.gameResultMessage(game.getResultMessage());
+            OutputView.gameResultMessage(dtoManager.getResultMessage());
         }
     }
 
     private void askToRestartGame() {
         displayWhenAnsweredCorrectMessage();
         game.restartGame(getUserInput());
-        if (game.getIsRestart()) {
+        if (dtoManager.getIsRestart()) {
             run();
             return;
         }
