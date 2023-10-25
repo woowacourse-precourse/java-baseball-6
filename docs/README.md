@@ -51,4 +51,20 @@
     - [x] 3스트라이크 일 경우 "3개의 숫자를 모두 맞히셨습니다! 게임 종료" 출력 후 종료
 
 
+### 프로그래밍 요구 사항 확인
+
+- [x] JDK 17 버전에서 실행 가능해야 한다
+- [x] JDK 17 버전에서 실행 가능해야 한다. **JDK 17에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
+- [x] 프로그램 실행의 시작점은 `Application`의 `main()`이다.
+- [x] [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 가이드를 준수하며 프로그래밍한다.
+    - [x] 블럭 들여쓰기: +4 스페이스
+    - [x] 열 제한 : 120
+    - [x] 들여쓰기 지속은 *최소* +8 스페이스
+- [x] `build.gradle` 파일을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다.
+- [x] 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
+- [x] 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
+- [x] 라이브러리 사용
+    - [x] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+    - [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+    - [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
