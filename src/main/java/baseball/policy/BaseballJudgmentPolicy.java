@@ -1,6 +1,6 @@
 package baseball.policy;
 
-import baseball.utility.Judgment;
+import baseball.utility.BaseballJudgment;
 import baseball.utility.BaseballScore;
 
 import java.util.List;
@@ -13,8 +13,8 @@ public class BaseballJudgmentPolicy {
 
         for (int i = 0; i < userNumbers.size(); i++) {
             Integer userNumber = userNumbers.get(i);
-            Judgment judgment = makeJudgment(computerNumbers, userNumber, i);
-            switch (judgment) {
+            BaseballJudgment baseballJudgment = makeJudgment(computerNumbers, userNumber, i);
+            switch (baseballJudgment) {
                 case strike -> baseballScore.plusStrike();
                 case ball -> baseballScore.plusBall();
             }
@@ -23,15 +23,15 @@ public class BaseballJudgmentPolicy {
         return baseballScore;
     }
 
-    private Judgment makeJudgment(List<Integer> computerNumbers, Integer userNumber, int userNumberIndex) {
-        Judgment judgment;
+    private BaseballJudgment makeJudgment(List<Integer> computerNumbers, Integer userNumber, int userNumberIndex) {
+        BaseballJudgment baseballJudgment;
         if (computerNumbers.get(userNumberIndex) == userNumber) {
-            judgment = Judgment.strike;
+            baseballJudgment = BaseballJudgment.strike;
         } else if (computerNumbers.contains(userNumber)) {
-            judgment = Judgment.ball;
+            baseballJudgment = BaseballJudgment.ball;
         } else {
-            judgment = Judgment.nothing;
+            baseballJudgment = BaseballJudgment.nothing;
         }
-        return judgment;
+        return baseballJudgment;
     }
 }
