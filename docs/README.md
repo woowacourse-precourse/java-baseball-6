@@ -49,7 +49,7 @@
 
 ### util
 1. NumbersValidator: 사용자 입력 숫자 검증 - (3)
-2. ResetValidator: 1 또는 2을 입력했는지 검증  - (7)
+2. RestartValidator: 1 또는 2을 입력했는지 검증  - (7)
 
 ### view
 1. InputView : 
