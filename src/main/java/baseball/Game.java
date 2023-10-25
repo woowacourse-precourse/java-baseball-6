@@ -4,29 +4,29 @@ import static baseball.Constants.ALERT_INPUT;
 import static baseball.Constants.ALERT_START;
 import static baseball.Constants.END_CHOICE;
 
-import baseball.end.InputChoice;
 import baseball.end.Restart;
+import baseball.end.RestartChoice;
 import baseball.game.BallAndStrike;
 import baseball.game.Mention;
 import baseball.game.Result;
-import baseball.start.Answer;
-import baseball.start.InputNumbers;
+import baseball.start.ComputeNumbers;
+import baseball.start.PlaygerNumbers;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-    private Answer answer;
-    private InputNumbers inputNumbers;
+    private ComputeNumbers computeNumbers;
+    private PlaygerNumbers playgerNumbers;
     private BallAndStrike ballAndStrike;
     private Result result;
-    private InputChoice inputChoice;
+    private RestartChoice restartChoice;
     private Restart restart;
 
     public Game() {
-        answer = new Answer();
-        inputNumbers = new InputNumbers();
+        computeNumbers = new ComputeNumbers();
+        playgerNumbers = new PlaygerNumbers();
         ballAndStrike = new BallAndStrike();
         result = Result.DEFAULT;
-        inputChoice = new InputChoice();
+        restartChoice = new RestartChoice();
         restart = new Restart();
     }
 
@@ -64,7 +64,7 @@ public class Game {
     }
 
     private void pickAnswerNumbers() {
-        answer.pickAnswerNumbers();
+        computeNumbers.pickAnswerNumbers();
     }
 
     private void alertStart() {
@@ -76,11 +76,11 @@ public class Game {
     }
 
     private void readInputNumbers() {
-        inputNumbers.readInputNumbers();
+        playgerNumbers.readInputNumbers();
     }
 
     private void getBallAndStrike() {
-        ballAndStrike.set(inputNumbers.getInputNumbers(), answer.getAnswer());
+        ballAndStrike.set(playgerNumbers.getPlayerNumbers(), computeNumbers.getComputerNumbers());
     }
 
     private void getResult() {
@@ -101,11 +101,11 @@ public class Game {
     }
 
     private void readInputChoice() {
-        inputChoice.readInputChoices();
+        restartChoice.readInputChoices();
     }
 
     private void decideEndOrNot() {
-        if (inputChoice.getInputChoice() == 2) {
+        if (restartChoice.getRestartChoice() == 2) {
             restart.stop();
         }
     }

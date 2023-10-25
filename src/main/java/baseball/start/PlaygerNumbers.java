@@ -8,16 +8,16 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class InputNumbers {
+public class PlaygerNumbers {
 
-    private List<Integer> inputNumbers;
+    private List<Integer> playerNumbers;
 
-    public InputNumbers() {
-        inputNumbers = new ArrayList<>();
+    public PlaygerNumbers() {
+        playerNumbers = new ArrayList<>();
     }
 
-    public List<Integer> getInputNumbers() {
-        return this.inputNumbers;
+    public List<Integer> getPlayerNumbers() {
+        return this.playerNumbers;
     }
 
     public void readInputNumbers() {
@@ -62,13 +62,13 @@ public class InputNumbers {
     }
 
     private void StringToIntegerList(String readLine) {
-        if (inputNumbers.size() > 0) {
-            inputNumbers = new ArrayList<>();
+        if (playerNumbers.size() > 0) {
+            playerNumbers = new ArrayList<>();
         }
         for (int i = 0; i < readLine.length(); i++) {
             char character = readLine.charAt(i);
             String letter = String.valueOf(character);
-            inputNumbers.add(Integer.parseInt(letter));
+            playerNumbers.add(Integer.parseInt(letter));
         }
     }
 }
