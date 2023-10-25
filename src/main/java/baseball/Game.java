@@ -20,6 +20,8 @@ public class Game {
             String userInput = getUserInput();
 
             int[] validInput = InputValidator.validateAndParseUserInput(userInput);
+
+            boolean isCorrect = computer.isCorrectGuess(validInput);
         } while (!correctAnswer);
     }
 
