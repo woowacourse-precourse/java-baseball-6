@@ -9,18 +9,28 @@ public class InputController {
     public static final String DELIMITER = "";
     private final InputView inputView = new InputView();
 
+    public void printStart() {
+        inputView.printStart();
+    }
+
     public List<Integer> getPlayerNumbers() {
 
         String input = inputView.getPlayerNumbers();
 
         validateInput(input);
-        
+
         return toPlayerNumbers(input);
     }
 
+    public String getRestartCommand() {
+        String input = inputView.getRestartCommand();
+        validateInput(input);
+        return input;
+    }
+
     private List<Integer> toPlayerNumbers(String input) {
-        String[] inputSplit = splitByDelimiter(input);
-        return Arrays.stream(inputSplit)
+        String[] splitResult = splitByDelimiter(input);
+        return Arrays.stream(splitResult)
                 .map(Integer::parseInt)
                 .toList();
     }
