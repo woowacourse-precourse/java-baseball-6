@@ -63,7 +63,7 @@ public class Game {
         // IllegalArgumentException을 발생시켜야 하는 경우
         // 3자리 숫자가 아닐 경우 or 서로 다른 숫자가 아닐 경우
         if (digits.length != 3 || distinctDigits.length != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("서로 다른 3자리 숫자가 아닙니다.");
         }
         return digits;
     }
@@ -73,7 +73,7 @@ public class Game {
         String input = Console.readLine();
         int[] digits = Utils.convertStringToInt(input);
         if (digits.length != 1 || (digits[0] != 1 & digits[0] != 2)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1 또는 2가 아닙니다.");
         }
         return digits[0];
     }
