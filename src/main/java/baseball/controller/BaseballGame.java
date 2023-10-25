@@ -4,7 +4,8 @@ import baseball.domain.balls.Balls;
 import baseball.domain.restart.RestartStatus;
 import baseball.domain.results.Results;
 import baseball.dto.BallsDifferenceDto;
-import baseball.utility.BallsUtils;
+import baseball.utility.RandomBallsGenerator;
+import baseball.utility.ConvertorUtils;
 import baseball.view.ConsoleView;
 import baseball.view.View;
 
@@ -35,7 +36,7 @@ public class BaseballGame implements Game {
     }
 
     private void generateAnswer() {
-        answerBalls = BallsUtils.generateRandomBalls(1, 9, 3);
+        answerBalls = RandomBallsGenerator.generateRandomBalls(1, 9, 3);
     }
 
     private void tryAnswer() {
@@ -48,7 +49,7 @@ public class BaseballGame implements Game {
 
     private void inputBalls() {
         String inputString = view.inputString();
-        balls = BallsUtils.convertStringToBalls(inputString);
+        balls = ConvertorUtils.convertStringToBalls(inputString);
     }
 
     private void determineResults() {

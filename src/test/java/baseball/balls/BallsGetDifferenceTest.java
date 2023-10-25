@@ -2,7 +2,7 @@ package baseball.balls;
 
 import baseball.domain.balls.Balls;
 import baseball.dto.BallsDifferenceDto;
-import baseball.utility.BallsUtils;
+import baseball.utility.ConvertorUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -23,8 +23,8 @@ public class BallsGetDifferenceTest {
             int expectedDifferentBallCount
     ) {
         // given
-        Balls balls1 = BallsUtils.convertStringToBalls(ballsString1);
-        Balls balls2 = BallsUtils.convertStringToBalls(ballsString2);
+        Balls balls1 = ConvertorUtils.convertStringToBalls(ballsString1);
+        Balls balls2 = ConvertorUtils.convertStringToBalls(ballsString2);
 
         // when
         BallsDifferenceDto ballsDifferenceDto = balls1.getDifference(balls2);
