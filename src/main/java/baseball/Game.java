@@ -96,6 +96,7 @@ public class Game {
         ball = NumberProcessor.calculateBallCount(randomDigits, userDigits);
     }
 
+
     private void displayBallAndStrike() {
         String result = "";
         if (ball == 0 && strike == 0) {
