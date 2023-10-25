@@ -14,6 +14,9 @@ public class Service {
     boolean isFirstGame = true;
     int ball;
     int strike;
+    static final int ANSWER_NUMBER = 3;
+    static final int NOTHING = 0;
+    static final String RESTART_MARK = "1";
     List<Integer> computerNumbers;
     List<Integer> userNumbers;
 
@@ -26,12 +29,12 @@ public class Service {
             initializeAskNumbers();
             userNumbers = getUserInput(inputView.getUserGameNumber());
             compareComputerAndUser(userNumbers, computerNumbers);
-            if (strike == 3) {
+            if (strike == ANSWER_NUMBER) {
                 gameStop = true;
                 OutputView.printGameEndMessage(strike);
                 askRestartGame(inputView.getUserGameContinue());
             }
-            if (strike != 3) {
+            if (strike != ANSWER_NUMBER) {
                 scoringGame(ball, strike);
             }
         }
@@ -54,7 +57,7 @@ public class Service {
     }
 
     public void compareComputerAndUser(List<Integer> user, List<Integer> computer) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < ANSWER_NUMBER; i++) {
             if (user.get(i).equals(computer.get(i))) {
                 strike++;
             } else if (computer.contains(user.get(i))) {
@@ -64,7 +67,7 @@ public class Service {
     }
 
     public void askRestartGame(String input) {
-        if (input.equals("1")) {
+        if (input.equals(RESTART_MARK)) {
             gameStop = false;
             isFirstGame = false;
             gameStart();
@@ -72,16 +75,16 @@ public class Service {
     }
 
     public void scoringGame(int ball, int strike) {
-        if (ball == 0 && strike == 0) {
+        if (ball == NOTHING && strike == NOTHING) {
             OutputView.printNothingMessage();
         }
-        if (ball > 0 && strike == 0) {
+        if (ball > NOTHING && strike == NOTHING) {
             OutputView.printBallMessage(ball);
         }
-        if (ball == 0 && strike > 0) {
+        if (ball == NOTHING && strike > NOTHING) {
             OutputView.printStrikeMessage(strike);
         }
-        if (ball > 0 && strike > 0) {
+        if (ball > NOTHING && strike > NOTHING) {
             OutputView.printStrikeAndBallMessage(ball, strike);
         }
     }

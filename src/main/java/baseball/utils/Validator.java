@@ -4,6 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validator {
+    static final int MIN_NUMBER = 1;
+    static final int RIGHT_LENGTH_NUMBER = 3;
+    static final int GAME_END_MARK = 2;
+    static final int GAME_RESTART_MARK = 1;
 
     public void validateNumeric(String input) {
         for (char c : input.toCharArray()) {
@@ -15,15 +19,15 @@ public class Validator {
 
     public void validateUnderOne(String input) {
         for (char c : input.toCharArray()) {
-            int tmp = c - '0';
-            if (tmp < 1) {
+            int toInt = c - '0';
+            if (toInt < MIN_NUMBER) {
                 throw new IllegalArgumentException();
             }
         }
     }
 
     public void validateNumberLengthThree(String input) {
-        if (input.length() != 3) {
+        if (input.length() != RIGHT_LENGTH_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
@@ -39,14 +43,14 @@ public class Validator {
     }
 
     public void validateNumberOneOrTwo(String input) {
-        int tmp = Integer.parseInt(input);
-        if (tmp != 1 && tmp != 2) {
+        int toInt = Integer.parseInt(input);
+        if (toInt != GAME_RESTART_MARK && toInt != GAME_END_MARK) {
             throw new IllegalArgumentException();
         }
     }
 
     public void validateNumberLengthOne(String input) {
-        if (input.length() != 1) {
+        if (input.length() != MIN_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
