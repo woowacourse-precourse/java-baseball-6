@@ -14,15 +14,15 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (gameContinue) {
-            List<Integer> computer = new ArrayList<>();
-            List<Integer> myDigit = new ArrayList<>();
+            List<Integer> computerDigit = new ArrayList<>();
+            List<Integer> playerDigit = new ArrayList<>();
             int inputDigit;
             boolean correctComputerDigit = false;
 
-            while (computer.size() < 3) {
+            while (computerDigit.size() < 3) {
                 int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
+                if (!computerDigit.contains(randomNumber)) {
+                    computerDigit.add(randomNumber);
                 }
             }
 
@@ -35,16 +35,16 @@ public class Application {
                 inputDigit = Integer.parseInt(input);
 
                 while (inputDigit != 0) {
-                    myDigit.add(inputDigit / divideValue);
+                    playerDigit.add(inputDigit / divideValue);
                     inputDigit %= divideValue;
                     divideValue /= 10;
                 }
 
-                if (input.length() != 3 || !checkThreeDifferentDigit(myDigit)) {
+                if (input.length() != 3 || !checkThreeDifferentDigit(playerDigit)) {
                     throw new IllegalArgumentException("잘못된 값을 입력하셨어요.");
                 }
 
-                correctComputerDigit = check3Strike(calculateBallAndStrike(computer, myDigit));
+                correctComputerDigit = check3Strike(calculateBallAndStrike(computerDigit, playerDigit));
             }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -101,11 +101,13 @@ public class Application {
             System.out.println("낫싱");
             return;
         }
-        if (ball != 0 && strike != 0) {
-            System.out.print(ball + "볼 ");
-        }
-        if(ball != 0 && strike == 0) {
-            System.out.println(ball + "볼");
+        if (ball != 0) {
+            if(strike != 0) {
+                System.out.print(ball + "볼 ");
+            }
+            else {
+                System.out.println(ball + "볼");
+            }
         }
         if (strike != 0) {
             System.out.println(strike + "스트라이크");
