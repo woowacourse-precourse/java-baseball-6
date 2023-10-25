@@ -1,13 +1,14 @@
 package baseball.domain;
 
-import java.util.List;
+import baseball.domain.ball.Ball;
+import baseball.domain.ball.Balls;
 
 public class BallCounter {
 
     private int strikeCount;
     private int ballCount;
 
-    public BallCounter(List<Ball> targetNumber, List<Ball> guessNumber) {
+    public BallCounter(Balls targetNumber, Balls guessNumber) {
         int index = 0;
 
         for (Ball ball : targetNumber) {
@@ -19,11 +20,11 @@ public class BallCounter {
         }
     }
 
-    private boolean isStrike(List<Ball> guessNumber, Ball ball, int index) {
+    private boolean isStrike(Balls guessNumber, Ball ball, int index) {
         return guessNumber.get(index).equals(ball);
     }
 
-    private boolean isBall(List<Ball> guessNumber, Ball ball) {
+    private boolean isBall(Balls guessNumber, Ball ball) {
         return guessNumber.contains(ball);
     }
 

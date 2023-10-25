@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.domain.ball.Balls;
+import baseball.model.User;
 import baseball.ui.Input;
 import baseball.ui.Message;
 import baseball.ui.Output;
@@ -66,10 +68,10 @@ public class Game {
         return ballCounter;
     }
 
-    private List<Ball> guessNumber() {
+    private Balls guessNumber() {
         output.print(Message.REQUEST_INPUT);
         user.generatePlayerNumber(NUMBER_BALLS);
-        return Utility.convertStringToBall(user.getNumbers(), NUMBER_BALLS);
+        return Utility.convertStringToBalls(user.getNumbers(), NUMBER_BALLS);
     }
 
     private boolean isRestart() {

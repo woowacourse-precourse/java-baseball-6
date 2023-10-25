@@ -2,6 +2,8 @@ package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import baseball.domain.ball.Ball;
+import baseball.domain.ball.Balls;
 import baseball.ui.ConsoleOutput;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +21,7 @@ class BallCounterTest {
         List<Ball> guessNumber = List.of(new Ball(1), new Ball(2), new Ball(3));
 
         // when
-        BallCounter ballCounter = new BallCounter(computer.getNumbers(), guessNumber);
+        BallCounter ballCounter = new BallCounter(computer.getNumbers(), new Balls(guessNumber));
         System.out.println(ballCounter.toString());
 
         String[] results = getResults();

@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.domain.ball.Ball;
+import baseball.domain.ball.Balls;
 import baseball.ui.Output;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -8,13 +10,13 @@ import java.util.List;
 public class Computer implements Player {
 
     private final Output output;
-    private List<Ball> numbers;
+    private Balls numbers;
 
     public Computer(Output output) {
         this.output = output;
     }
 
-    public List<Ball> getNumbers() {
+    public Balls getNumbers() {
         return numbers;
     }
 
@@ -23,7 +25,7 @@ public class Computer implements Player {
         numbers = generateRandomNumber(NUMBER_BALLS);
     }
 
-    private List<Ball> generateRandomNumber(int NUMBER_BALLS) {
+    private Balls generateRandomNumber(int NUMBER_BALLS) {
         List<Ball> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < NUMBER_BALLS) {
             Ball randomBall = new Ball(Randoms.pickNumberInRange(1, 9));
@@ -31,7 +33,7 @@ public class Computer implements Player {
                 randomNumbers.add(randomBall);
             }
         }
-        return randomNumbers;
+        return new Balls(randomNumbers);
     }
 
     public void announceResult(BallCounter ballCounter) {
