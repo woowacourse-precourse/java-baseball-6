@@ -15,7 +15,7 @@ public class Application {
 
 
     // 사용자 수 입력 값 예외처리 함수
-    public static void exceptionGeneartor(List<Integer> userInput){
+    public static void exceptionGenerator(List<Integer> userInput){
         try {
             // 3자리 숫자가 서로 다른 수가 아닐 경우
             List<Integer> temp = userInput.stream().distinct().toList();
@@ -81,9 +81,7 @@ public class Application {
         result.add(ball);
 
         return result;
-
     }
-
 
     // 메시지 출력함수
     public static void messagePrinter(String msg){
@@ -103,7 +101,7 @@ public class Application {
         return userInput_result;
     }
 
-    // 컴퓨터 수 생성하는 메소드
+    // 컴퓨터 수 생성하는 함수
     public static List<Integer> computerNumberGenerator(){
         List<Integer> computer = new ArrayList<>();
 
@@ -137,10 +135,10 @@ public class Application {
             List<Integer> userInput = strArrayTointList(userInput_str);
 
             // 잘못된 입력 값 체크 -> 예외 발생 후 종료
-            exceptionGeneartor(userInput);
+            exceptionGenerator(userInput);
 
             // 컴퓨터수 확인용 --주석처리
-            System.out.println("computer num:" + computerNum);
+            //System.out.println("computer num:" + computerNum);
 
             // 스트라이크+볼 체크
             List<Integer> strike_ball_list = strike_ballChecker(computerNum, userInput);
@@ -158,11 +156,13 @@ public class Application {
                 // 게임 재시작할지 종료할지에 대한 사용자 입력 값 받기
                 String user_answer = readLine();
 
-                // 게임 재시작
                 switch (user_answer){
+                    // 게임 재시작
                     case "1": computerNum = computerNumberGenerator();
                         break;
+                    // 게임 종료
                     case "2": return;
+                    // 1,2 외에 다른 값 입력 시 예외발생 후 종료
                     default: try {
                                 throw new IllegalArgumentException();
                             } catch (RuntimeException e) {
