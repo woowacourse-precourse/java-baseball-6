@@ -32,6 +32,7 @@ public class BaseballGameManager {
 
         while(true) {
             getUserInput();
+            validateInput();
             getBaseBallResult();
             printResult();
             if(isCorrect()) break;
@@ -94,5 +95,33 @@ public class BaseballGameManager {
     private Boolean isCorrect() {
         if (baseballResult.get("스트라이크") == 3) return true;
         return false;
+    }
+
+    private void validateInput() {
+        validate3Digit(userInput);
+
+        while(userInput > 0) {
+            Integer currDigit = userInput % 10;
+
+            validateNoneDuplicateDigit(currDigit);
+            validateNoneZeroDigit(currDigit);
+
+            userNumber.add(0, currDigit);
+            userInput /= 10;
+        }
+    }
+
+    private void validateNoneDuplicateDigit(Integer digit) {
+        if(userNumber.contains(digit)) throw new IllegalArgumentException("중복되지 않는 숫자를 입력해주세요.");
+    }
+
+    private void validateNoneZeroDigit(Integer digit) {
+        if(digit == 0) throw new IllegalArgumentException("1~9 사이의 숫자를 입력해주세요.");
+
+    }
+
+    private void validate3Digit(Integer input) {
+        // -123, 1002, 23 등등
+        if (input < 100 || input > 999) throw new IllegalArgumentException("세 자리의 양수를 입력해주세요.");
     }
 }
