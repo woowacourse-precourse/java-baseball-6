@@ -8,17 +8,20 @@ import java.util.List;
 
 public class BaseballGameClass implements Game{
     private List<Integer> RandomAnswerGeneratedInInit;
-    @Override
-    public void gameInit() {
-        List<Integer> RandomAnswerGenerated = new ArrayList<>();
-        while(RandomAnswerGenerated.size()<3){
+
+    public List<Integer> RandomNumberGenerator(){
+        List<Integer> randomNumberGenerated = new ArrayList<>();
+        while(randomNumberGenerated.size()<3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!RandomAnswerGenerated.contains(randomNumber)){
-                RandomAnswerGenerated.add(randomNumber);
+            if(!randomNumberGenerated.contains(randomNumber)){
+                randomNumberGenerated.add(randomNumber);
             }
         }
-        RandomAnswerGeneratedInInit =  RandomAnswerGenerated;
-        //System.out.println("RandomAnswerGenerated = " + RandomAnswerGenerated);
+        return randomNumberGenerated;
+    }
+    @Override
+    public void gameInit() {
+        RandomAnswerGeneratedInInit = RandomNumberGenerator();
     }
 
 
