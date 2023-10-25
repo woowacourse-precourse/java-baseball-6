@@ -27,19 +27,16 @@ public class GameResult {
     public String getResult() {
         String result = resultNumbers.stream()
                 .map(ResultNum::getResult)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
+                .flatMap(Optional::stream)
                 .collect(Collectors.joining(DELIMITER));
         if (result.isEmpty()) {
-            result = NOTHING;
+            return NOTHING;
         }
         return result;
     }
 
     public boolean isGameEnd() {
         return resultNumbers.stream()
-                .map(ResultNum::isGameEnd)
-                .reduce((result1, result2) -> result1 && result2)
-                .orElse(false);
+                .allMatch(ResultNum::isGameEnd);
     }
 }

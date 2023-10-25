@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public class BallNumber {
     private static final String BALL_GENERATION_ERROR = "숫자는 " + SMALLEST_NUMBER + "~9 만 입력 가능합니다.";
+
     private final int ballNumber;
 
     public BallNumber(int ballNumber) {

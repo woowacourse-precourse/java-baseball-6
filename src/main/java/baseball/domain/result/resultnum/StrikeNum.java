@@ -1,15 +1,15 @@
 package baseball.domain.result.resultnum;
 
-import baseball.domain.result.BallResult;
-
-import java.util.Optional;
-
 import static baseball.domain.result.resultnum.BallNum.ONE;
 import static baseball.domain.util.RandomBallGenerator.SIZE_OF_NUMBER;
 import static baseball.domain.util.RandomBallGenerator.ZERO;
 
+import baseball.domain.result.BallResult;
+import java.util.Optional;
+
 public class StrikeNum implements ResultNum {
     private static final String STRIKE = "스트라이크";
+
     private final int strikeNum;
 
     public StrikeNum() {

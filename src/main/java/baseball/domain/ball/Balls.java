@@ -1,18 +1,18 @@
 package baseball.domain.ball;
 
+import static baseball.domain.util.RandomBallGenerator.SIZE_OF_NUMBER;
 import static baseball.domain.util.RandomBallGenerator.SMALLEST_NUMBER;
 
 import baseball.domain.result.BallResult;
 import baseball.domain.result.GameResult;
 import baseball.domain.util.BallsConvertor;
 import baseball.domain.util.RandomBallGenerator;
-
 import java.util.List;
 
 public class Balls {
     private static final String WRONG_NUMBER_SIZE_MESSAGE = "세자리 숫자를 입력해야 합니다.";
-    private static final int MIN_BALL_NUMBER = 100 * SMALLEST_NUMBER;
-    private static final int MAX_BALL_NUMBER = 999;
+    private static final int MIN_BALL_NUMBER = (int) Math.pow(10, SIZE_OF_NUMBER - 1) * SMALLEST_NUMBER;
+    private static final int MAX_BALL_NUMBER = (int) Math.pow(10, SIZE_OF_NUMBER) - 1;
 
     private final List<Ball> balls;
 
