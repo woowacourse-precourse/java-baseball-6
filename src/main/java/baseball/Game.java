@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
-
 public class Game {
     public static final String STRING_GAME_START = "숫자 야구 게임을 시작합니다.";
     public static final String STRING_GAME_CLEAR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -17,13 +16,12 @@ public class Game {
     User user = new User();
     String EXCEPTION_MESSAGE = user.EXCEPTION_MESSAGE;
 
+    Computer computer = new Computer();
+    private boolean isPlaying = true;
     int strike;
     int ball;
-    List<Integer> computerNum;
     int userNum;
-    private boolean isPlaying = true;
-    Computer computer = new Computer();
-
+    List<Integer> computerNum;
 
     public void gamePlay() {
         System.out.println(STRING_GAME_START);
@@ -34,7 +32,7 @@ public class Game {
         }
     }
 
-    //사용자의 숫자를 기준으로 판단
+    //사용자의 숫자를 기준으로 스트라이크, 볼, 낫싱 판단
     void isStrikeOrBall() {
         computerNum = computer.getComputerNum();
         userNum = user.getUserNum();

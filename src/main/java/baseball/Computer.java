@@ -11,12 +11,11 @@ public class Computer {
     public void setComputerNum() {
         computerNum.clear();
         while (computerNum.size() < NUMBER_LENGTH) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
-            if (!computerNum.contains(randomNum)) {
-                computerNum.add(randomNum);
+            int randomDigit = Randoms.pickNumberInRange(1, 9);
+            if (!computerNum.contains(randomDigit)) {
+                computerNum.add(randomDigit);
             }
         }
-        System.out.println(computerNum);
     }
 
     public List<Integer> getComputerNum() {
