@@ -25,7 +25,9 @@ public class Application {
             user.clear();
             System.out.print("숫자를 입력해주세요 : ");
             String input  = Console.readLine();
-
+            if (input.length()> 3){
+                throw new IllegalArgumentException();
+            }
             for (int i = 0; i < input.length(); i++) {
                 char digitChar = input.charAt(i); // 문자열3에서 한 문자를 가져옴
                 int digit = Character.getNumericValue(digitChar); // 문자를 int로 변환
