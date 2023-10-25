@@ -19,6 +19,9 @@ public class Player {
     }
 
     public Numbers getNumbers() {
+        if (numbers == null) {
+            throw new IllegalArgumentException();
+        }
         return numbers;
     }
 
