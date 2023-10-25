@@ -6,6 +6,8 @@ import baseball.utils.Utils;
 
 public class Computer {
 
+    Utils utils = new Utils();
+
     private String answerNumber;
 
     public String getAnswerNumber() {
@@ -22,6 +24,14 @@ public class Computer {
         }
 
         this.answerNumber = result;
+    }
+
+    // 사용자 입력에 따라 힌트를 반환
+    public Hint giveHint(String playerGuess) {
+         int ballCnt = utils.checkBallCnt(this.answerNumber, playerGuess);
+         int strikeCnt = utils.checkStrikeCnt(this.answerNumber, playerGuess);
+
+         return new Hint(ballCnt, strikeCnt);
     }
 
 }
