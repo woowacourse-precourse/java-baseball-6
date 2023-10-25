@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 import player.Computer;
 import player.User;

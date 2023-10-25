@@ -1,6 +1,6 @@
 package baseball;
 
-import Game.BaseballGame;
+import game.BaseballGame;
 
 import view.InputView;
 import view.OutputView;
