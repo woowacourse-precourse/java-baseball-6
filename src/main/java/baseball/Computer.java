@@ -12,7 +12,7 @@ public class Computer {
         return this.computerNum;
     }
 
-    void setComputerNum(){
+    void selectComputerNum(){
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
