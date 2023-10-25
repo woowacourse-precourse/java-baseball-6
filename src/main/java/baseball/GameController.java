@@ -15,6 +15,7 @@ public class GameController {
         computerNumbers.selectNumbers();
         boolean isNotThreeStrike;
         do {
+            outputView.printInputNumberMessage();
             isNotThreeStrike = compare(computerNumbers, inputView.readNumbers());
             outputView.printResult(gameResult);
         } while(isNotThreeStrike);
@@ -32,7 +33,6 @@ public class GameController {
     }
 
     public boolean compare(ComputerNumbers computerNumbers, PlayerNumbers playerNumbers) {
-        outputView.printInputNumberMessage();
         CompareSystem compareSystem = new CompareSystem(computerNumbers, playerNumbers);
         gameResult = compareSystem.compare();
         return gameResult.isNotThreeStrike();
