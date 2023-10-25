@@ -2,7 +2,6 @@ package baseball.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class RandomNumbersGenerator {
 
@@ -11,12 +10,14 @@ public class RandomNumbersGenerator {
     private static final int NUMBER_RANGE_END = 9;
 
     public ArrayList<Integer> generateNumbers() {
-        HashSet<Integer> setComputerNumbers = new HashSet<>();
-        while (setComputerNumbers.size() < COMPUTER_NUMBERS_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
-            setComputerNumbers.add(randomNumber);
+        ArrayList<Integer> computernumbers = new ArrayList<>();
+        while (computernumbers.size() < COMPUTER_NUMBERS_LENGTH) {
+            int randomnumber = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
+            if (!computernumbers.contains(randomnumber)) {
+                computernumbers.add(randomnumber);
+            }
         }
-        return new ArrayList<>(setComputerNumbers);
+        return computernumbers;
     }
 
 }
