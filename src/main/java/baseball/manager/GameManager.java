@@ -1,7 +1,6 @@
 package baseball.manager;
 
 import baseball.config.GameConfig;
-import baseball.config.GameMessages;
 import baseball.domain.BaseballGame;
 import baseball.domain.GuessResult;
 import baseball.io.InputManager;
