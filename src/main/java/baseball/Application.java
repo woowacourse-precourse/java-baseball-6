@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
+        // TODO: 프로그램 구현
         Service.gameStart();
         List<Integer> comNum = Service.setNumber();
 
@@ -21,8 +21,9 @@ public class Application {
             System.out.println(Service.output(answer_list));
 
             if(answer_list[1] == 3){
-                comNum = Service.setNumber();
                 continueOrExit_bool = Service.continueOrExit();
+                comNum = Service.setNumber();
+
             }
         }
     }

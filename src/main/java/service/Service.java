@@ -10,7 +10,6 @@ import java.util.List;
 
 public class Service {
 
-    private static List<Integer> numList = new ArrayList<>();
 
     public static void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -19,21 +18,18 @@ public class Service {
     public static List<Integer> setNumber() {
 
 
-        do {
-            numList = Randoms.pickUniqueNumbersInRange(0, 9, 3);
-        } while (numList.get(0) == 0);
+        List<Integer> numList = new ArrayList<>();
+        int randomNumber;
 
-//        int int_out = Randoms.pickNumberInList(int_list);
-//        int pick_number = Randoms.pickNumberInRange(1, 100);
-//
-//        System.out.println("int_list : " + numList);
-//        System.out.println("int_out : " + int_out);
-//        System.out.println("pick_number : " + pick_number);
+        while(numList.size() < 3){
+            randomNumber = Randoms.pickNumberInRange(0, 9);
+            numList.add(randomNumber);
+        }
         return numList;
     }
 
     public static String inputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요 : ");
         return Console.readLine();
 
     }
