@@ -17,6 +17,7 @@ class RefereeTest {
 
     @BeforeEach
     void setup() {
+        referee.initialization();
         user = new Player(Arrays.asList(1, 2, 3));
         computer = new Player(Arrays.asList(1, 2, 3));
     }
