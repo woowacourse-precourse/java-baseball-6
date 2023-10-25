@@ -13,15 +13,15 @@ public class ScoreHandler {
             int computerDigit = computer.get(i);
 
             if (playerDigit == computerDigit) {
-                strike++;
+                strike++; // 메서드로 뽑아내기
             } else if (computer.contains(playerDigit)) {
-                ball++;
+                ball++; // 메서드로 뽑아내기
             }
         }
     }
 
 
-    public boolean hasThreeStrikes() {
+    public boolean isThreeStrikes() {
         if (strike == 3) return true;
         else return false;
     }

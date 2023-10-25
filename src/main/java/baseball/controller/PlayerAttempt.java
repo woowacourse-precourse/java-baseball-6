@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpanPlayers {
-    public List<Integer> playerAttempt() {
+public class PlayerAttempt {
+    public List<Integer> attempt() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 

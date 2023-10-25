@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.controller.SpanPlayers;
+import baseball.controller.PlayerAttempt;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ public class Player {
     private List<Integer> player;
 
     public List<Integer> getAttempt() {
-        SpanPlayers sp = new SpanPlayers();
-        player = sp.playerAttempt();
+        PlayerAttempt sp = new PlayerAttempt();
+        player = sp.attempt();
 
         return player;
     }

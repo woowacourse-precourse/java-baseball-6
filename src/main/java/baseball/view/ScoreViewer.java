@@ -9,8 +9,12 @@ public class ScoreViewer {
             System.out.println("낫싱");
             return;
         }
-        if (scoreHandler.getBall() != 0) System.out.print(scoreHandler.getBall() + "볼 ");
-        if (scoreHandler.getStrike() != 0) System.out.print(scoreHandler.getStrike() + "스트라이크");
+        if (scoreHandler.getBall() != 0) {
+            System.out.print(scoreHandler.getBall() + "볼 ");
+        }
+        if (scoreHandler.getStrike() != 0) {
+            System.out.print(scoreHandler.getStrike() + "스트라이크");
+        }
 
         System.out.println();
     }
