@@ -19,7 +19,7 @@ public class BaseBallGame {
         while (playOrNot) {
             //랜덤 숫자 생성
             numberGenerator = NumberGenerator.generateComputer();
-            System.out.println(numberGenerator.getComputer());
+            //System.out.println(numberGenerator.getComputer());
 
             //게임 실행
             runGame();
