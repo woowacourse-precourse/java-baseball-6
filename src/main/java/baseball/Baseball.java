@@ -38,7 +38,7 @@ public class Baseball {
         List<Integer> computerNumber = RandomUtil.generateRandomNumber(3);
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(true) {
+        do {
             int strike = 0;
             int ball = 0;
 
@@ -47,24 +47,28 @@ public class Baseball {
             UserInputUtil.validateThreeDifferentNatureNumber(userInput);
 
             List<Integer> userNumber = UserInputUtil.convertStringToIntegerList(userInput);
-            for (int i = 0; i < 3; i++) {
-                String result = compareNumber(computerNumber, userNumber.get(i), i);
+            updateScore(computerNumber, userNumber);
+            printHint(score.getBall(), score.getStrike());
+        } while (score.getStrike() != 3);
 
-                if (result.equals("스트라이크")) {
-                    strike++;
-                } else if (result.equals("볼")) {
-                    ball++;
-                }
-            }
+        printHint(score.getBall(), score.getStrike());
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 
-            score.setScore(ball, strike);
-            printHint(ball, strike);
+    private void updateScore(List<Integer> computerNumber, List<Integer> userNumber) {
+        int strike = 0;
+        int ball = 0;
 
-            if(score.getStrike() == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
+        for (int i = 0; i < 3; i++) {
+            var result = compareNumber(computerNumber, userNumber.get(i), i);
+            if (result.equals("스트라이크")) {
+                strike++;
+            } else if (result.equals("볼")) {
+                ball++;
             }
         }
+
+        score.setScore(ball, strike);
     }
 
     public String compareNumber(List<Integer> computerNumber, int userInputValue, int index) {
