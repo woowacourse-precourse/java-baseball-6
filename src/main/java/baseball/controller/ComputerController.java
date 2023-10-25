@@ -1,24 +1,18 @@
 package baseball.controller;
 
-import baseball.model.Computer;
+import baseball.model.Hint;
 import baseball.model.Numbers;
+import baseball.utils.HintGenerator;
 import baseball.utils.RandomNumberGenerator;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class ComputerController {
-    private Computer computer = new Computer();
+    private Numbers computer = new Numbers();
 
     private OutputView outputView = new OutputView();
 
     public void saveRandomNumbers() {
-        Numbers generatedNumbers = RandomNumberGenerator.generateRandomNumbers();
-        computer = Computer.from(generatedNumbers);
-    }
-
-    public void provideHint(List<Integer> inputNumbers) {
-        String hint = computer.provideHint(Numbers.from(inputNumbers));
-        outputView.printContents(hint);
+        this.computer = RandomNumberGenerator.generateRandomNumbers();
     }
 
     public Boolean checkCorrectAnswer() {
