@@ -5,8 +5,8 @@ public class OutputView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void printHint(String hintMessage) {
-        System.out.println(hintMessage);
+    public static void printHint(String hint) {
+        System.out.println(hint);
     }
 
     public static void printEnd() {
