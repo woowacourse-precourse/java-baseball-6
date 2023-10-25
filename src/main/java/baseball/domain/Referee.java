@@ -15,6 +15,14 @@ public class Referee {
         return instance;
     }
 
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
     public void initialization() {
         strike = INIT_VALUE;
         ball = INIT_VALUE;
@@ -56,4 +64,5 @@ public class Referee {
     public GameResponse toResponse() {
         return new GameResponse(isGameEnd(), strike, ball);
     }
+
 }
