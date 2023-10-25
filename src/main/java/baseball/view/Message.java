@@ -1,4 +1,4 @@
-package view;
+package baseball.view;
 
 public class Message {
     public static void printScores(int strike, int ball){
@@ -12,7 +12,7 @@ public class Message {
             System.out.println(ball + "볼");
         }
         if (strike != 0 && ball != 0) {
-            System.out.println(ball + "볼" + strike + "스트라이크");
+            System.out.println(ball + "볼" + " " + strike + "스트라이크");
         }
     }
     public static void printGameStart() {
