@@ -11,12 +11,12 @@ public class Game {
     private static final String MESSAGE_ENTER_NUMBER = "숫자를 입력해주세요 : ";
     private static final String MESSAGE_GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String MESSAGE_GAME_END_ASK = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final String MESSAGE_WRONG_NUMBER = "올바른 수를 입력해 주세요";
 
 
     private static void checkUserGuessingNumberInput(String guessingNumber) {
 
         boolean isValid = true;
+
         if (guessingNumber.length() != 3) {
             isValid = false;
         }
@@ -49,6 +49,7 @@ public class Game {
     }
 
     private static void checkUserReplayInput(String replayNumber) {
+        
     }
 
     private static String userReplayInput() {
@@ -103,15 +104,15 @@ public class Game {
 
     private static boolean play(String randomNumber, String guessingNumber) {
         System.out.println(MESSAGE_GAME_START);
-        boolean end = false;
-        while (!end) {
+        boolean isRunning = true;
+        while (isRunning) {
             System.out.println(MESSAGE_ENTER_NUMBER);
             int strike = calculateStrike(randomNumber, guessingNumber);
             int ball = calculateBall(randomNumber, guessingNumber);
 
             printResult(strike, ball);
             if (strike == 3) {
-                end = endGameOrNot(strike);
+                isRunning = endGameOrNot(strike);
             }
 
         }
