@@ -1,0 +1,15 @@
+package baseball;
+
+import camp.nextstep.edu.missionutils.Console;
+
+public class Retry {
+    public boolean retry() {
+        System.out.println("3?? ??? ?? ??????! ?? ??");
+        System.out.println("??? ?? ?????1, ?????2? ?????.\n");
+        char ans = Console.readLine().charAt(0);
+        if (ans == '1') {
+            return true;
+        }
+        return false;
+    }
+}
