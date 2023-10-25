@@ -1,8 +1,6 @@
 package baseball;
 
-import baseball.validator.NumValidator;
-import baseball.validator.RestartNumValidator;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.View.inputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,25 +8,29 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.setProperty("file.encoding", "UTF-8");
         System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean continueGame = true;
 
-        while (true) {
+        inputView view = new inputView();
+
+        while (continueGame) {
             List<Integer> computerNumbers = generateRandomNumbers();
             System.out.println("컴퓨터 숫자: " + computerNumbers);
 
-            boolean isGameWon = playGame(computerNumbers);
+            boolean isGameWon = playGame(computerNumbers, view);
 
             if (isGameWon) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                if (!shouldRestartGame()) {
-                    break;
-                }
+            } else {
+                System.out.println("게임 종료");
             }
+
+            continueGame = view.readRestartNumber();
         }
 
         System.out.println("게임을 종료합니다.");
     }
+
 
     private static List<Integer> generateRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
@@ -42,9 +44,9 @@ public class Application {
         return numbers;
     }
 
-    private static boolean playGame(List<Integer> computerNumbers) {
+    private static boolean playGame(List<Integer> computerNumbers, inputView view) {
         while (true) {
-            List<Integer> playerNumbers = readNumbers();
+            List<Integer> playerNumbers = view.readNumbers();
             int strikes = 0;
             int balls = 0;
 
@@ -64,20 +66,6 @@ public class Application {
         }
     }
 
-    private static List<Integer> readNumbers() {
-        System.out.print("숫자를 입력해주세요: ");
-        String input = Console.readLine();
-        NumValidator.validateLength(input);
-        NumValidator.ValidateIsNumeric(input);
-        NumValidator.ValidateDuplication(input);
-        NumValidator.validateIsInRange(input);
-
-        List<Integer> numbers = new ArrayList<>();
-        for (char digit : input.toCharArray()) {
-            numbers.add(Character.getNumericValue(digit));
-        }
-        return numbers;
-    }
 
     private static void printResult(int balls, int strikes) {
 
@@ -98,10 +86,4 @@ public class Application {
         System.out.println(resultMessage.toString());
     }
 
-    private static boolean shouldRestartGame() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
-        String choice = Console.readLine();
-        RestartNumValidator.validateRestartNum(choice);
-        return "1".equals(choice);
-    }
 }

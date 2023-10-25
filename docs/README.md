@@ -85,8 +85,8 @@ rc/
 | | | | |-- Game.java // 게임 로직 및 데이터 처리 클래스
 | | | |
 | | | |-- view/
-| | | | |-- InputView.java // 사용자 입력 처리 및 출력 클래스
-| | | | |-- OutputView.java // 결과 출력 클래스
+| | | | |-- inputView.java // 사용자 입력 처리 및 출력 클래스
+| | | | |-- outputView.java // 결과 출력 클래스
 | | | |
 | | | |-- validator/
 | | | | |-- NumValidator.java // 숫자 입력 유효성 검사
