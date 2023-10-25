@@ -11,24 +11,6 @@ public class Game {
     private final String MESSAGE_WRONG_NUMBER = "올바른 수를 입력해 주세요";
 
 
-    private static String getRandomNumber() {
-        StringBuffer stringbuffer = new StringBuffer();
-        boolean[] vis = new boolean[10];
-        while (true) {
-            int rand = Randoms.pickNumberInRange(1, 9);
-            if (vis[rand]) {
-                continue;
-            }
-            stringbuffer.append(rand);
-            if (sb.length() == 3) {
-                break;
-            }
-            vis[rand] = true;
-        }
-        return stringbuffer.toString();
-
-    }
-
     private static void checkUserGuessingNumberInput(String guessingNumber) {
 
         boolean isValid = false;
@@ -71,37 +53,68 @@ public class Game {
 
     }
 
+    private static String generateRandomNumber() {
+        StringBuffer sb = new StringBuffer();
+        boolean[] vis = new boolean[10];
+        while (true) {
+            int rand = Randoms.pickNumberInRange(1, 9);
+            if (vis[rand]) {
+                continue;
+            }
+            sb.append(rand);
+            if (sb.length() == 3) {
+                break;
+            }
+            vis[rand] = true;
+        }
+        return sb.toString();
+    }
+
+    private static int calculateStrike(String randomNumber, String GuessingNumber) {
+
+    }
+
+    private static int calculateBall(String randomNumber, String GuessingNumber) {
+
+    }
+
+    private static void printResult(int strike, int ball) {
+        if (ball > 0) {
+            System.out.printf(ball + "볼");
+            if (strike > 0) {
+                System.out.print(" ");
+            } else {
+                System.out.println();
+            }
+        }
+        if (strike > 0) {
+            System.out.println(strike + "스트라이크");
+        }
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
+    }
+
     private static boolean play(String randomNumber, String guessingNumber) {
         while (true) {
 
             int strike = 0;
             int ball = 0;
 
-            strike = checkStrike(a, b);
-            ball = checkBall(a, b);
+            strike = calculateStrike(randomNumber, guessingNumber);
+            ball = calculateBall(randomNumber, guessingNumber);
 
-            if (ball > 0) {
-                System.out.printf(ball + "볼");
-                if (strike > 0) {
-                    System.out.print(" ");
-                } else {
-                    System.out.println();
-                }
-            }
-            if (strike > 0) {
-                System.out.println(strike + "스트라이크");
-            }
-            if (ball == 0 && strike == 0) {
-                System.out.println("낫싱");
-            }
+            printResult(strike, ball);
+
             if (strike == 3) {
                 return false;
             }
         }
     }
 
+
     public void start() {
-        while (play(getRandomNumber(), getUserInput())) {
+        while (play(generateRandomNumber(), userGuessingNumberInput())) {
         }
     }
 
