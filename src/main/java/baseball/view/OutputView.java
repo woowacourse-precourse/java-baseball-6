@@ -1,6 +1,6 @@
 package baseball.view;
 
-public class OutputVIew {
+public class OutputView {
 
     private final static String REQUEST_INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private final static String BALL = "볼 ";

@@ -4,7 +4,7 @@ import static baseball.util.ThreeOutCount.getThreeOutCount;
 
 import baseball.config.withinRange;
 import baseball.util.Validate;
-import baseball.view.OutputVIew;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +14,11 @@ public class GameService {
     public final static String GAME_OVER = "2";
 
     private final Validate validate;
-    private final OutputVIew outputVIew;
+    private final OutputView outputVIew;
 
     private boolean play = true;
 
-    public GameService(Validate validate, OutputVIew outputVIew) {
+    public GameService(Validate validate, OutputView outputVIew) {
         this.validate = validate;
         this.outputVIew = outputVIew;
     }
