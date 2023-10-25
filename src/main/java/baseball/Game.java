@@ -25,15 +25,15 @@ public class Game {
     }
 
     private void initializeGame() {
-        GameResultPrinter gameResultPrinter = new GameResultPrinter();
-        gameResultPrinter.printStartGame();
+        GameOutputPrinter gameOutputPrinter = new GameOutputPrinter();
+        gameOutputPrinter.printStartGame();
 
         RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
         randomNumber = randomNumberCreater.getRandomNumber();
     }
 
     private void getUserInput() {
-        UserInputReader input = new UserInputReader();
+        GameInputReader input = new GameInputReader();
         userNumber = input.enterGameNumber();
     }
 
@@ -44,13 +44,13 @@ public class Game {
     }
 
     private void printResult() {
-        GameResultPrinter gameResultPrinter = new GameResultPrinter();
-        gameResultPrinter.printResult(strike, ball);
+        GameOutputPrinter gameOutputPrinter = new GameOutputPrinter();
+        gameOutputPrinter.printResult(strike, ball);
     }
 
     private void handleGameEnd() {
-        UserInputReader userInputReader = new UserInputReader();
-        if (userInputReader.enterAnswerRestartGame().equals("1")) {
+        GameInputReader gameInputReader = new GameInputReader();
+        if (gameInputReader.enterAnswerRestartGame().equals("1")) {
             RandomNumberCreater randomNumberCreater = new RandomNumberCreater();
             randomNumber = randomNumberCreater.getRandomNumber();
             System.out.println(randomNumber);

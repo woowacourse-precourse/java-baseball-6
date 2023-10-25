@@ -1,11 +1,11 @@
 package baseball;
 
-public class GameResultPrinter {
+public class GameOutputPrinter {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    String STRING_BALL = "볼";
-    String STRING_STRIKE = "스트라이크";
-    String STRING_NOTHING = "낫싱";
+    private static final String STRING_BALL = "볼";
+    private static final String STRING_STRIKE = "스트라이크";
+    private static final String STRING_NOTHING = "낫싱";
 
     public void printStartGame() {
         System.out.println(GAME_START_MESSAGE);
