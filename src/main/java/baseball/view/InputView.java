@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
     private final InputValidator inputValidator;
-    InputView(){
+    public InputView(){
         this.inputValidator = new InputValidator();
     }
 
