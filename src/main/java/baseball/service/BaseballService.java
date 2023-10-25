@@ -10,10 +10,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseballService {
-
-    public BaseballService() {
-    }
-
     public static void gameStart() {
 
         InputView.getStartMessage();
@@ -58,7 +54,7 @@ public class BaseballService {
         }
 
         Console.close();
-        
+
         return false;
     }
 

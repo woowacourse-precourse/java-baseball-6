@@ -16,9 +16,16 @@ public class ComputerBallGenerator {
         int index = 1;
 
         // 범위와 갯수를 지정하여 int 배열에 몇번째 위치에 있는지 파악하기
-        for (int num : Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, SELECTION_COUNT)) {
-            computerBall[num] += index++;
+        while (index != 4) {
+            int num = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+            if (computerBall[num] == 0) {
+                computerBall[num] = index++;
+            }
         }
+
+//        for (int num : Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, SELECTION_COUNT)) {
+//            computerBall[num] += index++;
+//        }
 
         return computerBall;
 
