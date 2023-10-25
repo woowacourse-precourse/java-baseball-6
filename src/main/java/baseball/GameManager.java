@@ -21,6 +21,7 @@ public class GameManager<A> {
     }
 
     public void start() {
+        game.start();
         isProgressing = true;
     }
 

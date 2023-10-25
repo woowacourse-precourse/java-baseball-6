@@ -16,8 +16,12 @@ public class Baseball implements Game<String> {
     }
 
     @Override
-    public void play() {
+    public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    @Override
+    public void play() {
         this.isGameEnded = false;
 
         while (!this.isGameEnded) {
