@@ -4,18 +4,20 @@ import baseball.Ball;
 import baseball.CompareResult;
 import baseball.computer.Computer;
 import baseball.util.StringUtils;
+import baseball.view.GameView;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class GameManager {
     private final Computer computer = new Computer();
+
     private boolean isEnd;
 
     public void startGame() {
         initializeGame();
-        printStartMessage();
+        GameView.printStartMessage();
         while (!isEnd) {
-            printThrowBallMessage();
+            GameView.printThrowBallMessage();
             throwBall();
         }
     }
@@ -25,35 +27,18 @@ public class GameManager {
         isEnd = false;
     }
 
-    public void printStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
     public void throwBall() {
         CompareResult compareResult = computer.balls.compareBall(new Ball(inputPlayerBall()));
 
-        printResultMessage(compareResult.getResultMessage());
+        GameView.printResultMessage(compareResult.getResultMessage());
         if (compareResult.isAnswer()) {
-            printEndMessage();
+            GameView.printEndMessage();
             checkRetry(inputRetryCommand());
         }
     }
 
-    private void printThrowBallMessage() {
-        System.out.println("숫자를 입력해주세요 : ");
-    }
-
     private List<Integer> inputPlayerBall() {
         return StringUtils.stringToIntegerList(Console.readLine());
-    }
-
-    private void printResultMessage(String resultMessage) {
-        System.out.println(resultMessage);
-    }
-
-    private void printEndMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     private void checkRetry(int retryCommand) {
