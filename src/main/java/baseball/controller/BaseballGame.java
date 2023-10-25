@@ -37,7 +37,7 @@ public class BaseballGame {
             result = compareNumbers(playerNumbers, computerNumbers);
             OutputView.printResult(result);
         } while (!result.isSuccess());
-        OutputView.printSuccessMessage();
+        OutputView.printEndGame();
     }
 
     public GameResult compareNumbers(List<Integer> playerNumbers, List<Integer> computerNumbers) {
