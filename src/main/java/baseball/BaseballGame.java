@@ -5,13 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
-    private List<Integer> computerNumberList;
-    private List<Integer> userNumberList;
-    private CompareNumber compareNumber;
     private int[] compareResult;
 
     public BaseballGame() {
-        compareNumber = new CompareNumber();
     }
 
     public void start() {
@@ -19,11 +15,11 @@ public class BaseballGame {
         Computer computer = new Computer();
         boolean playAgain = true;
         while (playAgain) {
-            computerNumberList = computer.generateComputerNumber();
-            compareNumber.initCount();
+            List<Integer> computerNumberList = computer.generateComputerNumber();
+            CompareNumber compareNumber = new CompareNumber();
             while (!compareNumber.isStrikeThree()) {
                 showInputUserNumber();
-                userNumberList = getUsetNumberList();
+                List<Integer> userNumberList = getUsetNumberList();
                 compareResult = compareNumber.getCompareResult(userNumberList, computerNumberList);
                 showCount(compareResult);
             }
@@ -44,7 +40,7 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    private static boolean retry() {
+    private static boolean retry() throws IllegalArgumentException {
         showAskRetry();
         int inputNum = Integer.parseInt(Console.readLine());
         if (inputNum == 1) {
