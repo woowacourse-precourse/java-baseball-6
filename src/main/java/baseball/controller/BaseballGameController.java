@@ -14,7 +14,8 @@ public class BaseballGameController {
     private final BaseballGameView baseballGameView;
     private boolean isFirstGame = true;
 
-    public BaseballGameController(BaseballGameModel baseballGameModel, BaseballGameView baseballGameView) {
+    public BaseballGameController(BaseballGameModel baseballGameModel,
+        BaseballGameView baseballGameView) {
         this.baseballGameModel = baseballGameModel;
         this.baseballGameView = baseballGameView;
     }
@@ -51,7 +52,6 @@ public class BaseballGameController {
             throw new IllegalArgumentException("입력값은 세 자리여야 합니다.");
         }
 
-
         for (char c : userInput.toCharArray()) {
 
             if (!Character.isDigit(c)) {
@@ -66,16 +66,15 @@ public class BaseballGameController {
             processedValues.add(parseResult);
         }
 
-
         return processedValues;
     }
 
-    public HashMap<String, Integer> computeResult(List<Integer> userNumbers, List<Integer> computerNumbers) {
-        ArrayList<Integer> copyComputerNumbers = new ArrayList<>();
+    public HashMap<String, Integer> computeResult(List<Integer> userNumbers,
+        List<Integer> computerNumbers) {
         HashMap<String, Integer> resultHashMap = new HashMap<String, Integer>();
         int strikes = 0;
         int balls = 0;
-        copyComputerNumbers.addAll(computerNumbers);
+        ArrayList<Integer> copyComputerNumbers = new ArrayList<>(computerNumbers);
 
         for (int i = 0; i < userNumbers.size(); i++) {
             if (userNumbers.get(i).equals(copyComputerNumbers.get(i))) {
@@ -105,10 +104,9 @@ public class BaseballGameController {
     public void handleGameEnd() {
         List<Integer> restartChoice = processInput(baseballGameView.getUserRestartInput(), 1);
 
-        if (restartChoice.get(0) != 1 && restartChoice.get(0) != 2){
+        if (restartChoice.get(0) != 1 && restartChoice.get(0) != 2) {
             throw new IllegalArgumentException("입력값은 1 또는 2여야 합니다.");
-        }
-        else if (restartChoice.get(0) == 1) {
+        } else if (restartChoice.get(0) == 1) {
             baseballGameModel.clearComputerNumbers();
             baseballGameModel.generateRandomNumbers();
             playGame();
