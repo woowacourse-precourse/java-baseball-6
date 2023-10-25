@@ -21,7 +21,7 @@ public class GameSystem {
       Player player = new Player();
       Result result = new Result();
 
-      checkResult(computer.getComputerNum(), player.getPlayerNum(), result);
+      calcurateResult(computer.getComputerNum(), player.getPlayerNum(), result);
       System.out.println(result.getResult());
 
       if (result.isEnd()) {
@@ -32,7 +32,7 @@ public class GameSystem {
     }
   }
 
-  public void checkResult(List<Integer> ComputerNum, List<Integer> playerNum, Result result) {
+  public void calcurateResult(List<Integer> ComputerNum, List<Integer> playerNum, Result result) {
     Set<Integer> computerNumSet = new HashSet<>(ComputerNum);
 
     for (int i = 0; i < Constant.SIZE; i++) {

@@ -17,7 +17,7 @@ public class Result {
   }
 
   public boolean isEnd() {
-    return Strike == 3;
+    return Strike == Constant.SIZE;
   }
 
   public String getResult() {
