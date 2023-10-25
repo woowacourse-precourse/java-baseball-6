@@ -32,7 +32,6 @@ public class Game {
             System.out.println(result.toString());
         }
         System.out.println(END_SENTENCE);
-        computer.makeAnswer();
     }
 
 }
