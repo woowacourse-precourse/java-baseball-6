@@ -20,7 +20,7 @@ public class PlayerValidation {
     }
 
     public static void isNullNumber(String numbers) {
-        if(numbers.isBlank() || numbers == null){
+        if(numbers.isBlank()){
             throw new IllegalArgumentException(NULL_ERROR_MESSAGE);
         }
     }
