@@ -23,7 +23,10 @@ public class Baseball {
             computerNumbers.add(randomNumber);
     }
 
-    private void resetUserNumber(String inputNumber) {
+    private void resetUserNumber(String inputNumber) throws IllegalArgumentException {
+        if(inputNumber.length() != 3) {
+            throw new IllegalArgumentException("문자 없이 숫자를 3개만 입력해주세요");
+        }
         userNumbers = new ArrayList<Integer>();
         String[] inputNumberArray = inputNumber.split("");
         for(String str : inputNumberArray) {
@@ -32,9 +35,12 @@ public class Baseball {
     }
 
     private void addUserNumber(String str) throws IllegalArgumentException {
+        if(!(str.matches("[0-9]+"))) {
+            throw new IllegalArgumentException("숫자 외의 문자가 들어있습니다.");
+        }
         int addNumber = Integer.valueOf(str).intValue();
-        if(userNumbers.contains(addNumber) || userNumbers.size() + 1 > 3) {
-            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        if(userNumbers.contains(addNumber)) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
         userNumbers.add(addNumber);
     }
@@ -89,7 +95,6 @@ public class Baseball {
             throw e;
         }
     }
-
     private boolean isGameExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String exitGame = Console.readLine();
@@ -102,6 +107,7 @@ public class Baseball {
         }
         return true;
     }
+
     public boolean playBaseballGame() {
         resetComputerNumber();
         do {
