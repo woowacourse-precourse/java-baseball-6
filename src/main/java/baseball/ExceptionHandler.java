@@ -19,8 +19,8 @@ public class ExceptionHandler {
     /**
      * 사용자가 입력한 재시작 옵션 유효성 체크 함수
      */
-    public void validateRestartOption(String againNumber) {
-        if (!againNumber.equals("1") && !againNumber.equals("2")) {
+    public void validateRestartOption(String restartOption) {
+        if (!restartOption.equals("1") && !restartOption.equals("2")) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
