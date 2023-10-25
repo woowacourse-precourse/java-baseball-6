@@ -1,10 +1,11 @@
 package baseball.model;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Objects;
 import java.util.Set;
 
 public class Game {
@@ -27,7 +28,7 @@ public class Game {
 
         for (int i = 0; i < 3; i++) {
             if (computer.contains(userInput.get(i))) {
-                if (userInput.get(i) == computer.get(i)) {
+                if (Objects.equals(userInput.get(i), computer.get(i))) {
                     strike++;
                 } else {
                     ball++;
@@ -42,18 +43,15 @@ public class Game {
         return result;
     }
 
-    public boolean retryHandler(Scanner sc) {
+    public boolean retryHandler() {
         System.out.println("다시 시작하시겠습니까? (1: 재시작, 2: 종료)");
-        String userInput = sc.nextLine();
+        String userInput = Console.readLine();
 
-        switch (userInput) {
-            case "1":
-                return true;
-            case "2":
-                return false;
-            default:
-                throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
-        }
+        return switch (userInput) {
+            case "1" -> true;
+            case "2" -> false;
+            default -> throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+        };
     }
 
 }
