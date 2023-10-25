@@ -19,7 +19,7 @@
 - [x] Randoms 테스트
 - [x] Console 테스트
 - [x] RandomGenerator 테스트
-- [ ] GameService 테스트
+- [x] GameService 테스트
 - [x] Computer 테스트
 - [x] User 테스트
 - [x] Application 테스트

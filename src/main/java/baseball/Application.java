@@ -17,9 +17,12 @@ public class Application {
             List<Integer> randomNumbers = RandomGenerator.getRandomNumbers();
             System.out.println(randomNumbers.toString());
 
-            // 게임 종료 했다면 시스템 종료
+            // 정답을 맞추어 게임이 끝난 경우라면
             if (gameService.hasGameEnded(randomNumbers)) {
-                break;
+                // 게임 종료 선택 시 시스템 종료
+                if (gameService.hasSelectedEndGame()) {
+                    break;
+                }
             }
         }
 
