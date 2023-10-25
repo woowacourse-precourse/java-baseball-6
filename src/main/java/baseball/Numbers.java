@@ -14,6 +14,6 @@ public class Numbers {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return new ArrayList<>(numbers);
     }
 }
