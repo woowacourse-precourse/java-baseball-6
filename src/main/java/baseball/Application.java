@@ -67,6 +67,40 @@ public class Application {
         return "1".equals(input);
     }
 
+    private static boolean playGame() throws IllegalArgumentException {
+        List<Integer> computer = generateRandomNumbers();
+        boolean[] comVisited = new boolean[MAX_NUMBER + 1];
+        for (Integer num : computer) {
+            comVisited[num] = true;
+        }
+
+        while (true) {
+            List<Integer> user = getUserInput();
+
+            int strike = 0;
+            int ball = 0;
+            for (int i = 0; i < NUM_DIGITS; i++) {
+                int comNum = computer.get(i);
+                int myNum = user.get(i);
+
+                if (comNum == myNum) {
+                    strike++;
+                    continue;
+                }
+
+                if (comVisited[myNum]) {
+                    ball++;
+                }
+            }
+
+            showResult(ball, strike);
+
+            if (strike == NUM_DIGITS) {
+                return checkRestart();
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
 
