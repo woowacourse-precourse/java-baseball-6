@@ -4,7 +4,7 @@ import baseball.constants.ErrorMessage;
 import baseball.constants.Regex;
 
 public class Validator {
-    public static String validateBaseballInput(String userGuess) {
+    public static void validateBaseballInput(String userGuess) {
         if (!isValidThreeDigitNumber(userGuess)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_ENOUGH_LENGTH);
         }
@@ -12,8 +12,6 @@ public class Validator {
         if (!hasNoRepeatedDigits(userGuess)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATED);
         }
-
-        return userGuess;
     }
 
     private static boolean isValidThreeDigitNumber(String userGuess) {
