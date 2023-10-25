@@ -19,7 +19,7 @@ public class Service {
 
     public void gameStart() {
         if (isFirstGame) {
-            System.out.println(OutputView.STARTING_MESSAGE);
+            OutputView.printStartingMessage();
         }
         initializeGame();
         while (!gameStop) {
@@ -28,7 +28,7 @@ public class Service {
             compareComputerAndUser(userNumbers, computerNumbers);
             if (strike == 3) {
                 gameStop = true;
-                printGameEndMessage(strike);
+                OutputView.printGameEndMessage(strike);
                 askRestartGame(inputView.getUserGameContinue());
             }
             if (strike != 3) {
@@ -40,7 +40,7 @@ public class Service {
     public void initializeAskNumbers() {
         ball = 0;
         strike = 0;
-        System.out.print(OutputView.INPUT_MESSAGE);
+        OutputView.printInputMessage();
     }
 
     public void initializeGame() {
@@ -71,24 +71,18 @@ public class Service {
         }
     }
 
-    public void printGameEndMessage(int strike) {
-        System.out.println(strike + OutputView.STRIKE_MESSAGE);
-        System.out.println(OutputView.EXIT_MESSAGE);
-        System.out.println(OutputView.CONTINUE_MESSAGE);
-    }
-
     public void scoringGame(int ball, int strike) {
         if (ball == 0 && strike == 0) {
-            System.out.println(OutputView.NOTHING_MESSAGE);
+            OutputView.printNothingMessage();
         }
         if (ball > 0 && strike == 0) {
-            System.out.println(ball + OutputView.BALL_MESSAGE);
+            OutputView.printBallMessage(ball);
         }
         if (ball == 0 && strike > 0) {
-            System.out.println(strike + OutputView.STRIKE_MESSAGE);
+            OutputView.printStrikeMessage(strike);
         }
         if (ball > 0 && strike > 0) {
-            System.out.println(ball + OutputView.BALL_MESSAGE + " " + strike + OutputView.STRIKE_MESSAGE);
+            OutputView.printStrikeAndBallMessage(ball, strike);
         }
     }
 }
