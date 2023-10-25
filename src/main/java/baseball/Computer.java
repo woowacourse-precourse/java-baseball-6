@@ -44,4 +44,20 @@ public class Computer {
             }
         }
     }
+
+    public int getStrike() {
+        return strikeCnt;
+    }
+
+    public int getBall() {
+        return ballCnt;
+    }
+
+    // 같은 수가 전혀 없으면 "낫싱"
+    public boolean isNothing() {
+        if (strikeCnt == 0 && ballCnt == 0) {
+            return true;
+        }
+        return false;
+    }
 }
