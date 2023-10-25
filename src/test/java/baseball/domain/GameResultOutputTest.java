@@ -10,12 +10,10 @@ import org.junit.jupiter.api.Test;
 
 class GameResultOutputTest {
 
-    private PrintStream standardOut;
     private OutputStream captor;
 
     @BeforeEach
     protected final void init() {
-        standardOut = System.out;
         captor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(captor));
     }
