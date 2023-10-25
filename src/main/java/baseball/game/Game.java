@@ -36,7 +36,6 @@ public class Game {
         }
     }
 
-
     public boolean compareNumber(int[] userNum, List<Integer> computerNum) { // 컴퓨터 번호와 사용자가 입력한 번호 비교
         //  1: 컴퓨터 숫자배열에 사용자가 입력한 수가 몇개나 들어있는지를 확인
         int ball = 0;
