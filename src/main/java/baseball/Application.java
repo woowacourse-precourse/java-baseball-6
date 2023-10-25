@@ -14,8 +14,10 @@ public class Application {
         // TODO: 프로그램 구현
         //라이브러리 Random 값 추출, 사용자 입력 주어진 거로 수정?
         System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean continueGame = true;
 
-        while(true) {
+        while(continueGame) {
+
             List<Integer> computer = new ArrayList<>();
             int strike = 0; // 입력한 값의 strike 저장
             int ball = 0; // 입력한 값의 ball 저장
@@ -44,7 +46,7 @@ public class Application {
                 List<Integer> numberArr = new ArrayList<>();
 
                 // 사용자가 입력할 때 범위가 벗어나면 오류 표시
-                if(input<99 || input > 1000) {
+                if(input< 100 || input > 999) {
                     throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
                 }
 
@@ -65,11 +67,7 @@ public class Application {
 
 
                 // 입력 받을 때 같은 숫자가 있으면 오류 표시
-                if(numberArr.get(0) == numberArr.get(1)) {
-                    throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-                } else if (numberArr.get(0) == numberArr.get(2)) {
-                    throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-                } else if (numberArr.get(1) == numberArr.get(2)) {
+                if(numberArr.get(0) == numberArr.get(1) || numberArr.get(0) == numberArr.get(2) || numberArr.get(1) == numberArr.get(2) ) {
                     throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
                 }
 
@@ -85,11 +83,11 @@ public class Application {
                 }
 
                 //출력 부분
-                if(strike == 0 & ball !=0) {
+                if(strike == 0 && ball !=0) {
                     System.out.println(ball + "볼");
-                } else if (ball == 0 & strike !=0) {
+                } else if (ball == 0 && strike !=0) {
                     System.out.println(strike + "스트라이크");
-                } else if (strike == 0 & ball ==0) {
+                } else if (strike == 0 && ball ==0) {
                     System.out.println("낫싱");
                 }else {
                     System.out.println(ball + "볼 " + strike + "스트라이크");
@@ -105,10 +103,10 @@ public class Application {
                         // strike, ball 초기화 -> 게임을 새로 시작할때도 strike, ball 초기화를 생각해야했음
                         strike = 0;
                         ball = 0;
+                        continueGame = true;
                         break;
                     } else if (button == 2) {
-                        strike = 0;
-                        ball = 0;
+                        continueGame = false;
                         return;
                     } else {
                         throw new IllegalArgumentException("잘못된 숫자 입력입니다."); //사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
