@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Computer {
     private List<Integer> computer = new ArrayList<>();
-
     public List<Integer> getComputer() {
         return computer;
     }

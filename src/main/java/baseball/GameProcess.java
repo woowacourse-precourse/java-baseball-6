@@ -57,7 +57,6 @@ public class GameProcess {
                         } else if (start_or_exit == 1) { // 1일 경우 게임 다시 시작
                             computerNumbers = computer1.generateRandomNumbers();
                             continue;
-
                         }
                 } else {
                     if (ball != 0) {
@@ -71,7 +70,6 @@ public class GameProcess {
                     }
                     System.out.println();
                 }
-
 
             } catch(IllegalAccessException e) {
                 System.out.println(e.getMessage());
