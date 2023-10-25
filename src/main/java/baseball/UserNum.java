@@ -9,7 +9,7 @@ public class UserNum {
 
     List<Integer> numArr = new ArrayList<>();
 
-    public void inputNum() {
+    public List inputNum() {
 
         StringTokenizer st = new StringTokenizer(Console.readLine());
         String userNum = st.nextToken(); //String 형태로 받기
@@ -18,6 +18,8 @@ public class UserNum {
         for (Character c : userNum.toCharArray()) {
             numArr.add(Integer.parseInt(c.toString()));
         }
+
+        return numArr;
 
     }
 
