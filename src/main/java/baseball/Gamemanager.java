@@ -31,14 +31,15 @@ public class Gamemanager {
         }
     }
 
-    private void setGame() {    //컴퓨터 숫자 초기화
+    private void setGame() {
         this.computer = new Computer();
+        this.user = new User();
     }
 
     private void playGame() {
         while (true) {
             Message.printInputMessage();
-            user.setUserNumbers(Input.userInput());
+            this.user.setUserNumbers(Input.userInput());
             this.gameResult = new GameResult(user.getUserNumbers(), computer.getComputerNumbers());
             if (gameResult.isWin()) {
                 Message.printWinMessage();
