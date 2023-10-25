@@ -95,4 +95,65 @@ class GameSet{
     }
 }
 
+class GamePlay {
+    boolean numCheck;
+    GamePlay(List<Integer> ComputerNum, List<Integer> PlayerNum) {
+    	getResult(ComputerNum, PlayerNum);
+        numCheck = numCheck(ComputerNum, PlayerNum);
+    }
+
+    private boolean numCheck(List<Integer> ComputerNum, List<Integer> PlayerNum) {
+        int n = ComputerNum.size();
+        for (int i = 0; i < n; i++)
+            if (ComputerNum.get(i) != PlayerNum.get(i))
+                return false;
+        return true;
+    }
+
+    private void getResult(List<Integer> ComputerNum, List<Integer> PlayerNum) {
+        int strike = checkStrike(ComputerNum, PlayerNum);
+        int ball = checkBall(ComputerNum,PlayerNum);
+        printResult(strike, ball);
+    }
+
+    private int checkStrike(List<Integer> ComputerNum, List<Integer> PlayerNum) {
+        int strike = 0;
+        int n = ComputerNum.size();
+        for (int i = 0; i < n; i++) {
+            if (PlayerNum.get(i) == ComputerNum.get(i))
+                strike++;
+        }
+        return strike;
+    }
+
+    private int checkBall(List<Integer> ComputerNum, List<Integer> PlayerNum) {
+        int ball = 0;
+        int n = ComputerNum.size();
+        for (int i = 0; i < n; i++) {
+            if (ComputerNum.contains(PlayerNum.get(i)))
+                ball++;
+        }
+        int strike = checkStrike(ComputerNum, PlayerNum);
+        return ball - strike;
+    }
+
+    private void printResult(int strike, int ball) {
+        if ((strike == 0) && (ball == 0)) {
+            System.out.println("낫싱");
+            return;
+        }
+        if ((strike == 0) && (ball != 0)) {
+            System.out.println(ball + "볼");
+            return;
+        }
+        if ((strike != 0) && (ball == 0)) {
+            System.out.println(strike + "스트라이크");
+            return;
+        }
+        if ((strike != 0) && (ball != 0)) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+    }
+}
+
 
