@@ -20,6 +20,7 @@ public class Application {
         while(start){
             //컴퓨터 숫자 세팅
             List<Integer> comNum = createRandomNum();
+            game = true;
 
             while(game){
                 //사용자 숫자 세팅(다 맞을 때까지 계속 입력 받기)
@@ -45,7 +46,8 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restart = Console.readLine();
-            if(restart.equals("2")) start = false;
+            if(restart.equals("2")) start = false; //전체 종료
+            else game = false; //현재 게임만 종료
 
         }
 
