@@ -13,6 +13,7 @@ public class PlayerNumber {
         isDigitNumber(playerNumber);
         isStringLengthCorrect(playerNumber);
         isDifferentNumber(playerNumber);
+        isContainZero(playerNumber);
         this.playerNumber = playerNumber;
     }
 
@@ -37,10 +38,14 @@ public class PlayerNumber {
     }
 
     public static void isDigitNumber(String word) throws IllegalArgumentException {
-        String regex = "^[1-9]\\d*$";
-        Pattern pattern = Pattern.compile(regex);
-        if (!pattern.matcher(word).matches()) {
+        if (!word.matches("\\d+")) {
             throw new IllegalArgumentException("자연수를 입력해주세요");
+        }
+    }
+
+    public static void isContainZero(String word) throws IllegalArgumentException {
+        if (word.contains("0")) {
+            throw new IllegalArgumentException("1부터 9까지 숫자중에 선택해주세요");
         }
     }
 
