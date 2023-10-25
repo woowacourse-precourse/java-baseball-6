@@ -19,7 +19,15 @@ public class InputView {
 
     public int inputRestartChoice() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Integer.parseInt(readLine());
+        int choice = Integer.parseInt(readLine());
+        validateIsOneOrTwo(choice);
+        return choice;
+    }
+
+    public void validateIsOneOrTwo(int choice) {
+        if (choice != 1 && choice != 2) {
+            throw new IllegalArgumentException("[ERROR] 1 또는 2의 숫자만 선택해야 합니다.");
+        }
     }
 
 }
