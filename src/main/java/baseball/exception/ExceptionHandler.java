@@ -19,13 +19,13 @@ public class ExceptionHandler {
         try {
             Integer.parseInt(userInput);
         } catch (Exception exception) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("숫자 외 입력 예외");
         }
     }
 
     private void userWrongLengthInputException(String userInput) {
         if (userInput.length() != AnswerLength.ANSWER_LENGTH.getAnswerLength()) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("입력 길이 예외");
         }
     }
 
@@ -37,14 +37,14 @@ public class ExceptionHandler {
         }
 
         if (set.size() != AnswerLength.ANSWER_LENGTH.getAnswerLength()) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("중복된 입력 예외");
         }
     }
 
     private void userZeroInputException(String userInput) {
         for (int i = 0; i < AnswerLength.ANSWER_LENGTH.getAnswerLength(); i++) {
             if (Integer.parseInt(String.valueOf(userInput.charAt(i))) == 0) {
-                throw new IllegalArgumentException("");
+                throw new IllegalArgumentException("`0` 입력 예외");
             }
         }
     }
@@ -55,6 +55,6 @@ public class ExceptionHandler {
             return userInput;
         }
 
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("1, 2 이외 입력 예외");
     }
 }
