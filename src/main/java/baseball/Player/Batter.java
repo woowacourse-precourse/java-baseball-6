@@ -42,13 +42,13 @@ public class Batter implements BaseballPlayer {
         return true;
     }
 
-    public void decideToPlayMoreOrNot(){
+    public Boolean decideToPlayMore(){
         String input = readLine();
         if(input.equals("1")){
-            return;
+            return false;
         }
         if(input.equals("2")){
-            return;
+            return true;
         }
         throw new IllegalArgumentException(INVALID_INPUT);
     }
