@@ -26,6 +26,7 @@ public class GameController {
             if ("2".equals(choice)) {
                 break;
             }
+            model = new GameModel();
         }
     }
 
