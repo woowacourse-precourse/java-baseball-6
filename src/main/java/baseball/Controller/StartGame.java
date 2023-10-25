@@ -1,13 +1,12 @@
 package baseball.Controller;
 
+import baseball.Utils.ExceptionProcess;
 import baseball.Utils.GameMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static baseball.Utils.ExceptionProcess.*;
 
 public class StartGame {
 
@@ -33,19 +32,17 @@ public class StartGame {
     }
 
     public List<Integer> userSetting() {
+        ExceptionProcess exceptionProcess = new ExceptionProcess();
         // UserInputData
         List<Integer> user = new ArrayList<>();
         while (user.size() < 3) {
             System.out.print(GameMessage.INPUT);
-            String[] userInput = Console.readLine().split("");
-            if (userInput.length > 3) inputLengthExceededException(); // 숫자 3개 초과시 예외처리
-            else {
-                for (int i = 0; i < 3; i++) {
-                    int num = Integer.parseInt(userInput[i]);
-                    if (num < 1 || num > 9) invalidNumberException(); // 1 ~ 9 제외 수 입력시 예외처리
-                    else if (user.contains(num)) duplicateNumberException(); // 수가 중복될시 예외처리
-                    else user.add(num);
-                }
+            String input = Console.readLine();
+            exceptionProcess.allUserException(input); // 예외 처리 코드
+            String[] userInput = input.split("");
+            for (int i = 0; i < 3; i++) {
+                int num = Integer.parseInt(userInput[i]);
+                user.add(num);
             }
         }
         return user;
