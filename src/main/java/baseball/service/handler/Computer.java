@@ -37,14 +37,29 @@ public class Computer {
         while (resultNumber.length() < numberOfDigits) {
 
             //렌덤수 생성
-            int randomNum = Randoms.pickNumberInRange(startRange, endRange);
+            String randomNum = getRandomNumByStr(startRange, endRange);
 
             //resultNumber에 randomNum 없을 경우 append
-            if (!(resultNumber.toString()).contains(String.valueOf(randomNum))) {
+            if (resultNumber.indexOf(randomNum) == -1) {
                 resultNumber.append(randomNum);
             }
         }
         return resultNumber.toString();
+    }
+
+    /**
+     * Returns a number in the form of String
+     * <p>
+     * startRange ~ endRange 사이의 랜덤수(문자열 형식) 리턴 함수
+     * </p>
+     *
+     * @param startRange :시작 범위
+     * @param endRange   :끝나는 범위
+     * @return random number(String Type)
+     */
+    private String getRandomNumByStr(int startRange, int endRange) {
+        int randomNum = Randoms.pickNumberInRange(startRange, endRange);
+        return String.valueOf(randomNum);
     }
 
 
