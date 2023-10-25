@@ -12,6 +12,8 @@ public class OutputView {
     private String makeUserScoreMessage(Result result) {
         if (result.isNothing()) {
             return NOTHING.getMessage();
+        } else if (result.getBall() == 0) {
+            return makeStrikeMessageIfExists(result.getStrike());
         }
         return makeBallMessageIfExists(result.getBall()) +
                 " " +
