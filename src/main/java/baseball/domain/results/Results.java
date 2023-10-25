@@ -1,6 +1,6 @@
-package baseball.results;
+package baseball.domain.results;
 
-import baseball.utils.ResultsUtils;
+import baseball.utility.ResultsUtils;
 
 public class Results {
 

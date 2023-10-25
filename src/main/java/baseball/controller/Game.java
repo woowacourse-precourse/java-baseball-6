@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.controller;
 
 public interface Game {
 

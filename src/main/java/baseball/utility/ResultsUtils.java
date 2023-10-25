@@ -1,9 +1,9 @@
-package baseball.utils;
+package baseball.utility;
 
-import baseball.balls.Ball;
-import baseball.balls.Balls;
-import baseball.results.ResultStatus;
-import baseball.results.Results;
+import baseball.domain.balls.Ball;
+import baseball.domain.balls.Balls;
+import baseball.domain.results.ResultStatus;
+import baseball.domain.results.Results;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 

@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.results.Results;
+import baseball.domain.results.Results;
 
 public interface Output {
 

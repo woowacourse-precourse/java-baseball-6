@@ -1,4 +1,4 @@
-package baseball.results;
+package baseball.domain.results;
 
 public enum ResultStatus {
     STRIKE("스트라이크"),

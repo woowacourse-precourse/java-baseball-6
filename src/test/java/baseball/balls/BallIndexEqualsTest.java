@@ -1,5 +1,6 @@
 package baseball.balls;
 
+import baseball.domain.balls.BallIndex;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

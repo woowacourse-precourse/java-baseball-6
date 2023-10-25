@@ -1,6 +1,6 @@
-package baseball.balls;
+package baseball.domain.balls;
 
-import baseball.validators.ListValidators;
+import baseball.validator.ListValidators;
 import java.util.List;
 
 public class Balls {

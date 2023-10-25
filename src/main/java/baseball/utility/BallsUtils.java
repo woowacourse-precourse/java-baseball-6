@@ -1,7 +1,7 @@
-package baseball.utils;
+package baseball.utility;
 
-import baseball.balls.Ball;
-import baseball.balls.Balls;
+import baseball.domain.balls.Ball;
+import baseball.domain.balls.Balls;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.IntStream;

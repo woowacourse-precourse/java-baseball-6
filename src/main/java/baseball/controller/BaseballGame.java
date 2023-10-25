@@ -1,9 +1,10 @@
-package baseball.game;
+package baseball.controller;
 
-import baseball.balls.Balls;
-import baseball.results.Results;
-import baseball.utils.BallsUtils;
-import baseball.utils.ResultsUtils;
+import baseball.domain.balls.Balls;
+import baseball.domain.restart.RestartStatus;
+import baseball.domain.results.Results;
+import baseball.utility.BallsUtils;
+import baseball.utility.ResultsUtils;
 import baseball.view.ConsoleView;
 import baseball.view.View;
 

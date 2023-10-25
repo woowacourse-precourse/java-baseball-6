@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.game.BaseballGame;
-import baseball.game.Game;
+import baseball.controller.BaseballGame;
+import baseball.controller.Game;
 
 public class Application {
 
