@@ -63,7 +63,7 @@
 - [ ] 사용자의 입력값이 게임 재시작인지 확인
 - [ ] 사용자의 입력값이 게임 종료인지 확인
 
-## RandNumGenerator
+## RandonNumberGenerator
 
 - [ ] 유저가 맞출 숫자를 생성하는 객체
 - [ ] List<Integer> 형태로 자리수 별로 나누어 저장하는 구조
