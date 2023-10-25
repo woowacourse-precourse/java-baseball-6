@@ -33,7 +33,7 @@ public class BaseballGameController {
             String playerNumber = inputView.getPlayerNumber();
             InputValidator.validatePlayerNumber(playerNumber);
             turn = Turn.fromPlayerAndComputerNumbers(playerNumber, computerNumber);
-            String result = turn.generateResultMessage();
+            String result = turn.generateResult();
             outputView.printTurnResult(result);
         } while (!turn.isThreeStrike());
     }

@@ -28,7 +28,7 @@ public class Turn {
         return new Turn(ballCount, strikeCount);
     }
 
-    public String generateResultMessage() {
+    public String generateResult() {
         StringBuilder result = new StringBuilder();
 
         if (ballCount > 0) {
