@@ -18,10 +18,8 @@ public class Umpire {
     public void countAll(List<Integer> computerNum, List<Integer> playerNum){
         int cnt_all = 0;
         for(int i=0;i<playerNum.size();i++){
-            for(int j=0;j< computerNum.size();j++){
-                if(computerNum.get(j) == playerNum.get(i)){
-                    cnt_all++;
-                }
+            if(computerNum.contains(playerNum.get(i))){
+                cnt_all++;
             }
         }
         setAll(cnt_all);
@@ -40,7 +38,7 @@ public class Umpire {
 
     //멘트 반환
     public String Judge(){
-    //하나도 못 맞힌 경우
+        //하나도 못 맞힌 경우
         if(getAll() == 0){
             return "낫싱";
         }
@@ -50,7 +48,6 @@ public class Umpire {
 
         if(getStrike() < getAll()){
             cnt_judgment = cnt_judgment + (getAll() - getStrike()) + "볼";
-
             if(getStrike()!=0){
                 cnt_judgment = cnt_judgment + " " + getStrike() + "스트라이크";
             }
@@ -60,6 +57,7 @@ public class Umpire {
         return cnt_judgment;
     }
 
+    //한판 더?
     public void onceAgain(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
