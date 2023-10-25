@@ -1,5 +1,10 @@
 package baseball;
 
+import static baseball.GameState.BALL;
+import static baseball.GameState.END_GAME;
+import static baseball.GameState.NOTHING;
+import static baseball.GameState.STRIKE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -8,10 +13,6 @@ import java.util.List;
 public class Game {
 
     private List<Integer> computer = new ArrayList<>();
-    private final static String BALL = "볼";
-    private final static String STRIKE = "스트라이크";
-    private final static String NOTHING = "낫싱";
-    private final static String END_GAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public Game() {
         while (computer.size() < 3) {
@@ -27,19 +28,19 @@ public class Game {
         int strikeCount = Referee.countStrike(computer, number);
 
         if (ballCount > 0) {
-            System.out.print(ballCount + BALL + " ");
+            System.out.print(ballCount + BALL.getMessage() + " ");
         }
         if (ballCount > 0 && strikeCount == 0) {
             System.out.println();
         }
         if (strikeCount > 0) {
-            System.out.println(strikeCount + STRIKE);
+            System.out.println(strikeCount + STRIKE.getMessage());
         }
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.println(NOTHING);
+            System.out.println(NOTHING.getMessage());
         }
         if (strikeCount == 3) {
-            System.out.println(END_GAME);
+            System.out.println(END_GAME.getMessage());
             return true;
         }
         return false;
