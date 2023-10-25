@@ -6,7 +6,7 @@ public interface Game {
     void runGame() ;
 
     //게임기에 출력을 넘기는 함수
-    void forwardText(String text);
+    void forwardOutputToMarchine(String text);
 
     //게임기에서 input을 받는 함수
     String askForInput();
