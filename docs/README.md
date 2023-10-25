@@ -37,3 +37,55 @@
     
 
  `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
+
+ ## 🥎 MVC모델에 따른 기능수행
+
+### controller
+
+1. **BaseballGame**
+    
+    ⇒ model, view, validator을 활용하여 사용자가 입력받은 값에 따라 숫자와 문구가 같이 보여질수있도록 해줍니다. 
+    
+
+### model
+
+1. **Computer**
+    
+    ⇒ 예시를 활용하여 컴퓨터가 랜덤한 숫자를 3자리수를 넘어가지 않도록 작성하였습니다. 
+    
+2. **Player**
+    
+    ⇒ 사용자로 부터 입력을 받아올수있도록 작성하였습니다. 
+    
+3. **ReStart**
+    
+    ⇒ 재시작시 출력됩니다. `IllegalArgumentException`를 사용하여 1 또는 2가 아닌 다른 숫자가 입력되었을 때 println의 문구가 출력되도록 해줍니다. 
+    
+
+### validator
+
+1. **NumberCompare**
+    
+    ⇒ Validator에서 비교한 후, 볼과 스트라이크의 카운트를 저장해줍니다. 
+    
+2. **Validator**
+    
+    ⇒ 사용자가 입력한 숫자와 랜덤생성된 컴퓨터의 숫자를 비교하기 위해 작성하였습니다. 
+    
+
+### view
+
+1. **MessageView**
+    
+    ⇒ 프로그램 실행시, 출력되는 문구들을 넣어주었습니다. 
+    
+2. **NumberView**
+    
+    ⇒ 프로그램에 사용되는 최소, 최대 숫자와 재실행, 종료에 대한 숫자변수를 넣어주었습니다. 
+    
+
+### Application
+
+⇒ 처음 시작할 때 나오는 문구를 출력
+
+⇒ Controller의 BaseGame이 실행되도록 연결해주었습니다.
