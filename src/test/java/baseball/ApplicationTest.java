@@ -32,11 +32,6 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        try {
-			Application.main(new String[]{});
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        Application.main(new String[]{});
     }
 }
