@@ -24,7 +24,43 @@ public class GameController {
     public void playBaseballGame() {
         userView.displayStartMessage();
 
-        //TODO playGame 코드
+        playGame();
     }
 
+    public void playGame() {
+        List<Integer> computerNumber = baseballGame.getComputerNumber();
+
+        while(true) {
+            String stringUserNumber = userView.getUserNumber();
+
+            List<Integer> userNumber = validateAndParseUserNumber(stringUserNumber);
+            List<Integer> ballAndStrike = baseballGame.countBallAndStrike(computerNumber, userNumber);
+
+            String resultMessage = BaseballGame.getResultMessage(ballAndStrike);
+            userView.displayResultMessage(resultMessage);
+            
+            //TODO 재시작/종료
+
+        }
+    }
+
+    public List<Integer> validateAndParseUserNumber(String userNumber) throws IllegalArgumentException {
+        if (validator.isValidNumber(userNumber)) {
+            return stringToListOfIntegers(userNumber);
+        }
+
+        throw new IllegalArgumentException();
+    }
+
+    public static List<Integer> stringToListOfIntegers(String userNumber) {
+        List<Integer> integerList = new ArrayList<>();
+
+        for (int i = 0; i < userNumber.length(); i++) {
+            char digitChar = userNumber.charAt(i);
+            int digit = Character.getNumericValue(digitChar);
+            integerList.add(digit);
+        }
+
+        return integerList;
+    }
 }
