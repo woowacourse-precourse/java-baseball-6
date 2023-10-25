@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -29,15 +31,10 @@ public class Application {
                 String response = Console.readLine();
                 List<Integer> prediction = validateUserInput(response);
 
-                for (int i = 0; i < prediction.size(); i++) {
-                    if (prediction.get(i).equals(numbers.get(i))) {
-                        numberOfStrike++;
-                        continue;
-                    }
-                    if (numbers.contains(prediction.get(i))) {
-                        numberOfBall++;
-                    }
-                }
+                Map<String, Integer> result = countStrikeOrBall(numbers, prediction);
+
+                numberOfStrike = result.get("strike");
+                numberOfBall = result.get("ball");
 
                 if (numberOfStrike == 3 && numberOfBall == 0) {
                     System.out.println("3스트라이크\n3개 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -74,6 +71,28 @@ public class Application {
             }
         }
 
+    }
+
+    private static Map<String, Integer> countStrikeOrBall(List<Integer> numbers, List<Integer> prediction) {
+        Map<String, Integer> result = new HashMap<>();
+
+        int numberOfStrike = 0;
+        int numberOfBall = 0;
+
+        for (int i = 0; i < prediction.size(); i++) {
+            if (prediction.get(i).equals(numbers.get(i))) {
+                numberOfStrike++;
+                continue;
+            }
+            if (numbers.contains(prediction.get(i))) {
+                numberOfBall++;
+            }
+        }
+
+        result.put("strike", numberOfStrike);
+        result.put("ball", numberOfBall);
+
+        return result;
     }
 
     private static List<Integer> validateUserInput(String response) throws IllegalArgumentException {
