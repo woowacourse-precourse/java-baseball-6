@@ -6,7 +6,6 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
         printStartMessage();
 
         Game game = new Game();
@@ -14,15 +13,17 @@ public class Application {
 
         while (user.isContinued()) {
             game.init();
-
-            while (!(game.getNumberOfStrike() == 3 && game.getNumberOfBall() == 0)) {
-                game.reset();
-                user.predict();
-                game.countStrikeOrBall(user.getPrediction());
-                printResultMessage(game.getNumberOfStrike(), game.getNumberOfBall());
-            }
-
+            resolve(game, user);
             user.decide();
+        }
+    }
+
+    public static void resolve(Game game, User user) {
+        while (!(game.getNumberOfStrike() == 3 && game.getNumberOfBall() == 0)) {
+            game.reset();
+            user.predict();
+            game.countStrikeOrBall(user.getPrediction());
+            printResultMessage(game.getNumberOfStrike(), game.getNumberOfBall());
         }
     }
 
