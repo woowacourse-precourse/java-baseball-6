@@ -3,7 +3,6 @@
 ### 진행방식
 1. 게임이 시작되었다는 출력
 2. 게임이 시작하기 전에 BaseBallGame 객체를 생성하고 생성자에 중복되지 않은 랜덤한 1~9 숫자 3자리 값 저장
-    - 중복되지 않은 숫자여야 하므로 Set 자료구조 사용하여 문자열을 생성할지 고민 중
 3. 이후 야구 게임이 3스트라이크가 될 때까지 3자리 숫자 입력값을 받아와서 결과를 출력
     - 3자리 숫자인지 유효성 검사
     - 생성해둔 랜덤 값과 숫자가 일치하는 알고리즘을 구현
@@ -32,6 +31,14 @@
 
 <br>
 
+### 고려사항
+- 뷰와 입력을 통해 비즈니스 로직을 실행할 구조
+- while 문을 사용하지 않고 야구 게임을 입력받고 재시작하는 방법
+- inputNumbers 객체와 randomNumbers 비교 방법
+- 객제지향적인 코드 구현
+
+<br>
+
 ### 라이브러리 요구사항
 - camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
 - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
@@ -39,19 +46,28 @@
 - 사용 예시는 다음과 같음
 
 ```java
-// 예시
-List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
-        computer.add(randomNumber);
-    }
-}
+// 사용 예시
+public RandomNumbers() {
+        setRandomNumbers();
+        }
+
+private void setRandomNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
+        int num = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+
+        if (!numbers.contains(num)) {
+        numbers.add(num);
+        }
+        }
+
+        this.randomNumbers = numbers;
+        }
 ```
 
 <br>
 
-### 야구게임 구조 예정
+### 야구게임 구조
 - 뷰 ( BaseBallView.class )
 - 서비스 ( BaseBallCompare.class )
 - 뷰와 서비스를 실행하는 run 클래스 ( BaseBallRun.class )
