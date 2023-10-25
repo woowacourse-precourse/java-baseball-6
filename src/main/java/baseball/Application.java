@@ -13,6 +13,27 @@ import java.util.List;
 */
 
 public class Application {
+    static void isThreeDigitNumbers(String input) {
+        try {
+            if(input.length()!=3) throw new IllegalArgumentException("범위 오류");
+            char first=input.charAt(0);
+            char middle=input.charAt(1);
+            char last=input.charAt(2);
+            if(first==middle || middle==last||last==first) throw new IllegalArgumentException("중복된 숫자 존재");
+            int number = Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static void isDigit(String input){
+        if (input.length()!=1) throw new IllegalArgumentException("길이가 1이 아님");
+        try {
+            int number=Integer.parseInt(input);
+        }catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 아님");
+        }
+    }
     static boolean checkAnswer(List<Integer> computer,String answer){
         String[] answer_splited=answer.split("");
         List<Integer> answer_int = new ArrayList<>();
@@ -40,18 +61,6 @@ public class Application {
         };
         return false;
     }
-    static void isThreeDigitNumbers(String input) {
-        if(input.length()!=3) throw new IllegalArgumentException("범위 오류");
-        char first=input.charAt(0);
-        char middle=input.charAt(1);
-        char last=input.charAt(2);
-        if(first==middle || middle==last||last==first) throw new IllegalArgumentException("중복된 숫자 존재");
-        try {
-            int number = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아님");
-        }
-    }
     public static void main(String[] args) {
         // TODO: 숫자야구 프로그램 구현
         // 1. 숫자형식 구현
@@ -75,17 +84,16 @@ public class Application {
                 System.out.println("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
                 //입력에서 잘못된 값 유형시 에러
-                try {
-                    //에러 판단 함수
-                    isThreeDigitNumbers(input);
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e);
-                    isnoterror =false;
-                    isnotAnswer=false;
-                }
+                isThreeDigitNumbers(input);
                 if(checkAnswer(computer,input)) isnotAnswer=false;
-                if(isnotAnswer==false){
-
+                if(!isnotAnswer){
+                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                    input=Console.readLine();
+                    try {
+                        if(Integer.parseInt(input)!=1) throw new IllegalArgumentException();
+                    }catch (Exception e){
+                        throw new IllegalArgumentException();
+                    }
                 }
             }
         }
