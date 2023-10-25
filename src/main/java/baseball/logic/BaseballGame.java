@@ -11,6 +11,7 @@ public class BaseballGame {
     private List<Integer> computerNumbers;
     private int strikeCount;
     private int ballCount;
+    private int total;
     private Player player;
     public static String RESTART = "1";
     public static String EXIT = "2";
@@ -65,7 +66,7 @@ public class BaseballGame {
 
     private void giveScore(List<Integer> playerNumbers) {
         resetCount();
-        int total = howMany(playerNumbers);
+        total = howMany(playerNumbers);
         strikeCount = countStrike(playerNumbers);
         ballCount = total - strikeCount;
     }
@@ -94,7 +95,7 @@ public class BaseballGame {
         this.ballCount = COUNT_INIT_NUMBER;
     }
     private void printScores() {
-        OutputView.printScores(ballCount, strikeCount);
+        OutputView.printScores(total, ballCount, strikeCount);
     }
     private boolean isGameOver() {
         if (strikeCount == GAME_OVER_STRIKE) {

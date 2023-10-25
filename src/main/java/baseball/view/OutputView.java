@@ -13,18 +13,17 @@ public class OutputView {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public static void printScores(int ballCount, int strikeCount) {
-        if (ballCount == 0 && strikeCount == 0){
+    public static void printScores(int total, int ballCount, int strikeCount) {
+        if (total == 0){
             System.out.println(NOTHING);
             return;
-        } else if(ballCount != 0 && strikeCount != 0){
-            System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
-            return;
-        } else if (ballCount != 0) {
+        } else if(strikeCount == 0){
             System.out.println(ballCount + BALL);
-        } else if (strikeCount != 0) {
+            return;
+        } else if (ballCount == 0) {
             System.out.println(strikeCount + STRIKE);
+            return;
         }
+        System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
     }
-
 }
