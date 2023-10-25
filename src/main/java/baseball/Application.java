@@ -1,12 +1,12 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import baseball.view.InputView;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
+import static baseball.model.Generator.generateComputerNumber;
 import static camp.nextstep.edu.missionutils.Console.*;
-import static camp.nextstep.edu.missionutils.Randoms.*;
-import static java.lang.Integer.*;
 
 public class Application {
 
@@ -15,7 +15,6 @@ public class Application {
     public static void main(String[] args) {
 
         MessageGenerator messageGenerator = new MessageGenerator();
-        Validation validation = new Validation();
 
         messageGenerator.startGame();
         int computerNumber = generateComputerNumber();
@@ -24,10 +23,9 @@ public class Application {
         while (true) {
             // 게임에서 3스트라이크를 했을 때 수행
             if (is3Strike) {
-                messageGenerator.selectOption();
-                String optionString = readLine();
+                String optionString = InputView.selectOption();
 
-                int optionNumber = validation.getOptionNumber(optionString);
+                int optionNumber = Validation.getOptionNumber(optionString);
                 if (optionNumber == 1) {
                     computerNumber = generateComputerNumber();
                     is3Strike = false;
@@ -45,28 +43,13 @@ public class Application {
 
     }
 
-    public static int generateComputerNumber() {
-        List<Integer> computer = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        while (computer.size() < 3) {
-            int randomNumber = pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-                sb.append(randomNumber);
-            }
-        }
-        return parseInt(sb.toString());
-    }
-
     private static int getUserInput() {
-        Validation validation = new Validation();
         int validateNumber = 0;
 
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInputString = readLine();
+        String userInputString = InputView.userInput();
 
         try {
-            validateNumber = validation.isValidateNumber(userInputString);
+            validateNumber = Validation.isValidateNumber(userInputString);
         } catch (IllegalArgumentException e) {
             String message = e.getMessage();
             System.out.println(message);
@@ -135,12 +118,9 @@ public class Application {
         String[] computerValue = String.valueOf(computerNumber).split("");
         String[] userValue = String.valueOf(userNumber).split("");
 
-        HashSet<String> computerSet = new HashSet<>();
         int count = 0;
 
-        for (String character : computerValue) {
-            computerSet.add(character);
-        }
+        HashSet<String> computerSet = new HashSet<>(Arrays.asList(computerValue));
 
         for (String character : userValue) {
             if (computerSet.contains(character)) {

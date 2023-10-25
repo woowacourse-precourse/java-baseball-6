@@ -5,7 +5,7 @@ import java.util.HashSet;
 import static java.lang.Integer.parseInt;
 
 public class Validation {
-    public int isValidateNumber(String userInput){
+    public static int isValidateNumber(String userInput){
         int inputNumber;
 
         // Integer.parseInt가 되지 않는 경우
