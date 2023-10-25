@@ -22,7 +22,7 @@ public class GameStart {
             if (CorrectNum.isContainZero(input)) {
                 throw new IllegalArgumentException("입력된 값에 0이 포함되어 있습니다.");
             }
-            if(CorrectNum.isContainNum(input)){
+            if (CorrectNum.isContainNum(input)) {
                 throw new IllegalArgumentException("입력된 값에 중복되는 숫자가 있습니다.");
             }
 
