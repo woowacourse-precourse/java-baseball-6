@@ -68,4 +68,10 @@ public class Utils {
         return result;
     }
 
+    // 게임 재시작 여부 요청의 입력을 검증하는 메소드
+    public void validateRestartInput(int playerInput) {
+        if (playerInput != 1 || playerInput != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
