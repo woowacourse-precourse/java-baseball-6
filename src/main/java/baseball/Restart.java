@@ -15,7 +15,8 @@ public class Restart {
     }
 
     private static boolean isValidMenu(String menu) {
-        if (menu.equals(FIRST_MENU) || menu.equals(SECOND_MENU)) return true;
+        if (menu.equals(FIRST_MENU)
+                || menu.equals(SECOND_MENU)) return true;
         return false;
     }
 }

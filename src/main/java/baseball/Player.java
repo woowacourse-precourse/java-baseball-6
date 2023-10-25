@@ -5,6 +5,10 @@ import java.util.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Player {
+    private static final char MIN_NUMBER = '1';
+    private static final char MAX_NUMBER = '9';
+    private static final int LENGTH_OF_NUMBER = 3;
+
     List<Integer> number = new ArrayList<>();
 
     public void inputPlayerNumber() {
@@ -29,12 +33,12 @@ public class Player {
     }
 
     private boolean isThreeDigit(String input) {
-        return input.length() == 3;
+        return input.length() == LENGTH_OF_NUMBER;
     }
 
     private boolean isValidRange(String input) {
         for (char digit : input.toCharArray()) {
-            if (digit < '1' || digit > '9') return false;
+            if (digit < MIN_NUMBER || digit > MAX_NUMBER) return false;
         }
         return true;
     }
@@ -44,6 +48,6 @@ public class Player {
         for (char digit : input.toCharArray()) {
             uniqueInput.add(digit);
         }
-        return input.length() == uniqueInput.size();
+        return LENGTH_OF_NUMBER == uniqueInput.size();
     }
 }
