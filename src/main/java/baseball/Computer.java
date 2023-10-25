@@ -31,18 +31,6 @@ public class Computer {
         return stringBuilder.toString();
     }
 
-//    public static String createNumber() {
-//        List<Integer> numberList = Randoms.pickUniqueNumbersInRange(1, 9, validLength);
-//        StringBuilder stringBuilder = new StringBuilder();
-//        for (Integer num : numberList) {
-//            System.out.println(num);
-//            stringBuilder.append(num);
-//        }
-//        String result = stringBuilder.toString();
-//        System.out.println(result);
-//        return result;
-//    }
-
     public String play(String userNumber) {
         int cntBS = GameRule.countBallAndStrike(this.number, userNumber);
         int cntS = GameRule.countStrike(this.number, userNumber);
