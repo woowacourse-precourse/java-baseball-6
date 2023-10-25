@@ -5,12 +5,12 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean runFlag = true;
+        boolean gameIsExit = false;
 
-        while (runFlag) {
+        while (!gameIsExit) {
             BaseballGame baseballGame = new BaseballGame();
             baseballGame.play();
-            runFlag = askExit();
+            gameIsExit = askExit();
         }
     }
 
