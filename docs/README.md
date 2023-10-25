@@ -53,5 +53,5 @@
 - 사용자가 게임 중단 여부를 입력할 때
   - 1 또는 2가 아니면 예외가 발생한다.
 
-## 회고
-- (블로그 링크 첨부)
+## ✅ 회고
+- https://velog.io/@dlthgml0108/%EC%9A%B0%ED%85%8C%EC%BD%94-%ED%94%84%EB%A6%AC%EC%BD%94%EC%8A%A4-1%EC%A3%BC%EC%B0%A8-%ED%9A%8C%EA%B3%A0
