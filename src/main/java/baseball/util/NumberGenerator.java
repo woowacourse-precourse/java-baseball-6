@@ -2,7 +2,6 @@ package baseball.util;
 
 import baseball.constant.GameConstant;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +17,8 @@ public class NumberGenerator {
 
         while (generatedNumber.size() < 3) {
             int number = Randoms.pickNumberInRange(
-                    GameConstant.GAME_START_INCLUSIVE.getConstant(), GameConstant.GAME_END_INCLUSIVE.getConstant());
+                    GameConstant.GAME_START_INCLUSIVE.getConstant(),
+                    GameConstant.GAME_END_INCLUSIVE.getConstant());
             addNumber(number);
         }
         return generatedNumber;

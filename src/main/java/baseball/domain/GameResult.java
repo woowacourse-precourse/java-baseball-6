@@ -13,7 +13,8 @@ public record GameResult(int ballCnt, int strikeCnt) {
     }
 
     public boolean isBallStrike() {
-        return this.ballCnt > 0 && strikeCnt > 0 && (this.ballCnt != GameConstant.MAXIMUM_STRIKE_COUNT.getConstant()
+        return this.ballCnt > 0 && strikeCnt > 0 && (
+                this.ballCnt != GameConstant.MAXIMUM_STRIKE_COUNT.getConstant()
                         && this.strikeCnt != (GameConstant.MAXIMUM_STRIKE_COUNT.getConstant()));
     }
 

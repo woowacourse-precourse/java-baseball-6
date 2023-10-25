@@ -1,10 +1,9 @@
 package baseball.domain;
 
-import baseball.controller.GameController;
 import baseball.constant.GameConstant;
 import baseball.constant.GameMessage;
 import baseball.constant.Status;
-
+import baseball.controller.GameController;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -30,7 +29,8 @@ public class Judge {
 
     public void generateResultMessage(GameResult gameResult) {
         if (gameResult.isBallStrike()) {
-            System.out.printf(GameMessage.BALL_STRIKE.getMessage(), gameResult.ballCnt(), gameResult.strikeCnt());
+            System.out.printf(GameMessage.BALL_STRIKE.getMessage(), gameResult.ballCnt(),
+                    gameResult.strikeCnt());
         } else if (gameResult.isOnlyStrike() && !gameResult.isThreeStrike()) {
             System.out.printf(GameMessage.STRIKE.getMessage(), gameResult.strikeCnt());
         } else if (gameResult.isOnlyBall()) {
@@ -39,7 +39,8 @@ public class Judge {
             System.out.println(GameMessage.NOTHING.getMessage());
         } else if (gameResult.isThreeStrike()) {
             System.out.printf(GameMessage.STRIKE.getMessage(), gameResult.strikeCnt());
-            System.out.printf(GameMessage.THREE_STRIKE.getMessage(), GameConstant.MAXIMUM_STRIKE_COUNT.getConstant());
+            System.out.printf(GameMessage.THREE_STRIKE.getMessage(),
+                    GameConstant.MAXIMUM_STRIKE_COUNT.getConstant());
         }
     }
 
@@ -47,7 +48,8 @@ public class Judge {
         return (int) IntStream.range(0, GameConstant.NUMBER_COUNT.getConstant())
                 .filter(index -> {
                     int currentNumber = playerNumber.get(index);
-                    return computerNumber.contains(currentNumber) && computerNumber.indexOf(currentNumber) != index;
+                    return computerNumber.contains(currentNumber)
+                            && computerNumber.indexOf(currentNumber) != index;
                 })
                 .count();
     }
@@ -56,7 +58,8 @@ public class Judge {
         return (int) IntStream.range(0, GameConstant.NUMBER_COUNT.getConstant())
                 .filter(index -> {
                     int currentNumber = playerNumber.get(index);
-                    return computerNumber.contains(currentNumber) && computerNumber.indexOf(currentNumber) == index;
+                    return computerNumber.contains(currentNumber)
+                            && computerNumber.indexOf(currentNumber) == index;
                 })
                 .count();
     }

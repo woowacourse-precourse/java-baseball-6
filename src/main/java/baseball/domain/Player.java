@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.util.InputUtil;
-
 import java.util.List;
 
 public class Player {

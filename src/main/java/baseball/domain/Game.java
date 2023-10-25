@@ -1,10 +1,9 @@
 package baseball.domain;
 
-import baseball.controller.GameController;
 import baseball.constant.Status;
 import baseball.constant.SystemMessage;
+import baseball.controller.GameController;
 import baseball.util.NumberGenerator;
-
 import java.util.List;
 
 public class Game {

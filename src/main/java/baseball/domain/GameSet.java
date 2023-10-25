@@ -1,11 +1,10 @@
 package baseball.domain;
 
-import baseball.controller.GameController;
 import baseball.constant.GameConstant;
 import baseball.constant.GameMessage;
 import baseball.constant.Status;
 import baseball.constant.SystemMessage;
-
+import baseball.controller.GameController;
 import java.util.List;
 
 public class GameSet {
