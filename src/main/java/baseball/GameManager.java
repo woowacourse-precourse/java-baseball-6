@@ -5,8 +5,8 @@ import static baseball.MessageConst.*;
 
 public class GameManager {
     private final InputManager inputManager = InputManager.getInstance();
-    private int answerNumber;
     private int digitSize = 3;
+    private int answerNumber;
     private boolean quitFlag = false;
 
     public void launch() {
@@ -24,8 +24,9 @@ public class GameManager {
         }
     }
 
-    private boolean isGameClear(BallCount result) {
-        return result.strike() == digitSize;
+    private void init() {
+        answerNumber = NumberFactory.createNumber(digitSize);
+        System.out.println(GAME_START_MESSAGE);
     }
 
     private BallCount calculateBallCount(String inputNumber) {
@@ -58,6 +59,10 @@ public class GameManager {
         }
     }
 
+    private boolean isGameClear(BallCount result) {
+        return result.strike() == digitSize;
+    }
+
     private void executeGameClearProcess() {
         System.out.println(GAME_CLEAR_MESSAGE);
 
@@ -65,11 +70,5 @@ public class GameManager {
 
         if(command.equals(GAME_RESTART_COMMAND)) init(); // 재시작
         if(command.equals(GAME_END_COMMAND)) quitFlag = true; // 종료
-    }
-
-    private void init() {
-        answerNumber = NumberFactory.createNumber(digitSize);
-        System.out.println(GAME_START_MESSAGE);
-        System.out.println(answerNumber);
     }
 }
