@@ -23,6 +23,9 @@ public class UserNumberPicker {
     }
 
     private boolean isException(String userInput) {
-        return !Exception.checkIsNumber(userInput) || Exception.checkIsDuplicated(userInput) || !Exception.checkInputLength(userInput) || Exception.checkIsZero(userInput);
+        return !Exception.isNumber(userInput)
+                || Exception.hasDuplicates(userInput)
+                || !Exception.isValidLength(userInput)
+                || Exception.containsZero(userInput);
     }
 }

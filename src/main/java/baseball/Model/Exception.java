@@ -4,22 +4,22 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Exception {
-    public static boolean checkIsNumber(String userInput) {
+    public static boolean isNumber(String userInput) {
         return userInput.chars()
                 .allMatch(Character::isDigit);
     }
 
-    public static boolean checkIsDuplicated(String userInput) {
+    public static boolean hasDuplicates(String userInput) {
         return userInput.chars()
                 .distinct()
                 .count() != userInput.length();
     }
 
-    public static boolean checkInputLength(String userInput) {
+    public static boolean isValidLength(String userInput) {
         return userInput.length() == GameConstant.MAX_NUM;
     }
 
-    public static boolean checkIsZero(String userInput) {
+    public static boolean containsZero(String userInput) {
         return userInput.contains("0");
     }
 }
