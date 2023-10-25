@@ -1,12 +1,16 @@
-package baseball;
+package baseball.model;
+
+import baseball.model.generator.PlayerGenerator;
 
 import java.util.List;
 
-import static baseball.Viewer.*;
-
-
 public class Player {
+    private final PlayerGenerator playerGenerator;
     private List<Integer> userNumberList;
+
+    public Player(PlayerGenerator playerGenerator) {
+        this.playerGenerator = playerGenerator;
+    }
 
 
     public List<Integer> speakNumbers() {
@@ -15,10 +19,10 @@ public class Player {
     }
 
     private void chooseNumbers() {
-        this.userNumberList = readNumbers();
+        this.userNumberList = playerGenerator.generateList();
     }
     
     public boolean speakRestart() {
-        return readIsFinish();
+        return playerGenerator.generateRestart();
     }
 }
