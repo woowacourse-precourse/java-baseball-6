@@ -2,7 +2,6 @@ package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DataTypeChanger {
 
@@ -17,9 +16,13 @@ public class DataTypeChanger {
     public static List<CompareNumber> compareStringNumberFormat(List<String> generatedBall) {
         ArrayList<CompareNumber> compareNumbers = new ArrayList<>();
         generatedBall.forEach(v -> {
-            compareNumbers.add(new CompareNumber(compareNumbers.size() + 1, Integer.parseInt(v)));
+            compareNumbers.add(new CompareNumber(compareNumbers.size() + 1, castInteger(v)));
         });
         return compareNumbers;
+    }
+
+    private static int castInteger(String v) {
+        return Integer.parseInt(v);
     }
 
 }
