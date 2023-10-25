@@ -2,6 +2,7 @@ package baseball.domain;
 
 import baseball.utils.Convertor;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -16,6 +17,10 @@ public class Number {
 
   public Number() {
     this.numbers = new int[NUMBER_OF_DIGITS];
+  }
+
+  public int[] getNumbers() {
+    return Arrays.copyOf(numbers, numbers.length);
   }
 
   public void generateComputerNumbers() {
