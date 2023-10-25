@@ -73,7 +73,7 @@
         - [x] 공백 제거
     - [x] 오류 메시지 전달
         - [x] IllegalArgumentException 발생 후 종료
-- [x] userInputString -> 숫자형 userInputNumbers 변환
+- [x] 문자열 정답 입력값 -> 숫자형으로 변환
     - [x] 데이터 유효성 검사
         - [x] 세 자리 입력값인지 확인
         - [x] 숫자형 변환이 가능한 입력값인지 확인
@@ -82,7 +82,7 @@
         - [x] 숫자형 userInputNumbers 변환
     - [x] 각 경우에 따른 오류 메시지 전달
         - [x] IllegalArgumentException 발생 후 종료
-- [x] userInputRestartOrExitString -> 숫자형 userInputRestartOrExitNumber 변환
+- [x] 문자열 재시작 입력값 -> 숫자형으로 변환
     - [x] 데이터 유효성 검사
         - [x] 1 또는 2의 입력값인지 확인
 
