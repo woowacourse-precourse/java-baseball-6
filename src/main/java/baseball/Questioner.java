@@ -13,11 +13,14 @@ public class Questioner {
     private static GameNumber generateTargetNumber() {
 
         while (true) {
-            int randInt = Randoms.pickNumberInRange(100, 999);
-            String currentTargetNumber = String.valueOf(randInt);
+            StringBuilder targetNumber = new StringBuilder();
 
-            if (GameNumber.isValid(currentTargetNumber)) {
-                return GameNumber.from(currentTargetNumber);
+            for (int i = 0; i < 3; i++) {
+                targetNumber.append(Randoms.pickNumberInRange(1, 9));
+            }
+
+            if (GameNumber.isValid(targetNumber.toString())) {
+                return GameNumber.from(targetNumber.toString());
             }
         }
     }
