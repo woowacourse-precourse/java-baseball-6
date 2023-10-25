@@ -36,11 +36,15 @@ public class Application {
     }
 
     private boolean isRestartGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = gameLogic.getUserInput();
-        if (!"1".equals(input) && !"2".equals(input)) {
-            throw new IllegalArgumentException();
+        try {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = gameLogic.getUserInput();
+            if (!"1".equals(input) && !"2".equals(input)) {
+                throw new IllegalArgumentException();
+            }
+            return "1".equals(input);
+        } catch (IllegalArgumentException e) {
+            return false;
         }
-        return "1".equals(input);
     }
 }
