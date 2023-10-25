@@ -19,6 +19,10 @@ public class Game {
                 String userNumber = Console.readLine();
                 List<Integer> user = getUserInput(userNumber);
                 calculateResult(computer, user);
+                if (strike == 3){
+                    finishGame();
+                    break;
+                }
             }
         }
     }
@@ -84,5 +88,14 @@ public class Game {
             System.out.printf(strike + "스트라이크");
         }
         System.out.println();
+    }
+
+    public void finishGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        gameRestart = Integer.parseInt(Console.readLine());
+        if (gameRestart != 1 && gameRestart != 2) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+        }
     }
 }
