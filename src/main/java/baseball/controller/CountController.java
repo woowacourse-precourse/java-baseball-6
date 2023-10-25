@@ -20,7 +20,7 @@ public class CountController {
         for(int i=0; i<computer.size(); i++){
             Ball comBall = computer.get(i);
             Ball userBall = user.get(i);
-            if(comBall.getNumber()==userBall.getNumber()) {
+            if(comBall.equals(userBall)) {
                 this.strike++;
                 continue;
             }

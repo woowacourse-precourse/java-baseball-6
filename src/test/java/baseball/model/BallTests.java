@@ -21,7 +21,6 @@ class BallTests {
         assertThat(ball.getDigits()).isGreaterThan(-1);
         assertThat(ball.getNumber()).isLessThan(10);
         assertThat(ball.getNumber()).isGreaterThan(0);
-
     }
     @Test
     @DisplayName("Ball digit 에러 case 생성")

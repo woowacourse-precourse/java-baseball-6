@@ -43,6 +43,10 @@ public class Ball {
     public int getDigits() {
         return digits;
     }
-
+    @Override
+    public boolean equals(Object obj) {
+        Ball user = (Ball) obj;
+        return this.number==user.getNumber()&&this.digits==user.getDigits();
+    }
 }
 

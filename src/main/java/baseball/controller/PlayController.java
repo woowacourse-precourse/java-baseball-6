@@ -12,33 +12,38 @@ public class PlayController {
     private boolean restart;
     private boolean retry;
     public PlayController() {
-        restart=true;
-        retry=true;
         initGame();
     }
 
     private void initGame(){
         view.game_start();
+        restart=true;
         while(restart) {
             playGame();
-            check_end();
+            check_rst();
         }
 
     }
 
-    private boolean check_end(){
-        int rst_num = Integer.parseInt(view.restart_num());
+    private boolean check_rst(){
+        view.restart_msg();
+        String userInput = view.restart_num();
+        int rst_num = Integer.parseInt(userInput);
         if(rst_num!=1 && rst_num!=2){
             throw new IllegalArgumentException("1 또는 2로 입력해야합니다.");
         }
-        if(rst_num==2) return restart==true;
-        return restart==false;
+        if(rst_num==2) {
+            return restart=false;
+        }
+        return restart=true;
     }
 
     private void playGame() {
+        retry=true;
         randomGenerator = new RandomGenerator();
         List<Ball> computer = randomGenerator.getComputer();
         while(retry) {
+            view.input_msg();
             String user_input = view.user_balls();
             List<Ball> user = Ball.of(user_input);
             countController = new CountController();
