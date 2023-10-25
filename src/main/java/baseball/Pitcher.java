@@ -21,7 +21,7 @@ public class Pitcher extends Player {
     }
 
     public void updateNumbers(int[] split) {
-        numbers.clear();
+        clearNumbers();
         Arrays.stream(split).forEach(num -> numbers.add(num));
     }
 }

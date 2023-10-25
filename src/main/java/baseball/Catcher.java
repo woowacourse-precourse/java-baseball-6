@@ -9,10 +9,6 @@ public class Catcher extends Player {
         generateRandomNumbers();
     }
 
-    public void clearNumbers() {
-        numbers.clear();
-    }
-
     public void generateRandomNumbers() {
         while (numbers.size() < Constant.MAX_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

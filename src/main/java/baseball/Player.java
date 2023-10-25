@@ -13,6 +13,9 @@ public abstract class Player {
     public List<Integer> getNumbers() {
         return numbers;
     }
+    public void clearNumbers() {
+        numbers.clear();
+    }
 
     public abstract void setNumbers();
 }
