@@ -27,8 +27,8 @@ public class BaseballGame {
         player = new Player();
         String playerAnswer;
         while (true) {
-            player.guess();
-            giveScore(player.getGuessNumbers());
+            player.guessNumbers();
+            giveScore(player.getNumbers());
             printScores();
             if (isThreeStrike()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");

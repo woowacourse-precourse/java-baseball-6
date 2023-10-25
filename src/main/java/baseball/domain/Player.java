@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -9,30 +10,28 @@ import static baseball.logic.BaseballGame.EXIT;
 import static baseball.logic.BaseballGame.RESTART;
 
 public class Player {
-    private List<Integer> guessNumbers;
+    private List<Integer> numbers;
 
-    public List<Integer> getGuessNumbers() {
-        return guessNumbers;
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     public Player() {
-        this.guessNumbers = new ArrayList<>();
+        this.numbers = new ArrayList<>();
     }
-    public void guess() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String guess = Console.readLine();
-        if(guess.length() <= 0 || guess.length() > 3 || isThereDuplicateNumber(guess)){
+    public void guessNumbers() {
+        String inputNumbers = InputView.inputNumbers();
+        if(inputNumbers.length() <= 0 || inputNumbers.length() > 3 || isThereDuplicateNumber(inputNumbers)){
             throwIllegalArgumentException();
         }
-        guessNumbers.clear();
+        numbers.clear();
         for (int i = 0; i < 3; i++) {
-            guessNumbers.add(guess.charAt(i) - '0');
+            numbers.add(inputNumbers.charAt(i) - '0');
         }
     }
 
     public String replayOrExit() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String answer = Console.readLine();
+        String answer = InputView.inputReplayOrExit();
         if (answer.equals(RESTART) || answer.equals(EXIT)) {
             return answer;
         }
