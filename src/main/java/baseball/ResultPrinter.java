@@ -15,7 +15,7 @@ public class ResultPrinter {
 		List<String> toCompareComNumList = comNumGenerator.getComGenerateNumList();
 		
 		while (true) {
-			userNumInputManager.InputUserNum();
+			userNumInputManager.inputUserNum();
 
 			List<String> toCompareUserNumList = userNumInputManager.getUserInputNumList();
 			

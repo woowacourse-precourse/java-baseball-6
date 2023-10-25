@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ComNumberGenerator {
 	private final List<Integer> comGenerateNumList = new ArrayList<>();
-	private	final List<String> StringComGenerateNumList = new ArrayList<>();
+	private	final List<String> stringComGenerateNumList = new ArrayList<>();
 	public void comGenerateNum() {
 	
 		while (comGenerateNumList.size() < 3) {
@@ -19,12 +19,12 @@ public class ComNumberGenerator {
 		}
 		for (Integer number : comGenerateNumList) {
 			String str = Integer.toString(number);
-			StringComGenerateNumList.add(str);
+			stringComGenerateNumList.add(str);
 		}
 	}
 	
 	public List<String> getComGenerateNumList() {
-		return StringComGenerateNumList;
+		return stringComGenerateNumList;
 	}
 	
 }

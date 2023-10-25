@@ -10,7 +10,7 @@ public class UserNumInputManager {
 	static String inputNum_1;
 	static String inputNum_2;
 	static String inputNum_3;
-	public static void InputUserNum() {
+	public static void inputUserNum() {
 
 		userInputNumList.clear();
 		System.out.print("숫자를 입력해주세요 : ");
