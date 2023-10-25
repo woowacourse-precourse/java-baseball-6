@@ -27,32 +27,29 @@ public class Application {
                 random_list.add(random_num);
             }
         }
-//        System.out.println(random_list);
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String exp_num_str = Console.readLine();
 
-            String[] exp_num_split = exp_num_str.split("");
-            List<String> exp_num_lst = Arrays.asList(exp_num_split);
-            Set<String> set_exp_num = new HashSet<>(exp_num_lst);
-            List<String> set_lst_exp_num = new ArrayList<>(set_exp_num);
-            if (set_lst_exp_num.size() != 3) {
+            String[] expected_num_split = exp_num_str.split("");
+            List<String> expected_num_lst = Arrays.asList(expected_num_split);
+            Set<String> set_expected_num = new HashSet<>(expected_num_lst);
+            List<String> set_lst_expected_num = new ArrayList<>(set_expected_num);
+            if (set_lst_expected_num.size() != 3) {
                 throw new IllegalArgumentException();
             }
             try{
-                int exp_num = Integer.parseInt(exp_num_str);
+                Integer.parseInt(exp_num_str);
             } catch (Exception e) {
-//                System.out.println(e.getCl®ass().getName());
-//                System.out.println(e.getMessage());
                 throw new IllegalArgumentException();
             }
 
             int[] cnt_lst = {0, 0}; // ball, strike
             for (var i=0; i<3; i++) {
-                if (Integer.parseInt(exp_num_lst.get(i)) == random_list.get(i)) { // strike
+                if (Integer.parseInt(expected_num_lst.get(i)) == random_list.get(i)) { // strike
                     cnt_lst[1] += 1;
-                } else if (random_list.contains(Integer.parseInt(exp_num_lst.get(i)))) { // ball
+                } else if (random_list.contains(Integer.parseInt(expected_num_lst.get(i)))) { // ball
                     cnt_lst[0] += 1;
                 }
             }
