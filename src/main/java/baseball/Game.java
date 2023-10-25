@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.Exception.NumberValidator;
+import baseball.utils.Score;
 import java.util.List;
 
 public class Game {
