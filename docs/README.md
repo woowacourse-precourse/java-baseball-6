@@ -1,5 +1,13 @@
 # ✏️ 기능 구현 목록
 
+## 🌏 목차
+
+- ### [GameManager.java](#👍-GameManager.java)
+- ### [Computer.java](#👍-Computer.java)
+- ### [Global/Strike.java](#👍-Global/Strike.java)
+- ### [Global/Ball.java](#👍-Global/Ball.java)
+- ### [NumberArray.java](#👍-NumberArray.java)
+
 ## 👍 GameManager.java
 
 ### 1. start()
