@@ -24,18 +24,18 @@
   - [예외처리] 이외의 입력에 대해서는 예외처리
 
 ### 입출력
-**입력 `inputView`**
+**입력 `InputView`**
 - `getBaseballNumber()`
   - 사용자로부터 서로 다른 3자리 수를 입력 받는 기능
 - `getExit()`
   - 게임이 끝난 경우 재시작(1) / 종료(2) 여부를 입력 받는 기능
 
-**출력 `outputView`**
-- `gameStart()`
+**출력 `OutputView`**
+- `showStart()`
   - 게임 시작 문구 출력하는 기능
 - `showResult()`
   - 입력한 수에 대한 결과를 출력하는 기능
-- `gameEnd()`
+- `showEnd()`
   - 게임 종료 문구 출력하는 기능
 
 ### 예외처리
