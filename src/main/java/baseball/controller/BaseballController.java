@@ -1,0 +1,35 @@
+package baseball.controller;
+
+import java.util.List;
+
+
+public class BaseballController {
+
+    private BaseballService service = new BaseballService();
+
+    public void run() {
+        do {
+            play();
+        } while (!UserInterface.shouldTerminate());
+    }
+
+    private void play() {
+        boolean isCorrect = false;
+        List<Integer> answer = BaseballUtil.generateRandomNumber();
+
+        do {
+            String userInput = UserInterface.askForNumber();
+            List<Integer> guess = BaseballUtil.stringToIntegerList(userInput);
+            GuessResultVO guessResult = service.countStrikeAndBall(guess, answer);
+
+            if (guessResult.isCorrectAnswer()) {
+                UserInterface.printWinningMessage();
+                isCorrect = true;
+            } else {
+                UserInterface.printGameStatus(guessResult);
+            }
+
+        } while (!isCorrect);
+    }
+
+}
