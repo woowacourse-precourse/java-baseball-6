@@ -26,4 +26,16 @@ public class GameController {
         return result;
     }
 
+    public boolean restartGame(int flag) throws IllegalArgumentException{
+        boolean result;
+        try {
+            result = ball.restartGame(flag);
+        }
+        catch(IllegalArgumentException ex){
+            throw ex;
+        }
+
+        return result;
+    }
+
 }
