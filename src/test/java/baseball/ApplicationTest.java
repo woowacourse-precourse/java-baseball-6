@@ -113,6 +113,21 @@ class ApplicationTest extends NsTest {
         assertThat(baseballGame.strikeCount).isEqualTo(STRIKE_COUNT);
     }
 
+    @Test
+    void 볼_개수_테스트() {
+        // given
+        final int BALL_COUNT = 2;
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        List<Integer> playerNumbers = List.of(3, 2, 1);
+        BaseballGame baseballGame = new BaseballGame();
+
+        // when
+        baseballGame.calculateNumbers(computerNumbers, playerNumbers);
+
+        // then
+        assertThat(baseballGame.ballCount).isEqualTo(BALL_COUNT);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
