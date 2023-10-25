@@ -7,7 +7,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class HintService {
-    private static String NUMBER_PATTERN = "[1-9]{3}";
+    private static final String NUMBER_TYPE_ERROR_MESSAGE = "서로 다른 수 3자리만 입력 가능합니다.";
+    private static final String NUMBER_PATTERN = "[1-9]{3}";
 
     public int ballCnt=0;
     public int strikeCnt=0;
@@ -18,11 +19,11 @@ public class HintService {
         this.answerArray = answerArray;
     }
 
-    public void getInputNumber(){
+    public void getInputNumber() throws ArithmeticException{
         HintView.askInputNumber();
         inputNumber = Console.readLine();
         if(!HintService.isValidNumber(inputNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NUMBER_TYPE_ERROR_MESSAGE);
         }
     }
 
