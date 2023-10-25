@@ -1,5 +1,6 @@
-package baseball;
+package baseball.controller;
 
+import baseball.view.InputView;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.platform.commons.util.StringUtils;

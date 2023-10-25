@@ -1,12 +1,18 @@
-package baseball;
+package baseball.controller;
 
+import baseball.ProgramCommand;
+import baseball.domain.GameResult;
+import baseball.domain.Judgement;
+import baseball.domain.Player;
+import baseball.domain.Referee;
+import baseball.view.OutputView;
 import java.util.List;
 
 public class MainController {
 
     private final InputController inputController;
-    private final Referee referee = new Referee();
     private final OutputView outputView = new OutputView();
+    private final Referee referee = new Referee();
 
     public MainController(InputController inputController) {
         this.inputController = inputController;

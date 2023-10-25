@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.view.OutputFormat;
 import java.util.EnumMap;
 import java.util.Map;
 

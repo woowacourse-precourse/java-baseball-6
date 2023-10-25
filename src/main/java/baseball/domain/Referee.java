@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.ComputerNumberGenerator;
 import java.util.List;
 
 public class Referee {
