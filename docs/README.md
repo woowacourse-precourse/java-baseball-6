@@ -22,32 +22,18 @@
 
 # 테스트 구현 목표
 
-1. Game
-    - Inning()이 3스트라이크로 종료 시 재시작/종료 안내 문구가 요구사항대로 출력되는지 확인한다.
-2. Inning
-    - startInning()시
-        - 3스트라이크 시, 종료 문구가 요구사항대로 출력되는지 확인한다.
-3. Number
-    - getXDigit()시 해당 숫자가 잘 반환되는지 확인한다.
-4. Players
-    - compareNumbers()시
-        - 두 객체가 잘 비교되는지 확인한다.
-5. Result
-    - checkResult()시
-        - 0볼 0스트라이크일 경우, 낫싱이 출력되는지 확인한다.
-        - 낫싱이 아닐 경우 볼과 스트라이크가 값대로 출력되는지 확인한다.
-    - isWin()시
-        - 3스트라이크일 경우, true가 반환되는지 확인한다.
-        - 3스트라이크가 아닐 경우, false가 반환되는지 확인한다.
-    - printWin()시
-        - 축하메시지가 출력되는지 확인한다.
-6. NumberValidate
-    - validateInput()시
-        - 1이나 2가 아닐 경우 IllegalArgumentException이 반환되는지 확인한다.
-    - convertToNumber()시
-        - 반환 인스턴스가 Number의 인스턴스인지 확인한다.
-    - checkNumberValidate()시
-        - 0이하 10이상일 경우 IllegalArgumentException이 반환되는지 확인한다.
-7. 전체 테스트
+1. Numbers
+    - MAX SIZE 이상의 List가 입력될 경우 IllegalArgumentException을 반환한다.
+    - 123과 123의 비교일 경우 3스트라이크가 출력되는지 확인한다.
+    - 123과 132의 비교일 경우 2볼 1스트라이크가 출력되는지 확인한다.
+    - 123과 456의 비교일 경우 낫싱이 출력되는지 확인한다.
+    - 자릿수를 Number로 변환하여 확인한다.
+    - Number를 List<Number>가 가지고 있는지 확인한다.
+2. Result
+    - 3스트라이크일 경우 isWin이 true를 반환하는지 확인한다.
+    - 3스트라이크가 아닐 경우 isWin이 false를 반환하는지 확인한다.
+3. 전체 테스트
     - 세 자리 초과 글자를 입력할 경우 IllegalArgumentException이 반환되는지 확인한다.
+    - 세 자리 미만 글자를 입력할 경우 IllegalArgumentException이 반환되는지 확인한다.
     - 숫자가 아닌 값을 입력할 경우 IllegalArgumentException이 반환되는지 확인한다.
+    - 재입력시 1이나 2가 아닌 값을 입력할 경우 IllegalArgumentException이 반환되는지 확인한다.
