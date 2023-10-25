@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,54 +9,60 @@ public class BaseBallGame {
     private List<Integer> computer = new ArrayList<>();
 
     private void init() {
-        end = false;
-        computer = new ArrayList<>();
-        getRandomNumber();
+        this.end = false;
+        this.computer = new ArrayList<>();
+        Util.getRandomNumber(this.computer);
     }
 
-    private void getRandomNumber() {
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+    private void check(int computerItem, int userItem, int comIdx, int userIdx) {
+        if (computerItem == userItem) {
+            if (comIdx == userIdx) {
+                this.strike++;
+            } else {
+                this.ball++;
             }
         }
     }
 
-    private void compare(List<Integer> num) {
-        strike = 0;
-        ball = 0;
+    private void count(List<Integer> num) {
+        this.strike = 0;
+        this.ball = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (computer.get(i).equals(num.get(j))) {
-                    if (i == j) {
-                        strike++;
-                    } else {
-                        ball++;
-                    }
-                }
+                int computerItem = this.computer.get(i);
+                int userItem = num.get(j);
+                check(computerItem, userItem, i, j);
             }
+        }
+    }
+
+    private void print() {
+        if (this.strike == 0 && this.ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (this.strike > 0 && this.ball > 0) {
+            System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
+            return;
+        }
+        if (this.ball > 0) {
+            System.out.println(this.ball + "볼");
+            return;
+        }
+        if (this.strike > 0) {
+            System.out.println(this.strike + "스트라이크");
+        }
+        if (this.strike == 3) {
+            this.end = true;
         }
     }
 
     private void play() {
         do {
             List<Integer> num = Util.getNumber();
-            compare(num);
-
-            if (strike == 0 && ball == 0) {
-                System.out.println("낫싱");
-            } else if (strike > 0 && ball > 0) {
-                System.out.println(ball + "볼 " + strike + "스트라이크");
-            } else if (ball > 0) {
-                System.out.println(ball + "볼");
-            } else {
-                if (strike == 3) {
-                    end = true;
-                }
-                System.out.println(strike + "스트라이크");
-            }
-        } while (!end);
+            count(num);
+            print();
+        } while (!this.end);
     }
 
     public void start() {
