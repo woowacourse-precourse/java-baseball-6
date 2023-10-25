@@ -5,13 +5,15 @@ import baseball.GameStatus;
 import baseball.game.CheckingBoard;
 import baseball.game.Score;
 import baseball.game.displayboard.DisplayBoard;
+import baseball.game.hitter.Hitter;
+import baseball.game.pitcher.Pitcher;
+import baseball.game.umpire.Umpire;
 import baseball.game.util.IllegalArgumentCheck;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameSettingImpl implements GameSetting {
     AppConfig appConfig = new AppConfig();
     DisplayBoard displayBoard = appConfig.displayBoard();
-
     @Override
     public void startGame() {
         displayBoard.displayGameStart();
@@ -24,14 +26,18 @@ public class GameSettingImpl implements GameSetting {
         Score score = new Score();
         CheckingBoard checkingBoard = new CheckingBoard();
 
-        ball = appConfig.pitcher().pitch();
+        Pitcher pitcher = appConfig.pitcher();
+        Hitter hitter = appConfig.hitter();
+        Umpire umpire = appConfig.umpire();
+
+        ball = pitcher.pitch();
 
         while (true) {
             displayBoard.displayRequestNum();
-            bat = appConfig.hitter().swing();
-            checkingBoard = appConfig.umpire().checkStrike(ball, bat, checkingBoard);
-            checkingBoard = appConfig.umpire().checkBall(ball, bat, checkingBoard);
-            score = appConfig.umpire().judge(checkingBoard, score);
+            bat = hitter.swing();
+            checkingBoard = umpire.checkStrike(ball, bat, checkingBoard);
+            checkingBoard = umpire.checkBall(ball, bat, checkingBoard);
+            score = umpire.judge(checkingBoard, score);
             displayBoard.displayScore(score);
             if (score.isHomerunCount()) {
                 break;
