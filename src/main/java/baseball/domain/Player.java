@@ -14,7 +14,6 @@ public class Player {
         this.numbers = new ArrayList<>();
     }
 
-
     // 사용자로부터 서로 다른 3개의 수를 입력받음
     public void inputNumbers() throws IllegalArgumentException {
         String input = Console.readLine();
