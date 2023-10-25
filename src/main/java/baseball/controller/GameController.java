@@ -1,7 +1,8 @@
-package baseball;
+package baseball.controller;
 
 import baseball.constant.Status;
 import baseball.constant.SystemMessage;
+import baseball.domain.Game;
 
 public class GameController {
 
