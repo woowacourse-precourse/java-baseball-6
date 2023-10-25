@@ -3,20 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         Game.start();
     }
-    // 숫자 저장 클래스 만들기
-    // 비교 메서드
-    // 입력 메서드
-    // 출력 메서드
-    // 게임 재시작 or 종료
-    // 예외 처리 (마지막에 1,2 이외를 누르면, 세자리 수 아니고 1234 입력 등)
 }
 
 class Computer {
@@ -79,15 +71,12 @@ class Game {
         return Result.getResult(Computer.answer, User.answer);
     }
     static void restart() {
-        //System.out.print("restart");
         int num = Integer.parseInt(Console.readLine());
         if(num == 1) start();
-        //else if(num == 2) System.out.print("게임 종료");
     }
     public static void start() {
         System.out.print(START_MESSAGE);
         Computer.generateAnswer();
-        System.out.print(Arrays.toString(Computer.answer));
         while (!Objects.equals(getResult(), Result.END_MESSAGE)) {
             System.out.print(INPUT_MESSAGE);
             User.getUserNumbers();
