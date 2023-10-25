@@ -6,15 +6,13 @@ import java.util.List;
 public class Comparing {
     int equalsNumber = 0;
     int equalsPosition = 0;
-
     public Result compareNumbers(String readLine, List<Integer> computer) {
-
         List<Integer> user = new ArrayList<>();
+
         generateUserNumbers(readLine, user);
 
-        synchronized (this) {
-            compareIndex(computer, user);
-        }
+        compareIndex(computer, user);
+
         return new Result(equalsNumber, equalsPosition);
     }
 
