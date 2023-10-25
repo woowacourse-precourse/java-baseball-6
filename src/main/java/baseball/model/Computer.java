@@ -22,13 +22,11 @@ public class Computer {
         int newRandomNumber;
 
         while(randomNumberList.size() < FIXED_LIST_SIZE) {
-
             newRandomNumber = Randoms.pickNumberInRange(MIN_OF_NUMBER_RANGE, MAX_OF_NUMBER_RANGE);
 
             if (!randomNumberList.contains(newRandomNumber)) {
                 randomNumberList.add(newRandomNumber);
             }
-
         }
 
         return randomNumberList;
