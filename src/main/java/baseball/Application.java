@@ -4,15 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
-
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Game();
-        StopOrRestart();
+        try {
+            Game();
+            StopOrRestart();
+        } catch(PlayerNumbersException e) {
+            System.out.println("!!서로 다른 세자리 수를 공백 없이 입력해주세요.!!");
+        }
+
     }
 
-    public static void Game() {
+    public static void Game() throws PlayerNumbersException {
         int strike = 0;
         int ball = 0;
         ArrayList<Integer> computerNumbers = ComputerNumbers();
@@ -45,14 +48,12 @@ public class Application {
         }
     }
 
-    public static void StopOrRestart() {
+    public static void StopOrRestart() throws PlayerNumbersException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String menuNumber = Console.readLine();
         if(menuNumber.trim().equals("2")) {
-            System.out.println("222");
             System.exit(0);
         } else if (menuNumber.trim().equals("1")) {
-            System.out.println("111");
             Game();
 
         }
@@ -69,10 +70,13 @@ public class Application {
         return computer;
     }
 
-    public static ArrayList<Integer> PlayerNumbers() {
+    public static ArrayList<Integer> PlayerNumbers() throws PlayerNumbersException {
         System.out.print("숫자를 입력해주세요 : ");
         String playerNumber = Console.readLine();
         String[] playerNumberArray = playerNumber.split("");
+
+        if(!threeLetters(playerNumberArray))
+            throw new PlayerNumbersException("잘못된 숫자 형식을 입력하셨습니다.");
 
         ArrayList<Integer> playerNumbers = new ArrayList<>();
         for(int i=0; i<playerNumberArray.length; i++) {
@@ -80,4 +84,17 @@ public class Application {
         }
         return playerNumbers;
     }
+
+    static boolean threeLetters(String[] arr) {
+        if(arr.length == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+}
+
+class PlayerNumbersException extends Exception {
+    PlayerNumbersException(String msg) { super(msg); }
 }
