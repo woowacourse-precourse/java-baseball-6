@@ -28,6 +28,7 @@
 - [x] void showStartMessage() : 게임 시작 메시지 출력
 - [x] void setComputerNumber() : 컴퓨터 수 세팅
 - [x] void setUserNumber() : 사용자 수 세팅
+- [x] void setCalculator() : HintCalculator 세팅
 - [x] void showHint() : 힌트 출력
 - [x] void showEndMessage() : 게임 종료 문구 출력
 - [x] boolean checkSuccess() : 게임 성공 여부 확인
