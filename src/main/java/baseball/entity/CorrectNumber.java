@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// CorrectNumber는 정답 생성, 관리, 비교
 public class CorrectNumber {
 
     private List<Integer> correctNumbers;

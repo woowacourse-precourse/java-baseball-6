@@ -1,6 +1,5 @@
 package baseball.entity;
 
-// Result는 채점 결과를 저장
 public class Result {
     private final int strikeNumber;
     private final int ballNumber;

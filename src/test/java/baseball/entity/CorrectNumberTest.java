@@ -19,7 +19,7 @@ class CorrectNumberTest {
         List<Integer> correctNumberList = correctNumber.getCorrectNumbers();
         for (int i = 0; i < correctNumberList.size(); i++) {
             for (int j = 0; j < correctNumberList.size(); j++) {
-                if (i != j) { // 같은 위치는 비교하지 않는다.
+                if (i != j) {
                     assertThat(correctNumberList.get(i)).isNotEqualTo(correctNumberList.get(j));
                 }
             }

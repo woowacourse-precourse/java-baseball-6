@@ -8,6 +8,7 @@ public final class RandomNumGenerator {
     static int pickSize = 3;
     static int minRange = 1;
     static int maxRange = 9;
+
     public static List<Integer> generate() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < pickSize) {
