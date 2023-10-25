@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Game;
+import baseball.validation.GameRestartNumberValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -10,6 +11,7 @@ public class GameController {
 	ComputerController computerController = new ComputerController();
 	OutputView outputView = new OutputView();
 	InputView inputView = new InputView();
+	GameRestartNumberValidator gameRestartNumberValidator = new GameRestartNumberValidator();
 
 	public void startGame() {
 		outputView.printStartGame();
@@ -32,7 +34,9 @@ public class GameController {
 	public boolean isWantRestartGame(Game playerData) {
 		if (computerController.isThreeStrike(playerData)) {
 			outputView.printEndGame();
+
 			String answer = inputView.enterAnswerReGame();
+			gameRestartNumberValidator.checkRestartNumberValidity(answer);
 
 			if (answer.equals(BASEBALL_GAME_END_NUMBER_STRING)) {
 				isEndGame = false;
