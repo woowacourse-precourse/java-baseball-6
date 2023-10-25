@@ -23,10 +23,11 @@ public class GameController {
     public static void playGame() {
         startGame();
         while (!Game.isGameWon()) {
-            initializeCounts();
             getUserInput();
             validateUserInput(userInput);
-            Game.generateHint(userInput, pickedNumbers);
+            int[] hint = Game.generateHint(userInput, pickedNumbers);
+            ball = hint[0];
+            strike = hint[1];
             printHintMessage(ball, strike);
         }
         endGame();
@@ -36,15 +37,11 @@ public class GameController {
     public static void startGame() {
         SystemMessagePrinter.printGameStartMessage();
         pickedNumbers = pickRandomNumbers(SIZE, MIN_NUMBER, MAX_NUMBER);
+        Game.initializeCounts();
     }
 
     public static void getUserInput() {
         userInput = Console.readLine();
-    }
-
-    public static void initializeCounts() {
-        ball = 0;
-        strike = 0;
     }
 
     // 사용자 입력 처리
@@ -55,8 +52,6 @@ public class GameController {
             throw new IllegalArgumentException("유효하지 않은 입력입니다.");
         }
     }
-
-    // 입력한 숫자와 컴퓨터가 선택한 숫자 비교
 
     // 게임 종료 여부 판단
     public static void endGame() {

@@ -7,9 +7,16 @@ public class Game {
     private static int ball;
     private static int strike;
 
-    public static void generateHint(String userInput, int[] pickedNumbers) {
+    public static void initializeCounts() {
+        ball = 0;
+        strike = 0;
+    }
+
+    public static int[] generateHint(String userInput, int[] pickedNumbers) {
+        initializeCounts();
         ball = countBalls(userInput, pickedNumbers);
         strike = countStrikes(userInput, pickedNumbers);
+        return new int[]{ball, strike};
     }
 
     public static int countBalls(String userInput, int[] pickedNumbers) {
