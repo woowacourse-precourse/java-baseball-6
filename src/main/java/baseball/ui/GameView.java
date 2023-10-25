@@ -2,14 +2,16 @@ package baseball.ui;
 
 import baseball.controller.GameController;
 import baseball.controller.GameControllerImpl;
-import baseball.controller.RandomNumberCreator;
-import baseball.controller.Scoring;
+import baseball.util.RandomNumberCreator;
+import baseball.state.Scoring;
+import baseball.ui.input.component.InputComponent;
+import baseball.ui.output.component.OutputComponent;
+import baseball.ui.output.format.ResultFormatStringCreator;
 import java.util.Map;
 
 public class GameView {
 
     private GameController gameController;
-    //    private final InputAnswerValidator validator;
     private final InputComponent inputUserAnswer;
     private final InputComponent inputUserResume;
     private final OutputComponent outputComponent;

@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.state.Scoring;
+
 public class GameControllerImpl extends AbstractGameController {
 
     public GameControllerImpl(Scoring scoring) {

@@ -1,4 +1,4 @@
-package baseball.ui;
+package baseball.ui.output.format;
 
 import java.util.Map;
 

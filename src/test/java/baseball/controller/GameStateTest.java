@@ -1,9 +1,9 @@
 package baseball.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import baseball.controller.GameState.State;
+import baseball.state.GameState;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,16 +11,16 @@ class GameStateTest {
 
     @Test
     public void 종료된상태라면_플레이상태로_변경할수있다() {
-        GameState gameState = new GameState(State.TERMINATED);
+        GameState gameState = new GameState(GameState.getTerminatedState());
         gameState.changeStateToStartGame();
 
-        assertEquals(gameState.getState(), State.PLAYING);
+        assertTrue(gameState.isPlaying());
     }
 
     @Test
     public void 이미_플레이중이라면_플레이상태로_변경할수없다() {
         IllegalStateException i = Assertions.assertThrows(IllegalStateException.class, () -> {
-            GameState gameState = new GameState(State.PLAYING);
+            GameState gameState = new GameState(GameState.getPlayingState());
             gameState.changeStateToStartGame();
         });
 
@@ -29,16 +29,16 @@ class GameStateTest {
 
     @Test
     public void 플레이상태라면_종료상태로_변경할수있다() {
-        GameState gameState = new GameState(State.PLAYING);
+        GameState gameState = new GameState(GameState.getPlayingState());
         gameState.changeStateToTerminateGame();
 
-        assertEquals(gameState.getState(), State.TERMINATED);
+        assertTrue(gameState.isTerminated());
     }
 
     @Test
     public void 이미_종료상태라면_종료상태로_변경할수없다() {
         IllegalStateException i = Assertions.assertThrows(IllegalStateException.class, () -> {
-            GameState gameState = new GameState(State.TERMINATED);
+            GameState gameState = new GameState(GameState.getTerminatedState());
             gameState.changeStateToTerminateGame();
         });
 

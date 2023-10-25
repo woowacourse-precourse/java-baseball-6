@@ -1,4 +1,4 @@
-package baseball.ui;
+package baseball.ui.output.component;
 
 public interface OutputComponent {
     void print(String message);

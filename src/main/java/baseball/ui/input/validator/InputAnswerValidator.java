@@ -1,4 +1,4 @@
-package baseball.ui;
+package baseball.ui.input.validator;
 
 public class InputAnswerValidator implements InputValidator {
 

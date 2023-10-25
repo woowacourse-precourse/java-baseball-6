@@ -2,6 +2,8 @@ package baseball.ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import baseball.ui.output.format.ResultFormatStringCreator;
+import baseball.ui.output.format.ResultFormatStringCreatorImpl;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 

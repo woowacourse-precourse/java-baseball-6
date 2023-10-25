@@ -1,15 +1,15 @@
 package baseball;
 
 import baseball.controller.GameControllerImpl;
-import baseball.controller.RandomNumberCreator;
-import baseball.controller.Scoring;
+import baseball.util.RandomNumberCreator;
+import baseball.state.Scoring;
 import baseball.ui.GameView;
-import baseball.ui.InputAnswerValidator;
-import baseball.ui.InputComponentForAnswer;
-import baseball.ui.InputComponentForResume;
-import baseball.ui.InputResumeValidator;
-import baseball.ui.OutputComponentImpl;
-import baseball.ui.ResultFormatStringCreatorImpl;
+import baseball.ui.input.validator.InputAnswerValidator;
+import baseball.ui.input.component.InputComponentForAnswer;
+import baseball.ui.input.component.InputComponentForResume;
+import baseball.ui.input.validator.InputResumeValidator;
+import baseball.ui.output.component.OutputComponentImpl;
+import baseball.ui.output.format.ResultFormatStringCreatorImpl;
 
 public class Application {
     public static void main(String[] args) {

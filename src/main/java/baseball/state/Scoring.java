@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.state;
 
 import java.util.HashMap;
 import java.util.Map;

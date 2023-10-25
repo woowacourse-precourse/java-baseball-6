@@ -1,12 +1,13 @@
-package baseball.ui;
+package baseball.ui.input.component;
 
+import baseball.ui.input.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputComponentForResume implements InputComponent {
+public class InputComponentForAnswer implements InputComponent {
 
     private final InputValidator inputValidator;
 
-    public InputComponentForResume(InputValidator inputValidator) {
+    public InputComponentForAnswer(InputValidator inputValidator) {
         this.inputValidator = inputValidator;
     }
 
@@ -14,4 +15,5 @@ public class InputComponentForResume implements InputComponent {
     public String getValidUserInput() {
         return inputValidator.validateInput(Console.readLine());
     }
+
 }

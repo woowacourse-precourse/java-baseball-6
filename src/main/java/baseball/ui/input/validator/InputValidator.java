@@ -1,4 +1,4 @@
-package baseball.ui;
+package baseball.ui.input.validator;
 
 public interface InputValidator {
     String validateInput(String input);

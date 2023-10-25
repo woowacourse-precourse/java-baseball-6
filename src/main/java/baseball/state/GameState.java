@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.state;
 
 public class GameState {
 
@@ -43,6 +43,19 @@ public class GameState {
     public boolean isTerminated() {
         return this.state == State.TERMINATED;
     }
+
+    public static State getStateForRestart() {
+        return State.TERMINATED;
+    }
+
+    public static State getTerminatedState() {
+        return State.TERMINATED;
+    }
+
+    public static State getPlayingState() {
+        return State.PLAYING;
+    }
+
 
     public State getState() {
         return state;

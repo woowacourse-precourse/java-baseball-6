@@ -3,6 +3,8 @@ package baseball.ui;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import baseball.ui.input.validator.InputAnswerValidator;
+import baseball.ui.input.validator.InputValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

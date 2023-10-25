@@ -1,4 +1,4 @@
-package baseball.ui;
+package baseball.ui.output.component;
 
 public class OutputComponentImpl implements OutputComponent {
     @Override

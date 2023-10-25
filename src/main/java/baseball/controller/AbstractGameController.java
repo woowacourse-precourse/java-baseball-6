@@ -1,6 +1,7 @@
 package baseball.controller;
 
-import baseball.controller.GameState.State;
+import baseball.state.GameState;
+import baseball.state.Scoring;
 import java.util.Map;
 
 public abstract class AbstractGameController implements GameController {
@@ -8,7 +9,7 @@ public abstract class AbstractGameController implements GameController {
     private final Scoring scoring;
 
     public AbstractGameController(Scoring scoring) {
-        this.gameState = new GameState(State.TERMINATED);
+        this.gameState = new GameState(GameState.getStateForRestart());
         this.scoring = scoring;
     }
 

@@ -4,8 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.controller.AbstractGameController;
 import baseball.controller.GameController;
-import baseball.controller.RandomNumberCreator;
-import baseball.controller.Scoring;
+import baseball.util.RandomNumberCreator;
+import baseball.state.Scoring;
+import baseball.ui.output.component.OutputComponentImpl;
+import baseball.ui.output.format.ResultFormatStringCreatorImpl;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
