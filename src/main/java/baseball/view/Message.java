@@ -29,7 +29,7 @@ public class Message {
     }
 
     public static void nothingMessage() {
-        System.out.print(NOTHING_MESSAGE);
+        System.out.println(NOTHING_MESSAGE);
     }
 
     public static void ballMessage(int ball) {
