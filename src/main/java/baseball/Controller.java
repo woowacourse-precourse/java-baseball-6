@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.Message.Constant.RequestMessage;
+import baseball.Message.printSystemMessage;
 import baseball.service.GameService;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -29,7 +30,7 @@ public class Controller {
     }
 
     private void endGame() {
-
+        printSystemMessage.printGameOverMessage();
     }
 
 

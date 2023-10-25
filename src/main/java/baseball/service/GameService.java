@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.Game;
 import baseball.Message.Constant.RequestMessage;
+import baseball.Message.printSystemMessage;
 import baseball.User;
 import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
@@ -11,6 +12,7 @@ public class GameService {
     int size;
     Game game;
     User user = new User();
+    printSystemMessage printSystemMessage = new printSystemMessage();
 
     Parser parser = new Parser();
 
@@ -24,7 +26,7 @@ public class GameService {
         int strike = 0;
         while (strike != 3) {
             play();
-            System.out.println(game.getBallCount() + game.getStrikeCount());
+            printSystemMessage.printScoreMessage(game.getBallCount(), game.getStrikeCount());
             strike = game.getStrikeCount();
         }
     }
