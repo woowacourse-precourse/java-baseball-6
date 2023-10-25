@@ -1,18 +1,22 @@
 package baseball.domain.service;
 
-import baseball.global.constant.CommonNumberType;
 import baseball.global.constant.CommonStringType;
 import baseball.global.constant.OutputType;
 import baseball.global.utils.ConsoleUtil;
+import java.util.List;
 
 public class ClientService {
 
-	private static final String NOT_ALLOWED_INPUT = "0";
-
-	public String getCommonInput() {
+	public List<Integer> getCommonInput() {
 		String input = ConsoleUtil.input();
-		validateCommonInput(input);
-		return input;
+		try {
+			return input.chars()
+					.map(Character::getNumericValue)
+					.boxed()
+					.toList();
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException(OutputType.EXCEPTION.getComment());
+		}
 	}
 
 	public String getRestartInput() {
@@ -27,32 +31,4 @@ public class ClientService {
 			throw new IllegalArgumentException(OutputType.EXCEPTION.getComment());
 		}
 	}
-
-	private void validateCommonInput(String input) {
-		if (isWrongInput(input)) {
-			throw new IllegalArgumentException(OutputType.EXCEPTION.getComment());
-		}
-	}
-
-	private boolean isWrongInput(String input) {
-		return !(isNotDuplication(input) && allowsNumberRange(input) &&
-				shouldInvalidLength(input) && allowsInputType(input));
-	}
-
-	private boolean isNotDuplication(String input) {
-		return input.length() == input.chars().distinct().count();
-	}
-
-	private boolean allowsNumberRange(String input) {
-		return !input.contains(NOT_ALLOWED_INPUT);
-	}
-
-	private boolean shouldInvalidLength(String input) {
-		return input.length() == CommonNumberType.LENGTH_OF_NUMBERS.getValue();
-	}
-
-	private boolean allowsInputType(String input) {
-		return input.chars().allMatch(Character::isDigit);
-	}
-
 }

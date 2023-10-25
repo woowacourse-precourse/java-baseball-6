@@ -7,7 +7,6 @@ import baseball.domain.service.ClientService;
 import baseball.global.constant.CommonStringType;
 import baseball.global.constant.OutputType;
 import baseball.global.utils.ConsoleUtil;
-import baseball.global.utils.generator.InputNumberGenerator;
 import baseball.global.utils.generator.RandomNumberGenerator;
 
 public class BaseballController {
@@ -21,7 +20,7 @@ public class BaseballController {
 	}
 
 	public void run() {
-		ConsoleUtil.commonOutput(OutputType.GAME_INITIALIZE.getComment());
+		ConsoleUtil.commonOutputLine(OutputType.GAME_INITIALIZE.getComment());
 		do {
 			Computer computer = new Computer(new RandomNumberGenerator());
 			startGame(computer);
@@ -32,7 +31,7 @@ public class BaseballController {
 		Client client;
 		do {
 			ConsoleUtil.commonOutput(OutputType.INPUT_NUMBER.getComment());
-			client = new Client(new InputNumberGenerator());
+			client = new Client();
 			baseballService.playRound(computer, client);
 		} while (!client.gameEnd());
 	}

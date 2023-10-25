@@ -5,14 +5,14 @@ import java.util.List;
 
 public class IntendedNumberGenerator implements NumberGenerator {
 
-	private final List<Integer> numbers;
+	private final List<Integer> input;
 
-	public IntendedNumberGenerator(List<Integer> numbers) {
-		this.numbers = numbers;
+	public IntendedNumberGenerator(List<Integer> input) {
+		this.input = input;
 	}
 
 	@Override
 	public List<Integer> generate() {
-		return Collections.unmodifiableList(numbers);
+		return Collections.unmodifiableList(input);
 	}
 }
