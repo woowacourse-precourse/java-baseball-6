@@ -2,8 +2,7 @@ package baseball;
 
 public class ExceptionControl {
     public static void checkUserNumberInput(String userNumber) {
-        int intUserNumber = Integer.parseInt(userNumber);
-        if (intUserNumber < 100 || intUserNumber > 999 ||
+        if (userNumber.length() != 3 ||
                 userNumber.charAt(0) == userNumber.charAt(1) ||
                 userNumber.charAt(1) == userNumber.charAt(2) ||
                 userNumber.charAt(2) == userNumber.charAt(0)) {
