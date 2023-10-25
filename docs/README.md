@@ -4,6 +4,10 @@
      1) printStartMessage : 게임 시작 안내 문구를 출력하는 메소드
      2) printRequestInputMessage : 숫자 입력 요구 메시지를 출력하는 메소드
      3) printIfStrikeOrBallMessage : 스트라이크, 볼, 낫싱 여부를 출력하는 메소드
+        - isStrike : 오직 strike로만 이루어져 있는지를 판단
+        - isBall : 오직 ball로만 이루어져 있는지를 판단
+        - isNothing : strike도 0이고 ball도 0인지를 판단
+        - isTerminated : 스트라이크가 3인지, 즉 게임이 종료되어야 하는지를 판단
      4) printRetryOrEndMessage : 재시작 혹은 종료 여부 안내 문구를 출력하는 메소드
      5) printErrorMessage : 잘못된 입력에 대한 에러 메시지를 출력하는 메소드
 ### InputManager Class
