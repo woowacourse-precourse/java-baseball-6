@@ -18,12 +18,12 @@ public class BaseballGame {
         on = true;
     }
 
-    public void rePlay() {
+    public void reStart() {
         List<Integer> cpuNewInput = new RandomNumber().getRandomNumbers();
         System.out.println("컴퓨터 숫자:" + cpuNewInput);
         System.out.print("숫자를 입력해주세요 : ");
         String userNewInput = readLine();
-        new BaseballGame().play(cpuNewInput, userNewInput);
+        new BaseballGame().start(cpuNewInput, userNewInput);
     }
 
     public void start(List<Integer> target, String input) {
