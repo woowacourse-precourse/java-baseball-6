@@ -33,7 +33,7 @@ public class Application {
                 System.out.println("숫자를 입력해주세요 : ");
                 String userInput = readLine();
 
-                if (userInput.length() >3 || userInput.charAt(0)=='0'){
+                if (userInput.length() >3 || userInput.charAt(0)=="0"){
                     throw new IllegalArgumentException();
                 }
                 int strike = 0, ball = 0;
