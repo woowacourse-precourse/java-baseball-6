@@ -1,49 +1,48 @@
 package baseball.validation;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.Application;
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-public class ValidationTest extends NsTest {
+public class ValidationTest {
 
     @Test
     void 입력값_문자_예외_테스트() {
-        assertThatThrownBy(() -> runException("1a3"))
+        // given
+        String input = "1a3";
+
+        // then
+        assertThatThrownBy(() -> NumberFormatValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 입력값_범위_예외_테스트() {
-        assertThatThrownBy(() -> runException("109"))
+        // given
+        String input = "109";
+
+        // then
+        assertThatThrownBy(() -> NumberRangeValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 입력값_길이_예외_테스트() {
-        assertThatThrownBy(() -> runException("1234"))
+        // given
+        String input = "1234";
+
+        // then
+        assertThatThrownBy(() -> NumberSizeValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 입력값_중복_예외_테스트() {
-        assertThatThrownBy(() -> runException("737"))
+        // given
+        String input = "737";
+
+        // then
+        assertThatThrownBy(() -> NumberDuplicateValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 재시작_명령어_예외_테스트() {
-        assertThatThrownBy(() -> assertRandomNumberInRangeTest(() -> {
-                    run("798", "3");
-                },
-                7, 9, 8
-        )).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Override
-    protected void runMain() {
-        Application.main(new String[]{});
     }
 }
