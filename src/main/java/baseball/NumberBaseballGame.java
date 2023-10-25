@@ -35,6 +35,8 @@ public class NumberBaseballGame {
                     }
                 } catch (IllegalArgumentException e) {
                     System.out.println("에러 메시지: " + e.getMessage());
+                    // 애플리케이션 종료
+                    throw new IllegalArgumentException("애플리케이션을 종료합니다.");
                 }
             }
             // 게임 재시작 또는 종료 확인
@@ -44,10 +46,5 @@ public class NumberBaseballGame {
                 gameWon = false; // 게임 재시작
             }
         } while (true);
-    }
-
-    public static void main(String[] args) {
-        NumberBaseballGame game = new NumberBaseballGame();
-        game.startGame();
     }
 }
