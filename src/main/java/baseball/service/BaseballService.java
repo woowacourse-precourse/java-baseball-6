@@ -4,7 +4,7 @@ import baseball.domain.BallAndStrike;
 import baseball.domain.BaseBallNumber;
 
 public class BaseballService {
-    // TODO: 야구게임 로직 실행
+    // 야구게임 로직 실행
     private BaseBallNumber ansBaseBallNumber;
 
     public BaseballService(BaseBallNumber ansBaseBallNumber) {
