@@ -30,5 +30,10 @@ public class Check {
         checkingNumber(input);
     }
 
-
+    public void checkingRetryOrEnd(String input){
+        if(input.equals("1") || input.equals("2")){
+            return;
+        }
+        throw new IllegalArgumentException("숫자 1(재시작) 또는 숫자 2(종료)를 입력해주세요.");
+    }
 }
