@@ -25,5 +25,52 @@ public class Computer {
             answer.add(randomNumber);
         }
     }
-    
+
+    public BallCounter checkAnswer(List<Integer> inputBalls) {
+
+        int strikeCount = countStrikes(inputBalls);
+        int ballCount = countBalls(inputBalls);
+
+        return new BallCounter(strikeCount, ballCount);
+    }
+
+    private int countStrikes(List<Integer> inputBalls) {
+        int strikeCount = 0;
+
+        for (int i = 0; i < inputBalls.size(); i++) {
+            if (answer.get(i) == inputBalls.get(i)) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
+    private int countBalls(List<Integer> inputBalls) {
+        int ballCount = 0;
+
+        for (int i = 0; i < answer.size(); i++) {
+            ballCount += countBall(i, inputBalls);
+        }
+
+        return ballCount;
+    }
+
+    private int countBall(int answerIndex, List<Integer> inputBalls) {
+        int ballCount = 0;
+
+        for (int i = 0; i < inputBalls.size(); i++) {
+            ballCount += checkBallCount(answerIndex, i, inputBalls);
+        }
+
+        return ballCount;
+    }
+
+    private int checkBallCount(int answerIndex, int inputBallIndex, List<Integer> inputBalls) {
+        if (answerIndex != inputBallIndex && answer.get(answerIndex) == inputBalls.get(inputBallIndex)) {
+            return 1;
+        }
+
+        return 0;
+    }
 }
