@@ -13,17 +13,18 @@ public class Baseball {
     public void startGame() {
         while(true) {
             startRound();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String restartOrQuit = readLine();
-            boolean isQuit = checkQuit(restartOrQuit);
+            boolean selection = selectQuit();
 
-            if(isQuit) {
+            if(selection) {
                 break;
             }
         }
     }
 
-    private static boolean checkQuit(String restartOrQuit) {
+    private static boolean selectQuit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartOrQuit = readLine();
+
         if(restartOrQuit.equals("2")) {
             return true;
         }
@@ -37,6 +38,7 @@ public class Baseball {
 
     private void startRound() {
         List<Integer> computerNumber = RandomUtil.generateRandomNumber(3);
+        computerNumber.forEach(v-> System.out.println(v));
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true) {
