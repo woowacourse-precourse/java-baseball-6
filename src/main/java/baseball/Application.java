@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -42,7 +39,7 @@ public class Application {
 
             boolean result = Arrays.equals(computer.toArray(), splitNum.toArray());
 
-            if (result == true){
+            if (result){
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -63,13 +60,13 @@ public class Application {
                 int strike = 0;
                 int ball = 0;
                 for (int i = 0; i < computer.size(); i++) {
-                    if (computer.get(i) == splitNum.get(i)) {
+                    if (Objects.equals(computer.get(i), splitNum.get(i))) {
                         strike += 1;
                     }
                 }
-                for (int j = 0; j < computer.size(); j++) {
-                    for (int k = 0; k < splitNum.size(); k++) {
-                        if (computer.get(j) == splitNum.get(k)) {
+                for (Integer integer : computer) {
+                    for (Integer value : splitNum) {
+                        if (Objects.equals(integer, value)) {
                             ball += 1;
                         }
                     }
@@ -78,9 +75,9 @@ public class Application {
                     System.out.println("낫싱");
                 } else if (strike != 0 && (ball - strike) == 0){
                     System.out.println(strike + "스트라이크 ");
-                } else if (strike == 0 && (ball - strike) != 0){
+                } else if (strike == 0){
                     System.out.println((ball - strike) + "볼");
-                } else if (strike != 0 && (ball - strike) != 0) {
+                } else {
                     System.out.println(strike + "스트라이크 " + (ball - strike) + "볼");
                 }
 
@@ -118,8 +115,6 @@ public class Application {
                                 }
                                 if (choice == 1) {
                                     Application.game();
-                                } else {
-
                                 }
                             } catch (NumberFormatException ex4) {
                                 ex4.printStackTrace();
@@ -129,14 +124,14 @@ public class Application {
                             strike = 0;
                             ball = 0;
                             for (int l = 0; l < computer.size(); l++) {
-                                if (computer.get(l) == splitNum2.get(l)) {
+                                if (Objects.equals(computer.get(l), splitNum2.get(l))) {
                                     strike += 1;
                                 }
                             }
 
-                            for (int m = 0; m < computer.size(); m++) {
-                                for (int n = 0; n < splitNum2.size(); n++) {
-                                    if (computer.get(m) == splitNum2.get(n)) {
+                            for (Integer integer : computer) {
+                                for (Integer value : splitNum2) {
+                                    if (Objects.equals(integer, value)) {
                                         ball += 1;
                                     }
                                 }
@@ -146,9 +141,9 @@ public class Application {
                                 System.out.println("낫싱");
                             } else if (strike != 0 && (ball - strike) == 0){
                                 System.out.println(strike + "스트라이크 ");
-                            } else if (strike == 0 && (ball - strike) != 0){
+                            } else if (strike == 0){
                                 System.out.println((ball - strike) + "볼");
-                            }  else if (strike != 0 && (ball - strike) != 0) {
+                            }  else {
                                 System.out.println(strike + "스트라이크 " + (ball - strike) + "볼");
                             }
                         }
