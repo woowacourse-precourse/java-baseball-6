@@ -3,38 +3,38 @@ package baseball.model;
 import java.util.List;
 
 public class Score {
-	private int ball;
-	private int strike;
+    private int balls;
+    private int strikes;
 
-	public Score() {
-		this.ball = 0;
-		this.strike = 0;
-	}
+    public Score() {
+        this.balls = 0;
+        this.strikes = 0;
+    }
 
-	public void resetScore() {
-		this.ball = 0;
-		this.strike = 0;
-	}
+    public void resetScore() {
+        this.balls = 0;
+        this.strikes = 0;
+    }
 
-	public void countScore(List<Integer> userNumber, List<Integer> computerNumber) {
-		for (int i = 0; i < 3; i++) {
+    public void countScore(List<Integer> userNumber, List<Integer> computerNumber) {
+        for (int i = 0; i < 3; i++) {
 
-			if (userNumber.get(i).equals(computerNumber.get(i))) {
-				this.strike++;
-				continue;
-			}
+            if (userNumber.get(i).equals(computerNumber.get(i))) {
+                this.strikes++;
+                continue;
+            }
 
-			if (computerNumber.contains(userNumber.get(i))) {
-				this.ball++;
-			}
-		}
-	}
+            if (computerNumber.contains(userNumber.get(i))) {
+                this.balls++;
+            }
+        }
+    }
 
-	public int getBall() {
-		return ball;
-	}
+    public int getBall() {
+        return balls;
+    }
 
-	public int getStrike() {
-		return strike;
-	}
+    public int getStrike() {
+        return strikes;
+    }
 }
