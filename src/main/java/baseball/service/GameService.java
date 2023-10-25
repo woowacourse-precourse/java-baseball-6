@@ -33,7 +33,7 @@ public class GameService {
             }
         }
         if (gameResult[GameHint.STRIKE.getResultIndex()] + gameResult[GameHint.BALL.getResultIndex()] == 0) {
-            gameResult[GameHint.BALL.getResultIndex()] = ++nothingCount;
+            gameResult[GameHint.NOTHING.getResultIndex()] = ++nothingCount;
         }
 
         return gameResult;
