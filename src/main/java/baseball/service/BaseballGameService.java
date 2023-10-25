@@ -1,6 +1,9 @@
 package baseball.service;
 
+import static baseball.utils.BaseballGameUserInputUtils.EXIT_GAME_INPUT_COMMAND;
+import static baseball.utils.BaseballGameUserInputUtils.RESTART_GAME_INPUT_COMMAND;
 import static baseball.utils.BaseballGameUserInputUtils.isInputContainsUniqueValue;
+import static baseball.utils.BaseballGameUserInputUtils.isValidExitOrRestartCommand;
 import static baseball.utils.BaseballGameUserInputUtils.isValidInputLength;
 import static baseball.utils.BaseballGameUserInputUtils.isValidInputValue;
 import static baseball.vo.BaseballGameResultStatus.ANSWER;
@@ -24,24 +27,26 @@ public class BaseballGameService {
 
     public void playBaseballGame() {
         BaseballGameResultStatus resultStatus = null;
+        String exitOrRestart = null;
 
         // 1. 게임 시작 => 게임 시작 시 사용자에게 문구 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
-
-        // 2. 게임을 위한 값 세팅 => 상대방 역할을 수행할 컴퓨터의 랜덤한 서로 다른 3가지 수 생성
-        List<Integer> computerAnswers = createComputerValue();
-
         do {
-            // 3. 입력 => 사용자로부터 서로 다른 3자리 수 입력받음
-            String input = readUserAnswerInput();
+            // 2. 게임을 위한 값 세팅 => 상대방 역할을 수행할 컴퓨터의 랜덤한 서로 다른 3가지 수 생성
+            List<Integer> computerAnswers = createComputerValue();
+            do {
+                // 3. 입력 => 사용자로부터 서로 다른 3자리 수 입력받음
+                String input = readUserAnswerInput();
 
-            // 4. 입력 결과 분석 => 사용자의 입력 값과 컴퓨터의 값을 비교하여 스트라이크, 볼, 낫싱 판단
-            BaseballGameResultDTO gameResultDTO = calResult(input.toCharArray(), computerAnswers);
+                // 4. 입력 결과 분석 => 사용자의 입력 값과 컴퓨터의 값을 비교하여 스트라이크, 볼, 낫싱 판단
+                BaseballGameResultDTO gameResultDTO = calResult(input.toCharArray(), computerAnswers);
 
-            // 5. 입력에 대한 힌트 출력 => 볼과 스트라이크 개수 혹은 낫싱을 출력
-            resultStatus = printUserInputResult(gameResultDTO);
-        } while (!resultStatus.equals(ANSWER)); // 6. 입력 과정 반복 => 사용자가 정답을 맞출 때 까지 3-5번 과정 반복
+                // 5. 입력에 대한 힌트 출력 => 볼과 스트라이크 개수 혹은 낫싱을 출력
+                resultStatus = printUserInputResult(gameResultDTO);
+            } while (!resultStatus.equals(ANSWER)); // 6. 입력 과정 반복 => 사용자가 정답을 맞출 때 까지 3-5번 과정 반복
 
+            exitOrRestart = exitOrRestartBaseballGame();
+        } while (!exitOrRestart.equals(EXIT_GAME_INPUT_COMMAND));
     }
 
     private List<Integer> createComputerValue() {
@@ -134,5 +139,25 @@ public class BaseballGameService {
         }
 
         return resultStatus;
+    }
+
+    private String exitOrRestartBaseballGame() {
+        System.out.println("게임을 새로 시작하려면 " + RESTART_GAME_INPUT_COMMAND + ", 종료하려면 " + EXIT_GAME_INPUT_COMMAND + "를 입력하세요.");
+        String exitOrRestartInput = readUserExitOrRestartInput();
+
+        if (exitOrRestartInput.equals(RESTART_GAME_INPUT_COMMAND)) {
+            return RESTART_GAME_INPUT_COMMAND;
+        } else {
+            return EXIT_GAME_INPUT_COMMAND;
+        }
+    }
+
+    private String readUserExitOrRestartInput() {
+        String input = Console.readLine();
+        if (!isValidExitOrRestartCommand(input)) {
+            throw new IllegalArgumentException(
+                    RESTART_GAME_INPUT_COMMAND + "또는 " + EXIT_GAME_INPUT_COMMAND + "를 입력해 주세요.");
+        }
+        return input;
     }
 }
