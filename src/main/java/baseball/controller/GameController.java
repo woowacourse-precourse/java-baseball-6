@@ -82,6 +82,7 @@ public class GameController {
     }
 
     private GameStatus requestRestartChoice() {
+        inputView.printRestartChoiceMessage();
         String choice = inputController.requestRestartChoice();
         return GameStatus.fromValue(Integer.parseInt(choice));
     }
