@@ -1,6 +1,6 @@
-package baseball.exceptionHandler;
+package baseball.handleException;
 
-public class ExecptionHandler {
+public class HandleException {
     public static void exceptionHandlingForUserNumber(String userInput) {
         //정규표현식
         String regularExpForUserNumber = "^(?!.*(.).*\\1)[1-9]{3}$";
