@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameNumber{
+    private static final int GAME_NUMBER_LENGTH = 3;
     private final List<Integer> numbers;
 
     public GameNumber(){
@@ -11,7 +12,7 @@ public class GameNumber{
     }
 
     public void add(int num){
-        if(validate(num)){
+        if(validate(num) && size() < GAME_NUMBER_LENGTH){
             numbers.add(num);
             return;
         }
