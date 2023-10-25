@@ -113,6 +113,7 @@ public class Application {
                     computer = createComputerNumber();
                     continue;
                 }
+                Console.close();
                 break;
             }
         }
