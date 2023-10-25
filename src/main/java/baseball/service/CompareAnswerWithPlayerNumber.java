@@ -8,6 +8,7 @@ public class CompareAnswerWithPlayerNumber {
 
 
     public void compareStrikeBall(List<Integer> player, List<Integer> computer) {
+        clearStrikeBall();
         compareStrike(player, computer);
         compareBall(player, computer);
     }
@@ -26,6 +27,11 @@ public class CompareAnswerWithPlayerNumber {
                 ball++;
             }
         }
+    }
+
+    public void clearStrikeBall() {
+        strike = 0;
+        ball = 0;
     }
 
     public int getStrike() {
