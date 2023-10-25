@@ -26,4 +26,10 @@ public class BaseballException {
         }
     }
 
+    public void isValidRestart(String restart){
+        if (!"1".equals(restart) && !"2".equals(restart)){
+            throw new IllegalArgumentException();
+        }
+    }
+
 }

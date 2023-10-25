@@ -34,14 +34,10 @@ public class BaseballController {
         // 3스트라이크인 경우, 게임 종료
         if (strike==3) {
             baseballView.printGameOver();
-
-            // 재시작 또는 종료 입력받기
             String restart = baseballView.inputRestart();
 
             // 플레이어가 입력한 수가 1 또는 2가 아닌 경우
-            if (!"1".equals(restart) && !"2".equals(restart)){
-                throw new IllegalArgumentException();
-            }
+            baseballException.isValidRestart(restart);
 
             if ("1".equals(restart)) {
                 startBaseball();
