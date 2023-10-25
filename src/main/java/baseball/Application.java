@@ -30,14 +30,25 @@ public class Application {
         arrRandomNum[0] = stringRandomNum1;
         arrRandomNum[1] = stringRandomNum2;
         arrRandomNum[2] = stringRandomNum3;
+        System.out.println("ramdom: " + arrRandomNum[0]+arrRandomNum[1]+arrRandomNum[2]);
         return arrRandomNum;
     }
 
     public static String[] getNumber(){
-        String givenNum;
+        String givenNum = null;
         System.out.println("숫자를 입력해주세요 : ");
         givenNum = Console.readLine();
-        //if(givenNum)
+
+        int intGivenNum = 0;
+        try {
+            intGivenNum = Integer.valueOf(givenNum);
+        } catch(Exception e){
+            stopProcessing();
+        }
+        if(intGivenNum <= 0){
+            stopProcessing();
+        }
+
         String[] arrGivenNum = new String[givenNum.length()];
         for(int i = 0; i < givenNum.length(); i++){
             arrGivenNum[i] = String.valueOf(givenNum.charAt(i));
@@ -118,10 +129,18 @@ public class Application {
         if(num == 1){
             Application.start();
         }
-        if(num == 2){
+        else if(num == 2){
             return;
         }
+        else{
+            throw new IllegalArgumentException();
+        }
 
+    }
+
+    public static void stopProcessing(){
+        System.out.println("잘못된 값 입력으로 인한 게임 종료");
+        throw new IllegalArgumentException();
     }
 
 }
