@@ -6,14 +6,17 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 public class Player {
     private List<Integer> numbers;
+
     public void inputNumbers() {
         InputView.printInputPlayerNumbers();
         String inputNumbers = Console.readLine();
         validateInputNumbers(inputNumbers);
         this.numbers = convertStringToList(inputNumbers);
     }
+
     private void validateInputNumbers(String inputNumbers) {
         if (inputNumbers.length() != 3) {
             throw new IllegalArgumentException("입력 값은 반드시 3자리여야 합니다.");
@@ -28,6 +31,7 @@ public class Player {
             throw new IllegalArgumentException("입력 값은 중복되지 않은 숫자여야 합니다.");
         }
     }
+
     private List<Integer> convertStringToList(String inputNumber) {
         return Arrays.stream(inputNumber.split(""))
                 .mapToInt(Integer::parseInt)

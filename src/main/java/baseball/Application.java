@@ -34,7 +34,7 @@ public class Application {
             OutputView.printGameDoneMessage();
             InputView.printRetryMessage();
             gameStatus.inputStatusCode();
-            statusCode = gameStatus.getGameState();;
+            statusCode = gameStatus.getGameState();
         }
     }
 }

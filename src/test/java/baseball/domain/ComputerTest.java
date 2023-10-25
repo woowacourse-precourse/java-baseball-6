@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest {
     @Test
-    void 컴퓨터_난수_생성(){
+    void 컴퓨터_난수_생성() {
         Computer computer = new Computer();
         assertThat(computer.generateRandomNumbers().size()).isEqualTo(3);
     }
