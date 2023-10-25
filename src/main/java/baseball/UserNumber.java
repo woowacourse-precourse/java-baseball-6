@@ -11,19 +11,19 @@ public class UserNumber {
         this.userNumber = userNumber;
     }
 
-    public void validateSpaceBar(String userNumber) {
+    private void validateSpaceBar(String userNumber) {
         if (userNumber.contains(" ")) {
             userNumber.replace(" ", "");
         }
     }
 
-    public void validateLength(String userNumber) {
+    private void validateLength(String userNumber) {
         if (userNumber.length() != 3) {
             throw new IllegalArgumentException("세개의 숫자를 입력해주세요.");
         }
     }
 
-    public void validateString(String userNumber) {
+    private void validateString(String userNumber) {
         if (!Character.isDigit(userNumber.charAt(0)) ||
                 !Character.isDigit(userNumber.charAt(1)) ||
                 !Character.isDigit(userNumber.charAt(2))) {
