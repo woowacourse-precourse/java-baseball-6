@@ -30,7 +30,6 @@ public class Application {
         arrRandomNum[0] = stringRandomNum1;
         arrRandomNum[1] = stringRandomNum2;
         arrRandomNum[2] = stringRandomNum3;
-        System.out.println("ramdom: " + arrRandomNum[0]+arrRandomNum[1]+arrRandomNum[2]);
         return arrRandomNum;
     }
 
