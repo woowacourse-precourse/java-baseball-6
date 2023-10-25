@@ -3,6 +3,7 @@ package baseball;
 import static baseball.domain.Score.THREE_STRIKE;
 
 import baseball.controller.BaseBallGameController;
+import baseball.controller.FrontController;
 import baseball.domain.RandomNumberGenerator;
 import baseball.domain.Score;
 import baseball.service.BaseBallGameService;
@@ -23,15 +24,15 @@ public class Application {
                 new RandomNumberGenerator(new DefaultRandomService()));
         InputView inputView = new InputView(new DefaultConsoleService(), new InputValidator());
         OutputView outputView = new OutputView();
+        FrontController frontController = new FrontController(inputView, outputView,
+                new BaseBallGameController(baseBallGameService));
         Score gameResult;
 
         outputView.printGameStart();
 
         do {
-            List<Integer> answerNumbers = baseBallGameService.createAnswerNumbers();
-
-            BaseBallGameController controller = new BaseBallGameController(inputView, baseBallGameService, outputView);
-            gameResult = controller.competeWith(answerNumbers);
+            List<Integer> answerNumbers = frontController.createAnswerNumber();
+            gameResult = frontController.gameStart(answerNumbers);
 
             outputView.printGameFinish();
         } while (playingGame(gameResult, inputView));

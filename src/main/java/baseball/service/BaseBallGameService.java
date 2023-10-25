@@ -14,7 +14,7 @@ public class BaseBallGameService {
         this.randomNumberGenerator = randomNumberGenerator;
     }
 
-    public List<Integer> createAnswerNumbers() {
+    public List<Integer> createRandomNumbers() {
         return randomNumberGenerator.createRandomNumbers();
     }
 

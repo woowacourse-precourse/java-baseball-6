@@ -40,3 +40,6 @@
     * [x] : 게임 시작 멘트를 출력한다.
     * [x] : 게임 종료 멘트를 출력한다.
     * [x] : 게임 결과를 출력한다.
+
+* `FrontController`
+    * [x] : FrontController에서만 BaseBallController를 호출하도록 만들어 BaseBallController의 View 의존성 제거
