@@ -3,8 +3,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class BaseBall {
 
@@ -58,6 +61,7 @@ public class BaseBall {
     public void evaluate(String inputString) throws IllegalArgumentException {
         this.validateInputString(inputString);
         List<Integer> input = NumericModule.stringToIntegerList(inputString);
+        this.validateInputNumber(input);
         this.compareAnswerToInput(this.answer, input);
         this.printScore();
         if (this.strike == this.ANSWER_LENGTH) {
@@ -97,6 +101,13 @@ public class BaseBall {
             throw new IllegalArgumentException();
         }
         if (!NumericModule.isNumeric(inputString)) {
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    private void validateInputNumber(List<Integer> input) throws IllegalArgumentException {
+        if (new HashSet<Integer>(input).size() != this.ANSWER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
