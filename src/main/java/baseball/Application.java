@@ -67,8 +67,8 @@ public class Application {
         // 2. 컴퓨터 랜덤 구현
         // 3. 정답 구현
         //에러판단 변수 정의
-        boolean isnoterror=true;
-        while (isnoterror){
+        boolean start=true;
+        while (start){
             List<Integer> computer=new ArrayList<>();
             while (computer.size()<3){
                 int randomNumber= Randoms.pickNumberInRange(1,9);
@@ -90,7 +90,8 @@ public class Application {
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
                     input=Console.readLine();
                     try {
-                        if(Integer.parseInt(input)!=1) throw new IllegalArgumentException();
+                        if(Integer.parseInt(input)!=1 ||Integer.parseInt(input)!=2) throw new IllegalArgumentException();
+                        if(Integer.parseInt(input)!=2) start=false;
                     }catch (Exception e){
                         throw new IllegalArgumentException();
                     }
