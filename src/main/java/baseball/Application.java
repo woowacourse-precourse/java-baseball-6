@@ -12,6 +12,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int a = 1;
+        Scanner scan = new Scanner(System.in);
         while (a == 1) {
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
@@ -22,9 +23,8 @@ public class Application {
             }
             System.out.println("숫자 야구 게임을 시작합니다.");
             while (true) {
-                Scanner input = new Scanner(System.in);
-                int number = input.nextInt();
-
+                System.out.print("숫자를 입력해주세요 : ");
+                int number = scan.nextInt();
                 if((int) (Math.log10(number) + 1) != 3){
                     throw new IllegalArgumentException();
                 }
@@ -47,7 +47,7 @@ public class Application {
                     }
                 }
                 if (ballCount > 0) {
-                    System.out.println(ballCount + "볼");
+                    System.out.print(ballCount + "볼 ");
                 }
                 if (strikeCount > 0) {
                     System.out.println(strikeCount + "스트라이크");
@@ -61,13 +61,11 @@ public class Application {
                 }
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            Scanner input = new Scanner(System.in);
-            a = input.nextInt();
+            a = scan.nextInt();
             if (a != 1 && a != 2) {
                 throw new IllegalArgumentException();
             }
         }
-
-
+        scan.close();
     }
 }
