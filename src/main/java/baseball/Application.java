@@ -36,7 +36,8 @@ public class Application {
                 while ( onGame ) {
 
                     System.out.print( ASK_INPUT );
-                    int userInput = Integer.parseInt( Console.readLine() );
+                    String input = Console.readLine();
+                    int userInput = Integer.parseInt( input );
 
 
                     if ( isValidInput( userInput ) ){ // 겹치지 않는 3자리 숫자인지 확인
