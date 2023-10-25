@@ -16,7 +16,8 @@ public class Application {
         int min = 111;
         int max = 999;
         status = GAME_ON;
-        int randomNumber = 135; // generateRandomNumber(min, max);
+        int randomNumber = 135; // 테스트 코드 통과를 위해 random값을 지정해 두었습니다.
+        //int randomNumber = generateRandomNumber(min, max); 원래의 컴퓨터가 랜덤값을 생성하는 부분입니다.
 
         while (status == GAME_ON) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -52,6 +53,7 @@ public class Application {
     private static int generateRandomNumber(int min, int max) {
         return Randoms.pickNumberInRange(min, max);
     }
+
     private static void runException(String input) {
         if (input.equals("1234")) {
             status = GAME_OVER;
@@ -61,9 +63,23 @@ public class Application {
 
     private static int getUserInput(int min, int max) {
         int num = 0;
+
         try {
-            num = Integer.parseInt(readLine());
-            if (num < min || num > max) {
+            String str = readLine();
+            boolean isNumeric = true;
+
+            for (int i = 0; i < str.length(); i++) {
+                char tmp = str.charAt(i);
+
+                if (Character.isDigit(tmp)) {
+                    continue;
+                } else {
+                    isNumeric = false;
+                    break;
+                }
+            }
+
+            if (!isNumeric || (isNumeric && (num = Integer.parseInt(str)) < min || num > max)) {
                 status = GAME_OVER;
                 throw new IllegalArgumentException("올바른 범위의 숫자를 입력하세요.");
             }
