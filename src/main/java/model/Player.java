@@ -12,4 +12,12 @@ public class Player {
             playerBall.add(uniqueNumber);
         }
     }
+
+    public void initPlayerBall() {
+        playerBall.clear();
+    }
+
+    public Set<Integer> getPlayerNumber() {
+        return playerBall;
+    }
 }
