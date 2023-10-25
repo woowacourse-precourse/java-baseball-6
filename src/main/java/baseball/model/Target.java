@@ -2,29 +2,27 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Target {
-    private final List<Integer> numbers = new ArrayList<>();
-    private final int[] targetNum = new int[3];
+    public static final int BALL_SIZE = 3;
+    private static final  int OVER_VALUE = 1;
+    private static final int UNDER_VALUE = 9;
+    private final int[] targetNum = new int[BALL_SIZE];
 
     public Target() {
-        for (int i = 1; i < 10; i++) {
-            numbers.add(i);
-        }
-        makeTargetNum();
-    }
+        Set<Integer> targetSet = new LinkedHashSet<>();
 
-    public void makeTargetNum() {
-        for (int i = 0; i < 3; i++) {
-            targetNum[i] = getRandomNum();
-            numbers.remove(Integer.valueOf(targetNum[i]));
+        while (targetSet.size() != BALL_SIZE) {
+            targetSet.add(Randoms.pickNumberInRange(OVER_VALUE, UNDER_VALUE));
         }
-    }
 
-    public int getRandomNum() {
-        return Randoms.pickNumberInList(numbers);
+        int idx = 0;
+        for (int targetSetValue : targetSet) {
+            targetNum[idx] = targetSetValue;
+            idx++;
+        }
     }
 
     public int[] getTargetNum() {

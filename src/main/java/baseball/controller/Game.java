@@ -2,23 +2,29 @@ package baseball.controller;
 
 import baseball.view.Input;
 import baseball.model.Target;
+import baseball.view.Output;
 
 public class Game {
-    Target target;
-    String userString = "";
 
     public void run() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        Hint.isAnswer = false;
 
-        target = new Target();
+        Output.startMessage();
+
+        Target target = new Target();
         int[] targetNum = target.getTargetNum();
 
         while (!Hint.isAnswer) {
-            userString = Input.inputUserNum();
+            String userString = Input.inputUserNum();
             int[] userNum = Input.getIntegerArrayFromString(userString);
 
             Hint.doBaseball(userNum, targetNum);
         }
-        Input.scannerClose();
+
+        Output.finishMessage();
+    }
+
+    public boolean isExit() {
+        return Exit.isReplay();
     }
 }

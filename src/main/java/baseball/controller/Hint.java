@@ -26,7 +26,7 @@ public class Hint {
             isAnswer = true;
         }
 
-        Output.message(ballCnt, strikeCnt);
+        Output.resultMessage(ballCnt, strikeCnt);
     }
 
     private static int getTargetIdxIfContain(int userValue, int[] targetNum) {
