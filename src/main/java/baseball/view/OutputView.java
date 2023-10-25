@@ -17,7 +17,6 @@ public class OutputView {
     public static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static final String END_OR_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static final String END = "게임종료";
 
     public static final String NEW_LINE = "\n";
 
@@ -50,9 +49,6 @@ public class OutputView {
         System.out.println(END_OR_RESTART);
     }
 
-    public static void printEnd() {
-        System.out.println(END);
-    }
 
     private static StringBuilder messageBuilder(int number, String ballType) {
         StringBuilder sb = new StringBuilder();
