@@ -14,11 +14,11 @@ public class UserNumber {
 		return userNumber;
 	}
 
-	public void newUserNumber(String input){
+	public void newUserNumber(String input) {
 		this.userNumber = stringToIntegerList(input);
 	}
 
-	private List<Integer> stringToIntegerList(String input){
+	private List<Integer> stringToIntegerList(String input) {
 		return input.chars()
 			.map(Character::getNumericValue)
 			.boxed()
