@@ -24,7 +24,7 @@ class BoardTest {
     @CsvSource(value = {"0,false", "1,true", "2,false"})
     void 정답_검증(int matchScore, boolean expected) {
         // given
-        board.scoring(STRIKE);
+        board.addScore(STRIKE);
 
         // when
         boolean result = board.isMatch(matchScore);
@@ -36,9 +36,9 @@ class BoardTest {
     @Test
     void 스코어_리셋_검증() {
         // given
-        board.scoring(BALL);
-        board.scoring(STRIKE);
-        board.scoring(NOTHING);
+        board.addScore(BALL);
+        board.addScore(STRIKE);
+        board.addScore(NOTHING);
 
         // when
         board.reset();

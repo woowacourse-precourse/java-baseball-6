@@ -17,7 +17,7 @@ public class Board {
         Arrays.fill(score, INIT_SCORE);
     }
 
-    public void scoring(BallStatus ball) {
+    public void addScore(BallStatus ball) {
         score[ball.getValue()]++;
     }
 
