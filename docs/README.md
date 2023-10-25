@@ -2,16 +2,23 @@
 
 ### ✅ 기능 목록
 
-#### 게임결과를 판단하는 역할 (Judgement)
+#### 게임결과를 얻어오는 역할 (Referee)
 
-- [x] 힌트 얻기
-    - [x] 같은 수가 같은 자리에 있는 스트라이크의 개수 세기
-    - [x] 같은 수가 다른 자리에 있는 볼의 개수 세기
-    - [x] 같은 수가 전혀 없으면 낫싱
+- [x] GameResult를 반환한다. `public`
 
 ##
 
-#### 1 ~ 9까지 유니크한 3자리의 야구공을 관리하는 자료구조 (BaseballCollection)
+#### 힌트를 계산하여 담고있는 역할 (GameResult)
+
+- [x] 힌트 getter `public`
+- [x] 힌트를 계산한다 `private`
+- [x] 낫싱 힌트 문자열 생성 `private`
+- [x] 스트라이크 힌트 문자열 생성 `private`
+- [x] 볼 힌트 문자열 생성 `private`
+
+##
+
+#### 1 ~ 9까지 유니크한 3자리의 야구공을 관리하는 자료구조 역할(BaseballCollection)
 
 - [x] 컴퓨터 야구공을 생성 `public`
 - [x] 사용자 야구공을 생성 `public`
@@ -19,6 +26,7 @@
 - [x] 볼 개수 구하기 `public`
 - [x] 3자리 유니크한 숫자 String을 생성 `private`
 - [x] 유효한 List<.Integer> 야구공을 생성 `private`
+- [x] String 유니크 유효성 검증 `private`
 - [x] String 3자리 유효성 검증 `private`
 - [x] String 1 ~ 9 범위 유효성 검증 `private`
 - [x] String 숫자가 아닌 문자 포함 여부 유효성 검증 `private`
