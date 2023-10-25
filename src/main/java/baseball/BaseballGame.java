@@ -9,6 +9,7 @@ public class BaseballGame {
 
     private boolean on = true;
     private int strike = 0;
+    private int ball = 0;
 
     private void toFalse() {
         on = false;
@@ -22,7 +23,18 @@ public class BaseballGame {
         this.strike = 0;
     }
 
+    private void resetBall() {
+        this.ball = 0;
+    }
+
+    private void upBall() {
+        this.ball++;
+    }
+
     public void reStart() {
+        resetStrike();
+        resetBall();
+        toFalse();
         List<Integer> cpuNewInput = new RandomNumber().getRandomNumbers();
         System.out.println("컴퓨터 숫자:" + cpuNewInput);
         System.out.print("숫자를 입력해주세요 : ");
@@ -36,25 +48,10 @@ public class BaseballGame {
         } while (on);
     }
 
-    public void ending() {
-        System.out.println(
-                strike + "스트라이크\n"
-                        + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
-                        + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        String userDecide = readLine();
-        if (userDecide.equals("1")) {
-            strike = 0;
-            reStart();
-        } else if (userDecide.equals("2")) {
-            toFalse();
-        }
-    }
 
     public void play(List<Integer> target, String input) {
         List<Integer> reTarget = new ArrayList<>(target);
 
-        int ball = 0;
         String message = "";
 
         List<Integer> userNum = new ArrayList<>();
@@ -74,15 +71,8 @@ public class BaseballGame {
             ending();
             return;
         }
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (target.get(i).equals(userNum.get(j))) {
-                    if (i != j) {
-                        ball++;
-                    }
-                }
-            }
-        }
+        countBall(target, userNum);
+        System.out.println("ball:" + ball);
         if (strike == 0 && ball == 0) {
             message = "낫싱";
         } else {
@@ -94,11 +84,34 @@ public class BaseballGame {
                 message = ball + "볼 " + strike + "스트라이크";
             }
         }
-        strike = 0;
+        resetStrike();
         System.out.println(message);
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
         play(reTarget, userInput);
+    }
+
+    public void ending() {
+        System.out.println(
+                strike + "스트라이크\n"
+                        + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+                        + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String userDecide = readLine();
+        if (userDecide.equals("1")) {
+            reStart();
+        } else if (userDecide.equals("2")) {
+            toFalse();
+        }
+    }
+
+    public void countBall(List<Integer> target, List<Integer> userNum) {
+        for (int i = 0; i < 3; i++) {
+            if (userNum.contains(target.get(i)) && !userNum.get(i).equals(target.get(i))) {
+                upBall();
+            }
+        }
+        System.out.println("countBall 함수의 ball:" + ball);
     }
 
 }
