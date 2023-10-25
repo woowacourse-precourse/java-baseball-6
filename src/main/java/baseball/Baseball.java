@@ -38,7 +38,7 @@ public class Baseball {
         } while (commandNumber == 1);
     }
 
-    public ArrayList<Integer> initRandomNumberList() {
+    public void initRandomNumberList() {
 
         answerNumberList = new ArrayList<>();
         answerNumberList.add(Randoms.pickNumberInRange(1, 9));
@@ -55,20 +55,19 @@ public class Baseball {
             }
         }
 
-        return answerNumberList;
     }
 
     public boolean checkGameScore() {
         int nowNumber;
-        int comparisionTarget;
+        int comparisonTarget;
         int ballCount = 0;
         int strikeCount = 0;
 
         for (int i = 0; i < 3; i++) {
             nowNumber = answerNumberList.get(i);
             for (int j = 0; j < 3; j++) {
-                comparisionTarget = myInputNumber.get(j);
-                if (nowNumber == comparisionTarget) {
+                comparisonTarget = myInputNumber.get(j);
+                if (nowNumber == comparisonTarget) {
                     if (i == j) {
                         strikeCount++;
                         continue;
