@@ -30,7 +30,7 @@
     - [x] 어떠한 `Ball`에 대해 같은 `Ball`을 포함하는지 확인
     - [x] 다른 `Balls`에 대한 차이를 담는 `BallsDifferenceDto`를 반환
 
-## 📒 BallsUtils
+## 📕 RandomBallsGenerator
 
 - [x] Balls 관련 utility class
     - [x] `List<Integer>`를 `List<Ball>`로 변환
@@ -40,7 +40,7 @@
     - [x] `List<Integer>`를 `Balls`로 변환
     - [x] `String`를 `Balls`로 변환
 
-## 📒 BallsDifferenceDto
+## 📦 BallsDifferenceDto
 
 - [x] 2개의 `Balls`에 대한 차이를 담는 DTO
 
@@ -51,14 +51,8 @@
 ## 📙 ResultStatus
 
 - [x] `Strike/Ball/Out`에 대한 enum class
-
-## 📒 ResultsUtils
-
-- [x] `ResultStatus` 관련 utility class
-    - [x] 결과를 `String`으로 반환
-        - [x] `Strike`, `Ball`, `Out` 값을 받아 개수와 함께 `String`으로 반환
-            - [x] `n볼`로 가공
-            - [x] `n스트라이크`로 가공
+    - [x] `n볼` 문자열 반환
+    - [x] `n스트라이크` 문자열 반환
 
 ## 📙 Results
 
@@ -66,6 +60,17 @@
     - [x] `Strike/Ball/Out`의 각각의 수를 저장
     - [x] 결과를 반환 (`toString()` 오버라이딩)
     - [x] 현재 상태가 정답인지 여부를 반환
+
+---
+
+# 🔨 유틸리티
+
+## 📒 ConvertorUtils
+
+- [x] 형변환 utility class
+    - [x] `String`을 `Balls`로 변환
+    - [x] `String`을 `List<Integer>`로 변환
+    - [x] `List<Integer>`를 `Balls`로 변환
 
 ---
 
@@ -100,11 +105,6 @@
     - [x] 판별 결과 출력
     - [x] 정답 축하 메시지 출력
     - [x] 재시작 여부 질문 메시지 출력
-
-## 📒 StringUtils
-
-- [x] String 관련 utility class
-    - [x] `String`을 `List<Integer>`로 변환
 
 ---
 
