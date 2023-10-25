@@ -18,7 +18,7 @@ public class RoundApplication {
 
     do {
       // 4. 심판 객체의 필드(스트라이크, 볼) 개수 초기화
-      referee.reset();
+      referee.resetCount();
       // 5. 사용자의 추측 값 입력
       Balls guessBalls = new Balls(console.getUserGuess());
       // 6. 심판 객체에게 사용자 값 전달
@@ -28,6 +28,6 @@ public class RoundApplication {
       // 7. 결과 출력
       console.printGuessResult(pitching);
       // 8. 사용자가 세 개의 숫자를 다 맞출 때까지 계속 반복
-    } while (!referee.isThreeStrike());
+    } while (!referee.isStrikeOut());
   }
 }
