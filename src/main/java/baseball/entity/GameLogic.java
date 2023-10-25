@@ -16,7 +16,7 @@ public class GameLogic {
         for (char c: charArr) {
             if (Character.isDigit(c)) {
                 int number = Character.getNumericValue(c);
-                if (number >= 0 && !playerGuessNumbers.contains(number)) {
+                if (number > 0 && !playerGuessNumbers.contains(number)) {
                     playerGuessNumbers.add(number);
                 } else {
                     throw new IllegalArgumentException();
