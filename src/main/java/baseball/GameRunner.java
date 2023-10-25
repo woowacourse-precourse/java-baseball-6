@@ -23,7 +23,7 @@ public class GameRunner {
     private void startNewGame() throws IllegalArgumentException {
         computer.generateAnswer();
 
-        while (true){
+        while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> answer = player.answer();
 
@@ -34,7 +34,7 @@ public class GameRunner {
 
     }
 
-    private boolean askToStartNewGame() throws IllegalArgumentException{
+    private boolean askToStartNewGame() throws IllegalArgumentException {
         Integer userResponse = player.askToStartNewGame();
 
         return switch (userResponse) {
