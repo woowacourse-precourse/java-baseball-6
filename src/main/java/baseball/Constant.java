@@ -13,4 +13,7 @@ public class Constant {
     public static final Integer BASEBALL_NUM_LIMIT_LENGTH = 3;
     public static final String NOT_ALLOW_BASEBALL_NUMBER = "0";
     public static final String END_GAME = "게임 종료";
+    public static final String CHECK_ZERONUM_ERROR = "숫자야구의 입력값은 1~9사이의 숫자이어야합니다.";
+    public static final String CHECK_LENGTH_ERROR = "숫자야구의 입력값은 3자리 숫자이어야합니다.";
+    public static final String CHECK_DUPLICATE_ERROR = "숫자야구의 입력값은 중복이 허용되지 않습니다.";
 }
