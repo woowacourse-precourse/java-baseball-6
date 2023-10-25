@@ -1,6 +1,12 @@
 package baseball.view;
 
-import static baseball.constant.Message.*;
+import static baseball.constant.Message.START_GAME;
+import static baseball.constant.Message.USER_INPUT;
+import static baseball.constant.Message.NOTHING;
+import static baseball.constant.Message.BALL;
+import static baseball.constant.Message.STRIKE;
+import static baseball.constant.Message.SUCCESS;
+import static baseball.constant.Message.RETRY;
 
 public class OutputView {
 
@@ -12,22 +18,22 @@ public class OutputView {
         System.out.print(USER_INPUT);
     }
 
-    public void resultMessage(int ball, int strike){
+    public void resultMessage(int balls, int strikes){
         StringBuilder result = new StringBuilder("");
 
-        if (ball == 0 && strike == 0){
+        if (balls == 0 && strikes == 0){
             result.append(NOTHING);
         }
-        if (ball!=0){
-            result.append(ball).append(BALL);
+        if (balls!=0){
+            result.append(balls).append(BALL);
         }
-        if (ball!=0 && strike!=0){
+        if (balls!=0 && strikes!=0){
             result.append(" ");
         }
-        if (strike!=0){
-            result.append(strike).append(STRIKE);
+        if (strikes!=0){
+            result.append(strikes).append(STRIKE);
         }
-        System.out.println(result.toString());
+        System.out.println(result);
     }
 
     public void winMessage(){

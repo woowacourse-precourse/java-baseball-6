@@ -6,38 +6,38 @@ import baseball.service.UserService;
 
 import java.util.List;
 
+import static baseball.constant.Number.FAIL;
+import static baseball.constant.Number.RESTART;
+
 public class GameController {
     private final UserService userService = new UserService();
     private final ComputerService computerService = new ComputerService();
 
-    //게임시작
     public GameController() {
-        computerService.printStart();
+        computerService.printInit();
     }
 
     public void baseBallGame() {
-        int retryNumber = Number.RESTART;
+        int retryNumber = RESTART;
         List<Integer> computerNumbers = computerService.generateComputerNumbers();
 
-        while (retryNumber == Number.RESTART) {
+        while (retryNumber == RESTART) {
 
             playRound(computerNumbers);
 
             retryNumber = userService.readRetryNumber();
-            if (retryNumber == Number.RESTART) {
+            if (retryNumber == RESTART) {
                 computerNumbers = computerService.generateComputerNumbers();
-
             }
         }
     }
 
     private void playRound(List<Integer> computerNumbers){
-        boolean gameResult = false;
-        while(!gameResult){
+        boolean result = FAIL;
+        while(result == FAIL){
             List<Integer> userNumbers = userService.readUserNumber();
-            gameResult = computerService.printResult(computerNumbers, userNumbers);
+            result = computerService.getResult(computerNumbers, userNumbers);
         }
-
     }
 
 }

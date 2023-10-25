@@ -1,15 +1,19 @@
 package baseball.service;
 
-import baseball.constant.Number;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.constant.Number.NUMBER_LENGTH;
+import static baseball.constant.Number.NUMBER_RANGE_START;
+import static baseball.constant.Number.NUMBER_RANGE_END;
+import static baseball.constant.Number.WIN;
+import static baseball.constant.Number.FAIL;
+
 public class ComputerService {
 
-    private String computerNumber;
     private final OutputView outputView = new OutputView();
 
     private class ScoreResult {
@@ -22,15 +26,15 @@ public class ComputerService {
         }
     }
 
-    public void printStart() {
+    public void printInit() {
         outputView.startGameMessage();
     }
 
     public List<Integer> generateComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
 
-        while (computerNumbers.size() < Number.NUMBER_LENGTH) {
-            int randomNum = Randoms.pickNumberInRange(Number.NUMBER_RANGE_START, Number.NUMBER_RANGE_END);
+        while (computerNumbers.size() < NUMBER_LENGTH) {
+            int randomNum = Randoms.pickNumberInRange(NUMBER_RANGE_START, NUMBER_RANGE_END);
             if (!computerNumbers.contains(randomNum)) {
                 computerNumbers.add(randomNum);
             }
@@ -39,36 +43,42 @@ public class ComputerService {
         return computerNumbers;
     }
 
-    public boolean printResult(List<Integer> computerNumbers, List<Integer> userNumbers){
+    public boolean getResult(List<Integer> computerNumbers, List<Integer> userNumbers){
         ScoreResult scoreResult = calculateStrikeAndBalls(computerNumbers, userNumbers);
-
         outputView.resultMessage(scoreResult.balls, scoreResult.strikes);
 
-        if (scoreResult.strikes==Number.NUMBER_LENGTH) {
+        if (scoreResult.strikes==NUMBER_LENGTH) {
             outputView.winMessage();
-            return true;
+            return WIN;
         }
-        return false;
+        return FAIL;
     }
 
     private ScoreResult calculateStrikeAndBalls(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int strikes = calculateStrikes(computerNumbers, userNumbers);
+        int balls = calculateBalls(computerNumbers, userNumbers) - strikes;
+
+        return new ScoreResult(balls, strikes);
+    }
+
+    private int calculateStrikes(List<Integer> computerNumbers, List<Integer> userNumbers) {
         int strikes = 0;
-        int balls = 0;
-
-        for (int i = 0; i < Number.NUMBER_LENGTH; i++) {
-            int computerNumber = computerNumbers.get(i);
-            int userNumber = userNumbers.get(i);
-
-            if (userNumber == computerNumber) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
+            if (userNumbers.get(i).equals(computerNumbers.get(i))) {
                 strikes++;
-                continue;
             }
+        }
+        return strikes;
+    }
 
+    private int calculateBalls(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        int balls = 0;
+        for (int userNumber : userNumbers) {
             if (computerNumbers.contains(userNumber)) {
                 balls++;
             }
         }
-
-        return new ScoreResult(balls, strikes);
+        return balls;
     }
+
 }

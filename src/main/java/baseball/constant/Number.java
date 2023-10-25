@@ -7,4 +7,7 @@ public class Number {
 
     public static final Integer RESTART = 1;
     public static final Integer EXIT = 2;
+
+    public static final boolean WIN = true;
+    public static final boolean FAIL = false;
 }
