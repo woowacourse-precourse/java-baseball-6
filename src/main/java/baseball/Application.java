@@ -33,14 +33,22 @@ public class Application {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (Character.getNumericValue(user[i]) == com.get(j) && i == j) {
-                    strike++;
-                } else if (Character.getNumericValue(user[i]) == com.get(j)) {
-                    ball++;
-                }
+            if (Character.getNumericValue(user[i]) == com.get(i)){
+                strike++;
+            }
+            else if(com.contains(Character.getNumericValue(user[i]))){
+                ball++;
             }
         }
+//        for (int i = 0; i < 3; i++) {
+//            for (int j = 0; j < 3; j++) {
+//                if (Character.getNumericValue(user[i]) == com.get(j) && i == j) {
+//                    strike++;
+//                } else if (Character.getNumericValue(user[i]) == com.get(j)) {
+//                    ball++;
+//                }
+//            }
+//        }
         int[] result = {ball, strike};
         return result;
     }
@@ -56,32 +64,36 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> com = generate();
         String ans = "0";
+
         while (!Objects.equals(ans, "2")) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String num = Console.readLine();
+            char[] user = num.toCharArray();
             try {
-                System.out.println(com);
-                System.out.print("숫자를 입력해주세요 : ");
-                String num = Console.readLine();
-                char[] user = num.toCharArray();
                 validate(user);
-                int[] res = compare(com, user);
-                if (res[1] == 3) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                    ans = Console.readLine();
-                    gameEnd(ans);
-                    if (Objects.equals(ans, "1")) {
-                        com = generate();
-                    }
-                } else if (res[0] == 0 && res[1] == 0) {
-                    System.out.println("낫싱");
-                } else if (res[0] > 0 && res[1] == 0) {
-                    System.out.println(res[0] + "볼");
-                } else if (res[1] > 0 && res[0] == 0) {
-                    System.out.println(res[1] + "스트라이크");
-                } else {
-                    System.out.println(res[0] + "볼 " + res[1] + "스트라이크");
-                }
             } catch (IllegalArgumentException e) {
                 break;
+            }
+            int[] res = compare(com, user);
+            if (res[1] == 3) {
+                System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                ans = Console.readLine();
+                try {
+                    gameEnd(ans);
+                } catch (IllegalArgumentException e) {
+                    break;
+                }
+                if (Objects.equals(ans, "1")) {
+                    com = generate();
+                }
+            } else if (res[0] == 0 && res[1] == 0) {
+                System.out.println("낫싱");
+            } else if (res[0] > 0 && res[1] == 0) {
+                System.out.println(res[0] + "볼");
+            } else if (res[1] > 0 && res[0] == 0) {
+                System.out.println(res[1] + "스트라이크");
+            } else {
+                System.out.println(res[0] + "볼 " + res[1] + "스트라이크");
             }
         }
     }
