@@ -11,7 +11,7 @@ public class Baseball {
     Score score = new Score();
 
     public void startGame() {
-        while(true) {
+        while (true) {
             startRound();
             if(selectQuit()) {
                 break;
@@ -39,19 +39,16 @@ public class Baseball {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         do {
-            int strike = 0;
-            int ball = 0;
-
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = readLine();
             UserInputUtil.validateThreeDifferentNatureNumber(userInput);
 
             List<Integer> userNumber = UserInputUtil.convertStringToIntegerList(userInput);
             updateScore(computerNumber, userNumber);
-            printHint(score.getBall(), score.getStrike());
+            printHint();
         } while (score.getStrike() != 3);
 
-        printHint(score.getBall(), score.getStrike());
+        printHint();
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
@@ -82,7 +79,10 @@ public class Baseball {
         return "낫싱";
     }
 
-    private void printHint(int ball, int strike) {
+    private void printHint() {
+        int strike = score.getStrike();
+        int ball = score.getBall();
+
         if(strike == 0 && ball == 0) {
             System.out.print("낫싱");
         }
