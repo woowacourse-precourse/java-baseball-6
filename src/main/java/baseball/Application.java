@@ -1,6 +1,7 @@
 package baseball;
 
-import baseball.View.inputView;
+import baseball.View.InputView;
+import baseball.View.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,27 +9,24 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean continueGame = true;
+        OutputView outputView = new OutputView();
+        InputView inputView = new InputView();
 
-        inputView view = new inputView();
+        outputView.displayGameStartMessage();
+        boolean continueGame = true;
 
         while (continueGame) {
             List<Integer> computerNumbers = generateRandomNumbers();
-            System.out.println("컴퓨터 숫자: " + computerNumbers);
+            outputView.displayComputerNumbers(computerNumbers);
 
-            boolean isGameWon = playGame(computerNumbers, view);
+            boolean isGameWon = playGame(computerNumbers, inputView, outputView);
 
-            if (isGameWon) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            } else {
-                System.out.println("게임 종료");
-            }
+            outputView.displayGameEndMessage(isGameWon);
 
-            continueGame = view.readRestartNumber();
+            continueGame = inputView.readRestartNumber();
         }
 
-        System.out.println("게임을 종료합니다.");
+        outputView.displayGameExitMessage();
     }
 
 
@@ -44,9 +42,9 @@ public class Application {
         return numbers;
     }
 
-    private static boolean playGame(List<Integer> computerNumbers, inputView view) {
+    private static boolean playGame(List<Integer> computerNumbers, InputView inputView, OutputView outputView) {
         while (true) {
-            List<Integer> playerNumbers = view.readNumbers();
+            List<Integer> playerNumbers = inputView.readNumbers();
             int strikes = 0;
             int balls = 0;
 
@@ -65,7 +63,6 @@ public class Application {
             }
         }
     }
-
 
     private static void printResult(int balls, int strikes) {
 

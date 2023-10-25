@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class inputView {
+public class InputView {
 
     // 사용자 숫자 입력 처리 (인스턴스 메서드로 변경)
     public List<Integer> readNumbers() {
