@@ -1,13 +1,9 @@
 package baseball.console;
 
-public class Output {
-    private static final String BALL_MESSAGE = "%d볼\n";
-    private static final String STRIKE_MESSAGE = "%d스트라이크\n";
-    private static final String BALL_AND_STRIKE_MESSAGE = "%d볼 %d스트라이크\n";
-    private static final String NOTHING_MESSAGE = "낫싱\n";
-    private static final String ANSWER_MESSAGE = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
-    private static final int REQUIRED_NUMBERS_TO_MATCH = 3;
+import static baseball.constants.Constants.REQUIRED_NUMBERS_TO_MATCH;
+import static baseball.constants.Messages.*;
 
+public class Output {
 
     public static void print(int ball, int strike) {
         if (ball == 0 && strike == 0) {
@@ -22,22 +18,22 @@ public class Output {
     }
 
     public static void printBallMessage(int ball) {
-        System.out.printf(BALL_MESSAGE, ball);
+        System.out.printf(BALL_MESSAGE.getMessage(), ball);
     }
 
     public static void printStrikeMessage(int strike) {
-        System.out.printf(STRIKE_MESSAGE, strike);
+        System.out.printf(STRIKE_MESSAGE.getMessage(), strike);
     }
 
     public static void printBallAndStirkeMessage(int ball, int strike) {
-        System.out.printf(BALL_AND_STRIKE_MESSAGE, ball, strike);
+        System.out.printf(BALL_AND_STRIKE_MESSAGE.getMessage(), ball, strike);
     }
 
     public static void printNothingMessage() {
-        System.out.printf(NOTHING_MESSAGE);
+        System.out.printf(NOTHING_MESSAGE.getMessage());
     }
 
     public static void printAnswerMessage() {
-        System.out.printf(ANSWER_MESSAGE, REQUIRED_NUMBERS_TO_MATCH);
+        System.out.printf(ANSWER_MESSAGE.getMessage(), REQUIRED_NUMBERS_TO_MATCH.getValue());
     }
 }

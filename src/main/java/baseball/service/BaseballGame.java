@@ -7,18 +7,19 @@ import baseball.entity.User;
 
 import java.util.HashSet;
 
-public class BaseballGame {
-    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String RESTART_CHOICE = "1";
-    private static final int REQUIRED_STRIKES_FOR_WIN = 3;
-    private static final int NUMBER_LENGTH = 3;
+import static baseball.constants.Constants.NUMBER_LENGTH;
+import static baseball.constants.Constants.REQUIRED_STRIKES_FOR_WIN;
+import static baseball.constants.Messages.START_MESSAGE;
 
+public class BaseballGame {
+
+    private static final String RESTART_CHOICE = "1";
 
     private User user;
     private Computer computer;
 
     public BaseballGame() {
-        System.out.println(START_MESSAGE);
+        System.out.println(START_MESSAGE.getMessage());
         user = new User();
         computer = new Computer();
     }
@@ -44,7 +45,7 @@ public class BaseballGame {
         int ball = countBall(number, answer);
         Output.print(ball, strike);
 
-        return strike == REQUIRED_STRIKES_FOR_WIN;
+        return strike == REQUIRED_STRIKES_FOR_WIN.getValue();
     }
 
     private boolean isUserWantsToRestart() {
@@ -58,7 +59,7 @@ public class BaseballGame {
             set.add(c);
         }
         int ballCount = 0;
-        for (int index = 0; index < NUMBER_LENGTH; index++) {
+        for (int index = 0; index < NUMBER_LENGTH.getValue(); index++) {
             if (number.charAt(index) != answer.charAt(index) && set.contains(number.charAt(index))) {
                 ballCount++;
             }
@@ -68,11 +69,11 @@ public class BaseballGame {
 
     public static int countStrike(String number, String answer) {
         if (number.equals(answer)) {
-            return REQUIRED_STRIKES_FOR_WIN;
+            return REQUIRED_STRIKES_FOR_WIN.getValue();
         }
 
         int strikeCount = 0;
-        for (int index = 0; index < NUMBER_LENGTH; index++) {
+        for (int index = 0; index < NUMBER_LENGTH.getValue(); index++) {
             if (number.charAt(index) == answer.charAt(index)) {
                 strikeCount++;
             }

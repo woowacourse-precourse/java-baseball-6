@@ -4,19 +4,18 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
 
+import static baseball.constants.Constants.VALID_NUMBER_LENGTH;
+import static baseball.constants.Messages.INPUT_MESSAGE;
+import static baseball.constants.Messages.RESTART_MESSAGE;
+
 public class Input {
 
-    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
-    private static final int VALID_NUMBER_LENGTH = 3;
     private static final char ZERO = '0';
     private static final String RESTART_CHOICE_ONE = "1";
     private static final String RESTART_CHOICE_TWO = "2";
 
-
     public static String get() {
-        System.out.print(INPUT_MESSAGE);
+        System.out.print(INPUT_MESSAGE.getMessage());
         String number = Console.readLine();
         if (!isValidNumber(number)) {
             throw new IllegalArgumentException();
@@ -25,7 +24,7 @@ public class Input {
     }
 
     public static String restart() {
-        System.out.println(RESTART_MESSAGE);
+        System.out.println(RESTART_MESSAGE.getMessage());
         String restartNumber = Console.readLine();
         if (!isValidRestartNumber(restartNumber)) {
             throw new IllegalArgumentException();
@@ -35,7 +34,7 @@ public class Input {
     }
 
     static boolean isValidNumber(String number) {
-        if (number.length() != VALID_NUMBER_LENGTH) {
+        if (number.length() != VALID_NUMBER_LENGTH.getValue()) {
             return false;
         }
         if (!isDigits(number)) {
