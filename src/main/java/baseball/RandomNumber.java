@@ -22,7 +22,6 @@ public class RandomNumber {
     }
 
     private int validateAlready(int num) {
-        System.out.println(num);
         if (arr.contains(num)) {
             return validateAlready(Randoms.pickNumberInRange(min, max));
         }

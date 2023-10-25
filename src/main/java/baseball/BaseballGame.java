@@ -84,7 +84,6 @@ public class BaseballGame {
             return;
         }
         countBall(target, userNum);
-        System.out.println("ball:" + this.ball);
         calculateScore();
         resetStrike();
         resetBall();
@@ -145,7 +144,6 @@ public class BaseballGame {
                 upBall();
             }
         }
-        System.out.println("countBall 함수의 ball:" + this.ball);
     }
 
 }
