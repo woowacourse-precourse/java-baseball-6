@@ -19,4 +19,10 @@ class BallCounterTest {
         assertThat(ballCounter.count(List.of(1, 2, 3), List.of(2, 8, 9)))
                 .isEqualTo(1);
     }
+
+    @Test
+    void 볼이_2개_존재한다() {
+        assertThat(ballCounter.count(List.of(1, 2, 3), List.of(2, 3, 9)))
+                .isEqualTo(2);
+    }
 }
