@@ -1,10 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class Application {
@@ -12,79 +8,47 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        boolean isExit = false;
+        boolean isRetry = true;
+        while (isRetry) {
+            Target target = new Target();
 
-        while (!isExit) {
-            List<Integer> randomList = new ArrayList<>();
-            while (randomList.size() < 3) {
-                int randomInt = Randoms.pickNumberInRange(1, 9);
-                if (!randomList.contains(randomInt)) {
-                    randomList.add(randomInt);
-                }
-            }
-
-            while (true) {
-                int strikeCount = 0;
-                int ballCount = 0;
-                StringBuilder output = new StringBuilder();
+            boolean isStrikeOut = true;
+            while (isStrikeOut) {
+                Output output = new Output();
 
                 System.out.print("숫자를 입력해주세요 : ");
-                String input = Console.readLine();
+                Input input = new Input();
 
-                if (input.length() != 3) {
-                    throw new IllegalArgumentException();
-                } else if (!input.matches("[0-9]+")) {
-                    throw new IllegalArgumentException();
-                }
-
-                String[] inputArr = input.split("");
-                List<Integer> inputList = Arrays.stream(inputArr).map(Integer::parseInt).toList();
-
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
+                for (int i = 0; i < target.getNumberList().size(); i++) {
+                    for (int j = 0; j < input.getNumberList().size(); j++) {
                         //NOTE 스트라이크 경우
-                        if (Objects.equals(randomList.get(i), inputList.get(j)) && i == j) {
-                            strikeCount++;
+                        if (Objects.equals(target.getNumberList().get(i), input.getNumberList().get(j))
+                                && i == j) {
+                            output.addStrikeCount();
                             break;
                         }
 
                         //NOTE 볼 경우
-                        if (Objects.equals(randomList.get(i), inputList.get(j))) {
-                            ballCount++;
+                        if (Objects.equals(target.getNumberList().get(i), input.getNumberList().get(j))) {
+                            output.addBallCount();
                             break;
                         }
                     }
                 }
 
-                if (strikeCount == 0 && ballCount == 0) {
-                    output.append("낫싱");
-                }
+                System.out.println(output.getOutputStr());
 
-                if (ballCount > 0) {
-                    output.append(ballCount).append("볼");
-                }
-
-                if (ballCount > 0 && strikeCount > 0) {
-                    output.append(" ");
-                }
-
-                if (strikeCount > 0) {
-                    output.append(strikeCount).append("스트라이크");
-                }
-
-                System.out.println(output);
-
-                if (strikeCount == 3) {
+                if (output.getStrikeCount() == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
                     String restartExitInput = Console.readLine();
 
                     if (restartExitInput.equals("1")) {
-                        break;
+                        isStrikeOut = false;
                     } else if (restartExitInput.equals("2")) {
-                        isExit = true;
-                        break;
+                        isStrikeOut = false;
+                        isRetry = false;
                     } else {
                         throw new IllegalArgumentException();
                     }
