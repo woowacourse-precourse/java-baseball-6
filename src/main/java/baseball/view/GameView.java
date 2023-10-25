@@ -5,17 +5,15 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameView {
     public String getPlayerInput() {
-        String input = Console.readLine();
-
         System.out.print(UIMessage.INPUT_MESSAGE.getMessage());
+        String input = Console.readLine();
         InputValidator.validatePlayNumber(input);
         return input;
     }
 
     public int gameContinue() {
-        String input = Console.readLine();
-
         System.out.println(UIMessage.RESTART_OR_END.getMessage());
+        String input = Console.readLine();
         InputValidator.validateGameContinue(input);
         return Integer.parseInt(input);
     }
