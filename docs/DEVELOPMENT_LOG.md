@@ -27,3 +27,4 @@
 - Game 인터페이스를 만들고 Game을 상속받는 BaseballGame 을 만들자
 - Application 은 생성자에서 Game 을 받아서 실행하자
 - gradePrediction이 strikeCount 만을 반환하고 있으니, Score 클래스를 만들자
+- BaseballGame 클래스를 BaseballGame, Player, Computer 로 나누어 클래스를 작게 유지하자
