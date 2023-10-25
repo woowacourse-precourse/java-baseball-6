@@ -5,7 +5,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Comsball {
-
+	
 	int[] coms_ball = new int[3];
 
 	public int[] make_ball() {

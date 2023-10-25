@@ -3,15 +3,18 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
+	
 	private Comsball comsball;
 	private Myball myball;
 
 	public Game() {
+		
 		comsball = new Comsball();
 		myball = new Myball();
 	}
 
 	public void start() {
+		
 		System.out.println("숫자 야구 게임을 시작합니다.");
 
 		do {
@@ -28,6 +31,7 @@ public class Game {
 	}
 
 	private void playGame() {
+		
 		int[] coms_ball = comsball.make_ball();
 		int strikes = 0;
 		int balls = 0;
