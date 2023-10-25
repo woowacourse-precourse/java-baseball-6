@@ -5,6 +5,7 @@ import static baseball.view.InputView.getEndOption;
 import static baseball.view.InputView.getNumbers;
 import static baseball.view.OutputView.printEnd;
 import static baseball.view.OutputView.printHint;
+import static baseball.view.OutputView.printStart;
 
 import baseball.domain.Board;
 import baseball.domain.Game;
@@ -21,6 +22,7 @@ public class BaseballGame {
     }
 
     public void start() {
+        printStart();
         do {
             game.init();
             run();
