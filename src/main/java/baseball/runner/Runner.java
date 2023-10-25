@@ -15,6 +15,7 @@ public class Runner {
 
         while (true) {
             List<Integer> baseballNum = Computer.generateRandomNumbers();
+            System.out.println(baseballNum);
             while (true) {
                 System.out.println("숫자를 입력해주세요 : ");
                 String input = player.input();
@@ -29,8 +30,7 @@ public class Runner {
                 }
             }
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String choice = Console.readLine();
-            if ("2".equals(choice))
+            if ("2".equals(isEnd()))
                 break;
         }
     }
@@ -67,6 +67,16 @@ public class Runner {
         if (strikeCount > 0)
             System.out.print(strikeCount + "스트라이크 ");
         System.out.println();
+    }
+
+    private static String isEnd() {
+        while (true) {
+            String choice = Console.readLine();
+            if ("1".equals(choice) || "2".equals(choice)) {
+                return choice;
+            }
+            System.out.println("잘못된 입력입니다. 다시 입력하세요.");
+        }
     }
 
 }
