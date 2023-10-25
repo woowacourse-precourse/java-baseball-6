@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.RandomNumberGenerator.makeRandomNumber;
+
 public class Application {
     private static String randomNumber;
     private static String inputNumber;
@@ -43,16 +45,6 @@ public class Application {
         }
     }
 
-    public static String makeRandomNumber() {
-        String randomNumber= "";
-        while (randomNumber.length() < 3) {
-            String n = String.valueOf(Randoms.pickNumberInRange(1,9));
-            if (!randomNumber.contains(n)) {
-                randomNumber += n;
-            }
-        }
-        return randomNumber;
-    }
 
     public static void isThreeDigitNumber() {
         if (inputNumber.length() != 3) {
