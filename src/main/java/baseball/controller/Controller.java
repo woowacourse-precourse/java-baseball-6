@@ -54,8 +54,8 @@ public class Controller {
 
     // 입력받은 숫자의 볼과 스트라이크의 여부를 체킹하는 기능
     public void checkStrikeAndBall(Model model) {
-        for (int input_index=0; input_index<SIZE; input_index++) {
-            for (int comp_index=0; comp_index<SIZE; comp_index++) {
+        for (int input_index = 0; input_index < SIZE; input_index++) {
+            for (int comp_index = 0; comp_index < SIZE; comp_index++) {
                 checkDetail(model, input_index, comp_index);
             }
         }
@@ -68,7 +68,7 @@ public class Controller {
         List<Integer> computer_number = model.getComputer_number();
 
         if (input_number[input_index] == computer_number.get(comp_index)) {
-            if(input_index == comp_index) {
+            if (input_index == comp_index) {
                 model.updateStrikeCount();
             } else {
                 model.updateBallCount();
@@ -88,7 +88,7 @@ public class Controller {
     }
 
     // 입력한 값내에 중복된 숫자가 있는지 확인
-    public boolean hasDuplicates(int[] numbers) {
+    private static boolean hasDuplicates(int[] numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>();
 
         for (Integer number : numbers) {
