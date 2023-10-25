@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.constant.Constant;
+import baseball.dto.ResultDTO;
 
 public class OutputView {
 
@@ -18,4 +19,23 @@ public class OutputView {
         System.out.println(END_MESSAGE);
     }
 
+    /**
+     * 정답과 사용자 입력을 비교한 결과를 Console에 출력
+     *
+     * @param resultDTO : strike, ball 결과가 담긴 객체
+     */
+    public static void printResult(ResultDTO resultDTO) {
+        int strikeCount = resultDTO.getStrikeCount();
+        int ballCount = resultDTO.getBallCount();
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.print("낫싱");
+        }
+        if (ballCount != 0) {
+            System.out.print(ballCount + "볼 ");
+        }
+        if (strikeCount != 0) {
+            System.out.print(strikeCount + "스트라이크");
+        }
+        System.out.println();
+    }
 }
