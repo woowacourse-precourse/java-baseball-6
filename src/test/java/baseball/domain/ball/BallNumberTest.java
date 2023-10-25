@@ -14,9 +14,9 @@ final class BallNumberTest {
     void test() {
         // given
         // when
-        // then
         final BallNumber ballNumber = new BallNumber(1);
         final BallNumber ballNumber2 = new BallNumber(9);
+        // then
         assertThat(ballNumber.number()).isEqualTo(1);
         assertThat(ballNumber2.number()).isEqualTo(9);
     }

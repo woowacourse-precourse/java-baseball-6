@@ -26,8 +26,8 @@ final class AnswerTest {
         final Guess guess = Guess.of(tripleBallNumbers);
 
         // when
-        final int strikeCount = answer.getStrikeCount(guess);
-        final int ballCount = answer.getBallCount(guess);
+        final int strikeCount = answer.countStrikes(guess);
+        final int ballCount = answer.countBalls(guess);
 
         // then
         assertThat(strikeCount).isEqualTo(3);
@@ -51,8 +51,8 @@ final class AnswerTest {
         final Answer answer = answerCreator.create();
 
         // when
-        final int ballCount = answer.getBallCount(guess);
-        final int strikeCount = answer.getStrikeCount(guess);
+        final int ballCount = answer.countBalls(guess);
+        final int strikeCount = answer.countStrikes(guess);
 
         // then
         assertThat(strikeCount).isEqualTo(0);
@@ -73,8 +73,8 @@ final class AnswerTest {
         final Guess guess = Guess.of(guessBallNumbers);
 
         // when
-        final int ballCount = answer.getBallCount(guess);
-        final int strikeCount = answer.getStrikeCount(guess);
+        final int ballCount = answer.countBalls(guess);
+        final int strikeCount = answer.countStrikes(guess);
 
         // then
         assertThat(strikeCount).isEqualTo(0);
