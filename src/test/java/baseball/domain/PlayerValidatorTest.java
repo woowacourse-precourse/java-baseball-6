@@ -33,4 +33,10 @@ class PlayerValidatorTest {
         List<Integer> numbers = Arrays.asList(0, 2, 3); // 0은 범위 외의 숫자입니다.
         assertThrows(IllegalArgumentException.class, () -> PlayerValidator.validate(numbers));
     }
+
+    @Test
+    void 숫자가_Null_이면_예외_발생() {
+        List<Integer> numbers = null;
+        assertThrows(IllegalArgumentException.class, () -> PlayerValidator.validate(numbers));
+    }
 }

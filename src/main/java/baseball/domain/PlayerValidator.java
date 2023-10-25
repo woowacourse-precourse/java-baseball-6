@@ -7,16 +7,16 @@ import java.util.Set;
 public class PlayerValidator {
 
     public static final String NUMBER_SIZE_EX_MESSAGE = "입력값은 세 자리의 숫자여야 합니다.\n";
-    public static final String NUMBER_NOT_DUPLICATED_EX_MESSAGE = "입력값은 중복되는 수가 하나라도 있으면 안됩니다.\n";
+    public static final String NUMBER_NOT_DUPLICATED_EX_MESSAGE = "입력값은 중복되는 수가 하나라도 없어야 합니다.\n";
     public static final String NUMBER_RANGE_EX_MESSAGE = "모든 숫자는 1에서 9 사이의 값을 가져야 합니다.\n";
-    public static final String NUMBER_NULL_EX_MESSAGE = "입력값은 null이면 안됩니다.\n";
+    public static final String NUMBER_NULL_EX_MESSAGE = "입력값이 null이 될 수 없습니다.\n";
 
 
     public static void validate(List<Integer> numbers) {
+        validateNotNull(numbers);
         validateNumberSize(numbers);
         validateNotDuplicated(numbers);
         validateNumberRange(numbers);
-        validateNotNull(numbers);
     }
 
     private static void validateNumberSize(List<Integer> numbers) {
