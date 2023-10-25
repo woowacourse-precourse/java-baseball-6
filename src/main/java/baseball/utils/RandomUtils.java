@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomUtils {
-
     public static int[] getRandomNumbers(int size, int start, int end) {
         List<Integer> numbersList = new ArrayList<>();
 
