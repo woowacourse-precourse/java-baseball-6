@@ -2,7 +2,6 @@ package baseball.game;
 
 import baseball.Computer;
 import baseball.user.User;
-import baseball.user.UserStatus;
 
 public class Game {
 
@@ -39,7 +38,7 @@ public class Game {
                     gameUI.displayCorrectAnswerMessage();
 
                     user.inputUserStatus();
-                    if (user.getUserStatus().equals(UserStatus.EXIT_COMMAND)) {
+                    if (gameLogic.isQuitGame(user.getUserStatus())) {
                         break;
                     }
 

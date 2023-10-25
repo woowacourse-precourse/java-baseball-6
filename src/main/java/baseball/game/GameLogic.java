@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.user.UserStatus;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -51,5 +52,9 @@ public class GameLogic {
         return Stream.of(GameHintType.BALL.format(ball), GameHintType.STRIKE.format(strike))
             .filter(hint -> !hint.isEmpty())
             .collect(Collectors.joining(" "));
+    }
+
+    public boolean isQuitGame(String userStatus) {
+        return userStatus.equals(UserStatus.EXIT_COMMAND);
     }
 }
