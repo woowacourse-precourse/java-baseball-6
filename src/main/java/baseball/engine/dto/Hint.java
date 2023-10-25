@@ -1,28 +1,19 @@
 package baseball.engine.dto;
 
-public class BaseBallStatus {
-    private static final int ALL_STRIKE = 3;
-    private int strike;
-    private int ball;
+import static baseball.constant.BaseballSystemPolicy.ALL_STRIKE;
 
-    private BaseBallStatus() {
-    }
-
-    public BaseBallStatus(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
-    }
+public record Hint(int strike, int ball) {
 
     public boolean isAllStrike() {
-        return this.strike == ALL_STRIKE;
+        return this.strike == ALL_STRIKE.getCondition();
     }
 
-    public String getResult() {
+    public String report() {
         StringBuilder result = new StringBuilder();
         writeBallCount(result);
         writeStrikeCount(result);
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             result.append("낫싱");
         }
         result.append("\n");

@@ -1,25 +1,30 @@
 package baseball.engine;
 
-import baseball.message.Message;
-import baseball.common.RandomNumberGenerator;
-import baseball.engine.manager.Referee;
+import static baseball.constant.BaseballSystemPolicy.EXIT;
+import static baseball.constant.BaseballSystemPolicy.LIMIT_LENGTH;
+import static baseball.constant.BaseballSystemPolicy.MAXIMUM_NUMBER;
+import static baseball.constant.BaseballSystemPolicy.MINIMUM_NUMBER;
+
 import baseball.console.Prompt;
-import baseball.engine.dto.BaseBallStatus;
+import baseball.constant.BaseballSystemPolicy;
+import baseball.domain.Computer;
+import baseball.domain.Player;
+import baseball.engine.dto.Hint;
+import baseball.engine.manager.Referee;
 import baseball.mapper.BaseBallGameMapper;
+import baseball.message.Message;
+import baseball.utils.RandomGeneratorUtils;
 import baseball.validator.Validator;
 import java.util.List;
 
 public class BaseBallGame {
-    private static final int REPLAY = 1;
-    private final RandomNumberGenerator randomNumberGenerator;
     private final Prompt prompt;
     private final Validator validator;
     private final BaseBallGameMapper baseBallGameMapper;
     private final Referee referee;
 
-    public BaseBallGame(RandomNumberGenerator randomNumberGenerator, Prompt prompt, Validator validator,
+    public BaseBallGame(Prompt prompt, Validator validator,
                         BaseBallGameMapper baseBallGameMapper, Referee referee) {
-        this.randomNumberGenerator = randomNumberGenerator;
         this.prompt = prompt;
         this.validator = validator;
         this.baseBallGameMapper = baseBallGameMapper;
@@ -29,34 +34,57 @@ public class BaseBallGame {
     public void start() {
         boolean isRunnable = true;
         prompt.print(SystemMessage.INTRO);
-        List<Integer> randomNumbers = randomNumberGenerator.createNumber(3);
+        List<Integer> newNumbers = RandomGeneratorUtils.createUniqueNumbers(LIMIT_LENGTH.getCondition(),
+                MINIMUM_NUMBER.getCondition(), MAXIMUM_NUMBER.getCondition());
+        Computer computer = new Computer(newNumbers);
 
         while (isRunnable) {
             prompt.print(SystemMessage.INPUT);
             String playerInput = prompt.input();
-            validator.verifyForBaseballNumber(playerInput);
+            this.verifyForBaseballNumber(playerInput);
             List<Integer> verifiedInput = baseBallGameMapper.toList(playerInput);
-            BaseBallStatus judgedBaseBallStatus = referee.getStrikeAndBallCount(verifiedInput, randomNumbers);
-            prompt.print(judgedBaseBallStatus::getResult);
+            Player player = new Player(verifiedInput);
+            Hint judgedHint = referee.ballCount(player, computer);
+            prompt.print(judgedHint::report);
 
-            if (judgedBaseBallStatus.isAllStrike()) {
+            if (judgedHint.isAllStrike()) {
                 prompt.print(SystemMessage.ALL_STRIKE);
-                prompt.print(SystemMessage.ASK_AGAIN);
 
                 isRunnable = isReplay();
                 if (isRunnable) {
-                    randomNumbers = randomNumberGenerator.createNumber(3);
+                    newNumbers = RandomGeneratorUtils.createUniqueNumbers(LIMIT_LENGTH.getCondition(),
+                            MINIMUM_NUMBER.getCondition(), MAXIMUM_NUMBER.getCondition());
+                    computer = new Computer(newNumbers);
                 }
             }
         }
     }
 
+    private void verifyForRedo(String input) {
+        validator.verifyNullAndEmpty(input);
+        validator.verifyNumberPerUnit(input);
+
+        int redo = baseBallGameMapper.toInt(input);
+        validator.verifyInRangeClosed(BaseballSystemPolicy.REPLAY.getCondition(), EXIT.getCondition(), redo);
+    }
+
+    private void verifyForBaseballNumber(String input) {
+        validator.verifyNullAndEmpty(input);
+        validator.verifyLength(input, LIMIT_LENGTH.getCondition());
+        validator.verifyNumberPerUnit(input);
+
+        List<Integer> inputNumbers = baseBallGameMapper.toList(input);
+        validator.verifyUniqueNumber(inputNumbers);
+    }
+
+
     private boolean isReplay() {
+        prompt.print(SystemMessage.ASK_AGAIN);
         String redo = prompt.input();
-        validator.verifyForRedo(redo);
+        verifyForRedo(redo);
         int verifiedRedo = baseBallGameMapper.toInt(redo);
 
-        return verifiedRedo == REPLAY;
+        return verifiedRedo == BaseballSystemPolicy.REPLAY.getCondition();
     }
 
     private enum SystemMessage implements Message {

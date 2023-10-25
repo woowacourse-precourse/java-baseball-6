@@ -1,28 +1,27 @@
 package baseball.engine.manager;
 
-import baseball.engine.dto.BaseBallStatus;
-import java.util.List;
+import baseball.constant.BaseballSystemPolicy;
+import baseball.domain.Computer;
+import baseball.domain.Player;
+import baseball.engine.dto.Hint;
 
-public class Referee {
+public record Referee() {
 
-    public Referee() {
-    }
-
-    public BaseBallStatus getStrikeAndBallCount(List<Integer> userNumbers, List<Integer> randomNumbers) {
+    public Hint ballCount(Player player, Computer computer) {
         int strike = 0;
         int ball = 0;
+        int limitLength = BaseballSystemPolicy.LIMIT_LENGTH.getCondition();
 
-        for (int i = 0; i < userNumbers.size(); i++) {
-            int userNumber = userNumbers.get(i);
-            int randomNumber = randomNumbers.get(i);
+        for (int index = 0; index < limitLength; index++) {
+            Integer playerValue = player.getValue(index);
 
-            if (userNumber == randomNumber) {
+            if (computer.exactlyMatch(index, playerValue)) {
                 strike++;
-            } else if (randomNumbers.contains(userNumber)) {
+            } else if (computer.isContains(playerValue)) {
                 ball++;
             }
         }
 
-        return new BaseBallStatus(strike, ball);
+        return new Hint(strike, ball);
     }
 }
