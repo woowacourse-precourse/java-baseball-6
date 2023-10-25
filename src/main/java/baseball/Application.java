@@ -1,7 +1,10 @@
 package baseball;
 
+import baseball.Playbaseball;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Playbaseball playbaseball = new Playbaseball();
+        playbaseball.startGame();
     }
 }
