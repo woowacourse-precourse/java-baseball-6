@@ -25,4 +25,8 @@ public class ResultDto {
         return result;
     }
 
+    public Boolean getThreeStrike() {
+        return isThreeStrike;
+    }
+
 }
