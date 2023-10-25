@@ -1,4 +1,4 @@
-### 프로그래밍 요구사항
+### 프로그래밍 요구 사항
 
     [] JDK 17버전에서 실행 가능해야 한다.
     [] 프로그래밍 시작은 `Application`의 main()이다.
@@ -12,3 +12,16 @@
         [] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console의 readLine()`을 활용한다.
 
 
+### 프로그래밍 기능 요구 사항
+
+    [] 숫자 야구 게임 시작 문구 출력
+    [] Random 값 추출
+        [] `camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()`를 사용
+    [] 숫자 입력 문구 출력
+    [] 숫자 입력
+        [] `camp.nextstep.edu.misstionutils.Console`의 readLine() 사용
+    [] 결과 출력
+        [] 입력한 수에 대한 결과를 볼, 스트라이크로 개수 표시
+        [] 하나도 없는 경우
+        [] 3개 다 맞춘 경우
+    
