@@ -13,6 +13,10 @@ public class Computer {
 
     public Computer() {
         randomNumberGenerator = RandomNumberGenerator.getInstance();
+        refreshNumbers();
+    }
+
+    public void refreshNumbers() {
         numbers = randomNumberGenerator.makeUniQueRandomNumbers(MIN_NUMBER, MAX_NUMBER, NUMBER_SIZE);
     }
 
