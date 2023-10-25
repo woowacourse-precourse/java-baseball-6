@@ -7,14 +7,13 @@ import java.util.List;
 
 public class NumberGenerator {
 
-    private final List<Integer> generatedNumber;
+    private List<Integer> generatedNumber;
 
     public NumberGenerator() {
-        this.generatedNumber = new ArrayList<>();
     }
 
     public List<Integer> generate() {
-
+        this.generatedNumber = new ArrayList<>();
         while (generatedNumber.size() < 3) {
             int number = Randoms.pickNumberInRange(
                     GameConstant.NUMBER_START_INCLUSIVE.getConstant(),
