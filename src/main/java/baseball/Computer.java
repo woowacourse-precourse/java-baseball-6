@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    public final List<Character> numbers = new ArrayList<>(); // 컴퓨터가 생성한 숫자 리스트
+    public final List<Integer> numbers = new ArrayList<>(); // 컴퓨터가 생성한 숫자 리스트
 
     public void threeRandomsNum() {
         numbers.clear();
@@ -17,9 +17,8 @@ public class Computer {
     }
 
     public void add(int randomNumber) {
-        char num = (char) (randomNumber + 48);
-        if (!numbers.contains(num)) {
-            numbers.add(num);
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber);
         }
     }
 }
