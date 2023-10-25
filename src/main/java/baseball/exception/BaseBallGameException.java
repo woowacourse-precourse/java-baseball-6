@@ -12,7 +12,7 @@ public enum BaseBallGameException {
         this.message = message;
     }
 
-    public IllegalArgumentException getException() throws IllegalStateException {
+    public void getException() throws IllegalArgumentException {
         throw new IllegalArgumentException(message);
     }
 
