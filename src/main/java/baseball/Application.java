@@ -32,7 +32,7 @@ public class Application {
                 strike = gameController.checkForStrike(userNumArray, computerNumArray, strike);
                 ball = gameController.checkForBall(userNumArray, computerNumArray, ball);
 
-                String output = "";
+                String output = gameController.generateNewOutput();
                 output = gameController.addBallToOutput(output, ball);
                 output = gameController.addStrikeToOutput(output, strike, ball);
                 output = gameController.addNothingToOutput(output, strike, ball);

@@ -78,4 +78,9 @@ public class GameController {
         Integer exit = Integer.parseInt(Console.readLine());
         return exit;
     }
+
+    public String generateNewOutput() {
+        String output = "";
+        return output;
+    }
 }
