@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 import baseball.controller.GameUtils;
 import baseball.model.GameManager;
 import org.junit.jupiter.api.Assertions;
