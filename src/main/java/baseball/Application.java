@@ -45,8 +45,10 @@ public class Application {
 
     public static List<Integer> generateRandomNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
+
         while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
