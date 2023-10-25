@@ -1,9 +1,7 @@
 package baseball.user;
 
-import static baseball.game.BaseballConstants.MAX_STRIKES;
-import static baseball.game.BaseballConstants.TOTAL_BASEBALL_NUMBERS;
-
 import baseball.game.BallCountResult;
+import baseball.game.BaseballConstants;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,7 @@ public class Computer {
         ballCountResult = new BallCountResult(0, 0);
 
         baseballNumbers = new ArrayList<>();
-        while (baseballNumbers.size() < TOTAL_BASEBALL_NUMBERS) {
+        while (baseballNumbers.size() < BaseballConstants.TOTAL_BASEBALL_NUMBERS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!baseballNumbers.contains(randomNumber)) {
                 baseballNumbers.add(randomNumber);
@@ -80,7 +78,7 @@ public class Computer {
         System.out.println(resultMessage);
 
         if (ballCountResult.isStrikeOut()) {
-            System.out.println(MAX_STRIKES + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(BaseballConstants.MAX_STRIKES + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
