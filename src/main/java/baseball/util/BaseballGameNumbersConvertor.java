@@ -26,5 +26,13 @@ public class BaseballGameNumbersConvertor {
         if (numbers.contains(-1)) {
             throw new IllegalArgumentException();
         }
+
+        int numbersGraterThan10 = (int) numbers.stream()
+            .filter(number -> number >= 10)
+            .count();
+
+        if (numbersGraterThan10 > 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
