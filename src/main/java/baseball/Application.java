@@ -20,6 +20,26 @@ public class Application {
             return true;
         }
     }
+    public static boolean gameResultPrint(CompareNums compareNums, String playerNums){
+        int[] ball_strike = compareNums.compareNums(Integer.parseInt(playerNums));
+        if(ball_strike[0]>0&&ball_strike[1]>0){
+            System.out.println(ball_strike[0]+"볼 "+ball_strike[1]+"스트라이크");
+        }
+        else if(ball_strike[0]>0){
+            System.out.println(ball_strike[0]+"볼");
+        }
+        else if(ball_strike[1]>0){
+            System.out.println(ball_strike[1]+"스트라이크");
+            if(ball_strike[1] == gamenumslen){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return false;
+            }
+        }
+        else{
+            System.out.println("낫싱");
+        }
+        return true;
+    }
     public static boolean gameRetryCheck(String nums){//게임을 재진행하는지 확인하기 위한 사용자의 값이 올바른지 확인
         if(nums.length() != 1){
             return false;
@@ -45,23 +65,7 @@ public class Application {
                     throw new IllegalArgumentException();
                 }
                 else{
-                    int[] ball_strike = compareNums.compareNums(Integer.parseInt(playerNums));
-                    if(ball_strike[0]>0&&ball_strike[1]>0){
-                        System.out.println(ball_strike[0]+"볼 "+ball_strike[1]+"스트라이크");
-                    }
-                    else if(ball_strike[0]>0){
-                        System.out.println(ball_strike[0]+"볼");
-                    }
-                    else if(ball_strike[1]>0){
-                        System.out.println(ball_strike[1]+"스트라이크");
-                        if(ball_strike[1] == gamenumslen){
-                            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                            break;
-                        }
-                    }
-                    else{
-                        System.out.println("낫싱");
-                    }
+                    gameSuccessCheck = gameResultPrint(compareNums, playerNums);
                 }
             }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
