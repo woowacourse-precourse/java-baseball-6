@@ -5,14 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer extends Number {
-    private List<Integer> computerNum;
-
-    public List<Integer> getComputerNum() {
-        return computerNum;
-    }
-
-    public void createComputerNum() {
-        computerNum = new ArrayList<>();
+    public List<Integer> createComputerNum() {
+        List<Integer> computerNum = new ArrayList<>();
         while (computerNum.size() < SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MINRANGE, MAXRANGE);
             if (!computerNum.contains(randomNumber)) {
@@ -24,5 +18,6 @@ public class Computer extends Number {
         } catch (IllegalArgumentException e) {
             createComputerNum();
         }
+        return computerNum;
     }
 }

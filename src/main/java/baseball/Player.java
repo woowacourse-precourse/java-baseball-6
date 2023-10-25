@@ -7,18 +7,13 @@ import java.util.List;
 public class Player extends Number {
 
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private List<Integer> userNum;
 
-    public List<Integer> getUserNum() {
-        return userNum;
-    }
-
-    public void createUserNum() {
+    public List<Integer> createUserNum() {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
         List<Integer> inputNum = convertStringToList(input);
         validate(inputNum);
-        userNum = inputNum;
+        return inputNum;
     }
 
     public List<Integer> convertStringToList(String input) {
