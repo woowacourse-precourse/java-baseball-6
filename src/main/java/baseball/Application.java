@@ -83,8 +83,8 @@ public class Application {
         String playGame = "1";
         
         System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> computerNumber = createComputerNumber();
         while ("1".equals(playGame)) {
-        	List<Integer> computerNumber = createComputerNumber();
         	System.out.println(computerNumber);
         	List<Integer> userNumber = getUserNumber();
 
@@ -92,8 +92,10 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 playGame = Console.readLine();
-                if (!("1").equals(playGame) || !("2").equals(playGame)) {
+                if (!("1".equals(playGame) || "2".equals(playGame))) {
                 	throw new IllegalArgumentException("잘못된 숫자입니다.");
+                } else if (("1").equals(playGame)) {
+                    computerNumber = createComputerNumber();
                 }
             }
         }
