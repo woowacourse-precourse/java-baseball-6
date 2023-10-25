@@ -6,7 +6,7 @@ public enum BallCountMessage {
     BALL("%d볼 "),
     NOTHING("낫싱\n");
 
-    String message;
+    final String message;
 
     BallCountMessage(String message) {
         this.message = message;
