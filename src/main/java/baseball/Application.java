@@ -81,18 +81,18 @@ class Game {
         for (int i = 0; i < Game.NUMBER_COUNT; i++) {
             number[i] = Integer.parseInt(str.charAt(i) + "");
         }
-    }  
+    }
 
     private int getRandomNumber() {
         return pickNumberInRange(Game.START_RANGE, Game.END_RANGE);
     }
 
     public static void init(Game rightAnswer) {
-        //Game answer = Game.getAnswer();
+        Game answer = Game.getAnswer();
 
         Test test = new Test();
-        //test.compareAnswer(answer, rightAnswer);
-        test.showResult();
+        test.compareAnswer(answer, rightAnswer);
+        test.printResult();
 
         if (test.strike != Game.NUMBER_COUNT) {
             Game.init(rightAnswer);
@@ -106,7 +106,13 @@ class Game {
         }
     }
 
+    private static Game getAnswer() {
+        System.out.print(GET_NUMBER_MESSAGE);
+        String userInput = readLine();
+        Game.checkInputValue(userInput);
 
+        return new Game(userInput);
+    }
 
     private static int checkNewGameStart() {
         System.out.println(SUCCESS_MESSAGE);
@@ -195,11 +201,41 @@ class Test {
     }
 
     void compareAnswer(Game answer, Game rightAnswer) {
+        int nowNumber;
 
+        for (int i = 0; i < Game.NUMBER_COUNT; i++) {
+            nowNumber = answer.number[i];
+
+            if (!Array.checkArrayContains(rightAnswer.number, nowNumber)) {
+                continue;
+            }
+            if (i == Array.getIndexFromValue(rightAnswer.number, nowNumber)) {
+                addStrikeCount();
+                continue;
+            }
+
+            addBallCount();
+        }
     }
 
-    void showResult() {
+    void printResult() {
+        String result = "";
+        if (this.ball != 0) {
+            result += this.ball + BALL_WORD;
+        }
 
+        if (this.strike != 0) {
+            if (this.ball != 0) {
+                result += " ";
+            }
+            result += this.strike + STRIKE_WORD;
+        }
+
+        if (result.equals("")) {
+            result = NOT_MATCH_WORD;
+        }
+
+        System.out.println(result);
     }
 }
 
