@@ -28,6 +28,6 @@ public class InputEndChoice {
         if (Character.getNumericValue(tmpNumber) == QUIT) {
             return Choice.QUIT;
         }
-        return Choice.INVALID;
+        throw new IllegalArgumentException("1,2만 입력 가능");
     }
 }
