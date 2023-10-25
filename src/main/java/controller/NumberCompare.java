@@ -23,7 +23,6 @@ public class NumberCompare {
         strike = 0;
         ball = 0;
         isGameEnded = false;
-        System.out.println(playerNumber);
         for (int i = 0; i < 3; i++) {
             if (Objects.equals(playerNumber.get(i), computerNumber.get(i))) {
                 strike++;

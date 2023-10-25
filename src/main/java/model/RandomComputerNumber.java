@@ -23,7 +23,6 @@ public class RandomComputerNumber {
                 computerPick.add(computerRandonPick);
             }
         }
-        System.out.println(computerPick);
     }
 
 
