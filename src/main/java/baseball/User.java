@@ -16,7 +16,7 @@ public class User {
         this.userNumber = userNumber;
     }
 
-    public String getUserNumber() {
+    public String getUserNumbers() {
         return userNumber;
     }
 }
