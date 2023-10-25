@@ -1,7 +1,7 @@
-package baseball;
+package baseball.domain;
 
+import baseball.Operator;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.Arrays;
 
 public class Computer {

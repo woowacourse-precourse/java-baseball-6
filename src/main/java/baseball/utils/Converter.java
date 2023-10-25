@@ -1,4 +1,4 @@
-package baseball.Utils;
+package baseball.utils;
 
 public class Converter {
     public int[] convertUserChooseInputToInt(String input) {

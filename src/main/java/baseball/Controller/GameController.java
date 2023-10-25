@@ -1,6 +1,6 @@
 package baseball.Controller;
 
-import baseball.Service.GameService;
+import baseball.service.GameService;
 
 public class GameController {
     private GameService gameService = new GameService();

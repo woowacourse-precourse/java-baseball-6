@@ -1,8 +1,8 @@
-package baseball.Service;
+package baseball.service;
 
-import baseball.Computer;
-import baseball.User;
-import baseball.Utils.Converter;
+import baseball.domain.Computer;
+import baseball.domain.User;
+import baseball.utils.Converter;
 import baseball.view.InputMessage;
 import baseball.view.OutputMessage;
 import camp.nextstep.edu.missionutils.Console;
