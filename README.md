@@ -144,11 +144,3 @@ while (computer.size() < 3) {
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
 
-
----
- todo list
-- 랜덤 3 자리 숫자 (서로 다른 )
-- 입력한 3 숫자와 비교
-- 볼, 스트라이크 , 낫싱 출력
-- 게임 재시작
-- 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
