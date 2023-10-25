@@ -5,7 +5,6 @@ import java.util.List;
 public class Referee {
     private int ball;
     public int strike;
-    public String message;
 
     public void count(List<Integer> computerNumList, List<Integer> playerNumList) {
         for (int i = 0; i < computerNumList.size(); i++) {
