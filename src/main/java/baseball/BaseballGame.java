@@ -23,7 +23,8 @@ class BaseballGame {
             int strikeNum = countStrikes();
             int ballNum = countBalls();
 
-            gameIsOver = gameResult(strikeNum, ballNum);
+            displayGameResult(strikeNum, ballNum);
+            gameIsOver = checkGameOver(strikeNum);
         }
     }
 
@@ -78,7 +79,7 @@ class BaseballGame {
         return ballNum;
     }
 
-    public boolean gameResult(int strikeNum, int ballNum) {
+    public void displayGameResult(int strikeNum, int ballNum) {
         if (strikeNum != 0 && ballNum == 0) {
             System.out.println(strikeNum + "스트라이크");
         }
@@ -91,7 +92,9 @@ class BaseballGame {
         else {
             System.out.println("낫싱");
         }
+    }
 
+    public boolean checkGameOver(int strikeNum) {
         if (strikeNum == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
