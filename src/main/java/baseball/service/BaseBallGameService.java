@@ -4,8 +4,16 @@ import baseball.model.BaseBallNumber;
 import baseball.model.BaseBallResult;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class BaseBallGameService {
+
+    private final Integer numberSize;
+
+    public BaseBallGameService(Integer numberSize) {
+        this.numberSize = numberSize;
+    }
 
     /**
      * 야구 게임 시작
@@ -26,7 +34,7 @@ public class BaseBallGameService {
     /**
      * 야구 게임 진행
      */
-    void playGame() {
+    private void playGame() {
         //숫자 생성
         BaseBallNumber computerNum = initComputerNum();
 
@@ -49,11 +57,19 @@ public class BaseBallGameService {
      * @return BaseBallNumber 컴퓨터 생성 숫자
      */
     private BaseBallNumber initComputerNum() {
-        int first = Randoms.pickNumberInRange(1, 9);
-        int second = Randoms.pickNumberInRange(1, 9);
-        int third = Randoms.pickNumberInRange(1, 9);
+        ArrayList<Integer> computerNums = new ArrayList<>();
+        int number[] = new int[10];
+        for (int i = 0; i < numberSize; i++) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (number[num] == 1) {
+                num = Randoms.pickNumberInRange(1, 9);
+            }
+            number[num] = 1;
+            computerNums.add(num);
 
-        return new BaseBallNumber(first, second, third);
+        }
+
+        return new BaseBallNumber(computerNums);
     }
 
     /**
@@ -63,20 +79,56 @@ public class BaseBallGameService {
      */
     private BaseBallNumber initUserNum() {
         String userInput = Console.readLine();
+        int userInputNum = 0;
         try {
-            int userInputNum = Integer.parseInt(userInput);
+            userInputNum = Integer.parseInt(userInput);
+            int min = makeSqrt(10, numberSize - 1);
+            int max = makeSqrt(10, numberSize);
 
-            if (userInputNum > 999 || userInputNum < 100) {
+            if (userInputNum >= max || userInputNum < min) {
                 throw new IllegalArgumentException();
             }
-
-            int first = userInputNum / 100;
-            int second = userInputNum / 10 % 10;
-            int third = userInputNum % 10;
-            return new BaseBallNumber(userInputNum / 100, userInputNum / 10 % 10, userInputNum % 10);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+
+        ArrayList<Integer> userInputNums = divideIntByTen(userInputNum);
+        if (!isAllDiffNumber(userInputNums)) {
+            throw new IllegalArgumentException();
+        }
+        return new BaseBallNumber(userInputNums);
+    }
+
+    boolean isAllDiffNumber(ArrayList<Integer> nums) {
+        int number[] = new int[10];
+        for (int i : nums) {
+            if (number[i] != 0) {
+                return false;
+            }
+            number[i] = 1;
+        }
+        return true;
+    }
+
+    /**
+     * a의 b제곱 만들기
+     */
+    private int makeSqrt(int a, int b) {
+        int result = 1;
+        for (int i = 0; i < b; i++) {
+            result *= a;
+        }
+        return result;
+    }
+
+    private ArrayList<Integer> divideIntByTen(int num) {
+        ArrayList<Integer> nums = new ArrayList<>();
+        while (num > 0) {
+            nums.add(num % 10);
+            num /= 10;
+        }
+        Collections.reverse(nums); //앞자리부터 저장하기 위함
+        return nums;
     }
 
     /**
@@ -85,7 +137,7 @@ public class BaseBallGameService {
      * @param result BaseBallResult
      * @return true:  정답, 게임 끝남, false: 정답 못맞춤
      */
-    boolean isGameFinish(BaseBallResult result) {
+    private boolean isGameFinish(BaseBallResult result) {
         if (result.strike().equals(3)) {
             return true;
         } else {
@@ -98,7 +150,7 @@ public class BaseBallGameService {
      *
      * @return true: 재시작, false: 종료
      */
-    boolean isRestartGame() {
+    private boolean isRestartGame() {
         String userInput = Console.readLine();
         try {
             int userInputNum = Integer.parseInt(userInput);
@@ -116,11 +168,11 @@ public class BaseBallGameService {
         }
     }
 
-    void printUserInputNotice() {
+    private void printUserInputNotice() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    void printGameResult(BaseBallResult result) {
+    private void printGameResult(BaseBallResult result) {
         if (result.ball().equals(0) && result.strike().equals(0)) {
             System.out.println("낫싱");
             return;
@@ -136,14 +188,13 @@ public class BaseBallGameService {
         }
     }
 
-    void printGameResult() {
+    private void printGameResult() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    void printRestartNotice() {
+    private void printRestartNotice() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
-
 
     private void printStartNotice() {
         System.out.println("숫자 야구 게임을 시작합니다.");
