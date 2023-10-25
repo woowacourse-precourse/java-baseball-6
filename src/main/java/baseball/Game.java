@@ -40,4 +40,10 @@ public class Game {
     public void increaseBallCount() {
         ballCount++;
     }
+
+    public void initBaseBall() {
+        strikeCount = 0;
+        ballCount = 0;
+
+    }
 }
