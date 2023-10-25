@@ -45,7 +45,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_같은_숫자() {
+    void 예외_테스트_같은숫자() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("112"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -53,7 +53,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 랜덤_숫자_생성() {
+    void 랜덤숫자_생성() {
         //given
 
         //when
@@ -77,5 +77,26 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void 볼() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("512", "135", "1", "895", "589", "2");
+                    assertThat(output()).contains("2볼", "3스트라이크", "3볼", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
 
+    @Test
+    void 스트라이크() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("167", "135", "1", "389", "589", "2");
+                    assertThat(output())
+                            .contains("1스트라이크", "3스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
 }
