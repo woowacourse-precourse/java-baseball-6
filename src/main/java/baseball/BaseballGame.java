@@ -21,7 +21,6 @@ public class BaseballGame {
 
     public void getNumberFromPlayer() {
         playerNum = new PlayerNumber(InputView.readPlayerNumber());
-//        playerNum.getPlayerNumber();
     }
 
     public int[] getCompareNumber() {
