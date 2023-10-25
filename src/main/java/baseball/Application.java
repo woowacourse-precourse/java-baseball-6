@@ -5,12 +5,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.InputMismatchException;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Application {
 public static void main(String[] args) {
@@ -21,18 +19,19 @@ public static void main(String[] args) {
             computer.add(randomNumber);
         }
     }
-
     System.out.println("숫자 야구 게임을 시작합니다.");
 
     boolean flag = true;
-    try (Scanner scanner = new Scanner(new InputStreamReader(System.in));) {
+
+    Scanner scanner = new Scanner(new InputStreamReader(System.in));
+    try {
         while (flag) {
-            System.out.println("computer: " + computer);
+//            System.out.println("computer: " + computer);
             System.out.print("숫자를 입력해주세요 : ");
             int number = scanner.nextInt();
 
             if (number <= 0 || number > 999 || !IsDifferentDigits(number)) {
-                throw new IllegalAccessException();
+                throw new IllegalArgumentException();
             }
 
             int cntSame = GetSameNumbers(computer, number);
@@ -59,19 +58,29 @@ public static void main(String[] args) {
                         flag = false;
                         break;
                     default:
-                        throw new IllegalAccessException();
+                        throw new IllegalArgumentException();
                 }
 
             }
         }
 
-    } catch (IllegalAccessException | InputMismatchException e) {
+    } catch (IllegalArgumentException e) {
         e.printStackTrace();
+//        throw new IllegalArgumentException(e);
+    } catch (InputMismatchException ie) {
+//        System.out.println("InputMismatchException");
+//        IllegalArgumentException iae = new IllegalArgumentException();
+//        iae.initCause(ie);
+//        throw ie;
+////        ie.printStackTrace();
+        throw new IllegalArgumentException();
+    } finally {
+        scanner.close();
     }
 
 }
 
-public static boolean IsDifferentDigits(int number) { // 다 다르면 true
+static boolean IsDifferentDigits(int number) { // 다 다르면 true
     boolean flag = false;
     Set<Integer> set = NumbersToSet(number);
     if (set.size() == String.valueOf(number).length()) {
@@ -81,7 +90,7 @@ public static boolean IsDifferentDigits(int number) { // 다 다르면 true
 }
 
 
-public static Set<Integer> NumbersToSet(int number) {
+static Set<Integer> NumbersToSet(int number) {
     Set<Integer> set = new LinkedHashSet<>();
     while (number > 0) {
         int digit = number % 10;
@@ -91,7 +100,7 @@ public static Set<Integer> NumbersToSet(int number) {
     return set;
 }
 
-public static List<Integer> NumbersToList(int number) {
+static List<Integer> NumbersToList(int number) {
     List<Integer> list = new ArrayList<>();
     while (number > 0) {
         int digit = number % 10;
@@ -101,7 +110,7 @@ public static List<Integer> NumbersToList(int number) {
     return list;
 }
 
-public static Integer GetSameNumbers(List<Integer> computer, int number) {
+static Integer GetSameNumbers(List<Integer> computer, int number) {
     Integer cntSame;
     Set<Integer> computerSet = new HashSet<>(computer);
     Set<Integer> set = NumbersToSet(number);
@@ -110,7 +119,7 @@ public static Integer GetSameNumbers(List<Integer> computer, int number) {
     return cntSame;
 }
 
-public static Integer GetStrike(List<Integer> computer, int number) {
+static Integer GetStrike(List<Integer> computer, int number) {
     Integer cntStrike = 0;
     List<Integer> list = NumbersToList(number);
     for (int i = 0; i < computer.size(); i++) {
@@ -121,16 +130,16 @@ public static Integer GetStrike(List<Integer> computer, int number) {
     return cntStrike;
 }
 
-public static String CheckStrikeBall(Integer cntSame, Integer cntStrike) {
+static String CheckStrikeBall(Integer cntSame, Integer cntStrike) {
     String msg = "";
     if (cntSame == 0) {
         msg = "낫싱";
     } else {
-        if (cntSame-cntStrike != 0) {
-            if(cntStrike == 0){
+        if (cntSame - cntStrike != 0) {
+            if (cntStrike == 0) {
                 msg += cntSame + "볼";
             } else {
-                msg += (cntSame-cntStrike) + "볼 " + cntStrike + "스트라이크";
+                msg += (cntSame - cntStrike) + "볼 " + cntStrike + "스트라이크";
             }
         } else {
             msg += cntStrike + "스트라이크";
