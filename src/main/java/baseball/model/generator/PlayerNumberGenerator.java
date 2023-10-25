@@ -28,8 +28,8 @@ public class PlayerNumberGenerator extends NumberGenerator {
 
         List<Integer> list = new ArrayList<>();
 
-        for (int i = 0; i < numbers.length; i++) {
-            int number = Integer.parseInt(numbers[i]);
+        for (String s : numbers) {
+            int number = Integer.parseInt(s);
             validateNumber(list, number);
             list.add(number);
         }
