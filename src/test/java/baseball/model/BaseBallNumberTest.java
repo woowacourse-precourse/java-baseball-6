@@ -2,6 +2,8 @@ package baseball.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +13,8 @@ class BaseBallNumberTest {
     @Test
     void compareNumber_allStrike() {
         //given
-        BaseBallNumber num = new BaseBallNumber(1, 2, 3);
-        BaseBallNumber num2 = new BaseBallNumber(1, 2, 3);
+        BaseBallNumber num = new BaseBallNumber(new ArrayList<Integer>(List.of(1, 2, 3)));
+        BaseBallNumber num2 = new BaseBallNumber(new ArrayList<Integer>(List.of(1, 2, 3)));
 
         //when
         BaseBallResult result = num.compareNumber(num2);
@@ -26,8 +28,8 @@ class BaseBallNumberTest {
     @Test
     void compareNumber_allBall() {
         //given
-        BaseBallNumber num = new BaseBallNumber(1, 2, 3);
-        BaseBallNumber num2 = new BaseBallNumber(2, 3, 1);
+        BaseBallNumber num = new BaseBallNumber(new ArrayList<Integer>(List.of(1, 2, 3)));
+        BaseBallNumber num2 = new BaseBallNumber(new ArrayList<Integer>(List.of(2, 3, 1)));
 
         //when
         BaseBallResult result = num.compareNumber(num2);
@@ -41,8 +43,8 @@ class BaseBallNumberTest {
     @Test
     void compareNumber_strikeAndBall() {
         //given
-        BaseBallNumber num = new BaseBallNumber(1, 2, 3);
-        BaseBallNumber num2 = new BaseBallNumber(1, 3, 2);
+        BaseBallNumber num = new BaseBallNumber(new ArrayList<Integer>(List.of(1, 2, 3)));
+        BaseBallNumber num2 = new BaseBallNumber(new ArrayList<Integer>(List.of(1, 3, 2)));
 
         //when
         BaseBallResult result = num.compareNumber(num2);
@@ -56,8 +58,8 @@ class BaseBallNumberTest {
     @Test
     void compareNumber_allDiff() {
         //given
-        BaseBallNumber num = new BaseBallNumber(1, 2, 3);
-        BaseBallNumber num2 = new BaseBallNumber(4, 5, 6);
+        BaseBallNumber num = new BaseBallNumber(new ArrayList<Integer>(List.of(1, 2, 3)));
+        BaseBallNumber num2 = new BaseBallNumber(new ArrayList<Integer>(List.of(4, 5, 6)));
 
         //when
         BaseBallResult result = num.compareNumber(num2);
