@@ -9,8 +9,14 @@ import java.util.List;
 
 public class Initializer {
 
-    private List<Integer> comNum=new ArrayList<>();
-    private List<Integer> userNum=new ArrayList<>();
+    private List<Integer> comNum;
+    private List<Integer> userNum;
+
+    public Initializer() {
+        this.comNum = new ArrayList<>();
+        this.userNum = new ArrayList<>();
+    }
+
     public List<Integer> setCom(){
 
         while(comNum.size()<3){
@@ -21,15 +27,19 @@ public class Initializer {
     }
     public List<Integer> setUser(){
         userNum.clear();
-
         System.out.print("숫자를 입력해주세요 : ");
-
         String userInStr =Console.readLine();
         int inputSize = userInStr.length();
 
-        if(inputSize>3 || inputSize==1 || inputSize==2 ){
-            //TODO: 예외처리
-            throw new IllegalArgumentException("[프로그램 종료] 잘못된 입력입니다.");
+        for(char c : userInStr.toCharArray()){
+            if(!Character.isDigit(c)){
+                throw new IllegalArgumentException("[프로그램 종료] 잘못된 입력입니다.");
+            }
+        }
+
+        if(inputSize!=3 ){
+            //TODO: 예외처리 (1. 입력길이 3이 아닌 경우 2.숫자가 아닌 것 입력)
+            throw new IllegalArgumentException("[프로그램 종료] 3자리 수를 입력해주세요.");
         }
 
         for (int i = 0; i < inputSize; ++i) {
