@@ -1,11 +1,14 @@
 package baseball;
 
+import java.util.List;
+
 public class Validator {
     private final String EMPTY_VALUE_ERROR_MESSAGE = "빈 값은 입력할 수 없습니다.";
     private final String LENGTH_ERROR_MESSAGE = "세 자리 이외의 값은 입력할 수 없습니다.";
     private final String TYPE_ERROR_MESSAGE = "숫자 이외의 값은 입력할 수 없습니다.";
     private final String CONTAIN_ZERO_ERROR_MESSAGE = "0은 입력할 수 없습니다.";
     private final String RESTART_INPUT_ERROR_MESSAGE = "1과 2 이외의 숫자는 입력할 수 없습니다.";
+    private final String DUPLICATED_NUMBER_ERROR_MESSAGE = "서로 중복되는 숫자는 입력할 수 없습니다.";
 
     private final Integer CORRECT_LENGTH = 3;
     private final String RESTART_NUMBER = "1";
@@ -31,6 +34,12 @@ public class Validator {
     public void validateRestartInput(String input) {
         if (isNotOneOrTwo(input)) {
             throw new IllegalArgumentException(RESTART_INPUT_ERROR_MESSAGE);
+        }
+    }
+
+    public void validateDuplicatedNumber(List<Character> numbers, char number) {
+        if (isDuplicated(numbers, number)) {
+            throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
     }
 
