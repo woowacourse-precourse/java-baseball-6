@@ -23,17 +23,17 @@ public class NumberConverter {
     }
 
     private static void validate(List<Integer> number) {
-        validateThreeNums(number);
-        validateUnduplicated(number);
+        isThreeNums(number);
+        isUnduplicated(number);
     }
 
-    private static void validateThreeNums(List<Integer> number) {
+    private static void isThreeNums(List<Integer> number) {
         if (number.size() != 3) {
             throw new IllegalArgumentException("1부터 9까지 3개의 숫자를 입력해주세요");
         }
     }
 
-    private static void validateUnduplicated(List<Integer> number) {
+    private static void isUnduplicated(List<Integer> number) {
         if (number.size() != number.stream().distinct().count()) {
             throw new IllegalArgumentException("서로 다른 숫자들을 입력해주세요");
         }
