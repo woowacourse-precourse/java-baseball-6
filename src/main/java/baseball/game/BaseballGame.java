@@ -24,6 +24,11 @@ public class BaseballGame {
         this.ball = RESET;
     }
 
+    public int tryAgainGame(String userInput) {
+        validRestart(userInput);
+        return Integer.parseInt(userInput);
+    }
+
     public void tryUserInput(String userInput) {
         valid(userInput);
         List<Integer> userNumbers = convertToIntegerList(userInput);
@@ -95,6 +100,15 @@ public class BaseballGame {
 
         if (temp.size() != GameConfig.SIZE) {
             throw new IllegalArgumentException(ErrorCode.DUPLICATION_ERROR.message);
+        }
+    }
+
+    private void validRestart(String userInput) {
+        String RestartButton = String.valueOf(GameConfig.RESTART_NUMBER);
+        String EndButton = String.valueOf(GameConfig.END_NUMBER);
+
+        if (!userInput.equals(RestartButton) && !userInput.equals(EndButton)) {
+            throw new IllegalArgumentException(ErrorCode.RESTART_ERROR.message);
         }
     }
 }

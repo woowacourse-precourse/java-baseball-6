@@ -44,6 +44,18 @@ class BaseballGameTest {
         );
     }
 
+    @ValueSource(strings = {"3", "a", "한", "9"})
+    @ParameterizedTest
+    void 숫자_1_2_외에_다른_것_입력(String restartButton) {
+        //given, when
+        BaseballGame game = new BaseballGame(List.of(1, 2, 3));
+
+        //then
+        assertThatThrownBy(() -> game.tryAgainGame(restartButton))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorCode.RESTART_ERROR.message);
+    }
+
     @ValueSource(strings = {"a12", "1b2", "56c", "qw1", "q2소", "9cz", "zxc"})
     @ParameterizedTest
     void 숫자_외에_다른_것_입력(String input) {
