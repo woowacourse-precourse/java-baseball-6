@@ -4,13 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class GameNumber {
 
     private static final int RANDOM_MIN = 1;
     private static final int RANDOM_MAX = 9;
-    private static final String INPUT_REGEX = String.format("^[%d-%d]*$", RANDOM_MIN, RANDOM_MAX);
 
     public static final int SIZE = 3;
     private final List<Integer> numbers;
@@ -26,7 +24,7 @@ public class GameNumber {
     }
 
     public GameNumber(String input) {
-        if (!input.matches(INPUT_REGEX)) {
+        if (!input.matches("^[" + RANDOM_MIN + "-" + RANDOM_MAX + "]*$")) {
             throw new IllegalArgumentException(RANDOM_MIN + "부터 " + RANDOM_MAX + "까지의 숫자만 입력해주세요.");
         }
         if (input.length() != SIZE) {
