@@ -1,12 +1,15 @@
 package baseball.model;
 
 public class GameResult {
-    private int strikeCount;
-    private int ballCount;
 
-    public GameResult(int strikeCount, int ballCount) {
-        this.strikeCount = strikeCount;
+    public static int MAX_STRIKE_COUNT = 3;
+
+    private int ballCount;
+    private int strikeCount;
+
+    public GameResult(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
+        this.strikeCount = strikeCount;
     }
 
     public int getStrikeCount() {
@@ -15,5 +18,13 @@ public class GameResult {
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    public boolean isStrikeOut() {
+        if (strikeCount== MAX_STRIKE_COUNT) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
