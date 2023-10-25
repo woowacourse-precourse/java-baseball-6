@@ -25,6 +25,43 @@ class BaseballGame{
         return numbers;
     }
 
+    public boolean isCorrectAnswer(String answer){
+        // 힌트 출력
+        List<Integer> user = new ArrayList<>();
+        for(int i=0;i<3;i++){
+            user.add(Integer.parseInt(Character.toString(answer.charAt(i))));
+        }
+        int strike=0;
+        int ball=0;
+        for(int i=0;i<3;i++){
+            if(Objects.equals(user.get(i), computer.get(i))){
+                strike+=1;
+            }
+            else if(computer.contains(user.get(i))) {
+                ball += 1;
+            }
+        }
+
+        printHint(strike, ball);
+
+        return strike==3;
+    }
+
+    private static void printHint(int strike, int ball){
+        if(strike==0 && ball==0){
+            System.out.println("낫싱");
+        }
+        if(strike!=0 && ball==0){
+            System.out.println(strike+"스트라이크");
+        }
+        if(strike==0 && ball!=0){
+            System.out.println(ball+"볼");
+        }
+        if(strike!=0 && ball!=0){
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        }
+    }
+
     public List<Integer> getComputerNumbers(){
         return computer;
     }
@@ -67,9 +104,9 @@ class GameProcess{
         // 문제 풀기-반복처리
         List<Integer> computer=game.getComputerNumbers();
 
-        while(true){
+        while(true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String answer= readLine();
+            String answer = readLine();
 
             // 입력값에 대한 예외 처리 필요
             try {
@@ -78,40 +115,13 @@ class GameProcess{
                 throw new IllegalArgumentException();
             }
 
-            // 힌트 출력
-            List<Integer> user = new ArrayList<>();
-            for(int i=0;i<3;i++){
-
-                user.add(Integer.parseInt(Character.toString(answer.charAt(i))));
+            // 정답시
+            if(game.isCorrectAnswer(answer)){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                break;
             }
-            int strike=0;
-            int ball=0;
-            for(int i=0;i<3;i++){
-                if(Objects.equals(user.get(i), computer.get(i))){
-                    strike+=1;
-                }
-                else if(computer.contains(user.get(i))) {
-                    ball += 1;
-                }
-            }
-
-            if(strike==0 && ball==0){
-                System.out.println("낫싱");
-            }
-            if(strike!=0 && ball==0){
-                System.out.println(strike+"스트라이크");
-            }
-            if(strike==0 && ball!=0){
-                System.out.println(ball+"볼");
-            }
-            if(strike!=0 && ball!=0){
-                System.out.println(ball+"볼 "+strike+"스트라이크");
-            }
-
-            if(strike==3)break;
         }
-
-
     }
 }
 
@@ -120,9 +130,5 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         GameProcess.startGame();
-        // 정답 알림 문구출력
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
     }
 }
