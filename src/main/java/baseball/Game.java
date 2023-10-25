@@ -19,13 +19,15 @@ public class Game {
     }
     public void playBall(List<Integer> computer, List<Integer> user){
         for(int i=0;i<3;i++){
-            if(computer.get(i)==user.get(i)){
+            if(computer.get(i) == user.get(i)){
                 strike++;
-            } else {
-                if(computer.contains(user.get(i))){
-                    ball++;
-                }
+                continue;
             }
+
+            if(computer.contains(user.get(i))){
+                ball++;
+            }
+
         }
     }
 
