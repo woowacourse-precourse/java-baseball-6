@@ -9,12 +9,12 @@ import java.util.List;
 public class NumberChecker {
     List<Integer> computerNumbers;
 
-    NumberChecker(List<Integer> computerNumbers) {
-        this.computerNumbers = computerNumbers;
-    }
-
     public static NumberChecker setRandomNumbers(List<Integer> computerNumbers) {
         return new NumberChecker(computerNumbers);
+    }
+
+    NumberChecker(List<Integer> computerNumbers) {
+        this.computerNumbers = computerNumbers;
     }
 
     public int getBallCount(List<Integer> inputNumbers) {
@@ -26,18 +26,6 @@ public class NumberChecker {
         }
 
         return ballCount;
-    }
-
-    public int getStrikeCount(List<Integer> inputNumbers) {
-        int strikeCount = 0;
-
-        for(int i = 0; i < computerNumbers.size(); i++) {
-            if(computerNumbers.get(i).equals(inputNumbers.get(i))) {
-                strikeCount++;
-            }
-        }
-
-        return strikeCount;
     }
 
     private boolean isBall(int current, List<Integer> inputNumbers) {
@@ -52,5 +40,17 @@ public class NumberChecker {
         }
 
         return false;
+    }
+
+    public int getStrikeCount(List<Integer> inputNumbers) {
+        int strikeCount = 0;
+
+        for(int i = 0; i < computerNumbers.size(); i++) {
+            if(computerNumbers.get(i).equals(inputNumbers.get(i))) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
     }
 }

@@ -76,12 +76,17 @@ public class Game {
 
     private void restartCheck() {
         int restartFlag = 1;
+        int endFlag = 2;
 
         OutputHandler.showRestartPrompt();
         Integer inputNumber = InputHandler.getOneNumberInput();
         if(inputNumber == restartFlag) {
             gameInit();
             makeInning();
+        }
+
+        if(inputNumber != restartFlag && inputNumber != endFlag) {
+            throw new IllegalArgumentException("Illegal input number. Allowed Number is 1 or 2");
         }
     }
 }
