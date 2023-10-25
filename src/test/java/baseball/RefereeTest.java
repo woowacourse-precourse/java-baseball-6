@@ -52,4 +52,11 @@ class RefereeTest {
         assertThat(outputStreamCaptor.toString().trim())
                 .isEqualTo("낫싱");
     }
+
+    @Test
+    void 스트라이크가_3개일_경우_정답이다() {
+        referee.judge(List.of(1, 2, 3), List.of(1, 2, 3));
+        assertThat(outputStreamCaptor.toString().trim())
+                .isEqualTo("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
