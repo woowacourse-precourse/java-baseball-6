@@ -1,11 +1,11 @@
-package baseball.domain.dto;
+package baseball.domain;
 
 import static baseball.util.MessageConst.RESTART_FORMAT_EXCEPTION;
 
-public class RestartDTO {
+public class Restart {
     private final boolean restart;
 
-    public RestartDTO(String userChoice) {
+    public Restart(String userChoice) {
         this.restart = getUserChoice(userChoice);
     }
 

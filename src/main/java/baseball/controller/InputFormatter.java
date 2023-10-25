@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.BallNumbers;
-import baseball.domain.dto.RestartDTO;
+import baseball.domain.Restart;
 import baseball.view.InputView;
 
 import java.util.ArrayList;
@@ -38,8 +38,8 @@ public class InputFormatter {
 
     public boolean wantRestart() {
         String userChoice = inputView.readLine();
-        RestartDTO restartDTO = new RestartDTO(userChoice);
-        return restartDTO.wantRestart();
+        Restart restart = new Restart(userChoice);
+        return restart.wantRestart();
     }
 }
 
