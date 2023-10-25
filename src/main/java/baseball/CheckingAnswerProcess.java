@@ -10,20 +10,21 @@ public class CheckingAnswerProcess extends BallCases {
             UserInputProcess userInputProcess = new UserInputProcess();
             int correctBalls = correctBallCount(listComputerFixed,userInputProcess.listUserFixedReturn());
             int strikes = strikeCount(listComputerFixed,userInputProcess.listUserFixedReturn());
-            if (correctBalls > 0) {
-                checkingNoStrikes(strikes,correctBalls);
-                if (checkingThreeStrike(strikes)) {
-                    break;
+
+            checkingNoStrikes(strikes,correctBalls);
+
+            if (checkingThreeStrike(strikes)) {
+                break;
                 }
-                if (strikes > 0) {
-                    if (allCorrectBallIsStrike(strikes,correctBalls)) {
-                        continue;
-                    }
-                    correctBallsAndStrikes(strikes,correctBalls);
-                }
+
+            if (allCorrectBallIsStrike(strikes,correctBalls)) {
+                continue;
             }
+
+            correctBallsAndStrikes(strikes,correctBalls);
+
             nothingCorrect(correctBalls);
+
         } while (!win);
     }
-
 }
