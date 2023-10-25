@@ -35,21 +35,6 @@ public class BaseballGameController {
                     initializePc();
                 }else break;
             }
-            /*
-                   Todo
-                    5. 힌트 출력
-                    (ex) N스트라이크 M볼, 낫싱...)
-
-                    -> 3번 ~ 5번 반복
-
-                    6. 3개의 숫자를 다 맞출 경우, 종료문구 출력
-
-                    7. 재시작 / 종료 문구 출력
-                    a. 재시작: 1번부터 다시 시작
-                    b. 종료: 시스템 종료
-
-             */
-
         }
     }
 
