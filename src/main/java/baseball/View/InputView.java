@@ -1,8 +1,6 @@
 package baseball.View;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.View.OutputView.printRetry;
-import static baseball.View.OutputView.printStart;
 
 public class InputView {
 
