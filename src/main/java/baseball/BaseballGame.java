@@ -5,7 +5,7 @@ import java.util.Map;
 public class BaseballGame {
     private Input input;
     private OutPut output;
-    private RandomGenerator randomGenerator;
+    private DiffNumberRandomGenerator randomGenerator;
     private Comparator comparator;
     private String computerNum;
     private boolean isFinish = false;
@@ -14,7 +14,7 @@ public class BaseballGame {
         this.input = new ConsoleInput();
         this.output = new ConsoleOutput();
         this.comparator = new Comparator();
-        this.randomGenerator = new RandomGenerator();
+        this.randomGenerator = new DiffNumberRandomGenerator();
     }
 
     public void start() {
