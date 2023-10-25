@@ -8,10 +8,15 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame implements Game{
-    private final String ANSWER = generateAnswer();
+    private final String ANSWER;
     private final int INPUT_LENGTH = 3;
 
-    public BaseballGame() {
+    private BaseballGame() {
+        this.ANSWER = generateAnswer();
+    }
+
+    public static Game createGame(){
+        return new BaseballGame();
     }
 
     /**
