@@ -28,8 +28,8 @@ public class BaseballController {
         Message.reStart();
         int game = Integer.parseInt(Console.readLine());
         if (game == GameNumber.GAME_START) {
-            List<Integer> ran_Num = GameNumber.RandomNumberGenerator();
-            playGame(ran_Num);
+            List<Integer> computerNumber = GameNumber.RandomNumberGenerator();
+            playGame(computerNumber);
         } else if (game == GameNumber.GAME_END) {
             return;
         } else {
