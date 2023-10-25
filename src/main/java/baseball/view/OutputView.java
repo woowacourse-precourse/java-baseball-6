@@ -1,26 +1,19 @@
 package baseball.view;
 
-import baseball.model.GameMessages;
+import baseball.constants.GameMessages;
 
 public class OutputView {
 
-    public void gameStart() {
-        System.out.println(GameMessages.GAME_START_GUIDE);
+    public void printlnMessage(GameMessages message) {
+        System.out.println(message.getMessage());
     }
 
-    public void requestInputNumber() {
-        System.out.print(GameMessages.NUMBER_REQUEST_MESSAGE);
+    public void printMessage(GameMessages message) {
+        System.out.print(message.getMessage());
     }
 
-    public void notifyCorrectAnswer() {
-        System.out.println(GameMessages.CORRECT_ANSWER_MESSAGE);
+    public void printContents(String contents) {
+        System.out.println(contents);
     }
 
-    public void askRestartOrExit() {
-        System.out.println(GameMessages.RESTART_OR_EXIT_MESSAGE);
-    }
-
-    public void printHint(String hint) {
-        System.out.println(hint);
-    }
 }

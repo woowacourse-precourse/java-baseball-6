@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constants.GameMessages;
 import baseball.utils.Parser;
 import baseball.validators.NumberValidator;
 import baseball.validators.RestartOrExitValidator;
@@ -14,7 +15,7 @@ public class GameController {
     private ComputerController computerController = new ComputerController();
 
     public GameController() {
-        outputView.gameStart();
+        outputView.printlnMessage(GameMessages.GAME_START_MESSAGE);
     }
 
     public void playGame() {
@@ -22,6 +23,7 @@ public class GameController {
         while (isRunning) {
             computerController.saveRandomNumbers();
             proceedGame();
+            outputView.printlnMessage(GameMessages.RESTART_OR_EXIT_MESSAGE);
             isRunning = requestRestartOrExit();
         }
     }
@@ -29,13 +31,12 @@ public class GameController {
     private void proceedGame() {
         Boolean isCorrectAnswer = false;
         while (!isCorrectAnswer) {
-            outputView.requestInputNumber();
+            outputView.printMessage(GameMessages.NUMBER_REQUEST_MESSAGE);
             List<Integer> playerNumbers = getPlayerNumbers();
             computerController.provideHint(playerNumbers);
-            outputView.askRestartOrExit();
             isCorrectAnswer = computerController.checkCorrectAnswer();
         }
-        outputView.notifyCorrectAnswer();
+        outputView.printlnMessage(GameMessages.CORRECT_ANSWER_MESSAGE);
     }
 
     private List<Integer> getPlayerNumbers() {

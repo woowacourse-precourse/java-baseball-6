@@ -19,7 +19,7 @@ public class ComputerController {
 
     public void provideHint(List<Integer> inputNumbers) {
         String hint = computer.provideHint(Numbers.from(inputNumbers));
-        outputView.printHint(hint);
+        outputView.printContents(hint);
     }
 
     public Boolean checkCorrectAnswer() {
