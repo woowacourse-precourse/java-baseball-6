@@ -15,10 +15,9 @@ public class User {
 
         try{
             if(userNumber.length() != 3){
-                throw new IllegalArgumentException("3자리 수로 입력해주세요.");
+                throw new IllegalArgumentException();
             }
         }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
             isExit = 2;
         }
         userNumberList.clear();
