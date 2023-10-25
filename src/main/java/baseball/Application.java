@@ -15,6 +15,22 @@ public class Application {
             List<Integer> Player = generatePlayer.PlayerNumber(tempNum);
 //            System.out.println(Player);
             List<Integer> Rival_Player = generateRival.RivalNumber();
+            int strike = 0;
+            int ball = 0;
+            for (int i = 0; i < 3; i++) {
+                int comNum = Rival_Player.get(i);
+                int myNum = Player.get(i);
+
+                if (comNum == myNum) {
+                    strike++;
+                    continue;
+                }
+                if (comVisited[myNum]) {
+                    ball++;
+                }
+
+
+            }
 //            System.out.println(Rival_Player);
 //            Restart = Console.readLine();
             }
