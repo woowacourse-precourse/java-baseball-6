@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.constant.BaseballConstant.GAME_EXIT;
+import static baseball.constant.BaseballConstant.GAME_RESTART;
+import static baseball.constant.BaseballConstant.GAME_RESTART_ASK_MESSAGE;
+
 import baseball.domain.Game;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -25,11 +29,11 @@ public class Application {
     }
 
     private boolean readRestartIntent() throws IllegalArgumentException {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GAME_RESTART_ASK_MESSAGE);
         String inputRestart = Console.readLine();
-        if (inputRestart.equals("1")) {
+        if (inputRestart.equals(GAME_RESTART)) {
             return true;
-        } else if (inputRestart.equals("2")) {
+        } else if (inputRestart.equals(GAME_EXIT)) {
             return false;
         } else {
             throw new IllegalArgumentException();

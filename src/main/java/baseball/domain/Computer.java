@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.constant.BaseballConstant.MAX_RANDOM_NUMBER;
+import static baseball.constant.BaseballConstant.MIN_RANDOM_NUMBER;
 import static baseball.constant.BaseballConstant.NUMBER_OF_TARGET;
 
 import baseball.model.Score;
@@ -14,9 +16,9 @@ public class Computer {
     public void initTargets() {
         targets.clear();
         for (int i = 0; i < NUMBER_OF_TARGET; ++i) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
             while (targets.contains(randomNumber)) {
-                randomNumber = Randoms.pickNumberInRange(1, 9);
+                randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
             }
             targets.add(randomNumber);
         }

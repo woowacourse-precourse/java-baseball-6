@@ -1,5 +1,11 @@
 package baseball.domain;
 
+import static baseball.constant.BaseballConstant.GAME_EXIT_MESSAGE;
+import static baseball.constant.BaseballConstant.GAME_START_MESSAGE;
+import static baseball.constant.BaseballConstant.GRADE_BALL;
+import static baseball.constant.BaseballConstant.GRADE_NOT_THING;
+import static baseball.constant.BaseballConstant.GRADE_SPACE;
+import static baseball.constant.BaseballConstant.GRADE_STRIKE;
 import static baseball.constant.BaseballConstant.NUMBER_OF_TARGET;
 
 import baseball.model.Score;
@@ -9,7 +15,7 @@ public class Game {
     private final Computer computer = new Computer();
 
     public void printStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START_MESSAGE);
     }
 
     public void initGame() {
@@ -20,7 +26,7 @@ public class Game {
         do {
             roundStart();
         } while (isPlayerLose());
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(GAME_EXIT_MESSAGE);
     }
 
     private void roundStart() {
@@ -32,20 +38,23 @@ public class Game {
     private void printScore() {
         Score score = player.getScore();
         if (score.getBall() == 0 && score.getStrike() == 0) {
-            System.out.println("낫싱");
+            System.out.println(GRADE_NOT_THING);
             return;
         }
+
+        String scoreString = "";
         if (score.getBall() != 0) {
-            System.out.print(score.getBall() + "볼");
-            if (score.getStrike() != 0) {
-                System.out.print(" ");
-            } else {
-                System.out.println();
+            scoreString += score.getBall() + GRADE_BALL;
+            if (score.getStrike() == 0) {
+                System.out.println(scoreString);
+                return;
             }
+            scoreString += GRADE_SPACE;
         }
         if (score.getStrike() != 0) {
-            System.out.println(score.getStrike() + "스트라이크");
+            scoreString += score.getStrike() + GRADE_STRIKE;
         }
+        System.out.println(scoreString);
     }
 
     private boolean isPlayerLose() {

@@ -1,6 +1,9 @@
 package baseball.domain;
 
+import static baseball.constant.BaseballConstant.MAX_RANDOM_NUMBER;
+import static baseball.constant.BaseballConstant.MIN_RANDOM_NUMBER;
 import static baseball.constant.BaseballConstant.NUMBER_OF_TARGET;
+import static baseball.constant.BaseballConstant.PLAYER_INPUT_MESSAGE;
 
 import baseball.model.Score;
 import camp.nextstep.edu.missionutils.Console;
@@ -30,7 +33,7 @@ public class Player {
     }
 
     private String readNumberString() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(PLAYER_INPUT_MESSAGE);
         return Console.readLine();
     }
 
@@ -40,10 +43,10 @@ public class Player {
         }
         for (int i = 0; i < NUMBER_OF_TARGET; ++i) {
             char ch = numberString.charAt(i);
-            if ('1' > ch || '9' < ch) {
+            int prediction = Character.getNumericValue(ch);
+            if (MIN_RANDOM_NUMBER > prediction || MAX_RANDOM_NUMBER < prediction) {
                 throw new IllegalArgumentException();
             }
-            Integer prediction = Character.getNumericValue(ch);
             if (predictions.contains(prediction)) {
                 throw new IllegalArgumentException();
             }
