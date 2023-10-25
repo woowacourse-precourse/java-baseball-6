@@ -13,11 +13,11 @@ public class Result {
     public int getBall() { return this.ball; }
 
     public String getMessage() {
-        if ( isAllStrike() ) { return "ALL STRIKE"; }
-        if ( isStrike() ) { return strike + "STRIKE"; }
-        if ( isBall() ) { return ball + "BALLS"; }
-        if ( isStrikeBall() ) { return strike + "STRIKE, " + ball + "BALL"; }
-        if ( isNoting() ) { return "NOTING"; }
+        if ( isAllStrike() ) { return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"; }
+        if ( isStrike() ) { return strike + "스트라이크"; }
+        if ( isBall() ) { return ball + "볼"; }
+        if ( isStrikeBall() ) { return ball + "볼" + strike + "스트라이크"; }
+        if ( isNoting() ) { return "낫싱"; }
 
         return "NOTING";
     }

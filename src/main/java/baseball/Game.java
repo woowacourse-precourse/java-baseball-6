@@ -20,7 +20,7 @@ public class Game {
         Balls com = Balls.makeRandomBalls();
         Result result;
         do {
-            System.out.println("숫자를 입력해 주세요 : ");
+            System.out.print("숫자를 입력해 주세요 : ");
 
             Balls user = makeUserBalls();
             result = Result.checkBalls(com, user);
