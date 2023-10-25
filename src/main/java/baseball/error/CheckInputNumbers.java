@@ -8,7 +8,7 @@ import java.util.Set;
 public class CheckInputNumbers {
     public static final int INPUT_NUMBER_MAX_LENGTH = 3;
     public static final int CHAR_TO_INT_CONVERT_NUMBER = 48;
-    public static final char RANDOM_NUMBER_RANGE_START = '0';
+    public static final char RANDOM_NUMBER_RANGE_START = '1';
     public static final char RANDOM_NUMBER_RANGE_END = '9';
     public static final String LENGTH_EXCEPTION_MESSAGE = "잘못된 길이의 값이 입력되었습니다.";
     public static final String NON_NUMERIC_EXCEPTION_MESSAGE = "숫자 외의 다른 값이 입력되었습니다.";
