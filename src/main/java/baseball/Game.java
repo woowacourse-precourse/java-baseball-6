@@ -16,11 +16,7 @@ public class Game {
     public void play(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (gameState == GameState.PLAYING) {
-            try{
-                user.input();
-            }catch(IllegalArgumentException e){
-                return;
-            }
+            user.input();
             comparision.compare(user.getUserInput(),computer.getComputerInput());
             comparision.printResult();
             if (comparision.getResult().get(1) == 3) {
