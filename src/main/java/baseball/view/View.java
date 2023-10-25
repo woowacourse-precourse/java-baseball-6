@@ -24,7 +24,7 @@ public class View {
     }
 
     public static void printResult(Result result) {
-        System.out.println(result.getValueToMessage());
+        System.out.println(result);
     }
 
     public static void printGameEndMessage() {

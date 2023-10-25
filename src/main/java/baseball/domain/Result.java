@@ -9,7 +9,7 @@ public class Result {
     private final int strike;
     private final int ball;
 
-    Result(int strike, int ball) {
+    public Result(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
     }
@@ -22,7 +22,8 @@ public class Result {
         return strike + ball == 0;
     }
 
-    public String getValueToMessage() {
+    @Override
+    public String toString() {
         if (this.isNothing()) return NOTHING_WORD;
 
         StringBuilder message = new StringBuilder();
