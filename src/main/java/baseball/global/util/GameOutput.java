@@ -3,7 +3,7 @@ package baseball.global.util;
 import static baseball.global.enums.GuideMessage.FINISH_GUIDE;
 import static baseball.global.enums.GuideMessage.INPUT_COMMAND;
 
-public class GameOutput {
+public final class GameOutput {
 
     public static void printResult(String result) {
         System.out.println(result);
