@@ -1,10 +1,10 @@
 package baseball;
 
-import validator.NumberInputValidator;
+import view.PlayGameInformationOutputView;
 
 public class Application {
     public static void main(String[] args) {
-        NumberInputValidator numberInputValidator = new NumberInputValidator();
-        numberInputValidator.validNumber();
+        PlayGameInformationOutputView playGameInformationOutputView = new PlayGameInformationOutputView();
+        playGameInformationOutputView.printGameStart();
     }
 }
