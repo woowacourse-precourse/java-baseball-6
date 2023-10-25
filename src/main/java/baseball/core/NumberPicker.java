@@ -24,8 +24,8 @@ public class NumberPicker {
         Set<Integer> pickedNumbersSet = new HashSet<>();
         while (pickedNumbersSet.size() < NumberSize.MAX_SIZE.getSize()) {
             int randomNumber = Randoms.pickNumberInRange(
-                NumberSize.START_INCLUSIVE.getSize(),
-                NumberSize.END_INCLUSIVE.getSize()
+                    NumberSize.START_INCLUSIVE.getSize(),
+                    NumberSize.END_INCLUSIVE.getSize()
             );
             pickedNumbersSet.add(randomNumber);
         }
@@ -36,7 +36,7 @@ public class NumberPicker {
         String[] stringBeforeNumber = unprocessedNumber.split("");
         validateInput(stringBeforeNumber);
         return Arrays.stream(stringBeforeNumber).map(Integer::parseInt)
-            .toList();
+                .toList();
     }
 
     private static void validateInput(String[] stringBeforeNumber) {

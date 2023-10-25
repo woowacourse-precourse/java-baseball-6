@@ -32,12 +32,12 @@ public class Referee {
         if (scoreResult.getBallCount() > 0) {
             this.gameStatus = GameStatus.IN_PROGRESS;
             results.add(String.format("%d%s", scoreResult.getBallCount(),
-                PointStatus.BALL.getDescription()));
+                    PointStatus.BALL.getDescription()));
         }
         if (scoreResult.getStrikeCount() > 0) {
             this.gameStatus = GameStatus.IN_PROGRESS;
             results.add(String.format("%d%s", scoreResult.getStrikeCount(),
-                PointStatus.STRIKE.getDescription()));
+                    PointStatus.STRIKE.getDescription()));
         }
 
         System.out.println(String.join(" ", results));

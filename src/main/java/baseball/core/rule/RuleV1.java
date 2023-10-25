@@ -21,7 +21,7 @@ public class RuleV1 implements Rule {
     }
 
     private void calculateStrikeScore(List<Integer> opponentNumberList,
-            List<Integer> playerNumberList, ScoreResult scoreResult) {
+                                      List<Integer> playerNumberList, ScoreResult scoreResult) {
         for (int i = 0; i < NumberSize.MAX_SIZE.getSize(); i++) {
             if (opponentNumberList.get(i).equals(playerNumberList.get(i))) {
                 scoreResult.addStrike();
@@ -30,7 +30,7 @@ public class RuleV1 implements Rule {
     }
 
     private void calculateBallScore(List<Integer> opponentNumberList,
-            List<Integer> playerNumberList, ScoreResult scoreResult) {
+                                    List<Integer> playerNumberList, ScoreResult scoreResult) {
         for (int i = 0; i < NumberSize.MAX_SIZE.getSize(); i++) {
             for (int j = 0; j < NumberSize.MAX_SIZE.getSize(); j++) {
                 if (!opponentNumberList.get(i).equals(playerNumberList.get(i))) {

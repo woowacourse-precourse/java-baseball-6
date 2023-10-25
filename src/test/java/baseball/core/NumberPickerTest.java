@@ -34,7 +34,7 @@ class NumberPickerTest {
         List<Integer> results = numberPicker.picConsoleNumber("219");
 
         //then
-        Assertions.assertThat(results).contains(2,1,9);
+        Assertions.assertThat(results).contains(2, 1, 9);
         Assertions.assertThat(results).size().isEqualTo(3);
 
         Assertions.assertThatThrownBy(() -> numberPicker.picConsoleNumber("1294"))

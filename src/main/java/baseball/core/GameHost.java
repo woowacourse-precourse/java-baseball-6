@@ -49,8 +49,7 @@ public class GameHost {
 
         List<Integer> playerNumberList = player.pickNumber(playerInput);
 
-        PickedNumbers pickedNumbers = PickedNumbers.createPickedNumbers(opponentNumberList,
-                playerNumberList);
+        PickedNumbers pickedNumbers = PickedNumbers.createPickedNumbers(opponentNumberList, playerNumberList);
         referee.checkPoint(pickedNumbers);
 
         return referee.getGameStatus();
