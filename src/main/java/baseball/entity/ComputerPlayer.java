@@ -19,7 +19,6 @@ public class ComputerPlayer extends Player {
 
     @Override
     public List<Integer> getNumbersList() {
-        System.out.println(numbers);
         return numbers;
     }
 }
