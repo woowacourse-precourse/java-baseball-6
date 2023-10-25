@@ -34,6 +34,40 @@ public class Game {
     }
 
 
+    private static boolean compareAnswer(List<Integer> answer) {
+        // 1. 스트라이크 2. 볼 3. 정답 4. 낫싱
+        String resultMessage = "";
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < COMPUTER_DIGIT; i++) {
+            if (getComputerAnswer().contains(answer.get(i))) {
+                if (answer.get(i) == computerAnswer.get(i)) {
+                    strike++;
+                } else {
+                    ball++;
+                }
+            }
+        }
+
+        if (ball != 0) {
+            resultMessage += ball + "볼 ";
+        }
+        if (strike != 0) {
+            resultMessage += strike + "스트라이크 ";
+            if (strike == 3) {
+                System.out.println(resultMessage);
+                System.out.println(FINISH_MESSAGE);
+                return false;
+            }
+        }
+        if (ball == 0 && strike == 0) {
+            System.out.println(NONE_MESSAGE);
+        } else {
+            System.out.println(resultMessage);
+        }
+        return true;
+    }
+
     private static List<Integer> parsingInput() {
         List<Integer> parsedInput = new ArrayList<>();
         String input = readLine();
