@@ -24,23 +24,28 @@ public class GameView {
         System.out.println(UIMessage.GAME_INTRO.getMessage());
     }
     public void showResult(int strike, int ball) {
-        if(strike > 0 && ball == 0) {
-            System.out.println(strike + UIMessage.STRIKE.getMessage());
-            if(strike == 3) {
-                System.out.println(UIMessage.END_MESSAGE);
+        String resultMessage = getResultMessage(strike, ball);
+        System.out.println(resultMessage);
+    }
+
+    private String getResultMessage(int strike, int ball) {
+        StringBuilder resultMessage = new StringBuilder();
+
+        if (ball > 0) {
+            resultMessage.append(ball).append(UIMessage.BALL.getMessage());
+        }
+        if (strike > 0) {
+            if (resultMessage.length() > 0) {
+                resultMessage.append(" ");
             }
+            resultMessage.append(strike).append(UIMessage.STRIKE.getMessage());
+        }
+        if (resultMessage.length() == 0) {
+            resultMessage.append(UIMessage.NOTHING.getMessage());
+        } else if (strike == 3) {
+            resultMessage.append("\n").append(UIMessage.END_MESSAGE.getMessage());
         }
 
-        else if(strike == 0 && ball > 0) {
-            System.out.println(ball + UIMessage.BALL.getMessage());
-        }
-
-        else if(strike == 0 && ball == 0) {
-            System.out.println(UIMessage.NOTHING);
-        }
-
-        else {
-            System.out.println(ball + UIMessage.BALL.getMessage() + " " + strike + UIMessage.STRIKE.getMessage());
-        }
+        return resultMessage.toString();
     }
 }
