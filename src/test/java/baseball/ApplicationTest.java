@@ -6,8 +6,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
+import baseball.service.BaseballGame;
 import baseball.validator.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -65,7 +67,7 @@ class ApplicationTest extends NsTest {
             Validator.validateInputLength(case3, lengthThree);
         });
 
-        //then
+        // then
         assertThat(result1).doesNotThrowAnyException();
         assertThat(result2).isInstanceOf(IllegalArgumentException.class);
         assertThat(result3).isInstanceOf(IllegalArgumentException.class);
@@ -90,10 +92,25 @@ class ApplicationTest extends NsTest {
             Validator.validateInputLength(case3, lengthOne);
         });
 
-        //then
+        // then
         assertThat(result1).doesNotThrowAnyException();
         assertThat(result2).isInstanceOf(IllegalArgumentException.class);
         assertThat(result3).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 스트라이크_개수_테스트() {
+        // given
+        final int STRIKE_COUNT = 2;
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        List<Integer> playerNumbers = List.of(1, 2, 4);
+        BaseballGame baseballGame = new BaseballGame();
+
+        // when
+        baseballGame.calculateNumbers(computerNumbers, playerNumbers);
+
+        // then
+        assertThat(baseballGame.strikeCount).isEqualTo(STRIKE_COUNT);
     }
 
     @Override
