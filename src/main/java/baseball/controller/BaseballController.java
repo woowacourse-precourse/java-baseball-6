@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.service.BaseballService;
 import baseball.util.BaseballUtil;
 import baseball.view.UserInterface;
 import baseball.vo.GuessResultVO;
