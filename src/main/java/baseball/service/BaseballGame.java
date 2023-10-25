@@ -48,18 +48,7 @@ public class BaseballGame {
                 ball++;
             }
         }
-        if (ball == 0 && strike == 0) {
-            Output.printNothingMessage();
-        }
-        else if (ball == 0) {
-            Output.printStrikeMessage(strike);
-        }
-        else if (strike == 0) {
-            Output.printBallMessage(ball);
-        }
-        else {
-            Output.printBallAndStirkeMessage(ball, strike);
-        }
+        Output.print(ball, strike);
 
         if (strike == 3) {
             return true;
