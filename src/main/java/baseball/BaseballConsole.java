@@ -7,7 +7,16 @@ public class BaseballConsole {
     public static void startBaseballShell() {
         while (true) {
             startNewGame();
+            if (isStop()) {
+                break;
+            }
         }
+    }
+
+    private static boolean isStop() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String answer = getInput("", "[12]");
+        return answer.equals("2");
     }
 
     private static void startNewGame() {
