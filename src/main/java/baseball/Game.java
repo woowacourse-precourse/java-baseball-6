@@ -35,7 +35,7 @@ public class Game {
             boolean isCorrect = false;
             while (!isCorrect) {
                 System.out.println(MSG_INPUT_NUMBER);
-                List<Integer> guess = inputUserGuess();
+                List<Integer> guess = createUserGuess(Console.readLine().trim());
                 GuessResult guessResult = checkGuess(answer, guess);
                 System.out.println(guessResult.toString());
                 if (isSuccessGuess(guessResult)) {
@@ -86,14 +86,13 @@ public class Game {
         return computer;
     }
 
-    private List<Integer> inputUserGuess() {
-        String userInputStr = Console.readLine().trim();
-        if (userInputStr.length() == COMPUTER_ANSWER_SIZE) {
+    private List<Integer> createUserGuess(String guessInput) {
+        if (guessInput.length() == COMPUTER_ANSWER_SIZE) {
             try {
                 return List.of(
-                        Integer.parseInt(userInputStr.substring(0, 1)),
-                        Integer.parseInt(userInputStr.substring(1, 2)),
-                        Integer.parseInt(userInputStr.substring(2, 3)));
+                        Integer.parseInt(guessInput.substring(0, 1)),
+                        Integer.parseInt(guessInput.substring(1, 2)),
+                        Integer.parseInt(guessInput.substring(2, 3)));
             } catch (Exception e) {
                 throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
             }
