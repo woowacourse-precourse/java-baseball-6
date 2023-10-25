@@ -24,7 +24,6 @@ public class Application {
             int[] computerNumbers = generateRandomNumbers();
             System.out.print("서로 다른 3자리의 수를 입력하세요: ");
             int[] userNumbers = getUserInput();
-
             int strikes = 0;
             int balls = 0;
 
