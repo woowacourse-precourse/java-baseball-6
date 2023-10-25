@@ -32,4 +32,31 @@ public class User extends Number {
         strikeCount = 0;
         ballCount = 0;
     }
+
+    public static void printResult() {
+        if(strikeCount + ballCount == 0) {
+            System.out.println(KEYWORD_NOMATCH);
+            return;
+        }
+
+        List<String> message = new ArrayList<>();
+
+        if(ballCount > 0) {
+            message.add(ballCount+KEYWORD_BALL);
+        }
+
+        if(strikeCount > 0) {
+            message.add(strikeCount+KEYWORD_STRIKE);
+        }
+
+        System.out.println(String.join(" ", message));
+    }
+
+    public static void addBallCount() {
+        ballCount++;
+    }
+
+    public static void addStrikeCount() {
+        strikeCount++;
+    }
 }

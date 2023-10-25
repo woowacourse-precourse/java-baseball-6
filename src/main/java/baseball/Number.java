@@ -75,4 +75,21 @@ public class Number {
         }
     }
 
+    public boolean hasValueAtSameIndex(int index, int value) {
+        int savedIndex = this.nums.indexOf(value);
+        return savedIndex == index;
+    }
+
+    public boolean hasValue(int value) {
+        return this.nums.contains(value);
+    }
+
+    protected int getNum(int index) {
+        return this.nums.get(index);
+    }
+
+    protected int getSize() {
+        return this.nums.size();
+    }
+
 }

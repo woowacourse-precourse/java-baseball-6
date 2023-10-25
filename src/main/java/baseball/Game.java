@@ -26,5 +26,22 @@ public class Game {
 
     private void play() {
         Number inputValues = User.getInputNums();
+        for(int i=0;i < inputValues.getSize();i++) {
+            calcCounts(i, inputValues.getNum(i));
+        }
+        User.printResult();
+    }
+
+    private void calcCounts(int index, int value) {
+
+        if(computer.hasValueAtSameIndex(index, value)) {
+            User.addStrikeCount();
+            return;
+        }
+
+        if(computer.hasValue(value)) {
+            User.addBallCount();
+        }
+
     }
 }
