@@ -10,6 +10,11 @@ public class BaseBallGame {
 		this.answer = answer;
 	}
 
+	/**
+	 * 게임 종료 여부
+	 * @author ybchar
+	 * @return 게임 종료 여부
+	 */
 	public boolean isGameOver() {
 		return gameOver;
 	}
