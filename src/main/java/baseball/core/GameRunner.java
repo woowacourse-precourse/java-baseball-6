@@ -29,7 +29,7 @@ public class GameRunner {
     }
 
     public boolean isEndOfGame() {
-        if (judge.is3Strikes()) {
+        if (judge.isMaxStrikes()) {
             OutputHandler.printGameEnd();
             return true;
         }

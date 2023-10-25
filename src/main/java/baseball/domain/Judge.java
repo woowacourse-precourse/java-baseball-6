@@ -25,8 +25,8 @@ public class Judge {
         }
     }
 
-    public boolean is3Strikes() {
-        return strikes == 3;
+    public boolean isMaxStrikes() {
+        return strikes == Constants.MAX_DIGITS;
     }
 
     @Override
