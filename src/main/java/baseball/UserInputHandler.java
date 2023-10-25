@@ -19,11 +19,11 @@ public class UserInputHandler {
         return c == '0';
     }
 
-    private boolean isCorrectLengthFromInput(String input) {
+    private boolean isCorrectLengthFromInput(String input) throws IllegalArgumentException {
         return input.length() == 3;
     }
 
-    private boolean isCorrectInput(String input) {
+    private boolean isCorrectInput(String input) throws IllegalArgumentException {
         return isCorrectDigit(input) && isCorrectLengthFromInput(input);
     }
 
