@@ -26,6 +26,23 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("가나다"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> assertThatThrownBy(() -> runException("196", "135","123"))
+                        .isInstanceOf(IllegalArgumentException.class),
+                1, 3, 5
+        );
+
     }
 
     @Override
