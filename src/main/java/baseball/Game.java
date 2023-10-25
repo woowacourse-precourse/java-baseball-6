@@ -23,7 +23,6 @@ public class Game {
 
         printStartMessage();
         rivalNumber = makeRivalNumber();
-        System.out.println(rivalNumber);
         while (score.getStrike() != 3) {
             userGuessNumber = inputUserGuess();
             checkScore(score, rivalNumber, userGuessNumber);
@@ -55,6 +54,7 @@ public class Game {
     private List<Integer> inputUserGuess() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
+
         isNumber(input);
         isTripleDigit(input);
         hasNoOverlap(input);
