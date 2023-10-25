@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResultService {
-    public List<Integer> number_init() {
+    public List<Integer> initComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -18,10 +18,10 @@ public class ResultService {
         return computer;
     }
 
-    public Result inputAndCompare(List<Integer> computer) {
+    public Result compareComputerAndInput(List<Integer> computer) {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        List<Integer> input_num = convert_to_list(input);
+        List<Integer> input_num = convertStrToList(input);
         if (checkException(input_num) == 1) {
             throw new IllegalArgumentException();
         }
@@ -29,7 +29,7 @@ public class ResultService {
         return res;
     }
 
-    private static List<Integer> convert_to_list(String num) {
+    private static List<Integer> convertStrToList(String num) {
         List<Integer> nums = new ArrayList<>();
         for (int i = 0; i < num.length(); i++) {
             nums.add(num.charAt(i) - '0');

@@ -10,9 +10,9 @@ public class ResultController {
 
     public void game() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computer = resultService.number_init();
+        List<Integer> computer = resultService.initComputerNumber();
         do {
-            Result res = resultService.inputAndCompare(computer);
+            Result res = resultService.compareComputerAndInput(computer);
             if (res.getStrike() == 3) {
                 computer = rightAnswer(computer);
             } else if (res.getStrike() < 3) {
@@ -27,7 +27,7 @@ public class ResultController {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String cmd = Console.readLine();
         if (cmd.equals("1")) {
-            computer = resultService.number_init();
+            computer = resultService.initComputerNumber();
         } else if (cmd.equals("2")) {
             return null;
         }
