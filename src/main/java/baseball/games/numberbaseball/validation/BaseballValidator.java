@@ -4,6 +4,7 @@ public class BaseballValidator {
     private static final Integer NUMBERS_INPUT_SIZE = 3;
     private static final Character NUMBERS_RANGE_START = '1';
     private static final Character NUMBERS_RANGE_END = '9';
+    private static final Integer OPTION_INPUT_SIZE = 1;
 
     public void validateNumbersInput(String input) {
         if (isInvalidNumbersLength(input)) {
@@ -31,4 +32,9 @@ public class BaseballValidator {
                 .distinct()
                 .count() < NUMBERS_INPUT_SIZE;
     }
+
+    private boolean isInvalidOptionLength(String input) {
+        return input.length() != OPTION_INPUT_SIZE;
+    }
+
 }
