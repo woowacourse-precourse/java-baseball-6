@@ -21,4 +21,16 @@ public class Referee {
             }
         }
     }
+
+    public void calculateBallCount(List<Integer> user, List<Integer> computer) {
+        for (int i = 0; i < NUMBERS_SIZE; i++) {
+            for (int j = 0; j < NUMBERS_SIZE; j++) {
+                if (i != j) {
+                    if (user.get(i) == computer.get(j)) {
+                        ball++;
+                    }
+                }
+            }
+        }
+    }
 }
