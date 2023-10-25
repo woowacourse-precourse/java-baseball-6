@@ -14,5 +14,6 @@ public class MessageConstants {
     public static final String INVALID_INPUT_ONLY_INTEGER_ERROR_MESSAGE = "숫자만 입력하세요.";
     public static final String INVALID_NUMBERS_INPUT_LENGTH_ERROR_MESSAGE = "숫자의 길이는 3이어야 합니다.";
     public static final String INVALID_NUMBERS_CONTAINS_DUPLICATE_NUMBER = "중복된 숫자를 입력하시면 안됩니다.";
+    public static final String INVALID_NUMBERS_CONTAINS_ZERO = "1 부터 9 사이의 숫자만 입력해주세요.";
     public static final String INVALID_OPTION_INPUT_ERROR_MESSAGE = "1 (계속) 혹은 2 (종료) 만 입력하셔야 합니다.";
 }
