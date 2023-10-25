@@ -8,23 +8,11 @@ public class GameInputReader {
 
     public String enterGameNumber() {
         System.out.print(INPUT_NUMBER_MESSAGE);
-        String inputNumber = Console.readLine();
-        isValidUserNumberInput(inputNumber);
-        return inputNumber;
+        return Console.readLine();
     }
 
     public String enterAnswerRestartGame() {
         System.out.print(ASK_RESET_GAME_MESSAGE);
-        String inputAnswer = Console.readLine();
-        isValidUserAnswerInput(inputAnswer);
-        return inputAnswer;
+        return Console.readLine();
     }
-
-    private void isValidUserNumberInput(String input) {
-        InputValidator.isValidUserNumberInput(input);
-    }
-    private void isValidUserAnswerInput(String input) {
-        InputValidator.isValidUserAnswerInput(input);
-    }
-
 }
