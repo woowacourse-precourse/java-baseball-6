@@ -9,13 +9,16 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        int[] computerNumbers = generateComputerNumbers();
-        System.out.println(Arrays.toString(computerNumbers));
-        System.out.println(isValid("124"));
-        System.out.println(Arrays.toString(parseInput("123")));
-        System.out.println(countStrikes(computerNumbers, parseInput("912")));
-        System.out.println(countBalls(computerNumbers, parseInput("841"), 1));
-        printResult(1,2);
+        while (true) {
+            int[] computerNumbers = generateComputerNumbers();
+            playGame(computerNumbers);
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String choice = Console.readLine();
+            if ("2".equals(choice)) {
+                break;
+            }
+        }
     }
 
     // 컴퓨터 랜덤 숫자 3개 생성
@@ -43,20 +46,27 @@ public class Application {
 
     // 게임 진행
     private static void playGame(int[] computerNumbers) {
-
+        while (true) {
         // 숫자 입력받기
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        if (isValid(input)) {
-            int[] userNumbers = parseInput(input);
-            int strikes = countStrikes(computerNumbers, userNumbers);
-            int balls = countBalls(computerNumbers, userNumbers, strikes);
+            if (isValid(input)) {
+                int[] userNumbers = parseInput(input);
+                int strikes = countStrikes(computerNumbers, userNumbers);
+                int balls = countBalls(computerNumbers, userNumbers, strikes);
 
-            printResult(strikes, balls);
+                if (strikes == 3) {
+                    System.out.printf("%d스트라이크\n", strikes);
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    return;
+                }
 
-        } else {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+                printResult(strikes, balls);
+
+            } else {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
         }
     }
 
@@ -109,19 +119,14 @@ public class Application {
         return count - strikes;
     }
 
-
     // 결과 출력
-    private static void printResult(int strikes, int balls){
-        if (strikes == 3){
-            System.out.printf("%d스트라이크\n", strikes);
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return;
-        }
-        if(strikes == 0 && balls == 0){
+    private static void printResult(int strikes, int balls) {
+
+        if (strikes == 0 && balls == 0) {
             System.out.println("낫싱");
             return;
         }
-        if(balls == 0){
+        if (balls == 0) {
             System.out.printf("%d스트라이크\n", strikes);
             return;
         }
