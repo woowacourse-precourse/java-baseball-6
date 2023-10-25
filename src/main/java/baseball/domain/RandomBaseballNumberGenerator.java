@@ -22,7 +22,7 @@ public class RandomBaseballNumberGenerator {
     private int getDigit() {
         int number = getRandomDigit();
         if (numbers.contains(number)) {
-            getDigit();
+            return getDigit();
         }
         return number;
     }
