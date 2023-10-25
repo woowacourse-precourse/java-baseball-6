@@ -7,7 +7,7 @@ import java.lang.String;
 
 public class Application {
     final static int gamenumslen = 3;
-    public static boolean gamePlayingCheck(String nums){//컴퓨터에 값을 맞추기 위한 사용자의 값이 올바른지 확인
+    public static boolean confirmUserCorrectAnswer(String nums){//컴퓨터에 값을 맞추기 위한 사용자의 값이 올바른지 확인
         if(nums.length() != gamenumslen){
             return false;
         }
@@ -52,16 +52,16 @@ public class Application {
         }
     }
     public static void main(String[] args) {
-        boolean gameplayingcheck = true;
+        boolean confirmUserCorrectAnswer = true;
         System.out.println("숫자 야구 게임을 시작합니다.");
         String playerNums;
-        while(gameplayingcheck){
+        while(confirmUserCorrectAnswer){
             CompareNums compareNums = new CompareNums();
             boolean gameSuccessCheck = true;
             while(gameSuccessCheck){
                 System.out.printf("숫자를 입력해주세요 : ");
                 playerNums = readLine();
-                if(!gamePlayingCheck(playerNums)){
+                if(!confirmUserCorrectAnswer(playerNums)){
                     throw new IllegalArgumentException();
                 }
                 else{
@@ -75,7 +75,7 @@ public class Application {
             }
             else{
                 if(retrychecknnum.equals("2")){
-                    gameplayingcheck = false;
+                    confirmUserCorrectAnswer = false;
                 }
             }
         }
