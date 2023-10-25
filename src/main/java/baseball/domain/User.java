@@ -21,12 +21,12 @@ public class User {
         final int numCount = rule.digits();
         final String regex = String.format("^[1-9]{%d}$", numCount);
 
-        validateInput(number, regex);
+        validateInput(number, regex, rule);
     }
 
-    private void validateInput(String number, String regex) {
+    private void validateInput(String number, String regex, Rule rule) {
         validateFormat(number, regex);
-        validateDuplicate(number);
+        validateDuplicate(number, rule);
     }
 
     private static void validateFormat(String number, String regex) {
@@ -35,8 +35,8 @@ public class User {
         }
     }
 
-    private void validateDuplicate(String number) {
-        if (isDuplicated(number)) {
+    private void validateDuplicate(String number, Rule rule) {
+        if (isDuplicated(number) && rule.canNotBeDuplicated()) {
             throw new IllegalArgumentException("숫자에 중복된 수가 있습니다.");
         }
     }
