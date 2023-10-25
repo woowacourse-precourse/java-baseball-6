@@ -10,6 +10,9 @@ import java.util.List;
 
 public class BaseballService {
 
+    public BaseballService() {
+    }
+
     public static void gameStart() {
 
         InputView.getStartMessage();
