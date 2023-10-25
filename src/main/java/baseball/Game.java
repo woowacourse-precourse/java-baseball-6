@@ -13,11 +13,16 @@ public class Game {
     private static List<Integer> answer;
     private static List<Integer> playerInputNum;
 
+    private boolean exit = false;
+
     public void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         answer = createRandomNumber();
-        playerInputNum = inputNum(); // 검증까지 끝
-        printResult(answer, playerInputNum);
+        while(!exit) {
+            playerInputNum = inputNum(); // 검증까지 끝
+            printResult(playerInputNum);
+        }
+
     }
 
     // 랜덤 세자리 수 정답 생성
@@ -29,6 +34,7 @@ public class Game {
                 randomNumber.add(num);
             }
         }
+        //System.out.println("테스트용 정답 : "+randomNumber);
         return randomNumber;
     }
 
@@ -98,5 +104,13 @@ public class Game {
             }
         }
         return cnt;
+    }
+
+    // 재시작 입력에 대한 검증
+    public boolean isRestartValidNumber(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("입력값이 1과 2 중 하나의 수가 아니므로 종료합니다.");
+        }
+        return true;
     }
 }
