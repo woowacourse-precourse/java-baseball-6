@@ -43,7 +43,6 @@ public class BaseballGame {
     public void playGame(){
         boolean flag = true;
         List<Integer> computer_number = RandomNumberGenerator.getRandomNumber();
-        System.out.println(computer_number);
         while (flag){
             List<Integer> player_number = inputPlayer();
 
