@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.dto.GameResult;
+import baseball.domain.dto.GameResultDTO;
 import baseball.util.Result;
 import baseball.util.Sentence;
 
@@ -21,9 +21,9 @@ public class OutputView {
         System.out.println(Sentence.GAME_RESTART_OR_EXIT.getMessage());
     }
 
-    public void printGameResult(GameResult gameResult) {
-        int ball = gameResult.ball();
-        int strike = gameResult.strike();
+    public void printGameResult(GameResultDTO gameResultDTO) {
+        int ball = gameResultDTO.ball();
+        int strike = gameResultDTO.strike();
 
         StringBuilder sb = new StringBuilder();
 

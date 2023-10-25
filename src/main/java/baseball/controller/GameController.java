@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.convertor.InputConvertor;
-import baseball.domain.dto.GameResult;
+import baseball.domain.dto.GameResultDTO;
 import baseball.domain.game.Computer;
 import baseball.domain.game.ComputerNumberGenerator;
 import baseball.domain.game.GameStatus;
@@ -26,7 +26,7 @@ public class GameController {
             playGame(computer);
         } while (inputConvertor.convertToGameStatus() == GameStatus.RESTART);
     }
-    
+
     private Computer generateRandomComputerNumbers() {
         outputView.printGameStartMessage();
         return randomComputerNumberGenerator.create();
@@ -35,10 +35,10 @@ public class GameController {
     private void playGame(Computer computer) {
         while (true) {
             Player player = inputConvertor.convertToPlayer();
-            GameResult gameResult = computer.evaluateWith(player);
-            outputView.printGameResult(gameResult);
+            GameResultDTO gameResultDTO = computer.evaluateWith(player);
+            outputView.printGameResult(gameResultDTO);
 
-            if (gameResult.isThreeStrikes()) {
+            if (gameResultDTO.isThreeStrikes()) {
                 break;
             }
         }

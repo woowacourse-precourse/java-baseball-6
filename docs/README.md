@@ -87,7 +87,7 @@ GameNumber 객체 리스트를 지닌 클래스
 
 # [ domain/dto ]
 
-## 7. GameResult (record)
+## 7. GameResultDTO (record)
 
 ### data
 

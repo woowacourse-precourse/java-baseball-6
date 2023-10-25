@@ -2,7 +2,7 @@ package baseball.view;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import baseball.domain.dto.GameResult;
+import baseball.domain.dto.GameResultDTO;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
@@ -28,11 +28,11 @@ class OutputViewTest {
     @Test
     void print_BallAndStrike() {
         // given
-        GameResult gameResult = new GameResult(1, 1);
+        GameResultDTO gameResultDTO = new GameResultDTO(1, 1);
 
         // when
         OutputView outputView = new OutputView();
-        outputView.printGameResult(gameResult);
+        outputView.printGameResult(gameResultDTO);
 
         // then
         assertEquals("1볼 1스트라이크", output.toString().trim());
@@ -42,11 +42,11 @@ class OutputViewTest {
     @Test
     void print_Ball() {
         // given
-        GameResult gameResult = new GameResult(2, 0);
+        GameResultDTO gameResultDTO = new GameResultDTO(2, 0);
 
         // when
         OutputView outputView = new OutputView();
-        outputView.printGameResult(gameResult);
+        outputView.printGameResult(gameResultDTO);
 
         // then
         assertEquals("2볼", output.toString().trim());
@@ -56,11 +56,11 @@ class OutputViewTest {
     @Test
     void print_Strike() {
         // given
-        GameResult gameResult = new GameResult(0, 1);
+        GameResultDTO gameResultDTO = new GameResultDTO(0, 1);
 
         // when
         OutputView outputView = new OutputView();
-        outputView.printGameResult(gameResult);
+        outputView.printGameResult(gameResultDTO);
 
         // then
         assertEquals("1스트라이크", output.toString().trim());
@@ -70,11 +70,11 @@ class OutputViewTest {
     @Test
     void print_Nothing() {
         // given
-        GameResult gameResult = new GameResult(0, 0);
+        GameResultDTO gameResultDTO = new GameResultDTO(0, 0);
 
         // when
         OutputView outputView = new OutputView();
-        outputView.printGameResult(gameResult);
+        outputView.printGameResult(gameResultDTO);
 
         // then
         assertEquals("낫싱", output.toString().trim());

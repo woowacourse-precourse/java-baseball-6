@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.domain.FixedNumberGenerator;
-import baseball.domain.dto.GameResult;
+import baseball.domain.dto.GameResultDTO;
 import baseball.util.Err;
 import baseball.util.NumberGenerator;
 import java.util.List;
@@ -67,12 +67,12 @@ class ComputerTest {
         // when
         Computer computer = computerNumberGenerator.create();
         Player player = Player.of(List.of(1, 2, 3));
-        GameResult gameResult = computer.evaluateWith(player);
+        GameResultDTO gameResultDTO = computer.evaluateWith(player);
 
         // then
-        assertThat(gameResult.ball()).isEqualTo(0);
-        assertThat(gameResult.strike()).isEqualTo(3);
-        assertThat(gameResult.isThreeStrikes()).isEqualTo(true);
+        assertThat(gameResultDTO.ball()).isEqualTo(0);
+        assertThat(gameResultDTO.strike()).isEqualTo(3);
+        assertThat(gameResultDTO.isThreeStrikes()).isEqualTo(true);
     }
 
     @DisplayName("Computer와 Player의 세 자리 숫자의 값이 모두 같고 위치는 모두 다르면, GameResult의 ball은 3이다.")
@@ -85,12 +85,12 @@ class ComputerTest {
         // when
         Computer computer = computerNumberGenerator.create();
         Player player = Player.of(List.of(8, 9, 7));
-        GameResult gameResult = computer.evaluateWith(player);
+        GameResultDTO gameResultDTO = computer.evaluateWith(player);
 
         // then
-        assertThat(gameResult.ball()).isEqualTo(3);
-        assertThat(gameResult.strike()).isEqualTo(0);
-        assertThat(gameResult.isThreeStrikes()).isEqualTo(false);
+        assertThat(gameResultDTO.ball()).isEqualTo(3);
+        assertThat(gameResultDTO.strike()).isEqualTo(0);
+        assertThat(gameResultDTO.isThreeStrikes()).isEqualTo(false);
     }
 
     @DisplayName("Computer와 Player의 세 자리 숫자의 값과 위치가 모두 다르면, GameResult의 strike와 ball은 0이다.")
@@ -103,11 +103,11 @@ class ComputerTest {
         // when
         Computer computer = computerNumberGenerator.create();
         Player player = Player.of(List.of(1, 2, 4));
-        GameResult gameResult = computer.evaluateWith(player);
+        GameResultDTO gameResultDTO = computer.evaluateWith(player);
 
         // then
-        assertThat(gameResult.ball()).isEqualTo(0);
-        assertThat(gameResult.strike()).isEqualTo(0);
-        assertThat(gameResult.isThreeStrikes()).isEqualTo(false);
+        assertThat(gameResultDTO.ball()).isEqualTo(0);
+        assertThat(gameResultDTO.strike()).isEqualTo(0);
+        assertThat(gameResultDTO.isThreeStrikes()).isEqualTo(false);
     }
 }

@@ -1,6 +1,6 @@
 package baseball.domain.game;
 
-import baseball.domain.dto.GameResult;
+import baseball.domain.dto.GameResultDTO;
 import java.util.List;
 
 public final class Computer extends GameNumbers {
@@ -12,10 +12,10 @@ public final class Computer extends GameNumbers {
         return new Computer(numbers);
     }
 
-    public GameResult evaluateWith(Player player) {
+    public GameResultDTO evaluateWith(Player player) {
         int ballCount = countBalls(player);
         int strikeCount = countStrikes(player);
-        return new GameResult(ballCount, strikeCount);
+        return new GameResultDTO(ballCount, strikeCount);
     }
 
     private int countBalls(Player player) {
