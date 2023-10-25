@@ -1,8 +1,8 @@
 package baseball.service;
 
 import baseball.domain.BallCount;
+import baseball.domain.Computer;
 import baseball.utility.ArrayConverter;
-import baseball.utility.RandomNumberGenerator;
 
 import java.util.List;
 
@@ -10,25 +10,24 @@ import static baseball.configuration.RandomNumberConfig.COUNT;
 
 public class BaseballGameServiceImpl implements BaseballGameService {
 
-    private List<Integer> computerNumbers;
-    BallCount ballCount;
+    private BallCount ballCount;
 
-    public void setComputerNumbers() {
-        computerNumbers = RandomNumberGenerator.generateNotDuplicatedRandomNumbers();
+    public Computer setComputerNumbers() {
+        return Computer.generateComputer();
     }
 
-    public BallCount playGame(String inputNumbers) {
+    public BallCount playGame(Computer computer, String inputNumbers) {
         int[] arrayNumbers = ArrayConverter.toIntArray(inputNumbers);
         ballCount = new BallCount();
 
         for (int i = 0; i < COUNT; i++) {
-            matchNumbers(i, arrayNumbers[i]);
+            matchNumbers(computer.getComputerNumbers(), i, arrayNumbers[i]);
         }
 
         return ballCount;
     }
 
-    private void matchNumbers(int i, int arrayNumber) {
+    private void matchNumbers(List<Integer> computerNumbers, int i, int arrayNumber) {
         for (int j = 0; j < COUNT; j++) {
             if (arrayNumber == computerNumbers.get(j)) {
                 increaseCount(i, j);

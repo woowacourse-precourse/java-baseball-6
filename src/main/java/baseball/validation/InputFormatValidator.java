@@ -1,12 +1,13 @@
 package baseball.validation;
 
+import static baseball.configuration.RandomNumberConfig.COUNT;
 import static baseball.constant.ErrorMessage.BASEBALL_NUMBERS_INPUT_EXCEPTION;
 import static baseball.constant.ErrorMessage.CHOICE_NUMBER_INPUT_EXCEPTION;
 
 public class InputFormatValidator {
 
     public static void validateBaseballNumbers(String inputNumbers) {
-        if (inputNumbers.matches("^\\d{3}$") && validateNotDuplicatedNumbers(inputNumbers)) {
+        if (inputNumbers.matches("^\\d{" + COUNT + "}$") && validateNotDuplicatedNumbers(inputNumbers)) {
             return;
         }
 

@@ -1,11 +1,12 @@
 package baseball.service;
 
 import baseball.domain.BallCount;
+import baseball.domain.Computer;
 
 public interface BaseballGameService {
 
-    void setComputerNumbers();
+    Computer setComputerNumbers();
 
-    BallCount playGame(String inputNumbers);
-    
+    BallCount playGame(Computer computer, String inputNumbers);
+
 }

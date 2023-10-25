@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.BallCount;
+import baseball.domain.Computer;
 import baseball.domain.GameStatus;
 import baseball.service.BaseballGameService;
 import baseball.service.BaseballGameServiceImpl;
@@ -23,7 +24,7 @@ public class BaseballGameController {
     private static void playBaseballGame() {
         GameStatus gameStatus = PLAYING;
         BaseballGameService baseballGameService = new BaseballGameServiceImpl();
-        baseballGameService.setComputerNumbers();
+        Computer computer = baseballGameService.setComputerNumbers();
 
         while (gameStatus == PLAYING) {
             Printer.printPlayMessage();
@@ -31,8 +32,7 @@ public class BaseballGameController {
 
             InputFormatValidator.validateBaseballNumbers(inputNumbers);
 
-            BallCount result = baseballGameService.playGame(inputNumbers);
-
+            BallCount result = baseballGameService.playGame(computer, inputNumbers);
             PrintHandler.printResultOfGame(result);
 
             if (result.getStrike() == 3) {
