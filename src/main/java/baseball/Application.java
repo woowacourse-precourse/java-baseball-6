@@ -1,8 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.Scanner;
+
 public class Application {
     public static void main(String[] args) {
-        System.out.println("fork 된건가??");
+        BaseballGame game = new BaseballGame();
+        game.playGame();
         // TODO: 프로그램 구현
     }
 }
