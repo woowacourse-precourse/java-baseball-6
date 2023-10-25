@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Ball;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -81,5 +82,23 @@ class CountControllerTests {
         countController.count_ball(com, user);
         assertThat(countController.getStrike()).isEqualTo(1);
         assertThat(countController.getBall()).isEqualTo(2);
+    }
+    @Test
+    @DisplayName("ballList 길이 Exception 테스트")
+    void validate_test() throws Exception {
+        List<Ball> user = new ArrayList<>();
+        user.add(new Ball(3,0));
+        user.add(new Ball(2,1));
+        user.add(new Ball(1,2));
+
+        List<Ball> com = new ArrayList<>();
+        com.add(new Ball(1,0));
+        com.add(new Ball(2,1));
+        com.add(new Ball(3,2));
+        com.add(new Ball(4,2));
+
+        Assertions.assertThrows(Exception.class, ()->{
+            countController.count_ball(com, user);
+        });
     }
 }

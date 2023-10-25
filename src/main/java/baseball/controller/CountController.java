@@ -13,7 +13,10 @@ public class CountController {
         this.strike=0;
         this.ball=0;
     }
-    public void count_ball(List<Ball> computer, List<Ball> user){
+    public void count_ball(List<Ball> computer, List<Ball> user) throws Exception {
+        if(!validate_ballList(computer, user)){
+            throw new Exception("balls의 길이가 맞지 않습니다.");
+        }
         for(int i=0; i<computer.size(); i++){
             Ball comBall = computer.get(i);
             Ball userBall = user.get(i);
@@ -24,6 +27,10 @@ public class CountController {
             boolean ballCheck = user.stream().anyMatch(u -> u.getNumber() == comBall.getNumber());
             if(ballCheck) this.ball++;
         }
+    }
+
+    private boolean validate_ballList(List<Ball> computer, List<Ball> user) {
+        return computer.size()!=user.size() && computer.size()!=3;
     }
 
     public int getBall() {
