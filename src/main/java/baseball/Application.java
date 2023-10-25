@@ -52,6 +52,14 @@ public class Application {
         return ballCount;
     }
 
+    public static int countUp(int userInput, int result) {
+        if (userInput == result) {
+            return 1;
+        }
+
+        return 0;
+    }
+
     public static List<Integer> changeStringToList(String userInput) {
         List<Integer> numberList = new ArrayList<>();
 
