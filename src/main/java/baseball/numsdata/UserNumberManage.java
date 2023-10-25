@@ -6,12 +6,8 @@ import java.util.List;
 public class UserNumberManage {
     private static final int MAX_LENGTH = 3;
     private List<Integer> numbers;
-    private final String data;
-    public UserNumberManage(String input){
-        data = input;
-    }
 
-    public void checkNumber(){
+    public void checkNumber(String data){
         numbers = new ArrayList<>();
 
         if (data.length() != MAX_LENGTH) {
