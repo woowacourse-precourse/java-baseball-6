@@ -1,4 +1,6 @@
-package baseball;
+package baseball.validator;
+
+import baseball.message.ExceptionMessage;
 
 import java.util.regex.Pattern;
 

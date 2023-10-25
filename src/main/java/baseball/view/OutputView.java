@@ -1,4 +1,8 @@
-package baseball;
+package baseball.view;
+
+import baseball.status.CompareStatus;
+import baseball.message.ProcessMessage;
+import baseball.domain.GameResult;
 
 import java.util.List;
 

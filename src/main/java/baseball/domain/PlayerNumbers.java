@@ -1,4 +1,6 @@
-package baseball;
+package baseball.domain;
+
+import baseball.message.ExceptionMessage;
 
 import java.util.List;
 

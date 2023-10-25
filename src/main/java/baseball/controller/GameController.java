@@ -1,4 +1,12 @@
-package baseball;
+package baseball.controller;
+
+import baseball.domain.CompareSystem;
+import baseball.domain.ComputerNumbers;
+import baseball.domain.GameResult;
+import baseball.domain.PlayerNumbers;
+import baseball.status.RestartStatus;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class GameController {
     private final ComputerNumbers computerNumbers = new ComputerNumbers();

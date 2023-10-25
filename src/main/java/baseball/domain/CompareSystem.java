@@ -1,4 +1,6 @@
-package baseball;
+package baseball.domain;
+
+import baseball.status.CompareStatus;
 
 public class CompareSystem {
     private final GameResult result;

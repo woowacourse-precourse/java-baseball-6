@@ -1,4 +1,4 @@
-package baseball;
+package baseball.status;
 
 public enum CompareStatus {
     BALL("볼"),

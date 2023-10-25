@@ -1,4 +1,6 @@
-package baseball;
+package baseball.domain;
+
+import baseball.status.CompareStatus;
 
 import java.util.EnumMap;
 import java.util.List;

@@ -1,4 +1,6 @@
-package baseball;
+package baseball.status;
+
+import baseball.message.ExceptionMessage;
 
 import java.util.Arrays;
 
