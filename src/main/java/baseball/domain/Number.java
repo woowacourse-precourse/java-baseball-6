@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.handler.OutputHandler;
 import baseball.utils.Convertor;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
@@ -43,5 +44,32 @@ public class Number {
 
   private int getRandomNumber() {
     return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+  }
+
+  public boolean compareWithPlayerNumbers(int[] playerNumbers) {
+    int strike = 0;
+    int ball = 0;
+
+    for (int i = 0; i < NUMBER_OF_DIGITS; i++) {
+      if (isStrike(playerNumbers[i], i)) {
+        strike++;
+        continue;
+      }
+      if (isBall(playerNumbers[i])) {
+        ball++;
+      }
+    }
+
+    OutputHandler.printGuessNumberResult(strike, ball);
+
+    return strike == ALL_STRIKE;
+  }
+
+  private boolean isStrike(Integer playerNumber, int index) {
+    return this.numbers[index] == playerNumber;
+  }
+
+  private boolean isBall(Integer playerNumber) {
+    return Arrays.stream(numbers).anyMatch(number -> number == playerNumber);
   }
 }
