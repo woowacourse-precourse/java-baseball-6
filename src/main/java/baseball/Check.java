@@ -1,7 +1,6 @@
 package baseball;
 
 public class Check {
-
     //3자리 숫자를 입력했는지 확인
     private void checkingRange(String input){
         if(input.length() != 3){
@@ -10,7 +9,6 @@ public class Check {
     }
     //숫자인지 중복되는 숫자가 있는지 확인
     private void checkingNumber(String input){
-
         char list[] = input.toCharArray();
         boolean duplicate[] = new boolean[10];
         for(int i=0; i<list.length; i++){
@@ -29,7 +27,6 @@ public class Check {
         checkingRange(input);
         checkingNumber(input);
     }
-
     public void checkingRetryOrEnd(String input){
         if(input.equals("1") || input.equals("2")){
             return;
