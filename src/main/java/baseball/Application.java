@@ -63,9 +63,9 @@ public class Application {
 
         if (reGame.equals(RESTART_OPTION) || reGame.equals(EXIT_OPTION)) {
             return reGame;
-        } else {
-            throw new IllegalArgumentException("유효하지 않은 입력입니다. " + RESTART_OPTION + " 또는 " + EXIT_OPTION + "를 입력하세요.");
         }
+
+        throw new IllegalArgumentException("유효하지 않은 입력입니다. " + RESTART_OPTION + " 또는 " + EXIT_OPTION + "를 입력하세요.");
     }
 
 
@@ -151,7 +151,8 @@ public class Application {
 
         if (ball > 0 || strike > 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
-        } else {
+        }
+        if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         }
     }
