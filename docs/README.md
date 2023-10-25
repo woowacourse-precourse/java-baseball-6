@@ -1,5 +1,6 @@
-### 컴퓨터 객체가 필요한 서비스(class ComputerService)
-boolean isNotDuplicatedNum()
+### 컴퓨터 서비스(class ComputerService)
+- 메소드
+boolean isNotDuplicatedNum()  
 생성한 숫자가 중복인지 검사
 ### 컴퓨터 역할(clas Computer)
 - 의존  
@@ -34,7 +35,7 @@ Map<String,Integer> oneTurn(List<Integer> computerSelect)
 유저가 숫자를 예측하고, 컴퓨터와 비교 후 상태 return  
 void printScore(Map<String,Integer> score)  
 유저의 상태를 출력  
-void oneGame()
+void oneGame()  
 한 게임의 진행과 종료  
 void playGame()  
 전체 게임 진행
