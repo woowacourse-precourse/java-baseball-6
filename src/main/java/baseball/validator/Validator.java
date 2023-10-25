@@ -1,4 +1,6 @@
-package baseball;
+package baseball.validator;
+
+import baseball.constants.Constants;
 
 public class Validator {
 

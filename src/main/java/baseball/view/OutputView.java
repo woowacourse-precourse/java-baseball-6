@@ -1,4 +1,6 @@
-package baseball;
+package baseball.view;
+
+import baseball.constants.Constants;
 
 public class OutputView {
 

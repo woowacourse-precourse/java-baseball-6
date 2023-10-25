@@ -3,6 +3,8 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import baseball.constants.Constants;
+import baseball.validator.Validator;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
