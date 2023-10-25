@@ -19,6 +19,18 @@ public class Validation {
         }
     }
 
+    public void validateRestartInfo(String restartInfo) {
+        validateNull(restartInfo, ErrorMessage.INVALID_RESTART_INFO_LENGTH.getMessage());
+        validateBlank(restartInfo, ErrorMessage.INVALID_RESTART_INFO_LENGTH.getMessage());
+
+        validateLength(restartInfo, Constant.RESTART_INFO_LENGTH.getValue(),
+                ErrorMessage.INVALID_RESTART_INFO_LENGTH.getMessage());
+
+        validateDigit(restartInfo.charAt(0), ErrorMessage.INVALID_RESTART_INFO_TYPE.getMessage());
+
+        validateCorrectRestartInfo(Integer.parseInt(restartInfo));
+    }
+
     private void validateNull(String info, String errMsg) {
         if (info == null) {
             throw new IllegalArgumentException(errMsg);
@@ -64,6 +76,12 @@ public class Validation {
     private void validateDuplicateNumber(int nmb, Set<Integer> setPlayerInptNmbr) {
         if (setPlayerInptNmbr.contains(nmb)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PLAYER_INPUT_DUPLICATION.getMessage());
+        }
+    }
+
+    private void validateCorrectRestartInfo(int restartInfo) {
+        if (restartInfo != Constant.RESTART_VALUE.getValue() && restartInfo != Constant.FINISH_GAME_VALUE.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RESTART_INFO_VALUE.getMessage());
         }
     }
 }
