@@ -38,8 +38,8 @@ public class GameInputValidator implements InputValidator {
     }
 
     private void checkInputIsNumeric(String input) throws IllegalArgumentException {
-        for (char c : input.toCharArray()){
-            if(!Character.isDigit(c)){
+        for (char c : input.toCharArray()) {
+            if(!Character.isDigit(c)) {
                 throw new IllegalArgumentException();
             }
         }

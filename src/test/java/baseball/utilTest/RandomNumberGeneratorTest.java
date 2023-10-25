@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class RandomNumberGeneratorTest {
     @Test
-    public void testMakeRandomNumber(){
+    public void testMakeRandomNumber() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         String result = randomNumberGenerator.makeRandomNumber();
 

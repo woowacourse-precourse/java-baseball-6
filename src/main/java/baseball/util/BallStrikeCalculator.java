@@ -3,31 +3,32 @@ package baseball.util;
 import java.util.ArrayList;
 
 public class BallStrikeCalculator {
-    public String calculateAnswer(String inputNumber, String answerNumber){
+   //사용자 입력과 세자리 난수를 받아 결과 메세지를 반환해주는 함수
+    public String calculateAnswer(String inputNumber, String answerNumber) {
         String answer = "";
 
         int ball = 0;
         int strike = 0;
 
         ArrayList<Character> answerNumberList = new ArrayList<>();
-        for (char c : answerNumber.toCharArray()){
-                answerNumberList.add(c);
+        for (char c : answerNumber.toCharArray()) {
+            answerNumberList.add(c);
         }
 
-        for (int i = 0 ; i < 3 ; i++){
+        for (int i = 0; i < 3; i++) {
             char c = inputNumber.charAt(i);
 
             if(answerNumberList.contains(c)){
-                    ball++;
+                ball++;
             }
         }
 
-        for (int i = 0 ; i < 3 ; i++){
+        for (int i = 0; i < 3; i++) {
             char c = inputNumber.charAt(i);
 
-            if(answerNumberList.get(i) == c){
-                    ball--;
-                    strike++;
+            if (answerNumberList.get(i) == c) {
+                ball--;
+                strike++;
             }
         }
 

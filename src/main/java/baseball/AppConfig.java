@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.util.BallStrikeCalculator;
 import baseball.util.RandomNumberGenerator;
+
 import baseball.validation.GameInputValidator;
 import baseball.validation.PlayOrStopInputValidator;
 

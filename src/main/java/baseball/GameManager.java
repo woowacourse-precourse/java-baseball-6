@@ -1,6 +1,5 @@
 package baseball;
 
-
 import camp.nextstep.edu.missionutils.Console;
 public class GameManager {
 
@@ -16,9 +15,9 @@ public class GameManager {
     // 게임 진행 여부를 체크 하는 변수
     private int gameSwitch = 1;
 
-    public void runGame(){
+    public void runGame() {
         System.out.println(START_MASSAGE);
-        while (gameSwitch == 1){
+        while (gameSwitch == 1) {
             System.out.print(PLEASE_INPUT_NUMBER_MASSAGE);
             String userInputNumber = Console.readLine();
 
@@ -32,8 +31,8 @@ public class GameManager {
         }
     }
 
-    public void handleThreeStrike(String answerMessage){
-        if(answerMessage.equals("3스트라이크")){
+    public void handleThreeStrike(String answerMessage) {
+        if (answerMessage.equals("3스트라이크")) {
             System.out.println(GAME_ENDING_MASSAGE);
             System.out.println(PLAY_OR_STOP_MASSAGE);
 
@@ -42,7 +41,7 @@ public class GameManager {
 
             gameSwitch = Integer.parseInt(playOrStopNumber);
 
-            if(gameSwitch == 1){
+            if (gameSwitch == 1) {
                 answerNumber = appConfig.randomNumberGenerator.makeRandomNumber();
             }
         }

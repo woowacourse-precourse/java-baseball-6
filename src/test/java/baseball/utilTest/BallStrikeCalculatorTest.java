@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class BallStrikeCalculatorTest {
     @Test
-    public void BallStrikeTest(){
+    public void BallStrikeTest() {
         BallStrikeCalculator ballStrikeCalculator = new BallStrikeCalculator();
         String result1 = ballStrikeCalculator.calculateAnswer("123","143");
         Assertions.assertThat(result1).isEqualTo("2스트라이크");

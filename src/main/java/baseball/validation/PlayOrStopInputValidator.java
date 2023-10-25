@@ -23,7 +23,7 @@ public class PlayOrStopInputValidator implements InputValidator {
     }
 
     private void checkInputIsNumeric(String input) throws IllegalArgumentException {
-        if(!Character.isDigit(input.charAt(0))){
+        if (!Character.isDigit(input.charAt(0))) {
             throw new IllegalArgumentException();
         }
     }

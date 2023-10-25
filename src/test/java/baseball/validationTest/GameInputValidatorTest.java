@@ -6,26 +6,26 @@ import org.junit.jupiter.api.Test;
 
 public class GameInputValidatorTest {
     /*@Test
-    public void lengthTest(){
+    public void lengthTest() {
         GameInputValidator gameInputValidator = new GameInputValidator();
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() ->{
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> {
             gameInputValidator.checkInputLengthValidity("1234");
         });
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() ->{
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> {
             gameInputValidator.checkInputLengthValidity("13");
         });
     }
 
     @Test
-    public void RangeTest(){
+    public void RangeTest() {
         GameInputValidator gameInputValidator = new GameInputValidator();
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() ->{
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> {
             gameInputValidator.checkInputRangeValidity("0123");
         });
     }
 
     @Test
-    public void uniquenessTest(){
+    public void uniquenessTest() {
         GameInputValidator gameInputValidator = new GameInputValidator();
         Assertions.assertThatIllegalArgumentException().isThrownBy(() ->{
             gameInputValidator.checkInputUniquenessValidity("333");
@@ -33,7 +33,7 @@ public class GameInputValidatorTest {
     }
 
     @Test
-    public void numericTest(){
+    public void numericTest() {
         GameInputValidator gameInputValidator = new GameInputValidator();
         Assertions.assertThatIllegalArgumentException().isThrownBy(() ->{
             gameInputValidator.checkInputIsNumeric("rdf");
