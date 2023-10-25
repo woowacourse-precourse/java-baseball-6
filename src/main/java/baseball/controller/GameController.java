@@ -11,6 +11,8 @@ public class GameController {
     public void startGame() {
         outputMessage.printGameStartMessage();
         gameService.setComputerNumbers();
+
+        gameService.getUserNumbers();
     }
 
 }
