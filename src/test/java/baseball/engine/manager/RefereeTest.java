@@ -52,7 +52,7 @@ class RefereeTest {
         Hint hint = referee.ballCount(player, computer);
         //then
         Assertions.assertThat(hint.isAllStrike()).isTrue();
-        Assertions.assertThat(hint.report()).contains(expectedResult.getMessage());
+        Assertions.assertThat(hint.getMessage()).contains(expectedResult.getMessage());
     }
 
     @DisplayName("isAllStrike() 메소드가 거짓이고 기대하는 문자열을 반환한다.")
@@ -66,7 +66,7 @@ class RefereeTest {
         Hint hint = referee.ballCount(player, computer);
         //then
         Assertions.assertThat(hint.isAllStrike()).isFalse();
-        Assertions.assertThat(hint.report()).contains(expectedResult.getMessage());
+        Assertions.assertThat(hint.getMessage()).contains(expectedResult.getMessage());
     }
 
     @DisplayName("isAllStrike() 메소드가 거짓이고 '낫싱' 문자열을 반환한다.")
@@ -81,7 +81,7 @@ class RefereeTest {
         Hint hint = referee.ballCount(player, computer);
         //then
         Assertions.assertThat(hint.isAllStrike()).isFalse();
-        Assertions.assertThat(hint.report()).contains(expectedResult.getMessage());
+        Assertions.assertThat(hint.getMessage()).contains(expectedResult.getMessage());
     }
 
     private enum ExpectedMessage {

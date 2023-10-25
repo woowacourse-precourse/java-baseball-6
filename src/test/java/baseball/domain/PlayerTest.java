@@ -75,33 +75,33 @@ class PlayerTest {
         @DisplayName("고유하지 않은 데이터를 가지고 객체를 생성하면 IllegalException 이 발생하여 실패한다.")
         @ParameterizedTest(name = "[{index}차]시도: randomNumbers: {0}")
         @MethodSource("getNonDuplicateNumbers")
-        void failDuplicateNumbers(List<Integer> nonDuplicateNumbers) {
+        void failDuplicateNumbers(List<Integer> duplicateNumbers) {
             //given
             //when
             //then
-            Assertions.assertThatThrownBy(() -> new Player(nonDuplicateNumbers))
+            Assertions.assertThatThrownBy(() -> new Player(duplicateNumbers))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("3자리가 아닌 데이터로 객체를 생성하면 IllegalException 이 발생하여 실패한다. ")
         @ParameterizedTest(name = "[{index}차]시도: randomNumbers: {0}")
         @MethodSource("getLessThan3orGraterThan3")
-        void failNotSize3(List<Integer> Not3SizeRandomNumbers) {
+        void failNotSize3(List<Integer> not3SizeRandomNumbers) {
             //given
             //when
             //then
-            Assertions.assertThatThrownBy(() -> new Player(Not3SizeRandomNumbers))
+            Assertions.assertThatThrownBy(() -> new Player(not3SizeRandomNumbers))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("[1~9] 숫자로 이루어지지 않은 데이터로 객체를 생성하면 IllegalException 이 발생하여 실패한다. ")
         @ParameterizedTest(name = "[{index}차]시도: randomNumbers: {0}")
         @MethodSource("getNotRequirementValue")
-        void failNotValue(List<Integer> NotRequirementNumbers) {
+        void failNotValue(List<Integer> notRequirementNumbers) {
             //given
             //when
             //then
-            Assertions.assertThatThrownBy(() -> new Player(NotRequirementNumbers))
+            Assertions.assertThatThrownBy(() -> new Player(notRequirementNumbers))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }

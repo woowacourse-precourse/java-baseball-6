@@ -20,7 +20,6 @@ class RandomGeneratorUtilsTest {
                         MINIMUM_NUMBER.getCondition(), MAXIMUM_NUMBER.getCondition()).stream()
                 .distinct()
                 .count();
-
         //then
         assertThat(uniqueNumberCount).isEqualTo(LIMIT_LENGTH.getCondition());
     }
