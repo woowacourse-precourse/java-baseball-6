@@ -72,17 +72,13 @@ public class Application {
         for (int i = 0; i < listAnswerNumber.size(); i++) {
             if (listAnswerNumber.get(i) == arrayPlayerNumber[i]) {
                 numberOfStrikes++;
-                continue;
-            }
-
-            if (listAnswerNumber.contains(arrayPlayerNumber[i])) {
+            } else if (listAnswerNumber.contains(arrayPlayerNumber[i])) {
                 numberOfBalls++;
             }
         }
 
         if ((numberOfBalls == 0) && (numberOfStrikes == 0)) {
             System.out.println("낫싱");
-
             return MAINTAIN_GAME;
         }
 
@@ -122,18 +118,19 @@ public class Application {
 
     public static void main(String[] args) {
         List<Integer> listAnswerNumber = makeRandomNumberList();
-        int[] arrayPlayerNumber = null;
-        int gameLoopSign = 0;
+        int gameLoopSign = MAINTAIN_GAME;
         int numberOfStrikes = 0;
 
         System.out.println("숫자 야구 게임을 시작합니다. ");
+
         while (gameLoopSign != EXIT_GAME) {
             if (gameLoopSign == RESTART_GAME) {
                 listAnswerNumber = makeRandomNumberList();
             }
 
             System.out.print("숫자를 입력해주세요: ");
-            arrayPlayerNumber = inputAndGetUserNumbers();
+
+            int[] arrayPlayerNumber = inputAndGetUserNumbers();
             numberOfStrikes = getHintForAnswer(arrayPlayerNumber, listAnswerNumber);
             gameLoopSign = judgeGameResult(numberOfStrikes);
         }
