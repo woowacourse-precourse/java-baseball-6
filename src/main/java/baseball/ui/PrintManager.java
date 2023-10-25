@@ -33,7 +33,7 @@ public class PrintManager {
         }
 
         if (ball != 0 && strike != 0) {
-            System.out.println(ball + BALL + strike + STRIKE);
+            System.out.println(ball + BALL + " " + strike + STRIKE);
         }
     }
 
