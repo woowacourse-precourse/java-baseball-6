@@ -15,7 +15,6 @@ public class Game {
 
     public void play() {
         List<Integer> theAnswer = makeAnswer();
-        System.out.println("answer: " + theAnswer);    // 테스트용
 
         do {
             this.guessNumber();
