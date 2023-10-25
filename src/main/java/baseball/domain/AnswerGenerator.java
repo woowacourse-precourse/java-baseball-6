@@ -11,7 +11,7 @@ final class AnswerGenerator {
 
     static int randomAnswer() {
         Set<Integer> randomNumbers = new HashSet<>();
-        while (randomNumbers.size() < 3) {
+        while (randomNumbers.size() < BaseBall.DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
             randomNumbers.add(randomNumber);
         }
