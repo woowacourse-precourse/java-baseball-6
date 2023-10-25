@@ -1,7 +1,7 @@
-package baseball;
+package baseball.view;
 
-import static baseball.ViewMessages.INPUT_NUMBER;
-import static baseball.ViewMessages.INPUT_RETRY_OR_QUIT;
+import static baseball.utils.ViewMessages.INPUT_NUMBER;
+import static baseball.utils.ViewMessages.INPUT_RETRY_OR_QUIT;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -14,8 +14,8 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static int inputRetryOrQuit() {
+    public static String inputRetryOrQuit() {
         System.out.println(INPUT_RETRY_OR_QUIT);
-        return IntegerConvertor.toInteger(Console.readLine());
+        return Console.readLine();
     }
 }

@@ -1,9 +1,10 @@
-package baseball;
+package baseball.view;
 
 
-import static baseball.ViewMessages.OUTPUT_DONE;
-import static baseball.ViewMessages.OUTPUT_START;
+import static baseball.utils.ViewMessages.OUTPUT_DONE;
+import static baseball.utils.ViewMessages.OUTPUT_START;
 
+import baseball.dto.BaseballResultDto;
 import java.text.MessageFormat;
 
 public class OutputView {
@@ -19,7 +20,7 @@ public class OutputView {
         System.out.println(message);
     }
 
-    public static void printDone() {
+    public static void printGameOver() {
         System.out.println(OUTPUT_DONE);
     }
 }

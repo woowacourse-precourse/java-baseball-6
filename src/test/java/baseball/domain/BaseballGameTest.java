@@ -1,9 +1,5 @@
 package baseball.domain;
 
-import baseball.Baseball;
-import baseball.BaseballGame;
-import baseball.Computer;
-import baseball.Player;
 import baseball.config.ComputerTestConfig;
 import java.util.List;
 import java.util.stream.Stream;
@@ -32,14 +28,15 @@ public class BaseballGameTest {
 
         @ParameterizedTest
         @MethodSource("providePlayerAndComputerNumbers")
-        void Player와_Computer의_숫자를_비교해_Baseball_객체를_반환한다(
+        void Player와_Computer의_숫자를_비교해_Baseball_객체를_생성한다(
                 String playerNumbers, List<Integer> computerNumbers, int ballCnt, int strikeCnt
         ) {
             Player player = new Player(playerNumbers);
             Computer computer = new TestComputer(computerNumbers);
-            BaseballGame baseballGame = new BaseballGame(computer, player);
+            BaseballGame baseballGame = new BaseballGame();
+            baseballGame.compare(computer, player);
 
-            Assertions.assertEquals(baseballGame.compare(), new Baseball(ballCnt, strikeCnt));
+            Assertions.assertEquals(baseballGame.getBaseball(), new Baseball(ballCnt, strikeCnt));
         }
     }
 }

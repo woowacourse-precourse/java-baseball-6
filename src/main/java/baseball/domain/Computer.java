@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.utils.NumberGenerator;
 import java.util.List;
 
 public class Computer {
@@ -7,6 +8,7 @@ public class Computer {
 
     public Computer(NumberGenerator numberGenerator) {
         this.numbers = numberGenerator.generate();
+        System.out.println(numbers);
     }
 
     public Boolean compareStrike(Player player, int idx) {
@@ -17,12 +19,5 @@ public class Computer {
     public Boolean compareBall(Player player, int idx) {
         int playerNumber = player.getNumber(idx);
         return numbers.contains(playerNumber) && !numbers.get(idx).equals(playerNumber);
-    }
-
-    public Computer resetOrMaintain(GameState state, NumberGenerator numberGenerator) {
-        if (state.isRetry()) {
-            return new Computer(numberGenerator);
-        }
-        return this;
     }
 }

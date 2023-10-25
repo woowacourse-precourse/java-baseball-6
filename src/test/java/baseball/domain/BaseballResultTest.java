@@ -1,15 +1,13 @@
 package baseball.domain;
 
-import static baseball.BaseballResult.ALL_STRIKE;
-import static baseball.BaseballResult.BALL;
-import static baseball.BaseballResult.BALL_STRIKE;
-import static baseball.BaseballResult.NOTHING;
-import static baseball.BaseballResult.STRIKE;
-import static baseball.ErrorMessages.NOT_MATCH_BASEBALL_RESULT;
+import static baseball.domain.BaseballResult.ALL_STRIKE;
+import static baseball.domain.BaseballResult.BALL;
+import static baseball.domain.BaseballResult.BALL_STRIKE;
+import static baseball.domain.BaseballResult.NOTHING;
+import static baseball.domain.BaseballResult.STRIKE;
+import static baseball.utils.ErrorMessages.NOT_MATCH_BASEBALL_RESULT;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.Baseball;
-import baseball.BaseballResult;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

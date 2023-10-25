@@ -1,6 +1,6 @@
-package baseball;
+package baseball.domain;
 
-import static baseball.Constants.NUMBER_SIZE;
+import static baseball.utils.Constants.NUMBER_SIZE;
 
 import java.util.Objects;
 

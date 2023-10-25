@@ -1,7 +1,7 @@
 package baseball.config;
 
-import baseball.Computer;
-import baseball.NumberGenerator;
+import baseball.domain.Computer;
+import baseball.utils.NumberGenerator;
 import java.util.List;
 
 public class ComputerTestConfig {

@@ -1,13 +1,7 @@
 package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import baseball.Computer;
-import baseball.GameState;
-import baseball.NumberGenerator;
-import baseball.Player;
-import baseball.RandomNumberGenerator;
 import baseball.config.ComputerTestConfig;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -91,35 +85,6 @@ public class ComputerTest {
                 assertEquals(computer.compareBall(player, 0), false);
                 assertEquals(computer.compareBall(player, 1), false);
                 assertEquals(computer.compareBall(player, 2), false);
-            }
-        }
-    }
-
-    @Nested
-    @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-    class resetOrMaintain_메소드는 extends ComputerTestConfig {
-
-        @Nested
-        @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class GameState이_RETRY로_주어지면 {
-            @Test
-            void 새로운_Computer_인스턴스를_반환한다() {
-                NumberGenerator numberGenerator = new RandomNumberGenerator();
-                Computer computer = new Computer(numberGenerator);
-
-                assertNotEquals(computer.resetOrMaintain(GameState.RETRY, numberGenerator), computer);
-            }
-        }
-
-        @Nested
-        @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-        class GameState이_RETRY_이외의_값으로_주어지면 {
-            @Test
-            void 기존의_Computer_인스턴스를_반환한다() {
-                NumberGenerator numberGenerator = new RandomNumberGenerator();
-                Computer computer = new Computer(numberGenerator);
-
-                assertEquals(computer.resetOrMaintain(GameState.RUNNING, numberGenerator), computer);
             }
         }
     }

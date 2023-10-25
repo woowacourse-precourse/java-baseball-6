@@ -1,4 +1,4 @@
-package baseball;
+package baseball.utils;
 
 public class Constants {
     public static final int NUMBER_SIZE = 3;

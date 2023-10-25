@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.utils.ErrorMessages;
 import java.util.Arrays;
 import java.util.function.Function;
 

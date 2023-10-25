@@ -1,4 +1,4 @@
-package baseball;
+package baseball.utils;
 
 public class ErrorMessages {
     public static final String PLAYER_NUMBERS_DUPLICATE = "[ERROR] 중복된 숫자는 입력할 수 없습니다.";

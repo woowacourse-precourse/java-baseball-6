@@ -1,4 +1,4 @@
-package baseball;
+package baseball.utils;
 
 public class ViewMessages {
     public static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
