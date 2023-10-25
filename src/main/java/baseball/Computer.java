@@ -6,22 +6,20 @@ import java.util.List;
 
 public class Computer {
 
-    private final String answerNumbers;
+    List<Integer> answerNumbers;
 
-    Computer() {
-        List<Integer> generatedNumbers = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        while (generatedNumbers.size() < 3) {
+    public void setComputerNumber() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!generatedNumbers.contains(randomNumber)) {
-                sb.append(generatedNumbers);
-                generatedNumbers.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
-        this.answerNumbers = sb.toString();
+        this.answerNumbers = numbers;
     }
 
-    public String getAnswerNumbers() {
+    public List<Integer> getAnswerNumbers() {
         return answerNumbers;
     }
 }
