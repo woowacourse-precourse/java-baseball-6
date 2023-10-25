@@ -31,28 +31,28 @@ public class Application {
         }
 
         // 입력값 메소드(입력후 전달받은 computer 값과 비교후 출력) ===================================================
-        public static void UserInput(List<String> computer) {                   //todo 예외처리 (중복포함)
+        public static void UserInput(List<String> computer) {
                 List<String> user = new ArrayList<>();
                 System.out.println("중복이 되지 않는 세 자리의 숫자를 입력해 주세요.");
                 String userInput = Console.readLine();
                 System.out.println("userInput = " + userInput);
                 try {
-                        for(String s : userInput.split("")) { // 입력받은 값을 배열에 나눠서 저장
-                                if(!user.contains(s)) {  // 배열에 값이 없으면
+                        for (String s : userInput.split("")) { // 입력받은 값을 배열에 나눠서 저장
+                                if (!user.contains(s)) {  // 배열에 값이 없으면
                                         user.add(s);  // 배열에 저장
                                 } else { // 값이 있으면 Exception 발생
                                         throw new IllegalArgumentException();
                                 }
                         }
-                        for(String s : user) { // 유저에게 입력받은 값 확인을 위한 for문
-                                if(toParseInt(s,0) == 0) { // 0 또는 문자가 입력되면 Exception 발생시킴
+                        for (String s : user) { // 유저에게 입력받은 값 확인을 위한 for문
+                                if (toParseInt(s, 0) == 0) { // 0 또는 문자가 입력되면 Exception 발생시킴
                                         throw new IllegalArgumentException();
                                 }
                         }
                 } catch (IllegalArgumentException e) {
                         return;
                 }
-                if(userInput.length() != 3) { // 입력된 수가 3자리가 아니라면 Exception 발생
+                if (userInput.length() != 3) { // 입력된 수가 3자리가 아니라면 Exception 발생
                         throw new IllegalArgumentException();
                 }
                 System.out.println("user = " + user);           // 입력 확인값
@@ -69,8 +69,7 @@ public class Application {
                                 }
                         }
                 }
-//                        System.out.println("strikeCount = " + strikeCount);
-//                        System.out.println("ballCount = " + ballCount);
+                
                 // 출력 메소드 ===================================================================================
                 if (strikeCount == 3) {
                         System.out.println("3스트라이크!");
@@ -85,7 +84,7 @@ public class Application {
                                 return;
                         } else {
                                 try {
-                                        throw new IllegalArgumentException();   //1,2 외의 값 입력시 예외처리 후 종료
+                                        throw new IllegalArgumentException();   //1,2 외의 값 입력시 Exception 발생
                                 } catch (Exception e) {
                                         System.out.println("잘못된 값을 입력 했습니다.");
                                         return;
@@ -101,14 +100,14 @@ public class Application {
                         System.out.println(strikeCount + "스트라이크");
                         UserInput(computer);
                 } else {
-                        System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");        // 출력
+                        System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");        
                         UserInput(computer);
                 }
         }
 
         public static int toParseInt(String value, int defVal) {        // 입력된 변수를 Integer로 바꿔주는 함수
                 try {
-                        return Integer.parseInt(value);         //입력 숫자 예외처리
+                        return Integer.parseInt(value);         // 숫자라면 그대로 숫자가 들어옴 그외라면 0 의 기본값
                 } catch (Exception e) {
                         return defVal;
                 }
