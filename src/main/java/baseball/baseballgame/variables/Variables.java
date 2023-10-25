@@ -1,4 +1,4 @@
-package baseball;
+package baseball.baseballgame.variables;
 
 public enum Variables {
     NUM("사용할 숫자의 개수", 3);

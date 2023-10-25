@@ -1,10 +1,8 @@
-package baseball;
+package baseball.baseballgame;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.baseballgame.variables.Variables;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BaseballGameController {
 

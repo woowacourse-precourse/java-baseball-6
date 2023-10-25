@@ -1,6 +1,6 @@
 package baseball.deprecated;
 
-import baseball.Variables;
+import baseball.baseballgame.variables.Variables;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;

@@ -146,6 +146,6 @@ while (computer.size() < 3) {
 ## 구현할 기능 목록
 
 -[x] Hardcoding으로 프로그램 단순 구현
--[ ] 앞의 결과로부터 Viewer와 로직 코드인 Controller를 분리
-  -[ ] 진행하며 테스트 코드 동작 여부 반드시 확인
--[ ] Controller에서 Model 코드 분리
+-[x] 앞의 결과로부터 Viewer와 로직 코드인 Controller를 분리
+  -[x] 진행하며 테스트 코드 동작 여부 반드시 확인
+-[x] Controller에서 Model 코드 분리

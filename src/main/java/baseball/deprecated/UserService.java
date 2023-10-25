@@ -1,6 +1,6 @@
 package baseball.deprecated;
 
-import baseball.Variables;
+import baseball.baseballgame.variables.Variables;
 
 import java.util.List;
 import java.util.stream.Collectors;

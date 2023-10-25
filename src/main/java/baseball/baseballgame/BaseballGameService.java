@@ -1,5 +1,6 @@
-package baseball;
+package baseball.baseballgame;
 
+import baseball.baseballgame.variables.Variables;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -7,18 +8,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BaseballGameService {
-    public int getStrikes() {
+    int getStrikes() {
         return strikes;
     }
 
-    public int getBalls() {
+    int getBalls() {
         return balls;
     }
 
     private int strikes;
     private int balls;
 
-    public List<Integer> generateComputerNumbers() {
+    List<Integer> generateComputerNumbers() {
         List<Integer> list = new ArrayList<>();
 
         while (list.size() < Variables.NUM.getValue()) {
@@ -31,7 +32,7 @@ public class BaseballGameService {
         return list;
     }
 
-    public List<Integer> parseInput(String input) {
+    List<Integer> parseInput(String input) {
         if (input.length() != Variables.NUM.getValue()) {
             throw new IllegalArgumentException(Variables.NUM.getValue() + "자리의 숫자를 입력해 주세요.");
         }
@@ -41,7 +42,7 @@ public class BaseballGameService {
                 .collect(Collectors.toList());
     }
 
-    public void countStrikes(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    void countStrikes(List<Integer> computerNumbers, List<Integer> userNumbers) {
         strikes = 0;
 
         for (int i = 0; i < Variables.NUM.getValue(); i++) {
@@ -51,7 +52,7 @@ public class BaseballGameService {
         }
     }
 
-    public void countBalls(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    void countBalls(List<Integer> computerNumbers, List<Integer> userNumbers) {
         balls = 0;
 
         for (int i = 0; i < Variables.NUM.getValue(); i++) {

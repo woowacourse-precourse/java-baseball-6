@@ -1,6 +1,6 @@
 package baseball.deprecated;
 
-import baseball.Variables;
+import baseball.baseballgame.variables.Variables;
 
 public class Game {
     public int getStrike() {

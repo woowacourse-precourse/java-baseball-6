@@ -1,4 +1,4 @@
-package baseball;
+package baseball.baseballgame;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -10,16 +10,16 @@ import java.util.stream.Collectors;
 public class BaseballGameViewer {
     private Console console;
 
-    public void startGameMessage() {
+    void startGameMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public String getUserGuess() {
+    String getUserGuess() {
         System.out.print("숫자를 입력해주세요: ");
         return console.readLine();
     }
 
-    public void displayResult(int strikes, int balls) {
+    void displayResult(int strikes, int balls) {
         if (strikes == 0 && balls == 0) {
             System.out.println("낫싱");
         } else if (strikes > 0 && balls == 0) {
@@ -31,7 +31,7 @@ public class BaseballGameViewer {
         }
     }
 
-    public boolean hasNewGameMessage() {
+    boolean hasNewGameMessage() {
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
         String restart = console.readLine();
 
