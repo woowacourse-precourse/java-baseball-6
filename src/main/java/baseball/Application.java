@@ -12,19 +12,24 @@ public class Application {
         2: 종료
          */
         String insertCoin = "1";
+        boolean isFirstGame = true;
 
         while (insertCoin.equals("1")) {
             User player = new User();
             Computer computer = new Computer();
 
-            startNewGame(player, computer);
+            startNewGame(player, computer, isFirstGame);
+            isFirstGame = false;
             insertCoin = Console.readLine();
+            System.out.println(insertCoin);
         }
         System.out.println("게임을 종료합니다.");
     }
 
-    public static void startNewGame(User player, Computer comp) {
-        greetings();
+    private static void startNewGame(User player, Computer comp, boolean isFirstGame) {
+        if (isFirstGame) {
+            greetings();
+        }
         comp.generateNumber();
         while (true) {
             List<Integer> inputNum = player.enterNumber();
