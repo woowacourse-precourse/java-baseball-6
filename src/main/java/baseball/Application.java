@@ -51,8 +51,8 @@ public class Application {
     static Integer[] setUserNumber(){
         System.out.print("숫자를 입력해주세요 : ");
         String[] user = Console.readLine().split("");
-        if (user.length != 3)
-            throw new IllegalArgumentException("숫자의 길이가 큽니다");
+        if (user.length != 3 || checkSameNumber(user))
+            throw new IllegalArgumentException("옳은 입력값을 입력해주세요.");
 
         //TODO 무슨 말인지 모르겠다 공부하자 새로운 언어에서의 문법
         return Stream.of(user).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
