@@ -1,6 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Game {
+
+    private static final String RESTART_KEYWORD = "1";
+    private static final String EXIT_KEYWORD = "2";
 
     private Computer computer;
     private Player player;
@@ -40,5 +45,15 @@ public class Game {
             }
         }
         return false;
+    }
+
+    private boolean restartOrExitGame() {
+        System.out.println("게임을 새로 시작하려면 " + RESTART_KEYWORD + ", 종료하려면 " + EXIT_KEYWORD + "를 입력하세요.");
+        String playerChoice = Console.readLine();
+
+        if (RESTART_KEYWORD.equals(playerChoice)) return true;
+        if (EXIT_KEYWORD.equals(playerChoice)) return false;
+
+        throw new IllegalArgumentException(RESTART_KEYWORD + " 또는 " + EXIT_KEYWORD + " 중 하나만 선택하세요.");
     }
 }
