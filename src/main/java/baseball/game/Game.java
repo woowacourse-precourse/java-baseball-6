@@ -44,11 +44,10 @@ public class Game<T> {
     private void checkStrikeBallCount(BaseballDataCompareResult compareResult) {
         StringBuilder printString = new StringBuilder();
         if (compareResult.ball > 0) {
-            printString.append(compareResult.ball + this.gameMessage.ballCountMessage());
+            printString.append(compareResult.ball).append(this.gameMessage.ballCountMessage());
         }
         if (compareResult.strike > 0) {
-            printString.append(
-                    compareResult.strike + this.gameMessage.strikeCountMessage());
+            printString.append(compareResult.strike).append(this.gameMessage.strikeCountMessage());
         }
         if (compareResult.strike == 0 && compareResult.ball == 0) {
             printString.append(this.gameMessage.nothingMessage());
@@ -61,7 +60,7 @@ public class Game<T> {
         return compareResult.strike == computerBaseballData.getSize();
     }
 
-    private boolean checkGameEnd() {
+    private boolean checkGameContinue() {
         this.systemConsole.println(
                 this.computerBaseballData.getSize()
                         + this.gameMessage.gameOverMessage());
@@ -69,10 +68,10 @@ public class Game<T> {
         int inputNumber = this.systemConsole.scanInt();
         if (inputNumber == 1) {
             this.computerBaseballData = this.baseballDataBuilder.createComputerData();
-            return false;
+            return true;
         } else if (inputNumber == 2) {
             this.systemConsole.close();
-            return true;
+            return false;
         }
         throw new IllegalArgumentException(this.gameMessage.retryErrorMessage());
 
