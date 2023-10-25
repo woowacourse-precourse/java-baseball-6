@@ -7,7 +7,11 @@ import java.util.List;
 
 public class GameManager{
 
-    private final Judge judge = new Judge();
+    private final Judge judge;
+
+    GameManager(){
+        this.judge =  new Judge();
+    }
 
     void playGame(ComputerNumbers computerNumber){
         while (true){
