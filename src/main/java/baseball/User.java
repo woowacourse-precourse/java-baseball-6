@@ -5,10 +5,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class User {
+    Message message = new Message();
     public ArrayList<Integer> readNumber(){
         ArrayList<Integer> userNumber = new ArrayList<>();
-
-        System.out.print("숫자를 입력해 주세요 : ");
+        //사용자(사람)으로 부터 입력 받기
+        message.inputNumberMessage();
         String readNumber = Console.readLine();
         //3자리 수 인지 확인.
         if(readNumber.length()!=3){
