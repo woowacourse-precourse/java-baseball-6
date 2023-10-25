@@ -1,6 +1,6 @@
 # 기능 목록
 
-### Player(사용자)
+### UserPlayer(사용자)
 - [x] 숫자 입력
   - [x] 문자 -> 숫자 변환
     - [x] 숫자 입력했는지 검증
@@ -8,6 +8,10 @@
   - [x] 입력 검증
     - [x] 서로 다른 수로 이루어진 3자리의 수 검증
     - [x] 입력 가능한 수 범위 123 ~ 987
+
+### ComputerPlayer
+- [x] ComputerPlayer 생성
+  -  camp.nextstep.edu.missionutils에서 제공하는 Randoms 함수 사용
 
 ### Referee(심판)
 - [x] 두명의 Player 값 비교
@@ -19,8 +23,6 @@
     - [x] 낫싱
 
 ### GameManager(게임 관리자 및 Controller)
-- [x] ComputerPlayer 생성
-  -  camp.nextstep.edu.missionutils에서 제공하는 Randoms 함수 사용
 - [x] 게임 진행
   - [x] Viewer 와 Entity 를 연결 및 관리
   - [x] 새로운 게임 시작 및 종료 관리
