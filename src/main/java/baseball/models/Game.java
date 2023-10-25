@@ -28,15 +28,10 @@ public class Game {
 
     // 사용자에게 숫자 입력을 요청하는 메소드
     public String askForGuess() {
-        String result = "";
-        try {
-            System.out.print("숫자를 입력해주세요 : ");
-            result = Console.readLine();
-            Utils.validateInputValue(result, NUM_LENGTH);
-        } catch (IllegalArgumentException e) {
-            System.out.println("입력이 잘못되었습니다.");
-            changeStatus();
-        }
+        System.out.print("숫자를 입력해주세요 : ");
+        String result = Console.readLine();
+        utils.validateInputValue(result, NUM_LENGTH);
+
         return result;
     }
 
