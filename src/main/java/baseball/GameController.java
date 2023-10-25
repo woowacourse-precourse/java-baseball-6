@@ -25,7 +25,6 @@ public class GameController {
         }
     }
 
-
     private void initializeGame() {
         gameOutputPrinter.printStartGame();
         randomNumber = randomNumberCreater.getRandomNumber();
