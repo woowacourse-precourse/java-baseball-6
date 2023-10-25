@@ -18,16 +18,16 @@ public class GameController {
 
     public void play() {
         boolean isGameContinued = true;
-        List<Integer> computerInput = gameComputing.generateComputerInput();
+        List<Integer> computer = gameComputing.generateComputerInput();
         gameView.printStart();
         while (isGameContinued) {
-            List<Integer> userInput = gameInput.receiveInput();
-            inputValidator.validateInput(userInput);
-            int result = gameComputing.compute(computerInput, userInput);
+            List<Integer> player = gameInput.receiveInput();
+            inputValidator.validateInput(player);
+            int result = gameComputing.compute(computer, player);
             if (isGameOver(result)) {
                 isGameContinued  = gameView.askContinueGame();
                 if (isGameContinued) {
-                    computerInput = gameComputing.generateComputerInput();
+                    computer = gameComputing.generateComputerInput();
                 }
             }
         }

@@ -17,14 +17,14 @@ public class GameComputing {
         return computer;
     }
 
-    public int compute(List<Integer> computerInput, List<Integer> userInput) {
+    public int compute(List<Integer> computer, List<Integer> player) {
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < userInput.size(); i++) {
-            if (computerInput.get(i) == userInput.get(i)) {
+        for (int i = 0; i < player.size(); i++) {
+            if (computer.get(i) == player.get(i)) {
                 strike++;
             }
-            else if (computerInput.contains(userInput.get(i))) {
+            else if (computer.contains(player.get(i))) {
                 ball++;
             }
         }
