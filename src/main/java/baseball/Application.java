@@ -36,28 +36,31 @@ public class Application {
                 List<String> user = new ArrayList<>();
                 System.out.println("중복이 되지 않는 세 자리의 숫자를 입력해 주세요.");
                 String userInput = Console.readLine();
-                Collections.addAll(user, userInput.split(""));
-                System.out.println("user = " + user);           // 입력 확인값
-                for (int i = 0; i < user.size(); i++) {         // 입력받은 값의 유효성 체크
-                        String str = user.get(i);
-                        System.out.println("str = " + str);
-                        if (!user.contains(str)) {
-                                try{
-                                        System.out.println("중복된 숫자가 있습니다.");
+                System.out.println("userInput = " + userInput);
+                try {
+                        for(String s : userInput.split("")) { // 입력받은 값을 배열에 나눠서 저장
+                                if(!user.contains(s)) {  // 배열에 값이 없으면
+                                        user.add(s);  // 배열에 저장
+                                } else { // 값이 있으면 Exception 발생
                                         throw new IllegalArgumentException();
-                                }catch (Exception e){
-                                        return;
                                 }
                         }
-                        if (toParseInt(str, 0) == 0 || user.size() != 3) {
-                                try {
-                                        System.out.println("올바른 세자리 숫자를 입력이 되지 않았습니다.");
+
+
+                        for(String s : user) { // 유저에게 입력받은 값 확인을 위한 for문
+                                if(toParseInt(s,0) == 0) { // 0 또는 문자가 입력되면 Exception 발생시킴
                                         throw new IllegalArgumentException();
-                                } catch (IllegalArgumentException e) {
-                                        return;
                                 }
                         }
+
+                } catch (IllegalArgumentException e) {
+                        return;
                 }
+                if(userInput.length() != 3) { // 입력된 수가 3자리가 아니라면 Exception 발생
+
+                        throw new IllegalArgumentException();
+                }
+                System.out.println("user = " + user);           // 입력 확인값
 
                 // 판정 메소드 =====================================================================================
                 int ballCount = 0;
@@ -81,7 +84,7 @@ public class Application {
                         String choice = Console.readLine();           // 재시작 또는 종료를 하기 위한 입력
                         if (choice.equals("1")) {
                                 System.out.println("게임을 재시작 합니다.\n");
-                                StartGame();            //게임 재시작 재귀함수
+                                StartGame();            //게임 재시작
                         } else if (choice.equals("2")) {
                                 System.out.println("게임을 종료 합니다.");
                                 return;
@@ -89,7 +92,7 @@ public class Application {
                                 try {
                                         throw new IllegalArgumentException();   //1,2 외의 값 입력시 예외처리 후 종료
                                 } catch (Exception e) {
-                                        System.out.println("e = " + e);
+                                        System.out.println("잘못된 값을 입력 했습니다.");
                                         return;
                                 }
                         }
@@ -109,7 +112,7 @@ public class Application {
 
         }
 
-        public static int toParseInt(String value, int defVal) {
+        public static int toParseInt(String value, int defVal) {        // 입력된 변수를 Integer로 바꿔주는 함수
                 try {
                         return Integer.parseInt(value);         //입력 숫자 예외처리
                 } catch (Exception e) {
