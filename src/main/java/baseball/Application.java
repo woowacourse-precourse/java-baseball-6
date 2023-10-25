@@ -14,9 +14,7 @@ public class Application {
 class Room{
 	public static void gameStart(Computer alice){
 		User coh = new User();
-		String userInput = coh.getUserInput();
-		Computer.checkResult(userInput, alice);
-		Message.makeMessage(alice.baseballFlag);
+		String userInput;
 		while (alice.baseballFlag[0] != Computer.SIZE){
 			userInput = coh.getUserInput();
 			Computer.checkResult(userInput, alice);
@@ -25,8 +23,8 @@ class Room{
 		Message.getSuccessMsg();
 		Message.newGameMsg();
 		if (User.newGameFlag() == 1){
-			Computer newGame = new Computer();
-			gameStart(newGame);
+			Computer newAlice = new Computer();
+			gameStart(newAlice);
 		}
 	}
 }
