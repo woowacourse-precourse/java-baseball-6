@@ -25,23 +25,7 @@ public class GameController {
         userView.displayStartMessage();
 
         playGame();
-    }
 
-    public void playGame() {
-        List<Integer> computerNumber = baseballGame.getComputerNumber();
-
-        while(true) {
-            String stringUserNumber = userView.getUserNumber();
-
-            List<Integer> userNumber = validateAndParseUserNumber(stringUserNumber);
-            List<Integer> ballAndStrike = baseballGame.countBallAndStrike(computerNumber, userNumber);
-
-            String resultMessage = BaseballGame.getResultMessage(ballAndStrike);
-            userView.displayResultMessage(resultMessage);
-            
-            //TODO 재시작/종료
-
-        }
     }
 
     public List<Integer> validateAndParseUserNumber(String userNumber) throws IllegalArgumentException {
@@ -62,5 +46,38 @@ public class GameController {
         }
 
         return integerList;
+    }
+
+    public void playGame() {
+        List<Integer> computerNumber = baseballGame.getComputerNumber();
+
+        while(true) {
+            String stringUserNumber = userView.getUserNumber();
+
+            List<Integer> userNumber = validateAndParseUserNumber(stringUserNumber);
+            List<Integer> ballAndStrike = baseballGame.countBallAndStrike(computerNumber, userNumber);
+
+            String resultMessage = BaseballGame.getResultMessage(ballAndStrike);
+            userView.displayResultMessage(resultMessage);
+
+            String restartOrEnd = restartOrEnd(resultMessage);
+            if (restartOrEnd.equals("2")) {
+                System.out.println(END_MESSAGE);
+                return;
+            } else if (restartOrEnd.equals("1")) {
+                playGame();
+                return;
+            }
+        }
+    }
+
+    private String restartOrEnd (String resultMessage) {
+        if (resultMessage.equals(GAME_NUMBER_LENGTH + STRIKE)) {
+            System.out.println(WIN_MESSAGE);
+            String restartOrEnd = UserView.getRestartOrEnd();
+            validator.validateRestartOrEndNumber(restartOrEnd);
+            return restartOrEnd;
+        }
+        return "0";
     }
 }

@@ -44,4 +44,17 @@ public class Validator {
         }
         return true;
     }
+
+    public void validateRestartOrEndNumber(String restartOrEndNumber) throws IllegalArgumentException{
+        if (!isInteger(restartOrEndNumber) && !isValidLength(restartOrEndNumber, 1) && !isOneOrTwo(restartOrEndNumber)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private Boolean isOneOrTwo(String restartOrEndNumber) {
+        if (Integer.parseInt(restartOrEndNumber) == 1 || Integer.parseInt(restartOrEndNumber) == 2) {
+            return true;
+        }
+        return false;
+    }
 }
