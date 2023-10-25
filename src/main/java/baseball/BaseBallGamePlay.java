@@ -43,10 +43,10 @@ public class BaseBallGamePlay {
             }
         }
 
-        for(int i = 0; i < inputPlayerBall.length(); i++){
+        for (int i = 0; i < inputPlayerBall.length(); i++) {
             char currentChar = inputPlayerBall.charAt(i);
-            for(int j = i+1; j < inputPlayerBall.length(); j++){
-                if(currentChar == inputPlayerBall.charAt(j)){
+            for (int j = i + 1; j < inputPlayerBall.length(); j++) {
+                if (currentChar == inputPlayerBall.charAt(j)) {
                     throw new IllegalArgumentException();
                 }
             }
@@ -71,13 +71,24 @@ public class BaseBallGamePlay {
             }
         }
 
-        if (strike + ball != 0) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-        } else {
-            System.out.println("낫싱");
+        refereeCall(strike, ball);
+        return strike != 3;
+    }
+
+    private void refereeCall(int strike, int ball) {
+        String call = "";
+
+        if (ball > 0) {
+            call += ball + "볼 ";
+        }
+        if (strike > 0) {
+            call += strike + "스트라이크 ";
+        }
+        if (call.length() == 0) {
+            call += "낫싱";
         }
 
-        return strike != 3;
+        System.out.println(call);
     }
 
     static class PlayerNumbers {
