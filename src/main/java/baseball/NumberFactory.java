@@ -7,16 +7,11 @@ import java.util.List;
 
 public class NumberFactory {
 
-    private static final int LIMIT_SIZE = 3;
-    private static final int START_INCLUSIVE = 1;
-    private static final int END_INCLUSIVE = 9;
-
-
-    public static List<Integer> createNumbers() {
+    public static List<Integer> createNumbers(int size, int startInclusive, int endInclusive) {
         List<Integer> numbers = new ArrayList<>();
 
-        while (numbers.size() < LIMIT_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+        while (numbers.size() < size) {
+            int randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
 
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
