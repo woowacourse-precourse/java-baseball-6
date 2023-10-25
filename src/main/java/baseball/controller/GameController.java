@@ -7,10 +7,10 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameController {
 
     public GameNumber getInputGameNumber() {
-        return GameNumber.makeGameNumberByInput(Console.readLine());
+        return new GameNumber(Console.readLine());
     }
 
     public GameDecision getGameDecision() {
-        return GameDecision.makeGameDecisionByInput(Console.readLine());
+        return new GameDecision(Console.readLine());
     }
 }

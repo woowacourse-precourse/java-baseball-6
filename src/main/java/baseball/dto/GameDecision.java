@@ -9,13 +9,9 @@ public class GameDecision {
 
     private final String command;
 
-    private GameDecision(String command) {
-        this.command = command;
-    }
-
-    public static GameDecision makeGameDecisionByInput(String input) {
+    public GameDecision(String input) {
         InputValidator.validateInputGameDecision(input);
-        return new GameDecision(input);
+        this.command = input;
     }
 
     public Boolean isRetry() {
