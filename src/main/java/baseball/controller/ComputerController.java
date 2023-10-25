@@ -10,12 +10,12 @@ import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerController {
+	private static final String NOTHING_MESSAGE = "낫싱";
+	private static final String STRIKE_MESSAGE = "스트라이크";
+	private static final String BALL_MASSAGE = "볼";
+	private static final String SPACE_MESSAGE = " ";
+	private static final String NULL_MESSAGE = "";
 	InputView inputView = new InputView();
-	public static final String NOTHING_MESSAGE = "낫싱";
-	public static final String STRIKE_MESSAGE = "스트라이크";
-	public static final String BALL_MASSAGE = "볼";
-	public static final String SPACE_MESSAGE = " ";
-	public static final String NULL_MESSAGE = "";
 
 	public List<Integer> getComputerNumber() {
 		List<Integer> computer = new ArrayList<>();
