@@ -1,7 +1,15 @@
 package baseball;
 
+import baseball.game.Computer;
+import baseball.game.Game;
+import baseball.game.Player;
+
 public class Application {
     public static void main(String[] args) {
-        //TODO: 기능 목록 구현
+        Computer computer = new Computer();
+        Player player = new Player();
+        Game game = new Game(computer, player);
+
+        game.start(true);
     }
 }

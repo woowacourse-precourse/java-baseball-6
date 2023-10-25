@@ -25,6 +25,9 @@ public class Game {
         computer.setRandomNum();
         do {
             String playerNum = player.inputNumber();
+            if (computer.printResult(playerNum)) {
+                end();
+            }
         } while (state == State.PROGRESS);
 
         restart();
