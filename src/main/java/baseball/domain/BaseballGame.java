@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static baseball.constant.Baseball.NUMBER_SIZE;
+import static baseball.constant.GameMessage.END_MESSAGE;
 import static baseball.constant.GameMessage.INPUT_ERROR_MESSAGE;
 import static baseball.constant.GameMessage.RESTART_CHECK_MESSAGE;
 import static baseball.constant.GameMessage.START_MESSAGE;
@@ -28,10 +29,12 @@ public class BaseballGame {
     }
 
     public void play() {
-        computer.init();
-        player.inputNumbers();
-        compareNumbers();
-        printHint();
+        do {
+            computer.init();
+            player.inputNumbers();
+            compareNumbers();
+            printHint();
+        } while (!isAnswer());
     }
 
     // 플레이어가 입력한 수와 컴퓨터가 선택한 수를 비교하여 스트라이크 / 볼 판정
@@ -65,6 +68,15 @@ public class BaseballGame {
         }
 
         System.out.println(result);
+    }
+
+    // 정답 확인. 3개의 숫자를 모두 맞힌 경우 true 반환
+    public boolean isAnswer() {
+        if (strikeCount == 3) {
+            System.out.println(END_MESSAGE);
+            return true;
+        }
+        return false;
     }
 
     // 게임 종료 OR 재시작 확인
