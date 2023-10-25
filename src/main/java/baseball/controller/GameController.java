@@ -16,11 +16,17 @@ public class GameController {
     private Computer computer;
     private Player player;
 
+    private ComputerService computerService;
+
+    public GameController(ComputerService computerService) {
+        this.computerService = computerService;
+    }
+
     public void startGame() {
         System.out.println(GAME_START.getMessage());
         this.player = new Player();
         this.computer = new Computer();
-        BaseballNumber computerWithRandomNumber = ComputerService.createComputerWithRandomNumber();
+        BaseballNumber computerWithRandomNumber = computerService.createComputerWithRandomNumber();
         computer.updateBaseballNumber(computerWithRandomNumber);
         doGame();
     }
@@ -32,7 +38,7 @@ public class GameController {
         System.out.println(GAME_END.getMessage());
 
         if (wantsToKeepPlaying()) {
-            BaseballNumber computerWithRandomNumber = ComputerService.createComputerWithRandomNumber();
+            BaseballNumber computerWithRandomNumber = computerService.createComputerWithRandomNumber();
             computer.updateBaseballNumber(computerWithRandomNumber);
             doGame();
         }
