@@ -13,7 +13,7 @@ public class Application {
 
         List<Integer> randomNumList = new ArrayList<>();
 
-        print.startGame();
+        print.startGame(); // 게임 시작 문구
         while (true) {
             randomNumList = computer.makeRandomList(randomNumList); // random 수 설정
             String inputValue = input.doGame(); // 초기 문구 및 사용자 값 받기 및 내부 예외 처리
