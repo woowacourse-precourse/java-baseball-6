@@ -17,7 +17,6 @@ public class Application {
             gameOn = Input.restartOrNot();
         }
     }
-
     private static void loopGame(List<Integer> randomNumber) {
         while (true) {
             List<Integer> userNumber = Input.inputUserNumber(NUMBER_SIZE);

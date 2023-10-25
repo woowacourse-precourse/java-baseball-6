@@ -21,6 +21,7 @@ public class View {
 		}
 		System.out.println(result);
 	}
+
 	public static int strike(List<Integer> randomNumber, List<Integer> userNumber) {
 		int strike = 0;
 		for (int i = 0; i < userNumber.size(); i++) {
