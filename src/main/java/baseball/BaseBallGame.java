@@ -24,7 +24,7 @@ public class BaseBallGame {
     }
 
     public void run() {
-        while (true) {
+        do {
             System.out.print(OutputMessage.START_GAME);
 
             computer.setRandomNumber();
@@ -35,12 +35,7 @@ public class BaseBallGame {
 
             System.out.println(OutputMessage.END_OR_NOT);
 
-            String st = Console.readLine();
-            throwException2(st);
-
-            if (st.equals("2"))
-                break;
-        }
+        } while (!isEnd());
     }
 
     private void guessNumber() {
@@ -52,9 +47,16 @@ public class BaseBallGame {
         } while (!score.isSuccess());
     }
 
-    private void throwException2(String st) {
+    public boolean isEnd() {
+        String chooseNumber = Console.readLine();
+        throwException(chooseNumber);
+        return chooseNumber.equals("2");
+    }
+
+    private void throwException(String st) {
         if (!st.matches(END_OR_NOT)) {
             throw new IllegalArgumentException();
         }
     }
+
 }
