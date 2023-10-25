@@ -8,7 +8,7 @@ import baseball.entity.User;
 import java.util.HashSet;
 
 public class BaseballGame {
-    private final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private User user;
     private Computer computer;
 
@@ -19,30 +19,33 @@ public class BaseballGame {
     }
 
     public void start() {
-        computer.generateRandomAnswer();
-        user.setNumber(Input.get());
-        while (!isCorrect()) {
-            user.setNumber(Input.get());
-        }
-        Output.printAnswerMessage();
-        String restart = Input.restart();
-        if (restart.equals("1")) {
-            start();
-        }
+        do {
+            playSingleRound();
+        } while (isUserWantsToRestart());
     }
 
-    private boolean isCorrect() {
+    private void playSingleRound() {
+        computer.generateRandomAnswer();
+        do {
+            user.setNumber(Input.get());
+        } while (!isGuessCorrect());
+        Output.printAnswerMessage();
+    }
+
+    private boolean isGuessCorrect() {
         String number = user.getNumber();
         String answer = computer.getAnswer();
         int strike = countStrike(number, answer);
         int ball = countBall(number, answer);
         Output.print(ball, strike);
 
-        if (strike == 3) {
-            return true;
-        }
-        return false;
+        return strike == 3;
     }
+
+    private boolean isUserWantsToRestart() {
+        return "1".equals(Input.restart());
+    }
+
 
     public static int countBall(String number, String answer) {
         HashSet<Character> set = new HashSet<>();
