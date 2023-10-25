@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.Result;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -20,6 +21,7 @@ public class GameController {
         Computer computer = new Computer();
 
         List<Integer> userGuess = guessUser();
+        Result result = computer.getStrikesAndBalls(userGuess);
     }
 
     private List<Integer> guessUser() {
