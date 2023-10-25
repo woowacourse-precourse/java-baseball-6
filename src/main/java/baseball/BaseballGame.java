@@ -1,14 +1,16 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseballGame {
     private final Integer BALL_INDEX = 0;
     private final Integer STRIKE_INDEX = 1;
+    private final Integer NOTHING = 0;
     public static final BaseballGame game = new BaseballGame();
+
     private List<Integer> compareAnswerWithUserInput(List<Integer> answer, List<Integer> userInput) {
         List<Integer> compared = new ArrayList<>();
         int strike = 0;
@@ -28,12 +30,12 @@ public class BaseballGame {
     }
 
     private Boolean isNothing(List<Integer> compared) {
-        return compared.get(BALL_INDEX) == 0 && compared.get(STRIKE_INDEX) == 0;
+        return compared.get(BALL_INDEX) == NOTHING && compared.get(STRIKE_INDEX) == NOTHING;
     }
 
     private Boolean isCorrect(List<Integer> compared) {
-        int max_num_of_correctness = 3;
-        return compared.get(STRIKE_INDEX) == max_num_of_correctness;
+        int maxNumOfCorrectness = 3;
+        return compared.get(STRIKE_INDEX) == maxNumOfCorrectness;
     }
 
     private List<Integer> convertUserInputToList(String input) {
@@ -51,13 +53,13 @@ public class BaseballGame {
 
     private void printResult(List<Integer> comparing) {
         String result = "";
-        if (comparing.get(BALL_INDEX) > 0) {
+        if (comparing.get(BALL_INDEX) > NOTHING) {
             result += String.format(Message.BALL, comparing.get(BALL_INDEX));
         }
-        if (comparing.get(STRIKE_INDEX) > 0) {
+        if (comparing.get(STRIKE_INDEX) > NOTHING) {
             result += String.format(Message.STRIKE, comparing.get(STRIKE_INDEX));
         }
-        if (result.length() > 0) {
+        if (result.length() > NOTHING) {
             System.out.println(result);
         }
     }
@@ -77,7 +79,6 @@ public class BaseballGame {
         String number;
         List<Integer> userInput, compared;
         Answer.answer.generateAnswer();
-//        System.out.println(Arrays.toString(Answer.answer.getNumber().toArray()));
         while (true) {
             System.out.print(Message.INPUT);
             number = readLine();

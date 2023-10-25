@@ -12,24 +12,29 @@ public class Validate {
     public static final Integer[] CONTINUE_RANGE_OF_DIGITS = {1, 2};
 
     public static void validateContinueGame(String number) throws IllegalArgumentException {
-        if (number.length() != CONTINUE_NUM_OF_DIGITS)
+        if (number.length() != CONTINUE_NUM_OF_DIGITS) {
             throw new IllegalArgumentException();
-        if (!Arrays.stream(CONTINUE_RANGE_OF_DIGITS).toList().contains(Integer.parseInt(number)))
+        }
+        if (!Arrays.stream(CONTINUE_RANGE_OF_DIGITS).toList().contains(Integer.parseInt(number))) {
             throw new IllegalArgumentException();
+        }
     }
 
     public static void validateNumber(String number) throws IllegalArgumentException {
-        if (number.length() != BASEBALL_NUM_OF_DIGITS)
+        if (number.length() != BASEBALL_NUM_OF_DIGITS) {
             throw new IllegalArgumentException();
+        }
         int num;
         Set<Integer> distinctNumber = new HashSet<>();
         for (int i = 0; i < BASEBALL_NUM_OF_DIGITS; i++) {
             num = Character.getNumericValue(number.charAt(i));
-            if (BASEBALL_START_DIGITS > num || num > BASEBALL_END_DIGITS)
+            if (BASEBALL_START_DIGITS > num || num > BASEBALL_END_DIGITS) {
                 throw new IllegalArgumentException();
+            }
             distinctNumber.add(num);
         }
-        if (distinctNumber.size() < BASEBALL_NUM_OF_DIGITS)
+        if (distinctNumber.size() < BASEBALL_NUM_OF_DIGITS) {
             throw new IllegalArgumentException();
+        }
     }
 }
