@@ -8,7 +8,7 @@ import java.util.List;
 public class user {
     private final List<Integer> numbers = new ArrayList<>();
 
-    private void getNum() {
+    public void getNum() {
         String getNumber;
         try {
             InputStreamReader ir = new InputStreamReader(System.in);
@@ -19,7 +19,7 @@ public class user {
         }
     }
 
-    private void getNumberError(String getNumber) {
+    public void getNumberError(String getNumber) {
         if (numOverLength(getNumber)) {
             throw new IllegalArgumentException("입력한 값이 세자리 수가 아닙니다.");
         } else if (notNum(getNumber)) {
@@ -27,10 +27,10 @@ public class user {
         }
     }
 
-    private boolean numOverLength(String getNum) {
+    public boolean numOverLength(String getNum) {
         return (getNum.length() != 3);
     }
-    private boolean notNum(String getNum) {
+    public boolean notNum(String getNum) {
         int numbers = Integer.parseInt(getNum);
         return (numbers / 1000 != 0);
     }

@@ -9,7 +9,7 @@ import java.util.Random;
 public class computer {
     private final List<Integer> numbers = new ArrayList<>(); // 컴퓨터가 생성한 숫자 리스트
 
-    private void threeRandomsNum() {
+    public void threeRandomsNum() {
         numbers.clear();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,7 +17,7 @@ public class computer {
         }
     }
 
-    private void add(int randomNumber) {
+    public void add(int randomNumber) {
         if (!numbers.contains(randomNumber)) {
             numbers.add(randomNumber);
         }
