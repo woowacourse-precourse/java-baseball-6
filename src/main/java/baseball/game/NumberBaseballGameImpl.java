@@ -1,31 +1,33 @@
 package baseball.game;
 
+import baseball.handleException.HandleException;
 import baseball.gameMachine.GameMachineImpl;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NumberBaseballGameImpl implements Game{
-    private final String startingGame = "숫자 야구 게임을 시작합니다.\n";
-    private static final String askingUserInput = "숫자를 입력해주세요 : ";
-    private final String ending = "3개의 숫자를 모두 맞히셨습니다! 게임 종료/n";
+    private final String STARTING_GAME = "숫자 야구 게임을 시작합니다.\n";
+    private static final String ASKING_USER_INPUT = "숫자를 입력해주세요 : ";
+    private final String ENDING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+    private final String BALL ="볼";
+    private final String STRIKE ="스트라이크";
+    private final String NOTHING = "낫싱";
 
-    public NumberBaseballGameImpl() {
-
-    }
+    public NumberBaseballGameImpl() {}
 
     @Override
     public void runGame()  {
         List<Integer> gameNumList;
         int[] resultArray;
         
-        forwardText(startingGame);
+        forwardText(STARTING_GAME);
         gameNumList = generateComputerNumber();
         String userNumber;
         do {
-            forwardText(askingUserInput);
+            forwardText(ASKING_USER_INPUT);
             userNumber = askForInput();
-            HandleGameException.askingUserInputException(userNumber);
+            HandleException.exceptionHandlingForUserNumber(userNumber);
             List<Integer> userNumList = stringToList(userNumber);
             resultArray = compare(userNumList, gameNumList);
             printResult(resultArray);
@@ -102,23 +104,23 @@ public class NumberBaseballGameImpl implements Game{
         int ballNum = resultArray[1];
         String resultString = null;
         if (ballNum != 0 && strikeNum == 0) {
-            resultString = ballNum + "볼\n";
+            resultString = ballNum + BALL + "\n";
         }
         if (ballNum == 0 && strikeNum != 0) {
-            resultString = strikeNum + "스트라이크\n";
+            resultString = strikeNum + STRIKE + "\n";
         }
         if (ballNum != 0 && strikeNum != 0) {
-            resultString = ballNum + "볼 " + strikeNum + "스트라이크\n";
+            resultString = ballNum + BALL + " " + strikeNum + STRIKE + "\n";
         }
         if (strikeNum == 0 && ballNum == 0) {
-            resultString = "낫싱\n";
+            resultString = NOTHING + "\n";
         }
         forwardText(resultString);
     }
     private boolean checkResult(int[] resultArray) {
         //스트라이크 개수가 3개면 true리턴 아니면 false 리턴
         if (resultArray[0] == 3) {
-            forwardText(ending);
+            forwardText(ENDING);
             return true;
         } else {
             return false;

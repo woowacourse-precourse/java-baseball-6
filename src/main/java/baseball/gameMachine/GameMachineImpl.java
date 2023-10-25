@@ -3,10 +3,12 @@ package baseball.gameMachine;
 import static baseball.user.UserImpl.*;
 
 import baseball.game.Game;
+import baseball.handleException.HandleException;
 import baseball.user.User;
+import net.bytebuddy.asm.Advice.ExceptionHandler;
 
 public class GameMachineImpl implements GameMachine {
-    private final String askingRegame = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
+    private final String ASKING_REGAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
 
     static User user;
     Game game;
@@ -24,9 +26,9 @@ public class GameMachineImpl implements GameMachine {
 
     @Override
     public boolean askForReGame() {
-        printText(askingRegame);
+        printText(ASKING_REGAME);
         String userInput = getInput();
-        HandleGameMachineException.askingReGameException(userInput);
+        HandleException.exceptionHandlingForUserInput(userInput);
         int checkValue = Integer.parseInt(userInput);
         if (checkValue == 1) {
             return true;
