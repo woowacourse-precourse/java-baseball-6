@@ -1,7 +1,7 @@
 package baseball.core;
 
-import baseball.Enum.PointStatus;
 import baseball.Enum.GameStatus;
+import baseball.Enum.PointStatus;
 import baseball.core.rule.PickedNumbers;
 import baseball.core.rule.Rule;
 import baseball.core.rule.ScoreResult;

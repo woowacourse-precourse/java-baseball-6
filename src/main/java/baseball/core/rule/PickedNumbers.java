@@ -8,7 +8,7 @@ public class PickedNumbers {
     private final List<Integer> playerNumberList;
 
     public static PickedNumbers createPickedNumbers(List<Integer> opponentNumberList,
-        List<Integer> playerNumberList) {
+                                                    List<Integer> playerNumberList) {
         return new PickedNumbers(opponentNumberList, playerNumberList);
     }
 

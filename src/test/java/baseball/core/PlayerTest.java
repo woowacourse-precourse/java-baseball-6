@@ -1,7 +1,5 @@
 package baseball.core;
 
-import static org.mockito.Mockito.mock;
-
 import baseball.core.participant.Player;
 import baseball.exception.IllegalCountException;
 import baseball.exception.IllegalDuplicateException;

@@ -1,7 +1,5 @@
 package baseball.core;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import baseball.Enum.GameStatus;
 import baseball.core.rule.PickedNumbers;
 import baseball.core.rule.RuleV1;
