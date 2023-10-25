@@ -9,7 +9,10 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         while (true) {
-            playGame();
+            boolean gameContinues = playGame();
+            if (!gameContinues) {
+                break;
+            }
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = Console.readLine();
             if (input.equals("2")) {
@@ -28,7 +31,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        //System.out.print(computer);
+        System.out.println(computer);
         return computer;
     }
 
@@ -46,7 +49,7 @@ public class Application {
         return new int[]{strike, ball};
     }
 
-    private static void playGame() {
+    private static boolean playGame() {
         List<Integer> computerNumbers = generateNumber();
         System.out.print("숫자 야구 게임을 시작합니다.");
 
@@ -59,14 +62,13 @@ public class Application {
                 userNumbers = validateInput(userInput);
             } catch (IllegalArgumentException e) {
                 System.out.println("잘못된 입력입니다.");
-                System.exit(0);
-                return;
+                return false;
             }
 
             int[] result = compareNumbers(computerNumbers, userNumbers);
             if (result[0] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                return;
+                return true;
             }
 
             if (result[0] == 0 && result[1] == 0) {
