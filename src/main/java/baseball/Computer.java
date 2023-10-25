@@ -1,12 +1,15 @@
 package baseball;
 
-import static baseball.Constants.*;
+import static baseball.Constants.NUMBER_LOWER_BOUND;
+import static baseball.Constants.NUMBER_UPPER_BOUND;
+import static baseball.Constants.SIZE_OF_DIGITS;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+    private final ScoreProcessor scoreProcessor = new ScoreProcessor();
     private Numbers numbers;
 
     public void generateRandomNumbers() {
@@ -21,5 +24,9 @@ public class Computer {
             }
         }
         this.numbers = new Numbers(randomGeneratedNumberList);
+    }
+
+    public Score guess(Numbers playerNumbers) {
+        return scoreProcessor.processScore(this.numbers, playerNumbers);
     }
 }
