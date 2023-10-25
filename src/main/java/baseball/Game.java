@@ -21,7 +21,7 @@ public class Game {
 
             int[] validInput = InputValidator.validateAndParseUserInput(userInput);
 
-            boolean isCorrect = computer.isCorrectGuess(validInput);
+            correctAnswer = computer.isCorrectGuess(validInput);
         } while (!correctAnswer);
     }
 
