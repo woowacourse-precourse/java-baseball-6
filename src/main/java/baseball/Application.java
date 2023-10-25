@@ -47,8 +47,12 @@ public class Application {
             game.reset();
             user.setPrediction(getPrediction());
             game.countStrikeOrBall(user.getPrediction());
-            printResultMessage(game.getNumberOfStrike(), game.getNumberOfBall());
+            print(game.getResult().toString());
         }
+    }
+
+    private static void print(String message) {
+        System.out.println(message);
     }
 
     private static List<Integer> getPrediction() throws IllegalArgumentException {
@@ -67,30 +71,6 @@ public class Application {
 
     public static void printInputMessage() {
         System.out.print("숫자를 입력해주세요 : ");
-    }
-
-    private static void printResultMessage(int numberOfStrike, int numberOfBall) {
-        if (numberOfStrike == 3 && numberOfBall == 0) {
-            System.out.println("3스트라이크\n3개 숫자를 모두 맞히셨습니다! 게임 종료");
-            return;
-        }
-
-        if (numberOfStrike == 0 && numberOfBall == 0) {
-            System.out.println("낫싱");
-            return;
-        }
-
-        if (numberOfStrike == 0) {
-            System.out.printf("%d볼%n", numberOfBall);
-            return;
-        }
-
-        if (numberOfBall == 0) {
-            System.out.printf("%d스트라이크%n", numberOfStrike);
-            return;
-        }
-
-        System.out.printf("%d볼 %d스트라이크%n", numberOfBall, numberOfStrike);
     }
 
     public static List<Integer> validateUserInput(String response) throws IllegalArgumentException {
