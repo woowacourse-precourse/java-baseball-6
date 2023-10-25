@@ -1,12 +1,13 @@
 package baseball.controller;
 
 import baseball.constants.GameMessages;
+import baseball.model.Hint;
+import baseball.model.Numbers;
 import baseball.utils.Parser;
 import baseball.validators.NumberValidator;
 import baseball.validators.RestartOrExitValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class GameController {
 
@@ -32,17 +33,17 @@ public class GameController {
         Boolean isCorrectAnswer = false;
         while (!isCorrectAnswer) {
             outputView.printMessage(GameMessages.NUMBER_REQUEST_MESSAGE);
-            List<Integer> playerNumbers = getPlayerNumbers();
-            computerController.provideHint(playerNumbers);
+            Hint hint = computerController.provideHint(getPlayerNumber());
+            outputView.printContents(hint.generateHintMessage());
             isCorrectAnswer = computerController.checkCorrectAnswer();
         }
         outputView.printlnMessage(GameMessages.CORRECT_ANSWER_MESSAGE);
     }
 
-    private List<Integer> getPlayerNumbers() {
-        String inputNumbers = inputView.readInputNumbers();
-        NumberValidator.validateNumber(inputNumbers);
-        return Parser.parseStringToList(inputNumbers);
+    private Numbers getPlayerNumber() {
+        String numberString = inputView.readInputNumbers();
+        NumberValidator.validateNumber(numberString);
+        return Numbers.from(Parser.parseStringToList(numberString));
     }
 
     private Boolean requestRestartOrExit() {
