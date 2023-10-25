@@ -6,22 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-class QueryResult {
-    private final int ball;
-    private final int strike;
-
-    QueryResult(int ball, int strike) {
-        this.ball = ball;
-        this.strike = strike;
-    }
-
-    public int getBall() {
-        return ball;
-    }
-
-    public int getStrike() {
-        return strike;
-    }
+record QueryResult(int balls, int strikes) {
 }
 
 
@@ -73,39 +58,40 @@ public class Game {
     }
 
     private QueryResult judge(List<Integer> query) {
-        int[] result = {0, 0};
+        int balls = 0;
+        int strikes = 0;
 
         // Ball judgement
         Set<Integer> answerSet = new HashSet<>(this.answer);
         Set<Integer> querySet = new HashSet<>(query);
 
         querySet.retainAll(answerSet);
-        result[0] = querySet.size();
+        balls = querySet.size();
 
         // Strike judgement
         for (int i = 0; i < 3; i++) {
             if (query.get(i).equals(this.answer.get(i))) {
-                result[0] -= 1;
-                result[1] += 1;
+                balls -= 1;
+                strikes += 1;
             }
         }
 
-        return new QueryResult(result[0], result[1]);
+        return new QueryResult(balls, strikes);
     }
 
     private void printResult(QueryResult result) {
-        if (result.getBall() > 0 && result.getStrike() > 0) {
-            System.out.println(result.getBall() + "볼 " + result.getStrike() + "스트라이크");
-        } else if (result.getStrike() > 0) {
-            System.out.println(result.getStrike() + "스트라이크");
-        } else if (result.getBall() > 0) {
-            System.out.println(result.getBall() + "볼");
+        if (result.balls() > 0 && result.strikes() > 0) {
+            System.out.println(result.balls() + "볼 " + result.strikes() + "스트라이크");
+        } else if (result.strikes() > 0) {
+            System.out.println(result.strikes() + "스트라이크");
+        } else if (result.balls() > 0) {
+            System.out.println(result.balls() + "볼");
         } else {
             System.out.println("낫싱");
         }
     }
 
     private boolean isCorrect(QueryResult result) {
-        return result.getStrike() == 3;
+        return result.strikes() == 3;
     }
 }
