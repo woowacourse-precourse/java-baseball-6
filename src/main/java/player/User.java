@@ -13,7 +13,8 @@ public class User implements Player {
     public void setNumbers() {
         char[] userNumbers = Console.readLine().toCharArray();
 
-        numberValidation(userNumbers);
+        numbersValidation(userNumbers);
+        numbersUniqueValidation(userNumbers);
         numbers = userNumbers;
     }
 
@@ -51,7 +52,7 @@ public class User implements Player {
         }
     }
 
-    private void numberValidation(char[] numbersInput) {
+    private void numbersValidation(char[] numbersInput) {
         if (numbersInput.length < SIZE) {
             throw new IllegalArgumentException("user input numbers size is smaller");
         }
@@ -64,6 +65,20 @@ public class User implements Player {
             if (number <= '0' || number > '9') {
                 throw new IllegalArgumentException("user input is not appropriate");
             }
+        }
+    }
+
+    private void numbersUniqueValidation(char[] numbersInput) {
+        boolean[] alreadyExist = new boolean[10];
+
+        for (char number : numbersInput) {
+            number -= '0';
+
+            if (alreadyExist[number]) {
+                throw new IllegalArgumentException("input number is not unique");
+            }
+
+            alreadyExist[number] = true;
         }
     }
 
