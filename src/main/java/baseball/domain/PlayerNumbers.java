@@ -38,6 +38,7 @@ public class PlayerNumbers {
             }
         }
     }
+
     public Result checkResult(BaseballNumbers baseballNumbers) {
         int strike = 0, ball = 0;
         for (int i = 0; i < numbers.size(); i++) {
