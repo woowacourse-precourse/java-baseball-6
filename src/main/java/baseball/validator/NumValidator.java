@@ -9,12 +9,12 @@ public class NumValidator {
     private final static String OUT_RANGE_NUMBER_MESSAGE = "숫자는 1과 9 사이의 숫자입니다.";
     private final static String DUPLICATE_NUMBER_MESSAGE = "중복된 숫자가 포함되어 있습니다.";
 
-    public static void isInRange(String input) {
+    public static void isInRange(String input) {make 
         if (input.length() != INPUT_LENGTH) {
             throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
         }
     }
-    
+
     public static void isNumeric(String input) {
         try {
             Integer.parseInt(input);
