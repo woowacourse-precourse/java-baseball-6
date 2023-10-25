@@ -49,4 +49,20 @@ public class UserInputUtil {
     private static boolean isContains(Set<Character> set, char c) {
         return set.contains(c);
     }
+
+    public static void isStringOneOrTwo(String input) {
+        if("2".equals(input) || "1".equals(input)) {
+            return ;
+        }
+
+        throw new IllegalArgumentException("잘못된 값을 입력했습니다. 애플리케이션을 종료합니다.");
+    }
+
+    public static boolean isSelectQuit(String input) {
+        if("2".equals(input)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

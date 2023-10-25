@@ -14,25 +14,18 @@ public class Baseball {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             startRound();
-            if(selectQuit()) {
+            if(checkProgress()) {
                 break;
             }
         }
     }
 
-    private static boolean selectQuit() {
+    private static boolean checkProgress() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartOrQuit = readLine();
+        UserInputUtil.isStringOneOrTwo(restartOrQuit);
 
-        if("2".equals(restartOrQuit)) {
-            return true;
-        }
-
-        if ("1".equals(restartOrQuit)) {
-            return false;
-        }
-
-        throw new IllegalArgumentException("잘못된 값을 입력했습니다. 애플리케이션을 종료합니다.");
+        return UserInputUtil.isSelectQuit(restartOrQuit);
     }
 
     private void startRound() {
