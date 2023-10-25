@@ -1,17 +1,7 @@
 package baseball;
 
-import baseball.error.ErrorException;
-import baseball.error.GameInputErrorException;
-import baseball.error.RetryInpurErrorException;
-import baseball.model.Computer;
-import baseball.util.BaseballNumberGenerator;
-import baseball.util.BaseballRandomNumberGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;

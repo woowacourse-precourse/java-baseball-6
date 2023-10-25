@@ -2,15 +2,11 @@ package baseball.controller;
 
 import baseball.error.ErrorException;
 import baseball.error.GameInputErrorException;
-import baseball.model.Computer;
 import baseball.util.BaseballRandomNumberGenerator;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameControllerTest {
 
@@ -24,7 +20,5 @@ class GameControllerTest {
         //when,then
         System.out.println(checkNumberString);
         errorException.checkUserInputValidate(checkNumberString);
-
     }
-
 }

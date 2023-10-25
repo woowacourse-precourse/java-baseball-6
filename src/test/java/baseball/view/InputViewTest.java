@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static org.junit.jupiter.api.Assertions.*;
+
 class InputViewTest {
     @Test
     void 숫자_야구_게임의_입력한_값이_유효한_값인지_검사_기능_테스트(){

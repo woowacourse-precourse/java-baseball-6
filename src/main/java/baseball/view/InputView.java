@@ -3,7 +3,6 @@ package baseball.view;
 import baseball.error.ErrorException;
 import baseball.error.GameInputErrorException;
 import baseball.error.RetryInpurErrorException;
-import baseball.util.MessageUtil;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {

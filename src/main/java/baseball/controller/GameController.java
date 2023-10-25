@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.model.Computer;
-import baseball.util.BaseballNumberGenerator;
 import baseball.util.BaseballRandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -35,6 +34,7 @@ public class GameController {
             }
         }
     }
+
     private static List<Integer> transferStringToIntegerList(String targetString){
         String[] stringList = targetString.split("");
         List<Integer> result = new ArrayList<>();
