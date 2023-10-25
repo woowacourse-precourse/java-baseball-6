@@ -16,7 +16,6 @@ public class View {
     public void postHint(Hint hint) {
         Integer strike = hint.getStrike();
         Integer ball = hint.getBall();
-
         if (checkThreeStrike(strike)) return;
         printHint(strike, ball);
     }

@@ -4,7 +4,6 @@ import baseball.domain.Hint;
 import baseball.domain.Numbers;
 import baseball.repository.AnswerRepository;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,15 +27,11 @@ public class AnswerService {
     }
 
     public Hint getHint(Numbers input) {
-
         Numbers answer = answerRepository.find();
-
         List<Integer> inputNumbers = input.getNumbers();
         List<Integer> answerNumbers = answer.getNumbers();
-
         int strike = 0;
         int ball = 0;
-
         for (int i = 0; i < inputNumbers.size(); i++) {
             Integer inputNumber = inputNumbers.get(i);
             Integer answerNumber = answerNumbers.get(i);
