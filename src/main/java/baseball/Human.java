@@ -24,20 +24,28 @@ public class Human {
             throw new IllegalArgumentException("Length 가 3이 아님.");
         }
 
-        // 2. Invalid type ( ex. 1a2 )
-        try {
-            for (int charIdx = 0; charIdx < input.length(); charIdx++) {
-                parseInput.set(charIdx,
-                        Integer.parseInt(String.valueOf(input.charAt(charIdx))));
+        // 2. Invalid type ( ex. 1a2, 112
+
+        for (int charIdx = 0; charIdx < input.length(); charIdx++) {
+
+            int parseInt;
+            try {
+                parseInt = Integer.parseInt(String.valueOf(input.charAt(charIdx)));
+            } catch (Exception e) {
+                throw new IllegalArgumentException("Invalid Type 발생: (ex. 1a2)");
             }
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Invalid Type 발생");
+
+            if (parseInt == 0) {
+                throw new IllegalArgumentException("Input 에 0을 포함하고있음.");
+            }
+            if (parseInput.contains(parseInt)) {
+                throw new IllegalArgumentException("Input 중 중복된 값이 있음. ex) 113, 112, 111");
+            }
+
+            parseInput.set(charIdx, parseInt);
         }
 
         // contains 0
-        if (parseInput.contains(0)) {
-            throw new IllegalArgumentException("Input 에 0을 포함하고있음.");
-        }
 
         Number = parseInput;
     }
