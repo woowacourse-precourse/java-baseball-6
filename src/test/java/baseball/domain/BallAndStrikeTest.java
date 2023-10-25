@@ -51,15 +51,15 @@ class BallAndStrikeTest {
 
     @Test
     void 볼_스트라이크_테스트2(){
-        String computerNumber = "111";
-        String playerNumber = "131";
+        String computerNumber = "123";
+        String playerNumber = "132";
 
         BaseBallNumber cpuNumber = new BaseBallNumber(computerNumber);
         BaseBallNumber userNumber = new BaseBallNumber(playerNumber);
 
         BallAndStrike resultBall = BallAndStrike.calcBallsAndStrikes(cpuNumber, userNumber);
 
-        assertThat(resultBall.getBalls()).isEqualTo(0);
-        assertThat(resultBall.getStrikes()).isEqualTo(2);
+        assertThat(resultBall.getBalls()).isEqualTo(2);
+        assertThat(resultBall.getStrikes()).isEqualTo(1);
     }
 }
