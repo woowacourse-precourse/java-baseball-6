@@ -3,10 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import javax.swing.table.TableRowSorter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static java.lang.System.exit;
 
@@ -14,7 +12,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        Scanner s = new Scanner(System.in);
         String answer, trial = "";
         int restart =1;
         int strike =0, ball=0;
