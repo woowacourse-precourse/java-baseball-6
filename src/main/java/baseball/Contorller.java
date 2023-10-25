@@ -46,13 +46,13 @@ class Game {
     private static final int NUM_END = 9;
     private static final int GAME_RESTART = 1;
     private static final int GAME_OVER = 2;
-
     private static final String GET_NUM_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String CORRECT_MESSAGE = Game.NUM_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String RETRY_MESSAGE = "게임을 새로 시작하려면 " + Game.GAME_RESTART + ", 종료하려면 " + Game.GAME_OVER + "를 입력하세요.";
-
+    private static final String CORRECT_MESSAGE = Game.NUM_SIZE
+            + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String RETRY_MESSAGE = "게임을 새로 시작하려면 "
+            + Game.GAME_RESTART + ", 종료하려면 "
+            + Game.GAME_OVER + "를 입력하세요.";
     int[] num = new int[NUM_SIZE];
-
 
     Game() {
         int randNum;
@@ -120,7 +120,6 @@ class Game {
         return intVal;
     }
 
-
     static void checkException(final String str){
         if(str.length() != NUM_SIZE){
             throw new IllegalArgumentException();
@@ -156,7 +155,6 @@ class Game {
         }
         return true;
     }
-
 }
 
 class Hint {
