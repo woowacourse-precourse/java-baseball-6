@@ -73,15 +73,15 @@ public class GameManager {
         try {
             Integer.parseInt(userGuess);
         }catch(NumberFormatException e){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자가 아닌 입력이 있습니다.");
         }
 
         if(userGuess.length() != 3)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자의 개수가 3개가 아닙니다.");
 
         for(int i = 0; i < 3; ++i){
             if(userGuess.charAt(i) == '0')
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("1 ~ 9 사이의 숫자만 입력해주세요");
         }
     }
 
@@ -140,7 +140,7 @@ public class GameManager {
 
     private void validateUserRestart(String userRestartInput) {
         if(!(userRestartInput.equals("1") || userRestartInput.equals("2")))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("허용되는 입력값이 아닙니다. 1 or 2를 입력해주세요");
     }
 }
 
