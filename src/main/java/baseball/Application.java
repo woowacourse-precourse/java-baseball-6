@@ -1,6 +1,12 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import camp.nextstep.edu.missionutils.Randoms;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -70,7 +76,7 @@ public class Application {
         return gameState == 1;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         Scanner scanner = new Scanner(System.in);
@@ -82,12 +88,16 @@ public class Application {
             // 사용자 입력
             System.out.print("숫자를 입력해주세요 : ");
 
-            int userNumber = 0;
-            if (scanner.hasNextInt()) {
-                userNumber = scanner.nextInt();
-            } else { // 정수형이 아닌 다른 입력을 하게 되면 예외 처리
+
+            String userValue = readLine();
+
+            if (userValue.length() != 3) {
                 throw new IllegalArgumentException();
+
             }
+
+            int userNumber = Integer.parseInt(userValue);
+
 
             List<Integer> user = convertNumberToList(userNumber);
 
