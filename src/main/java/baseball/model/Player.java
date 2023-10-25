@@ -29,6 +29,7 @@ public class Player extends Number {
     }
 
     private void setInput() {
+        System.out.println("숫자를 입력해주세요 : ");
         input = Console.readLine().trim();
     }
 
