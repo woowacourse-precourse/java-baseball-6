@@ -27,7 +27,6 @@ public class BaseballGameController {
         }
 
         List<Integer> computerNumbers = baseballGameModel.getComputerNumbers();
-        System.out.println("computerNumbers = " + computerNumbers);
 
         String userInput = baseballGameView.getUserInput();
         List<Integer> processedUserInput = processInput(userInput, 3);

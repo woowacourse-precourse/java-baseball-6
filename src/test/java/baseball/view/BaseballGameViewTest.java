@@ -124,7 +124,7 @@ class BaseballGameViewTest {
         assertEquals("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n", outputMessage.toString());
         assertThat(restartInput).isEqualTo(1);
 
-        System.setIn(System.in);
+        System.setIn(System.int);
     }
 
     @Test
