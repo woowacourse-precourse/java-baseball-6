@@ -1,24 +1,25 @@
 package baseball.view;
 
+import baseball.constants.MessageConstants;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballView {
 
     public void printGameStartMessage(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(MessageConstants.START_GAME_MESSAGE);
     }
 
     public void printUserInputGuideMessage(){
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(MessageConstants.USER_INPUT_MESSAGE);
     }
 
     public void printGameOverMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(MessageConstants.END_GAME_MESSAGE);
     }
 
     public void printWhetherRestartOrExitMessage() {
         printGameOverMessage();
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(MessageConstants.WHETHER_RESTART_OR_EXIT_MESSAGE);
     }
 
     public void printResultGameMessage(int ballCount, int strikeCount) {
@@ -26,15 +27,15 @@ public class BaseballView {
         String message = "";
 
         if (ballCount != 0) {
-            message = ballCount + "볼 ";
+            message = ballCount + MessageConstants.BALL_MESSAGE;
         }
 
         if (strikeCount != 0) {
-            message += strikeCount + "스트라이크";
+            message += strikeCount + MessageConstants.STRIKE_MESSAGE;
         }
 
         if (ballCount == 0 && strikeCount == 0) {
-            message = "낫싱";
+            message = MessageConstants.FAIL_MESSAGE;
         }
 
         System.out.println(message);
