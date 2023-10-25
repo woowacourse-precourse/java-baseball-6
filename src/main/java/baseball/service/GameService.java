@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.Game;
+import baseball.User;
 import baseball.utils.Parser;
 import baseball.utils.RandomUtils;
 import camp.nextstep.edu.missionutils.Console;
@@ -8,6 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameService {
     int size;
     Game game;
+    User user = new User();
 
     Parser parser = new Parser();
 
@@ -27,6 +29,12 @@ public class GameService {
     }
 
     private void play() {
+        game.initBaseBall();
+        user.setUserNumbers(getUserNumber());
+        computeScore();
+    }
+
+    private void computeScore() {
     }
 
 
