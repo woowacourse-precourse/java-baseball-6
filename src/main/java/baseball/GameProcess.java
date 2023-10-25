@@ -10,16 +10,21 @@ public class GameProcess {
     public List<Integer> getInput() {
         return input;
     }
+
+    Computer computer1 = new Computer();
     public static void process() {
 
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         input = new ArrayList<>();
         String num;
         int start_or_exit;
-
+       // System.out.println("1"); // computer 배열 3개가 어디서 생겨나는 지 확인하기 위한 코드
         Implementation implementation1 = new Implementation();
-        Computer computer1 = new Computer();
-        List<Integer> computerNumbers = computer1.generateRandomNumbers();
+        //System.out.println("2");
+        Computer computer1 = new Computer(); //
+        //System.out.println("3");
+        List<Integer> computerNumbers = computer1.generateRandomNumbers(); // 4
+        //System.out.println("4");
         while (true) {
             try {
                 System.out.print("숫자를 입력해주세요 : ");
@@ -61,7 +66,7 @@ public class GameProcess {
                         if (start_or_exit == 2) { // 2일경우 게임 종료
                             break;
                         } else if (start_or_exit == 1) { // 1일 경우 게임 다시 시작
-                            computerNumbers = computer1.generateRandomNumbers();
+                            computerNumbers = computer1.generateRandomNumbers(); //2
                             continue;
                         }
                 } else {
