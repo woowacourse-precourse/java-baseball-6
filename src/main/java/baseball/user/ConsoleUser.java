@@ -23,27 +23,28 @@ public class ConsoleUser implements User {
 
         GameResponse response = dispatcher.dispatch(new GameRequest(cmd, args));
 
-        if (response.result().equals("SUCCESS")) {
-            System.out.println(response.msg());
-
-            if (response.msg().equals("3스트라이크")) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String s = Console.readLine();
-
-                if (s.equals("1")) {
-                    doGame("start", 0);
-                } else {
-                    return;
-                }
-
-            } else {
-                doGame("predict", 1);
-            }
-        } else {
+        if (response.result().equals("FAIL")) {
             throw new IllegalArgumentException(response.msg());
         }
 
+        System.out.println(response.msg());
+        doNextGame(response);
+    }
+
+    private void doNextGame(GameResponse response) {
+        if (response.msg().equals("3스트라이크")) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String s = Console.readLine();
+
+            if (s.equals("1")) {
+                doGame("start", 0);
+            } else {
+                return;
+            }
+
+        } else {
+            doGame("predict", 1);
+        }
     }
 }
