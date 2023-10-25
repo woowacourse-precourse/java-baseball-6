@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
+
 	private Balls balls = new Balls();
 
 	public Balls makeNumbers() {
@@ -10,8 +11,12 @@ public class Computer {
 		int count = 0;
 
 		while (true) {
-			if (count == 3) break;
-			if (makeNumber()) count++;
+			if (count == 3) {
+				break;
+			}
+			if (makeNumber()) {
+				count++;
+			}
 		}
 
 		return balls;
@@ -20,7 +25,7 @@ public class Computer {
 	private boolean makeNumber() {
 		try {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
-				balls.add(randomNumber);
+			balls.add(randomNumber);
 		} catch (IllegalArgumentException e) {
 			return false;
 		}

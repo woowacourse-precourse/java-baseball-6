@@ -1,8 +1,10 @@
 package baseball;
 
 public class IntegerExtractor {
+
 	String str;
 	int number;
+
 	public int validateNumber() {
 		// 숫자 검증
 		try {

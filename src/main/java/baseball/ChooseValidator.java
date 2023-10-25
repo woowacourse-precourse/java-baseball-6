@@ -1,6 +1,7 @@
 package baseball;
 
-public class ChooseValidator extends IntegerExtractor{
+public class ChooseValidator extends IntegerExtractor {
+
 	public int validate(String input) {
 		str = input;
 		validateNumber();

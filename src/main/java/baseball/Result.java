@@ -1,6 +1,7 @@
 package baseball;
 
 public class Result {
+
 	private int nothing;
 	private int ball;
 	private int strike;

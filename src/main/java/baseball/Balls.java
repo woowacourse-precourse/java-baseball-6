@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Balls {
 
-	List<Integer> balls = new ArrayList<>();
+	private List<Integer> balls = new ArrayList<>();
 
 	public boolean add(Integer ball) {
 		// 중복 검사
@@ -23,12 +23,12 @@ public class Balls {
 		return true;
 	}
 
-	public Integer get(int idx) {
-		return balls.get(idx);
-	}
-
 	public boolean contains(Integer ball) {
 		return balls.contains(ball);
+	}
+
+	public Integer get(int idx) {
+		return balls.get(idx);
 	}
 
 	public void reverse() {
