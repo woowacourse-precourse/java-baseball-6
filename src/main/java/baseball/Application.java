@@ -156,7 +156,7 @@ public class Application {
         }
     }
 
-    public void startOneGame(List<Integer> result) {
+    public static void startOneGame(List<Integer> result) {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
@@ -174,9 +174,9 @@ public class Application {
         }
     }
 
-    public int startGame() {
+    public static int startGame() {
         List<Integer> result = Application.getThreeRandomNumber();
-        startOneGame(result);
+        Application.startOneGame(result);
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -184,11 +184,11 @@ public class Application {
         return Application.inputStartOrEnd(userInputStartOrEnd);
     }
 
-    public void start() {
+    public static void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-            int startOrEnd = startGame();
+            int startOrEnd = Application.startGame();
 
             if (startOrEnd == 1) {
                 continue;
