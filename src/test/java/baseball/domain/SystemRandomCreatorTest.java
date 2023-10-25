@@ -2,7 +2,9 @@ package baseball.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +25,12 @@ class SystemRandomCreatorTest {
     void 세_자리_수를_올바르게_생성하는지_확인() {
         List<Integer> randomNumbers = randomCreator.createRandomNumbers();
         assertEquals(Referee.NUMBERS_SIZE, randomNumbers.size());
+    }
+
+    @Test
+    void 중복되지_않는_숫자를_생성하는지_확인() {
+        List<Integer> randomNumbers = randomCreator.createRandomNumbers();
+        Set<Integer> validationSet = new HashSet<>(randomNumbers);
+        assertEquals(Referee.NUMBERS_SIZE, validationSet.size());
     }
 }
