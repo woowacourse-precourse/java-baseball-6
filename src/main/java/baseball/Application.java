@@ -8,30 +8,35 @@ import java.util.*;
 public class Application {
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        // 임의의 서로 다른 컴퓨터 숫자 3개 생성
-        RandomNumberMaker randomNumberMaker = new RandomNumberMaker();
-        List<Integer> computerNums = randomNumberMaker.maker();
+        int restartToggle = 1;
+        while (restartToggle == 1) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
 
-        // 문자열 리스트로 변환
-        List<Integer> userNumbers;
-        String result = "";
-        // 볼, 스트라이크, 낫싱 판별
-        Confirm baseballConfirm = new Confirm(computerNums);
+            // 임의의 서로 다른 컴퓨터 숫자 3개 생성
+            RandomNumberMaker randomNumberMaker = new RandomNumberMaker();
+            List<Integer> computerNums = randomNumberMaker.maker();
 
+            // 문자열 리스트로 변환
+            List<Integer> userNumbers;
+            String result = "";
+            // 볼, 스트라이크, 낫싱 판별
+            Confirm baseballConfirm = new Confirm(computerNums);
 
-        while (!result.equals("3스트라이크")) {
-            // 입력, 문자열 리스트로 변환
-            System.out.print("숫자를 입력해주세요 : ");
-            userNumbers = makeUserNumber(Console.readLine());
-            baseballConfirm.takeNumbers(userNumbers);
-            result = baseballConfirm.referee();
-            System.out.println(result);
+            while (!result.equals("3스트라이크")) {
+                // 입력, 문자열 리스트로 변환
+                System.out.print("숫자를 입력해주세요 : ");
+                userNumbers = makeUserNumber(Console.readLine());
+                baseballConfirm.takeNumbers(userNumbers);
+                result = baseballConfirm.referee();
+                System.out.println(result);
 
-        }
-        if (result.equals("3스트라이크")) {
+            }
+
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            restartToggle = Integer.parseInt(Console.readLine());
         }
 
 
