@@ -15,7 +15,6 @@ public class Pitch {
 
     private static final int MIN_BALL = 0;
     private static final int MIN_STRIKE = 0;
-    private static final String SPACE = " ";
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String STRIKE = "%d스트라이크";
     private static final String BALL = "%d볼";

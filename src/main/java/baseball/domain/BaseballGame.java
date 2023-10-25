@@ -11,7 +11,7 @@ public class BaseballGame {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력하세요 : ";
 
-    private GameOption STATE;
+    private GameOption state;
 
     private RandomNumbers randomNumbers;
     private Pitch pitch;
@@ -19,13 +19,13 @@ public class BaseballGame {
     public BaseballGame(RandomNumbers randomNumbers) {
         this.randomNumbers = randomNumbers;
         this.pitch = new Pitch(randomNumbers);
-        this.STATE = GameOption.PLAY_GAME;
+        this.state = GameOption.PLAY_GAME;
     }
 
     public void run() {
         System.out.println(START_MESSAGE);
 
-        while (STATE == GameOption.PLAY_GAME) {
+        while (state == GameOption.PLAY_GAME) {
             String inputNumbers = getInputNumbers();
             pitch.judgePitch(inputNumbers);
             pitch.printPitchResult();
@@ -38,8 +38,8 @@ public class BaseballGame {
     private void checkRestartGame(RandomNumbers randomNumbers, Pitch pitch) {
         if (pitch.getStrike() == MAX_STRIKE) {
             int gameOption = Integer.parseInt(Console.readLine());
-            STATE = GameOption.valueOfOption(gameOption);
-            if (STATE == GameOption.PLAY_GAME) {
+            state = GameOption.valueOfOption(gameOption);
+            if (state == GameOption.PLAY_GAME) {
                 randomNumbers.randomNumbersGenerate();
             }
         }
