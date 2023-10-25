@@ -1,7 +1,7 @@
 package baseball.controller;
 
 
-import static baseball.utils.OutputMessage.introMessage;
+import static baseball.utils.OutputMessage.printIntroMessage;
 
 import baseball.domain.Computer;
 import baseball.domain.NumberBaseballGame;
@@ -10,7 +10,7 @@ import baseball.domain.Player;
 public class GameController {
 
     public static void initNumberBaseballGame() {
-        introMessage();
+        printIntroMessage();
         initGame();
     }
 
@@ -26,5 +26,4 @@ public class GameController {
             initGame();
         }
     }
-
 }

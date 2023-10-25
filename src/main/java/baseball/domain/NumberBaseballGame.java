@@ -35,7 +35,7 @@ public class NumberBaseballGame {
 
     private boolean isFinish(String resultMessage) {
         if ("3스트라이크".equals(resultMessage)) {
-            OutputMessage.successMessage();
+            OutputMessage.printSuccessMessage();
             return true;
         }
         return false;
@@ -49,6 +49,4 @@ public class NumberBaseballGame {
             game();
         }
     }
-
-
 }
