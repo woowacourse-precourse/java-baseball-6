@@ -27,6 +27,7 @@ public class Game {
 
     public static void setComputerAnswer(List<Integer> computerAnswer) {
         Game.computerAnswer = computerAnswer;
+        System.out.println(getComputerAnswer());
     }
 
     public static List<Integer> getComputerAnswer() {
@@ -126,7 +127,6 @@ public class Game {
     private static boolean isNumber(String input) {
         return input.matches("\\d+");
     }
-
 
     /* 서로 다른 3자리 난수 생성*/
     private static List<Integer> createRandomNum(int digit) {
