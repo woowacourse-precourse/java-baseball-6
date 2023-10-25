@@ -28,12 +28,7 @@ public class InputConverter {
 
     public static ExitCode convertToExitCode(String line) {
         validateNumbers(line);
-        validateLength(line);
-        return new ExitCode(Character.getNumericValue(line.charAt(0)));
-    }
-
-    private static void validateLength(String line) {
-        if (line.length() != 1) throw new IllegalArgumentException();
+        return new ExitCode(Integer.getInteger(line));
     }
 
 }
