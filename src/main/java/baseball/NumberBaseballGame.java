@@ -30,7 +30,8 @@ public class NumberBaseballGame {
 
     private boolean gameOver(int[] score) {
         if (score[0] == Constants.NUMBER_SIZE) {
-            System.out.println(Constants.NUMBER_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(Constants.NUMBER_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             if (UserInput.getUserRestart()) {
                 this.computer.resetNumber();
                 return false;

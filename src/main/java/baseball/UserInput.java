@@ -31,7 +31,9 @@ public class UserInput {
     }
 
     private static void isValidInput(final String input) {
-        if (input.length() != Constants.NUMBER_SIZE || !input.matches("\\d+") || hasDuplicateCharacter(input)) {
+        if (input.length() != Constants.NUMBER_SIZE ||
+                !input.matches("\\d+") ||
+                hasDuplicateCharacter(input)) {
             throw new IllegalArgumentException();
         }
     }
