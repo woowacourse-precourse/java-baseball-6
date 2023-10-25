@@ -2,6 +2,9 @@ package baseball.Model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Ball {
     private Integer numberLength = null;
     private String number = "";
@@ -81,6 +84,14 @@ public class Ball {
         }
     }
 
+    public Map<String, Integer> gameResult(String inputNumbers){
+        Map<String, Integer> result = new HashMap<>();
+
+        result.put("ball", getBall(inputNumbers));
+        result.put("strike", getStrike(inputNumbers));
+
+        return result;
+    }
     public String getNumbers(){
         return new String(number);
     }
