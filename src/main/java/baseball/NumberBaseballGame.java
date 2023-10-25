@@ -5,6 +5,7 @@ import baseball.constant.GameMessage;
 public class NumberBaseballGame {
     private Computer computer;
     private Player player;
+    private Checker checker;
 
     public void start() {
         printStartMessage();
@@ -18,6 +19,9 @@ public class NumberBaseballGame {
         player = new Player();
         System.out.print(GameMessage.PLAYER_INPUT_MESSAGE);
         player.generatePlayerNumber();
+
+        checker = new Checker(computer.getComputerNumber(), player.getPlayerNumber(), computer.getUsedArray());
+        boolean isCorrect = checker.checkAnswer();
     }
 
     private void printStartMessage() {
