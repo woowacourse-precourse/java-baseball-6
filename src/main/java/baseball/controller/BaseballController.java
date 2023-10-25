@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.view.UserInterface;
+
 import java.util.List;
 
 
@@ -10,7 +12,7 @@ public class BaseballController {
     public void run() {
         do {
             play();
-        } while (!UserInterface.shouldTerminate());
+        } while (!UserInterface.shouldExit());
     }
 
     private void play() {
