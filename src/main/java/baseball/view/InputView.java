@@ -1,32 +1,17 @@
 package baseball.view;
 
-import baseball.validate.InvalidInputException;
+import baseball.domain.GameNumber;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.List;
 
 public class InputView {
-    InvalidInputException numberInvalidInputException = new InvalidInputException();
-
-    public List<Integer> playerNumberInput() {
-        List<Integer> playernum = new ArrayList<>();
-        String snum = Console.readLine();
-
-        numberInvalidInputException.checkInputForGame(snum); // 숫자 검증
-
-        for (String s : snum.split("")) {
-            playernum.add(Integer.parseInt(s));
-        }
-
-        return playernum;
+    public GameNumber playerNumberInput() {
+        String inputNum = Console.readLine();
+        return new GameNumber(inputNum, 3);
     }
 
-    public int endOrRestartInput() {
+    public GameNumber endOrRestartInput() {
         String inputNum = Console.readLine();
-
-        numberInvalidInputException.checkRestartChoice(inputNum); // 숫자 검증
-
-        return Integer.parseInt(inputNum);
+        return new GameNumber(inputNum, 1);
     }
 
 }
