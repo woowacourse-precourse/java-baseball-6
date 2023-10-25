@@ -1,14 +1,11 @@
 package baseball;
 
-import baseball.controller.BaseballController;
+import static baseball.PlayGame.START_MESSAGE;
 
 public class Application {
     public static void main(String[] args) {
-        try{
-            BaseballController baseballController = new BaseballController();
-            baseballController.startGame();
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        PlayGame play = new PlayGame();
+        System.out.println(START_MESSAGE);
+        play.playBaseball();
     }
 }
