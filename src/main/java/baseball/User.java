@@ -20,7 +20,6 @@ public class User {
                 map(Integer::parseInt).
                 collect(Collectors.toList());
 
-        Console.close();
 
         if(!service.isInputRight(numbers)){
             throw new IllegalArgumentException("잘못된 입력입니다");
