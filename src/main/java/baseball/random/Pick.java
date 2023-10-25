@@ -3,6 +3,7 @@ package baseball.random;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public class Pick implements RandomUtil{
 
     @Override
     public List<Integer> getBallNumber() {
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> set = new LinkedHashSet<>();
         while(set.size()<3){
             set.add(Randoms.pickNumberInRange(1,9));
         }
