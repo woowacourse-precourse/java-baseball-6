@@ -29,6 +29,15 @@ public class BaseballValidator {
                 .anyMatch(c -> c < NUMBERS_RANGE_START || c > NUMBERS_RANGE_END);
     }
 
+    public void validateOptionInput(String input) {
+        if (isInvalidOptionLength(input)) {
+            throw new IllegalArgumentException("1개의 숫자를 입력해야 합니다.");
+        }
+        if (containsNotOption(input)) {
+            throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
+        }
+    }
+
     private boolean containsDuplicatedInput(String input) {
         return input.chars()
                 .distinct()
