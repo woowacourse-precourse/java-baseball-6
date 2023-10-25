@@ -16,11 +16,11 @@ public class BaseballGameController {
     }
 
     private void run() {
-        guessNumber();
+        process();
         askForContinue();
     }
 
-    private void guessNumber() {
+    private void process() {
         final Computer computer = ComputerGenerator.generate();
 
         while (true) {
