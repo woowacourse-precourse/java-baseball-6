@@ -21,7 +21,7 @@ public class UserNumber {
 
     private void validateLength(String userInput) {
         if (userInput.length() != VALID_LENGTH) {
-            throw new IllegalArgumentException("올바른 숫자 3가지를 입력해주세요.");
+            throw new IllegalArgumentException(UserInputError.INVALID_LENGTH.getMessage());
         }
     }
 
@@ -31,14 +31,14 @@ public class UserNumber {
             uniqueChars.add(ch);
         }
         if (uniqueChars.size() != VALID_LENGTH) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException(UserInputError.DUPLICATED_NUMBER.getMessage());
         }
     }
 
     private void validateNumberRange(String userInput) {
         for (char ch : userInput.toCharArray()) {
             if (ch < '1' || ch > '9') {
-                throw new IllegalArgumentException("1부터 9사이의 숫자만 입력해주세요");
+                throw new IllegalArgumentException(UserInputError.OUT_OF_RANGE.getMessage());
             }
         }
     }
