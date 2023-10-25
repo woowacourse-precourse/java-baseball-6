@@ -14,7 +14,7 @@ public class GameController {
     private static final int GAME_RESTART_OPTION = 1;
     private static final int GAME_EXIT_OPTION = 2;
 
-    private static GameStatus gameStatus = PLAYING;
+    private GameStatus gameStatus = PLAYING;
 
     private final GameService gameService;
 
