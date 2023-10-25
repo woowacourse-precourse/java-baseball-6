@@ -1,4 +1,4 @@
-package Service;
+package service;
 
 public interface BallService {
     public void generateRandomNumber(); //랜덤 숫자 생성

@@ -1,13 +1,13 @@
 package baseball;
 
 
-import Service.BallServiceImpl;
 import camp.nextstep.edu.missionutils.Console;
+import service.BallServiceImpl;
 
 public class Application {
     public static void main(String[] args) throws IllegalArgumentException {
-        // TODO: 프로그램 구현
-        BallServiceImpl ballService = BallServiceImpl.getInstance(); //ballService 클래스 객체 생성
+        //ballService 클래스 객체 생성
+        BallServiceImpl ballService = BallServiceImpl.getInstance();
         boolean flag = false; //게임을 계속할건지 체크하는 flag, true이면 게임 그만둠
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (!flag) {

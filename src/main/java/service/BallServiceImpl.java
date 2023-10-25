@@ -1,4 +1,4 @@
-package Service;
+package service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
