@@ -15,15 +15,13 @@ import java.util.List;
 
 public class BaseballGame {
 
-    private final Computer computer;
-    private final HintScore hintScore;
-
     private static final String SEPARATOR = "";
-
     public static final Integer ANSWER_DIGIT = 3;
     public static final Integer NUMBER_MIN_RANGE = 1;
     public static final Integer NUMBER_MAX_RANGE = 9;
 
+    private final Computer computer;
+    private final HintScore hintScore;
 
     public BaseballGame(Computer computer, HintScore hintScore) {
         this.computer = computer;

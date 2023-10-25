@@ -10,10 +10,10 @@ import java.util.StringJoiner;
 
 public class HintScore {
 
+    private static final Integer NOTHING_MATCH_INDEX = -1;
+
     private int strike;
     private int ball;
-
-    private static final Integer NOTHING_MATCH_INDEX = -1;
 
     private void raiseStrike() {
         strike++;
