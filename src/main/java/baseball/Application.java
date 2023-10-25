@@ -55,6 +55,7 @@ public class Application {
         }
 
         if (strick == 3) {
+            System.out.println(strick + "스트라이크");
             return true;
         } else if (strick == 0 && ball == 0) {
             System.out.println("낫싱");
