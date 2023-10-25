@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.Computer;
 import baseball.model.Constants;
+import baseball.model.Player;
 import baseball.model.Referee;
 import baseball.model.Validation;
 import baseball.view.InputView;
@@ -11,6 +12,7 @@ public class BaseballGameController {
 
     private final Computer computer = new Computer();
     private final Referee referee = new Referee();
+    private Player player;
 
     public void play() {
         OutputView.printBaseballGameStartMessage();
@@ -25,13 +27,9 @@ public class BaseballGameController {
         String randomNumbers = computer.generateRandomNumbers();
 
         do {
-            referee.setUpGame();
             OutputView.printMessageToInputNumbers();
-
-            String inputNumbers = InputView.inputNumbers();
-            Validation.validateInputThreeNumber(inputNumbers);
-
-            referee.calculateBallAndStrikeNumber(randomNumbers, inputNumbers);
+            player = new Player(InputView.inputNumbers());
+            referee.calculateBallAndStrikeNumber(randomNumbers, player.getNumber());
             determineResult();
         } while (!referee.isThreeStrike());
     }
