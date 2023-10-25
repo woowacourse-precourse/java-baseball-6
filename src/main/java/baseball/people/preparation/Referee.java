@@ -4,6 +4,11 @@ import java.util.List;
 
 public class Referee {
     private TargetNumber targetNumber;
+    private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
+    private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String BALL = "%d볼 ";
+    private static final String STRIKE = "%d스트라이크";
+    private static final String NOTHING = "낫싱";
 
     Referee() {
     }
@@ -14,7 +19,7 @@ public class Referee {
      * @return Referee 객체
      */
     public static Referee enter() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START);
         return new Referee();
     }
 
@@ -49,22 +54,23 @@ public class Referee {
     }
 
     private void declare(int ball, int strike) {
-        if (strike == 3) {
-            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return;
-        }
         if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING);
             return;
         }
 
         StringBuilder print = new StringBuilder();
         if (ball > 0) {
-            print.append(String.format("%d볼 ", ball));
+            print.append(String.format(BALL, ball));
         }
         if (strike > 0) {
-            print.append(String.format("%d스트라이크", strike));
+            print.append(String.format(STRIKE, strike));
         }
+
         System.out.println(print);
+
+        if (strike == 3) {
+            System.out.println(GAME_END);
+        }
     }
 }
