@@ -2,7 +2,7 @@ package baseball;
 public class InputContinueOrEnd {
 
     public boolean error(String continueOrEnd){
-        if(!(new CheckException().isValidLength(continueOrEnd,1)))return true;
+        if(continueOrEnd.length()!=1)return true;
 
         return (continueOrEnd.charAt(0)!='1' && continueOrEnd.charAt(0)!='2');
     }

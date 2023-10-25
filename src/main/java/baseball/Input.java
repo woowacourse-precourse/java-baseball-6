@@ -2,21 +2,24 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckException {
-    CheckException(){}
-
-    boolean isValidLength(String userInput,int wantLength){
-        return userInput.length()==wantLength;
+public class Input {
+    final private String userInput;
+    Input(String userInput){
+        this.userInput=userInput;
     }
 
-    boolean isValidNumber(String userInput) {
+    boolean isValidLength(){
+        return userInput.length()==3;
+    }
+
+    boolean isValidNumber() {
         for (int i=0; i<userInput.length(); i++){
             if(userInput.charAt(i)<'1' || userInput.charAt(i)>'9') return false;
         }
         return true;
     }
 
-    boolean hasDuplication(String userInput){
+    boolean hasDuplication(){
         List<Integer>numberCount = new ArrayList<>();
         for (int i=0; i<=9; i++){
             numberCount.add(0);
@@ -34,8 +37,13 @@ public class CheckException {
         return false;
     }
 
-    boolean error(String userInput){
-        if(!isValidLength(userInput,3) || !isValidNumber(userInput)) return true;
-        return hasDuplication(userInput);
+    boolean error(){
+        if(!isValidLength() || !isValidNumber()) return true;
+        return hasDuplication();
     }
+
+   void checkException()throws IllegalArgumentException{
+        if(error()) throw new IllegalArgumentException();
+    }
+
 }

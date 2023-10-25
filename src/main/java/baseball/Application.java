@@ -12,10 +12,8 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
-            CheckException checkException = new CheckException();
-
-
-            if (checkException.error(userInput)) throw new IllegalArgumentException();
+            Input input = new Input(userInput);
+            input.checkException();
 
 
             Output output = new Output();
@@ -35,6 +33,5 @@ public class Application {
                 computerNumber = new Init().getComputerNumber();
             }
         }
-
     }
 }
