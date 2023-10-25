@@ -1,5 +1,5 @@
 package view;
-public class StartText {
+public class StartTextPrinter {
 
     /**
      * 게임 시작을 알리는 텍스트 출력 기능
