@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNum {
-    private List<Integer> baseballNum = new ArrayList<>();
+    private final List<Integer> baseballNum = new ArrayList<>();
 
-    public BaseballNum(String inputNum) throws IllegalArgumentException {
+    public BaseballNum(String inputNum) {
         if (CheckBaseballNum.isError(inputNum)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("BaseballNum 입력값 오류.");
         }
         baseballNum.add(Character.getNumericValue(inputNum.charAt(0)));
         baseballNum.add(Character.getNumericValue(inputNum.charAt(1)));
