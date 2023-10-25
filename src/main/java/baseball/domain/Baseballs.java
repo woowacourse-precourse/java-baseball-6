@@ -22,7 +22,7 @@ public class Baseballs {
         return this.baseballs.contains(baseball);
     }
 
-    public Integer getBall(int index) {
+    public Integer getBaseball(int index) {
         return baseballs.get(index);
     }
 }

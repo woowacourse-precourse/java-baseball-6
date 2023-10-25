@@ -51,12 +51,12 @@ public class ComputerService {
     }
 
     private boolean isStrike(int index) {
-        Integer computerBaseball = computer.getBaseballs().getBall(index);
-        Integer playerBaseball = player.getBaseballs().getBall(index);
+        Integer computerBaseball = computer.getBaseballs().getBaseball(index);
+        Integer playerBaseball = player.getBaseballs().getBaseball(index);
         return computerBaseball.equals(playerBaseball);
     }
 
     private boolean containsBaseball(int ballIndex) {
-        return computer.getBaseballs().contains(player.getBaseballs().getBall(ballIndex));
+        return computer.getBaseballs().contains(player.getBaseballs().getBaseball(ballIndex));
     }
 }
