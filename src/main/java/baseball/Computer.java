@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class Computer {
 
-    private final static int COMPUTER_NUMBER_SIZE = 3;
-    private final static int RANDOM_START_NUMBER = 1;
-    private final static int RANDOM_END_NUMBER = 9;
+    private static final int COMPUTER_NUMBER_SIZE = 3;
+    private static final int RANDOM_START_NUMBER = 1;
+    private static final int RANDOM_END_NUMBER = 9;
     private final ArrayList<Integer> computerNumber = new ArrayList<>();
 
     public Computer() {
