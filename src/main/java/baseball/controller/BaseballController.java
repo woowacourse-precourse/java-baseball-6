@@ -10,6 +10,7 @@ import java.util.List;
 public class BaseballController {
 
     private BaseballService service;
+    private static final int RESTART_GAME = 1;
 
     public BaseballController(BaseballService service) {
         this.service = service;
@@ -26,11 +27,12 @@ public class BaseballController {
      * 게임 시작
      */
     public void startGame() throws InvalidInputException {
-        do{
+        List<Integer> user;
+        do {
             service.setNewGame();
-            while (true){
+            while (true) {
                 ConsoleOutput.requestInput();
-                List<Integer> user = ConsoleInput.readDigitNumber(3);
+                user = ConsoleInput.readDigitNumber(3);
 
                 if (service.checkVictory(user)) {
                     ConsoleOutput.displayVictory();
@@ -38,7 +40,15 @@ public class BaseballController {
                 }
                 ConsoleOutput.displayHint(service.getHint(user));
             }
-            ConsoleOutput.requestRestart();
-        }while (ConsoleInput.readDigitNumber(1).get(0) == 1);
+        } while (askRestartGame());
+    }
+
+
+    /**
+     * 재시작 여부
+     */
+    private boolean askRestartGame() throws InvalidInputException {
+        ConsoleOutput.requestRestart();
+        return ConsoleInput.readDigitNumber(1).get(0) == RESTART_GAME;
     }
 }
