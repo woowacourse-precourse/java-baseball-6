@@ -1,8 +1,9 @@
 package baseball.service;
 
-import static baseball.exception.Exception.*;
+import static baseball.global.Validation.validateGameInput;
+import static baseball.global.Validation.validateRestartInput;
 
-import baseball.domain.Score;
+import baseball.domain.Result;
 import baseball.global.ComputerSingleton;
 import java.util.List;
 
@@ -10,30 +11,27 @@ public class Service {
 
     ComputerSingleton computerSingleton = ComputerSingleton.getInstance();
     List<Integer> computerNumbers = computerSingleton.getComputerNumbers();
-    Score score = new Score();
+    Result result = new Result();
 
-    public Score getScore(String input) {
+    public Result calculateGameResult(String input) {
 
-        validateNumericInput(input);
-        validateInputLength(input);
-        validateUniqueNumbers(input);
+        validateGameInput(input);
 
-        score.checkStrike(input, computerNumbers);
-        score.checkBall(input, computerNumbers);
-        score.setResultState();
+        result.checkStrike(input, computerNumbers);
+        result.checkBall(input, computerNumbers);
+        result.setResultState();
 
-        return score;
+        return result;
     }
 
     public boolean isRestart(String input) {
 
         validateRestartInput(input);
 
-        if (input.equals("1")) {
+        boolean isRestart = input.equals("1");
+        if (isRestart) {
             computerSingleton.resetComputerNumbers();
-            return true;
-        } else {
-            return false;
         }
+        return isRestart;
     }
 }

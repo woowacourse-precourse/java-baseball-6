@@ -1,8 +1,14 @@
-package baseball.exception;
+package baseball.global;
 
 import static baseball.global.Constants.NUMBER_LENGTH;
 
-public class Exception {
+public class Validation {
+
+    public static void validateGameInput(String input) {
+        validateNumericInput(input);
+        validateInputLength(input);
+        validateUniqueNumbers(input);
+    }
 
     public static void validateInputLength(String input) {
         if (input.length() != NUMBER_LENGTH) {

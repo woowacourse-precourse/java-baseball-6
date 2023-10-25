@@ -1,7 +1,7 @@
 package baseball.view;
 
 import baseball.controller.Controller;
-import baseball.domain.Score;
+import baseball.domain.Result;
 import camp.nextstep.edu.missionutils.Console;
 
 public class View {
@@ -10,12 +10,11 @@ public class View {
 
     public void mainView() {
         introView();
-        gameplayView();
-        outroView();
     }
 
     private void introView() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        gameplayView();
     }
 
     private void gameplayView() {
@@ -24,9 +23,11 @@ public class View {
         while (!isGameSuccess) {
             System.out.println("숫자를 입력해주세요: ");
             String input = Console.readLine();
-            Score score = controller.getScore(input);
-            isGameSuccess = displayGameResult(score);
+
+            Result result = controller.calculateGameResult(input);
+            isGameSuccess = displayGameResult(result);
         }
+        outroView();
     }
 
     private void outroView() {
@@ -39,17 +40,17 @@ public class View {
         }
     }
 
-    private boolean displayGameResult(Score score) {
+    private boolean displayGameResult(Result result) {
 
-        switch (score.getResultState()) {
+        switch (result.getResultState()) {
             case NOTHING ->
                 System.out.println("낫싱");
             case BALL ->
-                System.out.printf("%d볼\n", score.getBall());
+                System.out.printf("%d볼\n", result.getBall());
             case STRIKE ->
-                System.out.printf("%d스트라이크\n", score.getStrike());
+                System.out.printf("%d스트라이크\n", result.getStrike());
             case BALL_AND_STRIKE ->
-                System.out.printf("%d볼 %d스트라이크\n", score.getBall(), score.getStrike());
+                System.out.printf("%d볼 %d스트라이크\n", result.getBall(), result.getStrike());
             case THREE_STRIKE -> {
                 System.out.println("3스트라이크");
                 return true;
@@ -57,4 +58,5 @@ public class View {
         }
         return false;
     }
+
 }

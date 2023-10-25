@@ -1,14 +1,14 @@
 package baseball.controller;
 
-import baseball.domain.Score;
+import baseball.domain.Result;
 import baseball.service.Service;
 
 public class Controller {
 
     private static final Service service = new Service();
 
-    public Score getScore(String input) {
-        return service.getScore(input);
+    public Result calculateGameResult(String input) {
+        return service.calculateGameResult(input);
     }
 
     public boolean isRestart(String input) {
