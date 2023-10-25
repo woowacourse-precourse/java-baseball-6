@@ -25,6 +25,7 @@ public class BallList {
         }
     }
 
+    // 중복되지 않도록 ballList 랜덤 생성
     public static BallList makeRandomBallList() {
         List<Ball> ballList = new ArrayList<>();
 
