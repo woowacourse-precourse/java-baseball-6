@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ class ComputerTest {
         List<Integer> randomNumber = computer.getRandomNumber();
 
         // then
-        assertEquals(randomNumber.size(), Number.NUMBER_SIZE);
+        assertThat(randomNumber.size()).isEqualTo(Number.NUMBER_SIZE);
 
     }
 
@@ -31,6 +31,6 @@ class ComputerTest {
         List<Integer> randomNumber = computer.getRandomNumber();
 
         //then
-        assertEquals(randomNumber.stream().distinct().count(), Number.NUMBER_SIZE);
+        assertThat(randomNumber.stream().distinct().count()).isEqualTo(Number.NUMBER_SIZE);
     }
 }
