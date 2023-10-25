@@ -16,7 +16,7 @@ public class OutputView {
     public void printComparisonResult(ComparisonResult result) {
         println(resultView.changeToOutputMessage(result));
 
-        if (result.isRight()) {
+        if (result.isCorrect()) {
             println(String.format(GAME_END_MESSAGE_FORMAT, result.strike()));
         }
     }

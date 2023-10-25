@@ -31,7 +31,7 @@ public class BaseballController {
             Number answer = readAnswer();
             result = correctAnswer.compare(answer);
             outputView.printComparisonResult(result);
-        } while (!result.isRight());
+        } while (!result.isCorrect());
     }
 
     private Number readAnswer() {

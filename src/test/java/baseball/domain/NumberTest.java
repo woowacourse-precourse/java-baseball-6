@@ -77,7 +77,7 @@ class NumberTest {
             Number number1 = Number.from(value1);
             Number number2 = Number.from(value2);
 
-            boolean actual = number1.compare(number2).isRight();
+            boolean actual = number1.compare(number2).isCorrect();
 
             assertThat(actual).isEqualTo(expected);
         }
