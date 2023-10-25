@@ -2,6 +2,9 @@ package baseball.View;
 
 import baseball.data.GameResult;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.io.IOException;
+
 public class Cli implements View{
     @Override
     public void startView() {
@@ -52,6 +55,12 @@ public class Cli implements View{
     }
 
     private int getIntConsole() {
-        return Integer.parseInt(Console.readLine());
+        int num;
+        try {
+            num = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력하세요!");
+        }
+        return num;
     }
 }
