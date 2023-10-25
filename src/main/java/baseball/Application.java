@@ -20,9 +20,9 @@ public class Application {
     private static void playBaseballGame() {
         int status = GAME_ON;
         List<Integer> randomList = generateRandomNumber();
-        int randomNumber = 135; // 테스트 코드 통과를 위해 random값을 지정해 두었습니다.
+
         while (status == GAME_ON) {
-            //int randomNumber = randomList.get(0) * 100 + randomList.get(1) * 10 + randomList.get(2);
+            int randomNumber = randomList.get(0) * 100 + randomList.get(1) * 10 + randomList.get(2);
             System.out.print("숫자를 입력해주세요 : ");
             String num = readLine();
             runException(num);
@@ -48,8 +48,7 @@ public class Application {
                 if (status == GAME_OVER) {
                     break;
                 } else if (status == GAME_ON) {
-                    //randomList = generateRandomNumber();
-                    randomNumber = 589; // 테스트 코드 통과를 위해 random값을 지정해 두었습니다.
+                    randomList = generateRandomNumber();
                 }
             }
         }
