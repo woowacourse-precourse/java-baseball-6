@@ -12,7 +12,6 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
     private ComputerController computerController = new ComputerController();
@@ -52,7 +51,7 @@ public class GameController {
         return Numbers.from(Parser.parseNumbers(numberString));
     }
 
-    private boolean requestRestartOrExit() {
+    private Boolean requestRestartOrExit() {
         String response = inputView.readInput();
         RestartOrExitValidator.validateRestartOrExit(response);
         return Parser.parseRestartOrExit(response).equals(RESTART_ANSWER);

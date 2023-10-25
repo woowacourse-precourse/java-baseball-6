@@ -1,7 +1,8 @@
 package baseball.validators;
 
-public class NumberValidator {
+import static baseball.constants.DigitConstants.NUMBER_SIZE;
 
+public class NumberValidator {
     public static void validateNumber(String numbers) {
         validateOutOfRange(numbers);
         validateInputSize(numbers);
@@ -9,14 +10,14 @@ public class NumberValidator {
     }
 
     private static void validateOutOfRange(String numbers) {
-        boolean allMatch = numbers.chars().allMatch(c -> c >= '1' && c <= '9');
+        Boolean allMatch = numbers.chars().allMatch(c -> (c >= '1' && c <= '9'));
         if (!allMatch) {
             throw new IllegalArgumentException("1과 9 사이의 숫자를 입력해주세요.");
         }
     }
 
     private static void validateInputSize(String numbers) {
-        if (numbers.length() != 3) {
+        if (numbers.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException("3개의 숫자만 입력할 수 있습니다.");
         }
     }

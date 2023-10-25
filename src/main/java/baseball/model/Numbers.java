@@ -3,8 +3,7 @@ package baseball.model;
 import java.util.List;
 
 public class Numbers {
-
-    List<Integer> savedNumbers;
+    private List<Integer> savedNumbers;
 
     public Numbers() {
     }
@@ -21,12 +20,11 @@ public class Numbers {
         return savedNumbers.get(index);
     }
 
-    public boolean equalsAt(Integer number, int index) {
+    public Boolean equalsAt(Integer number, int index) {
         return savedNumbers.get(index).equals(number);
     }
 
-    public boolean contains(Integer number) {
+    public Boolean contains(Integer number) {
         return savedNumbers.contains(number);
     }
-
 }
