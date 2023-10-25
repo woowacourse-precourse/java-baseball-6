@@ -22,11 +22,4 @@ public class Output {
             System.out.print("낫싱");
         }
     }
-
-    public void threeStrike(int strike) {
-        Text text = new Text();
-        if (strike == 3) {
-            text.win();
-        }
-    }
 }

@@ -3,8 +3,8 @@ package baseball;
 import java.util.List;
 
 public class Game {
-    private int ball = 0;
-    private int strike = 0;
+    public int ball = 0;
+    public int strike = 0;
 
     public void numCompare(int computerNumber, int userNumber, int i, int j) {
         if (computerNumber == userNumber) {
