@@ -1,6 +1,6 @@
 package baseball;
 
-import com.sun.xml.internal.ws.api.message.Message;
+//import com.sun.xml.internal.ws.api.message.Message;
 
 public class Output {
     static final String startMessage = "숫자 야구 게임을 시작합니다.";
