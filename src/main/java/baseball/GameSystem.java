@@ -27,14 +27,13 @@ public class GameSystem {
       String result = check(computer.getComputerNum(), player.getPlayerNum());
       System.out.println(result);
 
-//      if (result.equals() {
-//        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-//        reStart();
-//        break;
-////      }
+      if (result.equals("3스트라이크")) {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        reStart();
+        break;
+      }
     }
   }
-
 
   public String check(List<Integer> ComputerNum, List<Integer> playerNum) {
     Result result = new Result();
@@ -48,5 +47,21 @@ public class GameSystem {
       }
     }
     return result.getResult();
+  }
+
+  public void reStart() {
+    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+    int choice = Integer.parseInt(readLine());
+    //if문으로 바꾸기
+    switch (choice) {
+      case 1:
+        playGame();
+        break;
+      case 2:
+        break;
+      default:
+        throw new IllegalArgumentException("잘못된 입력이 들어왔습니다.");
+    }
   }
 }
