@@ -1,36 +1,23 @@
 package baseball.model;
 
-import baseball.model.Computer;
-
 public class GameResult {
 
-    private static final String BALL_TEXT = "볼";
-    private static final String STRIKE_TEXT = "스트라이크";
     private static final String NOTING_TEXT = "낫싱";
-    private static final String SPACE = " ";
 
-    private Integer ballCount;
-    private Integer strikeCount;
+    private Ball ball;
+    private Strike strike;
 
     public GameResult(Integer ballCount, Integer strikeCount) {
-        this.ballCount = ballCount;
-        this.strikeCount = strikeCount;
+        this.ball = new Ball(ballCount);
+        this.strike = new Strike(strikeCount);
     }
 
     public Boolean isAnswer() {
-        return strikeCount.equals(Computer.NUMBER_DIGIT);
+        return strike.isFullStrike();
     }
 
     private Boolean isNoting() {
-        return ballCount == 0 && strikeCount == 0;
-    }
-
-    private Boolean isBallExist() {
-        return ballCount > 0;
-    }
-
-    private Boolean isStrikeExist() {
-        return strikeCount > 0;
+        return !ball.isExist() && !strike.isExist();
     }
 
     @Override
@@ -38,14 +25,6 @@ public class GameResult {
         if (isNoting()) {
             return NOTING_TEXT;
         }
-
-        StringBuilder sb = new StringBuilder(10);
-        if (isBallExist()) {
-            sb.append(ballCount).append(BALL_TEXT).append(SPACE);
-        }
-        if (isStrikeExist()) {
-            sb.append(strikeCount).append(STRIKE_TEXT);
-        }
-        return sb.toString().trim();
+        return String.format("%s %s", ball.toString(), strike.toString()).trim();
     }
 }
