@@ -8,6 +8,7 @@ import static baseball.utility.Constants.BALL;
 import static baseball.utility.Constants.STRIKE;
 import static baseball.utility.Constants.NOTHING;
 import static baseball.utility.Constants.NUMBER_CORRECT_MESSAGE;
+import static baseball.utility.Constants.GAME_PAUSE_OR_RESUME_PROMPT_MESSAGE;
 
 
 public class UserView {
@@ -40,5 +41,9 @@ public class UserView {
         else if((strikeCount == 0) && (ballCount == 0)){
             System.out.println(NOTHING);
         }
+    }
+
+    public void printResumeInputPrompt(){
+        System.out.print(GAME_PAUSE_OR_RESUME_PROMPT_MESSAGE);
     }
 }

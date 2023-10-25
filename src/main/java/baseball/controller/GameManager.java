@@ -41,5 +41,8 @@ public class GameManager {
             isCorrectNumber = gameResultDto.getIsCorrectNumber(); //정답여부 확인
         }
 
+        userView.printResumeInputPrompt(); //게임 재실행 여부 프롬포트 메시지 출력
+
+
     }
 }
