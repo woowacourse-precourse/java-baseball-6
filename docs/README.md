@@ -39,3 +39,10 @@
 - 사용자 세자리 숫자 입력
 - 게임 종료 후 재시작/종료 숫자 입력
 - 잘못된 값 입력 시 예외 발생
+
+### gameElements
+
+- 게임 진행에 필요한 요소인 strike, ball 변수 생성
+- strike, ball 변수 초기화 method
+- strike, ball 변수 getter method
+- strike, ball 변수를 증가시키는 method
