@@ -32,13 +32,4 @@ public class SystemMessagePrinter {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void printRestartGame() {
-        System.out.println("게임을 다시 시작합니다.");
-    }
-
-    public static void printExitGame() {
-        System.out.println("게임을 완전히 종료합니다.");
-    }
-
-
 }

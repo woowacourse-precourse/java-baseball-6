@@ -19,8 +19,13 @@ public class GameController {
     static int strike;
     static int[] pickedNumbers;
 
-    // 게임 진행
     public static void playGame() {
+        SystemMessagePrinter.printGameStartMessage();
+        gameProcess();
+    }
+
+    // 게임 진행
+    public static void gameProcess() {
         startGame();
         while (!Game.isGameWon()) {
             SystemMessagePrinter.printInputNumberMessage();
@@ -35,7 +40,6 @@ public class GameController {
 
     // 시작 화면 출력 요청
     public static void startGame() {
-        SystemMessagePrinter.printGameStartMessage();
         pickedNumbers = pickRandomNumbers(SIZE, MIN_NUMBER, MAX_NUMBER);
         Game.initializeCounts();
     }
@@ -69,11 +73,7 @@ public class GameController {
             throw new IllegalArgumentException(RESTART + " 혹은 " + EXIT + "를 입력해주세요.");
         }
         if (userInput == RESTART) {
-            SystemMessagePrinter.printRestartGame();
-            playGame();
-        }
-        if (userInput == EXIT) {
-            SystemMessagePrinter.printExitGame();
+            gameProcess();
         }
     }
 }
