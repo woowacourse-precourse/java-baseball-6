@@ -21,3 +21,4 @@ public class Computer {
         numGenerator.reset();
     }
 }
+

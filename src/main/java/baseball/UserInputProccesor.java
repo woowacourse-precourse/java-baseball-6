@@ -4,23 +4,19 @@ import java.util.Set;
 
 import static baseball.BaseballConstants.MAX_LENGTH_USER_NUMBER_SIZE;
 
-public class GameController {
+public class UserInputProccesor {
     private final User user;
     private final Computer computer;
     private final GameSupervisor gameSupervisor;
 
 
-    public GameController(User user, Computer computer, GameSupervisor gameSupervisor) {
+    public UserInputProccesor(User user, Computer computer, GameSupervisor gameSupervisor) {
         this.user = user;
         this.computer = computer;
         this.gameSupervisor = gameSupervisor;
     }
 
-    public String evaluateUserNum(String userNum) {
-        return processUserInput(userNum);
-    }
-
-    private String processUserInput(String userNum) {
+    public String processUserInput(String userNum) {
 
         Set<Integer> comRandomNum = computer.getNumGenerator();
         String result = "";

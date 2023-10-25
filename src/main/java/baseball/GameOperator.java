@@ -7,14 +7,15 @@ public class GameOperator {
     private final User user;
     private final Computer computer;
     private final InputValueValidator validator;
-    private final GameController gameController;
+    private final ResultOperator resultOperator;
     private final GameSupervisor supervisor;
 
-    public GameOperator(User user, Computer computer, InputValueValidator validator, GameController gameController, GameSupervisor supervisor) {
+
+    public GameOperator(User user, Computer computer, InputValueValidator validator, ResultOperator resultOperator, GameSupervisor supervisor) {
         this.user = user;
         this.computer = computer;
         this.validator = validator;
-        this.gameController = gameController;
+        this.resultOperator = resultOperator;
         this.supervisor = supervisor;
     }
 
@@ -23,7 +24,7 @@ public class GameOperator {
             String userNumber = user.inputNumber();
             computer.pickRandomNum();
             validator.validateInputValue(userNumber);
-            String result = gameController.evaluateUserNum(userNumber);
+            String result = resultOperator.evaluateUserNum(userNumber);
             supervisor.resetGameStatus();
             System.out.println(result);
 
