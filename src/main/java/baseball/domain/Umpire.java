@@ -6,18 +6,12 @@ import java.util.stream.IntStream;
 
 public class Umpire {
 
-    private final int strikeCount;
     private final int ballCount;
+    private final int strikeCount;
 
     public Umpire(Computer computer, Player player) {
-        this.strikeCount = countStrike(computer, player);
         this.ballCount = countBall(computer, player);
-    }
-
-    private int countStrike(Computer computer, Player player) {
-        return (int) IntStream.range(0, GUESS_NUMBER_SIZE)
-                .filter(i -> computer.getNumberOf(i) == player.getNumberOf(i))
-                .count();
+        this.strikeCount = countStrike(computer, player);
     }
 
     private int countBall(Computer computer, Player player) {
@@ -27,19 +21,17 @@ public class Umpire {
                 .count() - countStrike(computer, player);
     }
 
-    public boolean isNothing() {
-        return this.strikeCount == 0 && this.ballCount == 0;
-    }
-
-    public boolean isThreeStrike() {
-        return this.strikeCount == 3;
-    }
-
-    public int getStrikeCount() {
-        return strikeCount;
+    private int countStrike(Computer computer, Player player) {
+        return (int) IntStream.range(0, GUESS_NUMBER_SIZE)
+                .filter(i -> computer.getNumberOf(i) == player.getNumberOf(i))
+                .count();
     }
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
     }
 }
