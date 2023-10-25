@@ -1,47 +1,30 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.List;
+import java.util.*;
+
 public class GameRulesForInput{
-    private static void validateUserInput(String s) throws IllegalArgumentException{
-        try{
-            // 3자리의 숫자인지
-            if(s.length()!=3){
+
+    public static List<Integer> validateAndParseUserInput(String userInput) throws IllegalArgumentException{
+        List<Integer> user= new ArrayList<>();
+
+        // 3자리인지
+        if(userInput.length()!=3){
+            throw new IllegalArgumentException();
+        }
+
+        for(char c: userInput.toCharArray()){
+            // 모두 0부터 9까지의 숫자로 이루어져있는지
+            int number=Character.getNumericValue(c);
+            if(number<1 || 9<number){
                 throw new IllegalArgumentException();
             }
             // 3자리 모두 다른 숫자인지
-            for(int i=0;i<3;i++){
-                for(int j=i+1;j<3;j++){
-                    if(Objects.equals(s.charAt(i),s.charAt(j))){
-                        throw new IllegalArgumentException();
-                    }
-                }
+            if(user.contains(number)){
+                throw new IllegalArgumentException();
             }
-
-        }catch(NumberFormatException e){
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static List<Integer> parseUserInput(String userInput){
-        List<Integer> userNumbers= new ArrayList<>();
-
-        // 입력값에 대한 예외 처리 필요
-        try {
-            GameRulesForInput.validateUserInput(userInput);
-            for (char c : userInput.toCharArray()) {
-                //만약 숫자가 아니라면 예외 처리됨.
-                int number=Character.getNumericValue(c);
-                if(number<1 || 9<number){
-                    throw new IllegalArgumentException();
-                }
-                userNumbers.add(number);
-            }
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
+            user.add(number);
         }
 
-        return userNumbers;
+        return user;
     }
 }

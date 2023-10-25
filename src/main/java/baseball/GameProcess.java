@@ -19,7 +19,7 @@ public class GameProcess{
             String userInput = readLine();
 
             // 정답시
-            if(game.isCorrectAnswer(GameRulesForInput.parseUserInput(userInput))){
+            if(game.isCorrectAnswer(GameRulesForInput.validateAndParseUserInput(userInput))){
                 System.out.println(END_MESSAGE);
                 askForRestart();
                 break;
@@ -36,7 +36,7 @@ public class GameProcess{
             } else if(willRestart!=2){
                 throw new IllegalArgumentException();
             }
-        }catch(IllegalArgumentException e){
+        }catch(NumberFormatException e){
             throw new IllegalArgumentException();
         }
     }
