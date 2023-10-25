@@ -16,7 +16,7 @@ public class Player {
         List<Integer> numbers = new ArrayList<>();
         String input = Console.readLine();
 
-        if (!isRandomNumbers(input)) {
+        if (!isValidNumbers(input)) {
             throw new IllegalArgumentException("Invalid Numbers");
         }
 
@@ -29,14 +29,14 @@ public class Player {
     public Integer enterMenuNumber() throws IllegalArgumentException {
         String input = Console.readLine();
 
-        if (!isNumber(input)) {
+        if (!isValidMenuNumber(input)) {
             throw new IllegalArgumentException("Invalid Number");
         }
 
         return Integer.parseInt(input);
     }
 
-    public boolean isRandomNumbers(String input) {
+    public boolean isValidNumbers(String input) {
 
         Set<Character> charSet = new HashSet<>();
 
@@ -51,7 +51,7 @@ public class Player {
         return true;
     }
 
-    public boolean isNumber(String input) {
+    public boolean isValidMenuNumber(String input) {
 
         if (!(input.length() == 1) || !input.matches(GAME_INIT_REGEX)) {
             return false;

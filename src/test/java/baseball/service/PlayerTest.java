@@ -13,7 +13,7 @@ class PlayerTest {
         Player player = new Player();
 
         //when
-        boolean result = player.isRandomNumbers(input);
+        boolean result = player.isValidNumbers(input);
 
         //then
         Assertions.assertEquals(true, result);
@@ -27,7 +27,7 @@ class PlayerTest {
         Player player = new Player();
 
         //when
-        boolean result = player.isRandomNumbers(input);
+        boolean result = player.isValidNumbers(input);
 
         //then
         Assertions.assertEquals(false, result);
@@ -41,7 +41,7 @@ class PlayerTest {
         Player player = new Player();
 
         //when
-        boolean result = player.isRandomNumbers(input);
+        boolean result = player.isValidNumbers(input);
 
         //then
         Assertions.assertEquals(false, result);
@@ -55,7 +55,7 @@ class PlayerTest {
         Player player = new Player();
 
         //when
-        boolean result = player.isRandomNumbers(input);
+        boolean result = player.isValidNumbers(input);
 
         //then
         Assertions.assertEquals(false, result);
@@ -69,7 +69,7 @@ class PlayerTest {
         Player player = new Player();
 
         //when
-        boolean result = player.isRandomNumbers(input);
+        boolean result = player.isValidNumbers(input);
 
         //then
         Assertions.assertEquals(false, result);
@@ -82,7 +82,7 @@ class PlayerTest {
         String input = "1";
         Player player = new Player();
         //when
-        boolean result = player.isNumber(input);
+        boolean result = player.isValidMenuNumber(input);
         //then
         Assertions.assertEquals(true, result);
     }
@@ -94,7 +94,7 @@ class PlayerTest {
         String input = "이";
         Player player = new Player();
         //when
-        boolean result = player.isNumber(input);
+        boolean result = player.isValidMenuNumber(input);
         //then
         Assertions.assertEquals(false, result);
     }
@@ -106,7 +106,7 @@ class PlayerTest {
         String input = "3";
         Player player = new Player();
         //when
-        boolean result = player.isNumber(input);
+        boolean result = player.isValidMenuNumber(input);
         //then
         Assertions.assertEquals(false, result);
     }
@@ -118,7 +118,7 @@ class PlayerTest {
         String input = "12";
         Player player = new Player();
         //when
-        boolean result = player.isNumber(input);
+        boolean result = player.isValidMenuNumber(input);
         //then
         Assertions.assertEquals(false, result);
     }
