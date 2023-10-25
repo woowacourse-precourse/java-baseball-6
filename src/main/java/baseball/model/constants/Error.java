@@ -1,7 +1,7 @@
 package baseball.model.constants;
 
-public enum Exception {
-    NUMBER_NON_NUMBER("잘못된 값을 입력했습니다. (숫자가 아닙니다.)"),
+public enum Error {
+    NUMBER_NUMERIC("잘못된 값을 입력했습니다. (숫자가 아닙니다.)"),
     NUMBER_LENGTH_INVALID("잘못된 값을 입력했습니다. (3자리가 아닙니다.)"),
     NUMBER_RANGE_INVALID("잘못된 값을 입력했습니다. (1에서 9 범위가 아닙니다.)"),
     NUMBER_DUPLICATED("잘못된 값을 입력했습니다. (숫자가 중복되었습니다.)"),
@@ -10,7 +10,7 @@ public enum Exception {
 
     private final String message;
 
-    Exception(String message) {
+    Error(String message) {
         this.message = message;
     }
 

@@ -31,8 +31,7 @@ public class BaseballGame {
     }
 
     public static BaseballGame create() {
-        return new BaseballGame(new GeneratorImp(), new ValidatorImp(), new Comparator()
-        );
+        return new BaseballGame(new GeneratorImp(), new ValidatorImp(), new Comparator());
     }
 
     public void startGame() {

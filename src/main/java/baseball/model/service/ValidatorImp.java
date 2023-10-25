@@ -1,10 +1,10 @@
 package baseball.model.service;
 
-import static baseball.model.constants.Exception.NUMBER_DUPLICATED;
-import static baseball.model.constants.Exception.NUMBER_LENGTH_INVALID;
-import static baseball.model.constants.Exception.NUMBER_NON_NUMBER;
-import static baseball.model.constants.Exception.NUMBER_RANGE_INVALID;
-import static baseball.model.constants.Exception.OPTION_INVALID;
+import static baseball.model.constants.Error.NUMBER_DUPLICATED;
+import static baseball.model.constants.Error.NUMBER_LENGTH_INVALID;
+import static baseball.model.constants.Error.NUMBER_NUMERIC;
+import static baseball.model.constants.Error.NUMBER_RANGE_INVALID;
+import static baseball.model.constants.Error.OPTION_INVALID;
 import static baseball.model.constants.Rule.GAME_NUMBERS_MAX_VALUE;
 import static baseball.model.constants.Rule.GAME_NUMBERS_MIN_VALUE;
 import static baseball.model.constants.Rule.GAME_NUMBERS_SIZE;
@@ -32,7 +32,7 @@ public class ValidatorImp implements Validator {
     private static void validateIfNumeric(String input) {
         input.chars().forEach(ch -> {
             if (!Character.isDigit(ch)) {
-                throw new IllegalArgumentException(NUMBER_NON_NUMBER.getMessage());
+                throw new IllegalArgumentException(NUMBER_NUMERIC.getMessage());
             }
         });
     }
