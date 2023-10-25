@@ -1,5 +1,6 @@
-package baseball;
+package baseball.model;
 
+import baseball.ConstantVO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class InputNumber {
         List<Integer> playerNum = new ArrayList<>();
 
         checkSize(inputNum);
-
+ 
         for (String number : inputNum.split("")) {
             if (playerNum.contains(Integer.parseInt(number))) {
                 throw new IllegalArgumentException();
