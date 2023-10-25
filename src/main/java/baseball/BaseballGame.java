@@ -12,17 +12,17 @@ public class BaseballGame {
     public int strike = 0, ball = 0;
     Validator validator = new Validator();
 
-    public void startSystem() {
+    protected void startSystem() {
         sayStart();
         runGames();
     }
-    public void runGames(){
+    private void runGames(){
         runOneGame();
         if (determineRestart()) {
             runGames();
         }
     }
-    public void runOneGame() {
+    private void runOneGame() {
         setBallStrikeZero();
         List<Integer> computer = getRandomThreeNum();
         while (strike != Numeric.NUMBER_OF_INPUT) {
@@ -30,23 +30,23 @@ public class BaseballGame {
         }
         sayEndGame();
     }
-    public void runOneRound(List<Integer> computer) {
+    private void runOneRound(List<Integer> computer) {
         setBallStrikeZero();
         List<Integer> user = getThreeNum();
         calculateBallStrike(user, computer);
         sayBallStrike(ball, strike);
     }
     // 게임 시작
-    public void sayStart(){
+    private void sayStart(){
         System.out.println(Message.START_SYSTEM_MESSAGE);
     }
     // strike, ball 0으로 초기화
-    public void setBallStrikeZero() {
+    private void setBallStrikeZero() {
         ball = 0;
         strike = 0;
     }
     // 1~9 수 중 3개의 중복되지 않은 수 리턴
-    public List<Integer> getRandomThreeNum(){
+    private List<Integer> getRandomThreeNum(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < Numeric.NUMBER_OF_INPUT) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -58,7 +58,7 @@ public class BaseballGame {
         return computer;
     }
     //  1~9 수 중 중복되지 않은 수 3개 input 받기
-    public List<Integer> getThreeNum() throws IllegalArgumentException{
+    private List<Integer> getThreeNum() throws IllegalArgumentException{
         List<Integer> user = new ArrayList<>();
         System.out.print(Message.REQUIRE_NUMBER_MESSAGE);
         String input = Console.readLine();
@@ -73,7 +73,7 @@ public class BaseballGame {
         return user;
     }
     // strike, ball 판별
-    public void calculateBallStrike(List<Integer>user, List<Integer>computer){
+    private void calculateBallStrike(List<Integer>user, List<Integer>computer){
         setBallStrikeZero();
         for (int i=0; i<user.size(); i++) {
             int number = user.get(i);
@@ -81,7 +81,7 @@ public class BaseballGame {
         }
     }
     // ball인지 strike인지 판별 (같은 수 찾으면 더이상 볼 필요 없으므로 반복문 탈출)
-    public void determineBallOrStrike(Integer number, int i, List<Integer>computer) {
+    private void determineBallOrStrike(Integer number, int i, List<Integer>computer) {
         for (int j = 0; j< Numeric.NUMBER_OF_INPUT; j++) {
             Integer numberInList = computer.get(j);
             if (number.equals(numberInList) && i == j) {
@@ -94,7 +94,7 @@ public class BaseballGame {
         }
     }
     // strike, ball 출력
-    public void sayBallStrike(int ball, int strike){
+    private void sayBallStrike(int ball, int strike){
         // else 사용 X
         if (ball == 0 && strike == 0) {
             System.out.print("낫싱");
@@ -108,11 +108,11 @@ public class BaseballGame {
         System.out.println();
     }
     // 게임 종료 (3스트라이크 시)
-    public void sayEndGame() {
+    private void sayEndGame() {
         System.out.printf(Message.END_GAME_MESSAGE);
     }
     // 게임 새로 시작 할 지 정하기
-    public Boolean determineRestart() throws IllegalArgumentException{
+    private Boolean determineRestart() throws IllegalArgumentException{
         System.out.println(Message.ASK_RESTART_MESSAGE);
         String input = Console.readLine();
         if (input.equals("1")) {
