@@ -39,7 +39,7 @@ public class GameController {
 
             input.clear();
             for(int i = 0; i < inputString.length(); i++) {
-                input.add(inputString.indexOf(i) - '0');
+                input.add(inputString.charAt(i) - '0');
             }
 
             result = getGameResult(input);
@@ -80,11 +80,11 @@ public class GameController {
         ballCount = 0;
         strikeCount = 0;
         for(int i = 0; i < input.size(); i++) {
-            if(computer.contains(input.indexOf(i))) {
+            if(computer.contains(input.get(i))) {
                 ballCount += 1;
             }
 
-            if(computer.indexOf(i) == input.indexOf(i)) {
+            if(computer.get(i) == input.get(i)) {
                 strikeCount += 1;
             }
         }
@@ -94,22 +94,22 @@ public class GameController {
     }
 
     private void validateBaseballInput(String input) {
-        List<Integer> validations = new ArrayList<>();
+        List<Character> validations = new ArrayList<>();
 
         if(input.length() != 3) {
             ExceptionHandler.inputException();
         }
 
         for(int i = 0; i < input.length(); i++) {
-            if(!Character.isDigit(input.indexOf(i))) {
+            if(!Character.isDigit(input.charAt(i))) {
                 ExceptionHandler.inputException();
             }
 
-            if(validations.contains(input.indexOf(i))) {
+            if(validations.contains(input.charAt(i))) {
                 ExceptionHandler.inputException();
             }
 
-            validations.add(input.indexOf(i) - '0');
+            validations.add(input.charAt(i));
         }
     }
 
