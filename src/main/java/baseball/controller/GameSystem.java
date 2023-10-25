@@ -21,7 +21,7 @@ public class GameSystem {
     }
 
     private void startGame() {
-        inputMsgView.printStartMsg();
+        inputMsgView.printGameStartMsg();
 
         Computer computer = new Computer();
         List<Integer> computerNumbers = computer.generateNumbers();
@@ -41,7 +41,7 @@ public class GameSystem {
     }
 
     private boolean restartGame() {
-        inputMsgView.printRestartMsg();
+        inputMsgView.printGameRestartMsg();
 
         user.decideGameRestart();
 
