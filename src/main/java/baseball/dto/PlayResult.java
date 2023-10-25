@@ -8,4 +8,8 @@ public record PlayResult(
     public boolean isNothing() {
         return strikeCount == 0 && ballCount == 0;
     }
+
+    public boolean isThreeStrike() {
+        return strikeCount == 3;
+    }
 }
