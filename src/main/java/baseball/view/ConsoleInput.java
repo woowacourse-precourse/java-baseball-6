@@ -17,7 +17,7 @@ public class ConsoleInput {
         String input = readLine();
 
         if (validInput(input, len)) {
-            throw new InvalidInputException("잘못된 입력입니다.");
+            throw new IllegalArgumentException("잘못된 입력입니다.");
         }
         return convertStringToIntList(input);
     }
