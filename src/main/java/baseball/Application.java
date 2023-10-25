@@ -17,9 +17,8 @@ public class Application {
         }
     }
 
-    static List<Integer> readInput() {
+    static void readInput(List<Integer> player) {
         String input = Console.readLine();
-        List<Integer> player = new ArrayList<>();
 
         ExceptionHandler.checkInputSize(input, CAPACITY);
         for (int i = 0; i < CAPACITY; ++i) {
@@ -28,7 +27,6 @@ public class Application {
             ExceptionHandler.checkNumber(number, player);
             player.add(number);
         }
-        return player;
     }
 
     static Result evaluate(List<Integer> player, List<Integer> computer) {
@@ -86,14 +84,16 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
+        List<Integer> player = new ArrayList<>();
 
         while (true) {
             pickNumber(computer);
             System.out.println("숫자를 입력해주세요 : ");
-            List<Integer> player = readInput();
+            readInput(player);
             Result result = evaluate(player, computer);
 
             printResult(result);
+            player.clear();
             if (isStop(result, computer)) {
                 break;
             }
