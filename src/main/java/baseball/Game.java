@@ -21,9 +21,6 @@ public class Game {
                 answer.add(randomNumber);
             }
         }
-        for (Integer integer : answer) {
-            System.out.println(integer.toString());
-        }
     }
     public static void Run() {
         Game game;
