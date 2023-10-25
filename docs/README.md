@@ -2,9 +2,9 @@
 
 - 컴퓨터 클래스
     - 컴퓨터가 생각하는 수 생성 함수
-        - [ ] 서로 다른 수
-        - [ ] 3자리 숫자
-        - [ ] 1~9까지의 수
+        - [x] 서로 다른 수
+        - [x] 3자리 숫자
+        - [x] 1~9까지의 수
 
     * Random 값 추출은 cmp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
 

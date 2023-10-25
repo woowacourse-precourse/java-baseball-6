@@ -7,8 +7,11 @@ public class Computer {
     ArrayList<Integer> answer = new ArrayList();
 
     void generateNum() {
-        for (int i = 0; i < 3; i++) {
-            answer.add(Randoms.pickNumberInRange(1, 9));
+        while (answer.size() < 3) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(num)) {
+                answer.add(num);
+            }
         }
     }
 
