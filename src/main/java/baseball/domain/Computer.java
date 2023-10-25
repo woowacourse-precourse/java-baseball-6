@@ -34,29 +34,45 @@ public class Computer {
 
             if (result.equals(GameResult.PERFECT.name)) {
                 System.out.print(GameResult.PERFECT.name + "\n" + GuideMessage.FINISH_GUIDE.message);
+                status = 2;
                 break;
             }
-            System.out.println(result);
+//            System.out.println(result);
         }
+
+        if (finishMenu() == 2) {
+            //TODO 종료 메서드 호출
+
+        }
+
+        restart();
+    }
+
+    private int finishMenu() {
+        int menu = 0;
 
         while (status == 1) {
             System.out.println(GuideMessage.RESTART_MENU.message);
-            int menu;
             menu = Integer.parseInt(readLine());
-            if (menu != 1 && menu != 2) {
-                throw new IllegalArgumentException("1(재시작) 또는 2(종료)만 입력해주세요.");
+            try {
+                validateMenu(menu);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
-            if (menu == 2) {
-                status = 2;
-                //TODO 종료 메서드 호출
-            }
-            if (menu == 1) {
-                init();
-                play();
-            }
-
+            status = 2;   // 예외에서 잡히지 않으면 상태값을 2로 변경
         }
+        return menu;
+    }
 
+    private static void validateMenu(int menu) {
+        if (menu != 1 && menu != 2) {
+            throw new IllegalArgumentException("1(재시작) 또는 2(종료)만 입력해주세요.");
+        }
+    }
+
+    private void restart() {
+        init();
+        play();
     }
 
 

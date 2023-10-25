@@ -11,28 +11,19 @@ public class Baseball {
 
     private int strike;
     private int ball;
-    private boolean[] checkNum;
 
 
     public Baseball() {
         strike = 0;
         ball = 0;
-        checkNum = new boolean[9];
-        Arrays.fill(checkNum, false);
     }
 
     public void compare(List<Integer> computerNum, List<Integer> playerNum) {
+
         for (int i = 0; i < 3; i++) {
             if (computerNum.get(i).equals(playerNum.get(i))) {
                 updateStrike();
-            }
-            checkNum[computerNum.get(i) - 1] = true;
-            if (!checkNum[playerNum.get(i) - 1]) {
-                checkNum[computerNum.get(i) - 1] = false;
-            }
-        }
-        for (boolean b : checkNum) {
-            if (b == true) {
+            } else if (computerNum.contains(playerNum.get(i))) {
                 updateBall();
             }
         }

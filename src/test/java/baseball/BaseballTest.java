@@ -22,7 +22,7 @@ public class BaseballTest {
     void 세자리_숫자_간_비교결과_출력() {
         Baseball baseball = new Baseball();
         List<Integer> num1 = Arrays.asList(1, 2, 3);
-        List<Integer> num2 = Arrays.asList(3, 4, 3);
+        List<Integer> num2 = Arrays.asList(1, 4, 2);
         baseball.compare(num1, num2);
 
         assertThat(baseball.getResult()).isEqualTo("1볼 1스트라이크");
