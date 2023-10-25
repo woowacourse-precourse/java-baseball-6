@@ -7,7 +7,8 @@ public enum UIMessage {
     BALL("볼"),
     NOTHING("낫싱"),
     RESTART_OR_END("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
-    END_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    END_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
+    ERROR("잘못된 입력값입니다.");
 
     private final String message;
 
