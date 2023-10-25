@@ -21,12 +21,12 @@ public class InputValidator {
     }
 
     public void validateRetryCommand(final String input) {
-        if (isProperCommand(input)) {
+        if (isInvalidCommand(input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private boolean isProperCommand(final String input) {
+    private boolean isInvalidCommand(final String input) {
         return input.length() != COMMAND_LENGTH || hasNonNumeric(input);
     }
 }
