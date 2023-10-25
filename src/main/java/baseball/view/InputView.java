@@ -9,11 +9,12 @@ import java.util.Set;
 public class InputView {
     public static final int INPUT_NUMBER_SIZE = 3;
     public static final int GAME_RESTART_NUMBER = 1;
+    public static final String REGEX = "";
 
     private List<Integer> inputNumber = new ArrayList<>();
 
     public List<Integer> inputNumber() {
-        inputNumber = integerNumber(List.of(Console.readLine().split("")));
+        inputNumber = integerNumber(List.of(Console.readLine().split(REGEX)));
         validationNotSize();
 
         return inputNumber;
