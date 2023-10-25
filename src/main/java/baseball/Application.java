@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class Application {
     private static final int INPUT_SIZE = 3;
+
     public static void main(String[] args) {
         baseballGame();
     }
@@ -20,7 +21,9 @@ public class Application {
             List<Integer> computer = getRandomIntegers();
             playOneRound(computer);
 
-            if (!askPlayAgain()) break;
+            if (!askPlayAgain()) {
+                break;
+            }
         }
     }
 
@@ -41,7 +44,9 @@ public class Application {
                 }
             }
 
-            if (printResults(strikeCount, ballCount)) break;
+            if (printResults(strikeCount, ballCount)) {
+                break;
+            }
         }
     }
 
@@ -115,7 +120,9 @@ public class Application {
     }
 
     private static boolean printResults(int strikeCount, int ballCount) {
-        if (correctAnswer(strikeCount)) return true;
+        if (correctAnswer(strikeCount)) {
+            return true;
+        }
         return wrongAnswer(strikeCount, ballCount);
     }
 
