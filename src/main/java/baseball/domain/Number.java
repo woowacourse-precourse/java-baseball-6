@@ -1,5 +1,10 @@
 package baseball.domain;
 
+import baseball.utils.Convertor;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class Number {
 
   private static final int MAX_NUMBER = 9;
@@ -13,5 +18,21 @@ public class Number {
     this.numbers = new int[NUMBER_OF_DIGITS];
   }
 
+  public void generateComputerNumbers() {
+    this.numbers = createComputerNumbers();
+  }
 
+  private int[] createComputerNumbers() {
+    Set<Integer> generatedNumbers = new LinkedHashSet<>(NUMBER_OF_DIGITS);
+
+    while (generatedNumbers.size() < NUMBER_OF_DIGITS) {
+      generatedNumbers.add(getRandomNumber());
+    }
+
+    return Convertor.convertIntegerToInt(generatedNumbers);
+  }
+
+  private int getRandomNumber() {
+    return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+  }
 }
