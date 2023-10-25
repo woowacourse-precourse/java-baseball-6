@@ -28,9 +28,9 @@ public class GameStart {
         randomNumber = baseballGame.getRandomNumber();
 
         while (gameControlNum == RESTART_NUMBER) {
-            System.out.print("숫자를 입력해주세요 :");
             String userInput = baseballGame.getInputNumber();
             List<Integer> userInputNumber = baseballGame.validateInputNumber(userInput);
+            System.out.println("숫자를 입력해주세요: " + userInput);
 
             Result result = calculateNumber(randomNumber, userInputNumber);
             int ball = result.ballCount;
@@ -42,7 +42,8 @@ public class GameStart {
     }
 
     private Result calculateNumber(List<Integer> randomNumber, List<Integer> userInputNumber) {
-        int ball = 0, strike = 0;
+        int strike = 0;
+        int ball = 0;
 
         for (int i = 0; i < 3; i++) {
             int randomNum = randomNumber.get(i);
@@ -66,9 +67,10 @@ public class GameStart {
         int gameControlNumber= RESTART_NUMBER;
 
         if (strike == 3) {
-            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.print("게임을 새로 시작하려면 " + RESTART_NUMBER + ", 종료하려면 " + END_NUMBER + "를 입력하세요.");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 " + RESTART_NUMBER + ", 종료하려면 " + END_NUMBER + "를 입력하세요.");
             gameControlNumber = Integer.parseInt(baseballGame.getInputNumber());
+            System.out.println(gameControlNumber);
             if (gameControlNumber < RESTART_NUMBER || gameControlNumber > END_NUMBER) {
                 throw new IllegalArgumentException("게임을 새로 시작하려면 " + RESTART_NUMBER + ", 게임을 종료하려면 " + END_NUMBER + "를 입력하세요.");
             }
