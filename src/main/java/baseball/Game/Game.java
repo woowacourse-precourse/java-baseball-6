@@ -11,13 +11,13 @@ public class Game {
     private static final String PROCEED_UNIT_GUIDE = "숫자를 입력해주세요 : ";
     private static final String END_UNIT_GUIDE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    private static Boolean GAME_STATUS = true;
+    private Boolean GAME_STATUS = true;
 
-    private static Boolean UNIT_STATUS = true;
-    private static Pitcher pitcher;
-    private static Batter batter;
+    private Boolean UNIT_STATUS = true;
+    private Pitcher pitcher;
+    private Batter batter;
 
-    public static void doGame(){
+    public void doGame(){
         startGame();
         while(GAME_STATUS){
             startUnit();
@@ -26,17 +26,17 @@ public class Game {
         }
     }
 
-    public static void startGame(){
+    public void startGame(){
         System.out.println(START_GAME_GUIDE);
     }
-    public static void startUnit(){
+    public void startUnit(){
         pitcher = new Pitcher();
         batter = new Batter();
 
         pitcher.makeChoice();
     }
 
-    public static void proceedUnit(){
+    public void proceedUnit(){
         UNIT_STATUS = true;
         while(UNIT_STATUS){
             System.out.print(PROCEED_UNIT_GUIDE);
@@ -46,14 +46,14 @@ public class Game {
         }
     }
 
-    public static void endUnit(){
-        System.out.println(END_UNIT_GUIDE);
+    public void endUnit(){
+        System.out.print(END_UNIT_GUIDE);
         if(!batter.decideToPlayMore()) {
             GAME_STATUS = false;
         }
     }
 
-    public static List<Integer> compareChoices(List<Integer> batterChoice, List<Integer> pitcherChoice){
+    public List<Integer> compareChoices(List<Integer> batterChoice, List<Integer> pitcherChoice){
         Integer balls = 0;
         Integer strikes = 0;
 
@@ -72,7 +72,7 @@ public class Game {
         return result;
     }
 
-    public static void giveHint(List<Integer> result){
+    public void giveHint(List<Integer> result){
         Integer balls = result.get(0);
         Integer strikes = result.get(1);
         //unit 종료조건
