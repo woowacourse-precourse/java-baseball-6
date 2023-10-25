@@ -17,7 +17,7 @@ public class Computer {
      * @param numberOfDigits : 자리수
      */
     public Computer(int startRange, int endRange, int numberOfDigits) {
-        this.computerNumber = getRandomNumber(startRange, endRange, numberOfDigits);
+        this.computerNumber = getComputerNumber(startRange, endRange, numberOfDigits);
     }
 
     /**
@@ -28,22 +28,23 @@ public class Computer {
      *
      * @param startRange :시작 범위
      * @param endRange   : 끝나는 범위
-     * @return String : random number
+     * @return resultNumber(String Type)
      */
-    private String getRandomNumber(int startRange, int endRange, int numberOfDigits) {
-        StringBuilder number = new StringBuilder();
+    private String getComputerNumber(int startRange, int endRange, int numberOfDigits) {
+        StringBuilder resultNumber = new StringBuilder();
 
-        //number가 numberOfDigits자리수가 될때까지 반복
-        while (number.length() < numberOfDigits) {
+        //resultNumber numberOfDigits자리수가 될때까지 반복
+        while (resultNumber.length() < numberOfDigits) {
+
             //렌덤수 생성
-            int randomNumber = Randoms.pickNumberInRange(startRange, endRange);
+            int randomNum = Randoms.pickNumberInRange(startRange, endRange);
 
-            //randomNumber이 number에 없을 경우 append
-            if (!(number.toString()).contains(String.valueOf(randomNumber))) {
-                number.append(randomNumber);
+            //resultNumber에 randomNum 없을 경우 append
+            if (!(resultNumber.toString()).contains(String.valueOf(randomNum))) {
+                resultNumber.append(randomNum);
             }
         }
-        return number.toString();
+        return resultNumber.toString();
     }
 
 

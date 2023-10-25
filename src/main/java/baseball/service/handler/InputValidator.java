@@ -24,12 +24,12 @@ public class InputValidator {
      * @return (true : 각 자리수가 서로다른 수, false : 각 자리수가 서로다른 수가 아님)
      */
     public boolean isDifferentEachDigit(String inputNumber) {
-        StringBuilder tmp = new StringBuilder();
+        StringBuilder tmpForCompare = new StringBuilder();
         for (char c : inputNumber.toCharArray()) {
-            if ((tmp.toString()).contains(String.valueOf(c))) {
+            if ((tmpForCompare.toString()).contains(String.valueOf(c))) {
                 return false;
             }
-            tmp.append(c);
+            tmpForCompare.append(c);
         }
         return true;
     }
