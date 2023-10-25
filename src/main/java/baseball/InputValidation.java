@@ -4,10 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
 
 public class InputValidation {
+    public static final int CORRECT_INPUT_SIZE = 3;
+    public static final String INPUT_CONTINUE = "1";
+    public static final String INPUT_EXIT = "2";
+
     public static String validateUserInput() {
         String userInput = Console.readLine();
 
-        if (userInput.length() != 3) {
+        if (userInput.length() != CORRECT_INPUT_SIZE) {
             throw new IllegalArgumentException();
         }
 
@@ -19,7 +23,7 @@ public class InputValidation {
             }
             checkDuplicate.add(ch);
         }
-        if (checkDuplicate.size() != 3) {
+        if (checkDuplicate.size() != CORRECT_INPUT_SIZE) {
             throw new IllegalArgumentException();
         }
 
@@ -28,10 +32,10 @@ public class InputValidation {
 
     public static boolean validateContinue() {
         String userInput = Console.readLine();
-        if (userInput.equals("1")) {
+        if (userInput.equals(INPUT_CONTINUE)) {
             return true;
         }
-        if (userInput.equals("2")) {
+        if (userInput.equals(INPUT_EXIT)) {
             return false;
         }
         throw new IllegalArgumentException();

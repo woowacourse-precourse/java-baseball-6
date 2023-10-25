@@ -8,7 +8,7 @@ public class BaseballGame {
     public String pickCpuNumber() {
         ArrayList<Integer> computer = new ArrayList<>();
         int result = 0;
-        while (computer.size() < 3) {
+        while (computer.size() < InputValidation.CORRECT_INPUT_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -24,13 +24,13 @@ public class BaseballGame {
 
     public boolean executeBaseballGame(String user, String cpu) {
         if (user.equals(cpu)) {
-            System.out.println("3스트라이크");
+            System.out.printf("%d스트라이크\n", InputValidation.CORRECT_INPUT_SIZE);
             return true;
         }
 
         int ballCount, strikeCount = 0;
         HashSet<Character> checkDuplicate = new HashSet<>();
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < InputValidation.CORRECT_INPUT_SIZE; ++i) {
             if (user.charAt(i) == cpu.charAt(i)) {
                 strikeCount++;
             }
@@ -61,7 +61,7 @@ public class BaseballGame {
                 break;
             }
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", InputValidation.CORRECT_INPUT_SIZE);
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
