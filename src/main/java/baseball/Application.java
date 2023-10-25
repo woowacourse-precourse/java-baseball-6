@@ -52,7 +52,6 @@ public class Application {
 
     public static Result resolve(Game game, User user) {
         Result result = new Result();
-        game.reset();
         user.setPrediction(getPrediction());
         game.countStrikeOrBall(user.getPrediction());
         result.setResult(game);

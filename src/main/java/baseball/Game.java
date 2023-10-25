@@ -18,6 +18,12 @@ public class Game {
         this.numberOfBall = 0;
     }
 
+    public Game(List<Integer> numbers) {
+        this.numbers = numbers;
+        this.numberOfStrike = 0;
+        this.numberOfBall = 0;
+    }
+
     public void init() {
         numbers.clear();
         numberOfStrike = 0;
@@ -31,6 +37,7 @@ public class Game {
     }
 
     public void countStrikeOrBall(List<Integer> prediction) {
+        reset();
         for (int i = 0; i < prediction.size(); i++) {
             if (prediction.get(i).equals(numbers.get(i))) {
                 numberOfStrike++;
