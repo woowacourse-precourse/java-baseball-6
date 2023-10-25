@@ -28,5 +28,19 @@ public class GameView {
         return false;
     }
 
+    public boolean checkAndPrintResult(Game game) {
+        // 1. 성공한 경우 - true
+        if (game.checkSuccess()) {
+            System.out.println("3스트라이크");
+            return true;
+        } // 2. 하나도 없는 경우 - false
+        else if (game.checkNothing()) {
+            System.out.println("낫싱");
+        } // 3. 힌트가 필요한 경우 - false
+        else if (game.checkHint()) {
+            System.out.println(game.getHint());
+        }
+        return false;
+    }
 
 }
