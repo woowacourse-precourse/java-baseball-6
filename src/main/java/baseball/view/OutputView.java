@@ -3,7 +3,7 @@ package baseball.view;
 import baseball.domain.GameResultDTO;
 
 public class OutputView {
-    StringBuilder messageBuilder;
+    private StringBuilder messageBuilder;
 
     private void initializeMessageBuilder() {
         this.messageBuilder = new StringBuilder();

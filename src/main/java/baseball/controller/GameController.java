@@ -1,10 +1,10 @@
 package baseball.controller;
 
+import baseball.domain.GameNumber;
 import baseball.domain.GameResultDTO;
 import baseball.service.GameService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class GameController {
     private static final OutputView outputView = new OutputView();
@@ -20,7 +20,7 @@ public class GameController {
     // 게임 진행
     private void playGame() {
         inputNumberMessage(); // 숫자 입력 메시지 출력
-        List<Integer> playerNumbers = inputView.playerNumberInput();
+        GameNumber playerNumbers = inputView.playerNumberInput();
         gameResultDTO = gameService.calculateGameResult(playerNumbers);
         gameResultMessage(); // 게임 결과 메시지 출력
         isGameFinished(); // 게임 승/패 판정
@@ -49,21 +49,22 @@ public class GameController {
 
     // 컴퓨터 랜덤 수 생성
     private void generateComputerNumber() {
-        gameService.setComputerNumbers();
+        gameService.setComputerNumber();
     }
 
     // 게임이 끝나는지 확인
     private void isGameFinished() {
         if (!gameResultDTO.getIsGameFinished()) {
             playGame();
+            return;
         }
         outputView.displayEndGameMessage();
     }
 
     // 게임 재시작/종료 여부 판단
     private void restartOrExit() {
-        int inputNum = inputView.endOrRestartInput();
-        if (inputNum == 1) {
+        GameNumber inputNum = inputView.endOrRestartInput();
+        if (inputNum.getNumber().get(0) == 1) {
             run();
         }
     }
