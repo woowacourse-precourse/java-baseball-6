@@ -5,16 +5,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Game {
 
     private final Store store;
-    private final int NUMBER_OF_DIGITS;
 
-    public Game(Store store, int numberOfDigits) {
+    public Game(Store store) {
         this.store = store;
-        NUMBER_OF_DIGITS = numberOfDigits;
     }
 
     public void generateAnswer() {
-        while (store.computer.size() < NUMBER_OF_DIGITS) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (store.computer.size() < GameInfo.NUMBER_OF_DIGITS) {
+            int randomNumber = Randoms.pickNumberInRange(GameInfo.MIN_NUMBER, GameInfo.MAX_NUMBER);
             if (store.exist.getOrDefault(randomNumber,false)) continue;
             store.exist.put(randomNumber, true);
             store.computer.add(randomNumber);
@@ -22,12 +20,22 @@ public class Game {
     }
 
     public void compareAnswer() {
-        for (int i = 0; i < NUMBER_OF_DIGITS; i++) {
+        for (int i = 0; i < GameInfo.NUMBER_OF_DIGITS; i++) {
             int num = store.computer.get(i);
             int inputNum = Integer.parseInt(String.valueOf(store.input.charAt(i)));
+
             if (!store.exist.getOrDefault(inputNum, false)) continue;
-            String key = num == inputNum ? "스트라이크" : "볼";
+
+            String key = num == inputNum ? GameInfo.CORRECT : GameInfo.WRONG;
             store.result.put(key, store.result.getOrDefault(key, 0) + 1);
         }
+    }
+
+    public boolean checkCorrect() {
+        return store.result.getOrDefault(GameInfo.CORRECT, 0) == GameInfo.NUMBER_OF_DIGITS;
+    }
+
+    public boolean checkGameEnd(String input) {
+        return input.equals(GameInfo.GAME_END_INPUT);
     }
 }
