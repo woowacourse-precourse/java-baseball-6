@@ -43,7 +43,7 @@ public class NumberControl {
 
     public void isWrongLength(String userNumber) throws IllegalArgumentException {
         if (userNumber.length() != 3) {
-            throw new IllegalArgumentException("입력한 숫자는 3자리여야 합니다.");
+            throw new IllegalArgumentException("입력하는 숫자는 3자리여야 합니다.");
         }
     }
 
