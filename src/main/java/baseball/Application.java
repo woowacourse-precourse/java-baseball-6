@@ -8,19 +8,24 @@ public class Application {
     public static void main(String[] args) {
         GameRole gameRole = new GameRole();
 
-        StartProcess startProcess;
+        StartProcess startProcess = new StartProcess(gameRole);
         InProcess inProcess;
-        FinishProcess finishProcess = new FinishProcess();
+        FinishProcess finishProcess;
 
-        while (finishProcess.isContinueGame()) {
-            startProcess = new StartProcess(gameRole);
+        try {
+            while (true) {
+                while (true) {
+                    inProcess = new InProcess(gameRole, startProcess.getComputerNumber());
+                    if (inProcess.isNumberCorrect()) break;
+                }
 
-            inProcess = new InProcess(gameRole, startProcess.getComputerNumber());
-            while (inProcess.isNumberCorrect()) {
-                inProcess = new InProcess(gameRole, startProcess.getComputerNumber());
+                finishProcess = new FinishProcess();
+                if (!finishProcess.isContinueGame()) break;
+
+                startProcess.resetGame(gameRole);
             }
-
-            finishProcess = new FinishProcess();
+        } catch (Exception e) {
+            // e.printStackTrace();
         }
     }
 }
