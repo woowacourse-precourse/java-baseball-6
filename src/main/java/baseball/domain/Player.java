@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import static baseball.global.GameMessage.GAME_START_MESSAGE;
 import static baseball.global.GameMessage.INPUT_NUMBER_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -17,7 +16,6 @@ public class Player {
     }
 
     private List<Integer> input() {
-        System.out.print(GAME_START_MESSAGE.message);
         System.out.print(INPUT_NUMBER_MESSAGE.message);
         String input = Console.readLine().trim();
         validateNumberFormat(input);
