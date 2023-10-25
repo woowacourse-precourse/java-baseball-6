@@ -31,4 +31,5 @@ public class GameView {
     public String getAnswer() {
         return Console.readLine();
     }
+    
 }

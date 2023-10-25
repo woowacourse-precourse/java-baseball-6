@@ -23,4 +23,5 @@ public class BaseballScore {
     public boolean isThreeStrike() {
         return strike == 3;
     }
+    
 }

@@ -21,5 +21,4 @@ public class OutputView {
         System.out.println("게임을 새로 시작하시려면 1, 종료하시려면 2를 입력하세요.");
     }
 
-
 }
