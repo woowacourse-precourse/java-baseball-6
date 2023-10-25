@@ -1,5 +1,10 @@
-package baseball;
+package baseball.controller;
 
+import baseball.model.Computer;
+import baseball.model.ComputerGenerator;
+import baseball.model.GameOption;
+import baseball.model.PlayResult;
+import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
