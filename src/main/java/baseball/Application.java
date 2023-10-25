@@ -13,19 +13,22 @@ public class Application {
         int num;
         List<Integer> computer;
         computer = getBall();
-        System.out.println(computer);
+        //System.out.println(computer);
 
         while(true){
             int set;
-            System.out.println("숫자를 입력해주세요 : ");
 
-            try{
+            try {
+                System.out.print("숫자를 입력하세요: ");
                 scanner = Console.readLine();
-            } catch (IllegalArgumentException e){
+                num = Integer.parseInt(scanner);
+                if (num > 999) {
+                    throw new IllegalArgumentException();
+                }
+            } catch (IllegalArgumentException e) {
                 break;
             }
 
-            num = Integer.parseInt(scanner);
             set = checkBall(computer,num);
             if(set == 3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
