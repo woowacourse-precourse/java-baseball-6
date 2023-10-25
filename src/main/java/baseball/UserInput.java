@@ -14,9 +14,9 @@ public class UserInput {
 		
 	}
 	
-	public List<Integer> getUser(){
+	public List<Integer> setUser(){
 		System.out.print("숫자를 입력해 주세요 : ");
-		
+		user.clear();
 		String num = Console.readLine();
 		for(int i = 0; i < num.length(); i++) {
 			user.add(Character.getNumericValue(num.charAt(i)));
@@ -26,6 +26,8 @@ public class UserInput {
 		}
 		return user;
 	}
+
+
 	
 	public void printError() {
 		throw new IllegalArgumentException();

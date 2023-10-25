@@ -21,7 +21,7 @@ public class Game {
 	public void start() {
 		strike = 0;
 		ball = 0;
-		user = ui.getUser();
+		user = ui.setUser();
 		for(int i = 0; i < computer.size(); i++) {
     		int user_temp = user.get(i);
     		int com_temp = computer.get(i);
