@@ -7,6 +7,7 @@ import java.util.List;
 //결과를 출력하는 클래스
 public class Result {
 
+
     private boolean continueGuess;
     private boolean gameOver;
 

@@ -8,6 +8,7 @@ import static baseball.Constant.INTEGER_REGEX_EXCEPT_ZERO;
 import static baseball.Constant.VALID_INPUT_LENGTH;
 
 public class User {
+
     private String myNumber;
     private int ball;
     private int strike;

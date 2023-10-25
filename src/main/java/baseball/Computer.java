@@ -11,6 +11,7 @@ import static baseball.Constant.*;
 
 public class Computer {
 
+
     private List<Integer> computerNumber = new ArrayList<>();
 
     public Computer(){
