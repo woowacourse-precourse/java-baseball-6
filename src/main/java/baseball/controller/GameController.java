@@ -4,10 +4,10 @@ import baseball.model.BaseballNumber;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.service.ComputerService;
+import baseball.util.ConvertObjectType;
 import baseball.util.ValidatorPlayerInput;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.view.PrintMessage.*;
@@ -41,7 +41,7 @@ public class GameController {
     public void setPlayerBaseballNumber() {
         System.out.print(REQUEST_INPUT_NUMBER.getMessage());
         String input = Console.readLine();
-        List<Integer> inputToList = convertStringToList(input);
+        List<Integer> inputToList = ConvertObjectType.convertStringToList(input);
         ValidatorPlayerInput.validateNumberSizeAndDuplicate(inputToList);
         BaseballNumber playerInputNumber = new BaseballNumber(inputToList);
         player.updateBaseballNumber(playerInputNumber);
@@ -86,16 +86,6 @@ public class GameController {
         }
         System.out.println(NOTHING.getMessage());
         return false;
-    }
-
-    private List<Integer> convertStringToList(String input) {
-        List<Integer> resultList = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            char charAtPosition = input.charAt(i);
-            int digit = Character.getNumericValue(charAtPosition);
-            resultList.add(digit);
-        }
-        return resultList;
     }
 
 }
