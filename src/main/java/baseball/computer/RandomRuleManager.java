@@ -1,17 +1,18 @@
-package baseball;
+package baseball.computer;
 
+import baseball.player.UserNumberManager;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.enum_class.NumberInfo.*;
-import static baseball.enum_class.Message.*;
+import static baseball.enums.NumberInfo.*;
+import static baseball.enums.Message.*;
 
 public class RandomRuleManager implements GameManager {
     private final UserNumberManager userNumberManager;
 
-    RandomRuleManager(UserNumberManager userNumberManager){
+    public RandomRuleManager(UserNumberManager userNumberManager){
         this.userNumberManager = userNumberManager;
     }
 

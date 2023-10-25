@@ -1,4 +1,4 @@
-package baseball.enum_class;
+package baseball.enums;
 
 public enum Message {
     START_GAME_MESSAGE("숫자 야구 게임을 시작합니다."),

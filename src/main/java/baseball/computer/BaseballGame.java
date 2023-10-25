@@ -1,11 +1,12 @@
-package baseball;
+package baseball.computer;
 
+import baseball.computer.GameManager;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.enum_class.NumberInfo.*;
-import static baseball.enum_class.Message.*;
+import static baseball.enums.NumberInfo.*;
+import static baseball.enums.Message.*;
 
 public class BaseballGame {
     private final GameManager numberManager;

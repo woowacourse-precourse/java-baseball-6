@@ -1,14 +1,14 @@
-package baseball;
+package baseball.player;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static baseball.enum_class.Message.INPUT_USERNUMBER_MESSAGE;
-import static baseball.enum_class.NumberInfo.COUNT;
+import static baseball.enums.Message.INPUT_USERNUMBER_MESSAGE;
+import static baseball.enums.NumberInfo.COUNT;
 
-public class UserInputNumberManager implements UserNumberManager{
+public class UserInputNumberManager implements UserNumberManager {
     private String userNumber;
 
     public String getUserNumber() {
