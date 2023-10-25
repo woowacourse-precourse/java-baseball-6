@@ -31,8 +31,6 @@ public class Computer {
             for(int j : user.userNumberList){
                 if(j==i && computerIdx == userIdx){
                     strike++;
-//                    computerIdx++;
-//                    break;
                 }else if(j==i){
                     ball++;
                 }
