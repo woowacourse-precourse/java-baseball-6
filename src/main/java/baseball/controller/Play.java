@@ -47,22 +47,22 @@ public class Play {
         int ball = score.getBall();
 
         if (strike == 0 && ball == 0) {
-            OutputView.nothing();
+            OutputView.printNothing();
             return;
         }
 
         if (strike == 0) {
-            OutputView.onlyBall(ball);
+            OutputView.printOnlyBalls(ball);
             return;
         }
 
         if (ball == 0) {
-            OutputView.onlyStrike(strike);
+            OutputView.printOnlyStrikes(strike);
             return;
         }
 
         if (strike > 0 && ball > 0) {
-            OutputView.strikeAndBall(strike, ball);
+            OutputView.printStrikesAndBalls(strike, ball);
             return;
         }
     }

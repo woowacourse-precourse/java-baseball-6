@@ -20,10 +20,10 @@ public class Game {
 
     public void game() {
         while (gameFlag) {
-            OutputView.gameStart();
+            OutputView.printGameStart();
             computerNumber.newComputerNumber();
             play.play(computerNumber);
-            OutputView.gameFinish();
+            OutputView.printGameFinish();
             checkAgainOrStop(InputView.againOrStopInput());
         }
     }
