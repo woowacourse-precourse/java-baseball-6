@@ -74,7 +74,7 @@ public class ApplicationContainer {
     public GameService getGameService() {
         if ( gameService == null ) {
             gameService = new GameServiceImpl(getRandomNumberGenerator(), getNumbersMatcher(), getInputValidator(), getGameFactory());
-            printCreatedInstanceMessage(gameService.getClass().toString(), GameFactory.class.toString());
+            printCreatedInstanceMessage(gameService.getClass().toString(), GameService.class.toString());
         }
         return gameService;
     }
