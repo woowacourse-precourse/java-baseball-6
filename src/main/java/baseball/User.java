@@ -25,5 +25,14 @@ public class User {
         numbers = convertStrToList(inputNum);
     }
 
+    // String -> List 변환
+    private List<Integer> convertStrToList(String input) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < LEN_NUM; i++) {
+            result.add((int) input.charAt(i));
+        }
+        return result;
+    }
+
 
 }
