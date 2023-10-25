@@ -28,9 +28,17 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String humanInput = Console.readLine();
             //숫자가 아닌 값을 넣었을 때 예외처리
-            if(!humanInput.matches("\\d+") || humanInput.length() != 3){
-                throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다.");
-            }//잘못된 값 입력시 애플리케이션 종료
+            try {
+                if(!humanInput.matches("\\d+") || humanInput.length() != 3){
+                    throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다.");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                Console.close();
+                newGame = false;
+                break;// 애플리케이션 종료
+            }
+
             //String으로 받았기 때문에 각각의 인덱스들을 int값으로 변현
             char[] digits = humanInput.toCharArray();
             for (char digitChar : digits) {
