@@ -1,4 +1,4 @@
-package others;
+package baseball.others;
 
 public class Output {
     public static void printGameStart() {
