@@ -1,7 +1,7 @@
 package baseball.domain;
 
-public class game {
     public class Game {
+
         int strikeCount;
         int ballCount;
         int[] gameNumbers;
@@ -35,4 +35,4 @@ public class game {
             ballCount += 1;
         }
     }
-}
+
