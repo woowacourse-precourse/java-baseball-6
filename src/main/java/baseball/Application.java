@@ -11,10 +11,10 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int nextNum = 1;
-        BasicController controller = new BasicController();
-        System.out.println("숫자 야구 게임을 시작합니다.");
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while(nextNum != 2){
+            BasicController controller = new BasicController();
             controller.createComputerNumber();
 
             while(nextNum != 2){
