@@ -86,3 +86,5 @@ public class Application {
         }
     }
 }
+
+// 해당 파일만 단독으로 실행하면 결과 값이 나오지만 gradle이나 JDK 문제로 해당 디렉토리에선 실행 불가
