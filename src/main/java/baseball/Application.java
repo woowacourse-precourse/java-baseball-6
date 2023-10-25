@@ -6,9 +6,6 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        User player = new User();
-        Computer computer = new Computer();
 
         /*
         1: 게임 시작
@@ -16,7 +13,10 @@ public class Application {
          */
         String insertCoin = "1";
 
-        while (insertCoin == "1") {
+        while (insertCoin.equals("1")) {
+            User player = new User();
+            Computer computer = new Computer();
+
             startNewGame(player, computer);
             insertCoin = Console.readLine();
         }
@@ -39,8 +39,8 @@ public class Application {
         }
     }
 
-    private static String greetings() {
-        return "숫자 야구 게임을 시작합니다.";
+    private static void greetings() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
 }
