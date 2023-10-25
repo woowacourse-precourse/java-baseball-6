@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,9 @@ public class Game {
             inputNumbers.add(Integer.parseInt(String.valueOf(input.charAt(i))));
         }
 
-        if(inputNumbers.size() != 3) throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+        if (inputNumbers.size() != 3) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+        }
 
         return inputNumbers;
     }
