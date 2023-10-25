@@ -3,6 +3,7 @@ package mytest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import baseball.model.Game;
@@ -48,30 +49,37 @@ public class ModelTest {
     @DisplayName("숫자로만 이루어져 있는지 확인")
     @Test
     void testIsAllDigits() {
-        assertTrue(InputManager.isAllDigits("123"));
-        assertTrue(InputManager.isAllDigits("987654"));
-        assertFalse(InputManager.isAllDigits("123asd"));
+        Throwable exception = assertThrows(RuntimeException.class, () ->
+                InputManager.isAllDigits("123asd", SIZE)
+        );
+        assertEquals(SIZE + "자리의 수를 입력해주세요.", exception.getMessage());
     }
 
     @DisplayName("입력이 범위 내에 있는지 확인")
     @Test
     void testIsNumberInRange() {
-        assertTrue(InputManager.isNumberInRange("123", MIN, MAX));
-        assertFalse(InputManager.isNumberInRange("012", MIN, MAX));
+        Throwable exception = assertThrows(RuntimeException.class, () ->
+                InputManager.isNumberInRange("012", MIN, MAX)
+        );
+        assertEquals(MIN + "~" + MAX + "에 해당하는 수만 입력해주세요.", exception.getMessage());
     }
 
     @DisplayName("입력 크기가 유효한지 확인")
     @Test
     void testIsSizeValid() {
-        assertTrue(InputManager.isSizeValid("123", SIZE));
-        assertFalse(InputManager.isSizeValid("12", SIZE));
+        Throwable exception = assertThrows(RuntimeException.class, () ->
+                InputManager.isSizeValid("12", SIZE)
+        );
+        assertEquals(SIZE + "자리의 수를 입력해주세요.", exception.getMessage());
     }
 
     @DisplayName("중복된 수가 있는지 확인")
     @Test
     void testHasDuplicates() {
-        assertTrue(InputManager.hasDuplicates("112", SIZE));
-        assertFalse(InputManager.hasDuplicates("123", SIZE));
+        Throwable exception = assertThrows(RuntimeException.class, () ->
+                InputManager.hasDuplicates("112", SIZE)
+        );
+        assertEquals("수를 중복되지 않게 입력해주세요.", exception.getMessage());
     }
 
     @DisplayName("재시작 및 종료의 입력이 유효한지 확인")
