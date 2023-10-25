@@ -4,5 +4,6 @@ public enum BaseballGameResultStatus {
     BALL_AND_STRIKE,
     BALL,
     STRIKE,
-    NOTHING
+    NOTHING,
+    ANSWER
 }
