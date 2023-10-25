@@ -17,13 +17,13 @@ public class InputValidator {
     // validate 3-digit
     public void validateThreeDigit(int inputNumber) {
         if (inputNumber < 100 || inputNumber > 999) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input must be 3-digit");
         }
     }
 
     public void validateEndInput(int inputNumber) {
         if (inputNumber != 1 && inputNumber != 2) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input must be either 1 or 2");
         }
     }
 
