@@ -31,13 +31,12 @@ public class NumberBaseballGame {
 
                     if (result[0] == 3) {
                         gameWon = true;
-                        System.out.println("게임에서 승리하셨습니다! 컴퓨터의 숫자는 " + computerNumber[0] + computerNumber[1] + computerNumber[2] + " 입니다.");
+                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     }
                 } catch (IllegalArgumentException e) {
                     System.out.println("잘못된 입력입니다. 1-9 중복 없이 다시 시도하세요.");
                 }
             }
-
             // 게임 재시작 또는 종료 확인
             if (!restartOption.askForRestart()) {
                 break; // 게임 종료
