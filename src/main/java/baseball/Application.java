@@ -2,18 +2,22 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import org.mockito.internal.matchers.Null;
+
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-
-        while (true) {
+        boolean exitgame = false;
+        while (!exitgame) {
             List<Integer> computer = generateNumbers();
             boolean gameOver = false;
 
             while (!gameOver) {
-                List<Integer> user = getUserNumbers();
+                String user = getUserNumbers();
                 String result = getResult(computer, user);
                 System.out.println(result);
 
@@ -21,12 +25,16 @@ public class Application {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     int choice = Integer.parseInt(Console.readLine());
-                    if (choice != 1) {
+                    if (choice == 1) { // 0 1
+                        computer = generateNumbers();
+                    }
+                    else if(choice == 2) {
+                        gameOver = true;
+                        exitgame = true;
                         break;
                     }
                     else {
-                        gameOver = true;
-                        break;
+                        System.out.println("잘못된 입력입니다.");
                     }
                 }
             }
@@ -47,14 +55,17 @@ public class Application {
         return computer;
     }
 
-    private static List<Integer> getUserNumbers() {
+    private static String getUserNumbers() {
 
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        List<Integer> user = new ArrayList<>();
 
         try {
-            if (user.size() != 3) {
+            if (input.contains("0")) {
+                throw new IllegalArgumentException("1부터 9까지의 숫자만 입력해주세요.");
+            }
+
+            if (input.length() != 3) {
                 throw new IllegalArgumentException("세 자리수가 아닙니다.");
             }
         } catch (IllegalArgumentException e) {
@@ -62,17 +73,19 @@ public class Application {
             throw e;
         }
 
-        return user;
+        return input;
     }
 
-    private static String getResult(List<Integer> computer, List<Integer> user) {
+    private static String getResult(List<Integer> computer, String user) {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for (int i = 0; i < computer.size(); i++) {
-            if (computer.get(i).equals(user.get(i))) {
+        for (int i = 0; i < user.length(); i++) {
+            int number = Character.getNumericValue(user.charAt(i));
+
+            if (computer.get(i) == number) {
                 strikeCount++;
-            } else if (computer.contains(user.get(i))) {
+            } else if (computer.contains(number)) {
                 ballCount++;
             }
         }
@@ -89,6 +102,6 @@ public class Application {
             result += strikeCount + "스트라이크";
         }
 
-        return result.toString();
+        return result;
     }
 }

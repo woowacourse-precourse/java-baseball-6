@@ -124,16 +124,16 @@ BUILD SUCCESSFUL in 0s
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
-
-```java
-List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
-        computer.add(randomNumber);
+    
+    ```java
+    List<Integer> computer = new ArrayList<>();
+    while (computer.size() < 3) {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber);
+        }
     }
-}
-```
+    ```
 
 ---
 
