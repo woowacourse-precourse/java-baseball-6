@@ -22,7 +22,18 @@ public class Application {
             }
             strike = 0;
             ball = 0;
-            count(answer, input);
+            for(int i = 0; i < Size; i++){
+                for(int j = 0; j < Size; j++){
+                    if(answer.charAt(i) == input.charAt(j)){
+                        if(i == j){
+                            strike++;
+                        }
+                        else{
+                            ball++;
+                        }
+                    }
+                }
+            }
             if(strike + ball == 0){
                 System.out.println("낫싱");
             }
@@ -74,20 +85,5 @@ public class Application {
             }
         }
         return true;
-    }
-
-    public static void count(String answer, String input){
-        for(int i = 0; i < Size; i++){
-            for(int j = 0; j < Size; j++){
-                if(answer.charAt(i) == input.charAt(j)){
-                    if(i == j){
-                        strike++;
-                    }
-                    else{
-                        ball++;
-                    }
-                }
-            }
-        }
     }
 }
