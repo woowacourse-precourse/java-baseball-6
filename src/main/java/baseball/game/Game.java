@@ -1,13 +1,12 @@
 package baseball.game;
 
 import baseball.NumberFactory;
-import baseball.error.ErrorCode;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class GameProcess {
+public class Game {
 
     private BaseballGame baseballGame;
 
@@ -16,8 +15,7 @@ public class GameProcess {
         init();
         do {
             inputUserNumber();
-        } while (inputRestartNumber());
-
+        } while (isRestart());
         View.endGame();
     }
 
@@ -37,25 +35,15 @@ public class GameProcess {
         }
     }
 
-    private boolean inputRestartNumber() {
+    private boolean isRestart() {
         View.restartGame();
-        String inputNumber = Console.readLine();
+        String userInput = Console.readLine();
 
-        int number = valid(inputNumber);
-        if (number == GameConfig.RESTART_NUMBER) {
+        int pressedNumber = baseballGame.tryAgainGame(userInput);
+        if (pressedNumber == GameConfig.RESTART_NUMBER) {
             init();
             return true;
         }
         return false;
-    }
-
-    private int valid(String inputNumber) {
-        String RestartButton = String.valueOf(GameConfig.RESTART_NUMBER);
-        String EndButton = String.valueOf(GameConfig.END_NUMBER);
-
-        if (!inputNumber.equals(RestartButton) && !inputNumber.equals(EndButton)) {
-            throw new IllegalArgumentException(ErrorCode.RESTART_ERROR.message);
-        }
-        return Integer.parseInt(inputNumber);
     }
 }
