@@ -6,7 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+
+    private static List<Integer> generatedComputer;
+
     public static List<Integer> generateComputer() {
+
+        if (generatedComputer == null) {
+            generatedComputer = generatedRandomComputer();
+        }
+        return generatedComputer;
+    }
+
+    private static List<Integer> generatedRandomComputer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -15,5 +26,9 @@ public class Computer {
             }
         }
         return computer;
+    }
+
+    public static void resetGeneratedComputer() {
+        generatedComputer = null;
     }
 }

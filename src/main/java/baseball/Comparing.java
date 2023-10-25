@@ -33,7 +33,6 @@ public class Comparing {
 
     private void countEqualsNumberAndPosition(List<Integer> computer, Integer userIndex, Integer computerIndex) {
         if (userIndex == computerIndex) {
-            equalsNumber++;
             equalsPosition++;
         }
         if (computer.contains(userIndex)) {

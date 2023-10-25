@@ -4,6 +4,7 @@ import static baseball.Message.CHOICE;
 import static baseball.Message.COMPLETE;
 import static baseball.Message.DESTINATION;
 import static baseball.Message.EXIT;
+import static baseball.Message.GAME_OVER;
 import static baseball.Message.RESTART;
 
 import java.util.List;
@@ -23,7 +24,6 @@ public class GameManager {
         while (isNewGame) {
             if (isNewGame) {
                 playGame();
-                chooseNewGame();
             }
         }
     }
@@ -35,9 +35,11 @@ public class GameManager {
 
         if (response.equals(RESTART.getMessage())) {
             isNewGame = true;
+            Computer.resetGeneratedComputer();
         }
 
         if (response.equals(COMPLETE.getMessage())) {
+            System.out.println(GAME_OVER.getMessage());
             isNewGame = false;
             return;
         }
@@ -48,20 +50,11 @@ public class GameManager {
 
         if (inputResult.equals(DESTINATION.getMessage())) {
             System.out.println(EXIT.getMessage());
+            chooseNewGame();
         }
-
     }
 
-    private String getInputResult() {
-        String userInput = getRequest();
-        Computer computer = new Computer();
-
-        String inputResult = compareNumbers(userInput, computer.generateComputer());
-        System.out.println(inputResult);
-        return inputResult;
-    }
-
-    private static String getRequest() {
+    private String getRequest() {
         UserInterface.printMessage(Message.INPUT);
         String userInput = UserInterface.requestUserInput();
         System.out.println(userInput);
@@ -78,5 +71,18 @@ public class GameManager {
 
         return resultMapper.getResult(equalsNumber, equalsPosition);
     }
+
+    private String getCompareResult() {
+        String userInput = getRequest();
+        String inputResult = compareNumbers(userInput, Computer.generateComputer());
+        return inputResult;
+    }
+
+    private String getInputResult() {
+        String inputResult = getCompareResult();
+        System.out.println(inputResult);
+        return inputResult;
+    }
+
 }
 

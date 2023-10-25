@@ -1,15 +1,23 @@
 package baseball;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class UserInterfaceTest {
 
+    private UserInterface userInterface;
+
     public static InputStream setReadLine(String readLine) {
         return new ByteArrayInputStream(readLine.getBytes());
+    }
+
+    @BeforeEach
+    void given() {
+        userInterface = new UserInterface();
     }
 
     @Test
@@ -19,7 +27,7 @@ class UserInterfaceTest {
         System.setIn(readLine);
 
         String expect = "926";
-        String actual = UserInterface.requestUserInput();
+        String actual = userInterface.requestUserInput();
 
         assertEquals(expect, actual);
     }

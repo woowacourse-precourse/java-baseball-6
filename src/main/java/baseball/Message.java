@@ -12,6 +12,7 @@ public enum Message {
     NOTHING("낫싱"),
     STRIKE("스트라이크"),
     DESTINATION("3스트라이크"),
+    GAME_OVER("게임 종료"),
     INPUT_THREE_NUMBER("[ERROR] 세자리 숫자를 입력해주세요"),
     INPUT_RIGHT_NUMBER("[ERROR] 1 또는 2를 입력해주세요");
 
