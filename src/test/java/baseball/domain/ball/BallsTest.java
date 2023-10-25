@@ -24,9 +24,9 @@ class BallsTest {
 
     static Stream<Arguments> createBallsExceptionData() {
         return Stream.of(
-                Arguments.of(Arrays.asList(1, 2, 3)),
-                Arguments.of(Arrays.asList(5, 2, 4)),
-                Arguments.of(Arrays.asList(3, 9, 7))
+                Arguments.of(Arrays.asList(1, 2, 3, 4)),
+                Arguments.of(Arrays.asList(5, 2, 2)),
+                Arguments.of(Arrays.asList(3, 9, 0))
         );
     }
 
