@@ -20,9 +20,8 @@ public class Game {
         answer = createRandomNumber();
         while(!exit) {
             playerInputNum = inputNum(); // 검증까지 끝
-            printResult(playerInputNum);
+            printResult(answer, playerInputNum);
         }
-
     }
 
     // 랜덤 세자리 수 정답 생성
@@ -34,7 +33,7 @@ public class Game {
                 randomNumber.add(num);
             }
         }
-        //System.out.println("테스트용 정답 : "+randomNumber);
+        System.out.println("테스트용 정답 : "+randomNumber);
         return randomNumber;
     }
 
@@ -104,6 +103,49 @@ public class Game {
             }
         }
         return cnt;
+    }
+
+    // 결과값 출력
+    public void printResult(List<Integer> answer, List<Integer> input) {
+        int strike = countStrike(answer, input);
+        int ball = countBall(answer, input);
+
+        if(strike == 3) {
+            checkRestart();
+        } else if(strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else {
+            String resultStr = "";
+            if (ball > 0) {
+                resultStr += ball + "볼 ";
+            }
+            if (strike > 0) {
+                resultStr += strike+"스트라이크";
+            }
+            System.out.println(resultStr);
+        }
+    }
+
+    public void checkRestart() {
+        String inputRestart = inputRestartOrExit();
+        if (inputRestart.equals("1")) {
+            exit = false;
+            answer = createRandomNumber();
+        }else {
+            exit = true;
+        }
+    }
+
+    // 재시작 OR 종료 여부 입력받기
+    public String inputRestartOrExit() {
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if(!isRestartValidNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+        return input;
     }
 
     // 재시작 입력에 대한 검증
