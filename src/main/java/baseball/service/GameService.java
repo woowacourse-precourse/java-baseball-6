@@ -41,14 +41,23 @@ public class GameService {
     }
 
     private void compute(int[] gameNumber, int[] userNumber, int index) {
-        boolean isSame = false;
+        int pos = -1;
         for (int i = 0; i < gameNumber.length; i++) {
             if (gameNumber[i] == userNumber[i]) {
-                isSame = true;
+                pos = i;
                 break;
             }
         }
+        checkSamePosition(index, pos);
+    }
 
+    private void checkSamePosition(int index, int pos) {
+        if (index == pos) {
+            game.increaseStrikeCount();
+        }
+        if (index != pos && pos != -1) {
+            game.increaseBallCount();
+        }
     }
 
     private int[] getUserNumber() {
