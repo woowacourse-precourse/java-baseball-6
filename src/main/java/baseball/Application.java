@@ -1,7 +1,13 @@
 package baseball;
 
+
+import baseball.view.SystemMessage;
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        SystemMessage systemMessage = new SystemMessage();
+        Controller controller = new Controller();
+        systemMessage.startGreeting();
+        controller.run();
     }
 }
+
