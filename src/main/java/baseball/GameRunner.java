@@ -11,7 +11,68 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class GameRunner {
-    void startGame() {
+    GameRunner() {
+    }
+
+    static List<Integer> generateRandomNumbers() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
+
+    private int countBall(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int ball = 0;
+        for (int index = 0; index < 3; index++) {
+            if (computerNumber.contains(playerNumber.get(index)) && !(computerNumber.get(index).equals(playerNumber.get(index)))) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+    private int countStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int strike = 0;
+        for (int index = 0; index < 3; index++) {
+            if (computerNumber.contains(playerNumber.get(index)) && (computerNumber.get(index).equals(playerNumber.get(index)))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    private boolean askExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int input;
+        input = Integer.parseInt(Console.readLine());
+        if (input == 1) {
+            return false;
+        } else if (input == 2) {
+            return true;
+        }
+        throw new IllegalArgumentException("잘못된 값을 입력하여 게임을 종료합니다.");
+    }
+
+    public List<Integer> inputPlayerNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input;
+        List<Integer> number;
+        try {
+            input = Console.readLine();
+            int[] intArray = Arrays.stream(input.split("")).mapToInt(Integer::parseInt).toArray();
+            number = Arrays.stream(intArray).boxed().collect(Collectors.toList());
+            validateNumber(number);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("잘못된 값을 입력하여 게임을 종료합니다.");
+        }
+        return number;
+    }
+
+    public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean exitFlag;
         do {
@@ -30,18 +91,7 @@ public class GameRunner {
         } while (!exitFlag);
     }
 
-    static List<Integer> generateRandomNumbers() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
-
-    void printResult(int balls, int strikes) {
+    public void printResult(int balls, int strikes) {
         if (balls == 0 & strikes == 0) {
             System.out.println("낫싱");
         } else if (balls > 0 && strikes > 0) {
@@ -53,22 +103,7 @@ public class GameRunner {
         }
     }
 
-    List<Integer> inputPlayerNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input;
-        List<Integer> number;
-        try {
-            input = Console.readLine();
-            int[] intArray = Arrays.stream(input.split("")).mapToInt(Integer::parseInt).toArray();
-            number = Arrays.stream(intArray).boxed().collect(Collectors.toList());
-            validateNumber(number);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("잘못된 값을 입력하여 게임을 종료합니다.");
-        }
-        return number;
-    }
-
-    void validateNumber(List<Integer> number) {
+    public void validateNumber(List<Integer> number) {
         if (number.size() != 3) {
             throw new IllegalArgumentException("잘못된 값을 입력하여 게임을 종료합니다.");
         }
@@ -83,35 +118,4 @@ public class GameRunner {
         }
     }
 
-    int countBall(List<Integer> computerNumber, List<Integer> playerNumber) {
-        int ball = 0;
-        for (int index = 0; index < 3; index++) {
-            if (computerNumber.contains(playerNumber.get(index)) && !(computerNumber.get(index).equals(playerNumber.get(index)))) {
-                ball++;
-            }
-        }
-        return ball;
-    }
-
-    int countStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
-        int strike = 0;
-        for (int index = 0; index < 3; index++) {
-            if (computerNumber.contains(playerNumber.get(index)) && (computerNumber.get(index).equals(playerNumber.get(index)))) {
-                strike++;
-            }
-        }
-        return strike;
-    }
-
-    boolean askExit() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int input;
-        input = Integer.parseInt(Console.readLine());
-        if (input == 1) {
-            return false;
-        } else if (input == 2) {
-            return true;
-        }
-        throw new IllegalArgumentException("잘못된 값을 입력하여 게임을 종료합니다.");
-    }
 }
