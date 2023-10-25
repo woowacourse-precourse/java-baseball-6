@@ -35,14 +35,18 @@ public class BaseballGame {
     private void oneGame() {
         GameResult result;
         do {
-            String inputNumber = inputView.readGameNumber();
-            gameNumber.setPlayerNumbers(numberValidator.toValidateData(inputNumber));
+            setNumbers();
             List<Integer> playerNumbers = gameNumber.getPlayerNumbers();
             List<Integer> computerNumbers = gameNumber.getComputerNumbers();
             result = compareNumbers(playerNumbers, computerNumbers);
             OutputView.printResult(result);
         } while (!result.isSuccess());
         OutputView.printEndGame();
+    }
+
+    private void setNumbers() {
+        String inputNumber = inputView.readGameNumber();
+        gameNumber.setPlayerNumbers(numberValidator.toValidateData(inputNumber));
     }
 
     private GameResult compareNumbers(List<Integer> playerNumbers, List<Integer> computerNumbers) {
