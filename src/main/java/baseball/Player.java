@@ -2,15 +2,17 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+
 public class Player {
-    public static String inputNumber() {
+    public static String inputThreeNumbers() {
         String input = Console.readLine();
+        int len = input.length();
+        Exception.checkInputSize(len);
+        Exception.checkOverlap(input, len);
         return input;
     }
 
     public static int inputStrParseInt(String input, int i) {
-        int len = input.length();
-        Exception.checkInputSize(len);
         int num = stringToInt(input, i);
         return num;
     }
@@ -26,8 +28,5 @@ public class Player {
         int num = Character.getNumericValue(strToChar);
         return num;
     }
-
-
-
 
 }

@@ -16,8 +16,12 @@ public class Exception {
         }
     }
 
-    public static void checkOverlap(HashSet<Integer> array) {
-        if (array.size() != INPUT_NUMBER_LENGTH) {
+    public static void checkOverlap(String input, int len) {
+        HashSet<String> set = new HashSet<>();
+        for(int i=0; i<len; i++) {
+            set.add(input.substring(i,i+1));
+        }
+        if (set.size() != INPUT_NUMBER_LENGTH) {
             throw new IllegalArgumentException("서로 다른 " + INPUT_NUMBER_LENGTH + "자리의 수를 입력하세요.");
         }
     }
