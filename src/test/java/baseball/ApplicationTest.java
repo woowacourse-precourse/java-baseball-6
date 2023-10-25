@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -59,6 +61,14 @@ class ApplicationTest extends NsTest {
         List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
 
         assertThat(randomNumbersList.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 컴퓨터_숫자_생성_중복_테스트() {
+        Computer randomNumbers = Computer.createRandomNumbers();
+        List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
+
+        assertThat(randomNumbersList.size()).isEqualTo(new HashSet<>(randomNumbersList).size());
     }
 
     @Override
