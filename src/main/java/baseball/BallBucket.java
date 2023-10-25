@@ -17,6 +17,6 @@ public class BallBucket {
 	}
 
 	public Ball getBall() {
-		return balls.remove(Randoms.pickNumberInRange(1, balls.size()-1));
+		return balls.remove(Randoms.pickNumberInRange(0, balls.size()-1));
 	}
 }
