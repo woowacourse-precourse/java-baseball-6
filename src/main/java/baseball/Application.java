@@ -184,4 +184,18 @@ public class Application {
         return Application.inputStartOrEnd(userInputStartOrEnd);
     }
 
+    public void start() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (true) {
+            int startOrEnd = startGame();
+
+            if (startOrEnd == 1) {
+                continue;
+            } else {
+                break;
+            }
+        }
+    }
+
 }
