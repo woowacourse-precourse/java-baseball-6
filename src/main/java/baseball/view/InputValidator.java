@@ -3,9 +3,13 @@ package baseball.view;
 import java.util.List;
 
 public final class InputValidator {
+
+    private static final char MIN_NUMBER_SIZE = '1';
+    private static final char MAX_NUMBER_SIZE = '9';
+
     public void validateIsNumeric(String input) {
         boolean isNumeric = input.chars()
-                .allMatch(number -> '0' <= number && number <= '9');
+                .allMatch(number -> MIN_NUMBER_SIZE <= number && number <= MAX_NUMBER_SIZE);
 
         if (!isNumeric) {
             throw new IllegalArgumentException();
