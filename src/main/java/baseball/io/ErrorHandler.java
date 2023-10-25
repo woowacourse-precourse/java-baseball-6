@@ -31,7 +31,7 @@ public class ErrorHandler {
         }
     }
     public static void checkRestart(Integer userInput){
-        if(userInput != 1 || userInput != 2){
+        if(userInput != 1 && userInput != 2){
             throw new IllegalArgumentException("Error! 1, 2 중 선택 하셔야 됩니다!");
         }
     }
