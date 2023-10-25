@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 public class PlayGame {
 
-    public boolean compareNum(List<Integer> computer, List<Integer> user) {
+    public int compareNum(List<Integer> computer, List<Integer> user) {
         int strike = cntStrike(computer, user);
         int ball = cntBall(computer, user);
 
@@ -15,11 +15,13 @@ public class PlayGame {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             StringTokenizer st = new StringTokenizer(Console.readLine());
             String input = st.nextToken();
-            if ("2".equals(input)) {
-                return false; // 게임 종료
+            if ("2".equals(input)) { // 게임 종료
+                return 2;
+            } else { // 새로운 게임 시작
+                return 1;
             }
         }
-        return true; // 게임 지속
+        return 3; // 원래 게임 지속
     }
 
     public int cntStrike(List<Integer> computer, List<Integer> user) {
