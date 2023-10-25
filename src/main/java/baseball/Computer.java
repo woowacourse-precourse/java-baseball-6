@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class Computer {
     public List<Integer> compareTargetNumbers(List<Integer> inputNumbers) {
         List<Integer> hintCounts = new ArrayList<>(Hints.values().length);
 
-        setListZero(hintCounts,Hints.values().length);
+        setListZero(hintCounts, Hints.values().length);
 
         for (int i = 0; i < inputNumbers.size(); i++) {
             int hintType = calculateHint(inputNumbers.get(i), i);
@@ -41,7 +40,7 @@ public class Computer {
         return Hints.NOTHING.ordinal();
     }
 
-    private void setListZero(List<Integer> targetList,int counts) {
+    private void setListZero(List<Integer> targetList, int counts) {
         for (int i = 0; i < counts; i++) {
             targetList.add(0);
         }
