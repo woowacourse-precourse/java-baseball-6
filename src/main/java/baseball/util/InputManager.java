@@ -8,10 +8,10 @@ public class InputManager {
 
     // 입력받은 값이 모두 숫자로 이루어져 있는지
     public static void isAllDigits(String userInput, int size) {
-        for (char value : userInput.toCharArray()) {
-            if (!Character.isDigit(value)) {
-                throw new IllegalArgumentException(size + "자리의 수를 입력해주세요.");
-            }
+        try {
+            Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(size + "자리의 수를 입력해주세요.");
         }
     }
 

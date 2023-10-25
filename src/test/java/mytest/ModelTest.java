@@ -49,7 +49,7 @@ public class ModelTest {
     @Test
     void testIsAllDigits() {
         Throwable exception = assertThrows(RuntimeException.class, () ->
-                InputManager.isAllDigits("123asd", SIZE)
+                InputManager.isAllDigits("asd", SIZE)
         );
         assertEquals(SIZE + "자리의 수를 입력해주세요.", exception.getMessage());
     }
