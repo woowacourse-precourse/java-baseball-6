@@ -9,6 +9,22 @@ import java.util.Set;
 public class ComputerNumber {
 
     /**
+     * 일급 컬렉션 사용을 위한 private final 선언 및 생성자를 통한 검증
+     */
+    private final List<Integer> computerNumbers;
+
+    public ComputerNumber(List<Integer> computerNumbers) {
+        validateSize(computerNumbers);
+        validateDuplicate(computerNumbers);
+        validatePlayerInputRange(computerNumbers);
+        this.computerNumbers = computerNumbers;
+    }
+
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
+    }
+
+    /**
      * 랜덤으로 생성한 숫자 배열의 길이가 3이 아닌 경우 예외 발생
      *
      * @param computerNumbers : 랜덤으로 생성한 컴퓨터가 가진 수
