@@ -2,11 +2,25 @@ package baseball.service;
 
 import baseball.constant.Constant;
 import baseball.dto.ResultDTO;
+import baseball.view.InputView;
+import baseball.view.OutputView;
+import baseball.view.ReGameInputView;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NumberBaseballService {
+
+    /**
+     * 객체 생성 시 outputView, inputView 객체 할당
+     */
+    private final OutputView outputView;
+    private final InputView inputView;
+
+    public NumberBaseballService() {
+        outputView = new OutputView();
+        inputView = new InputView();
+    }
 
     /**
      * 한 사이클의 숫자야구게임에서 정답으로 사용될 랜덤 숫자 List 생성
@@ -42,5 +56,16 @@ public class NumberBaseballService {
             }
         }
         return new ResultDTO(strikeCount, ballCount);
+    }
+
+    /**
+     * 한 사이클의 게임 종료 후, 게임 재시작 여부를 묻는 메서드
+     *
+     * @return : 게임을 재시작할거면 true(1), 종료할거면 false(0) 반환
+     */
+    public boolean isReGame() {
+        outputView.printEndMessage();
+        ReGameInputView reGameInputView = new ReGameInputView();
+        return reGameInputView.inputReGameCommand().equals("1");
     }
 }
