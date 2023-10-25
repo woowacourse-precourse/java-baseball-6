@@ -31,6 +31,7 @@ public class BaseballNum {
 
     int isSamePositionNum(BaseballNum comparedNum) {
         int sameNumCnt = 0;
+
         for (int idx = 0; idx < 3; idx++) {
             if (baseballNum.get(idx).equals(comparedNum.getNum(idx))) {
                 sameNumCnt++;

@@ -8,14 +8,11 @@ public class Computer {
     }
 
     boolean checkNum(BaseballNum userNum) {
-        int strike;
-        int ball;
-
         if (userNum == null) {
             return (false);
         }
-        strike = computerNum.isSamePositionNum(userNum);
-        ball = computerNum.isContainsNum(userNum) - strike;
+        int strike = computerNum.isSamePositionNum(userNum);
+        int ball = computerNum.isContainsNum(userNum) - strike;
         Printer.baseball(strike, ball);
         return (strike == 3);
     }
