@@ -2,9 +2,47 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import org.assertj.core.internal.IntArrays;
 
 public class Application {
+
+    static int[] createNewArray(){
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        //정답이 될 3개의 숫자를 만들기
+        int[] answer = new int[3];
+        for(int i=0;i<3;i++){
+            answer[i] = Randoms.pickNumberInRange(1, 9);
+            for(int j=0; j < i; j++){
+                if(answer[j] == answer[i]) {
+                    answer[i] = Randoms.pickNumberInRange(1, 9);
+                    j = -1;
+                }
+            }
+        }
+        return answer;
+    }
+
+    static int[] receiveNewArray() {
+
+        int[] arr = new int[3];
+
+        System.out.print("숫자를 입력해주세요 : ");
+
+        //사용자로부터 3개의 숫자 입력받기
+        String readLine = Console.readLine();
+        if(readLine.length()!=3) throw new IllegalArgumentException(); //길이가 3이 아니면 오류
+        for (int i = 0; i < 3; i++) {
+            int temp = readLine.charAt(i) - '0';
+            if (temp < 1 || 9 < temp) throw new IllegalArgumentException(); //정수 1~9 사이의 값이 아니면 오류
+            arr[i] = temp;
+            for(int j=0; j < i; j++){
+                if(arr[j] == arr[i]) throw new IllegalArgumentException(); //중복 숫자가 있으면 오류
+            }
+        }
+        return arr;
+    }
+
     static boolean judge(int[] answer, int[] ask){
 
         int strike=0;
@@ -29,31 +67,35 @@ public class Application {
         }
         return false;
     }
+
+    static int endGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String readLine = Console.readLine();
+        if(readLine.length()!=1) throw new IllegalArgumentException(); //길이가 1이 아니면 오류
+        int temp = readLine.charAt(0) - '0';
+        if(temp < 1 || 2 < temp) throw new IllegalArgumentException(); //정수 1 또는 2가 아니면 오류
+        return temp;
+    }
+
     public static void main(String[] args) {
+        int key;
+        do {
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+            int[] answer = createNewArray();
+            int[] ask;
 
-        //정답이 될 3개의 숫자를 만들기
-        int[] answer = new int[3];
-        for(int i=0;i<3;i++){
-            answer[i] = Randoms.pickNumberInRange(1, 9);
-            for(int j=0; j < i && answer[j] == answer[i]; j++){
-                answer[i] = Randoms.pickNumberInRange(1, 9);
-                j=0;
+            try {
+
+                do {
+                    ask = receiveNewArray();
+                } while (!judge(answer, ask));
+
+                key = endGame();
+
+            } catch (IllegalArgumentException e) {
+                break;
             }
-        }
 
-        int[] ask = new int[3];
-        do{
-            System.out.print("숫자를 입력해주세요 : ");
-
-            //사용자로부터 3개의 숫자 입력받기
-            String readLine = Console.readLine();
-            for(int i=0; i<3; i++){
-                ask[i] = readLine.charAt(i)-'0';
-            }
-        }
-        while(!judge(answer, ask));
-
+        } while (key==1);
     }
 }
