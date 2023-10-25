@@ -28,14 +28,18 @@ public class InputErrorCheckService {
 
     //input이 3이어야하며, 숫자로만 이루어지고, 같은수가 없어야한다
     public Boolean errorCheck(String userInputNum){
-        return (userInputNum.length() == BaseballGameConstant.BASEBALL_NUM_SIZE
+        return (inputNumLengthCheck(userInputNum)
                 && IntegerCheck(userInputNum)
                 && sameNumCheck(userInputNum));
     }
 
+    public boolean inputNumLengthCheck(String userInputNum) {
+        return userInputNum.length() == BaseballGameConstant.BASEBALL_NUM_SIZE;
+    }
+
     //1과 2만 받는다
-    public void restartInputErrCheck(String restartInput){
-        if (!(restartInput.equals("1") || restartInput.equals("2"))) throw new IllegalArgumentException();
+    public Boolean restartInputErrCheck(String restartInput) {
+        return ((restartInput.equals("1") || restartInput.equals("2")));
     }
 
 }
