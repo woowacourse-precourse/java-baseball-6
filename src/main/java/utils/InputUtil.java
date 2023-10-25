@@ -24,6 +24,16 @@ public class InputUtil {
         }
     }
 
+    public static Integer getRestartInfo() {
+        String restartInfo = Console.readLine();
+
+        // 재시작 정보 검증
+        validation.validateRestartInfo(restartInfo);
+
+        // 재시작 정보 정수값으로 변환하여 반환
+        return Integer.parseInt(restartInfo);
+    }
+
     private static List<Integer> strToList(String playerInput) {
         List<Integer> listPlayerInput = new ArrayList<>();
         for (int idx = 0; idx < playerInput.length(); idx++) {
