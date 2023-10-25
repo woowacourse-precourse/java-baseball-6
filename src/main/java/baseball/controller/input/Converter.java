@@ -2,6 +2,7 @@ package baseball.controller.input;
 
 import baseball.domain.ball.Ball;
 import baseball.domain.ball.Balls;
+import baseball.exception.WrongInputException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +42,7 @@ public class Converter {
             int number = Integer.parseInt(numberString);
             return new Ball(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해주세요.");
+            throw new WrongInputException("숫자만 입력해주세요.");
         }
     }
 }

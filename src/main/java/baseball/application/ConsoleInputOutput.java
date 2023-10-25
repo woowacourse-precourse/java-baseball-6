@@ -20,6 +20,7 @@ public class ConsoleInputOutput implements GameOperator {
 
     @Override
     public boolean isContinue() {
+        Output.showEndMessage();
         return Input.isContinue();
     }
 }

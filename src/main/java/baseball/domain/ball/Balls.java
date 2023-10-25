@@ -1,6 +1,8 @@
 package baseball.domain.ball;
 
 import baseball.domain.result.Result;
+import baseball.exception.DuplicateException;
+import baseball.exception.OutOfRangeException;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -24,9 +26,9 @@ public class Balls {
 
     private void validSize(List<Ball> values) {
         if (values.size() < ROUNDS) {
-            throw new IllegalArgumentException("입력된 숫자가" + ROUNDS + "개 미만입니다.");
+            throw new OutOfRangeException("입력된 숫자가" + ROUNDS + "개 미만입니다.");
         } else if (values.size() > ROUNDS) {
-            throw new IllegalArgumentException("입력된 숫자가" + ROUNDS + "개 초과입니다.");
+            throw new OutOfRangeException("입력된 숫자가" + ROUNDS + "개 초과입니다.");
         }
     }
 
@@ -34,7 +36,7 @@ public class Balls {
         List<Ball> distinctList = values.stream().distinct().toList();
 
         if (values.size() != distinctList.size()) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+            throw new DuplicateException("중복된 숫자가 있습니다.");
         }
     }
 

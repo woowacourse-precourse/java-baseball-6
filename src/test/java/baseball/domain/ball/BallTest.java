@@ -1,5 +1,6 @@
 package baseball.domain.ball;
 
+import baseball.exception.OutOfRangeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,14 +20,14 @@ class BallTest {
     @DisplayName("Ball은 minRange 미만으로 설정될 수 없다.")
     void Ball은_minRange_미만이면_익셉션_발생() {
         int value = 0;
-        assertThrows(IllegalArgumentException.class, () -> new Ball(value));
+        assertThrows(OutOfRangeException.class, () -> new Ball(value));
     }
 
     @Test
     @DisplayName("Ball은 maxRange 초과로 설정될 수 없다.")
     void Ball은_minRange_초과이면_익셉션_발생() {
         int value = 10;
-        assertThrows(IllegalArgumentException.class, () -> new Ball(value));
+        assertThrows(OutOfRangeException.class, () -> new Ball(value));
     }
 
     @Test

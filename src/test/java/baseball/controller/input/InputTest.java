@@ -3,6 +3,9 @@ package baseball.controller.input;
 import baseball.domain.BallsFixture;
 import baseball.domain.ball.Balls;
 import baseball.domain.result.Result;
+import baseball.exception.DuplicateException;
+import baseball.exception.OutOfRangeException;
+import baseball.exception.WrongInputException;
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -25,9 +28,7 @@ class InputTest {
         final byte[] buf = String.join("\n", "abc").getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, Input::read);
-
-        assertEquals("숫자만 입력해주세요.", e.getMessage());
+        assertThrows(WrongInputException.class, Input::read);
     }
 
     @Test
@@ -36,9 +37,7 @@ class InputTest {
         final byte[] buf = String.join("\n", "112").getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, Input::read);
-
-        assertEquals("중복된 숫자가 있습니다.", e.getMessage());
+        assertThrows(DuplicateException.class, Input::read);
     }
 
     @Test
@@ -47,9 +46,7 @@ class InputTest {
         final byte[] buf = String.join("\n", "42").getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, Input::read);
-
-        assertEquals("입력된 숫자가3개 미만입니다.", e.getMessage());
+        assertThrows(OutOfRangeException.class, Input::read);
     }
 
     @Test
@@ -58,10 +55,7 @@ class InputTest {
         final byte[] buf = String.join("\n", "4256").getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
-
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, Input::read);
-
-        assertEquals("입력된 숫자가3개 초과입니다.", e.getMessage());
+        assertThrows(OutOfRangeException.class, Input::read);
     }
 
     @Test

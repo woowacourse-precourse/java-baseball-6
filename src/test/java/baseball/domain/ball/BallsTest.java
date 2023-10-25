@@ -2,6 +2,8 @@ package baseball.domain.ball;
 
 import baseball.domain.BallsFixture;
 import baseball.domain.result.Result;
+import baseball.exception.DuplicateException;
+import baseball.exception.OutOfRangeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -39,7 +41,7 @@ class BallsTest {
         values.add(one);
         values.add(two);
 
-        assertThrows(IllegalArgumentException.class, () -> new Balls(values));
+        assertThrows(OutOfRangeException.class, () -> new Balls(values));
     }
 
     @Test
@@ -56,7 +58,7 @@ class BallsTest {
         values.add(three);
         values.add(four);
 
-        assertThrows(IllegalArgumentException.class, () -> new Balls(values));
+        assertThrows(OutOfRangeException.class, () -> new Balls(values));
     }
 
     @Test
@@ -71,7 +73,7 @@ class BallsTest {
         values.add(two);
         values.add(three);
 
-        assertThrows(IllegalArgumentException.class, () -> new Balls(values));
+        assertThrows(DuplicateException.class, () -> new Balls(values));
     }
 
     @Test

@@ -20,7 +20,7 @@ public class BallsFixture {
         return new BallsFixture();
     }
 
-    public BallsFixture name(List<Ball> values) {
+    public BallsFixture values(List<Ball> values) {
         this.values = values;
         return this;
     }

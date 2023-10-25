@@ -15,10 +15,6 @@ public class Application {
 
         Output.showStart();
 
-        do {
-            game.play();
-
-            Output.showEndMessage();
-        } while (game.wantsToContinue());
+        game.play();
     }
 }

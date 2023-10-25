@@ -16,6 +16,13 @@ public class Game {
     }
 
     public void play() {
+        do {
+            pickComputer();
+
+        } while (wantsToContinue());
+    }
+
+    private void pickComputer() {
         Computer computer = Computer.generate(ballPicker);
 
         boolean isCompleted = false;
