@@ -21,24 +21,24 @@ public class BaseballGame {
 
 // 3자리 수 생성
     public void startGame() {
-        int gameControlNum = 1;
+        int gameStartNumber = 1;
         computerNums = computerPart.generateNumber();
 
-        while (gameControlNum == 1) {
+        while (gameStartNumber == 1) {
             messagePart.printInput();
             String userInput = playerPart.getPlayerInput();
             List<Integer> userNumbers = validator.validateInputNum(userInput);
 
-            ResultCount result = compareNumber(computerNums, userNumbers);
+            TotalCount result = compareNumber(computerNums, userNumbers);
             int ball = result.ballCount;
             int strike = result.strikeCount;
             messagePart.printResult(ball, strike);
 
-            gameControlNum = checkStrikeCount(strike);
+            gameStartNumber = StrikeScore(strike);
         }
     }
 
-    private ResultCount compareNumber(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    private TotalCount compareNumber(List<Integer> computerNumbers, List<Integer> userNumbers) {
         int ball = 0, strike = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -53,19 +53,19 @@ public class BaseballGame {
                 ball++;
             }
         }
-        return new ResultCount(ball, strike);
+        return new TotalCount(ball, strike);
     }
 
-    private static class ResultCount {
+    private static class TotalCount {
         int ballCount, strikeCount;
 
-        public ResultCount(int ballCount, int strikeCount) {  // 볼과 스트라이크 개수 정의
+        public TotalCount(int ballCount, int strikeCount) {  // 볼과 스트라이크 개수 정의
             this.ballCount = ballCount;
             this.strikeCount = strikeCount;
         }
     }
 
-    private int checkStrikeCount(int strike) {
+    private int StrikeScore(int strike) {
         int restartInput = 1;
 
         if (strike == 3) {

@@ -48,7 +48,7 @@ public class Validator {
         }
     }
 
-    public void restartValidation(int input) {
+    public static void restartValidation(int input) {
         if (input < 1 || input > 2) {
             throw new IllegalArgumentException(ASK_ONE_TWO_MSG);
         }
