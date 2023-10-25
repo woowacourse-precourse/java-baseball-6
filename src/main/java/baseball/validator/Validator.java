@@ -1,9 +1,9 @@
-package baseball;
+package baseball.validator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Constant.*;
+import static baseball.utils.Constant.*;
 
 public class Validator {
 

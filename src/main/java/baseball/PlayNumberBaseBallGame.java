@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.utils.Notification;
+import baseball.validator.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
