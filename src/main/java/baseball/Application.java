@@ -1,7 +1,13 @@
 package baseball;
 
+import static baseball.view.Message.StartMessage;
+
+import baseball.controller.BaseballController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseballController game = new BaseballController();
+        StartMessage();
+        game.run();
     }
 }
