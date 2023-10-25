@@ -3,6 +3,7 @@ package baseball.model;
 public class GameScoreDTO {
     private int strike;
     private int ball;
+    private  boolean isGameOver;
 
 
     public GameScoreDTO() {
@@ -24,5 +25,13 @@ public class GameScoreDTO {
 
     public void setAddStrike() {
         this.strike = this.strike+1;
+    }
+
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.isGameOver = gameOver;
     }
 }
