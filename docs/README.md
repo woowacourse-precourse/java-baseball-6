@@ -17,7 +17,18 @@
 - "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."를 출력한다.
 - 1 입력 시 게임 재시작, 2 입력 시 게임 종료
 
-## 구현 주의 사항
+# 예외 처리 기능 
+- 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
+- 사용자 입력값에 대한 예외 처리 기능
+  - 3자리 이외의 숫자 입력에 대한 예외 처리
+  - 숫자 이외의 값, 0을 포함하는 입력에 대한 예외 처리
+  - 중복된 숫자 입력에 대한 예외 처리
+  - 아무것도 입력하지 않은 입력에 대한 예외 처리
+- 게임 재시작 / 프로그램 종료 입력에 대한 예외 처리
+  - 1 또는 2 이외의 숫자 입력에 대한 예외 처리
+  - 숫자 이외의 다른 문자에 대한 예외 처리
+  - 아무것도 입력하지 않은 경우에 대한 예외처리
+# 구현 주의 사항
 - camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
   - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
   - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
