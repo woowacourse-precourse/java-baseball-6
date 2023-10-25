@@ -11,7 +11,6 @@ public class BaseballNumber {
 
     public BaseballNumber() {
         setComputer();
-        System.out.println(computer);
     }
 
     private void setComputer() {
