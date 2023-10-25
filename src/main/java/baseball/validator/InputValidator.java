@@ -1,18 +1,11 @@
 package baseball.validator;
 
+import baseball.config.GameConfig;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class InputValidator {
-    private int startOfRange;
-    private int endOfRange;
-    private int digitCount;
-
-    public InputValidator(int startOfRange, int endOfRange, int digitCount) {
-        this.startOfRange = startOfRange;
-        this.endOfRange = endOfRange;
-        this.digitCount = digitCount;
-    }
 
     public boolean isValidInput(String userInput) {
         return hasValidLength(userInput) &&
@@ -22,7 +15,7 @@ public class InputValidator {
     }
 
     private boolean hasValidLength(String userInput) {
-        return userInput.length() == digitCount;
+        return userInput.length() == GameConfig.DIGIT_COUNT.getValue();
     }
 
     private boolean hasOnlyDigits(String userInput) {
@@ -37,7 +30,7 @@ public class InputValidator {
     private boolean isWithinRange(String userInput) {
         for (char ch : userInput.toCharArray()) {
             int digit = Character.getNumericValue(ch);
-            if (digit < startOfRange || digit > endOfRange) {
+            if (digit < GameConfig.START_OF_RANGE.getValue() || digit > GameConfig.END_OF_RANGE.getValue()) {
                 return false;
             }
         }
@@ -53,5 +46,10 @@ public class InputValidator {
             uniqueDigits.add(ch);
         }
         return true;
+    }
+
+    public boolean isReplayOrStopInputValid(String userInput) {
+        return userInput.equals(String.valueOf(GameConfig.REPLAY.getValue()))
+                || userInput.equals(String.valueOf(GameConfig.STOP.getValue()));
     }
 }
