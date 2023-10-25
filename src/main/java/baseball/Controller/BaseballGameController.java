@@ -3,6 +3,9 @@ package baseball.Controller;
 import baseball.Model.BaseballGameModel;
 import baseball.View.BaseballGameView;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class BaseballGameController {
 
     private final static BaseballGameModel model = new BaseballGameModel();
@@ -21,6 +24,7 @@ public class BaseballGameController {
         String gameResult;
         do {
             String userInput = view.getUserInput();
+            validateUserInput(userInput);
             gameResult = model.calculateResult(userInput);
             view.print(gameResult);
         } while (!gameResult.equals(SINGLE_GAME_END));
@@ -40,6 +44,29 @@ public class BaseballGameController {
         }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return false;
+        }
+    }
+
+    private void validateUserInput(String userInput){
+        try{
+            int number = Integer.parseInt(userInput);
+            if (userInput.length() != 3) {
+                throw new IllegalArgumentException("세자리 수를 입력해야합니다.");
+            }
+            Set<Character> digit = new HashSet<>();
+            for(char c : userInput.toCharArray()){
+                if(!Character.isDigit(c)){
+                    throw new IllegalArgumentException("각 자리는 숫자로 입력해야합니다.");
+                }
+                digit.add(c);
+            }
+
+            if(digit.size()!=3){
+                throw new IllegalArgumentException("세 개의 다른 숫자로 입력해야합니다.");
+            }
+
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("숫자로 입력해야 합니다.");
         }
     }
 }
