@@ -10,6 +10,7 @@ import java.util.List;
 public class GameService {
 
     private static final GameService instance = new GameService();
+    private final Referee referee;
     private final RandomCreator randomCreator;
 
     private Player user;
@@ -20,11 +21,18 @@ public class GameService {
     }
 
     public GameService() {
+        this.referee = Referee.getInstance();
         this.randomCreator = new SystemRandomCreator();
     }
 
     public void initializeGame() {
         user = new Player();
         computer = new Player(randomCreator.createRandomNumbers());
+    }
+
+    public GameResponse playGame(List<Integer> input) {
+        user.setNumbers(input);
+        referee.playGame(user, computer);
+        return referee.toResponse();
     }
 }
