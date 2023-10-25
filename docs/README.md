@@ -33,21 +33,31 @@
 - 단, `System.exit()`를 호출하지 않는다.
 
 # <프로그램 구조>
+
 ## 1. numbers 패키지
+
 ### 숫자 생성
 - `NumbersGenerator` : 숫자 생성 방식을 정하는 인터페이스
 - `ComputerNumbersGenerator` : 컴퓨터 숫자 생성
 - `UserNumbersGenerator` : 사용자 숫자 생성
+
 ### 숫자 검증
 - `Numbers` : 생성된 숫자를 검증하는 일급 컬렉션
+
 ## 2. game 패키지
+
 ### 점수 계산
 - `CalculateScore` : 볼과 스트라이크 개수 계산
+
 ### 게임 실행
 #### 단위 게임 실행
-- `UnitOfGame` : 단위 게임 실행, 실행할때마다 사용자 숫자 생성해야함. `SetOfGame`에서 생성된 컴퓨터 숫자를 받아와야함
-- - `UnitOfGameResult` : 단위 게임의 결과 출력
+- `UnitOfGame` : 단위 게임을 실행하고 실행할때마다 사용자 숫자를 생성한다. `SetOfGame`에서 컴퓨터 숫자를 받아온다.
+- `UnitOfGameFactory` : `UnitOfGame`객체 생성 방식 정의
 #### 게임 한 세트 실행
-- `SetOfGame` : 게임 한 세트 실행, 실행할때마다 컴퓨터 숫자 생성해야함
+- `SetOfGame` : 게임 한 세트를 실행하고 실행할때마다 컴퓨터 숫자를 생성한다.
+- `SetOfGameFactory` : `SetOfGameFactory`객체 생성 방식 정의
 #### 전체 게임 실행
-- `TotalGame` : 전체 게임 실행, 게임 종료시 `게임 종료`출력
+- `TotalGame` : 전체 게임을 실행하고 게임 종료시 `게임 종료`를 출력한다.
+
+### 게임 결과 출력
+- `GameView` : 몇몇 게임 실행 단계에 필요한 결과를 출력하는 메서드 정의
