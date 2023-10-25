@@ -1,8 +1,8 @@
 package baseball.model;
 
-public class Hint {
-    private static final int THREE_STRIKES = 3;
+import static baseball.constants.DigitConstants.THREE_STRIKES;
 
+public class Hint {
     private Integer strike;
     private Integer ball;
 

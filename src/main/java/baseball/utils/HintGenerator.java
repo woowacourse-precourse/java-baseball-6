@@ -1,13 +1,13 @@
 package baseball.utils;
 
+import static baseball.constants.DigitConstants.INITIAL_INDEX;
+import static baseball.constants.DigitConstants.LAST_INDEX;
+
 import baseball.model.Hint;
 import baseball.model.Numbers;
 import java.util.stream.IntStream;
 
 public class HintGenerator {
-
-    private static final int INITIAL_INDEX = 0;
-    private static final int LAST_INDEX = 3;
 
     public static Hint generate(Numbers computer, Numbers player) {
         return Hint.from(countStrike(computer, player), countBall(computer, player));

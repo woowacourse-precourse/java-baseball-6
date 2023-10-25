@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import static baseball.constants.DigitConstants.RESTART_ANSWER;
+
 import baseball.constants.MessageConstants;
 import baseball.model.Hint;
 import baseball.model.Numbers;
@@ -14,8 +16,6 @@ public class GameController {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
     private ComputerController computerController = new ComputerController();
-
-    private static final int RESTART_ANSWER = 1;
 
     public GameController() {
         outputView.printlnMessage(MessageConstants.GAME_START_MESSAGE);

@@ -9,7 +9,8 @@ public class ComputerController {
     private Numbers computer = new Numbers();
 
     public void saveRandomNumbers() {
-        this.computer = RandomNumberGenerator.generateRandomNumbers();
+        Numbers randomNumbers = RandomNumberGenerator.generateRandomNumbers();
+        this.computer = randomNumbers;
     }
 
     public boolean checkCorrectAnswer(Hint hint) {
