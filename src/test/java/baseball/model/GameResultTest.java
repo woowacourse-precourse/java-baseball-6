@@ -24,9 +24,16 @@ class GameResultTest {
     }
 
     @Test
-    @DisplayName("유효하지 않은 게임 결과")
-    void invalidGameResultTest() {
+    @DisplayName("유효하지 않은 게임 결과 - 숫자 길이 넘어감")
+    void invalidGameResultSizeTest() {
         assertThrows(IllegalArgumentException.class, () ->
                 new GameResult(3, 2, 2));
+    }
+
+    @Test
+    @DisplayName("유효하지 않은 게임 결과 - 볼 하나, 나머지 다 스트라이크")
+    void invalidGameResultOneBallAllOthersStrikeTest() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new GameResult(3, 2, 1));
     }
 }
