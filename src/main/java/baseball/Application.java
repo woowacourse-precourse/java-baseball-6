@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+    private static final int ANSWER_LENGTH = 3;
+
     public static void main(String[] args) {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -79,9 +83,6 @@ public class Application {
 
     private static List<Integer> createRandomAnswer() {
 
-        final int MIN_NUMBER = 1;
-        final int MAX_NUMBER = 9;
-        final int ANSWER_LENGTH = 3;
         final List<Integer> computerAnswer = new ArrayList<>();
 
         while (computerAnswer.size() < ANSWER_LENGTH) {
@@ -96,10 +97,15 @@ public class Application {
 
     private static List<Integer> guessComputerAnswer() {
         System.out.print("숫자를 입력해주세요 : ");
-        final int ANSWER_LENGTH = 3;
         List<Integer> userGuessAnswer = new ArrayList<>();
         String userInput = Console.readLine();
 
+        handleGuessInput(ANSWER_LENGTH, userGuessAnswer, userInput);
+
+        return userGuessAnswer;
+    }
+
+    private static void handleGuessInput(int ANSWER_LENGTH, List<Integer> userGuessAnswer, String userInput) {
         if (userInput.length() != ANSWER_LENGTH) {
             throw new IllegalArgumentException("입력한 숫자의 개수가 3개가 아닙니다.");
         }
@@ -110,7 +116,7 @@ public class Application {
             }
 
             int userGuessNumber = Character.getNumericValue(c);
-            if (userGuessNumber < 1 || userGuessNumber > 9) {
+            if (userGuessNumber < MIN_NUMBER || userGuessNumber > MAX_NUMBER) {
                 throw new IllegalArgumentException("1부터 9까지의 범위 밖의 숫자가 포함되어 있습니다.");
             }
 
@@ -120,8 +126,6 @@ public class Application {
 
             userGuessAnswer.add(userGuessNumber);
         }
-
-        return userGuessAnswer;
     }
 
 }
