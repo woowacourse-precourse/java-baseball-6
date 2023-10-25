@@ -33,6 +33,22 @@ public class Game {
         return computerAnswer;
     }
 
+    public static void start() {
+        System.out.println(WELCOME_MESSAGE);
+        do {
+            run();
+        } while (checkRestart());
+    }
+
+    public static void run() {
+        boolean restart;
+        setComputerAnswer(createRandomNum(COMPUTER_DIGIT));
+        do {
+            System.out.print(CONTINUE_MESSAGE);
+            List<Integer> answer = parsingInput();
+            restart = compareAnswer(answer);
+        } while (restart);
+    }
 
     private static boolean checkRestart() {
         System.out.println(CHECK_RESTART_MESSAGE);
