@@ -30,4 +30,12 @@ class GameServiceTest {
         assertEquals(GameStatus.END, response.getGameStatus());
     }
 
+    @Test
+    void 세_개의_숫자를_맞히지_못_하면_게임_진행() {
+        List<Integer> userInput = Arrays.asList(1, 2, 5);
+        GameResponse response = gameService.playGame(userInput);
+
+        assertEquals(GameStatus.CONTINUE, response.getGameStatus());
+    }
+
 }
