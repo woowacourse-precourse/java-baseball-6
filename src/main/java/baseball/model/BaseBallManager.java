@@ -27,6 +27,11 @@ public class BaseBallManager {
         }
     }
 
+    public Map<String, Integer> judgeBaseBallGame(String numbers) {
+        Map<String, Integer> gameResult = compareBalls(numbers);
+        return gameResult;
+    }
+
     private Map<String, Integer> compareBalls(String numbers) {
         Map<String, Integer> compareResult = new HashMap<>();
         BallNumberGroup playerBallNumberGroup = generateBallGroup(numbers);
