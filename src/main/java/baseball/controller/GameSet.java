@@ -14,25 +14,25 @@ public class GameSet {
     private boolean success = false;
 
 
-    public void gameStart(){
+    public void gameStart() {
         compareNumber = new CompareNumber();
         OutputView.startMessage();
-        do{
+        do {
             computer = new ComputerNumber();
             answerCheck();
-        }while(reGame = reStartOrOver());
+        } while (reGame = reStartOrOver());
     }
 
-    public void answerCheck(){
-        do{
+    public void answerCheck() {
+        do {
             PlayerNumber playerNumber = new PlayerNumber(InputView.getPlayerNumber());
             int[] result = compareNumber.getResult(playerNumber.getPlayerNumber(), computer.getComputerNumber());
             success = compareNumber.successCheck(result);
             OutputView.resultCheck(result);
-        }while(!success);
+        } while (!success);
     }
 
-    public boolean reStartOrOver(){
+    public boolean reStartOrOver() {
         String check = InputView.getReStartOrOverNumber();
         if (check.equals("2")) {
             return false;

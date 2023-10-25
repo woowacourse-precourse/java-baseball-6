@@ -13,34 +13,35 @@ public class OutputView {
     private final static String CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final static String GAME_RESTART_OR_OVER_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public static void startMessage(){
+    public static void startMessage() {
         System.out.println(START_MESSAGE);
     }
-    public static void inputMessage(){
+
+    public static void inputMessage() {
         System.out.printf(USER_INPUT_MESSAGE);
     }
 
-    public static void resultCheck(int[] result){
+    public static void resultCheck(int[] result) {
         int ballCount = result[0];
         int strikeCount = result[1];
         List<String> message = new ArrayList<>();
-        if(ballCount == 0 && strikeCount == 0){
+        if (ballCount == 0 && strikeCount == 0) {
             message.add(NOTHING_MESSAGE);
         }
-        if(ballCount != 0){
-            message.add(ballCount+ BALL_MESSAGE);
+        if (ballCount != 0) {
+            message.add(ballCount + BALL_MESSAGE);
         }
-        if(strikeCount != 0){
-            message.add(strikeCount+ STRIKE_MESSAGE);
+        if (strikeCount != 0) {
+            message.add(strikeCount + STRIKE_MESSAGE);
         }
-        System.out.println(String.join(" ",message));
+        System.out.println(String.join(" ", message));
     }
 
-    public static void clearMessage(){
+    public static void clearMessage() {
         System.out.println(CLEAR_MESSAGE);
     }
 
-    public static void reStartOrOverMessage(){
+    public static void reStartOrOverMessage() {
         System.out.println(GAME_RESTART_OR_OVER_MESSAGE);
     }
 }
