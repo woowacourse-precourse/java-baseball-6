@@ -12,9 +12,10 @@ public class NumberBaseballGameImpl implements Game {
     public NumberBaseballGameImpl() {
     }
 
+    //게임로직을 돌리고, 게임을 다시 시작할지 확인한다.
     @Override
     public void runGame() {
-        giveOutputToMarchine(Constants.STARTING_GAME);
+        giveTextToMachine(Constants.STARTING_GAME);
         do {
             runGameLogic();
         } while (askForReGame());
@@ -29,27 +30,29 @@ public class NumberBaseballGameImpl implements Game {
         gameNumList = generateComputerNumber();
 
         do {
-            giveOutputToMarchine(Constants.ASKING_USER_INPUT);
-            userNumber = getTextFromMarchine();
+            //숫자 입력 받기
+            giveTextToMachine(Constants.ASKING_USER_INPUT);
+            userNumber = getTextFromMachine();
             HandleException.exceptionHandlingForUserNumber(userNumber);
-            List<Integer> userNumList = stringToList(userNumber);
+            List<Integer> userNumList = makeNumberStringToList(userNumber);
+            //비교하기
             resultArray = compareComputerWithUser(userNumList, gameNumList);
-            forwardResultToMarchine(resultArray);
+            giveResultToMachine(resultArray);
         } while (!checkResult(resultArray));
     }
 
     @Override
-    public void giveOutputToMarchine(String text) {
+    public void giveTextToMachine(String text) {
         GameMachineImpl.printText(text);
     }
 
     @Override
-    public String getTextFromMarchine() {
+    public String getTextFromMachine() {
         String input = GameMachineImpl.getTextFromUser();
         return input;
     }
 
-    public static List<Integer> generateComputerNumber() {
+    private static List<Integer> generateComputerNumber() {
         List<Integer> computerNumList = new ArrayList<>();
         while (computerNumList.size() < Constants.GAME_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(Constants.START_NUMBER, Constants.END_NUMBER);
@@ -61,7 +64,7 @@ public class NumberBaseballGameImpl implements Game {
         return computerNumList;
     }
 
-    public static int[] compareComputerWithUser(List<Integer> computerNumList, List<Integer> userNumList) {
+    private static int[] compareComputerWithUser(List<Integer> computerNumList, List<Integer> userNumList) {
         //변수 선언
         // resultArray의 인덱스 0은 stikeNum을 위한 자리, 인덱스 1은 ballNum을 위한 자리이다.
         int[] resultArray;
@@ -94,7 +97,7 @@ public class NumberBaseballGameImpl implements Game {
         return resultArray;
     }
 
-    private List<Integer> stringToList(String text) {
+    private List<Integer> makeNumberStringToList(String text) {
         List<Integer> userNumList = new ArrayList<>();
         for (String s : text.split("")) {
             userNumList.add(Integer.parseInt(s));
@@ -103,7 +106,7 @@ public class NumberBaseballGameImpl implements Game {
         return userNumList;
     }
 
-    private void forwardResultToMarchine(int[] resultArray) {
+    private void giveResultToMachine(int[] resultArray) {
         int strikeNum = resultArray[0];
         int ballNum = resultArray[1];
         String resultString = null;
@@ -119,23 +122,25 @@ public class NumberBaseballGameImpl implements Game {
         if (strikeNum == 0 && ballNum == 0) {
             resultString = Constants.NOTHING + "\n";
         }
-        giveOutputToMarchine(resultString);
+        giveTextToMachine(resultString);
     }
 
     private boolean checkResult(int[] resultArray) {
         //스트라이크 개수가 3개면 true리턴 아니면 false 리턴
         if (resultArray[0] == Constants.GAME_NUMBER_SIZE) {
-            giveOutputToMarchine(Constants.ENDING);
+            giveTextToMachine(Constants.ENDING);
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean askForReGame() {
-        giveOutputToMarchine(Constants.ASKING_REGAME);
-        String userInput = getTextFromMarchine();
+    private boolean askForReGame() {
+        //다시 시작할지 질문
+        giveTextToMachine(Constants.ASKING_REGAME);
+        String userInput = getTextFromMachine();
         HandleException.exceptionHandlingForUserInput(userInput);
+
         int checkValue = Integer.parseInt(userInput);
         if (checkValue == 1) {
             return true;
