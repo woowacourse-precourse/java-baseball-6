@@ -7,24 +7,19 @@ public class GameManager {
     private final InputManager inputManager = InputManager.getInstance();
     private int answerNumber;
     private int digitSize = 3;
+    private boolean quitFlag = false;
 
     public void launch() {
-        while (true) {
-            init();
-            while (true) {
-                System.out.print(INPUT_GUESS_NUMBER);
-                String inputNumber = inputManager.readNumber();
+        init();
+        while (!quitFlag) {
+            System.out.print(INPUT_GUESS_NUMBER);
+            String inputNumber = inputManager.readNumber();
 
-                BallCount result = calculateBallCount(inputNumber);
-                printResultMessage(result);
+            BallCount result = calculateBallCount(inputNumber);
+            printResultMessage(result);
 
-                if(isGameClear(result)) {
-                    System.out.println(GAME_CLEAR_MESSAGE);
-
-                    String command = inputManager.readWeatherRestartOrEnd();
-                    if(command.equals(GAME_RESTART_COMMAND)) break; // 재시작
-                    if(command.equals(GAME_END_COMMAND)) return; // 종료
-                }
+            if(isGameClear(result)) {
+                executeGameClearProcess();
             }
         }
     }
@@ -63,8 +58,18 @@ public class GameManager {
         }
     }
 
+    private void executeGameClearProcess() {
+        System.out.println(GAME_CLEAR_MESSAGE);
+
+        String command = inputManager.readWeatherRestartOrEnd();
+
+        if(command.equals(GAME_RESTART_COMMAND)) init(); // 재시작
+        if(command.equals(GAME_END_COMMAND)) quitFlag = true; // 종료
+    }
+
     private void init() {
         answerNumber = NumberFactory.createNumber(digitSize);
         System.out.println(GAME_START_MESSAGE);
+        System.out.println(answerNumber);
     }
 }
