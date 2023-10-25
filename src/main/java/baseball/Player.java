@@ -28,8 +28,15 @@ public class Player {
     }
 
     public boolean restartOrEnd() {
-        String str = Console.readLine();
-        int restartOrEnd = Integer.parseInt(str);
+        String str;
+        int restartOrEnd;
+        try {
+            str = Console.readLine();
+            restartOrEnd = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ExceptionMessage.RESTART_NUMBER_ERROR, e);
+        }
+        checkValidRestartNumber(restartOrEnd);
 
         if (restartOrEnd == GameRule.RESTART) {
             return true;
@@ -55,6 +62,12 @@ public class Player {
             if (!numberSet.add(number)) {
                 throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_ERROR);
             }
+        }
+    }
+
+    private void checkValidRestartNumber(int restartOrEnd) {
+        if (restartOrEnd != GameRule.RESTART && restartOrEnd != GameRule.END) {
+            throw new IllegalArgumentException(ExceptionMessage.RESTART_NUMBER_ERROR);
         }
     }
 }
