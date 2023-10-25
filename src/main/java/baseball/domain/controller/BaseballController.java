@@ -1,38 +1,45 @@
 package baseball.domain.controller;
 
-import baseball.global.constant.Common;
-import baseball.global.constant.Output;
+import baseball.domain.Client;
 import baseball.domain.Computer;
 import baseball.domain.service.BaseballService;
+import baseball.domain.service.ClientService;
+import baseball.global.constant.CommonStringType;
+import baseball.global.constant.OutputType;
 import baseball.global.utils.ConsoleUtil;
-import baseball.global.utils.validator.InputValidator;
-import baseball.global.utils.validator.RestartInputValidator;
+import baseball.global.utils.generator.InputNumberGenerator;
+import baseball.global.utils.generator.RandomNumberGenerator;
 
 public class BaseballController {
 
+	private final ClientService clientService;
 	private final BaseballService baseballService;
 
-	public BaseballController(BaseballService baseballService) {
+	public BaseballController(ClientService clientService, BaseballService baseballService) {
+		this.clientService = clientService;
 		this.baseballService = baseballService;
 	}
 
 	public void run() {
-		ConsoleUtil.commonOutput(Output.GAME_INITIALIZE.getComment());
+		ConsoleUtil.commonOutput(OutputType.GAME_INITIALIZE.getComment());
 		do {
-			Computer computer = new Computer();
-			baseballService.startGame(computer);
-		} while (checkRestart());
+			Computer computer = new Computer(new RandomNumberGenerator());
+			startGame(computer);
+		} while (isRestart());
 	}
 
-	private boolean checkRestart() {
-		ConsoleUtil.commonOutput(Output.CHOOSE_RESTART.getComment());
-		String restart = ConsoleUtil.input();
-		InputValidator inputValidator = new RestartInputValidator();
-		inputValidator.validate(restart);
-		return isRestart(restart);
+	public void startGame(Computer computer) {
+		Client client;
+		do {
+			ConsoleUtil.commonOutput(OutputType.INPUT_NUMBER.getComment());
+			client = new Client(new InputNumberGenerator());
+			baseballService.playRound(computer, client);
+		} while (!client.gameEnd());
 	}
 
-	private boolean isRestart(String restart) {
-		return restart.equals(Common.RESTART.getContent());
+	private boolean isRestart() {
+		ConsoleUtil.commonOutput(OutputType.CHOOSE_RESTART.getComment());
+		String restart = clientService.getRestartInput();
+		return restart.equals(CommonStringType.RESTART.getContent());
 	}
 }
