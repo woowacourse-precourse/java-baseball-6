@@ -26,12 +26,10 @@ public class CheckResult {
             this.user = user;
         }
         catch (NullPointerException e) {
-            throw new NullPointerException("Exception occur CheckResult Class: NullPointerException");
+            throw new NullPointerException("Exception occur CheckResult Class: NullPointerException: close");
         }
         selectComputers = computer.getterSelectComputerNum();
         selectUsers = user.getterSelectUsersNum();
-        System.out.println(selectComputers);
-        System.out.println(selectUsers);
     }
 
     public boolean equalsComputerAndUser() {

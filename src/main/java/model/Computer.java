@@ -8,7 +8,7 @@ public class Computer {
             this.selectComputers = selectComputers;
         }
         catch (NullPointerException e) {
-            throw new NullPointerException("Exception occur Computer Class: NullPointerException");
+            throw new NullPointerException("Exception occur Computer Class: NullPointerException: close");
         }
     }
 

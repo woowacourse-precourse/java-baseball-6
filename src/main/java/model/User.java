@@ -8,7 +8,7 @@ public class User {
             this.selectUsers = selectUsers;
         }
         catch (NullPointerException e) {
-            throw new NullPointerException("Exception occur User Class: NullPointerException");
+            throw new NullPointerException("Exception occur User Class: NullPointerException: close");
         }
     }
 
