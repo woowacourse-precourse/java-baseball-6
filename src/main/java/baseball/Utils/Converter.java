@@ -10,5 +10,8 @@ public class Converter {
         return output;
     }
 
+    public int convertUserInputToInt(String input) {
+        return Integer.parseInt(input);
+    }
 
 }
