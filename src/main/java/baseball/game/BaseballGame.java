@@ -18,7 +18,6 @@ public class BaseballGame {
             newGame();
         } while (restart());
 
-        System.out.println("숫자 야구 게임을 완전히 종료합니다.");
         cleanUpResource();
     }
 
