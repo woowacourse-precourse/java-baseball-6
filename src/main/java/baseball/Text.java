@@ -1,6 +1,6 @@
 package baseball;
 
-public class text {
+public class Text {
     public void start() {
         System.out.print("숫자 야구 게임을 시작합니다.");
     }

@@ -1,8 +1,6 @@
 package baseball;
 
-import org.w3c.dom.Text;
-
-public class output {
+public class Output {
 
     public void ballPrint(int ball) {
         if (ball > 0) {
@@ -26,7 +24,7 @@ public class output {
     }
 
     public void threeStrike(int strike) {
-        text text = new text();
+        Text text = new Text();
         if (strike == 3) {
             text.win();
         }

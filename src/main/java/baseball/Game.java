@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class game {
+public class Game {
     private int ball = 0;
     private int strike = 0;
 

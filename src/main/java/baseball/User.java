@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class user {
+public class User {
     private final List<Integer> numbers = new ArrayList<>();
 
     public void getNum() {
