@@ -21,7 +21,12 @@ public class Input {
   }
 
   public void exception_Length(String s) {
-    if (s.length() != Application.size) {
+    String answer = "";
+    
+    for (int i = 0; i < s.length(); i++) {
+        if(s.indexOf(s.charAt(i)) == i) answer += s.charAt(i);
+    }
+    if (s.contains("0") == true || answer.length() != Application.size ) {
       throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
     }
     System.out.println();
