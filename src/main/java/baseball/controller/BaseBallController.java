@@ -1,6 +1,8 @@
 package baseball.controller;
 
+import baseball.common.StringToInteger;
 import baseball.dto.BaseBallResult;
+import baseball.model.ContinueOrExit;
 import baseball.service.BaseBallService;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -20,35 +22,23 @@ public class BaseBallController {
     private BaseBallService baseBallService = BaseBallService.getInstance();
 
     public void run() {
-        boolean isContinue = true;
-        while (isContinue) {
+        int continueOrExit = 1;
+        while (continueOrExit == 1) {
             List<Integer> computerNumber = baseBallService.getComputerNumber();
             BaseBallResult result = new BaseBallResult(0, 0, false);
             while (result.getStrikeCnt() != 3) {
                 OutputView.printInputMessage();
-                // 그냥 엔터 유효성 검사필요
                 String userInputString = Console.readLine();
                 List<Integer> userNumber = baseBallService.getUserNumber(userInputString);
                 result = baseBallService.compareNumber(computerNumber, userNumber);
                 OutputView.printResultMessage(result);
             }
 
-            while (true) {
-                OutputView.printContinue();
-                String userInputContinue = Console.readLine();
-                try {
-                    int parseInt = Integer.parseInt(userInputContinue);
-                    if (parseInt == 1) {
-                        isContinue = true;
-                        break;
-                    } else if (parseInt == 2) {
-                        isContinue = false;
-                        break;
-                    }
-                } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException();
-                }
-            }
+            OutputView.printContinue();
+            String userInputContinue = Console.readLine();
+            int convertedUserInput = StringToInteger.convert(userInputContinue);
+            ContinueOrExit afterValidate = new ContinueOrExit(convertedUserInput);
+            continueOrExit = convertedUserInput;
         }
     }
 }
