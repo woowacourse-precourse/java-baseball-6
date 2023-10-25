@@ -1,3 +1,18 @@
+# 구현할 기능
+
+### 주요 기능
+
+입력,출력  
+숫자 야구 게임 기능 구현
+
+###    
+
+₩₩₩  
+Class Game:
+checkUserGuessingNumberInput
+userGuessingNumberInput
+₩₩₩
+
 # 기능 요구 사항
 
 ✅ 볼,스트라이크, 낫싱  
@@ -34,8 +49,6 @@
 
 # 과제 진행 요구 사항
 
-✅ 미션은 java-baseball-6 저장소를 Fork & Clone해 시작한다.
-✅ 기능을 구현하기 전 docs/README.md에 구현할 기능 목록을 정리해 추가한다.
+✅ 미션은 java-baseball-6 저장소를 Fork & Clone해 시작한다.  
+✅ 기능을 구현하기 전 docs/README.md에 구현할 기능 목록을 정리해 추가한다.  
 ✅ 과제 진행 및 제출 방법은 프리코스 과제 제출 문서를 참고한다.
-
-
