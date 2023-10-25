@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Game {
     private final Referee referee = new Referee();
-    private List<Integer> computer = new ArrayList<>();
+    private final List<Integer> computer = new ArrayList<>();
 
     public Game() {
         while (computer.size() < 3) {
