@@ -1,14 +1,15 @@
 package baseball.people.preparation;
 
+import static baseball.people.Message.BALL;
+import static baseball.people.Message.GAME_END;
+import static baseball.people.Message.GAME_START;
+import static baseball.people.Message.NOTHING;
+import static baseball.people.Message.STRIKE;
+
 import java.util.List;
 
 public class Referee {
     private TargetNumber targetNumber;
-    private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
-    private static final String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String BALL = "%d볼 ";
-    private static final String STRIKE = "%d스트라이크";
-    private static final String NOTHING = "낫싱";
 
     private Referee() {
     }
@@ -19,7 +20,7 @@ public class Referee {
      * @return Referee 객체
      */
     public static Referee enter() {
-        System.out.println(GAME_START);
+        System.out.println(GAME_START.getMessage());
         return new Referee();
     }
 
@@ -55,22 +56,22 @@ public class Referee {
 
     private void declare(int ball, int strike) {
         if (ball == 0 && strike == 0) {
-            System.out.println(NOTHING);
+            System.out.println(NOTHING.getMessage());
             return;
         }
 
         StringBuilder print = new StringBuilder();
         if (ball > 0) {
-            print.append(String.format(BALL, ball));
+            print.append(String.format(BALL.getMessage(), ball));
         }
         if (strike > 0) {
-            print.append(String.format(STRIKE, strike));
+            print.append(String.format(STRIKE.getMessage(), strike));
         }
 
         System.out.println(print);
 
         if (strike == 3) {
-            System.out.println(GAME_END);
+            System.out.println(GAME_END.getMessage());
         }
     }
 }

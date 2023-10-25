@@ -1,14 +1,15 @@
 package baseball.people;
 
+import static baseball.people.Message.ASK_TO_RESTART;
+import static baseball.people.Message.DEMAND_INPUT;
+import static baseball.people.Message.QUIT;
+import static baseball.people.Message.RESTART;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pitcher {
-    private static final String DEMAND_INPUT = "숫자를 입력해주세요 : ";
-    private static final String ASK_TO_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ";
-    private static final String RESTART = "1";
-    private static final String QUIT = "2";
     private static final int PROPER_LENGTH = 3;
 
     private Pitcher() {
@@ -29,7 +30,7 @@ public class Pitcher {
      * @return 크기가 3인 정수 리스트
      */
     public List<Integer> pitch() {
-        System.out.print(DEMAND_INPUT);
+        System.out.print(DEMAND_INPUT.getMessage());
         String input = Console.readLine();
 
         if (!isValidInput(input)) {
@@ -50,14 +51,14 @@ public class Pitcher {
      * @return boolean 값
      */
     public boolean restart() {
-        System.out.print(ASK_TO_RESTART);
+        System.out.print(ASK_TO_RESTART.getMessage());
         String input = Console.readLine();
 
-        if (input.equals(RESTART)) {
+        if (input.equals(RESTART.getMessage())) {
             return true;
         }
 
-        if (input.equals(QUIT)) {
+        if (input.equals(QUIT.getMessage())) {
             Console.close();
             return false;
         }
