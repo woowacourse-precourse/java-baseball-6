@@ -19,10 +19,6 @@ public final class Utils {
                 computer.add(randomNumber);
             }
         }
-
-        for (int com : computer) {
-            System.out.println("상대방(컴퓨터) 입력 수: " + com);
-        }
         return computer;
     }
 
