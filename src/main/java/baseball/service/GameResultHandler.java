@@ -4,7 +4,7 @@ import baseball.model.GameHint;
 
 import java.util.List;
 
-public class GameService {
+public class GameResultHandler {
 
     public int[] getGameResult(List<Integer> randomNumbers, int[] playersNumbers) {
         return checkGameResultOf(randomNumbers, playersNumbers);

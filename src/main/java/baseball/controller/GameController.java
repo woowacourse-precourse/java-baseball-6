@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.service.GameService;
+import baseball.service.GameResultHandler;
 import baseball.service.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -10,13 +10,13 @@ import java.util.List;
 public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
-    private final GameService gameService;
+    private final GameResultHandler gameResultHandler;
     private final RandomNumberGenerator randomNumberGenerator;
 
     public GameController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.gameService = new GameService();
+        this.gameResultHandler = new GameResultHandler();
         this.randomNumberGenerator = new RandomNumberGenerator();
     }
 
@@ -30,8 +30,8 @@ public class GameController {
         while (playOption) {
             outputView.printForInputThreeDigitNumbers();
             int[] playersNumbers = inputView.inputThreeDigitNumber();
-            int[] gameResult = gameService.getGameResult(randomNumbers, playersNumbers);
-            if (!gameService.isThreeStrike(gameResult)) {
+            int[] gameResult = gameResultHandler.getGameResult(randomNumbers, playersNumbers);
+            if (!gameResultHandler.isThreeStrike(gameResult)) {
                 outputView.printGameFailResult(gameResult);
                 continue;
             }
