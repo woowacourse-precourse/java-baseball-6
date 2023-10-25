@@ -3,17 +3,17 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MyException {
-    private static final MyException myException = new MyException();
+public class GameException {
+    private static final GameException gameException = new GameException();
 
-    private MyException() {
+    private GameException() {
     }
 
-    public static MyException getMyException() {
-        return myException;
+    public static GameException getMyException() {
+        return gameException;
     }
 
-    // 게임 중 예외 검사
+    // 게임 중 예외 검증
     public String checkAnswer(String inputValue) {
         Set<Character> set = new HashSet<>();
         // 3자리수가 아닌 경우
@@ -27,7 +27,7 @@ public class MyException {
         return inputValue;
     }
 
-    // 게임 종료 후 예외 검사
+    // 게임 종료 후 예외 검증
     public int checkFinishAnswer(String inputValue) {
         if (inputValue.equals("1") || inputValue.equals("2"))
             return Integer.parseInt(inputValue);
