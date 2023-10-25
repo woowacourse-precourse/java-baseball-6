@@ -1,13 +1,13 @@
 package baseball.model;
 
-public record GameResult(int perfectGameCount, int correctCount, int similarCount) {
+public record GameResult(int tryCount, int correctAnswerCount, int similarAnswerCount) {
     public GameResult {
-        if (perfectGameCount < correctCount + similarCount) {
+        if (tryCount < correctAnswerCount + similarAnswerCount) {
             throw new IllegalArgumentException();
         }
     }
 
     public boolean isPerfectGame() {
-        return correctCount() == perfectGameCount();
+        return correctAnswerCount() == tryCount();
     }
 }

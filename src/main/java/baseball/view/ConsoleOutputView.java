@@ -26,21 +26,21 @@ public class ConsoleOutputView implements OutputView {
     }
 
     private String createGameResultMessage(GameResult gameResult) {
-        int correctCount = gameResult.correctCount();
-        int similarCount = gameResult.similarCount();
+        int correctAnswerCount = gameResult.correctAnswerCount();
+        int similarAnswerCount = gameResult.similarAnswerCount();
 
-        if (correctCount + similarCount == 0) {
+        if (correctAnswerCount + similarAnswerCount == 0) {
             return "낫싱";
         }
 
         StringJoiner stringJoiner = new StringJoiner(" ");
 
-        if (0 < similarCount) {
-            stringJoiner.add(similarCount + "볼");
+        if (0 < similarAnswerCount) {
+            stringJoiner.add(similarAnswerCount + "볼");
         }
 
-        if (0 < correctCount) {
-            stringJoiner.add(correctCount + "스트라이크");
+        if (0 < correctAnswerCount) {
+            stringJoiner.add(correctAnswerCount + "스트라이크");
         }
 
         return stringJoiner.toString();
