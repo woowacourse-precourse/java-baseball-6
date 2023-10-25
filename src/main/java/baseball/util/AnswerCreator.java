@@ -9,6 +9,7 @@ public class AnswerCreator {
     private List<Integer> answer = new ArrayList<>();
 
     public List<Integer> createAnswer() {
+        answer.clear();
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(randomNumber)) {
