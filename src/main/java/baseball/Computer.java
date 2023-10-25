@@ -19,6 +19,11 @@ public class Computer {
         }
     }
 
+    // 테스트를 위한 생성자
+    Computer(List<Integer> computerNumbers) {
+        this.computerNumbers.addAll(computerNumbers);
+    }
+
     public String compare(Player player) {
         int strikeCount = 0;
         int ballCount = 0;
