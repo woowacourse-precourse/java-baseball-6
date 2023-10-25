@@ -7,9 +7,9 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        int choice=1;
+        int choice = 1;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(true){
+        while (true) {
             if (choice == 2) {
                 System.out.println("게임을 완전히 종료합니다.");
                 return;
@@ -17,7 +17,6 @@ public class Application {
                 startGame();
             }
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
-
             choice = Integer.parseInt(Console.readLine());
         }
     }
@@ -25,7 +24,6 @@ public class Application {
     public static void startGame() {
         // 랜덤 숫자 생성.
         int uniqueRandomNumber = generateUniqueRandomNumber(1, 9, 3);
-        System.out.println("상대방의 수: " + uniqueRandomNumber);
         int userNumber;
         String number;
 
@@ -33,18 +31,18 @@ public class Application {
             do {
                 System.out.print("숫자를 입력해 주세요 : ");
                 number = Console.readLine();
-                userNumber= Integer.parseInt(number);
+                userNumber = Integer.parseInt(number);
             } while (!isValidInput(userNumber));
-
 
             int strikes = 0;
             int balls = 0;
-            String computerNumber= String.valueOf(uniqueRandomNumber);
+            String computerNumber = String.valueOf(uniqueRandomNumber);
 
+            // 입력한 숫자와 상대방의 숫자를 비교하여 스트라이크와 볼 계산
             for (int i = 0; i < 3; i++) {
                 if (number.charAt(i) == computerNumber.charAt(i)) {
                     strikes++;
-                } else if (computerNumber.contains(String.valueOf(number.charAt(i)))){
+                } else if (computerNumber.contains(String.valueOf(number.charAt(i)))) {
                     balls++;
                 }
             }
@@ -71,7 +69,7 @@ public class Application {
         int result = 0;
         Set<Integer> uniqueNumbers = new HashSet<>();
 
-        //set을 이용해 중복 제거
+        // 중복된 숫자가 없는 임의의 3자리 숫자 생성
         while (uniqueNumbers.size() < count) {
             int uniqueNumber = Randoms.pickNumberInRange(start, end);
             uniqueNumbers.add(uniqueNumber);
@@ -87,16 +85,17 @@ public class Application {
         String numberStr = Integer.toString(number);
 
         if (numberStr.length() != 3) {
+            // 3자리 숫자가 아닌 경우 예외 처리
             throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
         }
 
         if (numberStr.charAt(0) == numberStr.charAt(1) ||
                 numberStr.charAt(1) == numberStr.charAt(2) ||
                 numberStr.charAt(0) == numberStr.charAt(2)) {
+            // 중복된 숫자가 있는 경우 예외 처리
             throw new IllegalArgumentException("서로 다른 숫자를 입력하세요.");
         }
 
         return true;
     }
-
 }
