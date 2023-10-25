@@ -1,17 +1,11 @@
 package baseball;
 
-<<<<<<< HEAD
-=======
-import camp.nextstep.edu.missionutils.Console;
->>>>>>> parent of 57b5d2f (refactor. mvc 패턴 적용 시도)
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputNumber {
-    public List<Integer> playerNumber() throws IllegalArgumentException {
-        System.out.print("숫자를 입력해주세요 : ");
+    public List<Integer> playerNumber(String inputNum) throws IllegalArgumentException {
         List<Integer> playerNum = new ArrayList<>();
-        String inputNum = Console.readLine();
 
         checkSize(inputNum);
 
@@ -24,8 +18,8 @@ public class InputNumber {
         return playerNum;
     }
 
-    private void checkSize(String inputNum) throws IllegalArgumentException {
-        if (inputNum.length() != ConstantVO.SIZE) {
+    private void checkSize(String input) throws IllegalArgumentException {
+        if (input.length() != ConstantVO.SIZE) {
             throw new IllegalArgumentException();
         }
     }
