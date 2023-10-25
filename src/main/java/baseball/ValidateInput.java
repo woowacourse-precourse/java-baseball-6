@@ -6,9 +6,9 @@ public class ValidateInput {
             throw new IllegalArgumentException(String.format("숫자가 중복되었습니다."));
         }
     }
-    public static void validateRestart(String input, String regex) {
+    public static void validate(String input, String regex, String errorMessage) {
         if(!input.matches(regex)){
-            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 }
