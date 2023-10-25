@@ -6,7 +6,11 @@ import baseball.domain.ComputerNumbers;
 
 public class NumberBaseballApp{
 
-    private final GameManager gm = new GameManager();
+    private final GameManager gm;
+
+    public NumberBaseballApp(){
+        this.gm = new GameManager();
+    }
 
     void run(){
         while (true){
