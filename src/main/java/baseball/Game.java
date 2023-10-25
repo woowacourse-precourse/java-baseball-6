@@ -1,7 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
+import static camp.nextstep.edu.missionutils.Randoms.*;
+import static camp.nextstep.edu.missionutils.Console.*;
+
+import java.io.Console;
 import java.util.*;
 
 
@@ -13,12 +15,15 @@ public class Game {
     int countBall = 0;
 
     int replay;
-    const RESTART = 1;
-    const END = 2;
+    final int RESTART = 1;
+    final int END = 2;
 
-    public startGame() {
+    public void startGame() {
         // 정답인 3가지 숫자 만들기
-        comNumber.makeComNumber();
+        for (int i = 0; i < 3; i++) {
+            comNumber[i].makeComNumber();
+        }
+        
 
         // 게임 시작
         while (countStrike < 3) {
@@ -27,9 +32,21 @@ public class Game {
             countBall = 0;
 
             // 사용자에게 3가지 숫자 입력받기
-            System.out.print("숫자를 입력해주세요 : ");
-            userNumber.inputUserNumber();
+            
+            Console.print("숫자를 입력해주세요 : ");
+            
+            for (int i = 0; i < 3; i++) {
+                userNumber[i].inputUserNumber();
 
+                try {
+                    if (userNumber[i] == 0) {
+                        throw new IllegalArgumentException("1~9 사이 숫자를 입력해주세요.");
+                    }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            
             compareNumber();
         }
 
@@ -41,13 +58,13 @@ public class Game {
     }
     
 
-    public compareNumber() {
+    public void compareNumber() {
         // 두 배열의 숫자들을 비교
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (i == j && comNumber[i] == userNumber[j])
+                if (i == j && comNumber[i].equals(userNumber[j]))
                     countStrike++;
-                else if (comNumber[i] == userNumber[j])
+                else if (comNumber[i].equals(userNumber[j]))
                     countBall++;
             }
         }
@@ -67,8 +84,8 @@ public class Game {
         }
     }
 
-    // 재식
-    public decideReplay() {
+    // 재시작할지 결정
+    public void decideReplay() {
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         
