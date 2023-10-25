@@ -1,10 +1,14 @@
 package baseball.game;
 
+import static baseball.view.Console.printGameOver;
+import static baseball.view.Console.printGameResult;
+import static baseball.view.Console.printGameStart;
+import static baseball.view.Console.printRestartOrTerminate;
+import static baseball.view.Console.printUserInputMessage;
+import static baseball.view.Console.printUserInputNumber;
+
 import baseball.User;
-
 import java.util.List;
-
-import static baseball.view.Console.*;
 
 
 public class BaseBallGame implements Game {

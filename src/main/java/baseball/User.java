@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.view.Console;
-
 import java.util.List;
 
 public class User {

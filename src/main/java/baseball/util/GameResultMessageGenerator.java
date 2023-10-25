@@ -1,6 +1,8 @@
 package baseball.util;
 
-import static baseball.util.GameResults.*;
+import static baseball.util.GameResults.BALL;
+import static baseball.util.GameResults.NOTHING;
+import static baseball.util.GameResults.STRIKE;
 
 public class GameResultMessageGenerator {
 
