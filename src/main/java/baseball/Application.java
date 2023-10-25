@@ -60,7 +60,7 @@ public class Application {
         }
     }
     public void user3Digit(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요: ");
         String input = Console.readLine();
         if (input.length() != 3) throw new IllegalArgumentException();
         int i = 0;
