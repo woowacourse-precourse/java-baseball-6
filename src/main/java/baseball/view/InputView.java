@@ -20,7 +20,6 @@ public class InputView {
         return inputNumber;
     }
 
-    // 숫자 사이즈 검사
     private void validationNotSize() {
         duplicateValidationNumber();
 
@@ -29,7 +28,6 @@ public class InputView {
         }
     }
 
-    // 숫자 중복 검사
     private void duplicateValidationNumber() {
         Set<Integer> setNumber = new HashSet<>(inputNumber);
 

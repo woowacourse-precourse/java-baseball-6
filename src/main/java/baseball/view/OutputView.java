@@ -22,6 +22,5 @@ public class OutputView {
         System.out.println(END_GAME_MESSAGE);
         System.out.println(RE_GAME_MESSAGE);
     }
-
-
+    
 }
