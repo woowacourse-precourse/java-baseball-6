@@ -1,10 +1,12 @@
 package baseball;
 
+import baseball.utils.Notification;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Constant.*;
-import static baseball.Notification.*;
+import static baseball.utils.Constant.*;
+import static baseball.utils.Notification.*;
 import static baseball.NumberGenerator.generateAnswerNumbers;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 

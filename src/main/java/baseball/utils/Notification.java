@@ -1,4 +1,4 @@
-package baseball;
+package baseball.utils;
 
 public class Notification {
     public static final String START_GAME = "숫자 야구 게임을 시작합니다.";                                   //게임 시작 알림
