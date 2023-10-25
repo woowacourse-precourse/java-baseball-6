@@ -51,7 +51,6 @@ public class Guess {
         }
     }
 
-    //TODO: 볼과 스트라이크 개수 한 번에 출력하기
     public int calculateBall() {
         int ballCount = 0;
         for (int i = 0; i < GUESS_SIZE; ++i) {
@@ -59,7 +58,7 @@ public class Guess {
                 ballCount++;
             }
         }
-        return ballCount;
+        return ballCount - calculateStrike();
     }
 
     public int calculateStrike() {
