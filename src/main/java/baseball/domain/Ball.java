@@ -24,13 +24,21 @@ public class Ball {
     }
 
     public BallType match(Ball randomBall) {
-        if (this.equals(randomBall)) {
+        if (isStrike(randomBall)) {
             return BallType.STRIKE;
         }
-        if (this.number == randomBall.number) {
+        if (isBall(randomBall)) {
             return BallType.BALL;
         }
         return BallType.NOTHING;
+    }
+
+    private boolean isStrike(Ball randomBall) {
+        return this.equals(randomBall);
+    }
+
+    private boolean isBall(Ball randomBall) {
+        return this.number == randomBall.number;
     }
 
     @Override
