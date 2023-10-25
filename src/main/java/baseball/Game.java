@@ -34,16 +34,24 @@ public class Game {
         int strike = 0;
 
         for (int oneDigit = 0; oneDigit < answerNumberList.size(); oneDigit++) {
-            if (answerNumberList.get(oneDigit).equals(userNumberList.get(oneDigit))) {
-                strike++;
-            } else if (answerNumberList.contains(userNumberList.get(oneDigit))) {
-                ball++;
-            }
+            checkBallAndStrike(ball, strike, answerNumberList, userNumberList.get(oneDigit));
         }
 
         checkResult(ball, strike);
 
         return strike;
+    }
+
+    private void checkBallAndStrike(int ball, int strike, List<Integer> answerNumberList, int userNumber) {
+        if (answerNumberList.equals(userNumber)) {
+            strike++;
+        }
+
+        if (answerNumberList.contains(userNumber)) {
+            ball++;
+        }
+
+        //List 형식으로 ball과 strike를 묶어서 반환
     }
 
     private void checkResult(int ball, int strike) {
