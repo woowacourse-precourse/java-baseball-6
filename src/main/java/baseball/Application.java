@@ -33,33 +33,29 @@ public class Application {
                 
                 int[] userNumber = new int[3]; 
                 int k = 0;
+
                 String input;
-
-                try {
-                    input = Console.readLine(); //사용자 넘버 입력받기
+                input = Console.readLine(); //사용자 넘버 입력받기
                     
-                    if (input.length() != 3) { // 3자리 입력이 아닐 경우 게임 종료
-                        throw new IllegalArgumentException(); 
-                    }
-
-                    for (String s : input.split("")) {
-                        userNumber[k] = Integer.parseInt(s);
-                        k++;
-                    }
-
-                    for (int i = 0; i < 3; i++) {
-                        for (int j = i+1; j < 3; j++) {
-                            if (userNumber[i] == userNumber[j]) { // 같은 숫자가 있을 경우 게임 종료
-                                throw new IllegalArgumentException();
-                            }
-                        }
-                    }
-
-                } catch(IllegalArgumentException e) {
-                    isGameStart = false;
-                    break;
+                if (input.length() != 3) { // 3자리 입력이 아닐 경우 게임 종료
+                    throw new IllegalArgumentException("3자리 숫자를 입력하세요."); 
                 }
 
+                for (String s : input.split("")) {
+                    userNumber[k] = Integer.parseInt(s);
+                    k++;
+                }
+                
+                for (int i = 0; i < 3; i++) {
+                    if (userNumber[i] == 0) { // 0이 입력된 경우
+                        throw new IllegalArgumentException("1~9 사이 숫자를 입력하세요.");
+                    }
+                    for (int j = i+1; j < 3; j++) {
+                        if (userNumber[i] == userNumber[j]) { // 같은 숫자가 있을 경우 게임 종료
+                            throw new IllegalArgumentException("같은 숫자를 입력하지 마세요.");
+                        }
+                    }
+                }
                 
                 //스트라이크, 볼, 낫싱 판별
                 for (int i = 0; i < 3; i++) {
@@ -90,22 +86,14 @@ public class Application {
                 if (strike == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-                    try {
-                        String replay = Console.readLine();
-                        int replayNum = Integer.parseInt(replay);
+                    
+                    String replay = Console.readLine();
+                    int replayNum = Integer.parseInt(replay);
                         
-                        if (replayNum != 1 && replayNum != 2) { //1,2가 아닌 다른 수 입력하면 게임 종료
-                            throw new IllegalArgumentException();
-                        }
-                        
-                        if (replayNum == 1) isGameStart = true;
-                        else if (replayNum == 2) isGameStart = false;
-
-                    } catch(IllegalArgumentException e) {
-                            isGameStart = false;
-                            break;
-                    }
+                    if (replayNum == 1) isGameStart = true;
+                    else if (replayNum == 2) isGameStart = false;
+                    //1,2가 아닌 다른 수 입력하면 게임 종료
+                    else { throw new IllegalArgumentException("잘못된 입력값입니다."); } 
                 }
             }
         }
