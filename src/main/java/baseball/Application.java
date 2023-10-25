@@ -8,9 +8,9 @@ public class Application {
         InputValueValidator validator = new InputValueValidator();
         GameSupervisor gameSupervisor = new GameSupervisor();
         GameController gameController = new GameController(user, computer, gameSupervisor);
+        GameOperator gameOperator = new GameOperator(user, computer, validator, gameController, gameSupervisor);
 
-        BaseballGame baseballGame = new BaseballGame(user, computer, validator, gameController, gameSupervisor);
-
+        BaseballGame baseballGame = new BaseballGame(gameOperator);
         baseballGame.gameStart();
     }
 }

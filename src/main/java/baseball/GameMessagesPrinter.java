@@ -9,8 +9,7 @@ public abstract class GameMessagesPrinter {
         printer(INPUT_MESSAGE);
     }
     public static void startGameMessage() {
-        printer(GAME_START_MESSAGE);
-    }
+        printer(GAME_START_MESSAGE);}
     public static void endGameMessage() {
         printer(GAME_END_MESSAGE);
     }
