@@ -31,7 +31,8 @@ public class GameModel {
         for (int i = 0; i < computerNumbers.size(); i++) {
             if (computerNumbers.get(i).equals(userGuess.get(i))) {
                 strikes++;
-            } else if (computerNumbers.contains(userGuess.get(i))) {
+            }
+            else if (computerNumbers.contains(userGuess.get(i))) {
                 balls++;
             }
         }
