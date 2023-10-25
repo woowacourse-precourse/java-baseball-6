@@ -1,25 +1,33 @@
 package baseball.controller;
 
+import baseball.entity.Coin;
 import baseball.entity.ComputerPlayer;
 import baseball.entity.Player;
-import baseball.entity.UserPlayer;
 import baseball.entity.Referee;
+import baseball.entity.UserPlayer;
 import baseball.view.Viewer;
 
 public class GameManager {
 
-    Viewer viewer = new Viewer();
+    private final Viewer viewer;
+
+    public GameManager(Viewer viewer) {
+        this.viewer = viewer;
+    }
 
     public void run() {
-        String coin = "1";
+        Coin coin = new Coin();
 
         viewer.startGameView();
-        while (coin.equals("1")) {
+        while (coin.isCoin()) {
             game(new ComputerPlayer());
 
-            coin = viewer.restartGameView();
+            coin = inputCoin();
         }
+    }
 
+    private Coin inputCoin() {
+        return new Coin(viewer.restartGameView());
     }
 
     private void game(Player computerUserPlayer) {

@@ -8,6 +8,7 @@ public class Referee {
     static final int THREE_STRIKE = 3;
     private int strike;
     private int ball;
+
     public Referee() {
     }
 
@@ -25,7 +26,7 @@ public class Referee {
             if (Objects.equals(playerOneNumber, playerTwoNumbers.get(i))) {
                 strikeCnt++;
             } else if (playerTwoNumbers.contains(playerOneNumber)) {
-                ballCnt ++;
+                ballCnt++;
             }
         }
         strike = strikeCnt;
