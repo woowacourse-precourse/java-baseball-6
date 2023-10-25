@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import static baseball.enums.Constant.GAME_RESTART_COMMAND;
+import static baseball.enums.Constant.GAME_END_COMMAND;
 
 import baseball.domain.BaseBallGameService;
 import baseball.domain.ComputerRandomNumbers;
@@ -41,14 +41,18 @@ public class BaseBallGameController {
 
             outputView.printFinishMessage();
             outputView.printRestartOrEndMessage();
-
-            String userGameCommand = inputView.getUserInput();
-            inputValidate.validateGameCommand(userGameCommand);
-            int numericValue = Character.getNumericValue(userGameCommand.charAt(0));
-            if (numericValue == GAME_RESTART_COMMAND.getConstant()) {
-                shouldStartGame = true;
-            }
+            shouldStartGame = isGameEnd();
         }
+    }
+
+    private boolean isGameEnd() {
+        String userGameCommand = inputView.getUserInput();
+        inputValidate.validateGameCommand(userGameCommand);
+        int numericValue = Character.getNumericValue(userGameCommand.charAt(0));
+        if (numericValue == GAME_END_COMMAND.getConstant()) {
+            return false;
+        }
+        return true;
     }
 
     private void startGame() {
