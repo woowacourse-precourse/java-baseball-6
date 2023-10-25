@@ -4,17 +4,18 @@ import baseball.model.GameModel;
 import baseball.view.View;
 
 public class GameController {
-    private View view;
-    private GameModel model;
+
+    private final View view;
+    private final GameModel model;
 
     public GameController() {
         model = new GameModel();
         view = new View();
     }
 
-    public void playGame(){
+    public void playGame() {
         view.printStart();
-        while (!model.getGameEndFlag()){
+        while (!model.getGameEndFlag()) {
             while (!model.getGuessEndFlag()) {
                 String guess = view.getUserGuess();
                 model.checkValidGuess(guess);
@@ -26,11 +27,11 @@ public class GameController {
             checkRestart(checkContinue);
         }
     }
-    private void checkRestart(String checkContinue){
-        if(checkContinue.equals("1")){
+
+    private void checkRestart(String checkContinue) {
+        if (checkContinue.equals("1")) {
             model.setNewGame();
-        }
-        else if (checkContinue.equals("2")) {
+        } else if (checkContinue.equals("2")) {
             model.setGameEndFlag(true);
         }
     }

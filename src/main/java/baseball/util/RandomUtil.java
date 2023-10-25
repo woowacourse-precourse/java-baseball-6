@@ -10,12 +10,11 @@ import java.util.List;
 
 public class RandomUtil {
 
-    List<Integer> computer = new ArrayList<>();
-    public static List<Integer> generateComputer(){
+    public static List<Integer> generateComputer() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size()<LENGTH){
+        while (computer.size() < LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(START_NUM, END_NUM);
-            if(!computer.contains(randomNumber)){
+            if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }

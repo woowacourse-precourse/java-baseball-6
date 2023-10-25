@@ -8,24 +8,27 @@ import static baseball.message.Message.START_GAME_MESSAGE;
 import camp.nextstep.edu.missionutils.Console;
 
 public class View {
-    public void printStart(){
+
+    public void printStart() {
         System.out.println(START_GAME_MESSAGE);
     }
 
-    public void printFinish(){
+    public void printFinish() {
         System.out.println(FINISH_GAME);
     }
 
-    public void printGuessResult(String message){
+    public void printGuessResult(String message) {
         System.out.println(message);
     }
+
     public String getUserGuess() {
         String guess;
         System.out.print(INPUT_NUMBER_MESSAGE);
         guess = Console.readLine();
         return guess;
     }
-    public String getContinueGameInput(){
+
+    public String getContinueGameInput() {
         String continueGameInput;
         System.out.println(RESTART_GAME);
         continueGameInput = Console.readLine();

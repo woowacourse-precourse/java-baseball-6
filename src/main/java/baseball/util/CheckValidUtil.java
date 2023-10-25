@@ -10,33 +10,33 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class CheckValidUtil {
-    public static boolean validateInput(String input){
+
+    public static void validateInput(String input) {
         if (!checkLengthAndDigit(input)) {
-            throw new IllegalArgumentException(
-                    "게임종료");
+            throw new IllegalArgumentException("게임종료");
         }
-        if (checkDistinctDigit(input)){
-            throw new IllegalArgumentException(
-                    "게임종료");
+        if (checkDistinctDigit(input)) {
+            throw new IllegalArgumentException("게임종료");
         }
-        return true;
     }
-    public static boolean checkLengthAndDigit(String input){
+
+    public static boolean checkLengthAndDigit(String input) {
         String regex = String.format("^[%d-%d]{%d}$", START_NUM, END_NUM, LENGTH);
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
     }
-    public static boolean checkContinueGameInput(String input){
+
+    public static boolean checkContinueGameInput(String input) {
         String regex = "^[12]$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
-        if(!matcher.matches()){
-            throw new IllegalArgumentException(
-                    "");
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("");
         }
         return true;
     }
+
     public static boolean checkDistinctDigit(String input) {
         for (int i = 0; i < LENGTH; i++) {
             char currentDigit = input.charAt(i);
@@ -48,12 +48,10 @@ public class CheckValidUtil {
         }
         return false;
     }
-    public static List<Integer> validateAndConvertInput(String input){
+
+    public static List<Integer> validateAndConvertInput(String input) {
         validateInput(input);
-        return input.chars()
-                .map(Character::getNumericValue)
-                .boxed()
-                .collect(Collectors.toList());
+        return input.chars().map(Character::getNumericValue).boxed().collect(Collectors.toList());
     }
 
 }
