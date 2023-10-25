@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +100,6 @@ public class Game {
     }
 
     private boolean checkReStart(String reStartValue) {
-
         if (!reStartValue.equals("1") && !reStartValue.equals("2")) {
             throw new IllegalArgumentException("1 혹은 2의 값만 입력해주세요");
         }
