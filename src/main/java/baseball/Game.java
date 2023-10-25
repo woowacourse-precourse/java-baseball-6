@@ -12,7 +12,6 @@ public class Game {
     private static int ball;
 
     private static int[] computerAnswer;
-
     private static int[] playerAnswer;
     private static Answer answer = new Answer();
 
@@ -27,6 +26,7 @@ public class Game {
         isGameInProgress = true;
         strike = 0;
         ball = 0;
+        computerAnswer = answer.generateAnswer();
         System.out.println(START_ANNOUNCEMENT);
 
         while (isGameInProgress) {
@@ -133,16 +133,17 @@ public class Game {
 
     public void newGameTry() {
         System.out.println(NEWGAME_ANNOUNCEMENT);
-        String answer = Console.readLine();
+        String input = Console.readLine();
         int num;
         try {
-            num = Integer.parseInt(answer);
+            num = Integer.parseInt(input);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
 
         if (num == 1) {
             isGameInProgress = true;
+            computerAnswer = answer.generateAnswer();
             return;
         }
 
