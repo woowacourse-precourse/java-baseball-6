@@ -13,10 +13,10 @@ public class GameInput {
         return result;
     }
 
-    private List<Integer> convertStringToIntegerList(String num) {
+    private List<Integer> convertStringToIntegerList(String input) {
         List<Integer> inputNum = new ArrayList<>();
-        for (int i = 0; i < num.length(); i++) {
-            inputNum.add(num.charAt(i) - '0');
+        for (int i = 0; i < input.length(); i++) {
+            inputNum.add(input.charAt(i) - '0');
         }
         return inputNum;
     }
