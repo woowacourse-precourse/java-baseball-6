@@ -35,4 +35,11 @@ public class OutputData {
         return "";
     }
 
+    private static String checkJustStrike(String ballCount, int count) {
+        if ("".equals(output)) {
+            return count + ballCount;
+        }
+        return " " + count + ballCount;
+    }
+
 }
