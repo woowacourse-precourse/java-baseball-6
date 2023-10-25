@@ -37,16 +37,12 @@ public class BaseBallGame {
     }
 
     private void guessNumber() {
-        while (true) {
+        do {
             System.out.print(OutputMessage.ENTER_NUMBER);
             user.setUserNumberFromConsole();
-            Score score = new Score(0, 0);
-            Score finalScore = score.returnScore(computer, user);
-            finalScore.printOutScore();
-            if (finalScore.isSuccess()) {
-                break;
-            }
-        }
+            score.returnScore(computer, user);
+            score.printOutScore();
+        } while (!score.isSuccess());
     }
 
     private static boolean askWhetherToEnd() {

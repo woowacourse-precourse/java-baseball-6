@@ -2,8 +2,8 @@ package baseball;
 
 public class Score {
 
-    public int numOfBall = 0;
-    public int numOfStrike = 0;
+    public int numOfBall;
+    public int numOfStrike;
 
     private static Score score;
 
@@ -22,19 +22,20 @@ public class Score {
         this.numOfStrike = numOfStrike;
     }
 
-    public void initializeScore() {
-        numOfBall = 0;
-        numOfStrike = 0;
-    }
-
-    public boolean isSuccess() {
-        if (numOfStrike == 3) {
-            initializeScore();
-            return true;
+    public void returnScore(Computer computer, User user) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (computer.getRandomNumber().get(i).equals(user.getInputNumber().get(j))) {
+                    if (i == j) {
+                        numOfStrike++;
+                        break;
+                    } else {
+                        numOfBall++;
+                        break;
+                    }
+                }
+            }
         }
-
-        initializeScore();
-        return false;
     }
 
     public void printOutScore() {
@@ -50,20 +51,18 @@ public class Score {
         }
     }
 
-    public Score returnScore(Computer computer, User user) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (computer.getRandomNumber().get(i).equals(user.getInputNumber().get(j))) {
-                    if (i == j) {
-                        numOfStrike++;
-                        break;
-                    } else {
-                        numOfBall++;
-                        break;
-                    }
-                }
-            }
+    public boolean isSuccess() {
+        if (numOfStrike == 3) {
+            initializeScore();
+            return true;
         }
-        return new Score(numOfBall, numOfStrike);
+
+        initializeScore();
+        return false;
+    }
+
+    public void initializeScore() {
+        numOfBall = 0;
+        numOfStrike = 0;
     }
 }
