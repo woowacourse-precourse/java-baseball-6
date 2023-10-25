@@ -8,7 +8,7 @@ public class Player {
         this.guessNumber = guessNumber;
     }
 
-    public Player(){
+    public Player() {
         this.guessNumber = Note.writeDown("123");
     }
 

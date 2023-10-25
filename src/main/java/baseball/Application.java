@@ -6,13 +6,16 @@ public class Application {
     enum GameStatus {
         RE_GAME("1"), END_GAME("2"), WIN_GAME("3스트라이크");
         private final String value;
-        GameStatus(String value){
+
+        GameStatus(String value) {
             this.value = value;
         }
-        public String getValue(){
+
+        public String getValue() {
             return this.value;
         }
     }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         do {

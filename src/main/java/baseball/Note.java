@@ -13,7 +13,7 @@ public class Note {
         checkDigitsUnique(number);
     }
 
-    private void checkThreeDigits(String number) throws IllegalArgumentException{
+    private void checkThreeDigits(String number) throws IllegalArgumentException {
         final int threeDigits = 3;
         final char numberLowerBound = '1';
         final char numberUpperBound = '9';
@@ -29,7 +29,7 @@ public class Note {
         }
     }
 
-    public static Note writeDown(String number) throws IllegalArgumentException{
+    public static Note writeDown(String number) throws IllegalArgumentException {
         return new Note(number);
     }
 
@@ -39,11 +39,11 @@ public class Note {
     }
 
 
-    private void checkDigitsUnique(String number) throws IllegalArgumentException{
+    private void checkDigitsUnique(String number) throws IllegalArgumentException {
         char firstNumber = number.charAt(0);
         char secondNumber = number.charAt(1);
         char thirdNumber = number.charAt(2);
-        if(firstNumber == secondNumber || secondNumber == thirdNumber || firstNumber == thirdNumber){
+        if (firstNumber == secondNumber || secondNumber == thirdNumber || firstNumber == thirdNumber) {
             throw new IllegalArgumentException("중복되지 않은 값을 입력하세요");
         }
     }
