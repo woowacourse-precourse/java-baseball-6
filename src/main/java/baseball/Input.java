@@ -14,6 +14,15 @@ public class Input {
         return isNotDuplicate(input) && isNumber(input) && isThreeDigits(input);
     }
 
+    public List<Integer> getInputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = ConsoleUtils.readLine();
+        if (!isValidInput(input)) {
+            throw new IllegalArgumentException();
+        }
+        return stringToList(input);
+    }
+
     private boolean isThreeDigits(String input) {
         return input.length() == 3;
     }
