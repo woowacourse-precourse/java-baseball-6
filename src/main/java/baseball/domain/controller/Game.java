@@ -1,6 +1,10 @@
 package baseball.domain.controller;
 
+import baseball.domain.dto.ResultDto;
+import baseball.domain.dto.UserInputDto;
 import baseball.domain.model.BallGenerator;
+import baseball.domain.view.InputData;
+import baseball.domain.view.OutputData;
 
 import java.util.List;
 
@@ -35,6 +39,15 @@ public class Game {
     }
 
     private void playBaseball(GameController gameController) {
+        boolean isThreeStrike = false;
+        while (!isThreeStrike) {
+            UserInputDto userInputDto = new UserInputDto(InputData.inputUserBallNumber());
+
+            ResultDto resultDto = gameController.doGame(userInputDto);
+            OutputData.gameResultPrint(resultDto);
+
+            isThreeStrike = resultDto.getThreeStrike();
+        }
     }
 
 }
