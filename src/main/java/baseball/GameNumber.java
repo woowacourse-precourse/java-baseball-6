@@ -3,10 +3,6 @@ package baseball;
 public class GameNumber {
     private final String value;
 
-    public String getValue() {
-        return value;
-    }
-
     private GameNumber(String value) {
         this.value = value;
     }
