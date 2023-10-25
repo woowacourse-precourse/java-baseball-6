@@ -1,5 +1,7 @@
 package baseball.model.domain;
 
+import static baseball.model.constants.Rule.RESTART_OPTION;
+
 import baseball.model.service.Validator;
 
 public class Restart {
@@ -16,6 +18,10 @@ public class Restart {
 
     public Integer getRestartOption() {
         return restartOption;
+    }
+
+    public boolean isRestartOption() {
+        return restartOption.equals(RESTART_OPTION.getValue());
     }
 
     private Integer parse(String inputOption) {

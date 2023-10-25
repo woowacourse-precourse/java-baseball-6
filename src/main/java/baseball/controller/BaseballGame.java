@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import static baseball.model.constants.Rule.RESTART_OPTION;
-
 import baseball.model.domain.Computer;
 import baseball.model.domain.Player;
 import baseball.model.domain.Restart;
@@ -18,6 +16,9 @@ public class BaseballGame {
     private Computer computer;
     private Player player;
     private Restart restart;
+
+    private boolean again;
+    private boolean correct;
 
     private final Generator generator;
     private final Validator validator;
@@ -43,7 +44,8 @@ public class BaseballGame {
         OutputView.printGameStart();
         do {
             playGame();
-        } while (!isFinish());
+            again = restart.isRestartOption();
+        } while (again);
     }
 
     private void playGame() {
@@ -51,7 +53,8 @@ public class BaseballGame {
         do {
             getNumbersFromPlayer();
             printHint(getCompareResult());
-        } while (!isWin());
+            correct = comparator.isCorrect();
+        } while (!correct);
         OutputView.printGameClear();
         getRestartOptionFromPlayer();
     }
@@ -102,15 +105,7 @@ public class BaseballGame {
         }
     }
 
-    private boolean isWin() {
-        return comparator.isCorrect();
-    }
-
     private void getRestartOptionFromPlayer() {
         restart = Restart.of(InputView.setRestartInput(), validator);
-    }
-
-    private boolean isFinish() {
-        return !restart.getRestartOption().equals(RESTART_OPTION.getValue());
     }
 }
