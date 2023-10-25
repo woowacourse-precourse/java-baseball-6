@@ -10,7 +10,7 @@ public class Score {
         this.ball = ball;
     }
 
-    public void increaseStrike(int strikeCnt){
+    public void increaseStrike(int strikeCnt) {
         this.strike = strikeCnt;
         this.ball -= strikeCnt;
     }

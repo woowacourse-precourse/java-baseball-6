@@ -22,15 +22,15 @@ public class OutputView {
     }
 
     public void printScore(Score score) {
-        if (score.getBall() == ZERO_SCORE && score.getStrike() == ZERO_SCORE){
+        if (score.getBall() == ZERO_SCORE && score.getStrike() == ZERO_SCORE) {
             System.out.println(NOTHING);
             return;
         }
-        if (score.getStrike() == ZERO_SCORE){
+        if (score.getStrike() == ZERO_SCORE) {
             System.out.printf(BALL, score.getBall());
             return;
         }
-        if (score.getBall() == ZERO_SCORE){
+        if (score.getBall() == ZERO_SCORE) {
             System.out.printf(STRIKE, score.getStrike());
             return;
         }
