@@ -37,6 +37,12 @@ public class GameService {
         computeScore();
     }
 
+    private int[] getUserNumber() {
+        System.out.println(RequestMessage.REQUEST_INPUT_DATA);
+        String input = Console.readLine();
+        return parser.parseUserInput(input, size);
+    }
+
     private void computeScore() {
         for (int i = 0; i < size; i++) {
             compute(game.getGameNumbers(), user.getUserNumbers(), i);
@@ -61,12 +67,6 @@ public class GameService {
         if (index != pos && pos != -1) {
             game.increaseBallCount();
         }
-    }
-
-    private int[] getUserNumber() {
-        System.out.println(RequestMessage.REQUEST_INPUT_DATA);
-        String input = Console.readLine();
-        return parser.parseUserInput(input, size);
     }
 
 

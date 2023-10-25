@@ -14,6 +14,7 @@ public class Parser {
 
     private int[] getParseInt(String input, int size) {
         int[] parseInt = new int[size];
+
         for (int i = 0; i < input.length(); i++) {
             if (!checkDigit(input, i)) {
                 throw new IllegalArgumentException();
@@ -24,6 +25,6 @@ public class Parser {
     }
 
     private Boolean checkDigit(String input, int i) {
-        return '0' <= input.charAt(i) && input.charAt(i) <= 9;
+        return '0' <= input.charAt(i) && input.charAt(i) <= '9';
     }
 }
