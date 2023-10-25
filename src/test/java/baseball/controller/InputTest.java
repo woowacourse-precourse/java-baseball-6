@@ -43,7 +43,7 @@ public class InputTest extends NsTest {
         String inputNumbers = "1234";
         run(inputNumbers);
         List<Integer> targetNumbers = Arrays.stream(inputNumbers.split("")).map(Integer::parseInt).toList();
-        assertThat(InputView.getPlayerRestartNumber()).isEqualTo(targetNumbers);
+        assertThat(InputView.getPlayerGuessNumbers()).isEqualTo(targetNumbers);
     }
     @Test
     @DisplayName("플레이어가 1 자리의 수를 화면에 입력한다.")
