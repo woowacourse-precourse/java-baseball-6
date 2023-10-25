@@ -22,7 +22,6 @@ public class PlayBaseball {
 
     public boolean compareTry(List<Integer> answer, int[] userTry) {
         int strikes = 0, balls = 0;
-        boolean nothing = false;
         for (int i = 0; i < 3; i++) {
             int userNumber = userTry[i];
             if (answer.get(i) == userNumber) {
