@@ -20,4 +20,17 @@ class RandomNumberGeneratorTest {
                     assertThat(list).doesNotHaveDuplicates();
                 });
     }
+
+    @Test
+    @DisplayName("난수가 1부터 9까지의 서로 다른 수인지 확인한다")
+    void isBallNumberFormat() {
+        Stream.iterate(0, i -> i + 1)
+                .limit(100)
+                .forEach(i -> {
+                    List<Integer> list = randNumGenerator.makeRandomNumbers();
+                    assertThat(list).hasSize(3);
+                    assertThat(list).doesNotHaveDuplicates();
+                    assertThat(list).allMatch(num -> num >= 1 && num <= 9);
+                });
+    }
 }
