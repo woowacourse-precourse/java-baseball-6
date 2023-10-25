@@ -10,6 +10,10 @@ public class Game {
     private final List<Integer> computer = new ArrayList<>();
 
     public Game() {
+        createRandomNumber();
+    }
+
+    private void createRandomNumber() {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
