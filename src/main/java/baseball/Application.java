@@ -82,14 +82,6 @@ public class Application {
     				randomList.set(j, Randoms.pickNumberInRange(1, 9));
     			}
     		}
-
-//    		if(i == randomList.size() - 1) {
-//    			for(int j = i - 1; j < 0; j--) {
-//    				if(randomList.get(i) == randomList.get(j)) {
-//    					randomList.set(j, Randoms.pickNumberInRange(1, 9));
-//    				}
-//    			}
-//    		}
     	}
 	}
 
