@@ -1,30 +1,27 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.beans.PropertyEditorSupport;
+import java.util.*;
 
 public abstract class NumberFactory {
 
     public static int createNumber(int digitSize) {
-        List<Integer> numberList = new ArrayList<>();
+        Set<Integer> numberSet = new LinkedHashSet<>();
 
-        while (numberList.size() < digitSize) {
+        while (numberSet.size() < digitSize) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!numberList.contains(randomNumber)) {
-                numberList.add(randomNumber);
-            }
+            numberSet.add(randomNumber);
         }
 
-        int createdNumber = combineNumber(numberList);
-        return createdNumber;
+        return combineNumber(numberSet);
     }
 
-    private static int combineNumber(List<Integer> numberList) {
+    private static int combineNumber(Set<Integer> numberSet) {
         int result = 0;
-        int len = numberList.size();
-        for (int i = 0; i < len; i++) {
-            result += numberList.get(i) * Math.pow(10, len-1-i);
+        for (int num : numberSet) {
+            result *= 10;
+            result += num;
         }
 
         return result;
