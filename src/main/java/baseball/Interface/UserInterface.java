@@ -26,7 +26,7 @@ public class UserInterface {
         }
     }
 
-    // 여기서 객체지향적으로 분리할 부분이 많이 생긴다.
+    // 여기서 객체지향적으로 분리할 부분이 많이 생긴다. 나중에 코드리뷰 하면서 수정해보자
     private void startGame() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
