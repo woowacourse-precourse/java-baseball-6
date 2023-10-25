@@ -46,19 +46,8 @@ public class UserInput {
         return userInput;
     }
 
-    public int checkStrike(List<Integer> answer){
-        int strikeNum = 0;
-        if (userInput.get(0).equals(answer.get(0))) strikeNum++;
-        if (userInput.get(1).equals(answer.get(1))) strikeNum++;
-        if (userInput.get(2).equals(answer.get(2))) strikeNum++;
-        return strikeNum;
+    public int get(int i){
+        return (int)userInput.get(i);
     }
 
-    public int checkBall(List<Integer> answer) {
-        int ballNum = 0;
-        if (userInput.get(0).equals(answer.get(1)) || answer.get(0).equals(userInput.get(2))) ballNum++;
-        if (userInput.get(1).equals(answer.get(0)) || answer.get(1).equals(userInput.get(2))) ballNum++;
-        if (userInput.get(2).equals(answer.get(0)) || answer.get(2).equals(userInput.get(1))) ballNum++;
-        return ballNum;
-    }
 }

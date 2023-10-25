@@ -24,8 +24,7 @@ public class Answer {
         return randomList;
     }
 
-    public List<Integer> getAnswer(){
-        return answer;
+    public int get(int i){
+        return (int)answer.get(i);
     }
-
 }

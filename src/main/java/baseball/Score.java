@@ -3,13 +3,13 @@ package baseball;
 import baseball.number.Answer;
 import baseball.number.UserInput;
 
+import java.util.List;
+
 public class Score {
 
     Answer answer;
     UserInput userInput;
-
     Baseball baseball = new Baseball();
-
     int[] scoreArr = new int[2];
 
     public Score(Answer answer, UserInput userInput){
@@ -18,8 +18,8 @@ public class Score {
     }
 
     public int[] checkScore(UserInput userInput){
-        scoreArr[0] = userInput.checkStrike(answer.getAnswer());
-        scoreArr[1] = userInput.checkBall(answer.getAnswer());
+        scoreArr[0] = checkStrike(userInput, answer);
+        scoreArr[1] = checkBall(userInput, answer);
         return scoreArr;
     }
 
@@ -40,5 +40,21 @@ public class Score {
         }
         System.out.println();
         return false;
+    }
+
+    private int checkStrike(UserInput userInput, Answer answer){
+        int strikeNum = 0;
+        if (userInput.get(0) == answer.get(0)) strikeNum++;
+        if (userInput.get(1) == answer.get(1)) strikeNum++;
+        if (userInput.get(2) == answer.get(2)) strikeNum++;
+        return strikeNum;
+    }
+
+    private int checkBall(UserInput userInput, Answer answer) {
+        int ballNum = 0;
+        if (userInput.get(0) == answer.get(1) || answer.get(0) == userInput.get(2)) ballNum++;
+        if (userInput.get(1) == answer.get(0) || answer.get(1) == userInput.get(2)) ballNum++;
+        if (userInput.get(2) == answer.get(0) || answer.get(2) == userInput.get(1)) ballNum++;
+        return ballNum;
     }
 }

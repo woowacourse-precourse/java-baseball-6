@@ -10,10 +10,10 @@ public class Baseball {
     UserInput userInput;
     Score score;
 
-    // TODO 2. 야구게임 시작
+    // TODO 1. 야구게임 시작
     public void play(){
 
-        // TODO 1. answer이 되는 숫자 생성
+        // TODO 2. answer이 되는 숫자 생성
         answer = new Answer();
 
         while(true){
@@ -32,7 +32,7 @@ public class Baseball {
             score = new Score(answer, userInput);
             int[] scoreArr = score.checkScore(userInput);
 
-            //TODO 5. 점수 출력 or 예외처리
+            //TODO 5. 점수 출력
             if (score.printScore(scoreArr)) break;
         }
     }
