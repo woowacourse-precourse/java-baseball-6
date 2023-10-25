@@ -14,9 +14,7 @@ public class ExceptionHandler {
     }
 
     public void userInputLengthValidation(String input) {
-
         if(input.length() != 3) throw new IllegalArgumentException();
-
 
     }
 

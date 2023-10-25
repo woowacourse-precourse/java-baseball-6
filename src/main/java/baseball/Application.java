@@ -12,13 +12,8 @@ public class Application {
         //게임 시작
         System.out.println(firstMent);
 
-        try {
-            gameManager.gameStart();
-        }
-        catch (IllegalArgumentException e) {
-            Console.close();
-            e.printStackTrace();
-        }
+        gameManager.gameStart();
+
 
 
     }
