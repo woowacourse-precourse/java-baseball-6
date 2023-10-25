@@ -78,6 +78,10 @@ public class BaseBallController {
     private String makeHintMessage() {
         if (ballCount == 0 && strikeCount == 0) {
             return BaseBallConstants.NOTHING;
+        } else if (ballCount > 0 && strikeCount == 0) {
+            return ballCount + BaseBallConstants.BALL;
+        } else if (ballCount == 0 && strikeCount > 0) {
+            return strikeCount + BaseBallConstants.STRIKE;
         }
         return ballCount + BaseBallConstants.BALL + " " + strikeCount + BaseBallConstants.STRIKE;
     }
