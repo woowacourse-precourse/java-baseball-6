@@ -37,7 +37,7 @@ class User {
         }
         for(int i = 0; i < Game.NUMBERS; i++) {
             answer[i]=strNum.charAt(i) - '0';
-            if(answer[i]<1==answer[i]>9) {
+            if(answer[i]<1||answer[i]>9) {
                 throw new IllegalArgumentException("Invalid input");
             }
         }
