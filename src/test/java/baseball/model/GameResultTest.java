@@ -6,12 +6,12 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class GameResultCalculatorTest {
-    private GameResultCalculator calculator;
+class GameResultTest {
+    private GameResult calculator;
 
     @BeforeEach
     void setUp() {
-        calculator = new GameResultCalculator();
+        calculator = new GameResult();
     }
 
     @Test

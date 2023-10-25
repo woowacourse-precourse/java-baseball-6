@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.model.Computer;
 import baseball.model.FinishInput;
-import baseball.model.GameResultCalculator;
+import baseball.model.GameResult;
 import baseball.model.Number;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -10,14 +10,14 @@ import baseball.view.OutputView;
 public class GameController {
     private final OutputView view;
     private final InputView input;
-    private final GameResultCalculator calculator;
+    private final GameResult calculator;
     private Computer computer;
     private Number randomNumber;
 
     public GameController() {
         view = new OutputView();
         input = new InputView();
-        calculator = new GameResultCalculator();
+        calculator = new GameResult();
         computer = new Computer();
     }
 

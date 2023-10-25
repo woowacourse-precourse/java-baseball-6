@@ -1,6 +1,6 @@
 package baseball.model;
 
-public class GameResultCalculator {
+public class GameResult {
 
     private static final String BALL_RESULT = "볼";
     private static final String STRIKE_RESULT = "스트라이크";
@@ -9,7 +9,7 @@ public class GameResultCalculator {
     private int ballCount;
     private int strikeCount;
 
-    public GameResultCalculator() {
+    public GameResult() {
         ballCount = 0;
         strikeCount = 0;
     }
