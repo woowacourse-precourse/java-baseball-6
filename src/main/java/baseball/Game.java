@@ -53,12 +53,16 @@ public class Game {
     private List<Integer> inputUserGuess() {
         System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
+        isTripleDigit(input);
+        return toArrayList(input);
+    }
 
+    private void isTripleDigit(String input) throws IllegalArgumentException {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
-        return toArrayList(input);
     }
+
 
     private List<Integer> toArrayList(String input) {
         List<Integer> userGuessNumber = new ArrayList<>();
