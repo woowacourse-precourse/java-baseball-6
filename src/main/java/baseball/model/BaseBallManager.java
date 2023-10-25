@@ -12,6 +12,7 @@ public class BaseBallManager {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
+    private static Map<Integer, Integer> computerBallInfo;
     private static BallNumberGroup computerBallGroup;
     private static Map<Integer, Integer> computerBallInfo;  // BallNumber, idx
     private static Map<String, Integer> playerResult;
@@ -25,23 +26,25 @@ public class BaseBallManager {
         }
     }
 
-    public Map<String, Integer> compareBaseBall(BallNumberGroup playerBallGroup) {
-        playerResult = new HashMap<>();
-        List<BallNumber> playerBalls = playerBallGroup.getBallNumberGroup();
-        int nothingCount = 0;
+    private Map<String, Integer> compareBalls(String numbers) {
+        Map<String, Integer> compareResult = new HashMap<>();
+        BallNumberGroup playerBallNumberGroup = generateBallGroup(numbers);
+        List<BallNumber> playerBalls = playerBallNumberGroup.getBallNumberGroup();
 
-        for (int ballIdx = 0; ballIdx < BALL_NUMBER_SIZE; ballIdx++) {
-            Integer playerBall = playerBalls.get(ballIdx).getNumber();
+        for (int bIdx = 0; bIdx < BALL_NUMBER_SIZE; bIdx++) {
+            Integer playerBall = playerBalls.get(bIdx).getNumber();
             if (!computerBallInfo.containsKey(playerBall)) {
-                nothingCount++;
+                compareResult.put(NOTHING, compareResult.getOrDefault(NOTHING, 0) + 1);
             } else {
-                if (ballIdx == computerBallInfo.get(playerBall)) {
-                    playerResult.put(STRIKE, playerResult.getOrDefault(STRIKE, 0) + 1);
-                } else if (ballIdx != computerBallInfo.get(playerBall)) {
-                    playerResult.put(BALL, playerResult.getOrDefault(BALL, 0) + 1);
+                if (bIdx == computerBallInfo.get(playerBall)) {
+                    compareResult.put(STRIKE, compareResult.getOrDefault(STRIKE, 0) + 1);
+                } else if (bIdx != computerBallInfo.get(playerBall)) {
+                    compareResult.put(BALL, compareResult.getOrDefault(BALL, 0) + 1);
                 }
             }
         }
+        return compareResult;
+    }
 
         if (nothingCount == 3) playerResult.put(NOTHING, 1);
 
