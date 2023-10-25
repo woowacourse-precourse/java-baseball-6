@@ -6,7 +6,6 @@ public class Application {
         do {
             Computer computer = new Computer();
             User user = new User();
-            computer.setAnswerNum();
             while (!computer.checkNum(user.getUserNum())) {
                 user.inputNum();
             }
