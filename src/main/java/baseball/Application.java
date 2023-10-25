@@ -13,13 +13,13 @@ public class Application {
         // 4. 정답을 맞출 수 있을 때까지 이 과정을 반복한다
 
         boolean playing = true;
-        Computer cmp = new Computer();
+        Computer computer = new Computer();
         List<Integer> randomNums;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         // TODO 1: 컴퓨터로 랜덤 숫자 만들기
-        randomNums = cmp.makeRandomNumbers();
+        randomNums = computer.makeRandomNumbers();
 
         while (playing) {
 
@@ -77,7 +77,7 @@ public class Application {
                 if (isRestart == 2) {
                     playing = false;
                 } else {
-                    randomNums = cmp.makeRandomNumbers();
+                    randomNums = computer.makeRandomNumbers();
                 }
 
             }
