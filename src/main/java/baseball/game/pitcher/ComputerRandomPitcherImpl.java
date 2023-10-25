@@ -10,6 +10,7 @@ public class ComputerRandomPitcherImpl implements Pitcher {
     public String pitch() {
         String ball = "";
         for(int i = 0 ; i < DIGIT_NUM ; i++){
+            //랜덤숫자 생성
             int randNum = pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             ball = ball + randNum;
         }

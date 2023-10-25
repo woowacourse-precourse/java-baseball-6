@@ -15,6 +15,7 @@ public class DisplayBoardImpl implements DisplayBoard {
 
     @Override
     public void displayScore(Score score) {
+        //점수 확인하여 상황에 맞게 출력
         if (score.getBallCount() > 0) {
             System.out.print(score.getBallCount());
             System.out.print("볼");
