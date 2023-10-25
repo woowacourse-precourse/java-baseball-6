@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group = 'camp.nextstep.edu'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    maven { url 'https://jitpack.io' }
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation('com.github.woowacourse-projects:mission-utils:1.0.0')
+}
+
+test {
+    useJUnitPlatform()
+}
