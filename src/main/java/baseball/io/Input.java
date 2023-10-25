@@ -28,6 +28,10 @@ public class Input {
         } else if (Validator.isDuplicate(input)) {
             Console.close();
             BaseballGame.exit(StringError.duplicatedInputError);
+
+        } else if (Validator.isZero(input)) {
+            Console.close();
+            BaseballGame.exit(StringError.wrongRangeError);
         }
 
         return input;

@@ -30,7 +30,7 @@ public class Validator {
         try {
             Integer.parseInt(strNum);
             return true;
-            
+
         } catch (NumberFormatException e) {
             return false;
         }
@@ -54,5 +54,15 @@ public class Validator {
         }
 
         return answer;
+    }
+
+    public static boolean isZero(String str) {
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '0') {
+                return true;
+            }
+        }
+        return false;
     }
 }
