@@ -14,7 +14,7 @@ public class BaseballGame {
     public void start() {
         while (!isDone) {
             PlayerNumbers playerNumbers = View.inputPlayerNumbers();
-            Result result = baseballNumbers.checkResult(playerNumbers);
+            Result result = playerNumbers.checkResult(baseballNumbers);
             View.printResult(result);
 
             if (result.isAllHit()) isDone = true;

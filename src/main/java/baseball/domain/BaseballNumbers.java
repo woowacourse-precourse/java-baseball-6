@@ -17,15 +17,12 @@ public class BaseballNumbers {
         this.numbers = numbers;
     }
 
-    public Result checkResult(PlayerNumbers playerNumbers) {
-        int strike = 0, ball = 0;
-        for (int i = 0; i < numbers.size(); i++) {
-            if (playerNumbers.isBall(numbers.get(i))) ball++;
-            if (playerNumbers.isStrike(i, numbers.get(i))) strike++;
-        }
-        ball -= strike;
+    public boolean isBall(Integer number) {
+        return numbers.contains(number);
+    }
 
-        return new Result(strike, ball);
+    public boolean isStrike(int index, Integer number) {
+        return numbers.get(index).equals(number);
     }
 
     public static BaseballNumbers generateBaseballNumbers() {
