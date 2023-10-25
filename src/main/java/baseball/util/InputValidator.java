@@ -43,8 +43,8 @@ public class InputValidator {
     }
 
     public boolean isValidContinueGameChoice(String playerInput) {
-        if (playerInput.equals(BaseBallConstants.CONTINUE_NUMBER) || playerInput.equals(
-                BaseBallConstants.GAME_TERMINATE_NUMBER)) {
+        if (playerInput.equals(BaseBallConstants.SIGNAL_CONTINUE) || playerInput.equals(
+                BaseBallConstants.SIGNAL_TERMINATE)) {
             return true;
         }
         throw new IllegalArgumentException(BaseBallConstants.WRONG_INPUT_GAME_CONTINUE_CHOICE_MESSAGE);

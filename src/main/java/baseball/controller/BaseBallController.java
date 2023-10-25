@@ -89,9 +89,9 @@ public class BaseBallController {
     }
 
     private void chooseGameRepeatOrQuit() {
-        if (playerInput.equals(BaseBallConstants.CONTINUE_NUMBER)) {
+        if (playerInput.equals(BaseBallConstants.SIGNAL_CONTINUE)) {
             startGame();
-        } else if (playerInput.equals(BaseBallConstants.GAME_TERMINATE_NUMBER)) {
+        } else if (playerInput.equals(BaseBallConstants.SIGNAL_TERMINATE)) {
             endGame();
         }
     }
