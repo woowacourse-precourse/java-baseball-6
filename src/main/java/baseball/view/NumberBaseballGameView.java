@@ -17,7 +17,11 @@ public class NumberBaseballGameView implements GameView {
         } catch (IOException e) {
             throw new RuntimeException("메시지 로드 오류", e);
         }
+        showStartGameMessage();
+    }
 
+    @Override
+    public void showStartGameMessage() {
         System.out.println(messageProperties.get("start-game"));
     }
 
