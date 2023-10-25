@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -50,6 +51,7 @@ public class Game {
             user.add(userInputInt % 10);
             userInputInt = userInputInt / 10;
         }
+        Collections.reverse(user);
 //        System.out.println("getUserInput 끝");
     }
 
