@@ -21,8 +21,7 @@ public class ResultService {
     public Result inputAndCompare(List<Integer> computer) {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        List<Integer> input_num =
-                convert_to_list(input);
+        List<Integer> input_num = convert_to_list(input);
         if (checkException(input_num) == 1) {
             throw new IllegalArgumentException();
         }

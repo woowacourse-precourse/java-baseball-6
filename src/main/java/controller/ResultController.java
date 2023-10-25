@@ -11,18 +11,14 @@ public class ResultController {
     public void game() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = resultService.number_init();
-        while (true) {
+        do {
             Result res = resultService.inputAndCompare(computer);
-//            System.out.println(computer);
             if (res.getStrike() == 3) {
                 computer = rightAnswer(computer);
             } else if (res.getStrike() < 3) {
                 wrongAnswer(res);
             }
-            if (computer == null) {
-                break;
-            }
-        }
+        } while (computer != null);
     }
 
     private List<Integer> rightAnswer(List<Integer> computer) {
