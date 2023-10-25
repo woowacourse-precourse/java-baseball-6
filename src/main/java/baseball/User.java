@@ -7,7 +7,6 @@ import java.util.List;
 public class User {
 
     private List<Integer> inputNumber;
-    private final String USER_NUM_REG_EX = "([1-9])(?!\\1)([1-9])(?!\\1|\\2)([1-9])";
 
     private static User user;
 
@@ -42,6 +41,7 @@ public class User {
     }
 
     private void throwException(String st) {
+        String USER_NUM_REG_EX = "([1-9])(?!\\1)([1-9])(?!\\1|\\2)([1-9])";
         if (!st.matches(USER_NUM_REG_EX)) {
             throw new IllegalArgumentException();
         }
