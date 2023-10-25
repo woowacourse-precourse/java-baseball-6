@@ -12,7 +12,7 @@ public class Score {
         for(int i = 0;i < 2;i++) this.scoreBoard.add(0);
     }
     // clear List of scoreBoard
-    public void clearBoard(){
+    private void clearBoard(){
         for(int i = 0;i < 2;i++) scoreBoard.set(i, 0);
     }
     // counting number of strike
