@@ -1,29 +1,32 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.HashSet;
 import java.util.List;
 
 
 public class Game {
-    private static final int START_NUMBER = 1;
-    private static final int LAST_NUMBER = 9;
+
     private static final int INPUT_NUMBER_LENGTH = 3;
     private static final int RESTART = 1;
     private static final int END = 2;
     private static Computer computer;
     private static Player player;
 
-    // 3개 숫자를 요청
     public static void startGame(List<Integer> computerSelectNumbers) {
-        String input = player.inputNumbers();
+        startMessage();
+        String input = player.insertNumbers();
         int len = input.length();
-        checkInputSize(len);
+        Exception.checkInputSize(len);
         compare(computerSelectNumbers, input);
-
     }
 
+    public static String startMessage() {
+        return "숫자를 입력해주세요: ";
+    }
+
+    public static String restartMessage() {
+        return "게임을 새로 시작하려면"+RESTART+", 종료하려면 "+END+"를 입력하세요.";
+    }
 
     public static void compare(List<Integer> computer, String input) {
         int cntStrike = 0;
@@ -32,7 +35,7 @@ public class Game {
 
         for(int i=0; i<computer.size(); i++) {
             int num = stringToInt(input, i);
-            numberRangeValidation(num);
+            Exception.numberRangeValidation(num);
             checkRepetition.add(num);
 
             if((num) == computer.get(i)) {
@@ -43,17 +46,12 @@ public class Game {
             }
 
         }
-        checkOverlap(checkRepetition);
+        Exception.checkOverlap(checkRepetition);
+
         countResult(cntStrike, cntBall);
         gameResult(computer, cntStrike, cntBall);
 
     }
-    public static void checkInputSize(int len) {
-        if(len != INPUT_NUMBER_LENGTH) {
-            throw new IllegalArgumentException("숫자 "+INPUT_NUMBER_LENGTH+"개를 입력하세요.");
-        }
-    }
-
 
     public static void countResult(int cntStrike, int cntBall) {
         if (cntStrike == 0 && cntBall == 0) {
@@ -71,15 +69,6 @@ public class Game {
 
     }
 
-
-    public static void checkOverlap(HashSet<Integer> array) {
-        if(array.size() != INPUT_NUMBER_LENGTH) {
-            throw new IllegalArgumentException("서로 다른 "+INPUT_NUMBER_LENGTH+"자리의 수를 입력하세요.");
-        }
-    }
-
-
-
     public static void gameResult(List<Integer> computer, int cntStrike, int cntBall) {
         if (cntStrike == INPUT_NUMBER_LENGTH && cntBall == 0) {
             restartOrNot();
@@ -89,25 +78,16 @@ public class Game {
     }
 
     public static void restartOrNot() {
-        String input = inputRestartStatus();
+        restartMessage();
+        String input = player.insertNumbers();
         int num = stringToInt(input,0);
         if (num == RESTART) {
             gameRestart();
         } else if (num == END) {
             return;
         } else {
-            inputRestartStatusValidation();
+            Exception.inputRestartStatusValidation();
         }
-    }
-
-    public static String inputRestartStatus() {
-        System.out.println("게임을 새로 시작하려면"+RESTART+", 종료하려면 "+END+"를 입력하세요.");
-        return Console.readLine();
-    }
-
-
-    public static void inputRestartStatusValidation() {
-        throw new IllegalArgumentException(RESTART+","+END+" 이외의 값은 입력할 수 없습니다.");
     }
 
     public static void gameRestart() {
@@ -116,14 +96,9 @@ public class Game {
     }
 
 
-    public static void numberRangeValidation(int num) {
-        if (num<START_NUMBER | num>LAST_NUMBER) {
-            throw new IllegalArgumentException(START_NUMBER+"~"+LAST_NUMBER+"를 이용한 "+INPUT_NUMBER_LENGTH+"자리의 수만 입력할 수 있습니다.");
-        }
-    }
-
     public static int stringToInt(String str, int i) {
-        int num = Character.getNumericValue(str.charAt(i));
+        char strToChar = str.charAt(i);
+        int num = Character.getNumericValue(strToChar);
         return num;
     }
 
