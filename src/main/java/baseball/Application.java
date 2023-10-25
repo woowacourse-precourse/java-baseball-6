@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.validator.NumValidator;
+import baseball.validator.RestartNumValidator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        System.setProperty("file.encoding", "UTF-8");
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
@@ -49,12 +51,12 @@ public class Application {
             for (int i = 0; i < 3; i++) {
                 if (computerNumbers.get(i).equals(playerNumbers.get(i))) {
                     strikes++;
-                } else if (computerNumbers.contains(playerNumbers.get(i))) {
+                } else if (playerNumbers.contains(computerNumbers.get(i))) {
                     balls++;
                 }
             }
 
-            printResult(strikes, balls);
+            printResult(balls, strikes);
 
             if (strikes == 3) {
                 return true;
@@ -77,22 +79,29 @@ public class Application {
         return numbers;
     }
 
-    private static void printResult(int strikes, int balls) {
-        if (strikes > 0) {
-            System.out.print(strikes + "스트라이크 ");
-        }
+    private static void printResult(int balls, int strikes) {
+
+        StringBuilder resultMessage = new StringBuilder();
+
         if (balls > 0) {
-            System.out.print(balls + "볼 ");
+            resultMessage.append(balls + "볼 ");
         }
+
+        if (strikes > 0) {
+            resultMessage.append(strikes + "스트라이크 ");
+        }
+
         if (strikes == 0 && balls == 0) {
-            System.out.print("낫싱 ");
+            resultMessage.append("낫싱");
         }
-        System.out.println();
+
+        System.out.println(resultMessage.toString());
     }
 
     private static boolean shouldRestartGame() {
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
         String choice = Console.readLine();
+        RestartNumValidator.validateRestartNum(choice);
         return "1".equals(choice);
     }
 }
