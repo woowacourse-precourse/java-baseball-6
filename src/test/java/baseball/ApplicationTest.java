@@ -32,4 +32,9 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    void runException(String input) {
+        Game game = new Game();
+        game.convertInput(input);
+    }
 }
