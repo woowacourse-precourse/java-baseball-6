@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ComputerNumber {
 
@@ -20,7 +19,7 @@ public class ComputerNumber {
     private static List<Integer> pickRandomNumber() {
         return Arrays.stream(new List[Constant.LENGTH_LIMIT])
                 .map(num -> Randoms.pickNumberInRange(Constant.START_NUMBER, Constant.END_NUMBER))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private boolean validateRandomNumberDuplicate(List<Integer> randomNumbs) {

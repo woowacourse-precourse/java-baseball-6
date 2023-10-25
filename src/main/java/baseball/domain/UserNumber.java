@@ -4,7 +4,6 @@ import baseball.constant.Constant;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserNumber {
 
@@ -21,7 +20,7 @@ public class UserNumber {
     private List<Integer> createUserNumber(String input) {
         return Arrays.stream(input.split(""))
                 .map(UserNumber::validateUserNumberInteger)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private static int validateUserNumberInteger(String input) {
