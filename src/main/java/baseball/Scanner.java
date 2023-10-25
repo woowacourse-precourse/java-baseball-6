@@ -22,8 +22,10 @@ public class Scanner {
     public List<Integer> inputUserNumber() {
         List<Integer> userNumbers = new ArrayList<>();
         String inStr = Console.readLine();
-
+        validateLength(inStr);
         for (char cur : inStr.toCharArray()) {
+            validateRange(cur);
+            validateDuplication(cur, userNumbers);
             userNumbers.add(cur - '0');
         }
         return userNumbers;
@@ -31,8 +33,31 @@ public class Scanner {
 
     public Integer inputReplayOption() {
         Integer option = Integer.parseInt(Console.readLine());
+        validateReplayOption(option);
         return option;
     }
 
+    private void validateReplayOption(Integer option) {
+        if (!option.equals(playOption) && !option.equals(endOption)) {
+            throw new IllegalArgumentException();
+        }
+    }
 
+    private void validateLength(String input) {
+        if (input.length() != numberOfNumbers) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateRange(char number) {
+        if (number < minimumOfRange + '0' || number > maximumOfRange + '0') {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplication(char number, List<Integer> inputList) {
+        if (inputList.contains(number - '0')) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
