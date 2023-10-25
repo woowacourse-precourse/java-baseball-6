@@ -2,7 +2,6 @@ package baseball.game;
 
 import baseball.domain.BaseBall;
 import baseball.domain.BaseBallMount;
-import baseball.domain.MountResult;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

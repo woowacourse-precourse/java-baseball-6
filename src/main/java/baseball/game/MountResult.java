@@ -1,5 +1,7 @@
-package baseball.domain;
+package baseball.game;
 
+import baseball.domain.BaseBall;
+import baseball.domain.BaseBallMount;
 import java.util.List;
 import java.util.Objects;
 
