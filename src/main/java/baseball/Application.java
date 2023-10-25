@@ -9,10 +9,12 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+
     //상수 정의
     private static final int NUMBER_OF_DIGITS = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
+
     public static void main(String[] args) {
         boolean playAgain = true;
 
@@ -39,7 +41,7 @@ public class Application {
     }
 
     //컴퓨터가 생성한 난수를 반환
-    private static List<Integer> randomNums(){
+    private static List<Integer> randomNums() {
         List<Integer> randomNums = new ArrayList<>();
         while (randomNums.size() < NUMBER_OF_DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -103,7 +105,8 @@ public class Application {
     }
 
     //사용자 숫자와 컴퓨터 숫자 비교
-    private static List<Integer> compareNumbers(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    private static List<Integer> compareNumbers(List<Integer> computerNumbers,
+            List<Integer> userNumbers) {
         int strikes = 0;
         int balls = 0;
 
@@ -156,7 +159,9 @@ public class Application {
                 return true;
             } else if (userInput == 2) {
                 return false;
-            }else throw new IllegalArgumentException("1 또는 2를 입력하지않았습니다.");
+            } else {
+                throw new IllegalArgumentException("1 또는 2를 입력하지않았습니다.");
+            }
         }
     }
 
