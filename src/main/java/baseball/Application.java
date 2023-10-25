@@ -90,8 +90,8 @@ public class Application {
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
                     input=Console.readLine();
                     try {
-                        if(Integer.parseInt(input)!=1 ||Integer.parseInt(input)!=2) throw new IllegalArgumentException();
-                        if(Integer.parseInt(input)!=2) start=false;
+                        if(!(Integer.parseInt(input)==1 ||Integer.parseInt(input)==2)) throw new IllegalArgumentException();
+                        if(Integer.parseInt(input)==2) start=false;
                     }catch (Exception e){
                         throw new IllegalArgumentException();
                     }
