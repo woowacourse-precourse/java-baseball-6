@@ -13,6 +13,8 @@ public class BaseballGameController {
     public BaseballGameController() {
         baseballGameView = new BaseballGameView();
         baseballGameUtils = new BaseballGameUtils();
+
+        baseballGameView.startView(); // 게임 첫 시작할 때 뷰
     }
 
     public boolean startGame() {
