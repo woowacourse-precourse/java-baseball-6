@@ -10,18 +10,11 @@ public class NumberBaseballGameController implements GameController {
     private static final String continueGame = "1";
     private final GameView gameView;
     private boolean playGame = true;
-    private Class<? extends Game> gameClass;
-    private final Supplier<Game> gameSupplier = () -> {
-        try {
-            return gameClass.getDeclaredConstructor().newInstance();
-        } catch (Exception e) {
-            throw new RuntimeException("게임 인스턴스 생성 오류", e);
-        }
-    };
+    private final Supplier<Game> gameSupplier;
     private Game game;
 
-    public NumberBaseballGameController(Class<? extends Game> gameClass, GameView view) {
-        this.gameClass = gameClass;
+    public NumberBaseballGameController(Supplier<Game> gameSupplier, GameView view) {
+        this.gameSupplier = gameSupplier;
         this.gameView = view;
     }
 

@@ -6,16 +6,25 @@ import baseball.model.Game;
 import baseball.model.NumberBaseballGame;
 import baseball.view.GameView;
 import baseball.view.NumberBaseballGameView;
+import java.util.function.Supplier;
 
 public class Application {
     private final GameController gameController;
 
     public Application(Class<? extends Game> gameClass, Class<? extends GameView> viewClass,
                        Class<? extends GameController> controllerClass, String messagePath) {
+        Supplier<Game> gameSupplier = () -> {
+            try {
+                return gameClass.getDeclaredConstructor().newInstance();
+            } catch (Exception e) {
+                throw new RuntimeException("게임 인스턴스 생성 오류", e);
+            }
+        };
+
         try {
             GameView view = viewClass.getDeclaredConstructor(String.class).newInstance(messagePath);
-            gameController = controllerClass.getDeclaredConstructor(Class.class, GameView.class)
-                    .newInstance(gameClass, view);
+            gameController = controllerClass.getDeclaredConstructor(Supplier.class, GameView.class)
+                    .newInstance(gameSupplier, view);
         } catch (Exception e) {
             throw new RuntimeException("인스턴스 생성 오류", e);
         }
