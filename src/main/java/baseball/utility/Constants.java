@@ -15,4 +15,8 @@ public final class Constants { //상속을 막기 위해 final 사용
 
     //정규표현식 패턴
     public static final String VALID_NUMBER_PATTERN = "^(?!.*(\\d).*\\1)[1-9]{3}$";
+
+    //게임 종료 여부 판단 상수
+    public static final int RESUME_GAME = 1;
+    public static final int PAUSE_GAME = 2;
 }
