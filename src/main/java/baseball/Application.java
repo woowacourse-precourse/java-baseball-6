@@ -31,7 +31,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
+        //System.out.println(computer);
         return computer;
     }
 
