@@ -12,7 +12,6 @@ public class InputView {
     }
 
     public static int readRetryNumber() {
-        printRetry();
         return Integer.parseInt(Console.readLine());
     }
 }
