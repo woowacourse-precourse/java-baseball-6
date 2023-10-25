@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import baseball.model.Game;
+import baseball.validation.NumberValidator;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -30,6 +31,8 @@ public class ComputerController {
 
 	public Game getPlayerNumbers() {
 		String playerInputNumber = inputView.enterGameNumber();
+
+		NumberValidator numberValidator = new NumberValidator(playerInputNumber);
 
 		Game playerGameData = new Game();
 		List<Integer> playerNumbers = convertNumberStringToList(playerInputNumber);
