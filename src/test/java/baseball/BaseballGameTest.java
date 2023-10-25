@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import constant.TestConstant;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -17,11 +18,16 @@ class BaseballGameTest extends NsTest {
     void success() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("456", "124", "123", "1", "167", "356", "354", "456", "2");
-                    assertThat(output()).contains("낫싱", "2스트라이크", "3스트라이크", "1볼", "2스트라이크", "1볼 1스트라이크", "3스트라이크",
-                            "게임 종료");
+                    run(TestConstant.BASEBALL_GAME_TEST_DATA_1, TestConstant.BASEBALL_GAME_TEST_DATA_2,
+                            TestConstant.BASEBALL_GAME_TEST_DATA_3, TestConstant.RESTART_GAME_VALUE,
+                            TestConstant.BASEBALL_GAME_TEST_DATA_4, TestConstant.BASEBALL_GAME_TEST_DATA_5,
+                            TestConstant.BASEBALL_GAME_TEST_DATA_6, TestConstant.BASEBALL_GAME_TEST_DATA_7,
+                            TestConstant.FINISH_GAME_VALUE);
+                    assertThat(output()).contains(TestConstant.NOTHING, TestConstant.TWO_STRIKE,
+                            TestConstant.THREE_STRIKE, TestConstant.ONE_BALL, TestConstant.TWO_STRIKE,
+                            TestConstant.ONE_BALL_AND_ONE_STRIKE, TestConstant.THREE_STRIKE, TestConstant.FINISH_GAME);
                 },
-                1, 2, 3, 4, 5, 6
+                TestConstant.ANSWER_LIST_FIRST_ELEM, TestConstant.ANSWER_LIST_OTHER_ELEM
         );
     }
 
@@ -34,9 +40,8 @@ class BaseballGameTest extends NsTest {
             @Test
             @DisplayName("null 테스트")
             void nullTest() {
-                String nullStr = null;
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException(nullStr))
+                        assertThatThrownBy(() -> runException(TestConstant.NULL_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
@@ -44,9 +49,8 @@ class BaseballGameTest extends NsTest {
             @Test
             @DisplayName("빈 문자열 테스트")
             void emptyTest() {
-                String emptyStr = new String();
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException(emptyStr))
+                        assertThatThrownBy(() -> runException(TestConstant.EMPTY_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
@@ -55,7 +59,7 @@ class BaseballGameTest extends NsTest {
             @DisplayName("잘못된 타입 테스트")
             void invalidTypeTest() {
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException("1a2"))
+                        assertThatThrownBy(() -> runException(TestConstant.PLAYER_INPUT_INVALID_TYPE_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
@@ -64,11 +68,11 @@ class BaseballGameTest extends NsTest {
             @DisplayName("3자리가 아닌 숫자 테스트")
             void invalidLengthTest() {
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException("12"))
+                        assertThatThrownBy(() -> runException(TestConstant.PLAYER_INPUT_SHORT_LENGTH_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException("1234"))
+                        assertThatThrownBy(() -> runException(TestConstant.PLAYER_INPUT_EXCEED_LENGTH_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
@@ -77,15 +81,15 @@ class BaseballGameTest extends NsTest {
             @DisplayName("0 테스트")
             void invalidZeroTest() {
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException("012"))
+                        assertThatThrownBy(() -> runException(TestConstant.PLAYER_INPUT_ZERO_TEST_1))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException("102"))
+                        assertThatThrownBy(() -> runException(TestConstant.PLAYER_INPUT_ZERO_TEST_2))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException("120"))
+                        assertThatThrownBy(() -> runException(TestConstant.PLAYER_INPUT_ZERO_TEST_3))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
@@ -94,7 +98,7 @@ class BaseballGameTest extends NsTest {
             @DisplayName("중복 테스트")
             void invalidDuplicateTest() {
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException("112"))
+                        assertThatThrownBy(() -> runException(TestConstant.PLAYER_INPUT_DUPLICATION_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
@@ -106,9 +110,8 @@ class BaseballGameTest extends NsTest {
             @Test
             @DisplayName("null 테스트")
             void nullTest() {
-                String nullStr = null;
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException(nullStr))
+                        assertThatThrownBy(() -> runException(TestConstant.NULL_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
@@ -116,9 +119,8 @@ class BaseballGameTest extends NsTest {
             @Test
             @DisplayName("빈 문자열 테스트")
             void emptyTest() {
-                String emptyStr = new String();
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException(emptyStr))
+                        assertThatThrownBy(() -> runException(TestConstant.EMPTY_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
@@ -127,7 +129,7 @@ class BaseballGameTest extends NsTest {
             @DisplayName("잘못된 타입 테스트")
             void invalidTypeTest() {
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException("a"))
+                        assertThatThrownBy(() -> runException(TestConstant.RESTART_INVALID_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
@@ -136,16 +138,16 @@ class BaseballGameTest extends NsTest {
             @DisplayName("1자리가 아닌 숫자 테스트")
             void invalidLengthTest() {
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException("12"))
+                        assertThatThrownBy(() -> runException(TestConstant.RESTART_INVALID_LENGTH_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }
 
             @Test
-            @DisplayName("0 테스트")
-            void invalidZeroTest() {
+            @DisplayName("잘못된 값 테스트")
+            void invalidValueTest() {
                 assertSimpleTest(() ->
-                        assertThatThrownBy(() -> runException("0"))
+                        assertThatThrownBy(() -> runException(TestConstant.RESTART_INVALID_ZERO_TEST))
                                 .isInstanceOf(IllegalArgumentException.class)
                 );
             }

@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.util.List;
+import constant.TestConstant;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,13 +13,12 @@ class RandomUtilTest extends NsTest {
     @Test
     @DisplayName("정상 작동")
     void success() {
-        List<Integer> answer = List.of(1, 2, 3);
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("");
-                    assertThat(output()).isEqualTo(answer.toString());
+                    run(TestConstant.EMPTY_TEST);
+                    assertThat(output()).isEqualTo(TestConstant.FIRST_ANSWER_SPLIT.toString());
                 },
-                1, 2, 3
+                TestConstant.FIRST_ANSWER_FIRST_ELEM, TestConstant.FIRST_ANSWER_OTHER_ELEM
         );
     }
 
