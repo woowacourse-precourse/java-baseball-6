@@ -29,4 +29,14 @@ public class App {
         text.win();
         return input.restartOrEndOption();
     }
+
+    public void main() {
+        boolean option;
+        start();
+        do {
+            randomNum();
+            game();
+            option = end();
+        } while (option);
+    }
 }
