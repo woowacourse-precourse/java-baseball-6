@@ -41,11 +41,6 @@ public class Game {
                 throw new IllegalArgumentException("유효하지 않은 값입니다.");
         }
     }
-
-    public void exit() {
-        gameState = GameState.EXIT;
-    }
-
     public void init() {
         computer.renewDigit();
         comparision = new Comparision();
