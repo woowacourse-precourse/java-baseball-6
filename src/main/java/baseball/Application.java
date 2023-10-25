@@ -13,7 +13,6 @@ public class Application {
 
         while(game.isStatus()) {
             computer.chooseNumber(game.NUM_LENGTH);
-            System.out.println("정답은 " + computer.getAnswerNumber());
 
             boolean isCorrect = false;
             while(!isCorrect) {
