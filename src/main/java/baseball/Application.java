@@ -17,7 +17,7 @@ public class Application {
                 System.out.println("computer = " + computer);           //난수 확인값
         }
 
-        // 랜덤숫자3자리 생성 메소드  =============================================================
+        // 랜덤숫자3자리 생성 메소드  =============================================================================
         public static List<String> ComputerInput() {            //난수생성
                 List<String> computer = new ArrayList<>();
                 while (computer.size() < 3) {
@@ -30,8 +30,7 @@ public class Application {
                 return computer;
         }
 
-
-        // 입력값 메소드(입력후 전달받은 computer 값과 비교후 출력) =======================================================================
+        // 입력값 메소드(입력후 전달받은 computer 값과 비교후 출력) ===================================================
         public static void UserInput(List<String> computer) {                   //todo 예외처리 (중복포함)
                 List<String> user = new ArrayList<>();
                 System.out.println("중복이 되지 않는 세 자리의 숫자를 입력해 주세요.");
@@ -45,24 +44,20 @@ public class Application {
                                         throw new IllegalArgumentException();
                                 }
                         }
-
-
                         for(String s : user) { // 유저에게 입력받은 값 확인을 위한 for문
                                 if(toParseInt(s,0) == 0) { // 0 또는 문자가 입력되면 Exception 발생시킴
                                         throw new IllegalArgumentException();
                                 }
                         }
-
                 } catch (IllegalArgumentException e) {
                         return;
                 }
                 if(userInput.length() != 3) { // 입력된 수가 3자리가 아니라면 Exception 발생
-
                         throw new IllegalArgumentException();
                 }
                 System.out.println("user = " + user);           // 입력 확인값
 
-                // 판정 메소드 =====================================================================================
+                // 판정 메소드 ===================================================================================
                 int ballCount = 0;
                 int strikeCount = 0;
                 for (int j = 0; j < user.size(); j++) {
@@ -109,7 +104,6 @@ public class Application {
                         System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");        // 출력
                         UserInput(computer);
                 }
-
         }
 
         public static int toParseInt(String value, int defVal) {        // 입력된 변수를 Integer로 바꿔주는 함수
