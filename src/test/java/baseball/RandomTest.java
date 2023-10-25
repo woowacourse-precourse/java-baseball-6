@@ -10,7 +10,7 @@ public class RandomTest {
     private static final RandomUtil randomUtil = Pick.getInstance();
 
     @Test
-    public void main() {
+    public void randomTest() {
         for (int i = 0; i < 100; i++) {
             print(randomUtil.getBallNumber());
         }
