@@ -36,13 +36,16 @@ public class BaseballModel {
                 gameResult.getBall().increaseCount();
             }
         }
-        checkGameEnded(gameResult);
+        if (checkGameEnded(gameResult)) {
+            gameResult.endGame();
+        }
         return gameResult;
     }
 
-    private void checkGameEnded(GameResult gameResult) {
+    private boolean checkGameEnded(GameResult gameResult) {
         if (gameResult.getStrike().getCount() == MAX_SCORE) {
-            gameResult.endGame();
+            return true;
         }
+        return false;
     }
 }
