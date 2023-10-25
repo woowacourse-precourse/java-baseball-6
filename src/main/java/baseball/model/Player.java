@@ -10,7 +10,7 @@ public class Player {
     private static final String NUMBER_SIZE_EXCEPTION = "%d자리 수만 가능합니다.";
     private static final String NUMBER_UNIQUE_EXCEPTION = "서로 다른 숫자만 가능합니다.";
 
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public Player(String number) {
         validateNumberSize(number);
