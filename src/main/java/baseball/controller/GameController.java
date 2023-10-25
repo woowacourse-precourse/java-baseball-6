@@ -6,15 +6,15 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    private static final int NUMBER_OF_DIGITS = 3;
     private static final String QUIT_NUMBER = "2";
-    static final AnswerNumber ANSWER_NUMBER = new AnswerNumber();
-    private CountController countController = new CountController();
-    private OutputView outputView = new OutputView();
-    private InputView inputView = new InputView();
+    private final CountController countController = new CountController();
+    private final OutputView outputView = new OutputView();
+    private final InputView inputView = new InputView();
 
-    public void createAnswer() {
-        ANSWER_NUMBER.setRandomNumber();
+    public AnswerNumber createAnswer() {
+        AnswerNumber answerNumber = new AnswerNumber();
+        answerNumber.setRandomNumber();
+        return answerNumber;
     }
 
     public void startGame() {
@@ -23,32 +23,24 @@ public class GameController {
     }
 
     public void proceedGame() {
-        createAnswer();
+        AnswerNumber answerNumber = createAnswer();
         InputNumber inputNumber;
 
         do {
             inputNumber = new InputNumber();
             inputNumber.setInputNumber(inputView.getPlayerInput());
-            outputView.printHint(countController.getHintMessage(inputNumber));
-        } while (!isDone(inputNumber));
+            outputView.printHint(countController.getHintMessage(inputNumber, answerNumber));
+        } while (!isDone(inputNumber, answerNumber));
 
         inputNumber.setQuitNumber(inputView.getRestartOrQuitInput());
-
-        if (!isQuit(inputNumber)) {
+        if (!inputNumber.isQuit()) {
             proceedGame();
         }
     }
 
-    public boolean isDone(InputNumber inputNumber) {
-        if (countController.getStrikeCount(inputNumber) == NUMBER_OF_DIGITS) {
+    public boolean isDone(InputNumber inputNumber, AnswerNumber answerNumber) {
+        if (countController.isSucceeded(inputNumber, answerNumber)) {
             outputView.printSuccess();
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isQuit(InputNumber inputNumber) {
-        if (inputNumber.getQuitNumber().equals(QUIT_NUMBER)) {
             return true;
         }
         return false;

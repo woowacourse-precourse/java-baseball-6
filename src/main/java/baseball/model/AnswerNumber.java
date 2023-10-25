@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 public class AnswerNumber {
     private static final int NUMBER_OF_DIGITS = 3;
-    private List<Integer> randomNumber = new ArrayList<>();
+    private List<Integer> randomNumber;
 
     public List<Integer> getRandomNumber() {
         return randomNumber;
@@ -21,5 +21,4 @@ public class AnswerNumber {
         }
         randomNumber = computer;
     }
-
 }

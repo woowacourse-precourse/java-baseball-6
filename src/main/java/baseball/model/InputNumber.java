@@ -12,7 +12,7 @@ public class InputNumber {
     private static final String QUIT_NUMBER = "2";
     private static final String QUIT_EXCEPTION_MESSAGE = "1(재시작) 또는 2(종료)를 입력해주세요.";
     private final List<Integer> inputNumber = new ArrayList<>();
-    private String quitNumber = "";
+    private String quitNumber;
 
     public List<Integer> getInputNumber() {
         return inputNumber;
@@ -29,14 +29,18 @@ public class InputNumber {
             inputNumber.add(Integer.parseInt(String.valueOf(letter)));
         }
     }
-    public String getQuitNumber() {
-        return quitNumber;
-    }
 
     public void setQuitNumber(String playerInput) throws IllegalArgumentException {
         if (!playerInput.equals(RESTART_NUMBER) && !playerInput.equals(QUIT_NUMBER)) {
             throw new IllegalArgumentException(QUIT_EXCEPTION_MESSAGE);
         }
         quitNumber = playerInput;
+    }
+
+    public boolean isQuit() {
+        if (quitNumber.equals(QUIT_NUMBER)) {
+            return true;
+        }
+        return false;
     }
 }
