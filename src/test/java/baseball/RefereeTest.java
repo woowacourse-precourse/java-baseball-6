@@ -38,4 +38,11 @@ class RefereeTest {
         assertThat(outputStreamCaptor.toString().trim())
                 .isEqualTo("2스트라이크");
     }
+
+    @Test
+    void 스트라이크와_볼이_함께_나올_수_있다() {
+        referee.judge(List.of(1, 2, 3), List.of(1, 4, 2));
+        assertThat(outputStreamCaptor.toString().trim())
+                .isEqualTo("1볼 1스트라이크");
+    }
 }
