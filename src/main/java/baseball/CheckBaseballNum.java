@@ -9,7 +9,7 @@ public class CheckBaseballNum {
 
     static boolean isCorrectRange(String baseballNum) {
         for (int i = 0; i < 3; i++) {
-            if (!is_digit(baseballNum.charAt(i))) {
+            if (!isDigit(baseballNum.charAt(i))) {
                 return (true);
             }
         }
@@ -22,7 +22,7 @@ public class CheckBaseballNum {
                 baseballNum.charAt(1) == baseballNum.charAt(2));
     }
 
-    static boolean is_digit(char num) {
+    static boolean isDigit(char num) {
         return (num >= '1' && num <= '9');
     }
 }

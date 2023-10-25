@@ -11,7 +11,7 @@ public class User {
         userNum = new BaseballNum(readLine());
     }
 
-    static boolean chooseRestart() throws IllegalArgumentException {
+    static boolean chooseRestart() {
         restartNum = new RestartNum();
         return (restartNum.getRestartNum() == 1);
     }
