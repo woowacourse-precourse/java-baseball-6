@@ -16,14 +16,14 @@ public class UserInputValidator {
     private static final char NUMERIC_RANGE_START_CHAR = '1';
     private static final char NUMERIC_RANGE_END_CHAR = '9';
 
-    public String validateUserInputString(String userInputString) {
+    public String validateInputString(String userInputString) {
         if (userInputString == null) {
             throw new IllegalArgumentException(NULL_INPUT_MESSAGE);
         }
         return userInputString.replaceAll(" ", "");
     }
 
-    public List<Integer> validateUserInputNumbers(String userInputString) {
+    public List<Integer> validateInputNumbers(String userInputString) {
         if (!isThreeNumbers(userInputString)) {
             throw new IllegalArgumentException(WRONG_ANSWER_LENGTH_MESSAGE);
         } else if (!isNumericCastable(userInputString)) {
