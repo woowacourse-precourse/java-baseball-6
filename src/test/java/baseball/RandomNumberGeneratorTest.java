@@ -2,18 +2,14 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import baseball.domain.NumberGenerator;
 import baseball.domain.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 
 public class RandomNumberGeneratorTest extends NsTest {
 
