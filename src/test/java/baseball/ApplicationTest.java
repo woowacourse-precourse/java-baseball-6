@@ -33,8 +33,4 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-    void runException(String input) {
-        Game game = new Game();
-        game.convertInput(input);
-    }
 }
