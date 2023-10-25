@@ -24,6 +24,21 @@ public class Application {
                 compareAnswer(randomAnswer, userGuessSet); // 정답 확인 로직 실행...
                 printResult(); // 분석 결과 출력...
             }
+            gameContinue();
+        }
+    }
+
+    private static void gameContinue() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if(input=="1"){
+            return;
+        }
+        else if(input=="2"){
+            computerPower=false;
+        }
+        else{
+            turnOff();
         }
     }
 
