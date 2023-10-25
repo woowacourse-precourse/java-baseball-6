@@ -8,7 +8,6 @@ public class GenerateRandomNumbers {
     private static final int RANDOM_MIN_VALUE = 1;
     private static final int RANDOM_MAX_VALUE = 9;
     private static final int RANDOM_NUMBERS_LENGTH = 3;
-    private List<Integer> computerNumbers;
 
     public List<Integer> getRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
