@@ -8,8 +8,8 @@ import static baseball.GameState.STRIKE;
 import java.util.List;
 
 public class Referee {
-    private final BallCounter ballCounter = new BallCounter();
-    private final StrikeCounter strikeCounter = new StrikeCounter();
+    private final Counter ballCounter = new BallCounter();
+    private final Counter strikeCounter = new StrikeCounter();
 
     public boolean judge(List<Integer> computer, List<Integer> number) {
         int ballCount = ballCounter.count(computer, number);
