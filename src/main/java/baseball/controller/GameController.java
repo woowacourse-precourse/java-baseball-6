@@ -8,8 +8,8 @@ import baseball.view.RegameView;
 import baseball.view.ResultView;
 
 public class GameController {
-    private final Computer computer = new Computer();
-    private final Player player = new Player();
+    private Computer computer = new Computer();
+    private Player player = new Player();
     private final InputView inputView = new InputView();
     private final CompareAnswerWithPlayerNumber compareAnswerWithPlayerNumber = new CompareAnswerWithPlayerNumber();
     private final ResultView resultView = new ResultView();
@@ -19,7 +19,7 @@ public class GameController {
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         computer.setComputerAnswer();  //게임 정답 세팅
-        do {
+        while (regame) {
             player.setPlayerAnswer(inputView.inputPlayerNumbers());//플레이어의 정답 작성
             compareAnswerWithPlayerNumber.compareStrikeBall(player.getPlayerAnswer(),
                     computer.getComputerAnswer());//플레이어 정답, 게임정답 비교
@@ -28,6 +28,6 @@ public class GameController {
                 regame = regameView.inputRegame();
                 computer.setComputerAnswer();  //게임 정답 세팅
             }
-        } while (regame);
+        }
     }
 }
