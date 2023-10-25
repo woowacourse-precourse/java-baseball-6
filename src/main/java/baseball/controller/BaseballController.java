@@ -37,7 +37,7 @@ public class BaseballController {
         Baseball baseball = baseballGame.compare();
         BaseballResult result = BaseballResult.of(baseball);
         OutputView.printBaseballResult(
-                new BaseballResultDto(baseball.getBall(), baseball.getStrike(), result.getMessageFormat()));
+                new BaseballResultDto(baseball.ball(), baseball.strike(), result.getMessageFormat()));
         return result;
     }
 

@@ -3,16 +3,13 @@ package baseball.domain;
 import static baseball.utils.Constants.NUMBER_SIZE;
 
 import baseball.utils.ErrorMessages;
-import java.util.Objects;
 
-public class Baseball {
-    private final int ball;
-    private final int strike;
-
-    public Baseball(int ball, int strike) {
+public record Baseball(
+        int ball,
+        int strike
+) {
+    public Baseball {
         validate(ball, strike);
-        this.ball = ball;
-        this.strike = strike;
     }
 
     public void validate(int ball, int strike) {
@@ -35,19 +32,11 @@ public class Baseball {
     }
 
     public Boolean isStrike() {
-        return ball == 0 && strike > 0 && strike != NUMBER_SIZE;
+        return ball == 0 && strike > 0 && strike < NUMBER_SIZE;
     }
 
     public Boolean isNothing() {
         return ball == 0 && strike == 0;
-    }
-
-    public int getBall() {
-        return ball;
-    }
-
-    public int getStrike() {
-        return strike;
     }
 
     @Override
@@ -62,8 +51,4 @@ public class Baseball {
         return ball == baseball.ball && strike == baseball.strike;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(ball, strike);
-    }
 }
