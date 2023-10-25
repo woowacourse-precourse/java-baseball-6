@@ -9,35 +9,49 @@ public class Baseball {
 
     private final PrintMessage printMessage = new PrintMessage();
     private final Illegalcheck illegalcheck = new Illegalcheck();
+    private final MyInputNumber myInputNumber = new MyInputNumber();
+
+    private ArrayList<Integer> answerNumberList = new ArrayList<>();
 
     public void run(){
         printMessage.gameStartMessage();
         startGame();
     }
 
+    /**
+     * Todo
+     * inputNumberList = getNumberInputList(); // 리팩토링이 필요한 부분
+     *
+     * MyInputNumber객체를 통해 checkGameScore사용
+     *
+     * 인풋은 MyInputNumber객체에게 역할을 넘김
+     *
+     * 에러체크는 누구에게 넘겨야하는가 고민
+     */
     public void startGame(){
         int commandNumber;
         ArrayList<Integer> inputNumberList;
         do {
-            ArrayList<Integer> answerNumberList = initRandomNumberList();
+            initRandomNumberList();
 
-            inputNumberList = getNumberInputList();
+            inputNumberList = getNumberInputList(); // 리팩토링이 필요한 부분
 
-            while(!checkGameScore(answerNumberList, inputNumberList)){
+            while(!checkGameScore(answerNumberList, inputNumberList)){ // MyInputNumber객체를 통해 checkGameScore사용
                 inputNumberList = getNumberInputList();
             }
 
             printMessage.endGameCommand();
-            commandNumber = Integer.parseInt(Console.readLine());
+            commandNumber = Integer.parseInt(Console.readLine()); // 인풋은 MyInputNumber객체에게 역할을 넘김
 
-            illegalcheck.commandCheck(commandNumber);
+            illegalcheck.commandCheck(commandNumber); // 에러체크는 누구에게 넘겨야하는가 고민
 
         }while (commandNumber == 1);
     }
 
+    // TODO: 2023-10-25 : 스트림으로 변환하여 가독성을 올릴 수 있는지 로직 재검증
     public ArrayList<Integer> initRandomNumberList(){
 
-        ArrayList<Integer> answerNumberList = new ArrayList<>();
+        answerNumberList = new ArrayList<>();
         answerNumberList.add(Randoms.pickNumberInRange(1, 9));
         boolean equalPrevNumber = false;
 
@@ -61,7 +75,7 @@ public class Baseball {
 
         return answerNumberList;
     }
-
+    // TODO: 2023-10-25 : MyInputNumber객체로 역할 분산
     public ArrayList<Integer> getNumberInputList(){
         printMessage.inputNumberMessage();
         String inputData = Console.readLine();
@@ -74,7 +88,8 @@ public class Baseball {
         return inputNumberList;
     }
 
-    public boolean checkGameScore(ArrayList<Integer> answerNumberList, ArrayList<Integer> inputNumberList){
+    // TODO: 2023-10-25 : 체크할 때 로직 최적화 확인
+    public boolean checkGameScore(ArrayList<Integer> answerNumberList, ArrayList<Integer> inputNumberList){ // 로직재검증
         int num1, num2;
         int ballCount = 0;
         int strikeCount = 0;
