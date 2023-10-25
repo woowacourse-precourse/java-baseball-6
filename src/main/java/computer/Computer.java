@@ -1,18 +1,39 @@
 package computer;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import constants.MessageConstants;
 import player.Player;
-import view.Input;
 
 import static constants.MessageConstants.*;
 import static constants.NumConstants.*;
 
 public class Computer {
     String randomString = new String();
+    Hint hint = new Hint();
     Computer computer;
     Player player;
-    Hint hint = new Hint();
+
+    public void start() {
+        computer = new Computer();
+        System.out.println(MessageConstants.GAME_START_MESSAGE);
+
+        try{
+            do {
+                computer.getRandomNumbers();
+                computer.getPlayerInput();
+                if (computer.chkOptionString()) {
+:wq                    // true: Restart
+                    // false: Finish
+                    computer = new Computer();
+                } else {
+                    break;
+                }
+            } while (true);
+        }catch (IllegalArgumentException e){
+            throw e;
+        }
+    }
 
     /**
      * 3자리의 난수 생성
@@ -26,36 +47,14 @@ public class Computer {
                 randomString += String.valueOf(randomNum);
             }
         }
-//        System.out.println("randomString: " + randomString);
         return randomString;
-    }
-
-    public void start() {
-        computer = new Computer();
-        System.out.println(MessageConstants.GAME_START_MESSAGE);
-
-        try{
-            do {
-                computer.getRandomNumbers();    // Computer 난수 생성
-                computer.getInput();    // User의 입력
-                if (computer.chkRestartOrFinish()) {
-                    // true: Restart
-                    // false: Finish
-                    computer = new Computer();
-                } else {
-                    break;
-                }
-            } while (true);
-        }catch (IllegalArgumentException e){
-            throw e;
-        }
     }
 
     /**
      * User의 input 입력받아 종료 조건과 비교해 진행
      * @return
      */
-    public void getInput(){
+    public void getPlayerInput(){
         player = new Player();
         String playerInput;
         do{
@@ -81,8 +80,10 @@ public class Computer {
      * @param
      * @return 재시작(true), 종료(false)
      */
-    private boolean chkRestartOrFinish(){
-        String playerOption = Input.readOption();
+    private boolean chkOptionString(){
+        System.out.println(MessageConstants.RESTART_OR_FINISH_MESSAGE);
+        String playerOption = Console.readLine();
+
         if (playerOption.equals(String.valueOf(OPTION_RESTART))) {
             return true;
         } else if (playerOption.equals(String.valueOf(OPTION_FINISH))) {

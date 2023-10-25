@@ -19,13 +19,11 @@ public class Player {
         return inputString;
     }
 
-    public boolean getOptionString(){
-        System.out.println(MessageConstants.RESTART_OR_FINISH_MESSAGE);
-        String optionString = Console.readLine();
-
-        return chkOptionString(optionString);
-    }
-
+    /**
+     * 올바른 입력 문자열인지 판단
+     * @param
+     * @return
+     */
     private void chkInputString(String inputString){
         if (inputString.length() != INPUT_LENGTH) {
             throw new IllegalArgumentException(ERROR_MESSAGE + INPUT_LENGTH_ERROR_MESSAGE);
@@ -43,14 +41,9 @@ public class Player {
         }
     }
 
-    private boolean chkOptionString(String optionString){
-        if (optionString.equals(String.valueOf(OPTION_RESTART))) {
-            return true;
-        } else if (optionString.equals(String.valueOf(OPTION_FINISH))) {
-            return false;
-        } else {
-            throw new IllegalArgumentException(OPTION_INPUT_ERROR_MESSAGE);
-        }
-    }
-
+    /**
+     * 올바른 옵션값인지 판단 - 재시작(1), 종료(2)
+     * @param
+     * @return
+     */
 }
