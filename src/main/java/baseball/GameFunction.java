@@ -26,9 +26,6 @@ public class GameFunction {
         return computer;
     }
     public static void getUserNumber(String num) {
-//        if(num.length() != 3) {
-//            throw new IllegalArgumentException("잘못된 값 입력");
-//        }
         for(int i = 0; i < 3; i ++) {
             userNum[i] = Character.getNumericValue(num.charAt(i));
         }
