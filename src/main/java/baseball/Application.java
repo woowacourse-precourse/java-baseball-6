@@ -1,10 +1,13 @@
 package baseball;
 
+import baseball.Exception.InputConverter;
+import baseball.view.ResultView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Application {
     private static int validateStrike(List<Integer> computer, List<Integer> player) {
@@ -35,7 +38,6 @@ public class Application {
         return numbers;
 
     }
-
     public static void main(String[] args) {
 
         while (true) {
@@ -49,16 +51,7 @@ public class Application {
                 int strikeCount = validateStrike(computer, player);
                 int ballCount = validateBall(computer, player);
 
-                if (ballCount > 0) {
-                    System.out.print(ballCount + "볼 ");
-                }
-                if (strikeCount > 0) {
-                    System.out.print(strikeCount + "스트라이크");
-                }
-                if (ballCount == 0 && strikeCount == 0) {
-                    System.out.print("낫싱");
-                }
-                System.out.println();
+                ResultView.printOutput(ballCount, strikeCount);
 
                 if (strikeCount == 3) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
