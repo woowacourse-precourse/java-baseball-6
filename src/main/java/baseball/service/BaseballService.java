@@ -16,12 +16,6 @@ public class BaseballService {
         return Baseball.from(baseballNumbers);
     }
 
-    private List<BaseballNumber> convertUniqueBaseballNumbers(Set<Integer> uniqueNumbers) {
-        return uniqueNumbers.stream()
-                .map(BaseballNumber::new)
-                .toList();
-    }
-
     private Set<Integer> getUniqueNumbers() {
         Set<Integer> uniqueNumbers = new LinkedHashSet<>();
         while (uniqueNumbers.size() < Baseball.LENGTH) {
@@ -29,6 +23,12 @@ public class BaseballService {
             uniqueNumbers.add(uniqueNumber);
         }
         return uniqueNumbers;
+    }
+
+    private List<BaseballNumber> convertUniqueBaseballNumbers(Set<Integer> uniqueNumbers) {
+        return uniqueNumbers.stream()
+                .map(BaseballNumber::new)
+                .toList();
     }
 
     public BaseballGameResult calculateResult(final Baseball answer, final Baseball guess) {
