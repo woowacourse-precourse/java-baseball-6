@@ -2,22 +2,20 @@ package baseball.util;
 
 import baseball.dto.StrikeBallCount;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class InputCalculator {
-
-    private static final int SELECTION_COUNT = 3;
 
     // 유저와 컴퓨터의 세자리 수를 비교
     public static StrikeBallCount compareComputerBallAndUserInput(int[] computerBall, List<Integer> userInput) {
 
         StrikeBallCount strikeBallCount = new StrikeBallCount();
+        AtomicInteger index = new AtomicInteger(1);
 
-        for (int index = 0; index < SELECTION_COUNT; index++) {
-
-            // 유저의 세자리 수 중 하나만 따로 비교
-            compareComputerBallAndEachBall(computerBall, userInput.get(index), index + 1, strikeBallCount);
-
-        }
+        // 병렬 처리
+        userInput.forEach(
+                (input) -> compareComputerBallAndEachBall(computerBall, input, index.getAndIncrement(), strikeBallCount)
+        );
 
         return strikeBallCount;
     }

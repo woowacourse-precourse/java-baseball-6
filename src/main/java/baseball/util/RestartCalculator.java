@@ -2,6 +2,7 @@ package baseball.util;
 
 import static baseball.view.InputView.checkInput;
 
+import baseball.common.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Objects;
 
@@ -48,7 +49,7 @@ public class RestartCalculator {
 
         }
 
-        throw new IllegalArgumentException("적절한 숫자가 아닙니다!");
+        throw new IllegalArgumentException(ErrorMessage.NOT_APPROPRIATE_RESTART_NUMBER.getMessage());
 
 
     }

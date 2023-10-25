@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.common.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +74,7 @@ public class InputView {
 
         if (input.length() != inputLength) {
 
-            throw new IllegalArgumentException("길이가 너무 짧습니다!");
+            throw new IllegalArgumentException(ErrorMessage.NOT_APPROPRIATE_LENGTH.getMessage());
 
         }
     }
@@ -85,7 +86,7 @@ public class InputView {
 
             if (eachNumber < 49 || eachNumber > 57) {
 
-                throw new IllegalArgumentException("올바른 숫자가 아닙니다");
+                throw new IllegalArgumentException(ErrorMessage.NOT_APPROPRIATE_NUMBER.getMessage());
 
             }
 
@@ -98,7 +99,7 @@ public class InputView {
 
         if (userInput.contains(eachNumber)) {
 
-            throw new IllegalArgumentException("중복된 숫자가 있습니다");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.getMessage());
 
         }
 

@@ -27,8 +27,25 @@ public class StrikeBallCount {
         this.ballCount++;
     }
 
-    @Override
-    public String toString() {
-        return ballCount + "볼 " + strikeCount + "스트라이크";
+    public String countPrint() {
+        if (this.strikeCount == 0 && this.ballCount == 0) {
+            return "낫싱";
+        }
+        return ballPoint() + strikePrint();
     }
+
+    public String strikePrint() {
+        if (this.strikeCount == 0) {
+            return "";
+        }
+        return String.format("%d스트라이크", this.strikeCount);
+    }
+
+    public String ballPoint() {
+        if (this.ballCount == 0) {
+            return "";
+        }
+        return String.format("%d볼 ", this.ballCount);
+    }
+
 }
