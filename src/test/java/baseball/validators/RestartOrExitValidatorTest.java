@@ -7,15 +7,13 @@ import org.junit.jupiter.api.Test;
 
 class RestartOrExitValidatorTest {
 
-    private RestartOrExitValidator validator;
-
     @Test
     public void 재시작_혹은_종료_여부를_정상적으로_입력한다() {
         // given
         String inputString = "1";
 
         // when & then
-        assertDoesNotThrow(() -> validator.validateRestartOrExit(inputString));
+        assertDoesNotThrow(() -> RestartOrExitValidator.validateRestartOrExit(inputString));
     }
 
     @Test
@@ -25,7 +23,7 @@ class RestartOrExitValidatorTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class,
-                () -> validator.validateRestartOrExit(inputString));
+                () -> RestartOrExitValidator.validateRestartOrExit(inputString));
     }
 
     @Test
@@ -35,6 +33,6 @@ class RestartOrExitValidatorTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class,
-                () -> validator.validateRestartOrExit(inputString));
+                () -> RestartOrExitValidator.validateRestartOrExit(inputString));
     }
 }
