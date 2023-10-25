@@ -1,9 +1,15 @@
-package baseball.domain;
+package baseball.dto;
 
-public class GameResult {
+public class GameResultDTO {
     Integer strike;
     Integer ball;
     Boolean success;
+
+    public GameResultDTO(Integer strike, Integer ball, Boolean success) {
+        this.strike = strike;
+        this.ball = ball;
+        this.success = success;
+    }
 
     public Integer getStrike() {
         return strike;
@@ -15,14 +21,6 @@ public class GameResult {
 
     public Boolean getSuccess() {
         return success;
-    }
-
-    public void setStrike(Integer strike) {
-        this.strike = strike;
-    }
-
-    public void setBall(Integer ball) {
-        this.ball = ball;
     }
 
     public void setSuccess(Boolean success) {
