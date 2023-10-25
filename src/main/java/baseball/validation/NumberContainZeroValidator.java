@@ -1,6 +1,8 @@
 package baseball.validation;
 
+import baseball.util.ArrayConverterUtil;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * @author 민경수
@@ -11,7 +13,7 @@ public class NumberContainZeroValidator implements NumberValidator {
 
     @Override
     public void validate(int[] number) {
-        if (Arrays.asList(number).contains(0)) {
+        if (ArrayConverterUtil.converIntArrayToList(number).contains(0)) {
             throw new IllegalArgumentException("숫자 0은 포함될 수 없습니다.");
         }
     }

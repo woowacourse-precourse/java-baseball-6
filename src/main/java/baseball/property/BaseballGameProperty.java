@@ -21,7 +21,7 @@ public class BaseballGameProperty {
         return digit;
     }
 
-    public Integer usableNumberFrom() {
+    public Integer usableSingleNumberFrom() {
         return usableSingleNumberFrom;
     }
 

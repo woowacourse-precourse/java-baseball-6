@@ -16,6 +16,14 @@ public class NumberRangeValidator implements NumberValidator {
         this.baseballGameProperty = baseballGameProperty;
     }
 
+    protected int usableSingleNumberFrom() {
+        return this.baseballGameProperty.usableSingleNumberFrom();
+    }
+
+    protected int usableSingleNumberTo() {
+        return this.baseballGameProperty.usableSingleNumberTo();
+    }
+
     @Override
     public void validate(int[] number) {
         int num = Integer.parseInt(Arrays.stream(number).mapToObj(String::valueOf).reduce("", (a, b) -> a + b));

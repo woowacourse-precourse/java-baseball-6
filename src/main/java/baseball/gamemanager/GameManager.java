@@ -60,11 +60,6 @@ public class GameManager {
 
     public void start() {
         randomNumber = randomNumberGenerator.generateNumber();
-
-        while (!isAllowedRandomNumber(randomNumber)) {
-            randomNumber = randomNumberGenerator.generateNumber();
-        }
-
     }
 
     private boolean isAllowedRandomNumber(int[] randomNumber) {
