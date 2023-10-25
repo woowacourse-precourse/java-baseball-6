@@ -1,13 +1,9 @@
 package baseball;
 
-import static baseball.status.GameMsg.BALL;
-import static baseball.status.GameMsg.BALL_AND_STRIKE;
 import static baseball.status.GameMsg.GAME_OVER;
 import static baseball.status.GameMsg.GAME_START;
-import static baseball.status.GameMsg.NOTHING;
 import static baseball.status.GameMsg.REPLAY_OR_OVER_MESSAGE;
 import static baseball.status.GameMsg.SET_INPUT;
-import static baseball.status.GameMsg.STRIKE;
 import static baseball.status.GameMsg.SUCCESS_MESSAGE;
 import static baseball.status.GameSetting.COUNT_NUM;
 import static baseball.status.GameSetting.MAX_NUM;
@@ -15,6 +11,7 @@ import static baseball.status.GameSetting.MIN_NUM;
 import static baseball.status.GameSetting.OVER;
 import static baseball.status.GameSetting.REPLAY;
 
+import baseball.status.GameUtil;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -22,76 +19,29 @@ import java.util.List;
 
 class Game {
     private final GameInput gameInput;
+    private final GameOutput gameOutput;
+    private final GameUtil gameUtil;
 
     Game() {
         gameInput = new GameInput();
+        gameOutput = new GameOutput();
+        gameUtil = new GameUtil();
     }
 
     public void play() {
         List<Integer> computerNum = setComputerNum();
         List<Integer> inputNum = new ArrayList<>();
+
         while (!inputNum.equals(computerNum)) {
-            System.out.print(SET_INPUT.getMsg());
+            gameOutput.printMessage(SET_INPUT.getMsg());
+
             String input = gameInput.setInput();
             inputNum = gameInput.getIntegerInput(input);
-            System.out.println(output(computerNum, inputNum));
+
+            int[] result = gameUtil.calculateResult(computerNum, inputNum);
+            gameOutput.output(result);
         }
         handleGameChoice();
-    }
-
-    /**
-     * 볼, 스트라이크, 낫싱 출력 메시지 생성
-     *
-     * @param computerNum 컴퓨터 수
-     * @param inputNum    입력 수
-     * @return 출력 메시지
-     */
-    public String output(List<Integer> computerNum, List<Integer> inputNum) {
-        int[] result = calculateResult(computerNum, inputNum);
-        int ball = result[0];
-        int strike = result[1];
-
-        StringBuilder outputMessage = new StringBuilder();
-
-        if (strike > 0 && ball == 0) {
-            outputMessage.append(STRIKE.getMsg().formatted(strike));
-        }
-
-        if (strike == 0 && ball > 0) {
-            outputMessage.append(BALL.getMsg().formatted(ball));
-        }
-
-        if (strike > 0 && ball > 0) {
-            outputMessage.append(BALL_AND_STRIKE.getMsg().formatted(ball, strike));
-        }
-
-        if (strike == 0 && ball == 0) {
-            outputMessage.append(NOTHING.getMsg());
-        }
-        return outputMessage.toString();
-    }
-
-    /**
-     * 볼, 스트라이크 개수 계산
-     *
-     * @param computerNum 컴퓨터 수
-     * @param inputNum    입력 수
-     * @return [ball 개수, strike 개수] 형태
-     */
-    private int[] calculateResult(List<Integer> computerNum, List<Integer> inputNum) {
-        int ball = 0;
-        int strike = 0;
-        for (int i = 0; i < 3; i++) {
-            int num = inputNum.get(i);
-            if (computerNum.contains(num)) {
-                if (computerNum.indexOf(num) == i) {
-                    strike++;
-                } else {
-                    ball++;
-                }
-            }
-        }
-        return new int[]{ball, strike};
     }
 
     /**
