@@ -13,13 +13,13 @@ public class User {
 
     public boolean checkInput(String input) {
 
-        if(input.length() != 3) {
+        if (input.length() != 3) {
             throw new IllegalArgumentException("3자리의 숫자가 입력되어야 합니다.");
         }
 
         try {
             Integer.parseInt(input);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자가 아닌 값이 입력되었습니다.");
         }
 

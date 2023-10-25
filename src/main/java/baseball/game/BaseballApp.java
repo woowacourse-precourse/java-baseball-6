@@ -18,37 +18,35 @@ public class BaseballApp {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         startGame();
-
     }
 
     public void startGame() {
 
         boolean power = true;
 
-        while(power) {
+        while (power) {
 
             String input = user.getInput();
 
-            if(user.checkInput(input)) {
+            if (user.checkInput(input)) {
                 Map<String, Integer> compareMap = computer.compare(transToList(input));
                 boolean result = computer.showResult(compareMap);
 
-                if(result) {
+                if (result) {
                     power = computer.gameOver();
                 }
             }
         }
     }
 
-    public List<Integer> transToList (String input) {
+    public List<Integer> transToList(String input) {
 
         List<Integer> numList = new ArrayList<>();
 
         int wholeNum = Integer.parseInt(input);
 
-        //parseInt + String 처리 vs 숫자 계산, 뭐가 더 좋으려나
-        for(int i=100; i>0; i/=10) {
-            int nowNum = wholeNum/i;
+        for (int i = 100; i > 0; i /= 10) {
+            int nowNum = wholeNum / i;
             numList.add(nowNum);
             wholeNum -= nowNum * i;
         }

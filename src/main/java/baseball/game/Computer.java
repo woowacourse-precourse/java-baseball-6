@@ -13,11 +13,13 @@ public class Computer {
     public User user;
 
     public Computer(User user) {
+
         genNumbers();
         this.user = user;
     }
 
     public void genNumbers() {
+
         randomNums = new ArrayList<>();
 
         while (randomNums.size() < 3) {
@@ -36,10 +38,10 @@ public class Computer {
         compareMap.put("strikeCnt", 0);
         compareMap.put("ballCnt", 0);
 
-        for(int i=0; i<inputList.size(); i++) {
+        for (int i = 0; i < inputList.size(); i++) {
 
-            if(randomNums.contains(inputList.get(i))){
-                if(randomNums.get(i) == inputList.get(i)) {
+            if (randomNums.contains(inputList.get(i))) {
+                if (randomNums.get(i) == inputList.get(i)) {
                     compareMap.replace("strikeCnt", compareMap.get("strikeCnt") + 1);
                 } else {
                     compareMap.replace("ballCnt", compareMap.get("ballCnt") + 1);
@@ -55,17 +57,17 @@ public class Computer {
         Integer strikeCnt = compareMap.get("strikeCnt");
         Integer ballCnt = compareMap.get("ballCnt");
 
-        if(strikeCnt==0 && ballCnt == 0) {
+        if (strikeCnt == 0 && ballCnt == 0) {
             System.out.println("낫싱");
-        } else if(strikeCnt == 0 && ballCnt != 0){
+        } else if (strikeCnt == 0 && ballCnt != 0) {
             System.out.printf("%d볼\n", ballCnt);
-        } else if(strikeCnt != 0 && ballCnt == 0) {
+        } else if (strikeCnt != 0 && ballCnt == 0) {
             System.out.printf("%d스트라이크\n", strikeCnt);
         } else {
             System.out.printf("%d볼 %d스트라이크\n", ballCnt, strikeCnt);
         }
 
-        if(strikeCnt == 3) {
+        if (strikeCnt == 3) {
             return true;
         }
 
@@ -79,9 +81,9 @@ public class Computer {
 
         String gameOverCode = user.getInput();
 
-        if(gameOverCode.equals("1")) {
+        if (gameOverCode.equals("1")) {
             genNumbers();
-        } else if(gameOverCode.equals("2")) {
+        } else if (gameOverCode.equals("2")) {
             return false;
         } else {
             throw new IllegalArgumentException("1이나 2만 입력해주세요");
