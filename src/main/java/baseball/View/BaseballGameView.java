@@ -32,6 +32,6 @@ public class BaseballGameView {
     }
 
     public void showResult(String result) {
-        System.out.println("result");
+        System.out.println(result);
     }
 }
