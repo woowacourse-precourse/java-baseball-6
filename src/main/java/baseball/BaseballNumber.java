@@ -11,6 +11,7 @@ public class BaseballNumber {
 
     public BaseballNumber() {
         setComputer();
+        System.out.println(computer);
     }
 
     private void setComputer() {
@@ -37,7 +38,7 @@ public class BaseballNumber {
     public BaseballScore checkBalls() {
         int strike = strikeNumber();
         int ball = ballNumber() - strike;
-        return new BaseballScore(strike, ball);
+        return new BaseballScore(ball, strike);
     }
 
     private int strikeNumber() {
@@ -61,4 +62,8 @@ public class BaseballNumber {
     }
 
 
+    public boolean strikeOf(int number) {
+        BaseballScore score = checkBalls();
+        return score.getStrike() == number;
+    }
 }
