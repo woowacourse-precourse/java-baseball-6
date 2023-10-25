@@ -1,10 +1,10 @@
 package baseball.controller;
 
-import static baseball.model.RandomNumberGenerator.pickRandomNumbers;
+import static baseball.util.RandomNumberGenerator.pickRandomNumbers;
 import static baseball.view.SystemMessagePrinter.printHintMessage;
 
 import baseball.model.Game;
-import baseball.model.InputManager;
+import baseball.util.InputManager;
 import baseball.view.SystemMessagePrinter;
 import camp.nextstep.edu.missionutils.Console;
 

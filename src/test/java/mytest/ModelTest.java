@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import baseball.model.Game;
-import baseball.model.InputManager;
-import baseball.model.RandomNumberGenerator;
+import baseball.util.InputManager;
+import baseball.util.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
