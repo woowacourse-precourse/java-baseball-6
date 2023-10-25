@@ -2,13 +2,16 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
 
-    private final String MESSAGE_GAME_START = "숫자 야구 게임을 시작합니다.";
-    private final String MESSAGE_GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private final String MESSAGE_GAME_END_ASK = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private final String MESSAGE_WRONG_NUMBER = "올바른 수를 입력해 주세요";
+    private static final String MESSAGE_GAME_START = "숫자 야구 게임을 시작합니다.";
+    private static final String MESSAGE_ENTER_NUMBER = "숫자를 입력해주세요 : ";
+    private static final String MESSAGE_GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String MESSAGE_GAME_END_ASK = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String MESSAGE_WRONG_NUMBER = "올바른 수를 입력해 주세요";
 
 
     private static void checkUserGuessingNumberInput(String guessingNumber) {
@@ -54,20 +57,14 @@ public class Game {
     }
 
     private static String generateRandomNumber() {
-        StringBuffer sb = new StringBuffer();
-        boolean[] vis = new boolean[10];
-        while (true) {
-            int rand = Randoms.pickNumberInRange(1, 9);
-            if (vis[rand]) {
-                continue;
+        List<Integer> temp = new ArrayList<>();
+        while (temp.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!temp.contains(randomNumber)) {
+                temp.add(randomNumber);
             }
-            sb.append(rand);
-            if (sb.length() == 3) {
-                break;
-            }
-            vis[rand] = true;
         }
-        return sb.toString();
+        return temp.toString();
     }
 
     private static int calculateStrike(String randomNumber, String GuessingNumber) {
@@ -80,35 +77,40 @@ public class Game {
 
     private static void printResult(int strike, int ball) {
         if (ball > 0) {
-            System.out.printf(ball + "볼");
+            System.out.print(ball + "볼");
             if (strike > 0) {
                 System.out.print(" ");
-            } else {
-                System.out.println();
             }
         }
+
         if (strike > 0) {
-            System.out.println(strike + "스트라이크");
+            System.out.print(strike + "스트라이크");
         }
         if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
+        System.out.println();
     }
 
-    private static boolean userEndGameInput(int strike) {
+    private static boolean endGameOrNot(int strike) {
+        System.out.println(MESSAGE_GAME_END);
+        System.out.println(MESSAGE_GAME_END_ASK);
         return userReplayInput().equals("2");
     }
 
 
     private static boolean play(String randomNumber, String guessingNumber) {
+        System.out.println(MESSAGE_GAME_START);
         boolean end = false;
         while (!end) {
-
+            System.out.println(MESSAGE_ENTER_NUMBER);
             int strike = calculateStrike(randomNumber, guessingNumber);
             int ball = calculateBall(randomNumber, guessingNumber);
 
             printResult(strike, ball);
-            end = userEndGameInput(strike);
+            if (strike == 3) {
+                end = endGameOrNot(strike);
+            }
 
         }
         return false;
