@@ -15,7 +15,8 @@ class ConfirmTest {
     @MethodSource("provideTestCases")
     public void testAccordNumber(List<Integer> userNumbers, List<Integer> computerNumbers,
             int expected) {
-        Confirm confirm = new Confirm(userNumbers, computerNumbers);
+        Confirm confirm = new Confirm(computerNumbers);
+        confirm.takeNumbers(userNumbers);
         int result = confirm.accordNumber();
         assertEquals(expected, result, expected + "개의 숫자가 일치해야 합니다.");
     }
@@ -36,7 +37,8 @@ class ConfirmTest {
     @MethodSource("providePositionMatchTestCases")
     public void testCheckPositionMatch(List<Integer> userNumbers, List<Integer> computerNumbers,
             int expected) {
-        Confirm confirm = new Confirm(userNumbers, computerNumbers);
+        Confirm confirm = new Confirm(computerNumbers);
+        confirm.takeNumbers(userNumbers);
         int result = confirm.checkPositionMatch();
         assertEquals(expected, result, expected + "개의 숫자와 위치가 일치해야 합니다.");
     }
@@ -56,7 +58,8 @@ class ConfirmTest {
     @MethodSource("provideRefereeTestCases")
     public void testReferee(List<Integer> userNumbers, List<Integer> computerNumbers,
             String expected) {
-        Confirm confirm = new Confirm(userNumbers, computerNumbers);
+        Confirm confirm = new Confirm(computerNumbers);
+        confirm.takeNumbers(userNumbers);
         String result = confirm.referee();
         assertEquals(expected, result);
     }

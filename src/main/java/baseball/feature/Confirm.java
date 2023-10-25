@@ -7,11 +7,10 @@ public class Confirm {
 
     private int accordCount;
     private int positionMatchCount;
-    private List<Integer> userNumbers;
-    private List<Integer> computerNumbers;
+    public List<Integer> userNumbers;
+    public List<Integer> computerNumbers;
 
-    public Confirm(List<Integer> UserNumbers, List<Integer> ComputerNumbers) {
-        userNumbers = UserNumbers;
+    public Confirm(List<Integer> ComputerNumbers) {
         computerNumbers = ComputerNumbers;
     }
 
@@ -71,6 +70,10 @@ public class Confirm {
         } else {
             resultMessage = MessageFormat.format("{0}볼 {1}스트라이크", ball, strike);
         }
+
+        accordCount = 0;
+        positionMatchCount = 0;
+
         return resultMessage;
     }
 
