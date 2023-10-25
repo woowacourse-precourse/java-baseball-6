@@ -2,9 +2,9 @@ package baseball;
 
 import static baseball.status.GameMsg.GAME_START;
 
-import baseball.game.GameInputImpl;
-import baseball.game.GameOutputImpl;
-import baseball.game.GameUtilImpl;
+import baseball.game.impl.GameInputImpl;
+import baseball.game.impl.GameOutputImpl;
+import baseball.game.impl.GameUtilImpl;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {

@@ -1,9 +1,10 @@
-package baseball.game;
+package baseball.game.impl;
 
 import static baseball.status.GameSetting.COUNT_NUM;
 import static baseball.status.GameSetting.MAX_NUM;
 import static baseball.status.GameSetting.MIN_NUM;
 
+import baseball.game.GameUtil;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,11 @@
-package baseball.game;
+package baseball.game.impl;
 
 import static baseball.status.GameMsg.BALL;
 import static baseball.status.GameMsg.BALL_AND_STRIKE;
 import static baseball.status.GameMsg.NOTHING;
 import static baseball.status.GameMsg.STRIKE;
+
+import baseball.game.GameOutput;
 
 public class GameOutputImpl implements GameOutput {
 

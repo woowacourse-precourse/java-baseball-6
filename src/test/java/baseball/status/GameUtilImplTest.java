@@ -5,7 +5,7 @@ import static baseball.status.GameSetting.MAX_NUM;
 import static baseball.status.GameSetting.MIN_NUM;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.game.GameUtilImpl;
+import baseball.game.impl.GameUtilImpl;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

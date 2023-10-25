@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.game.impl;
 
 import static baseball.status.ErrorCode.INVALID_DISTINCT_INPUT;
 import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT;
@@ -8,6 +8,7 @@ import static baseball.status.GameSetting.CHOICE_REGEX;
 import static baseball.status.GameSetting.COUNT_NUM;
 import static baseball.status.GameSetting.INPUT_REGEX;
 
+import baseball.game.GameInput;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
