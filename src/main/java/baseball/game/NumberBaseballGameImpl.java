@@ -6,36 +6,40 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberBaseballGameImpl implements Game{
-    private final String STARTING_GAME = "숫자 야구 게임을 시작합니다.\n";
-    private static final String ASKING_USER_INPUT = "숫자를 입력해주세요 : ";
-    private final String ENDING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
-    private final String BALL ="볼";
-    private final String STRIKE ="스트라이크";
-    private final String NOTHING = "낫싱";
+public class NumberBaseballGameImpl implements Game {
 
-    public NumberBaseballGameImpl() {}
+
+    public NumberBaseballGameImpl() {
+    }
 
     @Override
-    public void runGame()  {
+    public void runGame() {
+        forwardOutputToMarchine(GameOutputText.STARTING_GAME);
+        do {
+            runGameLogic();
+        } while (askForReGame());
+
+    }
+
+    private void runGameLogic() {
         List<Integer> gameNumList;
         int[] resultArray;
-        
-        forwardText(STARTING_GAME);
-        gameNumList = generateComputerNumber();
         String userNumber;
+
+        gameNumList = generateComputerNumber();
+
         do {
-            forwardText(ASKING_USER_INPUT);
+            forwardOutputToMarchine(GameOutputText.ASKING_USER_INPUT);
             userNumber = askForInput();
             HandleException.exceptionHandlingForUserNumber(userNumber);
             List<Integer> userNumList = stringToList(userNumber);
             resultArray = compare(userNumList, gameNumList);
-            printResult(resultArray);
+            forwardResultToMarchine(resultArray);
         } while (!checkResult(resultArray));
     }
 
     @Override
-    public void forwardText(String text) {
+    public void forwardOutputToMarchine(String text) {
         GameMachineImpl.printText(text);
     }
 
@@ -99,28 +103,41 @@ public class NumberBaseballGameImpl implements Game{
         return userNumList;
     }
 
-    private void printResult(int[] resultArray) {
+    private void forwardResultToMarchine(int[] resultArray) {
         int strikeNum = resultArray[0];
         int ballNum = resultArray[1];
         String resultString = null;
         if (ballNum != 0 && strikeNum == 0) {
-            resultString = ballNum + BALL + "\n";
+            resultString = ballNum + GameOutputText.BALL + "\n";
         }
         if (ballNum == 0 && strikeNum != 0) {
-            resultString = strikeNum + STRIKE + "\n";
+            resultString = strikeNum + GameOutputText.STRIKE + "\n";
         }
         if (ballNum != 0 && strikeNum != 0) {
-            resultString = ballNum + BALL + " " + strikeNum + STRIKE + "\n";
+            resultString = ballNum + GameOutputText.BALL + " " + strikeNum + GameOutputText.STRIKE + "\n";
         }
         if (strikeNum == 0 && ballNum == 0) {
-            resultString = NOTHING + "\n";
+            resultString = GameOutputText.NOTHING + "\n";
         }
-        forwardText(resultString);
+        forwardOutputToMarchine(resultString);
     }
+
     private boolean checkResult(int[] resultArray) {
         //스트라이크 개수가 3개면 true리턴 아니면 false 리턴
         if (resultArray[0] == 3) {
-            forwardText(ENDING);
+            forwardOutputToMarchine(GameOutputText.ENDING);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean askForReGame() {
+        forwardOutputToMarchine(GameOutputText.ASKING_REGAME);
+        String userInput = askForInput();
+        HandleException.exceptionHandlingForUserInput(userInput);
+        int checkValue = Integer.parseInt(userInput);
+        if (checkValue == 1) {
             return true;
         } else {
             return false;
