@@ -21,6 +21,10 @@ public class BallNumberGroup {
         this.BallNumberGroup = ballNumberGroup;
     }
 
+    public List<BallNumber> getBallNumberGroup() {
+        return BallNumberGroup;
+    }
+
     private void validateBallNumberGroupSize(List<Integer> ballNumberGroup) {
         if (ballNumberGroup.size() != BALL_NUMBER_GROUP_SIZE) {
             throw new IllegalArgumentException("공의 개수는 3개여야 합니다.");
