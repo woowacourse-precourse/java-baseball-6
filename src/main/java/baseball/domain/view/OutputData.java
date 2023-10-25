@@ -28,4 +28,11 @@ public class OutputData {
         return "";
     }
 
+    private static String printBallCount(String ballCount, int count) {
+        if (0 != count) {
+            return count + ballCount;
+        }
+        return "";
+    }
+
 }
