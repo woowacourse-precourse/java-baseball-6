@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class RandomNumbers {
-    private final int START_RANGE = 1;
-    private final int END_RANGE = 9;
+    private static final int START_RANGE = 1;
+    private static final int END_RANGE = 9;
     private List<Integer> randomNumbers;
 
     public RandomNumbers() {
