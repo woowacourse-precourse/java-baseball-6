@@ -1,17 +1,15 @@
 package baseball;
 
-import static baseball.RegularExpression.END_OR_NOT;
-
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
 public class BaseBallGame {
 
+    private static BaseBallGame baseBallGame;
+
     Computer computer = Computer.getInstance();
     User user = User.getInstance();
     Score score = Score.getInstance();
-
-    private static BaseBallGame baseBallGame;
 
     private BaseBallGame() {
     }
@@ -33,7 +31,7 @@ public class BaseBallGame {
 
             guessNumber();
 
-            System.out.println(OutputMessage.END_OR_NOT);
+            System.out.println(OutputMessage.ASK_END_OR_NOT);
 
         } while (!isEnd());
     }
@@ -49,14 +47,8 @@ public class BaseBallGame {
 
     public boolean isEnd() {
         String chooseNumber = Console.readLine();
-        throwException(chooseNumber);
+        endNumberException(chooseNumber);
         return chooseNumber.equals("2");
-    }
-
-    private void throwException(String st) {
-        if (!st.matches(END_OR_NOT)) {
-            throw new IllegalArgumentException();
-        }
     }
 
 }
