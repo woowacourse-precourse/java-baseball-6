@@ -1,8 +1,9 @@
-package baseball.domain.ball;
+package baseball.model.ball;
 
 import java.util.Objects;
 
 public class Ball {
+
     int number;
 
     public Ball(int number) {

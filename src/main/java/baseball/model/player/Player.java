@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.model.player;
 
 public interface Player {
 

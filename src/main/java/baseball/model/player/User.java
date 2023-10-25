@@ -1,5 +1,6 @@
-package baseball.domain;
+package baseball.model.player;
 
+import baseball.constants.Command;
 import baseball.ui.Input;
 
 public class User implements Player {

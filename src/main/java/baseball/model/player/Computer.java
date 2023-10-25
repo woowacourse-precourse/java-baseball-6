@@ -1,7 +1,8 @@
-package baseball.domain;
+package baseball.model.player;
 
-import baseball.domain.ball.Ball;
-import baseball.domain.ball.Balls;
+import baseball.model.BallCounter;
+import baseball.model.ball.Ball;
+import baseball.model.ball.Balls;
 import baseball.ui.Output;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

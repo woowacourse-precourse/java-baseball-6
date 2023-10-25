@@ -1,9 +1,10 @@
-package baseball.domain;
+package baseball.model;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import baseball.domain.ball.Ball;
-import baseball.domain.ball.Balls;
+import baseball.model.ball.Ball;
+import baseball.model.ball.Balls;
+import baseball.model.player.Computer;
 import baseball.ui.ConsoleOutput;
 import java.util.Arrays;
 import java.util.List;

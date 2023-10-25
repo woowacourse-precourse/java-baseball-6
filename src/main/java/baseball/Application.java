@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.domain.Game;
+import baseball.service.Game;
 import baseball.ui.ConsoleInput;
 import baseball.ui.ConsoleOutput;
 

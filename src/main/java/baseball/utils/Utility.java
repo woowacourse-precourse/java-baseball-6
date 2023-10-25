@@ -1,6 +1,7 @@
 package baseball.utils;
 
-import baseball.domain.Ball;
+import baseball.model.ball.Ball;
+import baseball.model.ball.Balls;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,13 +31,15 @@ public class Utility {
         }
     }
 
-    public static List<Ball> convertStringToBall(String input, int length) {
+    public static Balls convertStringToBalls(String input, int length) {
         validateInput(input, length);
 
-        return input.chars()
+        List<Ball> ballList = input.chars()
             .filter(Character::isDigit)
             .mapToObj(ch -> new Ball(Character.getNumericValue(ch)))
             .collect(Collectors.toList());
+
+        return new Balls(ballList);
     }
 
     private static void validateInput(String input, int length) {

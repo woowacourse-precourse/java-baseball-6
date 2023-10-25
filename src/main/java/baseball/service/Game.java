@@ -1,7 +1,10 @@
-package baseball.domain;
+package baseball.service;
 
-import baseball.domain.ball.Balls;
-import baseball.model.User;
+import baseball.constants.Command;
+import baseball.model.BallCounter;
+import baseball.model.ball.Balls;
+import baseball.model.player.Computer;
+import baseball.model.player.User;
 import baseball.ui.Input;
 import baseball.ui.Message;
 import baseball.ui.Output;

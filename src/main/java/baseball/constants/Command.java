@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.constants;
 
 public enum Command {
     RESTART("1", true),

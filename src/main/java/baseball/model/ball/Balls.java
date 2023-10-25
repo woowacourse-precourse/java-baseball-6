@@ -1,6 +1,5 @@
-package baseball.domain.ball;
+package baseball.model.ball;
 
-import baseball.domain.ball.Ball;
 import java.util.Iterator;
 import java.util.List;
 

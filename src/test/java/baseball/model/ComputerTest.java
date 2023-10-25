@@ -1,7 +1,8 @@
-package baseball.domain;
+package baseball.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import baseball.model.player.Computer;
 import baseball.ui.ConsoleOutput;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
