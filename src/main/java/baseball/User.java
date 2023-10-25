@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class User {
 
@@ -11,9 +13,13 @@ public class User {
     public void setUserNumbers() {
         System.out.println("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
-        int inputNumber = Integer.parseInt(inputString);
+
         //3자리, 중복, 0여부 확인
-        if (inputNumber < 100 || inputNumber > 999) {
+        Pattern pattern = Pattern.compile("^(?!.*(\\d).*\\1)[1-9]{3}$");
+        Matcher matcher = pattern.matcher(inputString);
+
+        int inputNumber = Integer.parseInt(inputString);
+        if (!matcher.matches()) {
             throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
         List<Integer> generatedNumbers = new ArrayList<>();
