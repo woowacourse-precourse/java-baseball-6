@@ -9,6 +9,10 @@ public class Player {
 
     public List<Integer> answer() {
         String answer = readLine();
+        return validateAndParseAnswer(answer);
+    }
+
+    private List<Integer> validateAndParseAnswer(String answer) {
         if (answer.length() != 3) {
             throw new IllegalArgumentException("답안 입력값이 세자리가 아닙니다.");
         }
@@ -33,19 +37,18 @@ public class Player {
     public Integer askToStartNewGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String answer = readLine();
-        int answerValue;
-
-        try {
-            answerValue = Integer.parseInt(answer);
-        } catch (NumberFormatException e){
-            throw new IllegalArgumentException("게임 재시작 여부를 위한 입력값 타입이 잘못되었습니다.");
-        }
-
-        if (answerValue == 1 || answerValue == 2) {
-            return answerValue;
-        }
-
-        throw new IllegalArgumentException("게임 재시작 여부를 위한 입력값 값이 잘못되었습니다.");
+        return validateAndParseNewGameAnswer(answer);
     }
 
+    private Integer validateAndParseNewGameAnswer(String answer) {
+        try {
+            int answerValue = Integer.parseInt(answer);
+            if (answerValue == 1 || answerValue == 2) {
+                return answerValue;
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("게임 재시작 여부를 위한 입력값 타입이 잘못되었습니다.");
+        }
+        throw new IllegalArgumentException("게임 재시작 여부를 위한 입력값 값이 잘못되었습니다.");
+    }
 }
