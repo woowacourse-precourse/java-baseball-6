@@ -16,8 +16,8 @@ public class GameStatus {
         gameStatus = input;
     }
 
-    public String getGameStatus() {
-        return gameStatus;
+    public boolean isQuit() {
+        return gameStatus.equals(QUIT);
     }
 
     private String generatePrompt() {

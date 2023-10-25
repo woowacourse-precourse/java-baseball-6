@@ -1,7 +1,6 @@
 package baseball.app;
 
 import static baseball.constants.Game.ANSWER_DIGIT;
-import static baseball.constants.Game.QUIT;
 import static baseball.constants.GameMessage.GAME_OVER;
 import static baseball.constants.GameMessage.GAME_START;
 import static baseball.constants.GameMessage.INPUT_PROMPT;
@@ -27,7 +26,7 @@ public class BaseballGame {
 
             GameStatus gameStatus = new GameStatus();
 
-            if (gameStatus.getGameStatus().equals(QUIT)) {
+            if (gameStatus.isQuit()) {
                 strikes = 0;
                 break;
             }

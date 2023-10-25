@@ -14,8 +14,12 @@ public class Answer {
         answer = generateRandomAnswer();
     }
 
-    public String getAnswer() {
-        return answer;
+    public boolean contains(String guessChar) {
+        return answer.contains(guessChar);
+    }
+
+    public char charAt(int i) {
+        return answer.charAt(i);
     }
 
     private String generateRandomAnswer() {

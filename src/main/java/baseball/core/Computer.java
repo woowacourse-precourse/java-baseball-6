@@ -24,7 +24,7 @@ public class Computer {
         int balls = 0;
         for (int i = 0; i < guess.length(); i++) {
             char guessChar = guess.charAt(i);
-            if (answer.getAnswer().contains("" + guessChar)) {
+            if (answer.contains("" + guessChar)) {
                 balls++;
             }
         }
@@ -35,7 +35,7 @@ public class Computer {
         int strikes = 0;
         for (int i = 0; i < guess.length(); i++) {
             char guessChar = guess.charAt(i);
-            char answerChar = answer.getAnswer().charAt(i);
+            char answerChar = answer.charAt(i);
             if (guessChar == answerChar) {
                 strikes++;
             }
