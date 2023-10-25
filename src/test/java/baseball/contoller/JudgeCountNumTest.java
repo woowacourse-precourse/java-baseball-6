@@ -53,6 +53,27 @@ public class JudgeCountNumTest {
         Assertions.assertThat(strikeNum).isEqualTo(0);
         Assertions.assertThat(ballNum).isEqualTo(0);
 
+        // 123 453
+        List<Integer> u4=new ArrayList<>(List.of(4, 5, 3));
+        userNum = new UserNum(u4);
+
+        countNum = judgeCountNumImpl.getJudgeCountNum(userNum,targetNum);
+        strikeNum = countNum.getStrikeNum();
+        ballNum = countNum.getBallNum();
+
+        Assertions.assertThat(strikeNum).isEqualTo(1);
+        Assertions.assertThat(ballNum).isEqualTo(0);
+
+        // 123 312
+        List<Integer> u5=new ArrayList<>(List.of(3, 1, 2));
+        userNum = new UserNum(u5);
+
+        countNum = judgeCountNumImpl.getJudgeCountNum(userNum,targetNum);
+        strikeNum = countNum.getStrikeNum();
+        ballNum = countNum.getBallNum();
+
+        Assertions.assertThat(strikeNum).isEqualTo(0);
+        Assertions.assertThat(ballNum).isEqualTo(3);
     }
 
 }

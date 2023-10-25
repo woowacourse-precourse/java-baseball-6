@@ -21,13 +21,18 @@ public class BaseballGameImpl implements BaseballGame {
     public void playBaseballGame(){
         TargetNum targetNum = generateTargetNum.getTargetNum();
         String s;
+        UserNum userNum;
+        CountNum countNum;
+        int strike;
+        int ball;
         while(true){
+            System.out.print("숫자를 입력해주세요 : ");
             s=Console.readLine();
-            UserNum userNum= validUserNum.getValidUserNum(s);
+            userNum= validUserNum.getValidUserNum(s);
 
-            CountNum countNum = judgeCountNum.getJudgeCountNum(userNum,targetNum);
-            int strike = countNum.getStrikeNum();
-            int ball = countNum.getBallNum();
+            countNum = judgeCountNum.getJudgeCountNum(userNum,targetNum);
+            strike = countNum.getStrikeNum();
+            ball = countNum.getBallNum();
 
             if(strike==3){
                 System.out.println("3스트라이크");
