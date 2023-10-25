@@ -1,14 +1,11 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import java.util.Scanner;
 
 public class Input {
-    Scanner sc = new Scanner(System.in);
-    String input = sc.next();
-
+    String input = Console.readLine();
     public List<Integer> numbers() {
         List<Integer> inputNumber = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
