@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.RegularExpression.END_OR_NOT;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
@@ -52,7 +54,7 @@ public class BaseBallGame {
     }
 
     private static void throwException2(String st) {
-        if (!st.matches("[12]")) {
+        if (!st.matches(END_OR_NOT)) {
             throw new IllegalArgumentException();
         }
     }

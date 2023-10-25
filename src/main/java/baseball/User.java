@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.RegularExpression.USER_NUM_REG_EX;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +37,6 @@ public class User {
     }
 
     private void throwException(String st) {
-        String USER_NUM_REG_EX = "([1-9])(?!\\1)([1-9])(?!\\1|\\2)([1-9])";
         if (!st.matches(USER_NUM_REG_EX)) {
             throw new IllegalArgumentException();
         }

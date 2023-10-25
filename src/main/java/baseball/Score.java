@@ -5,7 +5,6 @@ public class Score {
     private int numOfBall;
     private int numOfStrike;
 
-
     private static Score score;
 
     private Score() {
