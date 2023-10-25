@@ -15,7 +15,7 @@ class Game {
     private static final String NEW_GAME_CHECK_MESSAGE = "게임을 새로 시작하려면 " + Game.NEW_GAME + ", 종료하려면 " + Game.QUIT_GAME + "를 입력하세요.";
 
     int[] number = new int[NUMBER_COUNT];
-
+    // 게임이 시작되면 자동으로 컴퓨터 수를 출력해주는 생성자
     Game() {
         int nowRandomNum;
         int nowNumberIndex = 0;
@@ -29,6 +29,7 @@ class Game {
         }
     }
 
+    //사용자가 입력한 넘버를 한 숫자마다 number list에 입력
     Game(String str) {
         for (int i = 0; i < Game.NUMBER_COUNT; i++) {
             number[i] = Integer.parseInt(str.charAt(i) + "");
@@ -78,6 +79,7 @@ class Game {
         int intValue;
         try {
             intValue = Integer.parseInt(str);
+            //숫자를 안넣을시 오류를 던지는 메서드
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
@@ -93,6 +95,7 @@ class Game {
         return "number: " + this.number[0] + this.number[1] + this.number[2];
     }
 
+    //사용자가 입력한 수가 틀릴시 오류를 던지는 메소드
     static void checkInputValue(final String str) {
         if (!Game.checkInputLength(str)) {
             throw new IllegalArgumentException();

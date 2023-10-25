@@ -1,6 +1,8 @@
 package baseball;
 
 class Array {
+
+
     static boolean checkArrayContains(final int[] arr, final int number) {
         for (int value : arr) {
             if (value == number) {

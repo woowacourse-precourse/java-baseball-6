@@ -1,6 +1,7 @@
 package baseball;
 
 class Hint {
+    // 결과(볼, 스트라이크, 낫싱을 보여주는 클래스)
     int ball, strike;
 
     private static final String BALL_WORD = "볼";
