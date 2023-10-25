@@ -6,14 +6,8 @@ import java.util.Map;
 
 public class GameController {
 
-  private NumberController numberController;
-  private ExceptionController exceptionController;
-
-  public GameController(NumberController numberController,
-      ExceptionController exceptionController) {
-    this.numberController = numberController;
-    this.exceptionController = exceptionController;
-  }
+    private NumberController numberController = new NumberController();
+    private ExceptionController exceptionController = new ExceptionController();
 
     public void gameStart() {
         List<Integer> computerNumberList = numberController.generateComputerNumberList();
