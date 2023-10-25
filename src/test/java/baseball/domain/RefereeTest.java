@@ -32,4 +32,10 @@ class RefereeTest {
         referee.calculateBallCount(user, computer);
         assertEquals(3, referee.getBall());
     }
+
+    @Test
+    void 스트라이크가_세_개면_게임이_종료() {
+        referee.calculateStrikeCount(user, computer);
+        assertEquals(GameStatus.END, referee.isGameEnd());
+    }
 }
