@@ -34,7 +34,7 @@ public class NumberBaseballGame {
                         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     }
                 } catch (IllegalArgumentException e) {
-                    System.out.println("잘못된 입력입니다. 1-9 중복 없이 다시 시도하세요.");
+                    System.out.println("에러 메시지: " + e.getMessage());
                 }
             }
             // 게임 재시작 또는 종료 확인
