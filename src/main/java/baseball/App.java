@@ -22,7 +22,7 @@ public class App {
             String userNum = input.userNum();
             game.listCompare(computer.numbers, userNum);
             output.scorePrint(game.ball, game.strike);
-        } while (game.strike == 3);
+        } while (game.strike != 3);
     }
 
     public boolean end() {
