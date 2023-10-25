@@ -7,5 +7,8 @@ public class RandomNumbers {
     private static final int END_INCLUSIVE = 9;
     private static final int COUNT = 3;
 
+    private static List<BaseBallNumber> randomNumbers;
+
+
 
 }
