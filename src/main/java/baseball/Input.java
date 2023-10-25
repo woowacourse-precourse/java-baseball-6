@@ -17,7 +17,7 @@ public class Input {
     private static final String END_BUTTON = "2";
 
     public static List<Integer> inputUserNumber(int numberSize) {
-        System.out.print("숫자를 입력해주세요 : ");
+        Output.gameInputMessage();
         String userInput = Console.readLine();
 
         if (userInput.length() != numberSize) {
@@ -66,7 +66,7 @@ public class Input {
     }
 
     public static boolean restartOrNot() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Output.gameRestartMessage();
         String userInput = Console.readLine();
         if (RESTART_BUTTON.equals(userInput)) {
             return true;

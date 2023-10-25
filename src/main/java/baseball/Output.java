@@ -10,6 +10,14 @@ public class Output {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    public static void gameRestartMessage() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public static void gameInputMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
     public static void printScore(int strike, int ball) {
         String result = "";
         if (strike == 0 && ball == 0) {
