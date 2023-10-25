@@ -3,10 +3,10 @@ package baseball.domain.numbers;
 import java.util.List;
 
 public final class AnswerNumber {
-    private final List<Integer> answer;
+    private final BaseBallNumber answer;
 
-    public AnswerNumber(BaseBallNumber answerNumber) {
-        answer = answerNumber.getNumber();
+    public AnswerNumber(BaseBallNumber answer) {
+        this.answer = answer;
     }
 
     public static AnswerNumber createAnswerNumbers(NumberGenerator numberGenerator) {
@@ -17,16 +17,16 @@ public final class AnswerNumber {
 
     public boolean isSameWithAnswer(BaseBallNumber other) {
         String otherNumber = other.getNumber().toString();
-        return answer.toString().equals(otherNumber);
+        return answer.getNumber().toString().equals(otherNumber);
     }
 
     public boolean isSameNumberOfIndex(BaseBallNumber other, int index) {
         int targetNumber = other.getNumber().get(index);
-        return answer.get(index).equals(targetNumber);
+        return answer.getNumber().get(index).equals(targetNumber);
     }
 
     public boolean hasContainNumberOfIndex(BaseBallNumber other, int index) {
         int targetNumber = other.getNumber().get(index);
-        return answer.contains(targetNumber);
+        return answer.getNumber().contains(targetNumber);
     }
 }
