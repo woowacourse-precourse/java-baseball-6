@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class Implementation {
+public class BaseballScorer {
     Computer computer = new Computer();
     GameProcess gameProcess = new GameProcess();
     public int countStrike(List<Integer> computerNumbers, List<Integer> userInput) {
