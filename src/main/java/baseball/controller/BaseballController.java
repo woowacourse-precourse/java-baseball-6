@@ -9,6 +9,7 @@ import baseball.model.BaseballGameResult;
 import baseball.service.BaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballController {
 
@@ -30,6 +31,8 @@ public class BaseballController {
             playGame();
             play = askReplayChoice();
         }
+
+        releaseResource();
     }
 
     private void playGame() {
@@ -61,5 +64,9 @@ public class BaseballController {
         GameStatus gameStatus = GameStatus.from(replayDto.replay());
 
         return gameStatus.equals(GameStatus.REPLAY);
+    }
+
+    private void releaseResource() {
+        Console.close();
     }
 }
