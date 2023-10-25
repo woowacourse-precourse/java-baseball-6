@@ -1,6 +1,5 @@
 package baseball.domain.game;
 
-import baseball.domain.input.ConsoleReader;
 import baseball.domain.stadium.BaseBallStadium;
 
 public class BaseBallGame implements Game {
@@ -23,7 +22,7 @@ public class BaseBallGame implements Game {
         while (true) {
             baseBallStadium.startNewRound();
 
-            if (isExitingBaseballGame()) {
+            if (baseBallGameExitManager.isExitingBaseballGame()) {
                 printExitMessage();
                 return;
             }
@@ -38,16 +37,6 @@ public class BaseBallGame implements Game {
     private void printExitMessage() {
         final String GAME_EXIT_MESSAGE = "숫자 야구 게임을 종료합니다.";
         System.out.println(GAME_EXIT_MESSAGE);
-    }
-
-    private boolean isExitingBaseballGame() {
-//        return baseBallGameExitManager.isExitingBaseballGame();
-        baseBallGameExitManager.printInputExitOption();
-        final String userRetryInput = ConsoleReader.input();
-        if (baseBallGameExitManager.isUserInputRetryOption(userRetryInput)) return false;
-        if (baseBallGameExitManager.isUserInputExitOption(userRetryInput)) return true;
-        throw new IllegalArgumentException();
-        // TODO : EXCEPTION
     }
 
 }
