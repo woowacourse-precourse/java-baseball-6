@@ -26,7 +26,7 @@ public class UserInputNumberManager implements UserNumberManager{
     public void validInteger(String Number) {
         for (int i = 0; i < COUNT.getNumberInfo(); i++) {
             if (!Character.isDigit(Number.charAt(i))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[Error]: 각 자리는 정수값이어야 합니다.");
             }
         }
     }
@@ -37,20 +37,20 @@ public class UserInputNumberManager implements UserNumberManager{
             set.add(Number.charAt(i));
         }
         if (!(set.size() == COUNT.getNumberInfo())) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[Error]: 중복된 숫자가 존재합니다.");
         }
     }
 
     public void validThreeDigit(String Number) {
         if (Number.length() != COUNT.getNumberInfo()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[Error]: 세 자리 정수값을 입력하세요.");
         }
     }
 
     public void validZeroValue(String Number) {
         for (int i = 0; i < Number.length(); i++) {
             if (Number.charAt(i) == '0') {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[Error]: 0은 들어갈 수 없습니다.");
             }
         }
     }

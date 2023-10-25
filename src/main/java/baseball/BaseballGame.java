@@ -44,6 +44,6 @@ public class BaseballGame {
             return false;
         }
 
-        throw new IllegalArgumentException("재시작을 원하시면 1, 종료를 원하시면 2를 입력하세요.");
+        throw new IllegalArgumentException("[Error]: 재시작을 원하시면 1, 종료를 원하시면 2를 입력하세요.");
     }
 }
