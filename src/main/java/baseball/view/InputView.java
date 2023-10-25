@@ -25,7 +25,7 @@ public class InputView {
     private static void validatePlayerBaseBallNumber(String input) {
         try {
             Integer.parseInt(input);
-        } catch (NumberFormatException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(ILLEGAL_USER_INPUT_MESSAGE);
         }
     }
