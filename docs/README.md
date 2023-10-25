@@ -83,12 +83,12 @@
    - 게임의 시작을 알려준다.✅
    - 숫자입력 명령문을 출력한다.✅
    - 입력된 값의 결과를 알려준다.✅
-   - 게임 재시작 여부를 질문한다.
+   - 게임 재시작 여부를 질문한다.✅
 
    1. printGameStartMessage()✅
    2. printNumberInputPrompt()✅
    3. printResultOfJudgement()✅
-   4. printResumeInputPrompt()
+   4. printResumeInputPrompt()✅
 
 ## 3. Model
    
