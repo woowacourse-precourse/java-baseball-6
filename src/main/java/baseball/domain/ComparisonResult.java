@@ -7,8 +7,8 @@ import static baseball.global.GameMessage.STRIKE_COUNT_MESSAGE;
 
 public class ComparisonResult {
 
-    private int ballCount;
-    private int strikeCount;
+    private final int ballCount;
+    private final int strikeCount;
     private String result;
 
     public ComparisonResult(int ballCount, int strikeCount) {
@@ -35,8 +35,7 @@ public class ComparisonResult {
 
     private void hasOnlyStrike() {
         if (this.strikeCount > 0 && this.ballCount == 0) {
-            this.result = isThreeStrike() ? GAME_ENDED_MESSAGE.message
-                    : "%d%s".formatted(strikeCount, STRIKE_COUNT_MESSAGE.message);
+            this.result = "%d%s".formatted(strikeCount, STRIKE_COUNT_MESSAGE.message);
         }
     }
 
@@ -48,18 +47,25 @@ public class ComparisonResult {
         }
     }
 
-    public void configureResult() {
+    private void configureResult() {
         isNothing();
         hasOnlyBall();
         hasOnlyStrike();
         hasBothBallAndStrike();
     }
 
+    private void printGameEndedMessage() {
+        if (isThreeStrike()) {
+            System.out.print(GAME_ENDED_MESSAGE.message);
+        }
+    }
+
     public void printResult() {
         System.out.println(this.result);
+        printGameEndedMessage();
     }
 
     public boolean checkGameEnded() {
-        return this.result.equals(GAME_ENDED_MESSAGE.message);
+        return isThreeStrike();
     }
 }

@@ -13,18 +13,16 @@ public class Computer {
     private final List<Integer> numbers;
 
     public Computer() {
-        this.numbers = pickRandomNumbers();
+        this.numbers = new ArrayList<>();
     }
 
-    private List<Integer> pickRandomNumbers() {
-        List<Integer> nums = new ArrayList<>();
-        while (nums.size() < GUESS_NUMBER_SIZE) {
+    public void pickRandomNumbers() {
+        while (this.numbers.size() < GUESS_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
-            if (!nums.contains(randomNumber)) {
-                nums.add(randomNumber);
+            if (!this.numbers.contains(randomNumber)) {
+                this.numbers.add(randomNumber);
             }
         }
-        return nums;
     }
 
     public boolean numbersContains(int number) {
