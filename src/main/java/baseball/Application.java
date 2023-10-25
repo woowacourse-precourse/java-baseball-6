@@ -97,6 +97,7 @@ public class Application {
             }
         }
         Set<Integer> userGuessSet = new LinkedHashSet<>();
+        if(userGuessSet.size() != 3) turnOff();
         userGuessSet.add(userGuessStr.charAt(0)-'0');
         userGuessSet.add(userGuessStr.charAt(1)-'0');
         userGuessSet.add(userGuessStr.charAt(2)-'0');
