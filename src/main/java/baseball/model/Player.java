@@ -9,11 +9,11 @@ public class Player {
     private List<Character> playerNumber;
 
     public Player(String input) {
-        validate(input);
+        playerValidate(input);
         this.playerNumber = convertToCharList(input);
     }
 
-    private void validate(String input) {
+    private void playerValidate(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("세 자리의 숫자를 입력해주세요.");
         }
@@ -24,7 +24,6 @@ public class Player {
             if (ch < '1' || ch > '9') {
                 throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
             }
-
             uniqueDigits.add(ch);
         }
 
@@ -39,7 +38,6 @@ public class Player {
         for (char ch : input.toCharArray()) {
             list.add(ch);
         }
-
         return list;
     }
 
