@@ -20,7 +20,7 @@ public class Application {
     public boolean gameRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = readLine();
-        Utils.validateStringThreeDifferentDigits(userInput);
+        Utils.isStringOneOrTwo(userInput);
         if (userInput.equals("1")) {
             return false;
         } else {
