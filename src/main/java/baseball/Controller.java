@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.service.GameService;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Controller {
     final int NUMBER_OF_DIGIT = 3;
@@ -31,7 +32,19 @@ public class Controller {
     }
 
 
-    private void Retry() {
+    private void Retry() throws IllegalArgumentException {
+        if (getInputNum() == RESTART_GAME) {
+            run();
+        }
+    }
+
+    private int getInputNum() throws IllegalArgumentException {
+        int input = Integer.parseInt(Console.readLine());
+
+        if (input == 0 || input > END_GAME) {
+            throw new IllegalArgumentException();
+        }
+        return input;
     }
 
 
