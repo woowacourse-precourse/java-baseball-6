@@ -38,7 +38,6 @@ public class OutputView {
         nothingHandler.setNextHandler(ballHandler);
         ballHandler.setNextHandler(strikeHandler);
         strikeHandler.setNextHandler(ballAndStrikeHandler);
-
         return nothingHandler.handleResult(result.getBall(), result.getStrike());
     }
 }
