@@ -9,15 +9,12 @@ public class Input {
 
     public boolean gameContinue() {
         String decision = Console.readLine();
-        if(decision.equals("1")){
+        if (decision.equals("1")) {
            return false;
-        }
-        else if(decision.equals("2")){
+        } else if (decision.equals("2")) {
             return true;
-        }
-        else{
+        } else {
             throw new IllegalArgumentException();
         }
-
     }
 }

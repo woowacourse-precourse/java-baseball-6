@@ -1,6 +1,5 @@
 package baseball;
 
-
 import baseball.system.GameSystem;
 
 public class Application {

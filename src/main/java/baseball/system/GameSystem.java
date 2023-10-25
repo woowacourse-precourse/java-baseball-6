@@ -15,10 +15,11 @@ public class GameSystem {
     ResultManage result = new ResultManage();
 
     private boolean endGame = false;
+    private static final int ALL_STRIKE = 3;
 
     public void start() {
         show.opening();
-        while(!endGame){
+        while (!endGame) {
             show.guide();
 
             String input = read.readNumbers();
@@ -27,7 +28,7 @@ public class GameSystem {
             result.gameSetResult(user.getUserNumbers(), randomNumber.getComputerNumbers());
             show.result(result.getBall(), result.getStrike());
 
-            if(result.getStrike() == 3){
+            if (result.getStrike() == ALL_STRIKE) {
                 show.decide();
                 endGame = read.gameContinue();
                 if(!endGame) {

@@ -12,36 +12,33 @@ public class ResultManage {
         ball = 0;
         strike = 0;
 
-        for(int computerNum = 0; computerNum < 3; computerNum++){
-            for(int userNum = 0; userNum < 3; userNum++){
-                if(checkScore[userNum] == 2 ) continue;
-                if(randomNum.get(computerNum).equals(userInput.get(userNum)) && computerNum == userNum) {
+        for (int computerNum = 0; computerNum < 3; computerNum++) {
+            for (int userNum = 0; userNum < 3; userNum++) {
+                if (checkScore[userNum] == 2 ) continue;
+                if (randomNum.get(computerNum).equals(userInput.get(userNum)) && computerNum == userNum) {
                     checkScore[computerNum] = 2;
                     break;
-                }
-                else if(randomNum.get(computerNum).equals(userInput.get(userNum))){
+                } else if (randomNum.get(computerNum).equals(userInput.get(userNum))) {
                     checkScore[computerNum] = 1;
                     break;
                 }
             }
         }
 
-        for(int i = 0; i < 3; i++){
-            if(checkScore[i] == 1){
+        for (int i = 0; i < 3; i++) {
+            if (checkScore[i] == 1) {
                 ball++;
-            }
-            else if(checkScore[i] == 2){
+            } else if (checkScore[i] == 2) {
                 strike++;
             }
         }
     }
 
-    public int getBall(){
+    public int getBall() {
         return ball;
     }
 
     public int getStrike() {
         return strike;
     }
-
 }
