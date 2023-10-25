@@ -9,12 +9,17 @@ import java.util.List;
 public class Game {
     public List<Integer> computer;
     public List<Integer> inputNum;
+    public static final int NUMBER_LENGTH = 3;
+    public static final int NUMBER_MIN = 1;
+    public static final int NUMBER_MAX = 9;
+    public static final int REPLAY_O = 1;
+    public static final int REPLAY_X = 2;
 
     //컴퓨터 랜덤값 생성
     public List<Integer> makeRandom() {
         computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(NUMBER_MIN, NUMBER_MAX);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
@@ -29,7 +34,7 @@ public class Game {
 
         //예외처리
         //1. 입력값이 3글자가 아닐 때
-        if (input.length() != 3) {
+        if (input.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
         //2. 숫자(1~9)가 아닌 경우
@@ -51,7 +56,6 @@ public class Game {
     }
 
     //컴퓨터값과 입력값 비교
-    // 컴퓨터값과 입력값 비교
     public void play() {
         //컴퓨터 랜덤값
         computer = makeRandom();
@@ -85,9 +89,9 @@ public class Game {
             if (ball == 0 && strike == 0) {
                 System.out.print("낫싱");
             }
-            if (strike == 3) {
+            if (strike == NUMBER_LENGTH) {
                 System.out.println();
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
 
@@ -98,23 +102,23 @@ public class Game {
         //게임 재시작 묻기(1.재시작, 2.종료)
         int yesOrNo = replay();
         //재시작
-        if (yesOrNo == 1) {
+        if (yesOrNo == REPLAY_O) {
             play();
         }
         //게임 종료
-        if (yesOrNo == 2) {
+        if (yesOrNo == REPLAY_X) {
         }
 
     }
 
     //게임 재시작 묻기(1.재시작, 2.종료)
     public int replay() throws IllegalArgumentException {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 " + REPLAY_O + ", 종료하려면 " + REPLAY_X + "를 입력하세요.");
         int user = Integer.parseInt(Console.readLine());
 
         //예외처리
         //입력값이 1또는 2가 아닐 때
-        if (user != 1 && user != 2) {
+        if (user != REPLAY_O && user != REPLAY_X) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
         }
 
