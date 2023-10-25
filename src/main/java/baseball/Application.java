@@ -25,7 +25,7 @@ public class Application {
 
             total = getTotal(computer, player);
             strike = getStrike(computer, player);
-            answer = output(total, strike);
+            answer = outPut(total, strike);
             System.out.println(answer);
 
             if (strike == 3){
@@ -110,7 +110,7 @@ public class Application {
         return strike;
     }
 
-    public static String output(int total , int strike){
+    public static String outPut(int total , int strike){
         int ball = total - strike;
 
         if (total == 0){
