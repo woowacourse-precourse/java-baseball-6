@@ -24,11 +24,11 @@ public class BallCount {
         this.strikeOut= strikeOut;
     }
 
-    public void incrementStrike(){
+    private void incrementStrike(){
         this.strike += BASEBALL_BALL;
     }
 
-    public void incrementBall() {
+    private void incrementBall() {
         this.ball += BASEBALL_BALL;
     }
 

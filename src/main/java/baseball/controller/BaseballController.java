@@ -18,6 +18,7 @@ public class BaseballController {
         gameStartRequest(baseball, user, computer);
     }
 
+
     private static void gameStartRequest(Baseball baseball,User user,Computer computer){
         do{
             repeatGame(user,computer);

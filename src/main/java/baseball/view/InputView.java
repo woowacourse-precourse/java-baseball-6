@@ -29,7 +29,7 @@ public class InputView {
             return Integer.parseInt(Console.readLine());
         }
         catch(NumberFormatException e){
-            throw new IllegalArgumentException(INPUT_NUMBER_EXCEPTION_MESSAGE);
+            throw new IllegalArgumentException(GAME_RESTART_AND_SHUTDOWN_MESSAGE);
         }
     }
 }

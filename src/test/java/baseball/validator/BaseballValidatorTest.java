@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-class BaseballValidatorTest extends BaseballValidator{
+class BaseballValidatorTest{
     private static final String SIZE_EXCEPTION_MESSAGE ="3개의 숫자를 입력해야 합니다.";
     private static final String DUPLICATE_EXCEPTION_MESSAGE ="중복된 숫자를 입력할 수 없습니다.";
     private static final String RANGE_EXCEPTION_MESSAGE ="1부터 9까지의 숫자만 입력할 수 있습니다.";
@@ -52,12 +52,12 @@ class BaseballValidatorTest extends BaseballValidator{
     }
 
     private void testListException(List<Integer> list, String message) {
-        assertThatThrownBy(() -> validator(list))
+        assertThatThrownBy(() -> BaseballValidator.validator(list))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
     }
     private void testRetryException(Integer num, String message) {
-        assertThatThrownBy(() -> restartValidator(num))
+        assertThatThrownBy(() -> BaseballValidator.restartValidator(num))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
     }
