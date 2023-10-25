@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import baseball.Modules;
+
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -26,6 +28,8 @@ public class Application {
     }
 
     public static void baseball_game() {
+        Modules modules = new Modules();
+
         List<Integer> random_list = new ArrayList<>();
 
         while (random_list.size() < 3) {
@@ -38,17 +42,13 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String expected_num_str = Console.readLine();
+            modules.isTypeInt(expected_num_str);
 
             String[] expected_num_split = expected_num_str.split("");
             List<String> expected_num_lst = Arrays.asList(expected_num_split);
             Set<String> set_expected_num = new HashSet<>(expected_num_lst);
             List<String> set_lst_expected_num = new ArrayList<>(set_expected_num);
             if (set_lst_expected_num.size() != 3) {
-                throw new IllegalArgumentException();
-            }
-            try{
-                Integer.parseInt(expected_num_str);
-            } catch (Exception e) {
                 throw new IllegalArgumentException();
             }
 
