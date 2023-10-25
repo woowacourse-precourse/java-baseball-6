@@ -12,7 +12,7 @@ public class Common {
                 .boxed().toList();
     }
     public static String input3StringFromKeyboard() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
         HandleError.validateInputStringIsNumber(inputString);
         HandleError.validateInputStringSize(inputString,3);
