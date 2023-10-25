@@ -8,17 +8,17 @@ import java.util.List;
 
 public class Input {
 
-    Validation validation = new Validation();
+    private static final Validation validation = new Validation();
 
 
-    public List<Integer> playerInput(int dataType) {
+    public static List<Integer> playerInput(int dataType) {
         char[] player = readLine().toCharArray();
         validation.runValidation(player, dataType);
         return charIntoList(player);
     }
 
 
-    private List<Integer> charIntoList(char[] target) {
+    private static List<Integer> charIntoList(char[] target) {
         List<Integer> convertedData = new ArrayList<>();
 
         for (char chr : target) {
