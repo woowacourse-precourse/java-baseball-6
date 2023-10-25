@@ -9,7 +9,15 @@ import org.junit.jupiter.api.Test;
 public class BallsTest extends NsTest {
 
 	@Test
-	void 숫자_길이_검사() {
+	void 숫자_길이_검사_3보다_작은_경우() {
+		assertSimpleTest(() ->
+				assertThatThrownBy(() -> runException("15"))
+						.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
+	@Test
+	void 숫자_길이_검사_3보다_큰_경우() {
 		assertSimpleTest(() ->
 				assertThatThrownBy(() -> runException("1524"))
 						.isInstanceOf(IllegalArgumentException.class)

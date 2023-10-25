@@ -31,6 +31,10 @@ public class Balls {
 		return balls.get(idx);
 	}
 
+	public int getSize() {
+		return balls.size();
+	}
+
 	public void reverse() {
 		List<Integer> reverse = new ArrayList<>();
 		for (int i = balls.size() - 1; i >= 0; i--) {

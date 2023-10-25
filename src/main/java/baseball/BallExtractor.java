@@ -19,6 +19,10 @@ public class BallExtractor extends IntegerExtractor {
 			}
 		}
 
+		if (balls.getSize() < 3) {
+			throw new IllegalArgumentException();
+		}
+
 		balls.reverse();
 		return balls;
 	}
