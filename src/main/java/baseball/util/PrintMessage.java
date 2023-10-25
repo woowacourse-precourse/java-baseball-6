@@ -16,7 +16,22 @@ public class PrintMessage {
         System.out.println(MessageEnum.SUCCESS_MESSAGE.getMessage());
     }
 
+
     public static void printHint(GameResult result) {
-        //TODO 힌트 계산
+        if(result.isNothing()) {
+            System.out.println(GameHintEnum.NOTHING.getHintMessage());
+            return;
+        }
+
+        int resultBall = result.getBall();
+        int resultStrike = result.getStrike();
+
+        if(resultBall != 0)
+            System.out.print(resultBall + GameHintEnum.BALL.getHintMessage() + " ");
+
+        if(resultStrike != 0)
+            System.out.print(resultStrike + GameHintEnum.STRIKE.getHintMessage());
+
+        System.out.println();
     }
 }

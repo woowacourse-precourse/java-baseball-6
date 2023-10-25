@@ -33,4 +33,16 @@ public class GameResult {
     public boolean isRight() {
         return strike == 3;
     }
+
+    public boolean isNothing() {
+        return strike == 0 && ball == 0;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 }
