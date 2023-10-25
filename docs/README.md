@@ -11,6 +11,8 @@
 그렇다면, 사용자가 정답을 맞추거나 틀렸을 경우 알맞은 응답을 결정하는 것은 어느 클래스에서 행해야할까(BaseballGame, ConsoleOutput)  
 또한, 클래스간 의존성을 어떻게 해결해야할까. BaseballGame을 위해서는 ConsoleInput/Output, BaseballGameComputer가 모두 필요하다.
 이들을 인스턴스 필드로 가질 것인지, run 메소드 내에서 지역변수로 생성할 것인지.
+BaseballGameComputer를 싱글톤 패턴으로 만들어도 될까? -> 단일 유저 게임이라면 객체를 계속해서 생성, 삭제할 필요가 없지않나
+-> but 싱글톤패턴을 써서 얻는 장점도 없다. 싱글톤패턴은 다중 환경에서 stateless 할 때 강하다.
 
 ## 기능 
 
