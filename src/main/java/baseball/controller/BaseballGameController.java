@@ -7,12 +7,12 @@ import baseball.model.Turn;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class Controller {
+public class BaseballGameController {
     private final Game game;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public Controller() {
+    public BaseballGameController() {
         this.game = Game.start();
         this.inputView = new InputView();
         this.outputView = new OutputView();

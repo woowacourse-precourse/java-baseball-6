@@ -1,9 +1,9 @@
 package baseball;
 
-import baseball.controller.Controller;
+import baseball.controller.BaseballGameController;
 
 public class Application {
     public static void main(String[] args) {
-        new Controller().startGame();
+        new BaseballGameController().startGame();
     }
 }
