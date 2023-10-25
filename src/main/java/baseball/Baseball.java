@@ -10,6 +10,13 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Baseball {
 
     public void startGame() {
+        while(true) {
+            startRound();
+        }
+
+    }
+
+    private void startRound() {
         List<Integer> computerNumber = RandomUtil.generateRandomNumber(3);
 
         while(true) {
