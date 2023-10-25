@@ -13,4 +13,8 @@ public class BaseBallGamePlayer {
         this.balls = new Balls(givenNumbers);
         return balls;
     }
+
+    public Hint guessBalls(Balls targetBalls) {
+        return balls.match(targetBalls);
+    }
 }
