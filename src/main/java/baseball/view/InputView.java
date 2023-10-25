@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.service.ConsoleService;
+import baseball.view.valid.InputValidator;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

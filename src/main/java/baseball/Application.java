@@ -8,9 +8,9 @@ import baseball.domain.RandomNumberGenerator;
 import baseball.domain.Score;
 import baseball.service.DefaultConsoleService;
 import baseball.service.DefaultRandomService;
-import baseball.view.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import baseball.view.valid.InputValidator;
 import java.util.List;
 
 public class Application {
