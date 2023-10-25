@@ -22,7 +22,7 @@ public class BaseBallService {
     }
     public boolean reStart(String userInput) throws IllegalArgumentException {
         if(!playInputException.isValid(userInput)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1 혹은 2만 입력 해주세요.");
         }
         return userInput.equals(RESTART_NUMBER);
     }
