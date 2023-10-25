@@ -17,6 +17,7 @@ public class RandomRuleManager implements GameManager {
         this.userNumberManager = userNumberManager;
     }
 
+    @Override
     public List<Integer> createNumber() {
         List<Integer> randomNumber = new ArrayList<>();
 
@@ -31,6 +32,7 @@ public class RandomRuleManager implements GameManager {
         return randomNumber;
     }
 
+    @Override
     public Score calculateCount(List<Integer> randomNumber){
         String userNumber = userNumberManager.getUserNumber();
 
@@ -51,6 +53,7 @@ public class RandomRuleManager implements GameManager {
         return new Score(strikeCount, ballCount);
     }
 
+    @Override
     public void printCount(List<Integer> randomNumber) {
         while (true) {
             Score score = calculateCount(randomNumber);

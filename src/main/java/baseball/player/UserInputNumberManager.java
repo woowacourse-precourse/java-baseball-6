@@ -11,6 +11,7 @@ import static baseball.enums.NumberInfo.COUNT;
 public class UserInputNumberManager implements UserNumberManager {
     private String userNumber;
 
+    @Override
     public String getUserNumber() {
         System.out.print(INPUT_USERNUMBER_MESSAGE.getMessage());
         userNumber = Console.readLine();
