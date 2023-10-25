@@ -25,6 +25,6 @@ public class User implements Player {
     }
 
     public Command selectCommand() {
-        return Command.findCommand(input.scan());
+        return Command.findByCommand(input.scan());
     }
 }

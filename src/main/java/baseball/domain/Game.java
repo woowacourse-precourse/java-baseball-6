@@ -6,7 +6,6 @@ import baseball.ui.Output;
 import baseball.utils.Utility;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Game {
 
@@ -75,7 +74,7 @@ public class Game {
 
     private boolean isRestart() {
         Command command = chooseRestartGame();
-        return Objects.equals(command.getCommand(), "1");
+        return command.isRestart();
     }
 
     private Command chooseRestartGame() {
