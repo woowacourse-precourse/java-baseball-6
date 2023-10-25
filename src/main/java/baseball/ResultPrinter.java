@@ -10,12 +10,16 @@ public class ResultPrinter {
     private static final int NOTHING_IDX = 2;
 
     public void printResult(List<Integer> results) {
-        if (printNothing(results)) return;
+        if (printNothing(results)) {
+            System.out.println();
+            return;
+        }
         printBall(results);
         if (results.get(BALL_IDX) != 0 && results.get(STRIKE_IDX) != 0) {
             System.out.print(" ");
         }
         printStrike(results);
+        System.out.println();
     }
 
     public static void printStrike(List<Integer> results) {

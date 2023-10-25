@@ -75,6 +75,7 @@ public class BaseballGame {
             resultPrinter.printResult(results);
             if (results.get(STRIKE_IDX) == 3) {
                 correct = true;
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
         }
 
