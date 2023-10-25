@@ -14,18 +14,15 @@ public class BaseballComparator {
     }
 
     private int checkStrike(int[] computer, int[] user) {
-        return (int) IntStream.range(0, GameConstant.MAX_NUM).filter(i -> user[i] == computer[i]).count();
+        return (int) IntStream.range(0, GameConstant.MAX_NUM)
+                .filter(i -> user[i] == computer[i])
+                .count();
     }
 
     private int checkBall(int[] computer, int[] user) {
-        int ballCount = 0;
-        for (int i = 0; i < GameConstant.MAX_NUM; i++) {
-            final int userNum = user[i];
-            if (user[i] != computer[i] && IntStream.of(computer).anyMatch(number -> number == userNum)) {
-                ballCount++;
-            }
-        }
-        return ballCount;
+        return (int) IntStream.range(0, GameConstant.MAX_NUM)
+                .filter(i -> user[i] != computer[i] && IntStream.of(computer).anyMatch(number -> number == user[i]))
+                .count();
     }
 
     public boolean checkThreeStrike() {
