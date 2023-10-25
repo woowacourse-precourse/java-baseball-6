@@ -1,8 +1,31 @@
 package baseball.status;
 
+import static baseball.status.GameSetting.COUNT_NUM;
+import static baseball.status.GameSetting.MAX_NUM;
+import static baseball.status.GameSetting.MIN_NUM;
+
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameUtil {
+
+    /**
+     * 컴퓨터 수 설정
+     *
+     * @return 컴퓨터 수
+     */
+    public List<Integer> setComputerNum() {
+        List<Integer> computerNum = new ArrayList<>();
+        while (computerNum.size() < COUNT_NUM.getValue()) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUM.getValue(), MAX_NUM.getValue());
+            if (!computerNum.contains(randomNumber)) {
+                computerNum.add(randomNumber);
+            }
+        }
+
+        return computerNum;
+    }
 
     /**
      * 볼, 스트라이크 개수 계산

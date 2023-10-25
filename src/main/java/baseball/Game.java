@@ -4,14 +4,10 @@ import static baseball.status.GameMsg.GAME_OVER;
 import static baseball.status.GameMsg.REPLAY_OR_OVER_MESSAGE;
 import static baseball.status.GameMsg.SET_INPUT;
 import static baseball.status.GameMsg.SUCCESS_MESSAGE;
-import static baseball.status.GameSetting.COUNT_NUM;
-import static baseball.status.GameSetting.MAX_NUM;
-import static baseball.status.GameSetting.MIN_NUM;
 import static baseball.status.GameSetting.OVER;
 import static baseball.status.GameSetting.REPLAY;
 
 import baseball.status.GameUtil;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +23,7 @@ class Game {
     }
 
     public void play() {
-        List<Integer> computerNum = setComputerNum();
+        List<Integer> computerNum = gameUtil.setComputerNum();
         List<Integer> inputNum = new ArrayList<>();
 
         while (!inputNum.equals(computerNum)) {
@@ -65,22 +61,5 @@ class Game {
             System.out.println(GAME_OVER.getMsg());
             gameInput.close();
         }
-    }
-
-    /**
-     * 컴퓨터 수 설정
-     *
-     * @return 컴퓨터 수
-     */
-    private List<Integer> setComputerNum() {
-        List<Integer> computerNum = new ArrayList<>();
-        while (computerNum.size() < COUNT_NUM.getValue()) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUM.getValue(), MAX_NUM.getValue());
-            if (!computerNum.contains(randomNumber)) {
-                computerNum.add(randomNumber);
-            }
-        }
-
-        return computerNum;
     }
 }
