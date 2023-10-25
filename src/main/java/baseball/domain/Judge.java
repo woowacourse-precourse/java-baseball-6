@@ -16,7 +16,7 @@ public class Judge {
         }
         int ball = count - strike;
 
-        if(strike == 0){
+        if(count == 0){
             return "낫싱";
         }
 
