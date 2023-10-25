@@ -45,7 +45,9 @@ public class Application {
                     ballCnt++;
             }
 
-           
+            if(isFinish(strikeCnt, ballCnt)){
+              break;
+            }
 
         }
         System.out.println("게임을 종료합니다.");
