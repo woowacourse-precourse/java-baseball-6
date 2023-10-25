@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class PlaygerNumbers {
+public class PlayerNumbers {
 
     private List<Integer> playerNumbers;
 
-    public PlaygerNumbers() {
+    public PlayerNumbers() {
         playerNumbers = new ArrayList<>();
     }
 

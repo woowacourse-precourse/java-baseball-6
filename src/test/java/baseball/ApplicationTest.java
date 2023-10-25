@@ -1,12 +1,15 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import baseball.start.ComputerNumbers;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.HashSet;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -32,4 +35,47 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 예외_테스트_문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("가나다"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_같은_숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 랜덤_숫자_생성() {
+        //given
+
+        //when
+        ComputerNumbers computerNumbers = new ComputerNumbers();
+        computerNumbers.pickAnswerNumbers();
+        List<Integer> randomNumbers = computerNumbers.getComputerNumbers();
+
+        //then
+        assertThat(randomNumbers.size())
+                .as("랜덤 숫자 크기 검사")
+                .isEqualTo(3);
+
+        assertThat(randomNumbers.size())
+                .as("랜덤 숫자 중복 검사")
+                .isEqualTo(new HashSet<>(randomNumbers).size());
+
+        for (Integer number : randomNumbers) {
+            assertThat(number)
+                    .as("랜덤 숫자 범위 검사")
+                    .isBetween(1, 9);
+        }
+    }
+
+
 }

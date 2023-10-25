@@ -9,21 +9,21 @@ import baseball.end.RestartChoice;
 import baseball.game.BallAndStrike;
 import baseball.game.Mention;
 import baseball.game.Result;
-import baseball.start.ComputeNumbers;
-import baseball.start.PlaygerNumbers;
+import baseball.start.ComputerNumbers;
+import baseball.start.PlayerNumbers;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-    private ComputeNumbers computeNumbers;
-    private PlaygerNumbers playgerNumbers;
+    private ComputerNumbers computerNumbers;
+    private PlayerNumbers playerNumbers;
     private BallAndStrike ballAndStrike;
     private Result result;
     private RestartChoice restartChoice;
     private Restart restart;
 
     public Game() {
-        computeNumbers = new ComputeNumbers();
-        playgerNumbers = new PlaygerNumbers();
+        computerNumbers = new ComputerNumbers();
+        playerNumbers = new PlayerNumbers();
         ballAndStrike = new BallAndStrike();
         result = Result.DEFAULT;
         restartChoice = new RestartChoice();
@@ -64,7 +64,7 @@ public class Game {
     }
 
     private void pickAnswerNumbers() {
-        computeNumbers.pickAnswerNumbers();
+        computerNumbers.pickAnswerNumbers();
     }
 
     private void alertStart() {
@@ -76,11 +76,11 @@ public class Game {
     }
 
     private void readInputNumbers() {
-        playgerNumbers.readInputNumbers();
+        playerNumbers.readInputNumbers();
     }
 
     private void getBallAndStrike() {
-        ballAndStrike.set(playgerNumbers.getPlayerNumbers(), computeNumbers.getComputerNumbers());
+        ballAndStrike.set(playerNumbers.getPlayerNumbers(), computerNumbers.getComputerNumbers());
     }
 
     private void getResult() {
