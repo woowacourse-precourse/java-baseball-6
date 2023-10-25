@@ -1,10 +1,18 @@
 package baseball.validation;
 
 public class NumberValidator {
+
 	public NumberValidator(String playerInputNumber) {
 		numberValidateIsThreeNumber(playerInputNumber);
 		numberValidateIsDigit(playerInputNumber);
 		numberValidateIsSameDigit(playerInputNumber);
+		validateForZero(playerInputNumber);
+	}
+
+	public void validateForZero(String stringNumber) {
+		if (stringNumber.charAt(0) == '0' || stringNumber.charAt(1) == '0' || stringNumber.charAt(2) == '0') {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	public void numberValidateIsSameDigit(String stringNumber) {
