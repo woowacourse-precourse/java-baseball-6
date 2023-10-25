@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Scanner extends Exception {
+public class Scanner extends CheckException {
 
     private final String END_NUM = "2";
 

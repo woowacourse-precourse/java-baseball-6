@@ -1,8 +1,8 @@
 package baseball;
 
-public class Exception {
-    public static final String USER_NUM_REG_EX = "([1-9])(?!\\1)([1-9])(?!\\1|\\2)([1-9])";
-    public static final String END_OR_NOT = "[12]";
+public class CheckException {
+    private final String USER_NUM_REG_EX = "([1-9])(?!\\1)([1-9])(?!\\1|\\2)([1-9])";
+    private final String END_OR_NOT = "[12]";
 
     public void guessNumberException(String st) {
         if (!st.matches(USER_NUM_REG_EX)) {
