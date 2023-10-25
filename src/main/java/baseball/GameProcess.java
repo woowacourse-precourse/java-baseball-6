@@ -7,17 +7,19 @@ import java.util.*;
 public class GameProcess {
     private static List<Integer> input;
     private static BaseballScorer baseballScorer = new BaseballScorer();
+
     public List<Integer> getInput() {
         return input;
     }
 
     Computer computer1 = new Computer();
+
     public static void process() {
 
         input = new ArrayList<>();
         String num;
         int start_or_exit;
-        BaseballScorer baseballScorer1 = new BaseballScorer();
+
         Computer computer1 = new Computer();
         List<Integer> computerNumbers = computer1.generateRandomNumbers();
         while (true) {
@@ -35,7 +37,7 @@ public class GameProcess {
                     String digitStr = String.valueOf(digitChar); // 문자 digitChar를 문자열로 반환하여 digitStr 변수에 저장
                     try {
                         int digit = Integer.parseInt(digitStr); // 문자열 digitStr을 정수로 변환하여 digit 변수에 저장
-                        if (!(1<=digit && digit <= 9)) {
+                        if (!(1 <= digit && digit <= 9)) {
                             throw new IllegalAccessException("입력된 숫자는 1부터 9사이의 정수가 아닙니다");
                         }
                         input.add(digit); // 변환된 숫자 digit를 리스트 input에 추가
@@ -60,12 +62,12 @@ public class GameProcess {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                     start_or_exit = Integer.parseInt(Console.readLine()); // 재시작과 종료를 구분하는 수를 입력 받고
-                        if (start_or_exit == 2) { // 2일경우 게임 종료
-                            break;
-                        } else if (start_or_exit == 1) { // 1일 경우 게임 다시 시작
-                            computerNumbers = computer1.generateRandomNumbers(); //2
-                            continue;
-                        }
+                    if (start_or_exit == 2) { // 2일경우 게임 종료
+                        break;
+                    } else if (start_or_exit == 1) { // 1일 경우 게임 다시 시작
+                        computerNumbers = computer1.generateRandomNumbers(); //2
+                        continue;
+                    }
                 } else {
                     if (ball != 0) {
                         System.out.print(ball + "볼 ");
@@ -79,7 +81,7 @@ public class GameProcess {
                     System.out.println();
                 }
 
-            } catch(IllegalAccessException e) {
+            } catch (IllegalAccessException e) {
                 System.out.println(e.getMessage());
                 break;
             }

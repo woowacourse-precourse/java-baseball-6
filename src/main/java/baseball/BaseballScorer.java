@@ -5,6 +5,7 @@ import java.util.List;
 public class BaseballScorer {
     Computer computer = new Computer();
     GameProcess gameProcess = new GameProcess();
+
     public int countStrike(List<Integer> computerNumbers, List<Integer> userInput) {
         int strike = 0;
         for (int i = 0; i < computerNumbers.size(); i++) {
