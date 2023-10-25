@@ -12,12 +12,13 @@ public class Computer {
     public static final String FINISH_COMMAND = "2";
     public static final int NUMBER_SIZE = 3;
 
-    private boolean isFinish;
+    private boolean isRunning;
 
     public void run() {
         View.printGameStartMessage();
 
-        while (!isFinish) {
+        this.isRunning = true;
+        while (isRunning) {
             Game.makeNewGame(this).start();
         }
     }
@@ -41,7 +42,7 @@ public class Computer {
     }
 
     private void shutDown() {
-        this.isFinish = true;
+        this.isRunning = false;
     }
 
     public static void validatePlayerNumber(String playerNumber) {
