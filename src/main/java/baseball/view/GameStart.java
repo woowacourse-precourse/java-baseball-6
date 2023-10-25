@@ -17,14 +17,12 @@ public class GameStart {
     private List<Integer> computerList; // 컴퓨터의 3개의 랜덤 숫자 리스트
     private List<Integer> userList; // 입력을 받는 userList
     private GameProgress gameProgress; // 게임 진행 클래스
-    private NumbersGenerate numbersGenerate; // 게임 숫자 설정 객체.
 
 
     public GameStart() {
         gameProgress = new GameProgress();
         computerList = new ArrayList<>();
         userList = new ArrayList<>();
-        numbersGenerate = new NumbersGenerate();
     }
 
     public void run() {
@@ -69,7 +67,7 @@ public class GameStart {
      */
     private void initGame() {
         hintOfJudge = MyConstants.RESET_STRING(); // 결과 리셋
-        computerList = numbersGenerate.createRandomNumList(); // 컴퓨터의 3개의 랜덤 숫자 리스트
+        computerList = gameProgress.makeComputerList(); // 컴퓨터의 3개의 랜덤 숫자 리스트
     }
 
     /**

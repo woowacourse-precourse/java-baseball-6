@@ -66,6 +66,11 @@ public class ValidException {
         ValidException.isValidPositiveInt(inputStr); // 입력 받은 문자열이 양수로 인지 확인
     }
 
+    /**
+     * 게임의 힌트가 적절한 값이 없이 끝날때.
+     *
+     * @return
+     */
     public static String isValidNotAccuracyGameResult() {
         throw new IllegalArgumentException(ValidConstants.MSG_NOT_ACCURACY_GAME_RESULT());
     }
