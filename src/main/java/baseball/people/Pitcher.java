@@ -9,6 +9,7 @@ public class Pitcher {
     private static final String ASK_TO_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ";
     private static final String RESTART = "1";
     private static final String QUIT = "2";
+    private static final int PROPER_LENGTH = 3;
 
     private Pitcher() {
     }
@@ -65,7 +66,7 @@ public class Pitcher {
     }
 
     private boolean isValidInput(String input) {
-        if (input.length() != 3) {
+        if (input.length() != PROPER_LENGTH) {
             return false;
         }
 
