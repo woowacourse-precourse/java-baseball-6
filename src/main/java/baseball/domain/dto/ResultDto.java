@@ -17,4 +17,8 @@ public class ResultDto {
         return score.getResult();
     }
 
+    private Boolean checkIsThreeStrike(Score score) {
+        return score.isThreeStrike();
+    }
+
 }
