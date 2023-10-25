@@ -21,13 +21,30 @@
 - List<Integer> 타입의 컬렉션에 야구공들의 수를 저장한다.
 - 생성자에서 Validation 클래스를 이용해 입력을 검증한다.
 - 생성자에서 Converter 클래스를 이용해 입력을 변환한다.
-    - getBallsSize 메소드
-        - Balls 인스턴스에 저장되어 있는 balls의 길이를 리턴한다.
-    - getBall 메소드
-        - 인덱스 값을 파라미터로 받아서 balls의 해당 인덱스의 요소 값을 리턴한다.
-    - compareByDigit 메소드
-        - 인덱스 값과 또 다른 Balls 인스턴스의 balls 중 하나의 요소값을 파라미터로 받아 두 값을 비교한다. 같을 시 true를 리턴하고 다른 값일 시 false를 리턴한다.
-      
+- getBallsSize 메소드
+    - Balls 인스턴스에 저장되어 있는 balls의 길이를 리턴한다.
+- getBall 메소드
+    - 인덱스 값을 파라미터로 받아서 balls의 해당 인덱스의 요소 값을 리턴한다.
+- compareByDigit 메소드
+    - 인덱스 값과 또 다른 Balls 인스턴스의 balls 중 하나의 요소값을 파라미터로 받아 두 값을 비교한다. 같을 시 true를 리턴하고 다른 값일 시 false를 리턴한다.
+- countBall 메소드
+    - 볼의 개수를 카운트한다.
+    - return 타입은 int형이다.
+- isBall 메소드
+    - 볼의 여부를 판단한다.
+    - 사용자 입력과 컴퓨터 입력을 비교하여 같은 수가 다른 자릿수에 있으면 '볼'이라 판단한다.
+    - return 타입은 boolean형이다.
+- countStrike 메소드
+    - 스트라이크의 개수를 카운트한다.
+    - return 타입은 int형이다.
+- isStrike 메소드
+    - 스트라이크의 여부를 판단한다.
+    - 사용자 입력과 컴퓨터 입력을 비교하여 같은 수가 같은 자릿수에 있으면 '스트라이크'라 판단한다.
+    - return 타입은 boolean형이다.
+- isNothing 메소드
+    - 사용자 입력과 컴퓨터 입력을 비교한 결과 같은 수가 전혀 없으면 낫싱이라 판단한다.
+    - return 타입은 boolean형이다.
+
 ### BaseballGame
 
 사용자의 입출력을 전담한다.
@@ -64,25 +81,10 @@
 
 사용자 입력과 컴퓨터의 랜덤값을 비교한 결과를 제공한다.
 
-- countBall 메소드
-    - 볼의 개수를 카운트한다.
-    - return 타입은 int형이다.
-- isBall 메소드
-    - 볼의 여부를 판단한다.
-    - 사용자 입력과 컴퓨터 입력을 비교하여 같은 수가 다른 자릿수에 있으면 '볼'이라 판단한다.
-    - return 타입은 boolean형이다.
-- countStrike 메소드
-    - 스트라이크의 개수를 카운트한다.
-    - return 타입은 int형이다.
-- isStrike 메소드
-    - 스트라이크의 여부를 판단한다.
-    - 사용자 입력과 컴퓨터 입력을 비교하여 같은 수가 같은 자릿수에 있으면 '스트라이크'라 판단한다.
-    - return 타입은 boolean형이다.
-- isNothing 메소드
-    - 사용자 입력과 컴퓨터 입력을 비교한 결과 같은 수가 전혀 없으면 낫싱이라 판단한다.
-    - return 타입은 boolean형이다.
+- createComputerBalls
+    - 3자릿수의 컴퓨터 난수를 생성하여 Balls 인스턴스로 감싼다.
 - baseballGameServiceStart 메소드
-    - 컴퓨터의 3자리 난수를 생성하고, 사용자 입력과 비교하는 일련의 과정을 처리한다.
+    - 볼, 스트라이크 개수에 따라서 출력을 결정하고, 3스트라이크 시 false를 리턴하여 컴퓨터 난수와 사용자 입력이 완전히 일치했음을 알린다.
 
 ### Validation
 
