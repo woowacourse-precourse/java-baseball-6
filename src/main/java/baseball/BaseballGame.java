@@ -18,6 +18,10 @@ public class BaseballGame {
         on = true;
     }
 
+    private void resetStrike() {
+        this.strike = 0;
+    }
+
     public void reStart() {
         List<Integer> cpuNewInput = new RandomNumber().getRandomNumbers();
         System.out.println("컴퓨터 숫자:" + cpuNewInput);
@@ -41,7 +45,7 @@ public class BaseballGame {
         String userDecide = readLine();
         if (userDecide.equals("1")) {
             strike = 0;
-            rePlay();
+            reStart();
         } else if (userDecide.equals("2")) {
             toFalse();
         }
