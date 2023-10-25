@@ -50,7 +50,9 @@ public class Application {
     public static int checkStrike(List<Integer> userNumber, List<Integer> computerNumber) {
         int strike = 0;
         for (int i = 0; i < userNumber.size(); i++) {
-            if (userNumber.get(i).equals(computerNumber.get(i))) {
+            Integer userDigit = userNumber.get(i);
+            Integer computerDigit = computerNumber.get(i);
+            if (userDigit.equals(computerDigit)) {
                 strike += 1;
             }
         }
@@ -61,7 +63,11 @@ public class Application {
     public static int checkBall(List<Integer> userNumber, List<Integer> computerNumber) {
         int ball = 0;
         for (int i = 0; i < userNumber.size(); i++) {
-            if (!userNumber.get(i).equals(computerNumber.get(i)) && computerNumber.contains(userNumber.get(i))) {
+            Integer userDigit = userNumber.get(i);
+            int computerDigit = computerNumber.get(i);
+            boolean isStrike = userDigit.equals(computerDigit);
+
+            if (!isStrike && computerNumber.contains(userDigit)) {
                 ball += 1;
             }
         }
