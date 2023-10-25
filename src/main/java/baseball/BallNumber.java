@@ -1,22 +1,27 @@
 package baseball;
 
-import java.util.Map;
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BallNumber {
-    private int num;
-    private int ballDP[] = new int[3];
-    public BallNumber(int number){
+  private List<Integer> computer;
 
-    }
+  public BallNumber() {
+    makeBallNumber();
+  }
 
-    private int randomNum(){
-        Random random = new Random();
-        return random.nextInt(9);
+  private void makeBallNumber() {  // 랜덤 숫자 만들기
+    computer = new ArrayList<>(); // computer 숫자 (정답)
+    while (computer.size() < 3) {
+      int randomNumber = Randoms.pickNumberInRange(1, 9);
+      if (!computer.contains(randomNumber)) {
+        computer.add(randomNumber);
+      }
     }
+  }
 
-    public int makeNumber(){
-        ballDP[0] = this.num;
-        return 1;
-    }
+  public List<Integer> getComputer() {
+    return computer;
+  }
 }
