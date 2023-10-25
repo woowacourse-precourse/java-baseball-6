@@ -6,6 +6,7 @@ public class Umpire {
 
     private static final int INIT_NUMBER = 0;
     private static final int MAX_NUMBER_SIZE = 3;
+    private static final int WINNING_STRIKE_COUNT = 3;
 
     public int getStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
         int strike = INIT_NUMBER;
@@ -41,5 +42,9 @@ public class Umpire {
         }
 
         return "낫싱";
+    }
+
+    public boolean isGameSet(int strikeCount) {
+        return strikeCount == WINNING_STRIKE_COUNT;
     }
 }
