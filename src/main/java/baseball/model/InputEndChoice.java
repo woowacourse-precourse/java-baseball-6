@@ -6,7 +6,7 @@ public class InputEndChoice {
     private static final int INPUT_CHOICE_LENGTH = 1;
 
     public enum Choice {
-        RESTART, QUIT, INVALID
+        RESTART, QUIT
     }
 
     public Choice checkInputChoice(String input) {
