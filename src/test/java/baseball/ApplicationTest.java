@@ -32,4 +32,58 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 사용자입력_숫자만_입력_가능한지_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abe"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("안녕히"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자입력_중복되는_숫자가_있는지_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("989"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자입력_3자리인지_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("123456442"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
