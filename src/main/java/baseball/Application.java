@@ -12,7 +12,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class Application {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean again = true;
 
@@ -39,6 +39,7 @@ public class Application {
                     break;
                 }else{
                     computer = 컴퓨터_랜덤값();
+                    userInputList = new ArrayList<>();
                 }
             }
             result = 심판(computer,userInputList);
@@ -104,6 +105,7 @@ public class Application {
         return strike;
     }
 
+    //5. 컴퓨터가 가진 숫자 3개와 사용자에게 입력 받은 숫자 비교 로직 구현
     static String 심판 (List<Integer> 컴퓨터, List<Integer> 플레이어){
         int total = ballCount(컴퓨터, 플레이어);
         int strike = strikeCount(컴퓨터, 플레이어);
@@ -119,6 +121,7 @@ public class Application {
         return ball+" 볼 "+strike+ " 스트라이크";
     }
 
+     //7. 게임이 끝난 후 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. 라는 문구 출력
      static boolean playagain(){
          System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
          System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
