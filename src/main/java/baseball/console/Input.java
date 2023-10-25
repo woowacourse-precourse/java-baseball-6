@@ -12,7 +12,7 @@ public class Input {
     public static String get() {
         System.out.print(INPUT_MESSAGE);
         String number = Console.readLine();
-        if (!isValidateNumber(number)) {
+        if (!isValidNumber(number)) {
             throw new IllegalArgumentException();
         }
         return number;
@@ -28,7 +28,7 @@ public class Input {
         return restartNumber;
     }
 
-    static boolean isValidateNumber(String number) {
+    static boolean isValidNumber(String number) {
         if (number.length() != 3) {
             return false;
         }
