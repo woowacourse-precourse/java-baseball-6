@@ -21,8 +21,9 @@ public class AppController {
     }
 
     private void PlayGame () {
-        while (!checkFinish()) {
+        while (checkFinish()) {
             computer = ComputerGenerator.computerList();
+            initVariable();
 
             turnPlay();
 
@@ -54,6 +55,10 @@ public class AppController {
     }
     private boolean checkFinish () {
         return _command == 1;
+    }
+    private void initVariable () {
+        _ball = 0;
+        _strike = 0;
     }
 
     public void run () {
