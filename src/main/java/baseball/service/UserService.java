@@ -23,6 +23,9 @@ public class UserService {
     private List<Integer> validateUserNumber(String userNumber) {
         validation.checkNumberLength(userNumber, NUMBER_LENGTH);
         List<Integer> numberList = validation.isAllDigits(userNumber);
+        for (Integer num : numberList) {
+            validation.isInRange(num);
+        }
         validation.hasDuplicate(numberList);
 
         return numberList;

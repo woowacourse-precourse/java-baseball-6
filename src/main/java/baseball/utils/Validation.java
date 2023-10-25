@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.constant.Number.NUMBER_RANGE_START;
+import static baseball.constant.Number.NUMBER_RANGE_END;
 import static baseball.constant.Number.RESTART;
 import static baseball.constant.Number.EXIT;
 
@@ -30,6 +32,12 @@ public class Validation {
             throw new IllegalArgumentException("숫자가 아닌 문자가 있습니다.");
         }
         return Character.getNumericValue(userNumber);
+    }
+
+    public void isInRange(Integer number){
+        if (number < NUMBER_RANGE_START || number > NUMBER_RANGE_END) {
+            throw new IllegalArgumentException("숫자 범위를 벗어났습니다.");
+        }
     }
 
 
