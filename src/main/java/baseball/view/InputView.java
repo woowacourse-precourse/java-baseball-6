@@ -49,7 +49,8 @@ public class InputView {
     }
 
     private void validateNoDuplicate(List<Integer> numbers, int number) {
-        if (numbers.contains(number)) {
+        long count = numbers.stream().filter(n -> n == number).count();
+        if (count > 1) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
         }
     }
