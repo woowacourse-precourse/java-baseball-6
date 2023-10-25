@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static baseball.ExeptionMessage.NOT_NUMBER;
+
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -20,7 +22,7 @@ public class Application {
         try {
             if(Integer.valueOf(Console.readLine()) == 2) return true;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자(정수) 형식이 잘못되었거나, 숫자를 입력하지 않았습니다.(문자열, 특수기호, 실수형 등)");
+            throw new IllegalArgumentException(NOT_NUMBER);
         }
         return false;
     }

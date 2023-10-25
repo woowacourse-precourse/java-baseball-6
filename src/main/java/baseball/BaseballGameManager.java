@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static baseball.ExeptionMessage.*;
+
 public class BaseballGameManager {
     private static BaseballGameManager baseballGameManager;
     private List<Integer> computerNumber = new ArrayList<>();
@@ -58,7 +60,7 @@ public class BaseballGameManager {
         try {
             userInput = Integer.valueOf(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자(정수) 형식이 잘못되었거나, 숫자를 입력하지 않았습니다.(문자열, 특수기호, 실수형 등)");
+            throw new IllegalArgumentException(NOT_NUMBER);
         }
     }
 
@@ -116,16 +118,16 @@ public class BaseballGameManager {
     }
 
     private void validateNoneDuplicateDigit(Integer digit) {
-        if(userNumber.contains(digit)) throw new IllegalArgumentException("중복되지 않는 숫자를 입력해주세요.");
+        if(userNumber.contains(digit)) throw new IllegalArgumentException(NOT_UNIQUE_DIGITS);
     }
 
     private void validateNoneZeroDigit(Integer digit) {
-        if(digit == 0) throw new IllegalArgumentException("1~9 사이의 숫자를 입력해주세요.");
+        if(digit == 0) throw new IllegalArgumentException(NOT_IN_RANGE);
 
     }
 
     private void validate3Digit(Integer input) {
         // -123, 1002, 23 등등
-        if (input < 100 || input > 999) throw new IllegalArgumentException("세 자리의 양수를 입력해주세요.");
+        if (input < 100 || input > 999) throw new IllegalArgumentException(NOT_THREE_DIGITS);
     }
 }
