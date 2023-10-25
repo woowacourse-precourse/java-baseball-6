@@ -1,7 +1,8 @@
 package baseball.game;
 
 public class GameUI {
-    public void diplayUserInput() {
+
+    public void displayUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
@@ -21,5 +22,4 @@ public class GameUI {
     public void displayExceptionMessage(Exception e) {
         System.out.println(e);
     }
-
 }

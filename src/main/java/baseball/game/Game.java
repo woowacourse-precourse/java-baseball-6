@@ -29,7 +29,7 @@ public class Game {
 
         while (true) {
             try {
-                gameUI.diplayUserInput();
+                gameUI.displayUserInput();
                 user.inputUserNumber();
 
                 String hint = inferHint();
