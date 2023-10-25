@@ -8,11 +8,14 @@ import java.util.List;
 import static baseball.constants.BaseballConstants.*;
 
 public class Computer {
+
+    private List<Integer> numbers;
+
     /**
      * 컴퓨터의 수를 생성
      * @return 1~9까지의 숫자 3개가 담긴 리스트
      */
-    public static List<Integer> getRandomNumbers() {
+    private List<Integer> getRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < NUMBER_LENGTH){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -21,5 +24,13 @@ public class Computer {
             }
         }
         return numbers;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers() {
+        this.numbers = getRandomNumbers();
     }
 }
