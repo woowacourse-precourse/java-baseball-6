@@ -32,8 +32,8 @@ public class BallStrikeEvaluator {
     }
 
     private void checkBallStrike(int computerIdx, int playerIdx) {
-        if(computerIdx != -1) {
-            if(computerIdx == playerIdx) {
+        if (computerIdx != -1) {
+            if (computerIdx == playerIdx) {
                 this.strikeCount++;
             }
             if (computerIdx != playerIdx) {

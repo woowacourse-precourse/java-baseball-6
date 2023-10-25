@@ -20,7 +20,7 @@ public class BaseballGame {
     private void run() {
         boolean isRestart = true;
 
-        while(isRestart) {
+        while (isRestart) {
             isRestart = game();
         }
     }
@@ -30,10 +30,9 @@ public class BaseballGame {
         BallStrikeEvaluator ballStrikeEvaluator = new BallStrikeEvaluator();
         Integer ballCount;
         Integer strikeCount = 0;
-
         ComputerNumber computerNumber = computerNumberGenerator.createComputerNumber();
 
-        while(strikeCount < GOAL_NUMBER) {
+        while (strikeCount < GOAL_NUMBER) {
             List<Integer> userInputNumber = ConsoleIO.insert();
             PlayerNumber playerNumber = new PlayerNumber(userInputNumber);
             ballStrikeEvaluator.evaluate(computerNumber, playerNumber);
@@ -45,7 +44,7 @@ public class BaseballGame {
 
         String restartCode = ConsoleIO.restartRequest();
 
-        if(restartCode.equals(RESTART_CODE)) {
+        if (restartCode.equals(RESTART_CODE)) {
             return true;
         }
 

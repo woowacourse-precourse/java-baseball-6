@@ -15,6 +15,7 @@ public class ComputerNumberGenerator {
 
         return computerNumber;
     }
+
     private void extractedComputerNumber(List<Integer> computer) {
         while (computer.size() < COMPUTER_NUMBER_MAX_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(COMPUTER_NUMBER_MIN_NUMBER, COMPUTER_NUMBER_MAX_NUMBER);
