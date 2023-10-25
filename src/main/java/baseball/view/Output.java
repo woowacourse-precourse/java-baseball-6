@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.model.Settings;
+import baseball.model.GameSettings;
 
 public class Output {
     private final static String MESSAGE_FOR_START = "숫자 야구 게임을 시작합니다.";
@@ -25,14 +25,14 @@ public class Output {
     }
 
     public static void HintMessage() {
-        if (Settings.strike == 0 && Settings.ball == 0) {
+        if (GameSettings.strike == 0 && GameSettings.ball == 0) {
             System.out.println(MESSAGE_FOR_NOTHING);
-        } else if (Settings.strike != 0 && Settings.ball != 0) {
-            System.out.println(Settings.ball + MESSAGE_FOR_BALL + Settings.strike + MESSAGE_FOR_STRIKE);
-        } else if (Settings.strike != 0) {
-            System.out.println(Settings.strike + MESSAGE_FOR_STRIKE);
-        } else if (Settings.ball != 0) {
-            System.out.println(Settings.ball + MESSAGE_FOR_BALL);
+        } else if (GameSettings.strike != 0 && GameSettings.ball != 0) {
+            System.out.println(GameSettings.ball + MESSAGE_FOR_BALL + GameSettings.strike + MESSAGE_FOR_STRIKE);
+        } else if (GameSettings.strike != 0) {
+            System.out.println(GameSettings.strike + MESSAGE_FOR_STRIKE);
+        } else if (GameSettings.ball != 0) {
+            System.out.println(GameSettings.ball + MESSAGE_FOR_BALL);
         }
     }
 }

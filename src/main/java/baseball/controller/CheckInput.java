@@ -4,11 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CheckInput {
-    private static final int NUMBER_LENGTH = 3;
+    private static final Integer NUMBER_LENGTH = 3;
     private static final String NUMBER_REGEX = "[^1-9]";
     private static final String BLANK = "";
     private static final String RESTART = "1";
     private static final String END = "2";
+    
 
     public static void CheckNumber(String userInput) {
         String afterRegexInput = userInput.replaceAll(NUMBER_REGEX, BLANK);
