@@ -1,6 +1,5 @@
 package baseball;
 
-import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT2;
 import static baseball.status.GameMsg.BALL;
 import static baseball.status.GameMsg.BALL_AND_STRIKE;
 import static baseball.status.GameMsg.GAME_OVER;
@@ -10,7 +9,6 @@ import static baseball.status.GameMsg.REPLAY_OR_OVER_MESSAGE;
 import static baseball.status.GameMsg.SET_INPUT;
 import static baseball.status.GameMsg.STRIKE;
 import static baseball.status.GameMsg.SUCCESS_MESSAGE;
-import static baseball.status.GameSetting.CHOICE_REGEX;
 import static baseball.status.GameSetting.COUNT_NUM;
 import static baseball.status.GameSetting.MAX_NUM;
 import static baseball.status.GameSetting.MIN_NUM;
@@ -23,11 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Game {
+    private final GameInput gameInput;
+
+    Game() {
+        gameInput = new GameInput();
+    }
 
     public void play() {
         List<Integer> computerNum = setComputerNum();
         List<Integer> inputNum = new ArrayList<>();
-        GameInput gameInput = new GameInput();
         while (!inputNum.equals(computerNum)) {
             System.out.print(SET_INPUT.getMsg());
             String input = gameInput.setInput();
@@ -98,8 +100,8 @@ class Game {
     public void handleGameChoice() {
         System.out.println(SUCCESS_MESSAGE.getMsg());
         System.out.println(REPLAY_OR_OVER_MESSAGE.getMsg());
-        String input = Console.readLine();
-        String choice = getReplayOrOverInput(input);
+        String input = gameInput.setInput();
+        String choice = gameInput.getReplayOrOverInput(input);
         replayOrOver(choice);
     }
 
@@ -113,20 +115,8 @@ class Game {
             play();
         } else if (choice.equals(OVER.getStringValue())) {
             System.out.println(GAME_OVER.getMsg());
+            gameInput.close();
         }
-    }
-
-    /**
-     * 종료 여부 입력 값 유효성 체크
-     *
-     * @param s 입력 값
-     * @return 입력 값
-     */
-    public String getReplayOrOverInput(String s) {
-        if (!s.matches(CHOICE_REGEX.getStringValue())) {
-            throw new IllegalArgumentException(INVALID_FORMAT_INPUT2.getMsg());
-        }
-        return s;
     }
 
     /**

@@ -2,7 +2,9 @@ package baseball;
 
 import static baseball.status.ErrorCode.INVALID_DISTINCT_INPUT;
 import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT;
+import static baseball.status.ErrorCode.INVALID_FORMAT_INPUT2;
 import static baseball.status.ErrorCode.INVALID_LENGTH_INPUT;
+import static baseball.status.GameSetting.CHOICE_REGEX;
 import static baseball.status.GameSetting.COUNT_NUM;
 import static baseball.status.GameSetting.INPUT_REGEX;
 
@@ -58,5 +60,25 @@ public class GameInput {
         if (Arrays.stream(input).distinct().count() != COUNT_NUM.getValue()) {
             throw new IllegalArgumentException(INVALID_DISTINCT_INPUT.getMsg());
         }
+    }
+
+    /**
+     * 종료 여부 입력 값 유효성 체크
+     *
+     * @param s 입력 값
+     * @return 입력 값
+     */
+    public String getReplayOrOverInput(String s) {
+        if (!s.matches(CHOICE_REGEX.getStringValue())) {
+            throw new IllegalArgumentException(INVALID_FORMAT_INPUT2.getMsg());
+        }
+        return s;
+    }
+
+    /**
+     * Console close
+     */
+    public void close() {
+        Console.close();
     }
 }

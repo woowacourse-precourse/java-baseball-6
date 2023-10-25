@@ -140,10 +140,10 @@ class GameTest {
     @Test
     @DisplayName("올바른 입력_게임 종료 시 1, 2 입력")
     void handleGameChoiceTest() {
-        Game game = new Game();
+        GameInput gameInput = new GameInput();
 
-        String input = game.getReplayOrOverInput("1");
-        String input2 = game.getReplayOrOverInput("2");
+        String input = gameInput.getReplayOrOverInput("1");
+        String input2 = gameInput.getReplayOrOverInput("2");
 
         assertThat(input).isEqualTo("1");
         assertThat(input2).isEqualTo("2");
@@ -152,13 +152,14 @@ class GameTest {
     @Test
     @DisplayName("잘못된 입력_게임 종료 시 1, 2 이외의 숫자나 문자 입력")
     void handleGameChoiceTest2() {
-        Game game = new Game();
+        GameInput gameInput = new GameInput();
+
         IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class, () -> game.getReplayOrOverInput("a"));
+                IllegalArgumentException.class, () -> gameInput.getReplayOrOverInput("a"));
         IllegalArgumentException exception2 = assertThrows(
-                IllegalArgumentException.class, () -> game.getReplayOrOverInput("3"));
+                IllegalArgumentException.class, () -> gameInput.getReplayOrOverInput("3"));
         IllegalArgumentException exception3 = assertThrows(
-                IllegalArgumentException.class, () -> game.getReplayOrOverInput("12"));
+                IllegalArgumentException.class, () -> gameInput.getReplayOrOverInput("12"));
 
         assertThat(exception.getMessage()).isEqualTo(INVALID_FORMAT_INPUT2.getMsg());
         assertThat(exception2.getMessage()).isEqualTo(INVALID_FORMAT_INPUT2.getMsg());
