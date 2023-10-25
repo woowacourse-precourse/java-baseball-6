@@ -33,21 +33,26 @@ public class Application {
             }
 
             for(int index=0;index<3;index++){
-                int userNumber = userNumbers.get(index);
+                int userNumber = userNumbers.get((userNumbers.size()-1)-index);
                 int computerNumber = computerNumbers.get(index);
 
-                if(isStrike(userNumber,computerNumber){
+                if(isStrike(userNumber,computerNumber)){
                     strikeCnt++;
+                    continue;
                 }
+                if(isBall(userNumber,computerNumber))
+                    ballCnt++;
             }
 
+            System.out.println(strikeCnt+" "+ballCnt);
 
         }
         System.out.println("게임을 종료합니다.");
 
     }
 
-    private static void isBall() {
+    private static boolean isBall(int userNumber, int computerNumber) {
+        return isNumberUsedComputer[userNumber];
     }
 
     private static boolean isStrike(int userNumber, int computerNumber ) {
