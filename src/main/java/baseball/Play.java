@@ -6,52 +6,55 @@ import java.util.List;
 
 public class Play {
 
-    List<Integer> computer;
+    public void game(String input) {
 
-    public int game(String input) {
-
-        computer = new Computer().anotherNumber();
+        List<Integer> computer = new Computer().anotherNumber();
         int value = 0;
         while (value != 3) {
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> player = change(input);
 
-            List<Integer> player = numbers(input);
-            if (player.size() == 0) {
-                return -1;
-            }
             value = compare(player, computer);
         }
         System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        return 0;
     }
 
-    public List<Integer> numbers(String input) {
+    public List<Integer> change(String input) {
 
         List<Integer> inputNumber = new ArrayList<>();
-        System.out.print("숫자를 입력해주세요 : ");
+
         for (int i = 0; i < input.length(); i++) {
-            char num = input.charAt(i);
-            if (num < '0' || num > '9') {
-                break;
-            }
-            int value = Integer.parseInt(String.valueOf(num));
-            if (inputNumber.contains(value)) {
-                break;
-            }
-            inputNumber.add(value);
-        }
-        if (!inputCheck(inputNumber)) {
-            inputNumber.clear();
+            int number = Integer.parseInt(String.valueOf(input.charAt(i)));
+            inputNumber.add(number);
         }
         return inputNumber;
     }
 
-    private boolean inputCheck(List<Integer> numbers) {
+    public boolean inputCheck(String input) {
+        List<Character> inputNumber = new ArrayList<>();
+        for (int i = 0; i < inputNumber.size(); i++) {
+            char wordNumber = input.charAt(i);
+            if (!inputNumber.contains(wordNumber)) {
+                inputNumber.add(wordNumber);
+            }
+        }
         try {
-            if (numbers.size() != 3) {
+            if (input.length() != 3 || !numberCheck(input)) {
+                throw new IllegalArgumentException();
+            } else if (inputNumber.size() != input.length()) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
             return false;
+        }
+        return true;
+    }
+
+    private boolean numberCheck(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) < '0' || input.charAt(i) > '9') {
+                return false;
+            }
         }
         return true;
     }
