@@ -1,4 +1,0 @@
-package baseball.domain;
-
-public class Computer extends Player{
-}
