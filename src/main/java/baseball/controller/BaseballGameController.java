@@ -17,19 +17,19 @@ public class BaseballGameController {
 
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        initializePc();
 
         while (true) {
             System.out.print(INPUT_MESSAGE);
-            pc = new Computer();
-            pc.setNumber();
-
-            user = new User();
-            user.setNumber(Console.readLine());
 
             hint = new Hint();
             hint.gamePlay(pc.getNumber(), user.getNumber());
-            if(hint.getGameOver()) break;
             hint.printHint();
+
+            if(hint.getGameOver()) {
+
+                break;
+            }
             /*
                    Todo
                     5. 힌트 출력
@@ -44,6 +44,12 @@ public class BaseballGameController {
                     b. 종료: 시스템 종료
 
              */
+
         }
+    }
+
+    public void initializePc(){
+        pc = new Computer();
+        pc.setNumber();
     }
 }
