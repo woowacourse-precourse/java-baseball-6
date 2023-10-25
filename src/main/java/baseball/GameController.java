@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class GameController {
             while (strike < 3) {
                 // 사용자에게 입력받기
                 System.out.print("숫자를 입력해주세요 : ");
-                String userNum = scanner.nextLine();
+                String userNum = Console.readLine();
 
                 ArrayList<Integer> userNumArray = new ArrayList<>();
 //                try {
@@ -87,7 +88,7 @@ public class GameController {
             // 3개의 숫자를 모두 맞히면 종료, 다시 시작하거나 완전히 종료
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            exit = Integer.parseInt(scanner.nextLine());
+            exit = Integer.parseInt(Console.readLine());
         } // 외부 while문 끝
         return 0;
     }
