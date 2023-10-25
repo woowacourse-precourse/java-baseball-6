@@ -2,7 +2,6 @@ package baseball.game;
 
 import baseball.BaseballNumber;
 import baseball.Computer;
-import baseball.Result;
 import baseball.Rule;
 import baseball.User;
 
@@ -29,17 +28,17 @@ public class Game implements Rule {
     }
 
     private void guessNumber() {
-        boolean matched = false;
-        while (!matched) {
+        boolean allStrike = false;
+        while (!allStrike) {
             user.selectNumbers();
-            Result result = testMatch();
+            GameResult result = testMatch();
             result.print();
-            matched = result.isMatched();
+            allStrike = result.isAllStrike();
         }
         System.out.println(GAME_OVER_MESSAGE);
     }
 
-    private Result testMatch() {
+    private GameResult testMatch() {
         int strike = 0;
         int nothing = 0;
         for (int index = 0; index < DIGIT_SIZE; index++) {
@@ -48,6 +47,6 @@ public class Game implements Rule {
             nothing += computer.testNothing(userNumber);
         }
         int ball = DIGIT_SIZE - strike - nothing;
-        return new Result(strike, ball, nothing);
+        return new GameResult(strike, ball, nothing);
     }
 }

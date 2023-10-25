@@ -1,6 +1,8 @@
-package baseball;
+package baseball.game;
 
-public class Result implements Rule {
+import baseball.Rule;
+
+public class GameResult implements Rule {
     final String STRING_BALL = "볼";
     final String STRING_STRIKE = "스트라이크";
     final String STRING_NOTHING = "낫싱";
@@ -10,7 +12,7 @@ public class Result implements Rule {
     int ball;
     int nothing;
 
-    public Result(int strike, int ball, int nothing) {
+    public GameResult(int strike, int ball, int nothing) {
         this.strike = strike;
         this.ball = ball;
         this.nothing = nothing;
@@ -39,7 +41,7 @@ public class Result implements Rule {
         return stringBuilder.toString();
     }
 
-    public boolean isMatched() {
+    public boolean isAllStrike() {
         return (strike == DIGIT_SIZE);
     }
 }
