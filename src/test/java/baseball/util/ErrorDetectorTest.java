@@ -1,8 +1,8 @@
 package baseball.util;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static baseball.util.ErrorDetector.throwIfNumbersInputInvalid;
 import static baseball.util.ErrorDetector.throwIfOptionInputInvalid;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +23,14 @@ class ErrorDetectorTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> throwIfNumbersInputInvalid("11as")
+        );
+    }
+
+    @Test
+    void 입력에0이있을경우() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> throwIfNumbersInputInvalid("120")
         );
     }
 

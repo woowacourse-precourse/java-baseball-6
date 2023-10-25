@@ -13,7 +13,15 @@ public class ErrorDetector {
     public static void throwIfNumbersInputInvalid(String numbers) {
         throwIfContainsNonNumber(numbers);
         throwIfInvalidInputLength(numbers);
+        throwIfContainsZero(numbers);
         throwIfContainsDuplicateNumbers(numbers);
+    }
+
+    private static void throwIfContainsZero(String numbers) {
+        if (numbers.contains(String.valueOf(NumberConstants.ZERO_CHAR))) {
+            Output.printErrorMessage(MessageConstants.INVALID_NUMBERS_CONTAINS_ZERO);
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void throwIfContainsDuplicateNumbers(String numbers) {
