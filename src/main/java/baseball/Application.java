@@ -37,11 +37,11 @@ public class Application {
                     ball++;
                 }
             }
-
-            handleGameResult(strike, ball);
+            printGameResult(strike, ball);
 
             if (isGameWon(strike, ball)) {
                 if (endGameProcess()) break;
+
                 computerArray.clear();
                 userArray.clear();
                 computerArray = generateComputerNumbers();
@@ -88,7 +88,7 @@ public class Application {
         set.clear();
     }
 
-    private static void handleGameResult(int strike, int ball) {
+    private static void printGameResult(int strike, int ball) {
         if (strike == 0 && ball == 0) { // 둘다 0인 경우
             System.out.println("낫싱");
         } else if (strike == 0) { // strike 만 0인 경우
