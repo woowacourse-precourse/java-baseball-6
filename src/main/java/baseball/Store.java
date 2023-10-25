@@ -10,8 +10,13 @@ public class Store {
     List<Integer> computer = new ArrayList<>();
     String input;
 
-    public void init() {
+    public void initGame() {
         exist.clear(); computer.clear(); result.clear(); input = null;
+    }
+
+    public void initInputAndResult() {
+        result.clear();
+        input = null;
     }
 
     public void saveInput(String input) {
