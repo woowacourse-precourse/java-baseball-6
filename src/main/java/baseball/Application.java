@@ -48,6 +48,10 @@ public class Application {
     private static void startPrint() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+    private static boolean areDistinctNumbers(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        return uniqueNumbers.size() == numbers.size();
+    }
 
     public static List<Integer> generateRandomNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
