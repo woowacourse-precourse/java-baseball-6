@@ -10,8 +10,8 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameService {
     private Computer computer = new Computer();
     private User user = new User();
-    int strikeCount = 0;
-    int ballCount = 0;
+    private int strikeCount = 0;
+    private int ballCount = 0;
 
     private Converter converter = new Converter();
 
