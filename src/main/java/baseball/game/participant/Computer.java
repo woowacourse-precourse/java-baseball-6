@@ -1,10 +1,12 @@
 package baseball.game.participant;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 컴퓨터가 생성한 임의의 정답을 저장하기 위한 클래스
+ */
 public class Computer {
 
     private final List<Integer> answer;

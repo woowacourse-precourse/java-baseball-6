@@ -2,6 +2,9 @@ package baseball.game.participant;
 
 import java.util.List;
 
+/**
+ * 사용자가 추측한 답을 저장하기 위한 클래스
+ */
 public class Player {
 
     private final List<Integer> proposal;
@@ -15,9 +18,10 @@ public class Player {
      */
     public static Player create(String input) {
         List<Integer> proposal = List.of(
-                input.charAt(0)-'0',
-                input.charAt(1)-'0',
-                input.charAt(2)-'0');
+                input.charAt(0) - '0',
+                input.charAt(1) - '0',
+                input.charAt(2) - '0'
+        );
 
         return new Player(proposal);
     }
