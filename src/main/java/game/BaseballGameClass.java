@@ -26,19 +26,16 @@ public class BaseballGameClass implements Game{
 
 
     @Override
-    public void gamePlay() throws IllegalArgumentException{
+    public void gamePlay(){
+        ExceptionHandler exceptionHandler = new ExceptionHandler();
+
         while(true) {
             System.out.printf("숫자를 입력해주세요: ");
             String inputNumber = Console.readLine();
 
-            if(inputNumber.length() != 3) {
-                throw new IllegalArgumentException();
-            }
-            for(int i=0; i<inputNumber.length(); i++){
-                if(inputNumber.charAt(i) < '1' || inputNumber.charAt(i) >'9'){
-                    throw new IllegalArgumentException();
-                }
-            }
+            exceptionHandler.NumberSizeExceed(inputNumber);
+            exceptionHandler.UnexpectedValue(inputNumber);
+            exceptionHandler.DuplicatedValue(inputNumber);
 
             Integer ballCount = 0, strikeCount = 0;
             for (int i = 0; i < inputNumber.length(); i++) {
