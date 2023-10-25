@@ -19,7 +19,7 @@ final class BallNumbersViewTest {
         // then
         assertThat(renderedView)
                 .contains(
-                        BallNumbersView.GAME_START_MESSAGE,
+                        GameStartView.GAME_START_MESSAGE,
                         BallNumbersView.INPUT_BALL_NUMBER_MESSAGE
                 );
     }
@@ -36,7 +36,7 @@ final class BallNumbersViewTest {
         // then
         assertThat(renderedView)
                 .contains(BallNumbersView.INPUT_BALL_NUMBER_MESSAGE)
-                .doesNotContain(BallNumbersView.GAME_START_MESSAGE);
+                .doesNotContain(GameStartView.GAME_START_MESSAGE);
     }
 
 
