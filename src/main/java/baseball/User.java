@@ -41,5 +41,4 @@ public class User {
             throw new IllegalArgumentException();
         }
     }
-
 }

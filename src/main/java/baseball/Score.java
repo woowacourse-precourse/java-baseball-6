@@ -51,7 +51,6 @@ public class Score {
             initializeScore();
             return true;
         }
-
         initializeScore();
         return false;
     }
