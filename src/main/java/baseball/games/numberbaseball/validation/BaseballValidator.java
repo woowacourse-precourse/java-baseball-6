@@ -13,4 +13,10 @@ public class BaseballValidator {
         return input.chars()
                 .anyMatch(c -> c < NUMBERS_RANGE_START || c > NUMBERS_RANGE_END);
     }
+
+    private boolean containsDuplicatedInput(String input) {
+        return input.chars()
+                .distinct()
+                .count() < NUMBERS_INPUT_SIZE;
+    }
 }
