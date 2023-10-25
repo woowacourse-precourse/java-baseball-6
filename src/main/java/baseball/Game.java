@@ -7,7 +7,6 @@ import java.util.*;
 
 
 public class Game {
-
     public static void startGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true){
@@ -38,7 +37,7 @@ public class Game {
         int input = Integer.parseInt(playerInput());
         if(input == Data.DO_RESTART) return true;
         else if(input == Data.DO_NOT_RESTART) return false;
-        else throw new IllegalArgumentException();
+        throw new IllegalArgumentException();
 
     }
     static void printHint(){
@@ -46,7 +45,7 @@ public class Game {
         else if(Data.strike == 0 && Data.ball ==0)System.out.println("낫싱");
         else if(Data.strike == 0) System.out.println(Data.ball + "볼");
         else if(Data.ball == 0) System.out.println(Data.strike + "스트라이크");
-        else System.out.println(Data.ball + "볼 " +Data.strike + "스트라이크");
+        else if(Data.strike != 0 && Data.ball !=0)System.out.println(Data.ball + "볼 " +Data.strike + "스트라이크");
     }
     static void getResult(){
         int count = 0;
