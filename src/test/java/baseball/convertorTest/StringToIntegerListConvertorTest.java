@@ -1,5 +1,7 @@
 package baseball.convertorTest;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -21,7 +23,7 @@ public class StringToIntegerListConvertorTest {
         List<Integer> numbers = StringToIntegerListConvertor.convert(value);
 
         //then
-        Assertions.assertThat(numbers).isEqualTo(expect);
+        assertThat(numbers).isEqualTo(expect);
     }
 
     static Stream<Arguments> provideStringAndExpectedList() {

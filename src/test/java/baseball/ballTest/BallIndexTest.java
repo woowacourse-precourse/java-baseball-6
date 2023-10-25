@@ -1,5 +1,7 @@
 package baseball.ballTest;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,7 +20,7 @@ public class BallIndexTest {
         //when
         boolean result = ballIndexValidator.validate(number);
         //then
-        Assertions.assertThat(result).isTrue();
+        assertThat(result).isTrue();
     }
 
     @ParameterizedTest
@@ -28,7 +30,7 @@ public class BallIndexTest {
         //given
         BallIndexValidator ballIndexValidator = BallIndexValidator.getInstance();
         //then
-        Assertions.assertThatThrownBy(() -> ballIndexValidator.validate(number))
+        assertThatThrownBy(() -> ballIndexValidator.validate(number))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("공의 인덱스는 1 - 3 이여야 합니다.");
     }

@@ -1,5 +1,7 @@
 package baseball.ballTest;
 
+import static org.assertj.core.api.Assertions.*;
+
 import domain.ball.Ball;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +19,7 @@ public class BallDuplicateTest {
     @MethodSource("provideDuplicateBalls")
     public void testBalls(List<Ball> balls) {
         BallDuplicateValidator ballDuplicateValidator = BallDuplicateValidator.getInstance();
-        Assertions.assertThatThrownBy(() -> ballDuplicateValidator.validate(balls))
+        assertThatThrownBy(() -> ballDuplicateValidator.validate(balls))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 숫자가 존재합니다.");
     }

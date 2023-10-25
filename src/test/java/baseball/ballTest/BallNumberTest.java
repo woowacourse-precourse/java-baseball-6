@@ -1,5 +1,7 @@
 package baseball.ballTest;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +15,7 @@ public class BallNumberTest {
     @DisplayName("1부터 9 옳은 값 검증")
     void validationRightValue(int number) {
         BallNumberValidator ballNumberValidator = BallNumberValidator.getInstance();
-        Assertions.assertThat(ballNumberValidator.validate(number)).isTrue();
+        assertThat(ballNumberValidator.validate(number)).isTrue();
     }
 
     @ParameterizedTest
@@ -21,7 +23,7 @@ public class BallNumberTest {
     @DisplayName("잘못된 입력 값 검증")
     void validationWrongValue(int number) {
         BallNumberValidator ballNumberValidator = BallNumberValidator.getInstance();
-        Assertions.assertThatThrownBy(() -> ballNumberValidator.validate(number))
+        assertThatThrownBy(() -> ballNumberValidator.validate(number))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자 각각의 값은 1~9 이여야 합니다.");
     }

@@ -1,5 +1,7 @@
 package baseball.ballTest;
 
+import static org.assertj.core.api.Assertions.*;
+
 import domain.ball.Ball;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +19,7 @@ public class BallSizeTest {
     @MethodSource("provideWrongSizeBalls")
     public void testBalls(List<Ball> balls) {
         BallSizeValidator ballSizeValidator = BallSizeValidator.getInstance();
-        Assertions.assertThatThrownBy(() -> ballSizeValidator.validate(balls))
+        assertThatThrownBy(() -> ballSizeValidator.validate(balls))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3자리 수만 입력 가능합니다.");
     }

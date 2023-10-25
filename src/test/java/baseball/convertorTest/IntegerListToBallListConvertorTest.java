@@ -1,6 +1,8 @@
 package baseball.convertorTest;
 
 
+import static org.assertj.core.api.Assertions.*;
+
 import domain.ball.Ball;
 import java.util.Arrays;
 import java.util.List;
@@ -28,8 +30,8 @@ public class IntegerListToBallListConvertorTest {
                 .count();
 
         //then
-        Assertions.assertThat(count).isEqualTo(ballList.size());
-        Assertions.assertThat(ballList).isEqualTo(expectBallList);
+        assertThat(count).isEqualTo(ballList.size());
+        assertThat(ballList).isEqualTo(expectBallList);
     }
 
     static Stream<Arguments> provideIntegerListAndExpectedList() {

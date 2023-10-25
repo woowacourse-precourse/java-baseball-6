@@ -1,5 +1,7 @@
 package baseball.comparatorTest;
 
+import static org.assertj.core.api.Assertions.*;
+
 import domain.ball.Ball;
 import domain.comparator.BallComparator;
 import domain.ball.Balls;
@@ -26,8 +28,8 @@ public class BallCompareTest {
         GameResult gameResult = ballComparator.compareStatus(userBalls,
                 computerBalls);
         //then
-        Assertions.assertThat(gameResult.strike()).isEqualTo(resultDto.strike());
-        Assertions.assertThat(gameResult.ball()).isEqualTo(resultDto.ball());
+        assertThat(gameResult.strike()).isEqualTo(resultDto.strike());
+        assertThat(gameResult.ball()).isEqualTo(resultDto.ball());
     }
 
     static Stream<Arguments> ProvideCompareTestCases() {
