@@ -2,10 +2,9 @@ package baseball;
 
 public class Score {
 
+    private static Score score;
     private int numOfBall;
     private int numOfStrike;
-
-    private static Score score;
 
     private Score() {
     }

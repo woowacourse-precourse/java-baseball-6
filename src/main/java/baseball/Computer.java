@@ -6,9 +6,8 @@ import java.util.List;
 
 public class Computer {
 
-    private List<Integer> randomNumber;
-
     private static Computer computer;
+    private List<Integer> randomNumber;
 
     private Computer() {
     }
