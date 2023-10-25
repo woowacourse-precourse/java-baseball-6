@@ -25,13 +25,13 @@ public class BaseballController {
 
   public void playBaseball() {
     List<Integer> computer; // 랜덤 3자리 숫자
-    List<Integer> player = null; // 사용자 입력 3자리 숫자
+    List<Integer> player; // 사용자 입력 3자리 숫자
     List<Integer> gameResult; // [스트라이크, 볼] 값을 담은 리스트
     do {
       System.out.println("숫자 야구 게임을 시작합니다.");
       computer = baseballRandomNumber.generate();
       do {
-        player = inputview.playerNumber(player);
+        player = inputview.playerNumber();
         gameResult = baseballGame.evaluate(computer, player);
         outputview.printResult(gameResult.get(0), gameResult.get(1));
       } while (gameResult.get(0) != 3);
