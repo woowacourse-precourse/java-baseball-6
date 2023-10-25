@@ -1,0 +1,16 @@
+package baseball.domain.dto;
+
+import baseball.domain.model.Score;
+
+import java.util.Map;
+
+public class ResultDto {
+    private final Map<String, Integer> result;
+    private final Boolean isThreeStrike;
+
+    public ResultDto(Map<String, Integer> result, Boolean isThreeStrike) {
+        this.result = result;
+        this.isThreeStrike = isThreeStrike;
+    }
+
+}
