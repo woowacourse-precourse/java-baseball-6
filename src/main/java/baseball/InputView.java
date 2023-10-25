@@ -6,15 +6,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
-    private static final String ELEMENT = "";
+    private static final String DIVISION = "";
     private final InputValidator validator = new InputValidator();
 
-    public List<Integer> readNumbers() {
+    public PlayerNumbers readNumbers() {
         String number = Console.readLine();
-        validator.validatePlayerNumber(number);
-        return Arrays.stream(number.split(ELEMENT))
+        validator.validateIsDigit(number);
+        return new PlayerNumbers(Arrays.stream(number.split(DIVISION))
                 .map(Integer::parseInt)
-                .toList();
+                .toList());
     }
 
     public RestartStatus readReplayNumber() {
