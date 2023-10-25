@@ -21,9 +21,8 @@ public class Application {
             while (inputNum) {
                 System.out.print(InfoMessage.INPUT_NUMBER.getMessage());
                 String str = Console.readLine();
-                if (str.length() != 3) {
-                    throw new IllegalArgumentException();
-                }
+                checkInput(str);
+
                 int strike = 0;
                 int ball = 0;
                 for (int i = 0; i < 3; i++) {
@@ -79,5 +78,14 @@ public class Application {
         computer = new ArrayList<>();
         makeRandomNumber();
     }
-
+    private static void checkInput(String str){
+        if (str.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        try {
+            Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
