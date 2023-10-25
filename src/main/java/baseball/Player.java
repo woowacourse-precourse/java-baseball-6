@@ -19,20 +19,30 @@ public class Player {
     public List<Integer> getNumber(){
         System.out.print("숫자를 입력해주세요 : ");
 
-        List<Integer> nums = new ArrayList<>();
         String input = Console.readLine();
-        if(input.length()!=3){
-            throw new IllegalArgumentException("there must be only 3 numbers.");
-        }
+        validateInput(input);
 
-        for(int i=0;i<3;i++){
-            int number = input.charAt(i) - '0';
-            nums.add(number);
-        }
-
+        List<Integer> nums = stringToIntList(input);
         validateNumber(nums);
 
         return nums;
+    }
+
+    public List<Integer> stringToIntList(String str){
+        List<Integer> result = new ArrayList<>();
+
+        for(int i=0;i<3;i++){
+            int number = str.charAt(i) - '0';
+            result.add(number);
+        }
+
+        return result;
+    }
+
+    public static void validateInput(String str){
+        if(str.length()!=3){
+            throw new IllegalArgumentException("there must be only 3 numbers.");
+        }
     }
 
     public static void validateNumber(List<Integer> numbers){
