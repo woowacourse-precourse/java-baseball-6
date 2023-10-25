@@ -21,7 +21,7 @@ public class NumberValidator {
         }
     }
 
-    public static void checkValidate(Number number) {
+    public static void checkNumberValidate(Number number) {
         int num = number.number();
         if (num < 1 || num > 9) {
             throw new IllegalArgumentException("1이상 9이하의 값을 입력해주세요.");

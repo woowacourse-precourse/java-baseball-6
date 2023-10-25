@@ -24,7 +24,7 @@ public final class Computer extends Player {
     private void addUniqueNumber(List<Number> numbers) {
         Number number = generateNumber(numbers);
 
-        NumberValidator.checkValidate(number);
+        NumberValidator.checkNumberValidate(number);
         if (!numbers.contains(number)) {
             numbers.add(number);
         }

@@ -18,7 +18,7 @@ public final class User extends Player {
         for (String obj : input) {
             Number number = NumberValidator.convertToNumber(obj);
 
-            NumberValidator.checkValidate(number);
+            NumberValidator.checkNumberValidate(number);
             checkDuplicate(numbers, number);
 
             numbers.add(number);
