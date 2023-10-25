@@ -12,6 +12,12 @@ public class Bot {
     int[] generateRandomNumber(int[] botNumbers) {
         for(int i = 0; i < 3; i++){
             botNumbers[i] = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(1, 9);
+            for(int j = 0; j < i; j++){
+                if(botNumbers[j] == botNumbers[i]){
+                    --i;
+                    break;
+                }
+            }
         }
         return botNumbers;
     }
@@ -19,7 +25,11 @@ public class Bot {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = camp.nextstep.edu.missionutils.Console.readLine();
         int tempNumber = Integer.parseInt(userInput);
-        for(int i = 2; i >= 0; i--){
+        if(tempNumber < 100 || tempNumber > 999){
+            throw new IllegalArgumentException("알맞은 값을 입력하세요!");
+        }
+
+            for(int i = 2; i >= 0; i--){
             userNumbers[i] = tempNumber % 10;
             tempNumber /= 10;
         }
@@ -37,8 +47,10 @@ public class Bot {
                     ++ball;
             }
         }
+        if(ball == 0 && strike == 0)
+            System.out.println("낫싱");
         if(ball > 0)
-            System.out.print(strike + "볼 ");
+            System.out.print(ball + "볼 ");
         if(strike > 0)
             System.out.println(strike + "스트라이크");
         if(strike == 3) {

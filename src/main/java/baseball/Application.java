@@ -17,7 +17,5 @@ public class Application {
                 redo = true;
             }
         } while(redo);
-
-
     }
 }
