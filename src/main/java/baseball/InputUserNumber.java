@@ -6,8 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputUserNumber {
+    private List<Integer> user;
 
-    public List<Integer> inputUSerNumber(){
+    private InputUserNumber(List<Integer> user){
+        this.user = user;
+    }
+
+    public static InputUserNumber inputUSerNumber(){
         String inputNumber = Console.readLine();
 
         isNumber(inputNumber);
@@ -15,7 +20,7 @@ public class InputUserNumber {
         List<Integer> number = stringToList(inputNumber);
         isOK(number);
 
-        return number;
+        return new InputUserNumber(number);
     }
 
     public static void isNumber(String inputNumber){
@@ -28,7 +33,7 @@ public class InputUserNumber {
 
     public static void checkLength(String inputNumber){
         if(inputNumber.length() != 3){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
 
     }
@@ -44,13 +49,17 @@ public class InputUserNumber {
 
     public static void isOK(List<Integer> number){
         if(number.contains(0))
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         for(int i=0;i<3;i++){
             for(int j=0;j<3;j++){
                 if(number.get(i) == number.get(j) && i != j)
-                    throw new IllegalStateException();
+                    throw new IllegalArgumentException();
             }
         }
+    }
+
+    public List<Integer> getUser(){
+        return user;
     }
 
 }

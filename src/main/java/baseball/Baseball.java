@@ -4,51 +4,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Baseball{
-
-    public void playball() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private CreateComputerNumber createComputerNumber;
+    private InputUserNumber inputUserNumber;
+    public void playball(){
+        List<Integer> computer = new ArrayList<>();
+        List<Integer> user = new ArrayList<>();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (true) {
-            ArrayList<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
+        while(true) {
+            createComputerNumber = CreateComputerNumber.createComputerNumber();
 
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
-
-                int usernum = Integer.parseInt(br.readLine());
-                List<Integer> user = new ArrayList<>();
-
-                if(!(usernum >= 100 && usernum<=999))
-                    throw new IllegalArgumentException();
-                try {
-                    for (int i = 0; i < 3; i++) {
-                        user.add(usernum % 10);
-                        usernum /= 10;
-                    }
-                } catch (IllegalArgumentException e){} ;
-                if(strikeBall(user, computer)) {
+                inputUserNumber = InputUserNumber.inputUSerNumber();
+                computer = createComputerNumber.getComputer();
+                user = inputUserNumber.getUser();
+                if (strikeBall(user, computer)) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
             }
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            if(Integer.parseInt(br.readLine()) == 1)
-                continue;
-            else break;
+            if(!reGame())
+                break;
         }
+
     }
 
-    public boolean strikeBall(List user, List computer){
+
+    public boolean strikeBall(List<Integer> user, List<Integer> computer){
         int strike = 0, ball = 0;
 
         for(int i=0;i<3;i++){
@@ -76,5 +65,30 @@ public class Baseball{
             return false;
         }
     }
+
+    public boolean reGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        int number = isNum(input);
+
+        if(number != 1 && number != 2)
+            throw new IllegalArgumentException();
+
+        if(number == 1) return true;
+        if(number == 2) return false;
+
+
+        return false;
+    }
+
+    public static int isNum(String input){
+        try{
+            int num = Integer.parseInt(input);
+            return num;
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+    }
+
 
 }
