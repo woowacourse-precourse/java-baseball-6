@@ -40,8 +40,8 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        for (int i=0;i<3;i++)
-            System.out.print(computer.get(i));
+//        for (int i=0;i<3;i++)
+//            System.out.print(computer.get(i));
 
         return computer;
     }
@@ -86,7 +86,7 @@ public class Application {
     public static List<Integer> score(List<Integer> computer,List<Integer> user){
         List<Integer> result=new ArrayList<>();
 
-        List<Integer> diff=new ArrayList<>(computer); //볼, 스트라이크 개수를 차례로 입력
+        List<Integer> diff=new ArrayList<>(computer); //볼, 스트라이크 개수를 차례로 저장
         diff.removeAll(user);
 
         if(diff.size()==3){//숫자 3개가 포함되지 않은 경우
