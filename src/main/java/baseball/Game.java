@@ -7,6 +7,8 @@ import java.util.List;
 
 
 public class Game {
+  private static final String RESTART_OPTION = "1";
+  private static final String QUIT_OPTION = "2";
 
   private List<Integer> computerNumbers;
 
@@ -110,7 +112,7 @@ public class Game {
   private int restartOption() {
     String restart = Console.readLine();
     while (true) {
-      if (!restart.equals("1") && !restart.equals("2")) {
+      if (!restart.equals(RESTART_OPTION) && !restart.equals(QUIT_OPTION)) {
         System.out.println("잘못된 값을 입력했습니다. 다시 입력해주십시오.");
         restart = Console.readLine();
       } else {
