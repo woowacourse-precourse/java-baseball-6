@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.domain.CompareNumber;
-import baseball.domain.ComputerNumber;
-import baseball.domain.PlayerNumber;
+import baseball.model.CompareNumber;
+import baseball.model.ComputerNumber;
+import baseball.model.PlayerNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
