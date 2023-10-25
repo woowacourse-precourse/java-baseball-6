@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class User {
+public class Input {
 
     public List<Integer> stringToList(String str) {
         return Arrays.stream(str.split("")).map(Integer::parseInt).collect(Collectors.toList());

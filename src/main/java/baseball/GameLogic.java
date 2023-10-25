@@ -27,7 +27,7 @@ public class GameLogic {
         StringBuilder sb = new StringBuilder();
         if (strike != 0) {
             if (ball != 0) {
-                sb.append(ball).append("볼 ").append(strike).append("스트라이크\n");
+                sb.append(ball).append("볼 ").append(strike).append("스트라이크");
                 return sb.toString();
             }
             sb.append(strike).append("스트라이크");
