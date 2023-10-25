@@ -11,7 +11,7 @@ public class OutputMessage {
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
 
-    public static void introMessage() {
+    public static void printIntroMessage() {
         System.out.println(INTRO);
     }
 
@@ -23,7 +23,7 @@ public class OutputMessage {
         System.out.print(ASK_NUMBER);
     }
 
-    public static void successMessage() {
+    public static void printSuccessMessage() {
         System.out.println(SUCCESS);
     }
 
