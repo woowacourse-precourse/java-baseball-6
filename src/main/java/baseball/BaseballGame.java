@@ -16,6 +16,11 @@ public class BaseballGame {
     private Computer computer;
     private Player player;
     private int restart = 1;
+    private ResultPrinter resultPrinter;
+
+    public BaseballGame() {
+        resultPrinter = new ResultPrinter();
+    }
 
     public boolean isStrike(int playerNum, int idx, List<Integer> computerNums) {
         return computerNums.get(idx) == playerNum;
@@ -59,35 +64,6 @@ public class BaseballGame {
         }
     }
 
-    private void printResult(List<Integer> results) {
-        if (printNothing(results)) return;
-        printBall(results);
-        if (results.get(BALL_IDX) != 0 && results.get(STRIKE_IDX) != 0) {
-            System.out.print(" ");
-        }
-        printStrike(results);
-    }
-
-    private static void printStrike(List<Integer> results) {
-        if (results.get(STRIKE_IDX) != 0) {
-            System.out.print(results.get(STRIKE_IDX) + "스트라이크");
-        }
-    }
-
-    private static void printBall(List<Integer> results) {
-        if (results.get(BALL_IDX) != 0) {
-            System.out.print(results.get(BALL_IDX) + "볼");
-        }
-    }
-
-    private static boolean printNothing(List<Integer> results) {
-        if (results.get(NOTHING_IDX) == DEFAULT_SIZE) {
-            System.out.print("낫싱");
-            return true;
-        }
-        return false;
-    }
-
     public int run() throws IllegalArgumentException, NumberFormatException {
         computer = new Computer(DEFAULT_SIZE);
 
@@ -95,7 +71,7 @@ public class BaseballGame {
         while (!correct) {
             player = new Player(DEFAULT_SIZE);
             List<Integer> results = calcResult(computer.getNums(), player.getPlayerNums());
-            printResult(results);
+            resultPrinter.printResult(results);
             if (results.get(STRIKE_IDX) == 3) {
                 correct = true;
             }
