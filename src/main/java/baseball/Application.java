@@ -40,7 +40,9 @@ public class Application {
             printGameResult(strike, ball);
 
             if (isGameWon(strike, ball)) {
-                if (endGameProcess()) break;
+                if (endGameProcess()) {
+                    break;
+                }
                 computerArray = generateComputerNumbers();
             }
         }
