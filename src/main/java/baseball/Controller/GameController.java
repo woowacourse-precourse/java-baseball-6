@@ -7,7 +7,8 @@ import java.util.List;
 
 public class GameController {
     private static final String wrongAnswerRestartMSG = "1 또는 2만 입력이 가능합니다.";
-
+    private static final String BASEBALL_GAME_RESTART_ANSWER = "1";
+    private static final String BASEBALL_GAME_END_ANSWER = "2";
     PlayNumber playNumber = new PlayNumber();
     CheckAnswer checkAnswer = new CheckAnswer();
     NumberValidation numberValidation = new NumberValidation();
@@ -31,9 +32,9 @@ public class GameController {
     }
 
     private boolean wantRestartGame(String answer) {
-        if (answer.equals("1")) {
+        if (answer.equals(BASEBALL_GAME_RESTART_ANSWER)) {
             return true;
-        } else if (answer.equals("2")) {
+        } else if (answer.equals(BASEBALL_GAME_END_ANSWER)) {
             return false;
         }
         throw new IllegalArgumentException(wrongAnswerRestartMSG);

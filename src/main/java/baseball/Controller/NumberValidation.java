@@ -20,17 +20,12 @@ import java.util.stream.Stream;
 public class NumberValidation {
 
     public List<Integer> validationNumber(String inputNumber) {
-        try {
-            if (!checkBetween1to9(inputNumber)) {
-                throw new IllegalArgumentException("1~9 사이의 수만 입력이 가능합니다.");
-            } else if (!threeDigit(inputNumber)) {
-                throw new IllegalArgumentException("3자리의 수를 입력해야 합니다.");
-            } else if (!checkDuplication(inputNumber)) {
-                throw new IllegalArgumentException("중복된 수를 사용할 수 없습니다.");
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Validation Error: " + e.getMessage());
-            return Collections.emptyList(); // Return an empty list in case of validation error.
+        if (!checkBetween1to9(inputNumber)) {
+            throw new IllegalArgumentException("1~9 사이의 수만 입력이 가능합니다.");
+        } else if (!threeDigit(inputNumber)) {
+            throw new IllegalArgumentException("3자리의 수를 입력해야 합니다.");
+        } else if (!checkDuplication(inputNumber)) {
+            throw new IllegalArgumentException("중복된 수를 사용할 수 없습니다.");
         }
 
         return toInputNumber(inputNumber);
