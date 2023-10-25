@@ -14,7 +14,7 @@ public class GameController {
     private static int strike = 0;
 
 
-    void gameInit() {
+    public void gameInit() {
         user = new User();
         judge = new Judge();
         computer = new Computer();
@@ -28,7 +28,12 @@ public class GameController {
             strike = judgeResult(judge, input, answer);
             if (strike == 3) {
                 break;
+            } else {
+                strike = 0;
             }
+            inputView();
+            input = Console.readLine();
+            checkInput(user, input);
 
         }
     }

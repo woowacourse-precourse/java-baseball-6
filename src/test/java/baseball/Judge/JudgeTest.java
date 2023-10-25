@@ -19,9 +19,9 @@ class JudgeTest {
     @Order(1)
     void judgeStrike() {
         //given
-        Integer[] ans = {1, 2, 3};
+        Integer[] ans = {6, 3, 7};
         ArrayList<Integer> list = new ArrayList<>(Arrays.asList(ans));
-        String input = "122";
+        String input = "333";
         judge.setAnswer(list);
         judge.setInput(input);
 
