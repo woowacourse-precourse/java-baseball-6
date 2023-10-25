@@ -8,6 +8,7 @@ import java.util.Set;
 
 public class Numbers {
     private final List<Integer> numbers;
+
     public Numbers(List<Integer> numbers) {
         validateSize(numbers);
         validateRange(numbers);

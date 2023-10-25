@@ -19,9 +19,7 @@ public class UnitOfGame {
             List<Integer> userNumbers = numbersGenerator.generate();
             int ball = CalculateScore.countBall(computerNumbers, userNumbers);
             strike = CalculateScore.countStrike(computerNumbers, userNumbers);
-            UnitOfGameResult.printResult(ball, strike);
+            GameView.printAfterUnitOfGame(ball, strike);
         } while (strike != 3);
     }
-
-
 }
