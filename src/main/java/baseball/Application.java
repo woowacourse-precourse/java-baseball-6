@@ -25,7 +25,7 @@ public class Application {
             int strike = strike(randomNumber, userNumber);
             int ball = ball(randomNumber, userNumber);
             printScore(strike, ball);
-            if(strike == 3){
+            if(strike == NUMBER_SIZE){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return;
             }
@@ -48,7 +48,7 @@ public class Application {
 
     private static List<Integer> getRandomNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3) {
+        while (randomNumbers.size() < NUMBER_SIZE) {
             int random = Randoms.pickNumberInRange(1, 9);
             if(!randomNumbers.contains(random)) {
                 randomNumbers.add(random);
@@ -61,10 +61,10 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
 
-        if (userInput.length() != 3) {
+        if (userInput.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException("세 자리의 숫자를 입력해주세요.");
         }
-        if (userInput.replaceAll("\\s", "").length() < 3) {
+        if (userInput.replaceAll("\\s", "").length() < NUMBER_SIZE) {
             throw new IllegalArgumentException("공백을 제외한 세 자리 수를 입력해주세요.");
         }
 
