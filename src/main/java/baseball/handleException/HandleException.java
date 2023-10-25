@@ -1,9 +1,11 @@
 package baseball.handleException;
 
+import baseball.game.Constants;
+
 public class HandleException {
     public static void exceptionHandlingForUserNumber(String userInput) {
         //정규표현식
-        String regularExpForUserNumber = "^(?!.*(.).*\\1)[1-9]{3}$";
+        String regularExpForUserNumber = String.format("^(?!.*(.).*\\1)[1-9]{%d}$", Constants.GAME_NUMBER_SIZE);
 
         //예외처리
         if (!userInput.matches(regularExpForUserNumber)) {

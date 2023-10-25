@@ -14,7 +14,7 @@ public class NumberBaseballGameImpl implements Game {
 
     @Override
     public void runGame() {
-        giveOutputToMarchine(GameOutputText.STARTING_GAME);
+        giveOutputToMarchine(Constants.STARTING_GAME);
         do {
             runGameLogic();
         } while (askForReGame());
@@ -29,7 +29,7 @@ public class NumberBaseballGameImpl implements Game {
         gameNumList = generateComputerNumber();
 
         do {
-            giveOutputToMarchine(GameOutputText.ASKING_USER_INPUT);
+            giveOutputToMarchine(Constants.ASKING_USER_INPUT);
             userNumber = getTextFromMarchine();
             HandleException.exceptionHandlingForUserNumber(userNumber);
             List<Integer> userNumList = stringToList(userNumber);
@@ -51,8 +51,8 @@ public class NumberBaseballGameImpl implements Game {
 
     public static List<Integer> generateComputerNumber() {
         List<Integer> computerNumList = new ArrayList<>();
-        while (computerNumList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computerNumList.size() < Constants.GAME_NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(Constants.START_NUMBER, Constants.END_NUMBER);
             if (!computerNumList.contains(randomNumber)) {
                 computerNumList.add(randomNumber);
             }
@@ -108,24 +108,24 @@ public class NumberBaseballGameImpl implements Game {
         int ballNum = resultArray[1];
         String resultString = null;
         if (ballNum != 0 && strikeNum == 0) {
-            resultString = ballNum + GameOutputText.BALL + "\n";
+            resultString = ballNum + Constants.BALL + "\n";
         }
         if (ballNum == 0 && strikeNum != 0) {
-            resultString = strikeNum + GameOutputText.STRIKE + "\n";
+            resultString = strikeNum + Constants.STRIKE + "\n";
         }
         if (ballNum != 0 && strikeNum != 0) {
-            resultString = ballNum + GameOutputText.BALL + " " + strikeNum + GameOutputText.STRIKE + "\n";
+            resultString = ballNum + Constants.BALL + " " + strikeNum + Constants.STRIKE + "\n";
         }
         if (strikeNum == 0 && ballNum == 0) {
-            resultString = GameOutputText.NOTHING + "\n";
+            resultString = Constants.NOTHING + "\n";
         }
         giveOutputToMarchine(resultString);
     }
 
     private boolean checkResult(int[] resultArray) {
         //스트라이크 개수가 3개면 true리턴 아니면 false 리턴
-        if (resultArray[0] == 3) {
-            giveOutputToMarchine(GameOutputText.ENDING);
+        if (resultArray[0] == Constants.GAME_NUMBER_SIZE) {
+            giveOutputToMarchine(Constants.ENDING);
             return true;
         } else {
             return false;
@@ -133,7 +133,7 @@ public class NumberBaseballGameImpl implements Game {
     }
 
     public boolean askForReGame() {
-        giveOutputToMarchine(GameOutputText.ASKING_REGAME);
+        giveOutputToMarchine(Constants.ASKING_REGAME);
         String userInput = getTextFromMarchine();
         HandleException.exceptionHandlingForUserInput(userInput);
         int checkValue = Integer.parseInt(userInput);
