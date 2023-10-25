@@ -86,6 +86,9 @@ public class BaseballGame {
         if (playerChoice.equals("2")) { // 게임종료
             this.replayCheck = false;
         }
+        if (!playerChoice.equals("1") && !playerChoice.equals("2")) {
+            throw new IllegalArgumentException("사용자는 1 또는 2를 선택해야합니다.");
+        }
     }
 
     public void createRandomNumber() { // 정답 랜덤 번호 생성
@@ -125,7 +128,7 @@ public class BaseballGame {
         for (int i = 0; i < input.length(); i++) {
             for (int j = i + 1; j < input.length(); j++) {
                 if (input.charAt(i) == input.charAt(j)) {
-                    throw new IllegalArgumentException("입력값은 서로 다른 숫자로 이루어져야 합니다.");
+                    throw new IllegalArgumentException("입력값은 서로 다른 숫자로 구성되어야 합니다.");
                 }
             }
         }
@@ -133,7 +136,7 @@ public class BaseballGame {
 
     public void checkLength(String input) {
         if (input.length() != INPUT_ANSWER_LENGTH) {
-            throw new IllegalArgumentException("입력값의 길이는 " + INPUT_ANSWER_LENGTH + "자리 이어야합니다.");
+            throw new IllegalArgumentException("입력값의 길이는 " + INPUT_ANSWER_LENGTH + "자리이어야합니다.");
         }
     }
 
@@ -143,7 +146,7 @@ public class BaseballGame {
             eachDigit = Integer.parseInt(String.valueOf(input.charAt(i)));
             if (eachDigit < INPUT_ANSWER_RANGE_MIN || INPUT_ANSWER_RANGE_MAX < eachDigit) {
                 throw new IllegalArgumentException(
-                        "입력값은 " + INPUT_ANSWER_RANGE_MIN + " 이상" + INPUT_ANSWER_RANGE_MAX + " 이하여야 합니다.");
+                        "입력값은 " + INPUT_ANSWER_RANGE_MIN + "이상 " + INPUT_ANSWER_RANGE_MAX + "이하여야 합니다.");
             }
         }
     }
