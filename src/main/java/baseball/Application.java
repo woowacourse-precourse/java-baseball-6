@@ -10,12 +10,12 @@ public class Application {
     public static void main(String[] args) {
         String play = "1";
 
-        while (play.equals("1")){
+        while (play.equals("1")) {
             List<Integer> computer = createComputerNumber();
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             boolean isGameFinish = false;
-            while(!isGameFinish) {
+            while (!isGameFinish) {
                 System.out.print("숫자를 입력해주세요 : ");
 
                 String input = Console.readLine();
@@ -47,8 +47,8 @@ public class Application {
     }
 
     private static boolean checkIsNumber(String input) {
-        for(int i = 0; i < input.length() ; i++){
-            if(!Character.isDigit(input.charAt(i))){
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
                 return false;
             }
         }
@@ -57,7 +57,7 @@ public class Application {
 
     private static boolean checkDuplicateNumber(List<Integer> numbers) {
         HashSet<Integer> integers = new HashSet<>(numbers);
-        if(integers.size()!=3){
+        if (integers.size() != 3) {
             return true;
         }
         return false;
@@ -65,10 +65,10 @@ public class Application {
 
     private static Result getResult(List<Integer> computer, List<Integer> numbers) {
         int ballCnt = 0, strikeCnt = 0;
-        for(int i = 0; i < 3; i++){
-            if(Objects.equals(numbers.get(i), computer.get(i))){
+        for (int i = 0; i < 3; i++) {
+            if (Objects.equals(numbers.get(i), computer.get(i))) {
                 strikeCnt += 1;
-            }else if(computer.contains(numbers.get(i))){
+            } else if (computer.contains(numbers.get(i))) {
                 ballCnt += 1;
             }
         }
@@ -82,17 +82,17 @@ public class Application {
     private static boolean gameResult(Result result) {
         boolean isGameFinish = false;
 
-        if(result.strikeCnt() == 3){
+        if (result.strikeCnt() == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             isGameFinish = true;
-        }else if(result.strikeCnt() + result.ballCnt() == 0){
+        } else if (result.strikeCnt() + result.ballCnt() == 0) {
             System.out.println("낫싱");
-        }else if(result.ballCnt() == 0){
+        } else if (result.ballCnt() == 0) {
             System.out.printf("%d스트라이크\n", result.strikeCnt());
-        }else if(result.strikeCnt() == 0){
+        } else if (result.strikeCnt() == 0) {
             System.out.printf("%d볼\n", result.ballCnt());
-        }else {
+        } else {
             System.out.printf("%d볼 %d스트라이크\n", result.ballCnt(), result.strikeCnt());
         }
 
@@ -102,9 +102,9 @@ public class Application {
     private static String getRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartInput = Console.readLine();
-        if(List.of("1", "2").contains(restartInput)){
+        if (List.of("1", "2").contains(restartInput)) {
             return restartInput;
-        }else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
