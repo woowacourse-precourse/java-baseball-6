@@ -4,6 +4,9 @@ import baseball.Computer.Computer;
 import baseball.Game.Game;
 import baseball.View.InputView;
 import baseball.View.OutputView;
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
 
 import static baseball.Computer.Computer.checkNum;
 import static baseball.Computer.Computer.endRound;
@@ -13,20 +16,26 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Computer.InitGame();
+        List<Integer> gameNumber = Computer.InitGame();
         OutputView.printStart();
-        while(retryEnd){
+        while(Game.retryEnd){
             OutputView.printInput();
             String userInputs = InputView.readGameNumber();
             CreateBall(userInputs);
-            checkNum(userNumbers);
+            checkNum(gameNumber,userNumbers);
             endRound();
             checkGameEnd();
-            if(!gameContinue){
+            if(!Game.gameContinue){
                 int userRetry = InputView.readRetryNumber();
                 checkRetry(userRetry);
+                if(Game.retryEnd==false){
+                    break;
+                }
+                gameNumber = Computer.InitGame();
+                OutputView.printStart();
             }
         }
-        OutputView.printEnd();
+        //OutputView.printEnd();
+        //Console.close();
     }
 }
