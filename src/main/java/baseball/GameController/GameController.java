@@ -1,10 +1,38 @@
 package baseball.GameController;
 
+import baseball.Computer.Computer;
 import baseball.Judge.Judge;
 import baseball.User.User;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class GameController {
+    private static User user;
+    private static Judge judge;
+    private static Computer computer;
+    private static ArrayList<Integer> answer;
+    private static int strike = 0;
+
+
+    void gameInit() {
+        user = new User();
+        judge = new Judge();
+        computer = new Computer();
+        startView();
+        inputView();
+        String input = Console.readLine();
+        checkInput(user, input);
+        computer.generateNum();
+        answer = computer.getAnswer();
+        while (true) {
+            strike = judgeResult(judge, input, answer);
+            if (strike == 3) {
+                break;
+            }
+
+        }
+    }
+
     void startView() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
