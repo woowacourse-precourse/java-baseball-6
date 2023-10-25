@@ -20,8 +20,7 @@ public class PlayerTest {
 
     @BeforeEach
     void init() {
-        numbersConverter = new NumbersConverter();
-        playerNumbers = new PlayerNumbers(numbersConverter);
+        playerNumbers = new PlayerNumbers();
         player = new Player(playerNumbers);
     }
 
@@ -29,7 +28,7 @@ public class PlayerTest {
     @Test
     void playerTest() {
         String input = "123";
-        player.inputNumbers(input);
+        player.createPlayerNumbers(input);
 
         List<Integer> expected = new ArrayList<>();
         expected.add(1);
@@ -46,7 +45,7 @@ public class PlayerTest {
     void throwExceptionWhenInputSameNumber() {
         String input = "121";
 
-        assertThatThrownBy(() -> player.inputNumbers(input))
+        assertThatThrownBy(() -> player.createPlayerNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
