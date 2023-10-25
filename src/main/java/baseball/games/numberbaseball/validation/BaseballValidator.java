@@ -5,6 +5,8 @@ public class BaseballValidator {
     private static final Character NUMBERS_RANGE_START = '1';
     private static final Character NUMBERS_RANGE_END = '9';
     private static final Integer OPTION_INPUT_SIZE = 1;
+    private static final Character RESTART = '1';
+    private static final Character END = '2';
 
     public void validateNumbersInput(String input) {
         if (isInvalidNumbersLength(input)) {
@@ -37,4 +39,8 @@ public class BaseballValidator {
         return input.length() != OPTION_INPUT_SIZE;
     }
 
+    private boolean containsNotOption(String input) {
+        char playerOption = input.charAt(0);
+        return playerOption != RESTART && playerOption != END;
+    }
 }
