@@ -17,8 +17,6 @@ public class Application {
             }
             // System.out.println("결과는 : " + computer.get(0) + computer.get(1) + computer.get(2));
 
-            System.out.println("숫자 야구 게임을 시작합니다.");
-
             // 같은 수가 같은 자리에 있으면 스트라이크,
             // 다른 자리에 있으면 볼,
             // 같은 수가 전혀 없으면 낫싱이란 힌트를 얻고,
@@ -28,6 +26,11 @@ public class Application {
                 // 입력 받기
                 System.out.print("숫자를 입력해주세요 : ");
                 int num = Integer.parseInt(Console.readLine());
+
+                if (num < 100 || num > 999) {
+                    System.out.println("3자리 수만 입력 가능합니다.");
+                    continue;
+                }
 
                 int result1 = 0, result2 = 0;
 
