@@ -63,7 +63,7 @@ public class GameView {
         }
     }
 
-    public void restart() {
+    private void restart() {
         this.gameController = new GameControllerImpl(new Scoring(new DefaultRandomNumberCreatorByDigit().create(3)));
         this.gameController.start();
         guessUntilCorrect();
