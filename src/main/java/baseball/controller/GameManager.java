@@ -32,9 +32,9 @@ public class GameManager {
     }
 
     public void startGame(){
+        userView.printGameStartMessage(); //게임시작 메시지 출력
         while(!isPauseGame){
             computerNumberDto = computer.getRandomComputerNumber(); //랜덤한 3개 컴퓨터 숫자 생성
-            userView.printGameStartMessage(); //게임시작 메시지 출력
             isCorrectNumber = false;
 
             while(!isCorrectNumber){ //정답을 맞출 때까지 입력 반복
