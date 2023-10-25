@@ -8,13 +8,13 @@ public class Computer {
     private static final String NOTHING = "낫싱";
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
-    private final List<Integer> computerNumber = new ArrayList<>();
+    private final List<Integer> computerNumbers = new ArrayList<>();
 
     public Computer() {
-        while (computerNumber.size() < 3) {
+        while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
             }
         }
     }
@@ -23,10 +23,10 @@ public class Computer {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for (int i = 0; i < computerNumber.size(); i++) {
-            if (computerNumber.get(i).equals(player.playerNumber.get(i))) {
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            if (computerNumbers.get(i).equals(player.playerNumbers.get(i))) {
                 strikeCount++;
-            } else if (computerNumber.contains(player.playerNumber.get(i))) {
+            } else if (computerNumbers.contains(player.playerNumbers.get(i))) {
                 ballCount++;
             }
         }
