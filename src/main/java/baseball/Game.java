@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Game {
     final String MSG_START_GAME = "숫자 야구 게임을 시작합니다.";
-    final String NSG_INPUT_NUMBER = "숫자를 입력해주세요 : ";
+    final String MSG_INPUT_NUMBER = "숫자를 입력해주세요 : ";
     final String MSG_GUESS_SUCCESSFUL = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final String MSG_INPUT_REPLAY = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     final String MSG_END_GAME = "게임 종료";
@@ -34,7 +34,7 @@ public class Game {
             List<Integer> answer = createComputerAnswer();
             boolean isCorrect = false;
             while (!isCorrect) {
-                System.out.println(NSG_INPUT_NUMBER);
+                System.out.println(MSG_INPUT_NUMBER);
                 List<Integer> guess = inputUserGuess();
                 GuessResult guessResult = checkGuess(answer, guess);
                 System.out.println(guessResult.toString());
