@@ -16,7 +16,7 @@ public class InProcess {
     private int strike;
     private boolean isCorrect;
 
-    public InProcess(GameRole gameRole, List<Integer> computer) throws Exception{
+    public InProcess(GameRole gameRole, List<Integer> computer) throws IllegalArgumentException {
         try {
             initVariables(computer);
 
@@ -47,7 +47,7 @@ public class InProcess {
         System.out.print(InNotice.inputNumberPhrase);
     }
 
-    private void inputNumber() {
+    private void inputNumber() throws IllegalArgumentException {
         try {
             number = Integer.parseInt(readLine());
         }
@@ -56,7 +56,7 @@ public class InProcess {
         }
     }
 
-    private void checkInputNumber(GameRole gameRole) {
+    private void checkInputNumber(GameRole gameRole) throws IllegalArgumentException{
         try {
             checkNumberThree(gameRole);
             checkNumberOneToNineDifferent(gameRole);
@@ -66,13 +66,13 @@ public class InProcess {
         }
     }
 
-    private void checkNumberThree(GameRole gameRole) {
+    private void checkNumberThree(GameRole gameRole) throws IllegalArgumentException{
         if (String.valueOf(number).length() != gameRole.GAME_NUMBER_CNT) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void checkNumberOneToNineDifferent(GameRole gameRole) {
+    private void checkNumberOneToNineDifferent(GameRole gameRole) throws IllegalArgumentException {
         boolean[] exist = new boolean[gameRole.GAME_NUMBER_RANGE_UNDER+1];
         int share = number;
         int remain;
