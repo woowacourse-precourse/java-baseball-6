@@ -16,7 +16,7 @@ public class UserInputValidator {
     private static final char NUMERIC_RANGE_START_CHAR = '1';
     private static final char NUMERIC_RANGE_END_CHAR = '9';
 
-    public String userInputStringValidate(String userInputString) {
+    public String validateUserInputString(String userInputString) {
         if (userInputString == null) {
             throw new IllegalArgumentException(NULL_INPUT_MESSAGE);
         }

@@ -47,7 +47,7 @@ public class GameProgressController {
     }
 
     private void saveUserNumbers(String userInputString) {
-        String validUserInputString = userInputValidator.userInputStringValidate(userInputString);
+        String validUserInputString = userInputValidator.validateUserInputString(userInputString);
         List<Integer> validUserInputNumbers = userInputValidator.userInputNumbersValidate(validUserInputString);
         gameNumber.saveUserInputNumbers(validUserInputString, validUserInputNumbers);
     }

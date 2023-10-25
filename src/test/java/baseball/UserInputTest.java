@@ -15,7 +15,7 @@ public class UserInputTest {
     void 유저_정답_입력_정상() {
         String userInputString = "123";
         List<Integer> userInputNumbers = Arrays.asList(1, 2, 3);
-        assertThat(userInputValidator.userInputNumbersValidate(userInputValidator.userInputStringValidate(userInputString)))
+        assertThat(userInputValidator.userInputNumbersValidate(userInputValidator.validateUserInputString(userInputString)))
                 .isEqualTo(userInputNumbers);
     }
 
@@ -23,14 +23,14 @@ public class UserInputTest {
     void 유저_정답_입력_띄어쓰기_정상() {
         String userInputString = "1 2 3";
         List<Integer> userInputNumbers = Arrays.asList(1, 2, 3);
-        assertThat(userInputValidator.userInputNumbersValidate(userInputValidator.userInputStringValidate(userInputString)))
+        assertThat(userInputValidator.userInputNumbersValidate(userInputValidator.validateUserInputString(userInputString)))
                 .isEqualTo(userInputNumbers);
     }
 
     @Test
     void 유저_정답_입력_null_오류() {
         String userInputString = null;
-        assertThatThrownBy(() -> userInputValidator.userInputStringValidate(userInputString))
+        assertThatThrownBy(() -> userInputValidator.validateUserInputString(userInputString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("null은 입력할 수 없습니다.");
     }
@@ -38,7 +38,7 @@ public class UserInputTest {
     @Test
     void 유저_정답_입력_세자리_미만_오류() {
         String userInputString = "12";
-        assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.userInputStringValidate(userInputString)))
+        assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.validateUserInputString(userInputString)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세 자리의 숫자를 입력해주세요.");
     }
@@ -46,7 +46,7 @@ public class UserInputTest {
     @Test
     void 유저_정답_입력_세자리_초과_오류() {
         String userInputString = "1234";
-        assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.userInputStringValidate(userInputString)))
+        assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.validateUserInputString(userInputString)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세 자리의 숫자를 입력해주세요.");
     }
@@ -54,7 +54,7 @@ public class UserInputTest {
     @Test
     void 유저_정답_입력_범위_초과_문자_오류() {
         String userInputString = "12a";
-        assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.userInputStringValidate(userInputString)))
+        assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.validateUserInputString(userInputString)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("한 자리는 1에서 9까지의 숫자만 입력할 수 있습니다.");
     }
@@ -62,7 +62,7 @@ public class UserInputTest {
     @Test
     void 유저_정답_입력_범위_초과_숫자_오류() {
         String userInputString = "012";
-        assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.userInputStringValidate(userInputString)))
+        assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.validateUserInputString(userInputString)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("한 자리는 1에서 9까지의 숫자만 입력할 수 있습니다.");
     }
@@ -70,7 +70,7 @@ public class UserInputTest {
     @Test
     void 유저_정답_입력_중복_오류() {
         String userInputString = "112";
-        assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.userInputStringValidate(userInputString)))
+        assertThatThrownBy(() -> userInputValidator.userInputNumbersValidate(userInputValidator.validateUserInputString(userInputString)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세 자리 모두 서로 다른 숫자를 입력해주세요.");
     }
