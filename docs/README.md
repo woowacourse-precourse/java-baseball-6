@@ -7,10 +7,8 @@
   숫자야구 게임에서 쓰이는 상수들을 모아둠
 
 - cpu와 플레이어의 숫자를 생성시키는 `NumberGenerator` class
-    - `cpuRandomNumber()`
-        - CPU 랜덤숫자 3자리 정수 반환하는 메서드.
-    - `getPlayerNumber()`
-        - 플레이어에게 3자리 정수 입력받아서 반환하는 메서드.
+    - CPU 랜덤숫자 3자리 정수 반환하는 `cpuRandomNumber()`
+    - 플레이어에게 3자리 정수 입력받아서 반환하는 `getPlayerNumber()`
 - 플레이어가 입력한 숫자를 검증하는 `ValidationPlayerNumber` class
     - 입력된 String을 숫자로 바꿔주는  `changeListNumber()`
     - 입력된 String에 문자가 포함되어 있는지 검증하는 `isNumber()`
