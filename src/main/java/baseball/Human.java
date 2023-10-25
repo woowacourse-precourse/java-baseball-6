@@ -6,24 +6,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Human {
+
     private List<Integer> Number = new ArrayList<>(Arrays.asList(0, 0, 0));
 
-
-    public Exception setNumber() {
+    public void setNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        try {
-            validateInput(input);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            return e;
-        }
+        validateInput(input);
 
-        return null;
     }
 
-    public void validateInput(String input) throws IllegalAccessException {:
+    public void validateInput(String input) {
         List<Integer> parseInput = new ArrayList<>(Arrays.asList(0, 0, 0));
         // 1. Invalid Length
         if (input.length() != 3) {
@@ -42,10 +36,14 @@ public class Human {
 
         // contains 0
         if (parseInput.contains(0)) {
-            throw new IllegalArgumentException("Input에 0을 포함하고있음.");
+            throw new IllegalArgumentException("Input 에 0을 포함하고있음.");
         }
 
         Number = parseInput;
+    }
+
+    public List<Integer> getNumber() {
+        return Number;
     }
 
     @Override
