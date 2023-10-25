@@ -6,8 +6,15 @@ public class InputValidation {
 
     // Player 가 입력한 임의의 3자리 수를 검증하는 메서드.
     public void validation(String inPutNumber) {
-//        lengthValidation(inPutNumber);
+        lengthValidation(inPutNumber);
 //        numberValidation(inPutNumber);
 //        overlapValidation(inPutNumber);
+    }
+
+    // 입력한 수가 3자리가 맞는지 검증하는 메서드.
+    private void lengthValidation(String inPutNumber) {
+        if (inPutNumber.length() != MAX_LENGTH) {
+            throw new IllegalArgumentException(ExceptionMessage.LENGTH.getCode());
+        }
     }
 }
