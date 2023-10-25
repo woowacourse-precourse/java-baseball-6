@@ -7,6 +7,10 @@ public class UserNumberRepository implements NumberRepository {
     private static List<Integer> numbers = new ArrayList<>();
     private static final UserNumberRepository instance = new UserNumberRepository();
 
+    public static UserNumberRepository getInstance() {
+        return instance;
+    }
+
     public boolean contain(int pickNumber) {
         return numbers.contains(pickNumber);
     }
@@ -17,11 +21,6 @@ public class UserNumberRepository implements NumberRepository {
 
     public void addValue(int pickNumber) {
         numbers.add(pickNumber);
-    }
-
-
-    public static UserNumberRepository getInstance() {
-        return instance;
     }
 
     public void clear() {

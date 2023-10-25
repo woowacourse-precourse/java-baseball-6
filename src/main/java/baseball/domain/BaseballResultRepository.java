@@ -13,6 +13,10 @@ public class BaseballResultRepository {
         baseball.put("ball", 0);
     }
 
+    public static BaseballResultRepository getInstance() {
+        return instance;
+    }
+
     public Integer getStrike() {
         return baseball.get("strike");
     }
@@ -29,20 +33,16 @@ public class BaseballResultRepository {
         baseball.replace("ball", ball);
     }
 
-    public void addBall(){
-        setBall(baseball.get("ball")+1);
+    public void addBall() {
+        setBall(baseball.get("ball") + 1);
     }
 
-    public void subBall(){
-        setBall(baseball.get("ball")-1);
+    public void subBall() {
+        setBall(baseball.get("ball") - 1);
     }
 
-    public void addStrike(){
-        setStrike(baseball.get("strike")+1);
-    }
-
-    public static BaseballResultRepository getInstance() {
-        return instance;
+    public void addStrike() {
+        setStrike(baseball.get("strike") + 1);
     }
 
     public void clear() {

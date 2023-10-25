@@ -7,7 +7,11 @@ public class AnswerNumberRepository implements NumberRepository {
     private static List<Integer> numbers = new ArrayList<>();
     private static final AnswerNumberRepository instance = new AnswerNumberRepository();
 
-    public Integer size(){
+    public static AnswerNumberRepository getInstance() {
+        return instance;
+    }
+
+    public Integer size() {
         return numbers.size();
     }
 
@@ -21,10 +25,6 @@ public class AnswerNumberRepository implements NumberRepository {
 
     public void addValue(int pickNumber) {
         numbers.add(pickNumber);
-    }
-
-    public static AnswerNumberRepository getInstance() {
-        return instance;
     }
 
     public void clear() {

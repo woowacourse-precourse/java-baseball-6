@@ -5,6 +5,7 @@ import baseball.application.numbers.GenerateNumbersApplication;
 import baseball.domain.BaseballResultRepository;
 import camp.nextstep.edu.missionutils.Console;
 
+
 public class GetResultApplication {
     boolean isContinue;
     boolean isCorrect;
