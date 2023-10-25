@@ -1,8 +1,9 @@
 package baseball.model;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import baseball.exception.ErrorMessage;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -58,11 +59,9 @@ class NumberTest {
         int inputNumber = 023;
 
         // then
-        assertThrows(IllegalArgumentException.class, () ->
-        {
-            new Number(inputNumber);
-        });
-
+        assertThatThrownBy(() -> new Number(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INPUT_IS_NOT_DIGIT.getMessage());
     }
 
     @Test
@@ -71,10 +70,9 @@ class NumberTest {
         int inputNumber = 122;
 
         // then
-        assertThrows(IllegalArgumentException.class, () ->
-        {
-            new Number(inputNumber);
-        });
+        assertThatThrownBy(() -> new Number(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INPUT_DIGIT_IS_NOT_UNIQUE.getMessage());
     }
 
 }
