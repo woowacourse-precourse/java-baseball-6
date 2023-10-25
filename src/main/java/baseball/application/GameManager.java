@@ -1,22 +1,24 @@
 package baseball.application;
 
 import baseball.presentation.UserInput;
+import baseball.presentation.UserOutput;
 
 import java.util.List;
 
 public class GameManager {
     Generator generator = new Generator();
     UserInput userInput = new UserInput();
+    UserOutput userOutput = new UserOutput();
 
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = generator.generateNumber();
         String userRequest = userInput.inputNumber();
 
-        String judge = judge(computer, userRequest);
+        judge(computer, userRequest);
     }
 
-    public String judge(List<Integer> computer, String userRequest) {
+    public void judge(List<Integer> computer, String userRequest) {
         int strike = 0;
         int ball = 0;
 
@@ -31,14 +33,6 @@ public class GameManager {
             }
         }
 
-        if (strike > 0 && ball > 0) {
-            return strike + "스트라이크 " + ball + "볼";
-        } else if (strike > 0) {
-            return strike + "스트라이크";
-        } else if (ball > 0) {
-            return ball + "볼";
-        } else {
-            return "낫싱";
-        }
+        boolean result = userOutput.outputMessage(strike, ball);
     }
 }
