@@ -15,8 +15,6 @@ public class BaseBallManager {
     private static final String NOTHING = "낫싱";
     private static Map<Integer, Integer> computerBallInfo;
     private static BallNumberGroup computerBallGroup;
-    private static Map<Integer, Integer> computerBallInfo;  // BallNumber, idx
-    private static Map<String, Integer> playerResult;
 
     public BaseBallManager() {
         generateBaseBall();
