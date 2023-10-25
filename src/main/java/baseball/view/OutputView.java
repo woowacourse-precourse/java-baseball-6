@@ -1,25 +1,26 @@
 package baseball.view;
 
-
 import baseball.dto.GameResult;
-import baseball.game.constant.GameConstant;
+
+import static baseball.game.constant.GameConstant.*;
+import static baseball.view.GameMessage.*;
 
 public class OutputView {
     public void printStartMessage(){
-        System.out.print(GameMessage.GAME_START_MESSAGE.getMessage());
+        System.out.print(GAME_START_MESSAGE.getMessage());
     }
     public void printInputMessage(){
-        System.out.print(GameMessage.PROMPT_FOR_NUMBER.getMessage());
+        System.out.print(PROMPT_FOR_NUMBER.getMessage());
     }
     public void printEndMessage(){
-        System.out.print(GameMessage.GAME_SUCCESS_MESSAGE.formatMessage(
-                GameConstant.GAME_DIGIT.getValue()));
+        System.out.print(GAME_SUCCESS_MESSAGE.formatMessage(GAME_DIGIT.getValue()));
     }
     public void printRestartMessage(){
-        System.out.print(GameMessage.RESTART_CHOICE_MESSAGE.formatMessage(
-                GameConstant.RESTART_CHOICE.getValue(),GameConstant.END_CHOICE.getValue()));
+        System.out.print(
+                RESTART_CHOICE_MESSAGE.formatMessage(RESTART_CHOICE.getValue(),END_CHOICE.getValue()));
     }
     public void printResultMessage(GameResult gameResult){
-        System.out.println(ResultFormatter.formatResult(gameResult.strike(),gameResult.ball()));
+        System.out.println(
+                ResultFormatter.formatResult(gameResult.strike(),gameResult.ball()));
     }
 }
