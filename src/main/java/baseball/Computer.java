@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Computer {
-    ArrayList<Integer> computerNumber;
+
+    private final ArrayList<Integer> computerNumber = new ArrayList<>();
 
     public Computer() {
-        this.computerNumber = new ArrayList<>();
         makeRandomComputerNumber();
         System.out.println("computerNumber = " + computerNumber);
     }
