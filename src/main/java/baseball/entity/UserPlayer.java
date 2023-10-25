@@ -3,20 +3,13 @@ package baseball.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserPlayer {
-
-    private final int number;
-
-    public UserPlayer(int number) {
-        valid(number);
-        this.number = number;
-    }
+public class UserPlayer extends Player {
 
     public UserPlayer(String number) {
         try {
             int intNumber = Integer.parseInt(number);
             valid(intNumber);
-            this.number = intNumber;
+            setNumbers(intNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
         }
@@ -60,7 +53,7 @@ public class UserPlayer {
         }
     }
 
-    public List<Integer> getNumbersList() {
+    private void setNumbers(int number) {
         List<Integer> numbersList = new ArrayList<>();
 
         int tmpNum = number;
@@ -70,6 +63,11 @@ public class UserPlayer {
             numbersList.add(0, digit);
             tmpNum = tmpNum / 10;
         }
-        return numbersList;
+        numbers = numbersList;
+    }
+
+    @Override
+    public List<Integer> getNumbersList() {
+        return numbers;
     }
 }
