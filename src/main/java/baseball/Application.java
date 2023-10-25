@@ -8,14 +8,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.GameResultPrinter.printAnswerHint;
 import static baseball.InputValidator.*;
 import static baseball.RandomNumberGenerator.makeRandomNumber;
 
 public class Application {
     private static String randomNumber;
     public static String inputNumber;
-    private static int ball;
-    private static int strike;
+    public static int ball;
+    public static int strike;
     private static boolean isOver;
     private static String restartOrEndFlag;
     private static boolean isSucceed;
@@ -65,21 +66,6 @@ public class Application {
             }
         }
         return cnt;
-    }
-
-    public static void printAnswerHint() {
-        strike = calculateStrikeCount();
-        ball = calculateBallCount();
-        if (ball == 0 && strike == 0) {
-            System.out.print("낫싱");
-        }
-        if (ball > 0) {
-            System.out.print(ball + "볼 ");
-        }
-        if (strike > 0) {
-            System.out.print(strike + "스트라이크 ");
-        }
-        System.out.println();
     }
 
     public static void isSucceed() {
