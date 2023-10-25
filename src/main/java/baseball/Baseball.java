@@ -68,11 +68,11 @@ public class Baseball {
         score.setScore(ball, strike);
     }
 
-    public String compareNumber(List<Integer> computerNumber, int userInputValue, int index) {
+    public String compareNumber(List<Integer> computerNumber, int userInputValue, int userInputIndex) {
         for(int i = 0; i < 3; i++) {
-            if(computerNumber.get(i).equals(userInputValue) && i == index) {
+            if(computerNumber.get(i).equals(userInputValue) && i == userInputIndex) {
                 return "스트라이크";
-            } else if(computerNumber.get(i).equals(userInputValue) && i != index) {
+            } else if(computerNumber.get(i).equals(userInputValue) && i != userInputIndex) {
                 return "볼";
             }
         }
