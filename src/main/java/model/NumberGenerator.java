@@ -23,15 +23,18 @@ public class NumberGenerator {
 
     private String setNumber() {
         StringBuilder generatedNumber = new StringBuilder();
-        List<Integer> computer = Randoms.pickUniqueNumbersInRange(START, END, MAX_SIZE);
+        List<Integer> computer = new ArrayList<>();
+        while(computer.size() != MAX_SIZE) {
+            int number = Randoms.pickNumberInRange(START, END);
+            if(!computer.contains(number)) {
+                computer.add(number);
+            }
+        }
+
         for(int element : computer) {
             generatedNumber.append(element);
         }
 
         return generatedNumber.toString();
     }
-
-
-
-
 }
