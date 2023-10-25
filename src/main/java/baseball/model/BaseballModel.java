@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class BaseballModel {
-    public static final int MAX_STRIKES = 3;
+    public static final int MAX_SCORE = 3;
     public final GameResult gameResult;
 
     public BaseballModel(GameResult gameResult) {
@@ -41,7 +41,7 @@ public class BaseballModel {
     }
 
     private void checkGameEnded(GameResult gameResult) {
-        if (gameResult.getStrike().getCount() == MAX_STRIKES) {
+        if (gameResult.getStrike().getCount() == MAX_SCORE) {
             gameResult.endGame();
         }
     }
