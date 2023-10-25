@@ -14,7 +14,7 @@ public class Output {
     }
 
     public static void printWinMessage() {
-        System.out.println("3개의 숫자를 모두 맞회셨습니다! 게임 종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static void printRestartMessage() {
