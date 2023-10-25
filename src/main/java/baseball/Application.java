@@ -1,10 +1,12 @@
 package baseball;
 
+import baseball.computer.Computer;
+import baseball.user.User;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.BaseballConstants.*;
+import static baseball.constants.BaseballConstants.*;
 
 public class Application {
     public static void main(String[] args) {

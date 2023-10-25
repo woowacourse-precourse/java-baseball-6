@@ -1,9 +1,9 @@
-package baseball;
+package baseball.user;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.BaseballConstants.*;
+import static baseball.constants.BaseballConstants.*;
 
 public class User {
     private final String input;
