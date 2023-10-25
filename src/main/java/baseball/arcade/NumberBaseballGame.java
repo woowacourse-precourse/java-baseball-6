@@ -11,6 +11,8 @@ import static baseball.message.ErrorMessages.INVALID_RESTART;
 import static baseball.message.Messages.CHOOSE_RESTART;
 import static baseball.message.Messages.GAME_START;
 import static baseball.message.Messages.INPUT_NUMBERS;
+import static baseball.rules.GameConstants.END;
+import static baseball.rules.GameConstants.RESTART;
 
 public class NumberBaseballGame {
     private Computer computer;
@@ -46,15 +48,15 @@ public class NumberBaseballGame {
     }
 
     private void askForGameRestart() {
-        int restart = getAndValidateRestartInput();
+        String restart = getAndValidateRestartInput();
 
-        if (restart == 1) {
+        if (restart.equals(RESTART)) {
             computer = Computer.generateComputerAsRandomNumbers();
             isGameEnd = false;
             return;
         }
 
-        if (restart != 2) {
+        if (!restart.equals(END)) {
             throw new IllegalArgumentException(INVALID_RESTART);
         }
     }
@@ -68,13 +70,13 @@ public class NumberBaseballGame {
         return Console.readLine();
     }
 
-    private int getAndValidateRestartInput() {
+    private String getAndValidateRestartInput() {
         System.out.println(CHOOSE_RESTART);
         String input = Console.readLine();
 
         InputValidator.validateRestartInput(input);
 
-        return Integer.parseInt(input);
+        return input;
     }
 
     private void printGameResultMessage(StrikeBallCount gameResult) {
