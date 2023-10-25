@@ -149,6 +149,15 @@ public class Application {
                 throw new IllegalArgumentException("1 이상 숫자를 입력해주세요");
             }
         }
+        List<Integer> inputNumbers = new ArrayList<>();
+        for (int index=0; index<3; index++) {
+            int currentNumber = Integer.parseInt(input.substring(index, index + 1));
+            if(inputNumbers.contains(currentNumber)){
+                throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요");
+            }
+            inputNumbers.add(currentNumber);
+
+        }
 
 
     }
