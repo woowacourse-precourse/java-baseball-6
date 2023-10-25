@@ -29,4 +29,15 @@ public class BaseballView {
         }
     }
 
+    public void printGameOver(){
+        // 게임 종료 문구 출력
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public String inputRestart(){
+        // 재시작 또는 종료 입력받기
+        return Console.readLine();
+    }
+
 }

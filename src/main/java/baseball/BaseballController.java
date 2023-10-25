@@ -33,12 +33,10 @@ public class BaseballController {
 
         // 3스트라이크인 경우, 게임 종료
         if (strike==3) {
-            // 게임 종료 문구 출력
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-                    "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            baseballView.printGameOver();
 
             // 재시작 또는 종료 입력받기
-            String restart = Console.readLine();
+            String restart = baseballView.inputRestart();
 
             // 플레이어가 입력한 수가 1 또는 2가 아닌 경우
             if (!"1".equals(restart) && !"2".equals(restart)){
