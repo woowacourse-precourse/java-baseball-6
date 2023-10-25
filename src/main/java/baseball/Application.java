@@ -1,7 +1,16 @@
 package baseball;
 
+import player.Computer;
+import player.User;
+import referee.Referee;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Computer computer = new Computer();
+        User user = new User();
+
+        Referee referee = new Referee(computer, user);
+        referee.playBall();
     }
 }
