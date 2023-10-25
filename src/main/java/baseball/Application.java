@@ -44,7 +44,6 @@ public class Application {
                 ballCount += countUp(userInput.get(i), result.get(j));
             }
         }
-
         return ballCount;
     }
 
@@ -52,7 +51,6 @@ public class Application {
         if (userInput == result) {
             return 1;
         }
-
         return 0;
     }
 
@@ -63,21 +61,17 @@ public class Application {
             int charToInt = userInput.charAt(i) - '0';
             numberList.add(charToInt);
         }
-
         return numberList;
     }
 
     public static List<Integer> inputBaseball(String userInput) {
         List<Integer> numberList = new ArrayList<>();
 
-        if (isRightLength(userInput, 3)
-                && isDigitNumber(userInput)
-                && isRightRangeNumber(userInput)
-                && isDifferentNumber(userInput)) {
+        if (isRightLength(userInput, 3) && isDigitNumber(userInput)
+                && isRightRangeNumber(userInput) && isDifferentNumber(userInput)) {
             numberList = changeStringToList(userInput);
             return numberList;
         }
-
         throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
@@ -126,17 +120,14 @@ public class Application {
 
     public static boolean isDigitNumber(String userInput) {
         int digitCount = 0;
-
         for (int i = 0; i < userInput.length(); i++) {
             if (Character.isDigit(userInput.charAt(i))) {
                 digitCount++;
             }
         }
-
         if ((digitCount == userInput.length())) {
             return true;
         }
-
         throw new IllegalArgumentException("입력에 숫자가 아닌 것이 포함된 잘못된 입력입니다.");
     }
 
@@ -145,12 +136,10 @@ public class Application {
         int indexOne = userInput.charAt(1) - '0';
         int indexTwo = userInput.charAt(2) - '0';
 
-        if ((1 <= indexZero && indexZero <= 9)
-                && (1 <= indexOne && indexOne <= 9)
+        if ((1 <= indexZero && indexZero <= 9) && (1 <= indexOne && indexOne <= 9)
                 && (1 <= indexTwo && indexTwo <= 9)) {
             return true;
         }
-
         throw new IllegalArgumentException("입력에 1~9사이 숫자가 아닌 숫자가 포함된 잘못된 입력입니다.");
     }
 
@@ -159,12 +148,10 @@ public class Application {
         int indexOne = userInput.charAt(1) - '0';
         int indexTwo = userInput.charAt(2) - '0';
 
-        if ((indexZero != indexOne)
-                && (indexOne != indexTwo)
+        if ((indexZero != indexOne) && (indexOne != indexTwo)
                 && (indexTwo != indexZero)) {
             return true;
         }
-
         throw new IllegalArgumentException("입력에 중복된 숫자가 포함된 잘못된 입력입니다.");
     }
 
@@ -202,10 +189,8 @@ public class Application {
 
     public static void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         while (true) {
             int startOrEnd = Application.startGame();
-
             if (startOrEnd == RESTART) {
                 continue;
             } else if (startOrEnd == END) {
