@@ -1,8 +1,6 @@
 package view;
 
-import static model.BaseballData.MAX_HIT;
-import static model.BaseballData.MAX_NUMBER;
-import static model.BaseballData.MIN_NUMBER;
+import static model.BaseballData.*;
 import static view.InputView.changeInteger;
 
 import java.util.List;
