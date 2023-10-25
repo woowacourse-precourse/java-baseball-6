@@ -20,9 +20,16 @@ public class Application {
 
         while (true) {
 
-            List<Integer> userNumbers = inputNumberOfUser();
+            try{
+                List<Integer> userNumbers = inputNumberOfUser();
+            }catch(IllegalArgumentException e){
+                e.printStackTrace();
+                break;
+            }
+
 
         }
+        System.out.println("게임을 종료합니다.");
 
     }
 
