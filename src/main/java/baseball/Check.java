@@ -2,18 +2,33 @@ package baseball;
 
 public class Check {
 
-    static final String notIntegerMessage = "잘못입력하셨습니다. 숫자를 입력해주세요.";
-    //숫자인지 확인
-//    static boolean isInteger(String input){
-//
-////        try {
-////            int number = Integer.parseInt(input);
-////        }catch (IllegalArgumentException e){
-////            throw new IllegalArgumentException(notIntegerMessage);
-////        }
-//
-//    }
-    //서로 다른 숫자 3자리인지 확인
+    //3자리 숫자를 입력했는지 확인
+    private void checkingRange(String input){
+        if(input.length() != 3){
+            throw new IllegalArgumentException("3자리 숫자를 입력해야합니다.");
+        }
+    }
+    //숫자인지 중복되는 숫자가 있는지 확인
+    private void checkingNumber(String input){
 
-    //1 또는 2 인지 확인인지 확인
+        char list[] = input.toCharArray();
+        boolean duplicate[] = new boolean[10];
+        for(int i=0; i<list.length; i++){
+            int num = list[i] - '0';
+            if(num <= 0 || num > 9){
+                throw new IllegalArgumentException("1~9까지의 숫자만 입력해야합니다.");
+            }
+            if(duplicate[num]){
+                throw new IllegalArgumentException("서로 다른 3자리 숫자를 입력해야합니다.");
+            }
+            duplicate[num] = true;
+        }
+
+    }
+    public void checkingInput(String input){
+        checkingRange(input);
+        checkingNumber(input);
+    }
+
+
 }
