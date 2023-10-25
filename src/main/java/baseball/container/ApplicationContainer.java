@@ -28,7 +28,7 @@ public class ApplicationContainer {
     private Console console;
 
     private void printCreatedInstanceMessage( String instanceClass, String interfaceClass) {
-        // System.out.println("The instance of " + instanceClass + " is successfully created as an implementation of " + interfaceClass);
+        System.out.println("The instance of " + instanceClass + " is successfully created as an implementation of " + interfaceClass);
     }
 
     public RandomNumberGenerator getRandomNumberGenerator() {
