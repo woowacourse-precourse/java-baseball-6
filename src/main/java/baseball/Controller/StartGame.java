@@ -3,11 +3,11 @@ package baseball.Controller;
 import baseball.Utils.GameMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Utils.ExceptionProcess.duplicateNumberException;
-import static baseball.Utils.ExceptionProcess.inputLengthExceededException;
+import static baseball.Utils.ExceptionProcess.*;
 
 public class StartGame {
 
@@ -17,7 +17,7 @@ public class StartGame {
         List<Integer> computer = computerSetting();
         do {
             enter = inputComparator.contrastList(computer, userSetting());
-        }while(enter);
+        } while (enter);
     }
 
     public List<Integer> computerSetting() {
@@ -38,15 +38,13 @@ public class StartGame {
         while (user.size() < 3) {
             System.out.print(GameMessage.INPUT);
             String[] userInput = Console.readLine().split("");
-            if(userInput.length > 3) inputLengthExceededException(); // 숫자 3개 초과
+            if (userInput.length > 3) inputLengthExceededException(); // 숫자 3개 초과시 예외처리
             else {
                 for (int i = 0; i < 3; i++) {
                     int num = Integer.parseInt(userInput[i]);
-                    if (user.contains(num)) {
-                        duplicateNumberException(); // 중복숫자 예외처리
-                    } else {
-                        user.add(num);
-                    }
+                    if (num == 0) invalidNumberException(); // 1 ~ 9 제외 수 입력시 예외처리
+                    else if (user.contains(num)) duplicateNumberException(); // 수가 중복될시 예외처리
+                    else user.add(num);
                 }
             }
         }
