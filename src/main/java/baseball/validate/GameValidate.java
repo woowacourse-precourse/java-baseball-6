@@ -1,26 +1,22 @@
 package baseball.validate;
 
 import baseball.model.BaseballGameRule;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class GameValidate extends BaseballGameRule {
     public static void gameGuessNumbersCheck(List<Integer> givenNumbers) {
-        if (isCorrectSize(givenNumbers) && isCorrectSize(givenNumbers) && isNumberInRange(
-            givenNumbers)) {
-            return;
-        }
-        throw new IllegalArgumentException("Wrong Guess Input Violate Rules");
+        isCorrectSize(givenNumbers);
+        isNumberInRange(givenNumbers);
     }
 
     public static boolean isCorrectSize(List<Integer> numbers) {
-        return numbers.size()==BASEBALL_MAX_AMOUNT;
+        if(numbers.size()==BASEBALL_MAX_AMOUNT) return true ;
+        throw new IllegalArgumentException("Wrong Size Numbers");
     }
     public static boolean isNumberInRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (!isInRange(number)) {
-                return false;
+                throw new IllegalArgumentException("Wrong Range Number");
             }
         }
         return true;
