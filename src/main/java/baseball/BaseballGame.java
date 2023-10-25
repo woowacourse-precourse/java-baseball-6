@@ -37,7 +37,8 @@ public class BaseballGame {
     }
 
     private Balls createComputerBalls() {
-        return new Balls(createComputer());
+        List<Integer> numbers = createRandomNumbers();
+        return new Balls(numbers);
     }
 
     private void initBoard() {
@@ -49,30 +50,29 @@ public class BaseballGame {
     }
 
     private void play(Balls computer) {
-        List<BallNumber> balls = getBalls();
+        List<BallNumber> ballNumbers = getBallNumbers();
         for (int i = 0; i < BALL_SIZE; i++) {
-            int result = computer.compare(balls.get(i), i);
+            int result = computer.compare(ballNumbers.get(i), i);
             board[result]++;
         }
         printHint(board);
     }
 
-    private List<Integer> createComputer() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+    private List<Integer> createRandomNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
-        return computer;
+        return numbers;
     }
 
-    private List<BallNumber> getBalls() {
+    private List<BallNumber> getBallNumbers() {
         String inputNumbers = getNumbers();
         validateInput(inputNumbers);
         List<Integer> numbers = parseNumbers(inputNumbers);
-        validateNumbers(numbers);
         return numbers.stream()
             .map(BallNumber::new)
             .collect(Collectors.toList());
@@ -90,12 +90,6 @@ public class BaseballGame {
             numbers.add(c - '0');
         }
         return numbers;
-    }
-
-    private void validateNumbers(List<Integer> numbers) {
-        if (!ValidationUtils.isOtherNumbers(numbers)) {
-            throw new IllegalArgumentException("잘못된 입력입니다. 서로 다른 숫자를 입력해 주세요.");
-        }
     }
 
     private int getOptionNumber() {
