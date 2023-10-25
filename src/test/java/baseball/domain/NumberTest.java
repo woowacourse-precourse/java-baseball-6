@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -61,5 +62,14 @@ class NumberTest {
 
         // then
         assertThat(size).isEqualTo(3);
+    }
+
+    @Test
+    void 생성된_번호_범위_예외_테스트() {
+        // given
+        List<Integer> list1 = new ArrayList<>(List.of(1, 2, 3, 4));
+
+        // then
+        assertThatThrownBy(() -> new Number(list1)).isInstanceOf(IllegalArgumentException.class);
     }
 }
