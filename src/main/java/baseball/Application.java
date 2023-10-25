@@ -16,7 +16,6 @@ public class Application {
         //create an instance for one game
         Application app = new Application();
 //        while(item[0]<3){
-//
 //        }
     }
     public void com3Digit(Application app){
