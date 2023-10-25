@@ -17,6 +17,7 @@ public class Application {
     public static void main(String[] args) {
         // 게임 재시작, 종료 여부를 제어할 변수
         boolean isRestart;
+        System.out.println(GAMESTART_MESSAGE);
 
         do {
             // TODO: 랜덤 세 자리 수 생성
@@ -25,7 +26,6 @@ public class Application {
             List<Integer> computer = makeComputerNumber();
 
             // TODO: 숫자 야구 게임 진행
-            System.out.println(GAMESTART_MESSAGE);
 
             // 정답 여부를 체크하는 변수
             boolean isGameClear = DEFAULT_STATE;
