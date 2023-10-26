@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.constant.CAR_INIT_LOCATION;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,7 +10,7 @@ public class GameResultAnalyzer {
         int maxLocation = racingCars.stream()
                 .mapToInt(RacingCar::getLocation)
                 .max()
-                .orElse(0);
+                .orElse(CAR_INIT_LOCATION);
 
         return racingCars.stream()
                 .filter(racingCar -> racingCar.getLocation() == maxLocation)

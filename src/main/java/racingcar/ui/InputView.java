@@ -1,4 +1,5 @@
 package racingcar.ui;
+import static racingcar.constant.CAR_NAME_REGEX;
 import static racingcar.ui.OutputView.printInputAttemptMessage;
 import static racingcar.ui.OutputView.printInputCarNamesMessage;
 
@@ -7,7 +8,6 @@ import java.util.List;
 import racingcar.exception.InvalidInputException;
 
 public class InputView {
-    private static final String CAR_NAME_REGEX = "^[A-Za-z0-9,]*[A-Za-z0-9]$";
     public static List<String> inputCarNames() throws InvalidInputException {
         printInputCarNamesMessage();
         String input = Console.readLine();
