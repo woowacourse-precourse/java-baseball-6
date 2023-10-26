@@ -2,6 +2,7 @@ package racingcar.ui;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.RacingCar;
 
 public class OutputView {
@@ -19,21 +20,18 @@ public class OutputView {
 
 
     public static void printAttemptResult(List<RacingCar> racingCars) {
-        for(RacingCar racingCar: racingCars) {
-            String attemptResultString = racingCar.getName() + " : ";
-            attemptResultString += "-".repeat(racingCar.getLocation());
-            System.out.println(attemptResultString);
-        }
+        racingCars.stream()
+                .map(racingCar -> racingCar.getName()
+                        + " : "
+                        + "-".repeat(racingCar.getLocation()))
+                .forEach(System.out::println);
         System.out.println();
     }
 
     public static void printGameResult(List<RacingCar> winners) {
-        String result = "최종 우승자 : ";
-        List<String> winnersName = new ArrayList<>();
-        for(RacingCar winner: winners) {
-            winnersName.add(winner.getName());
-        }
-        result += String.join(", ", winnersName);
+        String result = winners.stream()
+                .map(RacingCar::getName)
+                .collect(Collectors.joining(", ", "최종 우승자 : ", ""));
         System.out.println(result);
     }
 }
