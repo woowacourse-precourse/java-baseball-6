@@ -1,6 +1,5 @@
 package baseball.view;
 
-import baseball.constants.InputMessage;
 import baseball.constants.OutputMessage;
 
 public class OutputView {
@@ -9,7 +8,7 @@ public class OutputView {
     }
 
     public static void printInputMessage() {
-        System.out.print(InputMessage.INPUT_PLAYER_NUMBERS);
+        System.out.print(OutputMessage.INPUT_PLAYER_NUMBERS);
     }
 
     public static void printResult(String result) {
@@ -17,7 +16,7 @@ public class OutputView {
     }
 
     public static void printAskRestartOrExit() {
-        System.out.println(InputMessage.RESTART_OR_EXIT);
+        System.out.println(OutputMessage.RESTART_OR_EXIT);
     }
 
     public static void printGameExitMessage() {
