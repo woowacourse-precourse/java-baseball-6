@@ -1,12 +1,11 @@
 package baseball.domain;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import baseball.domain.generator.BaseballNumbersGenerator;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @DisplayName("Computer 클래스 테스트")
@@ -14,18 +13,25 @@ class ComputerTest {
     @Test
     @DisplayName("Computer 생성 테스트")
     void testComputerConstructor() {
-        BaseballNumbersGenerator numbersGenerator = new FakeBaseballNumbersGenerator();
+        List<Integer> expected = List.of(5, 1, 4);
+        BaseballNumbersGenerator numbersGenerator = new FakeBaseballNumbersGenerator(expected);
 
         Computer computer = new Computer(numbersGenerator);
         computer.generateAnswerNumbers();
 
-        assertEquals(List.of(5, 1, 4), computer.getAnswerNumbers());
+        assertEquals(expected, computer.getAnswerNumbers());
     }
 
     static class FakeBaseballNumbersGenerator implements BaseballNumbersGenerator {
+        private final List<Integer> expectedNumbers;
+
+        public FakeBaseballNumbersGenerator(List<Integer> expectedNumbers) {
+            this.expectedNumbers = expectedNumbers;
+        }
+
         @Override
         public List<Integer> generate() {
-            return List.of(5, 1, 4);
+            return expectedNumbers;
         }
     }
 }
