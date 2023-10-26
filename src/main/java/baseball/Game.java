@@ -16,7 +16,7 @@ public class Game {
     static boolean gameRunning = true;
 
     private void printGameStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Message.GAME_START.getMessage());
     }
 
     private void generateRandomNumber() {
@@ -32,11 +32,11 @@ public class Game {
     private void getUserInput() {
         user = new ArrayList<>();
 
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Message.REQUESTING_INPUT.getMessage());
         String userInputString = readLine();
 
         if (userInputString.length() != 3) {
-            throw new IllegalArgumentException("입력은 3자리 수여야 합니다.");
+            throw new IllegalArgumentException(Message.INPUT_STRING_ERROR.getMessage());
         }
 
         int userInputInt = parseInt(userInputString);
@@ -61,8 +61,8 @@ public class Game {
         }
 
         if (strike == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(Message.THREE_STRIKE.getMessage());
+            System.out.println(Message.GAME_END.getMessage());
             gameRunning = false;
         } else if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
@@ -74,11 +74,11 @@ public class Game {
     }
 
     private void examineNewGameOrNot() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Message.GAME_RESTART.getMessage());
 
         String userInput = readLine();
         if (!userInput.equals("1") && !userInput.equals("2")) {
-            throw new IllegalArgumentException("입력은 1 혹은 2여야 합니다.");
+            throw new IllegalArgumentException(Message.INPUT_BOUND_ERROR.getMessage());
         }
 
         if (userInput.equals("2")) {
