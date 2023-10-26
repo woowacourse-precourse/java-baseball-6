@@ -26,7 +26,7 @@ public class RacingCar {
 
     private void validateName(String input_name) {
         if (!(input_name.length() <= MAX_CAR_NAME_LENGTH) || input_name.isEmpty()) {
-            throw new InvalidInputException("[ERROR] 이름의 길이가 다릅니다", input_name);
+            throw new InvalidInputException("[ERROR] 이름의 길이가 잘못됐습니다", input_name);
         }
     }
 }
