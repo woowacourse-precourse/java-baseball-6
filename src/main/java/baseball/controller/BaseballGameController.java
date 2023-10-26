@@ -21,14 +21,14 @@ public class BaseballGameController {
     }
 
     private void process() {
-        final Computer computer = ComputerGenerator.generate();
+        playGame(ComputerGenerator.generate());
+    }
 
-        while (true) {
-            final PlayResult playResult = play(computer);
+    private void playGame(final Computer computer) {
+        final PlayResult playResult = play(computer);
 
-            if (playResult.isClear()) {
-                break;
-            }
+        if (!playResult.isClear()) {
+            playGame(computer);
         }
     }
 
