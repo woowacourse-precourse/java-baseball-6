@@ -76,16 +76,13 @@ public class Computer {
     }
 
     public String makeResult() {
-        StringBuilder message = new StringBuilder();
-
         if (isNothing()) {
-            message.append(Message.NOTHING);
-        } else if (strikeCount == STRIKE_THRESHOLD) {
-            message.append(String.format("3%s%n%s", Message.STRIKE, Message.GAME_EXIT));
-        } else {
-            message.append(String.format("%s%s%s", makeBallMessage(), makeSeparator(), makeStrikeMessage()));
+            return String.format("%s", Message.NOTHING);
         }
-        return message.toString();
+        if (isGameExited()) {
+            return String.format("3%s%n%s", Message.STRIKE, Message.GAME_EXIT);
+        }
+        return String.format("%s%s%s", makeBallMessage(), makeSeparator(), makeStrikeMessage());
     }
 
     public boolean isGameExited() {
