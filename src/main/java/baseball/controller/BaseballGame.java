@@ -23,7 +23,9 @@ public class BaseballGame {
         computer.generateRandomNumbers();
 
         while (!isExit) {
+            OutputView.printInputMessage();
             getPlayerInput();
+
             computer.calculateHint(player.getNumbers());
             OutputView.printResult(computer.makeResult());
 
@@ -43,6 +45,7 @@ public class BaseballGame {
 
     private boolean restartOrExit() {
         OutputView.printGameExitMessage();
+        OutputView.printAskRestartOrExit();
         int restartOrExitNumber = InputView.inputRestartOrExitNumber();
 
         if (restartOrExitNumber == RESTART) {
