@@ -1,5 +1,8 @@
 package racingcar.ui;
 
+import java.util.List;
+import racingcar.domain.RacingCar;
+
 public class OutputView {
     public static void printInputCarNamesMessage() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -14,7 +17,12 @@ public class OutputView {
     }
 
 
-    public static void printAttemptResult() {
-
+    public static void printAttemptResult(List<RacingCar> racingCars) {
+        for(RacingCar racingCar: racingCars) {
+            String attemptResultString = racingCar.getName() + " : ";
+            attemptResultString += "-".repeat(racingCar.getLocation());
+            System.out.println(attemptResultString);
+        }
+        System.out.println();
     }
 }

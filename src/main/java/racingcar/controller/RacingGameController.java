@@ -1,7 +1,6 @@
 package racingcar.controller;
 
-import static racingcar.ui.OutputView.printInputAttemptMessage;
-import static racingcar.ui.OutputView.printInputCarNamesMessage;
+import static racingcar.ui.OutputView.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +22,12 @@ public class RacingGameController {
         }
     }
     public void start() {
+        printAttemptResultMessage();
         while (attempt-- > 0) {
             for(RacingCar racingCar: racingCars) {
                 racingCar.moveRandom();
             }
+            printAttemptResult(racingCars);
         }
-
     }
 }
