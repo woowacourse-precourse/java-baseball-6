@@ -50,8 +50,6 @@ public class Computer {
     }
 
     public void calculateHint(List<Integer> playerNumbers) {
-        resetCount();
-
         for (int index = 0; index < MAX_SIZE; index++) {
             Integer playerNumber = playerNumbers.get(index);
 

@@ -9,27 +9,26 @@ public class BaseballGame {
     private static final int RESTART = 1;
     private Computer computer;
     private Player player;
-    private boolean isExit;
 
     public BaseballGame(Computer computer, Player player) {
         this.computer = computer;
         this.player = player;
-        isExit = false;
     }
 
     public void start() {
         OutputView.printGameStartMessage();
         computer.generateRandomNumbers();
 
-        while (!isExit) {
+        while (!computer.isGameExited()) {
             OutputView.printInputMessage();
             getPlayerInput();
 
+            computer.resetCount();
             computer.calculateHint(player.getNumbers());
             OutputView.printResult(computer.makeResult());
 
             if (computer.isGameExited()) {
-                isExit = restartOrExit();
+                restartOrExit();
             }
         }
     }
@@ -38,15 +37,14 @@ public class BaseballGame {
         player.setNumbers(InputView.inputPlayerNumbers());
     }
 
-    private boolean restartOrExit() {
+    private void restartOrExit() {
         OutputView.printGameExitMessage();
         OutputView.printAskRestartOrExit();
         int restartOrExitNumber = InputView.inputRestartOrExitNumber();
 
         if (restartOrExitNumber == RESTART) {
+            computer.resetCount();
             computer.generateRandomNumbers();
-            return false;
         }
-        return true;
     }
 }
