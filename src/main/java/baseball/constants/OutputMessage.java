@@ -5,7 +5,8 @@ public enum OutputMessage {
     GAME_EXIT("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
     NOTHING("낫싱"),
     BALL("볼"),
-    STRIKE("스트라이크");
+    STRIKE("스트라이크"),
+    BLANK(" ");
 
     private final String message;
 
