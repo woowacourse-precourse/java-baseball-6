@@ -7,7 +7,6 @@ public class Player {
     private List<Integer> numbers;
 
     public Player() {
-
     }
 
     public List<Integer> getNumbers() {
