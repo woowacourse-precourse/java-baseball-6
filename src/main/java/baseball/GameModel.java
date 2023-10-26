@@ -24,7 +24,7 @@ public class GameModel {
         String computerNumber = nums.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
-        
+
         computer.setNumber(computerNumber);
     }
 
@@ -36,17 +36,18 @@ public class GameModel {
             return new ResultAndView("3스트라이크", false);
         } else if (result.getStrike() == 0 && result.getBall() == 0) {
             return new ResultAndView("낫싱", true);
-        } else {
-            int ballCount = result.getBall();
-            int strikeCount = result.getStrike();
-            StringBuilder sb = new StringBuilder();
-
-            if (ballCount > 0) sb.append(ballCount).append("볼");
-            if (ballCount > 0 && strikeCount > 0) sb.append(" ");
-            if (strikeCount > 0) sb.append(strikeCount).append("스트라이크");
-
-            return new ResultAndView(sb.toString(), true);
         }
+
+        int ballCount = result.getBall();
+        int strikeCount = result.getStrike();
+        StringBuilder sb = new StringBuilder();
+
+        if (ballCount > 0) sb.append(ballCount).append("볼");
+        if (ballCount > 0 && strikeCount > 0) sb.append(" ");
+        if (strikeCount > 0) sb.append(strikeCount).append("스트라이크");
+
+        return new ResultAndView(sb.toString(), true);
+
     }
 
     private void validateUserNumber(String userNumber) {
