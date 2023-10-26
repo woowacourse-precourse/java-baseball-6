@@ -7,6 +7,5 @@ public class Application {
 
         BaseballGameController baseballGameController = new BaseballGameController();
         baseballGameController.gameStart();
-        // TODO: 프로그램 구현
     }
 }

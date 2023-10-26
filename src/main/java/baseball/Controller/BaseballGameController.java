@@ -9,6 +9,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static baseball.message.Message.RESTART;
+
 public class BaseballGameController {
 
     private static ComputerService computerService = new ComputerService();
@@ -29,20 +31,19 @@ public class BaseballGameController {
 
     public static void compareResult() {
         setPlayerInput();
-        compareNumber.checkStrike(computer, player);
+        compareNumber.checkBallAndStrike(computer, player);
         if (compareNumber.threeStrikes()) {
             restartGame();
+            return;
         }
-        else {
-            compareResult();
-        }
+        compareResult();
     }
 
     public static void restartGame() {
         String input = View.printRestart();
         restart = new Restart(input);
         int parsedInput = Integer.parseInt(input);
-        if (parsedInput == RESTART_GAME) {
+        if (parsedInput == RESTART) {
             computer = computerService.createComputerList();
             compareResult();
         }

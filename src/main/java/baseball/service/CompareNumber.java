@@ -1,49 +1,63 @@
 package baseball.service;
 
 import java.util.List;
+
+import static baseball.message.Message.THREE_STRIKES;
+
 public class CompareNumber {
 
     private static int strike = 0;
     private static int ball = 0;
 
     public boolean threeStrikes() {
-        if (strike == 3){
+        if (strike == THREE_STRIKES){
             return true;
         }
         return false;
     }
 
-    private static void printResult() {
-        String result = "";
+    private void printResult() {
+        StringBuilder result = new StringBuilder();
         if (ball > 0) {
-            result += ball + "볼";
+            result.append(ball + "볼");
         }
 
         if (strike > 0) {
             if (!result.isEmpty()){
-                result += " ";
+                result.append(" ");
             }
-            result += strike + "스트라이크";
+            result.append(strike + "스트라이크");
         }
 
         if (result.isEmpty()){
-            result += "낫싱";
+            result.append("낫싱");
         }
-        System.out.println(result);
+        System.out.println(result.toString());
     }
 
-    public void checkStrike(List<Integer> computer, List<Integer> player) {
+    private void initStatus() {
         strike = 0;
         ball = 0;
+    }
+
+    private void updateBallAndStrike(List<Integer> computer, List<Integer> player) {
         for(int i = 0; i < computer.size(); i++){
-            if (computer.get(i).equals(player.get(i))) {
+            int computerNum = computer.get(i);
+            int playerNum = player.get(i);
+            if (computerNum == playerNum) {
                 strike++;
             }
 
-            else if (computer.contains(player.get(i))) {
+            else if (computer.contains(playerNum)){
                 ball++;
             }
         }
+    }
+
+
+    public void checkBallAndStrike(List<Integer> computer, List<Integer> player) {
+        initStatus();
+        updateBallAndStrike(computer, player);
         printResult();
     }
 }

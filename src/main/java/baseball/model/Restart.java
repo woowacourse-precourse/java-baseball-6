@@ -1,8 +1,9 @@
 package baseball.model;
 
+import static baseball.message.Message.*;
+
 public class Restart {
 
-    private static final int RESTART_MESSAGE_SIZE = 1;
     private final String input;
 
     public Restart(String input) {
@@ -18,7 +19,7 @@ public class Restart {
     }
 
     private void validateOptions(String input) {
-        if (!input.equals("1") && !input.equals("2")) {
+        if (!input.equals(RESTART_GAME) && !input.equals(EXIT_GAME)) {
             throw new IllegalArgumentException("플레이어는 1이나 2 이외의 값을 입력할 수 없습니다.");
         }
     }

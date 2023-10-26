@@ -1,11 +1,11 @@
 package baseball.model;
 
 import java.util.*;
-import java.util.regex.Pattern;
+
+import static baseball.message.Message.*;
 
 public class Player {
 
-    private static final int PLAYER_NUMBERS_SIZE = 3;
     private final List<Integer> player;
 
     public Player(List<Integer> player) {
@@ -28,7 +28,7 @@ public class Player {
 
     private void validateSize(List<Integer> player) {
         if (player.size() != PLAYER_NUMBERS_SIZE) {
-            throw new IllegalArgumentException("플레이어는 2개 미만이나 4개 이상의 숫자를 가질 수 없습니다.");
+            throw new IllegalArgumentException("플레이어는 2개 이하 4개 이상의 숫자를 가질 수 없습니다.");
         }
     }
 
@@ -41,7 +41,7 @@ public class Player {
 
     private void validateIsNumber(List<Integer> player) {
         boolean containsNonNumber = player.stream()
-                .map(val -> val < 1 || val > 9)
+                .map(val -> val < MIN_NUMBER || val > MAX_NUMBER)
                 .anyMatch(Boolean::booleanValue);
         if (containsNonNumber) {
             throw new IllegalArgumentException("플레이어는 숫자 이외의 값을 선택할 수 없습니다.");

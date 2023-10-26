@@ -1,13 +1,13 @@
 package baseball.model;
 
-import java.util.*;
-import java.util.regex.Pattern;
+import baseball.message.Message;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import java.util.*;
+
+import static baseball.message.Message.*;
 
 public class Computer {
 
-    private static final int COMPUTER_NUMBERS_SIZE = 3;
     private final List<Integer> computer;
 
     public Computer(List<Integer> computer) {
@@ -38,7 +38,7 @@ public class Computer {
 
     private void validateIsNumber(List<Integer> computer) {
         boolean containsNonNumber = computer.stream()
-                .map(val -> val < 1 || val > 9)
+                .map(val -> val < MIN_NUMBER || val > MAX_NUMBER)
                 .anyMatch(Boolean::booleanValue);
         if (containsNonNumber) {
             throw new IllegalArgumentException("컴퓨터는 숫자 이외의 값을 선택할 수 없습니다.");
