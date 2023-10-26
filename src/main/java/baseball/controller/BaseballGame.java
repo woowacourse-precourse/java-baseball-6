@@ -23,7 +23,7 @@ public class BaseballGame {
             OutputView.printInputMessage();
             getPlayerInput();
 
-            computer.resetCount();
+            computer.resetHint();
             computer.calculateHint(player.getNumbers());
             OutputView.printResult(computer.makeResult());
 
@@ -43,7 +43,7 @@ public class BaseballGame {
         int restartOrExitNumber = InputView.inputRestartOrExitNumber();
 
         if (restartOrExitNumber == RESTART) {
-            computer.resetCount();
+            computer.resetHint();
             computer.generateRandomNumbers();
         }
     }

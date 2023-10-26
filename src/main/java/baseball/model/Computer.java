@@ -22,7 +22,7 @@ public class Computer {
     public Computer() {
     }
 
-    public void resetCount() {
+    public void resetHint() {
         ballCount = NONE;
         strikeCount = NONE;
     }
