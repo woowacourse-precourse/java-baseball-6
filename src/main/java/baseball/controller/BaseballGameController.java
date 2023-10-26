@@ -16,23 +16,17 @@ public class BaseballGameController {
     }
 
     private void run() {
-        Computer computer = ComputerGenerator.generate();
-        playGame(computer);
+        process(ComputerGenerator.generate());
         askForContinue();
     }
-    
-    private void playGame(final Computer computer) {
-        final PlayResult playResult = play(computer);
 
-        if (!playResult.isClear()) {
-            playGame(computer);
-        }
-    }
-
-    private PlayResult play(final Computer computer) {
+    private void process(final Computer computer) {
         final PlayResult playResult = computer.compute(guessNumbers());
         OutputView.printResult(playResult);
-        return playResult;
+
+        if (!playResult.isClear()) {
+            process(computer);
+        }
     }
 
     private List<Integer> guessNumbers() {
