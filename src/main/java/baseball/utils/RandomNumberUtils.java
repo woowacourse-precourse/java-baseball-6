@@ -26,22 +26,15 @@ public class RandomNumberUtils {
          * 위 3가지 사항에 해당 하는 경우 IllegalArgumentException 예외 발생
          */
         // 장점 : 범위 체크를 진행 하면 단순 범위의 랜덤 값 하나만 뽑아 낼 수 있어 간단 하다.
-        // 단점 : 중복된 값이 나올 수 있다. -> duplicateCheck 메소드를 활용 하여서 중복 숫자의 경우 List 에 add 되지 않도록 처리
-//        List<Integer> result = new ArrayList<>(capacity);
-//        while (result.size() < capacity) {
-//            int num = Randoms.pickNumberInRange(startInclusive, endInclusive);
-//            // 중복 숫자 확인
-//            duplicateCheck(result, num);
-//        }
-//        return result;
-
+        // 단점 : 중복된 값이 나올 수 있다. -> LinkedHashSet 을 사용해서 순서가 보장되고 중복을 허용하지 않는 set을 활용
         // 리스트가 아닌 set을 이용해서 중복값 제거 하기
         Set<Integer> setResult = new LinkedHashSet<>();
         while (setResult.size() < capacity) {
             int num = Randoms.pickNumberInRange(startInclusive, endInclusive);
             setResult.add(num);
         }
-        return setResult.stream().collect(Collectors.toList());
+        // 수정 가능한 리스트가 되지 않도록 unmodifiableList 사용
+        return setResult.stream().collect(Collectors.toUnmodifiableList());
     }
 
     /**
