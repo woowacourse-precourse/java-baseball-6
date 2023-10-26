@@ -26,6 +26,7 @@ public class BaseballGame {
             getPlayerInput();
             computer.calculateHint(player.getNumbers());
             OutputView.printResult(computer.makeResult());
+
             if (isGameExited()) {
                 isExit = restartOrExit();
             }
