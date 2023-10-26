@@ -3,7 +3,7 @@ package racingcar.domain;
 public class RacingCar {
     String name;
     int location;
-    RacingCar(String name) {
+    public RacingCar(String name) {
         this.name = name;
         location = 0;
     }
