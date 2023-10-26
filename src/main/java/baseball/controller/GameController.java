@@ -9,14 +9,17 @@ import baseball.view.OutputView;
 
 public class GameController {
 
-    private OutputView outputView;
-    private InputView inputView;
+    private final OutputView outputView;
+    private final InputView inputView;
     private Balls com;
     private PlayResult result;
 
+    public GameController() {
+        this.outputView = new OutputView();
+        this.inputView = new InputView();
+    }
+
     private void init() {
-        outputView = new OutputView();
-        inputView = new InputView();
         com = new Balls(RandomNumberGenerator.createRandomNumbers());
         result = new PlayResult();
     }
