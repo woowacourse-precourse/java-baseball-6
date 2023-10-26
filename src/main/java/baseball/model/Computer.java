@@ -54,7 +54,7 @@ public class Computer {
         numbers = new ArrayList<>(randomNumbers);
     }
 
-    public void calculateResult(List<Integer> playerNumbers) {
+    public void calculateHint(List<Integer> playerNumbers) {
         resetCount();
 
         for (int index = 0; index < MAX_SIZE; index++) {
