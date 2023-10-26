@@ -10,11 +10,9 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Computer {
-    private static final int NONE = 0;
     private static final int MAX_SIZE = 3;
-    private static final int MIN_VALUE = 1;
-    private static final int MAX_VALUE = 9;
-    private static final int STRIKE_THRESHOLD = 3;
+    private static final int LOWER_INCLUSIVE = 1;
+    private static final int UPPER_INCLUSIVE = 9;
     private List<Integer> numbers;
     private int ballCount;
     private int strikeCount;
@@ -23,8 +21,8 @@ public class Computer {
     }
 
     public void resetCount() {
-        ballCount = NONE;
-        strikeCount = NONE;
+        ballCount = 0;
+        strikeCount = 0;
     }
 
     public List<Integer> getNumbers() {
@@ -47,7 +45,7 @@ public class Computer {
         Set<Integer> randomNumbers = new HashSet<>();
 
         while (randomNumbers.size() < MAX_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+            int randomNumber = Randoms.pickNumberInRange(LOWER_INCLUSIVE, UPPER_INCLUSIVE);
             randomNumbers.add(randomNumber);
         }
         numbers = new ArrayList<>(randomNumbers);
@@ -76,7 +74,7 @@ public class Computer {
     }
 
     private boolean isNothing() {
-        return strikeCount == NONE && ballCount == NONE;
+        return strikeCount == 0 && ballCount == 0;
     }
 
     public String makeResult() {
@@ -84,7 +82,7 @@ public class Computer {
 
         if (isNothing()) {
             message.append(OutputMessage.NOTHING);
-        } else if (strikeCount == STRIKE_THRESHOLD) {
+        } else if (strikeCount == 3) {
             message.append(String.format("3%s%n%s", OutputMessage.STRIKE, OutputMessage.GAME_EXIT));
         } else {
             message.append(String.format("%s%s%s", makeBallMessage(), makeSeparator(), makeStrikeMessage()));
@@ -93,21 +91,21 @@ public class Computer {
     }
 
     private String makeBallMessage() {
-        if (ballCount > NONE) {
+        if (ballCount > 0) {
             return ballCount + OutputMessage.BALL.toString();
         }
         return "";
     }
 
     private String makeStrikeMessage() {
-        if (strikeCount > NONE) {
+        if (strikeCount > 0) {
             return strikeCount + OutputMessage.STRIKE.toString();
         }
         return "";
     }
 
     private String makeSeparator() {
-        if (ballCount > NONE && strikeCount > NONE) {
+        if (ballCount > 0 && strikeCount > 0) {
             return OutputMessage.BLANK.toString();
         }
         return "";
