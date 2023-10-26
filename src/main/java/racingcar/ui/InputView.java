@@ -16,4 +16,19 @@ public class InputView {
         }
         return nameList;
     }
+
+    public static int inputAttempt() {
+        String input = Console.readLine();
+        int attempt;
+        try {
+            attempt = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (attempt < 1) {
+            throw new IllegalArgumentException();
+        }
+        return attempt;
+    }
 }
