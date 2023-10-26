@@ -83,18 +83,31 @@ public class Computer {
         if (isNothing()) {
             message.append(OutputMessage.NOTHING);
         } else if (strikeCount == 3) {
-            message.append(3).append(OutputMessage.STRIKE)
-                    .append(System.lineSeparator())
-                    .append(OutputMessage.GAME_EXIT);
-        } else if (strikeCount == 0) {
-            message.append(ballCount).append(OutputMessage.BALL);
-        } else if (ballCount == 0) {
-            message.append(strikeCount).append(OutputMessage.STRIKE);
+            message.append(String.format("3%s%n%s", OutputMessage.STRIKE, OutputMessage.GAME_EXIT));
         } else {
-            message.append(ballCount).append(OutputMessage.BALL)
-                    .append(OutputMessage.BLANK).append(strikeCount)
-                    .append(OutputMessage.STRIKE);
+            message.append(String.format("%s%s%s", makeBallMessage(), makeSeparator(), makeStrikeMessage()));
         }
         return message.toString();
+    }
+
+    private String makeBallMessage() {
+        if (ballCount > 0) {
+            return ballCount + OutputMessage.BALL.toString();
+        }
+        return "";
+    }
+
+    private String makeStrikeMessage() {
+        if (strikeCount > 0) {
+            return strikeCount + OutputMessage.STRIKE.toString();
+        }
+        return "";
+    }
+
+    private String makeSeparator() {
+        if (ballCount > 0 && strikeCount > 0) {
+            return OutputMessage.BLANK.toString();
+        }
+        return "";
     }
 }
