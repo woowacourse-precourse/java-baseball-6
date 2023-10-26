@@ -27,13 +27,14 @@ class Game {
             GameOutcome outcome = checkOutcome(computerNumber, userGuess);
             printOutcome(outcome);
 
-            if (outcome.isThreeStrikes()) {
-                if (askRestart()) {
-                    computerNumber = generateComputerNumber();
-                } else {
-                    System.out.println("게임 종료");
-                    break;
-                }
+            if (!outcome.isThreeStrikes())
+                continue;
+
+            if (askRestart()) {
+                computerNumber = generateComputerNumber();
+            } else {
+                System.out.println("게임 종료");
+                break;
             }
         }
     }
