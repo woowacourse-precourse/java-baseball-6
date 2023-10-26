@@ -27,10 +27,8 @@ public class GameModel {
     }
 
     public ResultAndView compareUserAndComputerNumber(String userNumber) {
-        // 유효성 검사
-        if (!Pattern.matches("^[1-9][1-9][1-9]$", userNumber)) throw new IllegalArgumentException();
-        if (Arrays.stream(userNumber.split("")).distinct().count() < 3) throw new IllegalArgumentException();
-
+        validateUserNumber(userNumber);
+        
         Result result = computer.compareNumber(userNumber);
         if (result.getStrike() == 3) {
             return new ResultAndView("3스트라이크", false);
@@ -47,6 +45,12 @@ public class GameModel {
 
             return new ResultAndView(sb.toString(), true);
         }
+    }
+
+    private void validateUserNumber(String userNumber) {
+        // 유효성 검사
+        if (!Pattern.matches("^[1-9][1-9][1-9]$", userNumber)) throw new IllegalArgumentException();
+        if (Arrays.stream(userNumber.split("")).distinct().count() < 3) throw new IllegalArgumentException();
     }
 
     public boolean isGameExit(String userInput) {
