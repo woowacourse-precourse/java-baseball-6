@@ -26,7 +26,7 @@ public class GameModelTest {
 
         // when
         ResultAndView response = gameModel.compareUserAndComputerNumber("123");
-        //when
+        // then
         assertThat(response).isEqualTo(result);
     }
 
@@ -37,7 +37,7 @@ public class GameModelTest {
         ResultAndView result = new ResultAndView("2볼 1스트라이크", true);
         // when
         ResultAndView response = gameModel.compareUserAndComputerNumber("321");
-        //when
+        // then
         assertThat(response).isEqualTo(result);
     }
 
@@ -48,7 +48,7 @@ public class GameModelTest {
         ResultAndView result = new ResultAndView("낫싱", true);
         // when
         ResultAndView response = gameModel.compareUserAndComputerNumber("456");
-        //when
+        // then
         assertThat(response).isEqualTo(result);
     }
 
@@ -59,7 +59,7 @@ public class GameModelTest {
         ResultAndView result = new ResultAndView("3볼", true);
         // when
         ResultAndView response = gameModel.compareUserAndComputerNumber("231");
-        //when
+        // then
         assertThat(response).isEqualTo(result);
     }
 
