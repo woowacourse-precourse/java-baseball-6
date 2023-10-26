@@ -12,8 +12,8 @@ import java.util.Set;
 public class Computer {
     private static final int NONE = 0;
     private static final int MAX_SIZE = 3;
-    private static final int LOWER_INCLUSIVE = 1;
-    private static final int UPPER_INCLUSIVE = 9;
+    private static final int MIN_VALUE = 1;
+    private static final int MAX_VALUE = 9;
     private static final int STRIKE_THRESHOLD = 3;
     private List<Integer> numbers;
     private int ballCount;
@@ -47,7 +47,7 @@ public class Computer {
         Set<Integer> randomNumbers = new HashSet<>();
 
         while (randomNumbers.size() < MAX_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(LOWER_INCLUSIVE, UPPER_INCLUSIVE);
+            int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
             randomNumbers.add(randomNumber);
         }
         numbers = new ArrayList<>(randomNumbers);
