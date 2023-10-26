@@ -1,9 +1,6 @@
 package baseball.model;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 public class PlayerNumber {
@@ -72,6 +69,7 @@ public class PlayerNumber {
     }
 
     public List<Integer> getNumbers() {
-        return new ArrayList<>(numbers);
+//        return new ArrayList<>(numbers);
+        return Collections.unmodifiableList(numbers);  //변경하려 하면 예외 발생시키니까 이 방식이 더 좋겠다. (방어적 복사)
     }
 }
