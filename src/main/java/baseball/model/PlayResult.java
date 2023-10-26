@@ -1,11 +1,10 @@
 package baseball.model;
 
-import baseball.Setting;
+import static baseball.model.Balls.BALL_SIZE;
 
 public class PlayResult {
 
     public static final int ZERO = 0;
-    private static final int BALL_SIZE = Setting.BALL_SIZE.get();
     private int ball = ZERO;
     private int strike = ZERO;
 
