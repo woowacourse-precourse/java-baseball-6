@@ -12,6 +12,21 @@ public class Application {
             Game game = new Game();
             game.start();
             System.out.println(Message.GAME_END);
-        } while (Console.readLine().equals("1"));
+        } while (isRestart());
+    }
+
+    private static boolean isRestart() {
+        final String RESTART_INPUT_REGEX = "[12]";
+
+        String input = Console.readLine();
+        if (!input.matches(RESTART_INPUT_REGEX)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (input.equals("1")) {
+            return true;
+        }
+
+        return false;
     }
 }
