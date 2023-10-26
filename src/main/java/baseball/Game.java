@@ -14,9 +14,8 @@ public class Game {
     static List<Integer> user;
     static boolean programRunning = true;
     static boolean gameRunning = true;
-
-    private String CONTINUE = "1";
-    private String EXIT = "2";
+    private static Validator validator = new Validator();
+    private static Constants constants = new Constants();
 
     private void printGameStartMessage() {
         System.out.println(Message.GAME_START.getMessage());
@@ -38,9 +37,7 @@ public class Game {
         System.out.print(Message.REQUESTING_INPUT.getMessage());
         String userInputString = readLine();
 
-        if (userInputString.length() != 3) {
-            throw new IllegalArgumentException(Message.INPUT_STRING_ERROR.getMessage());
-        }
+        validator.validateInputSize(userInputString);
 
         int userInputInt = parseInt(userInputString);
 
@@ -80,11 +77,9 @@ public class Game {
         System.out.println(Message.GAME_RESTART.getMessage());
 
         String userInput = readLine();
-        if (!userInput.equals(CONTINUE) && !userInput.equals(EXIT)) {
-            throw new IllegalArgumentException(Message.INPUT_BOUND_ERROR.getMessage());
-        }
+        validator.validateInputBound(userInput);
 
-        if (userInput.equals(EXIT)) {
+        if (userInput.equals(constants.getEXIT())) {
             programRunning = false;
         }
     }
