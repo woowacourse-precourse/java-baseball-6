@@ -29,5 +29,24 @@ public class RacingGameController {
             }
             printAttemptResult(racingCars);
         }
+        gameEndResult();
+    }
+
+    private void gameEndResult() {
+        List<RacingCar> winners = new ArrayList<>();
+        int maxLocation = 0;
+        for(RacingCar racingCar: racingCars) {
+            if (racingCar.getLocation() > maxLocation) {
+                maxLocation = racingCar.getLocation();
+            }
+        }
+
+        for(RacingCar racingCar: racingCars) {
+            if (racingCar.getLocation() == maxLocation) {
+                winners.add(racingCar);
+            }
+        }
+
+        printGameResult(winners);
     }
 }

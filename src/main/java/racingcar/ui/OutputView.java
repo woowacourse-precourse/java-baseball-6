@@ -1,5 +1,6 @@
 package racingcar.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.RacingCar;
 
@@ -24,5 +25,15 @@ public class OutputView {
             System.out.println(attemptResultString);
         }
         System.out.println();
+    }
+
+    public static void printGameResult(List<RacingCar> winners) {
+        String result = "최종 우승자 : ";
+        List<String> winnersName = new ArrayList<>();
+        for(RacingCar winner: winners) {
+            winnersName.add(winner.getName());
+        }
+        result += String.join(", ", winnersName);
+        System.out.println(result);
     }
 }
