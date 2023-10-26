@@ -72,6 +72,6 @@ public class PlayerNumber {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return new ArrayList<>(numbers);
     }
 }
