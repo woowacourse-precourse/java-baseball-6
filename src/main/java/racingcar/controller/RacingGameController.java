@@ -8,28 +8,35 @@ import racingcar.domain.RacingCar;
 import racingcar.ui.InputView;
 
 public class RacingGameController {
-
     List<RacingCar> racingCars = new ArrayList<>();
     int attempt;
 
-    public RacingGameController() {
-        printInputCarNamesMessage();
+    public void start() {
+        initGame();
+        printAttemptResultMessage();
+        while (attempt-- > 0) {
+            race();
+        }
+        gameEndResult();
+    }
+
+    private void initGame() {
         List<String> nameList = InputView.inputCarNames();
-        printInputAttemptMessage();
+        initRacingCars(nameList);
         this.attempt = InputView.inputAttempt();
+    }
+
+    private void initRacingCars(List<String> nameList) {
         for (String name: nameList) {
             racingCars.add(new RacingCar(name));
         }
     }
-    public void start() {
-        printAttemptResultMessage();
-        while (attempt-- > 0) {
-            for(RacingCar racingCar: racingCars) {
-                racingCar.moveRandom();
-            }
-            printAttemptResult(racingCars);
+
+    private void race() {
+        for (RacingCar racingCar : racingCars) {
+            racingCar.moveRandom();
         }
-        gameEndResult();
+        printAttemptResult(racingCars);
     }
 
     private void gameEndResult() {
