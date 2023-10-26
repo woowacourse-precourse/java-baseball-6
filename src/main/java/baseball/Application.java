@@ -1,7 +1,16 @@
 package baseball;
 
+import baseball.controller.BaseballController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseballController baseballController = Configuration.baseballController();
+        baseballController.start();
+
+        do {
+            baseballController.play();
+        } while (baseballController.replay());
+
+        baseballController.end();
     }
 }
