@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class GameModel {
     private final Computer computer;
@@ -15,20 +16,21 @@ public class GameModel {
     }
 
     public void setRandomNumberInComputer() {
-        StringBuilder sb = new StringBuilder();
         Set<Integer> nums = new HashSet<>();
         while (nums.size() < 3) {
             nums.add(Randoms.pickNumberInRange(1, 9));
         }
-        for (int num : nums) {
-            sb.append(num);
-        }
-        computer.setNumber(sb.toString());
+
+        String computerNumber = nums.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+        
+        computer.setNumber(computerNumber);
     }
 
     public ResultAndView compareUserAndComputerNumber(String userNumber) {
         validateUserNumber(userNumber);
-        
+
         Result result = computer.compareNumber(userNumber);
         if (result.getStrike() == 3) {
             return new ResultAndView("3스트라이크", false);
