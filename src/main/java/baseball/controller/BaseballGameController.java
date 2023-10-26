@@ -16,14 +16,11 @@ public class BaseballGameController {
     }
 
     private void run() {
-        process();
+        Computer computer = ComputerGenerator.generate();
+        playGame(computer);
         askForContinue();
     }
-
-    private void process() {
-        playGame(ComputerGenerator.generate());
-    }
-
+    
     private void playGame(final Computer computer) {
         final PlayResult playResult = play(computer);
 
