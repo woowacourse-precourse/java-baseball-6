@@ -14,8 +14,8 @@ import baseball.repository.ComputerRepository;
 import baseball.repository.GameSetRespository;
 import baseball.repository.PlayerRepository;
 import baseball.utils.CheckUtils;
+import baseball.view.InputView;
 import baseball.view.PrintMessage;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,10 +67,10 @@ public class Game {
     private void retry() {
         PrintMessage.println(END_MSG);
         PrintMessage.print(REGAME_MSG);
-        if (!Console.readLine().equals("1")) {
+        String retry = InputView.getInput();
+        if (!retry.equals("1")) {
             GameSetRespository.gameStatusEnd();
         }
-        Console.close();
     }
 
     /**
@@ -94,8 +94,7 @@ public class Game {
         // 입력 요청 메시지
         PrintMessage.print(INPUT_MSG);
         // 사용자 입력 받기 - 진행 루프
-        String inputStr = Console.readLine();
-        Console.close();
+        String inputStr = InputView.getInput();
         // 입력값 검증
         // 입력된 값 - 빈값 / 숫자 / 3자리 숫자 / 중복 확인
         CheckUtils.userInputCheck(inputStr, GameSetRespository.getGameSet(CAPACITY_STR));
