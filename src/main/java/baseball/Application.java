@@ -98,14 +98,14 @@ class Game {
 
             if ("1".equals(input)) {
                 return true;
-            } else if ("2".equals(input)) {
-                return false;
-            } else {
-                System.out.println("잘못된 입력입니다.");
             }
+            if ("2".equals(input)) {
+                return false;
+            }
+
+            System.out.println("잘못된 입력입니다.");
         }
     }
-
 }
 
 class GameOutcome {
