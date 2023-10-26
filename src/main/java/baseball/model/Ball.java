@@ -1,14 +1,9 @@
 package baseball.model;
 
-import java.util.Objects;
+public record Ball(int positoin, BallNo ballNo) {
 
-public class Ball {
-    private final int position;
-    private final BallNo ballNo;
-
-    public Ball(int position, int ballNo) {
-        this.position = position;
-        this.ballNo = new BallNo(ballNo);
+    public Ball(int postion, int ballNo) {
+        this(postion, new BallNo(ballNo));
     }
 
     public BallStatus play(Ball ball) {
@@ -21,18 +16,5 @@ public class Ball {
 
     private boolean matchBallNo(BallNo number) {
         return this.ballNo.equals(number);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Ball ball = (Ball) o;
-        return position == ball.position && Objects.equals(ballNo, ball.ballNo);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(position, ballNo);
     }
 }
