@@ -7,8 +7,8 @@ import baseball.view.OutputView;
 
 public class BaseballGame {
     private static final int RESTART = 1;
-    private Computer computer;
-    private Player player;
+    private final Computer computer;
+    private final Player player;
 
     public BaseballGame(Computer computer, Player player) {
         this.computer = computer;
