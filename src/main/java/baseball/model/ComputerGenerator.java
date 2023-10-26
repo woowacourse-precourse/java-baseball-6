@@ -2,7 +2,6 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class ComputerGenerator {
@@ -21,7 +20,7 @@ public final class ComputerGenerator {
         return Stream.generate(ComputerGenerator::pickRandomNumber)
                 .distinct()
                 .limit(COMPUTER_NUMBER_SIZE)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private static int pickRandomNumber() {
