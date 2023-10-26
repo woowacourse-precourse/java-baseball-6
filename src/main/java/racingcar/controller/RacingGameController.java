@@ -20,9 +20,9 @@ public class RacingGameController {
 
     private void raceFor(int attempt) {
         printAttemptResultMessage();
-        do {
+        while (attempt-- > 0) {
             race();
-        } while (attempt-- >= 0);
+        }
     }
 
     private void initGame() {
