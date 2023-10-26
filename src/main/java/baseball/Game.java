@@ -70,6 +70,7 @@ public class Game {
         if (!Console.readLine().equals("1")) {
             GameSetRespository.gameStatusEnd();
         }
+        Console.close();
     }
 
     /**
@@ -94,6 +95,7 @@ public class Game {
         PrintMessage.print(INPUT_MSG);
         // 사용자 입력 받기 - 진행 루프
         String inputStr = Console.readLine();
+        Console.close();
         // 입력값 검증
         // 입력된 값 - 빈값 / 숫자 / 3자리 숫자 / 중복 확인
         CheckUtils.userInputCheck(inputStr, GameSetRespository.getGameSet(CAPACITY_STR));
