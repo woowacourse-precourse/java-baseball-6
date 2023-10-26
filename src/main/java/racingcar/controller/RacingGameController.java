@@ -6,6 +6,7 @@ import static racingcar.ui.OutputView.*;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.RacingCar;
+import racingcar.exception.InvalidInputException;
 import racingcar.ui.InputView;
 
 public class RacingGameController {
@@ -13,19 +14,17 @@ public class RacingGameController {
     int attempt;
 
     public void start() {
-        initGame();
+        try {
+            initGame();
+        } catch (InvalidInputException e) {
+            System.out.println(e.getMessage());
+            throw new InvalidInputException();
+        }
         raceFor(attempt);
         displayGameResults();
     }
 
-    private void raceFor(int attempt) {
-        printAttemptResultMessage();
-        while (attempt-- > 0) {
-            race();
-        }
-    }
-
-    private void initGame() {
+    private void initGame() throws InvalidInputException {
         List<String> nameList = InputView.inputCarNames();
         initRacingCars(nameList);
         this.attempt = InputView.inputAttempt();
@@ -37,10 +36,15 @@ public class RacingGameController {
         }
     }
 
-    private void race() {
-        for (RacingCar racingCar : racingCars) {
-            racingCar.moveRandom();
+    private void raceFor(int attempt) {
+        printAttemptResultMessage();
+        while (attempt-- > 0) {
+            race();
         }
+    }
+
+    private void race() {
+        racingCars.forEach(RacingCar::moveRandom);
         printAttemptResult(racingCars);
     }
 
