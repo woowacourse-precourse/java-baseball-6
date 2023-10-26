@@ -6,7 +6,6 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGame {
-    private static final int STRIKE_THRESHOLD = 3;
     private static final int RESTART = 1;
     private Computer computer;
     private Player player;
@@ -29,7 +28,7 @@ public class BaseballGame {
             computer.calculateHint(player.getNumbers());
             OutputView.printResult(computer.makeResult());
 
-            if (isGameExited()) {
+            if (computer.isGameExited()) {
                 isExit = restartOrExit();
             }
         }
@@ -37,10 +36,6 @@ public class BaseballGame {
 
     private void getPlayerInput() {
         player.setNumbers(InputView.inputPlayerNumbers());
-    }
-
-    private boolean isGameExited() {
-        return computer.getStrikeCount() == STRIKE_THRESHOLD;
     }
 
     private boolean restartOrExit() {

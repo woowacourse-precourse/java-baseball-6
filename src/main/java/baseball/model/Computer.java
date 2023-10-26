@@ -31,10 +31,6 @@ public class Computer {
         return Collections.unmodifiableList(numbers);
     }
 
-    public int getStrikeCount() {
-        return strikeCount;
-    }
-
     private void addBallCount() {
         ballCount++;
     }
@@ -92,6 +88,10 @@ public class Computer {
             message.append(String.format("%s%s%s", makeBallMessage(), makeSeparator(), makeStrikeMessage()));
         }
         return message.toString();
+    }
+
+    public boolean isGameExited() {
+        return strikeCount == STRIKE_THRESHOLD;
     }
 
     private String makeBallMessage() {
