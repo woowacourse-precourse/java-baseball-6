@@ -15,6 +15,9 @@ public class Game {
     static boolean programRunning = true;
     static boolean gameRunning = true;
 
+    private String CONTINUE = "1";
+    private String EXIT = "2";
+
     private void printGameStartMessage() {
         System.out.println(Message.GAME_START.getMessage());
     }
@@ -65,10 +68,10 @@ public class Game {
             System.out.println(Message.GAME_END.getMessage());
             gameRunning = false;
         } else if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            System.out.println(Message.NO_BALL_NO_STRIKE.getMessage());
         } else {
-            if (ball != 0) System.out.print(ball + "볼 ");
-            if (strike != 0) System.out.print(strike + "스트라이크");
+            if (ball != 0) System.out.print(ball + Message.BALL.getMessage());
+            if (strike != 0) System.out.print(strike + Message.STRIKE.getMessage());
             System.out.println("");
         }
     }
@@ -77,11 +80,11 @@ public class Game {
         System.out.println(Message.GAME_RESTART.getMessage());
 
         String userInput = readLine();
-        if (!userInput.equals("1") && !userInput.equals("2")) {
+        if (!userInput.equals(CONTINUE) && !userInput.equals(EXIT)) {
             throw new IllegalArgumentException(Message.INPUT_BOUND_ERROR.getMessage());
         }
 
-        if (userInput.equals("2")) {
+        if (userInput.equals(EXIT)) {
             programRunning = false;
         }
     }

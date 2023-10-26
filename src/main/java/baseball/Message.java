@@ -7,7 +7,10 @@ public enum Message {
     REQUESTING_INPUT("숫자를 입력해주세요 : "),
     INPUT_STRING_ERROR("입력은 3자리 수여야 합니다."),
     INPUT_BOUND_ERROR("입력은 1 혹은 2여야 합니다."),
-    THREE_STRIKE("3스트라이크");
+    THREE_STRIKE("3스트라이크"),
+    BALL("볼 "),
+    STRIKE("스트라이크"),
+    NO_BALL_NO_STRIKE("낫싱");
 
     private String message;
 
