@@ -1,8 +1,9 @@
 package baseball.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RandomNumberGenerator {
 
@@ -11,12 +12,9 @@ public class RandomNumberGenerator {
     private static final int REPEAT_COUNT = 3;
 
     public static List<Integer> generate() {
-        List<Integer> randomNumbers = new ArrayList<>();
-
-        for (int i = 0; i < REPEAT_COUNT; i++) {
-            int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
-            randomNumbers.add(randomNumber);
-        }
-        return randomNumbers;
+        return Stream.generate(() -> Randoms.pickNumberInRange(MIN, MAX))
+                .distinct()
+                .limit(REPEAT_COUNT)
+                .collect(Collectors.toList());
     }
 }
