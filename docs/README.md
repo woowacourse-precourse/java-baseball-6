@@ -1,8 +1,8 @@
-### BaseballNumber          
-- [x] BallNumber 리스트 저장       
-- [x] 다른 BaseballNumber의 BallNumber리스트와 비교하여 스트라이크, 볼 결과 반환      
+### BallNumbers          
+- [x] Ball 리스트 저장       
+- [x] 다른 BallNumbers의 Ball리스트와 비교하여 스트라이크, 볼 결과 반환      
 
-### BallNumber      
+### Ball      
 - [x] 생성자를 통해 1~9 사이의 숫자를 가지도록 허용       
 
 ### Result      
