@@ -14,7 +14,7 @@ public class OutputView {
     }
 
     public static void printAttemptResultMessage() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
 
