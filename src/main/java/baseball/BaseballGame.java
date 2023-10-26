@@ -102,7 +102,7 @@ public class BaseballGame {
             }
         }
         this.computerAnswer = answerString.toString();
-        System.out.println("정답 숫자: " + this.computerAnswer);
+//        System.out.println("정답 숫자: " + this.computerAnswer);
     }
 
     // 2. 사용자 입력 받기
