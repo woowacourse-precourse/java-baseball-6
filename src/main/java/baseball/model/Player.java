@@ -1,5 +1,6 @@
 package baseball.model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Player {
@@ -10,7 +11,7 @@ public class Player {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 
     public void setNumbers(List<Integer> numbers) {
