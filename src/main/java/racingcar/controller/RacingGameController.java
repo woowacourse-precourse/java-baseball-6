@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import static racingcar.domain.GameResultAnalyzer.findWinners;
 import static racingcar.ui.OutputView.*;
 
 import java.util.ArrayList;
@@ -13,11 +14,15 @@ public class RacingGameController {
 
     public void start() {
         initGame();
+        raceFor(attempt);
+        displayGameResults();
+    }
+
+    private void raceFor(int attempt) {
         printAttemptResultMessage();
-        while (attempt-- > 0) {
+        do {
             race();
-        }
-        gameEndResult();
+        } while (attempt-- >= 0);
     }
 
     private void initGame() {
@@ -39,21 +44,8 @@ public class RacingGameController {
         printAttemptResult(racingCars);
     }
 
-    private void gameEndResult() {
-        List<RacingCar> winners = new ArrayList<>();
-        int maxLocation = 0;
-        for(RacingCar racingCar: racingCars) {
-            if (racingCar.getLocation() > maxLocation) {
-                maxLocation = racingCar.getLocation();
-            }
-        }
-
-        for(RacingCar racingCar: racingCars) {
-            if (racingCar.getLocation() == maxLocation) {
-                winners.add(racingCar);
-            }
-        }
-
+    private void displayGameResults() {
+        List<RacingCar> winners = findWinners(racingCars);
         printGameResult(winners);
     }
 }
