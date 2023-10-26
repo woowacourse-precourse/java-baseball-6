@@ -1,14 +1,14 @@
 package baseball.view;
 
-import baseball.constants.OutputMessage;
+import baseball.constants.Message;
 
 public class OutputView {
     public static void printGameStartMessage() {
-        System.out.println(OutputMessage.GAME_START);
+        System.out.println(Message.GAME_START);
     }
 
     public static void printInputMessage() {
-        System.out.print(OutputMessage.INPUT_PLAYER_NUMBERS);
+        System.out.print(Message.INPUT_PLAYER_NUMBERS);
     }
 
     public static void printResult(String result) {
@@ -16,10 +16,10 @@ public class OutputView {
     }
 
     public static void printAskRestartOrExit() {
-        System.out.println(OutputMessage.RESTART_OR_EXIT);
+        System.out.println(Message.RESTART_OR_EXIT);
     }
 
     public static void printGameExitMessage() {
-        System.out.println(OutputMessage.GAME_EXIT);
+        System.out.println(Message.GAME_EXIT);
     }
 }

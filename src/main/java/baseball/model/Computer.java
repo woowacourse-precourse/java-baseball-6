@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.constants.OutputMessage;
+import baseball.constants.Message;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -79,9 +79,9 @@ public class Computer {
         StringBuilder message = new StringBuilder();
 
         if (isNothing()) {
-            message.append(OutputMessage.NOTHING);
+            message.append(Message.NOTHING);
         } else if (strikeCount == STRIKE_THRESHOLD) {
-            message.append(String.format("3%s%n%s", OutputMessage.STRIKE, OutputMessage.GAME_EXIT));
+            message.append(String.format("3%s%n%s", Message.STRIKE, Message.GAME_EXIT));
         } else {
             message.append(String.format("%s%s%s", makeBallMessage(), makeSeparator(), makeStrikeMessage()));
         }
@@ -94,21 +94,21 @@ public class Computer {
 
     private String makeBallMessage() {
         if (ballCount > NONE) {
-            return ballCount + OutputMessage.BALL.toString();
+            return ballCount + Message.BALL.toString();
         }
         return "";
     }
 
     private String makeStrikeMessage() {
         if (strikeCount > NONE) {
-            return strikeCount + OutputMessage.STRIKE.toString();
+            return strikeCount + Message.STRIKE.toString();
         }
         return "";
     }
 
     private String makeSeparator() {
         if (ballCount > NONE && strikeCount > NONE) {
-            return OutputMessage.BLANK.toString();
+            return Message.BLANK.toString();
         }
         return "";
     }
