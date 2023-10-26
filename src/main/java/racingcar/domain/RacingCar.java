@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public abstract class RacingCar {
+public class RacingCar {
     String name;
     int location;
     RacingCar(String name) {
