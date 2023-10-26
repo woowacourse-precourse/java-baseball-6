@@ -83,14 +83,16 @@ public class Computer {
         if (isNothing()) {
             message.append(OutputMessage.NOTHING);
         } else if (strikeCount == 3) {
-            message.append(3).append(OutputMessage.STRIKE).append(System.lineSeparator())
+            message.append(3).append(OutputMessage.STRIKE)
+                    .append(System.lineSeparator())
                     .append(OutputMessage.GAME_EXIT);
         } else if (strikeCount == 0) {
             message.append(ballCount).append(OutputMessage.BALL);
         } else if (ballCount == 0) {
             message.append(strikeCount).append(OutputMessage.STRIKE);
         } else {
-            message.append(ballCount).append(OutputMessage.BALL).append(" ").append(strikeCount)
+            message.append(ballCount).append(OutputMessage.BALL)
+                    .append(OutputMessage.BLANK).append(strikeCount)
                     .append(OutputMessage.STRIKE);
         }
         return message.toString();
