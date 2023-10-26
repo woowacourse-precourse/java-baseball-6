@@ -61,7 +61,9 @@ public class Computer {
 
             if (isStrike(index, playerNumber)) {
                 addStrikeCount();
-            } else if (isBall(playerNumber)) {
+                continue;
+            }
+            if (isBall(playerNumber)) {
                 addBallCount();
             }
         }
