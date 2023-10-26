@@ -1,6 +1,6 @@
 # 자동차 경주
 
-# 기능 목록
+## 기능 목록
 
 - 게임 세팅
   - [x] 자동차 이름 입력
@@ -19,29 +19,40 @@
   - [x] 자동차 이름 입력
   - [x] 시도할 횟수 입력
 
-# 해야할 일
+## 해야할 일
 
 - [ ] 테스트 코드 추가
-- [ ] 객체지향 생활체조 원칙 적용
-- [ ] 클린코드 원칙 적용
 - [ ] 클래스, 메소드 별 역할 구분
-
-## 클래스 역할
-
-- RacingCar.java : 자동차 추상 클래스
-  - 속성: 이름, 현재 위치
-  - 메소드: 랜덤으로 움직이는 메소드, 이름 반환, 위치 반환
+- [ ] 객체지향 생활체조 원칙 적용
+  - [ ] 한 메소드에 오직 한 단계의 들여쓰기(indent)만 한다.
+  - [ ] else 예약어를 쓰지 않는다.
+  - [ ] 모든 원시값과 문자열을 포장한다.
+  - [ ] 한 줄에 점을 하나만 찍는다.
+  - [ ] 줄여쓰지 않는다(축약 금지).
+  - [ ] 모든 엔티티를 작게 유지한다.
+  - [ ] 3개 이상의 인스턴스 변수를 가진 클래스를 쓰지 않는다.
+  - [ ] 일급 컬렉션을 쓴다.
+  - [ ] 게터/세터/프로퍼티를 쓰지 않는다. 단, DTO는 허용한다.
+  - [ ] 메소드의 인자 수를 최대 3개만 사용한다. 적을 수록 좋다.
+  - [ ] 메소드가 한가지 일만 담당하도록 구현.
+  - [ ] 클래스를 작게 유지하기 위해 노력. 50줄 이상이면 여러가지 일을 동시에 하고 있을 확률이 높다.
+  - [ ] 메서드당 line을 10까지만 허용. 길이가 길어지면 메서드로 분리
+  - [ ] 매직 리터럴 / 매직 넘버 사용을 자제하고 상수 사용
 
 ## 파일 구조
 
-- Application.java
-- controller
-  - RacingGameController.java
-- domain
-  - RacingCar.java
-  - RandomNumberGenerator.java
-  - GameResultAnalyzer.java
-- ui
-  - InputView.java
-  - OutputView.java
-
+```
+racingcar
+├── Application.java
+├── controller
+│   └── RacingGameController.java : 게임 실행
+├── domain
+│   ├── GameResultAnalyzer.java : 게임 결과 분석
+│   ├── RacingCar.java : 자동차 클래스
+│   └── RandomNumberGenerator.java : 무작위 숫자 생성
+├── exception
+│   └── InvalidInputException.java : 유저 입력 예외
+└── ui
+    ├── InputView.java : 화면 출력
+    └── OutputView.java : 유저 입력
+```
