@@ -4,13 +4,23 @@ public class PlayerChoice {
     private int value;
 
     public PlayerChoice(String input) {
-        validateChoice(input);
-        value = Integer.parseInt(input);
+        int inputToIntValue = validateNumeric(input);
+        validateInput(inputToIntValue);
+        value = inputToIntValue;
     }
 
-    private void validateChoice(String input) {
-        int choice = Integer.parseInt(input);
-        if ((choice != 1) && (choice != 2)) {
+    private int validateNumeric(String input) {
+        int intInputValue;
+        try {
+            intInputValue  = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 1 또는 2를 입력해주세요.");
+        }
+        return intInputValue;
+    }
+
+    private void validateInput(int input) {
+        if ((input != 1) && (input != 2)) {
             throw new IllegalArgumentException("[ERROR] 1 또는 2 를 입력해주세요.");
         }
     }
