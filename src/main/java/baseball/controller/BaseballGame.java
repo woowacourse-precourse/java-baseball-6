@@ -25,7 +25,7 @@ public class BaseballGame {
         while (!isExit) {
             getPlayerInput();
             computer.calculateHint(player.getNumbers());
-            OutputView.printResult(computer.getBallCount(), computer.getStrikeCount());
+            OutputView.printResult(computer.makeResult());
             if (isGameExited()) {
                 isExit = restartOrExit();
             }

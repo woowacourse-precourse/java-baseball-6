@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.constants.OutputMessage;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,10 +27,6 @@ public class Computer {
 
     public List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
-    }
-
-    public int getBallCount() {
-        return ballCount;
     }
 
     public int getStrikeCount() {
@@ -74,5 +71,28 @@ public class Computer {
 
     private boolean isStrike(Integer index, Integer playerNumber) {
         return Objects.equals(numbers.get(index), playerNumber);
+    }
+
+    private boolean isNothing() {
+        return strikeCount == 0 && ballCount == 0;
+    }
+
+    public String makeResult() {
+        StringBuilder message = new StringBuilder();
+
+        if (isNothing()) {
+            message.append(OutputMessage.NOTHING);
+        } else if (strikeCount == 3) {
+            message.append(3).append(OutputMessage.STRIKE).append(System.lineSeparator())
+                    .append(OutputMessage.GAME_EXIT);
+        } else if (strikeCount == 0) {
+            message.append(ballCount).append(OutputMessage.BALL);
+        } else if (ballCount == 0) {
+            message.append(strikeCount).append(OutputMessage.STRIKE);
+        } else {
+            message.append(ballCount).append(OutputMessage.BALL).append(" ").append(strikeCount)
+                    .append(OutputMessage.STRIKE);
+        }
+        return message.toString();
     }
 }
