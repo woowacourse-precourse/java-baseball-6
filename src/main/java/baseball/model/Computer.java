@@ -31,11 +31,11 @@ public class Computer {
         return Collections.unmodifiableList(numbers);
     }
 
-    private void addBallCount() {
+    private void increaseBallCount() {
         ballCount++;
     }
 
-    private void addStrikeCount() {
+    private void increaseStrikeCount() {
         strikeCount++;
     }
 
@@ -54,11 +54,11 @@ public class Computer {
             Integer playerNumber = playerNumbers.get(index);
 
             if (isStrike(index, playerNumber)) {
-                addStrikeCount();
+                increaseStrikeCount();
                 continue;
             }
             if (isBall(playerNumber)) {
-                addBallCount();
+                increaseBallCount();
             }
         }
     }
