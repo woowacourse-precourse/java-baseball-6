@@ -60,7 +60,6 @@ public class GameController {
     private Balls generateAnswerBalls() {
         NumberGenerator numberGenerator = RandomNumberGenerator.init();
         BallsGenerator randomBallsGenerator = RandomBallsGenerator.init(numberGenerator);
-        List<Ball> answerBalls = randomBallsGenerator.generateBalls();
-        return Balls.from(answerBalls);
+        return randomBallsGenerator.generateBalls();
     }
 }

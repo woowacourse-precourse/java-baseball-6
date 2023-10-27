@@ -2,9 +2,9 @@ package baseball.domain;
 
 import static baseball.domain.Constant.UPPER_BALL_POSITION;
 import static baseball.domain.Constant.START_BALL_POSITION;
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RandomBallsGenerator implements BallsGenerator {
@@ -25,9 +25,9 @@ public class RandomBallsGenerator implements BallsGenerator {
     }
 
     @Override
-    public List<Ball> generateBalls() {
+    public Balls generateBalls() {
         return IntStream.range(START_BALL_POSITION, UPPER_BALL_POSITION)
             .mapToObj(this::generateBall)
-            .collect(Collectors.toList());
+            .collect(collectingAndThen(toList(), Balls::from));
     }
 }
