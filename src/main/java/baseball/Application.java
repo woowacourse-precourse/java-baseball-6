@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Console;
 final class computer {
     public ArrayList<Integer> data;
     public HashMap<Integer,Boolean> hash;
-
+    
     public computer(){
         ArrayList<Integer> comdata = new ArrayList<>();
         HashMap<Integer,Boolean> comhash = new HashMap<>();
@@ -32,7 +32,8 @@ public class Application {
 
     public static String jud(int s, int b){ 
         String res = "";
-        
+
+
         if(b+s==0) return "낫싱";
         if(b>0) res+=(String.format("%d볼",b));
         if(b > 0 && s > 0) res+=' ';
