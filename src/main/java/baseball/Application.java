@@ -1,7 +1,11 @@
 package baseball;
 
+import static baseball.PlayGame.START_MESSAGE;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        PlayGame play = new PlayGame();
+        System.out.println(START_MESSAGE);
+        play.playBaseball();
     }
 }
