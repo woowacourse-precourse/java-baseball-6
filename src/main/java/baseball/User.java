@@ -16,7 +16,7 @@ public class User {
         System.out.print(MessageConstant.inputNumberMsg);
         answerStr = Console.readLine();
 
-        if (isUserInputValidate()) {
+        if (isUserInputValid()) {
             changeStrToNumList();
             return true;
         }
@@ -39,7 +39,7 @@ public class User {
      *
      * @return 유저가 입력한 문자열이 올바르면 true 아니면 false
      */
-    private static boolean isUserInputValidate() {
+    private static boolean isUserInputValid() {
         return (isUserInputAllNumbers() && answerStr.length() == Application.NUMBER_COUNT);
     }
 
