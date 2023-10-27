@@ -49,6 +49,4 @@ public class InputValidator {
         Set<Integer> ballSet = new HashSet<>(ballList);
         return ballSet.size() != ballList.size();
     }
-
-
 }
