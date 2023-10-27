@@ -9,6 +9,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Game {
+
+    //의존성 주입 여기다 하지말고 인터페이스로 구현해서 다른 곳에서 호출하도록
     private Result result = new Result();
     private Validator validator = new Validator();
     private List<Character> randomNumbers;

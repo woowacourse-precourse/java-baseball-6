@@ -3,7 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Parsing {
+public class Parser {
     private static Validator validator = new Validator();
 
     public static List<Character> parseIntoList(String userInput) {
