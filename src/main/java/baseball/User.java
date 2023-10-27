@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +13,10 @@ public class User {
      * 유저로부터 문자열을 입력받는다.
      */
     public static boolean inputAnswerStr() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(MessageConstant.inputNumberMsg);
         answerStr = Console.readLine();
 
-        if(isUserInputValidate()){
+        if (isUserInputValidate()) {
             changeStrToNumList();
             return true;
         }
@@ -26,7 +25,6 @@ public class User {
 
     /**
      * 문자열에 들어있는 숫자를 뽑아 숫자 리스트 형태로 변환하여 numberList에 저장한다.
-     *
      */
     private static void changeStrToNumList() {
         numberList = new ArrayList<>();
@@ -50,14 +48,16 @@ public class User {
      *
      * @return 유저가 입력한 문자열이 모두 숫자이면 true 아니면 false
      */
-    private static boolean isUserInputAllNumbers(){
+    private static boolean isUserInputAllNumbers() {
         for (int i = 0; i < answerStr.length(); i++) {
-            if (!Character.isDigit(answerStr.charAt(i))) return false;
+            if (!Character.isDigit(answerStr.charAt(i))) {
+                return false;
+            }
         }
         return true;
     }
 
-    public static String getAnswerStr(){
+    public static String getAnswerStr() {
         return answerStr;
     }
 

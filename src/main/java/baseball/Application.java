@@ -11,7 +11,7 @@ public class Application {
     private static Boolean isApplicationEnd = false;
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(MessageConstant.gameStartMsg);
         do {
             // 컴퓨터가 숫자 3개를 고른다.
             List<Integer> computer = chooseNumByComputer();
@@ -20,7 +20,7 @@ public class Application {
             playGameRound(computer);
         } while (!isApplicationEnd);
 
-        System.out.println("숫자 야구 게임 애플리케이션을 종료합니다.");
+        System.out.println(MessageConstant.gameApplicationFinishMsg);
     }
 
     /**
@@ -75,13 +75,13 @@ public class Application {
         Integer ballCount = countBall(computer, user);
 
         if (ballCount > 0) {
-            System.out.print(ballCount.toString() + "볼 ");
+            System.out.print(ballCount.toString() + MessageConstant.ballResultMsg);
         }
         if (strikeCount > 0) {
-            System.out.print(strikeCount.toString() + "스트라이크");
+            System.out.print(strikeCount.toString() + MessageConstant.strikeResultMsg);
         }
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.print("낫싱");
+            System.out.print(MessageConstant.nothingResultMsg);
         }
         System.out.println();
 
@@ -92,7 +92,7 @@ public class Application {
      * 게임 종료 문구를 출력한다.
      */
     private static void printGameOverMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(MessageConstant.gameEndMsg);
     }
 
     /**
@@ -103,13 +103,13 @@ public class Application {
     private static String restartOrFinish() {
         String result;
         while (true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(MessageConstant.gameRestartOrFinishMsg);
             result = Console.readLine();
 
             if (result.equals("1") || result.equals("2")) {
                 break;
             }
-            System.out.print("잘못 입력하셨습니다. 다시 입력해주세요. ");
+            System.out.print(MessageConstant.invalidInputMsg);
         }
         return result;
     }
