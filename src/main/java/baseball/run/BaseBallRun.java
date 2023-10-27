@@ -33,7 +33,7 @@ public class BaseBallRun {
         }
     }
 
-    public boolean playBaseBallGame(RandomNumbers randomNumbers) {
+    private boolean playBaseBallGame(RandomNumbers randomNumbers) {
         InputNumbers inputNumbers = new InputNumbers(baseBallView.inputNumber());
         if (baseBallCompare.compare(randomNumbers, inputNumbers)) {
 
