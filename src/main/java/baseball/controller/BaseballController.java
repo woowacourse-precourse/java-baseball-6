@@ -2,12 +2,10 @@ package baseball.controller;
 
 import baseball.domain.BallNumber;
 import baseball.service.BaseballService;
+import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class BaseballController {
     private final InputView inputView;
@@ -33,7 +31,9 @@ public class BaseballController {
         do {
             tryGame();
             inputStartNewGame = inputView.inputStartNewGame();
-            validateInputStartNewGame(inputStartNewGame);
+            InputValidator.validateInputStartNewGame(inputStartNewGame);
+
+            // 사용자의 입력을 받아서 결과(boolean)을 반환해주는 로직
         } while ("1".equals(inputStartNewGame));
 
     }
@@ -48,7 +48,7 @@ public class BaseballController {
         do {
             // 3자리 숫자 입력 받기
             String inputNumbers = inputView.inputNumbers();
-            validateNumberDuplication(inputNumbers);
+            InputValidator.validateNumberDuplication(inputNumbers);
 
             // 숫자 비교
             List<Integer> result = baseballService.compareNumbers(correctNumber, inputNumbers);
@@ -60,20 +60,5 @@ public class BaseballController {
         } while (strike < 3);
     }
 
-    private void validateInputStartNewGame(final String inputStartNewGame) {
-        if (!"1".equals(inputStartNewGame) && !"2".equals(inputStartNewGame)) {
-            throw new IllegalArgumentException("게임 재시작 여부는 숫자 1, 2만 입력 가능합니다.");
-        }
-    }
 
-    private void validateNumberDuplication(final String inputNumbers) {
-
-        List<String> inputList = Arrays.stream(inputNumbers.split("")).toList();
-
-        Set<String> inputSet = new HashSet<>(inputList);
-
-        if (inputSet.size() != 3) {
-            throw new IllegalArgumentException("중복되지 않는 3자리 숫자만 입력가능합니다.");
-        }
-    }
 }
