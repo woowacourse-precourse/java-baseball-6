@@ -1,12 +1,13 @@
 package baseball.domain;
 
+import static baseball.domain.ErrorMessage.BALL_NUMBER_IS_NOT_IN_RANGE;
+
 import java.util.Objects;
 
 public class Ball {
 
     private static final int UNDER_RANGE = 1;
     private static final int OVER_RANGE = 9;
-    private static final String RANGE_EXCEPTION_MESSAGE = "[ERROR] 입력은 0을 포함할 수 없슴니다.";
     private final int number;
     private final int position;
 
@@ -18,7 +19,7 @@ public class Ball {
 
     private void validateRange(int number) {
         if (!isInRange(number)) {
-            throw new IllegalArgumentException(RANGE_EXCEPTION_MESSAGE);
+            throw new IllegalArgumentException(BALL_NUMBER_IS_NOT_IN_RANGE);
         }
     }
 

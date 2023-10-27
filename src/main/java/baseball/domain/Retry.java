@@ -1,12 +1,13 @@
 package baseball.domain;
 
+import static baseball.domain.ErrorMessage.RETRY_IS_NOT_MATCHED;
+
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public enum Retry {
     RETRY("1"), QUIT("2"), DEFAULT("0");
 
-    private static final String RETRY_FORMAT_EXCEPTION_MESSAGE = "[ERROR] 1 또는 2로 입력해야합니다.";
     private final String retrySymbol;
 
     Retry(String retrySymbol) {
@@ -21,7 +22,7 @@ public enum Retry {
         return Stream.of(values())
             .filter(matchesRetrySymbol(rawRetry))
             .findFirst()
-            .orElseThrow(() -> new IllegalArgumentException(RETRY_FORMAT_EXCEPTION_MESSAGE));
+            .orElseThrow(() -> new IllegalArgumentException(RETRY_IS_NOT_MATCHED));
     }
 
     public boolean isQuit() {

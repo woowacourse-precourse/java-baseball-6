@@ -9,7 +9,6 @@ import java.util.function.Predicate;
 
 public class Balls {
 
-    private static final int BALL_COUNT = 3;
     private final List<Ball> balls;
 
     private Balls(List<Ball> ballList) {
