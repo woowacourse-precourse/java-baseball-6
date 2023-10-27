@@ -39,12 +39,12 @@ public class GameResultTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"STRIKE, NOTHING,NOTHING, false", "NOTHING, NOTHING,NOTHING, true"})
-    void isNothing은_nothing이_아닌게_담겨있는지에_따라_결과를_반환한다(TryResult tryResult1, TryResult tryResult2,
+    @CsvSource(value = {"STRIKE, NOTHING,NOTHING, true", "NOTHING, NOTHING,NOTHING, false"})
+    void hasResult는_nothing이_아닌결과가_하나라도_담겨있는지에_따라_결과를_반환한다(TryResult tryResult1, TryResult tryResult2,
         TryResult tryResult3, boolean isNothing) {
         List<TryResult> tryResults = List.of(tryResult1, tryResult2, tryResult3);
         GameResult gameResult = GameResult.from(tryResults);
-        assertThat(gameResult.isNothing()).isEqualTo(isNothing);
+        assertThat(gameResult.hasResult()).isEqualTo(isNothing);
     }
 
     @ParameterizedTest

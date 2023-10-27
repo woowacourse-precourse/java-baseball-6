@@ -39,4 +39,8 @@ public class GameResult {
     public boolean containsStrike() {
         return tryResults.contains(STRIKE);
     }
+
+    public boolean contains(TryResult tryResult) {
+        return tryResults.contains(tryResult);
+    }
 }

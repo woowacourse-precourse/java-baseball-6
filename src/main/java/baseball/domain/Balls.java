@@ -28,7 +28,7 @@ public class Balls {
         int uniqueBallCount = (int) ballList.stream()
             .distinct()
             .count();
-        return uniqueBallCount < BALL_COUNT;
+        return uniqueBallCount != BALL_COUNT;
     }
 
     public GameResult getTryResultList(Balls playerBalls) {

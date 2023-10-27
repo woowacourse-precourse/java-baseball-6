@@ -36,7 +36,10 @@ public class OutputView {
     }
 
     private String getBallMessage(GameResult gameResult) {
-        String message = gameResult.getCount(BALL) + STRIKE.getMessage();
+        if (!gameResult.contains(BALL)) {
+            return BLANK;
+        }
+        String message = gameResult.getCount(BALL) + BALL.getMessage();
         if (gameResult.containsStrike()) {
             message += SPACE;
         }
@@ -44,14 +47,17 @@ public class OutputView {
     }
 
     private String getStrikeMessage(GameResult gameResult) {
+        if (!gameResult.contains(STRIKE)) {
+            return BLANK;
+        }
         return gameResult.getCount(STRIKE) + STRIKE.getMessage();
     }
 
     private String getNothingMessage(GameResult gameResult) {
-        if (!gameResult.hasResult()) {
-            return NOTHING.getMessage();
+        if (gameResult.hasResult()) {
+            return BLANK;
         }
-        return BLANK;
+        return NOTHING.getMessage();
     }
 
     public void printGameOver() {
