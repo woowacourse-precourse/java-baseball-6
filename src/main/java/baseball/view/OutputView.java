@@ -1,12 +1,11 @@
 package baseball.view;
 
+import baseball.util.Constants;
 import java.util.List;
 
 public class OutputView {
-
-
     public void printGameStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Constants.START_GAME_MESSAGE);
     }
 
     public void printGameResult(final List<Integer> result) {
@@ -15,7 +14,7 @@ public class OutputView {
 
         if (strike == 3) {
             System.out.println("3스트라이크\n"
-                    + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    + Constants.CORRECT_NUMBERS_END_GAME_MESSAGE);
             return;
         }
 
@@ -35,8 +34,5 @@ public class OutputView {
         }
 
         System.out.printf("%d볼 %d스트라이크\n", ball, strike);
-    }
-
-    public void printStartNewGameOrEndGame() {
     }
 }
