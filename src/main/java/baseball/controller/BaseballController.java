@@ -23,7 +23,6 @@ public class BaseballController {
     }
 
     public void start() {
-        // 게임 시작
         outputView.printGameStart();
 
         String inputStartNewGame;
