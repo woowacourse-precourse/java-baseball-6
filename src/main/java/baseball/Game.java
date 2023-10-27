@@ -1,5 +1,10 @@
 package baseball;
 
+import static baseball.GuideMessage.GAME_EXIT_MESSAGE;
+import static baseball.GuideMessage.GAME_START_MESSAGE;
+import static baseball.GuideMessage.INPUT_REQUEST_MESSAGE;
+import static baseball.GuideMessage.RESTART_INPUT_MESSAGE;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -15,17 +20,17 @@ public class Game {
     }
 
     private void start() {
-        System.out.println(GuideMessage.GAME_START);
+        System.out.println(GAME_START_MESSAGE);
 
         resetRandomNumbers();
     }
 
     private void play() {
-        System.out.print(GuideMessage.INPUT_REQUEST);
+        System.out.print(INPUT_REQUEST_MESSAGE);
 
         String userInput = Console.readLine();
 
-        List<Character> userNumbers = Parsing.parseIntoList(userInput);
+        List<Character> userNumbers = Parser.parseIntoList(userInput);
 
         result.calculate(userNumbers, randomNumbers);
 
@@ -37,9 +42,9 @@ public class Game {
     }
 
     private void end() {
-        System.out.println(GuideMessage.GAME_EXIT);
+        System.out.println(GAME_EXIT_MESSAGE);
 
-        System.out.println(GuideMessage.RESTART_INPUT);
+        System.out.println(RESTART_INPUT_MESSAGE);
 
         String restartInput = Console.readLine();
 
