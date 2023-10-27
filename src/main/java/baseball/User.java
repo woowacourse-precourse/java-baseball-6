@@ -44,17 +44,19 @@ public class User {
     }
 
     /**
-     * 유저가 입력한 문장열이 모두 숫자로 이루어졌으면 true return
+     * 유저가 입력한 문장열이 모두 1부터 9까지의 숫자로 이루어졌으면 true return
      *
-     * @return 유저가 입력한 문자열이 모두 숫자이면 true 아니면 false
+     * @return 유저가 입력한 문자열이 모두 1부터 9까지의 숫자이면 true 아니면 false
      */
     private static boolean isUserInputAllNumbers() {
+        // 모두 숫자로 이루어져있는지 확인
         for (int i = 0; i < answerStr.length(); i++) {
             if (!Character.isDigit(answerStr.charAt(i))) {
                 return false;
             }
         }
-        return true;
+        // 1~9까지의 숫자로만 이루어져있는지 확인( == 0이 포함되어 있으면 안된다)
+        return !answerStr.contains("0");
     }
 
     public static List<Integer> getNumberList() {
