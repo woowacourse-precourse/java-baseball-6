@@ -42,9 +42,11 @@ public class Gamemanager {
             this.user.setUserNumbers(Input.userInput());
             this.gameResult = new GameResult(user.getUserNumbers(), computer.getComputerNumbers());
             if (gameResult.isWin()) {
+                System.out.println(gameResult.getResult());
                 Message.printWinMessage();
                 break;
             }
+            System.out.println(gameResult.getResult());
         }
     }
 

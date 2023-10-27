@@ -30,7 +30,7 @@ public class GameResult {
         if (this.strikeCount == 0) {
             return this.ballCount + BALL_TEXT;
         }
-        return this.strikeCount + STRIKE_TEXT + SPACE + this.ballCount + SPACE + BALL_TEXT;
+        return this.ballCount + BALL_TEXT + SPACE + this.strikeCount + STRIKE_TEXT;
     }
 
     private void setBallCount(int[] userNumbers, int[] computerNumbers) {
