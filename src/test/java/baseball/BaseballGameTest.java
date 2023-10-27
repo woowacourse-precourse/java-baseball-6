@@ -15,23 +15,24 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class BaseballGameTest {
+    private BaseballGame baseballGameDefault = new BaseballGame();
 
     @Test
     void init은_객체를_PLAYING상태로_초기화한다() {
         Balls answerBall = Balls.from(DEFAULT_BALLS_123);
-        assertNotNull(BaseballGame.init(answerBall));
+        assertNotNull(baseballGameDefault.init(answerBall));
     }
 
     @Test
     void checkGameWin은_3스트라이크면_게임상태를_WIN으로_바꾼다() {
-        BaseballGame baseballGame = BaseballGame.init(Balls.from(DEFAULT_BALLS_123));
+        BaseballGame baseballGame = baseballGameDefault.init(Balls.from(DEFAULT_BALLS_123));
         GameResult gameresult = GameResult.from(List.of(STRIKE, STRIKE,STRIKE));
         baseballGame.checkGameWin(gameresult);
         assertTrue(baseballGame.isWin());
     }
     @Test
     void checkGameWin은_3스트라이크가_아니면_게임상태를_PLAYING_그대로둔다() {
-        BaseballGame baseballGame = BaseballGame.init(Balls.from(DEFAULT_BALLS_123));
+        BaseballGame baseballGame = baseballGameDefault.init(Balls.from(DEFAULT_BALLS_123));
         GameResult gameresult = GameResult.from(List.of(STRIKE, BALL, STRIKE));
         baseballGame.checkGameWin(gameresult);
         assertTrue(baseballGame.isPlaying());
@@ -39,13 +40,13 @@ public class BaseballGameTest {
 
     @Test
     void retry는_quit가_들어오면_게임상태를_END로_바꾼다() {
-        BaseballGame baseballGame = BaseballGame.init(Balls.from(DEFAULT_BALLS_123));
+        BaseballGame baseballGame = baseballGameDefault.init(Balls.from(DEFAULT_BALLS_123));
         baseballGame.retryOrEnd(QUIT);
         assertTrue(baseballGame.isEnd());
     }
     @Test
     void retry는_retry가_들어오면_게임상태를_PLAYING_그대로둔다() {
-        BaseballGame baseballGame = BaseballGame.init(Balls.from(DEFAULT_BALLS_123));
+        BaseballGame baseballGame = baseballGameDefault.init(Balls.from(DEFAULT_BALLS_123));
         baseballGame.retryOrEnd(RETRY);
         assertTrue(baseballGame.isPlaying());
     }

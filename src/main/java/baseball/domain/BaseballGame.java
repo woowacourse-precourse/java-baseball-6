@@ -1,6 +1,6 @@
 package baseball.domain;
 
-public class BaseballGame {
+public class BaseballGame implements Game {
 
     private Balls answerBall;
     private GameStatus gameStatus;
@@ -13,7 +13,7 @@ public class BaseballGame {
         this.gameStatus = gameStatus;
     }
 
-    public static BaseballGame init(Balls answerBalls) {
+    public BaseballGame init(Balls answerBalls) {
         return new BaseballGame(answerBalls, GameStatus.PLAYING);
     }
 

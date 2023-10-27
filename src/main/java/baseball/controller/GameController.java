@@ -4,6 +4,7 @@ import baseball.domain.Ball;
 import baseball.domain.Balls;
 import baseball.domain.BallsGenerator;
 import baseball.domain.BaseballGame;
+import baseball.domain.Game;
 import baseball.domain.GameResult;
 import baseball.domain.NumberGenerator;
 import baseball.domain.RandomBallsGenerator;
@@ -17,9 +18,9 @@ public class GameController {
 
     private final InputView inputView = InputView.getInstance();
     private final OutputView outputView = OutputView.getInstance();
-    private BaseballGame baseballGame;
+    private Game baseballGame;
 
-    public GameController(BaseballGame baseballGame) {
+    public GameController(Game baseballGame) {
         this.baseballGame = baseballGame;
     }
 
@@ -43,7 +44,7 @@ public class GameController {
 
     private BaseballGame initGame() {
         Balls answerBalls = generateAnswerBalls();
-        return BaseballGame.init(answerBalls);
+        return baseballGame.init(answerBalls);
     }
 
     private void playGame() {
