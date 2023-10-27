@@ -30,4 +30,16 @@ public class InputValidatorTest {
         List<Integer> list = List.of(1,2,3);
         assertDoesNotThrow(() -> InputValidator.validateBallsCount(list));
     }
+
+    @Test
+    void valdateDuplicates는_중복된_숫자가_있으면_예외를_반환한다() {
+        List<Integer> list = List.of(1,2,2);
+        assertThatThrownBy(() -> InputValidator.valdateDuplicates(list))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void valdateDuplicates는_중복된_숫자가_없으면_예외를_반환하지않는다() {
+        List<Integer> list = List.of(1,2,3);
+        assertDoesNotThrow(() -> InputValidator.valdateDuplicates(list));
+    }
 }
