@@ -55,8 +55,4 @@ public class UserNumber {
     public boolean isStrike(final int number, int position) {
         return userNumber.contains(number) && userNumber.get(position) == number;
     }
-
-//    public List<Integer> getUserNumber() {
-//        return Collections.unmodifiableList(userNumber);
-//    }
 }
