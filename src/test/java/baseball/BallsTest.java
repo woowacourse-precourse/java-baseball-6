@@ -30,14 +30,17 @@ public class BallsTest {
         Ball ball1 = Ball.from(1, 1);
         Ball ball2 = Ball.from(2, 2);
         Ball ball3 = Ball.from(3, 3);
+
         Balls balls = Balls.from(List.of(ball1, ball2, ball3));
+
         assertThat(balls.getBalls()).isEqualTo(List.of(ball1, ball2, ball3));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"12", "1234"})
     void 맞지않는_자리수를_입력한_경우_예외를_반환한다(String rawBalls) {
-        List<Integer> rawBallList = InputConvertor.convertBalls(rawBalls);
+        List<Integer> rawBallList = InputConvertor.convertStringToList(rawBalls);
+
         assertThatThrownBy(() -> InputValidator.validateBallsCount(rawBallList))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("3자리의 숫자를 입력해주세요.");
@@ -66,7 +69,9 @@ public class BallsTest {
     void getTryResultList는_공번호와_자리수가_일치하는것에_따라_비교결과를_담은_리스트를_반환한다(int num1, int num2,
         int num3, TryResult result1, TryResult result2, TryResult result3) {
         Balls answerBall = Balls.from(DEFAULT_BALLS_123);
+
         Balls balls = Balls.from(Arrays.asList(Ball.from(1, num1), Ball.from(2, num2), Ball.from(3, num3)));
+
         assertThat(balls.getTryResultList(answerBall).getTryResults()).containsExactly(
             result1, result2, result3);
     }
