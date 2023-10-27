@@ -2,6 +2,10 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameStatus gameStatus = new GameStatus(Output.startGame());
+        GameNumber gameNumber = new GameNumber();
+
+        GamePlayer gamePlayer = new GamePlayer(gameStatus, gameNumber);
+        gamePlayer.playGame();
     }
 }
