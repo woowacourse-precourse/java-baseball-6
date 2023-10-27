@@ -44,7 +44,7 @@ public class BaseballController {
 
         // 3스트라이크가 될 때까지 숫자 입력 반복
         do {
-            String inputNumbers = inputView.inputNumbers();
+            List<Integer> inputNumbers = inputView.inputNumbers();
             InputValidator.validateNumberDuplication(inputNumbers);
 
             List<Integer> result = baseballService.compareNumbers(correctNumber, inputNumbers);

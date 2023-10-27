@@ -29,11 +29,8 @@ public class InputValidator {
         }
     }
 
-    public static void validateNumberDuplication(final String inputNumbers) {
-
-        List<String> inputList = Arrays.stream(inputNumbers.split("")).toList();
-
-        Set<String> inputSet = new HashSet<>(inputList);
+    public static void validateNumberDuplication(final List<Integer> inputNumbers) {
+        Set<Integer> inputSet = new HashSet<>(inputNumbers);
 
         if (inputSet.size() != 3) {
             throw new IllegalArgumentException("중복되지 않는 3자리 숫자만 입력가능합니다.");

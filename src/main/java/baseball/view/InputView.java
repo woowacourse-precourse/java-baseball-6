@@ -4,16 +4,18 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.util.Constants;
 import baseball.validator.InputValidator;
+import java.util.Arrays;
+import java.util.List;
 
 public class InputView {
-    public String inputNumbers() {
+    public List<Integer> inputNumbers() {
         System.out.print(Constants.INPUT_NUMBERS_MESSAGE);
         String input = readLine().trim();
 
         InputValidator.validateInputLength(input);
         InputValidator.validateInputNumber(input);
 
-        return input;
+        return Arrays.stream(input.split("")).map(Integer::parseInt).toList();
     }
 
     public String inputStartNewGame() {

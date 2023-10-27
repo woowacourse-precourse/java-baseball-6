@@ -1,27 +1,21 @@
 package baseball.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BaseballService {
     private List<Integer> result = new ArrayList<>();
 
-    public List<Integer> compareNumbers(final List<Integer> correctNumbers, final String inputNumbers) {
-        // String -> List<Integer>로 변환
-        List<Integer> inputNumbersList = Arrays.stream(inputNumbers.split("")).map(Integer::parseInt).toList();
-
-        List<Integer> matchedNumbers = new ArrayList<>();
-
-        matchedNumbers = matchNumbers(correctNumbers, inputNumbersList);
+    public List<Integer> compareNumbers(final List<Integer> correctNumbers, final List<Integer> inputNumbers) {
+        List<Integer> matchedNumbers = matchNumbers(correctNumbers, inputNumbers);
 
         // 이전 결과 초기화
         result = List.of(0, 0);
 
         // 같은 숫자가 있다면 위치 비교
         if (!matchedNumbers.isEmpty()) {
-            result = matchPosition(matchedNumbers, correctNumbers, inputNumbersList);
+            result = matchPosition(matchedNumbers, correctNumbers, inputNumbers);
         }
 
         return result;
