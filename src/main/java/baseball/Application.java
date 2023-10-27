@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,15 +37,21 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
-            // 이번 라운드 게임 결과 출력 및 숫자를 3개 모두 맞혔을 경우 게임 종료
-            if (printRoundResult(computer, User.getNumberList())) {
-                printGameOverMessage();
-                if (isUserWantFinish()) {
-                    isApplicationEnd = true;
-                }
+            if (isAnwerCorrect(computer)) {
                 break;
             }
         }
+    }
+
+    private static boolean isAnwerCorrect(List<Integer> computer) {
+        if (printRoundResult(computer, User.getNumberList())) {
+            printGameOverMessage();
+            if (isUserWantFinish()) {
+                isApplicationEnd = true;
+            }
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -91,9 +96,7 @@ public class Application {
     }
 
     /**
-     * 게임을 재시작할 지, 종료할 지 유저의 입력을 받는다.
-     * 1. 재시작
-     * 2. 종료
+     * 게임을 재시작할 지, 종료할 지 유저의 입력을 받는다. 1. 재시작 2. 종료
      *
      * @return 유저의 선택(번호)
      */
@@ -103,7 +106,9 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             result = Console.readLine();
 
-            if (result.equals("1") || result.equals("2")) break;
+            if (result.equals("1") || result.equals("2")) {
+                break;
+            }
             System.out.print("잘못 입력하셨습니다. 다시 입력해주세요. ");
         }
         return result;
@@ -137,7 +142,9 @@ public class Application {
     private static Integer countStrike(List<Integer> computer, List<Integer> user) {
         Integer result = 0;
         for (int i = 0; i < computer.size(); i++) {
-            if (computer.get(i).equals(user.get(i))) result++;
+            if (computer.get(i).equals(user.get(i))) {
+                result++;
+            }
         }
         return result;
     }
