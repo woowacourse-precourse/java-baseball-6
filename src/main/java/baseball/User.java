@@ -57,10 +57,6 @@ public class User {
         return true;
     }
 
-    public static String getAnswerStr() {
-        return answerStr;
-    }
-
     public static List<Integer> getNumberList() {
         return numberList;
     }
