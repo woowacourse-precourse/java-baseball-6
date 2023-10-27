@@ -22,9 +22,9 @@ public class BaseballGameController {
 
     private void gameProcess() {
         String input;
+        ComputerNumber computerNumber = new ComputerNumber();
         do {
-            List<Integer> computerNumber = new ComputerNumber().getComputerNumber();
-            compareUserToComputer(computerNumber);
+            compareUserToComputer(computerNumber.getComputerNumber());
             OutputView.printClearMessage();
             input = InputView.inputUserRestartMessage();
         } while (isGameRestart(input));
@@ -36,10 +36,9 @@ public class BaseballGameController {
 
     private void compareUserToComputer(List<Integer> computerNumber) {
         BaseballGameResult gameResult;
-        String input;
         do {
             System.out.println(computerNumber);
-            input = InputView.inputUserNumberMessage();
+            String input = InputView.inputUserNumberMessage();
             gameResult = new BaseballGameResult(computerNumber, new UserNumber(input));
             new OutputView(gameResult).printGameResult();
         } while (!isGameClear(gameResult.strikeCount));
