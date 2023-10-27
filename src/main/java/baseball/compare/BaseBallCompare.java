@@ -67,7 +67,7 @@ public class BaseBallCompare {
             sb.append(strike).append("스트라이크");
         }
 
-        return sb.length() != 0 ? sb.toString() : "낫싱";
+        return sb.length() != 0 ? sb.toString().trim() : "낫싱";
     }
 
     public boolean threeStrikeCheck() {
