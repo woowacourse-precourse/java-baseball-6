@@ -1,5 +1,10 @@
 package baseball.view;
 
+import static baseball.domain.TryResult.BALL;
+import static baseball.domain.TryResult.NOTHING;
+import static baseball.domain.TryResult.STRIKE;
+
+import baseball.domain.BaseballGame;
 import baseball.domain.GameResult;
 import baseball.domain.TryResult;
 
@@ -31,35 +36,20 @@ public class OutputView {
     }
 
     private String getBallMessage(GameResult gameResult) {
-        String ballMessage =  getMessageOf(TryResult.BALL, gameResult);
-        return insertSpace(ballMessage, gameResult);
+        String message = gameResult.getCount(BALL) + STRIKE.getMessage();
+        if (gameResult.containsStrike()) {
+            message += SPACE;
+        }
+        return message;
     }
 
     private String getStrikeMessage(GameResult gameResult) {
-        return getMessageOf(TryResult.STRIKE, gameResult);
-    }
-
-    private String getMessageOf(TryResult tryResult, GameResult gameResult) {
-        if (gameResult.hasResult(tryResult)) {
-            return gameResult.getCount(tryResult) + tryResult.getMessage();
-        }
-        return BLANK;
-    }
-
-    private String insertSpace(String ballMessage, GameResult gameResult) {
-        if (hasBallAndStrike(gameResult)) {
-            return ballMessage + SPACE;
-        }
-        return ballMessage;
-    }
-
-    private boolean hasBallAndStrike(GameResult gameResult) {
-        return gameResult.hasResult(TryResult.BALL) && gameResult.hasResult(TryResult.STRIKE);
+        return gameResult.getCount(STRIKE) + STRIKE.getMessage();
     }
 
     private String getNothingMessage(GameResult gameResult) {
-        if (gameResult.isNothing()) {
-            return TryResult.NOTHING.getMessage();
+        if (!gameResult.hasResult()) {
+            return NOTHING.getMessage();
         }
         return BLANK;
     }

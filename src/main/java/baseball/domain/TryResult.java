@@ -12,4 +12,9 @@ public enum TryResult {
     public String getMessage() {
         return resultName;
     }
+
+    public boolean isBall() {
+        return this.equals(BALL);
+    }
+
 }

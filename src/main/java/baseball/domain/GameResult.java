@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import static baseball.domain.TryResult.BALL;
+import static baseball.domain.TryResult.STRIKE;
+
 import java.util.List;
 
 public class GameResult {
@@ -23,17 +26,17 @@ public class GameResult {
             .allMatch(tryResult -> tryResult == TryResult.STRIKE);
     }
 
-    public boolean hasResult(TryResult tryResult) {
-        return tryResults.contains(tryResult);
+    public boolean hasResult() {
+        return tryResults.contains(TryResult.STRIKE) || tryResults.contains(TryResult.BALL);
     }
 
-    public boolean isNothing() {
-        return !tryResults.contains(TryResult.STRIKE) && !tryResults.contains(TryResult.BALL);
-    }
-
-    public int getCount(TryResult inpuTryResult) {
+    public int getCount(TryResult inputTryResult) {
         return (int) tryResults.stream()
-            .filter(tryResult -> tryResult.equals(inpuTryResult))
+            .filter(tryResult -> tryResult.equals(inputTryResult))
             .count();
+    }
+
+    public boolean containsStrike() {
+        return tryResults.contains(STRIKE);
     }
 }
