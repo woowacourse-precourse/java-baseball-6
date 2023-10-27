@@ -20,13 +20,13 @@ public class Computer {
     }
 
     private void setComputerNumbers() {
-        for (int i = 0; i < 3; i++) {
             HashSet<Integer> numbers = new LinkedHashSet<>();
             while (numbers.size() < 3) {
                 int num = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
+                System.out.println(num);
                 numbers.add(num);
             }
-            computerNumbers = numbers.stream().mapToInt(Integer::intValue).toArray();
-        }
+
+            this.computerNumbers = numbers.stream().mapToInt(Integer::intValue).toArray();
     }
 }
