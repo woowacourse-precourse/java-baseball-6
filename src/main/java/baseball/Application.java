@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Application {
 
-    public final static Integer numberCount = 3;
+    public final static Integer NUMBER_COUNT = 3;
     private static Boolean isApplicationEnd = false;
 
     public static void main(String[] args) {
@@ -85,7 +85,7 @@ public class Application {
         }
         System.out.println();
 
-        return (strikeCount.equals(numberCount));
+        return (strikeCount.equals(NUMBER_COUNT));
     }
 
     /**
@@ -156,7 +156,7 @@ public class Application {
      */
     private static List<Integer> chooseNumByComputer() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < numberCount) {
+        while (computer.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
