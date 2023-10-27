@@ -9,24 +9,13 @@ import java.util.List;
 import java.util.Set;
 
 public class Game {
-    private static final String STARTING_STRING = "숫자 야구 게임을 시작합니다.";
-    private static final String RESTARING_STRING = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final String ENDING_STRING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼 ";
-    private static final String NOTHING = "낫싱";
-    private static final String RESTART = "1";
-    private static final String END = "2";
-    private static final int SIZE = 3;
-    private static final int RANDOM_START = 1;
-    private static final int RANDOM_END = 9;
     private List<Integer> computer = new ArrayList<>();
     private List<Integer> player = new ArrayList<>();
     private boolean correctFlag = false;
     User user = new User();
 
     public void gameStart() {
-        System.out.println(STARTING_STRING);
+        System.out.println(GameConstant.STARTING_STRING.getStringValue());
         computer = randomNumber();
         while (!correctFlag) {
             player = user.getNumber();
@@ -36,20 +25,22 @@ public class Game {
 
     private List<Integer> randomNumber() {
         Set<Integer> computer = new HashSet<>();
-        while (computer.size() < SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(RANDOM_START, RANDOM_END);
+        while (computer.size() < GameConstant.SIZE.getIntValue()) {
+            int randomNumber = Randoms.pickNumberInRange(
+                    GameConstant.RANDOM_START.getIntValue(), GameConstant.RANDOM_END.getIntValue()
+            );
             computer.add(randomNumber);
         }
         return new ArrayList<>(computer);
     }
 
     private void reset() {
-        System.out.println(RESTARING_STRING);
+        System.out.println(GameConstant.RESTARING_STRING.getStringValue());
         String input = Console.readLine();
 
-        if (input.equals(RESTART)) {
+        if (input.equals(GameConstant.RESTART.getStringValue())) {
             gameStart();
-        } else if (input.equals(END)) {
+        } else if (input.equals(GameConstant.END.getStringValue())) {
             correctFlag = true;
         } else {
             throw new IllegalArgumentException();
@@ -72,18 +63,18 @@ public class Game {
 
     private void displayScore(int strikes, int balls) {
         if (strikes == 0 && balls == 0) {
-            System.out.println(NOTHING);
+            System.out.println(GameConstant.NOTHING.getStringValue());
             return;
         }
 
         StringBuilder scoreMessage = new StringBuilder();
 
         if (balls > 0) {
-            scoreMessage.append(balls).append(BALL);
+            scoreMessage.append(balls).append(GameConstant.BALL.getStringValue());
         }
 
         if (strikes > 0) {
-            scoreMessage.append(strikes).append(STRIKE);
+            scoreMessage.append(strikes).append(GameConstant.STRIKE.getStringValue());
         }
 
         System.out.println(scoreMessage.toString().trim());
@@ -95,8 +86,8 @@ public class Game {
         int balls = score.get(1);
         displayScore(strikes, balls);
 
-        if (strikes == SIZE) {
-            System.out.println(ENDING_STRING);
+        if (strikes == GameConstant.SIZE.getIntValue()) {
+            System.out.println(GameConstant.ENDING_STRING.getStringValue());
             reset();
         }
     }

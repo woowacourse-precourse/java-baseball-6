@@ -7,11 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 public class User {
-    private static final String INPUT_STRING = "숫자를 입력해주세요 : ";
-    private static final int SIZE = 3;
 
     public List<Integer> getNumber() {
-        System.out.print(INPUT_STRING);
+        System.out.print(GameConstant.INPUT_STRING.getStringValue());
         String input = Console.readLine();
 
         if (!isValidInput(input)) {
@@ -29,7 +27,7 @@ public class User {
     }
 
     private boolean isValidInput(String input) {
-        if (input == null || input.length() != SIZE) {
+        if (input == null || input.length() != GameConstant.SIZE.getIntValue()) {
             return false;
         }
 
