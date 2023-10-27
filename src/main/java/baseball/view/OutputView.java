@@ -28,12 +28,15 @@ public class OutputView {
         if (gameResult.ballCount == Constant.ZERO_NUMBER && gameResult.strikeCount != Constant.ZERO_NUMBER) {
             System.out.println(gameResult.strikeCount + STRIKE_MESSAGE);
         }
+
         if (gameResult.ballCount != Constant.ZERO_NUMBER && gameResult.strikeCount == Constant.ZERO_NUMBER) {
             System.out.println(gameResult.ballCount + BALL_MESSAGE);
         }
+
         if (gameResult.ballCount != Constant.ZERO_NUMBER && gameResult.strikeCount != Constant.ZERO_NUMBER) {
             System.out.println(gameResult.ballCount + BALL_MESSAGE + gameResult.strikeCount + STRIKE_MESSAGE);
         }
+
         if (gameResult.ballCount == Constant.ZERO_NUMBER && gameResult.strikeCount == Constant.ZERO_NUMBER) {
             System.out.println(NOTHING_MESSAGE);
         }

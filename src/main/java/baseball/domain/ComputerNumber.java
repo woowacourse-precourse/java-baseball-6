@@ -27,7 +27,8 @@ public class ComputerNumber {
     }
 
     private boolean validateRandomNumberRange(List<Integer> randomNumbs) {
-        return randomNumbs.stream().anyMatch(num -> Constant.START_NUMBER <= num && num <= Constant.END_NUMBER);
+        return randomNumbs.stream()
+                .anyMatch(num -> Constant.START_NUMBER <= num && num <= Constant.END_NUMBER);
     }
 
     public List<Integer> getComputerNumber() {

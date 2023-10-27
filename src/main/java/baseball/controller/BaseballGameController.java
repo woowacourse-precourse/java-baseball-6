@@ -27,10 +27,10 @@ public class BaseballGameController {
             compareUserToComputer(computerNumber);
             OutputView.printClearMessage();
             input = InputView.inputUserRestartMessage();
-        } while (validateGameRestart(input));
+        } while (isGameRestart(input));
     }
 
-    private boolean validateGameRestart(String input) {
+    private boolean isGameRestart(String input) {
         return input.equals(Constant.GAME_RESTART_NUMBER);
     }
 
@@ -42,10 +42,10 @@ public class BaseballGameController {
             input = InputView.inputUserNumberMessage();
             gameResult = new BaseballGameResult(computerNumber, new UserNumber(input));
             new OutputView(gameResult).printGameResult();
-        } while (!validateGameClear(gameResult.strikeCount));
+        } while (!isGameClear(gameResult.strikeCount));
     }
 
-    private boolean validateGameClear(int strikeCount) {
+    private boolean isGameClear(int strikeCount) {
         return strikeCount == CLEAR_NUMBER;
     }
 }
