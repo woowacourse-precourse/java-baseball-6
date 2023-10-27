@@ -28,7 +28,7 @@ public class Computer {
 
     public boolean isCorrect(String playerNum) {
         int[] result = checkNum(playerNum);
-        if (result[1] == 3) {
+        if (result[1] == NUM_SIZE) {
             return true;
         }
         printResult(result[0], result[1]);
