@@ -8,6 +8,7 @@ public class OutputView {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GAMEOVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String BLANK = "";
+    private static final String SPACE = " ";
     private static OutputView instance;
 
     public static OutputView getInstance() {
@@ -23,11 +24,19 @@ public class OutputView {
 
     public void printResult(GameResult gameResult) {
         StringBuilder result = new StringBuilder();
-        result.append(getMessageOf(TryResult.BALL, gameResult));
-        result.append(insertSpace(gameResult));
-        result.append(getMessageOf(TryResult.STRIKE, gameResult));
+        result.append(getBallMessage(gameResult));
+        result.append(getStrikeMessage(gameResult));
         result.append(getNothingMessage(gameResult));
         System.out.println(result);
+    }
+
+    private String getBallMessage(GameResult gameResult) {
+        String ballMessage =  getMessageOf(TryResult.BALL, gameResult);
+        return insertSpace(ballMessage, gameResult);
+    }
+
+    private String getStrikeMessage(GameResult gameResult) {
+        return getMessageOf(TryResult.STRIKE, gameResult);
     }
 
     private String getMessageOf(TryResult tryResult, GameResult gameResult) {
@@ -37,11 +46,15 @@ public class OutputView {
         return BLANK;
     }
 
-    private String insertSpace(GameResult gameResult) {
-        if (gameResult.hasResult(TryResult.BALL) && gameResult.hasResult(TryResult.STRIKE)) {
-            return " ";
+    private String insertSpace(String ballMessage, GameResult gameResult) {
+        if (hasBallAndStrike(gameResult)) {
+            return ballMessage + SPACE;
         }
-        return BLANK;
+        return ballMessage;
+    }
+
+    private boolean hasBallAndStrike(GameResult gameResult) {
+        return gameResult.hasResult(TryResult.BALL) && gameResult.hasResult(TryResult.STRIKE);
     }
 
     private String getNothingMessage(GameResult gameResult) {
