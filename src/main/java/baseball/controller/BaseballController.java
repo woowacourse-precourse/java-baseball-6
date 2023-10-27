@@ -34,7 +34,6 @@ public class BaseballController {
             inputStartNewGame = inputView.inputStartNewGame();
             InputValidator.validateInputStartNewGame(inputStartNewGame);
 
-            // 사용자의 입력을 받아서 결과(boolean)을 반환해주는 로직
         } while (Constants.START_NEW_GAME_NUMBER.equals(inputStartNewGame));
     }
 
