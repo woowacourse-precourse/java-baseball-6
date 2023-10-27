@@ -17,6 +17,11 @@ public class GameController {
 
     private final InputView inputView = InputView.getInstance();
     private final OutputView outputView = OutputView.getInstance();
+    private BaseballGame baseballGame;
+
+    public GameController(BaseballGame baseballGame) {
+        this.baseballGame = baseballGame;
+    }
 
     public void start() {
         outputView.printStart();
@@ -24,17 +29,16 @@ public class GameController {
     }
 
     private void run() {
-        BaseballGame baseballGame;
         do {
             baseballGame = initGame();
-            playGame(baseballGame);
+            playGame();
             Retry retry = inputView.scanRetry();
-            retryGame(baseballGame, retry);
+            retryOrEndGame(retry);
         } while (!baseballGame.isEnd());
     }
 
-    private void retryGame(BaseballGame baseballGame, Retry retry) {
-        baseballGame.retry(retry);
+    private void retryOrEndGame(Retry retry) {
+        baseballGame.retryOrEnd(retry);
     }
 
     private BaseballGame initGame() {
@@ -42,7 +46,7 @@ public class GameController {
         return BaseballGame.init(answerBalls);
     }
 
-    private void playGame(BaseballGame baseballGame) {
+    private void playGame() {
         while (baseballGame.isPlaying()) {
             Balls playerBalls = inputView.scanBalls();
             GameResult gameResult = baseballGame.getTryResultList(playerBalls);

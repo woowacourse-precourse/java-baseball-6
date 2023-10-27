@@ -2,8 +2,11 @@ package baseball.domain;
 
 public class BaseballGame {
 
-    private final Balls answerBall;
+    private Balls answerBall;
     private GameStatus gameStatus;
+
+    public BaseballGame() {
+    }
 
     private BaseballGame(Balls answerBalls, GameStatus gameStatus) {
         this.answerBall = answerBalls;
@@ -24,7 +27,7 @@ public class BaseballGame {
         }
     }
 
-    public void retry(Retry retry) {
+    public void retryOrEnd(Retry retry) {
         if (retry.isQuit()) {
             gameStatus = GameStatus.END;
         }

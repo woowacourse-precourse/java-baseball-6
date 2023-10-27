@@ -40,13 +40,13 @@ public class BaseballGameTest {
     @Test
     void retry는_quit가_들어오면_게임상태를_END로_바꾼다() {
         BaseballGame baseballGame = BaseballGame.init(Balls.from(DEFAULT_BALLS_123));
-        baseballGame.retry(QUIT);
+        baseballGame.retryOrEnd(QUIT);
         assertTrue(baseballGame.isEnd());
     }
     @Test
     void retry는_retry가_들어오면_게임상태를_PLAYING_그대로둔다() {
         BaseballGame baseballGame = BaseballGame.init(Balls.from(DEFAULT_BALLS_123));
-        baseballGame.retry(RETRY);
+        baseballGame.retryOrEnd(RETRY);
         assertTrue(baseballGame.isPlaying());
     }
 }
