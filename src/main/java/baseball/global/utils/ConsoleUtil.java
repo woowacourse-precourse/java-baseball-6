@@ -1,6 +1,6 @@
 package baseball.global.utils;
 
-import baseball.global.constant.Common;
+import baseball.global.constant.CommonNumberType;
 import baseball.global.constant.OutputType;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -64,19 +64,19 @@ public class ConsoleUtil {
     }
 
     private static boolean existsStrike(int strike) {
-        return strike != Common.ZERO_COUNT.getNumber();
+        return strike != CommonNumberType.ZERO_COUNT.getValue();
     }
 
     private static boolean existsBall(int ball) {
-        return ball != Common.ZERO_COUNT.getNumber();
+        return ball != CommonNumberType.ZERO_COUNT.getValue();
     }
 
     private static boolean isGameEnd(int strike) {
-        return strike == Common.MAXIMUM_COUNT.getNumber();
+        return strike == CommonNumberType.MAXIMUM_COUNT.getValue();
     }
 
     private static boolean isNothing(int ball, int strike) {
-        return strike == Common.ZERO_COUNT.getNumber() && ball == Common.ZERO_COUNT.getNumber();
+        return strike == CommonNumberType.ZERO_COUNT.getValue() && ball == CommonNumberType.ZERO_COUNT.getValue();
     }
 
 }
