@@ -1,6 +1,5 @@
 package baseball.global.utils.validator;
 
-import baseball.global.constant.Common;
 import baseball.global.constant.OutputType;
 
 public class RestartInputValidator implements InputValidator {
