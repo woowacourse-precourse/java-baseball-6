@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.domain.service.ClientService;
 import baseball.global.constant.CommonNumberType;
 import baseball.global.utils.generator.NumberGenerator;
 
