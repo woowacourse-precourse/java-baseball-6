@@ -3,6 +3,7 @@ package baseball.view;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.BaseballGameResult;
+import baseball.domain.UserNumber;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
@@ -28,9 +29,9 @@ class OutputViewTest {
     @Test
     void 게임_결과_볼_출력_확인() {
         List<Integer> computerNumbs = List.of(1, 2, 3);
-        List<Integer> userNumbs = List.of(2, 3, 1);
+        String input = "231";
 
-        BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, userNumbs);
+        BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, new UserNumber(input));
         new OutputView(gameResult).printGameResult();
         String output = "3볼 \n";
 
@@ -40,9 +41,9 @@ class OutputViewTest {
     @Test
     void 게임_결과_스트라이크_출력_확인() {
         List<Integer> computerNumbs = List.of(1, 2, 3);
-        List<Integer> userNumbs = List.of(1, 2, 3);
+        String input = "123";
 
-        BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, userNumbs);
+        BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, new UserNumber(input));
         new OutputView(gameResult).printGameResult();
         String output = "3스트라이크\n";
 
@@ -52,9 +53,9 @@ class OutputViewTest {
     @Test
     void 게임_결과_볼_스트라이크_출력_확인() {
         List<Integer> computerNumbs = List.of(1, 2, 3);
-        List<Integer> userNumbs = List.of(1, 3, 5);
+        String input = "135";
 
-        BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, userNumbs);
+        BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, new UserNumber(input));
         new OutputView(gameResult).printGameResult();
         String output = "1볼 1스트라이크\n";
 
@@ -64,9 +65,9 @@ class OutputViewTest {
     @Test
     void 게임_결과_낫싱_출력_확인() {
         List<Integer> computerNumbs = List.of(1, 2, 3);
-        List<Integer> userNumbs = List.of(9, 8, 7);
+        String input = "987";
 
-        BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, userNumbs);
+        BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, new UserNumber(input));
         new OutputView(gameResult).printGameResult();
         String output = "낫싱\n";
 

@@ -2,7 +2,6 @@ package baseball.domain;
 
 import baseball.constant.Constant;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class UserNumber {
@@ -49,7 +48,15 @@ public class UserNumber {
         }
     }
 
-    public List<Integer> getUserNumber() {
-        return Collections.unmodifiableList(userNumber);
+    public boolean isBall(final int number, int position) {
+        return userNumber.contains(number) && userNumber.get(position) != number;
     }
+
+    public boolean isStrike(final int number, int position) {
+        return userNumber.contains(number) && userNumber.get(position) == number;
+    }
+
+//    public List<Integer> getUserNumber() {
+//        return Collections.unmodifiableList(userNumber);
+//    }
 }

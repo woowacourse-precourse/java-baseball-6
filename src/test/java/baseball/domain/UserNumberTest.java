@@ -11,9 +11,16 @@ class UserNumberTest {
     @Test
     void 입력_값_정상_작동_테스트() {
         String input = "124";
-        List<Integer> userNumbs = new UserNumber(input).getUserNumber();
-        List<Integer> userNumbsList = List.of(1, 2, 4);
-        assertThat(userNumbs).isEqualTo(userNumbsList);
+        UserNumber userNumbs = new UserNumber(input);
+        List<Integer> computerNumbs = List.of(4, 2, 1);
+
+        assertThat(userNumbs.isBall(computerNumbs.get(0), 0)).isTrue();
+        assertThat(userNumbs.isBall(computerNumbs.get(1), 1)).isFalse();
+        assertThat(userNumbs.isBall(computerNumbs.get(2), 2)).isTrue();
+
+        assertThat(userNumbs.isStrike(computerNumbs.get(0), 0)).isFalse();
+        assertThat(userNumbs.isStrike(computerNumbs.get(1), 1)).isTrue();
+        assertThat(userNumbs.isStrike(computerNumbs.get(2), 2)).isFalse();
     }
 
     @Test

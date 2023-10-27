@@ -36,10 +36,11 @@ public class BaseballGameController {
 
     private void compareUserToComputer(List<Integer> computerNumber) {
         BaseballGameResult gameResult;
+        String input;
         do {
-            String input = InputView.inputUserNumberMessage();
-            List<Integer> userNumber = new UserNumber(input).getUserNumber();
-            gameResult = new BaseballGameResult(computerNumber, userNumber);
+            System.out.println(computerNumber);
+            input = InputView.inputUserNumberMessage();
+            gameResult = new BaseballGameResult(computerNumber, new UserNumber(input));
             new OutputView(gameResult).printGameResult();
         } while (!validateGameClear(gameResult.strikeCount));
     }
