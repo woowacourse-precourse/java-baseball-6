@@ -1,13 +1,14 @@
 package baseball.domain;
 
+import static baseball.domain.Constant.UPPER_BALL_POSITION;
+import static baseball.domain.Constant.START_BALL_POSITION;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RandomBallsGenerator implements BallsGenerator {
 
-    private static final int FIRST_POSITION_NUMBER = 1;
-    private static final int END_POSITION_NUMBER = 4;
     private final NumberGenerator numberGenerator;
 
     public RandomBallsGenerator(NumberGenerator numberGenerator) {
@@ -25,7 +26,7 @@ public class RandomBallsGenerator implements BallsGenerator {
 
     @Override
     public List<Ball> generateBalls() {
-        return IntStream.range(FIRST_POSITION_NUMBER, END_POSITION_NUMBER)
+        return IntStream.range(START_BALL_POSITION, UPPER_BALL_POSITION)
             .mapToObj(this::generateBall)
             .collect(Collectors.toList());
     }

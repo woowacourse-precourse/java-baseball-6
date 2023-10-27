@@ -1,5 +1,7 @@
 package baseball.view;
 
+import static baseball.domain.Constant.BLANK;
+import static baseball.domain.Constant.SPACE;
 import static baseball.domain.TryResult.BALL;
 import static baseball.domain.TryResult.NOTHING;
 import static baseball.domain.TryResult.STRIKE;
@@ -12,8 +14,6 @@ public class OutputView {
 
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GAMEOVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String BLANK = "";
-    private static final String SPACE = " ";
     private static OutputView instance;
 
     public static OutputView getInstance() {

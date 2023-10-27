@@ -1,13 +1,14 @@
 package baseball.domain;
 
+import static baseball.domain.Constant.MAXIMUM_BALL_NUMBER;
+import static baseball.domain.Constant.MININUM_BALL_NUMBER;
 import static baseball.domain.ErrorMessage.BALL_NUMBER_IS_NOT_IN_RANGE;
 
 import java.util.Objects;
 
 public class Ball {
 
-    private static final int UNDER_RANGE = 1;
-    private static final int OVER_RANGE = 9;
+
     private final int number;
     private final int position;
 
@@ -34,7 +35,7 @@ public class Ball {
     }
 
     private boolean isInRange(int number) {
-        return UNDER_RANGE <= number  && number <= OVER_RANGE;
+        return MININUM_BALL_NUMBER <= number  && number <= MAXIMUM_BALL_NUMBER;
     }
 
     public boolean isSameNumber(Ball answerBall) {

@@ -1,5 +1,7 @@
 package baseball.util;
 
+import static baseball.domain.Constant.BALLS_LENGTH;
+import static baseball.domain.Constant.NUMBER_FORMAT;
 import static baseball.domain.ErrorMessage.BALL_NUMBER_IS_NOT_NUMBER;
 import static baseball.domain.ErrorMessage.BALL_NUMBER_IS_DUPLICATED;
 import static baseball.domain.ErrorMessage.BALL_NUMBER_SIZE_IS_NOT_MATCHED;
@@ -9,10 +11,6 @@ import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
-
-    private static final int BALL_COUNT = 3;
-    private static final String NUMBER_FORMAT = "\\d+";
-
 
     public static void validateBalls(String rawBalls) {
         validateNumber(rawBalls);
@@ -38,7 +36,7 @@ public class InputValidator {
     }
 
     private static boolean hasThreeDigits(List<Integer> ballList) {
-        return ballList.size() == BALL_COUNT;
+        return ballList.size() == BALLS_LENGTH;
     }
 
     public static void valdateDuplicates(List<Integer> rawBallList) {

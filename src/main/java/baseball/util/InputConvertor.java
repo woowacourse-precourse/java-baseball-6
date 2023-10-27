@@ -1,5 +1,6 @@
 package baseball.util;
 
+import static baseball.domain.Constant.BLANK;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
@@ -12,7 +13,6 @@ import java.util.stream.IntStream;
 
 public class InputConvertor {
 
-    private static final String BLANK = "";
 
     public static List<Integer> convertStringToList(String rawBalls) {
         String[] rawBallStrings = rawBalls.split(BLANK);
