@@ -44,13 +44,12 @@ public class NumberBaseballGame {
     }
 
     public void gameLoop() {
-        while (true) {
+        this.computer.resetNumber();
+        int[] score;
+        do {
             System.out.print("숫자를 입력해주세요 : ");
-            int[] score = this.computer.getResult(UserInput.getUserNumber());
+            score = this.computer.getResult(UserInput.getUserNumber());
             printGameResult(score);
-            if (gameOver(score)) {
-                break;
-            }
-        }
+        } while (!gameOver(score));
     }
 }
