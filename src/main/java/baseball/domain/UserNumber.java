@@ -31,7 +31,7 @@ public class UserNumber {
     }
 
     private void validateUserNumberLength(List<Integer> userNum) {
-        if (userNum.size() != Constant.ZERO_NUMBER && userNum.size() != Constant.LENGTH_LIMIT) {
+        if (!userNum.isEmpty() && userNum.size() != Constant.LENGTH_LIMIT) {
             throw new IllegalArgumentException();
         }
     }
