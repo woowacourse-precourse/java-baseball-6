@@ -50,7 +50,7 @@ class BaseballGameResultTest {
     @Test
     void 결과_계산_볼_셋_스트라이크_없음() {
         List<Integer> computerNumbs = List.of(3, 5, 2);
-        String input = "525";
+        String input = "523";
 
         BaseballGameResult gameResult = new BaseballGameResult(computerNumbs, new UserNumber(input));
         assertThat(gameResult.ballCount).isEqualTo(3);
