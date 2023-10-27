@@ -14,7 +14,6 @@ public class BaseballService {
 
         List<Integer> matchedNumbers = new ArrayList<>();
 
-        // 같은 숫자가 있는지 비교
         matchedNumbers = matchNumbers(correctNumbers, inputNumbersList);
 
         // 이전 결과 초기화
