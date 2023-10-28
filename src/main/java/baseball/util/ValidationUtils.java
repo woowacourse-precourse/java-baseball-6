@@ -1,16 +1,14 @@
 package baseball.util;
 
+import baseball.constant.StringPattern;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ValidationUtils {
-    private static final Pattern pattern = Pattern.compile("^[1-9]{3}$");
-
     private ValidationUtils() {
     }
 
     public static void validateInput(String inputValue) {
-        Matcher matcher = pattern.matcher(inputValue);
+        Matcher matcher = StringPattern.INPUT_PATTERN.matcher(inputValue);
         if (!(matcher.matches())) {
             throw new IllegalArgumentException("1~9 사이의 세 개의 숫자를 입력해주세요.");
         }

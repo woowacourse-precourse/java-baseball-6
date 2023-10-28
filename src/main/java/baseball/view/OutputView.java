@@ -4,8 +4,8 @@ import static baseball.enums.Message.END_MESSAGE;
 import static baseball.enums.Message.NOTHING;
 import static baseball.util.PrintUtils.println;
 
-import baseball.model.Score;
 import baseball.enums.Message;
+import baseball.model.Score;
 import baseball.util.PrintUtils;
 
 public class OutputView {
