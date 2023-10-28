@@ -3,48 +3,53 @@ package baseball.dto;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class ThreeIntegers {
-    List<Integer> integers;
+    private final List<Integer> integers;
 
-    private ThreeIntegers() {
+    private ThreeIntegers(List<Integer> integers) {
+        Objects.requireNonNull(integers);
+
+        this.integers = integers;
     }
 
-    public ThreeIntegers(List<Integer> integers) {
-        this.integers = integers;
+    private ThreeIntegers(String inputValue) {
+        Objects.requireNonNull(inputValue);
+        this.integers = Arrays.stream(inputValue.split(""))
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
     }
 
     public static ThreeIntegers createRandomThreeIntegers() {
         List<Integer> pickedIntegers = new ArrayList<>();
         while (pickedIntegers.size() < 3) {
             int pickedInteger = pickNumberInRange(1, 9);
-            if (!pickedIntegers.contains(pickedInteger)) {
-                pickedIntegers.add(pickedInteger);
-            }
+            addRandomUniqueInteger(pickedIntegers, pickedInteger);
         }
         return new ThreeIntegers(pickedIntegers);
     }
 
-    public List<Integer> getIntegers() {
-        return integers;
+    private static void addRandomUniqueInteger(List<Integer> pickedIntegers, int pickedInteger) {
+        Objects.requireNonNull(pickedIntegers);
+
+        if (!pickedIntegers.contains(pickedInteger)) {
+            pickedIntegers.add(pickedInteger);
+        }
     }
 
     public Score calculateScoreFrom(String inputValue) {
-        Score score = Score.builder().build();
+        Objects.requireNonNull(inputValue);
 
-        for (int i = 0; i < inputValue.length(); i++) {
-            for (int j = 0; j < this.integers.size(); j++) {
-                if (inputValue.charAt(i) == this.integers.get(j).toString().charAt(0) && i == j) {
-                    score.increaseStrikeCount();
-                    break;
-                }
+        List<Integer> inputIntegers = new ThreeIntegers(inputValue).getIntegers();
 
-                if (inputValue.charAt(i) == this.integers.get(j).toString().charAt(0)) {
-                    score.increaseBallCount();
-                }
-            }
-        }
-        return score;
+        return Score.from(inputIntegers, integers);
+    }
+
+    private List<Integer> getIntegers() {
+        return integers;
     }
 }
