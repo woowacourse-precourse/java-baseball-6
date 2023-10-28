@@ -13,4 +13,8 @@ public enum GameOverSignal {
     public String getNumber() {
         return value;
     }
+
+    public static boolean isNotFinished(String input) {
+        return !FINISH.value.equals(input);
+    }
 }

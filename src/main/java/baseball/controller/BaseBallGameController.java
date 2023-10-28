@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import static baseball.enums.GameOverSignal.FINISH;
 import static baseball.enums.Message.END_MESSAGE;
 import static baseball.enums.Message.GAME_END_PROMPT;
 import static baseball.enums.Message.INPUT_NUMBER_PROMPT;
@@ -14,6 +13,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import baseball.dto.Score;
+import baseball.enums.GameOverSignal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,6 +100,6 @@ public class BaseBallGameController {
     private static void askIfContinue() {
         printMessage(GAME_END_PROMPT);
 
-        isGameToBeContinued = !readLine().equals(FINISH.getNumber());
+        isGameToBeContinued = GameOverSignal.isNotFinished(readLine());
     }
 }
