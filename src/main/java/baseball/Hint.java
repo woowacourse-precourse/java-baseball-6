@@ -5,6 +5,7 @@ import java.util.List;
 public class Hint {
     public int ballCount = 0;
     public int strikeCount = 0;
+    public static final int endCount = 3;
 
     public void checkBall(List<Integer> computer, List<Integer> user) {
         for (int i = 0; i < user.size(); i++) {
@@ -28,7 +29,7 @@ public class Hint {
     }
 
     public boolean checkEndGame() {
-        if (strikeCount == 3) {
+        if (strikeCount == endCount) {
             return true;
         }
         return false;
