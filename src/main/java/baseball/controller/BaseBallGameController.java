@@ -26,22 +26,26 @@ public class BaseBallGameController {
         do {
             ThreeIntegers pickedThreeIntegers = ThreeIntegers.createRandomThreeIntegers();
 
-            while (true) {
-                printMessage(INPUT_NUMBER_PROMPT);
-
-                String inputValue = getInputValue();
-                Score score = pickedThreeIntegers.calculateScoreFrom(inputValue);
-
-                printScoreBoardMessageFrom(score);
-                printIfStrikeOutFrom(score);
-
-                if (score.isStrikeOut()) {
-                    break;
-                }
-            }
+            playGameFrom(pickedThreeIntegers);
             askIfContinue();
         } while (isGameToBeContinued);
         close();
+    }
+
+    private static void playGameFrom(ThreeIntegers pickedThreeIntegers) {
+        while (true) {
+            printMessage(INPUT_NUMBER_PROMPT);
+
+            String inputValue = getInputValue();
+            Score score = pickedThreeIntegers.calculateScoreFrom(inputValue);
+
+            printScoreBoardMessageFrom(score);
+            printIfStrikeOutFrom(score);
+
+            if (score.isStrikeOut()) {
+                break;
+            }
+        }
     }
 
     private static String getInputValue() {
