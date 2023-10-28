@@ -1,9 +1,9 @@
 package baseball.controller;
 
-import baseball.Hint;
 import baseball.model.ComputerNumber;
 import baseball.model.ReplayNumber;
 import baseball.model.UserNumber;
+import baseball.service.Hint;
 import baseball.view.Input;
 import baseball.view.Output;
 import java.util.List;
@@ -31,21 +31,21 @@ public class PlayGame {
                 strikeCount = hint.strikeCount;
 
                 ballCount -= strikeCount;
-                if (ballCount == 0 && strikeCount != 0) {
+                if (isStrike(ballCount, strikeCount) == 1) {
                     output.printCount(strikeCount);
                     output.printStrike();
                 }
-                if (ballCount != 0 && strikeCount == 0) {
+                if (isStrike(ballCount, strikeCount) == 2) {
                     output.printCount(ballCount);
                     output.printBall();
                 }
-                if (ballCount != 0 && strikeCount != 0) {
+                if (isStrike(ballCount, strikeCount) == 3) {
                     output.printCount(ballCount);
                     output.printBallAndStrike();
                     output.printCount(strikeCount);
                     output.printStrike();
                 }
-                if (ballCount == 0 && strikeCount == 0) {
+                if (isStrike(ballCount, strikeCount) == 4) {
                     output.printNothing();
                 }
                 checkEndGame = hint.checkEndGame();
@@ -57,5 +57,21 @@ public class PlayGame {
                 throw new IllegalArgumentException();
             }
         } while (checkReplayGame.checkReplay(newGame));
+    }
+
+    public static int isStrike(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount != 0) {
+            return 1;
+        }
+        if (ballCount != 0 && strikeCount == 0) {
+            return 2;
+        }
+        if (ballCount != 0 && strikeCount != 0) {
+            return 3;
+        }
+        if (ballCount == 0 && strikeCount == 0) {
+            return 4;
+        }
+        return 0;
     }
 }
