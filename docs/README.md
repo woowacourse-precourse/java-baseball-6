@@ -3,58 +3,37 @@
 ## 기능 목록
 
 - 게임 세팅
-  - [x] 자동차 이름 입력 - InputView : inputCarNames()
-  - [x] 시도할 횟수 입력 - InputView : inputAttempt()
+  - [ ] 자동차 이름 입력 안내 문구 출력 - OutputView
+  - [ ] 자동차 이름 입력 - InputView
+  - [ ] 시도할 횟수 입력 안내 문구 출력 - OutputView
+  - [ ] 시도할 횟수 입력 - InputView
 
 - 게임 로직 처리
-  - [x] 자동차 별로 무작위로 전진 - RacingCar : moveRandom()
-  - [x] 이동 후 차수별 실행 결과(자동차의 위치) 출력 - InputView : printAttemptResult()
-  - [x] 차수 횟수 도달시 게임 종료
+  - [ ] 무작위 숫자 생성 - RandomNumberGenerator
+  - [ ] 차수 마다 자동차 전진 명령 - RacingManager
+  - [ ] 자동차 무작위로 전진 - Car
+  - [ ] 차수 실행 결과(자동차의 위치) 분석 - RacingManager
+  - [ ] 차수 실행 결과 출력 - OutputView : printAttemptResult()
+  - [ ] 차수 횟수 도달시 게임 종료
 
 - 게임 종료시
-  - [x] 가장 멀리 간 자동차들이 우승
-  - [x] 우승자 안내 문구 출력
+  - [ ] 가장 멀리 간 자동차들 판별 - RacingManager : gameResult(), Car : compareTo()
+  - [ ] 우승자 안내 문구 출력 - OutputView : showGameResult()
 
 - 예외 처리
-  - [x] 자동차 이름 입력
-  - [x] 시도할 횟수 입력
+  - [ ] 자동차 이름 입력
+  - [ ] 시도할 횟수 입력
 
-## 리팩토링
 
-[토스ㅣSLASH 21 - 실무에서 바로 쓰는 Frontend Clean Code](https://www.youtube.com/watch?v=edWbHp_k_9Y&t=25s)
-위 영상과 객체지향의 오해와 진실 책을 보고 프로그래밍 설계를 다시 해야겠다는 생각이 들었다.
-
-> 목표 1. 모든 객체가 서로 협력할떄, 메세지를 전달하고 전달받으며 세부 로직은 서로 모르는 상태가 되는 것.
-> 목표 2. Ramdom 숫자를 생성하더라도 테스트가 용이하도록 구현
-
-- RacingCar : 자동차
-  - 속성: 이름, 위치
-  - 생성자: 자동차 객체 생성과 이름 유효성 검사
-  - 메소드1: 다른 자동차 객체와 위치 비교, 위치 차이 반환하는 메소드
-  - 메소드2: 다른 자동차 객체와 위치 비교해서 위치가 동일하면 true 반환
-  - 메소드3: 어떤 숫자를 받아서 4 이상이면 전진하는 메소드
-
-- RandomNumberGenerator : 랜덤 숫자 생성
-
-- Referee : 자동차를 관리.
-  - 차수별로 경주를 관할해서 자동차를 움직임.
-  - 자동차들을 보고 1등이 누구인지 판단
-
-- OutPutView : 유저에게 출력
-
-- InputView : 유저의 입력, 기본적인 검증 수행
-
-- Controller : 위 객체들의 협력을 담당
 
 ## 해야할 일
 
-- [ ] RacingCars 객체 추가
-- [참고](https://tecoble.techcourse.co.kr/post/2020-04-28-ask-instead-of-getter/)
-- [참고2](https://www.slipp.net/questions/559)
-- [참고3](https://www.slipp.net/questions/565)
-  
+
+- [x] TDD 학습
+- [ ] 클래스 다이어그램 그리기
+<img src='https://drive.google.com/uc?export=download&id=1iRAXmDhDeKPVf1bzERN_-zz9tWxHbdBW' width='' height=''/><br>
 - [ ] 테스트 코드 추가
-- [ ] 클래스, 메소드 별 역할 구분
+- [ ] 구현
 - [ ] 객체지향 생활체조 원칙 적용
   - [ ] 한 메소드에 오직 한 단계의 들여쓰기(indent)만 한다.
   - [ ] else 예약어를 쓰지 않는다.
@@ -83,13 +62,18 @@ racingcar
 │   ├── RacingCar.java : 자동차 클래스
 │   └── RandomNumberGenerator.java : 무작위 숫자 생성
 ├── exception
-│   └── InvalidInputException.java : 유저 입력 예외
+│   └── InvalidInputException.java : 유저 입력 예외 
 └── ui
     ├── InputView.java : 화면 출력
     └── OutputView.java : 유저 입력
 ```
 
 ### 생각정리
+
+**테스트가 쉽도록 리팩토링 하기**
+
+랜덤값을 메소드 안에서 돌려버리면 테스트 하기 어렵다.
+랜덤으로 나온 값을 매개변수로 받아서 동작하는 메소드로 만들면 테스트 하기 쉬워진다.
 
 **입력값 검증의 책임**
 
@@ -109,3 +93,19 @@ RacingCar 생성시에 이름을 전달받고, 생성자에서 검증 로직을 
 다른 도메인 로직에 validator 클래스를 구현한 후 컨트롤러에서 이름 검증을 해서 전달한다.
 
 2번은 매번 하던 방법인거 같으니 1번 방법으로 해보자.
+
+- [참고](https://tecoble.techcourse.co.kr/post/2020-04-28-ask-instead-of-getter/)
+- [참고2](https://www.slipp.net/questions/559)
+- [참고3](https://www.slipp.net/questions/565)
+- [토스ㅣSLASH 21 - 실무에서 바로 쓰는 Frontend Clean Code](https://www.youtube.com/watch?v=edWbHp_k_9Y&t=25s)
+위 영상과 글들, 객체지향의 오해와 진실 책, 그리고 Clean Code 책을 보고,
+객체지향의 올바른 설계와 TDD 방법론을 따르기 위해, 코드를 모두 갈아엎고 설계 단계부터 다시 시작하기로 했다.
+
+> 목표 1. 모든 객체가 서로 협력할떄, 메세지를 전달하고 전달받으며 세부 로직은 서로 모르는 상태가 되는 것.
+> 목표 2. 테스트가 용이하도록 구현하기 위해 코드 구현하기 전에 단위 테스트를 먼저 작성
+
+<img src='https://drive.google.com/uc?export=download&id=1iRAXmDhDeKPVf1bzERN_-zz9tWxHbdBW' width='' height=''/><br>
+
+다음과 같이 간단한 클래스 다이어그램을 먼저 그려서 객체들의 책임에 대해 정리했다.
+
+이제 테스트 코드를 작성할 차례이다.
