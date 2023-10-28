@@ -11,6 +11,10 @@ public enum RangeCondition {
         this.number = number;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     public static boolean isNotInRange(int number) {
         return number < START.number || number > END.number;
     }

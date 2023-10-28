@@ -3,11 +3,12 @@ package baseball.application;
 import baseball.domain.Hint;
 import baseball.domain.Player;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+
+import java.util.*;
+
+import static baseball.util.validateCondition.LengthCondition.LENGTH;
+import static baseball.util.validateCondition.RangeCondition.END;
+import static baseball.util.validateCondition.RangeCondition.START;
 
 public class NumberService {
 
@@ -23,8 +24,8 @@ public class NumberService {
 
     public List<Integer> getRandomNumber() {
         Set<Integer> numberSet = new HashSet<>();
-        while (numberSet.size() < 3) {
-            numberSet.add(Randoms.pickNumberInRange(1, 9));
+        while (numberSet.size() < LENGTH.getLength()) {
+            numberSet.add(Randoms.pickNumberInRange(START.getNumber(), END.getNumber()));
         }
 
         return new ArrayList<>(numberSet);
