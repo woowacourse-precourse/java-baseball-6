@@ -10,12 +10,10 @@ import static baseball.util.PrintUtils.println;
 import static baseball.util.ValidationUtils.validateInput;
 import static camp.nextstep.edu.missionutils.Console.close;
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import baseball.dto.Score;
+import baseball.dto.ThreeIntegers;
 import baseball.enums.GameOverSignal;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BaseBallGameController {
     private BaseBallGameController() {
@@ -26,13 +24,13 @@ public class BaseBallGameController {
     public static void playGame() {
         printMessage(START_MESSAGE);
         do {
-            List<Integer> pickedIntegers = getRandomIntegers();
+            ThreeIntegers pickedThreeIntegers = ThreeIntegers.createRandomThreeIntegers();
 
             while (true) {
                 printMessage(INPUT_NUMBER_PROMPT);
 
                 String inputValue = getInputValue();
-                Score score = getScoreFrom(inputValue, pickedIntegers);
+                Score score = pickedThreeIntegers.calculateScoreFrom(inputValue);
 
                 printScoreBoardMessageFrom(score);
                 printIfStrikeOutFrom(score);
@@ -46,41 +44,11 @@ public class BaseBallGameController {
         close();
     }
 
-    private static Score getScoreFrom(String inputValue, List<Integer> pickedIntegers) {
-        Score score = Score.builder().build();
-
-        for (int i = 0; i < inputValue.length(); i++) {
-            for (int j = 0; j < pickedIntegers.size(); j++) {
-                if (inputValue.charAt(i) == pickedIntegers.get(j).toString().charAt(0) && i == j) {
-                    score.increaseStrikeCount();
-                    break;
-                }
-
-                if (inputValue.charAt(i) == pickedIntegers.get(j).toString().charAt(0)) {
-                    score.increaseBallCount();
-                }
-            }
-        }
-        return score;
-    }
-
     private static String getInputValue() {
         String inputValue = readLine();
 
         validateInput(inputValue);
         return inputValue;
-    }
-
-    private static List<Integer> getRandomIntegers() {
-        List<Integer> pickedIntegers = new ArrayList<>();
-        while (pickedIntegers.size() < 3) {
-            int pickedInteger = pickNumberInRange(1, 9);
-            if (!pickedIntegers.contains(pickedInteger)) {
-                pickedIntegers.add(pickedInteger);
-            }
-        }
-
-        return pickedIntegers;
     }
 
     private static void printScoreBoardMessageFrom(Score score) {
