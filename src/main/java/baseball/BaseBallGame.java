@@ -70,7 +70,7 @@ class BaseballGame implements IGame {
     }
 
     private void checkForGameEndingCondition(BallCount ballCount) {
-        if (ballCount.getStrikes() == STRIKE_COUNT_FOR_WIN) {
+        if (ballCount.strikes() == STRIKE_COUNT_FOR_WIN) {
             handleWinningScenario();
         }
     }

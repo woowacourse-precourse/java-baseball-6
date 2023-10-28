@@ -2,6 +2,7 @@ package baseball;
 
 import User.Player;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,15 +32,14 @@ public class BaseballGuide {
 
     public String constructResultString(BallCount ballCount) {
         return Stream.of(
-                        ballCount.getBalls() > 0 ? Optional.of(ballCount.getBalls() + "볼") : Optional.<String>empty(),
-                        ballCount.getStrikes() > 0 ? Optional.of(ballCount.getStrikes() + "스트라이크") : Optional.<String>empty()
-                )
-                .flatMap(Optional::stream)
-                .collect(Collectors.joining(" "));
+            ballCount.balls() > 0 ? (ballCount.balls() + "볼") : null,
+            ballCount.strikes() > 0 ? (ballCount.strikes() + "스트라이크") : null)
+        .filter(Objects::nonNull)
+        .collect(Collectors.joining(" "));
     }
 
     public boolean isNothing(BallCount ballCount) {
-        return ballCount.getStrikes() == 0 && ballCount.getBalls() == 0;
+        return ballCount.strikes() == 0 && ballCount.balls() == 0;
     }
 
     public void displayResult(BallCount ballCount, Printer print) {
