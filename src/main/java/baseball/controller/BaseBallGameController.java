@@ -9,10 +9,11 @@ import static baseball.enums.Message.START_MESSAGE;
 import static baseball.util.PrintUtils.printMessage;
 import static baseball.util.PrintUtils.println;
 import static baseball.util.ValidationUtils.validateInput;
+import static camp.nextstep.edu.missionutils.Console.close;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import baseball.dto.Score;
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class BaseBallGameController {
             }
             askIfContinue();
         } while (isGameToBeContinued);
-        Console.close();
+        close();
     }
 
     private static Score getScoreFrom(String inputValue, List<Integer> pickedIntegers) {
@@ -64,7 +65,7 @@ public class BaseBallGameController {
     }
 
     private static String getInputValue() {
-        String inputValue = Console.readLine();
+        String inputValue = readLine();
 
         validateInput(inputValue);
         return inputValue;
@@ -73,7 +74,7 @@ public class BaseBallGameController {
     private static List<Integer> getRandomIntegers() {
         List<Integer> pickedIntegers = new ArrayList<>();
         while (pickedIntegers.size() < 3) {
-            int pickedInteger = Randoms.pickNumberInRange(1, 9);
+            int pickedInteger = pickNumberInRange(1, 9);
             if (!pickedIntegers.contains(pickedInteger)) {
                 pickedIntegers.add(pickedInteger);
             }
@@ -99,6 +100,6 @@ public class BaseBallGameController {
     private static void askIfContinue() {
         printMessage(GAME_END_PROMPT);
 
-        isGameToBeContinued = !Console.readLine().equals(FINISH.getNumber());
+        isGameToBeContinued = !readLine().equals(FINISH.getNumber());
     }
 }
