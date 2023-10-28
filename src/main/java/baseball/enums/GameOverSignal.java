@@ -10,10 +10,6 @@ public enum GameOverSignal {
         this.value = value;
     }
 
-    public String getNumber() {
-        return value;
-    }
-
     public static boolean isNotFinished(String input) {
         return !FINISH.value.equals(input);
     }
