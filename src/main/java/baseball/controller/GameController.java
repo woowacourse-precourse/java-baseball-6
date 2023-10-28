@@ -24,6 +24,8 @@ public class GameController {
             play(computer);
 
         } while (isGameRestarted());
+
+        inputView.readClose();
     }
 
     private void play(Player computer) {
