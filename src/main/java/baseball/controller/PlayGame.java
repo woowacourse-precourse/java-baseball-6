@@ -19,6 +19,7 @@ public class PlayGame {
     int newGame;
 
     public void startGame() {
+        output.printStart();
         do {
             List<Integer> computer = computerNumber.makeComputerNum();
             boolean checkEndGame = false;

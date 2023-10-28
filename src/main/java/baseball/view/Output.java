@@ -1,17 +1,24 @@
 package baseball.view;
 
 public class Output {
+    public static final String BALL = "볼";
+    public static final String STRIKE = "스트라이크";
+    public static final String NOTHING = "낫싱";
+
+    public void printStart() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 
     public void printBall() {
-        System.out.println("볼");
+        System.out.println(BALL);
     }
 
     public void printStrike() {
-        System.out.println("스트라이크");
+        System.out.println(STRIKE);
     }
 
     public void printBallAndStrike() {
-        System.out.print("볼 ");
+        System.out.print(BALL + " ");
     }
 
     public void printCount(int count) {
@@ -19,7 +26,7 @@ public class Output {
     }
 
     public void printNothing() {
-        System.out.println("낫싱");
+        System.out.println(NOTHING);
     }
 
     public void printEndGame() {
