@@ -16,10 +16,10 @@ import baseball.dto.ThreeIntegers;
 import baseball.enums.GameOverSignal;
 
 public class BaseBallGameController {
+    private static boolean isGameToBeContinued = true;
+
     private BaseBallGameController() {
     }
-
-    private static boolean isGameToBeContinued = true;
 
     public static void playGame() {
         printMessage(START_MESSAGE);

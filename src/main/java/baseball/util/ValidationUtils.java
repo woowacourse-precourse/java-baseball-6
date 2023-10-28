@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public class ValidationUtils {
     private static final Pattern pattern = Pattern.compile("^[1-9]{3}$");
+
     private ValidationUtils() {
     }
 
