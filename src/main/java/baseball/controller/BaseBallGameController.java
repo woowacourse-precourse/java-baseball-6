@@ -25,15 +25,15 @@ public class BaseBallGameController {
         outputView.printMessage(START_MESSAGE);
         boolean isGameToBeContinued;
         do {
-            ThreeIntegers pickedThreeIntegers = ThreeIntegers.createRandomThreeIntegers();
-
-            playGameFrom(pickedThreeIntegers);
+            interact();
             isGameToBeContinued = inputView.askIfContinue();
         } while (isGameToBeContinued);
         inputView.close();
     }
 
-    private void playGameFrom(ThreeIntegers pickedThreeIntegers) {
+    private void interact() {
+        ThreeIntegers pickedThreeIntegers = ThreeIntegers.createRandomThreeIntegers();
+
         while (true) {
             outputView.printMessage(INPUT_NUMBER_PROMPT);
 
