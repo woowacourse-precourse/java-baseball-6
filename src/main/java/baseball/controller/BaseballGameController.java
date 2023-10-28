@@ -37,7 +37,6 @@ public class BaseballGameController {
     private void compareUserToComputer(List<Integer> computerNumber) {
         BaseballGameResult gameResult;
         do {
-            System.out.println(computerNumber);
             String input = InputView.inputUserNumberMessage();
             gameResult = new BaseballGameResult(computerNumber, new UserNumber(input));
             new OutputView(gameResult).printGameResult();

@@ -48,11 +48,11 @@ public class UserNumber {
         }
     }
 
-    public boolean isBall(final int number, int position) {
+    public boolean isBall(final int number, final int position) {
         return userNumber.contains(number) && userNumber.get(position) != number;
     }
 
-    public boolean isStrike(final int number, int position) {
+    public boolean isStrike(final int number, final int position) {
         return userNumber.contains(number) && userNumber.get(position) == number;
     }
 }
