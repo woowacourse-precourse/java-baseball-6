@@ -11,22 +11,11 @@ public class Score {
     private int ballCount;
     private int strikeCount;
 
-    private Score(ScoreBuilder builder) {
-        Objects.requireNonNull(builder);
-
-        this.ballCount = builder.ballCount;
-        this.strikeCount = builder.strikeCount;
-    }
-
-    static ScoreBuilder builder() {
-        return new ScoreBuilder();
-    }
-
     public static Score from(List<Integer> inputIntegers, List<Integer> randomIntegers) {
         Objects.requireNonNull(inputIntegers);
         Objects.requireNonNull(randomIntegers);
 
-        Score score = Score.builder().build();
+        Score score = new Score();
 
         IntStream.range(0, inputIntegers.size())
                 .forEach(i -> traverseInputValue(inputIntegers, i, randomIntegers, score));
@@ -86,25 +75,5 @@ public class Score {
 
     public boolean isNothing() {
         return this.getStrikeCount() + this.getBallCount() == 0;
-    }
-
-    private static class ScoreBuilder {
-        private int ballCount;
-
-        private int strikeCount;
-
-        public ScoreBuilder ballCount(int ballCount) {
-            this.ballCount = ballCount;
-            return this;
-        }
-
-        public ScoreBuilder strikeCount(int strikeCount) {
-            this.strikeCount = strikeCount;
-            return this;
-        }
-
-        public Score build() {
-            return new Score(this);
-        }
     }
 }
