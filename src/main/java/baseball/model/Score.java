@@ -1,4 +1,4 @@
-package baseball.dto;
+package baseball.model;
 
 import static baseball.enums.Message.BALL;
 import static baseball.enums.Message.STRIKE;
