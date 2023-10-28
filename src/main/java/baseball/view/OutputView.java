@@ -24,12 +24,12 @@ public class OutputView {
         System.out.println(hint.toString());
     }
 
-    private void printGameEndMessage() {
+    public void printGameEndMessage() {
         System.out.println(GAME_END.getMessage());
         printRestartMessage();
     }
 
-    public void printRestartMessage() {
+    private void printRestartMessage() {
         System.out.println(GAME_RESTART.getMessage());
     }
 
