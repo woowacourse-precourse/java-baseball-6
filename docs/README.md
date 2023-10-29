@@ -6,7 +6,7 @@
 ### 기능 목록
 - [x] 1~9까지 서로 다른 임의의 수 3개 생성한다. - NumberGenerator#createRandomNumbers()
 - [ ] 컴퓨터와 플레이어의 수를 비교한다. - Referee#compare()
-  - [ ] 몇 개의 숫자가 같은지 알아낸다. - Judgement#countMatchingDigits()
+  - [x] 몇 개의 숫자가 같은지 알아낸다. - Judgement#countMatchingDigits()
   - [ ] 특정 자리에 특정 숫자가 있는지 알 수 있다 - Judgement#isNumberInPosition()
 - [ ] 같은 수가 같은 자리에 있으면 스트라이크이다.
 - [ ] 같은 수가 다른 자리에 있으면 볼이다.
