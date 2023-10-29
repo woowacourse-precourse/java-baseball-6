@@ -14,7 +14,7 @@ public class Judgement {
         return result;
     }
 
-    public boolean isNumberInPosition(int positionNumber, int number) {
-        return false;
+    public boolean isNumberAtIndex(List<Integer> computer, int index, int number) {
+        return (computer.get(index) == number);
     }
 }
