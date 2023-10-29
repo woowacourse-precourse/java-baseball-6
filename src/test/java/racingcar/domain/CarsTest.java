@@ -33,7 +33,6 @@ class CarsTest {
     void 이름_입력_성공_테스트() {
         String inputNames = "a,b,c";
         Cars cars = new Cars(inputNames, successNumberGenerator);
-        List<Car> carList = ;
 
         IntStream.rangeClosed(0,2).forEach(i -> assertThat(
                 cars.getCars()
