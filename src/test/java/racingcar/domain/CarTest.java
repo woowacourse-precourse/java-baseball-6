@@ -24,6 +24,12 @@ class CarTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
+    void 이름_입력_테스트() {
+        String name = "a";
+        Car car = new Car(name, new RandomNumberGenerator());
+        assertThat(car.getName()).isEqualTo(name);
+    }
+    @Test
     void 자동차_이동_성공_테스트() {
         String name1 = "dave";
         String name2 = "paul";
@@ -31,7 +37,11 @@ class CarTest {
         Car car2 = new Car(name2, successNumberGenerator);
 
         car1.tryMove();
-        assertThat(car1.compareTo(car2) == 1).isTrue();
+        car1.tryMove();
+        car2.tryMove();
+
+        assertThat(car1.getPosition()).isEqualTo(2);
+        assertThat(car2.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -45,7 +55,8 @@ class CarTest {
         car1.tryMove();
         car2.tryMove();
 
-        assertThat(car1.isSamePosition(car2)).isTrue();
+        assertThat(car1.getPosition()).isEqualTo(0);
+        assertThat(car2.getPosition()).isEqualTo(0);
     }
 
     @Test
