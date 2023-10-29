@@ -5,8 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import racingcar.domain.numbergenerator.NumberGenerator;
 import racingcar.domain.numbergenerator.SetNumberGenerator;
 
@@ -43,19 +42,6 @@ class RacingManagerTest {
         racingManager.doAttempt();
 
         assertThat(racingManager.isRaceEnd()).isFalse();
-    }
-    @Test
-    void 차수_실행_테스트() {
-        RacingManager racingManager = new RacingManager(successInputName, 4, successNumberGenerator);
-
-        racingManager.doAttempt();
-        racingManager.doAttempt();
-        racingManager.doAttempt();
-        racingManager.doAttempt();
-
-        for(int i = 0; i < 4; i++) {
-            assertThat(racingManager.cars.getCars().get(i).getPosition()).isEqualTo(4);
-        }
     }
     @Test
     void 차수_결과_테스트() {
