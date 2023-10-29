@@ -9,9 +9,9 @@ import java.util.stream.IntStream;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int response = 1;
+        String response = "1";
 
-        while(response==1) {
+        while(response.equals("1")) {
             play();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             response = requestRestart();
@@ -37,12 +37,15 @@ public class Application {
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-    private static int requestRestart() {
-        String input = readLine();
-        if (input.equals("1")) return 1;
-        if (input.equals("2")) return 2;
+    private static void judge(long ball, long strike) {
+        //볼, 스트라이크가 모두 없는 경우
+        if (strike + ball == 0) {System.out.print("낫싱");}
+        //볼이 존재하는 경우
+        if (ball > 0) {System.out.print(ball + "볼 ");}
+        //스트라이크가 존재하는 경우
+        if (strike > 0) {System.out.print(strike + "스트라이크");}
 
-        throw new IllegalArgumentException(); //1이나 2가 아닌 값을 입력하면 예외를 발생시킨다.
+        System.out.println();
     }
     private static int[] requestNums() {
         System.out.print("숫자를 입력해주세요 : ");
@@ -61,15 +64,13 @@ public class Application {
                 .map(Character::getNumericValue)
                 .toArray();
     }
-    private static void judge(long ball, long strike) {
-        //볼, 스트라이크가 모두 없는 경우
-       if (strike + ball == 0) {System.out.print("낫싱");}
-       //볼이 존재하는 경우
-       if (ball > 0) {System.out.print(ball + "볼 ");}
-       //스트라이크가 존재하는 경우
-       if (strike > 0) {System.out.print(strike + "스트라이크");}
+    private static String requestRestart() {
+        String input = readLine();
 
-       System.out.println();
+        if(!input.equals("1") && !input.equals("2")){
+            throw new IllegalArgumentException();
+        }
+        return input;
     }
     private static List<Integer> setNums() {
         List<Integer> computer = new ArrayList<>();
