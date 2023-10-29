@@ -33,4 +33,12 @@ public class Car implements Comparable<Car>{
             throw new IllegalArgumentException();
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }
