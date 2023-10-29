@@ -7,14 +7,16 @@ public class Car implements Comparable<Car>{
     private final Engine engine;
     private int position;
 
-    public Car(String name, NumberGenerator numberGenerator) {
+    public Car(String name, NumberGenerator numberGenerator) throws IllegalArgumentException {
         validateName(name);
         this.name = name;
         this.engine = new Engine(numberGenerator);
     }
 
     public void tryMove() {
-
+        if(engine.canMove()) {
+            position += 1;
+        }
     }
 
     @Override
@@ -23,10 +25,12 @@ public class Car implements Comparable<Car>{
     }
 
     public boolean isSamePosition(Car other) {
-        return true;
+        return compareTo(other) == 0;
     }
 
-    private void validateName(String name) {
-
+    private void validateName(String name) throws IllegalArgumentException {
+        if (name.length() >= 5 || name.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
     }
 }
