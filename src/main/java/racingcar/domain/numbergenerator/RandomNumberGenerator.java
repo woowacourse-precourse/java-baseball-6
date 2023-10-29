@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.numbergenerator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
