@@ -1,7 +1,6 @@
 package baseball;
 
-import baseball.domain.Judgement;
-import baseball.domain.NumberGenerator;
+import baseball.domain.Referee;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -13,16 +12,9 @@ import java.util.Set;
 public class Application {
 
     public static void main(String[] args) {
-//        NumberGenerator generator = new NumberGenerator();
-//        List<Integer> numbers = generator.createRandomNumbers();
-//        System.out.println(numbers);
-
-        Judgement judgement = new Judgement();
-//        int count = judgement.correctCount(Arrays.asList(7, 8, 9), Arrays.asList(1, 2, 3));
-//        System.out.println(count);
-
-        boolean place = judgement.hasPlace(Arrays.asList(7, 8, 9), 0, 7);
-        System.out.println(place);
+        Referee referee = new Referee();
+        String result = referee.compare(Arrays.asList(7, 8, 9), Arrays.asList(1, 2, 3));
+        System.out.println(result);
 
     }
 
