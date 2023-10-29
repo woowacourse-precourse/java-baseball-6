@@ -1,4 +1,4 @@
-package baseball.domain_yk;
+package baseball.domain;
 
 import java.util.List;
 

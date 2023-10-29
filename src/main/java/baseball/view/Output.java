@@ -1,4 +1,4 @@
-package baseball.view_yk;
+package baseball.view;
 
 public class Output {
 

@@ -1,6 +1,6 @@
-package baseball.domain_yk;
+package baseball.domain;
 
-import baseball.view_yk.Input;
+import baseball.view.Input;
 
 import java.util.ArrayList;
 import java.util.List;
