@@ -2,9 +2,10 @@ package baseball;
 
 import baseball.domain.NumberGenerator;
 import baseball.domain.Referee;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.logging.Level;
 
 public class Application {
 
@@ -25,9 +26,7 @@ public class Application {
 
     public static List<Integer> askNumbers() {
         System.out.print("숫자를 입력해 주세요: ");
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.next();
-
+        String input = Console.readLine();
         List<Integer> numbers = new ArrayList<>();
         for (String number : input.split("")) {
             numbers.add(Integer.valueOf(number));
