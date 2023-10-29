@@ -18,9 +18,14 @@ public class Application {
 //        System.out.println(numbers);
 
         Judgement judgement = new Judgement();
-        int count = judgement.correctCount(Arrays.asList(7, 8, 9), Arrays.asList(1, 2, 3));
-        System.out.println(count);
+//        int count = judgement.correctCount(Arrays.asList(7, 8, 9), Arrays.asList(1, 2, 3));
+//        System.out.println(count);
+
+        boolean place = judgement.hasPlace(Arrays.asList(7, 8, 9), 0, 7);
+        System.out.println(place);
+
     }
+
 
     public static List<Integer> selectComputerNums() {
         Set<Integer> set = new HashSet<>();
