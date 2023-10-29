@@ -13,7 +13,7 @@ public class Application {
         List<Integer> computer = generator.createRandomNumbers();
 
         Referee referee = new Referee();
-        String result = "";
+        String result;
         while (true) {
             result = referee.compare(computer, askNumbers());
             System.out.println(result);
@@ -34,11 +34,18 @@ public class Application {
     public static List<Integer> askNumbers() {
         System.out.print("숫자를 입력해 주세요: ");
         String input = Console.readLine();
-        List<Integer> numbers = new ArrayList<>();
-        for (String number : input.split("")) {
-            numbers.add(Integer.valueOf(number));
+        try {
+            if (input.length() != 3) {
+                throw new IllegalArgumentException("잘못된 입력으로 게임이 종료됩니다.");
+            }
+            List<Integer> numbers = new ArrayList<>();
+            for (String number : input.split("")) {
+                numbers.add(Integer.valueOf(number));
+            }
+            return numbers;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력으로 게임이 종료됩니다.");
         }
-        return numbers;
     }
 
     public static boolean resetGame() {
