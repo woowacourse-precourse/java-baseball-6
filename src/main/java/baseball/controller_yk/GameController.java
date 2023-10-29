@@ -1,10 +1,10 @@
-package baseball.controller;
+package baseball.controller_yk;
 
-import baseball.domain.GameResult;
-import baseball.domain.RandomNumbers;
-import baseball.domain.UserNumbers;
-import baseball.view.Input;
-import baseball.view.Output;
+import baseball.domain_yk.GameResult;
+import baseball.domain_yk.RandomNumbers;
+import baseball.domain_yk.UserNumbers;
+import baseball.view_yk.Input;
+import baseball.view_yk.Output;
 
 import java.util.List;
 

@@ -1,6 +1,4 @@
-package baseball.view;
-
-import java.util.List;
+package baseball.view_yk;
 
 public class Output {
 
