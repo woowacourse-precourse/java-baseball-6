@@ -26,14 +26,16 @@ public class RacingGameController {
         String carNames = inputView.inputCarNames();
         outputView.showAttemptsInputMessage();
         int attempts = inputView.inputAttempts();
+        System.out.println(attempts);
         this.racingManager = new RacingManager(carNames, attempts, new RandomNumberGenerator());
     }
 
     private void playRace() {
+        outputView.showAttemptResultStartMessage();
         do {
             racingManager.doAttempt();
             printAttemptResult();
-        } while (racingManager.isRaceEnd());
+        } while (!racingManager.isRaceEnd());
     }
 
     private void printAttemptResult() {
