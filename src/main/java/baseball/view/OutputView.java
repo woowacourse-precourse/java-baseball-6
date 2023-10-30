@@ -9,12 +9,14 @@ public class OutputView {
         if(balls == 0 && strikes == 0) {
             System.out.print("낫싱");
         } else {
-            if(strikes != 0) {
-                System.out.print(strikes + "스트라이크 ");
-            }
             if(balls != 0) {
                 System.out.print(balls + "볼 ");
             }
+            if(strikes != 0) {
+                System.out.print(strikes + "스트라이크 ");
+            }
+
+
         }
         System.out.println();
     }

@@ -13,14 +13,16 @@ public class NumberValidator {
 
     //재시작 입력값 유효성 검사.
     public static boolean checkRestartFormat(String input){
+
         if(input.equals("1")){
-            return true;
-        }
-        else if(input.equals("2")){
             return false;
+        }
+        if(input.equals("2")){
+            return true;
         }
 
         throw new IllegalArgumentException("재시작 입력값 오류.(입력값 포멧 : 1 또는 2)");
+
 
     }
 

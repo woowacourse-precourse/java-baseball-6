@@ -1,7 +1,5 @@
 package baseball;
-
 import baseball.controller.GameController;
-;
 import baseball.vailidation.NumberValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -13,12 +11,13 @@ public class Application {
         do {
             GameController baseballGame = new GameController();
             baseballGame.start();
-        } while(askRetry());
+        } while(!askRetry());
 
     }
     public static boolean askRetry() {
         String retryInput = InputView.restart();
         return NumberValidator.checkRestartFormat(retryInput);
     }
+
 
 }

@@ -12,12 +12,15 @@ public class GameController {
     private final ComputerNumber computer;
 
     public GameController() {
+
         computer = new ComputerNumber();
     }
 
     public void start() {
         Result result;
+
         do {
+            System.out.println(computer.getNumbers());
             result = getNumberCompare();
             printCount(result);
         } while (!isGameSet(result));
@@ -50,8 +53,8 @@ public class GameController {
     public boolean isGameSet(Result count) {
         if(count.strike == 3){
             OutputView.printGameSetMessage();
-            computer.resetNumbers();
+            return true;
         }
-        return true;
+        return false;
     }
 }
