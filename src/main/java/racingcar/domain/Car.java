@@ -4,14 +4,12 @@ import racingcar.domain.numbergenerator.NumberGenerator;
 
 public class Car implements Comparable<Car>{
     private static final int MOVE_AMOUNT = 1;
-    private static final int NAME_MAX_LENGTH = 4;
-    private final String name;
+    private final CarName name;
     private final Engine engine;
     private int position;
 
-    public Car(String name, NumberGenerator numberGenerator) throws IllegalArgumentException {
-        validateName(name);
-        this.name = name;
+    public Car(String nameValue, NumberGenerator numberGenerator) throws IllegalArgumentException {
+        this.name = new CarName(nameValue);
         this.engine = new Engine(numberGenerator);
     }
 
@@ -30,14 +28,8 @@ public class Car implements Comparable<Car>{
         return compareTo(other) == 0;
     }
 
-    private void validateName(String name) throws IllegalArgumentException {
-        if (name.length() > NAME_MAX_LENGTH || name.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이름의 길이가 너무 깁니다.");
-        }
-    }
-
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     public int getPosition() {
