@@ -1,7 +1,9 @@
 package baseball;
 
 public class Application {
+    public static Baseball_Machine baseballMachine = new Baseball_Machine();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        baseballMachine.play();
     }
 }
