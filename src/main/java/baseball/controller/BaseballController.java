@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.domain.BallNumbers;
-import baseball.util.Constants;
 import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -30,7 +29,7 @@ public class BaseballController {
             inputStartNewGame = inputView.inputStartNewGame();
             InputValidator.validateInputStartNewGame(inputStartNewGame);
 
-        } while (Constants.START_NEW_GAME_NUMBER.equals(inputStartNewGame));
+        } while (InputView.START_NEW_GAME_NUMBER.equals(inputStartNewGame));
     }
 
     private void tryGame() {
