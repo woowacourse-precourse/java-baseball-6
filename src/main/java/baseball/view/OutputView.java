@@ -1,6 +1,6 @@
 package baseball.view;
 
-import java.util.List;
+import baseball.domain.GameResult;
 
 public class OutputView {
     public static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";
@@ -11,9 +11,9 @@ public class OutputView {
         System.out.println(START_GAME_MESSAGE);
     }
 
-    public void printGameResult(final List<Integer> result) {
-        int strike = result.get(0);
-        int ball = result.get(1);
+    public void printGameResult(final GameResult gameResult) {
+        int strike = gameResult.strikeCount();
+        int ball = gameResult.BallCount();
 
         if (strike == 3) {
             System.out.println("3스트라이크\n"

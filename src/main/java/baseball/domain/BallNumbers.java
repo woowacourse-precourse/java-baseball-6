@@ -9,7 +9,8 @@ import java.util.stream.Collectors;
 
 public class BallNumbers {
     private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-
+    private int strikeCount = 0;
+    private int ballCount = 0;
     private List<Integer> numberList = new ArrayList<>();
 
     public List<Integer> generateBaseball() {
@@ -24,37 +25,33 @@ public class BallNumbers {
         return numberList;
     }
 
-    public List<Integer> compareNumbers(final List<Integer> inputNumbers) {
+    public GameResult compareNumbers(final List<Integer> inputNumbers) {
         List<Integer> matchedNumbers = matchNumbers(inputNumbers);
 
         if (!matchedNumbers.isEmpty()) {
             return matchPosition(matchedNumbers, inputNumbers);
         }
 
-        return List.of(0, 0);
+        return new GameResult(0, 0);
     }
 
     private List<Integer> matchNumbers(final List<Integer> inputNumbers) {
         return numberList.stream().filter(inputNumbers::contains).collect(Collectors.toList());
     }
 
-    private List<Integer> matchPosition(final List<Integer> matchedNumbers,
-                                        final List<Integer> inputNumbersList) {
-        List<Integer> result = new ArrayList<>();
-        int strike = 0;
-        int ball = 0;
+    private GameResult matchPosition(final List<Integer> matchedNumbers,
+                                     final List<Integer> inputNumbersList) {
+        strikeCount = 0;
+        ballCount = 0;
 
         for (Integer matchedNumber : matchedNumbers) {
             if (numberList.indexOf(matchedNumber) == inputNumbersList.indexOf(matchedNumber)) {
-                strike++;
+                strikeCount++;
                 continue;
             }
-            ball++;
+            ballCount++;
         }
 
-        result.add(strike);
-        result.add(ball);
-
-        return result;
+        return new GameResult(strikeCount, ballCount);
     }
 }

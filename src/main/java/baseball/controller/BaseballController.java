@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.BallNumbers;
+import baseball.domain.GameResult;
 import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -42,10 +43,10 @@ public class BaseballController {
             List<Integer> inputNumbers = inputView.inputNumbers();
             InputValidator.validateNumberDuplication(inputNumbers);
 
-            List<Integer> result = ballNumbers.compareNumbers(inputNumbers);
-            strike = result.get(0);
+            GameResult gameResult = ballNumbers.compareNumbers(inputNumbers);
+            strike = gameResult.strikeCount();
 
-            outputView.printGameResult(result);
+            outputView.printGameResult(gameResult);
 
         } while (strike < 3);
     }
