@@ -24,6 +24,9 @@
   - [x] 자동차 이름 입력
   - [x] 시도할 횟수 입력
 
+## 클래스 다이어그램
+<img src="https://drive.google.com/uc?export=download&id=1dyQl5DYD31gapDS3C51iSa2HAisS4Wtc"/>
+
 ## 파일 구조
 
 ```
@@ -48,7 +51,6 @@
 - [x] TDD 학습
 - [x] 피드백 받은것 학습
 - [x] 클래스 다이어그램 그리기
-  <br><img src="https://drive.google.com/uc?export=download&id=1dyQl5DYD31gapDS3C51iSa2HAisS4Wtc"/><br>
 - [x] 테스트 코드 추가
 - [x] 구현
 - [ ] 객체지향 생활체조 원칙 적용
@@ -66,4 +68,3 @@
   - [ ] 클래스를 작게 유지하기 위해 노력. 50줄 이상이면 여러가지 일을 동시에 하고 있을 확률이 높다.
   - [ ] 메서드당 line을 10까지만 허용. 길이가 길어지면 메서드로 분리
   - [ ] 매직 리터럴 / 매직 넘버 사용을 자제하고 상수 사용
-
