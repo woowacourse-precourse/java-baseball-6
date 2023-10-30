@@ -6,22 +6,23 @@ public class Car implements Comparable<Car>{
     private static final int MOVE_AMOUNT = 1;
     private final CarName name;
     private final Engine engine;
-    private int position;
+    private final Position position;
 
     public Car(String nameValue, NumberGenerator numberGenerator) throws IllegalArgumentException {
         this.name = new CarName(nameValue);
         this.engine = new Engine(numberGenerator);
+        this.position = new Position();
     }
 
     public void tryMove() {
         if(engine.canMove()) {
-            position += MOVE_AMOUNT;
+            position.moveBy(MOVE_AMOUNT);
         }
     }
 
     @Override
     public int compareTo(Car other) {
-        return Integer.compare(this.position, other.position);
+        return Integer.compare(this.position.getValue(), other.position.getValue());
     }
 
     public boolean isSamePosition(Car other) {
@@ -33,6 +34,6 @@ public class Car implements Comparable<Car>{
     }
 
     public int getPosition() {
-        return position;
+        return position.getValue();
     }
 }

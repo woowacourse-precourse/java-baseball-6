@@ -5,10 +5,11 @@ public class CarName {
     private final String value;
 
     public CarName(String value) {
+        validateName(value);
         this.value = value;
     }
-    private void validateName(String name) throws IllegalArgumentException {
-        if (name.length() > NAME_MAX_LENGTH || name.isEmpty()) {
+    private void validateName(String nameValue) throws IllegalArgumentException {
+        if (nameValue.length() > NAME_MAX_LENGTH || nameValue.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름의 길이가 너무 깁니다.");
         }
     }
