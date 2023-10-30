@@ -6,13 +6,21 @@ import javax.management.monitor.StringMonitor;
 import racingcar.domain.numbergenerator.NumberGenerator;
 
 public class RacingManager {
+    private static final String INPUT_NAMES_REGEX = "^[A-Za-z0-9,]*[A-Za-z0-9]$";
+    private static final String NAME_DELIMITER = ",";
     private static final int MIN_ATTEMPT = 1;
     private final Cars cars;
     private int attempts;
 
     public RacingManager(String inputNames, int attempts, NumberGenerator numberGenerator) {
         validateAttempts(attempts);
-        this.cars = new Cars(inputNames, numberGenerator);
+        validateInputNames(inputNames);
+        List<CarName> carNameList = new ArrayList<>();
+        for(String carName: inputNames.split(NAME_DELIMITER)) {
+            carNameList.add(new CarName(carName));
+        }
+
+        this.cars = new Cars(carNameList, numberGenerator);
         this.attempts = attempts;
     }
 
@@ -47,6 +55,12 @@ public class RacingManager {
 
     private void validateAttempts(int attempts) throws IllegalArgumentException {
         if (attempts < MIN_ATTEMPT) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateInputNames(String inputNames) {
+        if (!inputNames.matches(INPUT_NAMES_REGEX)) {
             throw new IllegalArgumentException();
         }
     }

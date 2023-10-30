@@ -8,10 +8,14 @@ public class Car implements Comparable<Car>{
     private final Engine engine;
     private final Position position;
 
-    public Car(String nameValue, NumberGenerator numberGenerator) throws IllegalArgumentException {
-        this.name = new CarName(nameValue);
+    public Car(CarName name, NumberGenerator numberGenerator) throws IllegalArgumentException {
+        this.name = name;
         this.engine = new Engine(numberGenerator);
         this.position = new Position();
+    }
+
+    public Car(String name, NumberGenerator numberGenerator) {
+        this(new CarName(name), numberGenerator);
     }
 
     public void tryMove() {
@@ -30,7 +34,7 @@ public class Car implements Comparable<Car>{
     }
 
     public String getName() {
-        return name.getValue();
+        return name.value();
     }
 
     public int getPosition() {

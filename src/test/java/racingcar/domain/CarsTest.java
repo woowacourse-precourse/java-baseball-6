@@ -14,14 +14,6 @@ class CarsTest {
     NumberGenerator successNumberGenerator = new SetNumberGenerator(4);
     NumberGenerator failureNumberGenerator = new SetNumberGenerator(3);
     @Test
-    void 이름_잘못된_입력_테스트() {
-        String inputNames = "dave,paul,";
-
-        assertThatThrownBy(() -> {
-            new Cars(inputNames, successNumberGenerator);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-    @Test
     void 이름_입력_5글자_테스트() {
         String inputNames = "david";
 

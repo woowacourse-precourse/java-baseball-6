@@ -14,6 +14,14 @@ class RacingManagerTest {
     NumberGenerator failureNumberGenerator = new SetNumberGenerator(0);
     String successInputName = "a,b,c,d";
     @Test
+    void 이름_잘못된_입력_테스트() {
+        String inputNames = "dave,paul,";
+
+        assertThatThrownBy(() -> {
+            new RacingManager(inputNames, 1, successNumberGenerator);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
     void 횟수_입력_검증_테스트1() {
         assertThatThrownBy(() -> {
            new RacingManager(successInputName, 0, successNumberGenerator);
