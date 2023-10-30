@@ -28,7 +28,7 @@ class OutputViewTest {
 
     @Test
     void 자동차이름_입력_안내메세지_테스트() {
-        view.showCarNamesInputMessage();
+        view.printCarNamesInputMessage();
 
         String expectedOutput = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)" + System.lineSeparator();
         assertThat(expectedOutput).isEqualTo(outContent.toString());
@@ -36,7 +36,7 @@ class OutputViewTest {
 
     @Test
     void 횟수_입력_안내메세지_테스트() {
-        view.showAttemptsInputMessage();
+        view.printAttemptsInputMessage();
         String expectedOutput = "시도할 회수는 몇회인가요?" + System.lineSeparator();
         assertThat(expectedOutput).isEqualTo(outContent.toString());
     }
@@ -53,7 +53,7 @@ class OutputViewTest {
                 + "show : ------\n"
                 + "mon : -----\n";
 
-        view.showAttemptResult(attemptResultSample);
+        view.printAttemptResult(attemptResultSample);
 
         assertThat(outContent.toString()).contains(attemptResultString);
     }
@@ -66,7 +66,7 @@ class OutputViewTest {
 
         String gameResultString = "최종 우승자 : pobi, jun\n";
 
-        view.showGameResult(winnersSample);
+        view.printGameResult(winnersSample);
         assertThat(gameResultString).isEqualTo(outContent.toString());
     }
 }
