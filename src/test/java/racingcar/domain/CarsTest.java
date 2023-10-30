@@ -1,10 +1,8 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.numbergenerator.NumberGenerator;
@@ -13,18 +11,15 @@ import racingcar.domain.numbergenerator.SetNumberGenerator;
 class CarsTest {
     NumberGenerator successNumberGenerator = new SetNumberGenerator(4);
     NumberGenerator failureNumberGenerator = new SetNumberGenerator(3);
-    @Test
-    void 이름_입력_5글자_테스트() {
-        String inputNames = "david";
 
-        assertThatThrownBy(() -> {
-            new Cars(inputNames, successNumberGenerator);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
     @Test
     void 이름_입력_성공_테스트() {
         String inputNames = "a,b,c";
-        Cars cars = new Cars(inputNames, successNumberGenerator);
+
+        List<CarName> carNameList = Arrays.stream(inputNames.split(","))
+                .map(CarName::new)
+                .toList();
+        Cars cars = new Cars(carNameList, successNumberGenerator);
 
         IntStream.rangeClosed(0,2).forEach(i -> assertThat(
                 cars.getCars()
@@ -36,7 +31,11 @@ class CarsTest {
     @Test
     void 자동차_이동_성공_테스트() {
         String inputNames = "a,b,c,d";
-        Cars cars = new Cars(inputNames, successNumberGenerator);
+
+        List<CarName> carNameList = Arrays.stream(inputNames.split(","))
+                .map(CarName::new)
+                .toList();
+        Cars cars = new Cars(carNameList, successNumberGenerator);
         cars.allTryMove();
 
         cars.getCars().forEach(car -> {
@@ -47,7 +46,11 @@ class CarsTest {
     @Test
     void 자동차_이동_실패_테스트() {
         String inputNames = "a,b,c,d";
-        Cars cars = new Cars(inputNames, failureNumberGenerator);
+
+        List<CarName> carNameList = Arrays.stream(inputNames.split(","))
+                .map(CarName::new)
+                .toList();
+        Cars cars = new Cars(carNameList, failureNumberGenerator);
         cars.allTryMove();
 
         cars.getCars().forEach(car -> {
@@ -55,16 +58,16 @@ class CarsTest {
         });
     }
 
-
     @Test
     void 불변_컬렉션_테스트() {
         String inputNames = "a,b,c,d";
-        Cars cars = new Cars(inputNames, successNumberGenerator);
-        List<Car> cars1 = cars.getCars();
 
-        Car newCar = new Car("f", successNumberGenerator);
+        List<CarName> carNameList = Arrays.stream(inputNames.split(","))
+                .map(CarName::new)
+                .toList();
+        Cars cars = new Cars(carNameList, successNumberGenerator);        List<Car> cars1 = cars.getCars();
+        Car newCar = new Car(new CarName("f"), successNumberGenerator);
 
         assertThatThrownBy(() -> cars1.add(newCar)).isInstanceOf(UnsupportedOperationException.class);
-
     }
 }

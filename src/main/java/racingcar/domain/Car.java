@@ -14,10 +14,6 @@ public class Car implements Comparable<Car>{
         this.position = new Position();
     }
 
-    public Car(String name, NumberGenerator numberGenerator) {
-        this(new CarName(name), numberGenerator);
-    }
-
     public void tryMove() {
         if(engine.canMove()) {
             position.moveBy(MOVE_AMOUNT);
