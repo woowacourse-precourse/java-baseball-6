@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.*;
 import java.util.stream.Collectors;
 import javax.management.monitor.StringMonitor;
+import org.mockito.internal.matchers.Null;
 import racingcar.domain.numbergenerator.NumberGenerator;
 
 public class RacingManager {
@@ -15,10 +16,10 @@ public class RacingManager {
     public RacingManager(String inputNames, int attempts, NumberGenerator numberGenerator) {
         validateAttempts(attempts);
         validateInputNames(inputNames);
-        List<CarName> carNameList = new ArrayList<>();
-        for(String carName: inputNames.split(NAME_DELIMITER)) {
-            carNameList.add(new CarName(carName));
-        }
+
+        List<CarName> carNameList = Arrays.stream(inputNames.split(NAME_DELIMITER))
+                .map(CarName::new)
+                .toList();
 
         this.cars = new Cars(carNameList, numberGenerator);
         this.attempts = attempts;
@@ -43,12 +44,12 @@ public class RacingManager {
     }
 
     public List<String> getWinners() {
-        Car firstCarPosition = cars.getCars().stream()
+        Car frontCar = cars.getCars().stream()
                 .max(Car::compareTo)
-                .get();
+                .orElseThrow(IllegalArgumentException::new);
 
         return cars.getCars().stream()
-                .filter(car -> car.isSamePosition(firstCarPosition))
+                .filter(car -> car.isSamePosition(frontCar))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }

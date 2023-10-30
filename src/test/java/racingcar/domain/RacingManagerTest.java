@@ -13,6 +13,7 @@ class RacingManagerTest {
     NumberGenerator successNumberGenerator = new SetNumberGenerator(5);
     NumberGenerator failureNumberGenerator = new SetNumberGenerator(0);
     String successInputName = "a,b,c,d";
+
     @Test
     void 이름_잘못된_입력_테스트() {
         String inputNames = "dave,paul,";
