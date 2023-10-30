@@ -1,26 +1,9 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
-    public static List<Integer> getRandomList(int length){
-        List<Integer> randomList = new ArrayList<>();
-
-        while (randomList.size() < length) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-            if (!randomList.contains(randomNumber)) {
-                randomList.add(randomNumber);
-            }
-        }
-
-        return randomList;
-    }
-
-    public boolean printAndGetResult(String stringOfNum, List<Integer> randomList){
+    public Count getResult(String stringOfNum, List<Integer> randomList) {
         int strike=0, ball=0;
 
         for (int i=0 ; i<stringOfNum.length() ; i++){
@@ -34,19 +17,25 @@ public class Model {
             }
         }
 
-        if (strike == 3){
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
-        }
-        else if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-            return false;
-        }
-        else{
-            System.out.println(ball+"볼 " + strike + "스트라이크");
-            return false;
-        }
+        Count count = new Count(strike, ball);
+
+        return count;
     }
 
+    public boolean isCorrect(Count count) {
+        int strike = count.getStrike();
+
+        if(strike == 3) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean isFinish(String finishInput) {
+        if(finishInput.equals("1")) {
+            return false;
+        }
+        return true;
+    }
 }

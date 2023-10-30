@@ -1,29 +1,46 @@
 package baseball.controller;
 
-import baseball.view.View;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import baseball.model.Model;
-
+import baseball.utility.Utility;
+import jdk.jshell.execution.Util;
+import baseball.model.Count;
+import baseball.verification.Verification;
 import java.util.List;
 
 public class Controller {
     public Controller(){
-        View view = new View();
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
         Model model = new Model();
+        Utility utility = new Utility();
+        Verification verification = new Verification();
 
         boolean finish = false;
 
         while (finish == false) {
-            List<Integer> randomList = model.getRandomList(3);
-            boolean isCorrect = false;
+            List<Integer> randomList = utility.getRandomList(3);
+            boolean correct = false;
 
-            view.printStart();
+            outputView.printStart();
 
-            while(isCorrect == false) {
-                String stringOfNum = view.getStringOfNum();
-                isCorrect = model.printAndGetResult(stringOfNum, randomList);
+            while(correct == false) {
+                String stringOfNum = inputView.getStringOfNum();
+
+                verification.checkStringIsNum(stringOfNum);
+                verification.checkStringLength(stringOfNum);
+
+                Count count = model.getResult(stringOfNum, randomList);
+                outputView.printResult(count);
+
+                correct = model.isCorrect(count);
             }
 
-            finish = view.getBooleanOfFinish();
+            String finishInput = inputView.getFinishInput();
+            verification.checkFinishInput(finishInput);
+
+            finish = model.isFinish(finishInput);
         }
     }
 }
