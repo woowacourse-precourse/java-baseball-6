@@ -5,8 +5,9 @@ public class Verification {
         for(int i=0 ; i<stringOfNum.length() ; i++){
             char currentChar = stringOfNum.charAt(i);
 
-            if(Character.isDigit(currentChar) == false)
+            if(Character.isDigit(currentChar) == false) {
                 throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
+            }
         }
     }
 

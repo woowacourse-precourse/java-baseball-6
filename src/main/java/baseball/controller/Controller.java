@@ -1,12 +1,11 @@
 package baseball.controller;
 
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.model.Count;
 import baseball.model.Model;
 import baseball.utility.Utility;
-import jdk.jshell.execution.Util;
-import baseball.model.Count;
 import baseball.verification.Verification;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.List;
 
 public class Controller {

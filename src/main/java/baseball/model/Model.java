@@ -36,6 +36,7 @@ public class Model {
         if(finishInput.equals("1")) {
             return false;
         }
+
         return true;
     }
 }
