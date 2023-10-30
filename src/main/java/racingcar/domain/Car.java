@@ -3,6 +3,8 @@ package racingcar.domain;
 import racingcar.domain.numbergenerator.NumberGenerator;
 
 public class Car implements Comparable<Car>{
+    private static final int MOVE_AMOUNT = 1;
+    private static final int NAME_MAX_LENGTH = 4;
     private final String name;
     private final Engine engine;
     private int position;
@@ -15,7 +17,7 @@ public class Car implements Comparable<Car>{
 
     public void tryMove() {
         if(engine.canMove()) {
-            position += 1;
+            position += MOVE_AMOUNT;
         }
     }
 
@@ -29,7 +31,7 @@ public class Car implements Comparable<Car>{
     }
 
     private void validateName(String name) throws IllegalArgumentException {
-        if (name.length() >= 5 || name.isEmpty()) {
+        if (name.length() > NAME_MAX_LENGTH || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }

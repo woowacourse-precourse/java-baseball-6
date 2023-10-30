@@ -22,6 +22,9 @@ public class InputView {
     }
 
     void validateAttempts(String attempts) throws IllegalArgumentException {
+        if (attempts.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         try {
             Integer.parseInt(attempts);
         } catch (NumberFormatException e) {

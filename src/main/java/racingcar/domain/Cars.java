@@ -6,12 +6,13 @@ import java.util.stream.Stream;
 import racingcar.domain.numbergenerator.NumberGenerator;
 
 public class Cars {
-    private final String INPUT_NAMES_REGEX = "^[A-Za-z0-9,]*[A-Za-z0-9]$";
+    private static final String INPUT_NAMES_REGEX = "^[A-Za-z0-9,]*[A-Za-z0-9]$";
+    private static final String NAME_DELIMITER = ",";
     private final List<Car> cars;
 
     public Cars(String inputNames, NumberGenerator numberGenerator) {
         validateInputNames(inputNames);
-        String[] names = inputNames.split(",");
+        String[] names = inputNames.split(NAME_DELIMITER);
         cars = Arrays.stream(names)
                 .map(name -> new Car(name, numberGenerator))
                 .collect(Collectors.toList());
