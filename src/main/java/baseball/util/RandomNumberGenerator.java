@@ -10,5 +10,4 @@ public class RandomNumberGenerator {
     public int generate() {
         return pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
     }
-
 }
