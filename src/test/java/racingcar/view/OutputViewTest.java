@@ -43,7 +43,7 @@ class OutputViewTest {
 
     @Test
     void 차수_결과_출력_테스트() {
-        Map<String, Integer> attemptResultSample = new HashMap<>();
+        Map<String, Integer> attemptResultSample = new LinkedHashMap<>();
         attemptResultSample.put("dave", 3);
         attemptResultSample.put("app", 7);
         attemptResultSample.put("show", 6);
@@ -64,7 +64,7 @@ class OutputViewTest {
         winnersSample.add("pobi");
         winnersSample.add("jun");
 
-        String gameResultString = "최종 우승자 : pobi, jun";
+        String gameResultString = "최종 우승자 : pobi, jun\n";
 
         view.showGameResult(winnersSample);
         assertThat(gameResultString).isEqualTo(outContent.toString());
