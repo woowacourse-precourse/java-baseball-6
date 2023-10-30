@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 
 public class BallNumbers {
     private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-    private int strikeCount = 0;
-    private int ballCount = 0;
     private List<Integer> numberList = new ArrayList<>();
 
     public List<Integer> generateBaseball() {
@@ -41,8 +39,8 @@ public class BallNumbers {
 
     private GameResult matchPosition(final List<Integer> matchedNumbers,
                                      final List<Integer> inputNumbersList) {
-        strikeCount = 0;
-        ballCount = 0;
+        int strikeCount = 0;
+        int ballCount = 0;
 
         for (Integer matchedNumber : matchedNumbers) {
             if (numberList.indexOf(matchedNumber) == inputNumbersList.indexOf(matchedNumber)) {
