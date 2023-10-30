@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import javax.management.monitor.StringMonitor;
-import org.mockito.internal.matchers.Null;
 import racingcar.domain.numbergenerator.NumberGenerator;
 
 public class RacingManager {
@@ -32,10 +30,7 @@ public class RacingManager {
 
     public Map<String, Integer> getAttemptResult() {
         Map<String, Integer> attemptsResult = new LinkedHashMap<>();
-        List<Car> carList = cars.getCars();
-        for(Car car: carList) {
-            attemptsResult.put(car.getName(), car.getPosition());
-        }
+        cars.getCars().forEach(car -> attemptsResult.put(car.getName(), car.getPosition()));
         return attemptsResult;
     }
 
@@ -56,13 +51,18 @@ public class RacingManager {
 
     private void validateAttempts(int attempts) throws IllegalArgumentException {
         if (attempts < MIN_ATTEMPT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 횟수가 1보다 작습니다.");
         }
     }
 
     private void validateInputNames(String inputNames) {
         if (!inputNames.matches(INPUT_NAMES_REGEX)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 이름 입력 형식이 맞지 않습니다.");
+        }
+        List<String> nameList = List.of(inputNames.split(NAME_DELIMITER));
+        Set<String> nameSet = new HashSet<>(nameList);
+        if (nameList.size() != nameSet.size()) {
+            throw new IllegalArgumentException("[ERROR] 이름이 중복됩니다.");
         }
     }
 }
