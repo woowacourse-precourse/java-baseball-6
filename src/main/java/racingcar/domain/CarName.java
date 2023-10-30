@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 public record CarName(String value) {
-    private static final String NAME_DELIMITER = ",";
     private static final int NAME_MAX_LENGTH = 4;
 
     public CarName {
