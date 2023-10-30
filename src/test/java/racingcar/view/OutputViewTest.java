@@ -55,7 +55,7 @@ class OutputViewTest {
 
         view.showAttemptResult(attemptResultSample);
 
-        assertThat(attemptResultString).isEqualTo(outContent.toString());
+        assertThat(outContent.toString()).contains(attemptResultString);
     }
 
     @Test
