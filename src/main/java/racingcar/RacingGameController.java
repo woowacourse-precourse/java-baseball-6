@@ -6,43 +6,43 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingGameController {
+    private final RandomNumberGenerator randomNumberGenerator;
     private final InputView inputView;
     private final OutputView outputView;
-    private RacingManager racingManager;
 
-    public RacingGameController() {
+    public RacingGameController(RandomNumberGenerator randomNumberGenerator) {
+        this.randomNumberGenerator = randomNumberGenerator;
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
     public void start(){
-        setUpGame();
-        playRace();
-        printGameResult();
+        RacingManager racingManager = setUpManager();
+        executeGame(racingManager);
+        showGameResult(racingManager);
     }
 
-    private void setUpGame() {
-        outputView.showCarNamesInputMessage();
+    private RacingManager setUpManager() {
+        outputView.printCarNamesInputMessage();
         String carNames = inputView.inputCarNames();
-        outputView.showAttemptsInputMessage();
+        outputView.printAttemptsInputMessage();
         int attempts = inputView.inputAttempts();
-        System.out.println(attempts);
-        this.racingManager = new RacingManager(carNames, attempts, new RandomNumberGenerator());
+        return new RacingManager(carNames, attempts, randomNumberGenerator);
     }
 
-    private void playRace() {
-        outputView.showAttemptResultStartMessage();
+    private void executeGame(RacingManager racingManager) {
+        outputView.printAttemptResultStartMessage();
         do {
             racingManager.doAttempt();
-            printAttemptResult();
+            showAttemptResult(racingManager);
         } while (!racingManager.isRaceEnd());
     }
 
-    private void printAttemptResult() {
-        outputView.showAttemptResult(racingManager.getAttemptResult());
+    private void showAttemptResult(RacingManager racingManager) {
+        outputView.printAttemptResult(racingManager.getAttemptResult());
     }
 
-    private void printGameResult() {
-        outputView.showGameResult(racingManager.getWinners());
+    private void showGameResult(RacingManager racingManager) {
+        outputView.printGameResult(racingManager.getWinners());
     }
 }

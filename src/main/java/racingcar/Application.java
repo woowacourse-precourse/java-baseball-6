@@ -1,10 +1,10 @@
 package racingcar;
 
-import racingcar.RacingGameController;
+import racingcar.domain.numbergenerator.RandomNumberGenerator;
 
 public class Application {
     public static void main(String[] args) {
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(new RandomNumberGenerator());
         controller.start();
     }
 }
