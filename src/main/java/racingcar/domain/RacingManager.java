@@ -6,6 +6,7 @@ import javax.management.monitor.StringMonitor;
 import racingcar.domain.numbergenerator.NumberGenerator;
 
 public class RacingManager {
+    private static final int MIN_ATTEMPT = 1;
     private final Cars cars;
     private int attempts;
 
@@ -17,11 +18,11 @@ public class RacingManager {
 
     public void doAttempt() {
         cars.allTryMove();
-        attempts -= 1;
+        attempts--;
     }
 
     public Map<String, Integer> getAttemptResult() {
-        Map<String, Integer> attemptsResult = new HashMap<>();
+        Map<String, Integer> attemptsResult = new LinkedHashMap<>();
         List<Car> carList = cars.getCars();
         for(Car car: carList) {
             attemptsResult.put(car.getName(), car.getPosition());
@@ -34,18 +35,18 @@ public class RacingManager {
     }
 
     public List<String> getWinners() {
-        Car headCar = cars.getCars().stream()
+        Car firstCarPosition = cars.getCars().stream()
                 .max(Car::compareTo)
                 .get();
 
         return cars.getCars().stream()
-                .filter(car -> car.isSamePosition(headCar))
+                .filter(car -> car.isSamePosition(firstCarPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
     private void validateAttempts(int attempts) throws IllegalArgumentException {
-        if (attempts < 1) {
+        if (attempts < MIN_ATTEMPT) {
             throw new IllegalArgumentException();
         }
     }
