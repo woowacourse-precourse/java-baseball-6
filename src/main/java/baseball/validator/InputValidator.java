@@ -11,6 +11,7 @@ public class InputValidator {
     public static final String WRONG_INPUT_CHARACTER_MESSAGE = "숫자만 입력 가능합니다.";
     public static final String WRONG_INPUT_START_NEW_GAME_OR_EXIT_MESSAGE = "게임 재시작 여부는 숫자 1, 2만 입력 가능합니다.";
     public static final String WRONG_INPUT_DUPLICATION_NUMBERS_MESSAGE = "중복되지 않는 3자리 숫자만 입력가능합니다.";
+    public static final int MAX_INPUT_NUMBER_LENGTH = 3;
 
     public static void validateInputLength(final String input) {
         if (input.length() != 3) {
@@ -36,7 +37,7 @@ public class InputValidator {
     public static void validateNumberDuplication(final List<Integer> inputNumbers) {
         Set<Integer> inputSet = new HashSet<>(inputNumbers);
 
-        if (inputSet.size() != 3) {
+        if (inputSet.size() != MAX_INPUT_NUMBER_LENGTH) {
             throw new IllegalArgumentException(WRONG_INPUT_DUPLICATION_NUMBERS_MESSAGE);
         }
     }
