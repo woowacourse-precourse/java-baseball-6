@@ -23,7 +23,7 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car other) {
-        return this.position - other.position;
+        return Integer.compare(this.position, other.position);
     }
 
     public boolean isSamePosition(Car other) {
@@ -32,7 +32,7 @@ public class Car implements Comparable<Car>{
 
     private void validateName(String name) throws IllegalArgumentException {
         if (name.length() > NAME_MAX_LENGTH || name.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 자동차 이름의 길이가 너무 깁니다.");
         }
     }
 
