@@ -4,13 +4,12 @@ import baseball.domain.view.input.UserInput;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserGenerate {
+public class UserGenerator {
     public List<Integer> getAttempt() {
         UserInput userInputIsString = new UserInput();
         List<Integer> result = new ArrayList<>();
         String userInput;
 
-        // 사용자 입력 받기
         userInput = userInputIsString.getGamingInput();
 
         // String -> List<Integer>

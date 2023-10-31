@@ -1,7 +1,7 @@
 package baseball.domain.controller;
 
-import baseball.domain.util.generator.ComputerGenerate;
-import baseball.domain.util.generator.UserGenerate;
+import baseball.domain.util.generator.ComputerGenerator;
+import baseball.domain.util.generator.UserGenerator;
 import baseball.domain.view.input.UserInput;
 import baseball.domain.view.output.GameProcessingPrinter;
 import java.util.List;
@@ -10,10 +10,10 @@ public class BaseballGame {
     public void gameStart() {
         GameProcessingPrinter.printGameStart();
         do {
-            ComputerGenerate computerGenerate = new ComputerGenerate();
+            ComputerGenerator computerGenerator = new ComputerGenerator();
 
             // 컴퓨터 랜덤 수 생성
-            List<Integer> target = computerGenerate.getTarget();
+            List<Integer> target = computerGenerator.getTarget();
 
             // 플레이어 입력 및 게임 로직
             play(target);
@@ -26,11 +26,11 @@ public class BaseballGame {
     }
 
     private boolean isCorrectAttempt(List<Integer> target) {
-        UserGenerate userGenerate = new UserGenerate();
+        UserGenerator userGenerator = new UserGenerator();
         GameRule gameRule = new GameRule();
 
         // 사용자 3개의 숫자 입력
-        List<Integer> attempt = userGenerate.getAttempt();
+        List<Integer> attempt = userGenerator.getAttempt();
 
         // 사용자 입력 마다의 결과
         if (gameRule.gameLogic(attempt, target)) {

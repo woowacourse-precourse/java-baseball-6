@@ -30,13 +30,13 @@ public class UserInput {
     }
 
     public static void validateGetGamingInput(String input) {
-        InputValidator.checkThreeNumber(input);
-        InputValidator.checkOnlyCompositionNumber(input);
+        InputValidator.checkBaseballNumberSize(input);
+        InputValidator.checkBetweenMinAndMax(input);
         InputValidator.checkDuplicationNumber(input);
     }
 
     public static void validateGetEndGameInput(String input) {
-        InputValidator.checkOnlyTwoNumber(input);
+        InputValidator.isNumber(input);
     }
 
 }
