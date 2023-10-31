@@ -1,13 +1,14 @@
 package baseball.domain.util.calculator;
 
+import baseball.domain.config.GameConfig;
 import baseball.domain.entity.ScoreBoard;
 import java.util.List;
 
 public class BallAndStrikeCalculator {
-    public ScoreBoard calculate(List<Integer> attempt, List<Integer> target) {
+    public static ScoreBoard calculate(List<Integer> attempt, List<Integer> target) {
         ScoreBoard scoreBoard = new ScoreBoard();
 
-        for (int i = 0; i < attempt.size(); i++) {
+        for (int i = 0; i < GameConfig.BASEBALL_SIZE; i++) {
             Integer attemptValue = attempt.get(i);
             Integer targetValue = target.get(i);
 

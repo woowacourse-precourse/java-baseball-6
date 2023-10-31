@@ -10,8 +10,7 @@ public class GameService {
     private static final int BASEBALL_SIZE = GameConfig.BASEBALL_SIZE;
 
     public static ScoreBoard gameLogic(List<Integer> attempt, List<Integer> target) {
-        BallAndStrikeCalculator ballAndStrikeCalculator = new BallAndStrikeCalculator();
-        ScoreBoard scoreBoard = ballAndStrikeCalculator.calculate(attempt, target);
+        ScoreBoard scoreBoard = BallAndStrikeCalculator.calculate(attempt, target);
         gameResult(scoreBoard.getBall(), scoreBoard.getStrike());
 
         return scoreBoard;
