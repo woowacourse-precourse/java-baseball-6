@@ -7,12 +7,10 @@ import racingcar.domain.numbergenerator.NumberGenerator;
 public class RacingManager {
     private static final String INPUT_NAMES_REGEX = "^[A-Za-z0-9,]*[A-Za-z0-9]$";
     private static final String NAME_DELIMITER = ",";
-    private static final int MIN_ATTEMPT = 1;
     private final Cars cars;
-    private int attempts;
+    private final Attempts attempts;
 
     public RacingManager(String inputNames, int attempts, NumberGenerator numberGenerator) {
-        validateAttempts(attempts);
         validateInputNames(inputNames);
 
         List<CarName> carNameList = Arrays.stream(inputNames.split(NAME_DELIMITER))
@@ -20,12 +18,12 @@ public class RacingManager {
                 .toList();
 
         this.cars = new Cars(carNameList, numberGenerator);
-        this.attempts = attempts;
+        this.attempts = new Attempts(attempts);
     }
 
     public void doAttempt() {
         cars.allTryMove();
-        attempts--;
+        attempts.decreaseAttempts();
     }
 
     public Map<String, Integer> getAttemptResult() {
@@ -35,7 +33,7 @@ public class RacingManager {
     }
 
     public boolean isRaceEnd() {
-        return attempts == 0;
+        return attempts.isZero();
     }
 
     public List<String> getWinners() {
@@ -47,12 +45,6 @@ public class RacingManager {
                 .filter(car -> car.isSamePosition(frontCar))
                 .map(Car::getName)
                 .collect(Collectors.toList());
-    }
-
-    private void validateAttempts(int attempts) throws IllegalArgumentException {
-        if (attempts < MIN_ATTEMPT) {
-            throw new IllegalArgumentException("[ERROR] 횟수가 1보다 작습니다.");
-        }
     }
 
     private void validateInputNames(String inputNames) {
