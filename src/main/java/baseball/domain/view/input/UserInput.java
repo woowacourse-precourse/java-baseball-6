@@ -25,17 +25,22 @@ public class UserInput {
         return userInput;
     }
 
+    public static int toInt(String input) {
+        InputValidator.isNumber(input);
+        return Integer.parseInt(input);
+    }
+
     private static String removeSpace(String str) {
         return str.replace(" ", "");
     }
 
-    public static void validateGetGamingInput(String input) {
+    private static void validateGetGamingInput(String input) {
         InputValidator.checkBaseballNumberSize(input);
         InputValidator.checkBetweenMinAndMax(input);
         InputValidator.checkDuplicationNumber(input);
     }
 
-    public static void validateGetEndGameInput(String input) {
+    private static void validateGetEndGameInput(String input) {
         InputValidator.isNumber(input);
     }
 

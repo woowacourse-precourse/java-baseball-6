@@ -9,7 +9,7 @@ import java.util.List;
 public class GameService {
     private static final int BASEBALL_SIZE = GameConfig.BASEBALL_SIZE;
 
-    public ScoreBoard gameLogic(List<Integer> attempt, List<Integer> target) {
+    public static ScoreBoard gameLogic(List<Integer> attempt, List<Integer> target) {
         BallAndStrikeCalculator ballAndStrikeCalculator = new BallAndStrikeCalculator();
         ScoreBoard scoreBoard = ballAndStrikeCalculator.calculate(attempt, target);
         gameResult(scoreBoard.getBall(), scoreBoard.getStrike());
@@ -17,7 +17,7 @@ public class GameService {
         return scoreBoard;
     }
 
-    private void gameResult(int ball, int strike) {
+    private static void gameResult(int ball, int strike) {
         // All strike인 경우
         if (strike == BASEBALL_SIZE) {
             GameProcessingPrinter.printAllStrike();

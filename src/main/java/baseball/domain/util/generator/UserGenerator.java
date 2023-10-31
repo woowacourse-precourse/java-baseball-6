@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserGenerator {
-    public List<Integer> getAttempt() {
+    public static List<Integer> getAttempt() {
         UserInput userInputIsString = new UserInput();
         List<Integer> result = new ArrayList<>();
         String userInput;

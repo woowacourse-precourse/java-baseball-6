@@ -10,7 +10,7 @@ public class ComputerGenerator {
     private static final int BASEBALL_MIN_NUMBER = GameConfig.BASEBALL_MIN_NUMBER;
     private static final int BASEBALL_MAX_NUMBER = GameConfig.BASEBALL_MAX_NUMBER;
 
-    public List<Integer> getTarget() {
+    public static List<Integer> getTarget() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < BASEBALL_SIZE) {

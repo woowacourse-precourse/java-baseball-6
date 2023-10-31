@@ -1,5 +1,6 @@
 package baseball.domain.controller;
 
+import baseball.domain.config.GameCommand;
 import baseball.domain.entity.ScoreBoard;
 import baseball.domain.service.GameService;
 import baseball.domain.util.generator.ComputerGenerator;
@@ -9,46 +10,50 @@ import baseball.domain.view.output.GameProcessingPrinter;
 import java.util.List;
 
 public class GameController {
-    public void gameStart() {
+    private final ScoreBoard END_SCORE_BOARD = ScoreBoard.getEndScoreBoard();
+
+    public void run() {
         GameProcessingPrinter.printGameStart();
-        do {
-            ComputerGenerator computerGenerator = new ComputerGenerator();
-
-            // 컴퓨터 랜덤 수 생성
-            List<Integer> target = computerGenerator.getTarget();
-
-            // 플레이어 입력 및 게임 로직
-            play(target);
-        } while (!isEnd());
+        startGame();
     }
 
-    private void play(List<Integer> target) {
-        while (!isCorrectAttempt(target)) {
-        }
+    private void startGame() {
+        play();
+        redoGame();
     }
 
-    private boolean isCorrectAttempt(List<Integer> target) {
-        UserGenerator userGenerator = new UserGenerator();
-        GameService gameService = new GameService();
-
-        // 사용자 3개의 숫자 입력
-        List<Integer> attempt = userGenerator.getAttempt();
-
-        // 사용자 입력 마다의 결과
-        if (ScoreBoard.getEndScoreBoard().equals(gameService.gameLogic(attempt, target))) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isEnd() {
-        UserInput userInput = new UserInput();
-
+    private void play() {
+        List<Integer> target = ComputerGenerator.getTarget();
+        
+        attepmtBaseball(target);
         GameProcessingPrinter.printGameEnd();
-        String input = userInput.getEndGameInput();
-        if (input.equals("1")) {
-            return false;
+    }
+
+    private void attepmtBaseball(List<Integer> target) {
+        while (true) {
+            List<Integer> attempt = UserGenerator.getAttempt();
+
+            ScoreBoard attemptScoreBoard = GameService.gameLogic(attempt, target);
+
+            if (END_SCORE_BOARD.equals(attemptScoreBoard)) {
+                break;
+            }
         }
-        return true;
+    }
+
+    private void redoGame() {
+        int option = getOption();
+        GameCommand command = GameCommand.from(option);
+
+        if (command.equals(GameCommand.QUIT)) {
+            return;
+        }
+
+        startGame();
+    }
+
+    private static int getOption() {
+        String userInput = UserInput.getEndGameInput();
+        return UserInput.toInt(userInput);
     }
 }
