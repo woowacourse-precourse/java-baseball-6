@@ -1,5 +1,6 @@
 package baseball.domain.controller;
 
+import baseball.domain.entity.ScoreBoard;
 import baseball.domain.service.GameService;
 import baseball.domain.util.generator.ComputerGenerator;
 import baseball.domain.util.generator.UserGenerator;
@@ -34,7 +35,7 @@ public class GameController {
         List<Integer> attempt = userGenerator.getAttempt();
 
         // 사용자 입력 마다의 결과
-        if (gameService.gameLogic(attempt, target)) {
+        if (ScoreBoard.getEndScoreBoard().equals(gameService.gameLogic(attempt, target))) {
             return true;
         }
         return false;
