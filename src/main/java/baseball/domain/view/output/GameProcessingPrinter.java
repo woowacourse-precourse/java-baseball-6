@@ -27,7 +27,7 @@ public class GameProcessingPrinter {
 
     public static void printProceeding(int ball, int strike) {
         if (ball > 0) {
-            System.out.print(ball + BALL);
+            System.out.print(ball + BALL + " ");
         }
         if (strike > 0) {
             System.out.print(strike + STRIKE);

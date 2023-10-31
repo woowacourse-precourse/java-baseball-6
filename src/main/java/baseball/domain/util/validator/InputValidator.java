@@ -17,7 +17,8 @@ public class InputValidator {
 
     public static void checkBetweenMinAndMax(String input) {
         for (char c : input.toCharArray()) {
-            if (c < BASEBALL_MIN_NUMBER - '0' || c > BASEBALL_MAX_NUMBER - '0') {
+            int number = c - '0';
+            if (number < BASEBALL_MIN_NUMBER || number > BASEBALL_MAX_NUMBER) {
                 throw new IllegalArgumentException(
                         "입력된 값은 "
                                 + BASEBALL_MIN_NUMBER + "~" + BASEBALL_MAX_NUMBER

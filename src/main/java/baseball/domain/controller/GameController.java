@@ -1,12 +1,13 @@
 package baseball.domain.controller;
 
+import baseball.domain.service.GameService;
 import baseball.domain.util.generator.ComputerGenerator;
 import baseball.domain.util.generator.UserGenerator;
 import baseball.domain.view.input.UserInput;
 import baseball.domain.view.output.GameProcessingPrinter;
 import java.util.List;
 
-public class BaseballGame {
+public class GameController {
     public void gameStart() {
         GameProcessingPrinter.printGameStart();
         do {
@@ -27,13 +28,13 @@ public class BaseballGame {
 
     private boolean isCorrectAttempt(List<Integer> target) {
         UserGenerator userGenerator = new UserGenerator();
-        GameRule gameRule = new GameRule();
+        GameService gameService = new GameService();
 
         // 사용자 3개의 숫자 입력
         List<Integer> attempt = userGenerator.getAttempt();
 
         // 사용자 입력 마다의 결과
-        if (gameRule.gameLogic(attempt, target)) {
+        if (gameService.gameLogic(attempt, target)) {
             return true;
         }
         return false;

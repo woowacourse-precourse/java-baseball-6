@@ -1,19 +1,20 @@
-package baseball.domain.controller;
+package baseball.domain.service;
 
+import baseball.domain.entity.ScoreBoard;
+import baseball.domain.util.calculator.BallAndStrikeCalculator;
 import baseball.domain.view.output.GameProcessingPrinter;
 import java.util.List;
 
-public class GameRule {
+public class GameService {
     private boolean endGame;
 
     public boolean gameLogic(List<Integer> attempt, List<Integer> target) {
         BallAndStrikeCalculator ballAndStrikeCalculator = new BallAndStrikeCalculator();
 
-        int[] results = ballAndStrikeCalculator.calculate(attempt, target);
-        int ball = results[0];
-        int strike = results[1];
+        ScoreBoard scoreBoard = ballAndStrikeCalculator.calculate(attempt, target);
+        int ball = scoreBoard.getBall();
+        int strike = scoreBoard.getStrike();
 
-        // 결과 로직 호출
         gameResult(ball, strike);
 
         return endGame;
