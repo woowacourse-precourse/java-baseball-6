@@ -13,7 +13,9 @@ public class GameValidator {
     private static final int CAR_NAME_MAX_LENGTH = 6;
     private static final int CAR_NAME_MIN_LENGTH = 1;
     private static final int CAR_NAME_BLANK = 0;
+    private static final int CAR_CHECK_INDEX_1 = 1;
     private static final String BLANK_BAR = " ";
+    private static final String COMMA = ",";
 
     public static String isNumeric(String strValue) {
         try {
@@ -50,6 +52,12 @@ public class GameValidator {
     public static void validateCarNameMinLength(String carName) {
         if (carName.length() == CAR_NAME_MIN_LENGTH) {
             throw new UserInputException(ErrorMsg.ERROR_CAR_NAME_MIN_LENGTH.getMessage());
+        }
+    }
+
+    public static void validateLastWordToCarName(String carName) {
+        if (carName.substring(carName.length() - CAR_CHECK_INDEX_1).equals(COMMA)) {
+            throw new UserInputException(ErrorMsg.ERROR_CAR_LAST_WORD.getMessage());
         }
     }
 

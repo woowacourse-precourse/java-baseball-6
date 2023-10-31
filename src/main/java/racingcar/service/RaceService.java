@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import static racingcar.utils.GameValidator.validateCheckDuplicateCarName;
+import static racingcar.utils.GameValidator.validateLastWordToCarName;
 
 import java.util.Arrays;
 import racingcar.domain.Car;
@@ -28,6 +29,7 @@ public class RaceService {
     }
 
     public void addRacingCarsFromInput(String inputName) {
+        validateLastWordToCarName(inputName);
         Arrays.stream(inputName.split(","))
                 .forEach(name -> raceCar.addSaveCar(new Car(name)));
     }
