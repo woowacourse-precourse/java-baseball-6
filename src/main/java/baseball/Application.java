@@ -1,7 +1,12 @@
 package baseball;
 
+import woowa.hyunho.messages.Messages;
+import woowa.hyunho.process.Process;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    	Messages.printStart();
+        Process baseball = new Process();
+        baseball.start();
     }
 }
