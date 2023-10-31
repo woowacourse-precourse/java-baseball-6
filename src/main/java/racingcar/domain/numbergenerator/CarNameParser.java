@@ -16,6 +16,9 @@ public class CarNameParser {
     }
 
     private static void validateInputNames(String inputNames) {
+        if (!inputNames.contains(NAME_DELIMITER)) {
+            throw new IllegalArgumentException("[ERROR] 2대 이상의 자동차 이름을 쉼표로 구분하여 입력해주세요.");
+        }
         if (!inputNames.matches(INPUT_NAMES_REGEX)) {
             throw new IllegalArgumentException("[ERROR] 이름 입력 형식이 맞지 않습니다.");
         }
