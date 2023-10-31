@@ -1,4 +1,4 @@
-package baseball.config;
+package baseball.domain.config;
 
 public enum GameCommand {
     RESTART(1),

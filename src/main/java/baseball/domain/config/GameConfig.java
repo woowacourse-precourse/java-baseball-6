@@ -1,4 +1,4 @@
-package baseball.config;
+package baseball.domain.config;
 
 public abstract class GameConfig {
     public static final int BASEBALL_SIZE = 3;
