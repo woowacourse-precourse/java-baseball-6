@@ -1,0 +1,61 @@
+# 미션 - 자동차 경주
+
+## 개요
+
+> 게임을 시작할 때 사용자 입력으로 `자동차 이름`,`시도할 횟수`를 입력 받아 시도한 횟수를 기준으로 게임이 시작이 되며 시도하는 턴마다 랜덤한 숫자 `0~9 숫자 중` `4이상` 일 경우 전진 할 수 있으며,
+> 시도할 횟수까지 제일 많이 전진한 자동차가 우승하는 게임이다.
+
+## 🚀 구현 기능 목록
+
+### 1. 게임 제어 기능
+
+- `게임시작 & 입력 -> 출력 -> 결과` 과정을 통해 `시도한 횟수` 동안 게임을 진행한다.
+
+#### 랜덤 값 생성
+
+- `GameUtils` 클래스 `pickNumberRange` 를 통해 랜덤 수 생성
+    - 해당 메서드는 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 사용 한다.
+    - 서로 다른 수 의 0 ~ 9 범위에 대한 한 개의 숫자 생성 한다.
+
+________
+
+#### 게임시작 & 입력
+
+- `RacingCarGameController` 클래스 `start`메서드를 통해 게임 진행
+- `RacingCarGameController` 클래스 `stop` 메서드를 통해 첫 게임 이후 `진행` 혹은 게임을 `종료`
+    1. `RacingCarCameController`가 인스턴스로 생성되고 `RaceService`가 초기화 될 때 `addRacingCarsFromInput`으로부터 쉼표 기준으로 자동차 경기를 할 자동차
+       이름을 받는다.
+    2. 게임의 종료 조건은 `RacingCarGameController`가 인스턴스로 생성 될때 `racingCycle`메서드를 통해서
+       입력받는 `input` 값을 통해 몇번 실행할지 결정한다.
+
+#### 출력
+
+1. `RaceService.start()` 메서드로 부터 `RaceCar`객체의 저장된 `Car`의 정보를 불러 온다.
+    1. 이때 `랜덤 한 수 4이상 일 경우를 체크한다`
+        1. `true` 일 경우 `Car` 인스턴수 변수인 `forwardCount`가 증가하며 증가한 수 만큼 출력 문자인 `"-"` 를 count 만큼 `.repeat` 함수로 출력한다.
+2. 해당 `RaceService.start()` 메서드는 `RaceController.run()` 이 끝날때 동안 `1번` 과정을 반복하며 출력한다.
+
+#### 결과
+
+- RaceController 의  `변수 GAME_CYCLE_COUNT` 가 `0`이 될 경우 `최종 우승자`를 표출한다.
+    1. `RaceService.findWinner(int winnerCount)` 메서드를 통해 표출
+        1. 매개변수는 `RaceCar.findWinnerNumber()`를 통해 최대값을 찾는다.
+        2. 찾은 값이 매개변수로 넘어간 이후 게임 요구 사항 `우승자는 한 명 이상일 수 있다`를 충족 시킨다.
+            - 넘어온 매개변수 값이랑 Car의 인스턴수 변수인 `forwardCount`를 `같거나 큰 값`인 `Car`의 이름을 가져오면서 `여러명인 경우 쉼표`를 넣어 출력
+
+## 테스트-목록
+
+- [ ] CarUtilsTest - `randomPickNumber()`
+    - 랜덤으로_0부터_9까지의_정수_하나를_반환한다
+
+ 
+
+
+
+
+
+
+
+
+
+
