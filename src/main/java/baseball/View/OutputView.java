@@ -8,6 +8,7 @@ public class OutputView {
     private final static String BALL = "볼 ";
     private final static String STRIKE = "스트라이크";
     private final static String NOTHING = "낫싱";
+
     public static void startMessage() {
         System.out.println(START_GAME_MESSAGE);
     }
@@ -17,17 +18,18 @@ public class OutputView {
     }
 
     public static void showUserInputResult(List<Integer> compareResult) {
+        StringBuilder stringBuilder = new StringBuilder();
         String inputResult = "";
         if (compareResult.get(0) != 0) {
-            inputResult += compareResult.get(0) + BALL;
+            stringBuilder.append(compareResult.get(0) + BALL);
         }
         if (compareResult.get(1) != 0) {
-            inputResult += compareResult.get(1) + STRIKE;
+            stringBuilder.append(compareResult.get(1) + STRIKE);
         }
         if (inputResult == "") {
-            inputResult = NOTHING;
+            stringBuilder.append(NOTHING);
         }
-        System.out.println(inputResult);
+        System.out.println(stringBuilder);
     }
 
 

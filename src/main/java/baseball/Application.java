@@ -6,20 +6,20 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        boolean START = true;
-        boolean WRONG = true;
+        boolean start = true;
+        boolean wrong = false;
         // TODO: 프로그램 구현
         OutputView.startMessage();
-        while (START) {
+        while (start) {
             NumberComparison numberComparison = new NumberComparison(RandomNumberGenerator.RandomNumberGenerator());
             do {
                 User user = new User(InputView.userInputMessage());
                 List<Integer> result = numberComparison.compareList(user.getUserInputList());
                 OutputView.showUserInputResult(result);
-                WRONG = numberComparison.success(result);
-            } while (WRONG);
+                wrong = numberComparison.success(result);
+            } while (!wrong);
             OutputView.gameOverMessage();
-            START = RestartPrompt.stringToBoolean(InputView.askRestartMessage());
+            start = RestartPrompt.stringToBoolean(InputView.askRestartMessage());
         }
     }
 }

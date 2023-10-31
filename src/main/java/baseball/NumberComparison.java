@@ -6,6 +6,8 @@ import java.util.stream.IntStream;
 
 public class NumberComparison {
     private static final int ANSWER_LENGTH = 3;
+    private static final int THREE_STRIKE = 3;
+    private static final int STRIKE_ZONE = 1;
     private final List<Integer> randomNumberList;
 
     public NumberComparison(List<Integer> randomNumberList) {
@@ -28,9 +30,6 @@ public class NumberComparison {
     }
 
     public boolean success(List<Integer> result) {
-        if (result.get(1) == 3) {
-            return false;
-        }
-        return true;
+        return result.get(STRIKE_ZONE) == THREE_STRIKE;
     }
 }

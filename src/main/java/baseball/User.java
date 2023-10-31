@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,12 +7,13 @@ import java.util.Set;
 public class User {
     private final List<Integer> userInputList;
     private static final int ANSWER_LENGTH = 3;
+    private static final String myInteger = "-?\\d+";
 
     public User(String userInput) {
         userInputNotNumber(userInput);
         userInputLengthException(userInput);
         this.userInputList = stringToIntegerList(userInput);
-        isUnique(userInputList);
+        checkUnique(userInputList);
     }
 
     public List<Integer> getUserInputList() {
@@ -28,14 +28,14 @@ public class User {
 
     private void userInputNotNumber(String userInput) {
         for (int i = 0; i < userInput.length(); i++) {
-            if (!userInput.matches("-?\\d+")) {
+            if (!userInput.matches(myInteger)) {
                 throw new IllegalArgumentException();
             }
         }
     }
 
 
-    private void isUnique(List<Integer> userInput) {
+    private void checkUnique(List<Integer> userInput) {
         Set<Integer> set = new HashSet<>(userInput);
         if (set.size() != ANSWER_LENGTH) {
             throw new IllegalArgumentException();
@@ -43,12 +43,8 @@ public class User {
     }
 
     private List<Integer> stringToIntegerList(String userInput) {
-        List<Integer> integerList = new ArrayList<>();
-        for (int i = 0; i < userInput.length(); i++) {
-            integerList.add(Integer.parseInt(String.valueOf(userInput.charAt(i))));
-        }
-        return integerList;
+        return userInput.chars()
+                .mapToObj(Character::getNumericValue)
+                .toList();
     }
-
-
 }
