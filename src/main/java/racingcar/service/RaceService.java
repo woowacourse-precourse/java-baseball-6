@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import static racingcar.utils.GameValidator.validateCheckDuplicateCarName;
+
 import java.util.Arrays;
 import racingcar.domain.Car;
 import racingcar.domain.RaceCar;
@@ -12,6 +14,7 @@ public class RaceService {
     public RaceService(InputView inputView) {
         this.raceCar = new RaceCar();
         addRacingCarsFromInput(inputView.racingCarName(inputView.commonFromInput()));
+        validateCheckDuplicateCarName(raceCar.getSavedCar());
     }
 
     public void start() {

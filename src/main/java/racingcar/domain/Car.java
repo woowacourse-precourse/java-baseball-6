@@ -1,22 +1,24 @@
 package racingcar.domain;
 
 import static racingcar.utils.GameUtils.randomPickNumber;
+import static racingcar.utils.GameValidator.validateBlankCarName;
+import static racingcar.utils.GameValidator.validateCarNameMaxLength;
+import static racingcar.utils.GameValidator.validateCarNameMinLength;
+import static racingcar.utils.GameValidator.validateCarNameSpaceBlack;
 
 public class Car {
 
     private final String carName;
     private int forwardCount;
 
+
     public Car(final String carName) {
         this.carName = carName;
+        validateCarNameSpaceBlack(carName);
+        validateCarNameMaxLength(carName);
+        validateBlankCarName(carName);
+        validateCarNameMinLength(carName);
     }
-
-    public void validateDuplicateCarName() {
-    }
-
-    public void validateDuplicateCarLength() {
-    }
-
 
     public String getCarName() {
         return this.carName;
