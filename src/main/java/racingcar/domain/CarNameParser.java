@@ -1,4 +1,4 @@
-package racingcar.domain.numbergenerator;
+package racingcar.domain;
 
 import java.util.*;
 import racingcar.domain.CarName;
