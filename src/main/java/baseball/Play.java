@@ -1,16 +1,19 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Play {
 
-    public void game(String input) {
+    public void game() {
 
         List<Integer> computer = new Computer().anotherNumber();
         String result;
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            inputCheck(input);
             List<Integer> player = change(input);
 
             result = compare(player, computer);
@@ -39,7 +42,7 @@ public class Play {
     // input으로 들어오는 값 전체 에러 확인
     public void inputCheck(String input) {
         List<Character> inputNumber = new ArrayList<>();
-        for (int i = 0; i < inputNumber.size(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             char wordNumber = input.charAt(i);
             if (!inputNumber.contains(wordNumber)) {
                 inputNumber.add(wordNumber);
