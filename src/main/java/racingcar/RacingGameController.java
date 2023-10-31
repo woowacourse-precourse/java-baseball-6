@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.RacingManager;
+import racingcar.domain.numbergenerator.CarNameParser;
 import racingcar.domain.numbergenerator.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -27,7 +28,7 @@ public class RacingGameController {
         String carNames = inputView.inputCarNames();
         outputView.printAttemptsInputMessage();
         int attempts = inputView.inputAttempts();
-        return new RacingManager(carNames, attempts, randomNumberGenerator);
+        return new RacingManager(CarNameParser.parse(carNames), attempts, randomNumberGenerator);
     }
 
     private void executeGame(RacingManager racingManager) {

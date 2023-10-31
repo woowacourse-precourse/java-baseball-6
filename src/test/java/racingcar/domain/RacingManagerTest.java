@@ -6,8 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.*;
 import org.junit.jupiter.api.*;
-import racingcar.domain.numbergenerator.NumberGenerator;
-import racingcar.domain.numbergenerator.SetNumberGenerator;
+import racingcar.domain.numbergenerator.*;
 
 class RacingManagerTest {
     NumberGenerator successNumberGenerator = new SetNumberGenerator(5);
@@ -19,7 +18,7 @@ class RacingManagerTest {
         String inputNames = "dave,paul,";
 
         assertThatThrownBy(() -> {
-            new RacingManager(inputNames, 1, successNumberGenerator);
+            new RacingManager(CarNameParser.parse(inputNames), 1, successNumberGenerator);
         }).isInstanceOf(IllegalArgumentException.class);
     }
     @Test
@@ -27,24 +26,24 @@ class RacingManagerTest {
         String inputNames = "dave,dave";
 
         assertThatThrownBy(() -> {
-            new RacingManager(inputNames, 1, successNumberGenerator);
+            new RacingManager(CarNameParser.parse(inputNames), 1, successNumberGenerator);
         }).isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void 횟수_입력_검증_테스트1() {
         assertThatThrownBy(() -> {
-           new RacingManager(successInputName, 0, successNumberGenerator);
+           new RacingManager(CarNameParser.parse(successInputName), 0, successNumberGenerator);
         }).isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void 횟수_입력_검증_테스트2() {
         assertThatThrownBy(() -> {
-            new RacingManager(successInputName, -1, successNumberGenerator);
+            new RacingManager(CarNameParser.parse(successInputName), -1, successNumberGenerator);
         }).isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void 경기_종료_테스트1() {
-        RacingManager racingManager = new RacingManager(successInputName, 2, successNumberGenerator);
+        RacingManager racingManager = new RacingManager(CarNameParser.parse(successInputName), 2, successNumberGenerator);
 
         racingManager.doAttempt();
         racingManager.doAttempt();
@@ -53,7 +52,7 @@ class RacingManagerTest {
     }
     @Test
     void 경기_종료_테스트2() {
-        RacingManager racingManager = new RacingManager(successInputName, 3, successNumberGenerator);
+        RacingManager racingManager = new RacingManager(CarNameParser.parse(successInputName), 3, successNumberGenerator);
 
         racingManager.doAttempt();
         racingManager.doAttempt();
@@ -62,7 +61,7 @@ class RacingManagerTest {
     }
     @Test
     void 차수_결과_테스트() {
-        RacingManager racingManager = new RacingManager(successInputName, 4, successNumberGenerator);
+        RacingManager racingManager = new RacingManager(CarNameParser.parse(successInputName), 4, successNumberGenerator);
 
         racingManager.doAttempt();
 
@@ -76,7 +75,7 @@ class RacingManagerTest {
     }
     @Test
     void 게임_승자_테스트() {
-        RacingManager racingManager = new RacingManager(successInputName, 3, successNumberGenerator);
+        RacingManager racingManager = new RacingManager(CarNameParser.parse(successInputName), 3, successNumberGenerator);
 
         racingManager.doAttempt();
         racingManager.doAttempt();
