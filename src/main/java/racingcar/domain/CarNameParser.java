@@ -1,13 +1,12 @@
 package racingcar.domain;
 
 import java.util.*;
-import racingcar.domain.CarName;
 
 public class CarNameParser {
-    private static final String INPUT_NAMES_REGEX = "^[A-Za-z0-9,]*[A-Za-z0-9]$";
+    private static final String INPUT_NAMES_REGEX = "^[가-힣A-Za-z0-9,]*[가-힣A-Za-z0-9]$";
     private static final String NAME_DELIMITER = ",";
 
-    public static List<CarName> parse(String inputNames) {
+    public List<CarName> parse(String inputNames) {
         validateInputNames(inputNames);
 
         return Arrays.stream(inputNames.split(NAME_DELIMITER))
@@ -15,7 +14,7 @@ public class CarNameParser {
                 .toList();
     }
 
-    private static void validateInputNames(String inputNames) {
+    private void validateInputNames(String inputNames) {
         if (!inputNames.contains(NAME_DELIMITER)) {
             throw new IllegalArgumentException("[ERROR] 2대 이상의 자동차 이름을 쉼표로 구분하여 입력해주세요.");
         }

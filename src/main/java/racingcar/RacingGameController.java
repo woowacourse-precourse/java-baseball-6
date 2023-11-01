@@ -28,7 +28,7 @@ public class RacingGameController {
         String carNames = inputView.inputCarNames();
         outputView.printAttemptsInputMessage();
         int attempts = inputView.inputAttempts();
-        return new RacingManager(CarNameParser.parse(carNames), attempts, randomNumberGenerator);
+        return new RacingManager(new CarNameParser().parse(carNames), attempts, randomNumberGenerator);
     }
 
     private void executeGame(RacingManager racingManager) {
