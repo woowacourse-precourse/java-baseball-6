@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import static racingcar.constants.MessageUtils.GAME_WINNER_MSG;
 import static racingcar.utils.GameValidator.validateCheckDuplicateCarName;
 import static racingcar.utils.GameValidator.validateLastWordToCarName;
 
@@ -36,7 +37,7 @@ public class RaceService {
 
     public void getWinner() {
         System.out.println(
-                "최종 우승자 : " + raceCar.findWinner(raceCar.findWinnerNumber())
+                GAME_WINNER_MSG.getMessage() + raceCar.findWinner(raceCar.findWinnerNumber())
         );
     }
 }
