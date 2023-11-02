@@ -6,12 +6,12 @@ public class Computer {
     private int secondNum;
     private int thirdNum;
 
-
     public Computer(int firstNum, int secondNum, int thirdNum) {
         this.firstNum = firstNum;
         this.secondNum = secondNum;
         this.thirdNum = thirdNum;
     }
+
 
     public int getFirstNum() {
         return firstNum;
@@ -34,6 +34,12 @@ public class Computer {
     }
 
     public void setThirdNum(int thirdNum) {
+        this.thirdNum = thirdNum;
+    }
+
+    public void setAllNum(int firstNum, int secondNum, int thirdNum) {
+        this.firstNum = firstNum;
+        this.secondNum = secondNum;
         this.thirdNum = thirdNum;
     }
 
