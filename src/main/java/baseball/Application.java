@@ -3,6 +3,7 @@ package baseball;
 import baseball.enums.GameFlag;
 import baseball.enums.Message;
 import baseball.enums.OrNot;
+import baseball.exception.WrongInputException;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -12,7 +13,7 @@ import java.util.Set;
 public class Application {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws WrongInputException {
         GameFlag flag = GameFlag.START;
         PrintMessage.printlnMessage(Message.START);
         while (flag == GameFlag.START) {
@@ -35,11 +36,15 @@ public class Application {
                 PrintMessage.printMessage(Message.INPUT_NUMBER);
                 Scanner sc = new Scanner(System.in);
                 gameValue.setUserInputValue(sc.nextLine());
+                try {
+                    gameValue.checkValidUserInput();
+                }catch (WrongInputException exception){
+                    PrintMessage.printlnMessage(exception.getMessage());
+                    continue;
+                }
 
                 // 사용자 수와 컴퓨터 수 검증하기
                 if (!gameValue.isEqaulsUserAndComputerValue()) {
-                    // TODO 예외 사항 1. 입력 수가 3자리 이상일때 2. 입력수가 유효하지 않을 때(모두 숫자가 아닐시)
-
                     Result result = new Result(gameValue.countSameNumber() - gameValue.countSamePositionAndNumber(), gameValue.countSamePositionAndNumber());
                     if (gameValue.isNothing()) {
                         PrintMessage.printlnMessage(Message.NOTHING);
