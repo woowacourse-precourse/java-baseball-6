@@ -1,14 +1,14 @@
 package baseball;
 
 import baseball.enums.GameFlag;
-import baseball.enums.Message;
+import baseball.enums.GameProgressMessage;
 import baseball.enums.OrNot;
 import baseball.exception.WrongInputException;
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
 
@@ -16,15 +16,14 @@ public class Application {
     public static void main(String[] args) throws WrongInputException {
         // Game 시작 Setting
         GameFlag flag = GameFlag.START;
-        PrintMessage.printlnMessage(Message.START);
+        PrintMessage.printlnMessage(GameProgressMessage.START);
 
         while (flag == GameFlag.START) {
 
             // 컴퓨터 수 생성
             Set<Integer> targetSet = new HashSet<>();
             while (targetSet.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                targetSet.add(randomNumber);
+                targetSet.add(pickNumberInRange(1, 9));
             }
 
             GameInputValue gameValue = new GameInputValue(targetSet.stream()
@@ -35,9 +34,8 @@ public class Application {
 
             // 맞출 때 까지 반복
             while (flag == GameFlag.ING) {
-                PrintMessage.printMessage(Message.INPUT_NUMBER);
-                Scanner sc = new Scanner(System.in);
-                gameValue.setUserInputValue(sc.nextLine());
+                PrintMessage.printMessage(GameProgressMessage.INPUT_NUMBER);
+                gameValue.setUserInputValue(readLine());
 
                 // 입력값 검증
                 try {
@@ -50,16 +48,15 @@ public class Application {
                 // 사용자 수와 컴퓨터 수 비교
                 Result result = new Result(gameValue.countSameNumber() - gameValue.countSamePositionAndNumber(), gameValue.countSamePositionAndNumber());
                 if (gameValue.isNothing()) {
-                    PrintMessage.printlnMessage(Message.NOTHING);
+                    PrintMessage.printlnMessage(GameProgressMessage.NOTHING);
                 } else {
-                    PrintMessage.printlnMessage(Message.makeHintMessage(result));
+                    PrintMessage.printlnMessage(GameProgressMessage.makeHintMessage(result));
                 }
 
                 // 리플레이 또는 종료
                 if(gameValue.isEqaulsUserAndComputerValue()){
-                    PrintMessage.printlnMessage(Message.PLAY_NEXT_GAME_OR_NOT);
-                    Scanner sc2 = new Scanner(System.in);
-                    String answer = sc2.nextLine();
+                    PrintMessage.printlnMessage(GameProgressMessage.PLAY_NEXT_GAME_OR_NOT);
+                    String answer = readLine();
 
                     if (answer.equals(OrNot.YES.getProcessCode())) {
                         flag = GameFlag.START;

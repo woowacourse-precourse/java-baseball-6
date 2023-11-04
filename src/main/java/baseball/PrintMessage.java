@@ -1,15 +1,15 @@
 package baseball;
 
-import baseball.enums.Message;
+import baseball.enums.GameProgressMessage;
 
 public class PrintMessage {
 
-    public static void printlnMessage(Message message) {
-        System.out.println(message.getKorMessage());
+    public static void printlnMessage(GameProgressMessage gameProgressMessage) {
+        System.out.println(gameProgressMessage.getKorMessage());
     }
 
-    public static void printMessage(Message message) {
-        System.out.print(message.getKorMessage());
+    public static void printMessage(GameProgressMessage gameProgressMessage) {
+        System.out.print(gameProgressMessage.getKorMessage());
     }
 
     public static void printMessage(String message) {
