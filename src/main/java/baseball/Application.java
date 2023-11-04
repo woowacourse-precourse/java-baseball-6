@@ -39,6 +39,7 @@ public class Application {
                 // 사용자 수와 컴퓨터 수 검증하기
                 if (!gameValue.isEqaulsUserAndComputerValue()) {
                     // TODO 예외 사항 1. 입력 수가 3자리 이상일때 2. 입력수가 유효하지 않을 때(모두 숫자가 아닐시)
+
                     Result result = new Result(gameValue.countSameNumber() - gameValue.countSamePositionAndNumber(), gameValue.countSamePositionAndNumber());
                     if (gameValue.isNothing()) {
                         PrintMessage.printlnMessage(Message.NOTHING);
