@@ -7,7 +7,6 @@ import baseball.exception.WrongInputException;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
