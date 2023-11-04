@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.enums.ExceptionMessage;
+import baseball.exception.WrongInputException;
+
 import java.util.HashSet;
 
 public class GameInputValue {
@@ -28,10 +31,6 @@ public class GameInputValue {
     }
 
     public int countSameNumber() {
-        if (isDuplicationNumberInUserInputValue()) {
-            // TODO 그에 맞는 예외처리 생각하기
-            throw new IllegalArgumentException();
-        }
         int count = 0;
         for (char c : this.userInputValue.toCharArray()) {
             if (this.computerValue.contains(String.valueOf(c))) {
@@ -64,4 +63,32 @@ public class GameInputValue {
     public boolean isNothing() {
         return countSameNumber() == 0;
     }
+
+
+    public boolean checkValidUserInput() {
+
+        if (!isThreeDigits()) {
+            throw new WrongInputException(ExceptionMessage.WRONG_INPUT_NOT_THREE_DIGITS.getMessage());
+        }
+
+        if (!isNumber()){
+            throw new WrongInputException(ExceptionMessage.WRONG_INPUT_NOT_NUMBER.getMessage());
+        }
+
+        if(isDuplicationNumberInUserInputValue()){
+            throw new WrongInputException(ExceptionMessage.WRONG_INPUT_DUPLICATE_VALUE.getMessage());
+        }
+
+        return true;
+    }
+
+
+    private boolean isThreeDigits() {
+        return userInputValue.length() == 3;
+    }
+
+    private boolean isNumber() {
+        return userInputValue != null && userInputValue.matches("[-+]?\\d*\\.?\\d+");
+    }
+
 }
