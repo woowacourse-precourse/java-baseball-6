@@ -48,27 +48,25 @@ public class Application {
                 }
 
                 // 사용자 수와 컴퓨터 수 비교
-                if (!gameValue.isEqaulsUserAndComputerValue()) {
-                    Result result = new Result(gameValue.countSameNumber() - gameValue.countSamePositionAndNumber(), gameValue.countSamePositionAndNumber());
-                    if (gameValue.isNothing()) {
-                        PrintMessage.printlnMessage(Message.NOTHING);
-                    } else {
-                        PrintMessage.printlnMessage(Message.makeHintMessage(result));
-                    }
-                    continue;
+                Result result = new Result(gameValue.countSameNumber() - gameValue.countSamePositionAndNumber(), gameValue.countSamePositionAndNumber());
+                if (gameValue.isNothing()) {
+                    PrintMessage.printlnMessage(Message.NOTHING);
+                } else {
+                    PrintMessage.printlnMessage(Message.makeHintMessage(result));
                 }
-
 
                 // 리플레이 또는 종료
-                PrintMessage.printlnMessage(Message.PLAY_NEXT_GAME_OR_NOT);
-                Scanner sc2 = new Scanner(System.in);
-                String answer = sc2.nextLine();
+                if(gameValue.isEqaulsUserAndComputerValue()){
+                    PrintMessage.printlnMessage(Message.PLAY_NEXT_GAME_OR_NOT);
+                    Scanner sc2 = new Scanner(System.in);
+                    String answer = sc2.nextLine();
 
-                if (answer.equals(OrNot.YES.getProcessCode())) {
-                    flag = GameFlag.START;
-                }
-                if (answer.equals(OrNot.NO.getProcessCode())) {
-                    flag = GameFlag.END;
+                    if (answer.equals(OrNot.YES.getProcessCode())) {
+                        flag = GameFlag.START;
+                    }
+                    if (answer.equals(OrNot.NO.getProcessCode())) {
+                        flag = GameFlag.END;
+                    }
                 }
             }
 

@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.exception.WrongInputException;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +25,7 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
+                        .isInstanceOf(WrongInputException.class)
         );
     }
 
