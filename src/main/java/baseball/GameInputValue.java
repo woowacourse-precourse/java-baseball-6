@@ -22,8 +22,10 @@ public class GameInputValue {
         return computerValue;
     }
 
+    // TODO 조금 더 명확한 목적을 띄는 메서드 ...
     public void setUserInputValue(String userInputValue) {
         this.userInputValue = userInputValue;
+        checkValidUserInput();
     }
 
     public boolean isEqaulsUserAndComputerValue() {
@@ -65,8 +67,7 @@ public class GameInputValue {
     }
 
 
-    public boolean checkValidUserInput() {
-
+    public void checkValidUserInput() {
         if (!isThreeDigits()) {
             throw new WrongInputException(ExceptionMessage.WRONG_INPUT_NOT_THREE_DIGITS.getMessage());
         }
@@ -78,8 +79,6 @@ public class GameInputValue {
         if(isDuplicationNumberInUserInputValue()){
             throw new WrongInputException(ExceptionMessage.WRONG_INPUT_DUPLICATE_VALUE.getMessage());
         }
-
-        return true;
     }
 
 
