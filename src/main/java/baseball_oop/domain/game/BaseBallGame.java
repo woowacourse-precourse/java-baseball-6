@@ -1,10 +1,13 @@
 package baseball_oop.domain.game;
 
+import baseball_oop.enums.ReplyOrNot;
 import baseball_oop.vo.Answer;
 import baseball_oop.domain.participant.computer.Computer;
 import baseball_oop.domain.participant.judgment.Judgment;
 import baseball_oop.domain.participant.player.Player;
 import baseball_oop.vo.Result;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseBallGame implements Game {
     private final Computer computer;
@@ -18,9 +21,10 @@ public class BaseBallGame implements Game {
     }
     @Override
     public void start() {
+        String command;
         do {
             play();
-        } while (true);
+        } while (ReplyOrNot.REPLY.getCode().equals(command = readLine()));
     }
 
     private void play() {
