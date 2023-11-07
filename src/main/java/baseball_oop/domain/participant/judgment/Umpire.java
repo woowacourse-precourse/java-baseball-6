@@ -8,4 +8,7 @@ public class Umpire implements Judgment {
     public Result judge(Answer answer, Answer input) {
         return null;
     }
+
+
+
 }

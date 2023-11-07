@@ -24,12 +24,18 @@ public class BaseBallGame implements Game {
         String command;
         do {
             play();
-        } while (ReplyOrNot.REPLY.getCode().equals(command = readLine()));
+            command = readLine();
+
+        } while (ReplyOrNot.REPLY.getCode().equals(command));
     }
 
     private void play() {
         Answer answer = computer.generateAnswer();
-        Answer input = player.generateAnswer();
-        Result result = judgment.judge(answer, input);
+        Answer input;
+        Result result = null;
+        while (!result.isWin()) {
+            input = player.generateAnswer();
+            result = judgment.judge(answer, input);
+        }
     }
 }
