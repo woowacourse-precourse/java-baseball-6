@@ -31,7 +31,7 @@ public class UserInput {
     }
 
     private static String removeSpace(String str) {
-        return str.replace(" ", "");
+        return str.trim();
     }
 
     private static void validateGetGamingInput(String input) {
