@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserGenerator {
+    private static final char ZERO_ASCII = '0';
+
     public static List<Integer> getAttempt() {
         List<Integer> result = new ArrayList<>();
 
@@ -12,7 +14,7 @@ public class UserGenerator {
 
         // String -> List<Integer>
         for (char c : userInput.toCharArray()) {
-            result.add(c - '0');
+            result.add(c - ZERO_ASCII);
         }
 
         return result;

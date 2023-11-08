@@ -8,6 +8,8 @@ public class GameProcessingPrinter {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String END_MESSAGE = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+    private static final int ZERO = 0;
+    private static final String SPACE = " ";
 
     public static void printGameStart() {
         System.out.println(START_MESSAGE);
@@ -26,10 +28,10 @@ public class GameProcessingPrinter {
     }
 
     public static void printProceeding(int ball, int strike) {
-        if (ball > 0) {
-            System.out.print(ball + BALL + " ");
+        if (ball > ZERO) {
+            System.out.print(ball + BALL + SPACE);
         }
-        if (strike > 0) {
+        if (strike > ZERO) {
             System.out.print(strike + STRIKE);
         }
         System.out.println();

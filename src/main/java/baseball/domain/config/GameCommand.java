@@ -4,6 +4,7 @@ public enum GameCommand {
     RESTART(1),
     QUIT(2);
 
+    private static final String GAME_COMMAND_ERROR_MESSAGE = "1 또는 2를 입력해야 합니다.";
     private final int option;
 
     GameCommand(int option) {
@@ -16,6 +17,6 @@ public enum GameCommand {
                 return command;
             }
         }
-        throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
+        throw new IllegalArgumentException(GAME_COMMAND_ERROR_MESSAGE);
     }
 }
