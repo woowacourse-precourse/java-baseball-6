@@ -1,6 +1,7 @@
 package baseball.Controller;
 
 import baseball.Model.BaseballGameModel;
+import baseball.Model.CreateRandomNum;
 import baseball.View.BaseballGameView;
 
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import java.util.Set;
 public class BaseballGameController {
 
     private final static BaseballGameModel model = new BaseballGameModel();
+    private final static CreateRandomNum mm = new CreateRandomNum();
     private final static BaseballGameView view = new BaseballGameView();
     private static final String SINGLE_GAME_END = "3스트라이크";
 
@@ -20,7 +22,6 @@ public class BaseballGameController {
 
     private void playSingleGame(){
         view.gameStart();
-        model.createRandomNumbers();
         String gameResult;
         do {
             String userInput = view.getUserInput();
