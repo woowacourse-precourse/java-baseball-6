@@ -35,7 +35,6 @@ public class Game {
             int userNumber = validateNumberRange(userInput);
             validateIsDuplicated(userNumber);
             List<Integer> computerNumber = computerNumberRandom();
-            System.out.println(computerNumber);
             baseBallGame(userNumber, computerNumber);
             if (finishFlag) {
                 break;
