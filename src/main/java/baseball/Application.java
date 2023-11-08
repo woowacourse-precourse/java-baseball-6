@@ -9,7 +9,7 @@ public class Application {
 
         //컴퓨터가 만든 서로다른 3개의 수
         int[] ComNum = new int[3];
-        Random rd = new Random();   //난수 만들 객체
+        Random rd = new Random();   //난수 만들 객체임
 
         for (int i = 0; i < 3; i++) {
             if (ComNum[i] !=  ComNum[i-1]) {    //중복방지
