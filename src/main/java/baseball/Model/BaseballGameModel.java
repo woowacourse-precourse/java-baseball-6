@@ -6,18 +6,6 @@ import java.util.List;
 
 public class BaseballGameModel {
     private List<Integer> computerNumbers;
-    //랜덤 숫자 생성하기
-    public void createRandomNumbers(){
-        List<Integer> numbers = new ArrayList<>();
-
-        while (numbers.size()<3){
-            int randomNumber = Randoms.pickNumberInRange(1,9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-        computerNumbers = numbers;
-    }
 
     //숫자 판단
     public String calculateResult(String userInput){
