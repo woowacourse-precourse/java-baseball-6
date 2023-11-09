@@ -89,13 +89,13 @@ public class Application {
     }
 
 
-    private static String getUserNumber() {// depth 0, 유저에게 값을 입력받는 메소드
+    private static String getUserNumber() {//유저에게 값을 입력
         System.out.print("숫자를 입력해주세요 : ");
         String UserNum = Console.readLine();
         return UserNum;
     }
 
-    private static void CheckUserNumber(int[] array) { //depth 2, 유저 가 입력한 값에 오류가 있는지 확인하는 메소드
+    private static void CheckUserNumber(int[] array) { //유저가 입력한 값에 오류가 있는지 확인
         //서로 다른 3자리 정수
         Set<Integer> verify = new HashSet<>();
         for (int num : array) {
@@ -106,7 +106,7 @@ public class Application {
         }
     }
 
-    private static int[] StringToIntArray(String input) {//depth 1, 문자열로 입력받은 값을 정수 배열로 변환
+    private static int[] StringToIntArray(String input) {//문자열로 입력받은 값을 정수 배열로 변환
         int[] result = new int[input.length()];
 
         for (int i = 0; i < input.length(); i++) {
@@ -116,7 +116,7 @@ public class Application {
         return result;
     }
 
-    private static int[] checkNum(int[] computerNumber, int[] userNum) {//depth 2 , 볼 과 스트라이크 판별 메소드
+    private static int[] checkNum(int[] computerNumber, int[] userNum) {//볼과 스트라이크 판별
         int strikes = 0;
         int balls = 0;
 
@@ -135,7 +135,7 @@ public class Application {
         return new int[]{balls, strikes};
     }
 
-    private static void printResult(int[] result) { //depth 1
+    private static void printResult(int[] result) {
         if (result[0] == 0 && result[1] == 0) {// 볼도 스트라이크도 아닌경우
             System.out.println("낫싱");
             return;
