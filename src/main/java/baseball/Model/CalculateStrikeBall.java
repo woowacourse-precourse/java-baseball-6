@@ -4,13 +4,13 @@ import java.util.List;
 
 public class CalculateStrikeBall {
     public int totalStrikeBall(List<Integer> computer,List<Integer> userInput){
-        int result = 0;
+        int total = 0;
         for(int i = 0; i<userInput.size(); i++){
             if(computer.contains(userInput.get(i))){
-                result += 1;
+                total += 1;
             }
         }
-        return result;
+        return total;
     }
 
     public int countStrike(List<Integer> computer,List<Integer> userInput){
