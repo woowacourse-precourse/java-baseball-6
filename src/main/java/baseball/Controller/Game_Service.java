@@ -17,7 +17,7 @@ public class Game_Service {
 
     public void setGame(int size, int start, int end) {
         this.size = size;
-        game = new Game_function(Computer.getRandomNumbers(size, start, end));
+        game = new Game_function(Computer.computerNum(size, start, end));
     }
 
     public void playGame() {

@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Play_controller {
     final int SIZE = 3;
-    final int START_INCLUSIVE = 1;
-    final int END_INCLUSIVE = 9;
+    final int START = 1;
+    final int END = 9;
     final int RETRY = 1;
     final int GAME_OVER = 2;
 
@@ -20,7 +20,7 @@ public class Play_controller {
     }
 
     private void setGame() {
-        gameService.setGame(SIZE, START_INCLUSIVE, END_INCLUSIVE);
+        gameService.setGame(SIZE, START, END);
     }
 
     private void startGame() throws IllegalArgumentException {

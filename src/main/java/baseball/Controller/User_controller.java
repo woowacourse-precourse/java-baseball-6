@@ -4,7 +4,7 @@ public class User_controller {
 
     public int[] UserInput(String input, int size) throws IllegalArgumentException {
         checkSize(input, size);
-        return getParseInt(input, size);
+        return getNum(input, size);
     }
 
     private void checkSize(String input, int size) throws IllegalArgumentException {
@@ -13,7 +13,7 @@ public class User_controller {
         }
     }
 
-    private int[] getParseInt(String input, int size) throws IllegalArgumentException {
+    private int[] getNum(String input, int size) throws IllegalArgumentException {
         int[] parseInt = new int[size];
 
         for (int i = 0; i < input.length(); i++) {
