@@ -1,6 +1,6 @@
 package baseball_oop.domain.game;
 
-import baseball_oop.enums.ReplyOrNot;
+import baseball_oop.enums.ReplayOrNot;
 import baseball_oop.vo.Answer;
 import baseball_oop.domain.participant.computer.Computer;
 import baseball_oop.domain.participant.judgment.Judgment;
@@ -23,19 +23,63 @@ public class BaseBallGame implements Game {
     public void start() {
         String command;
         do {
+            PrintMessage.printGameStart();
             play();
             command = readLine();
-
-        } while (ReplyOrNot.REPLY.getCode().equals(command));
+        } while (askReplay());
     }
 
     private void play() {
         Answer answer = computer.generateAnswer();
         Answer input;
         Result result = null;
-        while (!result.isWin()) {
-            input = player.generateAnswer();
+        while (!gameEnd(result)) {
+            input = selectInputToPlayer();
             result = judgment.judge(answer, input);
+        }
+    }
+
+    private static boolean askReplay() {
+        PrintMessage.printGameReplayOrNot();
+        return readLine().equals(ReplayOrNot.REPLAY.getCode());
+    }
+
+    private static boolean gameEnd(Result result) {
+        if (result == null) {
+            return false;
+        }
+
+        boolean isEnd = result.isWin();
+        if (isEnd) {
+            PrintMessage.printWinAndEnd();
+        }
+        return isEnd;
+    }
+
+    private Answer selectInputToPlayer() {
+        PrintMessage.printRequestInputNumber();
+        return player.generateAnswer();
+    }
+
+    private static class PrintMessage {
+        private final static String START = "숫자 야구 게임을 시작합니다.";
+        private final static String INPUT_NUMBER = "숫자를 입력해주세요 : ";
+        private final static String WIN = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        private final static String PLAY_NEXT_GAME_OR_NOT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        private final static String NOTHING = "낫싱";
+        private final static String BALL = "볼";
+        private final static String STRIKE = "스트라이크";
+        public static void printRequestInputNumber() {
+            System.out.println(INPUT_NUMBER);
+        }
+        public static void printGameStart() {
+            System.out.println(START);
+        }
+        public static void printWinAndEnd() {
+            System.out.println(WIN);
+        }
+        public static void printGameReplayOrNot() {
+            System.out.println(PLAY_NEXT_GAME_OR_NOT);
         }
     }
 }
