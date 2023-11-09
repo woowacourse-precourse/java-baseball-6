@@ -22,10 +22,9 @@ public class BaseBallGame implements Game {
     @Override
     public void start() {
         String command;
+        PrintMessage.printGameStart();
         do {
-            PrintMessage.printGameStart();
             play();
-            command = readLine();
         } while (askReplay());
     }
 
@@ -61,7 +60,7 @@ public class BaseBallGame implements Game {
         return player.generateAnswer();
     }
 
-    private void printHint(Result result) {
+    private void printHint(Result result) { // TODO 코드리팩토링 필요
         if (result == null) {
             return;
         }
@@ -92,7 +91,7 @@ public class BaseBallGame implements Game {
         private final static String BALL = "볼";
         private final static String STRIKE = "스트라이크";
         public static void printRequestInputNumber() {
-            System.out.println(INPUT_NUMBER);
+            System.out.print(INPUT_NUMBER);
         }
         public static void printGameStart() {
             System.out.println(START);
