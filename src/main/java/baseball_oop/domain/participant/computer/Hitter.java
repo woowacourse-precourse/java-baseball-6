@@ -6,6 +6,6 @@ public class Hitter implements Computer {
 
     @Override
     public Answer generateAnswer() {
-        return null;
+        return new Answer();
     }
 }

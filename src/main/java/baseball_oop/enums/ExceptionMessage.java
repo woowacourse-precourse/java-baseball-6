@@ -1,4 +1,4 @@
-package baseball.enums;
+package baseball_oop.enums;
 
 public enum ExceptionMessage {
     WRONG_INPUT_DEFAULT("잘못된 입력입니다."),
