@@ -2,16 +2,13 @@ package baseball_oop.vo;
 
 import baseball_oop.enums.ExceptionMessage;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Answer {
-    List<Integer> values;
+    List<Integer> values = new ArrayList<>();
     private final static int LENGTH_LIMIT = 3;
 
     public Answer() {
@@ -70,7 +67,31 @@ public class Answer {
         return value != null && value.matches("[-+]?\\d*\\.?\\d+");
     }
 
-    public Result compare(Answer input) {
-        return null;
+    public static int countSameElementAndPosition(List<Integer> answerValues, List<Integer> inputValues) {
+        int count = 0;
+        int index = 0;
+        for (Integer value : answerValues) {
+            if (value.equals(inputValues.get(index))) {
+                count++;
+            }
+            index++;
+        }
+        return count;
+    }
+
+    public static int countContainElement(List<Integer> answerValues, List<Integer> inputValues) {
+        int count = 0;
+        int index = 0;
+        for (Integer value : answerValues) {
+            if (inputValues.contains(value)) {
+                count++;
+            }
+            index++;
+        }
+        return count;
+    }
+
+    public List<Integer> getValues() {
+        return this.values;
     }
 }

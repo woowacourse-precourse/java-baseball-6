@@ -35,7 +35,7 @@ public class BaseBallGame implements Game {
         Result result = null;
         while (!gameEnd(result)) {
             input = selectInputToPlayer();
-            result = judgment.judge(answer, input);
+            printHint(result = judgment.judge(answer, input));
         }
     }
 
@@ -61,6 +61,28 @@ public class BaseBallGame implements Game {
         return player.generateAnswer();
     }
 
+    private void printHint(Result result) {
+        if (result == null) {
+            return;
+        }
+        int strikeCount = result.getStrikeCount();
+        int ballCount = result.getBallCount();
+
+        if (result.getBallCount() == 0 && result.getStrikeCount() == 0) {
+            PrintMessage.printResultNothing();
+            return;
+        }
+        if (strikeCount != 0 && ballCount == 0) {
+            PrintMessage.printMessage(strikeCount + PrintMessage.STRIKE);
+        }
+        if (strikeCount == 0 && ballCount != 0) {
+            PrintMessage.printMessage(ballCount + PrintMessage.BALL);
+        }
+        if (strikeCount != 0 && ballCount != 0) {
+            PrintMessage.printMessage(ballCount + PrintMessage.BALL + " " + strikeCount + PrintMessage.STRIKE);
+        }
+    }
+
     private static class PrintMessage {
         private final static String START = "숫자 야구 게임을 시작합니다.";
         private final static String INPUT_NUMBER = "숫자를 입력해주세요 : ";
@@ -80,6 +102,14 @@ public class BaseBallGame implements Game {
         }
         public static void printGameReplayOrNot() {
             System.out.println(PLAY_NEXT_GAME_OR_NOT);
+        }
+
+        public static void printResultNothing() {
+            System.out.println(NOTHING);
+        }
+
+        public static void printMessage(String message) {
+            System.out.println(message);
         }
     }
 }

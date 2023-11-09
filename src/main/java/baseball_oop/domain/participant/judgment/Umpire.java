@@ -6,9 +6,10 @@ import baseball_oop.vo.Result;
 public class Umpire implements Judgment {
     @Override
     public Result judge(Answer answer, Answer input) {
-        return null;
+        int strikeCount = Answer.countSameElementAndPosition(answer.getValues(), input.getValues());
+        int ballCount = Answer.countContainElement(answer.getValues(), input.getValues()) - strikeCount;
+
+        return new Result(strikeCount, ballCount);
     }
-
-
 
 }
