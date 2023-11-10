@@ -38,20 +38,21 @@ public class MainController {
         //EndView endView = new EndView();
 
         for (int i = 0; i < 3; i++) {
-            if((bm.getMyinputlist().get(i)) == bm.getComputer().get(i)){
-                System.out.println("");
+            int strike = 0;
+            int ball = 0;
 
+            for (int j = 0; j < 3; j++) {
+                if((bm.getComputer().get(i)) == (bm.getMyinputlist().get(j))){
+                    strike += 1;
+                    System.out.println(strike + "스트라이크");
+                }
+//              else {
+//               throw new IllegalArgumentException();
+//           }
             }
-            else{
-
-            }
-
-
         }
 
-        //만약 아니다 그럼 예외 처리 하기
         //endView.endview();//종료화면
-
 
     }
 
