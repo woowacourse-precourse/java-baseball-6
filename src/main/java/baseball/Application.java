@@ -1,6 +1,12 @@
 package baseball;
+
+import baseball.Controller.ComputerNumController;
+
 public class Application {
     public static void main(String[] args) {
-        //System.out.println("java-baseball");
+        ComputerNumController computerNumController = new ComputerNumController();
+        MainController mainController = new MainController();
     }
 }
+
+
