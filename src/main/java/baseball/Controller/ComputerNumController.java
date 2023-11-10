@@ -31,7 +31,9 @@ public class ComputerNumController {
 
         for (int i = 0; i < 3; i++) {
             int check = myinput.get(i);
-//            if (check.)
+             if (check.){
+                 throw new IllegalArgumentException();
+             }
             System.out.println(myinput.get(1));
 
             if (myinput.get(1) != null){
