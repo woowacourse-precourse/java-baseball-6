@@ -1,11 +1,11 @@
 package baseball;
 
-import baseball.Controller.ComputerNumController;
+import baseball.Controller.MainController;
 
 public class Application {
     public static void main(String[] args) {
-        ComputerNumController computerNumController = new ComputerNumController();
         MainController mainController = new MainController();
+        mainController.startGame();
     }
 }
 
