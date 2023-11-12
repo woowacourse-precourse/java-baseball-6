@@ -40,9 +40,10 @@
 3. 입력값이 서로 다른 수가 아니라 중복되는 수인지
 - 사용자가 잘못된 값을 입력할 경우 <b>IllegalArgumentException()</b>을 발생시킨 후 애플리케이션 종료
 
+<br>
 
+## 구현 목록
 
-### 기능
 1. PlayGame
 - UserNumber 배열에 값을 입력 받는다.
 - ComputerNumber값과 UserNumber 값을 비교
