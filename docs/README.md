@@ -62,3 +62,7 @@
 <br>
 
 4. CheckComputerNumber
+- 컴퓨터가 생성한 수 에 대한 중복 검사 메소드
+
+5. CheckUserNumber 
+- 유저가 입력한 값에 오류가 있는지 확인
