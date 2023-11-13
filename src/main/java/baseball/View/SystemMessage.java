@@ -1,13 +1,7 @@
 package baseball.View;
 
 public class SystemMessage {
-    public static void requestInputData() {
-        System.out.print("숫자를 입력해 주세요 : ");
-    }
 
-    public static void printRetryMessage() {
-        System.out.println("게임을 다시 시작하려면 1, 종료하려면 2를 입력하세요.");
-    }
     public void printScoreMessage(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");

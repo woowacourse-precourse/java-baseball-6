@@ -3,7 +3,7 @@ package baseball.Controller;
 import java.util.HashSet;
 import java.util.Set;
 
-public class User_controller {
+public class User_Controller {
 
     public int[] UserInput(String input, int size) throws IllegalArgumentException {
         checkSize(input, size);

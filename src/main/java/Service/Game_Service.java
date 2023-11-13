@@ -1,23 +1,25 @@
-package baseball.Controller;
+package Service;
 
-import baseball.Model.Game_function;
+import baseball.Controller.User_Controller;
+import baseball.Domain.Game_Domain;
 import baseball.Model.User;
 import baseball.Model.Computer;
 import baseball.View.SystemMessage;
+import baseball.View.RequestMessage;
 
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game_Service {
 
     int size;
-    Game_function game;
+    Game_Domain game;
     User user = new User();
-    User_controller parser = new User_controller();
+    User_Controller parser = new User_Controller();
     SystemMessage systemMessage = new SystemMessage();
 
     public void setGame(int size, int start, int end) {
         this.size = size;
-        game = new Game_function(Computer.computerNum(size, start, end));
+        game = new Game_Domain(Computer.computerNum(size, start, end));
     }
 
     public void playGame() {
@@ -36,7 +38,7 @@ public class Game_Service {
     }
 
     private int[] getUserNumber() throws IllegalArgumentException {
-        SystemMessage.requestInputData();
+        RequestMessage.requestInputData();
         String input = Console.readLine();
         return parser.UserInput(input, size);
     }

@@ -1,9 +1,11 @@
 package baseball.Controller;
 
+import Service.Game_Service;
+import baseball.View.RequestMessage;
 import baseball.View.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 
-public class Play_controller {
+public class Play_Controller {
     final int SIZE = 3;
     final int START = 1;
     final int END = 9;
@@ -32,7 +34,7 @@ public class Play_controller {
     }
 
     private void askRetry() throws IllegalArgumentException {
-        SystemMessage.printRetryMessage();
+        RequestMessage.printRetryMessage();
         if (getInputNum() == RETRY) {
             run();
         }
