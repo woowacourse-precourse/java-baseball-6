@@ -1,4 +1,4 @@
-package Service;
+package baseball.Service;
 
 import baseball.Controller.User_Controller;
 import baseball.Domain.Game_Domain;

@@ -1,6 +1,6 @@
 package baseball.Controller;
 
-import Service.Game_Service;
+import baseball.Service.Game_Service;
 import baseball.View.RequestMessage;
 import baseball.View.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
