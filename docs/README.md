@@ -32,37 +32,54 @@
 ### 게임 종료 후 처리 방법
 > 게임을 다시 시작하거나 종료
 
+
+
 <br>
 
 ### 예외 조건
 1. 입력값이 길이가 3이 초과가 되는지
 2. 입력값이 정수형이 아닌지
 3. 입력값이 서로 다른 수가 아니라 중복되는 수인지
-- 사용자가 잘못된 값을 입력할 경우 <b>IllegalArgumentException()</b>을 발생시킨 후 애플리케이션 종료
+4. 사용자가 잘못된 값을 입력할 경우 <b>IllegalArgumentException()</b>을 발생시킨 후 애플리케이션 종료
 
 <br>
 
 ## 구현 목록
 
-1. PlayGame
-- UserNumber 배열에 값을 입력 받는다.
-- ComputerNumber값과 UserNumber 값을 비교
-- 답을 맞추면 종료
+### Controller
+- GameController
+    - 시작 기능
+
+
+
+### Model
+- Game
+    - 컴퓨터 정답 생성
+    - 결과값 생성
+    - 현재 상태 (이겼는지 / 재시작 할건지 / 종료할건지)
+
+- GameResult
+    - 컴퓨터 vs 유저 값 판단하여 스트라이크, 볼 개수 판단
+    - 결과를 string형으로 변환
+
+### View
+- GameView
+    - 출력 인터페이스
+
+### Service
+- CheckUserNumber
+    - 예외 처리 기능 
+      - 입력 길이 3 이상인지
+      - 입력 값이 정수인지
+      - 입력 값이 중복되는지
 
 <br>
 
-2. PlayAgain
-- 게임을 다시할건지 안할건지 판단
+## 커밋 방법 [깃 배쉬]
+1. git clone --bare [forked한 레포지 주소]
+2. cd [forked한 레포지 주소]
+3. git push --mirror [새 레포지 주소]
+4. cd ..
+5. rm -rf [forked한 레포지 주소]
 
 <br>
-
-3. getComputerNumber
-- 컴퓨터의 3개의 랜덤 숫자 생성 메소드
-
-<br>
-
-4. CheckComputerNumber
-- 컴퓨터가 생성한 수 에 대한 중복 검사 메소드
-
-5. CheckUserNumber 
-- 유저가 입력한 값에 오류가 있는지 확인
