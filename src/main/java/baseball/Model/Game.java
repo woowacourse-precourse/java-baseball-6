@@ -6,21 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private final int NUMBER_LENGTH = 3;
+
     private final List<Integer> answerNumbers = new ArrayList<>();
-    private final boolean PLAYING = true;
-    private final boolean END = false;
-    private boolean gameStatus;
+    private boolean GameStatus;
+    private final boolean Playing = true;
+    private final boolean End = false;
     private final String RESTART = "1";
     private final String QUIT = "2";
-
-    public Game() {
+    public Game(){
         this.setAnswerNumbers();
-        this.gameStatus = PLAYING;
+        this.GameStatus = Playing;
     }
 
-    private void setAnswerNumbers() {
-        while (this.answerNumbers.size() < this.NUMBER_LENGTH) {
+    public void setAnswerNumbers(){
+        while (this.answerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!this.answerNumbers.contains(randomNumber)) {
                 this.answerNumbers.add(randomNumber);
@@ -34,15 +33,16 @@ public class Game {
         return gameResult.resultToString();
     }
 
-    public void applyResult(int strikes) {
-        if (strikes == NUMBER_LENGTH) {
-            this.gameStatus = END;
+    public void applyResult(int strike) {
+        if (strike == 3) {
+            this.GameStatus = End;
         }
     }
 
-    public boolean getGameStatus() {
-        return this.gameStatus;
+    public boolean gamestatus() {
+        return this.GameStatus;
     }
+
 
     public boolean isRestart(String input) {
         if (input.equals(RESTART)) {
@@ -52,5 +52,16 @@ public class Game {
         } else {
             throw new IllegalArgumentException();
         }
+    }
+
+
+    public List<Integer> stringToIntList(String String) { //입력값을 List로 변경
+        List<Integer> intList = new ArrayList<>();
+        for (int i = 0; i < String.length(); i++) {
+            char digitChar = String.charAt(i);
+            int digitInt = Character.getNumericValue(digitChar);
+            intList.add(digitInt);
+        }
+        return intList;
     }
 }
