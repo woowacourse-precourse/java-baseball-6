@@ -1,4 +1,4 @@
 package baseball.Service;
 
-public class MainService {
+public class inputNumber {
 }
