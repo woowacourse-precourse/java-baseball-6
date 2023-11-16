@@ -1,6 +1,6 @@
 package baseball.Service;
 
-import baseball.Model.BaseballMember;
+import baseball.domain.BaseballMember;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComupterRandomNumber {
@@ -15,4 +15,10 @@ public class ComupterRandomNumber {
         }
     }
     public static void main(String args[]){}
+
+    public void play() {
+        computerRandom();
+        Result result;
+
+    }
 }
