@@ -19,7 +19,7 @@ public class Game_Service {
 
     public void setGame(int size, int start, int end) {
         this.size = size;
-        game = new Game_Domain(Computer.computerNum(size, start, end));
+        game = new Game_Domain(Computer.getComputerNum(size, start, end));
     }
 
     public void playGame() {
@@ -40,7 +40,7 @@ public class Game_Service {
     private int[] getUserNumber() throws IllegalArgumentException {
         RequestMessage.requestInputData();
         String input = Console.readLine();
-        return parser.UserInput(input, size);
+        return parser.checkUserInput(input, size);
     }
 
     private void computeScore() {
