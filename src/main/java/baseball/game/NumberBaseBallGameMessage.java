@@ -4,6 +4,9 @@ import baseball.game.entity.NumberBaseBallGameWord;
 
 public class NumberBaseBallGameMessage {
 
+    private NumberBaseBallGameMessage() {
+    }
+
     public static void printMessage(String message) {
         System.out.println(message);
     }

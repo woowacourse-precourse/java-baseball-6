@@ -19,6 +19,7 @@ public class MemberService {
     }
 
     public static MemberService getInstance(MemberRepository memberRepository) {
+
         if (instance == null) {
             return instance = new MemberService(memberRepository);
         }
