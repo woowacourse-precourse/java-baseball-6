@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class User_Controller {
 
-    public int[] UserInput(String input, int size) throws IllegalArgumentException {
+    public int[] checkUserInput(String input, int size) throws IllegalArgumentException {
         checkSize(input, size);
         checkSame(input);
         return getNum(input, size);

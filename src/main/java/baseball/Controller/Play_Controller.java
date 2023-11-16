@@ -6,15 +6,15 @@ import baseball.View.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Play_Controller {
-    final int SIZE = 3;
-    final int START = 1;
-    final int END = 9;
-    final int RETRY = 1;
-    final int GAME_OVER = 2;
+    private static final int NUM_SIZE = 3;
+    private static final int START = 1;
+    private static final int END = 9;
+    private static final int RETRY = 1;
+    private static final int GAME_OVER = 2;
 
     Game_Service gameService = new Game_Service();
 
-    public void run() throws IllegalArgumentException {
+    public void runGame() throws IllegalArgumentException {
         setGame();
         startGame();
         endGame();
@@ -22,7 +22,7 @@ public class Play_Controller {
     }
 
     private void setGame() {
-        gameService.setGame(SIZE, START, END);
+        gameService.setGame(NUM_SIZE, START, END);
     }
 
     private void startGame() throws IllegalArgumentException {
@@ -36,7 +36,7 @@ public class Play_Controller {
     private void askRetry() throws IllegalArgumentException {
         RequestMessage.printRetryMessage();
         if (getInputNum() == RETRY) {
-            run();
+            runGame();
         }
     }
 

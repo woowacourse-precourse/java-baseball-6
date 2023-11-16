@@ -4,9 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
-    public static int[] computerNum(int size, int start, int end) {
+    public static int[] getComputerNum(int size, int start, int end) {
         int[] numbers = new int[3];
-
         for (int i = 0; i < size; i++) {
             numbers[i] = RandomNumber(numbers, start, end, i);
         }
