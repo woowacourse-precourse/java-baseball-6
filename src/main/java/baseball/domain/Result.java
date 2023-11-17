@@ -1,4 +1,4 @@
-package baseball.entity;
+package baseball.domain;
 
 public class Result {
     int ball;
