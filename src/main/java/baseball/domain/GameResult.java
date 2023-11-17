@@ -2,6 +2,8 @@ package baseball.domain;
 
 import java.util.Objects;
 
+import static baseball.domain.Result.*;
+
 public class GameResult {
     int ball;
     int strike;
@@ -29,7 +31,7 @@ public class GameResult {
     @Override
     public String toString() {
         if (out == 3) {
-            return "낫싱";
+            return NOTHING.getName();
         }
 
         String result = "";
@@ -43,7 +45,7 @@ public class GameResult {
         String result = "";
 
         if (ball > 0) {
-            result += ball + "볼";
+            result += ball + BALL.getName();
 
             if (strike > 0) {
                 result += " ";
@@ -56,7 +58,7 @@ public class GameResult {
         String result = "";
 
         if (strike > 0) {
-            result += strike + "스트라이크";
+            result += strike + STRIKE.getName();
         }
 
         return result;
