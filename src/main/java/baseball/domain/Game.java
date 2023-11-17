@@ -5,32 +5,32 @@ import java.util.List;
 import static baseball.service.NumberGenerator.*;
 
 public class Game {
-    private final List<Integer> computerAnswer;
-    private List<Integer> userAnswer;
+    private final List<Integer> computerNumbers;
+    private List<Integer> userNumbers;
 
     private boolean isUserWin = false;
 
     public Game() {
-        this.computerAnswer = pickNumbersInRangeWithoutDuplicates(1,9, 3);
+        this.computerNumbers = pickNumbersInRangeWithoutDuplicates(1,9, 3);
     }
 
     public Result makeResult() {
         return null;
     }
 
-    public List<Integer> getComputerAnswer() {
-        return computerAnswer;
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
     }
 
-    public List<Integer> getUserAnswer() {
-        return userAnswer;
+    public List<Integer> getUserNumbers() {
+        return userNumbers;
     }
 
     public boolean isUserWin() {
         return isUserWin;
     }
 
-    public void setUserAnswer(List<Integer> userAnswer) {
-        this.userAnswer = userAnswer;
+    public void setUserNumbers(List<Integer> userNumbers) {
+        this.userNumbers = userNumbers;
     }
 }

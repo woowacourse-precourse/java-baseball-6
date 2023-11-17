@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +14,7 @@ class GameTest {
     void gameGeneratorShouldMakeComputerAnswerAndRegister() {
         // given, when
         Game game = new Game();
-        List<Integer> computerAnswer = game.getComputerAnswer();
+        List<Integer> computerAnswer = game.getComputerNumbers();
 
         // then
         assertThat(computerAnswer)
