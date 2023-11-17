@@ -1,7 +1,7 @@
 package baseball.service;
 
 import baseball.model.ComputerNumber;
-import baseball.model.PlayerNumber;
+import baseball.model.UserNumber;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ public class GameResultService {
     private int ballCount = 0;
     private int strikeCount = 0;
 
-    public GameResultService(ComputerNumber computerNumber, PlayerNumber playerNumber) {
-        calculateResult(computerNumber.getNumbers(), playerNumber.getNumbers());
+    public GameResultService(ComputerNumber computerNumber, UserNumber userNumber) {
+        calculateResult(computerNumber.getNumbers(), userNumber.getNumbers());
     }
 
     public boolean isNothing() {

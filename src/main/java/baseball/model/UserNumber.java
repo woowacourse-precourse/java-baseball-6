@@ -3,22 +3,22 @@ package baseball.model;
 import java.util.*;
 
 
-public class PlayerNumber {
+public class UserNumber {
     private final List<Integer> numbers;
     private static final int NUMBERS_SIZE = 3;
 
-    private PlayerNumber(List<Integer> numbers) {
+    private UserNumber(List<Integer> numbers) {
         this.numbers = numbers;
     }
 
-    public static PlayerNumber create(String input) {
+    public static UserNumber create(String input) {
         validateNonNumeric(input);
         List<Integer> numbers = convertToIntegerList(input);
         validateNonZero(numbers);
         validateDuplicate(numbers);
         validateSize(numbers);
 
-        return new PlayerNumber(numbers);
+        return new UserNumber(numbers);
     }
 
     private static List<Integer> convertToIntegerList(String str) {

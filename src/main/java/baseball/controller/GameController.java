@@ -1,12 +1,11 @@
 package baseball.controller;
 
 import baseball.model.ComputerNumber;
+import baseball.model.UserNumber;
 import baseball.service.GameResultService;
 import baseball.model.PlayerChoice;
-import baseball.model.PlayerNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
     public static GameController instance = new GameController();
@@ -41,10 +40,9 @@ public class GameController {
     }
 
     private boolean playRound(ComputerNumber computerNumber) {
-        OutputView.printGetInput();
-        String input = InputView.readInput();
-        PlayerNumber playerNumber = PlayerNumber.create(input);
-        GameResultService gameResultService = new GameResultService(computerNumber, playerNumber);
+        String input = InputView.readUserNumber();
+        UserNumber userNumber = UserNumber.create(input);
+        GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
         OutputView.printResult(gameResultService.isNothing(), gameResultService.getBallCount(), gameResultService.getStrikeCount());
         return !gameResultService.isThreeStrike();
     }
