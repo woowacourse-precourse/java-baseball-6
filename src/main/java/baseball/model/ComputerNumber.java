@@ -28,6 +28,6 @@ public class ComputerNumber {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return List.copyOf(numbers);
     }
 }
