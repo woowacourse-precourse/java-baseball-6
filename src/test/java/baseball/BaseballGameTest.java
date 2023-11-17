@@ -25,21 +25,21 @@ public class BaseballGameTest {
     @DisplayName("입력 받은 숫자가 1~9의 서로 다른 숫자 3개인 경우 정상 처리 된다.")
     @Test
     void validatePlayerNumber_o(){
-        UserNumber userNumber = UserNumber.create("123");
+        UserNumber userNumber = UserNumber.from("123");
         assertThat(userNumber.getNumbers().size()).isEqualTo(3);
     }
 
     @DisplayName("입력 받은 값에 0이 포함된 경우 예외가 발생한다.")
     @Test
     void validatePlayerNumber_ex1(){
-        assertThatThrownBy(() -> UserNumber.create("012"))
+        assertThatThrownBy(() -> UserNumber.from("012"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력 받은 값이 1~9의 서로 다른 숫자 3개가 아니면 예외가 발생한다.")
     @Test
     void validatePlayerNumber_ex2(){
-        assertThatThrownBy(() -> UserNumber.create("144"))
+        assertThatThrownBy(() -> UserNumber.from("144"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -52,7 +52,7 @@ public class BaseballGameTest {
             //computerNumber 가 1,2,3이 되도록 mocking
 
             ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.create("456");
+            UserNumber userNumber = UserNumber.from("456");
             GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isTrue();
             assertThat(gameResultService.getBallCount()).isEqualTo(0);
@@ -68,7 +68,7 @@ public class BaseballGameTest {
             //computerNumber 가 1,2,3이 되도록 mocking
 
             ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.create("451");  //4,5,1
+            UserNumber userNumber = UserNumber.from("451");  //4,5,1
             GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(1);
@@ -84,7 +84,7 @@ public class BaseballGameTest {
             //computerNumber 가 1,2,3이 되도록 mocking
 
             ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.create("351");  //3,5,1
+            UserNumber userNumber = UserNumber.from("351");  //3,5,1
             GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(2);
@@ -100,7 +100,7 @@ public class BaseballGameTest {
             //computerNumber 가 1,2,3이 되도록 mocking
 
             ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.create("231");  //2,3,1
+            UserNumber userNumber = UserNumber.from("231");  //2,3,1
             GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(3);
@@ -116,7 +116,7 @@ public class BaseballGameTest {
             //computerNumber 가 1,2,3이 되도록 mocking
 
             ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.create("145");  //1,4,5
+            UserNumber userNumber = UserNumber.from("145");  //1,4,5
             GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(0);
@@ -132,7 +132,7 @@ public class BaseballGameTest {
             //computerNumber 가 1,2,3이 되도록 mocking
 
             ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.create("125");  //1,2,5
+            UserNumber userNumber = UserNumber.from("125");  //1,2,5
             GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(0);
@@ -148,7 +148,7 @@ public class BaseballGameTest {
             //computerNumber 가 1,2,3이 되도록 mocking
 
             ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.create("123");  //1,4,5
+            UserNumber userNumber = UserNumber.from("123");  //1,4,5
             GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(0);
@@ -164,7 +164,7 @@ public class BaseballGameTest {
             //computerNumber 가 1,2,3이 되도록 mocking
 
             ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.create("142");  //1,4,2
+            UserNumber userNumber = UserNumber.from("142");  //1,4,2
             GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(1);
@@ -180,7 +180,7 @@ public class BaseballGameTest {
             //computerNumber 가 1,2,3이 되도록 mocking
 
             ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.create("132");  //1,3,2
+            UserNumber userNumber = UserNumber.from("132");  //1,3,2
             GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(2);

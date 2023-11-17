@@ -1,14 +1,19 @@
 package baseball.view;
 
+import baseball.validator.UserNumberInputValidator;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
 
 public class InputView {
     private static final String ASK_USER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String ASK_PLAY_AGAIN_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public static String readUserNumber() {
+    public static List<Integer> readUserNumber() {
         System.out.print(ASK_USER_NUMBER_MESSAGE);
-        return Console.readLine();
+        String input = Console.readLine();
+        UserNumberInputValidator.validateNumeric(input);
+        return UserNumberInputValidator.convertToIntegerList(input);
     }
 
     public static String readPlayAgainInput() {

@@ -7,6 +7,8 @@ import baseball.model.PlayAgainInput;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.List;
+
 public class GameController {
     public static GameController instance = new GameController();
 
@@ -40,11 +42,15 @@ public class GameController {
     }
 
     private boolean playRound(ComputerNumber computerNumber) {
-        String input = InputView.readUserNumber();
-        UserNumber userNumber = UserNumber.create(input);
+        UserNumber userNumber = readUserNumber();
         GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
         OutputView.printResult(gameResultService.isNothing(), gameResultService.getBallCount(), gameResultService.getStrikeCount());
         return !gameResultService.isThreeStrike();
+    }
+
+    private static UserNumber readUserNumber() {
+        List<Integer> numbers = InputView.readUserNumber();
+        return UserNumber.from(numbers);
     }
 
     private static boolean doRestart() {

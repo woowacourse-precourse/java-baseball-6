@@ -1,7 +1,7 @@
 package baseball.model;
 
 public class PlayAgainInput {
-    private int value;
+    private final int value;
 
     public PlayAgainInput(String input) {
         int inputToIntValue = validateNumeric(input);

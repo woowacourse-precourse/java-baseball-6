@@ -1,6 +1,10 @@
 package baseball.model;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static baseball.exception.ErrorMessage.DUPLICATED_USER_NUMBER;
+import static baseball.exception.ErrorMessage.INVALID_USER_NUMBER_CONTAINS_ZERO;
 
 
 public class UserNumber {
@@ -11,52 +15,33 @@ public class UserNumber {
         this.numbers = numbers;
     }
 
-    public static UserNumber create(String input) {
-        validateNonNumeric(input);
-        List<Integer> numbers = convertToIntegerList(input);
+    public static UserNumber from(List<Integer> numbers) {
         validateNonZero(numbers);
         validateDuplicate(numbers);
         validateSize(numbers);
-
         return new UserNumber(numbers);
-    }
-
-    private static List<Integer> convertToIntegerList(String str) {
-        List<Integer> intList = new ArrayList<>();
-        for (int i = 0; i < str.length(); i++) {
-            intList.add(Integer.parseInt(str.substring(i, i+1)));
-        }
-        return intList;
-    }
-
-    private static void validateNonNumeric(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch(NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
-        }
     }
 
     private static void validateNonZero(List<Integer> numbers) {
         if (numbers.contains(0)) {
-            throw new IllegalArgumentException("[ERROR] 0이 아닌 숫자 3개를 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_USER_NUMBER_CONTAINS_ZERO.getMessage());
         }
     }
 
     private static void validateDuplicate(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 서로 다른 숫자 3개를 입력해주세요.");
+            throw new IllegalArgumentException(DUPLICATED_USER_NUMBER.getMessage());
         }
     }
 
     private static void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUMBERS_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 서로 다른 숫자 3개를 입력해주세요.");
+            throw new IllegalArgumentException(DUPLICATED_USER_NUMBER.getMessage());
         }
     }
 
     public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
+        return List.copyOf(numbers);
     }
 }

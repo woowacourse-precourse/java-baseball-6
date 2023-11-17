@@ -10,7 +10,7 @@ public class copyTest {
     void copy() {
         String inputStr = "123";
 //        List<Integer> numbersArr = Arrays.asList(1, 2, 3);
-        UserNumber userNumber = UserNumber.create(inputStr);
+        UserNumber userNumber = UserNumber.from(inputStr);
         userNumber.getNumbers().add(6);
         System.out.println("userNumber.getNumbers() = " + userNumber.getNumbers());
 
