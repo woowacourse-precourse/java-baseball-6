@@ -8,49 +8,33 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    //심판관은 누구라도 괜찮으니까 모든 메서드를 static 으로 만듦
     public static boolean run() {
-        //컴퓨터넘버 생성
         ComputerNumber computerNumber = createComputerNumber();
 
-        boolean needNextRound = true;  //게임 라운드 계속 진행 여부
+        boolean needNextRound = true;
         while (needNextRound) {
-            needNextRound = play(computerNumber);  //3스트라이크 이면 false 리턴
+            needNextRound = play(computerNumber);
         }
-
-        //게임 종료 이후 재시작, 완전 종료 여부 리턴
         return doRestart();
     }
 
-    /**
-     * ComputerNumber 생성
-     */
     private static ComputerNumber createComputerNumber() {
         return ComputerNumber.create();
     }
 
-    /**
-     * 게임 결과가 3스트라이크 인 경우 : false 리턴
-     */
     private static boolean play(ComputerNumber computerNumber) {
 
-        OutputView.printGetInput();  //사용자로부터 값 입력 받는 문구 출력
-        String input = InputView.readInput();  //사용자로부터 값을 입력 받기
-        PlayerNumber playerNumber = PlayerNumber.create(input);  //PlayerNumber 객체 생성
+        OutputView.printGetInput();
+        String input = InputView.readInput();
+        PlayerNumber playerNumber = PlayerNumber.create(input);
 
-        //게임 결과 계산
         GameResultGenerator gameResultGenerator = new GameResultGenerator(computerNumber, playerNumber);
 
-        //게임 결과 출력
         OutputView.printResult(gameResultGenerator.isNothing(), gameResultGenerator.getBallCount(), gameResultGenerator.getStrikeCount());
 
-        //게임 종료 여부 리턴 (종료면 false 리턴)
         return !gameResultGenerator.isThreeStrike();
     }
 
-    /**
-     * 게임 종료 시 재시작 or 종료 판단
-     */
     private static boolean doRestart() {
         OutputView.printEnd();
         String input = InputView.readInput();

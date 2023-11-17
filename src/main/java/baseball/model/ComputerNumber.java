@@ -16,9 +16,6 @@ public class ComputerNumber {
         return new ComputerNumber();
     }
 
-    /**
-     * 1 ~ 9 의 서로 다른 숫자 3개 생성
-     */
     private List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() != 3) {

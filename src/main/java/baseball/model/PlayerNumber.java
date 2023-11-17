@@ -21,9 +21,6 @@ public class PlayerNumber {
         return new PlayerNumber(numbers);
     }
 
-    /**
-     * String 을 List<Integer> 로 변환
-     */
     private static List<Integer> convertToIntegerList(String str) {
         List<Integer> intList = new ArrayList<>();
         for (int i = 0; i < str.length(); i++) {
@@ -32,9 +29,6 @@ public class PlayerNumber {
         return intList;
     }
 
-    /**
-     * 숫자가 아닌 값이 있는지 검증
-     */
     private static void validateNonNumeric(String input) {
         try {
             Integer.parseInt(input);
@@ -43,18 +37,12 @@ public class PlayerNumber {
         }
     }
 
-    /**
-     * 0 이 있는지 검증
-     */
     private static void validateNonZero(List<Integer> numbers) {
         if (numbers.contains(0)) {
             throw new IllegalArgumentException("[ERROR] 0이 아닌 숫자 3개를 입력해주세요.");
         }
     }
 
-    /**
-     * 서로 다른 숫자 NUMBERS_SIZE 개 인지 검증
-     */
     private static void validateDuplicate(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != numbers.size()) {
@@ -69,7 +57,6 @@ public class PlayerNumber {
     }
 
     public List<Integer> getNumbers() {
-//        return new ArrayList<>(numbers);
-        return Collections.unmodifiableList(numbers);  //변경하려 하면 예외 발생시키니까 이 방식이 더 좋겠다. (방어적 복사)
+        return Collections.unmodifiableList(numbers);
     }
 }
