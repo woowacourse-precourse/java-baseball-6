@@ -2,14 +2,12 @@ package baseball;
 
 import baseball.controller.GameController;
 import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        OutputView.printStart();
-        boolean continueRunning = true;
-
-        while (continueRunning) {
-            continueRunning = GameController.run();
-        }
+        GameController gameController = GameController.getInstance();
+        gameController.run();
+        Console.close();
     }
 }
