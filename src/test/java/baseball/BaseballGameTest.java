@@ -3,7 +3,7 @@ package baseball;
 import baseball.model.ComputerNumber;
 import baseball.model.UserNumber;
 import baseball.service.GameResultService;
-import baseball.model.PlayerChoice;
+import baseball.model.PlayAgainInput;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -191,14 +191,14 @@ public class BaseballGameTest {
     @DisplayName("게임 종료 문구에 대한 입력값 검증 - 1 이나 2 가 아닌 문자를 넣으면 예외가 발생한다.")
     @Test
     void validateInput_ex1() {
-        assertThatThrownBy(() -> new PlayerChoice("x"))
+        assertThatThrownBy(() -> new PlayAgainInput("x"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("게임 종료 문구에 대한 입력값 검증 - 1 이나 2 가 아닌 다른 숫자를 넣으면 예외가 발생한다.")
     @Test
     void validateInput_ex2() {
-        assertThatThrownBy(() -> new PlayerChoice("5"))
+        assertThatThrownBy(() -> new PlayAgainInput("5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

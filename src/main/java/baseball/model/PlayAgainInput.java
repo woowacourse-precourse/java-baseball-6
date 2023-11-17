@@ -1,9 +1,9 @@
 package baseball.model;
 
-public class PlayerChoice {
+public class PlayAgainInput {
     private int value;
 
-    public PlayerChoice(String input) {
+    public PlayAgainInput(String input) {
         int inputToIntValue = validateNumeric(input);
         validateInput(inputToIntValue);
         value = inputToIntValue;

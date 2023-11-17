@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.model.ComputerNumber;
 import baseball.model.UserNumber;
 import baseball.service.GameResultService;
-import baseball.model.PlayerChoice;
+import baseball.model.PlayAgainInput;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -49,8 +49,8 @@ public class GameController {
 
     private static boolean doRestart() {
         OutputView.printEnd();
-        String input = InputView.readInput();
-        PlayerChoice playerChoice = new PlayerChoice(input);
-        return playerChoice.getValue() == 1;
+        String input = InputView.readPlayAgainInput();
+        PlayAgainInput playAgainInput = new PlayAgainInput(input);
+        return playAgainInput.getValue() == 1;
     }
 }
