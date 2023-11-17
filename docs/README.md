@@ -9,7 +9,7 @@
 
 - 1~9사이의 숫자
 - 3개를 입력받음
-- 예외 ( IllegalArgumentException 발생 후 종료 )
+- 예외 처리 ( IllegalArgumentException 발생 후 종료 )
     - 3개가 아닌 경우
     - 중복되는 숫자가 있을 경우
     - 1~9가 아닐 경우
