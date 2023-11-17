@@ -4,7 +4,6 @@ public class Game_Domain {
     int strikeCount;
     int ballCount;
     int[] gameNumbers;
-
     public Game_Domain(int[] numbers) {
         gameNumbers = numbers;
     }
