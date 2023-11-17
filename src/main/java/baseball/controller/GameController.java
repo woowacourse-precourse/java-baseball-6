@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.model.ComputerNumber;
-import baseball.model.GameResultGenerator;
+import baseball.service.GameResultService;
 import baseball.model.PlayerChoice;
 import baseball.model.PlayerNumber;
 import baseball.view.InputView;
@@ -28,11 +28,11 @@ public class GameController {
         String input = InputView.readInput();
         PlayerNumber playerNumber = PlayerNumber.create(input);
 
-        GameResultGenerator gameResultGenerator = new GameResultGenerator(computerNumber, playerNumber);
+        GameResultService gameResultService = new GameResultService(computerNumber, playerNumber);
 
-        OutputView.printResult(gameResultGenerator.isNothing(), gameResultGenerator.getBallCount(), gameResultGenerator.getStrikeCount());
+        OutputView.printResult(gameResultService.isNothing(), gameResultService.getBallCount(), gameResultService.getStrikeCount());
 
-        return !gameResultGenerator.isThreeStrike();
+        return !gameResultService.isThreeStrike();
     }
 
     private static boolean doRestart() {

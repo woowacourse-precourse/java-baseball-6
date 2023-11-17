@@ -1,13 +1,16 @@
-package baseball.model;
+package baseball.service;
+
+import baseball.model.ComputerNumber;
+import baseball.model.PlayerNumber;
 
 import java.util.List;
 
-public class GameResultGenerator {
+public class GameResultService {
     private boolean isNothing = false;
     private int ballCount = 0;
     private int strikeCount = 0;
 
-    public GameResultGenerator(ComputerNumber computerNumber, PlayerNumber playerNumber) {
+    public GameResultService(ComputerNumber computerNumber, PlayerNumber playerNumber) {
         calculateResult(computerNumber.getNumbers(), playerNumber.getNumbers());
     }
 
