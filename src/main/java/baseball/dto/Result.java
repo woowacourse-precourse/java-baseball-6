@@ -1,20 +1,14 @@
 package baseball.dto;
 
 public record Result(int ballCount, int strikeCount) {  //보일러 플레이트 코드 비대해지는 것 방지 record 사용
-    private static final int BASEBALL_SIZE = 3;
-    private static final int ZERO_COUNT = 0;
-    private static final String NO_CONUT_MESSAGE = "낫싱";
-    private static final String BALL_MESSAGE = "볼";
-    private static final String STRIKE_MESSAGE = "스트라이크";
+    public static final int BASEBALL_SIZE = 3;
+    public static final int ZERO_COUNT = 0;
+    public static final String NO_CONUT_MESSAGE = "낫싱";
+    public static final String BALL_MESSAGE = "볼";
+    public static final String STRIKE_MESSAGE = "스트라이크";
 
-    @Override
-    public String toString(){
-        if ()
-    }
-
-    public boolean allStrike(){
-        return BASEBALL_SIZE == strikeCount;    //3개 전부 스트라이크
-    }
+    public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.\n";
+    public static final String SUCCESS_AND_EXIT_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
 
 
 
