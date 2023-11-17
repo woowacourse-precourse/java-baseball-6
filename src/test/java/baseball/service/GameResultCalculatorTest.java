@@ -1,12 +1,12 @@
 package baseball.service;
 
-import baseball.domain.Result;
+import baseball.domain.GameResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static baseball.service.GameResultCalculator.calculateResult;
+import static baseball.service.GameResultCalculator.caculateGameResult;
 import static baseball.service.GameResultCalculator.calculateStrikeCount;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -76,10 +76,10 @@ class GameResultCalculatorTest {
         List<Integer> userNumbers = List.of(1, 2, 3);
 
         // when
-        Result result = calculateResult(computerNumbers, userNumbers);
+        GameResult result = caculateGameResult(computerNumbers, userNumbers);
 
         // then
-        assertThat(result).isEqualTo(new Result(0, 3, 0));
+        assertThat(result).isEqualTo(new GameResult(0, 3, 0));
     }
 
     @Test
@@ -90,10 +90,10 @@ class GameResultCalculatorTest {
         List<Integer> userNumbers = List.of(1, 2, 4);
 
         // when
-        Result result = calculateResult(computerNumbers, userNumbers);
+        GameResult result = caculateGameResult(computerNumbers, userNumbers);
 
         // then
-        assertThat(result).isEqualTo(new Result(0, 2, 1));
+        assertThat(result).isEqualTo(new GameResult(0, 2, 1));
     }
 
     @Test
@@ -104,10 +104,10 @@ class GameResultCalculatorTest {
         List<Integer> userNumbers = List.of(1, 4, 5);
 
         // when
-        Result result = calculateResult(computerNumbers, userNumbers);
+        GameResult result = caculateGameResult(computerNumbers, userNumbers);
 
         // then
-        assertThat(result).isEqualTo(new Result(0, 1, 2));
+        assertThat(result).isEqualTo(new GameResult(0, 1, 2));
     }
 
     @Test
@@ -118,10 +118,10 @@ class GameResultCalculatorTest {
         List<Integer> userNumbers = List.of(1, 3, 4);
 
         // when
-        Result result = calculateResult(computerNumbers, userNumbers);
+        GameResult result = caculateGameResult(computerNumbers, userNumbers);
 
         // then
-        assertThat(result).isEqualTo(new Result(1, 1, 1));
+        assertThat(result).isEqualTo(new GameResult(1, 1, 1));
     }
 
     @Test
@@ -132,10 +132,10 @@ class GameResultCalculatorTest {
         List<Integer> userNumbers = List.of(1, 3, 2);
 
         // when
-        Result result = calculateResult(computerNumbers, userNumbers);
+        GameResult result = caculateGameResult(computerNumbers, userNumbers);
 
         // then
-        assertThat(result).isEqualTo(new Result(2, 1, 0));
+        assertThat(result).isEqualTo(new GameResult(2, 1, 0));
     }
 
     @Test
@@ -146,10 +146,10 @@ class GameResultCalculatorTest {
         List<Integer> userNumbers = List.of(2, 4, 5);
 
         // when
-        Result result = calculateResult(computerNumbers, userNumbers);
+        GameResult result = caculateGameResult(computerNumbers, userNumbers);
 
         // then
-        assertThat(result).isEqualTo(new Result(1, 0, 2));
+        assertThat(result).isEqualTo(new GameResult(1, 0, 2));
     }
 
     @Test
@@ -160,10 +160,10 @@ class GameResultCalculatorTest {
         List<Integer> userNumbers = List.of(2, 1, 4);
 
         // when
-        Result result = calculateResult(computerNumbers, userNumbers);
+        GameResult result = caculateGameResult(computerNumbers, userNumbers);
 
         // then
-        assertThat(result).isEqualTo(new Result(2, 0, 1));
+        assertThat(result).isEqualTo(new GameResult(2, 0, 1));
     }
 
     @Test
@@ -174,10 +174,10 @@ class GameResultCalculatorTest {
         List<Integer> userNumbers = List.of(2, 3, 1);
 
         // when
-        Result result = calculateResult(computerNumbers, userNumbers);
+        GameResult result = caculateGameResult(computerNumbers, userNumbers);
 
         // then
-        assertThat(result).isEqualTo(new Result(3, 0, 0));
+        assertThat(result).isEqualTo(new GameResult(3, 0, 0));
     }
 
     @Test
@@ -188,9 +188,9 @@ class GameResultCalculatorTest {
         List<Integer> userNumbers = List.of(4, 5, 6);
 
         // when
-        Result result = calculateResult(computerNumbers, userNumbers);
+        GameResult result = caculateGameResult(computerNumbers, userNumbers);
 
         // then
-        assertThat(result).isEqualTo(new Result(0, 0, 3));
+        assertThat(result).isEqualTo(new GameResult(0, 0, 3));
     }
 }

@@ -2,12 +2,12 @@ package baseball.domain;
 
 import java.util.Objects;
 
-public class Result {
+public class GameResult {
     int ball;
     int strike;
     int out;
 
-    public Result(int ball, int strike, int out) {
+    public GameResult(int ball, int strike, int out) {
         this.ball = ball;
         this.strike = strike;
         this.out = out;
@@ -17,7 +17,7 @@ public class Result {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Result result = (Result) o;
+        GameResult result = (GameResult) o;
         return ball == result.ball && strike == result.strike && out == result.out;
     }
 
