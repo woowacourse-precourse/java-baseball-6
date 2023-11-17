@@ -10,8 +10,12 @@ public class GameResultService {
     private int ballCount = 0;
     private int strikeCount = 0;
 
-    public GameResultService(ComputerNumber computerNumber, UserNumber userNumber) {
+    private GameResultService(ComputerNumber computerNumber, UserNumber userNumber) {
         calculateResult(computerNumber.getNumbers(), userNumber.getNumbers());
+    }
+
+    public static GameResultService of(ComputerNumber computerNumber, UserNumber userNumber) {
+        return new GameResultService(computerNumber, userNumber);
     }
 
     public boolean isNothing() {

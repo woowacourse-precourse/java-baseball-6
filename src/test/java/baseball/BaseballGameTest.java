@@ -1,59 +1,40 @@
 package baseball;
 
 import baseball.model.ComputerNumber;
+import baseball.model.PlayAgainDecision;
 import baseball.model.UserNumber;
 import baseball.service.GameResultService;
-import baseball.model.PlayAgainInput;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
-import static org.assertj.core.api.Assertions.*;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BaseballGameTest {
 
     @DisplayName("1~9의 서로 다른 숫자 3개를 생성한다.")
     @Test
-    void generateComputerNumber(){
+    void generateComputerNumber() {
         ComputerNumber computerNumber = ComputerNumber.create();
         assertThat(computerNumber.getNumbers().size()).isEqualTo(3);
     }
 
-
-    @DisplayName("입력 받은 숫자가 1~9의 서로 다른 숫자 3개인 경우 정상 처리 된다.")
-    @Test
-    void validatePlayerNumber_o(){
-        UserNumber userNumber = UserNumber.from("123");
-        assertThat(userNumber.getNumbers().size()).isEqualTo(3);
-    }
-
-    @DisplayName("입력 받은 값에 0이 포함된 경우 예외가 발생한다.")
-    @Test
-    void validatePlayerNumber_ex1(){
-        assertThatThrownBy(() -> UserNumber.from("012"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("입력 받은 값이 1~9의 서로 다른 숫자 3개가 아니면 예외가 발생한다.")
-    @Test
-    void validatePlayerNumber_ex2(){
-        assertThatThrownBy(() -> UserNumber.from("144"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    //입력 받은 숫자와 컴퓨터 숫자 비교
     @DisplayName("입력 받은 숫자와 컴퓨터 숫자 비교 - 낫싱")
     @Test
     void generateResult1() {
         try (MockedStatic<Randoms> randoms = Mockito.mockStatic(Randoms.class)) {
-            randoms.when(() -> Randoms.pickNumberInRange(1,9)).thenReturn(1).thenReturn(2).thenReturn(3);
-            //computerNumber 가 1,2,3이 되도록 mocking
+            randoms.when(() -> Randoms.pickNumberInRange(1, 9)).thenReturn(1).thenReturn(2).thenReturn(3);
 
-            ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.from("456");
-            GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
+            ComputerNumber computerNumber = ComputerNumber.create();
+            UserNumber userNumber = UserNumber.from(List.of(4, 5, 6));
+            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isTrue();
             assertThat(gameResultService.getBallCount()).isEqualTo(0);
             assertThat(gameResultService.getStrikeCount()).isEqualTo(0);
@@ -64,12 +45,11 @@ public class BaseballGameTest {
     @Test
     void generateResult2() {
         try (MockedStatic<Randoms> randoms = Mockito.mockStatic(Randoms.class)) {
-            randoms.when(() -> Randoms.pickNumberInRange(1,9)).thenReturn(1).thenReturn(2).thenReturn(3);
-            //computerNumber 가 1,2,3이 되도록 mocking
+            randoms.when(() -> Randoms.pickNumberInRange(1, 9)).thenReturn(1).thenReturn(2).thenReturn(3);
 
-            ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.from("451");  //4,5,1
-            GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
+            ComputerNumber computerNumber = ComputerNumber.create();
+            UserNumber userNumber = UserNumber.from(List.of(4, 5, 1));
+            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(1);
             assertThat(gameResultService.getStrikeCount()).isEqualTo(0);
@@ -80,12 +60,11 @@ public class BaseballGameTest {
     @Test
     void generateResult3() {
         try (MockedStatic<Randoms> randoms = Mockito.mockStatic(Randoms.class)) {
-            randoms.when(() -> Randoms.pickNumberInRange(1,9)).thenReturn(1).thenReturn(2).thenReturn(3);
-            //computerNumber 가 1,2,3이 되도록 mocking
+            randoms.when(() -> Randoms.pickNumberInRange(1, 9)).thenReturn(1).thenReturn(2).thenReturn(3);
 
-            ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.from("351");  //3,5,1
-            GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
+            ComputerNumber computerNumber = ComputerNumber.create();
+            UserNumber userNumber = UserNumber.from(List.of(3, 5, 1));
+            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(2);
             assertThat(gameResultService.getStrikeCount()).isEqualTo(0);
@@ -96,12 +75,11 @@ public class BaseballGameTest {
     @Test
     void generateResult4() {
         try (MockedStatic<Randoms> randoms = Mockito.mockStatic(Randoms.class)) {
-            randoms.when(() -> Randoms.pickNumberInRange(1,9)).thenReturn(1).thenReturn(2).thenReturn(3);
-            //computerNumber 가 1,2,3이 되도록 mocking
+            randoms.when(() -> Randoms.pickNumberInRange(1, 9)).thenReturn(1).thenReturn(2).thenReturn(3);
 
-            ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.from("231");  //2,3,1
-            GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
+            ComputerNumber computerNumber = ComputerNumber.create();
+            UserNumber userNumber = UserNumber.from(List.of(2, 3, 1));
+            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(3);
             assertThat(gameResultService.getStrikeCount()).isEqualTo(0);
@@ -112,12 +90,11 @@ public class BaseballGameTest {
     @Test
     void generateResult5() {
         try (MockedStatic<Randoms> randoms = Mockito.mockStatic(Randoms.class)) {
-            randoms.when(() -> Randoms.pickNumberInRange(1,9)).thenReturn(1).thenReturn(2).thenReturn(3);
-            //computerNumber 가 1,2,3이 되도록 mocking
+            randoms.when(() -> Randoms.pickNumberInRange(1, 9)).thenReturn(1).thenReturn(2).thenReturn(3);
 
-            ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.from("145");  //1,4,5
-            GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
+            ComputerNumber computerNumber = ComputerNumber.create();
+            UserNumber userNumber = UserNumber.from(List.of(1, 4, 5));
+            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(0);
             assertThat(gameResultService.getStrikeCount()).isEqualTo(1);
@@ -128,12 +105,11 @@ public class BaseballGameTest {
     @Test
     void generateResult6() {
         try (MockedStatic<Randoms> randoms = Mockito.mockStatic(Randoms.class)) {
-            randoms.when(() -> Randoms.pickNumberInRange(1,9)).thenReturn(1).thenReturn(2).thenReturn(3);
-            //computerNumber 가 1,2,3이 되도록 mocking
+            randoms.when(() -> Randoms.pickNumberInRange(1, 9)).thenReturn(1).thenReturn(2).thenReturn(3);
 
-            ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.from("125");  //1,2,5
-            GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
+            ComputerNumber computerNumber = ComputerNumber.create();
+            UserNumber userNumber = UserNumber.from(List.of(1, 2, 5));
+            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(0);
             assertThat(gameResultService.getStrikeCount()).isEqualTo(2);
@@ -144,12 +120,11 @@ public class BaseballGameTest {
     @Test
     void generateResult7() {
         try (MockedStatic<Randoms> randoms = Mockito.mockStatic(Randoms.class)) {
-            randoms.when(() -> Randoms.pickNumberInRange(1,9)).thenReturn(1).thenReturn(2).thenReturn(3);
-            //computerNumber 가 1,2,3이 되도록 mocking
+            randoms.when(() -> Randoms.pickNumberInRange(1, 9)).thenReturn(1).thenReturn(2).thenReturn(3);
 
-            ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.from("123");  //1,4,5
-            GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
+            ComputerNumber computerNumber = ComputerNumber.create();
+            UserNumber userNumber = UserNumber.from(List.of(1, 4, 5));
+            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(0);
             assertThat(gameResultService.getStrikeCount()).isEqualTo(3);
@@ -160,12 +135,11 @@ public class BaseballGameTest {
     @Test
     void generateResult8() {
         try (MockedStatic<Randoms> randoms = Mockito.mockStatic(Randoms.class)) {
-            randoms.when(() -> Randoms.pickNumberInRange(1,9)).thenReturn(1).thenReturn(2).thenReturn(3);
-            //computerNumber 가 1,2,3이 되도록 mocking
+            randoms.when(() -> Randoms.pickNumberInRange(1, 9)).thenReturn(1).thenReturn(2).thenReturn(3);
 
-            ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.from("142");  //1,4,2
-            GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
+            ComputerNumber computerNumber = ComputerNumber.create();
+            UserNumber userNumber = UserNumber.from(List.of(1, 4, 2));
+            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(1);
             assertThat(gameResultService.getStrikeCount()).isEqualTo(1);
@@ -176,30 +150,21 @@ public class BaseballGameTest {
     @Test
     void generateResult9() {
         try (MockedStatic<Randoms> randoms = Mockito.mockStatic(Randoms.class)) {
-            randoms.when(() -> Randoms.pickNumberInRange(1,9)).thenReturn(1).thenReturn(2).thenReturn(3);
-            //computerNumber 가 1,2,3이 되도록 mocking
+            randoms.when(() -> Randoms.pickNumberInRange(1, 9)).thenReturn(1).thenReturn(2).thenReturn(3);
 
-            ComputerNumber computerNumber = ComputerNumber.create();  //1,2,3
-            UserNumber userNumber = UserNumber.from("132");  //1,3,2
-            GameResultService gameResultService = new GameResultService(computerNumber, userNumber);
+            ComputerNumber computerNumber = ComputerNumber.create();
+            UserNumber userNumber = UserNumber.from(List.of(1, 3, 2));
+            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
             assertThat(gameResultService.isNothing()).isFalse();
             assertThat(gameResultService.getBallCount()).isEqualTo(2);
             assertThat(gameResultService.getStrikeCount()).isEqualTo(1);
         }
     }
 
-    @DisplayName("게임 종료 문구에 대한 입력값 검증 - 1 이나 2 가 아닌 문자를 넣으면 예외가 발생한다.")
-    @Test
-    void validateInput_ex1() {
-        assertThatThrownBy(() -> new PlayAgainInput("x"))
+    @ParameterizedTest(name = "[{index}] {0} 을 넣으면 예외가 발생한다.")
+    @ValueSource(ints = {-1, 0, 3, 5, 100})
+    void validateInput_ex(int element) {
+        assertThatThrownBy(() -> PlayAgainDecision.of(element))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @DisplayName("게임 종료 문구에 대한 입력값 검증 - 1 이나 2 가 아닌 다른 숫자를 넣으면 예외가 발생한다.")
-    @Test
-    void validateInput_ex2() {
-        assertThatThrownBy(() -> new PlayAgainInput("5"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
 }
