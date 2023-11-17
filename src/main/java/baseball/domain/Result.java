@@ -25,4 +25,40 @@ public class Result {
     public int hashCode() {
         return Objects.hash(ball, strike, out);
     }
+
+    @Override
+    public String toString() {
+        if (out == 3) {
+            return "낫싱";
+        }
+
+        String result = "";
+        result += ballCountToStr();
+        result += strikeCountToStr();
+
+        return result;
+    }
+
+    private String ballCountToStr() {
+        String result = "";
+
+        if (ball > 0) {
+            result += ball + "볼";
+
+            if (strike > 0) {
+                result += " ";
+            }
+        }
+
+        return result;
+    }
+    private String strikeCountToStr() {
+        String result = "";
+
+        if (strike > 0) {
+            result += strike + "스트라이크";
+        }
+
+        return result;
+    }
 }
