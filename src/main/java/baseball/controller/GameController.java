@@ -1,21 +1,32 @@
 package baseball.controller;
 
 import baseball.domain.Game;
+import baseball.domain.GameResult;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static baseball.view.InputView.readUserAnswer;
+import static baseball.view.OutputView.printGameResult;
 
 public class GameController {
     public void playGame() {
         Game game = new Game();
+        askUntilCorrectAnswer(game);
     }
 
     public List<Integer> askAnswer() {
         String userAnswer = readUserAnswer();
         validateUserAnswer(userAnswer);
         return userAnswerToUserNumbers(userAnswer);
+    }
+
+    public void askUntilCorrectAnswer(Game game) {
+        while (!game.isUserWin()) {
+            List<Integer> userNumbers = askAnswer();
+            GameResult gameResult = game.makeGameResult(userNumbers);
+            printGameResult(gameResult);
+        }
     }
 
     private void validateUserAnswer(String userAnswer) {
