@@ -6,27 +6,20 @@ import baseball.domain.Game;
 import baseball.domain.User;
 import baseball.dto.Result;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
 
 
 public class GameService {
 
-    int size;
-    Game game;
+
+    Game game ;
     User user = new User();
     Result result = new Result();
     printScoreMessage printScoreMessage = new printScoreMessage();
 
     public void setGame() {
-        while ((game.getRandomNumbers().size()) < 3) {   //리스트에 들어있는 원소 수
-            int randomNumber = Randoms.pickNumberInRange(1, 9); //1~9까지의 수 랜덤으로 집어넣음
-            if (!game.getRandomNumbers().contains(randomNumber)) { //중복방지
-                game.getRandomNumbers().add(randomNumber);
-            }
-        }
-    }
+            game.getGameNumbers();
 
+    }
     public void playGame(){
         int strike = 0;
         while(strike != 3){
@@ -38,7 +31,7 @@ public class GameService {
 
     private void play() {
         game.initBaseBall();    //스트라이크 & 볼 0으로 초기화
-        user.setMyinputList(getUserNumber());
+        user.setUserNumbers(getUserNumber());
         Score();
     }
 
@@ -47,11 +40,11 @@ public class GameService {
         RetryMessage.printInputMessage();   //숫자를 입력해 주세요 :
         String inputNumber = Console.readLine();
 
-        return User.checkUserInput(inputNumber, size);
+        return User.checkUserInput(inputNumber);
     }
     private void Score() {
-        for (int i = 0; i < size; i++) {
-            computer(game.getGameNumbers(), user.getMyinputList(), i);
+        for (int i = 0; i < 3; i++) {
+            computer(game.getGameNumbers(), user.getUserNumbers(), i);
         }
     }
 

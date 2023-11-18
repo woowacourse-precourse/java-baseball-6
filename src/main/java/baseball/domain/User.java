@@ -3,28 +3,30 @@ package baseball.domain;
 
 public class User {
 
-    int MyinputList[];
+    int[] userNumbers;
 
-    public int[] getMyinputList() {
-        return MyinputList;
+    public int[] getUserNumbers() {
+        return userNumbers;
     }
 
-    public void setMyinputList(int[] myinputList) {
-        MyinputList = myinputList;
-    }
-
-    public int[] checkUserInput(String inputNumber, int size) throws IllegalAccessException {
-        checkSize(inputNumber, size);
-        return getCheckInt(inputNumber, size);
+    public void setUserNumbers(int[] userNumbers) {
+        this.userNumbers = userNumbers;
     }
 
 
-    private static void checkSize(String inputNumber, int size) throws IllegalAccessException {
-        if (inputNumber.length() != size)
+
+    public int[] checkUserInput(String inputNumber) throws IllegalAccessException {
+        checkSize(inputNumber);
+        return getCheckInt(inputNumber);
+    }
+
+
+    private void checkSize(String inputNumber) throws IllegalAccessException {
+        if (inputNumber.length() != 3)
             throw new IllegalAccessException();
     }
-    private static int[] getCheckInt(String inputNumber, int size) throws IllegalAccessException {
-        int[] checkInt = new int[size];
+    private int[] getCheckInt(String inputNumber) throws IllegalAccessException {
+        int[] checkInt = new int[3];
 
         for (int i = 0; i < inputNumber.length(); i++) {
             if (!checkNum(inputNumber, i))
