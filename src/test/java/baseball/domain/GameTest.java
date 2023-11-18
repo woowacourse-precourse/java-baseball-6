@@ -5,48 +5,45 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 class GameTest {
     @Test
-    @DisplayName("Game 클래스를 생성할 때 computerAnswer가 만들어 진다.")
+    @DisplayName("Game 클래스를 생성할 때 입력한 computerNumbers가 멤버변수에 등록된다.")
     void gameGeneratorShouldMakeComputerAnswerAndRegister() {
         // given, when
-        Game game = new Game();
-        List<Integer> computerAnswer = game.getComputerNumbers();
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        Game game = new Game(computerNumbers);
 
         // then
-        assertThat(computerAnswer)
+        assertThat(game.getComputerNumbers())
                 .hasSize(3)
-                .allMatch(number -> number >= 1 && number <= 9)
-                .doesNotHaveDuplicates();
+                .containsExactly(1, 2, 3);
     }
 
     @Test
     @DisplayName("사용자 입력값을 가지고 게임 결과를 계산후 정확하게 반환한다.")
     void makeGameResultCorrectly() {
         // given
-        List<Integer> userNumbers = List.of(1, 2, 3);
-        List<String> answerCandidate =
-                List.of("낫싱", "1볼", "2볼", "1볼 1스트라이크", "1스트라이크", "2스트라이크", "3스트라이크");
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        Game game = new Game(computerNumbers);
+        List<Integer> userNumbers = List.of(3, 2, 1);
 
-        // when, then
-        for (int i = 0; i < 1000; i++) {
-            Game game = new Game();
-            GameResult gameResult = game.makeGameResult(userNumbers);
+        // when
+        GameResult gameResult = game.makeGameResult(userNumbers);
 
-            assertThat(gameResult.toString()).isIn(answerCandidate);
-        }
+        // then
+        assertThat(gameResult).isEqualTo(new GameResult(2, 1, 0));
     }
 
     @Test
     @DisplayName("사용자가 정답을 맞추었다면 isUserWin이 true가 된다.")
     void isUserWinShouldBecomeTrueWhenUserMatchComputerNumbers() {
         // given
-        Game game = new Game();
-        List<Integer> userNumbers = game.getComputerNumbers();
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        Game game = new Game(computerNumbers);
+        List<Integer> userNumbers = List.of(1, 2, 3);
 
         // when
         GameResult gameResult = game.makeGameResult(userNumbers);

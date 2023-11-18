@@ -9,8 +9,8 @@ public class Game {
     private final List<Integer> computerNumbers;
     private boolean isUserWin = false;
 
-    public Game() {
-        this.computerNumbers = pickNumbersInRangeWithoutDuplicates(1,9, 3);
+    public Game(List<Integer> computerNumbers) {
+        this.computerNumbers = computerNumbers;
     }
 
     public GameResult makeGameResult(List<Integer> userNumbers) {

@@ -6,6 +6,7 @@ import baseball.domain.GameResult;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.service.NumberGenerator.pickNumbersInRangeWithoutDuplicates;
 import static baseball.view.InputView.readUserAnswer;
 import static baseball.view.OutputView.printGameResult;
 
@@ -24,7 +25,7 @@ public class GameController {
     }
 
     public void playGame() {
-        Game game = new Game();
+        Game game = new Game(pickNumbersInRangeWithoutDuplicates(1, 9, 3));
         askUntilCorrectAnswer(game);
     }
 
