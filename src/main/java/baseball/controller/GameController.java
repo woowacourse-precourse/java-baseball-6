@@ -10,6 +10,19 @@ import static baseball.view.InputView.readUserAnswer;
 import static baseball.view.OutputView.printGameResult;
 
 public class GameController {
+    public void play() {
+        boolean isContinue = true;
+
+        while (isContinue) {
+            playGame();
+            isContinue = askContinue();
+        }
+    }
+
+    private boolean askContinue() {
+        return false;
+    }
+
     public void playGame() {
         Game game = new Game();
         askUntilCorrectAnswer(game);
