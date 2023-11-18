@@ -18,19 +18,15 @@ public class RoundResult {
     }
 
     private void processRound(ComputerNumber computerNumber, UserNumber userNumber) {
-        IntStream.range(START_INDEX, NUMBERS_SIZE).forEach(position -> {
+        for (int position = START_INDEX; position < NUMBERS_SIZE; position++) {
             int number = userNumber.findNumberByPosition(position);
-            calculateBallAndStrike(computerNumber, number, position);
-        });
-
-    }
-
-    private void calculateBallAndStrike(ComputerNumber computerNumber, int number, int position) {
-        if (computerNumber.containsNumber(number)) {
-            if (computerNumber.findNumberByPosition(position) == number) {
-                strikeCount++;
+            if (computerNumber.containsNumber(number)) {
+                if (computerNumber.findNumberByPosition(position) == number) {
+                    strikeCount++;
+                    continue;
+                }
+                ballCount++;
             }
-            ballCount++;
         }
     }
 

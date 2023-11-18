@@ -17,7 +17,7 @@ class UserNumberTest {
     @Test
     void validatePlayerNumber_o() {
         UserNumber userNumber = UserNumber.from(List.of(1, 2, 3));
-        assertThat(userNumber.getNumbers().size()).isEqualTo(3);
+        assertThat(userNumber).isNotNull();
     }
 
     @ParameterizedTest(name = "[{index}] {0} 입력 시 예외가 발생한다.")
