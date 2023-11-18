@@ -2,9 +2,9 @@ package baseball.View;
 
 import static baseball.dto.Result.*;
 
-public class printScoreMessage {
+public class PrintScoreMessage {
 
-    public void printMessage(int ball, int strike) {
+    public void PrintMessage(int ball, int strike) {
         if (ball == 0 && strike != 0)
             System.out.println(strike + STRIKE_MESSAGE);    //스트라이크
         if (ball != 0 && strike == 0)

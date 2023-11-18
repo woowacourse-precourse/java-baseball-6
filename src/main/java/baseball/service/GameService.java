@@ -1,7 +1,7 @@
-package baseball.Service;
+package baseball.service;
 
 import baseball.View.RetryMessage;
-import baseball.View.printScoreMessage;
+import baseball.View.PrintScoreMessage;
 import baseball.domain.Game;
 import baseball.domain.User;
 import baseball.dto.Result;
@@ -10,27 +10,26 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameService {
 
-
-    Game game ;
+    int size;
+    Game game;
     User user = new User();
     Result result = new Result();
-    printScoreMessage printScoreMessage = new printScoreMessage();
+    PrintScoreMessage printScoreMessage = new PrintScoreMessage();
 
     public void setGame() {
-            game.getGameNumbers();
-
+            Game.getGameNumbers();
     }
     public void playGame(){
         int strike = 0;
         while(strike != 3){
             play();
-            printScoreMessage.printMessage(game.getBallCount(), game.getStrikeCount());
+            printScoreMessage.PrintMessage(game.getBallCount(), game.getStrikeCount());
             strike = game.getStrikeCount();
         }
     }
 
     private void play() {
-        game.initBaseBall();    //스트라이크 & 볼 0으로 초기화
+        game.initBaseball();    //스트라이크 & 볼 0으로 초기화
         user.setUserNumbers(getUserNumber());
         Score();
     }
@@ -40,7 +39,7 @@ public class GameService {
         RetryMessage.printInputMessage();   //숫자를 입력해 주세요 :
         String inputNumber = Console.readLine();
 
-        return User.checkUserInput(inputNumber);
+        return user.checkUserInput(inputNumber, size);
     }
     private void Score() {
         for (int i = 0; i < 3; i++) {

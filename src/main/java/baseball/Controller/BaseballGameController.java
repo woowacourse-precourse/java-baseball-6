@@ -1,5 +1,5 @@
 package baseball.Controller;
-import baseball.Service.GameService;
+import baseball.service.GameService;
 import baseball.domain.*;
 import baseball.View.*;
 import camp.nextstep.edu.missionutils.Console;
@@ -32,7 +32,7 @@ public class BaseballGameController {
         gameService.playGame();
     }
     private void endGame() {
-        printScoreMessage.printGameOverMessage();
+        PrintScoreMessage.printGameOverMessage();
     }
 
     private void retry_or_not() throws IllegalAccessException {
