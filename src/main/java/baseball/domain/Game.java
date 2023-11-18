@@ -2,8 +2,7 @@ package baseball.domain;
 
 import java.util.List;
 
-import static baseball.service.GameResultCalculator.*;
-import static baseball.service.NumberGenerator.*;
+import static baseball.service.GameResultCalculator.caculateGameResult;
 
 public class Game {
     private final List<Integer> computerNumbers;

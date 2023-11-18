@@ -54,6 +54,7 @@ public class GameResult {
 
         return result;
     }
+
     private String strikeCountToStr() {
         String result = "";
 
