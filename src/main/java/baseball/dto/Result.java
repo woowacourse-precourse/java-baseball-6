@@ -1,6 +1,6 @@
 package baseball.dto;
 
-public record Result(int ballCount, int strikeCount) {  //보일러 플레이트 코드 비대해지는 것 방지 record 사용
+public record Result() {  //보일러 플레이트 코드 비대해지는 것 방지 record 사용
     public static final int BASEBALL_SIZE = 3;
     public static final int ZERO_COUNT = 0;
     public static final String NO_CONUT_MESSAGE = "낫싱";

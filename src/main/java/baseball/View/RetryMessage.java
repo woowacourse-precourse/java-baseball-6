@@ -1,6 +1,6 @@
 package baseball.View;
 
-public class Retry {
+public class RetryMessage {
     public void main(String[] args) {  }
 
     public static void printInputMessage () {
