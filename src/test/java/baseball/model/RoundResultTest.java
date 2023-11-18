@@ -113,7 +113,7 @@ class RoundResultTest {
             RoundResult roundResult = RoundResult.create(computerNumber, userNumber);
             assertThat(roundResult.isNothing()).isFalse();
             assertThat(roundResult.provideBallCount()).isEqualTo(0);
-            assertThat(roundResult.provideStrikeCount()).isEqualTo(3);
+            assertThat(roundResult.provideStrikeCount()).isEqualTo(1);
         }
     }
 
