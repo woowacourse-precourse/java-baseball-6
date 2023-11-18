@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -38,5 +39,20 @@ class GameTest {
 
             assertThat(gameResult.toString()).isIn(answerCandidate);
         }
+    }
+
+    @Test
+    @DisplayName("사용자가 정답을 맞추었다면 isUserWin이 true가 된다.")
+    void isUserWinShouldBecomeTrueWhenUserMatchComputerNumbers() {
+        // given
+        Game game = new Game();
+        List<Integer> userNumbers = game.getComputerNumbers();
+
+        // when
+        GameResult gameResult = game.makeGameResult(userNumbers);
+
+        // then
+        assertThat(gameResult.toString()).isEqualTo("3스트라이크");
+        assertThat(game.isUserWin()).isEqualTo(true);
     }
 }
