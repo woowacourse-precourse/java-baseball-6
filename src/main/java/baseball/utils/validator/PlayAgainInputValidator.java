@@ -1,4 +1,4 @@
-package baseball.validator;
+package baseball.utils.validator;
 
 import static baseball.exception.ErrorMessage.INVALID_PLAY_AGAIN;
 

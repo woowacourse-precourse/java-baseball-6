@@ -1,7 +1,7 @@
 package baseball.view;
 
-import baseball.validator.PlayAgainInputValidator;
-import baseball.validator.UserNumberInputValidator;
+import baseball.utils.validator.PlayAgainInputValidator;
+import baseball.utils.validator.UserNumberValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -13,8 +13,8 @@ public class InputView {
     public static List<Integer> readUserNumber() {
         System.out.print(ASK_USER_NUMBER_MESSAGE);
         String input = Console.readLine();
-        UserNumberInputValidator.validateNumeric(input);
-        return UserNumberInputValidator.convertToIntegerList(input);
+        UserNumberValidator.validateNumeric(input);
+        return UserNumberValidator.convertToIntegerList(input);
     }
 
     public static int readPlayAgainInput() {

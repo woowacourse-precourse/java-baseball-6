@@ -1,9 +1,10 @@
 package baseball.controller;
 
+import baseball.dto.RoundResultDto;
 import baseball.model.ComputerNumber;
-import baseball.model.UserNumber;
-import baseball.service.GameResultService;
 import baseball.model.PlayAgainDecision;
+import baseball.model.UserNumber;
+import baseball.service.GameManager;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -11,43 +12,13 @@ import java.util.List;
 
 public class GameController {
     public static GameController instance = new GameController();
-    private GameResultService gameResultService;
+    private GameManager gameManager;
 
     private GameController() {
     }
 
     public static GameController getInstance() {
         return instance;
-    }
-
-    public void run() {
-        boolean continuePlaying = true;
-        while (continuePlaying) {
-            continuePlaying = play();
-        }
-    }
-
-    private boolean play() {
-        OutputView.printStart();
-        ComputerNumber computerNumber = createComputerNumber();
-
-        boolean needsNextRound = true;
-        while (needsNextRound) {
-            needsNextRound = playRound(computerNumber);
-        }
-        return wantsRestart();
-    }
-
-    private ComputerNumber createComputerNumber() {
-        return ComputerNumber.create();
-    }
-
-    private boolean playRound(ComputerNumber computerNumber) {
-        UserNumber userNumber = readUserNumber();
-        //computerNumber, userNumber 가 최대한 일을 하게 하자. 그리고 둘이 같이 필요한 경우 GameResultService 이용
-        GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
-        OutputView.printResult(gameResultService.isNothing(), gameResultService.getBallCount(), gameResultService.getStrikeCount());
-        return !gameResultService.isThreeStrike();
     }
 
     private static UserNumber readUserNumber() {
@@ -64,5 +35,40 @@ public class GameController {
     private static PlayAgainDecision readPlayAgainInput() {
         int input = InputView.readPlayAgainInput();
         return PlayAgainDecision.of(input);
+    }
+
+    public void run() {
+        boolean continuePlaying = true;
+        while (continuePlaying) {
+            continuePlaying = play();
+        }
+    }
+
+    private boolean play() {
+        OutputView.printStart();
+        initializeGameManager();
+        boolean needsNextRound = true;
+        while (needsNextRound) {
+            UserNumber userNumber = readUserNumber();
+            needsNextRound = playRound(userNumber);
+            printRoundResult();
+        }
+        return wantsRestart();
+    }
+
+    private void initializeGameManager() {
+        ComputerNumber computerNumber = ComputerNumber.create();
+        gameManager = GameManager.from(computerNumber);
+    }
+
+    private boolean playRound(UserNumber userNumber) {
+        boolean needsNextRound;
+        needsNextRound = gameManager.playRound(userNumber);
+        return needsNextRound;
+    }
+
+    private void printRoundResult() {
+        RoundResultDto resultDto = gameManager.createResultDto();
+        OutputView.printResult(resultDto.isNothing(), resultDto.getBallCount(), resultDto.getStrikeCount());
     }
 }

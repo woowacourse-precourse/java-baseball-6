@@ -3,7 +3,7 @@ package baseball;
 import baseball.model.ComputerNumber;
 import baseball.model.PlayAgainDecision;
 import baseball.model.UserNumber;
-import baseball.service.GameResultService;
+import baseball.service.GameManager;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,10 +34,10 @@ public class BaseballGameTest {
 
             ComputerNumber computerNumber = ComputerNumber.create();
             UserNumber userNumber = UserNumber.from(List.of(4, 5, 6));
-            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
-            assertThat(gameResultService.isNothing()).isTrue();
-            assertThat(gameResultService.getBallCount()).isEqualTo(0);
-            assertThat(gameResultService.getStrikeCount()).isEqualTo(0);
+            GameManager gameManager = GameManager.of(computerNumber, userNumber);
+            assertThat(gameManager.isNothing()).isTrue();
+            assertThat(gameManager.getBallCount()).isEqualTo(0);
+            assertThat(gameManager.getStrikeCount()).isEqualTo(0);
         }
     }
 
@@ -49,10 +49,10 @@ public class BaseballGameTest {
 
             ComputerNumber computerNumber = ComputerNumber.create();
             UserNumber userNumber = UserNumber.from(List.of(4, 5, 1));
-            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
-            assertThat(gameResultService.isNothing()).isFalse();
-            assertThat(gameResultService.getBallCount()).isEqualTo(1);
-            assertThat(gameResultService.getStrikeCount()).isEqualTo(0);
+            GameManager gameManager = GameManager.of(computerNumber, userNumber);
+            assertThat(gameManager.isNothing()).isFalse();
+            assertThat(gameManager.getBallCount()).isEqualTo(1);
+            assertThat(gameManager.getStrikeCount()).isEqualTo(0);
         }
     }
 
@@ -64,10 +64,10 @@ public class BaseballGameTest {
 
             ComputerNumber computerNumber = ComputerNumber.create();
             UserNumber userNumber = UserNumber.from(List.of(3, 5, 1));
-            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
-            assertThat(gameResultService.isNothing()).isFalse();
-            assertThat(gameResultService.getBallCount()).isEqualTo(2);
-            assertThat(gameResultService.getStrikeCount()).isEqualTo(0);
+            GameManager gameManager = GameManager.of(computerNumber, userNumber);
+            assertThat(gameManager.isNothing()).isFalse();
+            assertThat(gameManager.getBallCount()).isEqualTo(2);
+            assertThat(gameManager.getStrikeCount()).isEqualTo(0);
         }
     }
 
@@ -79,10 +79,10 @@ public class BaseballGameTest {
 
             ComputerNumber computerNumber = ComputerNumber.create();
             UserNumber userNumber = UserNumber.from(List.of(2, 3, 1));
-            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
-            assertThat(gameResultService.isNothing()).isFalse();
-            assertThat(gameResultService.getBallCount()).isEqualTo(3);
-            assertThat(gameResultService.getStrikeCount()).isEqualTo(0);
+            GameManager gameManager = GameManager.of(computerNumber, userNumber);
+            assertThat(gameManager.isNothing()).isFalse();
+            assertThat(gameManager.getBallCount()).isEqualTo(3);
+            assertThat(gameManager.getStrikeCount()).isEqualTo(0);
         }
     }
 
@@ -94,10 +94,10 @@ public class BaseballGameTest {
 
             ComputerNumber computerNumber = ComputerNumber.create();
             UserNumber userNumber = UserNumber.from(List.of(1, 4, 5));
-            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
-            assertThat(gameResultService.isNothing()).isFalse();
-            assertThat(gameResultService.getBallCount()).isEqualTo(0);
-            assertThat(gameResultService.getStrikeCount()).isEqualTo(1);
+            GameManager gameManager = GameManager.of(computerNumber, userNumber);
+            assertThat(gameManager.isNothing()).isFalse();
+            assertThat(gameManager.getBallCount()).isEqualTo(0);
+            assertThat(gameManager.getStrikeCount()).isEqualTo(1);
         }
     }
 
@@ -109,10 +109,10 @@ public class BaseballGameTest {
 
             ComputerNumber computerNumber = ComputerNumber.create();
             UserNumber userNumber = UserNumber.from(List.of(1, 2, 5));
-            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
-            assertThat(gameResultService.isNothing()).isFalse();
-            assertThat(gameResultService.getBallCount()).isEqualTo(0);
-            assertThat(gameResultService.getStrikeCount()).isEqualTo(2);
+            GameManager gameManager = GameManager.of(computerNumber, userNumber);
+            assertThat(gameManager.isNothing()).isFalse();
+            assertThat(gameManager.getBallCount()).isEqualTo(0);
+            assertThat(gameManager.getStrikeCount()).isEqualTo(2);
         }
     }
 
@@ -124,10 +124,10 @@ public class BaseballGameTest {
 
             ComputerNumber computerNumber = ComputerNumber.create();
             UserNumber userNumber = UserNumber.from(List.of(1, 4, 5));
-            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
-            assertThat(gameResultService.isNothing()).isFalse();
-            assertThat(gameResultService.getBallCount()).isEqualTo(0);
-            assertThat(gameResultService.getStrikeCount()).isEqualTo(3);
+            GameManager gameManager = GameManager.of(computerNumber, userNumber);
+            assertThat(gameManager.isNothing()).isFalse();
+            assertThat(gameManager.getBallCount()).isEqualTo(0);
+            assertThat(gameManager.getStrikeCount()).isEqualTo(3);
         }
     }
 
@@ -139,10 +139,10 @@ public class BaseballGameTest {
 
             ComputerNumber computerNumber = ComputerNumber.create();
             UserNumber userNumber = UserNumber.from(List.of(1, 4, 2));
-            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
-            assertThat(gameResultService.isNothing()).isFalse();
-            assertThat(gameResultService.getBallCount()).isEqualTo(1);
-            assertThat(gameResultService.getStrikeCount()).isEqualTo(1);
+            GameManager gameManager = GameManager.of(computerNumber, userNumber);
+            assertThat(gameManager.isNothing()).isFalse();
+            assertThat(gameManager.getBallCount()).isEqualTo(1);
+            assertThat(gameManager.getStrikeCount()).isEqualTo(1);
         }
     }
 
@@ -154,10 +154,10 @@ public class BaseballGameTest {
 
             ComputerNumber computerNumber = ComputerNumber.create();
             UserNumber userNumber = UserNumber.from(List.of(1, 3, 2));
-            GameResultService gameResultService = GameResultService.of(computerNumber, userNumber);
-            assertThat(gameResultService.isNothing()).isFalse();
-            assertThat(gameResultService.getBallCount()).isEqualTo(2);
-            assertThat(gameResultService.getStrikeCount()).isEqualTo(1);
+            GameManager gameManager = GameManager.of(computerNumber, userNumber);
+            assertThat(gameManager.isNothing()).isFalse();
+            assertThat(gameManager.getBallCount()).isEqualTo(2);
+            assertThat(gameManager.getStrikeCount()).isEqualTo(1);
         }
     }
 

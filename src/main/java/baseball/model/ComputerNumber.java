@@ -1,33 +1,26 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.utils.NumbersGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumber {
     private final List<Integer> numbers;
 
-    private ComputerNumber() {
-        this.numbers = generateNumbers();
+    private ComputerNumber(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 
     public static ComputerNumber create() {
-        return new ComputerNumber();
+        List<Integer> numbers = NumbersGenerator.generate();
+        return new ComputerNumber(numbers);
     }
 
-    private List<Integer> generateNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() != 3) {
-            int number = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(number)) {
-                numbers.add(number);
-            }
-        }
-        return numbers;
+    public boolean containsNumber(int number) {
+        return numbers.contains(number);
     }
 
-    public List<Integer> getNumbers() {
-        return List.copyOf(numbers);
+    public int findNumberByPosition(int position) {
+        return numbers.get(position);
     }
 }

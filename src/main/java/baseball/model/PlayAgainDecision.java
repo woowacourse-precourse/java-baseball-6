@@ -1,7 +1,8 @@
 package baseball.model;
 
 import static baseball.exception.ErrorMessage.INVALID_PLAY_AGAIN;
-import static baseball.model.PlayAgainDecision.PlayAgainConstants.*;
+import static baseball.model.PlayAgainDecision.PlayAgainConstants.NO;
+import static baseball.model.PlayAgainDecision.PlayAgainConstants.YES;
 
 public class PlayAgainDecision {
     private final int value;
