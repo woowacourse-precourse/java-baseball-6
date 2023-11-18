@@ -18,7 +18,7 @@ public class GameService {
     GameResult gameResult;
     PrintScoreMessage printScoreMessage = new PrintScoreMessage();
 
-    public void setGame() {
+    public void setGameNumbers() {
         this.size = size;
         game = new Game(RandomNumbers.getGameNumbers(size));
     }
