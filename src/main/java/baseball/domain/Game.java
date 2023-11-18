@@ -20,33 +20,9 @@ public class Game {
     public int getBallCount() {
         return ballCount;
     }
-
-    public static int[] getGameNumbers() {
-        int[] computerNumber = new int[3];
-
-        for (int i = 0; i < 3; i++) {
-            computerNumber[i] = getUniqueRandomNumber(computerNumber, i);
-        }
-        return computerNumber;
+    public int[] getGameNumbers() {
+        return gameNumbers;
     }
-
-    private static int getUniqueRandomNumber(int[] computerNumber, int i) {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        while (!isUnique(computerNumber, i, randomNumber)) {
-            randomNumber = Randoms.pickNumberInRange(1, 9);
-        }
-        return randomNumber;
-    }
-
-    private static Boolean isUnique(int[] computerNumber, int i, int randomNumber) {
-        for (int j = 0; j < i; j++) {
-            if (computerNumber[j] == randomNumber) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public void incStrikeCount() {
         strikeCount += 1;
     }
@@ -54,6 +30,9 @@ public class Game {
     public void incBallCount() {
         ballCount += 1;
     }
+
+
+
 
 
 }

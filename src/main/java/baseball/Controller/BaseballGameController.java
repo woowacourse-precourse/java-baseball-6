@@ -35,18 +35,17 @@ public class BaseballGameController {
         PrintScoreMessage.printGameOverMessage();
     }
 
-    private void retry_or_not() throws IllegalAccessException {
+    public void retry_or_not() throws IllegalAccessException {
         RetryMessage.printRetryMessage();
         if (getInputNum() == GAME_RESTART)
             startGame();
     }
 
     private int getInputNum() throws IllegalAccessException { //게임 재시작 여부. 숫자를 입력
-        int inputNumber = Integer.parseInt(Console.readLine());
+        int inputNumber = Integer.parseInt(Console.readLine()); //1 또는 2 입력
 
-        if (inputNumber == 0 || inputNumber > GAME_OVER){
-            throw new IllegalAccessException();
-        }
+        if (inputNumber == 0 || inputNumber > GAME_OVER)
+            throw new IllegalArgumentException();
         return inputNumber;
     }
 

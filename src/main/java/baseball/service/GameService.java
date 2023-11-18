@@ -3,9 +3,9 @@ package baseball.service;
 import baseball.View.RetryMessage;
 import baseball.View.PrintScoreMessage;
 import baseball.domain.Game;
+import baseball.domain.RandomNumbers;
 import baseball.domain.User;
 import baseball.dto.GameResult;
-import baseball.dto.GameResult.*;
 import camp.nextstep.edu.missionutils.Console;
 
 
@@ -14,11 +14,13 @@ public class GameService {
     int size;
     Game game;
     User user = new User();
-    GameResult gameResult = new GameResult();
+    RandomNumbers randomNumbers = new RandomNumbers();
+    GameResult gameResult;
     PrintScoreMessage printScoreMessage = new PrintScoreMessage();
 
     public void setGame() {
-        Game.getGameNumbers();
+        this.size = size;
+        game = new Game(RandomNumbers.getGameNumbers(size));
     }
     public void playGame(){
         int strike = 0;
