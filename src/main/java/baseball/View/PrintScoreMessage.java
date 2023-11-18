@@ -1,6 +1,6 @@
 package baseball.View;
 
-import static baseball.dto.Result.*;
+import static baseball.dto.GameResult.*;
 
 public class PrintScoreMessage {
 

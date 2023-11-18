@@ -4,7 +4,7 @@ import baseball.domain.*;
 import baseball.View.*;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.dto.Result.*;
+import static baseball.dto.GameResult.*;
 
 public class BaseballGameController {
 

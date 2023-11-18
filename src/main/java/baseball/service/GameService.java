@@ -4,7 +4,8 @@ import baseball.View.RetryMessage;
 import baseball.View.PrintScoreMessage;
 import baseball.domain.Game;
 import baseball.domain.User;
-import baseball.dto.Result;
+import baseball.dto.GameResult;
+import baseball.dto.GameResult.*;
 import camp.nextstep.edu.missionutils.Console;
 
 
@@ -13,11 +14,11 @@ public class GameService {
     int size;
     Game game;
     User user = new User();
-    Result result = new Result();
+    GameResult gameResult = new GameResult();
     PrintScoreMessage printScoreMessage = new PrintScoreMessage();
 
     public void setGame() {
-            Game.getGameNumbers();
+        Game.getGameNumbers();
     }
     public void playGame(){
         int strike = 0;

@@ -1,8 +1,6 @@
 package baseball.dto;
 
-public record Result() {  //보일러 플레이트 코드 비대해지는 것 방지 record 사용
-    public static final int BASEBALL_SIZE = 3;
-    public static final int ZERO_COUNT = 0;
+public record GameResult() {  //보일러 플레이트 코드 비대해지는 것 방지 record 사용
     public static final String NO_CONUT_MESSAGE = "낫싱";
     public static final String BALL_MESSAGE = "볼";
     public static final String STRIKE_MESSAGE = "스트라이크";
