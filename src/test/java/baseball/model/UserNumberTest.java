@@ -13,6 +13,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class UserNumberTest {
+    static Stream<Arguments> generateData() {
+        return Stream.of(
+                Arguments.of(List.of(0, 1, 2)),
+                Arguments.of(List.of(1, 1, 2)),
+                Arguments.of(List.of(1, 2, 3, 4))
+        );
+    }
+
     @DisplayName("입력 받은 숫자가 1~9의 서로 다른 숫자 3개인 경우 정상 처리 된다.")
     @Test
     void validatePlayerNumber_o() {
@@ -25,13 +33,5 @@ class UserNumberTest {
     void validatePlayerNumber_ex(List<Integer> numbers) {
         assertThatThrownBy(() -> UserNumber.from(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    static Stream<Arguments> generateData() {
-        return Stream.of(
-                Arguments.of(List.of(0, 1, 2)),
-                Arguments.of(List.of(1, 1, 2)),
-                Arguments.of(List.of(1, 2, 10))
-        );
     }
 }
