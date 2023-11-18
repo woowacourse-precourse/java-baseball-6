@@ -21,22 +21,6 @@ public class GameController {
         return instance;
     }
 
-    private static UserNumber readUserNumber() {
-        List<Integer> numbers = InputView.readUserNumber();
-        return UserNumber.from(numbers);
-    }
-
-    private static boolean wantsRestart() {
-        OutputView.printEnd();
-        PlayAgainDecision playAgainDecision = readPlayAgainInput();
-        return playAgainDecision.isAgain();
-    }
-
-    private static PlayAgainDecision readPlayAgainInput() {
-        int input = InputView.readPlayAgainInput();
-        return PlayAgainDecision.of(input);
-    }
-
     public void run() {
         boolean continuePlaying = true;
         while (continuePlaying) {
@@ -61,6 +45,11 @@ public class GameController {
         gameManager = GameManager.from(computerNumber);
     }
 
+    private static UserNumber readUserNumber() {
+        List<Integer> numbers = InputView.readUserNumber();
+        return UserNumber.from(numbers);
+    }
+
     private boolean playRound(UserNumber userNumber) {
         boolean needsNextRound;
         needsNextRound = gameManager.playRound(userNumber);
@@ -70,5 +59,16 @@ public class GameController {
     private void printRoundResult() {
         RoundResultDto resultDto = gameManager.createResultDto();
         OutputView.printResult(resultDto.isNothing(), resultDto.getBallCount(), resultDto.getStrikeCount());
+    }
+
+    private static boolean wantsRestart() {
+        OutputView.printEnd();
+        PlayAgainDecision playAgainDecision = readPlayAgainInput();
+        return playAgainDecision.isAgain();
+    }
+
+    private static PlayAgainDecision readPlayAgainInput() {
+        int input = InputView.readPlayAgainInput();
+        return PlayAgainDecision.of(input);
     }
 }
