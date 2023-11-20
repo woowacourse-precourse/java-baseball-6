@@ -37,8 +37,7 @@ public class GamePlayController {
     }
 
     private void initializeGameManager() {
-        ComputerNumber computerNumber = ComputerNumber.create();
-        gameManager = GameManager.from(computerNumber);
+        gameManager = GameManager.create();
     }
 
     private UserNumber readUserNumber() {

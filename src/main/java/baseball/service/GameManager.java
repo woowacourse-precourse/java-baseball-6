@@ -13,7 +13,8 @@ public class GameManager {
         this.computerNumber = computerNumber;
     }
 
-    public static GameManager from(ComputerNumber computerNumber) {
+    public static GameManager create() {
+        ComputerNumber computerNumber = ComputerNumber.create();
         return new GameManager(computerNumber);
     }
 
