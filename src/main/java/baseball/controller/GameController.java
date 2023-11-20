@@ -11,14 +11,16 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class GameController {
-    public static GameController instance = new GameController(InputView.getInstance(), OutputView.getInstance());
+    public static GameController instance = new GameController(InputView.getInstance(), OutputView.getInstance(), GameRestartController.getInstance());
     private final InputView inputView;
     private final OutputView outputView;
+    private final GameRestartController gameRestartController;
     private GameManager gameManager;
 
-    private GameController(InputView inputView, OutputView outputView) {
+    private GameController(InputView inputView, OutputView outputView, GameRestartController gameRestartController) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.gameRestartController = gameRestartController;
     }
 
     public static GameController getInstance() {
@@ -41,7 +43,7 @@ public class GameController {
             needsNextRound = playRound(userNumber);
             printRoundResult();
         }
-        return wantsRestart();
+        return gameRestartController.wantsRestart();
     }
 
     private void initializeGameManager() {
@@ -63,16 +65,5 @@ public class GameController {
     private void printRoundResult() {
         RoundResultDto resultDto = gameManager.createResultDto();
         outputView.printResult(resultDto.isNothing(), resultDto.getBallCount(), resultDto.getStrikeCount());
-    }
-
-    private boolean wantsRestart() {
-        outputView.printEnd();
-        PlayAgainDecision playAgainDecision = readPlayAgainInput();
-        return playAgainDecision.isAgain();
-    }
-
-    private PlayAgainDecision readPlayAgainInput() {
-        int input = inputView.readPlayAgainInput();
-        return PlayAgainDecision.of(input);
     }
 }
