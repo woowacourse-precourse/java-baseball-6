@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.dto.RoundResultDto;
-import baseball.model.ComputerNumber;
 import baseball.model.UserNumber;
 import baseball.service.GameManager;
 import baseball.view.InputView;
