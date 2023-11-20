@@ -10,7 +10,7 @@ import baseball.view.OutputView;
 import java.util.List;
 import java.util.Map;
 
-public class NBGameController {
+public class GameController {
 
     private InputView in;
     private OutputView out;
@@ -21,7 +21,7 @@ public class NBGameController {
     private static final int RESTART_GAME = 1;
     private static final int END_GAME = 2;
 
-    public NBGameController() {
+    public GameController() {
         in = new InputView();
         out = new OutputView();
         numberValidation = new NumberValidation();
