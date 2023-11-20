@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.dto.RoundResultDto;
 import baseball.model.ComputerNumber;
-import baseball.model.PlayAgainDecision;
 import baseball.model.UserNumber;
 import baseball.service.GameManager;
 import baseball.view.InputView;
@@ -10,20 +9,20 @@ import baseball.view.OutputView;
 
 import java.util.List;
 
-public class GameController {
-    public static GameController instance = new GameController(InputView.getInstance(), OutputView.getInstance(), GameRestartController.getInstance());
+public class MainController {
+    public static MainController instance = new MainController(InputView.getInstance(), OutputView.getInstance(), GameRestartController.getInstance());
     private final InputView inputView;
     private final OutputView outputView;
     private final GameRestartController gameRestartController;
     private GameManager gameManager;
 
-    private GameController(InputView inputView, OutputView outputView, GameRestartController gameRestartController) {
+    private MainController(InputView inputView, OutputView outputView, GameRestartController gameRestartController) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.gameRestartController = gameRestartController;
     }
 
-    public static GameController getInstance() {
+    public static MainController getInstance() {
         return instance;
     }
 
