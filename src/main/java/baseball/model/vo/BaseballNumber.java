@@ -16,6 +16,11 @@ public class BaseballNumber {
         this.number = input;
     }
 
+    // static factory method
+    public static BaseballNumber of(List<Integer> input) {
+        return new BaseballNumber(input);
+    }
+
     // immutable object
     @Override
     public boolean equals(Object o) {
