@@ -23,7 +23,7 @@ public class GamePlayController {
         return instance;
     }
 
-    public boolean play() {
+    public boolean playRound() {
         outputView.printStart();
         initializeGameManager();
         boolean needsNextRound = true;

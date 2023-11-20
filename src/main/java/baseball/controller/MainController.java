@@ -17,7 +17,7 @@ public class MainController {
     public void run() {
         boolean continuePlaying = true;
         while (continuePlaying) {
-            if (!gamePlayController.play()) {
+            if (!gamePlayController.playRound()) {
                 continuePlaying = gameRestartController.wantsRestart();
             }
         }
