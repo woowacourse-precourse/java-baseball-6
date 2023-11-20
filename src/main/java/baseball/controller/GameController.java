@@ -11,10 +11,14 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class GameController {
-    public static GameController instance = new GameController();
+    public static GameController instance = new GameController(InputView.getInstance(), OutputView.getInstance());
+    private final InputView inputView;
+    private final OutputView outputView;
     private GameManager gameManager;
 
-    private GameController() {
+    private GameController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public static GameController getInstance() {
@@ -29,7 +33,7 @@ public class GameController {
     }
 
     private boolean play() {
-        OutputView.printStart();
+        outputView.printStart();
         initializeGameManager();
         boolean needsNextRound = true;
         while (needsNextRound) {
@@ -45,8 +49,8 @@ public class GameController {
         gameManager = GameManager.from(computerNumber);
     }
 
-    private static UserNumber readUserNumber() {
-        List<Integer> numbers = InputView.readUserNumber();
+    private UserNumber readUserNumber() {
+        List<Integer> numbers = inputView.readUserNumber();
         return UserNumber.from(numbers);
     }
 
@@ -58,17 +62,17 @@ public class GameController {
 
     private void printRoundResult() {
         RoundResultDto resultDto = gameManager.createResultDto();
-        OutputView.printResult(resultDto.isNothing(), resultDto.getBallCount(), resultDto.getStrikeCount());
+        outputView.printResult(resultDto.isNothing(), resultDto.getBallCount(), resultDto.getStrikeCount());
     }
 
-    private static boolean wantsRestart() {
-        OutputView.printEnd();
+    private boolean wantsRestart() {
+        outputView.printEnd();
         PlayAgainDecision playAgainDecision = readPlayAgainInput();
         return playAgainDecision.isAgain();
     }
 
-    private static PlayAgainDecision readPlayAgainInput() {
-        int input = InputView.readPlayAgainInput();
+    private PlayAgainDecision readPlayAgainInput() {
+        int input = inputView.readPlayAgainInput();
         return PlayAgainDecision.of(input);
     }
 }
