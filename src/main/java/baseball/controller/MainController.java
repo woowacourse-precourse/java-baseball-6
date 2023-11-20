@@ -17,11 +17,9 @@ public class MainController {
     public void run() {
         boolean continuePlaying = true;
         while (continuePlaying) {
-            boolean needsNextRound = true;
-            while (needsNextRound) {
-                needsNextRound = gamePlayController.play();
+            if (!gamePlayController.play()) {
+                continuePlaying = gameRestartController.wantsRestart();
             }
-            continuePlaying = gameRestartController.wantsRestart();
         }
     }
 }
