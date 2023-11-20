@@ -3,43 +3,36 @@ package baseball;
 import java.util.List;
 
 public class Validator {
-    private final String EMPTY_VALUE_ERROR_MESSAGE = "빈 값은 입력할 수 없습니다.";
-    private final String LENGTH_ERROR_MESSAGE = "세 자리 이외의 값은 입력할 수 없습니다.";
-    private final String TYPE_ERROR_MESSAGE = "숫자 이외의 값은 입력할 수 없습니다.";
-    private final String CONTAIN_ZERO_ERROR_MESSAGE = "0은 입력할 수 없습니다.";
-    private final String RESTART_INPUT_ERROR_MESSAGE = "1과 2 이외의 숫자는 입력할 수 없습니다.";
-    private final String DUPLICATED_NUMBER_ERROR_MESSAGE = "서로 중복되는 숫자는 입력할 수 없습니다.";
-
-    private final Integer CORRECT_LENGTH = 3;
-    private final String RESTART_NUMBER = "1";
-    private final String EXIT_NUMBER = "2";
-    private final String ZERO = "0";
-    private final String VALID_NUMBER_REGEX = "^[0-9]*$";
+    private static final Integer CORRECT_LENGTH = 3;
+    private static final String RESTART_NUMBER = "1";
+    private static final String EXIT_NUMBER = "2";
+    private static final String ZERO = "0";
+    private static final String VALID_NUMBER_REGEX = "^[0-9]*$";
 
     public void validateNumberInput(String input) {
         if (isEmptyValue(input)) {
-            throw new IllegalArgumentException(EMPTY_VALUE_ERROR_MESSAGE);
+            throw BaseballException.of(ErrorMessage.EMPTY_VALUE);
         }
         if (!isCorrectLength(input)) {
-            throw new IllegalArgumentException(LENGTH_ERROR_MESSAGE);
+            throw BaseballException.of(ErrorMessage.INVALID_LENGTH);
         }
         if (!isNumberType(input)) {
-            throw new IllegalArgumentException(TYPE_ERROR_MESSAGE);
+            throw BaseballException.of(ErrorMessage.NONE_NUMERIC);
         }
         if (isContainingZero(input)) {
-            throw new IllegalArgumentException(CONTAIN_ZERO_ERROR_MESSAGE);
+            throw BaseballException.of(ErrorMessage.CONTAINS_ZERO);
         }
     }
 
     public void validateRestartInput(String input) {
         if (isNotOneOrTwo(input)) {
-            throw new IllegalArgumentException(RESTART_INPUT_ERROR_MESSAGE);
+            throw BaseballException.of(ErrorMessage.NOT_REQUIRED_RESTART_INPUT);
         }
     }
 
     public void validateDuplicatedNumber(List<Character> numbers, char number) {
         if (isDuplicated(numbers, number)) {
-            throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
+            throw BaseballException.of(ErrorMessage.IS_DUPLICATED_VALUE);
         }
     }
 
