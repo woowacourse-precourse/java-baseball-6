@@ -21,9 +21,14 @@ public class Game {
         return InputView.readUserNum();
     }
 
+    private void showResult(int userNumber) {
+        OutputView.printResult(baseball.getResult(userNumber));
+    }
+
     private void play() {
         baseball = new Baseball();
         int userNumber = requestNumber();
+        showResult(userNumber);
     }
 
 

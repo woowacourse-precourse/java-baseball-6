@@ -23,29 +23,39 @@ public class Baseball {
     }
 
     public String getResult(int inputNum) {
-        int[] result=countStrikeBall(inputNum);
-        int strike=result[1];
-        int ball=result[2];
+        String result = "";
 
-//        String result = resultToString(strike, ball);
+        int[] countResult = countStrikeBall(inputNum);
+        int strike = countResult[1];
+        int ball = countResult[2];
 
+        if (ball != 0) {
+            result += ball + "볼 ";
+        }
+        if (strike != 0) {
+            result += strike + "스트라이크";
+        }
+        if (result.isEmpty()) {
+            result += "낫싱";
+        }
+        return result;
     }
 
-    private boolean isStrike(int index,String targetNum){
+    private boolean isStrike(int index, String targetNum) {
         return targetNum.equals(computerNum.get(index));
     }
 
-    private boolean isBall(String targetNum){
+    private boolean isBall(String targetNum) {
         return computerNum.contains(targetNum);
     }
 
-    private int[] countStrikeBall(int input){
-        int[] result=new int[2];
+    private int[] countStrikeBall(int input) {
+        int[] result = new int[2];
 
         String userNum = Integer.toString(input);
         for (int i = 0; i < 3; i++) {
-            String targetNum=userNum.substring(i,i+1);
-            if (isStrike(i,targetNum)) {
+            String targetNum = userNum.substring(i, i + 1);
+            if (isStrike(i, targetNum)) {
                 result[0]++;
                 continue;
             }
@@ -56,7 +66,4 @@ public class Baseball {
         return result;
     }
 
-    public(int index,int input){
-
-    }
 }
