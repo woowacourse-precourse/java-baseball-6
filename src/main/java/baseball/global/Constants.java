@@ -1,4 +1,4 @@
-package baseball.utils;
+package baseball.global;
 
 public class Constants {
     public static final int START_INDEX = 0;

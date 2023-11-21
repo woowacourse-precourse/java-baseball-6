@@ -1,6 +1,6 @@
 package baseball.utils.validator;
 
-import baseball.utils.Constants;
+import baseball.global.Constants;
 
 import java.util.HashSet;
 import java.util.List;

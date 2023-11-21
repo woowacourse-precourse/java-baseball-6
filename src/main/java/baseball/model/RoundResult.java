@@ -1,9 +1,7 @@
 package baseball.model;
 
-import java.util.stream.IntStream;
-
-import static baseball.utils.Constants.NUMBERS_SIZE;
-import static baseball.utils.Constants.START_INDEX;
+import static baseball.global.Constants.NUMBERS_SIZE;
+import static baseball.global.Constants.START_INDEX;
 
 public class RoundResult {
     private int ballCount = 0;
