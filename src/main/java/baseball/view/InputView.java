@@ -33,7 +33,7 @@ public class InputView {
     }
 
     public static void validateIsUnique(String input) {
-        List<String> inputNum = Arrays.asList(input);
+        List<String> inputNum = Arrays.asList(input.split(""));
         Set<String> unredundantInputNum = new HashSet<>(inputNum);
 
         if (unredundantInputNum.size() != inputNum.size()) {
