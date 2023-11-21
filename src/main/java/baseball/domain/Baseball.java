@@ -66,4 +66,8 @@ public class Baseball {
         return result;
     }
 
+    public static boolean isCorrect(String result) {
+        return result.equals("3스트라이크");
+    }
+
 }
