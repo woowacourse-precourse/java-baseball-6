@@ -25,8 +25,7 @@ public class Game {
         OutputView.printResult(result);
     }
 
-    private void play() {
-        baseball = new Baseball();
+    private void guessNumber() {
         boolean correct = false;
 
         while (!correct) {
@@ -35,6 +34,25 @@ public class Game {
             showResult(result);
             correct = Baseball.isCorrect(result);
         }
+    }
+
+    private String requestRestart() {
+        OutputView.printRequestRestart();
+        return InputView.readRestartNum();
+    }
+
+    private void showEnding() {
+        OutputView.printEnding();
+        if (requestRestart().equals("1")) {
+            play();
+        }
+    }
+
+    private void play() {
+        baseball = new Baseball();
+
+        guessNumber();
+        showEnding();
     }
 
 
