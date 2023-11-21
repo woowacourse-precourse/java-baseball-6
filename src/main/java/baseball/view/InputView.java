@@ -1,6 +1,10 @@
 package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class InputView {
     public static int readUserNum() {
@@ -29,10 +33,11 @@ public class InputView {
     }
 
     public static void validateIsUnique(String input) {
-        for (int i = 0; i < 3; i++) {
-            if (input.contains(input.substring(i, i + 1))) {
-                throw new IllegalArgumentException("입력된 세자리 수는 서로 다른 수여야 합니다. 재입력 하세요.");
-            }
+        List<String> inputNum = Arrays.asList(input);
+        Set<String> unredundantInputNum = new HashSet<>(inputNum);
+
+        if (unredundantInputNum.size() != inputNum.size()) {
+            throw new IllegalArgumentException("입력된 세자리 수는 서로 다른 수여야 합니다. 재입력 하세요.");
         }
     }
 
