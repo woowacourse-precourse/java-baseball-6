@@ -17,6 +17,23 @@ public class InputView {
         }
     }
 
+    public static String readRestartNum() {
+        try {
+            String restartNum = Console.readLine();
+            validateRestartNum(restartNum);
+            return restartNum;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return readRestartNum();
+        }
+    }
+
+    public static void validateRestartNum(String input) {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("입력값은 1또는 2여야 합니다. 재입력 하세요.");
+        }
+    }
+
     public static void validateLength(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("입력값은 세자리여야 합니다. 재입력 하세요.");
