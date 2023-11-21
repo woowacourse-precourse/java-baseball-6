@@ -1,13 +1,13 @@
 package baseball.controller;
 
 public class MainController {
-    public static MainController instance = new MainController(GameRestartController.getInstance(), GamePlayController.getInstance());
-    private final GameRestartController gameRestartController;
+    public static MainController instance = new MainController(GamePlayController.getInstance(), GameRestartController.getInstance());
     private final GamePlayController gamePlayController;
+    private final GameRestartController gameRestartController;
 
-    private MainController(GameRestartController gameRestartController, GamePlayController gamePlayController) {
-        this.gameRestartController = gameRestartController;
+    private MainController(GamePlayController gamePlayController, GameRestartController gameRestartController) {
         this.gamePlayController = gamePlayController;
+        this.gameRestartController = gameRestartController;
     }
 
     public static MainController getInstance() {
