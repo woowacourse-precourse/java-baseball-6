@@ -5,6 +5,7 @@ import baseball.exception.ErrorMessage;
 import baseball.exception.InvalidSizeException;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Balls {
     private final List<Ball> numbers;
@@ -33,5 +34,25 @@ public class Balls {
         if (userBalls.size() != 3) {
             throw InvalidSizeException.of(ErrorMessage.NOT_REQUIRED_SIZE);
         }
+    }
+
+    public Result calculateResult(Balls balls) {
+        int strikeCount = Math.toIntExact(IntStream.range(0, balls.numbers.size())
+                .filter(idx -> isSameIndex(idx, balls))
+                .count());
+
+        int ballCount = Math.toIntExact(IntStream.range(0, balls.numbers.size())
+                .filter(idx -> hasBall(balls.numbers.get(idx)) && !isSameIndex(idx, balls))
+                .count());
+
+        return Result.createFrom(strikeCount, ballCount);
+    }
+
+    private boolean hasBall(Ball ball) {
+        return this.numbers.contains(ball);
+    }
+
+    private boolean isSameIndex(int index, Balls balls) {
+        return this.numbers.get(index).equals(balls.numbers.get(index));
     }
 }
