@@ -7,7 +7,7 @@ public class InputView {
         try {
             String userNum = Console.readLine();
             validateLength(userNum);
-//            validateIsUnique();
+            validateIsUnique(userNum);
             validateRange(userNum);
 
             return convertStringToInt(userNum);
@@ -25,6 +25,14 @@ public class InputView {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return readRestartNum();
+        }
+    }
+
+    public static void validateIsUnique(String input) {
+        for (int i = 0; i < 3; i++) {
+            if (input.contains(input.substring(i, i + 1))) {
+                throw new IllegalArgumentException("입력된 세자리 수는 서로 다른 수여야 합니다. 재입력 하세요.");
+            }
         }
     }
 
