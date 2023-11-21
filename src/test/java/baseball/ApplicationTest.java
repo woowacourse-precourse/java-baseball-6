@@ -42,10 +42,34 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_세자리가_아닐때_테스트() {
         assertSimpleTest(() -> {
             runException("1234");
-            assertThat(output()).contains("재입력");
+            assertThat(output()).contains("세자리여야");
+        });
+    }
+
+    @Test
+    void 예외_숫자가_아닐때_테스트() {
+        assertSimpleTest(() -> {
+            runException("45@");
+            assertThat(output()).contains("숫자");
+        });
+    }
+
+    @Test
+    void 예외_같은수가_있을때_테스트() {
+        assertSimpleTest(() -> {
+            runException("122");
+            assertThat(output()).contains("서로 다른 수");
+        });
+    }
+
+    @Test
+    void 예외_범위가_맞지_않을때_테스트() {
+        assertSimpleTest(() -> {
+            runException("102");
+            assertThat(output()).contains("1~9사이");
         });
     }
 
