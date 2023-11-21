@@ -26,8 +26,8 @@ public class Baseball {
         String result = "";
 
         int[] countResult = countStrikeBall(inputNum);
-        int strike = countResult[1];
-        int ball = countResult[2];
+        int strike = countResult[0];
+        int ball = countResult[1];
 
         if (ball != 0) {
             result += ball + "볼 ";
