@@ -11,7 +11,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameService {
 
-    private final Number num = new Number();
+    private final Number number = new Number();
     private final ValidCheckService validCheckService = new ValidCheckService();
 
     private final List<Integer> computerNumber = new ArrayList<>();
@@ -20,7 +20,7 @@ public class GameService {
     public  List<Integer> generateRandomNumber(int length) {
         computerNumber.clear();
         while (computerNumber.size() < length) {
-            int randomNumber = Randoms.pickNumberInRange(num.MIN_NUM, num.MAX_NUM);
+            int randomNumber = Randoms.pickNumberInRange(number.MIN_NUM, number.MAX_NUM);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
@@ -60,10 +60,13 @@ public class GameService {
         return validCheckService.stringToIntegerList(userInput);
     }
 
-    public void countOnPlay(List<Integer> computer, List<Integer> user, Score score, int same) {
+    public Score countOnPlay(List<Integer> computer, List<Integer> user) {
+        Score score = new Score();
+        int same = sameCount(computer,user);
         int strike = countStrike(computer, user);
         int ball = countBall(same, strike);
         score.setScore(strike, ball);
+        return score;
     }
 
 }

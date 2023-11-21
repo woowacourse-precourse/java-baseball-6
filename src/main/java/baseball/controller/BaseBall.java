@@ -24,8 +24,8 @@ public class BaseBall {
     private void play(List<Integer> computer, Score score) {
         while (score.getStrike() != num.NUM_LENGTH){
             List<Integer> user = gameService.getUserNumber();
-            int same = gameService.sameCount(computer, user);
-            gameService.countOnPlay(computer, user, score, same);
+            score = gameService.countOnPlay(computer,user);
+            gameService.countOnPlay(computer, user);
             printService.showResult(score);
         }
     }
