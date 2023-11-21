@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Baseball {
-    private List<Integer> computerNum;
+    private List<String> computerNum;
 
     public Baseball() {
         this.computerNum = pickComputerNum();
     }
 
-    List<Integer> pickComputerNum() {
-        List<Integer> computerNum = new ArrayList<>();
+    private List<String> pickComputerNum() {
+        List<String> computerNum = new ArrayList<>();
         while (computerNum.size() < 3) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
+            String randomNum = Integer.toString(Randoms.pickNumberInRange(1, 9));
             if (!computerNum.contains(randomNum)) {
                 computerNum.add(randomNum);
             }
