@@ -4,8 +4,8 @@ import static baseball.global.Constants.NUMBERS_SIZE;
 import static baseball.global.Constants.START_INDEX;
 
 public class RoundResult {
-    private int ballCount = 0;
-    private int strikeCount = 0;
+    private int ballCount;
+    private int strikeCount;
 
     private RoundResult(ComputerNumber computerNumber, UserNumber userNumber) {
         processRound(computerNumber, userNumber);
