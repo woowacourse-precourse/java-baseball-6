@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.Baseball;
-import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Game {
     Baseball baseball;
@@ -12,7 +12,7 @@ public class Game {
     }
 
     private void start() {
-        InputView.printStart();
+        OutputView.printStart();
     }
 
     private void play() {
