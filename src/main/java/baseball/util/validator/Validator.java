@@ -5,6 +5,7 @@ import baseball.exception.ErrorMessage;
 import baseball.exception.InvalidInputException;
 import baseball.exception.NotNumericException;
 import baseball.global.Const;
+import baseball.util.parser.Parser;
 
 public class Validator {
     private static final String NUMERIC_REGEX = "^[0-9]*$";
@@ -29,13 +30,14 @@ public class Validator {
         return userInput.strip().isEmpty();
     }
 
-    public void validateRestartInput(String input) {
+    public static void validateRestartInput(String input) {
         if (isNotOneOrTwo(input)) {
             throw InvalidInputException.of(ErrorMessage.NOT_REQUIRED_RESTART_INPUT);
         }
     }
 
-    public boolean isNotOneOrTwo(String input) {
-        return !input.equals(Const.RESTART_INPUT) && !input.equals(Const.EXIT_INPUT);
+    public static boolean isNotOneOrTwo(String input) {
+        int userInput = Parser.parseToInt(input);
+        return userInput == Const.RESTART_INPUT && userInput == Const.EXIT_INPUT;
     }
 }
