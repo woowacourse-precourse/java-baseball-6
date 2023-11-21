@@ -45,9 +45,7 @@ public class GamePlayController {
     }
 
     private boolean playRound(UserNumber userNumber) {
-        boolean needsNextRound;
-        needsNextRound = gameManager.playRound(userNumber);
-        return needsNextRound;
+        return gameManager.playRound(userNumber);
     }
 
     private void printRoundResult() {
