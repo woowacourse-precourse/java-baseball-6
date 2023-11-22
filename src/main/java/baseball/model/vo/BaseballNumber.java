@@ -49,7 +49,7 @@ public class BaseballNumber {
 
     // exception handling
     private void validateNotIncludeZero(List<Integer> input) {
-        if (isNotIncludeZero(input)) {
+        if (isIncludeZero(input)) {
             throw new IllegalArgumentException();
         }
     }
@@ -67,9 +67,9 @@ public class BaseballNumber {
     }
 
     // validation
-    private boolean isNotIncludeZero(List<Integer> input) {
+    private boolean isIncludeZero(List<Integer> input) {
         return input.stream()
-                .allMatch(n -> n != 0);
+                .anyMatch(n -> n == 0);
     }
     private boolean is3Digit(List<Integer> input) {
         return input.size() != 3;
