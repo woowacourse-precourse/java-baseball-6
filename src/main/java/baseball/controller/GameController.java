@@ -1,22 +1,18 @@
 package baseball.controller;
 
-import baseball.model.Computer;
-import baseball.model.BaseballCount;
-import baseball.model.convertor.NumberTypeConvertor;
-import baseball.model.validator.NumberValidation;
-import baseball.model.validator.RestartNumberValidation;
+import baseball.model.pitcher.ComputerPitcher;
+import baseball.model.pitcher.Pitcher;
+import baseball.model.umpire.Umpire;
+import baseball.model.vo.BaseballNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
-import java.util.Map;
 
 public class GameController {
 
     private InputView in;
     private OutputView out;
-    private NumberValidation numberValidation;
-    private RestartNumberValidation restartNumberValidation;
-    private NumberTypeConvertor numberTypeConvertor;
+    private Pitcher pitcher;
 
     private static final int RESTART_GAME = 1;
     private static final int END_GAME = 2;
@@ -24,46 +20,29 @@ public class GameController {
     public GameController() {
         in = new InputView();
         out = new OutputView();
-        numberValidation = new NumberValidation();
-        numberTypeConvertor = new NumberTypeConvertor();
-        restartNumberValidation = new RestartNumberValidation();
+        pitcher = new ComputerPitcher();
     }
 
     public void run() {
         out.displayStartMessage();
         int restart = RESTART_GAME;
-        while (restart == RESTART_GAME) {
-            Computer computer = Computer.generateRandomNumber();
-
-            startGame(computer);
-
-            out.displayEndMessage();
+        while (restart == RESTART_GAME) {;
+            startGame();
 
             restart = Integer.parseInt(in.inputRestartNumber());
-            restartNumberValidation.validateNumber(restart);
         }
     }
 
-    private void startGame(Computer computer) {
-        int strike = 0;
-        while (is3Strike(strike)) {
-            String user = in.inputBaseballNumber();
+    private void startGame() {
+        Umpire umpire = Umpire.create();
+        BaseballNumber pitcherNumber = pitcher.generate();
+        while (!umpire.isStrikeOut()) {
+            BaseballNumber hitterNumber = BaseballNumber.of(in.inputBaseballNumber());
 
-            numberValidation.validateNumber(user);
+            List<Integer> result = umpire.determineStrikeAndBall(pitcherNumber, hitterNumber);
 
-            List<Integer> userIntList = numberTypeConvertor.toListInteger(user);
-
-            BaseballCount baseballCount = new BaseballCount();
-            List<Integer> comIntList = computer.getComputerNumber();
-            Map<String, Integer> pitched = baseballCount.pitch(userIntList, comIntList);
-
-            out.displayResult(pitched.get("strike"), pitched.get("ball"));
-
-            strike = pitched.get("strike");
+            out.displayResult(result.get(0), result.get(1));
         }
-    }
-
-    private boolean is3Strike(int strike) {
-        return strike != 3;
+        out.displayEndMessage();
     }
 }
