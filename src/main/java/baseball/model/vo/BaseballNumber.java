@@ -1,5 +1,6 @@
 package baseball.model.vo;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,13 @@ public class BaseballNumber {
     }
 
     // static factory method
+    public static BaseballNumber of(String input) {
+        List<Integer> integerList = Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .toList();
+        return new BaseballNumber(integerList);
+    }
+
     public static BaseballNumber of(List<Integer> input) {
         return new BaseballNumber(input);
     }
