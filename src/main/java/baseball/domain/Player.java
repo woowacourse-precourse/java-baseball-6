@@ -1,8 +1,6 @@
 package baseball.domain;
 
 import static baseball.utils.Constants.TOTAL_BALL_COUNTS;
-import static baseball.utils.GameMessage.GAME_SUCCESS_MESSAGE;
-import static baseball.utils.GameMessage.INPUT_REQUEST_MESSAGE;
 
 import baseball.domain.wrapped.Ball;
 import baseball.domain.wrapped.Strike;

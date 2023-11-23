@@ -1,10 +1,14 @@
 package baseball;
 
-import baseball.controller.Controller;
+import baseball.controller.GameController;
+import baseball.domain.Computer;
+import baseball.domain.RandomNumbers;
 
 public class Application {
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.startGame();
+        RandomNumbers randomNumbers = new RandomNumbers();
+        Computer computer = new Computer();
+        GameController gameController = new GameController(randomNumbers, computer);
+        gameController.startGame();
     }
 }

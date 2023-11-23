@@ -2,15 +2,21 @@ package baseball.controller;
 
 import static baseball.utils.Constants.PROGRAM_EXIT;
 import static baseball.utils.Constants.RESTART_GAME;
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.domain.Computer;
 import baseball.domain.Player;
+import baseball.domain.RandomNumbers;
 import baseball.utils.GameMessage;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class Controller {
-    public Controller() {
+public class GameController {
+    private RandomNumbers randomNumbers;
+    private Computer computer;
+
+    public GameController(RandomNumbers randomNumbers, Computer computer) {
+        this.randomNumbers = randomNumbers;
+        this.computer = computer;
     }
 
     public void startGame() {
