@@ -1,7 +1,7 @@
 package baseball.utils;
 
 public class Constants {
-    public static final int COUNTS = 3;
+    public static final int TOTAL_BALL_COUNTS = 3;
     public static final int MAXIMUM_NUMBER = 9;
     public static final int MINIMUM_NUMBER = 1;
     public static final boolean VERIFICATION_PASSED = true;

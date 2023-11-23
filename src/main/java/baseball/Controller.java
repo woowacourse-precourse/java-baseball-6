@@ -7,6 +7,8 @@ import static baseball.utils.GameMessage.ASK_RESTART_OR_EXIT_MESSAGE;
 import static baseball.utils.GameMessage.START_GAME_MESSAGE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.view.OutputView;
+
 public class Controller {
     public Controller() {
     }
@@ -14,22 +16,14 @@ public class Controller {
     public void startGame() {
         Player player = new Player();
         String status;
-        printStartGameMessage();
+        OutputView.printStartGameMessage();
         do {
             player.init();
             player.play();
-            printAskRestartOrExitMessage();
+            OutputView.printAskRestartOrExitMessage();
             status = readLine();
             validateStatusRange(status);
         } while (RESTART_GAME.equals(status));
-    }
-
-    private void printStartGameMessage() {
-        System.out.println(START_GAME_MESSAGE);
-    }
-
-    private void printAskRestartOrExitMessage() {
-        System.out.println(ASK_RESTART_OR_EXIT_MESSAGE);
     }
 
     private void validateStatusRange(String status) {

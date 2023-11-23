@@ -1,9 +1,11 @@
 package baseball;
 
-import static baseball.utils.Constants.COUNTS;
+import static baseball.utils.Constants.TOTAL_BALL_COUNTS;
 import static baseball.utils.GameMessage.GAME_SUCCESS_MESSAGE;
 import static baseball.utils.GameMessage.INPUT_REQUEST_MESSAGE;
 
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
@@ -22,9 +24,9 @@ public class Player {
 
     public void play() {
         PlayerNumbers playerNumbers;
-        while (strike.isLessThan(COUNTS)) {
-            System.out.print(INPUT_REQUEST_MESSAGE);
-            String playerInput = Console.readLine();
+        while (strike.isLessThan(TOTAL_BALL_COUNTS)) {
+            OutputView.printMessage(INPUT_REQUEST_MESSAGE);
+            String playerInput = InputView.getPlayerInput();
             playerNumbers = new PlayerNumbers(playerInput);
 
             strike = new Strike(playerNumbers.checkStrikeCount(computer));

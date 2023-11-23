@@ -1,8 +1,8 @@
 package baseball;
 
-import static baseball.utils.Constants.COUNTS;
 import static baseball.utils.Constants.MAXIMUM_NUMBER;
 import static baseball.utils.Constants.MINIMUM_NUMBER;
+import static baseball.utils.Constants.TOTAL_BALL_COUNTS;
 import static baseball.utils.Constants.VERIFICATION_FAILED;
 import static baseball.utils.Constants.VERIFICATION_PASSED;
 
@@ -24,7 +24,7 @@ public class RandomNumbers {
 
     private List<Integer> generateRandomNumbers() {
         Set<Integer> set = new HashSet<>();
-        while (set.size() < COUNTS) {
+        while (set.size() < TOTAL_BALL_COUNTS) {
             set.add(Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER));
         }
         List<Integer> list = new ArrayList<>();
@@ -50,7 +50,7 @@ public class RandomNumbers {
     }
 
     private boolean isValidSize(List<Integer> numbers) {
-        return numbers.size() == COUNTS;
+        return numbers.size() == TOTAL_BALL_COUNTS;
     }
 
     private boolean isWithinRange(List<Integer> numbers) {
@@ -59,18 +59,18 @@ public class RandomNumbers {
 
     private boolean hasUniqueValues(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
-        return uniqueNumbers.size() == COUNTS;
+        return uniqueNumbers.size() == TOTAL_BALL_COUNTS;
     }
 
     public int checkBallCount(List<Integer> playerNumbers) {
-        return (int) IntStream.range(0, COUNTS)
+        return (int) IntStream.range(0, TOTAL_BALL_COUNTS)
                 .filter(i -> playerNumbers.get(i) != randomNumbers.get(i) && randomNumbers.contains(
                         playerNumbers.get(i)))
                 .count();
     }
 
     public int checkStrikeCount(List<Integer> playerNumbers) {
-        return (int) IntStream.range(0, COUNTS)
+        return (int) IntStream.range(0, TOTAL_BALL_COUNTS)
                 .filter(i -> playerNumbers.get(i) == randomNumbers.get(i))
                 .count();
     }
