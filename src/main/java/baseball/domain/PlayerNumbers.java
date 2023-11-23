@@ -11,10 +11,6 @@ import java.util.Set;
 public class PlayerNumbers {
     private List<Integer> playerNumbers;
 
-    public List<Integer> getPlayerNumbers() {
-        return playerNumbers;
-    }
-
     public PlayerNumbers(String playerInput) {
         validateIntType(playerInput);
         this.playerNumbers = Util.convertToIntegerList(playerInput);
@@ -47,5 +43,9 @@ public class PlayerNumbers {
     private boolean hasNoDuplicates() {
         Set<Integer> numberSet = new HashSet<>(playerNumbers);
         return numberSet.size() == playerNumbers.size();
+    }
+
+    public List<Integer> getPlayerNumbers() {
+        return playerNumbers;
     }
 }

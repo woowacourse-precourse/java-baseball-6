@@ -2,11 +2,9 @@ package baseball.view;
 
 import static baseball.utils.GameMessage.*;
 
-import baseball.domain.wrapped.Strike;
-
 public class OutputView {
     public static void printAskRestartOrExitMessage() {
-        System.out.println(ASK_RESTART_OR_EXIT_MESSAGE);
+        System.out.println(ASK_RESTART_OR_EXIT_MESSAGE.getMessage());
     }
 
     public static void printMessage(String message) {

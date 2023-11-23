@@ -6,6 +6,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.domain.Player;
 import baseball.utils.GameMessage;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Controller {
@@ -20,7 +21,7 @@ public class Controller {
             player.init();
             player.play();
             OutputView.printAskRestartOrExitMessage();
-            status = readLine();
+            status = InputView.askRestart();
             validateStatusRange(status);
         } while (RESTART_GAME.equals(status));
     }
