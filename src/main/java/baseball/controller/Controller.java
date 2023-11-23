@@ -1,12 +1,12 @@
-package baseball;
+package baseball.controller;
 
 import static baseball.utils.Constants.PROGRAM_EXIT;
 import static baseball.utils.Constants.RESTART_GAME;
 import static baseball.utils.ErrorMessage.STATUS_OUT_OF_RANGE_ERROR_MESSAGE;
-import static baseball.utils.GameMessage.ASK_RESTART_OR_EXIT_MESSAGE;
-import static baseball.utils.GameMessage.START_GAME_MESSAGE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.domain.Player;
+import baseball.utils.GameMessage;
 import baseball.view.OutputView;
 
 public class Controller {
@@ -16,7 +16,7 @@ public class Controller {
     public void startGame() {
         Player player = new Player();
         String status;
-        OutputView.printStartGameMessage();
+        OutputView.printMessage(GameMessage.START_GAME_MESSAGE);
         do {
             player.init();
             player.play();

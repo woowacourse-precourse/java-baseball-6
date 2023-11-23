@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import static baseball.utils.Constants.*;
 
@@ -45,11 +45,11 @@ public class PlayerNumbers {
         return numberSet.size() == playerNumbers.size();
     }
 
-    public int checkStrikeCount(Computer computer) {
-        return computer.checkStrikeCount(playerNumbers);
+    public int checkStrikeCount(RandomNumbers randomNumbers) {
+        return randomNumbers.checkStrikeCount(playerNumbers);
     }
 
-    public int checkBallCount(Computer computer) {
-        return computer.checkBallCount(playerNumbers);
+    public int checkBallCount(RandomNumbers randomNumbers) {
+        return randomNumbers.checkBallCount(playerNumbers);
     }
 }
