@@ -6,13 +6,13 @@ import static baseball.utils.GameMessage.INPUT_REQUEST_MESSAGE;
 
 import baseball.domain.wrapped.Ball;
 import baseball.domain.wrapped.Strike;
+import baseball.utils.GameMessage;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
 
 public class Player {
     private RandomNumbers randomNumbers = new RandomNumbers();
-    private BallCountCalculator calculator = new BallCountCalculator();
     private Computer computer = new Computer();
     private Strike strike;
     private Ball ball;
@@ -32,7 +32,7 @@ public class Player {
             updateStrikeAndBallCounts(playerNumbers);
             printBallCount();
         }
-        OutputView.printMessage(GAME_SUCCESS_MESSAGE);
+        OutputView.printMessage(GameMessage.GAME_SUCCESS_MESSAGE.getMessage());
     }
 
     private boolean isGameContinuing() {
@@ -40,7 +40,7 @@ public class Player {
     }
 
     private PlayerNumbers getPlayerNumbers() {
-        OutputView.printMessageWithoutNewLine(INPUT_REQUEST_MESSAGE);
+        OutputView.printMessageWithoutNewLine(GameMessage.INPUT_REQUEST_MESSAGE.getMessage());
         String playerInput = InputView.getPlayerInput();
         return new PlayerNumbers(playerInput);
     }

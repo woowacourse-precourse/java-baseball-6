@@ -2,7 +2,6 @@ package baseball.controller;
 
 import static baseball.utils.Constants.PROGRAM_EXIT;
 import static baseball.utils.Constants.RESTART_GAME;
-import static baseball.utils.ErrorMessage.STATUS_OUT_OF_RANGE_ERROR_MESSAGE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.domain.Player;
@@ -16,7 +15,7 @@ public class Controller {
     public void startGame() {
         Player player = new Player();
         String status;
-        OutputView.printMessage(GameMessage.START_GAME_MESSAGE);
+        OutputView.printMessage(GameMessage.START_GAME_MESSAGE.getMessage());
         do {
             player.init();
             player.play();
@@ -28,7 +27,7 @@ public class Controller {
 
     private void validateStatusRange(String status) {
         if (!status.equals(RESTART_GAME) && !status.equals(PROGRAM_EXIT)) {
-            throw new IllegalArgumentException(STATUS_OUT_OF_RANGE_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 }
