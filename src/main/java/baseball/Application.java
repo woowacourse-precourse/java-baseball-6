@@ -10,12 +10,13 @@ public class Application {
         BaseBall baseBall = new BaseBall();
         PrintService printService = new PrintService();
 
-        boolean finish = false;
-
-        while(!finish){
+        //밖의 매개변수는 제거했음
+        while (true) {
             baseBall.playBall();
-            finish = printService.printAfterFinish();
+            boolean continueGame = printService.printAfterFinish();
+            if (!continueGame) {
+                break;
+            }
         }
-        System.out.println("프로그램을 종료합니다.");
     }
 }

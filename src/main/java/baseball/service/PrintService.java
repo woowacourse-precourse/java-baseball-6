@@ -37,10 +37,12 @@ public class PrintService {
         String input = readLine();
         //유효한 숫자인지 검증하는 로직 필요
         ValidCheckService.validExitNumber(input);
-        if (input.equals("2")) {
+        if (input.equals("1")) {
             return true;
         }
+        System.out.println("프로그램을 종료합니다.");
         return false;
+
     }
 
 }
