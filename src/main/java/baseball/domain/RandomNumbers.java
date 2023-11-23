@@ -62,16 +62,7 @@ public class RandomNumbers {
         return uniqueNumbers.size() == TOTAL_BALL_COUNTS;
     }
 
-    public int checkBallCount(List<Integer> playerNumbers) {
-        return (int) IntStream.range(0, TOTAL_BALL_COUNTS)
-                .filter(i -> playerNumbers.get(i) != randomNumbers.get(i) && randomNumbers.contains(
-                        playerNumbers.get(i)))
-                .count();
-    }
-
-    public int checkStrikeCount(List<Integer> playerNumbers) {
-        return (int) IntStream.range(0, TOTAL_BALL_COUNTS)
-                .filter(i -> playerNumbers.get(i) == randomNumbers.get(i))
-                .count();
+    public List<Integer> getRandomNumbers() {
+        return randomNumbers;
     }
 }

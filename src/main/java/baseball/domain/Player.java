@@ -8,9 +8,11 @@ import baseball.domain.wrapped.Ball;
 import baseball.domain.wrapped.Strike;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class Player {
     private RandomNumbers randomNumbers = new RandomNumbers();
+    private BallCountCalculator calculator = new BallCountCalculator();
     private Computer computer = new Computer();
     private Strike strike;
     private Ball ball;
@@ -25,17 +27,30 @@ public class Player {
     }
 
     public void play() {
-        PlayerNumbers playerNumbers;
-        while (strike.isLessThan(TOTAL_BALL_COUNTS)) {
-            OutputView.printMessageWithoutNewLine(INPUT_REQUEST_MESSAGE);
-            String playerInput = InputView.getPlayerInput();
-            playerNumbers = new PlayerNumbers(playerInput);
-
-            strike = new Strike(playerNumbers.checkStrikeCount(randomNumbers));
-            ball = new Ball(playerNumbers.checkBallCount(randomNumbers));
+        while (isGameContinuing()) {
+            PlayerNumbers playerNumbers = getPlayerNumbers();
+            updateStrikeAndBallCounts(playerNumbers);
             printBallCount();
         }
         OutputView.printMessage(GAME_SUCCESS_MESSAGE);
+    }
+
+    private boolean isGameContinuing() {
+        return strike.isLessThan(TOTAL_BALL_COUNTS);
+    }
+
+    private PlayerNumbers getPlayerNumbers() {
+        OutputView.printMessageWithoutNewLine(INPUT_REQUEST_MESSAGE);
+        String playerInput = InputView.getPlayerInput();
+        return new PlayerNumbers(playerInput);
+    }
+
+    private void updateStrikeAndBallCounts(PlayerNumbers playerNumbers) {
+        List<Integer> playerNumbersList = playerNumbers.getPlayerNumbers();
+        List<Integer> randomNumbersList = randomNumbers.getRandomNumbers();
+
+        strike = new Strike(BallCountCalculator.calculateStrikeCount(playerNumbersList, randomNumbersList));
+        ball = new Ball(BallCountCalculator.calculateBallCount(playerNumbersList, randomNumbersList));
     }
 
     public void printBallCount() {
