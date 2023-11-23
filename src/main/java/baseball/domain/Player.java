@@ -10,16 +10,20 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class Player {
-    private RandomNumbers randomNumbers = new RandomNumbers();
-    private Computer computer = new Computer();
+    private RandomNumbers randomNumbers;
+    private Computer computer;
     private Strike strike;
     private Ball ball;
 
-    public Player() {
+    public Player(RandomNumbers randomNumbers, Computer computer) {
+        this.randomNumbers = randomNumbers;
+        this.computer = computer;
+        this.strike = new Strike(0);
+        this.ball = new Ball(0);
     }
 
     public void init() {
-        computer.init();
+        computer.regenerateRandomNumbers();
         strike = new Strike(0);
         ball = new Ball(0);
     }

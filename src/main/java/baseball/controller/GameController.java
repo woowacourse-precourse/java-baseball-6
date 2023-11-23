@@ -20,7 +20,7 @@ public class GameController {
     }
 
     public void startGame() {
-        Player player = new Player();
+        Player player = new Player(randomNumbers, computer);
         String status;
         OutputView.printMessage(GameMessage.START_GAME_MESSAGE.getMessage());
         do {
