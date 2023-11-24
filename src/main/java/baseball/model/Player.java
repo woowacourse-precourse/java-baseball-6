@@ -14,6 +14,7 @@ public class Player {
     private void validate(List<Integer> numbers) {
         validateDuplicate(numbers);
         validateSize(numbers);
+        validateRange(numbers);
     }
 
     private void validateDuplicate(List<Integer> numbers) {
@@ -28,6 +29,12 @@ public class Player {
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 3) {
             throw new IllegalArgumentException("3자리 숫자여야 합니다.");
+        }
+    }
+
+    private void validateRange(List<Integer> numbers) {
+        if (numbers.contains(0)) {
+            throw new IllegalArgumentException("1~9 사이의 숫자여야 합니다.");
         }
     }
 }
