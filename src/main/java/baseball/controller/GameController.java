@@ -18,6 +18,7 @@ public class GameController {
         output.showStartMessage();
         do {
             start();
+            output.showEndMessage();
         } while (isReStart());
     }
 
