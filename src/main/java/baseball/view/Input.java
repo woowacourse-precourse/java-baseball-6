@@ -27,6 +27,8 @@ public class Input {
     }
 
     private String read() {
-        return Console.readLine();
+        String input = Console.readLine();
+        validator.validateBlank(input);
+        return input;
     }
 }
