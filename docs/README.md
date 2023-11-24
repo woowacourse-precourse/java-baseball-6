@@ -20,7 +20,7 @@
 
 ### 🕹️ 도메인
 
-- [ ] 임의의 숫자로 컴퓨터를 만든다.
+- [x] 컴퓨터를 만든다.
     - `camp.nextstep.edu.missionutils.Random.pickNumberInRange()`을 활용한다.
     - [x] 3자리의 랜덤 수를 만든다.
 - [x] 플레이어를 만든다.
