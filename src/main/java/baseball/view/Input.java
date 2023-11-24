@@ -14,9 +14,7 @@ public class Input {
 
     public String readCommand() {
         System.out.println(COMMAND_INPUT_MESSAGE);
-        String input = read();
-        validator.validateNumberFormat(input);
-        return input;
+        return read();
     }
 
     public List<Integer> readPlayerNumbers() {
