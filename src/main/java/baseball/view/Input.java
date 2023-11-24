@@ -23,7 +23,7 @@ public class Input {
         System.out.print(NUMBERS_INPUT_MESSAGE);
         String input = read();
         validator.validateNumberFormat(input);
-        return convertor.convertPlayerNumbers(input);
+        return convertor.convertIntegerList(input);
     }
 
     private String read() {

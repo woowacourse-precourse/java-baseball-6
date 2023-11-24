@@ -5,7 +5,7 @@ import java.util.List;
 
 public class InputConvertor {
 
-    public List<Integer> convertPlayerNumbers(String input) {
+    public List<Integer> convertIntegerList(String input) {
         return Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .toList();
