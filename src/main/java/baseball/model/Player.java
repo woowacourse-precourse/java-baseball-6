@@ -13,6 +13,7 @@ public class Player {
 
     private void validate(List<Integer> numbers) {
         validateDuplicate(numbers);
+        validateSize(numbers);
     }
 
     private void validateDuplicate(List<Integer> numbers) {
@@ -21,6 +22,12 @@ public class Player {
                 .count();
         if (numbers.size() != uniqueNumberCount) {
             throw new IllegalArgumentException("서로 다른 숫자여야 합니다.");
+        }
+    }
+
+    private void validateSize(List<Integer> numbers) {
+        if (numbers.size() != 3) {
+            throw new IllegalArgumentException("3자리 숫자여야 합니다.");
         }
     }
 }
