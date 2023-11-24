@@ -14,11 +14,11 @@ class JudgementTest {
     void judge() {
         // given
         Computer computer = new Computer(List.of(1, 2, 3));
+        Judgement judgement = new Judgement(computer);
         Player player = new Player(List.of(3, 2, 1));
-        Judgement judgement = new Judgement(computer, player);
 
         // when
-        judgement.judge();
+        judgement.judge(player);
 
         // then
         assertThat(judgement.getStrike()).isEqualTo(1);

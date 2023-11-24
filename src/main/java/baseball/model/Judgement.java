@@ -3,19 +3,21 @@ package baseball.model;
 public class Judgement {
 
     private final Computer computer;
-    private final Player player;
 
     private int strike;
     private int ball;
 
-    public Judgement(Computer computer, Player player) {
+    public Judgement(Computer computer) {
         this.computer = computer;
-        this.player = player;
     }
 
-    public void judge() {
+    public void judge(Player player) {
         strike = computer.countSamePlace(player);
         ball = computer.countSameNumber(player) - strike;
+    }
+
+    public boolean isProgress() {
+        return strike < 3;
     }
 
     public int getStrike() {

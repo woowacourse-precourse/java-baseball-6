@@ -15,8 +15,12 @@ public class GameController {
 
     public void run() {
         output.showStartMessage();
+
         Computer computer = new Computer(numberMaker.makeComputerNumbers());
-        Player player = new Player(input.readPlayerNumbers());
-        Judgement judgement = new Judgement(computer, player);
+        Judgement judgement = new Judgement(computer);
+        do {
+            Player player = new Player(input.readPlayerNumbers());
+            judgement.judge(player);
+        } while (judgement.isProgress());
     }
 }
