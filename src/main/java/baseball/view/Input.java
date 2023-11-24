@@ -2,15 +2,25 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Input {
 
-    public int readNumber() {
-        return convert(read());
+    public List<Integer> readPlayerNumbers() {
+        return convertPlayerNumbers(read());
     }
 
-    public int convert(String input) {
+    private List<Integer> convertPlayerNumbers(String input) {
+        validateNumberFormat(input);
+        return Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .toList();
+    }
+
+    private void validateNumberFormat(String input) {
         try {
-            return Integer.parseInt(input);
+            Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
