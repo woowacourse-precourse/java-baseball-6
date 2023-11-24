@@ -4,6 +4,11 @@ import java.util.List;
 
 public class Player {
 
+    private static final int NUMBERS_SIZE = 3;
+    private static final String DUPLICATE_EX_MESSAGE = "서로 다른 숫자여야 합니다.";
+    private static final String SIZE_EX_MESSAGE = "%d자리 숫자여야 합니다.";
+    private static final String RANGE_EX_MESSAGE = "1~9 사이의 숫자여야 합니다.";
+
     private final List<Integer> numbers;
 
     public Player(List<Integer> numbers) {
@@ -22,19 +27,19 @@ public class Player {
                 .distinct()
                 .count();
         if (numbers.size() != uniqueNumberCount) {
-            throw new IllegalArgumentException("서로 다른 숫자여야 합니다.");
+            throw new IllegalArgumentException(DUPLICATE_EX_MESSAGE);
         }
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 3) {
-            throw new IllegalArgumentException("3자리 숫자여야 합니다.");
+        if (numbers.size() != NUMBERS_SIZE) {
+            throw new IllegalArgumentException(String.format(SIZE_EX_MESSAGE, NUMBERS_SIZE));
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         if (numbers.contains(0)) {
-            throw new IllegalArgumentException("1~9 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(RANGE_EX_MESSAGE);
         }
     }
 

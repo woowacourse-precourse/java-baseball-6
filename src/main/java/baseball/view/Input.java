@@ -7,15 +7,18 @@ import java.util.List;
 
 public class Input {
 
+    private static final String COMMAND_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String NUMBERS_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+
     public String readCommand() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(COMMAND_INPUT_MESSAGE);
         String input = read();
         validateNumberFormat(input);
         return input;
     }
 
     public List<Integer> readPlayerNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(NUMBERS_INPUT_MESSAGE);
         return convertPlayerNumbers(read());
     }
 

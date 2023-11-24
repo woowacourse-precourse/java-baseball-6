@@ -2,6 +2,8 @@ package baseball.model;
 
 public class Judgement {
 
+    private static final int MAX_STRIKE_COUNT = 3;
+
     private final Computer computer;
 
     private int strike;
@@ -17,7 +19,7 @@ public class Judgement {
     }
 
     public boolean isProgress() {
-        return strike < 3;
+        return strike < MAX_STRIKE_COUNT;
     }
 
     public int getStrike() {
