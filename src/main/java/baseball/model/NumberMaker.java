@@ -9,7 +9,7 @@ public class NumberMaker {
     public List<Integer> makeComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
 
-        while (computerNumbers.size() <= 3) {
+        while (computerNumbers.size() < 3) {
             int randomNumber = pickRandomNumber();
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
