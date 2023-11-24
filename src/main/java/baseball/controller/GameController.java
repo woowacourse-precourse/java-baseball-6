@@ -22,11 +22,6 @@ public class GameController {
         } while (isReStart());
     }
 
-    private boolean isReStart() {
-        GameStatus gameStatus = GameStatus.find(input.readCommand());
-        return gameStatus.equals(GameStatus.RESTART);
-    }
-
     private void start() {
         Computer computer = new Computer(numberMaker.makeAutoNumbers());
         Judgement judgement = new Judgement(computer);
@@ -35,5 +30,10 @@ public class GameController {
             judgement.judge(player);
             output.showResult(judgement.getStrike(), judgement.getBall());
         } while (judgement.isProgress());
+    }
+
+    private boolean isReStart() {
+        GameStatus gameStatus = GameStatus.find(input.readCommand());
+        return gameStatus.equals(GameStatus.RESTART);
     }
 }
