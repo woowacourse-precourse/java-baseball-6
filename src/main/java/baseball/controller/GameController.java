@@ -28,7 +28,7 @@ public class GameController {
     }
 
     private void start() {
-        Computer computer = new Computer(numberMaker.makeComputerNumbers());
+        Computer computer = new Computer(numberMaker.makeAutoNumbers());
         Judgement judgement = new Judgement(computer);
         do {
             Player player = new Player(input.readPlayerNumbers());

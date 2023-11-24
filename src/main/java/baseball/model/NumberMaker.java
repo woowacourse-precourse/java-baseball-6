@@ -2,8 +2,8 @@ package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class NumberMaker {
 
@@ -11,17 +11,11 @@ public class NumberMaker {
     private static final int MAX_NUMBER = 9;
     private static final int NUMBERS_SIZE = 3;
 
-    public List<Integer> makeComputerNumbers() {
-        List<Integer> computerNumbers = new ArrayList<>();
-
-        while (computerNumbers.size() < NUMBERS_SIZE) {
-            int randomNumber = pickRandomNumber();
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
-            }
-        }
-
-        return computerNumbers;
+    public List<Integer> makeAutoNumbers() {
+        return Stream.generate(this::pickRandomNumber)
+                .distinct()
+                .limit(NUMBERS_SIZE)
+                .toList();
     }
 
     private int pickRandomNumber() {
