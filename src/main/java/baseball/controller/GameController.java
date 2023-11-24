@@ -21,6 +21,7 @@ public class GameController {
         do {
             Player player = new Player(input.readPlayerNumbers());
             judgement.judge(player);
+            output.showResult(judgement.getStrike(), judgement.getBall());
         } while (judgement.isProgress());
     }
 }
