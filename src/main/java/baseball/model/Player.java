@@ -37,4 +37,12 @@ public class Player {
             throw new IllegalArgumentException("1~9 사이의 숫자여야 합니다.");
         }
     }
+
+    public boolean hasNumber(int number) {
+        return numbers.contains(number);
+    }
+
+    public boolean hasSamePlace(int number, int place) {
+        return numbers.get(place) == number;
+    }
 }
