@@ -7,6 +7,12 @@ import java.util.List;
 
 public class Input {
 
+    public String readCommand() {
+        String input = read();
+        validateNumberFormat(input);
+        return input;
+    }
+
     public List<Integer> readPlayerNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         return convertPlayerNumbers(read());

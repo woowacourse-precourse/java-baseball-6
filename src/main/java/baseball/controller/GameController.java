@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.GameStatus;
 import baseball.model.Judgement;
 import baseball.model.NumberMaker;
 import baseball.model.Player;
@@ -15,7 +16,17 @@ public class GameController {
 
     public void run() {
         output.showStartMessage();
+        do {
+            start();
+        } while (isReStart());
+    }
 
+    private boolean isReStart() {
+        GameStatus gameStatus = GameStatus.find(input.readCommand());
+        return gameStatus.equals(GameStatus.RESTART);
+    }
+
+    private void start() {
         Computer computer = new Computer(numberMaker.makeComputerNumbers());
         Judgement judgement = new Judgement(computer);
         do {
