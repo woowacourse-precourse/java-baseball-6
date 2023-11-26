@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.model.pitcher.ComputerPitcher;
 import baseball.model.pitcher.Pitcher;
-import baseball.model.restarter.RestartNumber;
+import baseball.model.restarter.RestartState;
 import baseball.model.umpire.Umpire;
 import baseball.model.vo.BaseballNumber;
 import baseball.view.InputView;
@@ -25,8 +25,8 @@ public class GameController {
         out.displayStartMessage();
         while (true) {
             startGame();
-            RestartNumber restartNumber = RestartNumber.of(in.inputRestartNumber());
-            if (restartNumber.isEndGame()) {
+            RestartState state = RestartState.findState(in.inputRestartNumber());
+            if (state.isEndGame()) {
                 break;
             }
         }
