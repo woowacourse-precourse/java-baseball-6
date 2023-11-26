@@ -1,6 +1,6 @@
 package baseball.view;
 
-import java.util.List;
+import baseball.view.constant.ResultType;
 
 public class OutputView {
 
@@ -16,22 +16,7 @@ public class OutputView {
     }
 
     public void displayResult(int strike, int ball) {
-        if (isNothing(strike, ball)) {
-            System.out.println("낫싱");
-        } else if (isZero(strike)) {
-            System.out.println(ball + "볼");
-        } else if (isZero(ball)) {
-            System.out.println(strike + "스트라이크");
-        } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-        }
-    }
-
-    private boolean isNothing(int strike, int ball) {
-        return strike == 0 && ball == 0;
-    }
-
-    private boolean isZero(int count) {
-        return count == 0;
+        String resultMessage = ResultType.getResultMessage(strike, ball);
+        System.out.println(resultMessage);
     }
 }
