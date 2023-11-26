@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.pitcher.ComputerPitcher;
 import baseball.model.pitcher.Pitcher;
+import baseball.model.restarter.RestartNumber;
 import baseball.model.umpire.Umpire;
 import baseball.model.vo.BaseballNumber;
 import baseball.view.InputView;
@@ -14,9 +15,6 @@ public class GameController {
     private OutputView out;
     private Pitcher pitcher;
 
-    private static final int RESTART_GAME = 1;
-    private static final int END_GAME = 2;
-
     public GameController() {
         in = new InputView();
         out = new OutputView();
@@ -25,23 +23,25 @@ public class GameController {
 
     public void run() {
         out.displayStartMessage();
-        int restart = RESTART_GAME;
-        while (restart == RESTART_GAME) {;
+        while (true) {
             startGame();
-
-            restart = Integer.parseInt(in.inputRestartNumber());
+            RestartNumber restartNumber = RestartNumber.of(in.inputRestartNumber());
+            if (restartNumber.isEndGame()) {
+                break;
+            }
         }
     }
 
     private void startGame() {
         Umpire umpire = Umpire.create();
         BaseballNumber pitcherNumber = pitcher.generate();
-        while (!umpire.isStrikeOut()) {
+        while (true) {
             BaseballNumber hitterNumber = BaseballNumber.of(in.inputBaseballNumber());
-
             List<Integer> result = umpire.determineStrikeAndBall(pitcherNumber, hitterNumber);
-
             out.displayResult(result.get(0), result.get(1));
+            if (umpire.isStrikeOut()) {
+                break;
+            }
         }
         out.displayEndMessage();
     }
