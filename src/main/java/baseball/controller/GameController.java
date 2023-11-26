@@ -39,8 +39,7 @@ public class GameController {
             BaseballNumber hitterNumber = BaseballNumber.of(in.inputBaseballNumber());
 
             umpire.determineStrikeAndBall(pitcherNumber, hitterNumber);
-            List<Integer> result = umpire.getStrikeAndBall();
-            out.displayResult(result.get(0), result.get(1));
+            out.displayResult(umpire.getStrike(), umpire.getBall());
 
             if (umpire.isStrikeOut()) {
                 break;

@@ -50,8 +50,11 @@ public class Umpire {
     }
 
     // getter
-    public List<Integer> getStrikeAndBall() {
-        return List.of(strike, ball);
+    public int getStrike() {
+        return strike;
     }
 
+    public int getBall() {
+        return ball;
+    }
 }
