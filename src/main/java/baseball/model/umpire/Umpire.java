@@ -21,38 +21,37 @@ public class Umpire {
     }
 
     // utility
-    public List<Integer> determineStrikeAndBall(BaseballNumber pitcher, BaseballNumber hitter) {
-        int strike = determineStrike(pitcher, hitter);
-        int ball = determineBall(pitcher, hitter, strike);
-
-        return List.of(strike, ball);
+    public void determineStrikeAndBall(BaseballNumber pitcher, BaseballNumber hitter) {
+        determineStrike(pitcher, hitter);
+        determineBall(pitcher, hitter, strike);
     }
 
-    private int determineStrike(BaseballNumber pitcher, BaseballNumber hitter) {
+    private void determineStrike(BaseballNumber pitcher, BaseballNumber hitter) {
         List<Integer> pitcherNumber = pitcher.getNumber();
         List<Integer> hitterNumber = hitter.getNumber();
 
         strike = (int) IntStream.range(0, 3)
                 .filter(i -> pitcherNumber.get(i).equals(hitterNumber.get(i)))
                 .count();
-
-        return strike;
     }
 
-    private int determineBall(BaseballNumber pitcher, BaseballNumber hitter, int strike) {
+    private void determineBall(BaseballNumber pitcher, BaseballNumber hitter, int strike) {
         List<Integer> pitcherNumber = pitcher.getNumber();
         List<Integer> hitterNumber = hitter.getNumber();
 
         ball = (int) IntStream.range(0, 3)
                 .filter(i -> pitcherNumber.contains(hitterNumber.get(i)))
-                .count();
-        ball -= strike;
-
-        return ball;
+                .count()
+                - strike;
     }
 
     public boolean isStrikeOut() {
         return strike == 3;
+    }
+
+    // getter
+    public List<Integer> getStrikeAndBall() {
+        return List.of(strike, ball);
     }
 
 }

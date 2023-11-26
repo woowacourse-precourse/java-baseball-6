@@ -55,7 +55,7 @@ public class UmpireTest {
 
             umpire.determineStrikeAndBall(pitcherNumber, hitterNumber);
 
-            Assertions.assertThat(umpire.determineStrikeAndBall(pitcherNumber, hitterNumber))
+            Assertions.assertThat(umpire.getStrikeAndBall())
                     .isEqualTo(result);
         }
     }
