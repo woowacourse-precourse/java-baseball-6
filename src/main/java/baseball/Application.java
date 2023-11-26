@@ -1,39 +1,43 @@
 package baseball;
 
 
+import baseball.domain.MenuResult;
+import baseball.service.LunchService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import java.util.List;
-import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        LunchService lunchService = new LunchService();
-        CoachsDTO coachsDTO = takeInputName(lunchService);
+        InputView.printIntro();
+        LunchService lunchService = createLunchService();
 
-        for (String name : coachsDTO.getNames()) {
-            reportProhibitedFood(name, lunchService);
+        for (String coachName : lunchService.getCoachNames()) {
+            List<String> prohibitedFoods = takeProhibitedFood(coachName);
+            lunchService.addProhibitedFood(coachName, prohibitedFoods);
         }
-        OutputView.printMenu(lunchService.recommendFoods());
+
+        MenuResult menuResult = lunchService.recommendFoodMenus();
+        OutputView.printResult(menuResult);
     }
 
-    private static CoachsDTO takeInputName(LunchService lunchService) {
+    private static LunchService createLunchService() {
         try {
-            return lunchService.createCoachsDTO(InputView.readCoachName());
+            return new LunchService(InputView.takeInputNames());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return takeInputName(lunchService);
+            return createLunchService();
         }
     }
 
-    private static void reportProhibitedFood(String name, LunchService lunchService) {
+    private static List<String> takeProhibitedFood(String coachName) {
         try {
-            lunchService.putProhibitedFoods(InputView.readProhibitedFood(name));
+             return InputView.takeInputProhibitedFood(coachName);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            reportProhibitedFood(name, lunchService);
+            return takeProhibitedFood(coachName);
         }
     }
 }
