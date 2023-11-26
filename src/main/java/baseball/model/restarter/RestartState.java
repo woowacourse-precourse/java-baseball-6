@@ -1,19 +1,18 @@
 package baseball.model.restarter;
 
 import java.util.Arrays;
-import java.util.function.Function;
 
 public enum RestartState {
 
-    RESTART_GAME(input -> input == 1, false),
-    END_GAME(input -> input == 2, true);
+    RESTART_GAME(1, false),
+    END_GAME(2, true);
 
-    private Function<Integer, Boolean> function;
+    private int num;
     private boolean flag;
 
     // private constructor
-    RestartState(Function<Integer, Boolean> function, boolean flag) {
-        this.function = function;
+    RestartState(int num, boolean flag) {
+        this.num = num;
         this.flag = flag;
     }
 
@@ -29,7 +28,7 @@ public enum RestartState {
         validateIsNumeric(input);
         int num = Integer.parseInt(input);
         return Arrays.stream(values())
-                .filter(state -> state.function.apply(num))
+                .filter(state -> state.num == num)
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
