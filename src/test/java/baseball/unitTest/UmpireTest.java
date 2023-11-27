@@ -1,11 +1,10 @@
 package baseball.unitTest;
 
+import static org.assertj.core.api.Assertions.*;
+
 import baseball.model.umpire.Umpire;
 import baseball.model.vo.BaseballNumber;
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Stream;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -14,7 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-@DisplayName("심판 테스트")
+@DisplayName("[Umpire] 심판 테스트")
 public class UmpireTest {
 
     @Nested
@@ -24,12 +23,12 @@ public class UmpireTest {
         @Test
         @DisplayName("[SUCCESS] 성공적으로 심판을 생성한다")
         void should_success_when_createUmpire() {
-            Assertions.assertThat(Umpire.create())
-                    .isInstanceOf(Umpire.class);
+            assertThat(Umpire.create()).isInstanceOf(Umpire.class);
         }
     }
 
     @Nested
+    @DisplayName("[utility] 유틸 메서드 테스트")
     class UtilityTest {
 
         private Umpire umpire;
@@ -41,22 +40,31 @@ public class UmpireTest {
 
         static Stream<Arguments> provideBaseballNumber() {
             return Stream.of(
-                    Arguments.of(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6), Arrays.asList(0, 0)),
-                    Arguments.of(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3), Arrays.asList(3, 0))
+                    Arguments.of("낫싱", BaseballNumber.of("123"), BaseballNumber.of("456"), 0, 0),
+                    Arguments.of("3볼", BaseballNumber.of("123"), BaseballNumber.of("312"), 0, 3),
+                    Arguments.of("1볼 2스트라이크", BaseballNumber.of("123"), BaseballNumber.of("321"), 1, 2),
+                    Arguments.of("3스트라이크", BaseballNumber.of("123"), BaseballNumber.of("123"), 3, 0)
             );
         }
 
-        @ParameterizedTest
+        @ParameterizedTest(name = "{index}: {0}")
         @MethodSource("provideBaseballNumber")
-        @DisplayName("[SUCCESS] pitcher와 hitter의 수를 토대로 스트라이크 및 볼 갯수를 반환한다")
-        void should_success_when_determineStrikeAndBallCount(List<Integer> pitcher, List<Integer> hitter, List<Integer> result) {
-            BaseballNumber pitcherNumber = BaseballNumber.of(pitcher);
-            BaseballNumber hitterNumber = BaseballNumber.of(hitter);
+        @DisplayName("[SUCCESS] 스트라이크 및 볼 판단 테스트")
+        void should_success_when_determineStrikeAndBallCount(String message, BaseballNumber pitcher, BaseballNumber hitter, Integer strike, Integer ball) {
+            umpire.determineStrikeAndBall(pitcher, hitter);
 
-            umpire.determineStrikeAndBall(pitcherNumber, hitterNumber);
+            assertThat(umpire.getStrike()).isEqualTo(strike);
+            assertThat(umpire.getBall()).isEqualTo(ball);
+        }
 
-            Assertions.assertThat(umpire.getStrikeAndBall())
-                    .isEqualTo(result);
+        @Test
+        @DisplayName("[SUCCESS] 3스트라이크일 경우 true를 반환한다")
+        void should_true_is3Strike() {
+            BaseballNumber baseballNumber = BaseballNumber.of("123");
+
+            umpire.determineStrikeAndBall(baseballNumber, baseballNumber);
+
+            assertThat(umpire.isStrikeOut()).isTrue();
         }
     }
 }
