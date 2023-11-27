@@ -14,6 +14,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+@DisplayName("[RestartState] 재시작 테스트")
 public class RestartTest {
 
     @Nested
@@ -22,15 +23,15 @@ public class RestartTest {
 
         static Stream<Arguments> provideInput() {
             return Stream.of(
-                    Arguments.of(named("숫자가 아닐 경우 예외가 발생한다", "a")),
-                    Arguments.of(named("1혹은 2가 아닐 경우 예외가 발생한다", "0"))
+                    Arguments.of("숫자가 아닐 경우 예외가 발생한다", "a"),
+                    Arguments.of("1혹은 2가 아닐 경우 예외가 발생한다", "0")
             );
         }
 
-        @ParameterizedTest
+        @ParameterizedTest(name = "[EXCEPTION] {0}")
         @MethodSource("provideInput")
-        @DisplayName("[EXCEPTION]")
-        void should_throwException_when_isNumeric(String input) {
+        @DisplayName("[validate] 입력 값 검증")
+        void should_throwException_when_isNumeric(String message, String input) {
             assertThatIllegalArgumentException()
                     .isThrownBy(() -> RestartState.findState(input));
         }
