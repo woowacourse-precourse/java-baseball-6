@@ -1,4 +1,6 @@
 package baseball.Model;
 
-public class UserNumber {
+public class Computer {
+
+
 }

@@ -7,6 +7,6 @@ public class Application {
         // TODO: 프로그램 구현
 //        프로그램 시작
         BaseBallController baseBallController = new BaseBallController();
-        baseBallController.programStart();
+        baseBallController.startProgram();
     }
 }
