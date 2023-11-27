@@ -7,7 +7,6 @@ import baseball.model.umpire.Umpire;
 import baseball.model.vo.BaseballNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class GameController {
 
