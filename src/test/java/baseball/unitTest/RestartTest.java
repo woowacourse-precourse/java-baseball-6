@@ -2,11 +2,11 @@ package baseball.unitTest;
 
 import static baseball.model.restarter.RestartState.END_GAME;
 import static baseball.model.restarter.RestartState.RESTART_GAME;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Named.named;
 
 import baseball.model.restarter.RestartState;
 import java.util.stream.Stream;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ public class RestartTest {
         @MethodSource("provideInput")
         @DisplayName("[EXCEPTION]")
         void should_throwException_when_isNumeric(String input) {
-            Assertions.assertThatIllegalArgumentException()
+            assertThatIllegalArgumentException()
                     .isThrownBy(() -> RestartState.findState(input));
         }
     }
@@ -51,13 +51,13 @@ public class RestartTest {
         @MethodSource("provideInputState")
         @DisplayName("[SUCCESS] 상태 변환 테스트")
         void should_success_when_stateTest(String input, String message, RestartState result) {
-            Assertions.assertThat(RestartState.findState(input)).isEqualTo(result);
+            assertThat(RestartState.findState(input)).isEqualTo(result);
         }
 
         @Test
         @DisplayName("[SUCCESS] 상태가 END_GAME일 경우 참을 반환한다")
         void should_success_when_isENDGAME() {
-            Assertions.assertThat(END_GAME.isEndGame())
+            assertThat(END_GAME.isEndGame())
                     .isTrue();
         }
     }
