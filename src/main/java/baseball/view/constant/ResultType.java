@@ -8,7 +8,7 @@ public enum ResultType {
     NOTHING((strike, ball) -> strike == 0 && ball == 0, (strike, ball) -> "낫싱"),
     ONLY_BALL((strike, ball) -> strike == 0 && ball != 0, (strike, ball) -> ball + "볼"),
     ONLY_STRIKE((strike, ball) -> strike != 0 && ball == 0, (strike, ball) -> strike + "스트라이크"),
-    STRIKE_AND_BALL((strike, ball) -> strike != 0 && ball != 0, (strike, ball) -> strike + "스트라이크 " + ball + "볼");
+    STRIKE_AND_BALL((strike, ball) -> strike != 0 && ball != 0, (strike, ball) -> ball + "볼 " + strike + "스트라이크");
 
     private final BiFunction<Integer, Integer, Boolean> biFunction;
     private final BiFunction<Integer, Integer, String> messageFunction;
