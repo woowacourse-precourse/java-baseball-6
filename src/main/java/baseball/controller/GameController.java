@@ -10,9 +10,9 @@ import baseball.view.OutputView;
 
 public class GameController {
 
-    private InputView in;
-    private OutputView out;
-    private Pitcher pitcher;
+    private final InputView in;
+    private final OutputView out;
+    private final Pitcher pitcher;
 
     public GameController() {
         in = new InputView();
