@@ -1,6 +1,8 @@
 package baseball.Controller;
 
 import baseball.View.BaseBallView;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseBallController {
 
@@ -12,6 +14,6 @@ public class BaseBallController {
 
     private void inputNumData() {
         BaseBallView.displayInputNumData();
-
+        String inputNum = Console.readLine();
     }
 }
