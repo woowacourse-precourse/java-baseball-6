@@ -6,7 +6,7 @@ public class Referee {
 
     private Computer computer;
 
-    public void newComputerWith(List<Integer> numbers) {
+    public void createNewComputerWith(List<Integer> numbers) {
         computer = new Computer(numbers);
     }
 
