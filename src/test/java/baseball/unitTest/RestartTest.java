@@ -3,7 +3,6 @@ package baseball.unitTest;
 import static baseball.model.restarter.RestartState.END_GAME;
 import static baseball.model.restarter.RestartState.RESTART_GAME;
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Named.named;
 
 import baseball.model.restarter.RestartState;
 import java.util.stream.Stream;
