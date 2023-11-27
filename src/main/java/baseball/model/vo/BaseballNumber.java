@@ -19,6 +19,7 @@ public class BaseballNumber {
 
     // static factory method
     public static BaseballNumber of(String input) {
+        validateIsNumeric(input);
         List<Integer> integerList = Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .toList();
@@ -48,6 +49,12 @@ public class BaseballNumber {
     }
 
     // exception handling
+    private static void validateIsNumeric(String input) {
+        if (!Character.isDigit(input.charAt(0))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void validateNotIncludeZero(List<Integer> input) {
         if (isIncludeZero(input)) {
             throw new IllegalArgumentException();
