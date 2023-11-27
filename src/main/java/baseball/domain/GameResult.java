@@ -8,7 +8,7 @@ public class GameResult {
 
     private static final int INITIAL_VALUE = 0;
     private static final int ADDING_VALUE = 1;
-    private static final int OUT_CRITERION = 3;
+    private static final int CRITERION = 3;
     private final Map<Judgement, Integer> result = new EnumMap<>(Judgement.class);
 
     public GameResult() {
@@ -22,7 +22,7 @@ public class GameResult {
     }
 
     public boolean isThreeStrike() {
-        return result.get(Judgement.STRIKE) == OUT_CRITERION;
+        return result.get(Judgement.STRIKE) == CRITERION;
     }
 
     @Override
