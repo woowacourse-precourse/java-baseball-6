@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Player {
     private List<Integer> userNumbers = new ArrayList<>();
-    private int ball = 0;
-    private int strike = 0;
 
     public List<Integer> getUserNumbers() {
         return userNumbers;
@@ -20,20 +18,4 @@ public class Player {
         return Array.checkForDuplicateNumbers(userNum);
     }
 
-    public int getBall() {
-        return ball;
-    }
-
-    public void addBall() {
-        ball++;
-    }
-
-    public int getStrike() {
-        return strike;
-    }
-
-    public void addStrike() {
-        strike++;
-    }
-    
 }
