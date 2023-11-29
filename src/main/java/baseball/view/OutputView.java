@@ -14,7 +14,7 @@ public class OutputView {
         System.out.println(RESTART_CHECK);
     }
 
-    public static void startGameMesssage() {
+    public static void startGameMessage() {
         System.out.println(START_GAME);
     }
 

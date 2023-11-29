@@ -89,7 +89,7 @@ public class BaseballGame {
     }
 
     public void play() {
-        OutputView.startGameMesssage();
+        OutputView.startGameMessage();
         do {
             game();
         } while (isContinue.equals(CONTINUE));
