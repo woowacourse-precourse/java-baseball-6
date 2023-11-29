@@ -16,7 +16,7 @@ public class BaseballGame {
     public BaseballGame() {
     }
 
-    public List<Integer> setRandomNum() {
+    public List<Integer> createRandomNum() {
         RandomNum randomNum = new RandomNum();
         return randomNum.create();
     }
@@ -98,7 +98,7 @@ public class BaseballGame {
 
     public void game() {
         Computer computer = new Computer();
-        computer.setComputerNumbers(setRandomNum());
+        computer.setComputerNumbers(createRandomNum());
 
         Player player;
         do {
