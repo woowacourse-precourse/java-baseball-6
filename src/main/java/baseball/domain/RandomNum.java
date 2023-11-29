@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.domain;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 

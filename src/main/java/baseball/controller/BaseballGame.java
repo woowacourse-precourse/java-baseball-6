@@ -1,9 +1,9 @@
 package baseball.controller;
 
+import baseball.domain.RandomNum;
 import baseball.model.Array;
 import baseball.model.Computer;
 import baseball.model.Player;
-import baseball.model.RandomNum;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
