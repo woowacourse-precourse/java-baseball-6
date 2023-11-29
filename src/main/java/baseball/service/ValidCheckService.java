@@ -11,6 +11,7 @@ public class ValidCheckService {
 
     private final Number num = new Number();
     private final List<Integer> integerList = new ArrayList<>();
+    Set<Character> set = new HashSet<>();
 
     public boolean isValidStringNumber(String input){
         if(isNumberNaturalDigit(input) && isValidLength(input) && sameNumberCheck(input)){
@@ -35,9 +36,9 @@ public class ValidCheckService {
     }
 
     //set으로 만들었으니 중복이 있으면 input값과 set의 크기가 다르게 된다
+    //11.29 set을 밖으로 빼서 메서드 호출시마다 set 생성되던 것 수정
     public boolean sameNumberCheck(String input){
-        Set<Character> set = new HashSet<>();
-
+        set.clear();
         for (int i = 0; i < input.length(); i++) {
             set.add(input.charAt(i));
         }
