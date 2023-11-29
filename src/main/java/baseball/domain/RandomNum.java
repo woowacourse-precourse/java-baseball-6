@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNum {
-    public static List<Integer> create() {
+    public List<Integer> create() {
         List<Integer> computerNumbers = new ArrayList<>();
 
         while (computerNumbers.size() < 3) {

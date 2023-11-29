@@ -17,7 +17,8 @@ public class BaseballGame {
     }
 
     public List<Integer> setRandomNum() {
-        return RandomNum.create();
+        RandomNum randomNum = new RandomNum();
+        return randomNum.create();
     }
 
     public void checkInput(String userNumber) {
