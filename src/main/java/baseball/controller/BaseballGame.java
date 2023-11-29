@@ -28,7 +28,7 @@ public class BaseballGame {
 
     public String inputNumber() {
         OutputView.inputNumberMessage();
-        String inputNum = InputView.input(); // 서로 다른 3개의 숫자 입력
+        String inputNum = InputView.number(); // 서로 다른 3개의 숫자 입력
 
         checkInput(inputNum);
 
@@ -53,7 +53,7 @@ public class BaseballGame {
         String userInput;
         OutputView.restartCheckMessage();
 
-        userInput = InputView.input();
+        userInput = InputView.number();
         Array.checkArrayNumber(userInput);
         Array.checkOneOrTwo(userInput);
 
