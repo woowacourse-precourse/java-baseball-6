@@ -38,7 +38,7 @@ public class BaseballGame {
 
     public void getAnswer(Computer computer, Player player) {
         List<Integer> computerNumbers = computer.getComputerNumbers();
-        List<Integer> userNum = player.getUserNum();
+        List<Integer> userNum = player.getUserNumbers();
         // 컴퓨터가 만든 서로 다른 랜덤 3자리 수 computer 와 사용자 입력을 받은 서로 다른 3자리 수 userNum 비교
         for (int i = 0; i < computerNumbers.size(); i++) {
             Integer specificUserNum = userNum.get(i);
@@ -103,8 +103,8 @@ public class BaseballGame {
         Player player;
         do {
             player = new Player();
-            player.setUserNumber(inputNumber());
-            player.setUserNum(Array.checkForDuplicateNumbers(player.getUserNumber()));
+            List<Integer> playerNumbers = player.checkDuplication(inputNumber());
+            player.setUserNumbers(playerNumbers);
 
             getAnswer(computer, player); // 볼, 스트라이크 세기
             printAnswer(player); // 출력

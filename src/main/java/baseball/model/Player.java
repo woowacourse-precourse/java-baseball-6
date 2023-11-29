@@ -4,27 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private String userNumber;
-    private List<Integer> userNum = new ArrayList<>();
+    private List<Integer> userNumbers = new ArrayList<>();
     private int ball = 0;
     private int strike = 0;
 
-    public String getUserNumber() {
-        return userNumber;
+    public List<Integer> getUserNumbers() {
+        return userNumbers;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setUserNumbers(List<Integer> userNum) {
+        this.userNumbers = userNum;
     }
 
-    public List<Integer> getUserNum() {
-        return userNum;
+    public List<Integer> checkDuplication(String userNum) {
+        return Array.checkForDuplicateNumbers(userNum);
     }
 
-    public void setUserNum(List<Integer> userNum) {
-        this.userNum = userNum;
-    }
-    
     public int getBall() {
         return ball;
     }
@@ -40,14 +35,5 @@ public class Player {
     public void addStrike() {
         strike++;
     }
-
-    @Override
-    public String toString() {
-        return "Player{" +
-                "userNum=" + userNum +
-                ", ball=" + ball +
-                ", strike=" + strike +
-                '}';
-    }
-
+    
 }
