@@ -47,6 +47,7 @@ public class ValidCheckService {
         }
         return true;
     }
+    //이건 parser쪽으로
     public List<Integer> stringToIntegerList(String input) {
         integerList.clear();
         for (String s : input.split("")) {
