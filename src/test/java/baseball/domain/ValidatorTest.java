@@ -14,4 +14,14 @@ public class ValidatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @Test
+    void 숫자_범위_인지_확인() {
+        String userNumbers = "102";
+
+        assertThatThrownBy(() -> {
+            Validator.checkRange(userNumbers);
+        }).isInstanceOf(IllegalArgumentException.class);
+
+    }
 }
