@@ -1,9 +1,11 @@
 package baseball.controller;
 
 import baseball.domain.RandomNum;
+import baseball.domain.Referee;
 import baseball.model.Array;
 import baseball.model.Computer;
 import baseball.model.Player;
+import baseball.model.Result;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -36,18 +38,10 @@ public class BaseballGame {
         return inputNum;
     }
 
-    public void getAnswer(Computer computer, Player player) {
-        List<Integer> computerNumbers = computer.getComputerNumbers();
-        List<Integer> userNum = player.getUserNumbers();
-        // 컴퓨터가 만든 서로 다른 랜덤 3자리 수 computer 와 사용자 입력을 받은 서로 다른 3자리 수 userNum 비교
-        for (int i = 0; i < computerNumbers.size(); i++) {
-            Integer specificUserNum = userNum.get(i);
-            if (specificUserNum.equals(computerNumbers.get(i))) {
-                player.addStrike();
-            } else if (userNum.contains(computerNumbers.get(i))) {
-                player.addBall();
-            }
-        }
+    public Result getResult(Computer computer, Player player) {
+        Referee referee = new Referee();
+
+        return referee.compare(computer.getComputerNumbers(), player.getUserNumbers());
     }
 
     public String startNewGame() {
@@ -64,29 +58,12 @@ public class BaseballGame {
         return CONTINUE;
     }
 
-    public boolean isAllStrike(Player player) {
-        if (player.getStrike() == 3 && player.getBall() == 0) {
-            return true;
-        }
-        return false;
+    public boolean isAllStrike(Result result) {
+        return result.getStrike() == 3 && result.getBall() == 0;
     }
 
-    public void printAnswer(Player player) {
-
-        if (player.getStrike() == 0 && player.getBall() == 0) { // 같은 수가 전혀 없으면
-            System.out.println("낫싱");
-        } else if (player.getStrike() == 3 && player.getBall() == 0) { // 3개의 숫자를 모두 맞히면
-            System.out.println(player.getStrike() + "스트라이크");
-            OutputView.allStrikeMessage();
-
-            isContinue = startNewGame();
-        } else if (player.getBall() > 0) { // 볼만 있을 경우, 스트라이크만 있을 경우, 볼, 스트라이크 둘 다 있으면
-            System.out.print(player.getBall() + "볼 ");
-            if (player.getStrike() > 0) {
-                System.out.print(player.getStrike() + "스트라이크");
-            }
-            System.out.println();
-        }
+    public void printResult(Result result) {
+        System.out.println(result.print());
     }
 
     public void play() {
@@ -100,15 +77,15 @@ public class BaseballGame {
         Computer computer = new Computer();
         computer.setComputerNumbers(createRandomNum());
 
-        Player player;
+        Result result;
         do {
-            player = new Player();
+            Player player = new Player();
             List<Integer> playerNumbers = player.checkDuplication(inputNumber());
             player.setUserNumbers(playerNumbers);
 
-            getAnswer(computer, player); // 볼, 스트라이크 세기
-            printAnswer(player); // 출력
+            result = getResult(computer, player); // 볼, 스트라이크 세기
+            printResult(result); // 출력
 
-        } while (!isAllStrike(player));
+        } while (!isAllStrike(result));
     }
 }
