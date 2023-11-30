@@ -59,7 +59,11 @@ public class BaseballGame {
     }
 
     public boolean isAllStrike(Result result) {
-        return result.getStrike() == 3 && result.getBall() == 0;
+        if (result.getStrike() == 3 && result.getBall() == 0) {
+            isContinue = startNewGame();
+            return true;
+        }
+        return false;
     }
 
     public void printResult(Result result) {
