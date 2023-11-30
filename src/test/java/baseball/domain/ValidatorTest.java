@@ -34,4 +34,14 @@ public class ValidatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @Test
+    void 숫자_중복_확인() {
+        String userNumbers = "131";
+
+        assertThatThrownBy(() -> {
+            Validator.checkForDuplicateNumbers(userNumbers);
+        }).isInstanceOf(IllegalArgumentException.class);
+
+    }
 }
