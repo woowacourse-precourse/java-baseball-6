@@ -44,4 +44,14 @@ public class ValidatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @Test
+    void 숫자_1_또는_2_인지_확인() {
+        String userInput = "3";
+
+        assertThatThrownBy(() -> {
+            Validator.checkOneOrTwo(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+
+    }
 }
