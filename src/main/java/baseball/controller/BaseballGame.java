@@ -2,10 +2,10 @@ package baseball.controller;
 
 import baseball.domain.RandomNum;
 import baseball.domain.Referee;
+import baseball.domain.Validator;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.model.Result;
-import baseball.model.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;

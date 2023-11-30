@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.domain.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
