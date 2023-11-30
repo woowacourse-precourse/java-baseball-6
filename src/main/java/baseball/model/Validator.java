@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Array {
+public class Validator {
     public static void checkArrayLength(String userNumber) {
         if (userNumber.length() != 3) {
             throw new IllegalArgumentException("3자리 수가 아닙니다.");

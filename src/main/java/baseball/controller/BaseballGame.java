@@ -2,10 +2,10 @@ package baseball.controller;
 
 import baseball.domain.RandomNum;
 import baseball.domain.Referee;
-import baseball.model.Array;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.model.Result;
+import baseball.model.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -24,9 +24,9 @@ public class BaseballGame {
     }
 
     public void checkInput(String userNumber) {
-        Array.checkArrayNumber(userNumber);
-        Array.checkArrayLength(userNumber);
-        Array.checkRange(userNumber);
+        Validator.checkArrayNumber(userNumber);
+        Validator.checkArrayLength(userNumber);
+        Validator.checkRange(userNumber);
     }
 
     public String inputNumber() {
@@ -49,8 +49,8 @@ public class BaseballGame {
         OutputView.restartCheckMessage();
 
         userInput = InputView.number();
-        Array.checkArrayNumber(userInput);
-        Array.checkOneOrTwo(userInput);
+        Validator.checkArrayNumber(userInput);
+        Validator.checkOneOrTwo(userInput);
 
         if (userInput.equals("2")) {
             return QUIT;

@@ -15,7 +15,7 @@ public class Player {
     }
 
     public List<Integer> checkDuplication(String userNum) {
-        return Array.checkForDuplicateNumbers(userNum);
+        return Validator.checkForDuplicateNumbers(userNum);
     }
 
 }
