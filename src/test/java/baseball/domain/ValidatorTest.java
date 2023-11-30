@@ -16,11 +16,21 @@ public class ValidatorTest {
     }
 
     @Test
-    void 숫자_범위_인지_확인() {
+    void 숫자_범위_확인() {
         String userNumbers = "102";
 
         assertThatThrownBy(() -> {
             Validator.checkRange(userNumbers);
+        }).isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @Test
+    void 숫자_확인() {
+        String userNumbers = "ㅇㅇ";
+
+        assertThatThrownBy(() -> {
+            Validator.checkArrayNumber(userNumbers);
         }).isInstanceOf(IllegalArgumentException.class);
 
     }
