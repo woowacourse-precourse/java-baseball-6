@@ -10,8 +10,8 @@ public class RandomNum {
         List<Integer> computerNumbers = new ArrayList<>();
 
         while (computerNumbers.size() < 3) {
-            int randomNumber = pickNumberInRange(1, 9); // 1~9 랜덤 수 출력
-            if (!computerNumbers.contains(randomNumber)) { // 서로 다른 수
+            int randomNumber = pickNumberInRange(1, 9);
+            if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
         }

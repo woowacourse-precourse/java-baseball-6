@@ -11,7 +11,7 @@ public class Array {
     }
 
     public static void checkRange(String userNumber) {
-        String[] userNumArr = userNumber.split(""); // 입력 받은 수 한글자씩 나눔
+        String[] userNumArr = userNumber.split("");
         for (String str : userNumArr) {
             int num = Integer.parseInt(str);
             if (num < 1 || num > 9) {
@@ -23,10 +23,10 @@ public class Array {
     public static List<Integer> checkForDuplicateNumbers(String userNumber) {
         List<Integer> userNum = new ArrayList<>();
 
-        String[] userNumArr = userNumber.split(""); // 입력 받은 수 한글자씩 나눔
+        String[] userNumArr = userNumber.split("");
         for (String str : userNumArr) {
             Integer userNumInt = Integer.parseInt(str);
-            if (!userNum.contains(userNumInt)) { // 없으면 추가
+            if (!userNum.contains(userNumInt)) {
                 userNum.add(userNumInt);
             } else { // 같은 수 포함
                 throw new IllegalArgumentException("같은 수가 포함되어 있습니다.");

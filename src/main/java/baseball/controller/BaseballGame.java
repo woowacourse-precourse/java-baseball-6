@@ -31,7 +31,7 @@ public class BaseballGame {
 
     public String inputNumber() {
         OutputView.inputNumberMessage();
-        String inputNum = InputView.number(); // 서로 다른 3개의 숫자 입력
+        String inputNum = InputView.number();
 
         checkInput(inputNum);
 
@@ -88,8 +88,8 @@ public class BaseballGame {
             List<Integer> playerNumbers = player.checkDuplication(inputNumber());
             player.setUserNumbers(playerNumbers);
 
-            result = getResult(computer, player); // 볼, 스트라이크 세기
-            printResult(result); // 출력
+            result = getResult(computer, player);
+            printResult(result);
 
         } while (!isAllStrike(result));
     }
