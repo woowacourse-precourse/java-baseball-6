@@ -60,6 +60,7 @@ public class BaseballGame {
 
     public boolean isAllStrike(Result result) {
         if (result.getStrike() == 3 && result.getBall() == 0) {
+            OutputView.allStrikeMessage();
             isContinue = startNewGame();
             return true;
         }
