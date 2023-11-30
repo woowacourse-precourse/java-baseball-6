@@ -12,16 +12,16 @@ public class Result {
         return ball;
     }
 
-    public void addBall() {
-        this.ball++;
+    public void setBall(int ball) {
+        this.ball = ball;
     }
 
     public int getStrike() {
         return strike;
     }
 
-    public void addStrike() {
-        this.strike++;
+    public void setStrike(int strike) {
+        this.strike = strike;
     }
 
     public String print() {
