@@ -13,7 +13,7 @@ public class randomNumberGeneratorTest {
 
     @Test
     void createRandomNumbers() {
-        int[] testComputer = randomNumberGenerator.randomNumberGenerator();
+        int[] testComputer = randomNumberGenerator.generateComputer();
         assertThat(testComputer.length).isEqualTo(3);
         for (int i=1; i<3; i++) {
             assertThat(testComputer[i]).isNotEqualTo(testComputer[i-1]);
