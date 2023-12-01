@@ -12,6 +12,7 @@ public class PracticeApplication {
 
         System.out.println(isNumbers("123"));
         System.out.println(isNotDuplication("133"));
+        System.out.println(userNumbers());
 
     }
 
@@ -28,21 +29,22 @@ public class PracticeApplication {
     }
 
     // 사용자로부터 중복되지 않은 3개의 숫자 입력받기
-//    public static List<Integer> userNumbers() {
-//        String numbers = Console.readLine();
-//        while (true) {
-//            // 세 자리인가 O
-//            // 숫자인가 O
-//            // 중복되는 숫자를 입력하지 않았는가 X
-//            if (isValid(numbers)) {
-//
-//            }
-//
-//        }
-//    }
-//
-    private static boolean isValid(boolean isNumbers, boolean isNotDuplication) {
-        if (isNumbers && isNotDuplication) {
+    public static List<Integer> userNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputNumbers = Console.readLine();
+        if(isValid(inputNumbers)){
+            List<Integer> numbers = new ArrayList<>();
+            for (char ch: inputNumbers.toCharArray()) {
+                numbers.add(Character.getNumericValue(ch));
+            }
+            return numbers;
+        } else {
+            throw  new IllegalArgumentException("중복되지 않은 3자리 수를 입력해주세요.");
+        }
+    }
+
+    private static boolean isValid(String numbers) {
+        if (isNumbers(numbers) && isNotDuplication(numbers)) {
             return true;
         }
         return false;
