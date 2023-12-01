@@ -1,2 +1,5 @@
-package baseball;public class OutputView {
+package baseball;
+
+public class OutputView {
+
 }
