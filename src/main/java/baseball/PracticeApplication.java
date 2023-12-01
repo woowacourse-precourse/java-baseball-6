@@ -78,9 +78,20 @@ public class PracticeApplication {
     }
 
     // 숫자 비교하여 결과를 판단하는 메서드
-//    public static String judgment(List<Integer> computerNumbers, List<Integer> userNumbers) {
-//        //
-//    }
+    public static void judgment(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0){
+            System.out.println("낫싱");
+        }
+        if (strikeCount == 0) {
+            System.out.printf("%d 볼", ballCount);
+            return;
+        }
+        if (ballCount == 0) {
+            System.out.printf("%d 스트라이크", strikeCount);
+            return;
+        }
+        System.out.printf("%d볼 %d스트라이크", ballCount, strikeCount);
+    }
 
     // 스트라이크로 이미 카운트가 되었다면 볼에는 포함이 되면 안됨
     private static int ballCount(List<Integer> computerNumbers, List<Integer> userNumbers, int strikeCount) {
@@ -102,8 +113,6 @@ public class PracticeApplication {
         }
         return count;
     }
-
-
 }
 
 
