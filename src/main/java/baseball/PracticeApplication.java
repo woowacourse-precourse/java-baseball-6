@@ -9,17 +9,24 @@ import java.util.List;
 public class PracticeApplication {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println(computerNumbers());
+        boolean continueGame = true;
 
-        System.out.println(isNumbers("123"));
-        System.out.println(isNotDuplication("133"));
-//        System.out.println(userNumbers());
+        while (continueGame) {
+            List<Integer> computers = computerNumbers(); // 컴퓨터 숫자 생성하기
 
-        List<Integer> computer = Arrays.asList(1, 2, 3);
-        List<Integer> user = Arrays.asList(1, 2, 4);
+            while (true) {
+                List<Integer> users = userNumbers(); // 사용자 숫자 입력받기
+                // 판단하기
+                int strikes = strikeCount(computers, users);
+                int balls = ballCount(computers, users, strikes);
+                judgment(balls, strikes);
 
-        System.out.println(ballCount(computer, user, 1));
-
+                if (strikes == 3) {
+                    continueGame = InputGameOverOrAgain();
+                    break;
+                }
+            }
+        }
     }
 
     // 중복되지 않은 3개의 랜덤한 숫자
@@ -80,23 +87,23 @@ public class PracticeApplication {
     // 숫자 비교하여 결과를 판단하는 메서드
     public static void judgment(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱");
+            System.out.println("낫싱\n");
         }
         if (strikeCount == 0) {
-            System.out.printf("%d 볼", ballCount);
+            System.out.printf("%d 볼\n", ballCount);
             return;
         }
         if (ballCount == 0) {
-            System.out.printf("%d 스트라이크", strikeCount);
+            System.out.printf("%d 스트라이크\n", strikeCount);
             return;
         }
-        System.out.printf("%d볼 %d스트라이크", ballCount, strikeCount);
+        System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
     }
 
     // 스트라이크로 이미 카운트가 되었다면 볼에는 포함이 되면 안됨
     private static int ballCount(List<Integer> computerNumbers, List<Integer> userNumbers, int strikeCount) {
         int count = 0;
-        for (int userNumber : userNumbers()) {
+        for (int userNumber : userNumbers) {
             if (computerNumbers.contains(userNumber)) {
                 count++;
             }
@@ -115,18 +122,15 @@ public class PracticeApplication {
     }
 
     // 3스트라이크일 경우, 게임 새로 시작, 종료 여부 사용자에게 묻기
-    public static boolean InputGameOverOrAgain(int strikeCount) {
-        if (strikeCount == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String inputUser = Console.readLine();
-            if (inputUser.equals("1")) {
-                return true;
-            }
+    public static boolean InputGameOverOrAgain() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputUser = Console.readLine();
+        if(inputUser.equals("1")) {
+            return true;
         }
         return false;
     }
 
 }
-
 
