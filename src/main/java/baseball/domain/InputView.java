@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.List;
 
 public class InputView {
 
-    List<Integer> readPlayerNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+    public List<Integer> readPlayerNumber() {
+        System.out.println("숫자를 입력하세요");
         String player = Console.readLine();
         try {
             Validator.validateNumber(player);
