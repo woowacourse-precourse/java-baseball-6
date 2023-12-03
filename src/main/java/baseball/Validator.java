@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Validator {
     public static void validateNumber(String player) {
@@ -27,9 +28,9 @@ public class Validator {
         }
     }
 
-    static void duplicated(Integer[] numbers) {
-        for (int i=1; i<numbers.length; i++) {
-            if (numbers[i] == numbers[i-1]) {
+    static void duplicated(List<Integer> numbers) {
+        for (int i=1; i<numbers.size(); i++) {
+            if (Objects.equals(numbers.get(i), numbers.get(i-1))) {
                 throw new IllegalArgumentException();
             }
         }

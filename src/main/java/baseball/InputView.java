@@ -1,7 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class InputView {
@@ -18,14 +18,15 @@ public class InputView {
     }
 
     public static List<Integer> makeNumberArray(String player) {
-        int number = Integer.parseInt(player);
-        int n1, n2, n3;
-        n1 = number / 100;
-        n2 = number % 100 / 10;
-        n3 = number % 10;
-        Integer[] numberArray = {n1, n2, n3};
-        Validator.duplicated(numberArray);
-        List<Integer> playerNum = Arrays.asList(numberArray);
+        List<Integer> playerNum = new ArrayList<>();
+
+        for (int i=0; i<player.length(); i++) {
+            String eachNum = Character.toString(player.charAt(i));
+            int num = Integer.parseInt(eachNum);
+            playerNum.add(num);
+        }
+        Validator.duplicated(playerNum);
         return playerNum;
     }
+
 }
