@@ -7,7 +7,7 @@ public class Judgement {
     public int correctCounts(List<Integer> computer, List<Integer> player) {
         int result = 0;
         for (int i = 0; i < player.size(); i++) {
-            if (computer.contains(player)) {
+            if (computer.contains(player.get(i))) {
                 result++;
             }
         }
