@@ -29,9 +29,9 @@ public class OutputView {
 
     public void printResult(GameResult gameResult) {
         StringBuilder result = new StringBuilder();
-        result.append(getBallMessage(gameResult));
-        result.append(getStrikeMessage(gameResult));
-        result.append(getNothingMessage(gameResult));
+        result.append(getBallMessage(gameResult))
+        .append(getStrikeMessage(gameResult))
+        .append(getNothingMessage(gameResult));
         System.out.println(result);
     }
 

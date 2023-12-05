@@ -9,6 +9,8 @@ import static baseball.domain.ErrorMessage.BALL_NUMBER_SIZE_IS_NOT_MATCHED;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class InputValidator {
 
@@ -25,8 +27,11 @@ public class InputValidator {
         }
     }
 
+    private static final Pattern NUMBER = Pattern.compile(NUMBER_FORMAT);
+
     private static boolean isNumber(String rawBalls) {
-        return rawBalls.matches(NUMBER_FORMAT);
+        Matcher matcher = NUMBER.matcher(rawBalls);
+        return matcher.matches();
     }
 
     public static void validateBallsCount(List<Integer> rawBallList) {
