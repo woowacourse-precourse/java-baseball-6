@@ -5,12 +5,13 @@ import java.util.List;
 
 public class Answer {
 	List<Integer> answer;
+	List<String> transformedResult;
 	public Answer(){
-		answer = new ArrayList<>();
 		makeAnswer();
 	}
 
-	private void makeAnswer() {
+	public void makeAnswer() {
+		answer = new ArrayList<>();
 		while (answer.size() < 3) {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
 			if (!answer.contains(randomNumber)) {
@@ -19,8 +20,8 @@ public class Answer {
 		}
 	}
 
-	private List<String> getResult(int[] userNumber){
-		return answerTransforming(checkAnswer(userNumber));
+	public List<String> getResult(){
+		return transformedResult;
 	}
 
 	private List<String> answerTransforming(List<Integer> integerResult) {
@@ -34,7 +35,8 @@ public class Answer {
 		return result;
 	}
 
-	private List<Integer> checkAnswer(int[] userNumber) {
+	public boolean checkAnswer(int[] userNumber) {
+		transformedResult = new ArrayList<>();
 		int strike = 0;
 		int ball = 0;
 		for (int i = 0; i < answer.size(); i++){
@@ -48,7 +50,8 @@ public class Answer {
 		List<Integer> result = new ArrayList<>();
 		result.add(strike);
 		result.add(ball);
-		return result;
+		transformedResult = answerTransforming(result);
+		return result.get(0) == 3;
 	}
 
 

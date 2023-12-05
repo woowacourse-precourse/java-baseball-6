@@ -22,4 +22,12 @@ public class InputTest {
 			input.isNotDuplicate(nonDuplicateValue);
 		});
 	}
+
+	@Test
+	void testIsNumber(){
+		String notNumber = "abc";
+		assertThrows(IllegalArgumentException.class, () -> {
+			input.isNumber(notNumber);
+		});
+	}
 }

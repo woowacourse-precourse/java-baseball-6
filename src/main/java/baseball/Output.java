@@ -8,11 +8,12 @@ public class Output {
 	}
 
 	public void enterNumber(){
-		System.out.println("숫자를 입력해주세요 : ");
+		System.out.print("숫자를 입력해주세요 : ");
 	}
 
 	public void result(List<String> result){
-		result.forEach(i -> System.out.println(i + " "));
+		result.forEach(i -> System.out.print(i + " "));
+		System.out.println(" ");
 	}
 
 	public void endGame(){
