@@ -18,3 +18,9 @@
 
 # 예외처리
 > - 사용자가 잘못된 값을 입력할 경우에 IllegalArgumentException을 발생
+
+1부터 9까지 중 랜더함 3개의 숫자를 생성하는 NumberMaker
+사용자의 입력을 받는 input
+출력을 하는 output
+사령관 역할의 컨트롤러 하나
+사용자가 입력한 값을 만들어진 3자리의 숫자와 비교하는 CheckNumber
