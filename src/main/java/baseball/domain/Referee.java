@@ -4,7 +4,6 @@ import baseball.model.Result;
 import java.util.List;
 
 public class Referee {
-    final Result result = new Result();
 
     public Result compare(List<Integer> computer, List<Integer> player) {
         final Judgment judgment = new Judgment();
@@ -19,9 +18,6 @@ public class Referee {
 
         int ball = correctCount - strike;
 
-        result.setBall(ball);
-        result.setStrike(strike);
-
-        return this.result;
+        return new Result(ball, strike);
     }
 }

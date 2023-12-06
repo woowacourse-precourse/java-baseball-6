@@ -8,22 +8,19 @@ public class Result {
     private int ball = 0;
     private int strike = 0;
 
-    public int getBall() {
-        return ball;
+    public Result(int ball, int strike) {
+        this.ball = ball;
+        this.strike = strike;
     }
 
-    public void setBall(int ball) {
-        this.ball = ball;
+    public int getBall() {
+        return ball;
     }
 
     public int getStrike() {
         return strike;
     }
-
-    public void setStrike(int strike) {
-        this.strike = strike;
-    }
-
+    
     public String toString() {
         String result = NOTHING;
 
