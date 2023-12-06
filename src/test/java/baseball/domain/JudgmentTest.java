@@ -17,7 +17,7 @@ public class JudgmentTest {
     }
 
     @Test
-    void 해당_자리에_같은_숫_카운트() {
+    void 해당_자리에_같은_숫자_카운트() {
         Judgment judgment = new Judgment();
         boolean hasPlace = judgment.hasPlace(Arrays.asList(1, 2, 3), 0, 1);
 
