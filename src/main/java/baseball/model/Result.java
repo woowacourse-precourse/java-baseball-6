@@ -24,7 +24,7 @@ public class Result {
         this.strike = strike;
     }
 
-    public String print() {
+    public String toString() {
         String result = NOTHING;
 
         if (ball == 0 && strike == 0) {

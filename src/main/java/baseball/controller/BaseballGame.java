@@ -68,7 +68,7 @@ public class BaseballGame {
     }
 
     public void printResult(Result result) {
-        System.out.println(result.print());
+        System.out.println(result.toString());
     }
 
     public void play() {
