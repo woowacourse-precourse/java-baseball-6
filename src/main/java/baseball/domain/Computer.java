@@ -20,4 +20,8 @@ public class Computer {
 
         this.numbers = new Numbers(numbers);
     }
+
+    public Numbers getNumbers() {
+        return numbers;
+    }
 }

@@ -9,4 +9,8 @@ public class Player {
     public void chooseNumbers(List<Integer> numbers) {
         this.numbers = new Numbers(numbers);
     }
+
+    public Numbers getNumbers() {
+        return numbers;
+    }
 }

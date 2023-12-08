@@ -8,6 +8,7 @@ import java.util.List;
 public class InputView {
 
     public List<Integer> enterUserNumbers() {
+        System.out.print(BaseballMessages.INPUT_NUMBERS_MESSAGE);
         String input = Console.readLine()
                 .trim();
         try {

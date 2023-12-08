@@ -1,7 +1,9 @@
 package baseball.controller;
 
+import baseball.domain.BaseballJudge;
 import baseball.domain.Computer;
 import baseball.domain.Player;
+import baseball.dto.CompareResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -32,8 +34,12 @@ public class BaseballGame {
     private void play() {
         computer.generateNumbers();
 
-        List<Integer> inputNumbers = inputView.enterUserNumbers();
-        player.chooseNumbers(inputNumbers);
+        CompareResult compareResult;
+        do {
+            List<Integer> inputNumbers = inputView.enterUserNumbers();
+            player.chooseNumbers(inputNumbers);
+            compareResult = BaseballJudge.judgeCompareResult(player, computer);
+        } while (!compareResult.isThreeStrike());
     }
 
     private boolean isContinue() {
