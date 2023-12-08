@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.exception.ErrorMessages;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
@@ -16,7 +17,19 @@ public class InputView {
                     .map(Integer::parseInt)
                     .toList();
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
+            throw new IllegalArgumentException(ErrorMessages.NUMBER_FORMAT_ERROR);
+        }
+    }
+
+    public int enterRestartOrEnd() {
+        System.out.println(BaseballMessages.CONTINUE_OR_END_MESSAGE);
+        String input = Console.readLine()
+                .trim();
+
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException(ErrorMessages.NUMBER_FORMAT_ERROR);
         }
     }
 }

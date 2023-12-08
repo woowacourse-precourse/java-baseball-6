@@ -27,4 +27,8 @@ public class OutputView {
 
         System.out.println(message);
     }
+
+    public void printFinishMessage() {
+        System.out.println(BaseballMessages.FINISH_MESSAGE);
+    }
 }

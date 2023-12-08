@@ -28,7 +28,7 @@ public class BaseballGame {
 
         do {
             play();
-        } while (isContinue());
+        } while (isRestart());
     }
 
     private void play() {
@@ -41,9 +41,12 @@ public class BaseballGame {
             compareResult = BaseballJudge.judgeCompareResult(player, computer);
             outputView.printCompareResult(compareResult);
         } while (!compareResult.isThreeStrike());
+
+        outputView.printFinishMessage();
     }
 
-    private boolean isContinue() {
-        return false;
+    private boolean isRestart() {
+        int input = inputView.enterRestartOrEnd();
+        return input == 1;
     }
 }
