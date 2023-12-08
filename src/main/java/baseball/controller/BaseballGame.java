@@ -1,13 +1,16 @@
-package baseball;
+package baseball.controller;
 
+import baseball.domain.Computer;
 import baseball.view.OutputView;
 
 public class BaseballGame {
 
     private final OutputView outputView;
+    private final Computer computer;
 
-    public BaseballGame(OutputView outputView) {
+    public BaseballGame(OutputView outputView, Computer computer) {
         this.outputView = outputView;
+        this.computer = computer;
     }
 
     public void start() {
@@ -19,6 +22,7 @@ public class BaseballGame {
     }
 
     private void play() {
+        computer.generateNumbers();
     }
 
     private boolean isContinue() {
