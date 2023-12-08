@@ -39,6 +39,7 @@ public class BaseballGame {
             List<Integer> inputNumbers = inputView.enterUserNumbers();
             player.chooseNumbers(inputNumbers);
             compareResult = BaseballJudge.judgeCompareResult(player, computer);
+            outputView.printCompareResult(compareResult);
         } while (!compareResult.isThreeStrike());
     }
 

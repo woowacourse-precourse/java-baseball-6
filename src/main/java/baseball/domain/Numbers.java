@@ -13,11 +13,11 @@ public class Numbers {
     private final List<Integer> numbers;
 
     public Numbers(List<Integer> numbers) {
-        validateNumbers();
+        validateNumbers(numbers);
         this.numbers = numbers;
     }
 
-    private void validateNumbers() {
+    private void validateNumbers(List<Integer> numbers) {
         NumbersValidator.validateNumbersSize(SIZE, numbers);
         NumbersValidator.validateDuplicateNumbers(numbers);
         NumbersValidator.validateContainsZero(numbers);
