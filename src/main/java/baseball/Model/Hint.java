@@ -1,6 +1,8 @@
-package baseball;
+package baseball.Model;
 
 import static baseball.Constants.*;
+import static baseball.Controller.Array.*;
+import static baseball.View.OutputView.*;
 
 class Hint {
     int ball, strike;
@@ -18,28 +20,26 @@ class Hint {
     }
 
     void compareAns(Game answer, Game correctAnswer){
-        int nowNumber;
-
         for(int i = 0; i < NUM_SIZE; i++){
-            nowNumber = answer.num.get(i);
+            int currentNumber = answer.compareNumList.get(i);
 
-            if(!Array.checkArrayContains(correctAnswer.num, nowNumber)){
+            if(!checkArrayContains(correctAnswer.compareNumList, currentNumber)){
                 continue;
             }
-            if(i == Array.getIndexFromValue(correctAnswer.num, nowNumber)){
+            if(i == getIndexFromValue(correctAnswer.compareNumList, currentNumber)){
                 strikeCount();
                 continue;
             }
             ballCount();
         }
     }
-    void printResult(){
+    void setCount(){
         String result = "";
-        if(this.ball != 0){
+        if(this.ball != NO_COUNT){
             result += this.ball + BALL;
         }
-        if(this.strike != 0){
-            if(this.ball != 0){
+        if(this.strike != NO_COUNT){
+            if(this.ball != NO_COUNT){
                 result += " ";
             }
             result += this.strike + STRIKE;
@@ -47,6 +47,6 @@ class Hint {
         if(result.isEmpty()){
             result = NOTHING;
         }
-        System.out.println(result);
+        printResult(result);
     }
 }

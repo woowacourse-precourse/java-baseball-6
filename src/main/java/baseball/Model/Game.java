@@ -1,13 +1,15 @@
-package baseball;
+package baseball.Model;
 
+import baseball.Controller.Array;
 import java.util.ArrayList;
 
 import static baseball.Constants.*;
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import static baseball.View.InputView.*;
+import static baseball.View.OutputView.*;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Game {
-    ArrayList<Integer> num = new ArrayList<>();
+    ArrayList<Integer> compareNumList = new ArrayList<>();
 
     public Game() {
         setRandomNum();
@@ -15,7 +17,7 @@ public class Game {
 
     private Game(String str){
         for(int i = 0; i < NUM_SIZE;  i++){
-            num.add(Integer.parseInt(str.charAt(i) + ""));
+            compareNumList.add(Integer.parseInt(str.charAt(i) + ""));
         }
     }
 
@@ -23,8 +25,8 @@ public class Game {
         int numIdx = 0;
         while(numIdx < NUM_SIZE){
             int randNum = getRandomNum();
-            if(!Array.checkArrayContains(num, randNum)){
-                num.add(randNum);
+            if(!Array.checkArrayContains(compareNumList, randNum)){
+                compareNumList.add(randNum);
                 numIdx++;
             }
         }
@@ -34,39 +36,23 @@ public class Game {
     }
 
     public static void init(Game correctAnswer){
-        Game answer = new Game(getAnswer());
+        Game answer = new Game(readAnswer());
         Hint hint = new Hint();
         hint.compareAns(answer, correctAnswer);
-        hint.printResult();
+        hint.setCount();
 
-        if(hint.strike != NUM_SIZE){
+        if(hint.strike != ALL_CORRECT){
             Game.init(correctAnswer);
             return;
         }
 
-        int newGameAnswer = checkNewGameStart();
-        if(newGameAnswer == GAME_RESTART) {
+        if(printRetry() == GAME_RESTART) {
             correctAnswer = new Game();
             Game.init(correctAnswer);
         }
     }
 
-    private static String getAnswer() {
-        System.out.print(GET_NUM_MESSAGE);
-        String input = readLine();
-        checkException(input);
-
-        return input;
-    }
-
-    private static int checkNewGameStart() {
-        System.out.println(ALL_CORRECT + CORRECT_MESSAGE);
-        System.out.println(RETRY_MESSAGE);
-
-        return getNewGameAnswer(readLine());
-    }
-
-    private static int getNewGameAnswer(String str){
+    public static int getNewGameAnswer(String str){
         int intVal;
         try {
             intVal = Integer.parseInt(str);
@@ -74,43 +60,5 @@ public class Game {
             throw new IllegalArgumentException();
         }
         return intVal;
-    }
-
-    static void checkException(final String str){
-        if(str.length() != NUM_SIZE){
-            throw new IllegalArgumentException();
-        }
-        if(!checkInput(str)){
-            throw new IllegalArgumentException();
-        }
-        if(!equalInput(str)){
-            throw new IllegalArgumentException();
-        }
-    }
-
-    static boolean checkInput(String str){
-        try {
-            Integer.parseInt(str);
-        } catch (NumberFormatException e){
-            return false;
-        }
-
-        ArrayList<Character> charArray = Array.getArrayFromStr(str);
-        return !Array.checkArrayContains(charArray, '0');
-
-
-    }
-
-    static boolean equalInput(String str){
-        ArrayList<Character> checkEqual = new ArrayList<>();
-        ArrayList<Character> word = Array.getArrayFromStr(str);
-
-        for(int i = 0; i < str.length(); i++) {
-            if (Array.checkArrayContains(checkEqual, word.get(i))) {
-                return false;
-            }
-            checkEqual.add(word.get(i));
-        }
-        return true;
     }
 }
