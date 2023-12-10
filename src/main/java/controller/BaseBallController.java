@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import controller.validate.NumberValidate;
 import model.domain.Discriminator;
 import model.service.DiscriminatorService;
+import model.service.MessageService;
 import util.RandomUtil;
 import view.InputView;
 import view.OutputView;
@@ -17,6 +18,7 @@ public class BaseBallController {
     InputView inputView = new InputView();
     NumberValidate numberValidate = new NumberValidate();
     DiscriminatorService discriminatorService = new DiscriminatorService();
+    MessageService messageService = new MessageService();
     private static final String RESTART = "1";
     private static final int THREESTRIKE = 3;
     public void gameStart(){
@@ -24,23 +26,30 @@ public class BaseBallController {
         // 게임 시작 메세지 생성
         outputView.gameStartMessage();
         String playerThreeNumber = "";
+        int ball = 0;
+        int strike = 0;
         List<Integer> computerThreeNumber = RandomUtil.randomThreeNumber();
         Discriminator discriminator;
-        //플레이어가 선택한 세가지 번호가 올바른지 검증
-        while (true) {
-            try {
-                outputView.inputNumberPleaseMessage();
-                String beforeValidateNumber = inputView.pickThreeNumber();
-                numberValidate.NumberValidateMachine(beforeValidateNumber);
-                playerThreeNumber = beforeValidateNumber;
-                break;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+        while(strike != 3) {
+            //플레이어가 선택한 세가지 번호가 올바른지 검증
+            while (true) {
+                try {
+                    outputView.inputNumberPleaseMessage();
+                    String beforeValidateNumber = inputView.pickThreeNumber();
+                    numberValidate.NumberValidateMachine(beforeValidateNumber);
+                    playerThreeNumber = beforeValidateNumber;
+                    break;
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
             }
+            System.out.print(playerThreeNumber);
+            discriminator = new Discriminator(computerThreeNumber, playerThreeNumber);
+            List<Integer> ballAndStrikeNum = discriminatorService.discriminatorResult(discriminator.getPlayer(), discriminator.getComputer());
+            ball = ballAndStrikeNum.get(0);
+            strike = ballAndStrikeNum.get(1);
+            messageService.resultMessage(ball, strike);
         }
-        System.out.print(playerThreeNumber);
-        discriminator = new Discriminator(computerThreeNumber,playerThreeNumber);
-        discriminatorService.discriminatorResult(discriminator.getPlayer(),discriminator.getComputer());
 
     }
     public static void 게임진행(List<Integer> cpNumList){
