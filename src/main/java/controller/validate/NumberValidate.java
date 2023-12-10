@@ -3,8 +3,8 @@ package controller.validate;
 public class NumberValidate {
 
 
-    public void NumberValidateMachine(String numberToCheck){
-        if(!checkNumberLength(numberToCheck)) {
+    public void NumberValidateMachine(String numberToCheck) {
+        if (!checkNumberLength(numberToCheck)) {
             throw new IllegalArgumentException("[ERROR] 입력한 수가 세자리 수가 아닙니다.");
         }
         if (!containsOnlyNumbers(numberToCheck)) {
@@ -12,8 +12,8 @@ public class NumberValidate {
         }
     }
 
-    private boolean checkNumberLength(String playerNumber){
-        if(playerNumber.length() == 3){
+    private boolean checkNumberLength(String playerNumber) {
+        if (playerNumber.length() == 3) {
             return true;
         }
         return false;

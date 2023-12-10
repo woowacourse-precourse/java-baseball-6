@@ -1,8 +1,5 @@
 package controller;
 
-import baseball.메세지생성;
-import baseball.숫자맞춤검사;
-import camp.nextstep.edu.missionutils.Console;
 import controller.validate.ContinueValidate;
 import controller.validate.NumberValidate;
 import model.domain.Discriminator;
@@ -21,40 +18,70 @@ public class BaseBallController {
     ContinueValidate continueValidate = new ContinueValidate();
     DiscriminatorService discriminatorService = new DiscriminatorService();
     MessageService messageService = new MessageService();
-    private static final String RESTART = "1";
-    private static final int THREESTRIKE = 3;
-    public void gameStart(){
+    private static String playerThreeNumber = "";
+    private static int ball = 0;
+    private static int strike = 0;
+    private static int playerChoose = 0;
+
+    public void gameStart() {
 
         // 게임 시작 메세지 생성
         outputView.gameStartMessage();
-        String playerThreeNumber = "";
-        int ball = 0;
-        int strike = 0;
+        gameRun();
+    }
+
+    public void gameRun() {
+        //게임 재시작시 초기화
+        init();
         List<Integer> computerThreeNumber = RandomUtil.randomThreeNumber();
         Discriminator discriminator;
-        while(strike != 3) {
-            //플레이어가 선택한 세가지 번호가 올바른지 검증
-            while (true) {
-                try {
-                    outputView.inputNumberPleaseMessage();
-                    String beforeValidateNumber = inputView.pickThreeNumber();
-                    numberValidate.NumberValidateMachine(beforeValidateNumber);
-                    playerThreeNumber = beforeValidateNumber;
-                    break;
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
-                }
-            }
+        //플레이어가 3 스트라이크 될 때까지 반복
+        while (strike != 3) {
+            //플레이어가 선택한 세가지 번호가 올바른지 형식으로 들어왔는지 검증
+            checkInputNumber();
+            //플레이어와 컴퓨터 번호 판별기에 대입
             discriminator = new Discriminator(computerThreeNumber, playerThreeNumber);
-            List<Integer> ballAndStrikeNum = discriminatorService.discriminatorResult(discriminator.getPlayer(), discriminator.getComputer());
-            ball = ballAndStrikeNum.get(0);
-            strike = ballAndStrikeNum.get(1);
-            String resultMessage = messageService.resultMessage(ball, strike);
-            outputView.gameResultMessage(resultMessage);
+            //플레이어가 선택한 세가지 번호와 컴퓨터의 번호 비교 결과 반환
+            discriminatorOperate(discriminator.getComputer(),discriminator.getPlayer());
+            //판별 결과 메세지 생성
+            discriminatedMessagePrint();
         }
         outputView.gameFinishMessage();
         outputView.tobeContinueMessage();
-        int playerChoose = 0;
+        continueOrFinish();
+    }
+    private void init(){
+        ball = 0;
+        strike = 0;
+        playerChoose = 0;
+    }
+    //플레이어가 선택한 세가지 번호가 올바른지 형식으로 들어왔는지 검증
+    private void checkInputNumber(){
+        while (true) {
+            try {
+                outputView.inputNumberPleaseMessage();
+                String beforeValidateNumber = inputView.pickThreeNumber();
+                numberValidate.NumberValidateMachine(beforeValidateNumber);
+                playerThreeNumber = beforeValidateNumber;
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    //플레이어와 컴퓨터 번호 판별기에 대입
+    private void discriminatorOperate(List<Integer> computer, String player){
+        List<Integer> ballAndStrikeNum = discriminatorService.discriminatorResult(player, computer);
+        ball = ballAndStrikeNum.get(0);
+        strike = ballAndStrikeNum.get(1);
+    }
+    //플레이어가 선택한 세가지 번호와 컴퓨터의 번호 비교 결과 반환
+    private void discriminatedMessagePrint(){
+        String resultMessage = messageService.resultMessage(ball, strike);
+        outputView.gameResultMessage(resultMessage);
+    }
+    //판별 결과 메세지 생성
+    private void continueOrFinish(){
         while (true) {
             try {
                 playerChoose = inputView.tobeContinueNumber();
@@ -64,43 +91,9 @@ public class BaseBallController {
                 System.out.println(e.getMessage());
             }
         }
-        if(playerChoose == 1){
-            gameStart();
-        }
-    }
-    public static void 게임진행(List<Integer> cpNumList){
-
-        boolean flag = false;
-
-        숫자맞춤검사 correctNum = new 숫자맞춤검사(cpNumList);
-
-        while(!flag){
-
-            int 스트라이크 = 0;
-            int 볼 = 0;
-
-            System.out.print("숫자를 입력해주세요 : ");
-            String 내가입력한숫자 = Console.readLine();
-
-            스트라이크 = correctNum.스트라이크개수(내가입력한숫자);
-            볼 = correctNum.볼개수(내가입력한숫자);
-
-            메세지생성 messagePrint = new 메세지생성(스트라이크,볼);
-
-            System.out.print(messagePrint.메세지입력());
-
-            if(스트라이크 == THREESTRIKE){
-
-                flag = true;
-
-                System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String 게임진행여부 = Console.readLine();
-
-                if(게임진행여부.equals(RESTART)){
-
-                }
-            }
+        if (playerChoose == 1) {
+            // 게임 재시작
+            gameRun();
         }
     }
 }

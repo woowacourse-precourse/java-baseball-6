@@ -7,7 +7,7 @@ public class Discriminator {
     List<Integer> computer;
     String player;
 
-    public Discriminator(List<Integer> computer, String player){
+    public Discriminator(List<Integer> computer, String player) {
         this.computer = computer;
         this.player = player;
     }

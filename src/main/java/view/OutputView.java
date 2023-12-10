@@ -8,11 +8,11 @@ public class OutputView {
     private final String TO_BE_CONTINUED = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 
-    public void gameStartMessage(){
+    public void gameStartMessage() {
         System.out.println(GAME_START);
     }
 
-    public void inputNumberPleaseMessage(){
+    public void inputNumberPleaseMessage() {
         System.out.print(INPUT_NUMBER_PLEASE);
     }
 
