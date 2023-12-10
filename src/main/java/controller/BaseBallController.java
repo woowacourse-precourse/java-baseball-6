@@ -3,22 +3,37 @@ package controller;
 import baseball.메세지생성;
 import baseball.숫자맞춤검사;
 import camp.nextstep.edu.missionutils.Console;
+import controller.validate.NumberValidate;
 import view.InputView;
 import view.OutputView;
 
 import java.util.List;
 
 public class BaseBallController {
-    static OutputView outputView = new OutputView();
-    static InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
+    InputView inputView = new InputView();
+    NumberValidate numberValidate = new NumberValidate();
     private static final String RESTART = "1";
     private static final int THREESTRIKE = 3;
-    public static void gameStart(){
+    public void gameStart(){
 
+        // 게임 시작 메세지 생성
         outputView.gameStartMessage();
-        //플레이어가 선택한 세가지 번호
-        String playerThreeNumber = inputView.pickThreeNumber();
-        if()
+        String playerThreeNumber = "";
+        //플레이어가 선택한 세가지 번호가 올바른지 검증
+        while (true) {
+            try {
+                outputView.inputNumberPleaseMessage();
+                String beforeValidateNumber = inputView.pickThreeNumber();
+                numberValidate.NumberValidateMachine(beforeValidateNumber);
+                playerThreeNumber = beforeValidateNumber;
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        System.out.print(playerThreeNumber);
+
       /*  상대방숫자생성 computerNum = new 상대방숫자생성(3,1,9);
         게임진행(computerNum.랜덤숫자생성());*/
     }
@@ -53,7 +68,6 @@ public class BaseBallController {
 
                 if(게임진행여부.equals(RESTART)){
 
-                    게임시작();
                 }
             }
         }

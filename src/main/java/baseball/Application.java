@@ -1,14 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import controller.BaseBallController;
 
 import java.util.List;
-import static controller.BaseBallController.gameStart;
 
 public class Application {
         public static void main(String[] args) {
-                System.out.println("숫자 야구 게임을 시작합니다.");
-                gameStart();
+                BaseBallController baseBallController = new BaseBallController();
+                baseBallController.gameStart();
         }
 
 
