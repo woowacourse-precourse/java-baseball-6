@@ -1,8 +1,6 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Dictionary;
 import java.util.List;
 
 public class Referee {
@@ -23,10 +21,7 @@ public class Referee {
 
     public boolean doesWin(List<Integer> result) {
         int strike = result.get(0);
-        if (strike == 3) {
-            return true;
-        }
-        return false;
+        return strike == 3;
     }
 
 

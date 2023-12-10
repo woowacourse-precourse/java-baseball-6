@@ -4,14 +4,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class Validator {
-    public static void validateNumber(String player) {
-        try {
-            validateIntConvertable(player);
-            int number = Integer.parseInt(player);
-            validateRange(number);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
-        }
+    public static void validateNumber(String player) throws IllegalArgumentException {
+        validateIntConvertable(player);
+        int number = Integer.parseInt(player);
+        validateRange(number);
     }
 
     static void validateRange(int number) {

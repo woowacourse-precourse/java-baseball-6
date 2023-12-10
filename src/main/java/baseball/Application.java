@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.domain.InputView;
-import baseball.domain.Judgement;
 import baseball.domain.OutputView;
 import baseball.domain.Referee;
 import baseball.domain.randomNumberGenerator;
@@ -16,7 +15,7 @@ public class Application {
         Referee referee = new Referee();
 
         List<Integer> target = randomNumberGenerator.generateComputer();
-        List<Integer> result = Arrays.asList(0,0);
+        List<Integer> result = Arrays.asList(0, 0);
 
         while (!referee.doesWin(result)) {
             List<Integer> player = gameSystem.readPlayerNumber();
