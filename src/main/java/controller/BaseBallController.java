@@ -3,6 +3,7 @@ package controller;
 import baseball.메세지생성;
 import baseball.숫자맞춤검사;
 import camp.nextstep.edu.missionutils.Console;
+import controller.validate.ContinueValidate;
 import controller.validate.NumberValidate;
 import model.domain.Discriminator;
 import model.service.DiscriminatorService;
@@ -17,6 +18,7 @@ public class BaseBallController {
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
     NumberValidate numberValidate = new NumberValidate();
+    ContinueValidate continueValidate = new ContinueValidate();
     DiscriminatorService discriminatorService = new DiscriminatorService();
     MessageService messageService = new MessageService();
     private static final String RESTART = "1";
@@ -43,14 +45,28 @@ public class BaseBallController {
                     System.out.println(e.getMessage());
                 }
             }
-            System.out.print(playerThreeNumber);
             discriminator = new Discriminator(computerThreeNumber, playerThreeNumber);
             List<Integer> ballAndStrikeNum = discriminatorService.discriminatorResult(discriminator.getPlayer(), discriminator.getComputer());
             ball = ballAndStrikeNum.get(0);
             strike = ballAndStrikeNum.get(1);
-            messageService.resultMessage(ball, strike);
+            String resultMessage = messageService.resultMessage(ball, strike);
+            outputView.gameResultMessage(resultMessage);
         }
-
+        outputView.gameFinishMessage();
+        outputView.tobeContinueMessage();
+        int playerChoose = 0;
+        while (true) {
+            try {
+                playerChoose = inputView.tobeContinueNumber();
+                continueValidate.ContinueValidateMachine(playerChoose);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        if(playerChoose == 1){
+            gameStart();
+        }
     }
     public static void 게임진행(List<Integer> cpNumList){
 

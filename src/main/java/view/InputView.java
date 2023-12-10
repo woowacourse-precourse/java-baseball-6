@@ -8,5 +8,10 @@ public class InputView {
         String threeNumbers = Console.readLine();
         return threeNumbers;
     }
+
+    public int tobeContinueNumber(){
+        String finishOrOneMore = Console.readLine();
+        return Integer.parseInt(finishOrOneMore);
+    }
 }
 
