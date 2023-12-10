@@ -4,6 +4,9 @@ import baseball.메세지생성;
 import baseball.숫자맞춤검사;
 import camp.nextstep.edu.missionutils.Console;
 import controller.validate.NumberValidate;
+import model.domain.Discriminator;
+import model.service.DiscriminatorService;
+import util.RandomUtil;
 import view.InputView;
 import view.OutputView;
 
@@ -13,6 +16,7 @@ public class BaseBallController {
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
     NumberValidate numberValidate = new NumberValidate();
+    DiscriminatorService discriminatorService = new DiscriminatorService();
     private static final String RESTART = "1";
     private static final int THREESTRIKE = 3;
     public void gameStart(){
@@ -20,6 +24,8 @@ public class BaseBallController {
         // 게임 시작 메세지 생성
         outputView.gameStartMessage();
         String playerThreeNumber = "";
+        List<Integer> computerThreeNumber = RandomUtil.randomThreeNumber();
+        Discriminator discriminator;
         //플레이어가 선택한 세가지 번호가 올바른지 검증
         while (true) {
             try {
@@ -33,9 +39,9 @@ public class BaseBallController {
             }
         }
         System.out.print(playerThreeNumber);
+        discriminator = new Discriminator(computerThreeNumber,playerThreeNumber);
+        discriminatorService.discriminatorResult(discriminator.getPlayer(),discriminator.getComputer());
 
-      /*  상대방숫자생성 computerNum = new 상대방숫자생성(3,1,9);
-        게임진행(computerNum.랜덤숫자생성());*/
     }
     public static void 게임진행(List<Integer> cpNumList){
 
