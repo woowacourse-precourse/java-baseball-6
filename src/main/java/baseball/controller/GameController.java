@@ -1,64 +1,60 @@
 package baseball.controller;
 
-import baseball.domain.GameStatus;
-import baseball.response.GameResponse;
-import baseball.service.GameService;
+import baseball.domain.entity.game.GameStatus;
+import baseball.domain.dto.GameResponse;
+import baseball.domain.entity.player.Computer;
+import baseball.domain.entity.player.Player;
+import baseball.domain.entity.player.User;
+import baseball.service.GameServiceImpl;
+import baseball.utils.RandomUtil;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class GameController {
 
-    private static final GameController instance = new GameController();
-    private final GameService gameService;
-    private GameStatus currentGameStatus = GameStatus.CONTINUE;
+    private final GameServiceImpl gameService;
+    private final OutputView outputView;
+    private final InputView inputView;
+    private Player user, computer;
+    private GameStatus currentStatus;
 
-    public static GameController getInstance() {
-        return instance;
-    }
-
-    public GameController() {
-        this.gameService = GameService.getInstance();
-    }
-
-    public GameController(GameService gameService) {
+    public GameController(GameServiceImpl gameService, OutputView outputView,
+        InputView inputView) {
         this.gameService = gameService;
+        this.outputView = outputView;
+        this.inputView = inputView;
     }
 
     public void run() {
-        OutputView.printGameStart();
-        playGame();
+        outputView.printGameStart();
+        play();
     }
 
-    public void playGame() {
-        initializeGame();
-        do {
-            OutputView.printInputNumber();
-            List<Integer> numbers = InputView.inputNumbers();
+    public void initialize() {
+        currentStatus = GameStatus.CONTINUE;
+        computer = Computer.of(RandomUtil.createRandomNumbers());
+    }
 
-            currentGameStatus = playGameRound(numbers);
-        } while (currentGameStatus != GameStatus.END);
+    public void play() {
+        initialize();
+        do {
+            outputView.printInputNumber();
+            user = User.of(inputView.inputNumbers());
+            GameResponse gameResponse = gameService.playGame(user, computer);
+            outputView.printGameResult(gameResponse);
+            currentStatus = gameResponse.getGameStatus();
+        } while (currentStatus != GameStatus.OVER);
         handleGame();
     }
 
-    public GameStatus playGameRound(List<Integer> numbers) {
-        GameResponse response = gameService.playGame(numbers);
-        OutputView.printGameResult(response);
-        return response.getGameStatus();
-    }
-
     public void handleGame() {
-        OutputView.printGameEnd();
-        OutputView.printGameRestart();
-        GameStatus option = GameStatus.fromInt(InputView.inputRestart());
+        outputView.printGameEnd();
+        outputView.printGameRestart();
+        GameStatus option = GameStatus.from(inputView.inputRestart());
 
-        if (option == GameStatus.END) {
+        if (option.isOver()) {
             return;
         }
-        playGame();
-    }
-
-    public void initializeGame() {
-        gameService.initializeGame();
+        play();
     }
 }

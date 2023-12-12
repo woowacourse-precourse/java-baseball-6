@@ -1,6 +1,6 @@
-package baseball.response;
+package baseball.domain.dto;
 
-import baseball.domain.GameStatus;
+import baseball.domain.entity.game.GameStatus;
 
 public class GameResponse {
 
