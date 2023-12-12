@@ -6,6 +6,7 @@ public class NumbersValidator {
     public static void validation(String input) {
         if (input.length() != Constants.NUMBER_SIZE ||
                 !input.matches("\\d+") ||
+                input.contains("0") ||
                 hasDuplicateCharacter(input)) {
             throw new IllegalArgumentException();
         }
