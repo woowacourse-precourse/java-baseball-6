@@ -1,5 +1,7 @@
 package baseball.dto;
 
+import baseball.global.Constants;
+
 public class ResultDto {
     private final int strike;
     private final int ball;
@@ -23,5 +25,9 @@ public class ResultDto {
         }
 
         return result.trim();
+    }
+
+    public boolean isAllStrike() {
+        return strike == Constants.BASEBALL_SIZE;
     }
 }

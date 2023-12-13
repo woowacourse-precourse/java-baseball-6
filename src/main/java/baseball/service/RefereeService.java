@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RefereeService {
 
-    public ResultDto compareNumbers(List<Integer> user, List<Integer> com) {
+    public static ResultDto compareNumbers(List<Integer> user, List<Integer> com) {
         int strike = 0, ball = 0;
         for (int i = 0; i < user.size(); i++) {
             int userNum = user.get(i);
