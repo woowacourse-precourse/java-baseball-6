@@ -21,14 +21,22 @@ public class GameManager {
     public void run() {
         boolean isRunning = true;
         while (isRunning) {
+            computer.generate();
+            isRunning = play();
+        }
+    }
+
+    private boolean play() {
+        while (true) {
             List<Integer> numbers = inputView.enterNumbers();
             HintResult hintResult = computer.generateHintResult(numbers);
             outputView.printHintResult(hintResult);
             if (isSuccess(hintResult)) {
-                outputView.printGameOver();
-                isRunning = inputView.enterRestartOrQuit().isRunning();
+                break;
             }
         }
+        outputView.printGameOver();
+        return inputView.enterRestartOrQuit().isRunning();
     }
 
     private boolean isSuccess(HintResult hintResult) {
