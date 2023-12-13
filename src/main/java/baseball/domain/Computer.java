@@ -1,13 +1,18 @@
 package baseball.domain;
 
 import baseball.global.util.RandomNumberGenerator;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Computer() {
-        this.numbers = RandomNumberGenerator.generateRandomNumber();
+        this.numbers = new ArrayList<>();
+    }
+
+    public void generate() {
+        numbers = RandomNumberGenerator.generateRandomNumber();
     }
 
     public HintResult generateHintResult(List<Integer> givenNumbers) {
