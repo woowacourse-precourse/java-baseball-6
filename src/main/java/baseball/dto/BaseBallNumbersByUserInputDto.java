@@ -17,9 +17,8 @@ public class BaseBallNumbersByUserInputDto {
 
     private List<Integer> convertNumbersByInput() {
         List<Integer> numbers = new ArrayList<>();
-        String[] splitInputNumbers = input.split("");
 
-        for (String num : splitInputNumbers) {
+        for (String num : input.split("")) {
             numbers.add(Integer.parseInt(num));
         }
 

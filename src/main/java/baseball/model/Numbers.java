@@ -20,6 +20,10 @@ public class Numbers {
         this.numbers = new ArrayList<>(numbers);
     }
 
+    public List<Integer> getNumbers() {
+        return List.copyOf(numbers);
+    }
+
     private void validateDistinct(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != numbers.size()) {
