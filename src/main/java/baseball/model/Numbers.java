@@ -1,17 +1,15 @@
 package baseball.model;
 
+import static baseball.util.Constants.BASEBALL_SIZE;
+import static baseball.util.Constants.END_NUM;
+import static baseball.util.Constants.START_NUM;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Numbers {
-
-    private final int START_NUM = 1;
-
-    private final int END_NUM = 9;
-
-    private final int BASEBALL_SIZE = 3;
 
     private List<Integer> numbers;
 
