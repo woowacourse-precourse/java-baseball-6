@@ -23,7 +23,7 @@ public class Numbers {
     private void validateDistinct(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != numbers.size()) {
-            throw new IllegalArgumentException("중복된 숫자가 존재합니다" + numbers);
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재합니다" + numbers);
         }
     }
 
