@@ -87,3 +87,17 @@
 
 - [x] 무작위 3개의 조건에 맞는 숫자를 선택한다.
 - [x] Numbers를 발급하여 반환한다.
+
+### BaseBallNumbersByUserInputDto
+
+- [x] input값을 List 으로 변환하는 private 메서드 : convertNumbersByInput()
+- [x] 그 리스트를 Numbers로 변환하고 반환하는 메서드 : toNumbers()
+- [x] input을 저장해놓은 필드
+
+### InputView
+
+- [ ] 3개의 숫자를 입력받는다.
+- [ ] 1개의 숫자 (1,2 / 시작,종료)를 입력받는다.
+- [ ] 숫자가 아니면 예외처리
+- [ ] 띄어쓰기도 불허용
+- [ ] 입력받은 문자열을 유효성 검사 후 dto로 변환하고 반환 

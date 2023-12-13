@@ -1,8 +1,8 @@
 package baseball.model;
 
-import static baseball.util.Constants.BASEBALL_SIZE;
-import static baseball.util.Constants.END_NUM;
-import static baseball.util.Constants.START_NUM;
+import static baseball.global.Constants.BASEBALL_SIZE;
+import static baseball.global.Constants.END_NUM;
+import static baseball.global.Constants.START_NUM;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class Numbers {
 
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public Numbers(List<Integer> numbers) {
         validateSize(numbers);

@@ -1,8 +1,8 @@
 package baseball.service;
 
-import static baseball.util.Constants.BASEBALL_SIZE;
-import static baseball.util.Constants.END_NUM;
-import static baseball.util.Constants.START_NUM;
+import static baseball.global.Constants.BASEBALL_SIZE;
+import static baseball.global.Constants.END_NUM;
+import static baseball.global.Constants.START_NUM;
 
 import baseball.model.Numbers;
 import camp.nextstep.edu.missionutils.Randoms;
