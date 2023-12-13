@@ -37,11 +37,14 @@ public class UserNumber {
     }
 
     private static void lengthCheck(final List<Integer> numbers) {
-        if (numbers.size() < 3) {
+        lengthLower(numbers);
+        if (numbers.size() > 3) {
             throw IllegalArgumentExceptionType.INVALID_INPUT.getException();
         }
+    }
 
-        if (numbers.size() > 3) {
+    private static void lengthLower(final List<Integer> numbers) {
+        if (numbers.size() < 3) {
             throw IllegalArgumentExceptionType.INVALID_INPUT.getException();
         }
     }

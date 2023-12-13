@@ -57,4 +57,8 @@ public class OutputView {
     public void printCloseGame() {
         System.out.println(CLOSE_MESSAGE);
     }
+
+    public void printErrorMessage(final String message) {
+            System.out.println(message);
+    }
 }

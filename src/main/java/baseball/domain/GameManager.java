@@ -34,4 +34,8 @@ public class GameManager {
     public boolean hasAllStrike() {
         return baseballMachine.hasAllMatched(userNumber.getNumbers());
     }
+
+    public void retry() {
+        baseballMachine.updateNumber();
+    }
 }

@@ -1,10 +1,11 @@
 package baseball.domain;
 
+import baseball.util.NumberGenerator;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class BaseballMachine {
-    private final List<Integer> machine;
+    private static List<Integer> machine;
 
     private BaseballMachine(List<Integer> machine) {
         this.machine = machine;
@@ -14,7 +15,7 @@ public class BaseballMachine {
         return new BaseballMachine(machine);
     }
 
-    public void printMachineNumber() {
+    public static void printMachineNumber() {
         System.out.println(machine.toString());
     }
 
@@ -33,5 +34,9 @@ public class BaseballMachine {
     public boolean hasAllMatched(final List<Integer> numbers) {
         return IntStream.range(0, Math.min(machine.size(), numbers.size()))
                 .allMatch(i -> machine.get(i).equals(numbers.get(i)));
+    }
+
+    public void updateNumber() {
+        this.machine = NumberGenerator.generateRandomNumbers();
     }
 }

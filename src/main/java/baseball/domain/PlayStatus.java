@@ -23,4 +23,8 @@ public enum PlayStatus {
     public String getStatus() {
         return status;
     }
+
+    public boolean isRetry() {
+        return this == RETRY;
+    }
 }

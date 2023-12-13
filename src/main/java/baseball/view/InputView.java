@@ -11,7 +11,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public String readRetry() {
+    public String readPlayCommand() {
         System.out.println(INPUT_RETRY);
         return Console.readLine();
     }
