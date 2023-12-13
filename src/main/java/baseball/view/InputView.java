@@ -22,7 +22,7 @@ public class InputView {
         validateDuplicated(numbers);
         List<Integer> result = new ArrayList<>();
         for (String number : numbers) {
-            int value = Validator.validateNumber(message);
+            int value = Validator.validateNumber(number);
             Validator.validateRange(value, 1, 9);
             result.add(value);
         }
@@ -40,7 +40,7 @@ public class InputView {
     }
 
     private static String[] split(String message, String separator) {
-        return message.split(separator, -1);
+        return message.split(separator);
     }
 
     private static void validateDuplicated(List<String> items) {
