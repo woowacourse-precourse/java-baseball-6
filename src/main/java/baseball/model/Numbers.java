@@ -39,7 +39,7 @@ public class Numbers {
 
     private void validateScope(List<Integer> numbers) {
         boolean flag = numbers.stream()
-                .allMatch(num -> START_NUM < num && num < END_NUM);
+                .allMatch(num -> START_NUM <= num && num <= END_NUM);
         if (!flag) {
             throw new IllegalArgumentException("[ERROR] 숫자 범위에 포함되지 않는 숫자가 있습니다 " + numbers);
         }
