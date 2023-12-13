@@ -119,5 +119,7 @@
 
 ### RefereeService
 
-- [ ] 두개의 Numbers를 비교해서 ResultDto 반환
-- 
+- [x] 두개의 Numbers를 비교해서 ResultDto 반환
+
+### Controller
+
