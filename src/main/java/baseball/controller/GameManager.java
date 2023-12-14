@@ -2,9 +2,11 @@ package baseball.controller;
 
 import baseball.domain.Computer;
 import baseball.domain.HintResult;
+import baseball.domain.Numbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
+import baseball.view.console.ConsoleWriter;
+import java.util.function.Supplier;
 
 public class GameManager {
     private final InputView inputView;
@@ -28,7 +30,9 @@ public class GameManager {
 
     private boolean play() {
         while (true) {
-            List<Integer> numbers = inputView.enterNumbers();
+            Numbers numbers = retry(() -> {
+                return new Numbers(inputView.enterNumbers());
+            });
             HintResult hintResult = computer.generateHintResult(numbers);
             outputView.printHintResult(hintResult);
             if (isSuccess(hintResult)) {
@@ -36,10 +40,22 @@ public class GameManager {
             }
         }
         outputView.printGameOver();
-        return inputView.enterRestartOrQuit().isRunning();
+        return retry(() -> {
+            return inputView.enterRestartOrQuit().isRunning();
+        });
     }
 
     private boolean isSuccess(HintResult hintResult) {
         return hintResult.strike() == 3;
+    }
+
+    private static <T> T retry(Supplier<T> supplier) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (IllegalArgumentException e) {
+                ConsoleWriter.printlnMessage(e.getMessage());
+            }
+        }
     }
 }
