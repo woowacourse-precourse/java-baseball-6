@@ -15,7 +15,7 @@ public class Computer {
         numbers = RandomNumberGenerator.generateRandomNumber();
     }
 
-    public HintResult generateHintResult(List<Integer> givenNumbers) {
+    public HintResult generateHintResult(Numbers givenNumbers) {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < numbers.size(); i++) {
@@ -27,7 +27,7 @@ public class Computer {
         return new HintResult(strike, ball);
     }
 
-    private int isBallIndex(int i, List<Integer> givenNumbers) {
+    private int isBallIndex(int i, Numbers givenNumbers) {
         for (int j = 0; j < givenNumbers.size(); j++) {
             if (i != j && numbers.get(i) == givenNumbers.get(j)) {
                 return 1;
