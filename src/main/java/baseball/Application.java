@@ -1,9 +1,11 @@
 package baseball;
 
+import baseball.controller.Controller;
+
 public class Application {
 
     public static void main(String[] args) {
-        Player player = new Player();
-        player.start();
+        Controller controller = new Controller(ApplicationConfig.baseballService());
+        controller.run();
     }
 }
