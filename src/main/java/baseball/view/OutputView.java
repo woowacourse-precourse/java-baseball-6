@@ -2,7 +2,7 @@ package baseball.view;
 
 public class OutputView {
 
-    public static void gameStart() {
+    public static void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
@@ -20,7 +20,7 @@ public class OutputView {
         System.out.println(sb);
     }
 
-    public static void gameOver() {
+    public static void printGameOver() {
         System.out.println("게임 종료");
     }
 }

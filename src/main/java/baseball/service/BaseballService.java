@@ -20,7 +20,7 @@ public class BaseballService {
     }
 
     public boolean strikeOut(Ball playerBall) {
-        return answerBall.checkStrike(playerBall) == 3;
+        return answerBall.checkStrikeOut(playerBall);
     }
 
 }

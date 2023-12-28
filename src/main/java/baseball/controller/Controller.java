@@ -19,28 +19,22 @@ public class Controller {
     }
 
     public void run() {
-        OutputView.gameStart();
-        while (true) {
+        OutputView.printGameStart();
+        Button button;
+        do {
             play();
-            Button button = button();
-            if (button.isGameOver()) {
-                break;
-            }
-        }
-        OutputView.gameOver();
+            button = button();
+        } while (button != Button.GAME_OVER);
+        OutputView.printGameOver();
     }
 
     private void play() {
         baseballService.init();
-        while (true) {
-            Ball playerBall = playerBall();
-            int strike = baseballService.getStrike(playerBall);
-            int ball = baseballService.getBall(playerBall);
-            OutputView.printCount(strike, ball);
-            if (baseballService.strikeOut(playerBall)) {
-                break;
-            }
-        }
+        Ball playerBall;
+        do {
+            playerBall = playerBall();
+            OutputView.printCount(baseballService.getStrike(playerBall), baseballService.getBall(playerBall));
+        } while (!baseballService.strikeOut(playerBall));
     }
 
     private Ball playerBall() {
@@ -55,6 +49,6 @@ public class Controller {
 
     private Button button() {
         ButtonRequestDto buttonRequestDto = InputView.inputButton();
-        return Button.findButton(buttonRequestDto.getName());
+        return Button.findByName(buttonRequestDto.getName());
     }
 }

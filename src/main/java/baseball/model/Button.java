@@ -1,7 +1,6 @@
 package baseball.model;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public enum Button {
 
@@ -14,17 +13,10 @@ public enum Button {
         this.name = name;
     }
 
-    public static Button findButton(String name) {
-        Optional<Button> button = Arrays.stream(Button.values())
+    public static Button findByName(String name) {
+        return Arrays.stream(Button.values())
                 .filter(b -> b.name.equals(name))
-                .findFirst();
-        if (button.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-        return button.get();
-    }
-
-    public boolean isGameOver() {
-        return this == GAME_OVER;
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }

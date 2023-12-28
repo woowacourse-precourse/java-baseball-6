@@ -46,4 +46,8 @@ public class Ball {
     private boolean isBall(Ball ball, int index) {
         return !isStrike(ball, index) && this.numbers.contains(ball.numbers.get(index));
     }
+
+    public boolean checkStrikeOut(Ball ball) {
+        return checkStrike(ball) == 3;
+    }
 }
