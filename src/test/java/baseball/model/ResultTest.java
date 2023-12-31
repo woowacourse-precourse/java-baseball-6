@@ -11,8 +11,7 @@ public class ResultTest {
         Ball answer = new Ball(List.of(1, 2, 3));
         Ball player = new Ball(List.of(1, 3, 4));
 
-        Result result = new Result(answer, player);
-        Assertions.assertThat(result.toString())
+        Assertions.assertThat(new Result(answer, player).toString())
                 .isEqualTo("1볼 1스트라이크");
     }
 
@@ -20,9 +19,8 @@ public class ResultTest {
     void 삼진아웃_확인_테스트() {
         Ball answer = new Ball(List.of(1, 2, 3));
         Ball player = new Ball(List.of(1, 2, 3));
-
-        Result result = new Result(answer, player);
-        Assertions.assertThat(result.isStrikeOut())
+        
+        Assertions.assertThat(new Result(answer, player).isStrikeOut())
                 .isEqualTo(true);
     }
 }

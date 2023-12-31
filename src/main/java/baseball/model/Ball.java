@@ -10,11 +10,18 @@ public class Ball {
 
     public Ball(List<Integer> digits) {
         validateBallSize(digits);
+        validateDistinctDigit(digits);
         this.digits = digits;
     }
 
     private void validateBallSize(List<Integer> digits) {
         if (digits.size() != BALL_SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDistinctDigit(List<Integer> digits) {
+        if (digits.stream().distinct().count() != digits.size()) {
             throw new IllegalArgumentException();
         }
     }
