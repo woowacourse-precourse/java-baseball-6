@@ -18,19 +18,17 @@ public class BallTest {
     void 스트라이크_확인_테스트() {
         Ball answer = new Ball(List.of(1, 2, 3));
         Ball player = new Ball(List.of(1, 3, 4));
-        int index = 0;
 
-        Assertions.assertThat(answer.isStrike(player, index))
-                .isEqualTo(true);
+        Assertions.assertThat(answer.checkStrike(player))
+                .isEqualTo(1);
     }
 
     @Test
     void 볼_확인_테스트() {
         Ball answer = new Ball(List.of(1, 2, 3));
         Ball player = new Ball(List.of(1, 3, 4));
-        int index = 1;
 
-        Assertions.assertThat(answer.isBall(player, index))
-                .isEqualTo(true);
+        Assertions.assertThat(answer.checkBall(player))
+                .isEqualTo(1);
     }
 }

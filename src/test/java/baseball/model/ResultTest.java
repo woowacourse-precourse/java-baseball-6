@@ -15,4 +15,14 @@ public class ResultTest {
         Assertions.assertThat(result.toString())
                 .isEqualTo("1볼 1스트라이크");
     }
+
+    @Test
+    void 삼진아웃_확인_테스트() {
+        Ball answer = new Ball(List.of(1, 2, 3));
+        Ball player = new Ball(List.of(1, 2, 3));
+
+        Result result = new Result(answer, player);
+        Assertions.assertThat(result.isStrikeOut())
+                .isEqualTo(true);
+    }
 }

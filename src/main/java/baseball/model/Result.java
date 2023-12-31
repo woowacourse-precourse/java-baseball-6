@@ -1,36 +1,15 @@
 package baseball.model;
 
-import static constants.BallDetails.BALL_SIZE;
-
 public class Result {
 
     private final int strike;
     private final int ball;
 
     public Result(Ball answer, Ball player) {
-        strike = checkStrike(answer, player);
-        ball = checkBall(answer, player);
+        strike = answer.checkStrike(player);
+        ball = answer.checkBall(player);
     }
 
-    private int checkStrike(Ball answer, Ball player) {
-        int strike = 0;
-        for (int i = 0; i < BALL_SIZE; i++) {
-            if (answer.isStrike(player, i)) {
-                ++strike;
-            }
-        }
-        return strike;
-    }
-
-    private int checkBall(Ball answer, Ball player) {
-        int ball = 0;
-        for (int i = 0; i < BALL_SIZE; i++) {
-            if (answer.isBall(player, i)) {
-                ++ball;
-            }
-        }
-        return ball;
-    }
 
     public boolean isStrikeOut() {
         return strike == 3;
