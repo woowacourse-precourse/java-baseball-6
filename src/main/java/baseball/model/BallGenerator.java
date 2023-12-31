@@ -9,13 +9,13 @@ import java.util.List;
 public class BallGenerator {
 
     public static Ball generateBall() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < BALL_SIZE) {
+        List<Integer> digits = new ArrayList<>();
+        while (digits.size() < BALL_SIZE) {
             int number = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(number)) {
-                numbers.add(number);
+            if (!digits.contains(number)) {
+                digits.add(number);
             }
         }
-        return new Ball(numbers);
+        return new Ball(digits);
     }
 }

@@ -1,26 +1,22 @@
 package baseball.service;
 
 import baseball.model.Ball;
-import baseball.model.BallGenerator;
+import baseball.model.Result;
 
 public class BaseballService {
 
-    private Ball answerBall;
+    private Result result;
 
-    public void init() {
-        answerBall = BallGenerator.generateBall();
+    public void check(Ball answer, Ball player) {
+        result = new Result(answer, player);
     }
 
-    public int getStrike(Ball playerBall) {
-        return answerBall.checkStrike(playerBall);
+    public Result getResult() {
+        return result;
     }
 
-    public int getBall(Ball playerBall) {
-        return answerBall.checkBall(playerBall);
-    }
-
-    public boolean strikeOut(Ball playerBall) {
-        return answerBall.checkStrikeOut(playerBall);
+    public boolean isStrikeOut() {
+        return result.isStrikeOut();
     }
 
 }

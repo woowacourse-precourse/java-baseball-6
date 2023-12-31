@@ -1,11 +1,12 @@
 package baseball;
 
-import baseball.controller.Controller;
+import baseball.controller.BaseballController;
 
 public class Application {
 
     public static void main(String[] args) {
-        Controller controller = new Controller(ApplicationConfig.baseballService());
+        ApplicationConfig applicationConfig = new ApplicationConfig();
+        BaseballController controller = new BaseballController(applicationConfig.baseballService());
         controller.run();
     }
 }
