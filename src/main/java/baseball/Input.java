@@ -7,7 +7,6 @@ import java.util.Objects;
 
 public class Input {
     public ArrayList<Integer> inputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         return validate(input);
     }
