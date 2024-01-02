@@ -2,21 +2,24 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 public class Input {
-    public int[] inputNumber() {
+    public ArrayList<Integer> inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         return validate(input);
     }
 
-    private int[] validate(String input) {
+    private ArrayList<Integer> validate(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리가 아님");
         }
         if (!isAllNumber(input)){
             throw new IllegalArgumentException("숫자가 아님");
         }
-        int[] numbers = this.convertToNumbers(input);
+        ArrayList<Integer> numbers = this.convertToNumbers(input);
         if (!isAllDifferent(numbers)){
             throw new IllegalArgumentException("같은 숫자가 있음");
         }
@@ -32,14 +35,15 @@ public class Input {
         return true;
     }
 
-    private int[] convertToNumbers(String input){
-        int[] numbers = new int[3];
+    private ArrayList<Integer> convertToNumbers(String input){
+        ArrayList<Integer> numbers = new ArrayList<>(3);
         for(int i = 0;i < 3;i++){
-            numbers[i] = input.charAt(i);
+            int digit = Character.getNumericValue(input.charAt(i));
+            numbers.add(digit);
         }
         return numbers;
     }
-    private boolean isAllDifferent(int[] numbers){
-        return numbers[0] != numbers[1] && numbers[1] != numbers[2] && numbers[0] != numbers[2];
+    private boolean isAllDifferent(ArrayList<Integer> numbers){
+        return !Objects.equals(numbers.get(0), numbers.get(1)) && !Objects.equals(numbers.get(1), numbers.get(2)) && !Objects.equals(numbers.get(0), numbers.get(2));
     }
 }
