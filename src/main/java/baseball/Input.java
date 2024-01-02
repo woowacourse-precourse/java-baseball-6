@@ -8,10 +8,16 @@ import java.util.Objects;
 public class Input {
     public static ArrayList<Integer> inputNumber() {
         String input = Console.readLine();
-        return validate(input);
+        return validateNumber(input);
     }
 
-    private static ArrayList<Integer> validate(String input) {
+    public static boolean inputGameContinue() {
+        String input = Console.readLine();
+        validateGameContinue(input);
+        return input.charAt(0) == '1';
+    }
+
+    private static ArrayList<Integer> validateNumber(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리가 아님");
         }
@@ -23,6 +29,15 @@ public class Input {
             throw new IllegalArgumentException("같은 숫자가 있음");
         }
         return numbers;
+    }
+
+    private static void validateGameContinue(String input) {
+        if (input.length() != 1) {
+            throw new IllegalArgumentException("1자리가 아님");
+        }
+        if (!is1Or2(input)) {
+            throw new IllegalArgumentException("형식이 다름");
+        }
     }
 
     private static boolean isAllNumber(String input){
@@ -44,5 +59,9 @@ public class Input {
     }
     private static boolean isAllDifferent(ArrayList<Integer> numbers){
         return !Objects.equals(numbers.get(0), numbers.get(1)) && !Objects.equals(numbers.get(1), numbers.get(2)) && !Objects.equals(numbers.get(0), numbers.get(2));
+    }
+
+    private static boolean is1Or2(String input) {
+        return input.charAt(0) == '1' || input.charAt(0) == '2';
     }
 }
