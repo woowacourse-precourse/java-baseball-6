@@ -15,6 +15,10 @@ public enum PlayerDecision {
         this.sign = sign;
     }
 
+    public boolean isKeepPlaying() {
+        return this.equals(RESTART);
+    }
+
     public static PlayerDecision of(int intParameter) {
         return switch (intParameter) {
             case 1 -> RESTART;
