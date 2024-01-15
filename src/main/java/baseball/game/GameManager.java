@@ -10,8 +10,8 @@ public class GameManager {
 
     public void manage() {
         do {
-            Game game = new Game();
-            game.run();
+            BaseballGame baseballGame = new BaseballGame();
+            baseballGame.run();
 
             resolvePlayerDecisionFromInput();
         } while (playerDecision.isKeepPlaying());
