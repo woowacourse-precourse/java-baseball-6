@@ -13,7 +13,7 @@ public class Inning {
     private int ballCount = 0;
 
 
-    public String referee(BaseBallMount computerMount, BaseBallMount playerMount) {
+    public String referee(Pitch computerMount, Pitch playerMount) {
         calculateResult(computerMount, playerMount);
         return judgeMountResult();
     }
@@ -23,7 +23,7 @@ public class Inning {
         return strikeCount == FULL_STRIKE && ballCount == ZERO;
     }
 
-    private void calculateResult(BaseBallMount computerMount, BaseBallMount playerMount) {
+    private void calculateResult(Pitch computerMount, Pitch playerMount) {
         List<BaseBall> computerBaseBalls = computerMount.getBaseBalls();
         List<BaseBall> playerBaseBalls = playerMount.getBaseBalls();
 

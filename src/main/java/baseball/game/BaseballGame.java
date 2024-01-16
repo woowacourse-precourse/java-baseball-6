@@ -1,8 +1,8 @@
 package baseball.game;
 
 import baseball.domain.BaseBall;
-import baseball.domain.BaseBallMount;
 import baseball.domain.Inning;
+import baseball.domain.Pitch;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ public class BaseballGame {
     public static final String GAME_SUCCESSFULLY_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
 
-    private BaseBallMount computerMount;
-    private BaseBallMount playerMount;
+    private Pitch computerPitch;
+    private Pitch playerPitch;
 
-    private void setPlayerMount(List<BaseBall> baseBalls) {
-        this.playerMount = new BaseBallMount(baseBalls);
+    private void setPlayerPitch(List<BaseBall> baseBalls) {
+        this.playerPitch = new Pitch(baseBalls);
     }
 
     public void run() {
@@ -29,10 +29,10 @@ public class BaseballGame {
             Inning inning = new Inning();
 
             List<BaseBall> inputBaseBalls = resolveBaseBallsFromInput();
-            setPlayerMount(inputBaseBalls);
+            setPlayerPitch(inputBaseBalls);
 
             // 게임 결과 처리
-            String result = inning.referee(computerMount, playerMount);
+            String result = inning.referee(computerPitch, playerPitch);
             System.out.println(result);
 
             if (inning.isAllStrike()) {
@@ -45,7 +45,7 @@ public class BaseballGame {
 
     private void initializeComputerMount() {
         List<BaseBall> computerBaseBalls = new ArrayList<>();
-        while (computerBaseBalls.size() < BaseBallMount.VALID_BASEBALL_MOUNT_SIZE) {
+        while (computerBaseBalls.size() < Pitch.VALID_BASEBALL_MOUNT_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(BaseBall.MIN_VALUE, BaseBall.MAX_VALUE);
 
             List<Integer> computerBaseBallValues = computerBaseBalls.stream().map(BaseBall::getValue).toList();
@@ -53,7 +53,7 @@ public class BaseballGame {
                 computerBaseBalls.add(new BaseBall(randomNumber));
             }
         }
-        this.computerMount = new BaseBallMount(computerBaseBalls);
+        this.computerPitch = new Pitch(computerBaseBalls);
     }
 
     private List<BaseBall> resolveBaseBallsFromInput() {
