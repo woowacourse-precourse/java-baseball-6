@@ -1,40 +1,24 @@
 package baseball.domain;
 
-import java.util.List;
-
 /**
  * Inning : 한 이닝의 결과를 계산하고 판정하는 역할. 의존성: BaseBallMount, Sign
  */
 public class Inning {
     public static final int ZERO = 0;
-    public static final int FULL_STRIKE = 3;
+    public static final int FULL_STRIKE_COUNT = 3;
 
     private int strikeCount = 0;
     private int ballCount = 0;
 
 
-    public String referee(Pitch computerMount, Pitch playerMount) {
-        calculateResult(computerMount, playerMount);
+    public String referee(Pitch computerPitch, Pitch playerPitch) {
+        this.strikeCount = computerPitch.calculateStrikeCount(playerPitch);
+        this.ballCount = computerPitch.calculateBallCount(playerPitch);
         return judgeMountResult();
     }
 
-
     public boolean isAllStrike() {
-        return strikeCount == FULL_STRIKE && ballCount == ZERO;
-    }
-
-    private void calculateResult(Pitch computerMount, Pitch playerMount) {
-        List<BaseBall> computerBaseBalls = computerMount.getBaseBalls();
-        List<BaseBall> playerBaseBalls = playerMount.getBaseBalls();
-
-        // TODO: 이건 BaseBallMount의 책임.
-        for (int i = 0; i < playerBaseBalls.size(); i++) {
-            if (computerBaseBalls.get(i).equals(playerBaseBalls.get(i))) {
-                this.strikeCount++;
-            } else if (computerBaseBalls.contains(playerBaseBalls.get(i))) {
-                this.ballCount++;
-            }
-        }
+        return strikeCount == FULL_STRIKE_COUNT && ballCount == ZERO;
     }
 
     private String judgeMountResult() {

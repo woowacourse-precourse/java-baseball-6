@@ -16,20 +16,17 @@ public class BaseballGame {
     private Pitch computerPitch;
     private Pitch playerPitch;
 
-    private void setPlayerPitch(List<BaseBall> baseBalls) {
-        this.playerPitch = new Pitch(baseBalls);
-    }
 
     public void run() {
         System.out.println(GAME_START_MESSAGE);
 
-        initializeComputerMount();
+        initializeComputerPitch();
 
         while (true) {
             Inning inning = new Inning();
 
             List<BaseBall> inputBaseBalls = resolveBaseBallsFromInput();
-            setPlayerPitch(inputBaseBalls);
+            this.playerPitch = new Pitch(Inning.FULL_STRIKE_COUNT, inputBaseBalls);
 
             // 게임 결과 처리
             String result = inning.referee(computerPitch, playerPitch);
@@ -43,9 +40,9 @@ public class BaseballGame {
     }
 
 
-    private void initializeComputerMount() {
+    private void initializeComputerPitch() {
         List<BaseBall> computerBaseBalls = new ArrayList<>();
-        while (computerBaseBalls.size() < Pitch.VALID_BASEBALL_MOUNT_SIZE) {
+        while (computerBaseBalls.size() < Inning.FULL_STRIKE_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(BaseBall.MIN_VALUE, BaseBall.MAX_VALUE);
 
             List<Integer> computerBaseBallValues = computerBaseBalls.stream().map(BaseBall::getValue).toList();
@@ -53,7 +50,7 @@ public class BaseballGame {
                 computerBaseBalls.add(new BaseBall(randomNumber));
             }
         }
-        this.computerPitch = new Pitch(computerBaseBalls);
+        this.computerPitch = new Pitch(Inning.FULL_STRIKE_COUNT, computerBaseBalls);
     }
 
     private List<BaseBall> resolveBaseBallsFromInput() {
