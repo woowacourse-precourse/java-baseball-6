@@ -7,11 +7,18 @@ public class Inning {
     public static final int ZERO = 0;
     public static final int FULL_STRIKE_COUNT = 3;
 
+    private final Pitch computerPitch;
+    private final Pitch playerPitch;
     private int strikeCount = 0;
     private int ballCount = 0;
 
+    public Inning(Pitch computerPitch, Pitch playerPitch) {
+        this.computerPitch = computerPitch;
+        this.playerPitch = playerPitch;
+    }
 
-    public String referee(Pitch computerPitch, Pitch playerPitch) {
+
+    public String referee() {
         this.strikeCount = computerPitch.calculateStrikeCount(playerPitch);
         this.ballCount = computerPitch.calculateBallCount(playerPitch);
         return judgeMountResult();

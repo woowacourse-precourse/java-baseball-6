@@ -3,7 +3,7 @@ package baseball.domain;
 import java.util.List;
 
 /**
- * 피칭 역할. 책임: 야구공들에 대한 검증, 야구공들의 스트라이크 카운트, 볼 카운트
+ * Pitch : 한쪽 플레이어의 야구공 3자리를 관리하는 역할. 책임: 야구공들에 대한 검증, 상대방과의 스트라이크 카운트 및 볼 카운트 비교
  */
 public class Pitch {
     public static final String INVALID_BASEBALL_MOUNT_SIZE_MESSAGE = "세자리 수를 입력해주세요";

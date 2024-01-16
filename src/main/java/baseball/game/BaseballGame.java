@@ -13,23 +13,20 @@ public class BaseballGame {
     public static final String GAME_SUCCESSFULLY_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
 
-    private Pitch computerPitch;
-    private Pitch playerPitch;
-
 
     public void run() {
         System.out.println(GAME_START_MESSAGE);
 
-        initializeComputerPitch();
-
         while (true) {
-            Inning inning = new Inning();
+            // Pitch 생성 책임
+            Pitch computer = initializeComputerPitch();
+            Pitch player = resolveBaseBallsFromInput();
 
-            List<BaseBall> inputBaseBalls = resolveBaseBallsFromInput();
-            this.playerPitch = new Pitch(Inning.FULL_STRIKE_COUNT, inputBaseBalls);
+            // Inning - Pitch 관계 설정의 책임
+            Inning inning = new Inning(computer, player);
 
             // 게임 결과 처리
-            String result = inning.referee(computerPitch, playerPitch);
+            String result = inning.referee();
             System.out.println(result);
 
             if (inning.isAllStrike()) {
@@ -40,7 +37,7 @@ public class BaseballGame {
     }
 
 
-    private void initializeComputerPitch() {
+    private Pitch initializeComputerPitch() {
         List<BaseBall> computerBaseBalls = new ArrayList<>();
         while (computerBaseBalls.size() < Inning.FULL_STRIKE_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(BaseBall.MIN_VALUE, BaseBall.MAX_VALUE);
@@ -50,10 +47,10 @@ public class BaseballGame {
                 computerBaseBalls.add(new BaseBall(randomNumber));
             }
         }
-        this.computerPitch = new Pitch(Inning.FULL_STRIKE_COUNT, computerBaseBalls);
+        return new Pitch(Inning.FULL_STRIKE_COUNT, computerBaseBalls);
     }
 
-    private List<BaseBall> resolveBaseBallsFromInput() {
+    private Pitch resolveBaseBallsFromInput() {
         System.out.print(INPUT_GUIDE_MESSAGE);
         String input = Console.readLine();
 
@@ -64,7 +61,7 @@ public class BaseballGame {
                 BaseBall baseBall = new BaseBall(value);
                 baseBalls.add(baseBall);
             }
-            return baseBalls;
+            return new Pitch(Inning.FULL_STRIKE_COUNT, baseBalls);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
