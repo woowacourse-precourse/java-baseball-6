@@ -5,7 +5,7 @@ import baseball.domain.BaseBallMount;
 import java.util.List;
 import java.util.Objects;
 
-public class MountResult {
+public class Referee {
     public static final int ZERO = 0;
     public static final int FULL_STRIKE = 3;
     public static final String NOTHING_SIGN = "낫싱";
@@ -24,11 +24,11 @@ public class MountResult {
         return ballCount;
     }
 
-    public boolean isNotAllStrike() {
-        return !(strikeCount == FULL_STRIKE && ballCount == ZERO);
+    public boolean isAllStrike() {
+        return strikeCount == FULL_STRIKE && ballCount == ZERO;
     }
 
-    public String referee(BaseBallMount computerMount, BaseBallMount playerMount) {
+    public String judge(BaseBallMount computerMount, BaseBallMount playerMount) {
         calculateResult(computerMount, playerMount);
         return judgeMountResult();
     }
@@ -37,6 +37,7 @@ public class MountResult {
         List<BaseBall> computerBaseBalls = computerMount.getBaseBalls();
         List<BaseBall> playerBaseBalls = playerMount.getBaseBalls();
 
+        // TODO: 이건 BaseBallMount의 책임.
         for (int i = 0; i < playerBaseBalls.size(); i++) {
             if (Objects.equals(computerBaseBalls.get(i), playerBaseBalls.get(i))) {
                 this.strikeCount++;

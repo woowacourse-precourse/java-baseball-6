@@ -12,7 +12,7 @@ public class BaseballGame {
     public static final String GAME_SUCCESSFULLY_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
 
-    private MountResult mountResult;
+    private Referee referee;
     private BaseBallMount computerMount;
     private BaseBallMount playerMount;
 
@@ -33,15 +33,15 @@ public class BaseballGame {
             setPlayerMount(inputBaseBalls);
 
             // 게임 결과 처리
-            String result = mountResult.referee(computerMount, playerMount);
+            String result = referee.judge(computerMount, playerMount);
             System.out.println(result);
-        } while (mountResult.isNotAllStrike());
+        } while (!referee.isAllStrike());
 
         System.out.println(GAME_SUCCESSFULLY_END_MESSAGE);
     }
 
     private void initializeMountResult() {
-        this.mountResult = new MountResult();
+        this.referee = new Referee();
     }
 
     private void initializeComputerMount() {
