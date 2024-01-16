@@ -2,6 +2,7 @@ package baseball.game;
 
 import baseball.domain.BaseBall;
 import baseball.domain.BaseBallMount;
+import baseball.domain.Inning;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -12,7 +13,6 @@ public class BaseballGame {
     public static final String GAME_SUCCESSFULLY_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
 
-    private Referee referee;
     private BaseBallMount computerMount;
     private BaseBallMount playerMount;
 
@@ -25,24 +25,23 @@ public class BaseballGame {
 
         initializeComputerMount();
 
-        do {
-            // 숫자 입력 및 컴퓨터 야구공 초기화
-            initializeMountResult();
+        while (true) {
+            Inning inning = new Inning();
 
             List<BaseBall> inputBaseBalls = resolveBaseBallsFromInput();
             setPlayerMount(inputBaseBalls);
 
             // 게임 결과 처리
-            String result = referee.judge(computerMount, playerMount);
+            String result = inning.referee(computerMount, playerMount);
             System.out.println(result);
-        } while (!referee.isAllStrike());
 
+            if (inning.isAllStrike()) {
+                break;
+            }
+        }
         System.out.println(GAME_SUCCESSFULLY_END_MESSAGE);
     }
 
-    private void initializeMountResult() {
-        this.referee = new Referee();
-    }
 
     private void initializeComputerMount() {
         List<BaseBall> computerBaseBalls = new ArrayList<>();
