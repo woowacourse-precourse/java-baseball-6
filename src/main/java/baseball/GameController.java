@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.view.InputView;
+import baseball.view.OutputView;
+
 public class GameController {
 
     private final OutputView outputView;
@@ -18,14 +21,16 @@ public class GameController {
     }
 
     private void playOneGame() {
-        BaseballGame game = new BaseballGame(BaseballNumbers.randomNumber());
+        BaseballGame game = BaseballGame.of(BaseballNumbers.randomNumber());
         GameResult result;
+
         do {
             outputView.printAskNumber();
             BaseballNumbers userNumber = readUserNumberInput();
             result = game.judge(userNumber);
             outputView.printResult(result);
         } while (isPlaying(result));
+
         outputView.printEnd();
     }
 
@@ -40,7 +45,9 @@ public class GameController {
 
     private boolean askRestart() {
         outputView.printAskRestart();
-        GameCommand command = GameCommand.from(inputView.readUserInput());
-        return command.isRestart();
+        //GameCommand command = GameCommand.from(inputView.readUserInput());
+
+        //return command.isRestart();
+        return false;
     }
 }
