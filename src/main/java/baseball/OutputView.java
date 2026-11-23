@@ -14,5 +14,6 @@ public class OutputView {
     }
 
     public void printAskRestart() {
+
     }
 }

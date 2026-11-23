@@ -5,5 +5,6 @@ public class BaseballNumbers {
     }
 
     public static BaseballNumbers from(String input) {
+        return null;
     }
 }

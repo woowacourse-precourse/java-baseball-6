@@ -1,9 +1,12 @@
 package baseball;
 
-public class InputView {
-    public String readNumber() {
-    }
+import camp.nextstep.edu.missionutils.Console;
 
-    public Object readCommand() {
+public class InputView {
+    public String readUserInput() {
+        String userInput = Console.readLine();
+        InputValidator.validate(userInput);
+
+        return userInput;
     }
 }

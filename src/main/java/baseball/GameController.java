@@ -34,13 +34,13 @@ public class GameController {
     }
 
     private BaseballNumbers readUserNumberInput() {
-        String input = inputView.readNumber();
+        String input = inputView.readUserInput();
         return BaseballNumbers.from(input);
     }
 
     private boolean askRestart() {
         outputView.printAskRestart();
-        GameCommand command = GameCommand.from(inputView.readCommand());
+        GameCommand command = GameCommand.from(inputView.readUserInput());
         return command.isRestart();
     }
 }
