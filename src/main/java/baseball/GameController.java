@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.domain.BaseballGame;
+import baseball.domain.BaseballNumbers;
+import baseball.domain.GameResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
