@@ -4,12 +4,12 @@ public class GameResult {
     private int strike;
     private int ball;
 
-    public GameResult(int strike, int ball) {
+    private GameResult(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
     }
 
-    private static GameResult from(int strike, int ball) {
+    public static GameResult from(int strike, int ball) {
         return new GameResult(strike, ball);
     }
 
