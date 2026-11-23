@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.domain.BaseballGame;
 import baseball.domain.BaseballNumbers;
+import baseball.domain.GameCommand;
 import baseball.domain.GameResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -48,9 +49,8 @@ public class GameController {
 
     private boolean askRestart() {
         outputView.printAskRestart();
-        //GameCommand command = GameCommand.from(inputView.readUserInput());
+        GameCommand command = GameCommand.from(inputView.readUserInput());
 
-        //return command.isRestart();
-        return false;
+        return command.isRestart();
     }
 }
