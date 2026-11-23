@@ -46,4 +46,28 @@ public class BaseballNumbers {
             throw new IllegalArgumentException("서로 다른 숫자여야 합니다.");
         }
     }
+
+    public GameResult judge(BaseballNumbers userNumber) {
+        int strike = 0;
+        int ball = 0;
+        for(int index = 0; index < numbers.size(); index++){
+            if(isCurrentDigitStrike(userNumber, index)){
+                strike++;
+                continue;
+            }
+
+            if(isCurrentDigitBall(userNumber, index)){
+                ball++;
+            }
+        }
+        return GameResult.from(strike, ball);
+    }
+
+    private boolean isCurrentDigitBall(BaseballNumbers userNumber, int index) {
+        return numbers.contains(userNumber.numbers.get(index));
+    }
+
+    private boolean isCurrentDigitStrike(BaseballNumbers userNumber, int index) {
+        return numbers.get(index).equals(userNumber.numbers.get(index));
+    }
 }

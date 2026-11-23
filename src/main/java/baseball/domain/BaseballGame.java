@@ -11,6 +11,6 @@ public class BaseballGame {
     }
 
     public GameResult judge(BaseballNumbers userNumber) {
-        return null;
+        return answer.judge(userNumber);
     }
 }
