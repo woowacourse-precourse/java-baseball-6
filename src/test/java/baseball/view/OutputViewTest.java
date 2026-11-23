@@ -37,11 +37,11 @@ public class OutputViewTest {
 
     static Stream<Arguments> results() {
         return Stream.of(
-                Arguments.of("볼만 있는 경우", new GameResult(0, 2), "2볼"),
-                Arguments.of("스트라이크만 있는 경우", new GameResult(1, 0), "1스트라이크"),
-                Arguments.of("볼과 스트라이크가 모두 있는 경우", new GameResult(1, 1), "1볼 1스트라이크"),
-                Arguments.of("3볼 2스트라이크인 경우", new GameResult(2, 3), "3볼 2스트라이크"),
-                Arguments.of("아무것도 없는 경우", new GameResult(0, 0), "낫싱")
+                Arguments.of("볼만 있는 경우", GameResult.from(0, 2), "2볼"),
+                Arguments.of("스트라이크만 있는 경우", GameResult.from(1, 0), "1스트라이크"),
+                Arguments.of("볼과 스트라이크가 모두 있는 경우", GameResult.from(1, 1), "1볼 1스트라이크"),
+                Arguments.of("3볼 2스트라이크인 경우", GameResult.from(2, 3), "3볼 2스트라이크"),
+                Arguments.of("아무것도 없는 경우", GameResult.from(0, 0), "낫싱")
         );
     }
 }
