@@ -39,7 +39,7 @@ public class GameController {
     }
 
     private boolean isPlaying(GameResult result) {
-        return !result.isGameOver();
+        return result.isGameOver() == false;
     }
 
     private BaseballNumbers readUserNumberInput() {
