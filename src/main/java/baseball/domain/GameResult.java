@@ -9,6 +9,10 @@ public class GameResult {
         this.ball = ball;
     }
 
+    private static GameResult from(int strike, int ball) {
+        return new GameResult(strike, ball);
+    }
+
     public boolean isGameOver() {
         return strike == 3;
     }
