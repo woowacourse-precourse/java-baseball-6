@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.exception.BaseballGameException;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +38,13 @@ public class BaseballNumbers {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != SIZE) {
-            throw new IllegalArgumentException("숫자는 " + SIZE + "자리여야 합니다.");
+            throw new BaseballGameException("숫자는 " + SIZE + "자리여야 합니다.");
         }
         if (numbers.stream().anyMatch(n -> n < MIN || n > MAX)) {
-            throw new IllegalArgumentException(MIN + "~" + MAX + " 사이의 숫자여야 합니다.");
+            throw new BaseballGameException(MIN + "~" + MAX + " 사이의 숫자여야 합니다.");
         }
         if (numbers.stream().distinct().count() != SIZE) {
-            throw new IllegalArgumentException("서로 다른 숫자여야 합니다.");
+            throw new BaseballGameException("서로 다른 숫자여야 합니다.");
         }
     }
 

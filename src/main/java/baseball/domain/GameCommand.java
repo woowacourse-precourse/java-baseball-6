@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.exception.BaseballGameException;
 import java.util.Arrays;
 
 public enum GameCommand {
@@ -16,7 +17,7 @@ public enum GameCommand {
         return Arrays.stream(values())
                 .filter(command -> command.support(input))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("재시작(1)/종료(2) 입력은 1 또는 2만 가능합니다."));
+                .orElseThrow(() -> new BaseballGameException("재시작(1)/종료(2) 입력은 1 또는 2만 가능합니다."));
     }
 
     private boolean support(String input){
