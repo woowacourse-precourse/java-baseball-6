@@ -9,7 +9,7 @@ public class InputValidator {
 
     public static void validate(String input) {
         if (input == null || input.isBlank()) {
-            throw new BaseballGameException(BaseballErrorMessage.NULL_OR_BLANK_INPUT.getMessage());
+            throw new BaseballGameException(BaseballErrorMessage.NULL_OR_BLANK_INPUT);
         }
     }
 }
