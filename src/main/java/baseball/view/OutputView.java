@@ -31,7 +31,7 @@ public class OutputView {
             sb.append(result.getStrike()).append(OutputMessage.RESULT_STRIKE.getMessage());
         }
 
-        println(sb.toString());
+        System.out.println(sb);
     }
 
     public void printEnd() {
