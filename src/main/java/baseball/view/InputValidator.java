@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.exception.BaseballErrorMessage;
 import baseball.exception.BaseballGameException;
 
 public class InputValidator {
@@ -8,7 +9,7 @@ public class InputValidator {
 
     public static void validate(String input) {
         if (input == null || input.isBlank()) {
-            throw new BaseballGameException("입력한 값이 null 혹은 빈값입니다.");
+            throw new BaseballGameException(BaseballErrorMessage.NULL_OR_BLANK_INPUT.getMessage());
         }
     }
 }

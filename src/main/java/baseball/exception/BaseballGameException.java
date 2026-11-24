@@ -1,7 +1,7 @@
 package baseball.exception;
 
 public class BaseballGameException extends IllegalArgumentException {
-    public BaseballGameException(String message) {
-        super(message);
+    public BaseballGameException(BaseballErrorMessage message, Object... numbers) {
+        super(message.getMessage(numbers));
     }
 }
