@@ -31,11 +31,11 @@ public class OutputView {
             sb.append(result.getStrike()).append(OutputMessage.RESULT_STRIKE.getMessage());
         }
 
-        System.out.println(sb);
+        println(sb.toString());
     }
 
     public void printEnd() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        println(OutputMessage.END_MESSAGE);
     }
 
     public void printAskRestart() {
@@ -45,6 +45,11 @@ public class OutputView {
     private void println(OutputMessage message){
         System.out.println(message.getMessage());
     }
+
+    private void println(String message){
+        System.out.println(message);
+    }
+
     private void print(OutputMessage message){
         System.out.print(message.getMessage());
     }

@@ -1,8 +1,10 @@
 package baseball.domain;
 
 public class GameResult {
-    private int strike;
-    private int ball;
+    public static final int THREE_STRIKE = 3;
+    public static final int ZERO = 0;
+    private final int strike;
+    private final int ball;
 
     private GameResult(int strike, int ball) {
         this.strike = strike;
@@ -14,15 +16,15 @@ public class GameResult {
     }
 
     public boolean isGameOver() {
-        return strike == 3;
+        return strike == THREE_STRIKE;
     }
 
     public boolean isNothing() {
-        return strike == 0 && ball == 0;
+        return strike == ZERO && ball == ZERO;
     }
 
     public boolean hasBall() {
-        return 0 < ball;
+        return ZERO < ball;
     }
 
     public int getBall() {
@@ -30,7 +32,7 @@ public class GameResult {
     }
 
     public boolean hasStrike() {
-        return 0 < strike;
+        return ZERO < strike;
     }
 
     public int getStrike() {

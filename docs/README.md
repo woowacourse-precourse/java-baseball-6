@@ -38,7 +38,7 @@
   - `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.`
 
 ### 5. 예외 처리
-- [ ] 잘못된 입력이면 `IllegalArgumentException`을 발생시키고 종료한다.
+- [x] 잘못된 입력이면 `IllegalArgumentException`을 발생시키고 종료한다.
 
 ### 6. 요구 사항
 - [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
