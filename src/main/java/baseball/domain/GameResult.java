@@ -1,8 +1,7 @@
 package baseball.domain;
 
 public class GameResult {
-    public static final int THREE_STRIKE = 3;
-    public static final int ZERO = 0;
+
     private final int strike;
     private final int ball;
 
@@ -16,15 +15,15 @@ public class GameResult {
     }
 
     public boolean isGameOver() {
-        return strike == THREE_STRIKE;
+        return strike == GameRuleConstant.STRIKE_OUT.getNumber();
     }
 
     public boolean isNothing() {
-        return strike == ZERO && ball == ZERO;
+        return strike == 0 && ball == 0;
     }
 
     public boolean hasBall() {
-        return ZERO < ball;
+        return 0 < ball;
     }
 
     public int getBall() {
@@ -32,7 +31,7 @@ public class GameResult {
     }
 
     public boolean hasStrike() {
-        return ZERO < strike;
+        return 0 < strike;
     }
 
     public int getStrike() {

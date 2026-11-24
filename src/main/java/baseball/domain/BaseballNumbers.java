@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumbers {
-    private static final int SIZE = 3;
-    private static final int MIN = 1;
-    private static final int MAX = 9;
 
     private final List<Integer> numbers;
 
@@ -20,8 +17,8 @@ public class BaseballNumbers {
 
     public static BaseballNumbers randomNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < SIZE) {
-            int number = Randoms.pickNumberInRange(MIN, MAX);
+        while (randomNumbers.size() < GameRuleConstant.GAME_NUMBER_SIZE.getNumber()) {
+            int number = Randoms.pickNumberInRange(GameRuleConstant.GAME_NUMBER_MIN.getNumber(), GameRuleConstant.GAME_NUMBER_MAX.getNumber());
             if (!randomNumbers.contains(number)) {
                 randomNumbers.add(number);
             }
@@ -38,13 +35,13 @@ public class BaseballNumbers {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != SIZE) {
-            throw new BaseballGameException(BaseballErrorMessage.INVALID_NUMBER_LENGTH, SIZE);
+        if (numbers.size() != GameRuleConstant.GAME_NUMBER_SIZE.getNumber()) {
+            throw new BaseballGameException(BaseballErrorMessage.INVALID_NUMBER_LENGTH);
         }
-        if (numbers.stream().anyMatch(n -> n < MIN || n > MAX)) {
-            throw new BaseballGameException(BaseballErrorMessage.INVALID_NUMBER_RANGE, MIN, MAX);
+        if (numbers.stream().anyMatch(n -> n < GameRuleConstant.GAME_NUMBER_MIN.getNumber()|| n > GameRuleConstant.GAME_NUMBER_MAX.getNumber())) {
+            throw new BaseballGameException(BaseballErrorMessage.INVALID_NUMBER_RANGE);
         }
-        if (numbers.stream().distinct().count() != SIZE) {
+        if (numbers.stream().distinct().count() != GameRuleConstant.GAME_NUMBER_SIZE.getNumber()) {
             throw new BaseballGameException(BaseballErrorMessage.DUPLICATED_NUMBER);
         }
     }
