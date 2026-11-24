@@ -42,16 +42,22 @@
 
 ### 6. 요구 사항
 - [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-- [x]Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+- [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
 
 ### 7. 책임 분리
-- `GameController` : 입력 → 판정 → 출력의 게임 진행 흐름을 제어한다.
-- `BaseballGame` : 한 판의 정답을 가지고 있고, 입력된 숫자에 대한 판정을 요청한다.
-- `BaseballGameJudge` : 정답과 입력을 비교해 스트라이크/볼을 계산한다.
-- `GameResult` : 판정 결과(스트라이크, 볼 개수)를 담는다.
-- `BaseballNumbers` : 서로 다른 1~9 숫자 3개 (생성 시 게임 규칙 검증)
-- `NumberGenerator` : 정답용 숫자 3개를 생성한다.
-- `GameCommand` : 재시작/종료 선택 (1 또는 2 검증)
-- `InputView` : 사용자 입력을 받는다.
-- `OutputView` : 안내 문구와 결과를 출력한다.
-- `InputValidator` : 입력 형식 검증 (null/blank, 숫자 여부)
+- controller : 게임의 흐름을 제어
+  - `GameController` : 입력 → 판정 → 출력의 게임 진행 흐름을 제어한다.
+- domain : 게임에 대한 규칙과 동작을 구현
+  - `BaseballGame` : 한 판의 정답을 가지고 있고, 입력된 숫자에 대한 판정을 요청한다.
+  - `BaseballNumbers` : 게임에서 사용되는 숫자들을 생성하고 검증하며 입력된 숫자에 대한 결과를 판정을 하여 반환한다.
+  - `GameResult` : 판정 결과(스트라이크, 볼 개수)를 담고, 게임의 상태를 판정한다.
+  - `GameCommand` : 재시작/종료 선택 
+  - `GameRuleConstant` : 게임 규칙과 관련된 상수들을 정의한다.
+- exception : 게임에서 발생하는 오류 정의
+  - `BaseballErrorMessage` : 오류 메세지 정의
+  - `BaseballGameException` : 게임 예외 정의
+- view : 프로그램의 입출력을 제어 
+  - `InputView` : 사용자 입력을 받는다.
+  - `OutputView` : 안내 문구와 결과를 출력한다.
+  - `InputValidator` : 입력 형식 검증 (null/blank 검증)
+  - `OutputMessage` : 안내 및 출력 문구 정의
