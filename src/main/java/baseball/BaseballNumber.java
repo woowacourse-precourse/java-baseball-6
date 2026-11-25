@@ -6,74 +6,79 @@ import java.util.List;
 
 public class BaseballNumber {
 
-    private static final int NUMBER_COUNTER = 3;
-    private static final char MIN_DIGIT ='1';
-    private static final char MAX_DIGIT ='9';
+    private static final int NUMBER_COUNT = 3;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
 
     private final List<Integer> numbers;
 
     public BaseballNumber(String input) {
-        validate(input);
-        this.numbers = List.copyOf(convertToNumbers(input));
+        this(convertToNumbers(input));
+    }
+
+    public BaseballNumber(List<Integer> numbers) {
+        validate(numbers);
+        this.numbers = List.copyOf(numbers);
     }
 
     public GameResult compare(BaseballNumber guess) {
         int strikeCount = 0;
-        int matchCount = 0;
+        int matchedCount = 0;
 
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i).equals(guess.numbers.get(i))) {
+        for (int index = 0; index < NUMBER_COUNT; index++) {
+            if (numbers.get(index).equals(guess.numbers.get(index))) {
                 strikeCount++;
             }
 
-            if (numbers.contains(guess.numbers.get(i))) {
-                matchCount++;
+            if (numbers.contains(guess.numbers.get(index))) {
+                matchedCount++;
             }
         }
 
-        int ballCount = matchCount - strikeCount;
+        int ballCount = matchedCount - strikeCount;
         return new GameResult(ballCount, strikeCount);
     }
 
-    private void validate(String input) {
-        validateLength(input);
-        validateDigits(input);
-        validateDuplicate(input);
-    }
-
-    private void validateLength(String input) {
-        if (input.length() != NUMBER_COUNTER) {
-            throw new IllegalArgumentException("숫자는 3자리여야 합니다.");
-        }
-    }
-
-    private void validateDigits(String input) {
-        for (char digit : input.toCharArray()) {
-            if (digit <MIN_DIGIT || digit > MAX_DIGIT) {
-                throw new IllegalArgumentException(
-                        "1부터 9까지의 숫자만 입력할 수 있습니다.");
-            }
-        }
-    }
-
-    private void validateDuplicate(String input) {
-        HashSet<Character> uniqueDigits = new HashSet<>();
-
-        for (char digit : input.toCharArray()) {
-            if (!uniqueDigits.add(digit)) {
-                throw new IllegalArgumentException(
-                        "숫자는 중복될 수 없습니다.");
-            }
-        }
-    }
-
-    private List<Integer> convertToNumbers(String input) {
+    private static List<Integer> convertToNumbers(String input) {
         List<Integer> convertedNumbers = new ArrayList<>();
 
         for (char digit : input.toCharArray()) {
-            convertedNumbers.add(digit - 0);
+            if (digit < '0' || digit > '9') {
+                throw new IllegalArgumentException(
+                        "숫자만 입력할 수 있습니다.");
+            }
+
+            convertedNumbers.add(digit - '0');
         }
 
         return convertedNumbers;
+    }
+
+    private void validate(List<Integer> numbers) {
+        validateSize(numbers);
+        validateRange(numbers);
+        validateDuplicates(numbers);
+    }
+
+    private void validateSize(List<Integer> numbers) {
+        if (numbers.size() != NUMBER_COUNT) {
+            throw new IllegalArgumentException("숫자는 3개여야 합니다.");
+        }
+    }
+
+    private void validateRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < MIN_NUMBER || number > MAX_NUMBER) {
+                throw new IllegalArgumentException(
+                        "1부터 9까지의 숫자만 사용할 수 있습니다.");
+            }
+        }
+    }
+
+    private void validateDuplicates(List<Integer> numbers) {
+        if (new HashSet<>(numbers).size() != NUMBER_COUNT) {
+            throw new IllegalArgumentException(
+                    "숫자는 중복될 수 없습니다.");
+        }
     }
 }

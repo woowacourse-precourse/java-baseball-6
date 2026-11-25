@@ -3,6 +3,8 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -121,5 +123,25 @@ public class BaseballNumberTest {
 
         assertThat(result.ballCount()).isZero();
         assertThat(result.strikeCount()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("숫자 목록으로 만든 정답과 입력을 비교할 수 있다")
+    void compareAnswerCreatedFromList() {
+        BaseballNumber answer = new BaseballNumber(List.of(4, 2, 5));
+        BaseballNumber guess = new BaseballNumber("425");
+
+        GameResult result = answer.compare(guess);
+
+        assertThat(result.ballCount()).isZero();
+        assertThat(result.strikeCount()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("숫자 목록에도 중복을 허용하지 않는다")
+    void rejectDuplicateNumbersInList() {
+        assertThatThrownBy(() ->
+                new BaseballNumber(List.of(1, 1, 2)))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

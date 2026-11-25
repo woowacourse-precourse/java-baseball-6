@@ -16,4 +16,8 @@ public class GameResult {
     public int strikeCount() {
         return strikeCount;
     }
+
+    public boolean isCorrect() {
+        return strikeCount == 3;
+    }
 }
