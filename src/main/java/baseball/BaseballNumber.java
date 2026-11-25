@@ -17,6 +17,24 @@ public class BaseballNumber {
         this.numbers = List.copyOf(convertToNumbers(input));
     }
 
+    public GameResult compare(BaseballNumber guess) {
+        int strikeCount = 0;
+        int matchCount = 0;
+
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i).equals(guess.numbers.get(i))) {
+                strikeCount++;
+            }
+
+            if (numbers.contains(guess.numbers.get(i))) {
+                matchCount++;
+            }
+        }
+
+        int ballCount = matchCount - strikeCount;
+        return new GameResult(ballCount, strikeCount);
+    }
+
     private void validate(String input) {
         validateLength(input);
         validateDigits(input);
