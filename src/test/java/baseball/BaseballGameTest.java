@@ -18,7 +18,11 @@ class BaseballGameTest extends NsTest {
 
                     assertThat(output())
                             .contains("낫싱", "1볼 1스트라이크")
-                            .endsWith("3스트라이크");
+                            .endsWith(
+                                    "3스트라이크"
+                                            + System.lineSeparator()
+                                            + "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+                            );
                 },
                 4, 2, 5
         );

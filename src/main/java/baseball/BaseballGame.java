@@ -20,6 +20,7 @@ public class BaseballGame {
             outputView.printResult(result);
 
             if (result.isCorrect()) {
+                outputView.printCorrectAnswerMessage();
                 return;
             }
         }
