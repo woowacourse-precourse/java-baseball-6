@@ -9,6 +9,18 @@ public class BaseballGame {
     public void run() {
         outputView.printStartMessage();
 
+        while (true) {
+            play();
+
+            String choice = inputView.readRestartChoice();
+
+            if (choice.equals("2")) {
+                return;
+            }
+        }
+    }
+
+    private void play() {
         BaseballNumber answer =
                 new BaseballNumber(numberGenerator.generate());
 
