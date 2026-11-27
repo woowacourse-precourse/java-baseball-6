@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OutputView {
     public void printStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -14,21 +17,17 @@ public class OutputView {
             return;
         }
 
-        String message = "";
+        List<String> parts = new ArrayList<>();
 
         if (ballCount > 0) {
-            message += ballCount + "볼";
+            parts.add(ballCount + "볼");
         }
 
         if (strikeCount > 0) {
-            if (ballCount > 0) {
-                message += " ";
-            }
-
-            message += strikeCount + "스트라이크";
+            parts.add(strikeCount + "스트라이크");
         }
 
-        System.out.println(message);
+        System.out.println(String.join(" ", parts));
     }
 
     public void printCorrectAnswerMessage() {
