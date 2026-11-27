@@ -1,7 +1,6 @@
-package baseball;
+package baseball.domain;
 
 public enum RestartChoice {
-
     RESTART("1"),
     EXIT("2");
 

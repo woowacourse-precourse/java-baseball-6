@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BaseballNumberTest {
-
     @Test
     @DisplayName("서로 다른 1부터 9까지의 숫자 3자리는 허용한다.")
     void acceptValidInput() {

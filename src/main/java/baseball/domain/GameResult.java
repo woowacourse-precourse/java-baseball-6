@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 public class GameResult {
     private final int ballCount;

@@ -1,5 +1,6 @@
-package baseball;
+package baseball.view;
 
+import baseball.domain.GameResult;
 import java.util.ArrayList;
 import java.util.List;
 

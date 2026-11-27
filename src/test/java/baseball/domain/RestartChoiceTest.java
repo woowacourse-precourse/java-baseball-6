@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RestartChoiceTest {
-
     @Test
     @DisplayName("1은 재시작 선택으로 변환한다")
     void acceptRestartChoice() {

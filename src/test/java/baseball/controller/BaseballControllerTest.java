@@ -1,5 +1,6 @@
-package baseball;
+package baseball.controller;
 
+import baseball.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,8 +9,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class BaseballGameTest extends NsTest {
-
+class BaseballControllerTest extends NsTest {
     @Test
     @DisplayName("정답을 맞힐 때까지 진행하고 2를 입력하면 종료한다")
     void finishWhenExitSelected() {

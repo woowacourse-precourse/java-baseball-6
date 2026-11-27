@@ -1,7 +1,13 @@
-package baseball;
+package baseball.controller;
 
-public class BaseballGame {
+import baseball.domain.BaseballNumber;
+import baseball.domain.GameResult;
+import baseball.domain.RestartChoice;
+import baseball.generator.NumberGenerator;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
+public class BaseballController {
     private final NumberGenerator numberGenerator = new NumberGenerator();
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();

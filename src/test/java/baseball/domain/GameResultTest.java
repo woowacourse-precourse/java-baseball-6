@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameResultTest {
-
     @Test
     @DisplayName("3스트라이크이면 정답이다")
     void recognizeCorrectAnswer() {
