@@ -1,30 +1,25 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class InputViewTest extends NsTest {
-
-    private String choice;
+class RestartChoiceTest {
 
     @Test
-    @DisplayName("1을 입력하면 재시작 선택을 반환한다")
+    @DisplayName("1은 재시작 선택으로 변환한다")
     void acceptRestartChoice() {
-        run("1");
-
-        assertThat(choice).isEqualTo("1");
+        assertThat(RestartChoice.from("1"))
+                .isEqualTo(RestartChoice.RESTART);
     }
 
     @Test
-    @DisplayName("2를 입력하면 종료 선택을 반환한다")
+    @DisplayName("2는 종료 선택으로 변환한다")
     void acceptExitChoice() {
-        run("2");
-
-        assertThat(choice).isEqualTo("2");
+        assertThat(RestartChoice.from("2"))
+                .isEqualTo(RestartChoice.EXIT);
     }
 
     @Test
@@ -34,15 +29,15 @@ class InputViewTest extends NsTest {
     }
 
     @Test
-    @DisplayName("문자 입력은 거부한다")
+    @DisplayName("문자는 거부한다")
     void rejectLetter() {
         assertInvalidChoice("a");
     }
 
     @Test
-    @DisplayName("빈 입력은 거부한다")
+    @DisplayName("빈 문자열은 거부한다")
     void rejectEmptyInput() {
-        assertInvalidChoice("\n");
+        assertInvalidChoice("");
     }
 
     @Test
@@ -52,13 +47,7 @@ class InputViewTest extends NsTest {
     }
 
     private void assertInvalidChoice(String input) {
-        assertThatThrownBy(() -> run(input))
+        assertThatThrownBy(() -> RestartChoice.from(input))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Override
-    public void runMain() {
-        InputView inputView = new InputView();
-        choice = inputView.readRestartChoice();
     }
 }

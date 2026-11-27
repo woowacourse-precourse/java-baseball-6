@@ -12,9 +12,10 @@ public class BaseballGame {
         while (true) {
             play();
 
-            String choice = inputView.readRestartChoice();
+            RestartChoice choice =
+                    RestartChoice.from(inputView.readRestartChoice());
 
-            if (choice.equals("2")) {
+            if (choice == RestartChoice.EXIT) {
                 return;
             }
         }
