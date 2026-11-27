@@ -5,11 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class BaseballNumber {
-
-    private static final int NUMBER_COUNT = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-
     private final List<Integer> numbers;
 
     public BaseballNumber(String input) {
@@ -25,7 +20,7 @@ public class BaseballNumber {
         int strikeCount = 0;
         int matchedCount = 0;
 
-        for (int index = 0; index < NUMBER_COUNT; index++) {
+        for (int index = 0; index < BaseballRules.NUMBER_COUNT; index++) {
             if (numbers.get(index).equals(guess.numbers.get(index))) {
                 strikeCount++;
             }
@@ -61,14 +56,14 @@ public class BaseballNumber {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != NUMBER_COUNT) {
+        if (numbers.size() != BaseballRules.NUMBER_COUNT) {
             throw new IllegalArgumentException("숫자는 3개여야 합니다.");
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < MIN_NUMBER || number > MAX_NUMBER) {
+            if (number < BaseballRules.MIN_NUMBER || number > BaseballRules.MAX_NUMBER) {
                 throw new IllegalArgumentException(
                         "1부터 9까지의 숫자만 사용할 수 있습니다.");
             }
@@ -76,7 +71,7 @@ public class BaseballNumber {
     }
 
     private void validateDuplicates(List<Integer> numbers) {
-        if (new HashSet<>(numbers).size() != NUMBER_COUNT) {
+        if (new HashSet<>(numbers).size() != BaseballRules.NUMBER_COUNT) {
             throw new IllegalArgumentException(
                     "숫자는 중복될 수 없습니다.");
         }

@@ -18,6 +18,6 @@ public class GameResult {
     }
 
     public boolean isCorrect() {
-        return strikeCount == 3;
+        return strikeCount == BaseballRules.NUMBER_COUNT;
     }
 }
